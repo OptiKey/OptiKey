@@ -1,4 +1,6 @@
-﻿NEXT:
+﻿ANOTHER TEST
+
+NEXT:
   Remove error when trigger without point. A lack of cursor or key selection should hopefully be sufficient. Possibly increase point ttl to exceed average blink duration (150ms)? 
   Once over the changes I made yesterday, especially district until changed? 
 	Expose CapturingMultiKeySelection property on VM & equivalnet event on InputService
