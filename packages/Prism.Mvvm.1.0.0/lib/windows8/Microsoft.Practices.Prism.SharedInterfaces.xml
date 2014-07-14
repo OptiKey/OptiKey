@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Practices.Prism.SharedInterfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Practices.Prism.IActiveAware">
+            <summary>
+            Interface that defines if the object instance is active
+            and notifies when the activity changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.IActiveAware.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the object is active.
+            </summary>
+            <value><see langword="true" /> if the object is active; otherwise <see langword="false" />.</value>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.IActiveAware.IsActiveChanged">
+            <summary>
+            Notifies that the value for <see cref="P:Microsoft.Practices.Prism.IActiveAware.IsActive"/> property has changed.
+            </summary>
+        </member>
+    </members>
+</doc>

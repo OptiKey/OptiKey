@@ -71,24 +71,13 @@ IDEAS:
 	Complete current word
 	Next word prediction
 
-
-
-
-ISSUES:
 	
-
-
 NICE TO HAVES:
 	Blink trigger
 
 
-NOTES:
+TO ADD TO ISSUE TRACKER:
+
+
+OTHER:
 	If I encounter a DPI scaling issue read this: http://theeyetribe.com/forum/viewtopic.php?f=27&t=140&sid=96e7808b42ae998052775807adb8be74
-
-
-
-
-
-
-DONE:
-	

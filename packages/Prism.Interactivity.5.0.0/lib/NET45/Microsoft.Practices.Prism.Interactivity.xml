@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Practices.Prism.Interactivity</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1">
+            <summary>
+            Base behavior to handle connecting a <see cref="T:System.Windows.Controls.Control"/> to a Command.
+            </summary>
+            <typeparam name="T">The target object must derive from Control</typeparam>
+            <remarks>
+            CommandBehaviorBase can be used to provide new behaviors for commands.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.#ctor(`0)">
+            <summary>
+            Constructor specifying the target object.
+            </summary>
+            <param name="targetObject">The target object the behavior is attached to.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.UpdateEnabledState">
+            <summary>
+            Updates the target object's IsEnabled property based on the commands ability to execute.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.ExecuteCommand(System.Object)">
+            <summary>
+            Executes the command, if it's set, providing the <see cref="P:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.CommandParameter"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.Command">
+            <summary>
+            Corresponding command to be execute and monitored for <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.CommandParameter">
+            <summary>
+            The parameter to supply the command during execution
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1.TargetObject">
+            <summary>
+            Object to which this behavior is attached.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultConfirmationWindow">
+            <summary>
+            Interaction logic for ConfirmationChildWindow.xaml
+            </summary>
+            <summary>
+            DefaultConfirmationWindow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultConfirmationWindow.#ctor">
+            <summary>
+            Creates a new instance of ConfirmationChildWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultConfirmationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultConfirmationWindow.Confirmation">
+            <summary>
+            Sets or gets the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IConfirmation"/> shown by this window./&gt;
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultNotificationWindow">
+            <summary>
+            Interaction logic for NotificationChildWindow.xaml
+            </summary>
+            <summary>
+            DefaultNotificationWindow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultNotificationWindow.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultNotificationWindow"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultNotificationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.DefaultPopupWindows.DefaultNotificationWindow.Notification">
+            <summary>
+            Sets or gets the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification"/> shown by this window./&gt;
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Confirmation">
+            <summary>
+            Basic implementation of <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IConfirmation"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Notification">
+            <summary>
+            Basic implementation of <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification">
+            <summary>
+            Represents an interaction request used for notifications.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification.Title">
+            <summary>
+            Gets or sets the title to use for the notification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification.Content">
+            <summary>
+            Gets or sets the content of the notification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Notification.Title">
+            <summary>
+            Gets or sets the title to use for the notification.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Notification.Content">
+            <summary>
+            Gets or sets the content of the notification.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IConfirmation">
+            <summary>
+            Represents an interaction request used for confirmations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IConfirmation.Confirmed">
+            <summary>
+            Gets or sets a value indicating that the confirmation is confirmed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.Confirmation.Confirmed">
+            <summary>
+            Gets or sets a value indicating that the confirmation is confirmed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest">
+            <summary>
+            Represents a request from user interaction.
+            </summary>
+            <remarks>
+            View models can expose interaction request objects through properties and raise them when user interaction
+            is required so views associated with the view models can materialize the user interaction using an appropriate
+            mechanism.
+            </remarks>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest.Raised">
+            <summary>
+            Fired when the interaction is needed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequestAware">
+            <summary>
+            Interface used by the <see cref="T:Microsoft.Practices.Prism.Interactivity.PopupWindowAction"/>.
+            If the DataContext object of a view that is shown with this action implements this interface
+            it will be populated with the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification"/> data of the interaction request 
+            as well as an <see cref="T:System.Action"/> to finish the request upon invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequestAware.Notification">
+            <summary>
+            The <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification"/> passed when the interaction request was raised.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequestAware.FinishInteraction">
+            <summary>
+            An <see cref="T:System.Action"/> that can be invoked to finish the interaction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1">
+            <summary>
+            Implementation of the <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/> interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0)">
+            <summary>
+            Fires the Raised event.
+            </summary>
+            <param name="context">The context for the interaction request.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raise(`0,System.Action{`0})">
+            <summary>
+            Fires the Raised event.
+            </summary>
+            <param name="context">The context for the interaction request.</param>
+            <param name="callback">The callback to execute when the interaction is completed.</param>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequest`1.Raised">
+            <summary>
+            Fired when interaction is needed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs">
+            <summary>
+            Event args for the <see cref="E:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest.Raised"/> event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs.#ctor(Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification,System.Action)">
+            <summary>
+            Constructs a new instance of <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs"/>
+            </summary>
+            <param name="context"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs.Context">
+            <summary>
+            Gets the context for a requested interaction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestedEventArgs.Callback">
+            <summary>
+            Gets the callback to execute when an interaction is completed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestTrigger">
+            <summary>
+            Custom event trigger for using with <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/> objects.
+            </summary>
+            <remarks>
+            The standard <see cref="T:System.Windows.Interactivity.EventTrigger"/> class can be used instead, as long as the 'Raised' event 
+            name is specified.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestTrigger.GetEventName">
+            <summary>
+            Specifies the name of the Event this EventTriggerBase is listening for.
+            </summary>
+            <returns>This implementation always returns the Raised event name for ease of connection with <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestTrigger.OnAttached">
+            <summary>
+            Called after the trigger is attached to an AssociatedObject.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InteractionRequest.InteractionRequestTrigger.OnDetaching">
+            <summary>
+            Called when the trigger is being dettached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction">
+            <summary>
+            Trigger action that executes a command when invoked. 
+            It also maintains the Enabled state of the target control based on the CanExecute method of the command.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.CommandProperty">
+            <summary>
+            Dependency property identifying the command to execute when invoked.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.CommandParameterProperty">
+            <summary>
+            Dependency property identifying the command parameter to supply on command execution.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.TriggerParameterPathProperty">
+            <summary>
+            Dependency property identifying the TriggerParameterPath to be parsed to identify the child property of the trigger parameter to be used as the command parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.InvokeAction(System.Object)">
+            <summary>
+            Public wrapper of the Invoke method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.Invoke(System.Object)">
+            <summary>
+            Executes the command
+            </summary>
+            <param name="parameter">This parameter is passed to the command; the CommandParameter specified in the CommandParameterProperty is used for command invocation if not null.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.OnDetaching">
+            <summary>
+            Sets the Command and CommandParameter properties to null.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.OnAttached">
+            <summary>
+            This method is called after the behavior is attached.
+            It updates the command behavior's Command and CommandParameter properties if necessary.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.Command">
+            <summary>
+            Gets or sets the command to execute when invoked.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.CommandParameter">
+            <summary>
+            Gets or sets the command parameter to supply on command execution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.TriggerParameterPath">
+            <summary>
+            Gets or sets the TriggerParameterPath value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.ExecutableCommandBehavior">
+            <summary>
+            A CommandBehavior that exposes a public ExecuteCommand method. It provides the functionality to invoke commands and update Enabled state of the target control.
+            It is not possible to make the <see cref="T:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction"/> inherit from <see cref="T:Microsoft.Practices.Prism.Interactivity.CommandBehaviorBase`1"/>, since the <see cref="T:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction"/>
+            must already inherit from <see cref="T:System.Windows.Interactivity.TriggerAction`1"/>, so we chose to follow the aggregation approach.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.ExecutableCommandBehavior.#ctor(System.Windows.UIElement)">
+            <summary>
+            Constructor specifying the target object.
+            </summary>
+            <param name="target">The target object the behavior is attached to.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.InvokeCommandAction.ExecutableCommandBehavior.ExecuteCommand(System.Object)">
+            <summary>
+            Executes the command, if it's set.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Interactivity.PopupWindowAction">
+            <summary>
+            Shows a popup window in response to an <see cref="N:Microsoft.Practices.Prism.Interactivity.InteractionRequest"/> being raised.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.WindowContentProperty">
+            <summary>
+            The content of the child window to display as part of the popup.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.IsModalProperty">
+            <summary>
+            Determines if the content should be shown in a modal window or not.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.CenterOverAssociatedObjectProperty">
+            <summary>
+            Determines if the content should be initially shown centered over the view that raised the interaction request or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.Invoke(System.Object)">
+            <summary>
+            Displays the child window and collects results for <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequest"/>.
+            </summary>
+            <param name="parameter">The parameter to the action. If the action does not require a parameter, the parameter may be set to a null reference.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.GetWindow(Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification)">
+            <summary>
+            Returns the window to display as part of the trigger action.
+            </summary>
+            <param name="notification">The notification to be set as a DataContext in the window.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.PrepareContentForWindow(Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification,System.Windows.Window)">
+            <summary>
+            Checks if the WindowContent or its DataContext implements <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IInteractionRequestAware"/>.
+            If so, it sets the corresponding value.
+            Also, if WindowContent does not have a RegionManager attached, it creates a new scoped RegionManager for it.
+            </summary>
+            <param name="notification">The notification to be set as a DataContext in the HostWindow.</param>
+            <param name="wrapperWindow">The HostWindow</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.CreateDefaultWindow(Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification)">
+            <summary>
+            When no WindowContent is sent this method is used to create a default basic window to show
+            the corresponding <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.INotification"/> or <see cref="T:Microsoft.Practices.Prism.Interactivity.InteractionRequest.IConfirmation"/>.
+            </summary>
+            <param name="notification">The INotification or IConfirmation parameter to show.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.WindowContent">
+            <summary>
+            Gets or sets the content of the window.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.IsModal">
+            <summary>
+            Gets or sets if the window will be modal or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Interactivity.PopupWindowAction.CenterOverAssociatedObject">
+            <summary>
+            Gets or sets if the window will be initially shown centered over the view that raised the interaction request or not.
+            </summary>
+        </member>
+    </members>
+</doc>

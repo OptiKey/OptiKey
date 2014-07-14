@@ -1,0 +1,577 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Practices.Prism.Mvvm</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Practices.Prism.Mvvm.BindableBase">
+            <summary>
+            Implementation of <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> to simplify models.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Checks if a property already matches a desired value. Sets the property and
+            notifies listeners only when necessary.
+            </summary>
+            <typeparam name="T">Type of the property.</typeparam>
+            <param name="storage">Reference to a property with both getter and setter.</param>
+            <param name="value">Desired value for the property.</param>
+            <param name="propertyName">Name of the property used to notify listeners. This
+            value is optional and can be provided automatically when invoked from compilers that
+            support CallerMemberName.</param>
+            <returns>True if the value was changed, false if the existing value matched the
+            desired value.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.BindableBase.OnPropertyChanged(System.String)">
+            <summary>
+            Notifies listeners that a property value has changed.
+            </summary>
+            <param name="propertyName">Name of the property used to notify listeners. This
+            value is optional and can be provided automatically when invoked from compilers
+            that support <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/>.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.BindableBase.OnPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Raises this object's PropertyChanged event.
+            </summary>
+            <typeparam name="T">The type of the property that has a new value</typeparam>
+            <param name="propertyExpression">A Lambda expression representing the property that has a new value.</param>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Mvvm.BindableBase.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.CompositeCommand">
+            <summary>
+            The CompositeCommand composes one or more ICommands.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.CompositeCommand"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.CompositeCommand"/>.
+            </summary>
+            <param name="monitorCommandActivity">Indicates when the command activity is going to be monitored.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.RegisterCommand(System.Windows.Input.ICommand)">
+            <summary>
+            Adds a command to the collection and signs up for the <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> event of it.
+            </summary>
+             <remarks>
+            If this command is set to monitor command activity, and <paramref name="command"/> 
+            implements the <see cref="!:IActiveAwareCommand"/> interface, this method will subscribe to its
+            <see cref="!:IActiveAwareCommand.IsActiveChanged"/> event.
+            </remarks>
+            <param name="command">The command to register.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.UnregisterCommand(System.Windows.Input.ICommand)">
+            <summary>
+            Removes a command from the collection and removes itself from the <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> event of it.
+            </summary>
+            <param name="command">The command to unregister.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.CanExecute(System.Object)">
+            <summary>
+            Forwards <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> to the registered commands and returns
+            <see langword="true"/> if all of the commands return <see langword="true"/>.
+            </summary>
+            <param name="parameter">Data used by the command.
+            If the command does not require data to be passed, this object can be set to <see langword="null"/>.
+            </param>
+            <returns><see langword="true"/> if all of the commands return <see langword="true"/>; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.Execute(System.Object)">
+            <summary>
+            Forwards <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> to the registered commands.
+            </summary>
+            <param name="parameter">Data used by the command.
+            If the command does not require data to be passed, this object can be set to <see langword="null"/>.
+            </param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.ShouldExecute(System.Windows.Input.ICommand)">
+            <summary>
+            Evaluates if a command should execute.
+            </summary>
+            <param name="command">The command to evaluate.</param>
+            <returns>A <see cref="T:System.Boolean"/> value indicating whether the command should be used 
+            when evaluating <see cref="M:Microsoft.Practices.Prism.Commands.CompositeCommand.CanExecute(System.Object)"/> and <see cref="M:Microsoft.Practices.Prism.Commands.CompositeCommand.Execute(System.Object)"/>.</returns>
+            <remarks>
+            If this command is set to monitor command activity, and <paramref name="command"/>
+            implements the <see cref="!:IActiveAwareCommand"/> interface, 
+            this method will return <see langword="false"/> if the command's <see cref="!:IActiveAwareCommand.IsActive"/> 
+            property is <see langword="false"/>; otherwise it always returns <see langword="true"/>.</remarks>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.OnCanExecuteChanged">
+            <summary>
+            Raises <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> on the UI thread so every 
+            command invoker can requery <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> to check if the
+            <see cref="T:Microsoft.Practices.Prism.Commands.CompositeCommand"/> can execute.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.CompositeCommand.Command_IsActiveChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handler for IsActiveChanged events of registered commands.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">EventArgs to pass to the event.</param>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Commands.CompositeCommand.CanExecuteChanged">
+            <summary>
+            Occurs when any of the registered commands raise <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/>. You must keep a hard
+            reference to the handler to avoid garbage collection and unexpected results. See remarks for more information.
+            </summary>
+            <remarks>
+            When subscribing to the <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> event using 
+            code (not when binding using XAML) will need to keep a hard reference to the event handler. This is to prevent 
+            garbage collection of the event handler because the command implements the Weak Event pattern so it does not have
+            a hard reference to this handler. An example implementation can be seen in the CompositeCommand and CommandBehaviorBase
+            classes. In most scenarios, there is no reason to sign up to the CanExecuteChanged event directly, but if you do, you
+            are responsible for maintaining the reference.
+            </remarks>
+            <example>
+            The following code holds a reference to the event handler. The myEventHandlerReference value should be stored
+            in an instance member to avoid it from being garbage collected.
+            <code>
+            EventHandler myEventHandlerReference = new EventHandler(this.OnCanExecuteChanged);
+            command.CanExecuteChanged += myEventHandlerReference;
+            </code>
+            </example>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Commands.CompositeCommand.RegisteredCommands">
+            <summary>
+            Gets the list of all the registered commands.
+            </summary>
+            <value>A list of registered commands.</value>
+            <remarks>This returns a copy of the commands subscribed to the CompositeCommand.</remarks>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates can be attached for <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.Execute(`0)"/> and <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.CanExecute(`0)"/>.
+            </summary>
+            <typeparam name="T">Parameter type.</typeparam>
+            <remarks>
+            The constructor deliberately prevents the use of value types.
+            Because ICommand takes an object, having a value type for T would cause unexpected behavior when CanExecute(null) is called during XAML initialization for command bindings.
+            Using default(T) was considered and rejected as a solution because the implementor would not be able to distinguish between a valid and defaulted values.
+            <para/>
+            Instead, callers should support a value type by using a nullable value type and checking the HasValue property before using the Value property.
+            <example>
+                <code>
+            public MyClass()
+            {
+                this.submitCommand = new DelegateCommand&lt;int?&gt;(this.Submit, this.CanSubmit);
+            }
+            
+            private bool CanSubmit(int? customerId)
+            {
+                return (customerId.HasValue &amp;&amp; customers.Contains(customerId.Value));
+            }
+                </code>
+            </example>
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.DelegateCommandBase">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates can be attached for <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.Execute(System.Object)"/> and <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.CanExecute(System.Object)"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Creates a new instance of a <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommandBase"/>, specifying both the execute action and the can execute function.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to execute when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is invoked.</param>
+            <param name="canExecuteMethod">The <see cref="T:System.Func`2"/> to invoked when <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> is invoked.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.#ctor(System.Func{System.Object,System.Threading.Tasks.Task},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Creates a new instance of a <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommandBase"/>, specifying both the Execute action as an awaitable Task and the CanExecute function.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Func`2"/> to execute when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is invoked.</param>
+            <param name="canExecuteMethod">The <see cref="T:System.Func`2"/> to invoked when <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> is invoked.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.OnCanExecuteChanged">
+            <summary>
+            Raises <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> on the UI thread so every 
+            command invoker can requery <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.RaiseCanExecuteChanged">
+            <summary>
+            Raises <see cref="E:Microsoft.Practices.Prism.Commands.DelegateCommandBase.CanExecuteChanged"/> on the UI thread so every command invoker
+            can requery to check if the command can execute.
+            <remarks>Note that this will trigger the execution of <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.CanExecute(System.Object)"/> once for each invoker.</remarks>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.Execute(System.Object)">
+            <summary>
+            Executes the command with the provided parameter by invoking the <see cref="T:System.Action`1"/> supplied during construction.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.CanExecute(System.Object)">
+            <summary>
+            Determines if the command can execute with the provided parameter by invoking the <see cref="T:System.Func`2"/> supplied during construction.
+            </summary>
+            <param name="parameter">The parameter to use when determining if this command can execute.</param>
+            <returns>Returns <see langword="true"/> if the command can execute.  <see langword="False"/> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommandBase.OnIsActiveChanged">
+            <summary>
+            This raises the <see cref="E:Microsoft.Practices.Prism.Commands.DelegateCommandBase.IsActiveChanged"/> event.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Commands.DelegateCommandBase.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute. You must keep a hard
+            reference to the handler to avoid garbage collection and unexpected results. See remarks for more information.
+            </summary>
+            <remarks>
+            When subscribing to the <see cref="E:System.Windows.Input.ICommand.CanExecuteChanged"/> event using 
+            code (not when binding using XAML) will need to keep a hard reference to the event handler. This is to prevent 
+            garbage collection of the event handler because the command implements the Weak Event pattern so it does not have
+            a hard reference to this handler. An example implementation can be seen in the CompositeCommand and CommandBehaviorBase
+            classes. In most scenarios, there is no reason to sign up to the CanExecuteChanged event directly, but if you do, you
+            are responsible for maintaining the reference.
+            </remarks>
+            <example>
+            The following code holds a reference to the event handler. The myEventHandlerReference value should be stored
+            in an instance member to avoid it from being garbage collected.
+            <code>
+            EventHandler myEventHandlerReference = new EventHandler(this.OnCanExecuteChanged);
+            command.CanExecuteChanged += myEventHandlerReference;
+            </code>
+            </example>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Commands.DelegateCommandBase.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the object is active.
+            </summary>
+            <value><see langword="true" /> if the object is active; otherwise <see langword="false" />.</value>
+        </member>
+        <member name="E:Microsoft.Practices.Prism.Commands.DelegateCommandBase.IsActiveChanged">
+            <summary>
+            Fired if the <see cref="P:Microsoft.Practices.Prism.Commands.DelegateCommandBase.IsActive"/> property changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/>.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command. This can be null to just hook up a CanExecute delegate.</param>
+            <remarks><see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.CanExecute(`0)"/> will always return true.</remarks>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/>.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command. This can be null to just hook up a CanExecute delegate.</param>
+            <param name="canExecuteMethod">Delegate to execute when CanExecute is called on the command. This can be null.</param>
+            <exception cref="T:System.ArgumentNullException">When both <paramref name="executeMethod"/> and <paramref name="canExecuteMethod"/> ar <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.FromAsyncHandler(System.Func{`0,System.Threading.Tasks.Task})">
+            <summary>
+            Factory method to create a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/> from an awaitable handler method.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command.</param>
+            <returns>Constructed instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/></returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.FromAsyncHandler(System.Func{`0,System.Threading.Tasks.Task},System.Func{`0,System.Boolean})">
+            <summary>
+            Factory method to create a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/> from an awaitable handler method.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command. This can be null to just hook up a CanExecute delegate.</param>
+            <param name="canExecuteMethod">Delegate to execute when CanExecute is called on the command. This can be null.</param>
+            <returns>Constructed instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/></returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.CanExecute(`0)">
+            <summary>
+            Determines if the command can execute by invoked the <see cref="T:System.Func`2"/> provided during construction.
+            </summary>
+            <param name="parameter">Data used by the command to determine if it can execute.</param>
+            <returns>
+            <see langword="true"/> if this command can be executed; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand`1.Execute(`0)">
+            <summary>
+            Executes the command and invokes the <see cref="T:System.Action`1"/> provided during construction.
+            </summary>
+            <param name="parameter">Data used by the command.</param>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.DelegateCommand">
+            <summary>
+            An <see cref="T:System.Windows.Input.ICommand"/> whose delegates do not take any parameters for <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommand.Execute"/> and <see cref="M:Microsoft.Practices.Prism.Commands.DelegateCommand.CanExecute"/>.
+            </summary>
+            <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommandBase"/>
+            <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand`1"/>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.#ctor(System.Action)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/> with the <see cref="T:System.Action"/> to invoke on execution.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to invoke when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is called.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/> with the <see cref="T:System.Action"/> to invoke on execution
+            and a <see langword="Func"/> to query for determining if the command can execute.
+            </summary>
+            <param name="executeMethod">The <see cref="T:System.Action"/> to invoke when <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/> is called.</param>
+            <param name="canExecuteMethod">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> is called</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.FromAsyncHandler(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Factory method to create a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/> from an awaitable handler method.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command.</param>
+            <returns>Constructed instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/></returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.FromAsyncHandler(System.Func{System.Threading.Tasks.Task},System.Func{System.Boolean})">
+            <summary>
+            Factory method to create a new instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/> from an awaitable handler method.
+            </summary>
+            <param name="executeMethod">Delegate to execute when Execute is called on the command. This can be null to just hook up a CanExecute delegate.</param>
+            <param name="canExecuteMethod">Delegate to execute when CanExecute is called on the command. This can be null.</param>
+            <returns>Constructed instance of <see cref="T:Microsoft.Practices.Prism.Commands.DelegateCommand"/></returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.Execute">
+            <summary>
+             Executes the command.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.DelegateCommand.CanExecute">
+            <summary>
+            Determines if the command can be executed.
+            </summary>
+            <returns>Returns <see langword="true"/> if the command can execute, otherwise returns <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager">
+            <summary>
+            Handles management and dispatching of EventHandlers in a weak way.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.CallWeakReferenceHandlers(System.Object,System.Collections.Generic.List{System.WeakReference})">
+            <summary>
+             Invokes the handlers 
+            </summary>
+            <param name="sender"></param>
+            <param name="handlers"></param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.AddWeakReferenceHandler(System.Collections.Generic.List{System.WeakReference}@,System.EventHandler,System.Int32)">
+            <summary>
+             Adds a handler to the supplied list in a weak way.
+            </summary>
+            <param name="handlers">Existing handler list.  It will be created if null.</param>
+            <param name="handler">Handler to add.</param>
+            <param name="defaultListSize">Default list size.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Commands.WeakEventHandlerManager.RemoveWeakReferenceHandler(System.Collections.Generic.List{System.WeakReference},System.EventHandler)">
+            <summary>
+             Removes an event handler from the reference list.
+            </summary>
+            <param name="handlers">Handler list to remove reference from.</param>
+            <param name="handler">Handler to remove.</param>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1">
+            <summary>
+            Manages validation errors for an object, notifying when the error state changes.
+            </summary>
+            <typeparam name="T">The type of the error object.</typeparam>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.#ctor(System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1"/> class.
+            </summary>
+            <param name="raiseErrorsChanged">The action that invoked if when errors are added for an object./&gt;
+            event.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.GetErrors(System.String)">
+            <summary>
+            Gets the validation errors for a specified property.
+            </summary>
+            <param name="propertyName">The name of the property.</param>
+            <returns>The validation errors of type <typeparamref name="T"/> for the property.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.ClearErrors``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Clears the errors for the property indicated by the property expression.
+            </summary>
+            <typeparam name="TProperty">The property type.</typeparam>
+            <param name="propertyExpression">The expression indicating a property.</param>
+            <example>
+                container.ClearErrors(()=>SomeProperty);
+            </example>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.ClearErrors(System.String)">
+            <summary>
+            Clears the errors for a property.
+            </summary>
+            <param name="propertyName">The name of th property for which to clear errors.</param>
+            <example>
+                container.ClearErrors("SomeProperty");
+            </example>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.SetErrors``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Sets the validation errors for the specified property.
+            </summary>
+            <typeparam name="TProperty">The property type for which to set errors.</typeparam>
+            <param name="propertyExpression">The <see cref="T:System.Linq.Expressions.Expression"/> indicating the property.</param>
+            <param name="propertyErrors">The list of errors to set for the property.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.SetErrors(System.String,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Sets the validation errors for the specified property.
+            </summary>
+            <remarks>
+            If a change is detected then the errors changed event is raised.
+            </remarks>
+            <param name="propertyName">The name of the property.</param>
+            <param name="newValidationResults">The new validation errors.</param>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.ViewModel.ErrorsContainer`1.HasErrors">
+            <summary>
+            Gets a value indicating whether the object has validation errors. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Mvvm.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.CannotRegisterCompositeCommandInItself">
+            <summary>
+              Looks up a localized string similar to Cannot register a CompositeCommand in itself..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.CannotRegisterSameCommandTwice">
+            <summary>
+              Looks up a localized string similar to Cannot register the same command twice in the same CompositeCommand..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.DelegateCommandDelegatesCannotBeNull">
+            <summary>
+              Looks up a localized string similar to Neither the executeMethod nor the canExecuteMethod delegates can be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.DelegateCommandInvalidGenericPayloadType">
+            <summary>
+              Looks up a localized string similar to T for DelegateCommand&lt;T&gt; is not an object nor Nullable..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.PropertySupport_ExpressionNotProperty_Exception">
+            <summary>
+              Looks up a localized string similar to The member access expression does not access a property..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.PropertySupport_NotMemberAccessExpression_Exception">
+            <summary>
+              Looks up a localized string similar to The expression is not a member access expression..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.PropertySupport_StaticExpression_Exception">
+            <summary>
+              Looks up a localized string similar to The referenced property is a static property..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.Prism.Mvvm.Properties.Resources.WeakEventHandlerNotConstructedOnUIThread">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Mvvm.PropertySupport">
+            <summary>
+             Provides support for extracting property information based on a property expression.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.PropertySupport.ExtractPropertyName``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Extracts the property name from a property expression.
+            </summary>
+            <typeparam name="T">The object type containing the property specified in the expression.</typeparam>
+            <param name="propertyExpression">The property expression (e.g. p =&gt; p.PropertyName)</param>
+            <returns>The name of the property.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="propertyExpression"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the expression is:<br/>
+                Not a <see cref="T:System.Linq.Expressions.MemberExpression"/><br/>
+                The <see cref="T:System.Linq.Expressions.MemberExpression"/> does not represent a property.<br/>
+                Or, the property is static.
+            </exception>
+        </member>
+        <member name="T:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider">
+            <summary>
+            The ViewModelLocationProvider class locates the view model for the view that has the AutoWireViewModelChanged attached property set to true.
+            The view model will be located and injected into the view's DataContext. To locate the view, two strategies are used: First the ViewModelLocationProvider
+            will look to see if there is a view model factory registered for that view, if not it will try to infer the view model using a convention based approach.
+            This class also provide methods for registering the view model factories,
+            and also to override the default view model factory and the default view type to view model type resolver.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.factories">
+            <summary>
+            A dictionary that contains all the registered factories for the views.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.defaultViewModelFactory">
+            <summary>
+            The default view model factory.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.defaultViewTypeToViewModelTypeResolver">
+            <summary>
+            Default view type to view model type resolver, assumes the view model is in same assembly as the view type, but in the "ViewModels" namespace.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.SetDefaultViewModelFactory(System.Func{System.Type,System.Object})">
+            <summary>
+            Sets the default view model factory.
+            </summary>
+            <param name="viewModelFactory">The view model factory.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(System.Func{System.Type,System.Type})">
+            <summary>
+            Sets the default view type to view model type resolver.
+            </summary>
+            <param name="viewTypeToViewModelTypeResolver">The view type to view model type resolver.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.AutoWireViewModelChanged(Microsoft.Practices.Prism.Mvvm.IView)">
+            <summary>
+            Automatically looks up the viewmodel that corresponds to the current view, using two strategies:
+            It first looks to see if there is a mapping registered for that view, if not it will fallback to the convention based approach.
+            </summary>
+            <param name="view">The dependency object, typically a view.</param>
+            <param name="e">The <see cref="!:DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.GetViewModelForView(Microsoft.Practices.Prism.Mvvm.IView)">
+            <summary>
+            Gets the view model for the specified view.
+            </summary>
+            <param name="view">The view that the view model wants.</param>
+            <returns>The vie wmodel that corresponds to the view passed as a parameter.</returns>
+        </member>
+        <member name="M:Microsoft.Practices.Prism.Mvvm.ViewModelLocationProvider.Register(System.String,System.Func{System.Object})">
+            <summary>
+            Registers the view model factory for the specified view type name.
+            </summary>
+            <param name="viewTypeName">The name of the view type.</param>
+            <param name="factory">The viewmodel factory.</param>
+        </member>
+    </members>
+</doc>
