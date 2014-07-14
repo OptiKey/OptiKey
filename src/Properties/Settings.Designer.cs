@@ -97,7 +97,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("GazeTracker")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MousePosition")]
         public global::JuliusSweetland.ETTA.Enums.PointsSources PointsSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.PointsSources)(this["PointsSource"]));
