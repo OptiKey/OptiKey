@@ -1,0 +1,31 @@
+﻿namespace JuliusSweetland.ETTA.Enums
+{
+    public enum FunctionKeys
+    {
+        Next,
+        Back,
+        PreviousMatches,
+        NextMatches,
+        SelectMatch1,
+        SelectMatch2,
+        SelectMatch3,
+        SelectMatch4,
+        SelectMatch5,
+        SelectMatch6,
+        SelectMatch7,
+        SelectMatch8,
+        SelectMatch9,
+        SelectMatch10,
+        AddToDictionary,
+        SkipAddingToDictionary,
+        Shift,
+        ShowLettersKeyboard,
+        ShowNumbersKeyboard,
+        ShowSymbolsKeyboard,
+        ShowSymbols2Keyboard,
+        ShowEndSentencePunctuationKeyboard,
+        FullStop,
+        ExclamationMark,
+        QuestionMark
+    }
+}

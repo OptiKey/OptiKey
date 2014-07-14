@@ -1,0 +1,99 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.ETTA.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">LControlKey</Value>
+    </Setting>
+    <Setting Name="SelectionTriggerStopSignal" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
+      <Value Profile="(Default)">NextHigh</Value>
+    </Setting>
+    <Setting Name="SelectionTriggerMouseDownUpButton" Type="System.Windows.Forms.MouseButtons" Scope="User">
+      <Value Profile="(Default)">Left</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+      <Value Profile="(Default)">Fixations</Value>
+    </Setting>
+    <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PointsMousePositionSampleInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0130000</Value>
+    </Setting>
+    <Setting Name="PointsSource" Type="JuliusSweetland.ETTA.Enums.PointsSources" Scope="User">
+      <Value Profile="(Default)">GazeTracker</Value>
+    </Setting>
+    <Setting Name="PointTtl" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1000000</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationRadius" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:02</Value>
+    </Setting>
+    <Setting Name="GazeTrackerUdpPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6666</Value>
+    </Setting>
+    <Setting Name="GazeTrackerUdpRegex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionSupported" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionFixationMinDwellTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0500000</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionMaxDictionaryMatches" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionMaxDuration" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="Language" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
+      <Value Profile="(Default)">BritishEnglish</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+      <Value Profile="(Default)">Fixations</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:02</Value>
+    </Setting>
+    <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">800</Value>
+    </Setting>
+    <Setting Name="MainWindowLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MainWindowState" Type="System.Windows.WindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="MainWindowTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MainWindowWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1200</Value>
+    </Setting>
+    <Setting Name="ToastNotificationTitleFontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="ToastNotificationContentFontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="ToastNotificationCharactersPerLine" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="ToastNotificationSecondsPerLine" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ToastNotificationAdditionalSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

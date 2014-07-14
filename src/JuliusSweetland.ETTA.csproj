@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JuliusSweetland.ETTA</RootNamespace>
+    <AssemblyName>JuliusSweetland.ETTA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>JuliusSweetland.ETTA.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>EyeIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Composition">
+      <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.Interactivity.5.0.0\lib\NET45\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
+      <HintPath>..\packages\Prism.PubSubEvents.1.0.0\lib\portable-sl4+wp7+windows8+net40\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
+      <HintPath>..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyboardActivityMonitor">
+      <HintPath>..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.4\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.4\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.4\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.4\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\packages\Rx-XAML.2.2.4\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TETCSharpClient">
+      <HintPath>..\packages\TheEyeTribe.1.0.0\TETCSharpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsInput">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\SelectionModes.cs" />
+    <Compile Include="Enums\FunctionKeys.cs" />
+    <Compile Include="Enums\Languages.cs" />
+    <Compile Include="Enums\PointsSources.cs" />
+    <Compile Include="Enums\TriggerSources.cs" />
+    <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\KeyValueExtensions.cs" />
+    <Compile Include="Extensions\PointExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Model\DictionaryEntryWithUsageCount.cs" />
+    <Compile Include="Model\KeyValue.cs" />
+    <Compile Include="Model\ObservableDictionary.cs" />
+    <Compile Include="Model\PointAndKeyValue.cs" />
+    <Compile Include="Model\TriggerSignal.cs" />
+    <Compile Include="Extensions\ObservableExtensions.cs" />
+    <Compile Include="Observables\PointAndKeyValueSources\IPointAndKeyValueSource.cs" />
+    <Compile Include="Observables\PointAndKeyValueSources\GazeTrackerSource.cs" />
+    <Compile Include="Observables\PointAndKeyValueSources\MousePositionSource.cs" />
+    <Compile Include="Observables\PointAndKeyValueSources\TheEyeTribeSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Observables\TriggerSignalSources\AggregateKeyFixationSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\KeyFixationSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\PointFixationSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\IFixationSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\ITriggerSignalSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\MouseButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\KeyboardKeyDownUpSource.cs" />
+    <Compile Include="Services\DictionaryService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\IDictionaryService.cs" />
+    <Compile Include="Services\IOutputService.cs" />
+    <Compile Include="Services\IInputService.cs" />
+    <Compile Include="Services\InputService.cs" />
+    <Compile Include="Services\ITheEyeTribePointService.cs" />
+    <Compile Include="Services\OutputService.cs" />
+    <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Services\WindowStatePersistenceService.cs" />
+    <Compile Include="UI\Behaviours\AlwaysOnTopBehavior.cs" />
+    <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
+    <Compile Include="UI\ViewModels\InputOutputViewModel.cs" />
+    <Compile Include="UI\Views\InputOutputView.xaml.cs">
+      <DependentUpon>InputOutputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
+      <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\DrawingUtils.cs" />
+    <Compile Include="Utilities\VisualAndLogicalTreeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.dll">
+      <Link>TheEyeTribe\Newtonsoft.Json.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.xml">
+      <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\BritishEnglish.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Notes.txt" />
+    <Resource Include="Resources\Font\Apache License.txt" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Dictionaries\AmericanEnglish.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\CanadianEnglish.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Font\Roboto-Black.ttf" />
+    <Resource Include="Resources\Font\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Font\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Font\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Font\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Font\Roboto-Light.ttf" />
+    <Resource Include="Resources\Font\Roboto-LightItalic.ttf" />
+    <Resource Include="Resources\Font\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Font\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Font\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Font\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Font\Roboto-ThinItalic.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-Light.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Resources\Font\RobotoCondensed-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="EyeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\DefaultTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\InputOutputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\ToastNotificationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\UserControls\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

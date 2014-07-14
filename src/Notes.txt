@@ -1,0 +1,94 @@
+﻿NEXT:
+  Remove error when trigger without point. A lack of cursor or key selection should hopefully be sufficient. Possibly increase point ttl to exceed average blink duration (150ms)? 
+  Once over the changes I made yesterday, especially district until changed? 
+	Expose CapturingMultiKeySelection property on VM & equivalnet event on InputService
+	Expose current position property(ies) on VM (only KeyValue?) for binding - cursor position will be pushed to OutputService
+	Expose selection property on VM
+	Expose KeySelection property and PointSelection properties
+	Create keyboard type classes, e.g. Letter, Symbol1, Symbol2, Symbol3, Question etc (all derive from common Keyboard class)
+	Expose Keyboard property on VM
+	Expose Points Per Second property on VM
+	Display keyboard based on the Keyboard class property + Language setting. AddToDictionaryKeyboard - take any string and assume it is valid - calculate hash and ask user.
+	Push key map to InputService (on load/size changed/window state (minimised/restore/other - if this doesn't fire resize)
+	Display frame showing input service's capture state (instead of green/red/etc maybe hide the frame unless recording, then show HTC Sense coral colour to show capturing)
+	Add SelectionMode property to VM (point or key selection) - push to InputService on change. This will also be used to determine if cursor is shown  by OutputService (Point selection mode)
+	Use position VM property to highlight keys (if setting is on) - highlight key value in HTC blue or green colour
+	Display selection progress on keys if in SelectionModes.Key
+	Display selection on keys if in SelectionModes.Key
+	Display points from SelectionResult event - if Debug mode
+	Display points per second if Debug mode
+	Display icon and/or text about current state of points source - producing/not producing
+	Play sound on selection (choice of sounds in settings)
+	OutputView & OutputVM
+	  Remove char from keyvalue and just have string - any reason to keep the Char?
+
+  OutputVM:
+	output string buffer
+	lastOutput string - used for highlighting on View, and when deleting back;
+		Back - back 1 if lastOutput==null, else length of last output, which will either be a single keyvalue or multikeyselection.
+		Back Word - always back to last line break or space. (back to last word boundary, i.e. back until the beginning of the last word.)
+	pointer to beginning of last output word in buffer (only set and used when last output word is MultiKeySelection word - used to delete back and replace with suggestion, or delete word. otherwise delete back to last space)
+	suggestions - populated either from multikeyselection matches or direct calls to dictionary service to finish word when last output is a letter. when selecting a suggestion simulate back (length of lastOutput), then output suggestion, then clear suggestions.
+	auto-space state (push space before current output when current output is multiKeySelection and lastOutput is not in {[\n,\s,·,«,{,©,|,[,<,®,¡,*,\,¿,@,&,_,(,:,",#,/,?,.,-,'}
+	Auto turn on shift (to capitalise next output letter. User can turn it off before typing) when;
+		Shift is off.
+		There have been no letters output since last \n
+		Last output was sentence ending punctuation (.?!) followed by at least one space.
+		Evaluate after pushing any output.
+	DisplayButtons and DPs for buttons, e.g. PublishToMessageBus (display output view buttons & push output to windows message bus)
+	passed strings are cased appropriately by MainVM (using shift state) before being passed to OutputVM
+	event to request adding entry to dictionary - handled by MainVM. Detect new word when moving on from 'current'
+	Publish/Pushing keys to message bus;
+		http://inputsimulator.codeplex.com/
+	
+  OutputView:
+	Buffer text - don't bother highlighting the last output for the moment. The paradigm breaks down when the user back spaces by more than one output.
+	Buttons: Save Phrase (?), Clear (reset buffer, etc), Speak (all), Publish (toggle on/off)
+
+  Phrases:
+	Clear "scratchpad" and then write phase and "Add phrase to dictionary" button
+
+	
+
+IDEAS:
+	Colours:
+		Green = current entry
+		Blue = selection progress + key value highlight when user looks at key + cursor in SelectionModes.Point
+		Black = background + frame when no capturing
+		Red = frame when capturing
+		White = key value foreground when not highlighted
+		Grey = key borders + key selection
+	Be able to turn on/off:
+		Selection capture ("flow"/"swype") - turn off for spelling
+		Speak each selection (letter/word/function/etc)
+		Push selections to windows message queue (output captured keystrokes)
+		Active/Inactive - "Pause/Resume" or "Sleep/Wake" - allowing user to look around and rest
+	Manual button to speak all text
+	Turn on cursor only when in SelectionModes.Point (otherwise keys are highlighted)
+	Accessible settings, e.g. resize fonts, etc
+	Re-calibrate easily
+	Copy/Cut/Paste functionality (where cursor is)
+	Complete current word
+	Next word prediction
+
+
+
+
+ISSUES:
+	
+
+
+NICE TO HAVES:
+	Blink trigger
+
+
+NOTES:
+	If I encounter a DPI scaling issue read this: http://theeyetribe.com/forum/viewtopic.php?f=27&t=140&sid=96e7808b42ae998052775807adb8be74
+
+
+
+
+
+
+DONE:
+	
