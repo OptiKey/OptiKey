@@ -24,7 +24,7 @@
       <Value Profile="(Default)">MousePosition</Value>
     </Setting>
     <Setting Name="PointTtl" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationRadius" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:02</Value>
+      <Value Profile="(Default)">00:00:01</Value>
     </Setting>
     <Setting Name="GazeTrackerUdpPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6666</Value>
@@ -63,7 +63,7 @@
       <Value Profile="(Default)">15</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:02</Value>
+      <Value Profile="(Default)">00:00:01</Value>
     </Setting>
     <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">800</Value>

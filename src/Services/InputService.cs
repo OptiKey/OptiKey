@@ -638,8 +638,9 @@ namespace JuliusSweetland.ETTA.Services
                                                             }
                                                         }
 
+                                                        var hashAsString = new string(hash.ToArray());
                                                         List<string> dictionaryMatches =
-                                                            new string(hash.ToArray()).MapToDictionaryMatches(
+                                                            hashAsString.MapToDictionaryMatches(
                                                                 true, reliableLastLetter != null, dictionaryService,
                                                                 ref mapToDictionaryMatchesCancellationTokenSource,
                                                                 exception => PublishError(this, exception));
@@ -686,14 +687,8 @@ namespace JuliusSweetland.ETTA.Services
                             }
                             else
                             {
-                                var exception = new ArgumentNullException("TriggerSignal.PointAndKeyValue",
-                                        @"Unable to use your selection as no useful position info is being received right now. "
-                                       + @"Please check that your eye tracker/mouse/other position input device. "
-                                       + @"If you are using an eye tracker ensure it is calibrated and tracking your eyes.");
-
-                                Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. Point source is down, or producing stale points?", exception);
-
-                                PublishError(this, exception);
+                                Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
+                                        + "Discarding trigger request as point source is down, or producing stale points.");
                             }
                         }
                         else if (CapturingMultiKeySelection)

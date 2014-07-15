@@ -109,7 +109,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1500000")]
         public global::System.TimeSpan PointTtl {
             get {
                 return ((global::System.TimeSpan)(this["PointTtl"]));
@@ -145,7 +145,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:02")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
         public global::System.TimeSpan PointSelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["PointSelectionTriggerFixationTime"]));
@@ -266,7 +266,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:02")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
         public global::System.TimeSpan KeySelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationTime"]));
