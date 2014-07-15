@@ -195,7 +195,7 @@
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="TODO.txt" />
+    <Resource Include="NOTES.txt" />
     <Resource Include="Resources\Font\Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
