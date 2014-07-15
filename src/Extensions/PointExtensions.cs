@@ -13,17 +13,6 @@ namespace JuliusSweetland.ETTA.Extensions
             return new Point(Convert.ToInt32(points.Average(p => p.X)), Convert.ToInt32(points.Average(p => p.Y)));
         }
 
-        public static KeyValue? ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
-        {
-            Rect? keyRect = pointToKeyValueMap != null
-                ? pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point))
-                : (Rect?) null;
-
-            return keyRect != null && pointToKeyValueMap.ContainsKey(keyRect.Value)
-                ? pointToKeyValueMap[keyRect.Value]
-                : (KeyValue?) null;
-        }
-
         public static PointAndKeyValue? ToPointAndKeyValue(this Point? point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
         {
             if (point == null)
@@ -31,15 +20,18 @@ namespace JuliusSweetland.ETTA.Extensions
                 return null;
             }
 
+            return new PointAndKeyValue(point.Value, point.Value.ToKeyValue(pointToKeyValueMap));
+        }
+
+        public static KeyValue? ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
+        {
             Rect? keyRect = pointToKeyValueMap != null
-                ? pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point.Value))
+                ? pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point))
                 : (Rect?)null;
 
-            var keyValue = keyRect != null && pointToKeyValueMap.ContainsKey(keyRect.Value)
+            return keyRect != null && pointToKeyValueMap.ContainsKey(keyRect.Value)
                 ? pointToKeyValueMap[keyRect.Value]
                 : (KeyValue?)null;
-
-            return new PointAndKeyValue(point.Value, keyValue);
         }
     }
 }
