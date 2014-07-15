@@ -52,7 +52,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
             {
                 if (sequence == null)
                 { 
-                    sequence = Observable.Create<TriggerSignal>(subj =>
+                    sequence = Observable.Create<TriggerSignal>(observer =>
                     {
                         bool disposed = false;
 
@@ -64,23 +64,23 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
-                            .Where(tp => tp.Value != null) //Filter out stale indicators
+                            .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
                             .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
-                            .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
-                            .Subscribe(points =>
+                            .Buffer(detectFixationBufferSize, 1) //Skip buffer along by 1 value at a time
+                            .Subscribe(tps =>
                             {
-                                latestPointAndKeyValue = points.Last(); //Store latest timeStampedPointAndKeyValue
+                                latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
                                     
                                 if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points meet the criteria to start a new one
                                 {
-                                    if (points.All(t => t.Value.KeyValue != null)
-                                        && points.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
+                                    if (tps.All(t => t.Value.KeyValue != null)
+                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
                                     {
                                         //All the pointAndKeyValues have the same key value
-                                        var centrePoint = points.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
-                                        var keyValue = points.First().Value.KeyValue;
+                                        var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
+                                        var keyValue = tps.First().Value.KeyValue;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
-                                        fixationStart = points.First().Timestamp;
+                                        fixationStart = tps.First().Timestamp;
                                     }
                                 }
                                 else
@@ -90,8 +90,8 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                         || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue))
                                     {
                                         //Get the last point which was part of the current fixation, i.e. over the previously fixated key
-                                        Timestamped<PointAndKeyValue>? previousPointAndKeyValue = points.Count > 1
-                                                ? points[points.Count - 2]
+                                        Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps.Count > 1
+                                                ? tps[tps.Count - 2]
                                                 : (Timestamped<PointAndKeyValue>?)null;
 
                                         if (previousPointAndKeyValue != null)
@@ -129,7 +129,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)fixationTriggerTime.Ticks);
 
                                     //Publish a high signal if progress is 1 (100%), otherwise just publish progress
-                                    subj.OnNext(new TriggerSignal(
+                                    observer.OnNext(new TriggerSignal(
                                         progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
 
                                     //Reset if we've just published a high signal
@@ -137,14 +137,14 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     {
                                         fixationCentrePointAndKeyValue = null;
                                         keyAggregateFixationTicks.Clear();
-                                        subj.OnNext(new TriggerSignal(null, 0, null));
+                                        observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
                                 }
                             },
                             ex =>
                             {
-                                subj.OnError(ex);
+                                observer.OnError(ex);
                                 disposeAllSubscriptions();
                             });
 

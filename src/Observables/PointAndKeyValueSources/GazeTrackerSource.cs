@@ -88,10 +88,9 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                                 
                                 return new Timestamped<Point>(new Point(0,0), new DateTimeOffset()); //Return useless point which will be filtered out
                             })
-                            .Where(timestampedPoint => (timestampedPoint.Value.X != 0 || timestampedPoint.Value.Y != 0)) //(0,0) coordinates indicate that GT hasn't been calibrated, or regex failed to parse datagram - suppress
-                            .DistinctUntilChanged(timestampedPoint => timestampedPoint.Value) //When GT loses the user's eyes it repeats the last value - suppress
+                            .Where(tp => (tp.Value.X != 0 || tp.Value.Y != 0)) //(0,0) coordinates indicate that GT hasn't been calibrated, or regex failed to parse datagram - suppress
+                            .DistinctUntilChanged(tp => tp.Value) //When GT loses the user's eyes it repeats the last value - suppress
                             .PublishLivePointsOnly(pointTtl)
-                            .DistinctUntilChanged(timestampedPoint => timestampedPoint.Value) //Suppress repeating values, such as nulls when stale feed
                             .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp)))
                         .Replay(1) //Buffer one value for every subscriber so there is always a 'most recent' point available
                         .RefCount();

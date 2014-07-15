@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
             {
                 if (sequence == null)
                 { 
-                    sequence = Observable.Create<TriggerSignal>(subj =>
+                    sequence = Observable.Create<TriggerSignal>(observer =>
                     {
                         bool disposed = false;
 
@@ -59,11 +59,11 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                             .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
                             .Subscribe(nullablePoints =>
                             {
-                                //If any of the points received are null then the points feed is stale - reset
+                                //If any of the points received are null then the points feed is considered stale - reset
                                 if (nullablePoints.Any(tp => tp.Value == null))
                                 {
                                     fixationCentrePointAndKeyValue = null;
-                                    subj.OnNext(new TriggerSignal(null, 0, null));
+                                    observer.OnNext(new TriggerSignal(null, 0, null));
                                     return;
                                 }
 
@@ -99,7 +99,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                         if (((xDiff*xDiff) + (yDiff*yDiff)) > fixationRadiusSquared)
                                         {
                                             fixationCentrePointAndKeyValue = null;
-                                            subj.OnNext(new TriggerSignal(null, 0, null));
+                                            observer.OnNext(new TriggerSignal(null, 0, null));
                                             return;
                                         }
                                     }
@@ -112,21 +112,21 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     var progress = (double)fixationSpan.Ticks / (double)fixationTriggerTime.Ticks;
 
                                     //Publish a high signal if progress is 1 (100%), otherwise just publish progress
-                                    subj.OnNext(new TriggerSignal(
+                                    observer.OnNext(new TriggerSignal(
                                         progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
 
                                     //Reset if we've just published a high signal
                                     if (progress >= 1)
                                     {
                                         fixationCentrePointAndKeyValue = null;
-                                        subj.OnNext(new TriggerSignal(null, 0, null));
+                                        observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
                                 }
                             },
                             ex =>
                             {
-                                subj.OnError(ex);
+                                observer.OnError(ex);
                                 disposeAllSubscriptions();
                             });
 

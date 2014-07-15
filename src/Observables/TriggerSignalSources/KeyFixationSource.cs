@@ -41,11 +41,11 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
             {
                 if (sequence == null)
                 { 
-                    sequence = Observable.Create<TriggerSignal>(subj =>
+                    sequence = Observable.Create<TriggerSignal>(observer =>
                     {
                         bool disposed = false;
 
-                        Timestamped<PointAndKeyValue>? latestPointAndKeyValue = null;
+                        Timestamped<PointAndKeyValue>? latestPointAndKeyValue;
                         PointAndKeyValue? fixationCentrePointAndKeyValue = null;
                         DateTimeOffset fixationStart = DateTimeOffset.Now;
 
@@ -54,31 +54,33 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
                             .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
-                            .Subscribe(nullablePoints =>
+                            .Subscribe(nullableTps =>
                             {
-                                //If any of the points received are null then the points feed is stale - reset
-                                if (nullablePoints.Any(tp => tp.Value == null))
+                                //If any of the PointAndKeyValues received are null then the points feed is considered stale - reset
+                                if (nullableTps.Any(tp => tp.Value == null))
                                 {
                                     fixationCentrePointAndKeyValue = null;
-                                    subj.OnNext(new TriggerSignal(null, 0, null));
+                                    observer.OnNext(new TriggerSignal(null, 0, null));
                                     return;
                                 }
 
                                 //We know all buffered points are non-null now
-                                var points = nullablePoints.Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp));
+                                var tps = nullableTps
+                                    .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                                    .ToList();
 
-                                latestPointAndKeyValue = points.Last(); //Store latest timeStampedPointAndKeyValue
+                                latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
 
                                 if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points are eligable to initiate a fixation:
                                 {
-                                    if (points.All(t => t.Value.KeyValue != null)
-                                        && points.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
+                                    if (tps.All(t => t.Value.KeyValue != null)
+                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
                                     {
-                                        //All the pkv have the same key value
-                                        var centrePoint = points.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
-                                        var keyValue = points.First().Value.KeyValue;
+                                        //All buffered tps have the same key value
+                                        var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
+                                        var keyValue = tps.First().Value.KeyValue;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
-                                        fixationStart = points.First().Timestamp;
+                                        fixationStart = tps.First().Timestamp;
                                     }
                                 }
                                 else
@@ -89,7 +91,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                             || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)))
                                     {
                                         fixationCentrePointAndKeyValue = null;
-                                        subj.OnNext(new TriggerSignal(null, 0, null));
+                                        observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
                                 }
@@ -101,21 +103,21 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     var progress = (double)fixationSpan.Ticks / (double)fixationTriggerTime.Ticks;
 
                                     //Publish a high signal if progress is 1 (100%), otherwise just publish progress
-                                    subj.OnNext(new TriggerSignal(
+                                    observer.OnNext(new TriggerSignal(
                                         progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
 
                                     //Reset if we've just published a high signal
                                     if (progress >= 1)
                                     {
                                         fixationCentrePointAndKeyValue = null;
-                                        subj.OnNext(new TriggerSignal(null, 0, null));
+                                        observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
                                 }
                             },
                             ex =>
                             {
-                                subj.OnError(ex);
+                                observer.OnError(ex);
                                 disposeAllSubscriptions();
                             });
 

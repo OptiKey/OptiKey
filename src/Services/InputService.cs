@@ -525,7 +525,7 @@ namespace JuliusSweetland.ETTA.Services
                                         CapturingMultiKeySelection = true;
 
                                         multiKeySelectionPointsSubscription =
-                                            Observable.Create<IList<Timestamped<PointAndKeyValue>>>(subj =>
+                                            Observable.Create<IList<Timestamped<PointAndKeyValue>>>(observer =>
                                             {
                                                 bool disposed = false;
 
@@ -534,7 +534,7 @@ namespace JuliusSweetland.ETTA.Services
                                                 var intervalSubscription =
                                                     Observable.Interval(Settings.Default.MultiKeySelectionMaxDuration)
                                                         .Where(_ => disposed == false)
-                                                        .Subscribe(i => subj.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
+                                                        .Subscribe(i => observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
 
                                                 var pointAndKeyValueSubscription = pointAndKeyValueSource.Sequence
                                                     .Where(tp => tp.Value != null) //Filter out stale indicators
@@ -543,8 +543,8 @@ namespace JuliusSweetland.ETTA.Services
                                                     .ToList()
                                                     .Subscribe(points =>
                                                     {
-                                                        subj.OnNext(points);
-                                                        subj.OnCompleted();
+                                                        observer.OnNext(points);
+                                                        observer.OnCompleted();
                                                     });
 
                                                 disposeAllSubscriptions = () =>
