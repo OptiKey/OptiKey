@@ -12,7 +12,7 @@ namespace JuliusSweetland.ETTA.Services
         event EventHandler<Tuple<Point?, KeyValue?>> CurrentPosition;
         event EventHandler<Tuple<PointAndKeyValue?, double>> SelectionProgress;
         event EventHandler<PointAndKeyValue> Selection;
-        event EventHandler<Tuple<List<Point>, FunctionKeys?, Char?, string, List<string>>> SelectionResult;
+        event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult;
         event EventHandler<Exception> Error;
 
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }

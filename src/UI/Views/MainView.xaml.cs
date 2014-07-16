@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace JuliusSweetland.ETTA.UI.Views
 {
     /// <summary>
-    /// Interaction logic for InputOutputView.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class InputOutputView : UserControl
+    public partial class MainView : UserControl
     {
-        public InputOutputView()
+        public MainView()
         {
             InitializeComponent();
         }

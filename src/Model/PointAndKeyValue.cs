@@ -14,12 +14,14 @@ namespace JuliusSweetland.ETTA.Model
         public Point Point { get; private set; }
         public KeyValue? KeyValue { get; private set; }
 
-        /// <summary>
-        /// Call through to KeyValue.Value.Letter
-        /// </summary>
-        public char? Letter
+        public bool StringIsLetter
         {
-            get { return KeyValue != null && KeyValue.Value.Letter != null ? KeyValue.Value.Letter : null; }
+            get { return KeyValue != null && KeyValue.Value.StringIsLetter; }
+        }
+
+        public string String
+        {
+            get { return KeyValue != null ? KeyValue.Value.String : null; }
         }
 
         public override string ToString()

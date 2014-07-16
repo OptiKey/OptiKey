@@ -157,9 +157,9 @@
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="UI\Behaviours\AlwaysOnTopBehavior.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
-    <Compile Include="UI\ViewModels\InputOutputViewModel.cs" />
-    <Compile Include="UI\Views\InputOutputView.xaml.cs">
-      <DependentUpon>InputOutputView.xaml</DependentUpon>
+    <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -247,7 +247,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\InputOutputView.xaml">
+    <Page Include="UI\Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

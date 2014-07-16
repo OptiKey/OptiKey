@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using JuliusSweetland.ETTA.Model;
 
 namespace JuliusSweetland.ETTA.Extensions
@@ -10,14 +10,14 @@ namespace JuliusSweetland.ETTA.Extensions
         public static string ReduceToSequentiallyDistinctLetters(
             this List<KeyValue> keyValues, 
             int minSequenceLength,
-            Char? prefix,
-            Char? suffix)
+            string prefixLetter,
+            string suffixLetter)
         {
-            var output = new List<Char>();
+            var output = new StringBuilder();
 
             for (int index = 0; index < keyValues.Count; index++)
             {
-                Char? currentLetter = keyValues[index].Letter;
+                string currentLetter = keyValues[index].StringIsLetter ? keyValues[index].String : null;
 
                 if (currentLetter != null)
                 {
@@ -25,8 +25,7 @@ namespace JuliusSweetland.ETTA.Extensions
                     index++;
 
                     while (index < keyValues.Count
-                            && keyValues[index].Char != null
-                            && keyValues[index].Char.Value == currentLetter)
+                        && string.Equals(keyValues[index].String, currentLetter, StringComparison.InvariantCultureIgnoreCase))
                     {
                         charCount++;
                         index++;
@@ -36,9 +35,9 @@ namespace JuliusSweetland.ETTA.Extensions
                     if (charCount >= minSequenceLength)
                     {
                         //Add to output if not the same as previously output character
-                        if(!output.Any() || !output[output.Count - 1].Equals(currentLetter.Value))
+                        if(output.Length == 0 || !output[output.Length - 1].Equals(currentLetter[0]))
                         {
-                            output.Add(currentLetter.Value);
+                            output.Append(currentLetter);
                         }
                     }
                 }
@@ -46,23 +45,21 @@ namespace JuliusSweetland.ETTA.Extensions
                 index--;
             }
 
-            //Add prefix
-            if (prefix != null
-                && output.Any()
-                && output.First() != prefix.Value)
+            //Add prefixLetter
+            if (prefixLetter != null
+                && (output.Length == 0 || output[0] != prefixLetter[0]))
             {
-                output.Insert(0, prefix.Value);
+                output.Insert(0, prefixLetter[0]);
             }
 
-            //Add suffix
-            if (suffix != null
-                && output.Any()
-                && output.Last() != suffix.Value)
+            //Add suffixLetter
+            if (suffixLetter != null
+                && (output.Length == 0 || output[output.Length - 1] != suffixLetter[0]))
             {
-                output.Add(suffix.Value);
+                output.Append(suffixLetter[0]);
             }
 
-            return output.Any() ? new string(output.ToArray()) : null;
+            return output.Length > 0 ? output.ToString() : null;
         }
     }
 }

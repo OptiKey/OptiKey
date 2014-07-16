@@ -12,5 +12,5 @@
     <i:Interaction.Behaviors>
         <behaviours:AlwaysOnTopBehavior/>
     </i:Interaction.Behaviors>
-    <views:InputOutputView x:Name="InputOutputView" />
+    <views:MainView x:Name="MainView" />
 </Window>

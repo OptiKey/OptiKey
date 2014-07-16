@@ -10,7 +10,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class InputOutputViewModel : BindableBase
+    public class MainViewModel : BindableBase
     {
         private readonly IInputService inputService;
 
@@ -26,7 +26,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         #region Ctor
 
-        public InputOutputViewModel(IInputService inputService)
+        public MainViewModel(IInputService inputService)
         {
             this.inputService = inputService;
 
@@ -83,13 +83,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>
                 {
-                    {new Rect(0, 0, 100, 100), new KeyValue {Char = 'Å'}},
-                    {new Rect(101, 0, 100, 100), new KeyValue {Char = 'N'}},
-                    {new Rect(201, 0, 100, 100), new KeyValue {Char = 'G'}},
-                    {new Rect(301, 0, 100, 100), new KeyValue {Char = 'S'}},
-                    {new Rect(401, 0, 100, 100), new KeyValue {Char = 'R'}},
-                    {new Rect(501, 0, 100, 100), new KeyValue {Char = 'ö'}},
-                    {new Rect(601, 0, 100, 100), new KeyValue {Char = 'M'}}
+                    {new Rect(0, 0, 100, 100), new KeyValue {String = "Å"}},
+                    {new Rect(101, 0, 100, 100), new KeyValue {String = "N"}},
+                    {new Rect(201, 0, 100, 100), new KeyValue {String = "G"}},
+                    {new Rect(301, 0, 100, 100), new KeyValue {String = "S"}},
+                    {new Rect(401, 0, 100, 100), new KeyValue {String = "R"}},
+                    {new Rect(501, 0, 100, 100), new KeyValue {String = "ö"}},
+                    {new Rect(601, 0, 100, 100), new KeyValue {String = "M"}}
                 };
             inputService.PointToKeyValueMap = pointToKeyValueMap;
         }

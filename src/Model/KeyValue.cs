@@ -6,19 +6,17 @@ namespace JuliusSweetland.ETTA.Model
     public struct KeyValue
     {
         public FunctionKeys? FunctionKey { get; set; }
-        public char? Char { get; set; }
         public string String { get; set; }
 
-        public char? Letter
+        public bool StringIsLetter
         {
-            get { return Char != null && char.IsLetter(Char.Value) ? Char.Value : (char?)null; }
+            get { return String != null && String.Length == 1 && char.IsLetter(String, 0); }
         }
         
         public bool Equals(KeyValue kv)
         {
             // Return true if the fields match:
             return (FunctionKey == kv.FunctionKey)
-                && (Char == kv.Char)
                 && (String == kv.String);
         }
 
@@ -29,15 +27,6 @@ namespace JuliusSweetland.ETTA.Model
             if (FunctionKey != null)
             {
                 stringBuilder.Append(FunctionKey);
-            }
-
-            if (Char != null)
-            {
-                if (stringBuilder.Length > 0)
-                {
-                    stringBuilder.Append(",");
-                }
-                stringBuilder.Append(Char);
             }
 
             if (String != null)

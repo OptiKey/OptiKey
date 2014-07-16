@@ -38,7 +38,7 @@ namespace JuliusSweetland.ETTA.Services
         private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
-        private event EventHandler<Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>> selectionResultEvent;
+        private event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> selectionResultEvent;
 
         #endregion
 
@@ -274,7 +274,7 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Selection Result
 
-        public event EventHandler<Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>> SelectionResult
+        public event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult
         {
             add
             {
@@ -372,15 +372,15 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Publish Selection Result
 
-        private void PublishSelectionResult(Tuple<List<Point>, FunctionKeys?, char?, string, List<string>> selectionResult)
+        private void PublishSelectionResult(Tuple<List<Point>, FunctionKeys?, string, List<string>> selectionResult)
         {
             if (selectionResultEvent != null)
             {
-                Log.Debug(string.Format("Publishing Selection Result event with {0} points, FunctionKey:{1}, Char:{2}, String:{3}, Match {4} (count:{5})",
+                Log.Debug(string.Format("Publishing Selection Result event with {0} points, FunctionKey:{1}, String:{2}, Match {3} (count:{4})",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
-                        selectionResult.Item2, selectionResult.Item3, selectionResult.Item4,
-                        selectionResult.Item5 != null ? selectionResult.Item5.First() : null,
-                        selectionResult.Item5 != null ? selectionResult.Item5.Count : (int?)null));
+                        selectionResult.Item2, selectionResult.Item3,
+                        selectionResult.Item4 != null ? selectionResult.Item4.First() : null,
+                        selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null));
 
                 selectionResultEvent(this, selectionResult);
             }
@@ -514,11 +514,12 @@ namespace JuliusSweetland.ETTA.Services
                                     && ts.PointAndKeyValue.Value.KeyValue != null)
                                 {
                                     if (Settings.Default.MultiKeySelectionSupported
-                                        && ts.PointAndKeyValue.Value.Letter != null)
+                                        && ts.PointAndKeyValue.Value.StringIsLetter)
                                     {
                                         //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
                                         PublishSelection(ts.PointAndKeyValue.Value);
 
+                                        //Set up start and stop trigger signals
                                         var startTriggerSignal = ts;
                                         stopTriggerSignal = null;
 
@@ -582,17 +583,19 @@ namespace JuliusSweetland.ETTA.Services
                                                         .Select(tp => tp.Value.KeyValue.Value)
                                                         .ToList();
 
-                                                    Char? reliableFirstLetter =
+                                                    string reliableFirstLetter =
                                                         startTriggerSignal.PointAndKeyValue != null
-                                                            ? startTriggerSignal.PointAndKeyValue.Value.Letter
+                                                        && startTriggerSignal.PointAndKeyValue.Value.StringIsLetter
+                                                            ? startTriggerSignal.PointAndKeyValue.Value.String
                                                             : null;
 
-                                                    //If we are using a fixation trigger and the stop trigger is 
+                                                    //If we are using a fixation trigger and the stop trigger has
                                                     //occurred on a letter then it is reliable - use it
-                                                    Char? reliableLastLetter = selectionTriggerSource is IFixationSource
+                                                    string reliableLastLetter = selectionTriggerSource is IFixationSource
                                                         && stopTriggerSignal != null
                                                         && stopTriggerSignal.Value.PointAndKeyValue != null
-                                                            ? stopTriggerSignal.Value.PointAndKeyValue.Value.Letter
+                                                        && stopTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
+                                                            ? stopTriggerSignal.Value.PointAndKeyValue.Value.String
                                                             : null;
 
                                                     if (reliableLastLetter != null)
@@ -607,17 +610,17 @@ namespace JuliusSweetland.ETTA.Services
                                                     {
                                                         //No useful selection
                                                         PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>(
+                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                                                 new List<Point> { ts.PointAndKeyValue.Value.Point },
-                                                                null, null, null, null));
+                                                                null, null, null));
                                                     }
                                                     else if (reducedSequence.Length == 1)
                                                     {
                                                         //The user fixated on one letter - output it
                                                         PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>(
+                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                                                 points.Select(tp => tp.Value.Point).ToList(),
-                                                                null, reducedSequence.First(), null, null));
+                                                                null, reducedSequence, null));
                                                     }
                                                     else
                                                     {
@@ -646,9 +649,9 @@ namespace JuliusSweetland.ETTA.Services
                                                                 exception => PublishError(this, exception));
 
                                                         PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>(
+                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                                                 points.Select(tp => tp.Value.Point).ToList(),
-                                                                null, null, null, dictionaryMatches));
+                                                                null, null, dictionaryMatches));
                                                     }
                                                 }
                                             },
@@ -669,10 +672,9 @@ namespace JuliusSweetland.ETTA.Services
                                     {
                                         PublishSelection(ts.PointAndKeyValue.Value);
 
-                                        PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>(
+                                        PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                             new List<Point> { ts.PointAndKeyValue.Value.Point },
                                             ts.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                            ts.PointAndKeyValue.Value.KeyValue.Value.Char,
                                             ts.PointAndKeyValue.Value.KeyValue.Value.String,
                                             null));
                                     }
@@ -681,8 +683,8 @@ namespace JuliusSweetland.ETTA.Services
                                 {
                                     PublishSelection(ts.PointAndKeyValue.Value);
 
-                                    PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, char?, string, List<string>>(
-                                        new List<Point> { ts.PointAndKeyValue.Value.Point }, null, null, null, null));
+                                    PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                        new List<Point> { ts.PointAndKeyValue.Value.Point }, null, null, null));
                                 }
                             }
                             else
@@ -699,7 +701,7 @@ namespace JuliusSweetland.ETTA.Services
                             {
                                 //If we are using a fixation trigger source then the stop signal must occur on a letter
                                 if (!(selectionTriggerSource is IFixationSource)
-                                    || (ts.PointAndKeyValue != null && ts.PointAndKeyValue.Value.Letter != null))
+                                    || (ts.PointAndKeyValue != null && ts.PointAndKeyValue.Value.StringIsLetter))
                                 {
                                     stopTriggerSignal = ts;
                                 }

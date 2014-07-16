@@ -146,7 +146,7 @@ namespace JuliusSweetland.ETTA
                 
                 //Compose main window
                 var mainWindow = new MainWindow();
-                mainWindow.InputOutputView.DataContext = new InputOutputViewModel(inputService);
+                mainWindow.MainView.DataContext = new MainViewModel(inputService);
                 mainWindow.Show();
 
                 //pointSource.Sequence.Dump("PointSource");
