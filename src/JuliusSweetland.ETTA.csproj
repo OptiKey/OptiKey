@@ -196,7 +196,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="NOTES.txt" />
-    <Resource Include="Resources\Font\Apache License.txt" />
+    <Resource Include="Resources\Fonts\Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,24 +217,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\Font\Roboto-Black.ttf" />
-    <Resource Include="Resources\Font\Roboto-BlackItalic.ttf" />
-    <Resource Include="Resources\Font\Roboto-Bold.ttf" />
-    <Resource Include="Resources\Font\Roboto-BoldItalic.ttf" />
-    <Resource Include="Resources\Font\Roboto-Italic.ttf" />
-    <Resource Include="Resources\Font\Roboto-Light.ttf" />
-    <Resource Include="Resources\Font\Roboto-LightItalic.ttf" />
-    <Resource Include="Resources\Font\Roboto-Medium.ttf" />
-    <Resource Include="Resources\Font\Roboto-MediumItalic.ttf" />
-    <Resource Include="Resources\Font\Roboto-Regular.ttf" />
-    <Resource Include="Resources\Font\Roboto-Thin.ttf" />
-    <Resource Include="Resources\Font\Roboto-ThinItalic.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-Bold.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-BoldItalic.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-Italic.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-Light.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-LightItalic.ttf" />
-    <Resource Include="Resources\Font\RobotoCondensed-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
