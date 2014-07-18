@@ -6,13 +6,13 @@
       <Value Profile="(Default)">LControlKey</Value>
     </Setting>
     <Setting Name="SelectionTriggerStopSignal" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
-      <Value Profile="(Default)">NextHigh</Value>
+      <Value Profile="(Default)">NextLow</Value>
     </Setting>
     <Setting Name="SelectionTriggerMouseDownUpButton" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
-      <Value Profile="(Default)">Fixations</Value>
+      <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
     </Setting>
     <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -30,7 +30,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">15</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01</Value>
@@ -60,7 +60,7 @@
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">15</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01</Value>
