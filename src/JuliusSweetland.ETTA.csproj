@@ -105,6 +105,9 @@
     <Reference Include="WindowsInput">
       <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
+    <Reference Include="WpfCircularProgressBar">
+      <HintPath>..\packages\WpfCircularProgressBar.1.0.0\WpfCircularProgressBar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -201,6 +204,7 @@
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
     <Resource Include="NOTES.txt" />
     <Resource Include="Resources\Fonts\Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
