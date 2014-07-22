@@ -201,11 +201,11 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Credits.txt" />
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
-    <Resource Include="NOTES.txt" />
     <Resource Include="Resources\Fonts\Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

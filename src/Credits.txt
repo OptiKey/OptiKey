@@ -1,0 +1,5 @@
+﻿I would like to extend my thanks to the following people & organisations...
+
+The StackOverflow community for providing the answer more times than I can count.
+Scott Logic for his excellent work on the circular progress bar (http://www.scottlogic.com/blog/2011/02/07/a-circular-progressbar-style-using-an-attached-viewmodel.html).
+My wife Kate for listening to me bang on about this project for far, far too long, but still supporting me and keeping a convincing "tell me more" face on. xxx
