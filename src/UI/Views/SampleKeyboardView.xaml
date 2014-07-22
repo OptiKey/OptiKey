@@ -63,6 +63,107 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="ProgressBar" x:Key="PointsProgressBarStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="LayoutRoot">
+                            <wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+                                <wpfCircularProgressBar:SegmentedProgressBarViewModel HoleSizeFactor="0.8" SegmentCount="14"/>
+                            </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+
+                            <Canvas>
+                                <ItemsControl ItemsSource="{Binding Segments}"
+                                              Canvas.Top="{Binding CentreY}"
+                                              Canvas.Left="{Binding CentreX}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Ellipse Width="9" Height="9" Fill="{StaticResource KeySelectionProgressBrush}">
+                                                <Ellipse.RenderTransform>
+                                                    <TransformGroup>
+                                                        <TranslateTransform X="-4" Y="-4"/>
+                                                        <ScaleTransform ScaleX="{Binding Opacity}" ScaleY="{Binding Opacity}"/>
+                                                        <TranslateTransform Y="{Binding Parent.InnerRadius}"/>
+                                                        <RotateTransform Angle="180"/>
+                                                        <RotateTransform Angle="{Binding StartAngle}"/>
+                                                    </TransformGroup>
+                                                </Ellipse.RenderTransform>
+                                            </Ellipse>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ProgressBar" x:Key="CircularProgressBarStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="LayoutRoot">
+                            <wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+                                <wpfCircularProgressBar:CircularProgressBarViewModel HoleSizeFactor="0.75"/>
+                            </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+
+                            <wpfCircularProgressBar:PiePiece 
+                                CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
+                                RotationAngle="0" WedgeAngle="{Binding Angle}"
+                                Radius="{Binding Radius}" InnerRadius="{Binding InnerRadius}"
+                                Fill="{StaticResource KeySelectionProgressBrush}" Opacity="1"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ProgressBar" x:Key="SegmentedProgressBarStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="LayoutRoot">
+                            <wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+                                <wpfCircularProgressBar:SegmentedProgressBarViewModel HoleSizeFactor="0.7"/>
+                            </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
+
+                            <ItemsControl ItemsSource="{Binding Segments}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <!-- a grey segment -->
+                                            <!--<wpfCircularProgressBar:PiePiece 
+                                                CentreX="{Binding Parent.CentreX}" CentreY="{Binding Parent.CentreY}"
+                                                RotationAngle="{Binding StartAngle}" WedgeAngle="{Binding WedgeAngle}"
+                                                Radius="{Binding Parent.Radius}" InnerRadius="{Binding Parent.InnerRadius}"
+                                                Fill="LightGray" Stroke="White" Opacity="0.5"/>-->
+                                            <!-- a blue segment, with an Opacity bound to the view model -->
+                                            <wpfCircularProgressBar:PiePiece 
+                                                CentreX="{Binding Parent.CentreX}" CentreY="{Binding Parent.CentreY}"
+                                                RotationAngle="{Binding StartAngle}" WedgeAngle="{Binding WedgeAngle}"
+                                                Radius="{Binding Parent.Radius}" InnerRadius="{Binding Parent.InnerRadius}"
+                                                Fill="{StaticResource KeySelectionProgressBrush}" Opacity="{Binding Opacity}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Border BorderThickness="10" BorderBrush="{StaticResource CapturingMultiKeySelectionBrush}">
@@ -305,7 +406,6 @@
                                    Background="Transparent"/>
                         </Viewbox>
                     </Grid>
-                
                 </Border>
                 <Border BorderThickness="5" 
                         BorderBrush="{StaticResource KeyHoverForegroundBrush}">
@@ -329,11 +429,22 @@
                 <Border BorderThickness="1" 
                         BorderBrush="{StaticResource KeyDefaultBorderBrush}" 
                         Background="{StaticResource KeyDefaultBackgroundBrush}">
-                    <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
-                             Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="i" FontFamily="/Resources/Fonts/#Roboto Light" 
-                                   Foreground="{StaticResource KeyDefaultForegroundBrush}" />
-                    </Viewbox>
+                    <Grid>
+                        <ProgressBar Value="{Binding Value}" Margin="5"
+                                     Style="{StaticResource PointsProgressBarStyle}" />
+                        <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
+                                 Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
+                            <TextBlock Text="i" FontFamily="/Resources/Fonts/#Roboto Light" 
+                                   Foreground="{StaticResource KeyDefaultForegroundBrush}"
+                                   Background="Transparent"/>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="5" 
+                        BorderBrush="{StaticResource KeyHoverForegroundBrush}">
+                    <Border.Effect>
+                        <BlurEffect Radius="5.0" KernelType="Gaussian"/>
+                    </Border.Effect>
                 </Border>
             </Grid>
 
@@ -383,11 +494,22 @@
                 <Border BorderThickness="1" 
                         BorderBrush="{StaticResource KeyDefaultBorderBrush}" 
                         Background="{StaticResource KeyDefaultBackgroundBrush}">
-                    <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
-                             Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="C" FontFamily="/Resources/Fonts/#Roboto Light" 
-                                   Foreground="{StaticResource KeyDefaultForegroundBrush}" />
-                    </Viewbox>
+                    <Grid>
+                        <ProgressBar Value="{Binding Value}" Margin="5"
+                                     Style="{StaticResource CircularProgressBarStyle}" />
+                        <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
+                                 Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
+                            <TextBlock Text="C" FontFamily="/Resources/Fonts/#Roboto Light" 
+                                   Foreground="{StaticResource KeyDefaultForegroundBrush}"
+                                   Background="Transparent"/>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="5" 
+                        BorderBrush="{StaticResource KeyHoverForegroundBrush}">
+                    <Border.Effect>
+                        <BlurEffect Radius="5.0" KernelType="Gaussian"/>
+                    </Border.Effect>
                 </Border>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="4">
@@ -417,11 +539,22 @@
                 <Border BorderThickness="1" 
                         BorderBrush="{StaticResource KeyDefaultBorderBrush}" 
                         Background="{StaticResource KeyDefaultBackgroundBrush}">
-                    <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
-                             Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="F" FontFamily="/Resources/Fonts/#Roboto Light" 
-                                   Foreground="{StaticResource KeyDefaultForegroundBrush}" />
-                    </Viewbox>
+                    <Grid>
+                        <ProgressBar Value="{Binding Value}" Margin="5"
+                                     Style="{StaticResource SegmentedProgressBarStyle}" />
+                        <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
+                                 Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
+                            <TextBlock Text="F" FontFamily="/Resources/Fonts/#Roboto Light" 
+                                   Foreground="{StaticResource KeyDefaultForegroundBrush}"
+                                   Background="Transparent"/>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+                <Border BorderThickness="5" 
+                        BorderBrush="{StaticResource KeyHoverForegroundBrush}">
+                    <Border.Effect>
+                        <BlurEffect Radius="5.0" KernelType="Gaussian"/>
+                    </Border.Effect>
                 </Border>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="7">
