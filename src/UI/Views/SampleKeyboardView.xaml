@@ -21,9 +21,10 @@
         <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Gray}" />
         <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource Black}" />
 
-        <SolidColorBrush x:Key="KeyHoverForegroundBrush" Color="{StaticResource Blue}" />
-        <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Blue}" />
-
+        <SolidColorBrush x:Key="KeyHoverForegroundBrush" Color="{StaticResource Red}" />
+        <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Red}" />
+        <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
+        
         <SolidColorBrush x:Key="KeySelectionForegroundBrush" Color="{StaticResource Blue}" />
         <SolidColorBrush x:Key="KeySelectionBorderBrush" Color="{StaticResource Gray}" />
         <SolidColorBrush x:Key="KeySelectionBackgroundBrush" Color="{StaticResource Gray}" />
@@ -36,8 +37,6 @@
         <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Gray}" />
         <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
         
-        <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Blue}" />
-
         <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
         <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />
         
@@ -196,8 +195,11 @@
                         Background="{StaticResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="1" FontFamily="/Resources/Fonts/#Roboto Light" 
-                                   Foreground="{StaticResource KeyDefaultForegroundBrush}" />
+                        <!--<TextBlock Text="1" FontFamily="/Resources/Fonts/#Roboto Light" 
+                                   Foreground="{StaticResource KeyDefaultForegroundBrush}" />-->
+                        <!--Stretch="Fill"-->
+                        <Path Stretch="Uniform" Fill="{StaticResource KeyDefaultForegroundBrush}"
+                              Data="m 61.969977 58.603095 1.182649 0 c 0.583638 0 0.788433 -0.293417 0.788433 -1.366323 l 0 -23.227473 c 0 -1.011421 -0.193166 -1.366322 -0.788433 -1.366322 l -1.182649 0 c -0.611036 0 -0.788432 0.354901 -0.788432 1.366322 l 0 23.227473 c 0 1.031574 0.189422 1.366323 0.788432 1.366323 z M 0.96833659 32.06542 l 1.18265101 0 c 0.5836355 0 0.7884308 -0.293418 0.7884308 -1.366322 l 0 -23.2274749 c 0 -1.01142 -0.1931656 -1.3663228 -0.7884308 -1.3663228 l -1.18265101 0 c -0.61103636 0 -0.78843124 0.3549028 -0.78843124 1.3663228 l 0 23.2274749 c 0 1.031573 0.18941956 1.366322 0.78843124 1.366322 z M 18.521935 31.740571 c 0.474217 0.308167 1.056532 0.487273 1.684238 0.487273 1.565384 0 2.832744 -1.118356 2.832744 -2.498521 l 0.0012 -3.745414 34.946115 0 c 1.564787 0 2.833937 -1.119409 2.833937 -2.499047 l 0 -8.744039 c 0 -1.378058 -1.267954 -2.495887 -2.833937 -2.495887 l -34.945517 0 -0.0012 -3.746994 c 2e-6 -1.3806924 -1.267358 -2.4979944 -2.83155 -2.4979944 -0.629497 0 -1.211215 0.1817412 -1.683638 0.4872723 L 4.2554982 16.897991 c -1.3885967 1.224767 -1.3885967 3.20915 0 4.43339 l 14.2664398 10.40919 z m 26.989594 26.451251 c -0.476006 0.304479 -1.057724 0.486219 -1.687224 0.486219 -1.560606 0 -2.830951 -1.117304 -2.832145 -2.496942 l 0.0023 -3.746465 -34.9508956 0 c -1.562397 0 -2.8297573 -1.118883 -2.8297573 -2.496942 l 0 -8.74667 c 0 -1.377532 1.2673603 -2.497996 2.8297573 -2.497996 l 34.9491016 0 -0.0011 -3.745938 c 0 -1.37964 1.269746 -2.497468 2.832143 -2.497468 0.628902 0 1.211219 0.182264 1.683042 0.488323 L 59.77617 43.346082 c 1.390988 1.224766 1.390988 3.20915 0 4.433389 L 45.511535 58.191822 z" />
                     </Viewbox>
                 </Border>
             </Grid>
