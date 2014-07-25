@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="150"
+   height="64"
    id="svg3109"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="New document 3">
+   sodipodi:docname="Space.xaml">
   <defs
      id="defs3111" />
   <sodipodi:namedview
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.5"
-     inkscape:cx="32"
-     inkscape:cy="32"
+     inkscape:cx="90.631897"
+     inkscape:cy="11.865722"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -54,7 +54,7 @@
      inkscape:groupmode="layer">
     <path
        id="path3044"
-       d="M 60.772081,43.509045 H 3.5906723 c -1.544251,0 -2.79553557,-1.08242 -2.79553557,-2.41827 V 18.36377 c 0,-1.33585 1.25128457,-2.41827 2.79553557,-2.41827 1.544251,0 2.7955356,1.08242 2.7955356,2.41827 V 38.672506 H 57.977428 V 18.36377 c 0,-1.33585 1.251285,-2.41827 2.795536,-2.41827 1.544251,0 2.795536,1.08242 2.795536,2.41827 v 22.727005 c -8.83e-4,1.33585 -1.252167,2.41827 -2.796419,2.41827 z"
+       d="M 143.25788,63.690863 H 6.7822313 c -3.685685,0 -6.6721431,-2.49614 -6.6721431,-5.576707 V 5.7040253 c 0,-3.0805672 2.9864581,-5.57670712 6.6721431,-5.57670712 3.6856847,0 6.6721427,2.49613992 6.6721427,5.57670712 V 52.537451 H 136.58784 V 5.7040253 c 0,-3.0805672 2.98647,-5.57670712 6.67215,-5.57670712 3.68568,0 6.67214,2.49613992 6.67214,5.57670712 V 58.114156 c -0.002,3.080567 -2.98855,5.576707 -6.67425,5.576707 z"
        inkscape:connector-curvature="0"
        style="fill:#000000" />
   </g>
