@@ -201,12 +201,26 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Solution Items\Vector Icon Files\Space.svg" />
+    <None Include="Solution Items\Vector Icon Files\AddPhrase.svg" />
+    <None Include="Solution Items\Vector Icon Files\BackMany.svg" />
+    <None Include="Solution Items\Vector Icon Files\BackOne.svg" />
+    <None Include="Solution Items\Vector Icon Files\Clear.svg" />
+    <None Include="Solution Items\Vector Icon Files\Left Arrow.svg" />
+    <None Include="Solution Items\Vector Icon Files\Lock Bar.svg" />
+    <None Include="Solution Items\Vector Icon Files\More.svg" />
+    <None Include="Solution Items\Vector Icon Files\MultiKeySelection.svg" />
+    <None Include="Solution Items\Vector Icon Files\Return.svg" />
+    <None Include="Solution Items\Vector Icon Files\Right Arrow.svg" />
+    <None Include="Solution Items\Vector Icon Files\Shift.svg" />
+    <None Include="Solution Items\Vector Icon Files\Tab.svg" />
+    <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
     <Resource Include="Credits.txt" />
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
-    <Resource Include="Resources\Fonts\Apache License.txt" />
+    <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -227,7 +241,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

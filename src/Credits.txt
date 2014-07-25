@@ -1,5 +1,23 @@
-﻿I would like to extend my thanks to the following people & organisations...
+﻿I would like to extend my thanks/credit to the following people & organisations...
 
+Fonts, icons and other artwork:
+  Fonts: Roboto Light and Roboto Light Italic - Under the Apache Licence ("Roboto Font - Apache License.txt")
+  Tab icon modified from: Transfer designed by Stefan Parnarov from the thenounproject.com
+  Shift icon: Arrow designed by Mateo Zlatar from the thenounproject.com
+  Windows icon: appbar.os.windows.8 from Modern UI Icons - modernuiicons.com
+  Return/Enter icon: Arrow designed by Sam Vermette from the thenounproject.com
+  Backspace (Single) icon: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
+  Backspace (Multiple) icon modified from: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
+  MultiKeySelection icon: Connection by Brenda Castro Pelayo from the thenounproject.com
+  Publish icon: Modern UI Icons - appbar.stream from Modern UI Icons - modernuiicons.com
+  Speak icon: appbar.speakerphone from Modern UI Icons - modernuiicons.com
+  Clear icon: Cross designed by Herbert Spencer from the thenounproject.com
+  Add Phrase icon: Add Comment designed by Andrew Sivko from the thenounproject.com
+  More icon: Dots designed by Alex S. Lakas from the thenounproject.com
+  Left & Right Arrow icons: Arrow designed by Stefan Parnarov from the thenounproject.com
+  Lock Bar icon modified from: Minus designed by Icomatic from the thenounproject.com
+
+All icon manipulation/editing achieved with the excellent, free, and open source Inkscape - inkscape.org
 The StackOverflow community for providing the answer more times than I can count.
 Scott Logic for his excellent work on the circular progress bar (http://www.scottlogic.com/blog/2011/02/07/a-circular-progressbar-style-using-an-attached-viewmodel.html).
-My wife Kate for listening to me bang on about this project for far, far too long, but still supporting me and keeping a convincing "tell me more" face on. xxx
+My wife Kate for listening to me bang on about this project for far, far too long, but still supporting me and keeping a convincing "tell me more" face on.
