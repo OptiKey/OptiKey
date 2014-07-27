@@ -3,8 +3,8 @@ using System.Windows;
 using System.Windows.Interactivity;
 using System.Windows.Media;
 using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.Windows;
-using JuliusSweetland.ETTA.Utilities;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.UI.TriggerActions

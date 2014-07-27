@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 
-namespace JuliusSweetland.ETTA.Utilities
+namespace JuliusSweetland.ETTA.UI.Utilities
 {
     /// <summary>
     /// Inherits ResourceDictionary, used to identify a theme resource dictionary in the merged dictionaries collection
@@ -11,9 +11,12 @@ namespace JuliusSweetland.ETTA.Utilities
     {
     }
 
+    /// <summary>
+    /// Credit to Svetoslav Savov for the ThemeSelector class
+    /// http://svetoslavsavov.blogspot.co.uk/2009/07/switching-wpf-interface-themes-at.html
+    /// </summary>
     public class ThemeSelector : DependencyObject
     {
-
         public static readonly DependencyProperty CurrentThemeDictionaryProperty =
             DependencyProperty.RegisterAttached("CurrentThemeDictionary", typeof (Uri),
                 typeof (ThemeSelector),

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace JuliusSweetland.ETTA.Utilities
+namespace JuliusSweetland.ETTA.UI.Utilities
 {
     public static class VisualAndLogicalTreeHelper
     {

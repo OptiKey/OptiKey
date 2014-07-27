@@ -3,7 +3,7 @@
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Sense.xaml" />
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Templates/CircularProgressBar.xaml" />
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Templates/CircularProgressBar.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Gray}" />

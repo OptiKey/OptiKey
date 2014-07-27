@@ -176,9 +176,9 @@
     <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
       <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\DrawingUtils.cs" />
-    <Compile Include="Utilities\ThemeSelector.cs" />
-    <Compile Include="Utilities\VisualAndLogicalTreeHelper.cs" />
+    <Compile Include="UI\Utilities\DrawingUtils.cs" />
+    <Compile Include="UI\Utilities\ThemeSelector.cs" />
+    <Compile Include="UI\Utilities\VisualAndLogicalTreeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -202,21 +202,23 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Solution Items\Vector Icon Files\Space.svg" />
-    <None Include="Solution Items\Vector Icon Files\AddPhrase.svg" />
-    <None Include="Solution Items\Vector Icon Files\BackMany.svg" />
-    <None Include="Solution Items\Vector Icon Files\BackOne.svg" />
-    <None Include="Solution Items\Vector Icon Files\Clear.svg" />
-    <None Include="Solution Items\Vector Icon Files\Left Arrow.svg" />
-    <None Include="Solution Items\Vector Icon Files\Lock Bar.svg" />
-    <None Include="Solution Items\Vector Icon Files\More.svg" />
-    <None Include="Solution Items\Vector Icon Files\MultiKeySelection.svg" />
-    <None Include="Solution Items\Vector Icon Files\Return.svg" />
-    <None Include="Solution Items\Vector Icon Files\Right Arrow.svg" />
-    <None Include="Solution Items\Vector Icon Files\Shift.svg" />
-    <None Include="Solution Items\Vector Icon Files\Tab.svg" />
+    <None Include="Resources\Icons\Source Files\Space.svg" />
+    <None Include="Resources\Icons\Source Files\AddPhrase.svg" />
+    <None Include="Resources\Icons\Source Files\BackMany.svg" />
+    <None Include="Resources\Icons\Source Files\BackOne.svg" />
+    <None Include="Resources\Icons\Source Files\Clear.svg" />
+    <None Include="Resources\Icons\Source Files\SuggestionsLeft.svg" />
+    <None Include="Resources\Icons\Source Files\Lock Bar.svg" />
+    <None Include="Resources\Icons\Source Files\More.svg" />
+    <None Include="Resources\Icons\Source Files\MultiKeySelection.svg" />
+    <None Include="Resources\Icons\Source Files\Enter.svg" />
+    <None Include="Resources\Icons\Source Files\SuggestionsRight.svg" />
+    <None Include="Resources\Icons\Source Files\Shift.svg" />
+    <None Include="Resources\Icons\Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <Resource Include="Credits.txt" />
+    <Content Include="Credits.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -250,6 +252,10 @@
     <Resource Include="EyeIcon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Icons\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\Sense_Light.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -258,7 +264,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Themes\Templates\CircularProgressBar.xaml">
+    <Page Include="Resources\Templates\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

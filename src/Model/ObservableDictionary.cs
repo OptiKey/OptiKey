@@ -1,4 +1,13 @@
-﻿namespace JuliusSweetland.ETTA.Model
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+
+namespace JuliusSweetland.ETTA.Model
 {
     /* Copyright (c) 2007, Dr. WPF
      * All rights reserved.
@@ -27,16 +36,6 @@
      * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
      * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      */
-
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.Specialized;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Runtime.Serialization;
-    using System.Runtime.InteropServices;
-
     namespace DrWPF.Windows.Data
     {
         [Serializable]

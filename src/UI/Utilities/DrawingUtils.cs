@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace JuliusSweetland.ETTA.Utilities
+namespace JuliusSweetland.ETTA.UI.Utilities
 {
     class DrawingUtils
     {

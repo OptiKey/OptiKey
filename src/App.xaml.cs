@@ -8,9 +8,9 @@ using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
 using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
-using JuliusSweetland.ETTA.Utilities;
 using log4net;
 
 namespace JuliusSweetland.ETTA
