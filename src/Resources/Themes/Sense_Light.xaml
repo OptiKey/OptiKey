@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Sense.xaml" />
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Templates/CircularProgressBar.xaml" />
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="KeyHoverForegroundBrush" Color="{StaticResource Red}" />
+            <SolidColorBrush x:Key="KeySelectionProgressBrush" Color="{StaticResource Red}" />
+            <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
+
+            <SolidColorBrush x:Key="KeySelectionForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeySelectionBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeySelectionBackgroundBrush" Color="{StaticResource Gray}" />
+
+            <SolidColorBrush x:Key="KeySelectionOnForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeySelectionOnBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeySelectionOnBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="KeySelectionLockForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeySelectionLockBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeySelectionLockBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
+            <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />
+
+            <SolidColorBrush x:Key="ScratchPadForegroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="ScratchPadBorderBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource Black}" />
+
+            <Style TargetType="ProgressBar" x:Key="CircularProgressBarStyle">
+                <Setter Property="Template" Value="{StaticResource PieProgressBar}" />
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

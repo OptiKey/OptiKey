@@ -1,12 +1,12 @@
 ﻿<Application x:Class="JuliusSweetland.ETTA.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="UI\Windows\SampleKeyboardWindow.xaml">
-             <!--Startup="App_OnStartup">-->
+             Startup="App_OnStartup">
+    <!--StartupUri="UI\Windows\SampleKeyboardWindow.xaml">-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/DefaultTheme.xaml" />
+                <!--<ResourceDictionary Source="Themes/DefaultTheme.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -10,6 +10,7 @@ using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
+using JuliusSweetland.ETTA.Utilities;
 using log4net;
 
 namespace JuliusSweetland.ETTA
@@ -144,9 +145,12 @@ namespace JuliusSweetland.ETTA
                 var inputService = new InputService(
                     dictionaryService, pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
                 
-                //Compose main window
-                var mainWindow = new MainWindow();
-                mainWindow.MainView.DataContext = new MainViewModel(inputService);
+                //Compose main window and apply theme
+                //var mainWindow = new MainWindow();
+                var mainWindow = new SampleKeyboardWindow();
+                ThemeSelector.SetCurrentThemeDictionary(mainWindow,
+                    new Uri("/JuliusSweetland.ETTA;component/Resources/Themes/Sense_Dark.xaml", UriKind.Relative));  
+                //mainWindow.MainView.DataContext = new MainViewModel(inputService);
                 mainWindow.Show();
 
                 //pointSource.Sequence.Dump("PointSource");
