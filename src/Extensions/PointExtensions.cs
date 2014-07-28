@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Linq;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Extensions
 {

@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 using log4net;
 
 namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Extensions
 {

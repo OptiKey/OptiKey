@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 {

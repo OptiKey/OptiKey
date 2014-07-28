@@ -4,7 +4,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Services;
 
 namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources

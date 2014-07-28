@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Model;
-using JuliusSweetland.ETTA.Model.DrWPF.Windows.Data;
+using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Models.DrWPF.Windows.Data;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -20,7 +21,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private SelectionModes selectionMode;
         private Tuple<Point, double> pointSelectionProgress;
-        private ObservableDictionary<KeyValue, double> keySelectionProgress;
+        private readonly ObservableDictionary<KeyValue, KeyDownStates> keyDownStates;
+        private readonly ObservableDictionary<KeyValue, double> keySelectionProgress;
 
         #endregion
 
@@ -32,12 +34,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             SelectionMode = SelectionModes.Key;
 
+            keyDownStates = new ObservableDictionary<KeyValue, KeyDownStates>
+            {
+                ReturnDefaultValueIfKeyNotFound = true
+            };
+
             keySelectionProgress = new ObservableDictionary<KeyValue, double>
             {
                 ReturnDefaultValueIfKeyNotFound = true
             };
 
             //TESTING...
+            keyDownStates.Add(new KeyValue { String = "W" }, Enums.KeyDownStates.On);
+            keyDownStates.Add(new KeyValue { String = "Y" }, Enums.KeyDownStates.Lock);
+            keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
+
             inputService.PointsPerSecond += (o, value) =>
             {
                 //Log.Debug(string.Format("PointsPerSecond event... FPS:{0}", value));
@@ -100,6 +111,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public IInputService InputService { get { return inputService; } }
 
+        public IKeyboard Keyboard { get { return null; } }
+
+        public ObservableDictionary<KeyValue, KeyDownStates> KeyDownStates
+        {
+            get { return keyDownStates; }
+        }
+
         public SelectionModes SelectionMode
         {
             get { return selectionMode; }
@@ -128,6 +146,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public ObservableDictionary<KeyValue, double> KeySelectionProgress
         {
             get { return keySelectionProgress; }
+        }
+
+        public KeyValue Selection
+        {
+            get { return new KeyValue {String = "P"}; }
         }
 
         #endregion

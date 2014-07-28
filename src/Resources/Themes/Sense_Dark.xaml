@@ -3,7 +3,6 @@
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Sense.xaml" />
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Templates/CircularProgressBar.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Gray}" />
@@ -35,10 +34,6 @@
             <SolidColorBrush x:Key="ScratchPadForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="ScratchPadBorderBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource White}" />
-
-            <Style TargetType="ProgressBar" x:Key="CircularProgressBarStyle">
-                <Setter Property="Template" Value="{StaticResource PieProgressBar}" />
-            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

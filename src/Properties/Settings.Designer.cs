@@ -395,5 +395,29 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["ToastNotificationAdditionalSeconds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Resources/Fonts/#Roboto")]
+        public string KeyFontFamily {
+            get {
+                return ((string)(this["KeyFontFamily"]));
+            }
+            set {
+                this["KeyFontFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsPublishing {
+            get {
+                return ((bool)(this["IsPublishing"]));
+            }
+            set {
+                this["IsPublishing"] = value;
+            }
+        }
     }
 }

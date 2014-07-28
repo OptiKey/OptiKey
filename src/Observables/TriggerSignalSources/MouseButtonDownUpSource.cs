@@ -2,7 +2,7 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 

@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
 using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;

@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using JuliusSweetland.ETTA.Enums;
 
-namespace JuliusSweetland.ETTA.Model
+namespace JuliusSweetland.ETTA.Models
 {
     public struct KeyValue
     {

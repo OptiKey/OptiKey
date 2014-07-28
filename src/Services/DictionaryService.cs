@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
 

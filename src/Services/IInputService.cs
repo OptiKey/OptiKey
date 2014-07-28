@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Model;
+using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Services
 {

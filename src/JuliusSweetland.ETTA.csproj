@@ -118,6 +118,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
     <Compile Include="Enums\FunctionKeys.cs" />
     <Compile Include="Enums\Languages.cs" />
@@ -128,11 +129,11 @@
     <Compile Include="Extensions\KeyValueExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Model\DictionaryEntryWithUsageCount.cs" />
-    <Compile Include="Model\KeyValue.cs" />
-    <Compile Include="Model\ObservableDictionary.cs" />
-    <Compile Include="Model\PointAndKeyValue.cs" />
-    <Compile Include="Model\TriggerSignal.cs" />
+    <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
+    <Compile Include="Models\KeyValue.cs" />
+    <Compile Include="Models\ObservableDictionary.cs" />
+    <Compile Include="Models\PointAndKeyValue.cs" />
+    <Compile Include="Models\TriggerSignal.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\IPointAndKeyValueSource.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\GazeTrackerSource.cs" />
@@ -159,8 +160,16 @@
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="UI\Behaviours\AlwaysOnTopBehavior.cs" />
+    <Compile Include="UI\UserControls\Key.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
+    <Compile Include="UI\UserControls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\DictionaryAndKeyCombiner.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\Alpha_English.xaml.cs">
+      <DependentUpon>Alpha_English.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\SampleKeyboardView.xaml.cs">
       <DependentUpon>SampleKeyboardView.xaml</DependentUpon>
     </Compile>
@@ -252,7 +261,7 @@
     <Resource Include="EyeIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\Icons\Icons.xaml">
+    <Page Include="Resources\Icons\KeySymbols.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,11 +273,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Templates\CircularProgressBar.xaml">
+    <Page Include="UI\Styles\Key.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Styles\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Themes\Colours\Sense.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Alpha_English.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -293,9 +310,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

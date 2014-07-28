@@ -8,8 +8,9 @@
              Background="{DynamicResource KeyDefaultBackgroundBrush}">
 
     <UserControl.Resources>
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/Icons.xaml" />
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
+    
     <Border BorderThickness="10" BorderBrush="{DynamicResource CapturingMultiKeySelectionBrush}">
         <Grid>
             <Grid.RowDefinitions>
@@ -43,7 +44,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="1" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="1" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -54,7 +55,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="2" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="2" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -65,7 +66,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="3" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="3" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -76,7 +77,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="4" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="4" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -87,7 +88,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="5" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="5" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -98,7 +99,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="6" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="6" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -110,7 +111,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="7" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="7" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -121,7 +122,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="8" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="8" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -132,7 +133,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="9" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="9" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -143,7 +144,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="0" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="0" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -155,9 +156,9 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox x:Name="MasterViewBox">
                         <StackPanel>
-                            <TextBlock Text="Pg" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="Pg" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
-                            <TextBlock Text="Up" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="Up" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                         </StackPanel>
                     </Viewbox>
@@ -170,7 +171,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="a" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="a" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -182,7 +183,7 @@
                         Background="{DynamicResource KeySelectionBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="b" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="b" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeySelectionForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -194,7 +195,7 @@
                         Background="{DynamicResource KeySelectionOnBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="c" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="c" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeySelectionOnForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -206,7 +207,7 @@
                         Background="{DynamicResource KeyDisabledBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="d" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="d" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDisabledForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -217,7 +218,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="e" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="e" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -234,7 +235,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="f" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="f" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -248,7 +249,7 @@
                                      Style="{DynamicResource CircularProgressBarStyle}" />
                         <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                                  Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                            <TextBlock Text="g" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="g" FontFamily="/Resources/Fonts/#Roboto"
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}"
                                    Background="Transparent"/>
                         </Viewbox>
@@ -267,7 +268,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="h" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="h" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -281,7 +282,7 @@
                                      Style="{DynamicResource CircularProgressBarStyle}" />
                         <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                                  Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                            <TextBlock Text="i" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="i" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}"
                                    Background="Transparent"/>
                         </Viewbox>
@@ -307,9 +308,9 @@
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <StackPanel>
-                            <TextBlock Text="Pg" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="Pg" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
-                            <TextBlock Text="Dn" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="Dn" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                         </StackPanel>
                     </Viewbox>
@@ -321,7 +322,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="A" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="A" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -332,7 +333,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="B" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="B" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -346,7 +347,7 @@
                                      Style="{DynamicResource CircularProgressBarStyle}" />
                         <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                                  Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                            <TextBlock Text="C" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="C" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}"
                                    Background="Transparent"/>
                         </Viewbox>
@@ -365,7 +366,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="D" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="D" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -376,7 +377,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="E" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="E" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -391,7 +392,7 @@
                                      Style="{DynamicResource CircularProgressBarStyle}" />
                         <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                                  Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                            <TextBlock Text="F" FontFamily="/Resources/Fonts/#Roboto Light" 
+                            <TextBlock Text="F" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}"
                                    Background="Transparent"/>
                         </Viewbox>
@@ -410,7 +411,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="G" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="G" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -421,7 +422,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="H" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="H" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -432,7 +433,7 @@
                         Background="{DynamicResource KeyDefaultBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
-                        <TextBlock Text="I" FontFamily="/Resources/Fonts/#Roboto Light" 
+                        <TextBlock Text="I" FontFamily="/Resources/Fonts/#Roboto" 
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" />
                     </Viewbox>
                 </Border>
@@ -589,7 +590,7 @@
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="ctrl" FontFamily="/Resources/Fonts/#Roboto Light Italic" 
+                            <TextBlock Text="ctrl" FontFamily="/Resources/Fonts/#Roboto"  FontStyle="Italic"
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" x:Name="CtrlTextBlock" />
                             <Path Stretch="Uniform" Fill="{DynamicResource KeyDefaultForegroundBrush}" 
                                   Width="{Binding ElementName=CtrlTextBlock, Path=ActualWidth}"
@@ -606,7 +607,7 @@
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="ctrl" FontFamily="/Resources/Fonts/#Roboto Light Italic" 
+                            <TextBlock Text="ctrl" FontFamily="/Resources/Fonts/#Roboto" FontStyle="Italic"
                                    Foreground="{DynamicResource KeyDefaultForegroundBrush}" x:Name="CtrlTextBlock2" />
                             <Path Stretch="Uniform" Fill="{DynamicResource KeyDefaultForegroundBrush}" 
                                   Width="{Binding ElementName=CtrlTextBlock2, Path=ActualWidth}"

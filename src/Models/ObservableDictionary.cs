@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-namespace JuliusSweetland.ETTA.Model
+namespace JuliusSweetland.ETTA.Models
 {
     /* Copyright (c) 2007, Dr. WPF
      * All rights reserved.
@@ -471,7 +471,17 @@ namespace JuliusSweetland.ETTA.Model
 
             object IDictionary.this[object key]
             {
-                get { return _keyedEntryCollection[(TKey)key].Value; }
+                get
+                {
+                    if (!_keyedEntryCollection.Contains((TKey)key)
+                        && ReturnDefaultValueIfKeyNotFound)
+                    {
+                        //Instead of throwing a key not found exception, return a default value
+                        return default(TValue);
+                    }
+
+                    return _keyedEntryCollection[(TKey)key].Value;
+                }
                 set { DoSetEntry((TKey)key, (TValue)value); }
             }
 

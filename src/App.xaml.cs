@@ -146,11 +146,11 @@ namespace JuliusSweetland.ETTA
                     dictionaryService, pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
                 
                 //Compose main window and apply theme
-                //var mainWindow = new MainWindow();
-                var mainWindow = new SampleKeyboardWindow();
+                var mainWindow = new MainWindow();
+                //var mainWindow = new SampleKeyboardWindow();
                 ThemeSelector.SetCurrentThemeDictionary(mainWindow,
                     new Uri("/JuliusSweetland.ETTA;component/Resources/Themes/Sense_Dark.xaml", UriKind.Relative));  
-                //mainWindow.MainView.DataContext = new MainViewModel(inputService);
+                mainWindow.MainView.DataContext = new MainViewModel(inputService);
                 mainWindow.Show();
 
                 //pointSource.Sequence.Dump("PointSource");
