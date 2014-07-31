@@ -14,7 +14,7 @@
    id="svg7134"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="Lock Bar.xaml">
+   sodipodi:docname="Lock Bar.svg">
   <defs
      id="defs7136" />
   <sodipodi:namedview
@@ -44,13 +44,13 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <path
      id="path7146"
-     d="m 60.560492,31.506493 v -2.64935 c 0,-1.307455 -0.64092,-1.766234 -2.984495,-1.766234 H 6.8395883 c -2.2092735,0 -2.984495,0.432727 -2.984495,1.766234 v 2.64935 c 0,1.368832 0.7752215,1.766234 2.984495,1.766234 H 57.575997 c 2.253292,0 2.984495,-0.424338 2.984495,-1.766234 z"
+     d="m 60.560492,30.961039 v -1.558442 c 0,-0.769091 -0.64092,-1.038961 -2.984495,-1.038961 H 6.8395883 c -2.2092735,0 -2.984495,0.254546 -2.984495,1.038961 v 1.558442 C 3.8550933,31.766234 4.6303148,32 6.8395883,32 H 57.575997 c 2.253292,0 2.984495,-0.249611 2.984495,-1.038961 z"
      inkscape:connector-curvature="0"
      style="fill:#000000;fill-rule:evenodd" />
 </svg>

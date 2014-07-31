@@ -411,12 +411,24 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IsPublishing {
+        public bool PublishingKeys {
             get {
-                return ((bool)(this["IsPublishing"]));
+                return ((bool)(this["PublishingKeys"]));
             }
             set {
-                this["IsPublishing"] = value;
+                this["PublishingKeys"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
+        public string KeyFontWeight {
+            get {
+                return ((string)(this["KeyFontWeight"]));
+            }
+            set {
+                this["KeyFontWeight"] = value;
             }
         }
     }

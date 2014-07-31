@@ -98,8 +98,11 @@
     <Setting Name="KeyFontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
     </Setting>
-    <Setting Name="IsPublishing" Type="System.Boolean" Scope="User">
+    <Setting Name="PublishingKeys" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="KeyFontWeight" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Light</Value>
     </Setting>
   </Settings>
 </SettingsFile>

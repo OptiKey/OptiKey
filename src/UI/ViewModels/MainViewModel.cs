@@ -20,9 +20,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private SelectionModes selectionMode;
+        private Point currentPositionPoint;
+        private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private readonly ObservableDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly ObservableDictionary<KeyValue, double> keySelectionProgress;
+        private readonly ObservableDictionary<KeyValue, KeyDownStates> keyDownStates;
 
         #endregion
 
@@ -45,9 +47,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
 
             //TESTING...
+            currentPositionKey = new KeyValue {String = "U"}; 
             keyDownStates.Add(new KeyValue { String = "W" }, Enums.KeyDownStates.On);
             keyDownStates.Add(new KeyValue { String = "Y" }, Enums.KeyDownStates.Lock);
-            keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
+            //keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
+            keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Ctrl }, Enums.KeyDownStates.Lock);
 
             inputService.PointsPerSecond += (o, value) =>
             {
@@ -113,11 +117,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public IKeyboard Keyboard { get { return null; } }
 
-        public ObservableDictionary<KeyValue, KeyDownStates> KeyDownStates
-        {
-            get { return keyDownStates; }
-        }
-
         public SelectionModes SelectionMode
         {
             get { return selectionMode; }
@@ -148,9 +147,26 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keySelectionProgress; }
         }
 
+        public Point CurrentPositionPoint
+        {
+            get { return currentPositionPoint; }
+            set { SetProperty(ref currentPositionPoint, value); }
+        }
+
+        public KeyValue CurrentPositionKey
+        {
+            get { return currentPositionKey; }
+            set { SetProperty(ref currentPositionKey, value); }
+        }
+
         public KeyValue Selection
         {
             get { return new KeyValue {String = "P"}; }
+        }
+
+        public ObservableDictionary<KeyValue, KeyDownStates> KeyDownStates
+        {
+            get { return keyDownStates; }
         }
 
         #endregion

@@ -3,7 +3,8 @@
     public enum FunctionKeys
     {
         Next,
-        Back,
+        BackOne,
+        BackMany,
         PreviousMatches,
         NextMatches,
         SelectMatch1,
@@ -19,13 +20,17 @@
         AddToDictionary,
         SkipAddingToDictionary,
         Shift,
-        ShowLettersKeyboard,
-        ShowNumbersKeyboard,
-        ShowSymbolsKeyboard,
-        ShowSymbols2Keyboard,
-        ShowEndSentencePunctuationKeyboard,
-        FullStop,
-        ExclamationMark,
-        QuestionMark
+        Enter,
+        Alt,
+        Ctrl,
+        Tab,
+        Win,
+        ToggleMultiKeySelectionSupported,
+        Speak,
+        LettersKeyboard,
+        NumbersKeyboard,
+        Symbols1Keyboard,
+        Symbols2Keyboard,
+        MoreKeyboard
     }
 }

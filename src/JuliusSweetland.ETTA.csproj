@@ -148,6 +148,7 @@
     <Compile Include="Observables\TriggerSignalSources\ITriggerSignalSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\MouseButtonDownUpSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\KeyboardKeyDownUpSource.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\DictionaryService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -163,10 +164,14 @@
     <Compile Include="UI\UserControls\Key.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\UserControls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\AllValuesAreEqual.cs" />
     <Compile Include="UI\ValueConverters\DictionaryAndKeyCombiner.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\Publish_English.xaml.cs">
+      <DependentUpon>Publish_English.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Alpha_English.xaml.cs">
       <DependentUpon>Alpha_English.xaml</DependentUpon>
     </Compile>
@@ -211,6 +216,16 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
     <None Include="Resources\Icons\Source Files\Space.svg" />
     <None Include="Resources\Icons\Source Files\AddPhrase.svg" />
     <None Include="Resources\Icons\Source Files\BackMany.svg" />
@@ -284,6 +299,10 @@
     <Page Include="Resources\Themes\Colours\Sense.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Publish_English.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Alpha_English.xaml">
       <SubType>Designer</SubType>

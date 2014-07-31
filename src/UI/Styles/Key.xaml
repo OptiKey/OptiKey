@@ -10,112 +10,240 @@
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/UI/Styles/CircularProgressBar.xaml" />
         <ResourceDictionary>
+            <valueConverters:DictionaryAndKeyCombiner x:Key="DictionaryAndKeyCombiner" />
+            <valueConverters:AllValuesAreEqual x:Key="AllValuesAreEqual" />
+
+            <Style x:Key="KeyTextStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Text" Value="{Binding Path=LowerText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontFamily}" />
+                <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}" />
+                <Setter Property="Foreground" Value="{DynamicResource KeyDefaultForegroundBrush}" />
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <!--Is there text to display-->
+                    <DataTrigger Binding="{Binding Path=HasText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                                       
+                    <!--This key is a modifier key-->
+                    <DataTrigger Binding="{Binding Path=IsModifier, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                        <Setter Property="FontStyle" Value="Italic" />
+                    </DataTrigger>
+
+                    <!--This key is in an On state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Foreground" Value="{DynamicResource KeySelectionOnForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--This key is in a Lock state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Foreground" Value="{DynamicResource KeySelectionLockForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--SHIFT is in an On state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding>
+                                    <Binding.Source>
+                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
+                                    </Binding.Source>
+                                </Binding>
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Text" Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                    </DataTrigger>
+
+                    <!--SHIFT is in a Lock state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding>
+                                    <Binding.Source>
+                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
+                                    </Binding.Source>
+                                </Binding>
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Text" Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                    </DataTrigger>
+
+                    <!--This key is publish only, but we are not publishing-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=IsPublishOnly, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True" />
+                            <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=PublishingKeys}" Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter Property="Foreground" Value="{DynamicResource KeyDisabledForegroundBrush}" />
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="KeySymbolStyle" TargetType="{x:Type Path}">
+                <Setter Property="Stretch" Value="Uniform" />
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Data" Value="{Binding Path=SymbolGeometry, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                <Setter Property="Fill" Value="{DynamicResource KeyDefaultForegroundBrush}" />
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <!--Is there a symbol to display-->
+                    <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                    
+                    <!--This key is in an On state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Fill" Value="{DynamicResource KeySelectionOnForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--This key is in a Lock state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Fill" Value="{DynamicResource KeySelectionLockForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--This key is publish only, but we are not publishing-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=IsPublishOnly, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True" />
+                            <Condition Binding="{Binding Source={x:Static properties:Settings.Default}, Path=PublishingKeys}" Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.Setters>
+                            <Setter Property="Fill" Value="{DynamicResource KeyDisabledForegroundBrush}" />
+                        </MultiDataTrigger.Setters>
+                    </MultiDataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="KeyLockBarStyle" TargetType="{x:Type Path}">
+                <Setter Property="Visibility" Value="Hidden" />
+                <Setter Property="Fill" Value="{DynamicResource KeySelectionLockForegroundBrush}" />
+                <Setter Property="Stretch" Value="Uniform" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="Data" Value="{StaticResource LockBarIcon}" />
+                <Style.Triggers>
+                    <!--This key is in a Lock state-->
+                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
+                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="KeyBorderStyle" TargetType="{x:Type Border}">
+                <Setter Property="Padding" Value="2" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{DynamicResource KeyDefaultBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource KeyDefaultBackgroundBrush}" />
+                <Setter Property="Tag" Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                <!--<Style.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource DataContext., AncestorType=UserControl}}"
+                                    Value="">
+                        <Setter Property="BorderBrush" Value="{DynamicResource KeyDefaultBorderBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource KeyDefaultBackgroundBrush}" />
+                    </DataTrigger>
+                </Style.Triggers>-->
+
+                <!--This key is the currently focussed key-->
+                <!--<DataTrigger Binding="{Binding Path=DataContext.CurrentPositionKey, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" 
+                                                     Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}">
+                        <DataTrigger.Setters>
+                            <Setter Property="Foreground" Value="{DynamicResource KeyHoverForegroundBrush}" />
+                        </DataTrigger.Setters>
+                    </DataTrigger>-->
+            </Style>
+
+            <Style x:Key="KeyBorderHighlightStyle" TargetType="{x:Type Border}">
+                <Setter Property="BorderThickness" Value="5" />
+                <Setter Property="BorderBrush" Value="{DynamicResource KeyHoverForegroundBrush}" />
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <BlurEffect Radius="5.0" KernelType="Gaussian"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <DataTrigger Value="True">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource AllValuesAreEqual}">
+                                <Binding Path="DataContext.CurrentPositionKey" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
             <Style TargetType="{x:Type controls:Key}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Key}">
-                            <ControlTemplate.Resources>
-
-                                <valueConverters:DictionaryAndKeyCombiner x:Key="DictionaryAndKeyCombiner" />
-                                
-                                <Style TargetType="TextBlock" x:Key="KeyTextStyle">
-                                    <Setter Property="TextAlignment" Value="Center" />
-                                    <Setter Property="Text" Value="{Binding Path=LowerText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
-                                    <Setter Property="FontStyle" Value="Normal" />
-                                    <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontFamily}" />
-                                    <Setter Property="Foreground" Value="{DynamicResource KeyDefaultForegroundBrush}" />
-                                    <Style.Triggers>
-                                        <!--This key is a modifier key-->
-                                        <DataTrigger Binding="{Binding Path=IsModifier, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
-                                            <Setter Property="FontStyle" Value="Italic" />
-                                        </DataTrigger>
-                                        
-                                        <!--This key is in an On or Lock state-->
-                                        <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                                    <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                                                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter Property="Foreground" 
-                                                    Value="{DynamicResource KeySelectionOnForegroundBrush}" />
-                                        </DataTrigger>
-                                        <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                                    <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                                                    <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter Property="Foreground" 
-                                                    Value="{DynamicResource KeySelectionLockForegroundBrush}" />
-                                        </DataTrigger>
-                                        
-                                        <!--SHIFT is in an On or Lock state-->
-                                        <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                                    <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                                                    <Binding>
-                                                        <Binding.Source>
-                                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
-                                                        </Binding.Source>
-                                                    </Binding>
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter Property="Text" 
-                                                    Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
-                                        </DataTrigger>
-                                        <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                                    <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                                                    <Binding>
-                                                        <Binding.Source>
-                                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
-                                                        </Binding.Source>
-                                                    </Binding>
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter Property="Text" 
-                                                    Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
-                                        </DataTrigger>
-                                        
-                                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource DataContext., AncestorType=UserControl}}"
-                                                        Value="">
-                                            <Setter Property="Foreground" Value="{DynamicResource KeyDefaultBorderBrush}" />
-                                        </DataTrigger>-->
-                                    </Style.Triggers>
-                                </Style>
-                            </ControlTemplate.Resources>
-
-                            <Border BorderThickness="1">
-                                <Border.Style>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="BorderBrush" Value="{DynamicResource KeyDefaultBorderBrush}" />
-                                        <Setter Property="Background" Value="{DynamicResource KeyDefaultBackgroundBrush}" />
-                                        <!--<Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource DataContext., AncestorType=UserControl}}"
-                                                         Value="">
-                                                <Setter Property="BorderBrush" Value="{DynamicResource KeyDefaultBorderBrush}" />
-                                                <Setter Property="Background" Value="{DynamicResource KeyDefaultBackgroundBrush}" />
-                                            </DataTrigger>
-                                        </Style.Triggers>-->
-                                    </Style>
-                                </Border.Style>
-                                <Viewbox>
+                            <Grid>
+                                <Border Style="{StaticResource KeyBorderStyle}">
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition SharedSizeGroup="SharedKeyHeight" />
+                                            <RowDefinition SharedSizeGroup="LockBarSharedHeight" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition SharedSizeGroup="LockBarSharedHeight" />
                                         </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition SharedSizeGroup="SharedKeyWidth" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Style="{StaticResource KeyTextStyle}" />
+                                        <Viewbox Grid.Row="1">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition SharedSizeGroup="{Binding Path=SharedHeightGroupName, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition SharedSizeGroup="{Binding Path=SharedWidthGroupName, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                    <Path Style="{StaticResource KeySymbolStyle}" />
+                                                    <TextBlock Style="{StaticResource KeyTextStyle}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Viewbox>
+                                        <Path Grid.Row="2" Style="{StaticResource KeyLockBarStyle}" />
                                     </Grid>
-                                </Viewbox>
-                            </Border>
+                                </Border>
+                                <Border Style="{StaticResource KeyBorderHighlightStyle}" />
+                            </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
