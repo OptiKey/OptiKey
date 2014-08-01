@@ -164,14 +164,12 @@
     <Compile Include="UI\UserControls\Key.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\UserControls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\AllValuesAreEqual.cs" />
     <Compile Include="UI\ValueConverters\DictionaryAndKeyCombiner.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\Publish_English.xaml.cs">
-      <DependentUpon>Publish_English.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Alpha_English.xaml.cs">
       <DependentUpon>Alpha_English.xaml</DependentUpon>
     </Compile>
@@ -181,12 +179,10 @@
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\SampleKeyboardWindow.xaml.cs">
-      <DependentUpon>SampleKeyboardWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\ThemedWindow.cs" />
     <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
       <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
     </Compile>
@@ -300,10 +296,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Publish_English.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Views\Keyboards\Alpha_English.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,10 +307,6 @@
     <Page Include="UI\Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Windows\SampleKeyboardWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>

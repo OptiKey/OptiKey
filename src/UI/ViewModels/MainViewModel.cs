@@ -52,6 +52,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keyDownStates.Add(new KeyValue { String = "Y" }, Enums.KeyDownStates.Lock);
             //keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
             keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Ctrl }, Enums.KeyDownStates.Lock);
+            keySelection = new KeyValue {String = "P"};
 
             inputService.PointsPerSecond += (o, value) =>
             {
@@ -130,6 +131,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
+        public Point CurrentPositionPoint
+        {
+            get { return currentPositionPoint; }
+            set { SetProperty(ref currentPositionPoint, value); }
+        }
+
+        public KeyValue CurrentPositionKey
+        {
+            get { return currentPositionKey; }
+            set { SetProperty(ref currentPositionKey, value); }
+        }
+
         public Tuple<Point, double> PointSelectionProgress
         {
             get { return pointSelectionProgress; }
@@ -147,21 +160,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keySelectionProgress; }
         }
 
-        public Point CurrentPositionPoint
+        private Point pointSelection;
+        public Point PointSelection
         {
-            get { return currentPositionPoint; }
-            set { SetProperty(ref currentPositionPoint, value); }
+            get { return pointSelection; }
+            set { SetProperty(ref pointSelection, value); }
         }
-
-        public KeyValue CurrentPositionKey
+        
+        private KeyValue keySelection;
+        public KeyValue KeySelection
         {
-            get { return currentPositionKey; }
-            set { SetProperty(ref currentPositionKey, value); }
-        }
-
-        public KeyValue Selection
-        {
-            get { return new KeyValue {String = "P"}; }
+            get { return keySelection; }
+            set { SetProperty(ref keySelection, value); }
         }
 
         public ObservableDictionary<KeyValue, KeyDownStates> KeyDownStates

@@ -104,5 +104,8 @@
     <Setting Name="KeyFontWeight" Type="System.String" Scope="User">
       <Value Profile="(Default)">Light</Value>
     </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sense_Dark</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

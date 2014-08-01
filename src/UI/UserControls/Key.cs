@@ -10,24 +10,26 @@ namespace JuliusSweetland.ETTA.UI.UserControls
 {
     public class Key : UserControl, INotifyPropertyChanged
     {
-        public static readonly DependencyProperty SharedWidthGroupNameProperty =
-            DependencyProperty.Register("SharedWidthGroupName", typeof (string), typeof (Key), new PropertyMetadata(default(string)));
+        //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
+        public static readonly DependencyProperty WidthSpanProperty =
+            DependencyProperty.Register("WidthSpan", typeof (int), typeof (Key), new PropertyMetadata(1));
 
-        public string SharedWidthGroupName
+        public int WidthSpan
         {
-            get { return (string) GetValue(SharedWidthGroupNameProperty); }
-            set { SetValue(SharedWidthGroupNameProperty, value); }
+            get { return (int) GetValue(WidthSpanProperty); }
+            set { SetValue(WidthSpanProperty, value); }
         }
 
-        public static readonly DependencyProperty SharedHeightGroupNameProperty =
-            DependencyProperty.Register("SharedHeightGroupName", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+        //Specify if this key spans multiple keys vertically - used to keep the contents proportional to other keys
+        public static readonly DependencyProperty HeightSpanProperty =
+            DependencyProperty.Register("HeightSpan", typeof (int), typeof (Key), new PropertyMetadata(1));
 
-        public string SharedHeightGroupName
+        public int HeightSpan
         {
-            get { return (string)GetValue(SharedHeightGroupNameProperty); }
-            set { SetValue(SharedHeightGroupNameProperty, value); }
+            get { return (int) GetValue(HeightSpanProperty); }
+            set { SetValue(HeightSpanProperty, value); }
         }
-
+        
         public static readonly DependencyProperty SymbolGeometryProperty =
             DependencyProperty.Register("SymbolGeometry", typeof (Geometry), typeof (Key),
             new PropertyMetadata(default(Geometry), OnSymbolGeometryOrTextChanged));
@@ -65,15 +67,6 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         {
             get { return (bool) GetValue(IsPublishOnlyProperty); }
             set { SetValue(IsPublishOnlyProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsModifierProperty =
-            DependencyProperty.Register("IsModifier", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
-
-        public bool IsModifier
-        {
-            get { return (bool) GetValue(IsModifierProperty); }
-            set { SetValue(IsModifierProperty, value); }
         }
 
         public static readonly DependencyProperty ValueProperty =

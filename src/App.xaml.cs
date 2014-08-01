@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
 using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
 using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
@@ -148,13 +147,13 @@ namespace JuliusSweetland.ETTA
                 //Compose main window and apply theme
                 var mainWindow = new MainWindow();
                 //var mainWindow = new SampleKeyboardWindow();
-                ThemeSelector.SetCurrentThemeDictionary(mainWindow,
-                    new Uri("/JuliusSweetland.ETTA;component/Resources/Themes/Sense_Dark.xaml", UriKind.Relative));  
+                //ThemeSelector.SetCurrentThemeDictionary(mainWindow,
+                //    new Uri(string.Format("/Resources/Themes/{0}.xaml", Settings.Default.Theme), UriKind.Relative));  
                 mainWindow.MainView.DataContext = new MainViewModel(inputService);
                 mainWindow.Show();
 
                 //pointSource.Sequence.Dump("PointSource");
-                keySelectionTriggerSource.Sequence.Dump("KeySelectionTriggerSource");
+                //keySelectionTriggerSource.Sequence.Dump("KeySelectionTriggerSource");
             }
             catch (Exception ex)
             {

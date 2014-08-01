@@ -9,14 +9,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="150"
-   height="64"
-   id="svg3109"
+   width="64px"
+   height="64px"
+   id="svg2994"
    version="1.1"
    inkscape:version="0.48.5 r10040"
    sodipodi:docname="Space.xaml">
   <defs
-     id="defs3111" />
+     id="defs2996" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.5"
-     inkscape:cx="90.631897"
-     inkscape:cy="11.865722"
+     inkscape:cx="32"
+     inkscape:cy="32"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
@@ -37,7 +37,7 @@
      inkscape:window-y="-9"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata3114">
+     id="metadata2999">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -54,7 +54,7 @@
      inkscape:groupmode="layer">
     <path
        id="path3044"
-       d="M 143.25788,63.690863 H 6.7822313 c -3.685685,0 -6.6721431,-2.49614 -6.6721431,-5.576707 V 5.7040253 c 0,-3.0805672 2.9864581,-5.57670712 6.6721431,-5.57670712 3.6856847,0 6.6721427,2.49613992 6.6721427,5.57670712 V 52.537451 H 136.58784 V 5.7040253 c 0,-3.0805672 2.98647,-5.57670712 6.67215,-5.57670712 3.68568,0 6.67214,2.49613992 6.67214,5.57670712 V 58.114156 c -0.002,3.080567 -2.98855,5.576707 -6.67425,5.576707 z"
+       d="M 57.489779,51.060094 H 6.873077 c -1.3669627,0 -2.4745942,-0.92578 -2.4745942,-2.068314 V 29.553675 c 0,-1.142535 1.1076315,-2.068314 2.4745942,-2.068314 1.3669638,0 2.4745948,0.925779 2.4745948,2.068314 V 46.923466 H 55.015965 V 29.553675 c 0,-1.142535 1.107635,-2.068314 2.474596,-2.068314 1.366963,0 2.474594,0.925779 2.474594,2.068314 V 48.99178 c -7.41e-4,1.142534 -1.108407,2.068314 -2.475376,2.068314 z"
        inkscape:connector-curvature="0"
        style="fill:#000000" />
   </g>
