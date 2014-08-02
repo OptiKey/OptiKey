@@ -52,8 +52,7 @@
                 <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontFamily}" />
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}" />
-                <Setter Property="FontSize" Value="64px" />
-                <!--Font size same as symbol canvas size (64px)-->
+                <Setter Property="FontSize" Value="64px" /> <!--Font size same as symbol canvas size (64px)-->
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Style.Triggers>
                     <!--Is there text to display-->
