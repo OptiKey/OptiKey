@@ -128,11 +128,13 @@
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\KeyValueExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
+    <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
     <Compile Include="Models\KeyValue.cs" />
     <Compile Include="Models\ObservableDictionary.cs" />
     <Compile Include="Models\PointAndKeyValue.cs" />
+    <Compile Include="Models\ThemeResourceDictionary.cs" />
     <Compile Include="Models\TriggerSignal.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\IPointAndKeyValueSource.cs" />
@@ -182,12 +184,10 @@
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\ThemedWindow.cs" />
     <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
       <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Utilities\DrawingUtils.cs" />
-    <Compile Include="UI\Utilities\ThemeSelector.cs" />
     <Compile Include="UI\Utilities\VisualAndLogicalTreeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,12 @@
     <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
     <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Light.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="Resources\Icons\Source Files\Space.svg" />
     <None Include="Resources\Icons\Source Files\AddPhrase.svg" />
     <None Include="Resources\Icons\Source Files\BackMany.svg" />
@@ -284,11 +290,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Styles\Key.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Styles\CircularProgressBar.xaml">
+    <Page Include="Resources\Styles\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

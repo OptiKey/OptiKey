@@ -434,13 +434,25 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Sense_Dark")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Resources/Themes/Sense_Dark.xaml")]
         public string Theme {
             get {
                 return ((string)(this["Theme"]));
             }
             set {
                 this["Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string KeyFontStretch {
+            get {
+                return ((string)(this["KeyFontStretch"]));
+            }
+            set {
+                this["KeyFontStretch"] = value;
             }
         }
     }

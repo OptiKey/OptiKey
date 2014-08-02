@@ -7,7 +7,7 @@ namespace JuliusSweetland.ETTA.UI.Windows
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ThemedWindow
+    public partial class MainWindow : Window
     {
         private readonly WindowStatePersistenceService windowStatePersistenceService;
 

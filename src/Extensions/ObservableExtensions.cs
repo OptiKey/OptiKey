@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Windows;
 using log4net;
 
@@ -71,6 +73,49 @@ namespace JuliusSweetland.ETTA.Extensions
             i => Console.WriteLine("{0}-->{1}", name, i),
             ex => Console.WriteLine("{0} failed-->{1}", name, ex.Message),
             () => Console.WriteLine("{0} completed", name));
+        }
+
+        public static IObservable<T> OnPropertyChanges<T>(this DependencyObject source, DependencyProperty property)
+        {
+            return Observable.Create<T>(o =>
+            {
+                var dpd = DependencyPropertyDescriptor.FromProperty(property, property.OwnerType);
+                if (dpd == null)
+                {
+                    o.OnError(new InvalidOperationException("Can not register change handler for this dependency property."));
+                }
+
+                EventHandler handler = delegate { o.OnNext((T)source.GetValue(property)); };
+                dpd.AddValueChanged(source, handler);
+
+                return Disposable.Create(() => dpd.RemoveValueChanged(source, handler));
+            });
+        }
+
+        /// <summary>
+        /// Returns an observable sequence of the value of a property when <paramref name="source"/> raises <seealso cref="INotifyPropertyChanged.PropertyChanged"/> for the given property.
+        /// </summary>
+        /// <typeparam name="T">The type of the source object. Type must implement <seealso cref="INotifyPropertyChanged"/>.</typeparam>
+        /// <typeparam name="TProperty">The type of the property that is being observed.</typeparam>
+        /// <param name="source">The object to observe property changes on.</param>
+        /// <param name="property">An expression that describes which property to observe.</param>
+        /// <returns>Returns an observable sequence of the property values as they change.</returns>
+        public static IObservable<TProperty> OnPropertyChanges<T, TProperty>(this T source, Expression<Func<T, TProperty>> property)
+            where T : INotifyPropertyChanged
+        {
+            return Observable.Create<TProperty>(o =>
+            {
+                var propertyName = property.GetPropertyInfo().Name;
+                var propertySelector = property.Compile();
+
+                return Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>(
+                                handler => handler.Invoke,
+                                h => source.PropertyChanged += h,
+                                h => source.PropertyChanged -= h)
+                            .Where(e => e.EventArgs.PropertyName == propertyName)
+                            .Select(e => propertySelector(source))
+                            .Subscribe(o);
+            });
         }
     }
 }

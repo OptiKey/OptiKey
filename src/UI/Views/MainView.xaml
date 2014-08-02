@@ -5,11 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:userControls="clr-namespace:JuliusSweetland.ETTA.UI.UserControls"
              xmlns:keyboards="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards"
+             xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <userControls:KeyboardHost>
             <keyboards:Alpha_English DataContext="{Binding Keyboard}" />
         </userControls:KeyboardHost>
+        <ComboBox Grid.Row="1"
+                  SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
+            <ComboBox.Items>
+                <system:String>/Resources/Themes/Sense_Dark.xaml</system:String>
+                <system:String>/Resources/Themes/Sense_Light.xaml</system:String>
+            </ComboBox.Items>
+        </ComboBox>
+        <ComboBox Grid.Row="2"
+                  SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}">
+            <ComboBox.Items>
+                <system:String>Black</system:String>
+                <system:String>Bold</system:String>
+                <system:String>Medium</system:String>
+                <system:String>Regular</system:String>
+                <system:String>Light</system:String>
+                <system:String>Thin</system:String>
+            </ComboBox.Items>
+        </ComboBox>
+        <ComboBox Grid.Row="3"
+                  SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}">
+            <ComboBox.Items>
+                <system:String>Normal</system:String>
+                <system:String>Condensed</system:String>
+            </ComboBox.Items>
+        </ComboBox>
     </Grid>
 </UserControl>

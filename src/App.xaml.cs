@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Extensions;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
 using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
@@ -22,6 +25,27 @@ namespace JuliusSweetland.ETTA
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        #endregion
+
+        #region Ctor
+
+        public App()
+        {
+            Action applyTheme = () =>
+            {
+                var themeDictionary = new ThemeResourceDictionary
+                {
+                    Source = new Uri(Settings.Default.Theme, UriKind.Relative)
+                };
+                var currentThemeDictionaries = this.Resources.MergedDictionaries.OfType<ThemeResourceDictionary>().ToList();
+                this.Resources.MergedDictionaries.Insert(0, themeDictionary);
+                currentThemeDictionaries.ForEach(rd => this.Resources.MergedDictionaries.Remove(rd));
+            };
+            applyTheme();
+
+            Settings.Default.OnPropertyChanges(s => s.Theme).Subscribe(s => applyTheme());
+        }
 
         #endregion
 
