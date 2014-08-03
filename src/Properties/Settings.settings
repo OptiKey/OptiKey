@@ -105,7 +105,7 @@
       <Value Profile="(Default)">Light</Value>
     </Setting>
     <Setting Name="Theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/Resources/Themes/Sense_Dark.xaml</Value>
+      <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
     </Setting>
     <Setting Name="KeyFontStretch" Type="System.String" Scope="User">
       <Value Profile="(Default)">Normal</Value>

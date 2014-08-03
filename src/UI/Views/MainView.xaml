@@ -22,8 +22,8 @@
         <ComboBox Grid.Row="1"
                   SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
             <ComboBox.Items>
-                <system:String>/Resources/Themes/Sense_Dark.xaml</system:String>
-                <system:String>/Resources/Themes/Sense_Light.xaml</system:String>
+                <system:String>/Resources/Themes/Android_Dark.xaml</system:String>
+                <system:String>/Resources/Themes/Android_Light.xaml</system:String>
             </ComboBox.Items>
         </ComboBox>
         <ComboBox Grid.Row="2"
