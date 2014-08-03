@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
@@ -52,7 +54,27 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keyDownStates.Add(new KeyValue { String = "Y" }, Enums.KeyDownStates.Lock);
             //keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
             keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Ctrl }, Enums.KeyDownStates.Lock);
-            keySelection = new KeyValue {String = "P"};
+
+            Observable.Interval(TimeSpan.FromSeconds(2))
+                .SubscribeOnDispatcher()
+                .Subscribe(i =>
+            {
+                KeySelection = i%2 == 0 ? new KeyValue { String = "P" } : new KeyValue { String = "O" };
+            });
+
+            Observable
+                .Interval(TimeSpan.FromMilliseconds(10))
+                .SubscribeOnDispatcher()
+                .Subscribe(i =>
+                {
+                    var percent = (double)i % 100;
+                    var key = new KeyValue {String = "K"};
+                    KeySelectionProgress[key] = percent;
+                    //TODO: Is there a way around firind a property changed on the whole observable collection? It's inefficient as all listeners will rebind.
+                    OnPropertyChanged(() => KeySelectionProgress);
+                });
+
+            //KeySelectionProgress[new KeyValue {String = "K"}] = 40;
 
             inputService.PointsPerSecond += (o, value) =>
             {
@@ -160,15 +182,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keySelectionProgress; }
         }
 
-        private Point pointSelection;
-        public Point PointSelection
+        private Point? pointSelection;
+        public Point? PointSelection
         {
             get { return pointSelection; }
             set { SetProperty(ref pointSelection, value); }
         }
         
-        private KeyValue keySelection;
-        public KeyValue KeySelection
+        private KeyValue? keySelection;
+        public KeyValue? KeySelection
         {
             get { return keySelection; }
             set { SetProperty(ref keySelection, value); }
