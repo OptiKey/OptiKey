@@ -231,9 +231,9 @@
                                 </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
 
                                 <wpfCircularProgressBar:PiePiece 
-                                CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
-                                RotationAngle="0" WedgeAngle="{Binding Angle}"
-                                Radius="{Binding Radius}" Fill="{StaticResource KeySelectionProgressBrush}"/>
+                                    CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
+                                    RotationAngle="0" WedgeAngle="{Binding Angle}"
+                                    Radius="{Binding Radius}" Fill="{StaticResource KeySelectionProgressBrush}"/>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>

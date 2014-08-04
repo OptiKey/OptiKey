@@ -4,7 +4,8 @@
                     xmlns:valueConverters="clr-namespace:JuliusSweetland.ETTA.UI.ValueConverters"
                     xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
                     xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
-                    xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models">
+                    xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
+                    xmlns:wpfCircularProgressBar="clr-namespace:WpfCircularProgressBar;assembly=WpfCircularProgressBar">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Sense.xaml" />
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
