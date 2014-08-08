@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Models.DrWPF.Windows.Data;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
@@ -25,8 +23,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Point currentPositionPoint;
         private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private readonly ObservableDictionary<KeyValue, double> keySelectionProgress;
-        private readonly ObservableDictionary<KeyValue, KeyDownStates> keyDownStates;
+        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress = new NotifyingConcurrentDictionary<double>();
+        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
 
         #endregion
 
@@ -38,22 +36,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             SelectionMode = SelectionModes.Key;
 
-            keyDownStates = new ObservableDictionary<KeyValue, KeyDownStates>
-            {
-                ReturnDefaultValueIfKeyNotFound = true
-            };
-
-            keySelectionProgress = new ObservableDictionary<KeyValue, double>
-            {
-                ReturnDefaultValueIfKeyNotFound = true
-            };
-
             //TESTING...
             currentPositionKey = new KeyValue {String = "U"}; 
-            keyDownStates.Add(new KeyValue { String = "W" }, Enums.KeyDownStates.On);
-            keyDownStates.Add(new KeyValue { String = "Y" }, Enums.KeyDownStates.Lock);
-            //keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Shift}, Enums.KeyDownStates.On);
-            keyDownStates.Add(new KeyValue { FunctionKey = FunctionKeys.Ctrl }, Enums.KeyDownStates.Lock);
+            keyDownStates["W"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.On);
+            keyDownStates["Y"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
+            keyDownStates["Ctrl"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
+            //keyDownStates["Shift"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
 
             Observable.Interval(TimeSpan.FromSeconds(2))
                 .SubscribeOnDispatcher()
@@ -68,10 +56,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 .Subscribe(i =>
                 {
                     var percent = (double)i % 100;
-                    var key = new KeyValue {String = "K"};
-                    KeySelectionProgress[key] = percent;
-                    //TODO: Is there a way around firind a property changed on the whole observable collection? It's inefficient as all listeners will rebind.
-                    OnPropertyChanged(() => KeySelectionProgress);
+                    KeySelectionProgress["K"] = new NotifyingProxy<double>(percent);
                 });
 
             //KeySelectionProgress[new KeyValue {String = "K"}] = 40;
@@ -95,7 +80,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value] = progress.Item2;
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
@@ -177,7 +162,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        public ObservableDictionary<KeyValue, double> KeySelectionProgress
+        public NotifyingConcurrentDictionary<double> KeySelectionProgress
         {
             get { return keySelectionProgress; }
         }
@@ -196,7 +181,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref keySelection, value); }
         }
 
-        public ObservableDictionary<KeyValue, KeyDownStates> KeyDownStates
+        public NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates
         {
             get { return keyDownStates; }
         }
