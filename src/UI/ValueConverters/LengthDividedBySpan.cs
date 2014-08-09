@@ -15,7 +15,15 @@ namespace JuliusSweetland.ETTA.UI.ValueConverters
                 var length = (double)values[0];
                 var span = (int)values[1];
 
-                return length/span;
+                var singleUnit = length/span;
+
+                double parameterAsDouble;
+                if(double.TryParse((string)parameter, out parameterAsDouble))
+                {
+                    singleUnit = singleUnit - parameterAsDouble;
+                }
+
+                return singleUnit;
             }
 
             return DependencyProperty.UnsetValue;
