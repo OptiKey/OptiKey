@@ -38,10 +38,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             //TESTING...
             currentPositionKey = new KeyValue {String = "U"}; 
-            keyDownStates["W"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.On);
-            keyDownStates["Y"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
-            keyDownStates["Ctrl"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
-            //keyDownStates["Shift"] = new NotifyingProxy<KeyDownStates>(Enums.KeyDownStates.Lock);
+            keyDownStates["W"].Value = Enums.KeyDownStates.On;
+            keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
+            keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
+            keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
 
             Observable.Interval(TimeSpan.FromSeconds(2))
                 .SubscribeOnDispatcher()
@@ -56,7 +56,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 .Subscribe(i =>
                 {
                     var percent = (double)i % 100;
-                    KeySelectionProgress["K"] = new NotifyingProxy<double>(percent);
+                    KeySelectionProgress["K"].Value = percent;
                 });
 
             //KeySelectionProgress[new KeyValue {String = "K"}] = 40;

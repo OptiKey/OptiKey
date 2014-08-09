@@ -22,26 +22,25 @@
             <StaticResource x:Key="KeySelectionBorder" ResourceKey="Gray"/>
             <StaticResource x:Key="KeySelectionBackground" ResourceKey="Gray"/>
             
-            <SolidColorBrush x:Key="KeySelectionOnForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeySelectionOnBorderBrush" Color="{StaticResource Gray}" />
-            <SolidColorBrush x:Key="KeySelectionOnBackgroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="KeyDownStateIsOnForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeyDownStateIsOnBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDownStateIsOnBackgroundBrush" Color="{StaticResource White}" />
 
-            <SolidColorBrush x:Key="KeySelectionLockForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeySelectionLockBorderBrush" Color="{StaticResource Gray}" />
-            <SolidColorBrush x:Key="KeySelectionLockBackgroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockBackgroundBrush" Color="{StaticResource White}" />
 
             <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Gray}" />
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Gray}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource White}" />
 
-            <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
+            <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />
 
-            <SolidColorBrush x:Key="ScratchPadForegroundBrush" Color="{StaticResource White}" />
-            <SolidColorBrush x:Key="ScratchPadBorderBrush" Color="{StaticResource Black}" />
-            <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ScratchPadForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ScratchPadBorderBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource White}" />-->
 
-            <valueConverters:DictionaryAndKeyCombiner x:Key="DictionaryAndKeyCombiner" />
             <valueConverters:AllValuesAreEqual x:Key="AllValuesAreEqual" />
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
 
@@ -60,54 +59,17 @@
                     </DataTrigger>
 
                     <!--This key is in a key down state of On-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="Foreground" Value="{StaticResource KeySelectionOnForegroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="Foreground" Value="{StaticResource KeySelectionLockForegroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--The Shift key is in a key down state of On-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding>
-                                    <Binding.Source>
-                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
-                                    </Binding.Source>
-                                </Binding>
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="Text" Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
-                    </DataTrigger>
-
-                    <!--The Shift key is in a key down state of Lock-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding>
-                                    <Binding.Source>
-                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
-                                    </Binding.Source>
-                                </Binding>
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <!--The Shift key is down-->
+                    <DataTrigger Binding="{Binding Path=IsShiftDown, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
                         <Setter Property="Text" Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
@@ -157,25 +119,13 @@
                     </DataTrigger>
 
                     <!--This key is in a key down state of On-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="Fill" Value="{StaticResource KeySelectionOnForegroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
+                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="Fill" Value="{StaticResource KeySelectionLockForegroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="{x:Static enums:KeyDownStates.Lock}">
+                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is publish only, but we are not publishing-->
@@ -193,34 +143,20 @@
 
             <Style x:Key="KeyLockBarStyle" TargetType="{x:Type Path}">
                 <Setter Property="Visibility" Value="Hidden" />
-                <Setter Property="Fill" Value="{StaticResource KeySelectionLockForegroundBrush}" />
+                <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                 <Setter Property="Stretch" Value="Uniform" />
                 <Setter Property="Margin" Value="2" />
                 <Setter Property="Data" Value="{StaticResource LockBarIcon}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
 
             <Style x:Key="SelectionProgressStyle" TargetType="{x:Type ProgressBar}">
-                <!--Hidden unless key value has non-zero selection progress-->
-                <Setter Property="Value">
-                    <Setter.Value>
-                        <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                            <Binding Path="DataContext.KeySelectionProgress" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                            <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                        </MultiBinding>
-                    </Setter.Value>
-                </Setter>
+                <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ProgressBar">
@@ -230,13 +166,18 @@
                                 </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
 
                                 <wpfCircularProgressBar:PiePiece 
-                                CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
-                                RotationAngle="0" WedgeAngle="{Binding Angle}"
-                                Radius="{Binding Radius}" Fill="{StaticResource KeySelectionProgressBrush}"/>
+                                    CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
+                                    RotationAngle="0" WedgeAngle="{Binding Angle}"
+                                    Radius="{Binding Radius}" Fill="{StaticResource KeySelectionProgressBrush}"/>
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+                <Style.Triggers>
+                    <Trigger Property="Value" Value="0">
+                        <Setter Property="Visibility" Value="Hidden" />
+                    </Trigger>
+                </Style.Triggers>
             </Style>
 
             <Style x:Key="KeyBorderStyle" TargetType="{x:Type Border}">
@@ -247,27 +188,15 @@
                 <Setter Property="Tag" Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of On-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.On}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="BorderBrush" Value="{StaticResource KeySelectionOnBorderBrush}" />
-                        <Setter Property="Background" Value="{StaticResource KeySelectionOnBackgroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsOnBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsOnBackgroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Value="{x:Static enums:KeyDownStates.Lock}">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource DictionaryAndKeyCombiner}">
-                                <Binding Path="DataContext.KeyDownStates" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
-                        <Setter Property="BorderBrush" Value="{StaticResource KeySelectionLockBorderBrush}" />
-                        <Setter Property="Background" Value="{StaticResource KeySelectionLockBackgroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsLockBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockBackgroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is publish only, but we are not publishing-->

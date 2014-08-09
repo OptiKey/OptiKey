@@ -191,12 +191,12 @@
 
             <Grid Grid.Row="1" Grid.Column="3">
                 <Border BorderThickness="1" 
-                        BorderBrush="{DynamicResource KeySelectionOnBorderBrush}" 
-                        Background="{DynamicResource KeySelectionOnBackgroundBrush}">
+                        BorderBrush="{DynamicResource KeyDownStateIsOnBorderBrush}" 
+                        Background="{DynamicResource KeyDownStateIsOnBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <TextBlock Text="c" FontFamily="/Resources/Fonts/#Roboto" 
-                                   Foreground="{DynamicResource KeySelectionOnForegroundBrush}" />
+                                   Foreground="{DynamicResource KeyDownStateIsOnForegroundBrush}" />
                     </Viewbox>
                 </Border>
             </Grid>
@@ -653,14 +653,14 @@
             </Grid>
             <Grid Grid.Row="4" Grid.Column="7">
                 <Border BorderThickness="1" 
-                        BorderBrush="{DynamicResource KeySelectionOnBorderBrush}" 
-                        Background="{DynamicResource KeySelectionOnBackgroundBrush}">
+                        BorderBrush="{DynamicResource KeyDownStateIsOnBorderBrush}" 
+                        Background="{DynamicResource KeyDownStateIsOnBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <StackPanel Orientation="Vertical">
-                            <Path Stretch="Uniform" Fill="{DynamicResource KeySelectionOnForegroundBrush}"
+                            <Path Stretch="Uniform" Fill="{DynamicResource KeyDownStateIsOnForegroundBrush}"
                                   x:Name="ShiftPath3" Data="{StaticResource ShiftIcon}" />
-                            <Path Stretch="Uniform" Fill="{DynamicResource KeySelectionOnForegroundBrush}" 
+                            <Path Stretch="Uniform" Fill="{DynamicResource KeyDownStateIsOnForegroundBrush}" 
                                   Width="{Binding ElementName=ShiftPath3, Path=ActualWidth}"
                                   Visibility="Hidden" Margin="0,4,0,0"
                                   Data="{StaticResource LockBarIcon}" />
@@ -687,14 +687,14 @@
             </Grid>
             <Grid Grid.Row="4" Grid.Column="9">
                 <Border BorderThickness="1" 
-                        BorderBrush="{DynamicResource KeySelectionLockBorderBrush}" 
-                        Background="{DynamicResource KeySelectionLockBackgroundBrush}">
+                        BorderBrush="{DynamicResource KeyDownStateIsLockBorderBrush}" 
+                        Background="{DynamicResource KeyDownStateIsLockBackgroundBrush}">
                     <Viewbox Width="{Binding ElementName=MasterViewBox, Path=ActualWidth}"
                              Height="{Binding ElementName=MasterViewBox, Path=ActualHeight}">
                         <StackPanel Orientation="Vertical">
-                            <Path Stretch="Uniform" Fill="{DynamicResource KeySelectionLockForegroundBrush}"
+                            <Path Stretch="Uniform" Fill="{DynamicResource KeyDownStateIsLockForegroundBrush}"
                                   x:Name="ShiftPath5" Data="{StaticResource ShiftIcon}" />
-                            <Path Stretch="Uniform" Fill="{DynamicResource KeySelectionLockForegroundBrush}" 
+                            <Path Stretch="Uniform" Fill="{DynamicResource KeyDownStateIsLockForegroundBrush}" 
                                   Width="{Binding ElementName=ShiftPath5, Path=ActualWidth}"
                                   Visibility="Visible" Margin="0,4,0,0"
                                   Data="m 60.560492 31.506493 v -2.64935 c 0 -1.307455 -0.64092 -1.766234 -2.984495 -1.766234 H 6.8395883 c -2.2092735 0 -2.984495 0.432727 -2.984495 1.766234 v 2.64935 c 0 1.368832 0.7752215 1.766234 2.984495 1.766234 H 57.575997 c 2.253292 0 2.984495 -0.424338 2.984495 -1.766234 z" />

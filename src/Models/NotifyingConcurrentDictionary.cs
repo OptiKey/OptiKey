@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
@@ -10,8 +11,12 @@ namespace JuliusSweetland.ETTA.Models
 
         public void Clear()
         {
-            dictionary.Clear();
-            OnPropertyChanged(() => this);
+            foreach (string key in dictionary.Keys)
+            {
+                dictionary[key].Value = default(T);
+            }
+            //dictionary.Clear();
+            //OnPropertyChanged(() => this);
         }
 
         public NotifyingProxy<T> this[string key]
