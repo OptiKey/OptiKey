@@ -38,7 +38,7 @@ namespace JuliusSweetland.ETTA
                     Source = new Uri(Settings.Default.Theme, UriKind.Relative)
                 };
                 var currentThemeDictionaries = this.Resources.MergedDictionaries.OfType<ThemeResourceDictionary>().ToList();
-                this.Resources.MergedDictionaries.Insert(0, themeDictionary);
+                this.Resources.MergedDictionaries.Add(themeDictionary);
                 currentThemeDictionaries.ForEach(rd => this.Resources.MergedDictionaries.Remove(rd));
             };
             applyTheme();

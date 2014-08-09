@@ -44,61 +44,71 @@
 
         <userControls:Key Grid.Row="0" Grid.Column="0" />
         <userControls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                          LowerText="q" UpperText="Q">
+                          LowerText="q" UpperText="Q"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="Q" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
-                      LowerText="w" UpperText="W">
+                          LowerText="w" UpperText="W"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="W" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
-                          LowerText="e" UpperText="E" IsPublishOnly="True">
+                          LowerText="e" UpperText="E" 
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="E" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="2"
-                          LowerText="r" UpperText="R">
+                          LowerText="r" UpperText="R"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="R" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="2"
-                          LowerText="t" UpperText="T">
+                          LowerText="t" UpperText="T"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="T" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
-                          LowerText="y" UpperText="Y">
+                          LowerText="y" UpperText="Y"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="Y" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
-                          LowerText="u" UpperText="U">
+                          LowerText="u" UpperText="U"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="U" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="2"
-                          LowerText="i" UpperText="I">
+                          LowerText="i" UpperText="I"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="I" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="2"
-                          LowerText="o" UpperText="O">
+                          LowerText="o" UpperText="O"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="O" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="19" Grid.ColumnSpan="2"
-                          LowerText="p" UpperText="P">
+                          LowerText="p" UpperText="P"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="P" />
             </userControls:Key.Value>
@@ -106,135 +116,157 @@
         <userControls:Key Grid.Row="0" Grid.Column="21" />
 
         <userControls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource TabIcon}"
-                          IsPublishOnly="True">
+                          SymbolGeometry="{StaticResource TabIcon}" 
+                          IsPublishOnly="True"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Tab}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                          LowerText="a" UpperText="A">
+                          LowerText="a" UpperText="A"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="A" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
-                          LowerText="s" UpperText="S">
+                          LowerText="s" UpperText="S"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="S" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
-                          LowerText="d" UpperText="D">
+                          LowerText="d" UpperText="D"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="D" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2"
-                          LowerText="f" UpperText="F">
+                          LowerText="f" UpperText="F"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="F" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
-                          LowerText="g" UpperText="G">
+                          LowerText="g" UpperText="G"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="G" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2"
-                          LowerText="h" UpperText="H">
+                          LowerText="h" UpperText="H"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="H" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2"
-                          LowerText="j" UpperText="J">
+                          LowerText="j" UpperText="J"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="J" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
-                          LowerText="k" UpperText="K">
+                          LowerText="k" UpperText="K"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="K" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
-                          LowerText="l" UpperText="L">
+                          LowerText="l" UpperText="L"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="L" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource MoreIcon}">
+                          SymbolGeometry="{StaticResource MoreIcon}"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoreKeyboard}" />
             </userControls:Key.Value>
         </userControls:Key>
 
         <userControls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource ShiftIcon}">
+                          SymbolGeometry="{StaticResource ShiftIcon}"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                          LowerText="z" UpperText="Z">
+                          LowerText="z" UpperText="Z"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="Z" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                          LowerText="x" UpperText="X">
+                          LowerText="x" UpperText="X"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="X" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                          LowerText="c" UpperText="C">
+                          LowerText="c" UpperText="C"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="C" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                          LowerText="v" UpperText="V">
+                          LowerText="v" UpperText="V"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="V" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                          LowerText="b" UpperText="B">
+                          LowerText="b" UpperText="B"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="B" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                          LowerText="n" UpperText="N">
+                          LowerText="n" UpperText="N"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="N" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                          LowerText="m" UpperText="M">
+                          LowerText="m" UpperText="M"
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="M" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource BackOneIcon}">
+                          SymbolGeometry="{StaticResource BackOneIcon}"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource BackManyIcon}">
+                          SymbolGeometry="{StaticResource BackManyIcon}"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                          LowerText="123&#x0a;+!=" UpperText="123&#x0a;+!=">
+                          LowerText="123&#x0a;+!=" UpperText="123&#x0a;+!="
+                          SharedSizeGroup="KeyWithMultipleLetters">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Symbols1Keyboard}" />
             </userControls:Key.Value>
@@ -242,54 +274,61 @@
 
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           LowerText="ctrl" UpperText="ctrl" FontStyle="Italic"
-                          IsPublishOnly="True">
+                          IsPublishOnly="True" 
+                          SharedSizeGroup="KeyWithMultipleLetters">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource WinIcon}"
-                          IsPublishOnly="True">
+                          IsPublishOnly="True"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Win}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           LowerText="alt" UpperText="alt" FontStyle="Italic"
-                          IsPublishOnly="True">
+                          IsPublishOnly="True"
+                          SharedSizeGroup="KeyWithMultipleLetters">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                           LowerText="," UpperText=","
-                          x:Name="SingleKey">
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="," />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="6"
                           SymbolGeometry="{StaticResource SpaceIcon}"
-                          WidthSpan="3">
+                          WidthSpan="3" 
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue String=" " />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                          LowerText="." UpperText=".">
+                          LowerText="." UpperText="."
+                          SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="." />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource MultiKeySelectionIcon}">
+                          SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ToggleMultiKeySelectionSupported}" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="4"
                           SymbolGeometry="{StaticResource EnterIcon}"
-                          WidthSpan="2">
+                          WidthSpan="2"
+                          SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Enter}" />
             </userControls:Key.Value>

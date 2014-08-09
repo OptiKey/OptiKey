@@ -119,6 +119,15 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             get { return (int) GetValue(HeightSpanProperty); }
             set { SetValue(HeightSpanProperty, value); }
         }
+
+        public static readonly DependencyProperty SharedSizeGroupProperty =
+            DependencyProperty.Register("SharedSizeGroup", typeof (string), typeof (Key), new PropertyMetadata(default(string)));
+
+        public string SharedSizeGroup
+        {
+            get { return (string) GetValue(SharedSizeGroupProperty); }
+            set { SetValue(SharedSizeGroupProperty, value); }
+        }
         
         public static readonly DependencyProperty SymbolGeometryProperty =
             DependencyProperty.Register("SymbolGeometry", typeof (Geometry), typeof (Key),
