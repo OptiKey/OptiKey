@@ -41,7 +41,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keyDownStates["W"].Value = Enums.KeyDownStates.On;
             keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
             keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
-            //keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
+            keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
 
             Observable.Interval(TimeSpan.FromSeconds(2))
                 .SubscribeOnDispatcher()
@@ -124,6 +124,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public IInputService InputService { get { return inputService; } }
 
         public IKeyboard Keyboard { get { return null; } }
+
+        public Dictionary<Rect, KeyValue> PointToKeyValueMap
+        {
+            set { inputService.PointToKeyValueMap = value; }
+        }
 
         public SelectionModes SelectionMode
         {

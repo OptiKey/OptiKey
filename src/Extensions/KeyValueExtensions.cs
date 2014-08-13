@@ -40,9 +40,9 @@ namespace JuliusSweetland.ETTA.Extensions
                             output.Append(currentLetter);
                         }
                     }
-                }
 
-                index--;
+                    index--;
+                }
             }
 
             //Add prefixLetter

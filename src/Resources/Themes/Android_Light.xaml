@@ -270,37 +270,51 @@
                                             <RowDefinition Height="*" />
                                             <RowDefinition SharedSizeGroup="LockBarSharedHeight" />
                                         </Grid.RowDefinitions>
-                                        <Viewbox Grid.Row="1">
+                                        <ContentControl Grid.Row="1">
                                             <!--Enforce size limits of one key high/wide using the Span info on the key-->
-                                            <Viewbox.MaxWidth>
+                                            <ContentControl.MaxWidth>
                                                 <MultiBinding Converter="{StaticResource LengthDividedBySpan}">
                                                     <MultiBinding.Bindings>
                                                         <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType={x:Type Grid}}" />
                                                         <Binding Path="WidthSpan" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
                                                     </MultiBinding.Bindings>
                                                 </MultiBinding>
-                                            </Viewbox.MaxWidth>
-                                            <Viewbox.MaxHeight>
+                                            </ContentControl.MaxWidth>
+                                            <ContentControl.MaxHeight>
                                                 <MultiBinding Converter="{StaticResource LengthDividedBySpan}">
                                                     <MultiBinding.Bindings>
                                                         <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type Grid}}" />
                                                         <Binding Path="HeightSpan" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" />
                                                     </MultiBinding.Bindings>
                                                 </MultiBinding>
-                                            </Viewbox.MaxHeight>
-                                            
+                                            </ContentControl.MaxHeight>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="4*" />
+                                                    <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
-                                                <ProgressBar Style="{StaticResource SelectionProgressStyle}" />
-                                                <StackPanel Orientation="Vertical">
-                                                    <Path Style="{StaticResource KeySymbolStyle}" Width="64" Height="64" />
-                                                    <TextBlock Style="{StaticResource KeyTextStyle}" />
-                                                </StackPanel>
+                                                <ProgressBar Grid.ColumnSpan="3"
+                                                             Style="{StaticResource SelectionProgressStyle}" />
+                                                <!--<Grid Background="GreenYellow" Grid.Column="0" />-->
+                                                <Viewbox Grid.Column="1">
+                                                    <!--<Border BorderBrush="Yellow" BorderThickness="1">-->
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <!--<Border BorderBrush="Red" BorderThickness="1">-->
+                                                        <StackPanel Orientation="Vertical">
+                                                            <Path Style="{StaticResource KeySymbolStyle}" Width="64" Height="64" />
+                                                            <TextBlock Style="{StaticResource KeyTextStyle}" />
+                                                        </StackPanel>
+                                                        <!--</Border>-->
+                                                    </Grid>
+                                                    <!--</Border>-->
+                                                </Viewbox>
+                                                <!--<Grid Background="GreenYellow" Grid.Column="2" />-->
                                             </Grid>
-                                        </Viewbox>
-
+                                        </ContentControl>
                                         <Path Grid.Row="2" Style="{StaticResource KeyLockBarStyle}" />
                                     </Grid>
                                 </Border>

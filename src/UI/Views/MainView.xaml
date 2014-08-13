@@ -16,9 +16,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <userControls:KeyboardHost>
+
+        <userControls:KeyboardHost PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
             <keyboards:Alpha_English DataContext="{Binding Keyboard}" />
         </userControls:KeyboardHost>
+        
         <ComboBox Grid.Row="1"
                   SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
             <ComboBox.Items>
