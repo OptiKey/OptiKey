@@ -20,8 +20,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private SelectionModes selectionMode;
-        private Point currentPositionPoint;
-        private KeyValue currentPositionKey;
+        private Point? currentPositionPoint;
+        private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private readonly NotifyingConcurrentDictionary<double> keySelectionProgress = new NotifyingConcurrentDictionary<double>();
         private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
@@ -37,7 +37,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             SelectionMode = SelectionModes.Key;
 
             //TESTING...
-            currentPositionKey = new KeyValue {String = "U"}; 
             keyDownStates["W"].Value = Enums.KeyDownStates.On;
             keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
             keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
@@ -67,7 +66,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.CurrentPosition += (o, tuple) =>
             {
-                //Log.Debug(string.Format("CurrentPosition event... Point:{0}, KeyValue:{1}", tuple.Item1, tuple.Item2));
+                CurrentPositionPoint = tuple.Item1;
+                CurrentPositionKey = tuple.Item2;
+
             };
             inputService.SelectionProgress += (o, progress) =>
             {
@@ -143,13 +144,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        public Point CurrentPositionPoint
+        public Point? CurrentPositionPoint
         {
             get { return currentPositionPoint; }
             set { SetProperty(ref currentPositionPoint, value); }
         }
 
-        public KeyValue CurrentPositionKey
+        public KeyValue? CurrentPositionKey
         {
             get { return currentPositionKey; }
             set { SetProperty(ref currentPositionKey, value); }

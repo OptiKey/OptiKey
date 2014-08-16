@@ -184,7 +184,6 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{StaticResource KeyDefaultBorderBrush}" />
                 <Setter Property="Background" Value="{StaticResource KeyDefaultBackgroundBrush}" />
-                <Setter Property="Tag" Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of On-->
                     <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">

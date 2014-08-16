@@ -24,6 +24,7 @@ namespace JuliusSweetland.ETTA
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly Action applyTheme;
 
         #endregion
 
@@ -31,19 +32,20 @@ namespace JuliusSweetland.ETTA
 
         public App()
         {
-            Action applyTheme = () =>
+            applyTheme = () =>
             {
                 var themeDictionary = new ThemeResourceDictionary
-                {
-                    Source = new Uri(Settings.Default.Theme, UriKind.Relative)
-                };
-                var currentThemeDictionaries = this.Resources.MergedDictionaries.OfType<ThemeResourceDictionary>().ToList();
-                this.Resources.MergedDictionaries.Add(themeDictionary);
-                currentThemeDictionaries.ForEach(rd => this.Resources.MergedDictionaries.Remove(rd));
-            };
-            applyTheme();
+                    { Source = new Uri(Settings.Default.Theme, UriKind.Relative) };
+                
+                Resources.MergedDictionaries
+                    .OfType<ThemeResourceDictionary>()
+                    .ToList()
+                    .ForEach(rd => Resources.MergedDictionaries.Remove(rd));
 
-            Settings.Default.OnPropertyChanges(s => s.Theme).Subscribe(s => applyTheme());
+                Resources.MergedDictionaries.Add(themeDictionary);
+            };
+            
+            Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());
         }
 
         #endregion
@@ -67,6 +69,9 @@ namespace JuliusSweetland.ETTA
                     Settings.Default.SettingsUpgradeRequired = false;
                     Settings.Default.Save();
                 }
+                
+                //Apply theme
+                applyTheme();
 
                 //Instantiate point source
                 IPointAndKeyValueSource pointSource;

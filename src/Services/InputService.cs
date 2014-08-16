@@ -334,7 +334,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (currentPositionEvent != null)
             {
-                Log.Debug(string.Format("Publishing CurrentPosition event with Point:{0}, KeyValue:{1}", currentPosition.Item1, currentPosition.Item2));
+                Log.Debug(string.Format("Publishing CurrentPosition event with Point:{0} KeyValue:{1}", currentPosition.Item1, currentPosition.Item2));
 
                 currentPositionEvent(this, currentPosition);
             }

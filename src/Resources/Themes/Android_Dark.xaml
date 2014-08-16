@@ -185,7 +185,6 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{StaticResource KeyDefaultBorderBrush}" />
                 <Setter Property="Background" Value="{StaticResource KeyDefaultBackgroundBrush}" />
-                <Setter Property="Tag" Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of On-->
                     <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
@@ -298,6 +297,7 @@
                                                 <ProgressBar Grid.ColumnSpan="3"
                                                              Style="{StaticResource SelectionProgressStyle}" />
                                                 <!--<Grid Background="GreenYellow" Grid.Column="0" />-->
+                                                <!--<Border Grid.Column="1" BorderBrush="Pink" BorderThickness="1">-->
                                                 <Viewbox Grid.Column="1">
                                                     <!--<Border BorderBrush="Yellow" BorderThickness="1">-->
                                                     <Grid>
@@ -313,6 +313,7 @@
                                                     </Grid>
                                                     <!--</Border>-->
                                                 </Viewbox>
+                                                <!--</Border>-->
                                                 <!--<Grid Background="GreenYellow" Grid.Column="2" />-->
                                             </Grid>
                                         </ContentControl>

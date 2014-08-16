@@ -83,24 +83,29 @@ namespace JuliusSweetland.ETTA.UI.UserControls
 
         private void BuildPointToKeyMap()
         {
-            var allBorders = VisualAndLogicalTreeHelper.FindVisualChildren<Border>(this).ToList();
+            var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
 
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>();
 
             var topLeftPoint = new Point(0, 0);
 
-            foreach (var border in allBorders)
+            foreach (var key in allKeys)
             {
-                if (border.Tag is KeyValue)
+                if (key.Value.FunctionKey != null
+                    || key.Value.String != null)
                 {
-                    var keyValue = (KeyValue)border.Tag;
+                    //http://stackoverflow.com/questions/3286175/how-do-i-convert-a-wpf-size-to-physical-pixels
+                    var source = PresentationSource.FromVisual(key);
+                    var transformToDevice = source.CompositionTarget.TransformToDevice;
+                    var transformedRenderSize = (Size)transformToDevice.Transform((Vector)key.RenderSize);
+
                     var rect = new Rect
                     {
-                        Location = border.PointToScreen(topLeftPoint),
-                        Size = border.RenderSize
+                        Location = key.PointToScreen(topLeftPoint),
+                        Size = transformedRenderSize
                     };
 
-                    pointToKeyValueMap.Add(rect, keyValue);
+                    pointToKeyValueMap.Add(rect, key.Value);
                 }
             }
 

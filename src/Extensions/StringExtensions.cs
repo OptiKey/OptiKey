@@ -93,23 +93,17 @@ namespace JuliusSweetland.ETTA.Extensions
                         .Select(hash =>
                         {
                             var lcs = capturedLetters.LongestCommonSubsequence(hash);
-                            return new { Hash = hash, LongestCommonSubsequence = lcs };
+                            return new
+                            {
+                                Hash = hash,
+                                Similarity = ((double)lcs / (double)hash.Length) * lcs,
+                                Lcs = lcs
+                            };
                         })
-                        .OrderByDescending(pair => pair.LongestCommonSubsequence) //How long is the matching sequence
-                        .ThenBy(pair => pair.Hash.Length) //Shorter dictionary words are preferred (larger ratio of dictionary word which matches is better)
-                        .ThenByDescending(pair => pair.Hash.Last() == capturedLetters.Last()) //Matching last letter
-                        //.ThenByDescending(pair =>
-                        //{
-                        //    var ratioOfDictionaryWordThatMatches = ((double) pair.LongestCommonSubsequence/
-                        //                                            (double) pair.Hash.Length);
-
-                        //    var ratioOfLengthDifference = ((double) Math.Abs(capturedLetters.Length - pair.Hash.Length) / 
-                        //                                   (double) capturedLetters.Length);
-
-                        //    return ratioOfDictionaryWordThatMatches - ratioOfLengthDifference;
-                        //}) 
-                        //.ThenByDescending(pair => pair.Hash.Length) //Longer matching words are preferred (the ratio of common letters to total letters is better)
-                        .SelectMany(pair => dictionaryService.GetEntries(pair.Hash))
+                        .OrderByDescending(x => x.Similarity)
+                        //.ThenBy(x => x.Hash.Length) //Shorter dictionary words are preferred (larger ratio of dictionary word which matches is better)
+                        .ThenByDescending(x => x.Hash.Last() == capturedLetters.Last()) //Matching last letter
+                        .SelectMany(x => dictionaryService.GetEntries(x.Hash))
                         .Take(Settings.Default.MultiKeySelectionMaxDictionaryMatches)
                         .ToList()
                         .ForEach(matches.Add);
