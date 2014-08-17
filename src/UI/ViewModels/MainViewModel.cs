@@ -35,31 +35,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             this.inputService = inputService;
 
             SelectionMode = SelectionModes.Key;
-
-            //TESTING...
-            //keyDownStates["W"].Value = Enums.KeyDownStates.On;
-            //keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
-            //keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
-            //keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
-
-            //Observable.Interval(TimeSpan.FromSeconds(2))
-            //    .SubscribeOnDispatcher()
-            //    .Subscribe(i =>
-            //{
-            //    KeySelection = i%2 == 0 ? new KeyValue { String = "P" } : new KeyValue { String = "O" };
-            //});
-
-            //Observable
-            //    .Interval(TimeSpan.FromMilliseconds(10))
-            //    .SubscribeOnDispatcher()
-            //    .Subscribe(i =>
-            //    {
-            //        var percent = (double)i % 100;
-            //        KeySelectionProgress["K"].Value = percent;
-            //    });
-
+            
             inputService.PointsPerSecond += (o, value) =>
             {
+                //TODO: Display debugging info such as points per second and the position of the points in a selection
                 //Log.Debug(string.Format("PointsPerSecond event... FPS:{0}", value));
             };
             inputService.CurrentPosition += (o, tuple) =>
@@ -100,6 +79,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.SelectionResult += (o, tuple) =>
             {
+                //TODO: Handle selection result, i.e. the actual thing to use
                 //Log.Debug(string.Format("SelectionResult event... Points(count):{0}, FunctionKey:{1}, Char:{2}, String:{3}, Matches(first/count):{4}/{5}", 
                 //    tuple.Item1 != null ? tuple.Item1.Count : (int?)null, tuple.Item2, tuple.Item3, tuple.Item4,
                 //    tuple.Item5 != null ? tuple.Item5.First() : null,
@@ -107,20 +87,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.Error += (o, exception) =>
             {
+                //TODO: Handle errors
                 //Log.Debug(string.Format("ERROR. Exception message:{0}", exception.Message));
             };
-
-            var pointToKeyValueMap = new Dictionary<Rect, KeyValue>
-                {
-                    {new Rect(0, 0, 100, 100), new KeyValue {String = "Å"}},
-                    {new Rect(101, 0, 100, 100), new KeyValue {String = "N"}},
-                    {new Rect(201, 0, 100, 100), new KeyValue {String = "G"}},
-                    {new Rect(301, 0, 100, 100), new KeyValue {String = "S"}},
-                    {new Rect(401, 0, 100, 100), new KeyValue {String = "R"}},
-                    {new Rect(501, 0, 100, 100), new KeyValue {String = "ö"}},
-                    {new Rect(601, 0, 100, 100), new KeyValue {String = "M"}}
-                };
-            inputService.PointToKeyValueMap = pointToKeyValueMap;
         }
 
         #endregion

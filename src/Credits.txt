@@ -16,6 +16,7 @@ Fonts, icons and other artwork:
   More icon: Dots designed by Alex S. Lakas from the thenounproject.com
   Left & Right Arrow icons: Arrow designed by Stefan Parnarov from the thenounproject.com
   Lock Bar icon modified from: Minus designed by Icomatic from the thenounproject.com
+  Left, Right, Up, Down arrows modified from: Arrow by Milo Miloezger from the thenounproject.com
 
 All icon manipulation/editing achieved with the excellent, free, and open source Inkscape - inkscape.org
 The StackOverflow community for providing the answer more times than I can count.

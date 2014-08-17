@@ -47,7 +47,7 @@
             <Style x:Key="KeyTextStyle" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="TextAlignment" Value="Center" />
-                <Setter Property="Text" Value="{Binding Path=LowerText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                <Setter Property="Text" Value="{Binding Path=ShiftUpText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
                 <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontFamily}" />
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}" />
@@ -70,7 +70,7 @@
 
                     <!--The Shift key is down-->
                     <DataTrigger Binding="{Binding Path=IsShiftDown, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
-                        <Setter Property="Text" Value="{Binding Path=UpperText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
+                        <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
                     <!--This key is publish only, but we are not publishing-->

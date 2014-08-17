@@ -1,0 +1,6 @@
+﻿Create output control
+Create other keyboards - need to fix multi key size issue - PASTE/BREAK are too wide
+Combine output and keyboards which use output together
+Change keyboard based on bound keyboard and language, i.e. MainVM exposes Alpha class and the result is Alpha_English + output control
+State variables to track shift state etc and which keyboard is displayed
+Think about not exposing state variables for disabled keys (i.e. publish keys when publish is off)

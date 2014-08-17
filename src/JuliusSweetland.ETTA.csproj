@@ -176,6 +176,18 @@
     <Compile Include="UI\Views\Keyboards\Alpha_English.xaml.cs">
       <DependentUpon>Alpha_English.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\NumericAndSymbols1_English.xaml.cs">
+      <DependentUpon>NumericAndSymbols1_English.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Publish_English.xaml.cs">
+      <DependentUpon>Publish_English.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Symbols2_English.xaml.cs">
+      <DependentUpon>Symbols2_English.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -210,6 +222,11 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons\Source Files\DownArrow.svg" />
+    <Content Include="Resources\Icons\Source Files\LeftArrow.svg" />
+    <Content Include="Resources\Icons\Source Files\RightArrow.svg" />
+    <Content Include="Resources\Icons\Source Files\Speak.svg" />
+    <Content Include="Resources\Icons\Source Files\UpArrow.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -247,6 +264,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Resource Include="IMMEDIATE NEXT STEPS.txt" />
     <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -293,6 +311,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Alpha_English.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\NumericAndSymbols1_English.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Publish_English.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Symbols2_English.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

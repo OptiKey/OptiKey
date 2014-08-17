@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
 using JuliusSweetland.ETTA.Annotations;
@@ -139,24 +138,24 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             set { SetValue(SymbolGeometryProperty, value); }
         }
 
-        public static readonly DependencyProperty LowerTextProperty =
-            DependencyProperty.Register("LowerText", typeof(string), typeof(Key),
+        public static readonly DependencyProperty ShiftUpTextProperty =
+            DependencyProperty.Register("ShiftUpText", typeof(string), typeof(Key),
             new PropertyMetadata(default(string), OnSymbolGeometryOrTextChanged));
 
-        public string LowerText
+        public string ShiftUpText
         {
-            get { return (string)GetValue(LowerTextProperty); }
-            set { SetValue(LowerTextProperty, value); }
+            get { return (string)GetValue(ShiftUpTextProperty); }
+            set { SetValue(ShiftUpTextProperty, value); }
         }
 
-        public static readonly DependencyProperty UpperTextProperty =
-            DependencyProperty.Register("UpperText", typeof (string), typeof (Key),
+        public static readonly DependencyProperty ShiftDownTextProperty =
+            DependencyProperty.Register("ShiftDownText", typeof (string), typeof (Key),
             new PropertyMetadata(default(string), OnSymbolGeometryOrTextChanged));
 
-        public string UpperText
+        public string ShiftDownText
         {
-            get { return (string) GetValue(UpperTextProperty); }
-            set { SetValue(UpperTextProperty, value); }
+            get { return (string) GetValue(ShiftDownTextProperty); }
+            set { SetValue(ShiftDownTextProperty, value); }
         }
 
         public static readonly DependencyProperty IsPublishOnlyProperty =
@@ -188,7 +187,7 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return LowerText != null || UpperText != null; } }
+        public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
 
         #region OnPropertyChanged
 
