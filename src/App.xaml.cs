@@ -37,12 +37,14 @@ namespace JuliusSweetland.ETTA
                 var themeDictionary = new ThemeResourceDictionary
                     { Source = new Uri(Settings.Default.Theme, UriKind.Relative) };
                 
-                Resources.MergedDictionaries
+                var previousThemes = Resources.MergedDictionaries
                     .OfType<ThemeResourceDictionary>()
-                    .ToList()
-                    .ForEach(rd => Resources.MergedDictionaries.Remove(rd));
-
+                    .ToList();
+                    
+                //N.B. Add replacement before removing the previous as having no applicable resource
+                //dictionary can result in the first element not being rendered (usually the first key).
                 Resources.MergedDictionaries.Add(themeDictionary);
+                previousThemes.ForEach(rd => Resources.MergedDictionaries.Remove(rd));
             };
             
             Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());

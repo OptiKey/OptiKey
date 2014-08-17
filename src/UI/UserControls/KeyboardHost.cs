@@ -5,6 +5,9 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
+using System.Windows.Media;
+using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.UI.Utilities;
 using log4net;
@@ -94,15 +97,10 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                 if (key.Value.FunctionKey != null
                     || key.Value.String != null)
                 {
-                    //http://stackoverflow.com/questions/3286175/how-do-i-convert-a-wpf-size-to-physical-pixels
-                    var source = PresentationSource.FromVisual(key);
-                    var transformToDevice = source.CompositionTarget.TransformToDevice;
-                    var transformedRenderSize = (Size)transformToDevice.Transform((Vector)key.RenderSize);
-
                     var rect = new Rect
                     {
                         Location = key.PointToScreen(topLeftPoint),
-                        Size = transformedRenderSize
+                        Size = (Size)key.GetTransformToDevice().Transform((Vector)key.RenderSize)
                     };
 
                     pointToKeyValueMap.Add(rect, key.Value);

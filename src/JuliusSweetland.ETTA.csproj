@@ -130,6 +130,7 @@
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
     <Compile Include="Models\KeyValue.cs" />

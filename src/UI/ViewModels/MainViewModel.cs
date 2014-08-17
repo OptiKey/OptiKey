@@ -37,28 +37,26 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             SelectionMode = SelectionModes.Key;
 
             //TESTING...
-            keyDownStates["W"].Value = Enums.KeyDownStates.On;
-            keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
-            keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
-            keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
+            //keyDownStates["W"].Value = Enums.KeyDownStates.On;
+            //keyDownStates["Y"].Value = Enums.KeyDownStates.Lock;
+            //keyDownStates["Ctrl"].Value = Enums.KeyDownStates.Lock;
+            //keyDownStates["Shift"].Value = Enums.KeyDownStates.On;
 
-            Observable.Interval(TimeSpan.FromSeconds(2))
-                .SubscribeOnDispatcher()
-                .Subscribe(i =>
-            {
-                KeySelection = i%2 == 0 ? new KeyValue { String = "P" } : new KeyValue { String = "O" };
-            });
+            //Observable.Interval(TimeSpan.FromSeconds(2))
+            //    .SubscribeOnDispatcher()
+            //    .Subscribe(i =>
+            //{
+            //    KeySelection = i%2 == 0 ? new KeyValue { String = "P" } : new KeyValue { String = "O" };
+            //});
 
-            Observable
-                .Interval(TimeSpan.FromMilliseconds(10))
-                .SubscribeOnDispatcher()
-                .Subscribe(i =>
-                {
-                    var percent = (double)i % 100;
-                    KeySelectionProgress["K"].Value = percent;
-                });
-
-            //KeySelectionProgress[new KeyValue {String = "K"}] = 40;
+            //Observable
+            //    .Interval(TimeSpan.FromMilliseconds(10))
+            //    .SubscribeOnDispatcher()
+            //    .Subscribe(i =>
+            //    {
+            //        var percent = (double)i % 100;
+            //        KeySelectionProgress["K"].Value = percent;
+            //    });
 
             inputService.PointsPerSecond += (o, value) =>
             {
@@ -81,17 +79,24 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2);
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2 * 100);
                     }
                 }
             };
             inputService.Selection += (o, value) =>
             {
-                //Log.Debug(string.Format("Selection event... PointAndKeyValue:{0}", value));
+                if (SelectionMode == SelectionModes.Key)
+                {
+                    KeySelection = value.KeyValue;
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    PointSelection = value.Point;
+                }
             };
             inputService.SelectionResult += (o, tuple) =>
             {
@@ -200,6 +205,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             PointSelectionProgress = null;
             KeySelectionProgress.Clear();
+            PointSelection = null;
+            KeySelection = null;
         }
 
         #endregion

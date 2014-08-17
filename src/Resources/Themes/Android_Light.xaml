@@ -95,7 +95,7 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:.25" FillBehavior="Stop">
+                                                                   Duration="0:0:0.2" FillBehavior="Stop">
                                         <DiscreteColorKeyFrame Value="{StaticResource KeySelectionForeground}" KeyTime="0:0:0" />
                                     </ColorAnimationUsingKeyFrames>
                                 </Storyboard>
@@ -221,11 +221,11 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.25" FillBehavior="Stop">
+                                                                   Duration="0:0:0.2" FillBehavior="Stop">
                                         <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
                                     </ColorAnimationUsingKeyFrames>
                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.25" FillBehavior="Stop">
+                                                                   Duration="0:0:0.2" FillBehavior="Stop">
                                         <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBackground}" KeyTime="0:0:0" />
                                     </ColorAnimationUsingKeyFrames>
                                 </Storyboard>
@@ -295,23 +295,17 @@
                                                 </Grid.ColumnDefinitions>
                                                 <ProgressBar Grid.ColumnSpan="3"
                                                              Style="{StaticResource SelectionProgressStyle}" />
-                                                <!--<Grid Background="GreenYellow" Grid.Column="0" />-->
                                                 <Viewbox Grid.Column="1">
-                                                    <!--<Border BorderBrush="Yellow" BorderThickness="1">-->
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
                                                         </Grid.ColumnDefinitions>
-                                                        <!--<Border BorderBrush="Red" BorderThickness="1">-->
                                                         <StackPanel Orientation="Vertical">
                                                             <Path Style="{StaticResource KeySymbolStyle}" Width="64" Height="64" />
                                                             <TextBlock Style="{StaticResource KeyTextStyle}" />
                                                         </StackPanel>
-                                                        <!--</Border>-->
                                                     </Grid>
-                                                    <!--</Border>-->
                                                 </Viewbox>
-                                                <!--<Grid Background="GreenYellow" Grid.Column="2" />-->
                                             </Grid>
                                         </ContentControl>
                                         <Path Grid.Row="2" Style="{StaticResource KeyLockBarStyle}" />

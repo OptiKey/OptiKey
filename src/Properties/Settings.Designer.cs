@@ -61,7 +61,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));
@@ -145,7 +145,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.5000000")]
         public global::System.TimeSpan PointSelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["PointSelectionTriggerFixationTime"]));
@@ -242,7 +242,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources PointSelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
@@ -266,7 +266,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.5000000")]
         public global::System.TimeSpan KeySelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationTime"]));
