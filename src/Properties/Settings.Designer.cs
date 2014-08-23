@@ -446,13 +446,49 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Condensed")]
         public string KeyFontStretch {
             get {
                 return ((string)(this["KeyFontStretch"]));
             }
             set {
                 this["KeyFontStretch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Resources/Fonts/#Roboto")]
+        public string OutputFontFamily {
+            get {
+                return ((string)(this["OutputFontFamily"]));
+            }
+            set {
+                this["OutputFontFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
+        public string OutputFontWeight {
+            get {
+                return ((string)(this["OutputFontWeight"]));
+            }
+            set {
+                this["OutputFontWeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Condensed")]
+        public string OutputFontStretch {
+            get {
+                return ((string)(this["OutputFontStretch"]));
+            }
+            set {
+                this["OutputFontStretch"] = value;
             }
         }
     }

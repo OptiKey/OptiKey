@@ -108,7 +108,16 @@
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
     </Setting>
     <Setting Name="KeyFontStretch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
+      <Value Profile="(Default)">Condensed</Value>
+    </Setting>
+    <Setting Name="OutputFontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
+    </Setting>
+    <Setting Name="OutputFontWeight" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Light</Value>
+    </Setting>
+    <Setting Name="OutputFontStretch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Condensed</Value>
     </Setting>
   </Settings>
 </SettingsFile>

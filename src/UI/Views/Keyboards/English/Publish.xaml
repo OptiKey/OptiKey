@@ -50,7 +50,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                           ShiftUpText="F1" ShiftDownText="F1"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F1}" />
             </userControls:Key.Value>
@@ -58,7 +58,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
                           ShiftUpText="F2" ShiftDownText="F2"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F2}" />
             </userControls:Key.Value>
@@ -66,7 +66,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
                           ShiftUpText="F3" ShiftDownText="F3"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F3}" />
             </userControls:Key.Value>
@@ -74,7 +74,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="2"
                           ShiftUpText="F4" ShiftDownText="F4"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F4}" />
             </userControls:Key.Value>
@@ -82,7 +82,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="2"
                           ShiftUpText="F5" ShiftDownText="F5"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F5}" />
             </userControls:Key.Value>
@@ -90,7 +90,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
                           ShiftUpText="F6" ShiftDownText="F6"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F6}" />
             </userControls:Key.Value>
@@ -98,7 +98,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
                           ShiftUpText="F7" ShiftDownText="F7"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F7}" />
             </userControls:Key.Value>
@@ -106,7 +106,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="2"
                           ShiftUpText="F8" ShiftDownText="F8"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F8}" />
             </userControls:Key.Value>
@@ -114,7 +114,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="2"
                           ShiftUpText="F9" ShiftDownText="F9"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F9}" />
             </userControls:Key.Value>
@@ -122,7 +122,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="19" Grid.ColumnSpan="2"
                           ShiftUpText="F10" ShiftDownText="F10"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F10}" />
             </userControls:Key.Value>
@@ -132,7 +132,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                           ShiftUpText="PRNT&#x0a;SCR" ShiftDownText="PRNT&#x0a;SCR"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PrintScreen}" />
             </userControls:Key.Value>
@@ -140,7 +140,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                           ShiftUpText="SCR&#x0a;LK" ShiftDownText="SCR&#x0a;LK"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollLock}" />
             </userControls:Key.Value>
@@ -148,7 +148,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
                           ShiftUpText="NUM&#x0a;LK" ShiftDownText="NUM&#x0a;LK"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumberLock}" />
             </userControls:Key.Value>
@@ -156,7 +156,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
                           ShiftUpText="MENU" ShiftDownText="MENU"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Menu}" />
             </userControls:Key.Value>
@@ -174,7 +174,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2"
                           ShiftUpText="BREAK" ShiftDownText="BREAK"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Break}" />
             </userControls:Key.Value>
@@ -182,7 +182,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
                           ShiftUpText="F11" ShiftDownText="F11"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F11}" />
             </userControls:Key.Value>
@@ -190,7 +190,7 @@
         <userControls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
                           ShiftUpText="F12" ShiftDownText="F12"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="FunctionKey">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F12}" />
             </userControls:Key.Value>
@@ -206,7 +206,7 @@
         <userControls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                           ShiftUpText="INS" ShiftDownText="INS"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Insert}" />
             </userControls:Key.Value>
@@ -214,7 +214,7 @@
         <userControls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                           ShiftUpText="HOME" ShiftDownText="HOME"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Home}" />
             </userControls:Key.Value>
@@ -222,7 +222,7 @@
         <userControls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                           ShiftUpText="PG&#x0a;UP" ShiftDownText="PG&#x0a;UP"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgUp}" />
             </userControls:Key.Value>
@@ -269,7 +269,7 @@
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                           ShiftUpText="ABC" ShiftDownText="ABC"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
             </userControls:Key.Value>
@@ -278,7 +278,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           ShiftUpText="DEL" ShiftDownText="DEL"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Delete}" />
             </userControls:Key.Value>
@@ -286,7 +286,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                           ShiftUpText="END" ShiftDownText="END"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.End}" />
             </userControls:Key.Value>
@@ -294,7 +294,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           ShiftUpText="PG&#x0a;DN" ShiftDownText="PG&#x0a;DN"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgDn}" />
             </userControls:Key.Value>
@@ -302,7 +302,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                           ShiftUpText="ESC" ShiftDownText="ESC"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Escape}" />
             </userControls:Key.Value>
@@ -318,7 +318,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
                           ShiftUpText="SLCT&#x0a;ALL" ShiftDownText="SLCT&#x0a;ALL"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SelectAll}" />
             </userControls:Key.Value>
@@ -326,7 +326,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
                           ShiftUpText="CUT" ShiftDownText="CUT"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Cut}" />
             </userControls:Key.Value>
@@ -334,7 +334,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
                           ShiftUpText="COPY" ShiftDownText="COPY"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Copy}" />
             </userControls:Key.Value>
@@ -342,7 +342,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                           ShiftUpText="PASTE" ShiftDownText="PASTE"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Paste}" />
             </userControls:Key.Value>

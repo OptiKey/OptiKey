@@ -37,7 +37,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //TESTING START
             Suggestions = new List<string>
             {
-                "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one"
+                "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
             //TESTING END
 

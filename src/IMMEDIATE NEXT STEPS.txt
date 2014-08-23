@@ -1,12 +1,8 @@
 ﻿Change SelectionResult to tuple of PointAndKeyValue? (single selection) and MultiKeySelection (List<Point> and List<string> matches)
-Create output control
-Create other keyboards - need to fix multi key size issue - PASTE/BREAK are too wide
 Expose notification dictionary of key valid states - evaluate from VM when things like Publish changes, SuggestionsPerPage changes/suggestions populated/suggestions next/previous, etc
 	Change styling to display disabled foreground key current position indicator if key is not currently valid. VM will control whether selection progress and selection are published (they won't be!)
 	Remove theme binding to Publish etc as this should now be handled by the VM updating the valid state
 	Remove IsPublishOnly dependency property on Key
-Move themeing of scratchpad into the theme
 Combine output and keyboards which use output together
-Change keyboard based on bound keyboard and language, i.e. MainVM exposes Alpha class and the result is Alpha_English + output control
-State variables to track shift state etc and which keyboard is displayed
-Think about not exposing state variables for disabled keys (i.e. publish keys when publish is off)
+Expose keyboard based on bound keyboard and language, i.e. MainVM exposes Alpha class and the result is Alpha_English + output control
+Don't expose state variables for disabled keys (i.e. publish keys when publish is off)

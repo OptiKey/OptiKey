@@ -198,8 +198,8 @@
         </userControls:Key>
 
         <userControls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                          ShiftUpText="2 OF 2" ShiftDownText="1 OF 2"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          ShiftUpText="2of2" ShiftDownText="2of2"
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="NumericAndSymbols1Keyboard" />
             </userControls:Key.Value>
@@ -269,7 +269,7 @@
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                           ShiftUpText="ABC" ShiftDownText="ABC"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
             </userControls:Key.Value>
@@ -278,7 +278,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           ShiftUpText="ctrl" ShiftDownText="ctrl" FontStyle="Italic"
                           IsPublishOnly="True" 
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
             </userControls:Key.Value>
@@ -294,7 +294,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           ShiftUpText="alt" ShiftDownText="alt" FontStyle="Italic"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />
             </userControls:Key.Value>

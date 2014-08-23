@@ -28,24 +28,30 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                 : null;
 
             if (keyboardHost != null
-                && mainViewModel != null)
+                && mainViewModel != null
+                && !string.IsNullOrEmpty(Value.Key))
             {
+                /* 
+                 * Certain characters have meaning in property paths, for example the comma.
+                 * To ensure WPF doesn't mistake the KeyValue's Key string as a special symbol
+                 * they must be escaped using the caret character (as we are inside an indexer).
+                 */
                 this.SetBinding(KeyDownStateProperty, new Binding
                 {
-                    Path = new PropertyPath(string.Format("KeyDownStates[{0}].Value", Value.Key)),
+                    Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", Value.Key)),
                     Source = mainViewModel
                 });
 
-                var shiftKey = new KeyValue {FunctionKey = FunctionKeys.Shift}.Key;
+                var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
                 this.SetBinding(ShiftDownStateProperty, new Binding
                 {
-                    Path = new PropertyPath(string.Format("KeyDownStates[{0}].Value", shiftKey)),
+                    Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", shiftKey)),
                     Source = mainViewModel
                 });
 
                 this.SetBinding(SelectionProgressProperty, new Binding
                 {
-                    Path = new PropertyPath(string.Format("KeySelectionProgress[{0}].Value", Value.Key)),
+                    Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
                     Source = mainViewModel
                 });
             }

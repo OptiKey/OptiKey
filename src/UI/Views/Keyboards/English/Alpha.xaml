@@ -270,7 +270,7 @@
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                           ShiftUpText="123&#x0a;+!=" ShiftDownText="123&#x0a;+!="
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
             </userControls:Key.Value>
@@ -279,7 +279,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           ShiftUpText="ctrl" ShiftDownText="ctrl" FontStyle="Italic"
                           IsPublishOnly="True" 
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
             </userControls:Key.Value>
@@ -295,7 +295,7 @@
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           ShiftUpText="alt" ShiftDownText="alt" FontStyle="Italic"
                           IsPublishOnly="True"
-                          SharedSizeGroup="KeyWithMultipleLetters">
+                          SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />
             </userControls:Key.Value>
