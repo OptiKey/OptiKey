@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:userControls="clr-namespace:JuliusSweetland.ETTA.UI.UserControls"
-             xmlns:keyboards="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards"
              xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:keyboardsEnglish="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -18,7 +18,8 @@
         </Grid.RowDefinitions>
 
         <userControls:KeyboardHost PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
-            <keyboards:Alpha_English DataContext="{Binding Keyboard}" />
+            <keyboardsEnglish:Alpha DataContext="{Binding Keyboard}" />
+            <!--<keyboardsEnglish:Output NumberOfSuggestionsDisplayed="{Binding DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=userControls:KeyboardHost}, Mode=OneWayToSource}" />-->
         </userControls:KeyboardHost>
         
         <ComboBox Grid.Row="1"

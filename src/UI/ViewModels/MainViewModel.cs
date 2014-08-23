@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
@@ -32,13 +34,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public MainViewModel(IInputService inputService)
         {
+            //TESTING START
+            Suggestions = new List<string>
+            {
+                "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one"
+            };
+            //TESTING END
+
             this.inputService = inputService;
 
             SelectionMode = SelectionModes.Key;
             
             inputService.PointsPerSecond += (o, value) =>
             {
-                //TODO: Display debugging info such as points per second and the position of the points in a selection
+                //TODO: Display debugging points per second
                 //Log.Debug(string.Format("PointsPerSecond event... FPS:{0}", value));
             };
             inputService.CurrentPosition += (o, tuple) =>
@@ -49,7 +58,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.SelectionProgress += (o, progress) =>
             {
-                if (progress.Item2 == 0) 
+                //TODO: Add logic to not use selection progress if the selection is invalid, i.e. key is publish only & not publishing
+                if (progress.Item2 == 0)
                 {
                     ResetSelectionProperties();
                 }
@@ -68,6 +78,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.Selection += (o, value) =>
             {
+                //TODO: Add logic to not use selection if the selection is invalid, i.e. key is publish only & not publishing
                 if (SelectionMode == SelectionModes.Key)
                 {
                     KeySelection = value.KeyValue;
@@ -79,7 +90,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
             inputService.SelectionResult += (o, tuple) =>
             {
+                //TODO: Display debugging set of points
+                
                 //TODO: Handle selection result, i.e. the actual thing to use
+
+                //TODO: Check if keyvalue is useful before using it
+                //if(IsKeySelectionValid(tuple.))
                 //Log.Debug(string.Format("SelectionResult event... Points(count):{0}, FunctionKey:{1}, Char:{2}, String:{3}, Matches(first/count):{4}/{5}", 
                 //    tuple.Item1 != null ? tuple.Item1.Count : (int?)null, tuple.Item2, tuple.Item3, tuple.Item4,
                 //    tuple.Item5 != null ? tuple.Item5.First() : null,
@@ -137,7 +153,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 if (SetProperty(ref pointSelectionProgress, value))
                 {
-                    throw new NotImplementedException("Pushing point selection progress to the output service has not been implemented yet");
+                    throw new NotImplementedException("Handling of PointSelection progress has not been implemented yet");
                 }
             }
         }
@@ -166,6 +182,34 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keyDownStates; }
         }
 
+        private List<string> suggestions;
+        public List<string> Suggestions
+        {
+            get { return suggestions; }
+            set { SetProperty(ref suggestions, value); }
+        }
+
+        private int suggestionsPage;
+        public int SuggestionsPage
+        {
+            get { return suggestionsPage; }
+            set { SetProperty(ref suggestionsPage, value); }
+        }
+
+        private int suggestionsPerPage;
+        public int SuggestionsPerPage
+        {
+            get { return suggestionsPerPage; }
+            set { SetProperty(ref suggestionsPerPage, value); }
+        }
+
+        private string output;
+        public string Output
+        {
+            get { return output; }
+            set { SetProperty(ref output, value); }
+        }
+        
         #endregion
 
         #region Methods
@@ -177,6 +221,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             PointSelection = null;
             KeySelection = null;
         }
+
+        //private bool IsKeySelectionValid(FunctionKeys? fk)
+        //{
+        //    if (!Settings.Default.PublishingKeys
+        //        && fk.IsPublishOnly())
+        //    {
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
 
         #endregion
     }

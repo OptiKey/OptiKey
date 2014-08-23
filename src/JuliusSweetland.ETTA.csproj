@@ -164,28 +164,33 @@
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
-    <Compile Include="UI\Behaviours\AlwaysOnTopBehavior.cs" />
+    <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Behaviours\WindowAlwaysOnTopBehavior.cs" />
     <Compile Include="UI\UserControls\Key.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\UserControls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\AllValuesAreEqual.cs" />
+    <Compile Include="UI\ValueConverters\SuggestionsPage.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\Alpha_English.xaml.cs">
-      <DependentUpon>Alpha_English.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Output.xaml.cs">
+      <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\NumericAndSymbols1_English.xaml.cs">
-      <DependentUpon>NumericAndSymbols1_English.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml.cs">
+      <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Publish_English.xaml.cs">
-      <DependentUpon>Publish_English.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Publish.xaml.cs">
+      <DependentUpon>Publish.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Symbols2_English.xaml.cs">
-      <DependentUpon>Symbols2_English.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Symbols2.xaml.cs">
+      <DependentUpon>Symbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
@@ -310,19 +315,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Alpha_English.xaml">
+    <Page Include="UI\Views\Keyboards\English\Output.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\NumericAndSymbols1_English.xaml">
+    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Publish_English.xaml">
+    <Page Include="UI\Views\Keyboards\English\Publish.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Symbols2_English.xaml">
+    <Page Include="UI\Views\Keyboards\English\Symbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

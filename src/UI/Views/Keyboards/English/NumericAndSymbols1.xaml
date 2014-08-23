@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.Symbols2_English"
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.NumericAndSymbols1"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -48,145 +48,145 @@
 
         <userControls:Key Grid.Row="0" Grid.Column="0" />
         <userControls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                          ShiftUpText="·" ShiftDownText="·"
+                          ShiftUpText="1" ShiftDownText="1"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="·" />
+                <models:KeyValue String="1" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
-                          ShiftUpText="°" ShiftDownText="°"
+                          ShiftUpText="2" ShiftDownText="2"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="°" />
+                <models:KeyValue String="2" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
-                          ShiftUpText="~" ShiftDownText="~" 
+                          ShiftUpText="3" ShiftDownText="3" 
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="~" />
+                <models:KeyValue String="3" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="2"
-                          ShiftUpText="¬" ShiftDownText="¬"
+                          ShiftUpText="4" ShiftDownText="4"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¬" />
+                <models:KeyValue String="4" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="2"
-                          ShiftUpText="^" ShiftDownText="^"
+                          ShiftUpText="5" ShiftDownText="5"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="^" />
+                <models:KeyValue String="5" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
-                          ShiftUpText="±" ShiftDownText="±"
+                          ShiftUpText="6" ShiftDownText="6"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="±" />
+                <models:KeyValue String="6" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
-                          ShiftUpText="«" ShiftDownText="«"
+                          ShiftUpText="7" ShiftDownText="7"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="«" />
+                <models:KeyValue String="7" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="2"
-                          ShiftUpText="»" ShiftDownText="»"
+                          ShiftUpText="8" ShiftDownText="8"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="»" />
+                <models:KeyValue String="8" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="2"
-                          ShiftUpText="{}{" ShiftDownText="{}{"
+                          ShiftUpText="9" ShiftDownText="9"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="{}{" />
+                <models:KeyValue String="9" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="19" Grid.ColumnSpan="2"
-                          ShiftUpText="{}}" ShiftDownText="{}}"
+                          ShiftUpText="0" ShiftDownText="0"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="{}}" />
+                <models:KeyValue String="0" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="0" Grid.Column="21" />
 
         <userControls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                          ShiftUpText="©" ShiftDownText="©"
+                          ShiftUpText="+" ShiftDownText="+"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="©" />
+                <models:KeyValue String="+" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                          ShiftUpText="®" ShiftDownText="®"
+                          ShiftUpText="-" ShiftDownText="-"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="®" />
+                <models:KeyValue String="-" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
-                          ShiftUpText="™" ShiftDownText="™"
+                          ShiftUpText="*" ShiftDownText="*"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="™" />
+                <models:KeyValue String="*" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
-                          ShiftUpText="\" ShiftDownText="\"
+                          ShiftUpText="/" ShiftDownText="/"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="\" />
+                <models:KeyValue String="/" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2"
-                          ShiftUpText="|" ShiftDownText="|"
+                          ShiftUpText="_" ShiftDownText="_"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="|" />
+                <models:KeyValue String="_" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
-                          ShiftUpText="¦" ShiftDownText="¦"
+                          ShiftUpText="%" ShiftDownText="%"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¦" />
+                <models:KeyValue String="%" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2"
-                          ShiftUpText="[" ShiftDownText="["
+                          ShiftUpText="(" ShiftDownText="("
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="[" />
+                <models:KeyValue String="(" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2"
-                          ShiftUpText="]" ShiftDownText="]"
+                          ShiftUpText=")" ShiftDownText=")"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="]" />
+                <models:KeyValue String=")" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
-                          ShiftUpText="&lt;" ShiftDownText="&lt;"
+                          ShiftUpText=":" ShiftDownText=":"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="&lt;" />
+                <models:KeyValue String=":" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
-                          ShiftUpText="&gt;" ShiftDownText="&gt;"
+                          ShiftUpText=";" ShiftDownText=";"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="&gt;" />
+                <models:KeyValue String=";" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
@@ -198,59 +198,59 @@
         </userControls:Key>
 
         <userControls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                          ShiftUpText="2 OF 2" ShiftDownText="1 OF 2"
+                          ShiftUpText="1 OF 2" ShiftDownText="1 OF 2"
                           SharedSizeGroup="KeyWithMultipleLetters">
             <userControls:Key.Value>
-                <models:KeyValue FunctionKey="NumericAndSymbols1Keyboard" />
+                <models:KeyValue FunctionKey="Symbols2Keyboard" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                          ShiftUpText="€" ShiftDownText="€"
+                          ShiftUpText="#" ShiftDownText="#"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="€" />
+                <models:KeyValue String="#" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                          ShiftUpText="$" ShiftDownText="$"
+                          ShiftUpText="@" ShiftDownText="@"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="$" />
+                <models:KeyValue String="@" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                          ShiftUpText="¢" ShiftDownText="¢"
+                          ShiftUpText="£" ShiftDownText="£"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¢" />
+                <models:KeyValue String="£" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                          ShiftUpText="¥" ShiftDownText="¥"
+                          ShiftUpText="=" ShiftDownText="="
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¥" />
+                <models:KeyValue String="=" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                          ShiftUpText="`" ShiftDownText="`"
+                          ShiftUpText="'" ShiftDownText="'"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="`" />
+                <models:KeyValue String="'" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                          ShiftUpText="&amp;" ShiftDownText="&amp;"
+                          ShiftUpText="&quot;" ShiftDownText="&quot;"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="&amp;" />
+                <models:KeyValue String="&quot;" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                          ShiftUpText="¡" ShiftDownText="¡"
+                          ShiftUpText="!" ShiftDownText="!"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¡" />
+                <models:KeyValue String="!" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
@@ -322,10 +322,10 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                          ShiftUpText="¿" ShiftDownText="¿"
+                          ShiftUpText="?" ShiftDownText="?"
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
-                <models:KeyValue String="¿" />
+                <models:KeyValue String="?" />
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="4"

@@ -6,10 +6,10 @@ namespace JuliusSweetland.ETTA.UI.Behaviours
     /*
        Usage:
        <i:Interaction.Behaviors>
-         <behaviors:AlwaysOnTopBehavior/>
+         <behaviors:WindowAlwaysOnTopBehavior/>
        </i:Interaction.Behaviors>
      */
-    public class AlwaysOnTopBehavior : Behavior<Window>
+    public class WindowAlwaysOnTopBehavior : Behavior<Window>
     {
         protected override void OnAttached()
         {

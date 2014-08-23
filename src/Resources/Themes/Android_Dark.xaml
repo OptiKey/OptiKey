@@ -35,11 +35,11 @@
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
-            <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
             <SolidColorBrush x:Key="ScratchPadForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="ScratchPadBorderBrush" Color="{StaticResource White}" />
-            <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource White}" />-->
+            <SolidColorBrush x:Key="ScratchPadBackgroundBrush" Color="{StaticResource White}" />
 
             <valueConverters:AllValuesAreEqual x:Key="AllValuesAreEqual" />
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />

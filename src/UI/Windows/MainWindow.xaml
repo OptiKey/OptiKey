@@ -10,7 +10,7 @@
         Topmost="True"
         Icon="..\..\EyeIcon.ico">
     <i:Interaction.Behaviors>
-        <behaviours:AlwaysOnTopBehavior/>
+        <behaviours:WindowAlwaysOnTopBehavior/>
     </i:Interaction.Behaviors>
     <views:MainView x:Name="MainView" />
 </Window>

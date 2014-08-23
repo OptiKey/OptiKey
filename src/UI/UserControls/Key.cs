@@ -138,6 +138,27 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             set { SetValue(SymbolGeometryProperty, value); }
         }
 
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof (string), typeof (Key), new PropertyMetadata(default(string), TextChanged));
+
+        private static void TextChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var key = dependencyObject as Key;
+            var value = dependencyPropertyChangedEventArgs.NewValue as string;
+            if (key != null
+                && value != null)
+            {
+                key.ShiftDownText = value;
+                key.ShiftUpText = value;
+            }
+        }
+
+        public string Text
+        {
+            get { return (string) GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
         public static readonly DependencyProperty ShiftUpTextProperty =
             DependencyProperty.Register("ShiftUpText", typeof(string), typeof(Key),
             new PropertyMetadata(default(string), OnSymbolGeometryOrTextChanged));
