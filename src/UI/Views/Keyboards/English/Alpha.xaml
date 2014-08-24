@@ -269,7 +269,7 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                          ShiftUpText="123&#x0a;+!=" ShiftDownText="123&#x0a;+!="
+                          Text="123&#x0a;+!="
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
@@ -277,7 +277,7 @@
         </userControls:Key>
 
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                          ShiftUpText="ctrl" ShiftDownText="ctrl" FontStyle="Italic"
+                          Text="ctrl" FontStyle="Italic"
                           IsPublishOnly="True" 
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
@@ -293,7 +293,7 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                          ShiftUpText="alt" ShiftDownText="alt" FontStyle="Italic"
+                          Text="alt" FontStyle="Italic"
                           IsPublishOnly="True"
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
@@ -301,7 +301,7 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                          ShiftUpText="," ShiftDownText=","
+                          Text=","
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="," />
@@ -316,7 +316,7 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                          ShiftUpText="." ShiftDownText="."
+                          Text="."
                           SharedSizeGroup="KeyWithSingleLetter">
             <userControls:Key.Value>
                 <models:KeyValue String="." />
