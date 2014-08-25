@@ -131,6 +131,9 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
+    <Compile Include="Models\IKeyboardStateInfo.cs" />
+    <Compile Include="Models\KeyValidStates.cs" />
+    <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
     <Compile Include="Models\KeyValue.cs" />
@@ -172,7 +175,7 @@
     <Compile Include="UI\UserControls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\AllValuesAreEqual.cs" />
-    <Compile Include="UI\ValueConverters\SuggestionsPage.cs" />
+    <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />

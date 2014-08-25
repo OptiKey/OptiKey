@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
-                    <valueConverters:SuggestionsPage x:Key="SuggestionsPage" />
+                    <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -63,7 +63,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
@@ -81,7 +81,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
@@ -99,7 +99,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
@@ -117,7 +117,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
@@ -135,7 +135,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
@@ -153,7 +153,7 @@
         <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="3"
                           SharedSizeGroup="KeyWithSuggestion">
             <userControls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPage}" Mode="OneWay">
+                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                     <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
                     <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />

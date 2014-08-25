@@ -13,7 +13,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class MainViewModel : BindableBase
+    public class MainViewModel : BindableBase, IKeyboardStateInfo
     {
         private readonly IInputService inputService;
 
@@ -25,8 +25,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress = new NotifyingConcurrentDictionary<double>();
-        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
+        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
+        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
+        private readonly KeyValidStates keyValidStates;
 
         #endregion
 
@@ -39,26 +40,38 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
+
+            Observable.Interval(TimeSpan.FromSeconds(3))
+                .Take(1)
+                .SubscribeOnDispatcher()
+                .Subscribe(i =>
+                {
+                    Settings.Default.PublishingKeys = true;
+                });
             //TESTING END
 
             this.inputService = inputService;
+           
+            keySelectionProgress = new NotifyingConcurrentDictionary<double>();
+            keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
+            keyValidStates = new KeyValidStates(this);
 
             SelectionMode = SelectionModes.Key;
             
             inputService.PointsPerSecond += (o, value) =>
             {
                 //TODO: Display debugging points per second
-                //Log.Debug(string.Format("PointsPerSecond event... FPS:{0}", value));
             };
+
             inputService.CurrentPosition += (o, tuple) =>
             {
+                //It's ok to publish CurrentPosition over an invalid key so don't bother checking for validity
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
-
             };
+
             inputService.SelectionProgress += (o, progress) =>
             {
-                //TODO: Add logic to not use selection progress if the selection is invalid, i.e. key is publish only & not publishing
                 if (progress.Item2 == 0)
                 {
                     ResetSelectionProperties();
@@ -68,7 +81,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
+                        if (KeyValidStates[progress.Item1.Value.KeyValue.Value.Key])
+                        {
+                            KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
+                        }
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
@@ -76,31 +92,39 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     }
                 }
             };
+
             inputService.Selection += (o, value) =>
             {
-                //TODO: Add logic to not use selection if the selection is invalid, i.e. key is publish only & not publishing
-                if (SelectionMode == SelectionModes.Key)
+                if (SelectionMode == SelectionModes.Key
+                    && value.KeyValue != null)
                 {
-                    KeySelection = value.KeyValue;
+                    if (KeyValidStates[value.KeyValue.Value.Key])
+                    {
+                        KeySelection = value.KeyValue;
+                    }
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
                     PointSelection = value.Point;
                 }
             };
+
             inputService.SelectionResult += (o, tuple) =>
             {
-                //TODO: Display debugging set of points
-                
-                //TODO: Handle selection result, i.e. the actual thing to use
+                if (tuple.Item2 != null || tuple.Item3 != null)
+                {
+                    var keyValue = new KeyValue {FunctionKey = tuple.Item2, String = tuple.Item3};
+                    if (KeyValidStates[keyValue.Key])
+                    {
+                        //TODO: Display debugging set of points
 
-                //TODO: Check if keyvalue is useful before using it
-                //if(IsKeySelectionValid(tuple.))
-                //Log.Debug(string.Format("SelectionResult event... Points(count):{0}, FunctionKey:{1}, Char:{2}, String:{3}, Matches(first/count):{4}/{5}", 
-                //    tuple.Item1 != null ? tuple.Item1.Count : (int?)null, tuple.Item2, tuple.Item3, tuple.Item4,
-                //    tuple.Item5 != null ? tuple.Item5.First() : null,
-                //    tuple.Item5 != null ? tuple.Item5.Count : (int?)null));
+                        //TODO: Handle selection result, i.e. the actual thing to use
+
+                        //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
+                    }
+                }
             };
+
             inputService.Error += (o, exception) =>
             {
                 //TODO: Handle errors
@@ -182,6 +206,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keyDownStates; }
         }
 
+        public KeyValidStates KeyValidStates
+        {
+            get { return keyValidStates; }
+        }
+
         private List<string> suggestions;
         public List<string> Suggestions
         {
@@ -221,17 +250,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             PointSelection = null;
             KeySelection = null;
         }
-
-        //private bool IsKeySelectionValid(FunctionKeys? fk)
-        //{
-        //    if (!Settings.Default.PublishingKeys
-        //        && fk.IsPublishOnly())
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
 
         #endregion
     }

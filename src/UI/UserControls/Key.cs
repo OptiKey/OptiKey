@@ -54,6 +54,12 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                     Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
                     Source = mainViewModel
                 });
+
+                this.SetBinding(IsKeyValidProperty, new Binding
+                {
+                    Path = new PropertyPath(string.Format("KeyValidStates[^{0}].Value", Value.Key)),
+                    Source = mainViewModel
+                });
             }
         }
 
@@ -103,6 +109,15 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         {
             get { return (double) GetValue(SelectionProgressProperty); }
             set { SetValue(SelectionProgressProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsKeyValidProperty =
+            DependencyProperty.Register("IsKeyValid", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+
+        public bool IsKeyValid
+        {
+            get { return (bool) GetValue(IsKeyValidProperty); }
+            set { SetValue(IsKeyValidProperty, value); }
         }
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys

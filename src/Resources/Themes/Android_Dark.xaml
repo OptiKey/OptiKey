@@ -74,17 +74,11 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--This key is publish only, but we are not publishing-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=IsPublishOnly, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=PublishingKeys, Source={x:Static properties:Settings.Default}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
-
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsKeyValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
+                    
                     <!--Animation when this key is selected-->
                     <DataTrigger Value="True">
                         <DataTrigger.Binding>
@@ -125,20 +119,14 @@
                     </DataTrigger>
 
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="{x:Static enums:KeyDownStates.Lock}">
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
                         <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--This key is publish only, but we are not publishing-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=IsPublishOnly, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=PublishingKeys, Source={x:Static properties:Settings.Default}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsKeyValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
 
                     <!--Animation when this key is selected-->
                     <DataTrigger Value="True">

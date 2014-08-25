@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace JuliusSweetland.ETTA.UI.ValueConverters
 {
-    public class SuggestionsPage : IMultiValueConverter
+    public class SuggestionsPaged : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
@@ -22,7 +22,7 @@ namespace JuliusSweetland.ETTA.UI.ValueConverters
 
                 if (suggestions != null)
                 {
-                    var index = (suggestionsPage*suggestionsPerPage) + suggestionIndex;
+                    var index = (suggestionsPage * suggestionsPerPage) + suggestionIndex;
 
                     if (suggestions.Count > index)
                     {

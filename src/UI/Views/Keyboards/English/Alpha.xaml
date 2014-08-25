@@ -277,7 +277,7 @@
         </userControls:Key>
 
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                          Text="ctrl" FontStyle="Italic"
+                          Text="ctrl"
                           IsPublishOnly="True" 
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
@@ -293,7 +293,7 @@
             </userControls:Key.Value>
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                          Text="alt" FontStyle="Italic"
+                          Text="alt"
                           IsPublishOnly="True"
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
