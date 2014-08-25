@@ -55,9 +55,9 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                     Source = mainViewModel
                 });
 
-                this.SetBinding(IsKeyValidProperty, new Binding
+                this.SetBinding(IsValidProperty, new Binding
                 {
-                    Path = new PropertyPath(string.Format("KeyValidStates[^{0}].Value", Value.Key)),
+                    Path = new PropertyPath(string.Format("KeyValidStates[^{0}]", Value.Key)),
                     Source = mainViewModel
                 });
             }
@@ -111,13 +111,13 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             set { SetValue(SelectionProgressProperty, value); }
         }
 
-        public static readonly DependencyProperty IsKeyValidProperty =
-            DependencyProperty.Register("IsKeyValid", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty IsValidProperty =
+            DependencyProperty.Register("IsValid", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
 
-        public bool IsKeyValid
+        public bool IsValid
         {
-            get { return (bool) GetValue(IsKeyValidProperty); }
-            set { SetValue(IsKeyValidProperty, value); }
+            get { return (bool) GetValue(IsValidProperty); }
+            set { SetValue(IsValidProperty, value); }
         }
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
@@ -198,15 +198,6 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         {
             get { return (string) GetValue(ShiftDownTextProperty); }
             set { SetValue(ShiftDownTextProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsPublishOnlyProperty =
-            DependencyProperty.Register("IsPublishOnly", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
-
-        public bool IsPublishOnly
-        {
-            get { return (bool) GetValue(IsPublishOnlyProperty); }
-            set { SetValue(IsPublishOnlyProperty, value); }
         }
 
         public static readonly DependencyProperty ValueProperty =

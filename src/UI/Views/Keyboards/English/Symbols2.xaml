@@ -277,7 +277,6 @@
 
         <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           Text="ctrl"
-                          IsPublishOnly="True" 
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
@@ -285,7 +284,6 @@
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource WinIcon}"
-                          IsPublishOnly="True"
                           SharedSizeGroup="KeyWithSymbol">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Win}" />
@@ -293,7 +291,6 @@
         </userControls:Key>
         <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           Text="alt"
-                          IsPublishOnly="True"
                           SharedSizeGroup="KeyWithDescription">
             <userControls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />

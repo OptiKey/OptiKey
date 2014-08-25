@@ -75,7 +75,7 @@
                     </DataTrigger>
 
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsKeyValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
                     
@@ -124,7 +124,7 @@
                     </DataTrigger>
 
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsKeyValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
 
@@ -207,17 +207,11 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--This key is publish only, but we are not publishing-->
-                    <MultiDataTrigger>
-                        <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Path=IsPublishOnly, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
-                            <Condition Binding="{Binding Path=PublishingKeys, Source={x:Static properties:Settings.Default}, Mode=OneWay}" Value="False" />
-                        </MultiDataTrigger.Conditions>
-                        <MultiDataTrigger.Setters>
-                            <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
-                            <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
-                        </MultiDataTrigger.Setters>
-                    </MultiDataTrigger>
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
+                    </DataTrigger>
 
                     <!--Animation when this key is selected-->
                     <DataTrigger Value="True">
@@ -255,6 +249,11 @@
                 </Setter>
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Style.Triggers>
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
+                    <!--Make visible when current position is this key-->
                     <DataTrigger Value="True">
                         <DataTrigger.Binding>
                             <MultiBinding Converter="{StaticResource AllValuesAreEqual}">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Data;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Properties;
@@ -37,7 +38,7 @@ namespace JuliusSweetland.ETTA.Models
                 {
                     if (KeyValueCollections.PublishOnlyKeys.Select(kv => kv.Key).Contains(key))
                     {
-                        return true;
+                        return false;
                     }
                 }
 
@@ -69,7 +70,7 @@ namespace JuliusSweetland.ETTA.Models
 
         public void NotifyStateChanged()
         {
-            OnPropertyChanged(() => this);
+            OnPropertyChanged(Binding.IndexerName);
         }
 
         #endregion

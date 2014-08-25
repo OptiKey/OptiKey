@@ -42,11 +42,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
 
             Observable.Interval(TimeSpan.FromSeconds(3))
-                .Take(1)
                 .SubscribeOnDispatcher()
                 .Subscribe(i =>
                 {
-                    Settings.Default.PublishingKeys = true;
+                    Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
                 });
             //TESTING END
 
