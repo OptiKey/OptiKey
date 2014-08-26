@@ -8,7 +8,7 @@
                     xmlns:wpfCircularProgressBar="clr-namespace:WpfCircularProgressBar;assembly=WpfCircularProgressBar">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Sense.xaml" />
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Android.xaml" />
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
@@ -183,9 +183,14 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
+                    <!--Progress is 0-->
                     <Trigger Property="Value" Value="0">
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="Visibility" Value="Hidden" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
 

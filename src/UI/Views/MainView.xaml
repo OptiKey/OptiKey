@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         
         <userControls:KeyboardHost PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
-            <keyboardsEnglish:Publish DataContext="{Binding Keyboard}" />
+            <keyboardsEnglish:Alpha DataContext="{Binding Keyboard}" />
             <!--<keyboardsEnglish:Output NumberOfSuggestionsDisplayed="{Binding DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=userControls:KeyboardHost}, Mode=OneWayToSource}" />-->
         </userControls:KeyboardHost>
         
