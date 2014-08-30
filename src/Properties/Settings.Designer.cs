@@ -61,7 +61,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));

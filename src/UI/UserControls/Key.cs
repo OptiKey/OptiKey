@@ -32,7 +32,11 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         {
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
 
-            if (keyboardHost != null
+            var mainViewModel = keyboardHost != null
+                ? keyboardHost.DataContext as MainViewModel
+                : null;
+
+            if (mainViewModel != null
                 && !string.IsNullOrEmpty(Value.Key))
             {
                 /* 
@@ -43,46 +47,47 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                 this.SetBinding(KeyDownStateProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", Value.Key)),
-                    Source = keyboardHost.DataContext
+                    Source = mainViewModel
                 });
 
                 var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
                 this.SetBinding(ShiftDownStateProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", shiftKey)),
-                    Source = keyboardHost.DataContext
+                    Source = mainViewModel
                 });
 
                 this.SetBinding(SelectionProgressProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
-                    Source = keyboardHost.DataContext
+                    Source = mainViewModel
                 });
 
                 this.SetBinding(IsEnabledProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeyEnabledStates[^{0}]", Value.Key)),
-                    Source = keyboardHost.DataContext
+                    Source = mainViewModel
                 });
 
-                var mainViewModel = keyboardHost.DataContext as MainViewModel;
+                mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
+                    .Subscribe(kv => IsCurrent = kv != null && kv.Value.Equals(Value));
 
-                mainViewModel
-                    .OnPropertyChanges(p => p.KeySelection)
-                    .Where(kv => kv != null && kv.Value.Equals(Value))
-                    .Subscribe(kv =>
+                mainViewModel.KeySelection += (o, value) =>
+                {
+                    if (value.Equals(Value)
+                        && Selection != null)
                     {
-                        //TODO: View should handle this as an event, not a property changed notification
-                        /* 
-                         * Need to toggle the value as animations will not fire if the value has not changed. Should really be an event and consumed by an event trigger, but...
-                         * Attempted to trigger animation from routed event on this class - not accessible to child elements, e.g. TextBlock in Key template.
-                         * Attempted to trigger animation from CLR event on this class - interaction triggers required, but cannot be applied in a style, e.g. the style of a child text block element in the theme
-                         */
-                        Selection = true;
-                        Selection = false;
-                    });
+                        Selection(this, null);
+                    }
+                };
             }
         }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler Selection;
 
         #endregion
 
@@ -127,13 +132,13 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             set { SetValue(IsShiftDownProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectionProperty =
-            DependencyProperty.Register("Selection", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty IsCurrentProperty =
+            DependencyProperty.Register("IsCurrent", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
 
-        public bool Selection
+        public bool IsCurrent
         {
-            get { return (bool) GetValue(SelectionProperty); }
-            set { SetValue(SelectionProperty, value); }
+            get { return (bool) GetValue(IsCurrentProperty); }
+            set { SetValue(IsCurrentProperty, value); }
         }
         
         public static readonly DependencyProperty SelectionProgressProperty =

@@ -524,13 +524,13 @@ namespace JuliusSweetland.ETTA.Services
                     {
                         if (ts.Signal >= 1
                             && !CapturingMultiKeySelection)
-                            //&& (KeyEnabledStates)
                         {
                             //We are not currently capturing a multikey selection and have received a high (start) trigger signal
                             if (ts.PointAndKeyValue != null)
                             {
                                 if (SelectionMode == SelectionModes.Key
-                                    && ts.PointAndKeyValue.Value.KeyValue != null)
+                                    && ts.PointAndKeyValue.Value.KeyValue != null
+                                    && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value.Key]))
                                 {
                                     if (Settings.Default.MultiKeySelectionSupported
                                         && ts.PointAndKeyValue.Value.StringIsLetter)

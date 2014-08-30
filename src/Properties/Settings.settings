@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
-      <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
+      <Value Profile="(Default)">Fixations</Value>
     </Setting>
     <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

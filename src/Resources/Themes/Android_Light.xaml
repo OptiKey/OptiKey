@@ -41,7 +41,6 @@
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Gray}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource Black}" />
 
-            <valueConverters:AllValuesAreEqual x:Key="AllValuesAreEqual" />
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
 
             <Style x:Key="KeyTextStyle" TargetType="TextBlock">
@@ -52,6 +51,16 @@
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}" />
                 <Setter Property="Visibility" Value="Collapsed" />
+                <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
+                    <Setter.Value>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource KeySelectionForeground}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <!--Is there text to display-->
                     <DataTrigger Binding="{Binding Path=HasText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
@@ -77,20 +86,6 @@
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
-
-                    <!--Animation when this key is selected-->
-                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
-                        <DataTrigger.EnterActions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionForeground}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </DataTrigger.EnterActions>
-                    </DataTrigger>
                 </Style.Triggers>
             </Style>
 
@@ -100,6 +95,16 @@
                 <Setter Property="Data" Value="{Binding Path=SymbolGeometry, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Setter Property="Fill" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="Visibility" Value="Collapsed" />
+                <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
+                    <Setter.Value>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" 
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource KeySelectionForeground}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <!--Is there a symbol to display-->
                     <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
@@ -119,20 +124,6 @@
                     <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
-                    </DataTrigger>
-
-                    <!--Animation when this key is selected-->
-                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
-                        <DataTrigger.EnterActions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionForeground}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </DataTrigger.EnterActions>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -174,6 +165,7 @@
                     <Trigger Property="Value" Value="0">
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
+
                     <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
@@ -186,6 +178,20 @@
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{StaticResource KeyDefaultBorderBrush}" />
                 <Setter Property="Background" Value="{StaticResource KeyDefaultBackgroundBrush}" />
+                <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
+                    <Setter.Value>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                                   Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                                   Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBackground}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <!--This key is in a key down state of On-->
                     <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
@@ -203,24 +209,6 @@
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
-                    </DataTrigger>
-
-                    <!--Animation when this key is selected-->
-                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
-                        <DataTrigger.EnterActions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
-                                        <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBackground}" KeyTime="0:0:0" />
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </DataTrigger.EnterActions>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -240,14 +228,8 @@
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--Make visible when current position is this key-->
-                    <DataTrigger Value="True">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource AllValuesAreEqual}">
-                                <Binding Path="DataContext.CurrentPositionKey" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <!--Make visible when this key is current-->
+                    <DataTrigger Binding="{Binding Path=IsCurrent, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
                 </Style.Triggers>

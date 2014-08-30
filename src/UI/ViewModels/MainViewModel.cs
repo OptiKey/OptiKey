@@ -96,11 +96,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 if (SelectionMode == SelectionModes.Key
                     && value.KeyValue != null)
                 {
-                    KeySelection = value.KeyValue;
+                    if (KeySelection != null)
+                    {
+                        KeySelection(this, value.KeyValue.Value);
+                    }
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    PointSelection = value.Point;
+                    //TODO: Handle point selection
                 }
             };
 
@@ -123,6 +126,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 //Log.Debug(string.Format("ERROR. Exception message:{0}", exception.Message));
             };
         }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler<KeyValue> KeySelection;
 
         #endregion
 
@@ -179,25 +188,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keySelectionProgress; }
         }
 
-        private Point? pointSelection;
-        public Point? PointSelection
-        {
-            get { return pointSelection; }
-            set { SetProperty(ref pointSelection, value); }
-        }
-        
-        private KeyValue? keySelection;
-        public KeyValue? KeySelection
-        {
-            get { return keySelection; }
-            set
-            {
-                keySelection = value;
-                OnPropertyChanged(() => KeySelection);
-                //SetProperty(ref keySelection, value); - don't use this as we need to notify even when the value is the same as last time
-            }
-        }
-
         public NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates
         {
             get { return keyDownStates; }
@@ -244,8 +234,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             PointSelectionProgress = null;
             KeySelectionProgress.Clear();
-            PointSelection = null;
-            KeySelection = null;
         }
 
         #endregion
