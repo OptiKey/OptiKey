@@ -6,7 +6,7 @@
       <Value Profile="(Default)">LControlKey</Value>
     </Setting>
     <Setting Name="SelectionTriggerStopSignal" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
-      <Value Profile="(Default)">NextLow</Value>
+      <Value Profile="(Default)">NextHigh</Value>
     </Setting>
     <Setting Name="SelectionTriggerMouseDownUpButton" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>

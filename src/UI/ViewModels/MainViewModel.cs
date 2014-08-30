@@ -58,7 +58,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keyEnabledStates = new KeyEnabledStates(this);
 
             inputService.KeyEnabledStates = keyEnabledStates;
-            
+
+            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
+                .Subscribe(cmks => CapturingMultiKeySelection = cmks);
+
             inputService.PointsPerSecond += (o, value) =>
             {
                 //TODO: Display debugging points per second
@@ -157,6 +160,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     InputService.SelectionMode = value;
                 }
             }
+        }
+
+        private bool capturingMultiKeySelection;
+        public bool CapturingMultiKeySelection
+        {
+            get { return capturingMultiKeySelection; }
+            set { SetProperty(ref capturingMultiKeySelection, value); }
         }
 
         public Point? CurrentPositionPoint

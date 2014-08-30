@@ -37,7 +37,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("NextLow")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
         public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals SelectionTriggerStopSignal {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["SelectionTriggerStopSignal"]));

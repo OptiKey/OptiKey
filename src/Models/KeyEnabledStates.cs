@@ -22,7 +22,13 @@ namespace JuliusSweetland.ETTA.Models
         {
             this.keyboardStateInfo = keyboardStateInfo;
 
-            Settings.Default.OnPropertyChanges(settings => settings.PublishingKeys).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.OnPropertyChanges(ksi => ksi.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.OnPropertyChanges(ksi => ksi.Suggestions).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
+            
+            Settings.Default.OnPropertyChanges(settings => settings.PublishingKeys)
+                .Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -34,12 +40,10 @@ namespace JuliusSweetland.ETTA.Models
             get
             {
                 //Key is publish only, but we are not publishing
-                if (!Settings.Default.PublishingKeys)
+                if (!Settings.Default.PublishingKeys
+                    && KeyValueCollections.PublishOnlyKeys.Select(kv => kv.Key).Contains(key))
                 {
-                    if (KeyValueCollections.PublishOnlyKeys.Select(kv => kv.Key).Contains(key))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
 
                 //Previous suggestions if no suggestions, or on page 1
@@ -56,6 +60,13 @@ namespace JuliusSweetland.ETTA.Models
                     && (keyboardStateInfo.Suggestions == null
                         || !keyboardStateInfo.Suggestions.Any()
                         || keyboardStateInfo.Suggestions.Count > ((keyboardStateInfo.SuggestionsPage * keyboardStateInfo.SuggestionsPerPage) + keyboardStateInfo.SuggestionsPerPage)))
+                {
+                    return false;
+                }
+
+                //Key is not a letter, but we're capturing a multi-key selection (which must be ended by selecting a letter)
+                if (keyboardStateInfo.CapturingMultiKeySelection
+                    && !KeyValueCollections.LetterKeys.Select(kv => kv.Key).Contains(key))
                 {
                     return false;
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using JuliusSweetland.ETTA.Enums;
 
 namespace JuliusSweetland.ETTA.Models
@@ -48,6 +49,17 @@ namespace JuliusSweetland.ETTA.Models
                     new KeyValue {FunctionKey = FunctionKeys.Copy},
                     new KeyValue {FunctionKey = FunctionKeys.Paste}
                 };
+            }
+        }
+
+        public static List<KeyValue> LetterKeys
+        {
+            get
+            {
+                return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    .ToCharArray()
+                    .Select(c => new KeyValue {String = c.ToString()})
+                    .ToList();
             }
         }
     }

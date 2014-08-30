@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Services
 {
-    public interface IInputService
+    public interface IInputService : INotifyPropertyChanged
     {
         event EventHandler<int> PointsPerSecond;
         event EventHandler<Tuple<Point?, KeyValue?>> CurrentPosition;
