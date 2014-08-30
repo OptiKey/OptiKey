@@ -75,18 +75,12 @@
                     </DataTrigger>
 
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
                     
                     <!--Animation when this key is selected-->
-                    <DataTrigger Value="True">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource AllValuesAreEqual}">
-                                <Binding Path="DataContext.KeySelection" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
                         <DataTrigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard>
@@ -124,18 +118,12 @@
                     </DataTrigger>
 
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
 
                     <!--Animation when this key is selected-->
-                    <DataTrigger Value="True">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource AllValuesAreEqual}">
-                                <Binding Path="DataContext.KeySelection" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
                         <DataTrigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard>
@@ -188,7 +176,7 @@
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
                     </DataTrigger>
                 </Style.Triggers>
@@ -213,19 +201,13 @@
                     </DataTrigger>
 
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
                     </DataTrigger>
 
                     <!--Animation when this key is selected-->
-                    <DataTrigger Value="True">
-                        <DataTrigger.Binding>
-                            <MultiBinding Converter="{StaticResource AllValuesAreEqual}">
-                                <Binding Path="DataContext.KeySelection" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" Mode="OneWay" />
-                                <Binding Path="Value" RelativeSource="{RelativeSource AncestorType={x:Type controls:Key}}" Mode="OneWay" />
-                            </MultiBinding>
-                        </DataTrigger.Binding>
+                    <DataTrigger Binding="{Binding Path=Selection, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="True">
                         <DataTrigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard>
@@ -255,9 +237,10 @@
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Style.Triggers>
                     <!--Is Key Valid-->
-                    <DataTrigger Binding="{Binding Path=IsValid, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
+                    
                     <!--Make visible when current position is this key-->
                     <DataTrigger Value="True">
                         <DataTrigger.Binding>

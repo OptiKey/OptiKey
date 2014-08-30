@@ -12,7 +12,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
     /// Aggregates fixations on keys, allowing you to move away and return to complete a key fixation.
     /// Point fixations have to be completed in one go, i.e. if you move away from a point fixation it is lost.
     /// </summary>
-    public class AggregateKeyFixationSource : ITriggerSignalSource, IFixationSource
+    public class AggregateKeyFixationSource : ITriggerSignalSource, IFixationTriggerSource
     {
         #region Fields
 
@@ -46,6 +46,8 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
         #region Properties
 
+        public KeyEnabledStates KeyEnabledStates { get; set; }
+
         public IObservable<TriggerSignal> Sequence
         {
             get
@@ -66,17 +68,19 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                             .Where(_ => disposed == false)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
                             .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
-                            .Buffer(detectFixationBufferSize, 1) //Skip buffer along by 1 value at a time
+                            .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
                             .Subscribe(tps =>
                             {
                                 latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
                                     
-                                if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points meet the criteria to start a new one
+                                if (fixationCentrePointAndKeyValue == null)
                                 {
+                                    //We don't have a fixation - check if the buffered points meet the criteria to start a new one
                                     if (tps.All(t => t.Value.KeyValue != null)
-                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
+                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1
+                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value.Key]))
                                     {
-                                        //All the pointAndKeyValues have the same key value
+                                        //All the pointAndKeyValues have the same key value and the key is enabled (or we don't know the key states)
                                         var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
                                         var keyValue = tps.First().Value.KeyValue;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
@@ -85,9 +89,10 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                 }
                                 else
                                 {
-                                    //We are building a fixation and the latest pointAndKeyValue is not over that key
+                                    //We are building a fixation and the latest pointAndKeyValue is not over the same key, or the key is now disabled
                                     if (latestPointAndKeyValue.Value.Value.KeyValue == null
-                                        || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue))
+                                        || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)
+                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value.Key]))
                                     {
                                         //Get the last point which was part of the current fixation, i.e. over the previously fixated key
                                         Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps.Count > 1
@@ -96,7 +101,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
                                         if (previousPointAndKeyValue != null)
                                         {
-                                            //Calculate the span of the fixation up to this point and store the aggregate progress
+                                            //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
                                             
                                             if (keyAggregateFixationTicks.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))

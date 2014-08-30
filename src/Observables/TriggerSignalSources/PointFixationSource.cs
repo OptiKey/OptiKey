@@ -7,7 +7,7 @@ using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 {
-    public class PointFixationSource : ITriggerSignalSource, IFixationSource
+    public class PointFixationSource : IFixationTriggerSource
     {
         #region Fields
 
@@ -37,6 +37,8 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #endregion
 
         #region Properties
+
+        public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevent on point trigger
 
         public IObservable<TriggerSignal> Sequence
         {

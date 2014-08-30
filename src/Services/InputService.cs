@@ -34,6 +34,8 @@ namespace JuliusSweetland.ETTA.Services
         private readonly ITriggerSignalSource keySelectionTriggerSource;
         private readonly ITriggerSignalSource pointSelectionTriggerSource;
         
+        private KeyEnabledStates keyEnabledStates;
+        
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
@@ -70,6 +72,22 @@ namespace JuliusSweetland.ETTA.Services
                 }
 
                 DiscardMultiKeySelection();
+            }
+        }
+
+        public KeyEnabledStates KeyEnabledStates 
+        {
+            get { return keyEnabledStates; }
+            set
+            {
+                keyEnabledStates = value;
+
+                //Fixation key triggers also need the enabled state info
+                var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
+                if (fixationTrigger != null)
+                {
+                    fixationTrigger.KeyEnabledStates = value;
+                }
             }
         }
 
@@ -506,6 +524,7 @@ namespace JuliusSweetland.ETTA.Services
                     {
                         if (ts.Signal >= 1
                             && !CapturingMultiKeySelection)
+                            //&& (KeyEnabledStates)
                         {
                             //We are not currently capturing a multikey selection and have received a high (start) trigger signal
                             if (ts.PointAndKeyValue != null)
@@ -591,7 +610,7 @@ namespace JuliusSweetland.ETTA.Services
 
                                                     //If we are using a fixation trigger and the stop trigger has
                                                     //occurred on a letter then it is reliable - use it
-                                                    string reliableLastLetter = selectionTriggerSource is IFixationSource
+                                                    string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
                                                         && stopTriggerSignal != null
                                                         && stopTriggerSignal.Value.PointAndKeyValue != null
                                                         && stopTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
@@ -700,7 +719,7 @@ namespace JuliusSweetland.ETTA.Services
                                 || (ts.Signal >= -1 && Settings.Default.SelectionTriggerStopSignal == TriggerStopSignals.NextLow))
                             {
                                 //If we are using a fixation trigger source then the stop signal must occur on a letter
-                                if (!(selectionTriggerSource is IFixationSource)
+                                if (!(selectionTriggerSource is IFixationTriggerSource)
                                     || (ts.PointAndKeyValue != null && ts.PointAndKeyValue.Value.StringIsLetter))
                                 {
                                     stopTriggerSignal = ts;

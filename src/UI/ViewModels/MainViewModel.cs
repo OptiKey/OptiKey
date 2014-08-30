@@ -27,7 +27,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
-        private readonly KeyValidStates keyValidStates;
+        private readonly KeyEnabledStates keyEnabledStates;
 
         #endregion
 
@@ -50,12 +50,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //TESTING END
 
             this.inputService = inputService;
-           
-            keySelectionProgress = new NotifyingConcurrentDictionary<double>();
-            keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
-            keyValidStates = new KeyValidStates(this);
 
             SelectionMode = SelectionModes.Key;
+
+            keySelectionProgress = new NotifyingConcurrentDictionary<double>();
+            keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
+            keyEnabledStates = new KeyEnabledStates(this);
+
+            inputService.KeyEnabledStates = keyEnabledStates;
             
             inputService.PointsPerSecond += (o, value) =>
             {
@@ -80,10 +82,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        if (KeyValidStates[progress.Item1.Value.KeyValue.Value.Key])
-                        {
-                            KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
-                        }
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
@@ -97,10 +96,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 if (SelectionMode == SelectionModes.Key
                     && value.KeyValue != null)
                 {
-                    if (KeyValidStates[value.KeyValue.Value.Key])
-                    {
-                        KeySelection = value.KeyValue;
-                    }
+                    KeySelection = value.KeyValue;
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
@@ -113,14 +109,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 if (tuple.Item2 != null || tuple.Item3 != null)
                 {
                     var keyValue = new KeyValue {FunctionKey = tuple.Item2, String = tuple.Item3};
-                    if (KeyValidStates[keyValue.Key])
-                    {
-                        //TODO: Display debugging set of points
+                    //TODO: Display debugging set of points
 
-                        //TODO: Handle selection result, i.e. the actual thing to use
+                    //TODO: Handle selection result, i.e. the actual thing to use
 
-                        //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
-                    }
+                    //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
                 }
             };
 
@@ -197,7 +190,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public KeyValue? KeySelection
         {
             get { return keySelection; }
-            set { SetProperty(ref keySelection, value); }
+            set
+            {
+                keySelection = value;
+                OnPropertyChanged(() => KeySelection);
+                //SetProperty(ref keySelection, value); - don't use this as we need to notify even when the value is the same as last time
+            }
         }
 
         public NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates
@@ -205,9 +203,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return keyDownStates; }
         }
 
-        public KeyValidStates KeyValidStates
+        public KeyEnabledStates KeyEnabledStates
         {
-            get { return keyValidStates; }
+            get { return keyEnabledStates; }
         }
 
         private List<string> suggestions;

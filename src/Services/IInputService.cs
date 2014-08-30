@@ -16,6 +16,7 @@ namespace JuliusSweetland.ETTA.Services
         event EventHandler<Exception> Error;
 
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
+        KeyEnabledStates KeyEnabledStates { set; }
         SelectionModes SelectionMode { set; }
         bool CapturingMultiKeySelection { get; }
     }

@@ -132,7 +132,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\IKeyboardStateInfo.cs" />
-    <Compile Include="Models\KeyValidStates.cs" />
+    <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
@@ -151,7 +151,7 @@
     <Compile Include="Observables\TriggerSignalSources\AggregateKeyFixationSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\KeyFixationSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\PointFixationSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\IFixationSource.cs" />
+    <Compile Include="Observables\TriggerSignalSources\IFixationTriggerSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\ITriggerSignalSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\MouseButtonDownUpSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\KeyboardKeyDownUpSource.cs" />

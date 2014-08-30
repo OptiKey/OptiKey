@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using JuliusSweetland.ETTA.Annotations;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels;
@@ -15,20 +17,22 @@ namespace JuliusSweetland.ETTA.UI.UserControls
 {
     public class Key : UserControl, INotifyPropertyChanged
     {
+        #region Ctor
+
         public Key()
         {
-            this.Loaded += OnLoaded;
+            Loaded += OnLoaded;
         }
+
+        #endregion
+
+        #region On Loaded
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
-            var mainViewModel = keyboardHost != null
-                ? keyboardHost.DataContext as MainViewModel
-                : null;
 
             if (keyboardHost != null
-                && mainViewModel != null
                 && !string.IsNullOrEmpty(Value.Key))
             {
                 /* 
@@ -39,29 +43,50 @@ namespace JuliusSweetland.ETTA.UI.UserControls
                 this.SetBinding(KeyDownStateProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", Value.Key)),
-                    Source = mainViewModel
+                    Source = keyboardHost.DataContext
                 });
 
                 var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
                 this.SetBinding(ShiftDownStateProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", shiftKey)),
-                    Source = mainViewModel
+                    Source = keyboardHost.DataContext
                 });
 
                 this.SetBinding(SelectionProgressProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
-                    Source = mainViewModel
+                    Source = keyboardHost.DataContext
                 });
 
-                this.SetBinding(IsValidProperty, new Binding
+                this.SetBinding(IsEnabledProperty, new Binding
                 {
-                    Path = new PropertyPath(string.Format("KeyValidStates[^{0}]", Value.Key)),
-                    Source = mainViewModel
+                    Path = new PropertyPath(string.Format("KeyEnabledStates[^{0}]", Value.Key)),
+                    Source = keyboardHost.DataContext
                 });
+
+                var mainViewModel = keyboardHost.DataContext as MainViewModel;
+
+                mainViewModel
+                    .OnPropertyChanges(p => p.KeySelection)
+                    .Where(kv => kv != null && kv.Value.Equals(Value))
+                    .Subscribe(kv =>
+                    {
+                        //TODO: View should handle this as an event, not a property changed notification
+                        /* 
+                         * Need to toggle the value as animations will not fire if the value has not changed. Should really be an event and consumed by an event trigger, but...
+                         * Attempted to trigger animation from routed event on this class - not accessible to child elements, e.g. TextBlock in Key template.
+                         * Attempted to trigger animation from CLR event on this class - interaction triggers required, but cannot be applied in a style, e.g. the style of a child text block element in the theme
+                         */
+                        Selection = true;
+                        Selection = false;
+                    });
             }
         }
+
+        #endregion
+
+        #region Properties
 
         public static readonly DependencyProperty KeyDownStateProperty =
             DependencyProperty.Register("KeyDownState", typeof(KeyDownStates), typeof(Key), new PropertyMetadata(default(KeyDownStates)));
@@ -101,6 +126,15 @@ namespace JuliusSweetland.ETTA.UI.UserControls
             get { return (bool) GetValue(IsShiftDownProperty); }
             set { SetValue(IsShiftDownProperty, value); }
         }
+
+        public static readonly DependencyProperty SelectionProperty =
+            DependencyProperty.Register("Selection", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+
+        public bool Selection
+        {
+            get { return (bool) GetValue(SelectionProperty); }
+            set { SetValue(SelectionProperty, value); }
+        }
         
         public static readonly DependencyProperty SelectionProgressProperty =
             DependencyProperty.Register("SelectionProgress", typeof (double), typeof (Key), new PropertyMetadata(default(double)));
@@ -109,15 +143,6 @@ namespace JuliusSweetland.ETTA.UI.UserControls
         {
             get { return (double) GetValue(SelectionProgressProperty); }
             set { SetValue(SelectionProgressProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsValidProperty =
-            DependencyProperty.Register("IsValid", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
-
-        public bool IsValid
-        {
-            get { return (bool) GetValue(IsValidProperty); }
-            set { SetValue(IsValidProperty, value); }
         }
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
@@ -221,6 +246,8 @@ namespace JuliusSweetland.ETTA.UI.UserControls
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+
+        #endregion
 
         #region OnPropertyChanged
 

@@ -7,7 +7,7 @@ using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 {
-    public class KeyFixationSource : ITriggerSignalSource, IFixationSource
+    public class KeyFixationSource : ITriggerSignalSource, IFixationTriggerSource
     {
         #region Fields
 
@@ -34,6 +34,8 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #endregion
 
         #region Properties
+
+        public KeyEnabledStates KeyEnabledStates { get; set; }
 
         public IObservable<TriggerSignal> Sequence
         {
@@ -74,9 +76,10 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                 if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points are eligable to initiate a fixation:
                                 {
                                     if (tps.All(t => t.Value.KeyValue != null)
-                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1)
+                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1
+                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value.Key]))
                                     {
-                                        //All buffered tps have the same key value
+                                        //All buffered tps have the same key value and that key is enabled
                                         var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
                                         var keyValue = tps.First().Value.KeyValue;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
@@ -85,10 +88,11 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                 }
                                 else
                                 {
-                                    //We are building a fixation based on a key value and the latest pointAndKeyValue is not on that key
+                                    //We are building a fixation based on a key value and the latest pointAndKeyValue is not on that key, or the key is now disabled
                                     if (fixationCentrePointAndKeyValue.Value.KeyValue != null
                                         && (latestPointAndKeyValue.Value.Value.KeyValue == null
-                                            || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)))
+                                            || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)
+                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value.Key])))
                                     {
                                         fixationCentrePointAndKeyValue = null;
                                         observer.OnNext(new TriggerSignal(null, 0, null));

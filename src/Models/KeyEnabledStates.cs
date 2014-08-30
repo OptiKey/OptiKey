@@ -8,7 +8,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
 {
-    public class KeyValidStates : BindableBase
+    public class KeyEnabledStates : BindableBase
     {
         #region Fields
 
@@ -18,7 +18,7 @@ namespace JuliusSweetland.ETTA.Models
 
         #region Ctor
 
-        public KeyValidStates(IKeyboardStateInfo keyboardStateInfo)
+        public KeyEnabledStates(IKeyboardStateInfo keyboardStateInfo)
         {
             this.keyboardStateInfo = keyboardStateInfo;
 
