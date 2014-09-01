@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media.Animation;
-using JuliusSweetland.ETTA.UI.UserControls;
+using JuliusSweetland.ETTA.UI.Controls;
 
 namespace JuliusSweetland.ETTA.UI.Behaviours
 {

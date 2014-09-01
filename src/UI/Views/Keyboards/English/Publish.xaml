@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
-             xmlns:userControls="clr-namespace:JuliusSweetland.ETTA.UI.UserControls"
              xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
+             xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -46,274 +46,274 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <userControls:Key Grid.Row="0" Grid.Column="0" />
-        <userControls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="0" Grid.Column="0" />
+        <controls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                           Text="F1"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F1}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
                           Text="F2"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F2}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
                           Text="F3"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F3}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="2"
                           Text="F4"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F4}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="2"
                           Text="F5"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F5}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
                           Text="F6"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F6}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
                           Text="F7"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F7}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="2"
                           Text="F8"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F8}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="2"
                           Text="F9"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F9}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="19" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="19" Grid.ColumnSpan="2"
                           Text="F10"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F10}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="21" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="21" />
 
-        <userControls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                           Text="PRNT&#x0a;SCR"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PrintScreen}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                           Text="SCR&#x0a;LK"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollLock}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
                           Text="NUM&#x0a;LK"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumberLock}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
                           Text="MENU"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Menu}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" />
-        <userControls:Key Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource UpArrowIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowUp}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" />
-        <userControls:Key Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="2"
                           Text="BREAK"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Break}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
                           Text="F11"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F11}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
                           Text="F12"
                           SharedSizeGroup="FunctionKey">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F12}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource MoreIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoreKeyboard}" />
-            </userControls:Key.Value>
-        </userControls:Key>
+            </controls:Key.Value>
+        </controls:Key>
 
-        <userControls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                           Text="INS"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Insert}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                           Text="HOME"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Home}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                           Text="PG&#x0a;UP"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgUp}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" />
-        <userControls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource LeftArrowIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowLeft}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource DownArrowIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowDown}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource RightArrowIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowRight}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" />
-        <userControls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource BackOneIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
                           SymbolGeometry="{StaticResource BackManyIcon}"
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                           Text="ABC"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
-            </userControls:Key.Value>
-        </userControls:Key>
+            </controls:Key.Value>
+        </controls:Key>
 
-        <userControls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                           Text="DEL"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Delete}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                           Text="END"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.End}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                           Text="PG&#x0a;DN"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgDn}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                           Text="ESC"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Escape}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="6"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="6"
                           SymbolGeometry="{StaticResource SpaceIcon}"
                           WidthSpan="3" 
                           SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue String=" " />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
                           Text="SLCT&#x0a;ALL"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SelectAll}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
                           Text="CUT"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Cut}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
                           Text="COPY"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Copy}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                           Text="PASTE"
                           SharedSizeGroup="KeyWithDescription">
-            <userControls:Key.Value>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Paste}" />
-            </userControls:Key.Value>
-        </userControls:Key>
+            </controls:Key.Value>
+        </controls:Key>
     </Grid>
 </UserControl>

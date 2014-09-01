@@ -5,14 +5,12 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Interop;
-using System.Windows.Media;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.UI.Utilities;
 using log4net;
 
-namespace JuliusSweetland.ETTA.UI.UserControls
+namespace JuliusSweetland.ETTA.UI.Controls
 {
     public class KeyboardHost : ContentControl
     {

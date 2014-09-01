@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +12,7 @@ using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels;
 
-namespace JuliusSweetland.ETTA.UI.UserControls
+namespace JuliusSweetland.ETTA.UI.Controls
 {
     public class Key : UserControl, INotifyPropertyChanged
     {

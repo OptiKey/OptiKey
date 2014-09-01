@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
-             xmlns:userControls="clr-namespace:JuliusSweetland.ETTA.UI.UserControls"
              xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
              xmlns:valueConverters="clr-namespace:JuliusSweetland.ETTA.UI.ValueConverters"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"             
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -53,157 +53,160 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <userControls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource SuggestionLeftIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+        <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SuggestionLeftIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>0</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion1" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>1</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion2" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>2</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion3" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>3</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion4" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>4</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion5" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="3"
-                          SharedSizeGroup="KeyWithSuggestion">
-            <userControls:Key.Text>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="3"
+                      SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=userControls:KeyboardHost}" />
+                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>5</system:Int32>
                         </Binding.Source>
                     </Binding>
                 </MultiBinding>
-            </userControls:Key.Text>
-            <userControls:Key.Value>
+            </controls:Key.Text>
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="Suggestion6" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="0" Grid.Column="20" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource SuggestionRightIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SuggestionRightIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
-            </userControls:Key.Value>
-        </userControls:Key>
+            </controls:Key.Value>
+        </controls:Key>
 
-        <userControls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource AddPhraseIcon}" 
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+        <controls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource AddPhraseIcon}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddPhraseToDictionary}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource ClearIcon}" 
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource ClearIcon}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearOutput}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Scratchpad Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="14" />
-        <userControls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource SpeakIcon}" 
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            </controls:Key.Value>
+        </controls:Key>
+        
+        <controls:Scratchpad Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="14"
+                             Text="{Binding DataContext.Output, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
+
+        <controls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SpeakIcon}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
-            </userControls:Key.Value>
-        </userControls:Key>
-        <userControls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource PublishIcon}" 
-                          SharedSizeGroup="KeyWithSymbol">
-            <userControls:Key.Value>
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource PublishIcon}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.TogglePublish}" />
-            </userControls:Key.Value>
-        </userControls:Key>
+            </controls:Key.Value>
+        </controls:Key>
     </Grid>
 </UserControl>

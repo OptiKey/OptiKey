@@ -53,6 +53,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             SelectionMode = SelectionModes.Key;
 
+            Keyboard = new Alpha();
+
             keySelectionProgress = new NotifyingConcurrentDictionary<double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
@@ -69,7 +71,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.CurrentPosition += (o, tuple) =>
             {
-                //It's ok to publish CurrentPosition over an invalid key so don't bother checking for validity
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
             };
@@ -142,7 +143,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public IInputService InputService { get { return inputService; } }
 
-        public IKeyboard Keyboard { get { return null; } }
+        private IKeyboard keyboard;
+        public IKeyboard Keyboard
+        {
+            get { return keyboard; }
+            set { SetProperty(ref keyboard, value); }
+        }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
         {
