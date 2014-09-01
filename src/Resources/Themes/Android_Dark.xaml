@@ -12,7 +12,7 @@
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
-            <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource Black}" />
 
             <SolidColorBrush x:Key="KeyHoverForegroundBrush" Color="{StaticResource Red}" />
@@ -20,26 +20,26 @@
             <SolidColorBrush x:Key="CapturingMultiKeySelectionBrush" Color="{StaticResource Red}" />
 
             <StaticResource x:Key="KeySelectionForeground" ResourceKey="Blue"/>
-            <StaticResource x:Key="KeySelectionBorder" ResourceKey="Gray"/>
-            <StaticResource x:Key="KeySelectionBackground" ResourceKey="Gray"/>
+            <StaticResource x:Key="KeySelectionBorder" ResourceKey="Grey"/>
+            <StaticResource x:Key="KeySelectionBackground" ResourceKey="Grey"/>
 
             <SolidColorBrush x:Key="KeyDownStateIsOnForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeyDownStateIsOnBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDownStateIsOnBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsOnBackgroundBrush" Color="{StaticResource Black}" />
 
             <SolidColorBrush x:Key="KeyDownStateIsLockForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsLockBackgroundBrush" Color="{StaticResource Black}" />
 
-            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Gray}" />
-            <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Black}" />
-            <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Gray}" />
+            <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />

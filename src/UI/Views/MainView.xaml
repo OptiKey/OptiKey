@@ -5,19 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:keyboardsEnglish="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/ResourceDictionaries/KeyboardHostResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        <controls:KeyboardHost PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
-            <keyboardsEnglish:Alpha DataContext="{Binding Keyboard}" />
-            <!--<keyboardsEnglish:Output NumberOfSuggestionsDisplayed="{Binding DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=userControls:KeyboardHost}, Mode=OneWayToSource}" />-->
+        <controls:KeyboardHost Grid.Row="0" 
+                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}"
+                               ContentTemplateSelector="{StaticResource KeyboardDataTemplateSelector}">
+            <ContentControl.Content>
+                <MultiBinding Converter="{StaticResource KeyboardDataTemplateCriteriaCreator}" Mode="OneWay">
+                    <Binding Source="{x:Static properties:Settings.Default}" Path="Language" />
+                    <Binding Path="Keyboard" />
+                </MultiBinding>
+            </ContentControl.Content>
         </controls:KeyboardHost>
         
         <Grid Grid.Row="1">
