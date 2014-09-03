@@ -6,6 +6,7 @@
              xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
+             xmlns:english="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -21,10 +22,12 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <controls:KeyboardHost Grid.Row="0" 
                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}"
-                               ContentTemplateSelector="{StaticResource KeyboardDataTemplateSelector}">
+                               ContentTemplateSelector="{StaticResource KeyboardDataTemplateSelector}"
+                               HorizontalContentAlignment="Stretch"
+                               VerticalContentAlignment="Stretch">
             <ContentControl.Content>
                 <MultiBinding Converter="{StaticResource KeyboardDataTemplateCriteriaCreator}" Mode="OneWay">
                     <Binding Source="{x:Static properties:Settings.Default}" Path="Language" />

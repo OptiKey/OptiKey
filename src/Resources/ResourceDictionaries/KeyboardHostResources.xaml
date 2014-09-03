@@ -25,34 +25,19 @@
     </DataTemplate>
 
     <DataTemplate x:Key="KeyboardEnglishAlpha">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <english:Output Grid.Row="0" 
-                            NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
-            <english:Alpha Grid.Row="1" 
-                           DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        </Grid>
+        <english:Alpha DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
     </DataTemplate>
+    
     <DataTemplate x:Key="KeyboardEnglishNumericAndSymbols1">
-        <StackPanel Orientation="Vertical">
-            <english:Output NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
-            <english:NumericAndSymbols1 DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        </StackPanel>
+        <english:NumericAndSymbols1 DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
     </DataTemplate>
+    
     <DataTemplate x:Key="KeyboardEnglishSymbols2">
-        <StackPanel Orientation="Vertical">
-            <english:Output NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
-            <english:Symbols2 DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        </StackPanel>
+        <english:Symbols2 DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
     </DataTemplate>
+    
     <DataTemplate x:Key="KeyboardEnglishPublish">
-        <StackPanel Orientation="Vertical">
-            <english:Output NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
-            <english:Publish DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        </StackPanel>
+        <english:Publish DataContext="{Binding Path=DataContext.Keyboard, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
     </DataTemplate>
 
     <dataTemplateSelectors:KeyboardDataTemplateSelector x:Key="KeyboardDataTemplateSelector"

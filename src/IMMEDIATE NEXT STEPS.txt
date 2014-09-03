@@ -1,3 +1,6 @@
-﻿Combine output and keyboards which use output together
-
-Expose keyboard based on bound keyboard and language, i.e. MainVM exposes Alpha class and the result is Alpha_English + output control
+﻿Change keyboard based on selections
+Wire up Publish button down state to setting
+Wire up MultiKeySelection button down state to setting
+Thicken up AddPhrase icon
+Make left right suggestion icons smaller/hollow
+Make Win icon smaller/hollow

@@ -37,9 +37,9 @@
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
-            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
 
@@ -82,7 +82,7 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Valid-->
+                    <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -121,7 +121,7 @@
                         <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Valid-->
+                    <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -166,7 +166,7 @@
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
 
-                    <!--Is Key Valid-->
+                    <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
                     </DataTrigger>
@@ -205,7 +205,7 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Valid-->
+                    <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
@@ -223,7 +223,7 @@
                 </Setter>
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Style.Triggers>
-                    <!--Is Key Valid-->
+                    <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
