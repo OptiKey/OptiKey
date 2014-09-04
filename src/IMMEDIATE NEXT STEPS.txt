@@ -1,6 +1,3 @@
 ﻿Change keyboard based on selections
 Wire up Publish button down state to setting
 Wire up MultiKeySelection button down state to setting
-Thicken up AddPhrase icon
-Make left right suggestion icons smaller/hollow
-Make Win icon smaller/hollow
