@@ -11,7 +11,7 @@ Fonts, icons and other artwork:
   MultiKeySelection icon: Connection by Brenda Castro Pelayo from thenounproject.com
   Publish icon: Modern UI Icons - appbar.stream from Modern UI Icons - modernuiicons.com
   Speak icon: appbar.speakerphone from Modern UI Icons - modernuiicons.com
-  Clear icon: Close designed by Icomatic from thenounproject.com
+  Clear icon: Trash designed by Garrett Knoll from thenounproject.com
   Add Phrase icon: Add Comment designed by Andrew Sivko from thenounproject.com
   More icon: Dots designed by Alex S. Lakas from thenounproject.com
   Left & Right Arrow icons: Arrow designed by Stefan Parnarov from thenounproject.com

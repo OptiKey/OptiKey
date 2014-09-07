@@ -81,9 +81,9 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     {
                                         //All buffered tps have the same key value and that key is enabled
                                         var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
-                                        var keyValue = tps.First().Value.KeyValue;
+                                        var keyValue = tps.Last().Value.KeyValue;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
-                                        fixationStart = tps.First().Timestamp;
+                                        fixationStart = tps.Last().Timestamp;
                                     }
                                 }
                                 else

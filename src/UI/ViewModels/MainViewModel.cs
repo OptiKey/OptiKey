@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
@@ -113,14 +114,22 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.SelectionResult += (o, tuple) =>
             {
-                if (tuple.Item2 != null || tuple.Item3 != null)
+                var points = tuple.Item1;
+                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
+                    ? new KeyValue {FunctionKey = tuple.Item2, String = tuple.Item3}
+                    : (KeyValue?)null;
+                var multiKeySelection = tuple.Item4;
+
+                //TODO: Display debugging set of points
+
+                if (SelectionMode == SelectionModes.Key
+                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
                 {
-                    var keyValue = new KeyValue {FunctionKey = tuple.Item2, String = tuple.Item3};
-                    //TODO: Display debugging set of points
-
-                    //TODO: Handle selection result, i.e. the actual thing to use
-
-                    //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
+                    KeySelectionResult(singleKeyValue, multiKeySelection);
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    //TODO: Handle point selection result
                 }
             };
 
@@ -129,6 +138,35 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 //TODO: Handle errors
                 //Log.Debug(string.Format("ERROR. Exception message:{0}", exception.Message));
             };
+        }
+
+        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
+        {
+            if (singleKeyValue != null
+                && singleKeyValue.Value.FunctionKey != null)
+            {
+                switch (singleKeyValue.Value.FunctionKey)
+                {
+                    case FunctionKeys.AlphaKeyboard:
+                        Keyboard = new Alpha();
+                        break;
+
+                    case FunctionKeys.NumericAndSymbols1Keyboard:
+                        Keyboard = new NumericAndSymbols1();
+                        break;
+
+                    case FunctionKeys.Symbols2Keyboard:
+                        Keyboard = new Symbols2();
+                        break;
+
+                    case FunctionKeys.PublishKeyboard:
+                        Keyboard = new Publish();
+                        break;
+                }
+            }
+
+            //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
+
         }
 
         #endregion

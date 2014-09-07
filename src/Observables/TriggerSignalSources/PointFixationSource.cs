@@ -87,7 +87,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                         }))
                                     {
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
-                                        fixationStart = points.First().Timestamp;
+                                        fixationStart = points.Last().Timestamp;
                                     }
                                 }
                                 else

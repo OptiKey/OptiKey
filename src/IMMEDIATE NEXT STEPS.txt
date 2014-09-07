@@ -1,3 +1,4 @@
-﻿Change keyboard based on selections
+﻿Investigate why keyboard transitions are so slow
 Wire up Publish button down state to setting
 Wire up MultiKeySelection button down state to setting
+TEST THE ABOVE BEFORE STARTING THIS: Configure a 'reset period' for fixation triggers after registering a selection - allows user to redirect their attention to the next selection - FixationTriggerRestAfterSelection

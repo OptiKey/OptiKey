@@ -60,6 +60,7 @@
         AlphaKeyboard,
         NumericAndSymbols1Keyboard,
         Symbols2Keyboard,
-        MoreKeyboard
+        MoreKeyboard,
+        PublishKeyboard
     }
 }
