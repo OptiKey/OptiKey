@@ -87,11 +87,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2 * 100);
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2 * 100);
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
                     }
                 }
             };

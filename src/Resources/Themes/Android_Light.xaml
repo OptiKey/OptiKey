@@ -4,7 +4,6 @@
                     xmlns:valueConverters="clr-namespace:JuliusSweetland.ETTA.UI.ValueConverters"
                     xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
                     xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
-                    xmlns:wpfCircularProgressBar="clr-namespace:WpfCircularProgressBar;assembly=WpfCircularProgressBar"
                     xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Android.xaml" />
@@ -82,7 +81,7 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -121,7 +120,7 @@
                         <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -142,31 +141,17 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="SelectionProgressStyle" TargetType="{x:Type ProgressBar}">
+            <Style x:Key="SelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+                <Setter Property="Fill" Value="{StaticResource KeySelectionProgressBrush}" />
+                <Setter Property="MaxValue" Value="1" />
                 <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="ProgressBar">
-                            <Grid>
-                                <wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
-                                    <wpfCircularProgressBar:CircularProgressBarViewModel HoleSizeFactor="0.75"/>
-                                </wpfCircularProgressBar:CircularProgressBarViewModel.Attach>
-
-                                <wpfCircularProgressBar:PiePiece 
-                                    CentreX="{Binding CentreX}" CentreY="{Binding CentreY}"
-                                    RotationAngle="0" WedgeAngle="{Binding Angle}"
-                                    Radius="{Binding Radius}" Fill="{StaticResource KeySelectionProgressBrush}"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
                 <Style.Triggers>
                     <!--Progress is 0-->
                     <Trigger Property="Value" Value="0">
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
                     </DataTrigger>
@@ -205,7 +190,7 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
+                    <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
@@ -223,7 +208,7 @@
                 </Setter>
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Style.Triggers>
-                    <!--Is Key Enabled-->
+                    <!--Is Key Valid-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
@@ -276,8 +261,8 @@
                                                     <ColumnDefinition Width="4*" />
                                                     <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
-                                                <ProgressBar Grid.ColumnSpan="3"
-                                                             Style="{StaticResource SelectionProgressStyle}" />
+                                                <controls:ProgressPie Grid.ColumnSpan="3" 
+                                                                      Style="{StaticResource SelectionProgressStyle}" />
                                                 <Viewbox Grid.Column="1">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -306,8 +291,8 @@
                         <ControlTemplate TargetType="{x:Type controls:Scratchpad}">
                             <Border Style="{StaticResource ScratchpadBorderStyle}">
                                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
-                                          behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{Binding DataContext.Output, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}">
-                                    <TextBlock Text="{Binding DataContext.Output, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}"
+                                          behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
+                                    <TextBlock Text="{TemplateBinding Text}"
                                                HorizontalAlignment="Stretch"
                                                FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontFamily}"
                                                FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontWeight}"

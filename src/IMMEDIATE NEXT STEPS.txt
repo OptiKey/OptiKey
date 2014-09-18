@@ -1,4 +1,6 @@
-﻿Investigate why keyboard transitions are so slow
+﻿Investigate why keyboard transitions are so slow & map is missing for a lot of keys - connected? Able to repair mapping by resizing window.
+	Map is not of current keyboard - needs to be set to null on content change, and then set properly when content loaded
+	Find other causes of UI thread lock up/non-responsive
 Wire up Publish button down state to setting
 Wire up MultiKeySelection button down state to setting
 TEST THE ABOVE BEFORE STARTING THIS: Configure a 'reset period' for fixation triggers after registering a selection - allows user to redirect their attention to the next selection - FixationTriggerRestAfterSelection

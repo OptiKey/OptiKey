@@ -105,9 +105,6 @@
     <Reference Include="WindowsInput">
       <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
-    <Reference Include="WpfCircularProgressBar">
-      <HintPath>..\packages\WpfCircularProgressBar.1.0.0\WpfCircularProgressBar.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -171,6 +168,7 @@
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
     <Compile Include="UI\Behaviours\WindowAlwaysOnTopBehavior.cs" />
+    <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />
     <Compile Include="UI\DataTemplateSelectors\KeyboardDataTemplateSelector.cs" />
