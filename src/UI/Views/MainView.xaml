@@ -6,7 +6,6 @@
              xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
-             xmlns:english="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>

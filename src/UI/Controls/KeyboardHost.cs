@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
@@ -24,15 +25,13 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         public KeyboardHost()
         {
-            DependencyPropertyDescriptor.FromProperty(ContentProperty, typeof(KeyboardHost)).AddValueChanged(this, ContentChanged);
-            
             Loaded += OnLoaded;
         }
 
         #endregion
 
         #region Properties
-        
+
         public static readonly DependencyProperty PointToKeyValueMapProperty =
             DependencyProperty.Register("PointToKeyValueMap", typeof(Dictionary<Rect, KeyValue>),
                 typeof(KeyboardHost), new PropertyMetadata(default(Dictionary<Rect, KeyValue>)));
@@ -53,7 +52,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
             BuildPointToKeyMap();
 
-            BuildOfPointToKeyValueMapOnSizeChanged();
+            RebuildPointToKeyValueMapOnSizeChanged();
 
             var parentWindow = Window.GetWindow(this);
 
@@ -62,20 +61,31 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 throw new ApplicationException("Parent Window could not be identified. Unable to continue");
             }
 
-            BuildPointToKeyValueMapOnParentWindowMove(parentWindow);
+            RebuildPointToKeyValueMapOnParentWindowMove(parentWindow);
+
+            Loaded -= OnLoaded; //Ensure this logic only runs once
         }
 
         #endregion
 
         #region Content Changed
 
-        private void ContentChanged(object sender, EventArgs e)
+        protected override void OnContentChanged(object oldContent, object newContent)
         {
-            var keyboardHost = sender as KeyboardHost;
-            if (keyboardHost != null)
-            {
-                keyboardHost.BuildPointToKeyMap();
-            }
+            Debug.Print("*** KeyboardHost: ContentChanged");
+            base.OnContentChanged(oldContent, newContent);
+        }
+
+        protected override void OnContentTemplateChanged(DataTemplate oldContentTemplate, DataTemplate newContentTemplate)
+        {
+            Debug.Print("*** KeyboardHost: OnContentTemplateChanged");
+            base.OnContentTemplateChanged(oldContentTemplate, newContentTemplate);
+        }
+
+        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        {
+            Debug.Print("*** KeyboardHost: OnTemplateChanged");
+            base.OnTemplateChanged(oldTemplate, newTemplate);
         }
 
         #endregion
@@ -112,7 +122,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
         
         #region Size Changed
 
-        private void BuildOfPointToKeyValueMapOnSizeChanged()
+        private void RebuildPointToKeyValueMapOnSizeChanged()
         {
             Observable.FromEventPattern<SizeChangedEventHandler, SizeChangedEventArgs>
                 (h => this.SizeChanged += h,
@@ -130,7 +140,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         #region Window Move
 
-        private void BuildPointToKeyValueMapOnParentWindowMove(Window parentWindow)
+        private void RebuildPointToKeyValueMapOnParentWindowMove(Window parentWindow)
         {
             //This event will also fire if the window is mimised, restored, or maximised, so no need to monitor StateChanged
             Observable.FromEventPattern<EventHandler, EventArgs>

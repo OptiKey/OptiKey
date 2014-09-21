@@ -1,5 +1,5 @@
 ﻿Investigate why keyboard transitions are so slow & map is missing for a lot of keys - connected? Able to repair mapping by resizing window.
-	Map is not of current keyboard - needs to be set to null on content change, and then set properly when content loaded
+	Map is not of current keyboard - needs to be set to null on content change, and then set properly when content loaded - REMEMBER TO UNHOOK LOADED EVENT AFTER 1st FIRING
 	Find other causes of UI thread lock up/non-responsive
 Wire up Publish button down state to setting
 Wire up MultiKeySelection button down state to setting
