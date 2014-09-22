@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.Utilities;
+using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 
 namespace JuliusSweetland.ETTA.UI.Controls
@@ -25,12 +26,33 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         public KeyboardHost()
         {
+            Settings.Default.OnPropertyChanges(s => s.Language)
+                            .Subscribe(_ => GenerateContent());
+
             Loaded += OnLoaded;
         }
 
         #endregion
 
         #region Properties
+
+        public static readonly DependencyProperty KeyboardProperty =
+            DependencyProperty.Register("Keyboard", typeof (IKeyboard), typeof (KeyboardHost),
+                new PropertyMetadata(default(IKeyboard),
+                    (o, args) =>
+                    {
+                        var keyboardHost = o as KeyboardHost;
+                        if (keyboardHost != null)
+                        {
+                            keyboardHost.GenerateContent();
+                        }
+                    }));
+
+        public IKeyboard Keyboard
+        {
+            get { return (IKeyboard) GetValue(KeyboardProperty); }
+            set { SetValue(KeyboardProperty, value); }
+        }
 
         public static readonly DependencyProperty PointToKeyValueMapProperty =
             DependencyProperty.Register("PointToKeyValueMap", typeof(Dictionary<Rect, KeyValue>),
@@ -42,6 +64,15 @@ namespace JuliusSweetland.ETTA.UI.Controls
             set { SetValue(PointToKeyValueMapProperty, value); }
         }
 
+        public static readonly DependencyProperty ErrorContentProperty =
+            DependencyProperty.Register("ErrorContent", typeof (object), typeof (KeyboardHost), new PropertyMetadata(default(object)));
+
+        public object ErrorContent
+        {
+            get { return GetValue(ErrorContentProperty); }
+            set { SetValue(ErrorContentProperty, value); }
+        }
+
         #endregion
 
         #region OnLoaded - build key map
@@ -50,49 +81,76 @@ namespace JuliusSweetland.ETTA.UI.Controls
         {
             Log.Debug("Rebuilding Point To Key Value Map");
 
-            BuildPointToKeyMap();
+            RebuildPointToKeyMap();
 
-            RebuildPointToKeyValueMapOnSizeChanged();
+            SubscribeToSizeChanges();
 
             var parentWindow = Window.GetWindow(this);
-
-            if (parentWindow == null)
-            {
-                throw new ApplicationException("Parent Window could not be identified. Unable to continue");
-            }
-
-            RebuildPointToKeyValueMapOnParentWindowMove(parentWindow);
+            if (parentWindow == null) throw new ApplicationException("Parent Window could not be identified. Unable to continue");
+            SubscribeToParentWindowMoves(parentWindow);
 
             Loaded -= OnLoaded; //Ensure this logic only runs once
         }
 
         #endregion
 
-        #region Content Changed
+        #region Generate Content
 
-        protected override void OnContentChanged(object oldContent, object newContent)
+        private void GenerateContent()
         {
-            Debug.Print("*** KeyboardHost: ContentChanged");
-            base.OnContentChanged(oldContent, newContent);
-        }
+            object newContent = ErrorContent;
 
-        protected override void OnContentTemplateChanged(DataTemplate oldContentTemplate, DataTemplate newContentTemplate)
-        {
-            Debug.Print("*** KeyboardHost: OnContentTemplateChanged");
-            base.OnContentTemplateChanged(oldContentTemplate, newContentTemplate);
-        }
+            switch (Settings.Default.Language)
+            {
+                case Languages.AmericanEnglish:
+                case Languages.BritishEnglish:
+                case Languages.CanadianEnglish:
+                    if (Keyboard is Alpha)
+                    {
+                        newContent = new Views.Keyboards.English.Alpha { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is NumericAndSymbols1)
+                    {
+                        newContent = new Views.Keyboards.English.NumericAndSymbols1 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Symbols2)
+                    {
+                        newContent = new Views.Keyboards.English.Symbols2 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Publish)
+                    {
+                        newContent = new Views.Keyboards.English.Publish { DataContext = Keyboard };
+                    }
+                    break;
+            }
 
-        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
-        {
-            Debug.Print("*** KeyboardHost: OnTemplateChanged");
-            base.OnTemplateChanged(oldTemplate, newTemplate);
+            var contentAsFrameworkElement = newContent as FrameworkElement;
+            if (contentAsFrameworkElement != null)
+            {
+                if (contentAsFrameworkElement.IsLoaded)
+                {
+                    RebuildPointToKeyMap();
+                }
+                else
+                {
+                    RoutedEventHandler loaded = null;
+                    loaded = (sender, args) =>
+                    {
+                        RebuildPointToKeyMap();
+                        contentAsFrameworkElement.Loaded -= loaded;
+                    };
+                    contentAsFrameworkElement.Loaded += loaded;
+                }
+            }
+
+            Content = newContent;
         }
 
         #endregion
 
-        #region Build Point To Key Map
+        #region Rebuild Point To Key Map
 
-        private void BuildPointToKeyMap()
+        private void RebuildPointToKeyMap()
         {
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
 
@@ -119,28 +177,28 @@ namespace JuliusSweetland.ETTA.UI.Controls
         }
 
         #endregion
-        
-        #region Size Changed
 
-        private void RebuildPointToKeyValueMapOnSizeChanged()
+        #region Subscribe To Siz eChanges
+
+        private void SubscribeToSizeChanges()
         {
             Observable.FromEventPattern<SizeChangedEventHandler, SizeChangedEventArgs>
-                (h => this.SizeChanged += h,
-                h => this.SizeChanged -= h)
+                (h => SizeChanged += h,
+                h => SizeChanged -= h)
                 .Throttle(TimeSpan.FromSeconds(0.1))
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
                     Log.Debug("SizeChanged event detected - Point To Key Value Map");
-                    BuildPointToKeyMap();
+                    RebuildPointToKeyMap();
                 });
         }
 
         #endregion
 
-        #region Window Move
+        #region Subscribe To Parent Window Moves
 
-        private void RebuildPointToKeyValueMapOnParentWindowMove(Window parentWindow)
+        private void SubscribeToParentWindowMoves(Window parentWindow)
         {
             //This event will also fire if the window is mimised, restored, or maximised, so no need to monitor StateChanged
             Observable.FromEventPattern<EventHandler, EventArgs>
@@ -151,7 +209,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 .Subscribe(_ =>
                 {
                     Log.Debug("Window's LocationChanged event detected - Rebuilding Point To Key Value Map");
-                    BuildPointToKeyMap();
+                    RebuildPointToKeyMap();
                 });
         }
 

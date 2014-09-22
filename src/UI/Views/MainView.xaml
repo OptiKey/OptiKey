@@ -8,14 +8,6 @@
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Resources/ResourceDictionaries/KeyboardHostResources.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-        
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,16 +15,29 @@
         </Grid.RowDefinitions>
 
         <controls:KeyboardHost Grid.Row="0" 
-                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}"
-                               ContentTemplateSelector="{StaticResource KeyboardDataTemplateSelector}"
-                               HorizontalContentAlignment="Stretch"
-                               VerticalContentAlignment="Stretch">
-            <ContentControl.Content>
-                <MultiBinding Converter="{StaticResource KeyboardDataTemplateCriteriaCreator}" Mode="OneWay">
-                    <Binding Source="{x:Static properties:Settings.Default}" Path="Language" />
-                    <Binding Path="Keyboard" />
-                </MultiBinding>
-            </ContentControl.Content>
+                               Keyboard="{Binding Keyboard, Mode=OneWay}"
+                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+                               <!--HorizontalContentAlignment="Stretch"
+                               VerticalContentAlignment="Stretch">-->
+            <controls:KeyboardHost.ErrorContent>
+                <Border Background="Black">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" >
+                            <TextBlock Text="PROBLEM LOADING KEYBOARD" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Foreground="DarkRed" 
+                               Margin="10" />
+                            <TextBlock Text="The current keyboard &amp; language combination is not valid"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               Foreground="DarkRed" 
+                               Margin="10" />
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+            </controls:KeyboardHost.ErrorContent>
         </controls:KeyboardHost>
         
         <Grid Grid.Row="1">

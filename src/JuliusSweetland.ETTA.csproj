@@ -129,7 +129,6 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\IKeyboardStateInfo.cs" />
-    <Compile Include="Models\KeyboardDataTemplateCriteria.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
@@ -171,10 +170,8 @@
     <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />
-    <Compile Include="UI\DataTemplateSelectors\KeyboardDataTemplateSelector.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\ValueConverters\KeyboardDataTemplateCriteriaCreator.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Publish.cs" />
@@ -308,10 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Icons\KeySymbols.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ResourceDictionaries\KeyboardHostResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
