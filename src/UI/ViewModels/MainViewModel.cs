@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.UI.Controls;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
@@ -60,6 +58,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //Init state properties
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
+            //KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key].Value = Enums.KeyDownStates.On;
             
             //Apply settings and subscribe to setting changes
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
@@ -188,6 +187,16 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.ToggleMultiKeySelectionSupported:
                         Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
+                        break;
+
+                    case FunctionKeys.Shift:
+                        var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
+                        KeyDownStates[shiftKey].Value =
+                            KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
+                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
+                                : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
+                                    ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
+                                    : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
                         break;
                 }
             }
