@@ -237,6 +237,7 @@
     <Content Include="Resources\Icons\Source Files\RightArrow.svg" />
     <Content Include="Resources\Icons\Source Files\Speak.svg" />
     <Content Include="Resources\Icons\Source Files\UpArrow.svg" />
+    <Content Include="Resources\Icons\Source Files\Win.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />

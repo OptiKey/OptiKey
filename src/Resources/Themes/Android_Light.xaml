@@ -131,7 +131,7 @@
                 <Setter Property="Visibility" Value="Hidden" />
                 <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                 <Setter Property="Stretch" Value="Uniform" />
-                <Setter Property="Margin" Value="2" />
+                <Setter Property="Margin" Value="10,2,10,2" />
                 <Setter Property="Data" Value="{StaticResource LockBarIcon}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of Lock-->

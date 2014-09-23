@@ -27,8 +27,7 @@ namespace JuliusSweetland.ETTA.Models
             keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
             
-            Settings.Default.OnPropertyChanges(settings => settings.PublishingKeys)
-                .Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion

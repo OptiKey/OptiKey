@@ -8,6 +8,7 @@ using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.UI.Controls;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
@@ -16,25 +17,25 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 {
     public class MainViewModel : BindableBase, IKeyboardStateInfo
     {
-        private readonly IInputService inputService;
-
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
+        private readonly IInputService inputService;
+        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
+        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
+        private readonly KeyEnabledStates keyEnabledStates;
 
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
-        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
-        private readonly KeyEnabledStates keyEnabledStates;
-
+        
         #endregion
 
         #region Ctor
 
-        public MainViewModel(IInputService inputService)
+        public MainViewModel(IInputService inputSvc)
         {
             //TESTING START
             Suggestions = new List<string>
@@ -42,24 +43,42 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
 
-            Observable.Interval(TimeSpan.FromSeconds(3))
-                .SubscribeOnDispatcher()
-                .Subscribe(i =>
-                {
-                    Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
-                });
+            //Observable.Interval(TimeSpan.FromSeconds(3))
+            //    .SubscribeOnDispatcher()
+            //    .Subscribe(i =>
+            //    {
+            //        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+            //    });
             //TESTING END
 
-            this.inputService = inputService;
-
-            SelectionMode = SelectionModes.Key;
-
-            Keyboard = new Alpha();
-
+            //Init readonly fields
+            inputService = inputSvc;
             keySelectionProgress = new NotifyingConcurrentDictionary<double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
+            
+            //Init state properties
+            SelectionMode = SelectionModes.Key;
+            Keyboard = new Alpha();
+            
+            //Apply settings and subscribe to setting changes
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
+                Settings.Default.PublishingKeys ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off;
 
+            Settings.Default.OnPropertyChanges(s => s.PublishingKeys)
+                .Subscribe(pk => 
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
+                        pk ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off);
+
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
+                Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off;
+
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
+                .Subscribe(mkss =>
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
+                        mkss ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off);
+            
+            //Init input service properties
             inputService.KeyEnabledStates = keyEnabledStates;
 
             inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
@@ -161,6 +180,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.PublishKeyboard:
                         Keyboard = new Publish();
+                        break;
+
+                    case FunctionKeys.TogglePublish:
+                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+                        break;
+
+                    case FunctionKeys.ToggleMultiKeySelectionSupported:
+                        Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
                         break;
                 }
             }
