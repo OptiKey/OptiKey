@@ -167,6 +167,7 @@
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
     <Compile Include="UI\Behaviours\WindowAlwaysOnTopBehavior.cs" />
+    <Compile Include="UI\Controls\PointVisualiser.cs" />
     <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />

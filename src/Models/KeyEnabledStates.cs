@@ -58,7 +58,7 @@ namespace JuliusSweetland.ETTA.Models
                 if (key == new KeyValue { FunctionKey = FunctionKeys.NextSuggestions }.Key
                     && (keyboardStateInfo.Suggestions == null
                         || !keyboardStateInfo.Suggestions.Any()
-                        || keyboardStateInfo.Suggestions.Count > ((keyboardStateInfo.SuggestionsPage * keyboardStateInfo.SuggestionsPerPage) + keyboardStateInfo.SuggestionsPerPage)))
+                        || keyboardStateInfo.Suggestions.Count <= ((keyboardStateInfo.SuggestionsPage * keyboardStateInfo.SuggestionsPerPage) + keyboardStateInfo.SuggestionsPerPage)))
                 {
                     return false;
                 }

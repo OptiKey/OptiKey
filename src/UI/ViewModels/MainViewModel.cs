@@ -62,20 +62,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Apply settings and subscribe to setting changes
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
-                Settings.Default.PublishingKeys ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off;
+                Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
 
             Settings.Default.OnPropertyChanges(s => s.PublishingKeys)
                 .Subscribe(pk => 
                     KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
-                        pk ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off);
+                        pk ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
 
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
-                Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off;
+                Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
 
             Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
                 .Subscribe(mkss =>
                     KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
-                        mkss ? Enums.KeyDownStates.Lock : Enums.KeyDownStates.Off);
+                        mkss ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
             
             //Init input service properties
             inputService.KeyEnabledStates = keyEnabledStates;
@@ -85,7 +85,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.PointsPerSecond += (o, value) =>
             {
-                //TODO: Display debugging points per second
+                PointsPerSecond = value;
             };
 
             inputService.CurrentPosition += (o, tuple) =>
@@ -98,7 +98,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 if (progress.Item2 == 0)
                 {
-                    ResetSelectionProperties();
+                    ResetSelectionProgress();
                 }
                 else if (progress.Item1 != null)
                 {
@@ -116,6 +116,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.Selection += (o, value) =>
             {
+                SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
+
                 if (SelectionMode == SelectionModes.Key
                     && value.KeyValue != null)
                 {
@@ -138,7 +140,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     : (KeyValue?)null;
                 var multiKeySelection = tuple.Item4;
 
-                //TODO: Display debugging set of points
+                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
                 if (SelectionMode == SelectionModes.Key
                     && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
@@ -236,7 +238,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 if (SetProperty(ref selectionMode, value))
                 {
-                    ResetSelectionProperties();
+                    ResetSelectionProgress();
                     InputService.SelectionMode = value;
                 }
             }
@@ -276,6 +278,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public NotifyingConcurrentDictionary<double> KeySelectionProgress
         {
             get { return keySelectionProgress; }
+        }
+
+        private List<Point> selectionResultPoints;
+        public List<Point> SelectionResultPoints
+        {
+            get { return selectionResultPoints; }
+            set { SetProperty(ref selectionResultPoints, value); }
+        }
+
+        private int pointsPerSecond;
+        public int PointsPerSecond
+        {
+            get { return pointsPerSecond; }
+            set { SetProperty(ref pointsPerSecond, value); }
         }
 
         public NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates
@@ -320,7 +336,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         #region Methods
 
-        private void ResetSelectionProperties()
+        private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
             KeySelectionProgress.Clear();

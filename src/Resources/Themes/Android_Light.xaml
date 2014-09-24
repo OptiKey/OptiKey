@@ -40,6 +40,11 @@
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
 
+            <SolidColorBrush x:Key="FrameDefaultBorderBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="FrameCapturingBorderBrush" Color="{StaticResource Red}" />
+
+            <SolidColorBrush x:Key="PointsPerSecondForegroundBrush" Color="{StaticResource Green}" />
+
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
 
             <Style x:Key="KeyTextStyle" TargetType="TextBlock">

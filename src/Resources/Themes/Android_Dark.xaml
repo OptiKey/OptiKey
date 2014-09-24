@@ -30,9 +30,9 @@
             <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsLockBackgroundBrush" Color="{StaticResource Black}" />
 
-            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Grey}" />
 
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
@@ -40,6 +40,11 @@
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource Black}" />
+
+            <SolidColorBrush x:Key="FrameDefaultBorderBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="FrameCapturingBorderBrush" Color="{StaticResource Red}" />
+
+            <SolidColorBrush x:Key="PointsPerSecondForegroundBrush" Color="{StaticResource Yellow}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
 

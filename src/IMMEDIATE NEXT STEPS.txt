@@ -1,4 +1,6 @@
-﻿Create OutputService
+﻿Hook up shift key properly - think about basic implementation that's there now.
+
+Create OutputService
 	VM can still be IKeyboardState & output service can hold a reference to it for keydown states
 	Also needs a way to ask user to add words to dictionary - pass delegate into output service to call VM method?
 
