@@ -121,6 +121,10 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.Publish { DataContext = Keyboard };
                     }
+                    else if (Keyboard is YesNoQuestion)
+                    {
+                        newContent = new Views.Keyboards.English.YesNoQuestion { DataContext = Keyboard };
+                    }
                     break;
             }
 

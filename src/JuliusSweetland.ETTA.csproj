@@ -128,7 +128,7 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
-    <Compile Include="Models\IKeyboardStateInfo.cs" />
+    <Compile Include="Models\IKeyboardStateManager.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
@@ -169,12 +169,15 @@
     <Compile Include="UI\Behaviours\WindowAlwaysOnTopBehavior.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
     <Compile Include="UI\Controls\ProgressPie.cs" />
+    <Compile Include="UI\Controls\QuestionText.cs" />
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />
+    <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Publish.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
@@ -190,6 +193,9 @@
     <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\YesNoQuestion.xaml.cs">
+      <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Publish.xaml.cs">
       <DependentUpon>Publish.xaml</DependentUpon>
@@ -333,6 +339,10 @@
     <Page Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\YesNoQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\Publish.xaml">
       <SubType>Designer</SubType>

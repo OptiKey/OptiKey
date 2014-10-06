@@ -36,9 +36,12 @@
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
-            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Green}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
 
             <SolidColorBrush x:Key="FrameDefaultBorderBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="FrameCapturingBorderBrush" Color="{StaticResource Red}" />
@@ -51,9 +54,9 @@
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="TextAlignment" Value="Center" />
                 <Setter Property="Text" Value="{Binding Path=ShiftUpText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
-                <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontFamily}" />
-                <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}" />
-                <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}" />
+                <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
+                <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
+                <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
                 <Setter Property="Visibility" Value="Collapsed" />
                 <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
                     <Setter.Value>
@@ -225,11 +228,6 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="ScratchpadBorderStyle" TargetType="{x:Type Border}">
-                <Setter Property="BorderThickness" Value="1" />
-                <Setter Property="BorderBrush" Value="{StaticResource ScratchpadBorderBrush}" />
-            </Style>
-
             <Style TargetType="{x:Type controls:Key}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -294,18 +292,38 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Scratchpad}">
-                            <Border Style="{StaticResource ScratchpadBorderStyle}">
+                            <Border BorderThickness="1" BorderBrush="{StaticResource ScratchpadBorderBrush}">
                                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
                                           behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
                                     <TextBlock Text="{TemplateBinding Text}"
                                                HorizontalAlignment="Stretch"
-                                               FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontFamily}"
-                                               FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontWeight}"
-                                               FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontStretch}"
+                                               FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
+                                               FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
+                                               FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
                                                Foreground="{StaticResource ScratchpadForegroundBrush}"
                                                Background="{StaticResource ScratchpadBackgroundBrush}"/>
                                 </ScrollViewer>
                             </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type controls:QuestionText}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:QuestionText}">
+                            <Viewbox>
+                                <TextBlock Text="{TemplateBinding Text}"
+                                           FontSize="12" Width="300"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           HorizontalAlignment="Stretch"
+                                           FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
+                                           FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
+                                           FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
+                                           Foreground="{StaticResource QuestionForegroundBrush}"
+                                           Background="{StaticResource QuestionBackgroundBrush}"/>
+                            </Viewbox>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

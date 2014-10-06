@@ -95,35 +95,26 @@
     <Setting Name="ToastNotificationAdditionalSeconds" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="KeyFontFamily" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
-    </Setting>
     <Setting Name="PublishingKeys" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="KeyFontWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Regular</Value>
-    </Setting>
     <Setting Name="Theme" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
-    </Setting>
-    <Setting Name="KeyFontStretch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Condensed</Value>
-    </Setting>
-    <Setting Name="OutputFontFamily" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
-    </Setting>
-    <Setting Name="OutputFontWeight" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Regular</Value>
-    </Setting>
-    <Setting Name="OutputFontStretch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Condensed</Value>
     </Setting>
     <Setting Name="FrameThickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="Debug" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
+    </Setting>
+    <Setting Name="FontStretch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Condensed</Value>
+    </Setting>
+    <Setting Name="FontWeight" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
     </Setting>
   </Settings>
 </SettingsFile>

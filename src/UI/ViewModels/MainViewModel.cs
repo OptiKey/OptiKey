@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
@@ -9,11 +10,12 @@ using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
+using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class MainViewModel : BindableBase, IKeyboardStateInfo
+    public class MainViewModel : BindableBase, IKeyboardStateManager
     {
         #region Fields
 
@@ -23,6 +25,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
+        private readonly InteractionRequest<Notification> errorNotificationRequest;
 
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
@@ -41,11 +44,19 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
 
+            Output = "This is some test output";
+
             //Observable.Interval(TimeSpan.FromSeconds(3))
-            //    .SubscribeOnDispatcher()
+            //    .Take(1)
+            //    .ObserveOnDispatcher()
             //    .Subscribe(i =>
             //    {
-            //        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+            //        ErrorNotificationRequest.Raise(new Notification
+            //        {
+            //            Title = "Uh-oh!",
+            //            Content = "This is a test"
+            //        });
+            //        //Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
             //    });
             //TESTING END
 
@@ -54,11 +65,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keySelectionProgress = new NotifyingConcurrentDictionary<double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
+            errorNotificationRequest = new InteractionRequest<Notification>();
             
             //Init state properties
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
-            //KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key].Value = Enums.KeyDownStates.On;
+            Keyboard = new YesNoQuestion("This is a sample question. Let's see what happens as it gets longer. And longer, and longer and longer. Hmm - this should probably be wrapping by now.");
+            //Keyboard = new Alpha();
             
             //Apply settings and subscribe to setting changes
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
@@ -153,11 +165,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 }
             };
 
-            inputService.Error += (o, exception) =>
-            {
-                //TODO: Handle errors
-                //Log.Debug(string.Format("ERROR. Exception message:{0}", exception.Message));
-            };
+            inputService.Error += (o, exception) => 
+                ErrorNotificationRequest.Raise(new Notification
+                {
+                    Title = "Uh-oh!",
+                    Content = exception.Message
+                });
         }
 
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
@@ -228,7 +241,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
         {
-            set { inputService.PointToKeyValueMap = value; }
+            set
+            {
+                inputService.PointToKeyValueMap = value;
+
+                //The last selection result points cannot be valid if this has changed (window has moved or resized)
+                SelectionResultPoints = null;
+            }
         }
 
         public SelectionModes SelectionMode
@@ -331,7 +350,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return output; }
             set { SetProperty(ref output, value); }
         }
-        
+
+        public InteractionRequest<Notification> ErrorNotificationRequest
+        {
+            get { return errorNotificationRequest; }
+        }
+
         #endregion
 
         #region Methods

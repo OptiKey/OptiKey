@@ -12,13 +12,13 @@ namespace JuliusSweetland.ETTA.Models
     {
         #region Fields
 
-        private readonly IKeyboardStateInfo keyboardStateInfo;
+        private readonly IKeyboardStateManager keyboardStateInfo;
 
         #endregion
 
         #region Ctor
 
-        public KeyEnabledStates(IKeyboardStateInfo keyboardStateInfo)
+        public KeyEnabledStates(IKeyboardStateManager keyboardStateInfo)
         {
             this.keyboardStateInfo = keyboardStateInfo;
 

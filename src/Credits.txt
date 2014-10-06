@@ -17,6 +17,12 @@ Fonts, icons and other artwork:
   Left & Right Arrow icons: Arrow designed by Stefan Parnarov from thenounproject.com
   Lock Bar icon modified from: Minus designed by Icomatic from thenounproject.com
   Left, Right, Up, Down arrows modified from: Arrow by Milo Miloezger from thenounproject.com
+  Yes icon from: Right by Raúl Santos from thenounproject.com
+  No icon from: Wrong by Raúl Santos from thenounproject.com
+
+Sound effects - royalty free from:
+	soundbible.com
+	soundjig.com
 
 All icon manipulation/editing achieved with the excellent, free, and open source Inkscape - inkscape.org
 The StackOverflow community for providing the answer more times than I can count.

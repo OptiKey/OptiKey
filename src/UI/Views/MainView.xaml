@@ -6,12 +6,23 @@
              xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:interactionRequest="http://www.codeplex.com/prism"
+             xmlns:triggerActions="clr-namespace:JuliusSweetland.ETTA.UI.TriggerActions"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    
+
+    <i:Interaction.Triggers>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ErrorNotificationRequest, Mode=OneWay}">
+            <triggerActions:ToastNotificationWindowAction ToastBackgroundBrush="DarkRed" 
+                                                          ToastForegroundBrush="White"
+                                                          ToastBorderBrush="Black" />
+        </interactionRequest:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -31,7 +42,6 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
-
                 <Border.Child>
                     <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
                                            PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
@@ -86,7 +96,7 @@
 
             <Label Grid.Row="1" Grid.Column="0" Content="Key:" />
             <ComboBox Grid.Row="2" Grid.Column="0"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontWeight}">
+                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}">
                 <ComboBox.Items>
                     <system:String>Black</system:String>
                     <system:String>Bold</system:String>
@@ -97,7 +107,7 @@
                 </ComboBox.Items>
             </ComboBox>
             <ComboBox Grid.Row="3" Grid.Column="0"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=KeyFontStretch}">
+                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
                 <ComboBox.Items>
                     <system:String>Normal</system:String>
                     <system:String>Condensed</system:String>
@@ -106,7 +116,7 @@
 
             <Label Grid.Row="1" Grid.Column="1" Content="Output:" />
             <ComboBox Grid.Row="2" Grid.Column="1"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontWeight}">
+                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}">
                 <ComboBox.Items>
                     <system:String>Black</system:String>
                     <system:String>Bold</system:String>
@@ -117,7 +127,7 @@
                 </ComboBox.Items>
             </ComboBox>
             <ComboBox Grid.Row="3" Grid.Column="1"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=OutputFontStretch}">
+                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
                 <ComboBox.Items>
                     <system:String>Normal</system:String>
                     <system:String>Condensed</system:String>
