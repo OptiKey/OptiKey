@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg4427"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="UpArrow.svg">
+  <defs
+     id="defs4429" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.5"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:current-layer="svg4427"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4432">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     inkscape:connector-curvature="0"
+     d="m 46.933236,18.845603 c -1.79394,-1.793941 -4.701833,-1.793941 -6.496143,0 l -15.107352,15.108092 -5.025179,-5.025179 0,0 c -0.832781,-0.832782 -1.98336,-1.348137 -3.254175,-1.348137 -2.541632,0 -4.601944,2.060312 -4.601944,4.601943 0,1.272295 0.516466,2.423984 1.351097,3.257136 l 8.270846,8.270845 0.0092,-0.01073 c 1.79357,1.79431 4.701462,1.79431 6.495403,0 L 46.933236,25.342116 c 1.79394,-1.792831 1.79431,-4.702573 0,-6.496513 z"
+     id="path3" />
+</svg>
