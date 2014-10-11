@@ -313,9 +313,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:QuestionText}">
-                            <Viewbox>
+                            <controls:TextBlockScaler>
                                 <TextBlock Text="{TemplateBinding Text}"
-                                           FontSize="12" Width="300"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"
                                            HorizontalAlignment="Stretch"
@@ -324,7 +323,7 @@
                                            FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
                                            Foreground="{StaticResource QuestionForegroundBrush}"
                                            Background="{StaticResource QuestionBackgroundBrush}"/>
-                            </Viewbox>
+                            </controls:TextBlockScaler>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

@@ -124,6 +124,8 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         private void CalculateTextBlockFontSize()
         {
+            if (string.IsNullOrEmpty(textBlock.Text)) return;
+
             double fontSize = textBlock.FontSize;
 
             //Enlarge to fit
@@ -134,7 +136,8 @@ namespace JuliusSweetland.ETTA.UI.Controls
             }
 
             //Shrink to fit
-            while (IsTextTrimmedAtThisFontSize(fontSize)
+            while (fontSize > 0
+                   && IsTextTrimmedAtThisFontSize(fontSize)
                    && (MinFontSize == null || fontSize > MinFontSize.Value))
             {
                 fontSize--;

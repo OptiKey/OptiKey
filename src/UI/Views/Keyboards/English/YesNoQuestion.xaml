@@ -51,8 +51,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <controls:QuestionText Grid.Row="1" Grid.Column="0" 
-                           Grid.RowSpan="2" Grid.ColumnSpan="22"
+        <controls:QuestionText Grid.Row="0" Grid.Column="0" 
+                           Grid.RowSpan="3" Grid.ColumnSpan="22"
                            Text="{Binding Text, Mode=OneWay}" />
         
         <controls:Key Grid.Row="4" Grid.Column="2" 
