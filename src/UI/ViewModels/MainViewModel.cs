@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
 
-            Output = "This is some test output";
+            Output = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
 
             //Observable.Interval(TimeSpan.FromSeconds(3))
             //    .Take(1)
@@ -58,6 +58,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //        });
             //        //Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
             //    });
+
+            Observable.Interval(TimeSpan.FromMilliseconds(500))
+                .ObserveOnDispatcher()
+                .Subscribe(l => Output = Output + " " + l);
             //TESTING END
 
             //Init readonly fields
@@ -69,8 +73,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Init state properties
             SelectionMode = SelectionModes.Key;
-            Keyboard = new YesNoQuestion("This is a sample question. Let's see what happens as it gets longer. And longer, and longer and longer. Hmm - this should probably be wrapping by now.");
-            //Keyboard = new Alpha();
+            //Keyboard = new YesNoQuestion(
+            //        "This is a sample question. Let's see what happens as it gets longer. And longer, and longer and longer. Hmm - this should probably be wrapping by now.",
+            //        () => Keyboard = new Alpha(),
+            //        () => Keyboard = new Alpha());
+            Keyboard = new Alpha();
             
             //Apply settings and subscribe to setting changes
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
@@ -212,6 +219,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                                 : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
                                     ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
                                     : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
+                        break;
+
+                    case FunctionKeys.YesQuestionResult:
+                        HandleYesNoQuestionResult(true);
+                        break;
+
+                    case FunctionKeys.NoQuestionResult:
+                        HandleYesNoQuestionResult(false);
+                        break;
+
+                    case FunctionKeys.ClearOutput:
+                        Output = null;
                         break;
                 }
             }
@@ -364,6 +383,22 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             PointSelectionProgress = null;
             KeySelectionProgress.Clear();
+        }
+
+        private void HandleYesNoQuestionResult(bool yesResult)
+        {
+            var yesNoQuestion = Keyboard as YesNoQuestion;
+            if (yesNoQuestion != null)
+            {
+                if (yesResult)
+                {
+                    yesNoQuestion.YesAction();
+                }
+                else
+                {
+                    yesNoQuestion.NoAction();
+                }
+            }
         }
 
         #endregion

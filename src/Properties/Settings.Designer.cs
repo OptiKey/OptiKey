@@ -479,5 +479,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["FontWeight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int ScratchpadNumberOfLines {
+            get {
+                return ((int)(this["ScratchpadNumberOfLines"]));
+            }
+            set {
+                this["ScratchpadNumberOfLines"] = value;
+            }
+        }
     }
 }

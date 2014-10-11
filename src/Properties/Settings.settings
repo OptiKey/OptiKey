@@ -116,5 +116,8 @@
     <Setting Name="FontWeight" Type="System.String" Scope="User">
       <Value Profile="(Default)">Regular</Value>
     </Setting>
+    <Setting Name="ScratchpadNumberOfLines" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -31,13 +31,15 @@ namespace JuliusSweetland.ETTA.UI.Behaviours
             {
                 if (notifyPropertyChanged != null)
                 {
-                    notifyPropertyChanged.PropertyChanged += (sender, args) => scrollViewer.ScrollToRightEnd();
+                    notifyPropertyChanged.PropertyChanged += (sender, args) => scrollViewer.ScrollToEnd();
                 }
 
                 if (notifyCollectionChanged != null)
                 {
-                    notifyCollectionChanged.CollectionChanged += (sender, args) => scrollViewer.ScrollToRightEnd();
+                    notifyCollectionChanged.CollectionChanged += (sender, args) => scrollViewer.ScrollToEnd();
                 }
+
+                scrollViewer.ScrollToEnd();
             }
         }
     }

@@ -175,6 +175,7 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />

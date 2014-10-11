@@ -50,6 +50,7 @@
             <SolidColorBrush x:Key="PointsPerSecondForegroundBrush" Color="{StaticResource Yellow}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
+            <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
 
             <Style x:Key="KeyTextStyle" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
@@ -294,15 +295,26 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Scratchpad}">
                             <Border BorderThickness="1" BorderBrush="{StaticResource ScratchpadBorderBrush}">
-                                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
-                                          behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                                              behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
                                     <TextBlock Text="{TemplateBinding Text}"
-                                               HorizontalAlignment="Stretch"
+                                               TextWrapping="Wrap"
+                                               MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
                                                FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
                                                FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
                                                FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
                                                Foreground="{StaticResource ScratchpadForegroundBrush}"
-                                               Background="{StaticResource ScratchpadBackgroundBrush}"/>
+                                               Background="{StaticResource ScratchpadBackgroundBrush}">
+                                        <TextBlock.FontSize>
+                                            <MultiBinding Converter="{StaticResource FontSizeToFitLines}">
+                                                <MultiBinding.Bindings>
+                                                    <Binding Path="ScratchpadNumberOfLines" Source="{x:Static properties:Settings.Default}" />
+                                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type ScrollViewer}}" />
+                                                    <Binding Path="FontFamily" RelativeSource="{RelativeSource Self}" />
+                                                </MultiBinding.Bindings>
+                                            </MultiBinding>
+                                        </TextBlock.FontSize>
+                                    </TextBlock>
                                 </ScrollViewer>
                             </Border>
                         </ControlTemplate>
@@ -317,7 +329,6 @@
                                 <TextBlock Text="{TemplateBinding Text}"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"
-                                           HorizontalAlignment="Stretch"
                                            FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
                                            FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
                                            FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
