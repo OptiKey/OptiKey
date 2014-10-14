@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
+using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
@@ -21,7 +23,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        private readonly IInputService inputService;
+        private IInputService inputService;
+        private readonly IOutputService outputService;
         private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
@@ -36,16 +39,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         #region Ctor
 
-        public MainViewModel(IInputService inputSvc)
+        public MainViewModel()
         {
             //TESTING START
             Suggestions = new List<string>
             {
                 "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
             };
-
-            Output = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
-
+            
             //Observable.Interval(TimeSpan.FromSeconds(3))
             //    .Take(1)
             //    .ObserveOnDispatcher()
@@ -58,14 +59,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //        });
             //        //Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
             //    });
-
-            Observable.Interval(TimeSpan.FromMilliseconds(500))
-                .ObserveOnDispatcher()
-                .Subscribe(l => Output = Output + " " + l);
             //TESTING END
 
+            inputService = CreateInputService();
+            outputService = CreateOutputService();
+
             //Init readonly fields
-            inputService = inputSvc;
             keySelectionProgress = new NotifyingConcurrentDictionary<double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
@@ -180,65 +179,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 });
         }
 
-        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
-        {
-            if (singleKeyValue != null
-                && singleKeyValue.Value.FunctionKey != null)
-            {
-                switch (singleKeyValue.Value.FunctionKey)
-                {
-                    case FunctionKeys.AlphaKeyboard:
-                        Keyboard = new Alpha();
-                        break;
-
-                    case FunctionKeys.NumericAndSymbols1Keyboard:
-                        Keyboard = new NumericAndSymbols1();
-                        break;
-
-                    case FunctionKeys.Symbols2Keyboard:
-                        Keyboard = new Symbols2();
-                        break;
-
-                    case FunctionKeys.PublishKeyboard:
-                        Keyboard = new Publish();
-                        break;
-
-                    case FunctionKeys.TogglePublish:
-                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
-                        break;
-
-                    case FunctionKeys.ToggleMultiKeySelectionSupported:
-                        Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
-                        break;
-
-                    case FunctionKeys.Shift:
-                        var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
-                        KeyDownStates[shiftKey].Value =
-                            KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
-                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
-                                : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
-                                    ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
-                                    : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
-                        break;
-
-                    case FunctionKeys.YesQuestionResult:
-                        HandleYesNoQuestionResult(true);
-                        break;
-
-                    case FunctionKeys.NoQuestionResult:
-                        HandleYesNoQuestionResult(false);
-                        break;
-
-                    case FunctionKeys.ClearOutput:
-                        Output = null;
-                        break;
-                }
-            }
-
-            //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
-
-        }
-
         #endregion
 
         #region Events
@@ -250,6 +190,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         #region Properties
 
         public IInputService InputService { get { return inputService; } }
+        public IOutputService OutputService { get { return outputService; } }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
@@ -363,13 +304,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref suggestionsPerPage, value); }
         }
 
-        private string output;
-        public string Output
-        {
-            get { return output; }
-            set { SetProperty(ref output, value); }
-        }
-
         public InteractionRequest<Notification> ErrorNotificationRequest
         {
             get { return errorNotificationRequest; }
@@ -378,6 +312,174 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         #endregion
 
         #region Methods
+
+        private IInputService CreateInputService()
+        {
+            //Instantiate point source
+            IPointAndKeyValueSource pointSource;
+            switch (Settings.Default.PointsSource)
+            {
+                case PointsSources.GazeTracker:
+                    pointSource = new GazeTrackerSource(
+                        Settings.Default.PointTtl,
+                        Settings.Default.GazeTrackerUdpPort,
+                        new Regex(Settings.Default.GazeTrackerUdpRegex));
+                    break;
+
+                case PointsSources.TheEyeTribe:
+                    pointSource = new TheEyeTribeSource(
+                        Settings.Default.PointTtl,
+                        new TheEyeTribePointService());
+                    break;
+
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
+                default:
+                    throw new ArgumentException(
+                        "'PointsSource' settings is missing or not recognised! Please correct and restart ETTA.");
+            }
+
+            //Instantiate key trigger source
+            ITriggerSignalSource keySelectionTriggerSource;
+            switch (Settings.Default.KeySelectionTriggerSource)
+            {
+                case TriggerSources.AggregatedFixations:
+                    keySelectionTriggerSource = new AggregateKeyFixationSource(
+                        Settings.Default.KeySelectionTriggerFixationMinPoints,
+                        Settings.Default.KeySelectionTriggerFixationTime,
+                        Settings.Default.PointTtl,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.Fixations:
+                    keySelectionTriggerSource = new KeyFixationSource(
+                        Settings.Default.KeySelectionTriggerFixationMinPoints,
+                        Settings.Default.KeySelectionTriggerFixationTime,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.KeyboardKeyDownsUps:
+                    keySelectionTriggerSource = new KeyboardKeyDownUpSource(
+                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.MouseButtonDownUps:
+                    keySelectionTriggerSource = new MouseButtonDownUpSource(
+                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        pointSource.Sequence);
+                    break;
+
+                default:
+                    throw new ArgumentException(
+                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart ETTA.");
+            }
+
+            //Instantiate point trigger source
+            ITriggerSignalSource pointSelectionTriggerSource;
+            switch (Settings.Default.PointSelectionTriggerSource)
+            {
+                case TriggerSources.AggregatedFixations:
+                    throw new ArgumentException(
+                        "'PointSelectionTriggerSource' setting is AggregatedFixations which is not supported! Please correct and restart ETTA.");
+
+                case TriggerSources.Fixations:
+                    pointSelectionTriggerSource = new PointFixationSource(
+                        Settings.Default.PointSelectionTriggerFixationMinPoints,
+                        Settings.Default.PointSelectionTriggerFixationRadius,
+                        Settings.Default.PointSelectionTriggerFixationTime,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.KeyboardKeyDownsUps:
+                    pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
+                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.MouseButtonDownUps:
+                    pointSelectionTriggerSource = new MouseButtonDownUpSource(
+                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        pointSource.Sequence);
+                    break;
+
+                default:
+                    throw new ArgumentException(
+                        "'PointSelectionTriggerSource' setting is missing or not recognised! "
+                        + "Please correct and restart ETTA.");
+            }
+
+            //Instantiation dictionary and input services
+            var dictionaryService = new DictionaryService();
+            return new InputService(dictionaryService, pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+        }
+
+        private IOutputService CreateOutputService()
+        {
+            return new OutputService(this);
+        }
+
+        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
+        {
+            if (singleKeyValue != null
+                && singleKeyValue.Value.FunctionKey != null)
+            {
+                switch (singleKeyValue.Value.FunctionKey)
+                {
+                    case FunctionKeys.AlphaKeyboard:
+                        Keyboard = new Alpha();
+                        break;
+
+                    case FunctionKeys.NumericAndSymbols1Keyboard:
+                        Keyboard = new NumericAndSymbols1();
+                        break;
+
+                    case FunctionKeys.Symbols2Keyboard:
+                        Keyboard = new Symbols2();
+                        break;
+
+                    case FunctionKeys.PublishKeyboard:
+                        Keyboard = new Publish();
+                        break;
+
+                    case FunctionKeys.TogglePublish:
+                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+                        break;
+
+                    case FunctionKeys.ToggleMultiKeySelectionSupported:
+                        Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
+                        break;
+
+                    case FunctionKeys.Shift:
+                        var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
+                        KeyDownStates[shiftKey].Value =
+                            KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
+                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
+                                : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
+                                    ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
+                                    : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
+                        break;
+
+                    case FunctionKeys.YesQuestionResult:
+                        HandleYesNoQuestionResult(true);
+                        break;
+
+                    case FunctionKeys.NoQuestionResult:
+                        HandleYesNoQuestionResult(false);
+                        break;
+
+                    case FunctionKeys.ClearOutput:
+                        OutputService.ClearText();
+                        break;
+                }
+            }
+
+            //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
+
+        }
 
         private void ResetSelectionProgress()
         {

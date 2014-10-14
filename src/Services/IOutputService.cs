@@ -2,5 +2,7 @@
 {
     public interface IOutputService
     {
+        string Text { get; }
+        void ClearText();
     }
 }

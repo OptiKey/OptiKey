@@ -192,7 +192,7 @@
         </controls:Key>
         
         <controls:Scratchpad Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="14"
-                             Text="{Binding DataContext.Output, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
+                             Text="{Binding DataContext.OutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
 
         <controls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
