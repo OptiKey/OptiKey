@@ -63,6 +63,48 @@ namespace JuliusSweetland.ETTA.Models
                     return false;
                 }
 
+                //Suggestion 1 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue {FunctionKey = FunctionKeys.Suggestion1}.Key
+                    && !SuggestionKeyIsValid(0))
+                {
+                    return false;
+                }
+
+                //Suggestion 2 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue { FunctionKey = FunctionKeys.Suggestion2 }.Key
+                    && !SuggestionKeyIsValid(1))
+                {
+                    return false;
+                }
+
+                //Suggestion 3 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue { FunctionKey = FunctionKeys.Suggestion3 }.Key
+                    && !SuggestionKeyIsValid(2))
+                {
+                    return false;
+                }
+
+                //Suggestion 4 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue { FunctionKey = FunctionKeys.Suggestion4 }.Key
+                    && !SuggestionKeyIsValid(3))
+                {
+                    return false;
+                }
+
+                //Suggestion 5 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue { FunctionKey = FunctionKeys.Suggestion5 }.Key
+                    && !SuggestionKeyIsValid(4))
+                {
+                    return false;
+                }
+
+                //Suggestion 6 is only valid if suggestions exist for the appropriate index
+                if (key == new KeyValue { FunctionKey = FunctionKeys.Suggestion6 }.Key
+                    && !SuggestionKeyIsValid(5))
+                {
+                    return false;
+                }
+                
                 //Key is not a letter, but we're capturing a multi-key selection (which must be ended by selecting a letter)
                 if (keyboardStateInfo.CapturingMultiKeySelection
                     && !KeyValueCollections.LetterKeys.Select(kv => kv.Key).Contains(key))
@@ -72,6 +114,13 @@ namespace JuliusSweetland.ETTA.Models
 
                 return true;
             }
+        }
+
+        private bool SuggestionKeyIsValid(int index)
+        {
+            return keyboardStateInfo.Suggestions != null 
+                && keyboardStateInfo.Suggestions.Any() 
+                && keyboardStateInfo.Suggestions.Count > (keyboardStateInfo.SuggestionsPage * keyboardStateInfo.SuggestionsPerPage + index);
         }
 
         #endregion

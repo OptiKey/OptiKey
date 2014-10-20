@@ -1,5 +1,4 @@
-using System;
-using System.Reactive.Linq;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -31,11 +30,11 @@ namespace JuliusSweetland.ETTA.Services
             this.keyboardStateManager = keyboardStateManager;
 
             //TESTING START
-            Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
+            //Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
 
-            Observable.Interval(TimeSpan.FromMilliseconds(500))
-                .ObserveOnDispatcher()
-                .Subscribe(l => Text = Text + " " + l);
+            //Observable.Interval(TimeSpan.FromMilliseconds(500))
+            //    .ObserveOnDispatcher()
+            //    .Subscribe(l => Text = Text + " " + l);
             //TESTING END
         }
 
@@ -46,6 +45,31 @@ namespace JuliusSweetland.ETTA.Services
         public void ClearText()
         {
             Text = null;
+        }
+
+        public void ProcessCapture(string capture)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void ProcessCapture(FunctionKeys capture)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void ProcessBackOne()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void ProcessBackMany()
+        {
+            ////throw new NotImplementedException();
+        }
+
+        public void SwapLastCaptureForSuggestion(string suggestion)
+        {
+            //throw new NotImplementedException();
         }
 
         #endregion

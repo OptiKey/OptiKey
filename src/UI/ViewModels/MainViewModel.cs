@@ -11,9 +11,15 @@ using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
+using JuliusSweetland.ETTA.UI.Views.Keyboards.English;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
+using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
+using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
+using Publish = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Publish;
+using Symbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Symbols2;
+using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
@@ -42,10 +48,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public MainViewModel()
         {
             //TESTING START
-            Suggestions = new List<string>
-            {
-                "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
-            };
+            //Suggestions = new List<string>
+            //{
+            //    "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
+            //};
             
             //Observable.Interval(TimeSpan.FromSeconds(3))
             //    .Take(1)
@@ -424,67 +430,137 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
+            //Single key string
+            if (singleKeyValue != null
+                && !string.IsNullOrEmpty(singleKeyValue.Value.String))
+            {
+                OutputService.ProcessCapture(singleKeyValue.Value.String);
+            }
+
+            //Single key function key
             if (singleKeyValue != null
                 && singleKeyValue.Value.FunctionKey != null)
             {
-                switch (singleKeyValue.Value.FunctionKey)
-                {
-                    case FunctionKeys.AlphaKeyboard:
-                        Keyboard = new Alpha();
-                        break;
-
-                    case FunctionKeys.NumericAndSymbols1Keyboard:
-                        Keyboard = new NumericAndSymbols1();
-                        break;
-
-                    case FunctionKeys.Symbols2Keyboard:
-                        Keyboard = new Symbols2();
-                        break;
-
-                    case FunctionKeys.PublishKeyboard:
-                        Keyboard = new Publish();
-                        break;
-
-                    case FunctionKeys.TogglePublish:
-                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
-                        break;
-
-                    case FunctionKeys.ToggleMultiKeySelectionSupported:
-                        Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
-                        break;
-
-                    case FunctionKeys.Shift:
-                        var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
-                        KeyDownStates[shiftKey].Value =
-                            KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
-                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
-                                : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
-                                    ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
-                                    : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
-                        break;
-
-                    case FunctionKeys.YesQuestionResult:
-                        HandleYesNoQuestionResult(true);
-                        break;
-
-                    case FunctionKeys.NoQuestionResult:
-                        HandleYesNoQuestionResult(false);
-                        break;
-
-                    case FunctionKeys.ClearOutput:
-                        OutputService.ClearText();
-                        break;
-                }
+                HandleFunctionKeySelectionResult(singleKeyValue);
             }
 
-            //TODO: Call NotifyStateChanged() at appropriate place to notify that key states have changed
-
+            //Multi key selection
+            if (multiKeySelection != null
+                && multiKeySelection.Any())
+            {
+                OutputService.ProcessCapture(multiKeySelection.First());
+                Suggestions = multiKeySelection.Skip(1).ToList();
+            }
         }
 
-        private void ResetSelectionProgress()
+        private void HandleFunctionKeySelectionResult(KeyValue? singleKeyValue)
         {
-            PointSelectionProgress = null;
-            KeySelectionProgress.Clear();
+            switch (singleKeyValue.Value.FunctionKey.Value)
+            {
+                case FunctionKeys.AlphaKeyboard:
+                    Keyboard = new Alpha();
+                    break;
+
+                case FunctionKeys.BackMany:
+                    OutputService.ProcessBackMany();
+                    break;
+
+                case FunctionKeys.BackOne:
+                    OutputService.ProcessBackOne();
+                    break;
+
+                case FunctionKeys.ClearOutput:
+                    OutputService.ClearText();
+                    break;
+
+                case FunctionKeys.NoQuestionResult:
+                    HandleYesNoQuestionResult(false);
+                    break;
+
+                case FunctionKeys.NumericAndSymbols1Keyboard:
+                    Keyboard = new NumericAndSymbols1();
+                    break;
+
+                case FunctionKeys.NextSuggestions:
+                    if (Suggestions != null
+                        && (Suggestions.Count > (SuggestionsPage + 1)*SuggestionsPerPage))
+                    {
+                        SuggestionsPage++;
+                    }
+                    break;
+
+                case FunctionKeys.PreviousSuggestions:
+                    if (SuggestionsPage > 0)
+                    {
+                        SuggestionsPage--;
+                    }
+                    break;
+
+                case FunctionKeys.PublishKeyboard:
+                    Keyboard = new Publish();
+                    break;
+
+                case FunctionKeys.Shift:
+                    var shiftKey = new KeyValue {FunctionKey = FunctionKeys.Shift}.Key;
+                    KeyDownStates[shiftKey].Value =
+                        KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
+                            ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
+                            : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
+                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
+                                : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
+                    break;
+
+                case FunctionKeys.Suggestion1:
+                    PassSuggestionToOutputService(0);
+                    break;
+
+                case FunctionKeys.Suggestion2:
+                    PassSuggestionToOutputService(1);
+                    break;
+
+                case FunctionKeys.Suggestion3:
+                    PassSuggestionToOutputService(2);
+                    break;
+
+                case FunctionKeys.Suggestion4:
+                    PassSuggestionToOutputService(3);
+                    break;
+
+                case FunctionKeys.Suggestion5:
+                    PassSuggestionToOutputService(4);
+                    break;
+
+                case FunctionKeys.Suggestion6:
+                    PassSuggestionToOutputService(5);
+                    break;
+
+                case FunctionKeys.Symbols2Keyboard:
+                    Keyboard = new Symbols2();
+                    break;
+
+                case FunctionKeys.ToggleMultiKeySelectionSupported:
+                    Settings.Default.MultiKeySelectionSupported = !Settings.Default.MultiKeySelectionSupported;
+                    break;
+
+                case FunctionKeys.TogglePublish:
+                    Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+                    break;
+
+                case FunctionKeys.YesQuestionResult:
+                    HandleYesNoQuestionResult(true);
+                    break;
+            }
+
+            OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+        }
+
+        private void PassSuggestionToOutputService(int keyIndex)
+        {
+            var suggestionIndex = (SuggestionsPage * SuggestionsPerPage) + keyIndex;
+            if (Suggestions.Count > suggestionIndex)
+            {
+                OutputService.SwapLastCaptureForSuggestion(Suggestions[suggestionIndex]);
+            }
         }
 
         private void HandleYesNoQuestionResult(bool yesResult)
@@ -501,6 +577,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     yesNoQuestion.NoAction();
                 }
             }
+        }
+
+        private void ResetSelectionProgress()
+        {
+            PointSelectionProgress = null;
+            KeySelectionProgress.Clear();
         }
 
         #endregion

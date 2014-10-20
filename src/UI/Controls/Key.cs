@@ -194,10 +194,11 @@ namespace JuliusSweetland.ETTA.UI.Controls
         private static void TextChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var key = dependencyObject as Key;
-            var value = dependencyPropertyChangedEventArgs.NewValue as string;
-            if (key != null
-                && value != null)
+            
+            if (key != null)
             {
+                var value = dependencyPropertyChangedEventArgs.NewValue as string;
+
                 key.ShiftDownText = value;
                 key.ShiftUpText = value;
             }
