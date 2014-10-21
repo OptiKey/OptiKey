@@ -50,6 +50,7 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ClearText()
         {
+            lastTextChange = null;
             Text = null;
         }
 
@@ -57,11 +58,12 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (string.IsNullOrEmpty(capture)) return;
 
-            //Suppress auto space if we are spelling a word (last & current capture were single characters)
-            //or the last capture was a space or newline.
-            if (!string.IsNullOrEmpty(lastTextChange)
-                && lastTextChange.Length == 1
-                && capture.Length == 1 || new[] { " ", "\n" }.Contains(lastTextChange))
+            //Suppress auto space if... 
+            if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
+                || (lastTextChange.Length == 1 && capture.Length == 1) //we are capturing char by char (after 1st char)
+                || (capture.Length == 1 && !char.IsLetter(capture.First())) //we have captured a single char which is not a letter
+                || new [] { " ", "\n" }.Contains(lastTextChange) //the current capture follows a space or newline
+                )
             {
                 suppressAutoSpace = true;
             }
