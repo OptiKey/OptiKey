@@ -283,7 +283,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
-    <Resource Include="IMMEDIATE NEXT STEPS.txt" />
     <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

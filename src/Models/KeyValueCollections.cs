@@ -56,7 +56,7 @@ namespace JuliusSweetland.ETTA.Models
         {
             get
             {
-                return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                return "abcdefghijklmnopqrstuvwxyz"
                     .ToCharArray()
                     .Select(c => new KeyValue {String = c.ToString()})
                     .ToList();

@@ -1,7 +1,0 @@
-﻿Create OutputService
-	VM can still be IKeyboardState & output service can hold a reference to it for keydown states
-	Also needs a way to ask user to add words to dictionary - pass delegate into output service to call VM method?
-
-TEST THE ABOVE BEFORE STARTING THIS: Configure a 'reset period' for fixation triggers after registering a selection - allows user to redirect their attention to the next selection - FixationTriggerRestAfterSelection
-
-Code contracts?
