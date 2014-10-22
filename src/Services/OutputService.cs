@@ -1,8 +1,10 @@
+using System;
 using System.Linq;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
+using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Services
@@ -11,21 +13,10 @@ namespace JuliusSweetland.ETTA.Services
     {
         #region Private Member Vars
 
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IKeyboardStateManager keyboardStateManager;
-
         private string lastTextChange;
         private bool suppressAutoSpace = true;
-
-        #endregion
-
-        #region Properties
-
-        private string text;
-        public string Text
-        {
-            get { return text; }
-            private set { SetProperty(ref text, value); }
-        }
 
         #endregion
 
@@ -42,7 +33,32 @@ namespace JuliusSweetland.ETTA.Services
             //    .ObserveOnDispatcher()
             //    .Subscribe(l => Text = Text + " " + l);
             //TESTING END
+
+            //Auto capitalise - when previous text is ". ", "! ", "? ", "\n". Backspace removes auto capitalise if not manual.
+            //Auto add to dictionary
+            //Clear suggestions (unless swapping suggestions)
+            //Auto complete word
+            //Publish keys (need to reset physical keyboard state on ctor or Publish setting to true)
         }
+
+        #endregion
+
+        #region Properties
+
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            private set { SetProperty(ref text, value); }
+        }
+
+        private NotifyingProxy<KeyDownStates> ShiftKeyProxy
+        { 
+            get
+            {
+                return keyboardStateManager.KeyDownStates[new KeyValue {FunctionKey = FunctionKeys.Shift}.Key];
+            } 
+        } 
 
         #endregion
 
@@ -50,6 +66,7 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ClearText()
         {
+            ShiftKeyProxy.Value = KeyDownStates.On;
             lastTextChange = null;
             Text = null;
         }
@@ -68,13 +85,14 @@ namespace JuliusSweetland.ETTA.Services
                 suppressAutoSpace = true;
             }
 
-            PrependSpaceIfAppropriate(capture);
+            AutoPrependSpace();
 
             var casedCapture = CaseCapture(capture);
             Text = string.Concat(Text, casedCapture);
 
-            lastTextChange = casedCapture;
+            AutoCapitalise();
 
+            lastTextChange = casedCapture;
             suppressAutoSpace = false;
         }
 
@@ -90,20 +108,42 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessBackOne()
         {
+            var backCount = 1;
+            if (!string.IsNullOrEmpty(lastTextChange))
+            {
+                backCount = lastTextChange.Length;
+            }
+
+            if (!string.IsNullOrEmpty(Text))
+            {
+                if (Text.Length < backCount)
+                {
+                    backCount = Text.Length; //Coallesce backCount if somehow the Text length is less
+                }
+
+                Text = Text.Substring(0, Text.Length - backCount);
+            }
+
+            AutoCapitalise();
+
             suppressAutoSpace = true;
         }
 
         public void ProcessBackMany()
         {
+            throw new NotImplementedException();
+
+            AutoCapitalise();
+
             suppressAutoSpace = true;
         }
 
         public void SwapLastCaptureForSuggestion(string suggestion)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        private void PrependSpaceIfAppropriate(string capture)
+        private void AutoPrependSpace()
         {
             if (Settings.Default.AutoAddSpace
                 && Text != null
@@ -114,20 +154,31 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
+        private void AutoCapitalise()
+        {
+            if (ShiftKeyProxy.Value == KeyDownStates.On)
+            {
+                ShiftKeyProxy.Value = KeyDownStates.Off;
+            }
+
+            if (Settings.Default.AutoCapitalise
+                && Text.NextCharacterWouldBeStartOfNewSentence()
+                && ShiftKeyProxy.Value == KeyDownStates.Off)
+            {
+                ShiftKeyProxy.Value = KeyDownStates.On;
+            }
+        }
+
         private string CaseCapture(string capture)
         {
             if (!string.IsNullOrEmpty(capture))
             {
-                var shiftKeyDownStateNotifyingProxy =
-                    keyboardStateManager.KeyDownStates[new KeyValue {FunctionKey = FunctionKeys.Shift}.Key];
-
-                if (shiftKeyDownStateNotifyingProxy.Value == KeyDownStates.On)
+                if (ShiftKeyProxy.Value == KeyDownStates.On)
                 {
-                    shiftKeyDownStateNotifyingProxy.Value = KeyDownStates.Off;
                     return capture.FirstCharToUpper();
                 }
 
-                if (shiftKeyDownStateNotifyingProxy.Value == KeyDownStates.Lock)
+                if (ShiftKeyProxy.Value == KeyDownStates.Lock)
                 {
                     return capture.ToUpper();
                 }

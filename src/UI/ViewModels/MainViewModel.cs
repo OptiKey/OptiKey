@@ -11,7 +11,6 @@ using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
-using JuliusSweetland.ETTA.UI.Views.Keyboards.English;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
@@ -29,7 +28,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        private IInputService inputService;
+        private readonly IInputService inputService;
         private readonly IOutputService outputService;
         private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
@@ -47,142 +46,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public MainViewModel()
         {
-            //TESTING START
-            //Suggestions = new List<string>
-            //{
-            //    "Suggestion1", "AnotherOne", "OneMore", "Why not another", "And a final one", "Wait, one more"
-            //};
-            
-            //Observable.Interval(TimeSpan.FromSeconds(3))
-            //    .Take(1)
-            //    .ObserveOnDispatcher()
-            //    .Subscribe(i =>
-            //    {
-            //        ErrorNotificationRequest.Raise(new Notification
-            //        {
-            //            Title = "Uh-oh!",
-            //            Content = "This is a test"
-            //        });
-            //        //Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
-            //    });
-            //TESTING END
-
+            //Initialise fields
             inputService = CreateInputService();
             outputService = CreateOutputService();
-
-            //Init readonly fields
             keySelectionProgress = new NotifyingConcurrentDictionary<double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
             errorNotificationRequest = new InteractionRequest<Notification>();
             
-            //Init state properties
+            //Initialise state properties
             SelectionMode = SelectionModes.Key;
-            //Keyboard = new YesNoQuestion(
-            //        "This is a sample question. Let's see what happens as it gets longer. And longer, and longer and longer. Hmm - this should probably be wrapping by now.",
-            //        () => Keyboard = new Alpha(),
-            //        () => Keyboard = new Alpha());
             Keyboard = new Alpha();
             
-            //Apply settings and subscribe to setting changes
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
-                Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+            InitialiseInputService();
 
-            Settings.Default.OnPropertyChanges(s => s.PublishingKeys)
-                .Subscribe(pk => 
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
-                        pk ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
-
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
-                Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
-
-            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
-                .Subscribe(mkss =>
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
-                        mkss ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
-            
-            //Init input service properties
-            inputService.KeyEnabledStates = keyEnabledStates;
-
-            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
-                .Subscribe(cmks => CapturingMultiKeySelection = cmks);
-
-            inputService.PointsPerSecond += (o, value) =>
-            {
-                PointsPerSecond = value;
-            };
-
-            inputService.CurrentPosition += (o, tuple) =>
-            {
-                CurrentPositionPoint = tuple.Item1;
-                CurrentPositionKey = tuple.Item2;
-            };
-
-            inputService.SelectionProgress += (o, progress) =>
-            {
-                if (progress.Item2 == 0)
-                {
-                    ResetSelectionProgress();
-                }
-                else if (progress.Item1 != null)
-                {
-                    if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.Value.KeyValue != null)
-                    {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] = new NotifyingProxy<double>(progress.Item2);
-                    }
-                    else if (SelectionMode == SelectionModes.Point)
-                    {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
-                    }
-                }
-            };
-
-            inputService.Selection += (o, value) =>
-            {
-                SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
-
-                if (SelectionMode == SelectionModes.Key
-                    && value.KeyValue != null)
-                {
-                    if (KeySelection != null)
-                    {
-                        KeySelection(this, value.KeyValue.Value);
-                    }
-                }
-                else if (SelectionMode == SelectionModes.Point)
-                {
-                    //TODO: Handle point selection
-                }
-            };
-
-            inputService.SelectionResult += (o, tuple) =>
-            {
-                var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue {FunctionKey = tuple.Item2, String = tuple.Item3}
-                    : (KeyValue?)null;
-                var multiKeySelection = tuple.Item4;
-
-                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
-
-                if (SelectionMode == SelectionModes.Key
-                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
-                {
-                    KeySelectionResult(singleKeyValue, multiKeySelection);
-                }
-                else if (SelectionMode == SelectionModes.Point)
-                {
-                    //TODO: Handle point selection result
-                }
-            };
-
-            inputService.Error += (o, exception) => 
-                ErrorNotificationRequest.Raise(new Notification
-                {
-                    Title = "Uh-oh!",
-                    Content = exception.Message
-                });
+            ApplySettings();
         }
 
         #endregion
@@ -428,6 +306,102 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             return new OutputService(this);
         }
 
+        private void InitialiseInputService()
+        {
+            inputService.KeyEnabledStates = keyEnabledStates;
+
+            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
+                .Subscribe(value =>
+                {
+                    CapturingMultiKeySelection = value;
+
+                    //TODO: Visually change uppercase keys to lowercase after starting a multi-key capture - cannot just change shift state as this affects the casing of the capture
+                    //if (value)
+                    //{
+                    //    var shiftKeyProxy = KeyDownStates[new KeyValue {FunctionKey = FunctionKeys.Shift}.Key];
+                    //    if (shiftKeyProxy.Value == Enums.KeyDownStates.On)
+                    //    {
+                    //        shiftKeyProxy.Value = Enums.KeyDownStates.Off;
+                    //    }
+                    //}
+                });
+
+            inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
+
+            inputService.CurrentPosition += (o, tuple) =>
+            {
+                CurrentPositionPoint = tuple.Item1;
+                CurrentPositionKey = tuple.Item2;
+            };
+
+            inputService.SelectionProgress += (o, progress) =>
+            {
+                if (progress.Item2 == 0)
+                {
+                    ResetSelectionProgress();
+                }
+                else if (progress.Item1 != null)
+                {
+                    if (SelectionMode == SelectionModes.Key
+                        && progress.Item1.Value.KeyValue != null)
+                    {
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] =
+                            new NotifyingProxy<double>(progress.Item2);
+                    }
+                    else if (SelectionMode == SelectionModes.Point)
+                    {
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                    }
+                }
+            };
+
+            inputService.Selection += (o, value) =>
+            {
+                SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
+
+                if (SelectionMode == SelectionModes.Key
+                    && value.KeyValue != null)
+                {
+                    if (KeySelection != null)
+                    {
+                        KeySelection(this, value.KeyValue.Value);
+                    }
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    //TODO: Handle point selection
+                }
+            };
+
+            inputService.SelectionResult += (o, tuple) =>
+            {
+                var points = tuple.Item1;
+                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
+                    ? new KeyValue { FunctionKey = tuple.Item2, String = tuple.Item3 }
+                    : (KeyValue?)null;
+                var multiKeySelection = tuple.Item4;
+
+                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
+
+                if (SelectionMode == SelectionModes.Key
+                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
+                {
+                    KeySelectionResult(singleKeyValue, multiKeySelection);
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    //TODO: Handle point selection result
+                }
+            };
+
+            inputService.Error += (o, exception) =>
+                ErrorNotificationRequest.Raise(new Notification
+                {
+                    Title = "Uh-oh!",
+                    Content = exception.Message
+                });
+        }
+
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
             //Single key string
@@ -577,6 +551,27 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     yesNoQuestion.NoAction();
                 }
             }
+        }
+
+        private void ApplySettings()
+        {
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key].Value = Enums.KeyDownStates.On;
+
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
+                Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+
+            Settings.Default.OnPropertyChanges(s => s.PublishingKeys)
+                .Subscribe(value =>
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
+                        value ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
+
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
+                Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
+                .Subscribe(value =>
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
+                        value ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
         }
 
         private void ResetSelectionProgress()

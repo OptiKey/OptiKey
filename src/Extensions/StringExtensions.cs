@@ -222,5 +222,11 @@ namespace JuliusSweetland.ETTA.Extensions
             if (string.IsNullOrEmpty(input)) return input;
             return string.Concat(input.First().ToString().ToUpper(), input.Substring(1));
         }
+
+        public static bool NextCharacterWouldBeStartOfNewSentence(this string input)
+        {
+            return string.IsNullOrEmpty(input)
+                   || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 });
 
                 mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
-                    .Subscribe(kv => IsCurrent = kv != null && kv.Value.Equals(Value));
+                    .Subscribe(value => IsCurrent = value != null && value.Value.Equals(Value));
 
                 mainViewModel.KeySelection += (o, value) =>
                 {

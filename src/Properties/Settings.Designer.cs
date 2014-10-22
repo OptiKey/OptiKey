@@ -503,5 +503,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["AutoAddSpace"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoCapitalise {
+            get {
+                return ((bool)(this["AutoCapitalise"]));
+            }
+            set {
+                this["AutoCapitalise"] = value;
+            }
+        }
     }
 }
