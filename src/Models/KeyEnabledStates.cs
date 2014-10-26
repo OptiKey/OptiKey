@@ -13,6 +13,8 @@ namespace JuliusSweetland.ETTA.Models
         #region Fields
 
         private readonly IKeyboardStateManager keyboardStateInfo;
+        private readonly string altKey = new KeyValue { FunctionKey = FunctionKeys.Alt }.Key;
+        private readonly string ctrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl }.Key;
 
         #endregion
 
@@ -26,6 +28,8 @@ namespace JuliusSweetland.ETTA.Models
             keyboardStateInfo.OnPropertyChanges(ksi => ksi.Suggestions).Subscribe(_ => NotifyStateChanged());
             keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             keyboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.KeyDownStates[altKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyboardStateInfo.KeyDownStates[ctrlKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             
             Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(_ => NotifyStateChanged());
         }
@@ -41,6 +45,17 @@ namespace JuliusSweetland.ETTA.Models
                 //Key is publish only, but we are not publishing
                 if (!Settings.Default.PublishingKeys
                     && KeyValueCollections.PublishOnlyKeys.Select(kv => kv.Key).Contains(key))
+                {
+                    return false;
+                }
+
+                //Key is BackOne/BackMany and the Alt or Ctrl modifier key is down
+                if ((key == new KeyValue {FunctionKey = FunctionKeys.BackOne}.Key 
+                    || key == new KeyValue {FunctionKey = FunctionKeys.BackMany}.Key)
+                    && (keyboardStateInfo.KeyDownStates[altKey].Value == KeyDownStates.On
+                        || keyboardStateInfo.KeyDownStates[altKey].Value == KeyDownStates.Lock
+                        || keyboardStateInfo.KeyDownStates[ctrlKey].Value == KeyDownStates.On
+                        || keyboardStateInfo.KeyDownStates[ctrlKey].Value == KeyDownStates.Lock))
                 {
                     return false;
                 }

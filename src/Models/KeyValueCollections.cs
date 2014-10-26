@@ -12,7 +12,6 @@ namespace JuliusSweetland.ETTA.Models
             {
                 return new List<KeyValue>
                 {
-                    new KeyValue {FunctionKey = FunctionKeys.Tab},
                     new KeyValue {FunctionKey = FunctionKeys.Ctrl},
                     new KeyValue {FunctionKey = FunctionKeys.Win},
                     new KeyValue {FunctionKey = FunctionKeys.Alt},

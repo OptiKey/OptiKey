@@ -5,11 +5,6 @@ namespace JuliusSweetland.ETTA.Services
     public interface IOutputService
     {
         string Text { get; }
-        void ClearText();
-        void ProcessCapture(string capture);
-        void ProcessCapture(FunctionKeys capture);
-        void ProcessBackOne();
-        void ProcessBackMany();
-        void SwapLastCaptureForSuggestion(string suggestion);
+        void ProcessCapture(FunctionKeys? functionKey, string chars);
     }
 }

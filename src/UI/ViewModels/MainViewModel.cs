@@ -57,10 +57,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
+            InitialiseKeyDownStates();
             
             InitialiseInputService();
-
-            ApplySettings();
+            
+            //Set initial shift state to on
+            HandleFunctionKeySelectionResult(new KeyValue { FunctionKey = FunctionKeys.Shift });
         }
 
         #endregion
@@ -315,15 +317,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     CapturingMultiKeySelection = value;
 
-                    //TODO: Visually change uppercase keys to lowercase after starting a multi-key capture - cannot just change shift state as this affects the casing of the capture
-                    //if (value)
-                    //{
-                    //    var shiftKeyProxy = KeyDownStates[new KeyValue {FunctionKey = FunctionKeys.Shift}.Key];
-                    //    if (shiftKeyProxy.Value == Enums.KeyDownStates.On)
-                    //    {
-                    //        shiftKeyProxy.Value = Enums.KeyDownStates.Off;
-                    //    }
-                    //}
+                    if (value)
+                    {
+                        //Visually show represent that the shift key will release if it was on (not locked) and we have started a multi key capture
+                        var shiftKeyProxy = KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key];
+                        if (shiftKeyProxy.Value == Enums.KeyDownStates.On)
+                        {
+                            shiftKeyProxy.Value = Enums.KeyDownStates.Off;
+                        }
+                    }
                 });
 
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
@@ -408,7 +410,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             if (singleKeyValue != null
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
-                OutputService.ProcessCapture(singleKeyValue.Value.String);
+                OutputService.ProcessCapture(null, singleKeyValue.Value.String);
             }
 
             //Single key function key
@@ -422,7 +424,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             if (multiKeySelection != null
                 && multiKeySelection.Any())
             {
-                OutputService.ProcessCapture(multiKeySelection.First());
+                OutputService.ProcessCapture(null, multiKeySelection.First());
                 Suggestions = multiKeySelection.Skip(1).ToList();
             }
         }
@@ -433,18 +435,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 case FunctionKeys.AlphaKeyboard:
                     Keyboard = new Alpha();
-                    break;
-
-                case FunctionKeys.BackMany:
-                    OutputService.ProcessBackMany();
-                    break;
-
-                case FunctionKeys.BackOne:
-                    OutputService.ProcessBackOne();
-                    break;
-
-                case FunctionKeys.ClearOutput:
-                    OutputService.ClearText();
                     break;
 
                 case FunctionKeys.NoQuestionResult:
@@ -474,40 +464,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     Keyboard = new Publish();
                     break;
 
-                case FunctionKeys.Shift:
-                    var shiftKey = new KeyValue {FunctionKey = FunctionKeys.Shift}.Key;
-                    KeyDownStates[shiftKey].Value =
-                        KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
-                            ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.On
-                            : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
-                                ? KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Lock
-                                : KeyDownStates[shiftKey].Value = Enums.KeyDownStates.Off;
-                    break;
-
-                case FunctionKeys.Suggestion1:
-                    PassSuggestionToOutputService(0);
-                    break;
-
-                case FunctionKeys.Suggestion2:
-                    PassSuggestionToOutputService(1);
-                    break;
-
-                case FunctionKeys.Suggestion3:
-                    PassSuggestionToOutputService(2);
-                    break;
-
-                case FunctionKeys.Suggestion4:
-                    PassSuggestionToOutputService(3);
-                    break;
-
-                case FunctionKeys.Suggestion5:
-                    PassSuggestionToOutputService(4);
-                    break;
-
-                case FunctionKeys.Suggestion6:
-                    PassSuggestionToOutputService(5);
-                    break;
-
                 case FunctionKeys.Symbols2Keyboard:
                     Keyboard = new Symbols2();
                     break;
@@ -523,17 +479,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 case FunctionKeys.YesQuestionResult:
                     HandleYesNoQuestionResult(true);
                     break;
-            }
 
-            OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
-        }
-
-        private void PassSuggestionToOutputService(int keyIndex)
-        {
-            var suggestionIndex = (SuggestionsPage * SuggestionsPerPage) + keyIndex;
-            if (Suggestions.Count > suggestionIndex)
-            {
-                OutputService.SwapLastCaptureForSuggestion(Suggestions[suggestionIndex]);
+                default:
+                    OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value, null);
+                    break;
             }
         }
 
@@ -553,10 +502,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        private void ApplySettings()
+        private void InitialiseKeyDownStates()
         {
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key].Value = Enums.KeyDownStates.On;
-
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
                 Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
 

@@ -240,6 +240,7 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Notes.txt" />
     <Content Include="Resources\Icons\Source Files\DownArrow.svg" />
     <Content Include="Resources\Icons\Source Files\LeftArrow.svg" />
     <Content Include="Resources\Icons\Source Files\RightArrow.svg" />

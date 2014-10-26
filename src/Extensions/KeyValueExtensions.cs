@@ -67,10 +67,7 @@ namespace JuliusSweetland.ETTA.Extensions
         {
             switch (kv.FunctionKey)
             {
-                case FunctionKeys.Tab:
-                case FunctionKeys.Ctrl:
                 case FunctionKeys.Win:
-                case FunctionKeys.Alt:
                 case FunctionKeys.F1:
                 case FunctionKeys.F2:
                 case FunctionKeys.F3:
@@ -103,6 +100,19 @@ namespace JuliusSweetland.ETTA.Extensions
                 case FunctionKeys.Cut:
                 case FunctionKeys.Copy:
                 case FunctionKeys.Paste:
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool IsModifier(this KeyValue kv)
+        {
+            switch (kv.FunctionKey)
+            {
+                case FunctionKeys.Ctrl:
+                case FunctionKeys.Alt:
+                case FunctionKeys.Shift:
                     return true;
             }
 

@@ -340,7 +340,7 @@
                       WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Enter}" />
+                <models:KeyValue String="\n" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
