@@ -1,10 +1,8 @@
 ﻿NEXT STEPS:
 
-!Shift is not being reset after capture
-Test that Backspace keys are disabled when ctrl/alt are on
+Convert "\n" and "\t" to actual whitespace - the strings are being displayed at the moment
 
 Add 3 modifier keys to Publish keyboard
-Add caret to scratchpad - http://www.codeproject.com/Articles/633935/Customizing-the-Caret-of-a-WPF-TextBox
 Swap in suggestions
 	+ Clear suggestions when any input, except swapping suggestions is output
 	+ Apply shift state to suggestions when they are initially set - therefore swapping them in matches casing of 1st suggestion used as capture

@@ -39,6 +39,7 @@
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Green}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
+            <StaticResource x:Key="ScratchpadCaretBackground" ResourceKey="Green"/>
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
@@ -289,6 +290,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <Style TargetType="{x:Type controls:Scratchpad}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -296,30 +298,63 @@
                             <Border BorderThickness="1" BorderBrush="{StaticResource ScratchpadBorderBrush}">
                                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
                                               behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
-                                    <TextBlock Text="{TemplateBinding Text}"
-                                               TextWrapping="Wrap"
-                                               MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
-                                               FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
-                                               FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
-                                               FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
-                                               Foreground="{StaticResource ScratchpadForegroundBrush}"
-                                               Background="{StaticResource ScratchpadBackgroundBrush}">
-                                        <TextBlock.FontSize>
-                                            <MultiBinding Converter="{StaticResource FontSizeToFitLines}">
-                                                <MultiBinding.Bindings>
-                                                    <Binding Path="ScratchpadNumberOfLines" Source="{x:Static properties:Settings.Default}" />
-                                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type ScrollViewer}}" />
-                                                    <Binding Path="FontFamily" RelativeSource="{RelativeSource Self}" />
-                                                </MultiBinding.Bindings>
-                                            </MultiBinding>
-                                        </TextBlock.FontSize>
-                                    </TextBlock>
+                                    <Grid>
+                                        <TextBox x:Name="ScratchpadTextBox"
+                                             Text="{TemplateBinding Text}"
+                                             behaviours:TextBoxBehaviours.CaretElement="{Binding ElementName=ScratchpadCaret}"
+                                             TextWrapping="Wrap"
+                                             IsReadOnly="True"
+                                             CaretBrush="Transparent" 
+                                             Padding="0" Margin="0" BorderThickness="0"
+                                             MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                                             FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
+                                             FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
+                                             FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
+                                             Foreground="{StaticResource ScratchpadForegroundBrush}"
+                                             Background="{StaticResource ScratchpadBackgroundBrush}">
+                                            <TextBox.FontSize>
+                                                <MultiBinding Converter="{StaticResource FontSizeToFitLines}">
+                                                    <MultiBinding.Bindings>
+                                                        <Binding Path="ScratchpadNumberOfLines" Source="{x:Static properties:Settings.Default}" />
+                                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type ScrollViewer}}" />
+                                                        <Binding Path="FontFamily" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding.Bindings>
+                                                </MultiBinding>
+                                            </TextBox.FontSize>
+                                        </TextBox>
+                                        <Canvas>
+                                            <Border x:Name="ScratchpadCaret" 
+                                                    Canvas.Left="0" Canvas.Top="0" 
+                                                    Width="5" 
+                                                    Height="{Binding FontSize, ElementName=ScratchpadTextBox}" 
+                                                    Background="{StaticResource ScratchpadForegroundBrush}">
+                                                <Border.Triggers>
+                                                    <EventTrigger RoutedEvent="Border.Loaded">
+                                                        <BeginStoryboard>
+                                                            <Storyboard  x:Name="CaretStoryBoard" RepeatBehavior="Forever">
+                                                                <ColorAnimationUsingKeyFrames 
+                                                                    Storyboard.TargetProperty="Background.Color"
+                                                                    Duration="0:0:0:1"
+                                                                    FillBehavior="HoldEnd">
+                                                                    <ColorAnimationUsingKeyFrames.KeyFrames >
+                                                                        <DiscreteColorKeyFrame KeyTime="0:0:0.750" Value="Transparent" />
+                                                                        <DiscreteColorKeyFrame KeyTime="0:0:0.000" Value="{StaticResource ScratchpadCaretBackground}"/>
+                                                                    </ColorAnimationUsingKeyFrames.KeyFrames>
+                                                                </ColorAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                </Border.Triggers>
+                                            </Border>
+                                        </Canvas>
+                                    </Grid>
                                 </ScrollViewer>
                             </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <Style TargetType="{x:Type controls:QuestionText}">
                 <Setter Property="Template">
                     <Setter.Value>

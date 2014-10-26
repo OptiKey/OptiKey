@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reactive.Linq;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
@@ -31,7 +32,7 @@ namespace JuliusSweetland.ETTA.Services
             this.keyboardStateManager = keyboardStateManager;
 
             //TESTING START
-            //Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
+            Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
 
             //Observable.Interval(TimeSpan.FromMilliseconds(500))
             //    .ObserveOnDispatcher()
