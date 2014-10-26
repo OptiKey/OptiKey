@@ -1,6 +1,8 @@
 ﻿NEXT STEPS:
 
 !Shift is not being reset after capture
+Test that Backspace keys are disabled when ctrl/alt are on
+
 Add 3 modifier keys to Publish keyboard
 Add caret to scratchpad - http://www.codeproject.com/Articles/633935/Customizing-the-Caret-of-a-WPF-TextBox
 Swap in suggestions

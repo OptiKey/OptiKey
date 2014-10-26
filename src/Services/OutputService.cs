@@ -235,7 +235,7 @@ namespace JuliusSweetland.ETTA.Services
                     default:
                         //TODO process all other function keys
 
-                        PublishKeyStroke(functionKey.Value, null);
+                        ProcessSingleElementOfCapture(functionKey.Value, null);
                         lastTextChange = null;
                         break;
                 }
@@ -262,7 +262,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 foreach (char c in chars)
                 {
-                    PublishKeyStroke(null, c);
+                    ProcessSingleElementOfCapture(null, c);
                 }
                 
                 lastTextChange = modifiedChars;
@@ -280,28 +280,18 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - private
 
-        private void PublishKeyStroke(FunctionKeys? functionKey, char? character)
+        private void ProcessSingleElementOfCapture(FunctionKeys? functionKey, char? character)
         {
             if (Settings.Default.PublishingKeys)
             {
                 //TODO Publish key
 
-                //Release modifiers which are not locked
-                if (ShiftKeyDownState == KeyDownStates.On)
-                {
-                    ShiftKeyDownState = KeyDownStates.Off;
-                }
-
-                if (AltKeyDownState == KeyDownStates.On)
-                {
-                    AltKeyDownState = KeyDownStates.Off;
-                }
-
-                if (CtrlKeyDownState == KeyDownStates.On)
-                {
-                    CtrlKeyDownState = KeyDownStates.Off;
-                }
             }
+
+            //Release modifiers which are not locked
+            if (ShiftKeyDownState == KeyDownStates.On) ShiftKeyDownState = KeyDownStates.Off;
+            if (AltKeyDownState == KeyDownStates.On) AltKeyDownState = KeyDownStates.Off; 
+            if (CtrlKeyDownState == KeyDownStates.On) CtrlKeyDownState = KeyDownStates.Off;
         }
 
         private void ProcessBackOne()
@@ -335,7 +325,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < backCount; i++)
                 {
-                    PublishKeyStroke(FunctionKeys.BackOne, null);
+                    ProcessSingleElementOfCapture(FunctionKeys.BackOne, null);
                 }
             }
         }
