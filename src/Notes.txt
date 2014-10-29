@@ -1,7 +1,5 @@
 ﻿NEXT STEPS:
 
-Convert "\n" and "\t" to actual whitespace - the strings are being displayed at the moment
-
 Add 3 modifier keys to Publish keyboard
 Swap in suggestions
 	+ Clear suggestions when any input, except swapping suggestions is output

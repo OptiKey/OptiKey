@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
@@ -20,6 +21,7 @@ namespace JuliusSweetland.ETTA.Models
         {
             get
             {
+                Debug.Print("*************************************************" + key);
                 return dictionary.GetOrAdd(key, new NotifyingProxy<T>(default(T)));
             }
             set

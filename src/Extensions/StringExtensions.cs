@@ -228,5 +228,17 @@ namespace JuliusSweetland.ETTA.Extensions
             return string.IsNullOrEmpty(input)
                    || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
         }
+
+        public static string ConvertEscapedCharsToLiterals(this string input)
+        {
+            return input
+                .Replace("\0", @"\0")
+                .Replace("\a", @"\a")
+                .Replace("\b", @"\b")
+                .Replace("\t", @"\t")
+                .Replace("\f", @"\f")
+                .Replace("\n", @"\n")
+                .Replace("\r", @"\r");
+        }
     }
 }

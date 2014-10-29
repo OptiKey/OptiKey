@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Extensions;
 
 namespace JuliusSweetland.ETTA.Models
 {
@@ -40,7 +41,10 @@ namespace JuliusSweetland.ETTA.Models
                 {
                     stringBuilder.Append(",");
                 }
-                stringBuilder.Append(String);
+
+                //Special chars such as '\n' have meaning in a string - convert to literal strings.
+                //This is also required by the Key property as Key is used in dictionary indexes, for example.
+                stringBuilder.Append(String.ConvertEscapedCharsToLiterals());
             }
             
             return stringBuilder.ToString();
