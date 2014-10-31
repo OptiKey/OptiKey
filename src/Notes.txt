@@ -1,6 +1,6 @@
 ﻿NEXT STEPS:
 
-Add 3 modifier keys to Publish keyboard
+Add 3 modifier keys to Publish keyboard + other keyboards
 Swap in suggestions
 	+ Clear suggestions when any input, except swapping suggestions is output
 	+ Apply shift state to suggestions when they are initially set - therefore swapping them in matches casing of 1st suggestion used as capture
@@ -10,9 +10,11 @@ Error tones
 Publish keys
 	+ Ctor & Publish state change: Manually reset keyboard to default state (caps lock etc)
 Change AddPhraseToDictionary (and icon name) to AddToDictionary and display list of viable options (individual words + whole sentence(s))
-Auto complete words
+
 
 --------------------------------------------------------------------------------
 
 TO DO?
 Character codes – ALT on/lock, then numbers, then ALT off
+Auto complete words
+Predict next word

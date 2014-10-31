@@ -286,7 +286,7 @@
         </controls:Key>
 
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="ctrl"
+                      Text="CTRL"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
@@ -300,7 +300,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="alt"
+                      Text="ALT"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />

@@ -56,7 +56,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
+            //Keyboard = new Alpha();
+            Keyboard = new Publish();
             InitialiseKeyDownStates();
             
             InitialiseInputService();
