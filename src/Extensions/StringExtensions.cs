@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using log4net;
@@ -226,7 +227,7 @@ namespace JuliusSweetland.ETTA.Extensions
         public static bool NextCharacterWouldBeStartOfNewSentence(this string input)
         {
             return string.IsNullOrEmpty(input)
-                   || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
+                   || new[] {".", "!", "?", "\n"}.Any(input.TrimEnd().EndsWith); //N.B. End white space is irrelevant
         }
 
         public static string ConvertEscapedCharsToLiterals(this string input)
@@ -239,6 +240,31 @@ namespace JuliusSweetland.ETTA.Extensions
                 .Replace("\f", @"\f")
                 .Replace("\n", @"\n")
                 .Replace("\r", @"\r");
+        }
+
+        public static int CountBackToLastCharCategoryBoundary(this string input)
+        {
+            int charsToRemove = 0;
+
+            if (string.IsNullOrEmpty(input)) return charsToRemove;
+
+            //Special case - LetterOrDigitOrSymbolOrPunctuation followed by single space - remove the final space before we start
+            if (input.Length >= 2
+                && input[input.Length - 1].ToCharCategory() == CharCategories.Space
+                && input[input.Length - 2].ToCharCategory() == CharCategories.LetterOrDigitOrSymbolOrPunctuation)
+            {
+                charsToRemove = 1;
+            }
+
+            var charCategoryToRemove = input[input.Length - charsToRemove - 1].ToCharCategory();
+
+            while (input.Length > charsToRemove
+                    && input[input.Length - charsToRemove - 1].ToCharCategory() == charCategoryToRemove)
+            {
+                charsToRemove++;
+            }
+
+            return charsToRemove;
         }
     }
 }

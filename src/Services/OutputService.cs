@@ -302,9 +302,10 @@ namespace JuliusSweetland.ETTA.Services
                 || CtrlKeyDownState == KeyDownStates.On
                 || CtrlKeyDownState == KeyDownStates.Lock)
             {
-                //Ctrl+Backspace = back a whole word (in some applications?)
-                //Shift+Backspace = undo (in some applications?)
-                //As the expected behaviour varies we will not handle a modified backspace
+                //We shouldn't actually get here as modifier + BackOne or BackMany should be disabled, because...
+                //Ctrl+Backspace = back a whole word in some applications.
+                //Shift+Backspace = undo in some applications).
+                //As the expected behaviour varies we will not handle a modified backspace.
                 //TODO Audible error tone = we should not get here and user should understand that something went wrong
                 return;
             }
@@ -333,9 +334,27 @@ namespace JuliusSweetland.ETTA.Services
 
         private void ProcessBackMany()
         {
-            throw new NotImplementedException();
+            if (AltKeyDownState == KeyDownStates.On
+                || AltKeyDownState == KeyDownStates.Lock
+                || CtrlKeyDownState == KeyDownStates.On
+                || CtrlKeyDownState == KeyDownStates.Lock)
+            {
+                //We shouldn't actually get here as modifier + BackOne or BackMany should be disabled, because...
+                //Ctrl+Backspace = back a whole word in some applications.
+                //Shift+Backspace = undo in some applications).
+                //As the expected behaviour varies we will not handle a modified backspace.
+                //TODO Audible error tone = we should not get here and user should understand that something went wrong
+                return;
+            }
 
-            //TODO Apply modifiers? (Ctrl+Backspace = whole word. Shift+Backspace = undo)
+            var backCount = Text.CountBackToLastCharCategoryBoundary();
+
+            Text = Text.Substring(0, Text.Length - backCount);
+
+            for (int i = 0; i < backCount; i++)
+            {
+                ProcessSingleElementOfCapture(FunctionKeys.BackOne, null);
+            }
         }
 
         private void SwapLastCaptureForSuggestion(int index)

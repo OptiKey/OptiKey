@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using JuliusSweetland.ETTA.Enums;
 
 namespace JuliusSweetland.ETTA.Extensions
 {
@@ -17,6 +18,31 @@ namespace JuliusSweetland.ETTA.Extensions
 
             //Convert back to char
             return cAsString.First();
+        }
+
+        public static CharCategories ToCharCategory(this char c)
+        {
+            if (new[] { '\n', '\r' }.Contains(c))
+            {
+                return CharCategories.NewLine;
+            }
+
+            if (c == ' ')
+            {
+                return CharCategories.Space;
+            }
+
+            if (c == '\t')
+            {
+                return CharCategories.Tab;
+            }
+
+            if (char.IsLetterOrDigit(c) || char.IsSymbol(c) || char.IsPunctuation(c))
+            {
+                return CharCategories.LetterOrDigitOrSymbolOrPunctuation;
+            }
+
+            return CharCategories.SomethingElse;
         }
     }
 }
