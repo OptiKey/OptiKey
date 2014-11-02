@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
@@ -154,7 +155,7 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - IOutputService
 
-        public void ProcessCapture(FunctionKeys? functionKey, string chars)
+        public void ProcessCapture(FunctionKeys? functionKey, string chars, List<string> suggestions)
         {
             if (functionKey == null && string.IsNullOrEmpty(chars)) return;
 
@@ -174,8 +175,9 @@ namespace JuliusSweetland.ETTA.Services
 
                     case FunctionKeys.BackMany:
                         ProcessBackMany();
-
+                        
                         lastTextChange = null;
+                        keyboardStateManager.Suggestions = null;
                         suppressAutoSpace = true;
                         calculateShiftState = true;
                         break;
@@ -184,6 +186,7 @@ namespace JuliusSweetland.ETTA.Services
                         ProcessBackOne();
 
                         lastTextChange = null;
+                        keyboardStateManager.Suggestions = null;
                         suppressAutoSpace = true;
                         calculateShiftState = true;
                         break;
@@ -192,6 +195,7 @@ namespace JuliusSweetland.ETTA.Services
                         Text = null;
 
                         lastTextChange = null;
+                        keyboardStateManager.Suggestions = null;
                         suppressAutoSpace = true;
                         calculateShiftState = true;
                         break;
@@ -237,8 +241,9 @@ namespace JuliusSweetland.ETTA.Services
                         break;
 
                     default:
-                        ProcessSingleElementOfCapture(functionKey.Value, null);
+                        PublishKeyAndReleaseModifiers(functionKey.Value, null);
                         lastTextChange = null;
+                        keyboardStateManager.Suggestions = null;
                         break;
                 }
             }
@@ -258,25 +263,32 @@ namespace JuliusSweetland.ETTA.Services
                 var modifiedChars = ApplyModifiers(chars);
                 if (!string.IsNullOrEmpty(modifiedChars))
                 {
-                    var prefix = GeneratePrefix();
-                    if (!string.IsNullOrEmpty(prefix))
-                    {
-                        foreach (char p in prefix)
-                        {
-                            ProcessSingleElementOfCapture(null, p, false);
-                        }
-                    }
-                    Text = string.Concat(Text, prefix, modifiedChars);
+                    AutoAddSpace();
+                    Text = string.Concat(Text, modifiedChars);
                 }
 
                 foreach (char c in chars)
                 {
-                    ProcessSingleElementOfCapture(null, c);
+                    PublishKeyAndReleaseModifiers(null, c);
                 }
                 
                 lastTextChange = modifiedChars;
+                keyboardStateManager.Suggestions = null;
                 suppressAutoSpace = false;
                 calculateShiftState = true;
+            }
+
+            if (suggestions != null
+                && suggestions.Any())
+            {
+                var modifiedSuggestions = suggestions
+                    .Select(ApplyModifiers)
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToList();
+
+                keyboardStateManager.Suggestions = modifiedSuggestions.Any()
+                        ? modifiedSuggestions
+                        : null;
             }
 
             if (calculateShiftState)
@@ -289,7 +301,7 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - private
 
-        private void ProcessSingleElementOfCapture(FunctionKeys? functionKey, char? character, bool releaseModifiers = true)
+        private void PublishKeyAndReleaseModifiers(FunctionKeys? functionKey, char? character, bool releaseModifiers = true)
         {
             if (Settings.Default.PublishingKeys)
             {
@@ -337,7 +349,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < backCount; i++)
                 {
-                    ProcessSingleElementOfCapture(FunctionKeys.BackOne, null);
+                    PublishKeyAndReleaseModifiers(FunctionKeys.BackOne, null);
                 }
             }
         }
@@ -363,7 +375,7 @@ namespace JuliusSweetland.ETTA.Services
 
             for (int i = 0; i < backCount; i++)
             {
-                ProcessSingleElementOfCapture(FunctionKeys.BackOne, null);
+                PublishKeyAndReleaseModifiers(FunctionKeys.BackOne, null);
             }
         }
 
@@ -381,14 +393,16 @@ namespace JuliusSweetland.ETTA.Services
             throw new NotImplementedException();
         }
 
-        private string GeneratePrefix()
+        private void AutoAddSpace()
         {
-            return Settings.Default.AutoAddSpace
-                   && Text != null
-                   && Text.Any()
-                   && !suppressAutoSpace
-                ? " "
-                : null;
+            if (Settings.Default.AutoAddSpace
+                && Text != null
+                && Text.Any()
+                && !suppressAutoSpace)
+            {
+                PublishKeyAndReleaseModifiers(null, ' ', false);
+                Text = string.Concat(Text, " ");
+            }
         }
 
         private void CalculateShiftState()

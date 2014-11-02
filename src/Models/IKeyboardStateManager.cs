@@ -9,7 +9,7 @@ namespace JuliusSweetland.ETTA.Models
     {
         bool CapturingMultiKeySelection { get; }
         NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates { get; }
-        List<string> Suggestions { get; }
+        List<string> Suggestions { get; set; }
         int SuggestionsPage { get; }
         int SuggestionsPerPage { get; }
         IKeyboard Keyboard { set; }

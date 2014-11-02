@@ -1,10 +1,11 @@
-﻿using JuliusSweetland.ETTA.Enums;
+﻿using System.Collections.Generic;
+using JuliusSweetland.ETTA.Enums;
 
 namespace JuliusSweetland.ETTA.Services
 {
     public interface IOutputService
     {
         string Text { get; }
-        void ProcessCapture(FunctionKeys? functionKey, string chars);
+        void ProcessCapture(FunctionKeys? functionKey, string chars, List<string> suggestions);
     }
 }

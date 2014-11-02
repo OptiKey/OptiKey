@@ -1,13 +1,13 @@
 ﻿NEXT STEPS:
 
+Publish keys
+	+ Ctor & Publish state change: Manually reset keyboard to default state (caps lock etc)
+	+ Release down keys when app closes
 Swap in suggestions
 	+ Clear suggestions when any input, except swapping suggestions is output
 	+ Apply shift state to suggestions when they are initially set - therefore swapping them in matches casing of 1st suggestion used as capture
-Auto capitalise
 Speak
 Error tones
-Publish keys
-	+ Ctor & Publish state change: Manually reset keyboard to default state (caps lock etc)
 Change AddPhraseToDictionary (and icon name) to AddToDictionary and display list of viable options (individual words + whole sentence(s))
 
 

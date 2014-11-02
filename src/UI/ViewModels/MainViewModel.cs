@@ -411,7 +411,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             if (singleKeyValue != null
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
-                OutputService.ProcessCapture(null, singleKeyValue.Value.String);
+                OutputService.ProcessCapture(null, singleKeyValue.Value.String, null);
             }
 
             //Single key function key
@@ -425,8 +425,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             if (multiKeySelection != null
                 && multiKeySelection.Any())
             {
-                OutputService.ProcessCapture(null, multiKeySelection.First());
-                Suggestions = multiKeySelection.Skip(1).ToList();
+                OutputService.ProcessCapture(null, multiKeySelection.First(), multiKeySelection.Skip(1).ToList());
             }
         }
 
@@ -482,7 +481,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     break;
 
                 default:
-                    OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value, null);
+                    OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value, null, null);
                     break;
             }
         }
