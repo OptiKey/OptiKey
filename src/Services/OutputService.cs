@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Reactive.Linq;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
@@ -16,6 +15,7 @@ namespace JuliusSweetland.ETTA.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IKeyboardStateManager keyboardStateManager;
+        private readonly IPublishService publishService;
         private readonly string shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
         private readonly string altKey = new KeyValue { FunctionKey = FunctionKeys.Alt }.Key;
         private readonly string ctrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl }.Key;
@@ -27,12 +27,15 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Ctor
 
-        public OutputService(IKeyboardStateManager keyboardStateManager)
+        public OutputService(
+            IKeyboardStateManager keyboardStateManager,
+            IPublishService publishService)
         {
             this.keyboardStateManager = keyboardStateManager;
+            this.publishService = publishService;
 
             //TESTING START
-            Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
+            //Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
 
             //Observable.Interval(TimeSpan.FromMilliseconds(500))
             //    .ObserveOnDispatcher()
@@ -75,12 +78,12 @@ namespace JuliusSweetland.ETTA.Services
                         if (previousValue == KeyDownStates.Off
                         && (value == KeyDownStates.On || value == KeyDownStates.Lock))
                         {
-                            //TODO Publish shift down
+                            publishService.KeyDown(FunctionKeys.Shift, null);
                         }
                         else if ((previousValue == KeyDownStates.On || previousValue == KeyDownStates.Lock)
                             && value == KeyDownStates.Off)
                         {
-                            //TODO Publish shift up
+                            publishService.KeyUp(FunctionKeys.Shift, null);
                         }
                     }
                 }
@@ -105,12 +108,12 @@ namespace JuliusSweetland.ETTA.Services
                         if (previousValue == KeyDownStates.Off
                             && (value == KeyDownStates.On || value == KeyDownStates.Lock))
                         {
-                            //TODO Publish alt down
+                            publishService.KeyDown(FunctionKeys.Alt, null);
                         }
                         else if ((previousValue == KeyDownStates.On || previousValue == KeyDownStates.Lock)
                                  && value == KeyDownStates.Off)
                         {
-                            //TODO Publish alt up
+                            publishService.KeyUp(FunctionKeys.Alt, null);
                         }
                     }
                 }
@@ -135,12 +138,12 @@ namespace JuliusSweetland.ETTA.Services
                         if (previousValue == KeyDownStates.Off
                             && (value == KeyDownStates.On || value == KeyDownStates.Lock))
                         {
-                            //TODO Publish ctrl down
+                            publishService.KeyDown(FunctionKeys.Ctrl, null);
                         }
                         else if ((previousValue == KeyDownStates.On || previousValue == KeyDownStates.Lock)
                                  && value == KeyDownStates.Off)
                         {
-                            //TODO Publish ctrl up
+                            publishService.KeyUp(FunctionKeys.Ctrl, null);
                         }
                     }
                 }
@@ -234,8 +237,6 @@ namespace JuliusSweetland.ETTA.Services
                         break;
 
                     default:
-                        //TODO process all other function keys
-
                         ProcessSingleElementOfCapture(functionKey.Value, null);
                         lastTextChange = null;
                         break;
@@ -258,6 +259,13 @@ namespace JuliusSweetland.ETTA.Services
                 if (!string.IsNullOrEmpty(modifiedChars))
                 {
                     var prefix = GeneratePrefix();
+                    if (!string.IsNullOrEmpty(prefix))
+                    {
+                        foreach (char p in prefix)
+                        {
+                            ProcessSingleElementOfCapture(null, p, false);
+                        }
+                    }
                     Text = string.Concat(Text, prefix, modifiedChars);
                 }
 
@@ -281,18 +289,20 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - private
 
-        private void ProcessSingleElementOfCapture(FunctionKeys? functionKey, char? character)
+        private void ProcessSingleElementOfCapture(FunctionKeys? functionKey, char? character, bool releaseModifiers = true)
         {
             if (Settings.Default.PublishingKeys)
             {
-                //TODO Publish key
-
+                publishService.KeyPress(functionKey, character);
             }
 
-            //Release modifiers which are not locked
-            if (ShiftKeyDownState == KeyDownStates.On) ShiftKeyDownState = KeyDownStates.Off;
-            if (AltKeyDownState == KeyDownStates.On) AltKeyDownState = KeyDownStates.Off; 
-            if (CtrlKeyDownState == KeyDownStates.On) CtrlKeyDownState = KeyDownStates.Off;
+            if (releaseModifiers)
+            {
+                //Release modifiers which are not locked
+                if (ShiftKeyDownState == KeyDownStates.On) ShiftKeyDownState = KeyDownStates.Off;
+                if (AltKeyDownState == KeyDownStates.On) AltKeyDownState = KeyDownStates.Off;
+                if (CtrlKeyDownState == KeyDownStates.On) CtrlKeyDownState = KeyDownStates.Off;
+            }
         }
 
         private void ProcessBackOne()

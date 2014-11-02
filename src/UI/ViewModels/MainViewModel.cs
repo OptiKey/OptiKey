@@ -306,7 +306,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private IOutputService CreateOutputService()
         {
-            return new OutputService(this);
+            return new OutputService(this, new PublishService());
         }
 
         private void InitialiseInputService()

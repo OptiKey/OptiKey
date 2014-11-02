@@ -1,6 +1,5 @@
 ﻿NEXT STEPS:
 
-Add 3 modifier keys to Publish keyboard + other keyboards
 Swap in suggestions
 	+ Clear suggestions when any input, except swapping suggestions is output
 	+ Apply shift state to suggestions when they are initially set - therefore swapping them in matches casing of 1st suggestion used as capture

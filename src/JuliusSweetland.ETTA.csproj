@@ -123,6 +123,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\KeyValueExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\IKeyboardStateManager.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
+    <Compile Include="Models\VirtualKeyCodeSet.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
@@ -161,8 +163,10 @@
     <Compile Include="Services\IOutputService.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
+    <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
     <Compile Include="Services\OutputService.cs" />
+    <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
