@@ -26,6 +26,16 @@ namespace JuliusSweetland.ETTA.Models
                 && (String == kv.String);
         }
 
+        public static bool operator ==(KeyValue kv1, KeyValue kv2)
+        {
+            return kv1.Equals(kv2);
+        }
+
+        public static bool operator !=(KeyValue x, KeyValue y)
+        {
+            return !(x == y);
+        }
+
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();

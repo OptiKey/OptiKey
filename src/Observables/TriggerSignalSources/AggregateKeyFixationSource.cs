@@ -78,7 +78,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     //We don't have a fixation - check if the buffered points meet the criteria to start a new one
                                     if (tps.All(t => t.Value.KeyValue != null)
                                         && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1
-                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value.Key]))
+                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value]))
                                     {
                                         //All the pointAndKeyValues have the same key value and the key is enabled (or we don't know the key states)
                                         var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
@@ -92,7 +92,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     //We are building a fixation and the latest pointAndKeyValue is not over the same key, or the key is now disabled
                                     if (latestPointAndKeyValue.Value.Value.KeyValue == null
                                         || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)
-                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value.Key]))
+                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value]))
                                     {
                                         //Get the last point which was part of the current fixation, i.e. over the previously fixated key
                                         Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps.Count > 1

@@ -530,7 +530,7 @@ namespace JuliusSweetland.ETTA.Services
                             {
                                 if (SelectionMode == SelectionModes.Key
                                     && ts.PointAndKeyValue.Value.KeyValue != null
-                                    && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value.Key]))
+                                    && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value]))
                                 {
                                     if (Settings.Default.MultiKeySelectionSupported
                                         && ts.PointAndKeyValue.Value.StringIsLetter)

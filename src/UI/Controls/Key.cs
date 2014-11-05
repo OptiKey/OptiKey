@@ -1,10 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using JuliusSweetland.ETTA.Annotations;
 using JuliusSweetland.ETTA.Enums;
@@ -36,48 +34,51 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 ? keyboardHost.DataContext as MainViewModel
                 : null;
 
-            if (mainViewModel != null
-                && !string.IsNullOrEmpty(Value.Key))
+            if (mainViewModel != null)
             {
-                /* 
-                 * Certain characters have meaning in property paths, for example the comma.
-                 * To ensure WPF doesn't mistake the KeyValue's Key string as a special symbol
-                 * they must be escaped using the caret character (as we are inside an indexer).
-                 */
-                this.SetBinding(KeyDownStateProperty, new Binding
-                {
-                    Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", Value.Key)),
-                    Source = mainViewModel
-                });
-                
-                this.SetBinding(SelectionProgressProperty, new Binding
-                {
-                    Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
-                    Source = mainViewModel
-                });
+                //Calculate KeyDownState
+                mainViewModel.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+                    .Subscribe(value => KeyDownState = value);
 
-                this.SetBinding(IsEnabledProperty, new Binding
-                {
-                    Path = new PropertyPath(string.Format("KeyEnabledStates[^{0}]", Value.Key)),
-                    Source = mainViewModel
-                });
+                KeyDownState = mainViewModel.KeyDownStates[Value].Value;
+
+                //Calculate SelectionProgress
+                mainViewModel.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value => SelectionProgress = value);
+
+                SelectionProgress = mainViewModel.KeySelectionProgress[Value].Value;
+
+                //Calculate IsEnabled
+                mainViewModel.KeyEnabledStates.OnAnyPropertyChanges()
+                    .Subscribe(value => IsEnabled = mainViewModel.KeyEnabledStates[Value]);
+
+                IsEnabled = mainViewModel.KeyEnabledStates[Value];
+                
+                //Calculate IsCurrent
+                Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
 
                 mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
-                    .Subscribe(value => IsCurrent = value != null && value.Value.Equals(Value));
+                    .Subscribe(calculateIsCurrent);
+
+                calculateIsCurrent(mainViewModel.CurrentPositionKey);
                 
                 //Calculate DisplayShiftDownText
-                var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
+                Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
+                    (shiftDownState, capturingMultiKeySelection) => 
+                        DisplayShiftDownText = shiftDownState == KeyDownStates.Lock
+                        || (shiftDownState == KeyDownStates.On && !capturingMultiKeySelection);
 
                 mainViewModel.OnPropertyChanges(vm => vm.CapturingMultiKeySelection)
-                    .Subscribe(value => CalculateDisplayShiftDownText(mainViewModel.KeyDownStates[shiftKey].Value, value));
+                    .Subscribe(value => calculateDisplayShiftDownText(mainViewModel.KeyDownStates[KeyValues.ShiftKey].Value, value));
 
-                mainViewModel.KeyDownStates[shiftKey].OnPropertyChanges(sds => sds.Value)
-                    .Subscribe(value => CalculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
+                mainViewModel.KeyDownStates[KeyValues.ShiftKey].OnPropertyChanges(sds => sds.Value)
+                    .Subscribe(value => calculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
 
-                CalculateDisplayShiftDownText(
-                    mainViewModel.KeyDownStates[shiftKey].Value,
+                calculateDisplayShiftDownText(
+                    mainViewModel.KeyDownStates[KeyValues.ShiftKey].Value,
                     mainViewModel.CapturingMultiKeySelection);
 
+                //Publish own version of KeySelection event
                 mainViewModel.KeySelection += (o, value) =>
                 {
                     if (value.Equals(Value)
@@ -237,16 +238,6 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
-
-        #endregion
-
-        #region Methods
-
-        private void CalculateDisplayShiftDownText(KeyDownStates shiftDownState, bool capturingMultiKeySelection)
-        {
-            DisplayShiftDownText = shiftDownState == KeyDownStates.Lock
-                || (shiftDownState == KeyDownStates.On && !capturingMultiKeySelection);
-        }
 
         #endregion
 

@@ -77,7 +77,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                 {
                                     if (tps.All(t => t.Value.KeyValue != null)
                                         && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1
-                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value.Key]))
+                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value]))
                                     {
                                         //All buffered tps have the same key value and that key is enabled
                                         var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
@@ -92,7 +92,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     if (fixationCentrePointAndKeyValue.Value.KeyValue != null
                                         && (latestPointAndKeyValue.Value.Value.KeyValue == null
                                             || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)
-                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value.Key])))
+                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value])))
                                     {
                                         fixationCentrePointAndKeyValue = null;
                                         observer.OnNext(new TriggerSignal(null, 0, null));

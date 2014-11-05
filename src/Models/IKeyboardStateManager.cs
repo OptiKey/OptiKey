@@ -8,7 +8,7 @@ namespace JuliusSweetland.ETTA.Models
     public interface IKeyboardStateManager : INotifyPropertyChanged
     {
         bool CapturingMultiKeySelection { get; }
-        NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates { get; }
+        NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get; }
         List<string> Suggestions { get; set; }
         int SuggestionsPage { get; }
         int SuggestionsPerPage { get; }

@@ -1,28 +1,26 @@
 ﻿using System.Collections.Concurrent;
-using System.Diagnostics;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
 {
-    public class NotifyingConcurrentDictionary<T> : BindableBase
+    public class NotifyingConcurrentDictionary<TKey, TValue> : BindableBase
     {
-        private readonly ConcurrentDictionary<string, NotifyingProxy<T>> dictionary =
-            new ConcurrentDictionary<string, NotifyingProxy<T>>();
+        private readonly ConcurrentDictionary<TKey, NotifyingProxy<TValue>> dictionary =
+            new ConcurrentDictionary<TKey, NotifyingProxy<TValue>>();
 
         public void Clear()
         {
-            foreach (string key in dictionary.Keys)
+            foreach (TKey key in dictionary.Keys)
             {
-                dictionary[key].Value = default(T);
+                dictionary[key].Value = default(TValue);
             }
         }
 
-        public NotifyingProxy<T> this[string key]
+        public NotifyingProxy<TValue> this[TKey key]
         {
             get
             {
-                Debug.Print("*************************************************" + key);
-                return dictionary.GetOrAdd(key, new NotifyingProxy<T>(default(T)));
+                return dictionary.GetOrAdd(key, new NotifyingProxy<TValue>(default(TValue)));
             }
             set
             {

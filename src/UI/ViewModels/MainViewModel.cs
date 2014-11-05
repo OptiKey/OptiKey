@@ -30,8 +30,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
-        private readonly NotifyingConcurrentDictionary<double> keySelectionProgress;
-        private readonly NotifyingConcurrentDictionary<KeyDownStates> keyDownStates;
+        private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
+        private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly InteractionRequest<Notification> errorNotificationRequest;
 
@@ -51,8 +51,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             //Initialise fields
             inputService = CreateInputService();
             outputService = CreateOutputService();
-            keySelectionProgress = new NotifyingConcurrentDictionary<double>();
-            keyDownStates = new NotifyingConcurrentDictionary<KeyDownStates>();
+            keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
+            keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
             errorNotificationRequest = new InteractionRequest<Notification>();
             
@@ -143,7 +143,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        public NotifyingConcurrentDictionary<double> KeySelectionProgress
+        public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress
         {
             get { return keySelectionProgress; }
         }
@@ -162,7 +162,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref pointsPerSecond, value); }
         }
 
-        public NotifyingConcurrentDictionary<KeyDownStates> KeyDownStates
+        public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates
         {
             get { return keyDownStates; }
         }
@@ -344,7 +344,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value.Key] =
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
                             new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
@@ -434,19 +434,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     break;
 
                 case FunctionKeys.Alt:
-                    KeyDownStates[KeyValueKeys.AltKey].Value =
-                        KeyDownStates[KeyValueKeys.AltKey].Value == Enums.KeyDownStates.Off
-                            ? Enums.KeyDownStates.On
-                            : KeyDownStates[KeyValueKeys.AltKey].Value == Enums.KeyDownStates.On
-                                ? Enums.KeyDownStates.Lock
-                                : Enums.KeyDownStates.Off;
-                    break;
-
                 case FunctionKeys.Ctrl:
-                    KeyDownStates[KeyValueKeys.CtrlKey].Value =
-                        KeyDownStates[KeyValueKeys.CtrlKey].Value == Enums.KeyDownStates.Off
+                case FunctionKeys.Shift:
+                    KeyDownStates[singleKeyValue.Value].Value =
+                        KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off
                             ? Enums.KeyDownStates.On
-                            : KeyDownStates[KeyValueKeys.CtrlKey].Value == Enums.KeyDownStates.On
+                            : KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On
                                 ? Enums.KeyDownStates.Lock
                                 : Enums.KeyDownStates.Off;
                     break;
@@ -476,15 +469,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 case FunctionKeys.PublishKeyboard:
                     Keyboard = new Publish();
-                    break;
-
-                case FunctionKeys.Shift:
-                    KeyDownStates[KeyValueKeys.ShiftKey].Value =
-                        KeyDownStates[KeyValueKeys.ShiftKey].Value == Enums.KeyDownStates.Off
-                            ? Enums.KeyDownStates.On
-                            : KeyDownStates[KeyValueKeys.ShiftKey].Value == Enums.KeyDownStates.On
-                                ? Enums.KeyDownStates.Lock
-                                : Enums.KeyDownStates.Off;
                     break;
 
                 case FunctionKeys.Symbols2Keyboard:
@@ -527,10 +511,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void InitialiseKeyDownStates()
         {
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }].Value =
                 Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
             
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }].Value =
                 Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
         }
 
@@ -538,7 +522,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(value =>
                 {
-                    KeyDownStates[KeyValueKeys.TogglePublishKey].Value = value 
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }].Value = value 
                         ? Enums.KeyDownStates.On 
                         : Enums.KeyDownStates.Off;
                     
@@ -548,17 +532,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
                 .Subscribe(value =>
-                    KeyDownStates[KeyValueKeys.ToggleMultiKeySelectionSupportedKey].Value = value 
+                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }].Value = value 
                         ? Enums.KeyDownStates.On 
                         : Enums.KeyDownStates.Off);
 
-            KeyDownStates[KeyValueKeys.AltKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 {
                     CalculateMultiKeySelectionSupported();
                     CalculateScratchpadIsDisabled();
                 });
 
-            KeyDownStates[KeyValueKeys.CtrlKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 {
                     CalculateMultiKeySelectionSupported();
                     CalculateScratchpadIsDisabled();
@@ -573,22 +557,22 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             if (!Settings.Default.PublishingKeys)
             {
-                KeyDownStates[KeyValueKeys.AltKey].Value = Enums.KeyDownStates.Off;
-                KeyDownStates[KeyValueKeys.CtrlKey].Value = Enums.KeyDownStates.Off;
+                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value = Enums.KeyDownStates.Off;
+                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value = Enums.KeyDownStates.Off;
             }
         }
 
         private void CalculateMultiKeySelectionSupported()
         {
-            if ((KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock() 
-                 || KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock())
+            if ((KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
+                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock())
                 && Settings.Default.MultiKeySelectionSupported)
             {
                 Settings.Default.MultiKeySelectionSupported = false;
                 turnOnMultiKeySelectionWhenCtrlAndAltReleased = true;
             }
-            else if (!KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
-                && !KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock()
+            else if (!KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
+                && !KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
                 && turnOnMultiKeySelectionWhenCtrlAndAltReleased)
             {
                 Settings.Default.MultiKeySelectionSupported = true;
@@ -598,8 +582,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void CalculateScratchpadIsDisabled()
         {
-            ScratchpadIsDisabled = KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
-                                   || KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock();
+            ScratchpadIsDisabled = KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
+                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock();
         }
 
         private void ResetSelectionProgress()

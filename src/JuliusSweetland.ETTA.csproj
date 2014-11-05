@@ -133,7 +133,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\IKeyboardStateManager.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
-    <Compile Include="Models\KeyValueKeys.cs" />
+    <Compile Include="Models\KeyValues.cs" />
     <Compile Include="Models\VirtualKeyCodeSet.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
