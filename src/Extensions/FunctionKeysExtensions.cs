@@ -7,6 +7,7 @@ namespace JuliusSweetland.ETTA.Extensions
     public static class FunctionKeysExtensions
     {
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
+        //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
         public static VirtualKeyCodeSet? ToVirtualKeyCodeSet(this FunctionKeys functionKey)
         {
             switch (functionKey)

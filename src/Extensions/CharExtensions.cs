@@ -48,6 +48,7 @@ namespace JuliusSweetland.ETTA.Extensions
         }
 
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
+        //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
         public static VirtualKeyCodeSet? ToVirtualKeyCodeSet(this char character)
         {
             switch (character)
@@ -185,6 +186,28 @@ namespace JuliusSweetland.ETTA.Extensions
 
                 case '0':
                     return new VirtualKeyCodeSet {KeyCodes = new[] {VirtualKeyCode.VK_0}};
+
+                case ' ':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.SPACE } };
+
+                case '\t':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.TAB } };
+
+                case '\n':
+                case '\r':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.RETURN } };
+
+                case ',':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.OEM_COMMA } };
+
+                case '.':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.OEM_PERIOD } };
+
+                case '+':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.OEM_PLUS } };
+
+                case '-':
+                    return new VirtualKeyCodeSet { KeyCodes = new[] { VirtualKeyCode.OEM_MINUS } };
 
                 default:
                     return null;

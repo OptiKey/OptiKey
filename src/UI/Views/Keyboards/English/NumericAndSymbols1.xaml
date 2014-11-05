@@ -128,7 +128,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="20"
                       IsEnabled="False" />
-        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="1of2"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>

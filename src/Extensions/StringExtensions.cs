@@ -4,7 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using log4net;
@@ -265,6 +267,23 @@ namespace JuliusSweetland.ETTA.Extensions
             }
 
             return charsToRemove;
+        }
+
+        //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
+        //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
+        public static VirtualKeyCodeSet? ToVirtualKeyCodeSet(this string chars)
+        {
+            switch (chars)
+            {
+                case "\n":
+                case "\r":
+                case "\r\n":
+                case "\n\r":
+                    return new VirtualKeyCodeSet {KeyCodes = new[] {VirtualKeyCode.RETURN}};
+
+                default:
+                    return null;
+            }
         }
     }
 }

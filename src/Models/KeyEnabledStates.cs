@@ -47,6 +47,19 @@ namespace JuliusSweetland.ETTA.Models
                     return false;
                 }
 
+                //Key does not support modification, but Ctrl or Alt are on or locked
+                //A key does not support modification if it can't be converted to a VirtualKeyCode
+                //(which suggests that it isn't a physical keyboard key). Exclude keys with a FunctionKey
+                //value as these might have nothing to do with being modified, e.g. keys to change keyboard.
+                if (keyValue.String != null
+                    && ((keyValue.String.Length > 1 && keyValue.String.ToVirtualKeyCodeSet() == null)
+                        || (keyValue.String.Length == 1 && keyValue.String.First().ToVirtualKeyCodeSet() == null))
+                    && (keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
+                        || keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()))
+                {
+                    return false;
+                }
+
                 //Key is MultiKeySelection, but Ctrl or Alt are on or locked 
                 if (keyValue == KeyValues.ToggleMultiKeySelectionSupportedKey
                     && (keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
