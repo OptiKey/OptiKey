@@ -35,6 +35,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly InteractionRequest<Notification> errorNotificationRequest;
 
+        private readonly string shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
+        private readonly string altKey = new KeyValue { FunctionKey = FunctionKeys.Alt }.Key;
+        private readonly string ctrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl }.Key;
+
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
@@ -314,20 +318,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             inputService.KeyEnabledStates = keyEnabledStates;
 
             inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
-                .Subscribe(value =>
-                {
-                    CapturingMultiKeySelection = value;
-
-                    if (value)
-                    {
-                        //Visually show represent that the shift key will release if it was on (not locked) and we have started a multi key capture
-                        var shiftKeyProxy = KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Shift }.Key];
-                        if (shiftKeyProxy.Value == Enums.KeyDownStates.On)
-                        {
-                            shiftKeyProxy.Value = Enums.KeyDownStates.Off;
-                        }
-                    }
-                });
+                .Subscribe(value => CapturingMultiKeySelection = value);
 
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
 
@@ -437,6 +428,24 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     Keyboard = new Alpha();
                     break;
 
+                case FunctionKeys.Alt:
+                    KeyDownStates[altKey].Value = 
+                        KeyDownStates[altKey].Value == Enums.KeyDownStates.Off
+                            ? Enums.KeyDownStates.On
+                            : KeyDownStates[altKey].Value == Enums.KeyDownStates.On
+                                ? Enums.KeyDownStates.Lock
+                                : Enums.KeyDownStates.Off;
+                    break;
+
+                case FunctionKeys.Ctrl:
+                    KeyDownStates[ctrlKey].Value =
+                        KeyDownStates[ctrlKey].Value == Enums.KeyDownStates.Off
+                            ? Enums.KeyDownStates.On
+                            : KeyDownStates[ctrlKey].Value == Enums.KeyDownStates.On
+                                ? Enums.KeyDownStates.Lock
+                                : Enums.KeyDownStates.Off;
+                    break;
+
                 case FunctionKeys.NoQuestionResult:
                     HandleYesNoQuestionResult(false);
                     break;
@@ -462,6 +471,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 case FunctionKeys.PublishKeyboard:
                     Keyboard = new Publish();
+                    break;
+
+                case FunctionKeys.Shift:
+                    KeyDownStates[shiftKey].Value =
+                        KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
+                            ? Enums.KeyDownStates.On
+                            : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
+                                ? Enums.KeyDownStates.Lock
+                                : Enums.KeyDownStates.Off;
                     break;
 
                 case FunctionKeys.Symbols2Keyboard:

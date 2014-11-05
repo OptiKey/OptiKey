@@ -49,14 +49,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", Value.Key)),
                     Source = mainViewModel
                 });
-
-                var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
-                this.SetBinding(ShiftDownStateProperty, new Binding
-                {
-                    Path = new PropertyPath(string.Format("KeyDownStates[^{0}].Value", shiftKey)),
-                    Source = mainViewModel
-                });
-
+                
                 this.SetBinding(SelectionProgressProperty, new Binding
                 {
                     Path = new PropertyPath(string.Format("KeySelectionProgress[^{0}].Value", Value.Key)),
@@ -71,6 +64,19 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
                 mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                     .Subscribe(value => IsCurrent = value != null && value.Value.Equals(Value));
+                
+                //Calculate DisplayShiftDownText
+                var shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
+
+                mainViewModel.OnPropertyChanges(vm => vm.CapturingMultiKeySelection)
+                    .Subscribe(value => CalculateDisplayShiftDownText(mainViewModel.KeyDownStates[shiftKey].Value, value));
+
+                mainViewModel.KeyDownStates[shiftKey].OnPropertyChanges(sds => sds.Value)
+                    .Subscribe(value => CalculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
+
+                CalculateDisplayShiftDownText(
+                    mainViewModel.KeyDownStates[shiftKey].Value,
+                    mainViewModel.CapturingMultiKeySelection);
 
                 mainViewModel.KeySelection += (o, value) =>
                 {
@@ -102,34 +108,13 @@ namespace JuliusSweetland.ETTA.UI.Controls
             set { SetValue(KeyDownStateProperty, value); }
         }
 
-        public static readonly DependencyProperty ShiftDownStateProperty =
-            DependencyProperty.Register("ShiftDownState", typeof (KeyDownStates), typeof (Key),
-                new PropertyMetadata(default(KeyDownStates), ShiftDownStateChanged));
+        public static readonly DependencyProperty DisplayShiftDownTextProperty =
+            DependencyProperty.Register("DisplayShiftDownText", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
 
-        public KeyDownStates ShiftDownState
+        public bool DisplayShiftDownText
         {
-            get { return (KeyDownStates) GetValue(ShiftDownStateProperty); }
-            set { SetValue(ShiftDownStateProperty, value); }
-        }
-
-        private static void ShiftDownStateChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as Key;
-            var newValue = dependencyPropertyChangedEventArgs.NewValue as KeyDownStates?;
-            if (key != null
-                && newValue != null)
-            {
-                key.IsShiftDown = newValue.Value == KeyDownStates.On || newValue.Value == KeyDownStates.Lock;
-            }
-        }
-
-        public static readonly DependencyProperty IsShiftDownProperty =
-            DependencyProperty.Register("IsShiftDown", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
-
-        public bool IsShiftDown
-        {
-            get { return (bool) GetValue(IsShiftDownProperty); }
-            set { SetValue(IsShiftDownProperty, value); }
+            get { return (bool) GetValue(DisplayShiftDownTextProperty); }
+            set { SetValue(DisplayShiftDownTextProperty, value); }
         }
 
         public static readonly DependencyProperty IsCurrentProperty =
@@ -252,6 +237,16 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+
+        #endregion
+
+        #region Methods
+
+        private void CalculateDisplayShiftDownText(KeyDownStates shiftDownState, bool capturingMultiKeySelection)
+        {
+            DisplayShiftDownText = shiftDownState == KeyDownStates.Lock
+                || (shiftDownState == KeyDownStates.On && !capturingMultiKeySelection);
+        }
 
         #endregion
 
