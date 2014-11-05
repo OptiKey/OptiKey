@@ -35,14 +35,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly KeyEnabledStates keyEnabledStates;
         private readonly InteractionRequest<Notification> errorNotificationRequest;
 
-        private readonly string shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
-        private readonly string altKey = new KeyValue { FunctionKey = FunctionKeys.Alt }.Key;
-        private readonly string ctrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl }.Key;
-
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
+
+        private bool turnOnMultiKeySelectionWhenCtrlAndAltReleased;
         
         #endregion
 
@@ -60,9 +58,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
-            //Keyboard = new Alpha();
-            Keyboard = new Publish();
+            Keyboard = new Alpha();
             InitialiseKeyDownStates();
+            SetupStateChangeHandlers();
             
             InitialiseInputService();
             
@@ -172,6 +170,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public KeyEnabledStates KeyEnabledStates
         {
             get { return keyEnabledStates; }
+        }
+
+        private bool scratchpadIsDisabled;
+        public bool ScratchpadIsDisabled
+        {
+            get { return scratchpadIsDisabled; }
+            set { SetProperty(ref scratchpadIsDisabled, value); }
         }
 
         private List<string> suggestions;
@@ -429,19 +434,19 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     break;
 
                 case FunctionKeys.Alt:
-                    KeyDownStates[altKey].Value = 
-                        KeyDownStates[altKey].Value == Enums.KeyDownStates.Off
+                    KeyDownStates[KeyValueKeys.AltKey].Value =
+                        KeyDownStates[KeyValueKeys.AltKey].Value == Enums.KeyDownStates.Off
                             ? Enums.KeyDownStates.On
-                            : KeyDownStates[altKey].Value == Enums.KeyDownStates.On
+                            : KeyDownStates[KeyValueKeys.AltKey].Value == Enums.KeyDownStates.On
                                 ? Enums.KeyDownStates.Lock
                                 : Enums.KeyDownStates.Off;
                     break;
 
                 case FunctionKeys.Ctrl:
-                    KeyDownStates[ctrlKey].Value =
-                        KeyDownStates[ctrlKey].Value == Enums.KeyDownStates.Off
+                    KeyDownStates[KeyValueKeys.CtrlKey].Value =
+                        KeyDownStates[KeyValueKeys.CtrlKey].Value == Enums.KeyDownStates.Off
                             ? Enums.KeyDownStates.On
-                            : KeyDownStates[ctrlKey].Value == Enums.KeyDownStates.On
+                            : KeyDownStates[KeyValueKeys.CtrlKey].Value == Enums.KeyDownStates.On
                                 ? Enums.KeyDownStates.Lock
                                 : Enums.KeyDownStates.Off;
                     break;
@@ -474,10 +479,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     break;
 
                 case FunctionKeys.Shift:
-                    KeyDownStates[shiftKey].Value =
-                        KeyDownStates[shiftKey].Value == Enums.KeyDownStates.Off
+                    KeyDownStates[KeyValueKeys.ShiftKey].Value =
+                        KeyDownStates[KeyValueKeys.ShiftKey].Value == Enums.KeyDownStates.Off
                             ? Enums.KeyDownStates.On
-                            : KeyDownStates[shiftKey].Value == Enums.KeyDownStates.On
+                            : KeyDownStates[KeyValueKeys.ShiftKey].Value == Enums.KeyDownStates.On
                                 ? Enums.KeyDownStates.Lock
                                 : Enums.KeyDownStates.Off;
                     break;
@@ -524,19 +529,77 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
                 Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
-
-            Settings.Default.OnPropertyChanges(s => s.PublishingKeys)
-                .Subscribe(value =>
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }.Key].Value =
-                        value ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
-
+            
             KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
                 Settings.Default.MultiKeySelectionSupported ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+        }
+
+        private void SetupStateChangeHandlers()
+        {
+            Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(value =>
+                {
+                    KeyDownStates[KeyValueKeys.TogglePublishKey].Value = value 
+                        ? Enums.KeyDownStates.On 
+                        : Enums.KeyDownStates.Off;
+                    
+                    CalculateAltAndCtrlKeysDownState();
+                });
+                    
 
             Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionSupported)
                 .Subscribe(value =>
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }.Key].Value =
-                        value ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off);
+                    KeyDownStates[KeyValueKeys.ToggleMultiKeySelectionSupportedKey].Value = value 
+                        ? Enums.KeyDownStates.On 
+                        : Enums.KeyDownStates.Off);
+
+            KeyDownStates[KeyValueKeys.AltKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                {
+                    CalculateMultiKeySelectionSupported();
+                    CalculateScratchpadIsDisabled();
+                });
+
+            KeyDownStates[KeyValueKeys.CtrlKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                {
+                    CalculateMultiKeySelectionSupported();
+                    CalculateScratchpadIsDisabled();
+                });
+
+            CalculateAltAndCtrlKeysDownState();
+            CalculateMultiKeySelectionSupported();
+            CalculateScratchpadIsDisabled();
+        }
+
+        private void CalculateAltAndCtrlKeysDownState()
+        {
+            if (!Settings.Default.PublishingKeys)
+            {
+                KeyDownStates[KeyValueKeys.AltKey].Value = Enums.KeyDownStates.Off;
+                KeyDownStates[KeyValueKeys.CtrlKey].Value = Enums.KeyDownStates.Off;
+            }
+        }
+
+        private void CalculateMultiKeySelectionSupported()
+        {
+            if ((KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock() 
+                 || KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock())
+                && Settings.Default.MultiKeySelectionSupported)
+            {
+                Settings.Default.MultiKeySelectionSupported = false;
+                turnOnMultiKeySelectionWhenCtrlAndAltReleased = true;
+            }
+            else if (!KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
+                && !KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock()
+                && turnOnMultiKeySelectionWhenCtrlAndAltReleased)
+            {
+                Settings.Default.MultiKeySelectionSupported = true;
+                turnOnMultiKeySelectionWhenCtrlAndAltReleased = false;
+            }
+        }
+
+        private void CalculateScratchpadIsDisabled()
+        {
+            ScratchpadIsDisabled = KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
+                                   || KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock();
         }
 
         private void ResetSelectionProgress()

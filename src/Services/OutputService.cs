@@ -17,9 +17,6 @@ namespace JuliusSweetland.ETTA.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IKeyboardStateManager keyboardStateManager;
         private readonly IPublishService publishService;
-        private readonly string shiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift }.Key;
-        private readonly string altKey = new KeyValue { FunctionKey = FunctionKeys.Alt }.Key;
-        private readonly string ctrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl }.Key;
 
         private string lastTextChange;
         private bool suppressAutoSpace = true;
@@ -204,28 +201,26 @@ namespace JuliusSweetland.ETTA.Services
 
         private void ReleaseUnlockedModifiers()
         {
-            if (keyboardStateManager.KeyDownStates[shiftKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value == KeyDownStates.On)
             {
-                keyboardStateManager.KeyDownStates[shiftKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value = KeyDownStates.Off;
             }
 
-            if (keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.AltKey].Value == KeyDownStates.On)
             {
-                keyboardStateManager.KeyDownStates[altKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValueKeys.AltKey].Value = KeyDownStates.Off;
             }
 
-            if (keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.CtrlKey].Value == KeyDownStates.On)
             {
-                keyboardStateManager.KeyDownStates[ctrlKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValueKeys.CtrlKey].Value = KeyDownStates.Off;
             }
         }
 
         private void ProcessBackOne()
         {
-            if (keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.Lock
-                || keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.Lock)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
+                || keyboardStateManager.KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock())
             {
                 //Ctrl/Alt modifiers are on - we will publish and release modifiers, but not modify Text
                 PublishKey(FunctionKeys.BackOne, null);
@@ -259,10 +254,8 @@ namespace JuliusSweetland.ETTA.Services
 
         private void ProcessBackMany()
         {
-            if (keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.Lock
-                || keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.Lock)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock()
+                || keyboardStateManager.KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock())
             {
                 //Ctrl/Alt modifiers are on - we will publish and release modifiers, but not modify Text
                 PublishKey(FunctionKeys.BackOne, null);
@@ -338,35 +331,33 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
-                && keyboardStateManager.KeyDownStates[shiftKey].Value == KeyDownStates.Off)
+                && keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value == KeyDownStates.Off)
             {
-                keyboardStateManager.KeyDownStates[shiftKey].Value = KeyDownStates.On;
+                keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value = KeyDownStates.On;
             }
         }
 
         private string ModifyCapturedText(string capture)
         {
-            if (keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[altKey].Value == KeyDownStates.Lock)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.AltKey].Value.IsOnOrLock())
             {
                 //TODO Handle Alt modified captures - Alt+Code = unicode characters
                 return null;
             }
 
-            if (keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.On
-                || keyboardStateManager.KeyDownStates[ctrlKey].Value == KeyDownStates.Lock)
+            if (keyboardStateManager.KeyDownStates[KeyValueKeys.CtrlKey].Value.IsOnOrLock())
             {
                 return null;
             }
 
             if (!string.IsNullOrEmpty(capture))
             {
-                if (keyboardStateManager.KeyDownStates[shiftKey].Value == KeyDownStates.On)
+                if (keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value == KeyDownStates.On)
                 {
                     return capture.FirstCharToUpper();
                 }
 
-                if (keyboardStateManager.KeyDownStates[shiftKey].Value == KeyDownStates.Lock)
+                if (keyboardStateManager.KeyDownStates[KeyValueKeys.ShiftKey].Value == KeyDownStates.Lock)
                 {
                     return capture.ToUpper();
                 }

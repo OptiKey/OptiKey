@@ -40,7 +40,11 @@
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Green}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource Black}" />
-            <StaticResource x:Key="ScratchpadCaretBackground" ResourceKey="Green"/>
+            <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Green"/>
+
+            <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
+            <SolidColorBrush x:Key="ScratchpadDisabledBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ScratchpadDisabledBackgroundBrush" Color="{StaticResource Grey}" />
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource Black}" />
@@ -53,7 +57,7 @@
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
 
-            <Style x:Key="KeyTextStyle" TargetType="TextBlock">
+            <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="TextAlignment" Value="Center" />
                 <Setter Property="Text" Value="{Binding Path=ShiftUpText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
@@ -291,12 +295,22 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <Style TargetType="{x:Type controls:Scratchpad}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:Scratchpad}">
-                            <Border BorderThickness="1" BorderBrush="{StaticResource ScratchpadBorderBrush}">
+                            <Border BorderThickness="1">
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="BorderBrush" Value="{StaticResource ScratchpadBorderBrush}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
+                                                <Setter Property="BorderBrush" Value="{StaticResource ScratchpadDisabledBorderBrush}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
                                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
                                               behaviours:ScrollViewerBehaviours.AutoScrollToEndOnPropertyOrCollectionChanged="{TemplateBinding Text}">
                                     <Grid>
@@ -310,9 +324,7 @@
                                              MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
                                              FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}"
                                              FontWeight="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}"
-                                             FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}"
-                                             Foreground="{StaticResource ScratchpadForegroundBrush}"
-                                             Background="{StaticResource ScratchpadBackgroundBrush}">
+                                             FontStretch="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
                                             <TextBox.FontSize>
                                                 <MultiBinding Converter="{StaticResource FontSizeToFitLines}">
                                                     <MultiBinding.Bindings>
@@ -322,6 +334,18 @@
                                                     </MultiBinding.Bindings>
                                                 </MultiBinding>
                                             </TextBox.FontSize>
+                                            <TextBox.Style>
+                                                <Style TargetType="{x:Type TextBox}">
+                                                    <Setter Property="Foreground" Value="{StaticResource ScratchpadForegroundBrush}" />
+                                                    <Setter Property="Background" Value="{StaticResource ScratchpadBackgroundBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
+                                                            <Setter Property="Foreground" Value="{StaticResource ScratchpadDisabledForegroundBrush}" />
+                                                            <Setter Property="Background" Value="{StaticResource ScratchpadDisabledBackgroundBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBox.Style>
                                         </TextBox>
                                         <Canvas>
                                             <Border x:Name="ScratchpadCaret" 
@@ -329,23 +353,30 @@
                                                     Width="5" 
                                                     Height="{Binding FontSize, ElementName=ScratchpadTextBox}" 
                                                     Background="{StaticResource ScratchpadForegroundBrush}">
-                                                <Border.Triggers>
-                                                    <EventTrigger RoutedEvent="Border.Loaded">
-                                                        <BeginStoryboard>
-                                                            <Storyboard  x:Name="CaretStoryBoard" RepeatBehavior="Forever">
-                                                                <ColorAnimationUsingKeyFrames 
+                                                <Border.Style>
+                                                    <Style TargetType="{x:Type Border}">
+                                                        <Style.Triggers>
+                                                            <EventTrigger RoutedEvent="Border.Loaded">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard  x:Name="CaretStoryBoard" RepeatBehavior="Forever">
+                                                                        <ColorAnimationUsingKeyFrames 
                                                                     Storyboard.TargetProperty="Background.Color"
                                                                     Duration="0:0:0:1"
                                                                     FillBehavior="HoldEnd">
-                                                                    <ColorAnimationUsingKeyFrames.KeyFrames >
-                                                                        <DiscreteColorKeyFrame KeyTime="0:0:0.750" Value="Transparent" />
-                                                                        <DiscreteColorKeyFrame KeyTime="0:0:0.000" Value="{StaticResource ScratchpadCaretBackground}"/>
-                                                                    </ColorAnimationUsingKeyFrames.KeyFrames>
-                                                                </ColorAnimationUsingKeyFrames>
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </EventTrigger>
-                                                </Border.Triggers>
+                                                                            <ColorAnimationUsingKeyFrames.KeyFrames >
+                                                                                <DiscreteColorKeyFrame KeyTime="0:0:0.750" Value="Transparent" />
+                                                                                <DiscreteColorKeyFrame KeyTime="0:0:0.000" Value="{StaticResource ScratchpadCaretBackgroundBrush}"/>
+                                                                            </ColorAnimationUsingKeyFrames.KeyFrames>
+                                                                        </ColorAnimationUsingKeyFrames>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+                                                            <DataTrigger Binding="{Binding DataContext.ScratchpadIsDisabled, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}}" Value="True">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
                                             </Border>
                                         </Canvas>
                                     </Grid>
@@ -355,7 +386,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <Style TargetType="{x:Type controls:QuestionText}">
                 <Setter Property="Template">
                     <Setter.Value>

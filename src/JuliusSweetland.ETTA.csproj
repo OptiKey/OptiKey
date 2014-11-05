@@ -123,6 +123,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\KeyValueExtensions.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Models\IKeyboardStateManager.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
+    <Compile Include="Models\KeyValueKeys.cs" />
     <Compile Include="Models\VirtualKeyCodeSet.cs" />
     <Compile Include="Models\KeyValueCollections.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
