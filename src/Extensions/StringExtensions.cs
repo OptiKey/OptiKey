@@ -279,7 +279,7 @@ namespace JuliusSweetland.ETTA.Extensions
                 case "\r":
                 case "\r\n":
                 case "\n\r":
-                    return new VirtualKeyCodeSet {KeyCodes = new[] {VirtualKeyCode.RETURN}};
+                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.RETURN}};
 
                 default:
                     return null;

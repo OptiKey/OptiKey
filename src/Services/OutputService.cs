@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
@@ -19,7 +21,7 @@ namespace JuliusSweetland.ETTA.Services
         private readonly IPublishService publishService;
 
         private string lastTextChange;
-        private bool suppressAutoSpace = true;
+        private bool suppressNextAutoSpace = true;
         
         #endregion
 
@@ -62,128 +64,151 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - IOutputService
 
-        public void ProcessCapture(FunctionKeys? functionKey, string chars, List<string> suggestions)
+        public void ProcessCapture(FunctionKeys functionKey)
         {
-            if (functionKey == null && string.IsNullOrEmpty(chars)) return;
-
-            bool calculateShiftState = false;
-
-            if (functionKey != null)
+            switch (functionKey)
             {
-                switch (functionKey.Value)
-                {
-                    case FunctionKeys.BackMany:
-                        ProcessBackMany();
-                        
-                        lastTextChange = null;
-                        keyboardStateManager.Suggestions = null;
-                        suppressAutoSpace = true;
-                        calculateShiftState = true;
-                        break;
-
-                    case FunctionKeys.BackOne:
-                        ProcessBackOne();
-
-                        lastTextChange = null;
-                        keyboardStateManager.Suggestions = null;
-                        suppressAutoSpace = true;
-                        calculateShiftState = true;
-                        break;
-
-                    case FunctionKeys.ClearOutput:
-                        Text = null;
-
-                        lastTextChange = null;
-                        keyboardStateManager.Suggestions = null;
-                        suppressAutoSpace = true;
-                        calculateShiftState = true;
-                        break;
-
-                    case FunctionKeys.Suggestion1:
-                        SwapLastCaptureForSuggestion(0);
-                        break;
-
-                    case FunctionKeys.Suggestion2:
-                        SwapLastCaptureForSuggestion(1);
-                        break;
-
-                    case FunctionKeys.Suggestion3:
-                        SwapLastCaptureForSuggestion(2);
-                        break;
-
-                    case FunctionKeys.Suggestion4:
-                        SwapLastCaptureForSuggestion(3);
-                        break;
-
-                    case FunctionKeys.Suggestion5:
-                        SwapLastCaptureForSuggestion(4);
-                        break;
-
-                    case FunctionKeys.Suggestion6:
-                        SwapLastCaptureForSuggestion(5);
-                        break;
-
-                    default:
-                        PublishKey(functionKey.Value, null);
+                case FunctionKeys.BackMany:
+                    var backManyCount = Text.CountBackToLastCharCategoryBoundary();
+                    
+                    Text = Text.Substring(0, Text.Length - backManyCount);
+                    
+                    for (int i = 0; i < backManyCount; i++)
+                    {
+                        PublishStroke(FunctionKeys.BackOne, null);
                         ReleaseUnlockedModifiers();
-                        lastTextChange = null;
-                        keyboardStateManager.Suggestions = null;
-                        break;
-                }
-            }
+                    }
 
-            if (!string.IsNullOrEmpty(chars))
-            {
-                //Suppress auto space if... 
-                if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                    || (lastTextChange.Length == 1 && chars.Length == 1) //we are capturing char by char (after 1st char)
-                    || (chars.Length == 1 && !char.IsLetter(chars.First())) //we have captured a single char which is not a letter
-                    || new[] { " ", "\n" }.Contains(lastTextChange) //the current capture follows a space or newline
-                    )
-                {
-                    suppressAutoSpace = true;
-                }
+                    StoreLastTextChange(null);
+                    StoreSuggestions(null);
+                    AutoPressShiftIfAppropriate();
+                    suppressNextAutoSpace = true;
+                    break;
 
-                var modifiedChars = ModifyCapturedText(chars);
-                
-                //Apply modifiers to suggestions also (if any) and set Suggestions property
-                if (suggestions != null
-                    && suggestions.Any())
-                {
-                    var modifiedSuggestions = suggestions
-                        .Select(ModifyCapturedText)
-                        .Where(s => !string.IsNullOrEmpty(s))
-                        .ToList();
+                case FunctionKeys.BackOne:
+                    var backOneCount = string.IsNullOrEmpty(lastTextChange)
+                        ? 1
+                        : lastTextChange.Length;
 
-                    keyboardStateManager.Suggestions = modifiedSuggestions.Any()
-                            ? modifiedSuggestions
-                            : null;
-                }
-                else
-                {
-                    keyboardStateManager.Suggestions = null;
-                }
+                    if (!string.IsNullOrEmpty(Text))
+                    {
+                        if (Text.Length < backOneCount)
+                        {
+                            backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
+                        }
 
-                if (!string.IsNullOrEmpty(modifiedChars))
-                {
-                    AutoAddSpace();
-                    Text = string.Concat(Text, modifiedChars);
-                }
+                        Text = Text.Substring(0, Text.Length - backOneCount);
 
-                foreach (char c in chars)
-                {
-                    PublishKey(null, c);
+                        for (int i = 0; i < backOneCount; i++)
+                        {
+                            PublishStroke(FunctionKeys.BackOne, null);
+                            ReleaseUnlockedModifiers();
+                        }
+                    }
+
+                    StoreLastTextChange(null);
+                    StoreSuggestions(null);
+                    AutoPressShiftIfAppropriate();
+                    suppressNextAutoSpace = true;
+                    break;
+
+                case FunctionKeys.ClearOutput:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    StoreSuggestions(null);
+                    AutoPressShiftIfAppropriate();
+                    suppressNextAutoSpace = true;
+                    break;
+
+                case FunctionKeys.Suggestion1:
+                    SwapLastCaptureForSuggestion(0);
+                    break;
+
+                case FunctionKeys.Suggestion2:
+                    SwapLastCaptureForSuggestion(1);
+                    break;
+
+                case FunctionKeys.Suggestion3:
+                    SwapLastCaptureForSuggestion(2);
+                    break;
+
+                case FunctionKeys.Suggestion4:
+                    SwapLastCaptureForSuggestion(3);
+                    break;
+
+                case FunctionKeys.Suggestion5:
+                    SwapLastCaptureForSuggestion(4);
+                    break;
+
+                case FunctionKeys.Suggestion6:
+                    SwapLastCaptureForSuggestion(5);
+                    break;
+
+                default:
+                    //No Text modification from any other function key
+                    PublishStroke(functionKey, null);
                     ReleaseUnlockedModifiers();
-                }
-                
-                lastTextChange = modifiedChars;
-                suppressAutoSpace = false;
-                calculateShiftState = true;
+                    StoreLastTextChange(null);
+                    StoreSuggestions(null);
+                    break;
+            }
+        }
+
+        public void ProcessCapture(string textCapture)
+        {
+            if (string.IsNullOrEmpty(textCapture)) return;
+
+            //Suppress auto space if... 
+            if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
+                || (lastTextChange.Length == 1 && textCapture.Length == 1) //we are capturing char by char (after 1st char)
+                || (textCapture.Length == 1 && !char.IsLetter(textCapture.First())) //we have captured a single char which is not a letter
+                || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
+            {
+                suppressNextAutoSpace = true;
             }
 
-            if (calculateShiftState)
+            //Modify the capture and apply to Text
+            var modifiedText = ModifyCapturedText(textCapture);
+            if (!string.IsNullOrEmpty(modifiedText))
             {
-                AutoPressShiftIfAppropriate();
+                AutoAddSpace();
+                Text = string.Concat(Text, modifiedText);
+            }
+
+            //Publish each character (if publishing), releasing on, but unlocked modifier keys as appropriate
+            foreach (char c in textCapture)
+            {
+                PublishStroke(null, c);
+                ReleaseUnlockedModifiers();
+            }
+
+            StoreLastTextChange(modifiedText);
+            AutoPressShiftIfAppropriate();
+            suppressNextAutoSpace = false;
+        }
+
+        public void ProcessCapture(List<string> captureAndSuggestions)
+        {
+            if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
+
+            var bestMatch = captureAndSuggestions.First();
+            ProcessCapture(bestMatch);
+
+            var suggestions = captureAndSuggestions.Count > 1
+                ? captureAndSuggestions.Skip(1).ToList()
+                : null;
+
+            if (suggestions != null
+                && suggestions.Any())
+            {
+                StoreSuggestions(suggestions
+                    .Select(ModifyCapturedText) //Apply modifiers to suggestion text
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToList());
+            }
+            else
+            {
+                StoreSuggestions(null);
             }
         }
 
@@ -191,21 +216,76 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - private
 
-        private void PublishKey(FunctionKeys? functionKey, char? character)
+        private void StoreLastTextChange(string text)
+        {
+            lastTextChange = text;
+        }
+
+        private void StoreSuggestions(List<string> suggestions)
+        {
+            keyboardStateManager.Suggestions = suggestions != null && suggestions.Any()
+                ? suggestions
+                : null;
+        }
+
+        private void PublishStroke(FunctionKeys? functionKey, char? character)
         {
             if (Settings.Default.PublishingKeys)
             {
-                publishService.KeyPress(functionKey, character);
+                if (functionKey != null)
+                {
+                    var virtualKeyCodeSet = functionKey.Value.ToVirtualKeyCodeSet();
+                    if (virtualKeyCodeSet != null)
+                    {
+                        PublishVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                    }
+                }
+
+                if (character != null)
+                {
+                    var virtualKeyCodeSet = character.Value.ToVirtualKeyCodeSet();
+                    if (virtualKeyCodeSet != null)
+                    {
+                        PublishVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                    }
+                    else
+                    {
+                        publishService.PublishText(character.ToString());
+                    }
+                }
             }
+        }
+
+        private void PublishVirtualKeyCodeSet(VirtualKeyCodeSet virtualKeyCodeSet)
+        {
+            if (virtualKeyCodeSet.ModifierKeyCodes == null)
+            {
+                virtualKeyCodeSet.ModifierKeyCodes = new List<VirtualKeyCode>();
+            }
+
+            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock() 
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.MENU))
+            {
+                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.MENU);
+            }
+
+            if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.CONTROL))
+            {
+                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.CONTROL);
+            }
+
+            if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value.IsOnOrLock()
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.SHIFT))
+            {
+                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.SHIFT);
+            }
+
+            publishService.PublishKeyStroke(virtualKeyCodeSet);
         }
 
         private void ReleaseUnlockedModifiers()
         {
-            if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
-            {
-                keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.Off;
-            }
-
             if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value == KeyDownStates.On)
             {
                 keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value = KeyDownStates.Off;
@@ -215,63 +295,10 @@ namespace JuliusSweetland.ETTA.Services
             {
                 keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value = KeyDownStates.Off;
             }
-        }
 
-        private void ProcessBackOne()
-        {
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
-                || keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock())
+            if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
             {
-                //Ctrl/Alt modifiers are on - we will publish and release modifiers, but not modify Text
-                PublishKey(FunctionKeys.BackOne, null);
-                ReleaseUnlockedModifiers();
-            }
-            else
-            {
-                var backCount = 1;
-                if (!string.IsNullOrEmpty(lastTextChange))
-                {
-                    backCount = lastTextChange.Length;
-                }
-
-                if (!string.IsNullOrEmpty(Text))
-                {
-                    if (Text.Length < backCount)
-                    {
-                        backCount = Text.Length; //Coallesce backCount if somehow the Text length is less
-                    }
-
-                    Text = Text.Substring(0, Text.Length - backCount);
-
-                    for (int i = 0; i < backCount; i++)
-                    {
-                        PublishKey(FunctionKeys.BackOne, null);
-                        ReleaseUnlockedModifiers();
-                    }
-                }
-            }
-        }
-
-        private void ProcessBackMany()
-        {
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
-                || keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock())
-            {
-                //Ctrl/Alt modifiers are on - we will publish and release modifiers, but not modify Text
-                PublishKey(FunctionKeys.BackOne, null);
-                ReleaseUnlockedModifiers();
-            }
-            else
-            {
-                var backCount = Text.CountBackToLastCharCategoryBoundary();
-
-                Text = Text.Substring(0, Text.Length - backCount);
-
-                for (int i = 0; i < backCount; i++)
-                {
-                    PublishKey(FunctionKeys.BackOne, null);
-                    ReleaseUnlockedModifiers();
-                }
+                keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.Off;
             }
         }
 
@@ -286,7 +313,7 @@ namespace JuliusSweetland.ETTA.Services
                     SwapLastCaptureForSuggestion(keyboardStateManager.Suggestions[suggestionIndex]);
                     var newSuggestions = keyboardStateManager.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
-                    keyboardStateManager.Suggestions = newSuggestions;
+                    StoreSuggestions(newSuggestions);
                 }
             }
         }
@@ -301,17 +328,17 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < lastTextChange.Length; i++)
                 {
-                    PublishKey(FunctionKeys.BackOne, null);
+                    PublishStroke(FunctionKeys.BackOne, null);
                     ReleaseUnlockedModifiers();
                 }
 
                 foreach (char c in suggestion)
                 {
-                    PublishKey(null, c);
+                    PublishStroke(null, c);
                     ReleaseUnlockedModifiers();
                 }
 
-                lastTextChange = suggestion;
+                StoreLastTextChange(suggestion);
             }
         }
 
@@ -320,9 +347,9 @@ namespace JuliusSweetland.ETTA.Services
             if (Settings.Default.AutoAddSpace
                 && Text != null
                 && Text.Any()
-                && !suppressAutoSpace)
+                && !suppressNextAutoSpace)
             {
-                PublishKey(null, ' ');
+                PublishStroke(null, ' ');
                 Text = string.Concat(Text, " ");
             }
         }

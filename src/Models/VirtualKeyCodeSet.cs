@@ -5,7 +5,7 @@ namespace JuliusSweetland.ETTA.Models
 {
     public struct VirtualKeyCodeSet
     {
-        public IEnumerable<VirtualKeyCode> ModifierKeyCodes { get; set; }
-        public IEnumerable<VirtualKeyCode> KeyCodes { get; set; }
+        public List<VirtualKeyCode> ModifierKeyCodes { get; set; }
+        public List<VirtualKeyCode> KeyCodes { get; set; }
     }
 }
