@@ -1,7 +1,4 @@
-﻿using System;
-using WindowsInput;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
+﻿using WindowsInput;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Services
@@ -15,7 +12,7 @@ namespace JuliusSweetland.ETTA.Services
             inputSimulator = new InputSimulator();
         }
 
-        public void PublishKeyStroke(VirtualKeyCodeSet virtualKeyCodeSet)
+        public void PublishModifiedKeyStroke(VirtualKeyCodeSet virtualKeyCodeSet)
         {
             inputSimulator.Keyboard.ModifiedKeyStroke(
                 virtualKeyCodeSet.ModifierKeyCodes, virtualKeyCodeSet.KeyCodes);

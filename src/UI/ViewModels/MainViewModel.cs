@@ -39,6 +39,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
+        private bool noKeyStrokesSinceModifierOn;
 
         private bool turnOnMultiKeySelectionWhenCtrlAndAltReleased;
         
@@ -58,7 +59,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
+            Keyboard = new Publish();//Alpha();
             InitialiseKeyDownStates();
             SetupStateChangeHandlers();
             
@@ -408,6 +409,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
                 OutputService.ProcessCapture(singleKeyValue.Value.String);
+                noKeyStrokesSinceModifierOn = false;
             }
 
             //Single key function key
@@ -422,6 +424,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && multiKeySelection.Any())
             {
                 OutputService.ProcessCapture(multiKeySelection);
+                noKeyStrokesSinceModifierOn = false;
             }
         }
 
@@ -436,12 +439,28 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 case FunctionKeys.Alt:
                 case FunctionKeys.Ctrl:
                 case FunctionKeys.Shift:
-                    KeyDownStates[singleKeyValue.Value].Value =
-                        KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off
-                            ? Enums.KeyDownStates.On
-                            : KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On
-                                ? Enums.KeyDownStates.Lock
-                                : Enums.KeyDownStates.Off;
+                    if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off)
+                    {
+                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.On;
+                        
+                        noKeyStrokesSinceModifierOn = true;
+                    }
+                    else if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On)
+                    {
+                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Lock;
+                    }
+                    else
+                    {
+                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Off;
+                        
+                        if (noKeyStrokesSinceModifierOn
+                            && KeyDownStates[KeyValues.AltKey].Value == Enums.KeyDownStates.Off
+                            && KeyDownStates[KeyValues.CtrlKey].Value == Enums.KeyDownStates.Off
+                            && KeyDownStates[KeyValues.ShiftKey].Value == Enums.KeyDownStates.Off)
+                        {
+                            OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+                        }
+                    }
                     break;
 
                 case FunctionKeys.NoQuestionResult:
@@ -489,6 +508,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 default:
                     OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+                    noKeyStrokesSinceModifierOn = false;
                     break;
             }
         }

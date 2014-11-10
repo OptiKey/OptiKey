@@ -1,6 +1,8 @@
 ﻿NEXT STEPS:
 
-Speak
+Test modifier key presses on their own - they don't seem to work. Ctrl+Shift+Esc and Ctrl+F work.
+Speak + AudioService
+Add logging to mainVM, outputserivce, publishservice, audioservice
 Error tones
 Change AddPhraseToDictionary (and icon name) to AddToDictionary and display list of viable options (individual words + whole sentence(s))
 Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)

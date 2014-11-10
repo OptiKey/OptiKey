@@ -75,7 +75,7 @@ namespace JuliusSweetland.ETTA.Services
                     
                     for (int i = 0; i < backManyCount; i++)
                     {
-                        PublishStroke(FunctionKeys.BackOne, null);
+                        PublishKeyStroke(FunctionKeys.BackOne, null);
                         ReleaseUnlockedModifiers();
                     }
 
@@ -101,7 +101,7 @@ namespace JuliusSweetland.ETTA.Services
 
                         for (int i = 0; i < backOneCount; i++)
                         {
-                            PublishStroke(FunctionKeys.BackOne, null);
+                            PublishKeyStroke(FunctionKeys.BackOne, null);
                             ReleaseUnlockedModifiers();
                         }
                     }
@@ -146,7 +146,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 default:
                     //No Text modification from any other function key
-                    PublishStroke(functionKey, null);
+                    PublishKeyStroke(functionKey, null);
                     ReleaseUnlockedModifiers();
                     StoreLastTextChange(null);
                     StoreSuggestions(null);
@@ -178,7 +178,7 @@ namespace JuliusSweetland.ETTA.Services
             //Publish each character (if publishing), releasing on, but unlocked modifier keys as appropriate
             foreach (char c in textCapture)
             {
-                PublishStroke(null, c);
+                PublishKeyStroke(null, c);
                 ReleaseUnlockedModifiers();
             }
 
@@ -228,7 +228,7 @@ namespace JuliusSweetland.ETTA.Services
                 : null;
         }
 
-        private void PublishStroke(FunctionKeys? functionKey, char? character)
+        private void PublishKeyStroke(FunctionKeys? functionKey, char? character)
         {
             if (Settings.Default.PublishingKeys)
             {
@@ -237,7 +237,7 @@ namespace JuliusSweetland.ETTA.Services
                     var virtualKeyCodeSet = functionKey.Value.ToVirtualKeyCodeSet();
                     if (virtualKeyCodeSet != null)
                     {
-                        PublishVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                        PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
                     }
                 }
 
@@ -246,7 +246,7 @@ namespace JuliusSweetland.ETTA.Services
                     var virtualKeyCodeSet = character.Value.ToVirtualKeyCodeSet();
                     if (virtualKeyCodeSet != null)
                     {
-                        PublishVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                        PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
                     }
                     else
                     {
@@ -256,32 +256,35 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void PublishVirtualKeyCodeSet(VirtualKeyCodeSet virtualKeyCodeSet)
+        private void PublishModifiedVirtualKeyCodeSet(VirtualKeyCodeSet virtualKeyCodeSet)
         {
             if (virtualKeyCodeSet.ModifierKeyCodes == null)
             {
                 virtualKeyCodeSet.ModifierKeyCodes = new List<VirtualKeyCode>();
             }
 
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock() 
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.MENU))
+            var altVirtualKeyCode = FunctionKeys.Alt.ToVirtualKeyCodeSet().Value.KeyCodes.First();
+            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(altVirtualKeyCode))
             {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.MENU);
+                virtualKeyCodeSet.ModifierKeyCodes.Add(altVirtualKeyCode);
             }
 
+            var ctrlVirtualKeyCode = FunctionKeys.Ctrl.ToVirtualKeyCodeSet().Value.KeyCodes.First();
             if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.CONTROL))
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(ctrlVirtualKeyCode))
             {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.CONTROL);
+                virtualKeyCodeSet.ModifierKeyCodes.Add(ctrlVirtualKeyCode);
             }
 
+            var shiftVirtualKeyCode = FunctionKeys.Shift.ToVirtualKeyCodeSet().Value.KeyCodes.First();
             if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value.IsOnOrLock()
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(VirtualKeyCode.SHIFT))
+                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(shiftVirtualKeyCode))
             {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(VirtualKeyCode.SHIFT);
+                virtualKeyCodeSet.ModifierKeyCodes.Add(shiftVirtualKeyCode);
             }
 
-            publishService.PublishKeyStroke(virtualKeyCodeSet);
+            publishService.PublishModifiedKeyStroke(virtualKeyCodeSet);
         }
 
         private void ReleaseUnlockedModifiers()
@@ -328,13 +331,13 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < lastTextChange.Length; i++)
                 {
-                    PublishStroke(FunctionKeys.BackOne, null);
+                    PublishKeyStroke(FunctionKeys.BackOne, null);
                     ReleaseUnlockedModifiers();
                 }
 
                 foreach (char c in suggestion)
                 {
-                    PublishStroke(null, c);
+                    PublishKeyStroke(null, c);
                     ReleaseUnlockedModifiers();
                 }
 
@@ -349,7 +352,7 @@ namespace JuliusSweetland.ETTA.Services
                 && Text.Any()
                 && !suppressNextAutoSpace)
             {
-                PublishStroke(null, ' ');
+                PublishKeyStroke(null, ' ');
                 Text = string.Concat(Text, " ");
             }
         }

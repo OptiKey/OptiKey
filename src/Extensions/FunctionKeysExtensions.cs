@@ -20,10 +20,10 @@ namespace JuliusSweetland.ETTA.Extensions
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.SHIFT}};
 
                 case FunctionKeys.Alt:
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.MENU}}; //This is not a typo
+                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LMENU}}; //This is not a typo
 
                 case FunctionKeys.Ctrl:
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.CONTROL}};
+                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LCONTROL}};
 
                 case FunctionKeys.Win:
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LWIN}};
