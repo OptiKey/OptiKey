@@ -35,7 +35,9 @@ namespace JuliusSweetland.ETTA
             applyTheme = () =>
             {
                 var themeDictionary = new ThemeResourceDictionary
-                    { Source = new Uri(Settings.Default.Theme, UriKind.Relative) };
+                {
+                    Source = new Uri(Settings.Default.Theme, UriKind.Relative)
+                };
                 
                 var previousThemes = Resources.MergedDictionaries
                     .OfType<ThemeResourceDictionary>()
@@ -74,7 +76,7 @@ namespace JuliusSweetland.ETTA
                 
                 //Apply theme
                 applyTheme();
-
+                
                 //Compose main window and apply theme
                 var mainWindow = new MainWindow();
                 mainWindow.MainView.DataContext = new MainViewModel();

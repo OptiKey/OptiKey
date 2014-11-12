@@ -515,5 +515,53 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["AutoCapitalise"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SpeechRate {
+            get {
+                return ((int)(this["SpeechRate"]));
+            }
+            set {
+                this["SpeechRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SpeechVoice {
+            get {
+                return ((string)(this["SpeechVoice"]));
+            }
+            set {
+                this["SpeechVoice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int SpeechVolume {
+            get {
+                return ((int)(this["SpeechVolume"]));
+            }
+            set {
+                this["SpeechVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Beep1.wav")]
+        public string ErrorSoundFile {
+            get {
+                return ((string)(this["ErrorSoundFile"]));
+            }
+            set {
+                this["ErrorSoundFile"] = value;
+            }
+        }
     }
 }

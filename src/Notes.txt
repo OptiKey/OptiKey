@@ -1,8 +1,8 @@
 ﻿NEXT STEPS:
 
-Test modifier key presses on their own - they don't seem to work. Ctrl+Shift+Esc and Ctrl+F work.
-Speak + AudioService
 Add logging to mainVM, outputserivce, publishservice, audioservice
+Hook up Error events on all service classes and display errors (main view model needs reference to every service to log)
+	+ Make sure when publishing errors they are logged
 Error tones
 Change AddPhraseToDictionary (and icon name) to AddToDictionary and display list of viable options (individual words + whole sentence(s))
 Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)

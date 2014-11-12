@@ -27,7 +27,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
+        private readonly IAudioService audioService;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
@@ -50,6 +51,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public MainViewModel()
         {
             //Initialise fields
+            audioService = new AudioService();
             inputService = CreateInputService();
             outputService = CreateOutputService();
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
@@ -59,7 +61,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Publish();//Alpha();
+            Keyboard = new Alpha();
             InitialiseKeyDownStates();
             SetupStateChangeHandlers();
             
@@ -488,6 +490,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 case FunctionKeys.PublishKeyboard:
                     Keyboard = new Publish();
+                    break;
+
+                case FunctionKeys.Speak:
+                    audioService.Speak(
+                        OutputService.Text, Settings.Default.SpeechVolume, 
+                        Settings.Default.SpeechRate, Settings.Default.SpeechVoice);
                     break;
 
                 case FunctionKeys.Symbols2Keyboard:

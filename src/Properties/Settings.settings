@@ -125,5 +125,17 @@
     <Setting Name="AutoCapitalise" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="SpeechRate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SpeechVoice" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SpeechVolume" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ErrorSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Beep1.wav</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
