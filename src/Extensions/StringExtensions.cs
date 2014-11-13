@@ -229,7 +229,7 @@ namespace JuliusSweetland.ETTA.Extensions
         public static bool NextCharacterWouldBeStartOfNewSentence(this string input)
         {
             return string.IsNullOrEmpty(input)
-                   || new[] {".", "!", "?", "\n"}.Any(input.TrimEnd().EndsWith); //N.B. End white space is irrelevant
+                   || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
         }
 
         public static string ConvertEscapedCharsToLiterals(this string input)

@@ -172,10 +172,13 @@ namespace JuliusSweetland.ETTA.Services
             if (!string.IsNullOrEmpty(modifiedText))
             {
                 AutoAddSpace();
+                AutoPressShiftIfAppropriate();
+                modifiedText = ModifyCapturedText(textCapture); //Recalc modified text as an auto space may have resulted in the shift being auto pressed
+                ApplyModifiersAndStoreSuggestions(keyboardStateManager.Suggestions); //Recalc stored suggestions
                 Text = string.Concat(Text, modifiedText);
             }
 
-            //Publish each character (if publishing), releasing on, but unlocked modifier keys as appropriate
+            //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
             foreach (char c in textCapture)
             {
                 PublishKeyStroke(null, c);
@@ -191,25 +194,16 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
 
-            var bestMatch = captureAndSuggestions.First();
-            ProcessCapture(bestMatch);
-
             var suggestions = captureAndSuggestions.Count > 1
-                ? captureAndSuggestions.Skip(1).ToList()
+                ? captureAndSuggestions
+                    .Skip(1)
+                    .ToList()
                 : null;
 
-            if (suggestions != null
-                && suggestions.Any())
-            {
-                StoreSuggestions(suggestions
-                    .Select(ModifyCapturedText) //Apply modifiers to suggestion text
-                    .Where(s => !string.IsNullOrEmpty(s))
-                    .ToList());
-            }
-            else
-            {
-                StoreSuggestions(null);
-            }
+            ApplyModifiersAndStoreSuggestions(suggestions);
+
+            var bestMatch = captureAndSuggestions.First();
+            ProcessCapture(bestMatch);
         }
 
         #endregion
@@ -219,6 +213,18 @@ namespace JuliusSweetland.ETTA.Services
         private void StoreLastTextChange(string text)
         {
             lastTextChange = text;
+        }
+
+        private void ApplyModifiersAndStoreSuggestions(List<string> suggestions)
+        {
+            var modifiedSuggestions = suggestions != null && suggestions.Any()
+                ? suggestions
+                    .Select(ModifyCapturedText)
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToList()
+                : null;
+
+            StoreSuggestions(modifiedSuggestions);
         }
 
         private void StoreSuggestions(List<string> suggestions)
@@ -332,13 +338,11 @@ namespace JuliusSweetland.ETTA.Services
                 for (int i = 0; i < lastTextChange.Length; i++)
                 {
                     PublishKeyStroke(FunctionKeys.BackOne, null);
-                    ReleaseUnlockedModifiers();
                 }
 
                 foreach (char c in suggestion)
                 {
                     PublishKeyStroke(null, c);
-                    ReleaseUnlockedModifiers();
                 }
 
                 StoreLastTextChange(suggestion);
