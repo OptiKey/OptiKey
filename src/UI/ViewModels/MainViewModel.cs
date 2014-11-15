@@ -397,11 +397,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             };
 
             inputService.Error += (o, exception) =>
+            {
                 ErrorNotificationRequest.Raise(new Notification
-                {
-                    Title = "Uh-oh!",
-                    Content = exception.Message
-                });
+                    {
+                        Title = "Uh-oh!",
+                        Content = exception.Message
+                    });
+
+                audioService.PlaySound(Settings.Default.ErrorSoundFile);
+            };
         }
 
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)

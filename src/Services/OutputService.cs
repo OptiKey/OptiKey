@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using WindowsInput.Native;
@@ -6,7 +5,6 @@ using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.UI.Controls;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -33,20 +31,6 @@ namespace JuliusSweetland.ETTA.Services
         {
             this.keyboardStateManager = keyboardStateManager;
             this.publishService = publishService;
-
-            //TESTING START
-            //Text = "This is some test output. I will make it arbitrarily long so we can see what is going on.";
-
-            //Observable.Interval(TimeSpan.FromMilliseconds(500))
-            //    .ObserveOnDispatcher()
-            //    .Subscribe(l => Text = Text + " " + l);
-            //TESTING END
-
-            //Auto capitalise - when previous text is ". ", "! ", "? ", "\n". Backspace removes auto capitalise if not manual.
-            //Auto add to dictionary
-            //Clear suggestions (unless swapping suggestions)
-            //Auto complete word
-            //Publish keys (need to reset physical keyboard state on ctor or Publish setting to true)
         }
 
         #endregion
@@ -66,6 +50,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessCapture(FunctionKeys functionKey)
         {
+            Log.Debug(string.Format("Processing captured function key '{0}'", functionKey));
+
             switch (functionKey)
             {
                 case FunctionKeys.BackMany:
@@ -156,6 +142,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessCapture(string textCapture)
         {
+            Log.Debug(string.Format("Processing captured text '{0}'", textCapture));
+
             if (string.IsNullOrEmpty(textCapture)) return;
 
             //Suppress auto space if... 
@@ -164,6 +152,8 @@ namespace JuliusSweetland.ETTA.Services
                 || (textCapture.Length == 1 && !char.IsLetter(textCapture.First())) //we have captured a single char which is not a letter
                 || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
+                Log.Debug("Suppressing next auto space.");
+
                 suppressNextAutoSpace = true;
             }
 
@@ -192,6 +182,10 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessCapture(List<string> captureAndSuggestions)
         {
+            Log.Debug(
+                string.Format("Processing {0} captured multi-key selection results", 
+                    captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
+
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
 
             var suggestions = captureAndSuggestions.Count > 1
@@ -210,13 +204,16 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - private
 
-        private void StoreLastTextChange(string text)
+        private void StoreLastTextChange(string textChange)
         {
-            lastTextChange = text;
+            Log.Debug(string.Format("Storing last text change '{0}'", textChange));
+            lastTextChange = textChange;
         }
 
         private void ApplyModifiersAndStoreSuggestions(List<string> suggestions)
         {
+            Log.Debug(string.Format("Applying modifiers to {0} suggestions.", suggestions != null ? suggestions.Count : 0));
+
             var modifiedSuggestions = suggestions != null && suggestions.Any()
                 ? suggestions
                     .Select(ModifyCapturedText)
@@ -229,6 +226,8 @@ namespace JuliusSweetland.ETTA.Services
 
         private void StoreSuggestions(List<string> suggestions)
         {
+            Log.Debug(string.Format("Storing {0} suggestions.", suggestions != null ? suggestions.Count : 0));
+
             keyboardStateManager.Suggestions = suggestions != null && suggestions.Any()
                 ? suggestions
                 : null;
@@ -238,6 +237,8 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (Settings.Default.PublishingKeys)
             {
+                Log.Debug(string.Format("PublishKeyStroke called with functionKey '{0}' and character '{1}'",  functionKey, character));
+
                 if (functionKey != null)
                 {
                     var virtualKeyCodeSet = functionKey.Value.ToVirtualKeyCodeSet();
@@ -264,6 +265,8 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PublishModifiedVirtualKeyCodeSet(VirtualKeyCodeSet virtualKeyCodeSet)
         {
+            Log.Debug(string.Format("PublishModifiedVirtualKeyCodeSet called with virtualKeyCodeSet '{0}'", virtualKeyCodeSet));
+
             if (virtualKeyCodeSet.ModifierKeyCodes == null)
             {
                 virtualKeyCodeSet.ModifierKeyCodes = new List<VirtualKeyCode>();
@@ -295,24 +298,34 @@ namespace JuliusSweetland.ETTA.Services
 
         private void ReleaseUnlockedModifiers()
         {
+            Log.Debug("ReleaseUnlockedModifiers called.");
+
             if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value == KeyDownStates.On)
             {
+                Log.Debug("Releasing Alt key.");
+
                 keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value = KeyDownStates.Off;
             }
 
             if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value == KeyDownStates.On)
             {
+                Log.Debug("Releasing Ctrl key.");
+
                 keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value = KeyDownStates.Off;
             }
 
             if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
             {
+                Log.Debug("Releasing Shift key.");
+
                 keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.Off;
             }
         }
 
         private void SwapLastCaptureForSuggestion(int index)
         {
+            Log.Debug(string.Format("SwapLastCaptureForSuggestion called with index {0}", index));
+
             if (!string.IsNullOrEmpty(lastTextChange))
             {
                 var suggestionIndex = (keyboardStateManager.SuggestionsPage * keyboardStateManager.SuggestionsPerPage) + index;
@@ -329,6 +342,8 @@ namespace JuliusSweetland.ETTA.Services
 
         private void SwapLastCaptureForSuggestion(string suggestion)
         {
+            Log.Debug(string.Format("SwapLastCaptureForSuggestion called with suggestion '{0}'", suggestion));
+
             if (!string.IsNullOrEmpty(lastTextChange)
                 && !string.IsNullOrEmpty(suggestion))
             {
@@ -351,11 +366,15 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AutoAddSpace()
         {
+            Log.Debug("AutoAddSpace called.");
+
             if (Settings.Default.AutoAddSpace
                 && Text != null
                 && Text.Any()
                 && !suppressNextAutoSpace)
             {
+                Log.Debug("Publishing auto space and adding auto space to Text.");
+
                 PublishKeyStroke(null, ' ');
                 Text = string.Concat(Text, " ");
             }
@@ -363,41 +382,55 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AutoPressShiftIfAppropriate()
         {
+            Log.Debug("AutoPressShiftIfAppropriate called.");
+
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
                 && keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Off)
             {
+                Log.Debug("Pressing shift.");
+
                 keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.On;
             }
         }
 
-        private string ModifyCapturedText(string capture)
+        private string ModifyCapturedText(string text)
         {
+            Log.Debug(string.Format("ModifyCapturedText called with text '{0}'", text));
+
             if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock())
             {
                 //TODO Handle Alt modified captures - Alt+Code = unicode characters
+                Log.Debug("Modifying text - Alt is on or locked on so returning null.");
+
                 return null;
             }
 
             if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock())
             {
+                Log.Debug("Modifying text - Ctrl is on or locked on so returning null.");
+
                 return null;
             }
 
-            if (!string.IsNullOrEmpty(capture))
+            if (!string.IsNullOrEmpty(text))
             {
                 if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
                 {
-                    return capture.FirstCharToUpper();
+                    Log.Debug("Modifying text - Shift is on so returning text with first character capitalised.");
+
+                    return text.FirstCharToUpper();
                 }
 
                 if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Lock)
                 {
-                    return capture.ToUpper();
+                    Log.Debug("Modifying text - Shift is locked on so returning text with all characters capitalised.");
+
+                    return text.ToUpper();
                 }
             }
 
-            return capture;
+            return text;
         }
 
         #endregion

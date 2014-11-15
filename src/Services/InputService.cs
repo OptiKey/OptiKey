@@ -66,6 +66,8 @@ namespace JuliusSweetland.ETTA.Services
         {
             set
             {
+                Log.Debug("PointToKeyValueMap property changed (setter called).");
+
                 if (pointAndKeyValueSource != null)
                 {
                     pointAndKeyValueSource.PointToKeyValueMap = value;
@@ -757,6 +759,8 @@ namespace JuliusSweetland.ETTA.Services
 
         private void DiscardMultiKeySelection()
         {
+            Log.Debug("DiscardMultiKeySelection called.");
+
             if (multiKeySelectionPointsSubscription != null)
             {
                 multiKeySelectionPointsSubscription.Dispose();

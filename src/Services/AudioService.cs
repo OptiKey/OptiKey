@@ -72,16 +72,24 @@ namespace JuliusSweetland.ETTA.Services
 
         public List<string> GetAvailableVoices()
         {
-            return new SpeechSynthesizer().GetInstalledVoices()
+            var availableVoices = new SpeechSynthesizer().GetInstalledVoices()
                 .Where(v => v.Enabled)
                 .Select(v => v.VoiceInfo.Name)
                 .ToList();
+
+            Log.Debug(string.Format("GetAvailableVoices returing {0} voices", availableVoices.Count));
+
+            return availableVoices;
         }
 
         public void PlaySound(string soundLocation)
         {
+            if (string.IsNullOrEmpty(soundLocation)) return;
+
             try
             {
+                Log.Debug(string.Format("Playing sound '{0}'", soundLocation));
+
                 var player = new System.Media.SoundPlayer(soundLocation);
                 player.Play();
             }

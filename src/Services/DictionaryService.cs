@@ -47,6 +47,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public void LoadDictionary()
         {
+            Log.Debug("LoadDictionary called.");
+
             try
             {
                 dictionary = new Dictionary<string, List<DictionaryEntryWithUsageCount>>();
@@ -177,13 +179,21 @@ namespace JuliusSweetland.ETTA.Services
 
         public bool ExistsInDictionary(string entryToFind)
         {
+            Log.Debug(string.Format("ExistsInDictionary called with '{0}'.", entryToFind));
+
             if (dictionary != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
-                return dictionary
+                var exists = dictionary
                     .SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
                     .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
+
+                Log.Debug(exists
+                    ? string.Format("'{0}' exists in the dictionary", entryToFind)
+                    : string.Format("'{0}' does not exist in the dictionary", entryToFind));
+
+                return exists;
             }
 
             return false;
@@ -200,6 +210,10 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AddEntryToDictionary(string entry, bool isNewEntry, int usageCount = 0)
         {
+            Log.Debug(
+                string.Format("AddEntryToDictionary called with entry '{0}', isNewEntry={1}, usageCount={2}", 
+                    entry, isNewEntry, usageCount));
+
             if (dictionary != null
                 && entry != null)
             {
@@ -243,6 +257,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public void RemoveEntryFromDictionary(string entry)
         {
+            Log.Debug(string.Format("RemoveEntryFromDictionary called with entry '{0}'", entry));
+
             if (dictionary != null
                 && !string.IsNullOrWhiteSpace(entry)
                 && ExistsInDictionary(entry))
@@ -271,6 +287,10 @@ namespace JuliusSweetland.ETTA.Services
 
         public void RemoveEntryFromDictionary(DictionaryEntryWithUsageCount entryWithUsageCount)
         {
+            Log.Debug(
+                string.Format("RemoveEntryFromDictionary called with entryWithUsageCount.Entry '{0}'", 
+                    entryWithUsageCount != null ? entryWithUsageCount.Entry : null));
+
             if (dictionary != null
                 && entryWithUsageCount != null
                 && !string.IsNullOrWhiteSpace(entryWithUsageCount.Entry)
@@ -301,6 +321,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public IEnumerable<string> GetHashes()
         {
+            Log.Debug("GetHashes called.");
+
             if (dictionary != null)
             {
                 var enumerator = dictionary.GetEnumerator();
@@ -319,6 +341,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public IEnumerable<DictionaryEntryWithUsageCount> GetAllEntriesWithUsageCounts()
         {
+            Log.Debug("GetAllEntriesWithUsageCounts called.");
+
             if (dictionary != null)
             {
                 var enumerator = dictionary
@@ -338,6 +362,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public IEnumerable<string> GetEntries(string hash)
         {
+            Log.Debug(string.Format("GetEntries called with hash '{0}'", hash));
+
             if (dictionary != null
                 && dictionary.ContainsKey(hash))
             {
@@ -370,6 +396,10 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PerformIncrementOrDecrementOfEntryUsageCount(string entry, bool isIncrement)
         {
+            Log.Debug(
+                string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", 
+                    entry, isIncrement));
+
             if (!string.IsNullOrWhiteSpace(entry)
                 && dictionary != null)
             {

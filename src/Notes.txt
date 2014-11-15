@@ -1,11 +1,12 @@
 ﻿NEXT STEPS:
 
-Add logging to mainVM, outputserivce, publishservice, audioservice
+Add logging to mainVM and anywhere else not properly covered (extension classes, behaviours, controls)
 Hook up Error events on all service classes and display errors (main view model needs reference to every service to log)
 	+ Make sure when publishing errors they are logged
-Error tones
+	+ Error tones
 Change AddPhraseToDictionary (and icon name) to AddToDictionary and display list of viable options (individual words + whole sentence(s))
 Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)
+Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
 
 
 --------------------------------------------------------------------------------
@@ -15,86 +16,4 @@ Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 Predict next word
 
-
 --------------------------------------------------------------------------------
-
-
-PUBLISH:
-
-Modifiers and how they play alongside; single keys (function, letters, numbers) & multikey captures.
-
-Ctrl/Alt should prevent BackOne, BackMany & multikeycaptures. For everything else it should simulate modified key strokes (below), unless the function key has modifiers on it (e.g. Select All, Cut, Copy, Paste).
-
-Add VirtualKeyCode to keys - if it has a code (and it not in a list of exceptions; i.e. BackOne/BackMany) then we can use it with Ctrl/Alt/Shift, otherwise disabled. In other words a Key's VirtualKeyCode is required to be able to call SimulateModifiedKeyStroke(), whether it is modified or not.
-
-For unmodified keys and multikey captures we call SimulateTextEntry, which means we do not need to publish KeyDown/KeyUp for casing published text. This also means we do not have to synchronise Caps and modifier state at startup/shutdown.
-
-PublishService can be simplified to just 2 methods;
-
-1.PublishText (SimulateTextEntry) - this supports cased text
-2.PublishModifiedKeyStroke
-
-  InputSimulator.SimulateTextEntry("HELLO!");
-
-  InputSimulator.SimulateKeyDown(VirtualKeyCode.SHIFT);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_H);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_E);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_L);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_L);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_O);
-  InputSimulator.SimulateKeyPress(VirtualKeyCode.VK_1);
-  InputSimulator.SimulateKeyUp(VirtualKeyCode.SHIFT);
-
-  InputSimulator.SimulateModifiedKeyStroke(
-    new[] { VirtualKeyCode.CONTROL, VirtualKeyCode.MENU, VirtualKeyCode.SHIFT },
-    new[] { VirtualKeyCode.ESCAPE, VirtualKeyCode.VK_K });
-
-
-
-KeyValue could have;
-·         New property ‘PublishKeyStroke’ {VirtualKeyCode.VK_H} (including modifiers)
-
-·         New property bool CanModifyKeyStrokeWithCtrl & CanModifyKeyStrokeWithAlt (false by default, including BackOne/BackMany). Keep it simple - any key with ‘PublishKeyStroke’ can be modified, even if it would behave oddly (e.g. BackOne/BackMany/SelectAll/Cut/Copy/Paste).
-
- 
-If ‘IsPublishing’ AND Ctrl/Alt are on then enabled only keys where;
-·         KeyValue.PublishKeyStroke != null OR KeyValue.FunctionKey != null (in other words disable all keys which are just text, which is the symbols)
-
- 
-Turning on Ctrl/Alt:
-·         Store lastMultKeySelection value
-
-·         Set MultiKeySelection to false
-
-·         Disable MultiKeySelection key
-
- 
-Turning off Ctrl/Alt:
-·         Set MultiKeySelection to lastMultiKeySelection value
-
-·         Clear lastMultKeySelection value
-
-·         Enable MultiKeySelection key
-
- 
-OutputService:
-·         Adjust Text with modified input (Ctrl/Alt = no chars, Shift only = case chars)
-
-·         If publishing:
-
-o   Single key with PublishKeyStroke = SimulateModifiedKeyStroke (with modifiers)
-
-o   Multi key capture = do nothing if Ctrl/Alt on (log error?), else case text and SimulateTextEntry
-
- 
-NEEDS MORE THOUGHT!
-
-
-
-Disable scratchpad when ctrl/alt are on?
-
-
-Two publish methods called from output service;
-
-Publish virtual key codes
-Publish string
