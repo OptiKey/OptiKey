@@ -78,12 +78,7 @@ namespace JuliusSweetland.ETTA.Services
             }
             catch (Exception exception)
             {
-                Log.Error("Loading dictionary from file threw an exception", exception);
-
-                if (Error != null)
-                {
-                    Error(this, exception);
-                }
+                PublishError(this, exception);
             }
         }
 
@@ -164,12 +159,7 @@ namespace JuliusSweetland.ETTA.Services
             }
             catch (Exception exception)
             {
-                Log.Error("Saving user dictionary to file threw an exception:", exception);
-
-                if (Error != null)
-                {
-                    Error(this, exception);
-                }
+                PublishError(this, exception);
             }
         }
 
@@ -426,6 +416,20 @@ namespace JuliusSweetland.ETTA.Services
                         SaveUserDictionaryToFile();
                     }
                 }
+            }
+        }
+
+        #endregion
+
+        #region Publish Error
+
+        private void PublishError(object sender, Exception ex)
+        {
+            if (Error != null)
+            {
+                Log.Error("Publishing Error event", ex);
+
+                Error(sender, ex);
             }
         }
 

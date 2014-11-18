@@ -45,7 +45,7 @@ namespace JuliusSweetland.ETTA.Services
         }
 
         #endregion
-
+        
         #region Methods - IOutputService
 
         public void ProcessCapture(FunctionKeys functionKey)

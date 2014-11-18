@@ -1,10 +1,10 @@
 ﻿NEXT STEPS:
 
-Add logging to anywhere else not properly covered (controls)
 Use Debug setting to control log4net logging level (config is the default, but setting overrides it) ???
 Hook up Error events on all service classes and display errors (main view model needs reference to every service to log)
 	+ Make sure when publishing errors they are logged
 	+ Error tones
+
 AddToDictionary - display list of viable options (individual words + whole sentence(s)) from OutputService.Text
 Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)

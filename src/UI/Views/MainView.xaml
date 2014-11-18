@@ -16,6 +16,9 @@
     </UserControl.Resources>
 
     <i:Interaction.Triggers>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
+            <triggerActions:ToastNotificationWindowAction />
+        </interactionRequest:InteractionRequestTrigger>
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ErrorNotificationRequest, Mode=OneWay}">
             <triggerActions:ToastNotificationWindowAction ToastBackgroundBrush="DarkRed" 
                                                           ToastForegroundBrush="White"

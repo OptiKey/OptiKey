@@ -34,6 +34,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
+        private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
 
         private SelectionModes selectionMode;
@@ -57,6 +58,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
+            notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
             
             //Initialise state properties

@@ -60,17 +60,22 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                 parentWindow = AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject);
             }
 
+            bool parentWindowHadFocus = false;
+
             if (parentWindow != null)
             {
                 childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
+                parentWindowHadFocus = parentWindow.IsFocused;
             }
 
             Log.Debug(string.Format("Showing ToastNotificationWindow with content '{0}' for {1} seconds", contentAsString, displayTimeInSeconds));
 
             childWindow.Show();
 
-            if (parentWindow != null)
+            if (parentWindow != null
+                && parentWindowHadFocus)
             {
+                Log.Debug("Parent Window was previously focussed - giving it focus again.");
                 parentWindow.Focus();
             }
         }

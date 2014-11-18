@@ -46,14 +46,11 @@ namespace JuliusSweetland.ETTA.Services
                     }
                     catch (Exception exception)
                     {
-                        Log.Error(string.Format("There was a problem setting the voice to '{0}'{1}", voiceToUse, voice == null ? " (from settings)" : null), exception);
+                        var customException = new ApplicationException(
+                            string.Format("There was a problem setting the voice to '{0}'{1}", 
+                            voiceToUse, voice == null ? " (from settings)" : null), exception);
 
-                        Settings.Default.SpeechVoice = null;
-
-                        if (Error != null)
-                        {
-                            Error(this, new ApplicationException(string.Format("There was a problem setting the voice to '{0}'{1}. Resetting back to the default voice for the moment. Please correct the setting.", voiceToUse, voice == null ? " (from settings)" : null)));
-                        }
+                        PublishError(this, customException);
                     }
                 }
 
@@ -61,12 +58,7 @@ namespace JuliusSweetland.ETTA.Services
             }
             catch (Exception exception)
             {
-                Log.Error("Speak threw an exception", exception);
-
-                if (Error != null)
-                {
-                    Error(this, exception);
-                }
+                PublishError(this, exception);
             }
         }
 
@@ -95,12 +87,17 @@ namespace JuliusSweetland.ETTA.Services
             }
             catch (Exception exception)
             {
-                Log.Error("PlaySound threw an exception", exception);
+                PublishError(this, exception);
+            }
+        }
 
-                if (Error != null)
-                {
-                    Error(this, exception);
-                }
+        private void PublishError(object sender, Exception ex)
+        {
+            if (Error != null)
+            {
+                Log.Error("Publishing Error event", ex);
+
+                Error(sender, ex);
             }
         }
 
