@@ -79,14 +79,23 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
-            Log.Debug("Rebuilding Point To Key Value Map");
+            Log.Debug("KeyboardHost loaded.");
 
             RebuildPointToKeyMap();
 
             SubscribeToSizeChanges();
 
             var parentWindow = Window.GetWindow(this);
-            if (parentWindow == null) throw new ApplicationException("Parent Window could not be identified. Unable to continue");
+
+            if (parentWindow == null)
+            {
+                var windowException = new ApplicationException("Parent Window could not be identified. Unable to continue");
+
+                Log.Error(windowException);
+
+                throw windowException;
+            }
+            
             SubscribeToParentWindowMoves(parentWindow);
 
             Loaded -= OnLoaded; //Ensure this logic only runs once
@@ -147,6 +156,9 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 }
             }
 
+            Log.Debug(string.Format("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
+                Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null));
+
             Content = newContent;
         }
 
@@ -156,6 +168,8 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         private void RebuildPointToKeyMap()
         {
+            Log.Debug("Rebuilding PointToKeyMap.");
+
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
 
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>();
@@ -182,7 +196,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         #endregion
 
-        #region Subscribe To Siz eChanges
+        #region Subscribe To Size Changes
 
         private void SubscribeToSizeChanges()
         {
@@ -193,7 +207,8 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Debug("SizeChanged event detected - Point To Key Value Map");
+                    Log.Debug("SizeChanged event detected.");
+
                     RebuildPointToKeyMap();
                 });
         }
@@ -212,7 +227,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 .ObserveOnDispatcher()
                 .Subscribe(_ =>
                 {
-                    Log.Debug("Window's LocationChanged event detected - Rebuilding Point To Key Value Map");
+                    Log.Debug("Window's LocationChanged event detected.");
                     RebuildPointToKeyMap();
                 });
         }

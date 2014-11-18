@@ -41,7 +41,7 @@
     <Setting Name="GazeTrackerUdpRegex" Type="System.String" Scope="User">
       <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionSupported" Type="System.Boolean" Scope="User">
+    <Setting Name="MultiKeySelectionEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MultiKeySelectionFixationMinDwellTime" Type="System.TimeSpan" Scope="User">

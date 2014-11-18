@@ -30,9 +30,9 @@
             <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsLockBackgroundBrush" Color="{StaticResource Black}" />
 
-            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
+            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->

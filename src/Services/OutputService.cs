@@ -366,15 +366,12 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AutoAddSpace()
         {
-            Log.Debug("AutoAddSpace called.");
-
             if (Settings.Default.AutoAddSpace
                 && Text != null
                 && Text.Any()
                 && !suppressNextAutoSpace)
             {
                 Log.Debug("Publishing auto space and adding auto space to Text.");
-
                 PublishKeyStroke(null, ' ');
                 Text = string.Concat(Text, " ");
             }
@@ -382,55 +379,48 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AutoPressShiftIfAppropriate()
         {
-            Log.Debug("AutoPressShiftIfAppropriate called.");
-
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
                 && keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Off)
             {
-                Log.Debug("Pressing shift.");
-
+                Log.Debug("Auto-pressing shift.");
                 keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.On;
             }
         }
 
-        private string ModifyCapturedText(string text)
+        private string ModifyCapturedText(string capturedText)
         {
-            Log.Debug(string.Format("ModifyCapturedText called with text '{0}'", text));
-
             if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock())
             {
                 //TODO Handle Alt modified captures - Alt+Code = unicode characters
-                Log.Debug("Modifying text - Alt is on or locked on so returning null.");
-
+                Log.Debug(string.Format("Alt is on or locked on so modifying '{0}' to null.", capturedText));
                 return null;
             }
 
             if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock())
             {
-                Log.Debug("Modifying text - Ctrl is on or locked on so returning null.");
-
+                Log.Debug(string.Format("Ctrl is on or locked on so modifying '{0}' to null.", capturedText));
                 return null;
             }
 
-            if (!string.IsNullOrEmpty(text))
+            if (!string.IsNullOrEmpty(capturedText))
             {
                 if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
                 {
-                    Log.Debug("Modifying text - Shift is on so returning text with first character capitalised.");
-
-                    return text.FirstCharToUpper();
+                    var modifiedText = capturedText.FirstCharToUpper();
+                    Log.Debug(string.Format("Shift is on so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    return modifiedText;
                 }
 
                 if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Lock)
                 {
-                    Log.Debug("Modifying text - Shift is locked on so returning text with all characters capitalised.");
-
-                    return text.ToUpper();
+                    var modifiedText = capturedText.ToUpper();
+                    Log.Debug(string.Format("Shift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    return modifiedText;
                 }
             }
 
-            return text;
+            return capturedText;
         }
 
         #endregion

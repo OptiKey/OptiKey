@@ -7,13 +7,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xaml;
+using log4net;
 
 namespace JuliusSweetland.ETTA.UI.Controls
 {
     public class TextBlockScaler : ContentControl
     {
-        private TextBlock textBlock;
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private TextBlock textBlock;
+        
         public static readonly DependencyProperty MinFontSizeProperty =
             DependencyProperty.Register("MinFontSize", typeof (double?), typeof (TextBlockScaler), new PropertyMetadata(default(double?)));
 
@@ -80,7 +83,14 @@ namespace JuliusSweetland.ETTA.UI.Controls
             var children = LogicalTreeHelper.GetChildren(this);
             textBlock = children.OfType<TextBlock>().FirstOrDefault();
 
-            if(textBlock == null) throw new XamlException("TextBlockScaler cannot find a TextBlock in its collection of child elements");
+            if (textBlock == null)
+            {
+                var textBlockException = new XamlException("TextBlockScaler cannot find a TextBlock in its collection of child elements");
+
+                Log.Error(textBlockException);
+                
+                throw textBlockException;
+            }
 
             if (textBlock.IsLoaded) //Loaded event is fired from the root down; we may be here before the child TextBlock has loaded, so check
             {

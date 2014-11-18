@@ -36,7 +36,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
         {
             if (PointsToDisplay != null)
             {
-                Log.Debug("OnRender - PointsToDisplay is not empty - rendering points");
+                Log.Debug("PointsToDisplay is not empty - rendering points");
 
                 var canvasWidth = (int)ActualWidth;
                 var canvasHeight = (int)ActualHeight;

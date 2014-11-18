@@ -183,12 +183,12 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool MultiKeySelectionSupported {
+        public bool MultiKeySelectionEnabled {
             get {
-                return ((bool)(this["MultiKeySelectionSupported"]));
+                return ((bool)(this["MultiKeySelectionEnabled"]));
             }
             set {
-                this["MultiKeySelectionSupported"] = value;
+                this["MultiKeySelectionEnabled"] = value;
             }
         }
         

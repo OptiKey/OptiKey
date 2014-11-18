@@ -5,12 +5,15 @@ using System.Windows.Media;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.Windows;
+using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.UI.TriggerActions
 {
     public class ToastNotificationWindowAction : TriggerAction<FrameworkElement>
     {
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         #region Invoke
 
         protected override void Invoke(object parameter)
@@ -61,6 +64,8 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
             {
                 childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
             }
+
+            Log.Debug(string.Format("Showing ToastNotificationWindow with content '{0}' for {1} seconds", contentAsString, displayTimeInSeconds));
 
             childWindow.Show();
 

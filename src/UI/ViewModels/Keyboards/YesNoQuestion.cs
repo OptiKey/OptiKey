@@ -1,10 +1,13 @@
 ﻿using System;
+using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
 {
     public class YesNoQuestion : BindableBase, IKeyboard
     {
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly string text;
         private readonly Action yesAction;
         private readonly Action noAction;
@@ -15,8 +18,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
             Action noAction)
         {
             this.text = text;
-            this.yesAction = yesAction;
-            this.noAction = noAction;
+
+            this.yesAction = () =>
+            {
+                Log.Debug("Triggering YES action.");
+                yesAction();
+            };
+
+            this.noAction = () =>
+            {
+                Log.Debug("Triggering NO action.");
+                noAction();
+            };
         }
         
         public string Text { get { return text; } }

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Reflection;
 using System.Windows;
 using log4net;
 
@@ -23,16 +20,18 @@ namespace JuliusSweetland.ETTA.Extensions
         public static IObservable<Timestamped<Point?>> PublishLivePointsOnly(
             this IObservable<Timestamped<Point>> source, TimeSpan pointTtl)
         {
+            //Sequence of live points only
             var usefulSource = source
                 .FilterOutStaleOnArrival(pointTtl)
                 .Select(x => new Timestamped<Point?>(x.Value, x.Timestamp));
 
+            //Sequence of nulls, throttled to only publish when there is no live point
             var staleSource = usefulSource
                 .Throttle(tp =>
                 {
                     var ageOfPoint = DateTimeOffset.Now.ToUniversalTime().Subtract(tp.Timestamp.ToUniversalTime());
-                    var remainingUntilStale = pointTtl.Subtract(ageOfPoint);
-                    return Observable.Timer(remainingUntilStale).Select(_ => tp);
+                    var timeUntilStale = pointTtl.Subtract(ageOfPoint);
+                    return Observable.Timer(timeUntilStale).Select(_ => tp);
                 })
                 .Select(tp =>
                 {
@@ -40,9 +39,10 @@ namespace JuliusSweetland.ETTA.Extensions
                     return new Timestamped<Point?>(null, DateTimeOffset.Now.ToUniversalTime());
                 });
 
+            //Return the live and stale sequence merged together
             return usefulSource
                 .Merge(staleSource)
-                .StartWith(new Timestamped<Point?>(null, DateTimeOffset.Now.ToUniversalTime()));
+                .StartWith(new Timestamped<Point?>(null, DateTimeOffset.Now.ToUniversalTime())); //Prefix the sequence with an initial value of NULL
         }
 
         public static IObservable<Timestamped<Point>> FilterOutStaleOnArrival(
@@ -52,11 +52,11 @@ namespace JuliusSweetland.ETTA.Extensions
             {
                 //Log and filter out points which are stale on arrival
                 var ageOfPoint = DateTimeOffset.Now.ToUniversalTime().Subtract(tp.Timestamp.ToUniversalTime());
-                var remainingUntilStale = pointTtl.Subtract(ageOfPoint);
+                var timeUntilStale = pointTtl.Subtract(ageOfPoint);
 
-                if (remainingUntilStale.Ticks <= 0)
+                if (timeUntilStale.Ticks <= 0)
                 {
-                    Log.Debug(string.Format(
+                    Log.Warn(string.Format(
                         "Point received which was stale on arrival. Timestamp of point:{0}ms old (TTL is {1}ms). Discarding it.",
                         ageOfPoint.TotalMilliseconds, pointTtl.TotalMilliseconds));
 

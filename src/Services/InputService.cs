@@ -530,13 +530,19 @@ namespace JuliusSweetland.ETTA.Services
                             //We are not currently capturing a multikey selection and have received a high (start) trigger signal
                             if (ts.PointAndKeyValue != null)
                             {
+                                Log.Debug("Selection trigger signal (with relevent PointAndKeyValue) detected.");
+
                                 if (SelectionMode == SelectionModes.Key
                                     && ts.PointAndKeyValue.Value.KeyValue != null
                                     && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value]))
                                 {
-                                    if (Settings.Default.MultiKeySelectionSupported
+                                    Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
+
+                                    if (Settings.Default.MultiKeySelectionEnabled
                                         && ts.PointAndKeyValue.Value.StringIsLetter)
                                     {
+                                        Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
+
                                         //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
                                         PublishSelection(ts.PointAndKeyValue.Value);
 
@@ -591,6 +597,8 @@ namespace JuliusSweetland.ETTA.Services
                                             .ObserveOnDispatcher()
                                             .Subscribe(points =>
                                             {
+                                                Log.Debug(string.Format("Multi-key selection capture has returned a set of '{0}' PointAndKeyValues.", points.Count));
+
                                                 if (points.Any())
                                                 {
                                                     var timeSpan = points.Last().Timestamp.Subtract(points.First().Timestamp);
@@ -598,6 +606,12 @@ namespace JuliusSweetland.ETTA.Services
                                                     var sequenceThreshold = (int)Math.Round(
                                                         ((double)points.Count / (double)timeSpan.TotalMilliseconds)
                                                         * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
+
+                                                    Log.Debug(string.Format(
+                                                        "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
+                                                        timeSpan.TotalMilliseconds,
+                                                        Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
+                                                        sequenceThreshold));
 
                                                     var keyValues = points
                                                         .Where(tp => tp.Value.KeyValue != null)
@@ -610,6 +624,11 @@ namespace JuliusSweetland.ETTA.Services
                                                             ? startTriggerSignal.PointAndKeyValue.Value.String
                                                             : null;
 
+                                                    Log.Debug(string.Format(
+                                                        "First letter ('{0}') of multi-key selection capture {1} reliable.", 
+                                                        reliableFirstLetter,
+                                                        reliableFirstLetter != null ? "IS" : "IS NOT"));
+
                                                     //If we are using a fixation trigger and the stop trigger has
                                                     //occurred on a letter then it is reliable - use it
                                                     string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
@@ -619,8 +638,15 @@ namespace JuliusSweetland.ETTA.Services
                                                             ? stopTriggerSignal.Value.PointAndKeyValue.Value.String
                                                             : null;
 
+                                                    Log.Debug(string.Format(
+                                                            "Last letter ('{0}') of multi-key selection capture {1} reliable.",
+                                                            reliableLastLetter,
+                                                            reliableLastLetter != null ? "IS" : "IS NOT"));
+
                                                     if (reliableLastLetter != null)
                                                     {
+                                                        Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
+
                                                         PublishSelection(stopTriggerSignal.Value.PointAndKeyValue.Value);
                                                     }
 
@@ -630,6 +656,8 @@ namespace JuliusSweetland.ETTA.Services
                                                     if (string.IsNullOrEmpty(reducedSequence))
                                                     {
                                                         //No useful selection
+                                                        Log.Debug("Multi-key selection capture reduces to nothing useful.");
+
                                                         PublishSelectionResult(
                                                             new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                                                 new List<Point> { ts.PointAndKeyValue.Value.Point },
@@ -638,6 +666,8 @@ namespace JuliusSweetland.ETTA.Services
                                                     else if (reducedSequence.Length == 1)
                                                     {
                                                         //The user fixated on one letter - output it
+                                                        Log.Debug("Multi-key selection capture reduces to a single letter.");
+
                                                         PublishSelectionResult(
                                                             new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                                                 points.Select(tp => tp.Value.Point).ToList(),
@@ -646,10 +676,12 @@ namespace JuliusSweetland.ETTA.Services
                                                     else
                                                     {
                                                         //The user fixated on multiple letters - map to dictionary word
-                                                        Log.Debug(string.Format("Multi-key selection made: '{0}'", reducedSequence));
+                                                        Log.Debug(string.Format("Multi-key selection capture reduces to '{0}'", reducedSequence));
 
                                                         //Remove diacritics and make uppercase
                                                         reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
+
+                                                        Log.Debug(string.Format("Removing diacritics leaves us with '{0}'", reducedSequence));
 
                                                         //Reduce again - by removing diacritics we might now have adjacent 
                                                         //letters which are the same (the dictionary hashes do not)
@@ -663,6 +695,9 @@ namespace JuliusSweetland.ETTA.Services
                                                         }
 
                                                         var hashAsString = new string(hash.ToArray());
+
+                                                        Log.Debug(string.Format("Reducing the sequence again leaves us with '{0}'", hashAsString));
+
                                                         List<string> dictionaryMatches =
                                                             hashAsString.MapToDictionaryMatches(
                                                                 true, reliableLastLetter != null, dictionaryService,
@@ -685,6 +720,8 @@ namespace JuliusSweetland.ETTA.Services
                                             }),
                                             () =>
                                             {
+                                                Log.Debug("Multi-key selection capture has completed.");
+
                                                 stopTriggerSignal = null;
                                                 CapturingMultiKeySelection = false;
                                             });
@@ -724,6 +761,8 @@ namespace JuliusSweetland.ETTA.Services
                                 if (!(selectionTriggerSource is IFixationTriggerSource)
                                     || (ts.PointAndKeyValue != null && ts.PointAndKeyValue.Value.StringIsLetter))
                                 {
+                                    Log.Debug("Trigger signal to stop the current multi-key selection capture detected.");
+
                                     stopTriggerSignal = ts;
                                 }
                             }

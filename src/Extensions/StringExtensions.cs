@@ -61,7 +61,7 @@ namespace JuliusSweetland.ETTA.Extensions
                 {
                     if (userEntered)
                     {
-                        Log.Debug(string.Format("Entry '{0}' hashed to '{1}'", entry, hash));
+                        Log.Debug(string.Format("User entered entry of '{0}' hashed to '{1}'", entry, hash));
                     }
 
                     return hash;
@@ -124,11 +124,12 @@ namespace JuliusSweetland.ETTA.Extensions
             }
             catch (AggregateException ae)
             {
-                if (ae.InnerExceptions != null)
+                if (ae.InnerExceptions != null
+                    && ae.InnerExceptions.Any())
                 {
                     var flattenedExceptions = ae.Flatten();
 
-                    Log.Error("Aggregate exception encountered. Flattened exception follows:", flattenedExceptions);
+                    Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
 
                     exceptionHandler(flattenedExceptions);
                 }
@@ -141,12 +142,12 @@ namespace JuliusSweetland.ETTA.Extensions
         {
             int maxSubSeq = 0;
 
-            // Create 2-d Array
+            //Create 2D Array
             var arr = new int[str1.Length + 1, str2.Length + 1];
 
-            // Initialize 2 - d array 
-            // Note only zeroth column and zeroth row is assigned value 0
-            // Can be skipped as well as by default they are Zero in C#
+            //Initialize 2D array 
+            //Note only zeroth column and zeroth row is assigned value 0
+            //Can be skipped as well as by default they are Zero in C#
             for (int i = 0; i < str2.Length; i++)
             {
                 arr[0, i] = 0;
@@ -155,17 +156,17 @@ namespace JuliusSweetland.ETTA.Extensions
             {
                 arr[i, 0] = 0;
             }
-            // Start Filling the table 
-            // if Character match add 1 to diagonal element of 2 - d array and fill it
-            // Else put the max of the elements on its top or  on its left ..
-            // Keep track of the size using a variable "maxSubSeq"
+            //Start Filling the table 
+            //If Character match add 1 to diagonal element of 2D array and fill it
+            //Else put the max of the elements on its top or on its left
+            //Keep track of the size using a variable "maxSubSeq"
             for (int i = 1; i <= str1.Length; i++)
             {
                 for (int j = 1; j <= str2.Length; j++)
                 {
                     if (str1[i - 1] == str2[j - 1])
                     {
-                        //Character match add 1 to diagonal element of 2 - d array
+                        //Character match add 1 to diagonal element of 2D array
                         arr[i, j] = arr[i - 1, j - 1] + 1;
                         if (arr[i, j] > maxSubSeq)
                         {
@@ -174,7 +175,7 @@ namespace JuliusSweetland.ETTA.Extensions
                     }
                     else
                     {
-                        // Else put the max of the elements on its top or  on its left ..
+                        //Else put the max of the elements on its top or  on its left
                         arr[i, j] = Math.Max(arr[i, j - 1], arr[i - 1, j]);
                     }
                 }
@@ -192,6 +193,11 @@ namespace JuliusSweetland.ETTA.Extensions
             return RemoveDiacritics(src, compatibilityDecomposition, c => c);
         }
 
+        /// <summary>
+        /// Remove diacritics (accents etc) from source string and returns the base string
+        /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
+        /// � symbols in your dictionary file? Resave it in UNICODE encoding 
+        /// </summary>
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
         {
             var sb = new StringBuilder();
@@ -223,6 +229,7 @@ namespace JuliusSweetland.ETTA.Extensions
         public static string FirstCharToUpper(this string input)
         {
             if (string.IsNullOrEmpty(input)) return input;
+
             return string.Concat(input.First().ToString().ToUpper(), input.Substring(1));
         }
 
@@ -266,6 +273,9 @@ namespace JuliusSweetland.ETTA.Extensions
                 charsToRemove++;
             }
 
+            Log.Debug(string.Format(
+                "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove));
+
             return charsToRemove;
         }
 
@@ -282,7 +292,7 @@ namespace JuliusSweetland.ETTA.Extensions
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.RETURN}};
 
                 default:
-                    return null;
+                    return null; //No other strings can be converted to a single KeyCodeSet (effectively a single key stroke)
             }
         }
     }
