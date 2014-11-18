@@ -18,12 +18,15 @@ Add settings
 Dictionary management window
 	+ Add
 	+ Remove
+Add simplified/'Speech only' theme - no publishing keys etc
+Add high contrast theme
 
 --------------------------------------------------------------------------------
 
 TO DO?
 Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
+	+ auto correct words
 Predict next word
 
 --------------------------------------------------------------------------------
