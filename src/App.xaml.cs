@@ -8,6 +8,7 @@ using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
 using log4net;
+using log4net.Core;
 
 namespace JuliusSweetland.ETTA
 {
@@ -61,6 +62,13 @@ namespace JuliusSweetland.ETTA
                 Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
+                //Attach shutdown handler
+                Application.Current.Exit += (o, args) => Log.Info("ETTA SHUTTING DOWN");
+
+                //Adjust log4net logging level if in debug mode
+                ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
+                ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+                
                 //Upgrade settings (if required) - this ensures that user settings migrate between version changes
                 if (Settings.Default.SettingsUpgradeRequired)
                 {

@@ -1,7 +1,5 @@
 ﻿NEXT STEPS:
 
-Use Debug setting to control log4net logging level (config is the default, but setting overrides it) ???
-
 AddToDictionary - display list of viable options (individual words + whole sentence(s)) from OutputService.Text
 	+ Log, notify and play sound when adding new entry
 
