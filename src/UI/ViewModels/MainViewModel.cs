@@ -29,7 +29,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IAudioService audioService;
+        private readonly IDictionaryService dictionaryService;
         private readonly IInputService inputService;
+        private readonly IPublishService publishService;
         private readonly IOutputService outputService;
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
@@ -53,8 +55,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             //Initialise fields
             audioService = new AudioService();
+            dictionaryService = new DictionaryService();
             inputService = CreateInputService();
-            outputService = CreateOutputService();
+            publishService = new PublishService();
+            outputService = new OutputService(this, publishService);
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
@@ -67,6 +71,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             InitialiseKeyDownStates();
             SetupStateChangeHandlers();
             
+            //Setup services
+            audioService.Error += HandleServiceError;
+            dictionaryService.Error += HandleServiceError;
+            publishService.Error += HandleServiceError;
             InitialiseInputService();
             
             //Set initial shift state to on
@@ -128,6 +136,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 if (SetProperty(ref capturingMultiKeySelection, value))
                 {
                     Log.Debug(string.Format("CapturingMultiKeySelection changed to {0}", value));
+
+                    audioService.PlaySound(value 
+                        ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
+                        : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
                 }
             }
         }
@@ -213,6 +225,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref suggestionsPerPage, value); }
         }
 
+        public InteractionRequest<Notification> NotificationRequest
+        {
+            get { return notificationRequest; }
+        }
+
         public InteractionRequest<Notification> ErrorNotificationRequest
         {
             get { return errorNotificationRequest; }
@@ -238,9 +255,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     break;
 
                 case PointsSources.TheEyeTribe:
+                    var eyeTribePointsService = new TheEyeTribePointService();
+                    eyeTribePointsService.Error += HandleServiceError;
                     pointSource = new TheEyeTribeSource(
-                        Settings.Default.PointTtl,
-                        new TheEyeTribePointService());
+                        Settings.Default.PointTtl, eyeTribePointsService);
                     break;
 
                 case PointsSources.MousePosition:
@@ -323,14 +341,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         + "Please correct and restart ETTA.");
             }
 
-            //Instantiation dictionary and input services
-            var dictionaryService = new DictionaryService();
             return new InputService(dictionaryService, pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
-        }
-
-        private IOutputService CreateOutputService()
-        {
-            return new OutputService(this, new PublishService());
         }
 
         private void InitialiseInputService()
@@ -377,6 +388,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
+                if (!CapturingMultiKeySelection)
+                {
+                    audioService.PlaySound(Settings.Default.SelectionSoundFile);
+                }
+
                 if (SelectionMode == SelectionModes.Key
                     && value.KeyValue != null)
                 {
@@ -416,18 +432,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 }
             };
 
-            inputService.Error += (o, exception) =>
-            {
-                Log.Error("Error event received from InputService. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
-
-                ErrorNotificationRequest.Raise(new Notification
-                    {
-                        Title = "Uh-oh!",
-                        Content = exception.Message
-                    });
-
-                audioService.PlaySound(Settings.Default.ErrorSoundFile);
-            };
+            inputService.Error += HandleServiceError;
         }
 
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
@@ -688,6 +693,19 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             PointSelectionProgress = null;
             KeySelectionProgress.Clear();
+        }
+
+        private void HandleServiceError(object sender, Exception exception)
+        {
+            Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
+
+            ErrorNotificationRequest.Raise(new Notification
+            {
+                Title = "Uh-oh!",
+                Content = exception.Message
+            });
+
+            audioService.PlaySound(Settings.Default.ErrorSoundFile);
         }
 
         #endregion

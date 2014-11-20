@@ -544,13 +544,12 @@ namespace JuliusSweetland.ETTA.Services
                                         Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
 
                                         //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
-                                        PublishSelection(ts.PointAndKeyValue.Value);
-
-                                        //Set up start and stop trigger signals
                                         var startTriggerSignal = ts;
                                         stopTriggerSignal = null;
 
                                         CapturingMultiKeySelection = true;
+
+                                        PublishSelection(ts.PointAndKeyValue.Value);
 
                                         multiKeySelectionPointsSubscription =
                                             Observable.Create<IList<Timestamped<PointAndKeyValue>>>(observer =>

@@ -278,7 +278,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("800")]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
         public double MainWindowHeight {
             get {
                 return ((double)(this["MainWindowHeight"]));
@@ -326,7 +326,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
         public double MainWindowWidth {
             get {
                 return ((double)(this["MainWindowWidth"]));
@@ -554,13 +554,61 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Beep1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Error1.wav")]
         public string ErrorSoundFile {
             get {
                 return ((string)(this["ErrorSoundFile"]));
             }
             set {
                 this["ErrorSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Info1.wav")]
+        public string InfoSoundFile {
+            get {
+                return ((string)(this["InfoSoundFile"]));
+            }
+            set {
+                this["InfoSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Selection1.wav")]
+        public string SelectionSoundFile {
+            get {
+                return ((string)(this["SelectionSoundFile"]));
+            }
+            set {
+                this["SelectionSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureEnd1.wav")]
+        public string MultiKeySelectionCaptureEndSoundFile {
+            get {
+                return ((string)(this["MultiKeySelectionCaptureEndSoundFile"]));
+            }
+            set {
+                this["MultiKeySelectionCaptureEndSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureStart1.wav")]
+        public string MultiKeySelectionCaptureStartSoundFile {
+            get {
+                return ((string)(this["MultiKeySelectionCaptureStartSoundFile"]));
+            }
+            set {
+                this["MultiKeySelectionCaptureStartSoundFile"] = value;
             }
         }
     }

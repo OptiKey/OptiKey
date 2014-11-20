@@ -37,10 +37,10 @@
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
-            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Green}" />
+            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Yellow}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource Black}" />
-            <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Green"/>
+            <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Yellow"/>
 
             <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBorderBrush" Color="{StaticResource Grey}" />
@@ -146,7 +146,7 @@
                 <Setter Property="Visibility" Value="Hidden" />
                 <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
                 <Setter Property="Stretch" Value="Uniform" />
-                <Setter Property="Margin" Value="10,2,10,2" />
+                <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Data" Value="{StaticResource LockBarIcon}" />
                 <Style.Triggers>
                     <!--This key is in a key down state of Lock-->

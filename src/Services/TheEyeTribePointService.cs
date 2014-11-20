@@ -26,7 +26,9 @@ namespace JuliusSweetland.ETTA.Services
 
         #endregion
 
-        #region Point Event
+        #region Events
+
+        public event EventHandler<Exception> Error;
 
         public event EventHandler<Timestamped<Point>> Point
         {
@@ -36,7 +38,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 if (!GazeManager.Instance.IsActivated)
                 {
-                    Log.Error("TET server is not activated (not running)! Please start the TET server and try again! Attempting to connect anyway.");
+                    PublishError(this, new ApplicationException("TET server is not activated (not running)! Please start the TET server and try again! Attempting to connect anyway."));
                 }
 
                 if (!GazeManager.Instance.HasGazeListener(this))
@@ -46,7 +48,7 @@ namespace JuliusSweetland.ETTA.Services
                     if (GazeManager.Instance.IsActivated
                         && !GazeManager.Instance.IsCalibrated)
                     {
-                        Log.Warn("TET has not been calibrated. No data will be received until calibration is completed.");
+                        PublishError(this, new ApplicationException("TET has not been calibrated. No data will be received until calibration is completed."));
                     }
 
                     GazeManager.Instance.AddGazeListener(this);
@@ -79,6 +81,20 @@ namespace JuliusSweetland.ETTA.Services
                 pointEvent(this, new Timestamped<Point>(
                     new Point(data.SmoothedCoordinates.X, data.SmoothedCoordinates.Y),
                     new DateTimeOffset(DateTime.Parse(data.TimeStampString)).ToUniversalTime()));
+            }
+        }
+
+        #endregion
+
+        #region Publish Error
+
+        private void PublishError(object sender, Exception ex)
+        {
+            if (Error != null)
+            {
+                Log.Error("Publishing Error event", ex);
+
+                Error(sender, ex);
             }
         }
 

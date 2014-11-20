@@ -66,7 +66,7 @@
       <Value Profile="(Default)">00:00:01.5000000</Value>
     </Setting>
     <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">800</Value>
+      <Value Profile="(Default)">400</Value>
     </Setting>
     <Setting Name="MainWindowLeft" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -78,7 +78,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="MainWindowWidth" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">1200</Value>
+      <Value Profile="(Default)">800</Value>
     </Setting>
     <Setting Name="ToastNotificationTitleFontSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
@@ -135,7 +135,19 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="ErrorSoundFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Beep1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Error1.wav</Value>
+    </Setting>
+    <Setting Name="InfoSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Info1.wav</Value>
+    </Setting>
+    <Setting Name="SelectionSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Selection1.wav</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureEndSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureEnd1.wav</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureStartSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureStart1.wav</Value>
     </Setting>
   </Settings>
 </SettingsFile>

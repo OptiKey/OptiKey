@@ -31,7 +31,7 @@ namespace JuliusSweetland.ETTA.Services
         #region Events
 
         public event EventHandler<Exception> Error;
-
+        
         #endregion
 
         #region Ctor
@@ -422,7 +422,7 @@ namespace JuliusSweetland.ETTA.Services
         #endregion
 
         #region Publish Error
-
+        
         private void PublishError(object sender, Exception ex)
         {
             if (Error != null)

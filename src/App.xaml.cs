@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
-using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
-using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
 using log4net;
@@ -109,7 +104,12 @@ namespace JuliusSweetland.ETTA
         {
             if (exception != null)
             {
-                Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
+                try
+                {
+                    Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
+                    MessageBox.Show("An unhandled error has occurred and the application needs to close. Please check the logs for details.");
+                }
+                catch {} //Swallow exception with logging or displaying messagebox to avoid looped errors
             }
         }
 

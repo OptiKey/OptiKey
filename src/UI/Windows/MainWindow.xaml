@@ -4,11 +4,14 @@
         xmlns:views="clr-namespace:JuliusSweetland.ETTA.UI.Views"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:JuliusSweetland.ETTA.UI.Behaviours"
-        Height="600" Width="1200" 
-        Title="ETTA"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Title="ETTA"
         Topmost="True"
         Icon="..\..\EyeIcon.ico">
+    
+    <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
+    
     <i:Interaction.Behaviors>
         <behaviours:WindowAlwaysOnTopBehavior/>
     </i:Interaction.Behaviors>
