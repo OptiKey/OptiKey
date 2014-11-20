@@ -101,9 +101,6 @@
     <Setting Name="Theme" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
     </Setting>
-    <Setting Name="FrameThickness" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
-    </Setting>
     <Setting Name="Debug" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>

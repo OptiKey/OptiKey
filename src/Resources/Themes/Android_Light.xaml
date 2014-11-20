@@ -36,20 +36,17 @@
             <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
             <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
 
-            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Green}" />
+            <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
+            <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
-            <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Green"/>
-
+            
             <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBackgroundBrush" Color="{StaticResource LightGrey}" />
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
-
-            <SolidColorBrush x:Key="FrameDefaultBorderBrush" Color="{StaticResource White}" />
-            <SolidColorBrush x:Key="FrameCapturingBorderBrush" Color="{StaticResource Red}" />
 
             <SolidColorBrush x:Key="PointsPerSecondForegroundBrush" Color="{StaticResource Green}" />
 

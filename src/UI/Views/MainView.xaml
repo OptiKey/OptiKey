@@ -33,37 +33,22 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" >
-            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=FrameThickness}">
-                <Border.Style>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="BorderBrush" Value="{DynamicResource FrameDefaultBorderBrush}" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding CapturingMultiKeySelection, Mode=OneWay}" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource FrameCapturingBorderBrush}" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <Border.Child>
-                    <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                                           PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
-                        <controls:KeyboardHost.ErrorContent>
-                            <Border Background="Black">
-                                <Viewbox>
-                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                        <TextBlock Text="PROBLEM LOADING KEYBOARD" HorizontalAlignment="Center" 
-                                                   VerticalAlignment="Center" Foreground="DarkRed"  Margin="10" />
-                                        <TextBlock Text="The current keyboard &amp; language combination is not valid"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                                   Foreground="DarkRed" Margin="10" />
-                                    </StackPanel>
-                                </Viewbox>
-                            </Border>
-                        </controls:KeyboardHost.ErrorContent>
-                    </controls:KeyboardHost>
-                </Border.Child>
-            </Border>
+            <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
+                                   PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+                <controls:KeyboardHost.ErrorContent>
+                    <Border Background="Black">
+                        <Viewbox>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <TextBlock Text="PROBLEM LOADING KEYBOARD" HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" Foreground="DarkRed"  Margin="10" />
+                                <TextBlock Text="The current keyboard &amp; language combination is not valid"
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                Foreground="DarkRed" Margin="10" />
+                            </StackPanel>
+                        </Viewbox>
+                    </Border>
+                </controls:KeyboardHost.ErrorContent>
+            </controls:KeyboardHost>
             
             <controls:PointVisualiser Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                                            Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
