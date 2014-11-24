@@ -388,7 +388,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type controls:QuestionText}">
-                            <controls:TextBlockScaler>
+                            <controls:TextBlockScaler Margin="5">
                                 <TextBlock Text="{TemplateBinding Text}"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"

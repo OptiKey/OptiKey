@@ -37,7 +37,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
+        [global::System.Configuration.DefaultSettingValueAttribute("NextLow")]
         public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals SelectionTriggerStopSignal {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["SelectionTriggerStopSignal"]));
@@ -61,7 +61,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));

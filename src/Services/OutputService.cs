@@ -133,9 +133,9 @@ namespace JuliusSweetland.ETTA.Services
                 default:
                     //No Text modification from any other function key
                     PublishKeyStroke(functionKey, null);
-                    ReleaseUnlockedModifiers();
-                    StoreLastTextChange(null);
-                    StoreSuggestions(null);
+                    //ReleaseUnlockedModifiers();
+                    //StoreLastTextChange(null);
+                    //StoreSuggestions(null);
                     break;
             }
         }
@@ -171,7 +171,7 @@ namespace JuliusSweetland.ETTA.Services
                     {
                         //Shift has been auto-pressed - re-apply modifiers to captured text and suggestions
                         modifiedText = ModifyCapturedText(textCapture);
-                        ApplyModifiersAndStoreSuggestions(keyboardStateManager.Suggestions);
+                        ApplyModifiersAndStoreSuggestions(modifiedText, keyboardStateManager.Suggestions);
                     }
                 }
                 
@@ -192,11 +192,12 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessCapture(List<string> captureAndSuggestions)
         {
-            Log.Debug(
-                string.Format("Processing {0} captured multi-key selection results", 
-                    captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
+            Log.Debug(string.Format("Processing {0} captured multi-key selection results", 
+                captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
 
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
+
+            var bestMatch = captureAndSuggestions.First();
 
             var suggestions = captureAndSuggestions.Count > 1
                 ? captureAndSuggestions
@@ -204,9 +205,7 @@ namespace JuliusSweetland.ETTA.Services
                     .ToList()
                 : null;
 
-            ApplyModifiersAndStoreSuggestions(suggestions);
-
-            var bestMatch = captureAndSuggestions.First();
+            ApplyModifiersAndStoreSuggestions(bestMatch, suggestions);
             ProcessCapture(bestMatch);
         }
 
@@ -220,7 +219,7 @@ namespace JuliusSweetland.ETTA.Services
             lastTextChange = textChange;
         }
 
-        private void ApplyModifiersAndStoreSuggestions(List<string> suggestions)
+        private void ApplyModifiersAndStoreSuggestions(string current, List<string> suggestions)
         {
             Log.Debug(string.Format("Applying modifiers to {0} suggestions.", suggestions != null ? suggestions.Count : 0));
 
@@ -228,8 +227,15 @@ namespace JuliusSweetland.ETTA.Services
                 ? suggestions
                     .Select(ModifyCapturedText)
                     .Where(s => !string.IsNullOrEmpty(s))
+                    .Distinct()
                     .ToList()
                 : null;
+
+            if (modifiedSuggestions != null)
+            {
+                //Ensure suggestions do not contain the current entry with the same casing
+                modifiedSuggestions = modifiedSuggestions.Where(ms => ms != current).ToList();
+            }
 
             StoreSuggestions(modifiedSuggestions);
         }

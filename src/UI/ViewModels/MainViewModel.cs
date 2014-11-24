@@ -470,122 +470,121 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void HandleFunctionKeySelectionResult(KeyValue? singleKeyValue)
         {
-            switch (singleKeyValue.Value.FunctionKey.Value)
+            if (singleKeyValue != null
+                && singleKeyValue.Value.FunctionKey != null)
             {
-                case FunctionKeys.AddToDictionary:
-                    AddTextToDictionary();
-                    break;
+                switch (singleKeyValue.Value.FunctionKey.Value)
+                {
+                    case FunctionKeys.AddToDictionary:
+                        AddTextToDictionary();
+                        break;
 
-                case FunctionKeys.AlphaKeyboard:
-                    Log.Debug("Changing keyboard to Alpha.");
+                    case FunctionKeys.AlphaKeyboard:
+                        Log.Debug("Changing keyboard to Alpha.");
+                        Keyboard = new Alpha();
+                        break;
 
-                    Keyboard = new Alpha();
-                    break;
-
-                case FunctionKeys.Alt:
-                case FunctionKeys.Ctrl:
-                case FunctionKeys.Shift:
-                    if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off)
-                    {
-                        Log.Debug(string.Format("Changing key down state of '{0}' key to ON.", singleKeyValue.Value));
-
-                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.On;
-                        
-                        noKeyStrokesSinceModifierOn = true;
-                    }
-                    else if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On)
-                    {
-                        Log.Debug(string.Format("Changing key down state of '{0}' key to LOCK.", singleKeyValue.Value));
-
-                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Lock;
-                    }
-                    else
-                    {
-                        Log.Debug(string.Format("Changing key down state of '{0}' key to OFF.", singleKeyValue.Value));
-
-                        KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Off;
-                        
-                        if (noKeyStrokesSinceModifierOn
-                            && KeyDownStates[KeyValues.AltKey].Value == Enums.KeyDownStates.Off
-                            && KeyDownStates[KeyValues.CtrlKey].Value == Enums.KeyDownStates.Off
-                            && KeyDownStates[KeyValues.ShiftKey].Value == Enums.KeyDownStates.Off)
+                    case FunctionKeys.Alt:
+                    case FunctionKeys.Ctrl:
+                    case FunctionKeys.Shift:
+                        if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off)
                         {
-                            Log.Debug(string.Format("On->Lock->Off cycle of '{0}' key detected without any other key strokes so publishing '{0}' keypress.", singleKeyValue.Value));
-
-                            OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
-
-                            noKeyStrokesSinceModifierOn = false;
+                            Log.Debug(string.Format("Changing key down state of '{0}' key to ON.", singleKeyValue.Value));
+                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.On;
+                            noKeyStrokesSinceModifierOn = true;
                         }
-                    }
-                    break;
+                        else if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On)
+                        {
+                            Log.Debug(string.Format("Changing key down state of '{0}' key to LOCK.", singleKeyValue.Value));
+                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Lock;
+                        }
+                        else
+                        {
+                            Log.Debug(string.Format("Changing key down state of '{0}' key to OFF.", singleKeyValue.Value));
+                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Off;
 
-                case FunctionKeys.NoQuestionResult:
-                    HandleYesNoQuestionResult(false);
-                    break;
+                            if (noKeyStrokesSinceModifierOn
+                                && KeyDownStates[KeyValues.AltKey].Value == Enums.KeyDownStates.Off
+                                && KeyDownStates[KeyValues.CtrlKey].Value == Enums.KeyDownStates.Off
+                                && KeyDownStates[KeyValues.ShiftKey].Value == Enums.KeyDownStates.Off)
+                            {
+                                Log.Debug(string.Format(
+                                    "On->Lock->Off cycle of '{0}' key detected without any other key strokes so publishing '{0}' keypress.", 
+                                    singleKeyValue.Value));
 
-                case FunctionKeys.NumericAndSymbols1Keyboard:
-                    Log.Debug("Changing keyboard to NumericAndSymbols1.");
+                                OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
 
-                    Keyboard = new NumericAndSymbols1();
-                    break;
+                                noKeyStrokesSinceModifierOn = false;
+                            }
+                        }
+                        break;
 
-                case FunctionKeys.NextSuggestions:
-                    Log.Debug("Incrementing suggestions page.");
+                    case FunctionKeys.NoQuestionResult:
+                        HandleYesNoQuestionResult(false);
+                        break;
 
-                    if (Suggestions != null
-                        && (Suggestions.Count > (SuggestionsPage + 1)*SuggestionsPerPage))
-                    {
-                        SuggestionsPage++;
-                    }
-                    break;
+                    case FunctionKeys.NumericAndSymbols1Keyboard:
+                        Log.Debug("Changing keyboard to NumericAndSymbols1.");
+                        Keyboard = new NumericAndSymbols1();
+                        break;
 
-                case FunctionKeys.PreviousSuggestions:
-                    Log.Debug("Decrementing suggestions page.");
+                    case FunctionKeys.NextSuggestions:
+                        Log.Debug("Incrementing suggestions page.");
 
-                    if (SuggestionsPage > 0)
-                    {
-                        SuggestionsPage--;
-                    }
-                    break;
+                        if (Suggestions != null
+                            && (Suggestions.Count > (SuggestionsPage + 1) * SuggestionsPerPage))
+                        {
+                            SuggestionsPage++;
+                        }
+                        break;
 
-                case FunctionKeys.PublishKeyboard:
-                    Log.Debug("Changing keyboard to Publish.");
+                    case FunctionKeys.PreviousSuggestions:
+                        Log.Debug("Decrementing suggestions page.");
 
-                    Keyboard = new Publish();
-                    break;
+                        if (SuggestionsPage > 0)
+                        {
+                            SuggestionsPage--;
+                        }
+                        break;
 
-                case FunctionKeys.Speak:
-                    audioService.Speak(
-                        OutputService.Text, Settings.Default.SpeechVolume, 
-                        Settings.Default.SpeechRate, Settings.Default.SpeechVoice);
-                    break;
+                    case FunctionKeys.PublishKeyboard:
+                        Log.Debug("Changing keyboard to Publish.");
+                        Keyboard = new Publish();
+                        break;
 
-                case FunctionKeys.Symbols2Keyboard:
-                    Log.Debug("Changing keyboard to Symbols2.");
+                    case FunctionKeys.Speak:
+                        audioService.Speak(
+                            OutputService.Text, 
+                            Settings.Default.SpeechVolume, 
+                            Settings.Default.SpeechRate, 
+                            Settings.Default.SpeechVoice);
+                        break;
 
-                    Keyboard = new Symbols2();
-                    break;
+                    case FunctionKeys.Symbols2Keyboard:
+                        Log.Debug("Changing keyboard to Symbols2.");
 
-                case FunctionKeys.ToggleMultiKeySelectionSupported:
-                    Log.Debug(string.Format("Changing setting MultiKeySelectionSupported to '{0}'.", !Settings.Default.MultiKeySelectionEnabled));
+                        Keyboard = new Symbols2();
+                        break;
 
-                    Settings.Default.MultiKeySelectionEnabled = !Settings.Default.MultiKeySelectionEnabled;
-                    break;
+                    case FunctionKeys.ToggleMultiKeySelectionSupported:
+                        Log.Debug(string.Format("Changing setting MultiKeySelectionSupported to '{0}'.", !Settings.Default.MultiKeySelectionEnabled));
+                        Settings.Default.MultiKeySelectionEnabled = !Settings.Default.MultiKeySelectionEnabled;
+                        break;
 
-                case FunctionKeys.TogglePublish:
-                    Log.Debug(string.Format("Changing setting PublishingKeys to '{0}'.", !Settings.Default.PublishingKeys));
+                    case FunctionKeys.TogglePublish:
+                        Log.Debug(string.Format("Changing setting PublishingKeys to '{0}'.", !Settings.Default.PublishingKeys));
+                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+                        break;
 
-                    Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
-                    break;
+                    case FunctionKeys.YesQuestionResult:
+                        HandleYesNoQuestionResult(true);
+                        break;
 
-                case FunctionKeys.YesQuestionResult:
-                    HandleYesNoQuestionResult(true);
-                    break;
-
-                default:
-                    OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
-                    noKeyStrokesSinceModifierOn = false;
-                    break;
+                    default:
+                        OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+                        noKeyStrokesSinceModifierOn = false;
+                        break;
+                }
             }
         }
 
@@ -641,11 +640,25 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
                     : string.Format("Would you like to add the word '{0}' to the dictionary?", candidate);
 
+                var similarEntries = dictionaryService.GetAllEntriesWithUsageCounts()
+                    .Where(de => string.Equals(de.Entry, candidate, StringComparison.InvariantCultureIgnoreCase))
+                    .Select(de => de.Entry)
+                    .ToList();
+
+                if (similarEntries.Any())
+                {
+                    string similarEntriesPrompt = string.Format("(FYI some similar entries are already in the dictionary: {0})", 
+                        string.Join(", ", similarEntries.Select(se => string.Format("'{0}'", se))));
+
+                    prompt = string.Concat(prompt, "\n\n", similarEntriesPrompt);
+                }
+
                 Action nextAction = candidates.Count > 1
                         ? (Action)(() => PromptToAddCandidatesToDictionary(candidates.Skip(1).ToList(), originalKeyboard))
                         : (Action)(() => Keyboard = originalKeyboard);
 
-                Keyboard = new YesNoQuestion(prompt,
+                Keyboard = new YesNoQuestion(
+                    prompt,
                     () =>
                     {
                         dictionaryService.AddNewEntryToDictionary(candidate);

@@ -337,7 +337,8 @@ namespace JuliusSweetland.ETTA.Services
             {
                 var enumerator = dictionary
                     .SelectMany(pair => pair.Value)
-                    .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry).GetEnumerator();
+                    .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
+                    .GetEnumerator();
 
                 while (enumerator.MoveNext())
                 {
