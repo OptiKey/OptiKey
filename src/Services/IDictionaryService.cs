@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive;
+using System.Threading;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Services
@@ -18,5 +20,8 @@ namespace JuliusSweetland.ETTA.Services
         void RemoveEntryFromDictionary(DictionaryEntryWithUsageCount entryWithUsageCount);
         void IncrementEntryUsageCount(string entry);
         void DecrementEntryUsageCount(string entry);
+        List<string> MapCaptureToEntries(List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
+            string reducedCapture, bool firstSequenceLetterIsReliable, 
+            bool lastSequenceLetterIsReliable, ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
     }
 }

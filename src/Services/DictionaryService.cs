@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive;
+using System.Threading;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
@@ -422,8 +424,103 @@ namespace JuliusSweetland.ETTA.Services
 
         #endregion
 
+        #region Map Capture To Entries
+
+        public List<string> MapCaptureToEntries(
+            List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
+            string reducedSequence,
+            bool firstSequenceLetterIsReliable,
+            bool lastSequenceLetterIsReliable,
+            ref CancellationTokenSource cancellationTokenSource,
+            Action<Exception> exceptionHandler)
+        {
+            var matches = new List<string>();
+
+            try
+            {
+                Log.Debug(string.Format("Mapping capture to dictionary entries with {0} timestamped points and the reduced sequence: {1}",
+                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence));
+
+                //N.B. The timestamped points (and key values) are not currently used, but could provide better info
+
+                if (reducedSequence != null && reducedSequence.Any())
+                {
+                    //Remove diacritics and make uppercase
+                    reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
+
+                    Log.Debug(string.Format("Removing diacritics leaves us with '{0}'", reducedSequence));
+
+                    //Reduce again - by removing diacritics we might now have adjacent 
+                    //letters which are the same (the dictionary hashes do not)
+                    var reducedSequence2Chars = new List<Char>();
+                    foreach (char c in reducedSequence)
+                    {
+                        if (!reducedSequence2Chars.Any() || !reducedSequence2Chars[reducedSequence2Chars.Count - 1].Equals(c))
+                        {
+                            reducedSequence2Chars.Add(c);
+                        }
+                    }
+
+                    reducedSequence = new string(reducedSequence2Chars.ToArray());
+
+                    Log.Debug(string.Format("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence));
+
+                    cancellationTokenSource = new CancellationTokenSource();
+
+                    this.GetHashes()
+                        .AsParallel()
+                        .WithCancellation(cancellationTokenSource.Token)
+                        .Where(s => !firstSequenceLetterIsReliable || s.First() == reducedSequence.First())
+                        .Where(s => !lastSequenceLetterIsReliable || s.Last() == reducedSequence.Last())
+                        .Select(hash =>
+                        {
+                            var lcs = reducedSequence.LongestCommonSubsequence(hash);
+                            return new
+                            {
+                                Hash = hash,
+                                Similarity = ((double)lcs / (double)hash.Length) * lcs,
+                                Lcs = lcs
+                            };
+                        })
+                        .OrderByDescending(x => x.Similarity)
+                        //.ThenBy(x => x.Hash.Length) //Shorter dictionary words are preferred (larger ratio of dictionary word which matches is better)
+                        .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
+                        .SelectMany(x => this.GetEntries(x.Hash))
+                        .Take(Settings.Default.MultiKeySelectionMaxDictionaryMatches)
+                        .ToList()
+                        .ForEach(matches.Add);
+                }
+
+                if (matches.Any())
+                {
+                    matches.ForEach(match => Log.Debug(string.Format("Returning dictionary match: {0}", match)));
+                    return matches;
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Error("Map captured letters to dictionary matches cancelled - returning nothing");
+            }
+            catch (AggregateException ae)
+            {
+                if (ae.InnerExceptions != null
+                    && ae.InnerExceptions.Any())
+                {
+                    var flattenedExceptions = ae.Flatten();
+
+                    Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
+
+                    exceptionHandler(flattenedExceptions);
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
+
         #region Publish Error
-        
+
         private void PublishError(object sender, Exception ex)
         {
             if (Error != null)

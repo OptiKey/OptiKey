@@ -594,16 +594,16 @@ namespace JuliusSweetland.ETTA.Services
                                                 return disposeAllSubscriptions;
                                             })
                                             .ObserveOnDispatcher()
-                                            .Subscribe(points =>
+                                            .Subscribe(pointsAndKeyValues =>
                                             {
-                                                Log.Debug(string.Format("Multi-key selection capture has returned a set of '{0}' PointAndKeyValues.", points.Count));
+                                                Log.Debug(string.Format("Multi-key selection capture has returned a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
 
-                                                if (points.Any())
+                                                if (pointsAndKeyValues.Any())
                                                 {
-                                                    var timeSpan = points.Last().Timestamp.Subtract(points.First().Timestamp);
+                                                    var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
 
                                                     var sequenceThreshold = (int)Math.Round(
-                                                        ((double)points.Count / (double)timeSpan.TotalMilliseconds)
+                                                        ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
                                                         * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
 
                                                     Log.Debug(string.Format(
@@ -611,11 +611,6 @@ namespace JuliusSweetland.ETTA.Services
                                                         timeSpan.TotalMilliseconds,
                                                         Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
                                                         sequenceThreshold));
-
-                                                    var keyValues = points
-                                                        .Where(tp => tp.Value.KeyValue != null)
-                                                        .Select(tp => tp.Value.KeyValue.Value)
-                                                        .ToList();
 
                                                     string reliableFirstLetter =
                                                         startTriggerSignal.PointAndKeyValue != null
@@ -649,9 +644,12 @@ namespace JuliusSweetland.ETTA.Services
                                                         PublishSelection(stopTriggerSignal.Value.PointAndKeyValue.Value);
                                                     }
 
-                                                    var reducedSequence = keyValues.ReduceToSequentiallyDistinctLetters(
-                                                            sequenceThreshold, reliableFirstLetter, reliableLastLetter);
-
+                                                    var reducedSequence = pointsAndKeyValues
+                                                        .Where(tp => tp.Value.KeyValue != null)
+                                                        .Select(tp => tp.Value.KeyValue.Value)
+                                                        .ToList()
+                                                        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
+                                                    
                                                     if (string.IsNullOrEmpty(reducedSequence))
                                                     {
                                                         //No useful selection
@@ -669,43 +667,24 @@ namespace JuliusSweetland.ETTA.Services
 
                                                         PublishSelectionResult(
                                                             new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                                                points.Select(tp => tp.Value.Point).ToList(),
+                                                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
                                                                 null, reducedSequence, null));
                                                     }
                                                     else
                                                     {
                                                         //The user fixated on multiple letters - map to dictionary word
-                                                        Log.Debug(string.Format("Multi-key selection capture reduces to '{0}'", reducedSequence));
-
-                                                        //Remove diacritics and make uppercase
-                                                        reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
-
-                                                        Log.Debug(string.Format("Removing diacritics leaves us with '{0}'", reducedSequence));
-
-                                                        //Reduce again - by removing diacritics we might now have adjacent 
-                                                        //letters which are the same (the dictionary hashes do not)
-                                                        var hash = new List<Char>();
-                                                        foreach (char c in reducedSequence)
-                                                        {
-                                                            if (!hash.Any() || !hash[hash.Count - 1].Equals(c))
-                                                            {
-                                                                hash.Add(c);
-                                                            }
-                                                        }
-
-                                                        var hashAsString = new string(hash.ToArray());
-
-                                                        Log.Debug(string.Format("Reducing the sequence again leaves us with '{0}'", hashAsString));
+                                                        Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
 
                                                         List<string> dictionaryMatches =
-                                                            hashAsString.MapToDictionaryMatches(
-                                                                true, reliableLastLetter != null, dictionaryService,
+                                                            dictionaryService.MapCaptureToEntries(
+                                                                pointsAndKeyValues.ToList(), reducedSequence, 
+                                                                true, reliableLastLetter != null,
                                                                 ref mapToDictionaryMatchesCancellationTokenSource,
                                                                 exception => PublishError(this, exception));
 
                                                         PublishSelectionResult(
                                                             new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                                                points.Select(tp => tp.Value.Point).ToList(),
+                                                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
                                                                 null, null, dictionaryMatches));
                                                     }
                                                 }

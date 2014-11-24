@@ -16,7 +16,6 @@ Dictionary management window
 	+ Remove
 Add high contrast theme
 
-Pass timestamped points through to logic which matches multi-key selection keyvalues to words - this allows that logic to examine exactly how the selection was made
 Profile and optimise
 
 --------------------------------------------------------------------------------
