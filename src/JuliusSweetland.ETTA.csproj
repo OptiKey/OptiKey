@@ -256,6 +256,7 @@
     <Content Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
     <Content Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
     <Content Include="Resources\Icons\Source Files\No.svg" />
+    <Content Include="Resources\Icons\Source Files\Sleep.svg" />
     <Content Include="Resources\Icons\Source Files\Win.svg" />
     <Content Include="Resources\Icons\Source Files\Yes.svg" />
     <Content Include="Resources\Sounds\Error1.wav">

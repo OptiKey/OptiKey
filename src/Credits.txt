@@ -2,23 +2,24 @@
 
 Fonts, icons and other artwork:
   Fonts: Roboto Light and Roboto Light Italic - Under the Apache Licence ("Roboto Font - Apache License.txt")
-  Tab icon modified from: Transfer designed by Stefan Parnarov from thenounproject.com
-  Shift icon: Arrow designed by Mateo Zlatar from thenounproject.com
+  Tab icon modified from: Transfer designed by Stefan Parnarov from the Noun Project (thenounproject.com)
+  Shift icon: Arrow designed by Mateo Zlatar from the Noun Project (thenounproject.com)
   Windows icon: appbar.os.windows.8 from Modern UI Icons - modernuiicons.com
-  Return/Enter icon: Arrow designed by Sam Vermette from thenounproject.com
+  Return/Enter icon: Arrow designed by Sam Vermette from the Noun Project (thenounproject.com)
   Backspace (Single) icon: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Backspace (Multiple) icon modified from: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
-  MultiKeySelection icon: Connection by Brenda Castro Pelayo from thenounproject.com
+  MultiKeySelection icon: Connection by Brenda Castro Pelayo from the Noun Project (thenounproject.com)
   Publish icon: Modern UI Icons - appbar.stream from Modern UI Icons - modernuiicons.com
   Speak icon: appbar.speakerphone from Modern UI Icons - modernuiicons.com
-  Clear icon: Trash designed by Garrett Knoll from thenounproject.com
-  Add Phrase icon odified from: Book designed by Danilo Gusmão Silveira from thenounproject.com
-  More icon: Dots designed by Alex S. Lakas from thenounproject.com
-  Left & Right Arrow icons: Arrow designed by Stefan Parnarov from thenounproject.com
-  Lock Bar icon modified from: Minus designed by Icomatic from thenounproject.com
-  Left, Right, Up, Down arrows modified from: Arrow by Milo Miloezger from thenounproject.com
-  Yes icon from: Right by Raúl Santos from thenounproject.com
-  No icon from: Wrong by Raúl Santos from thenounproject.com
+  Clear icon: Trash designed by Garrett Knoll from the Noun Project (thenounproject.com)
+  Add Phrase icon odified from: Book designed by Danilo Gusmão Silveira from the Noun Project (thenounproject.com)
+  More icon: Dots designed by Alex S. Lakas from the Noun Project (thenounproject.com)
+  Left & Right Arrow icons: Arrow designed by Stefan Parnarov from the Noun Project (thenounproject.com)
+  Lock Bar icon modified from: Minus designed by Icomatic from the Noun Project (thenounproject.com)
+  Left, Right, Up, Down arrows modified from: Arrow by Milo Miloezger from the Noun Project (thenounproject.com)
+  Yes icon from: Right by Raúl Santos from the Noun Project (thenounproject.com)
+  No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
+  Sleep icon: Sleep designed by Rémy Médard from the Noun Project (thenounproject.com)
 
 Sound effects - royalty free from:
 	soundbible.com
