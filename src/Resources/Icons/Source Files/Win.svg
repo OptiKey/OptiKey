@@ -14,7 +14,7 @@
    id="svg4427"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="Win.xaml">
+   sodipodi:docname="Win - hollow.svg">
   <defs
      id="defs4429">
     <clipPath
@@ -52,14 +52,14 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <path
+     id="path2994"
      style="fill:#000000;fill-rule:nonzero"
-     d="M 53 11.5 L 30 14.5 L 30 31 L 53 31 L 53 11.5 z M 28 14.78125 L 11 17 L 11 31 L 28 31 L 28 14.78125 z M 11 33 L 11 47 L 28 49.21875 L 28 33 L 11 33 z M 30 33 L 30 49.5 L 53 52.5 L 53 33 L 30 33 z "
-     id="path2994" />
+     d="m 30,33 0,16.5 23,3 0,-19.5 -23,0 z m 3.8125,3.25 15.28125,0 0,12.96875 -15.28125,-2 0,-10.96875 z M 53,11.5 l -23,3 0,16.5 23,0 0,-19.5 z m -3.6875,3.28125 0,13.34375 -15.71875,0 0,-11.28125 15.71875,-2.0625 z M 11,33 11,47 28,49.21875 28,33 11,33 z m 3.0625,2.78125 10.78125,0 0,10.28125 -10.78125,-1.4375 0,-8.84375 z M 28,14.78125 11,17 l 0,14 17,0 0,-16.21875 z m -3.28125,3.28125 0,10.0625 -10.53125,0 0,-8.6875 10.53125,-1.375 z" />
   <svg
      inkscape:version="0.48.5 r10040"
      width="76"
@@ -67,9 +67,11 @@
      clip-path="url(#clippath_id2794739)"
      id="svg2987"
      version="1.1"
-     transform="translate(-8.7272727,-5.2727273)" />
-  <clipPath
-     id="clipPath3035" />
-  <defs
-     id="defs2989" />
+     transform="translate(-8.7272727,-5.2727273)">
+    <defs
+       id="defs2989">
+      <clipPath
+         id="clipPath3035" />
+    </defs>
+  </svg>
 </svg>

@@ -251,6 +251,13 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons\Source Files\AddPhrase.svg" />
+    <Content Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
+    <Content Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
+    <Content Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
+    <Content Include="Resources\Icons\Source Files\No.svg" />
+    <Content Include="Resources\Icons\Source Files\Win.svg" />
+    <Content Include="Resources\Icons\Source Files\Yes.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -281,7 +288,7 @@
     <Content Include="Resources\Icons\Source Files\RightArrow.svg" />
     <Content Include="Resources\Icons\Source Files\Speak.svg" />
     <Content Include="Resources\Icons\Source Files\UpArrow.svg" />
-    <Content Include="Resources\Icons\Source Files\Win.svg" />
+    <Content Include="Resources\Icons\Source Files\Win - Alt 1.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -299,7 +306,7 @@
     <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="Resources\Icons\Source Files\Space.svg" />
-    <None Include="Resources\Icons\Source Files\AddPhrase.svg" />
+    <None Include="Resources\Icons\Source Files\AddPhrase - Alt 1.svg" />
     <None Include="Resources\Icons\Source Files\BackMany.svg" />
     <None Include="Resources\Icons\Source Files\BackOne.svg" />
     <None Include="Resources\Icons\Source Files\Clear.svg" />
