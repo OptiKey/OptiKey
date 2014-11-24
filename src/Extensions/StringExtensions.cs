@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
@@ -17,15 +18,12 @@ namespace JuliusSweetland.ETTA.Extensions
     {
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static string CreateDictionaryEntryHash(this string entry, bool userEntered = true)
+        public static string CreateDictionaryEntryHash(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {
                 //Trim white space
                 string hash = entry.Trim();
-
-                //Only letters are relevent
-                hash = new string(hash.Where(Char.IsLetter).ToArray());
 
                 //Phrase/Sentence - extract first letter of each word, from which we will build the hash
                 if (hash.Contains(" "))
@@ -36,6 +34,9 @@ namespace JuliusSweetland.ETTA.Extensions
                         .Select(s => s.First())
                         .ToArray());
                 }
+
+                //Only letters are relevent
+                hash = new string(hash.Where(Char.IsLetter).ToArray());
 
                 //Hashes are stored without diacritics (accents etc)
                 hash = hash.RemoveDiacritics();
@@ -59,12 +60,54 @@ namespace JuliusSweetland.ETTA.Extensions
 
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
-                    if (userEntered)
+                    if (log)
                     {
                         Log.Debug(string.Format("User entered entry of '{0}' hashed to '{1}'", entry, hash));
                     }
 
                     return hash;
+                }
+            }
+
+            return null;
+        }
+
+        public static List<string> ExtractWordsAndLines(this string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return null;
+
+            var words = new Regex(Settings.Default.WordRegex).Matches(text)
+                                .Cast<Match>()
+                                .Select(match => match.Value.CleanupPossibleDictionaryEntry())
+                                .Where(sanitisedMatch => sanitisedMatch != null)
+                                .ToList();
+
+            var lines = text.Split('\n', '\r')
+                            .Select(line => line.CleanupPossibleDictionaryEntry())
+                            .Where(sanitisedMatch => sanitisedMatch != null)
+                            .ToList();
+
+            var extracts = words.Concat(lines).Distinct().ToList();
+
+            return extracts.Any() ? extracts : null;
+        }
+
+        public static string CleanupPossibleDictionaryEntry(this string word)
+        {
+            if (!string.IsNullOrWhiteSpace(word)
+                && word.ToCharArray().Any(Char.IsLetter))
+            {
+                word = word.Trim();
+
+                while (word.Length > 1
+                    && !Char.IsLetterOrDigit(word.Last()))
+                {
+                    word = word.Substring(0, word.Length - 1);
+                }
+
+                if (word.Length > 1)
+                {
+                    return word;
                 }
             }
 

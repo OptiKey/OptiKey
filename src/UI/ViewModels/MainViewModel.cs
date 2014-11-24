@@ -11,6 +11,7 @@ using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
+using JuliusSweetland.ETTA.UI.Views.Keyboards.English;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
@@ -471,6 +472,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             switch (singleKeyValue.Value.FunctionKey.Value)
             {
+                case FunctionKeys.AddToDictionary:
+                    AddTextToDictionary();
+                    break;
+
                 case FunctionKeys.AlphaKeyboard:
                     Log.Debug("Changing keyboard to Alpha.");
 
@@ -579,6 +584,79 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
                     noKeyStrokesSinceModifierOn = false;
                     break;
+            }
+        }
+
+        private void AddTextToDictionary()
+        {
+            Log.Debug("AddTextToDictionary called.");
+
+            var possibleEntries = OutputService.Text.ExtractWordsAndLines();
+
+            if (possibleEntries != null)
+            {
+                var candidates = possibleEntries.Where(pe => !dictionaryService.ExistsInDictionary(pe)).ToList();
+
+                if (candidates.Any())
+                {
+                    PromptToAddCandidatesToDictionary(candidates, Keyboard);
+                }
+                else
+                {
+                    Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", OutputService.Text));
+
+                    NotificationRequest.Raise(new Notification
+                    {
+                        Title = "Hmm",
+                        Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
+                    });
+
+                    audioService.PlaySound(Settings.Default.InfoSoundFile);
+                }
+            }
+            else
+            {
+                Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", OutputService.Text));
+
+                NotificationRequest.Raise(new Notification
+                {
+                    Title = "Hmm",
+                    Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
+                });
+
+                audioService.PlaySound(Settings.Default.InfoSoundFile);
+            }
+        }
+
+        private void PromptToAddCandidatesToDictionary(List<string> candidates, IKeyboard originalKeyboard)
+        {
+            if (candidates.Any())
+            {
+                var candidate = candidates.First();
+
+                var prompt = candidate.Contains(' ')
+                    ? string.Format("Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?", 
+                        candidate, candidate.CreateDictionaryEntryHash(log: true))
+                    : string.Format("Would you like to add the word '{0}' to the dictionary?", candidate);
+
+                Action nextAction = candidates.Count > 1
+                        ? (Action)(() => PromptToAddCandidatesToDictionary(candidates.Skip(1).ToList(), originalKeyboard))
+                        : (Action)(() => Keyboard = originalKeyboard);
+
+                Keyboard = new YesNoQuestion(prompt,
+                    () =>
+                    {
+                        dictionaryService.AddNewEntryToDictionary(candidate);
+
+                        NotificationRequest.Raise(new Notification
+                        {
+                            Title = "Added",
+                            Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
+                        });
+
+                        nextAction();
+                    },
+                    () => nextAction());
             }
         }
 

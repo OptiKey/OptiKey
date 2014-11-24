@@ -146,5 +146,8 @@
     <Setting Name="MultiKeySelectionCaptureStartSoundFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureStart1.wav</Value>
     </Setting>
+    <Setting Name="WordRegex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

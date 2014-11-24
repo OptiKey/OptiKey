@@ -599,5 +599,18 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["MultiKeySelectionCaptureStartSoundFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("(?:\\s*)(([_a-zA-Z0-9-\\+]+(\\.[_a-zA-Z0-9-\\+]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\." +
+            "[a-zA-Z]{2,6}))|(([a-zA-Z]\\.){2,})|([a-zA-Z]+([\'-][a-zA-Z]+)*))(?:\\s*)")]
+        public string WordRegex {
+            get {
+                return ((string)(this["WordRegex"]));
+            }
+            set {
+                this["WordRegex"] = value;
+            }
+        }
     }
 }

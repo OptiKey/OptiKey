@@ -150,7 +150,7 @@ namespace JuliusSweetland.ETTA.Services
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
                 || (lastTextChange.Length == 1 && textCapture.Length == 1) //we are capturing char by char (after 1st char)
                 || (textCapture.Length == 1 && !char.IsLetter(textCapture.First())) //we have captured a single char which is not a letter
-                || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
+                || new[] { " ", "\n", "\r", "\n\r", "\r\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
                 Log.Debug("Suppressing next auto space.");
 

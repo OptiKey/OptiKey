@@ -213,7 +213,7 @@ namespace JuliusSweetland.ETTA.Services
                 }
 
                 //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
-                var hash = entry.CreateDictionaryEntryHash(userEntered: isNewEntry);
+                var hash = entry.CreateDictionaryEntryHash(log: isNewEntry);
 
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
@@ -253,7 +253,7 @@ namespace JuliusSweetland.ETTA.Services
                 && !string.IsNullOrWhiteSpace(entry)
                 && ExistsInDictionary(entry))
             {
-                var hash = entry.CreateDictionaryEntryHash(userEntered: false);
+                var hash = entry.CreateDictionaryEntryHash(log: false);
 
                 if (!string.IsNullOrWhiteSpace(hash)
                     && dictionary.ContainsKey(hash))
@@ -286,7 +286,7 @@ namespace JuliusSweetland.ETTA.Services
                 && !string.IsNullOrWhiteSpace(entryWithUsageCount.Entry)
                 && ExistsInDictionary(entryWithUsageCount.Entry))
             {
-                var hash = entryWithUsageCount.Entry.CreateDictionaryEntryHash(userEntered: false);
+                var hash = entryWithUsageCount.Entry.CreateDictionaryEntryHash(log: false);
 
                 if (!string.IsNullOrWhiteSpace(hash)
                     && dictionary.ContainsKey(hash))
@@ -393,7 +393,7 @@ namespace JuliusSweetland.ETTA.Services
             if (!string.IsNullOrWhiteSpace(entry)
                 && dictionary != null)
             {
-                var hash = entry.CreateDictionaryEntryHash(userEntered: true);
+                var hash = entry.CreateDictionaryEntryHash(log: true);
 
                 if (hash != null
                     && dictionary.ContainsKey(hash))

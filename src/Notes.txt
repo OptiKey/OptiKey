@@ -1,20 +1,5 @@
 ﻿NEXT STEPS:
 
-AddToDictionary - display list of viable options (individual words + whole sentence(s)) from OutputService.Text
-	+ Log, notify and play sound when adding new entry
-
-	Log.Debug(string.Format(
-                "Info event received from service. Raising NotificationRequest and playing InfoSoundFile (from settings). Title:'{0}', Message:'{1}'", 
-                titleAndMessage.Item1, titleAndMessage.Item2));
-
-            NotificationRequest.Raise(new Notification
-            {
-                Title = titleAndMessage.Item1,
-                Content = titleAndMessage.Item2
-            });
-
-            audioService.PlaySound(Settings.Default.InfoSoundFile);
-
 Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
 More keyboard
