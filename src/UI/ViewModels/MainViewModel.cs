@@ -513,6 +513,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                             Log.Debug(string.Format("On->Lock->Off cycle of '{0}' key detected without any other key strokes so publishing '{0}' keypress.", singleKeyValue.Value));
 
                             OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+
+                            noKeyStrokesSinceModifierOn = false;
                         }
                     }
                     break;

@@ -161,10 +161,20 @@ namespace JuliusSweetland.ETTA.Services
             var modifiedText = ModifyCapturedText(textCapture);
             if (!string.IsNullOrEmpty(modifiedText))
             {
-                AutoAddSpace();
-                AutoPressShiftIfAppropriate();
-                modifiedText = ModifyCapturedText(textCapture); //Recalc modified text as an auto space may have resulted in the shift being auto pressed
-                ApplyModifiersAndStoreSuggestions(keyboardStateManager.Suggestions); //Recalc stored suggestions
+                var spaceAdded = AutoAddSpace();
+                if (spaceAdded)
+                {
+                    //Auto space added - recalc whether shift should be auto-pressed
+                    var shiftPressed = AutoPressShiftIfAppropriate();
+
+                    if (shiftPressed)
+                    {
+                        //Shift has been auto-pressed - re-apply modifiers to captured text and suggestions
+                        modifiedText = ModifyCapturedText(textCapture);
+                        ApplyModifiersAndStoreSuggestions(keyboardStateManager.Suggestions);
+                    }
+                }
+                
                 Text = string.Concat(Text, modifiedText);
             }
 
@@ -364,7 +374,7 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void AutoAddSpace()
+        private bool AutoAddSpace()
         {
             if (Settings.Default.AutoAddSpace
                 && Text != null
@@ -374,10 +384,13 @@ namespace JuliusSweetland.ETTA.Services
                 Log.Debug("Publishing auto space and adding auto space to Text.");
                 PublishKeyStroke(null, ' ');
                 Text = string.Concat(Text, " ");
+                return true;
             }
+
+            return false;
         }
 
-        private void AutoPressShiftIfAppropriate()
+        private bool AutoPressShiftIfAppropriate()
         {
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
@@ -385,7 +398,10 @@ namespace JuliusSweetland.ETTA.Services
             {
                 Log.Debug("Auto-pressing shift.");
                 keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.On;
+                return true;
             }
+
+            return false;
         }
 
         private string ModifyCapturedText(string capturedText)
