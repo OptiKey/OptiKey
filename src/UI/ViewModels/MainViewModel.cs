@@ -59,7 +59,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             dictionaryService = new DictionaryService();
             inputService = CreateInputService();
             publishService = new PublishService();
-            outputService = new OutputService(this, publishService);
+            outputService = new OutputService(this, publishService, dictionaryService);
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);

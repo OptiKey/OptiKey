@@ -1,6 +1,5 @@
 ﻿NEXT STEPS:
 
-Make sure usage counts are incremented & decremented correctly (when swapping, or backspace removing last entry)
 Sound when start trigger not usable (disabled keys, out of bounds, old data, etc)
 	? New event for incorrect trigger?
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
@@ -21,6 +20,7 @@ Profile and optimise
 --------------------------------------------------------------------------------
 
 TO DO?
+Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
 Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words

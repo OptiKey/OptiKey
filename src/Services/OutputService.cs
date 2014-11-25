@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WindowsInput.Native;
@@ -17,7 +18,9 @@ namespace JuliusSweetland.ETTA.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IKeyboardStateManager keyboardStateManager;
         private readonly IPublishService publishService;
+        private readonly IDictionaryService dictionaryService;
 
+        private string text;
         private string lastTextChange;
         private bool suppressNextAutoSpace = true;
         
@@ -27,17 +30,18 @@ namespace JuliusSweetland.ETTA.Services
 
         public OutputService(
             IKeyboardStateManager keyboardStateManager,
-            IPublishService publishService)
+            IPublishService publishService,
+            IDictionaryService dictionaryService)
         {
             this.keyboardStateManager = keyboardStateManager;
             this.publishService = publishService;
+            this.dictionaryService = dictionaryService;
         }
 
         #endregion
 
         #region Properties
 
-        private string text;
         public string Text
         {
             get { return text; }
@@ -56,9 +60,10 @@ namespace JuliusSweetland.ETTA.Services
             {
                 case FunctionKeys.BackMany:
                     var backManyCount = Text.CountBackToLastCharCategoryBoundary();
-                    
+
+                    dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount - 1, backManyCount));
                     Text = Text.Substring(0, Text.Length - backManyCount);
-                    
+
                     for (int i = 0; i < backManyCount; i++)
                     {
                         PublishKeyStroke(FunctionKeys.BackOne, null);
@@ -66,7 +71,7 @@ namespace JuliusSweetland.ETTA.Services
                     }
 
                     StoreLastTextChange(null);
-                    StoreSuggestions(null);
+                    ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     suppressNextAutoSpace = true;
                     break;
@@ -83,6 +88,7 @@ namespace JuliusSweetland.ETTA.Services
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
 
+                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount - 1, backOneCount));
                         Text = Text.Substring(0, Text.Length - backOneCount);
 
                         for (int i = 0; i < backOneCount; i++)
@@ -93,7 +99,7 @@ namespace JuliusSweetland.ETTA.Services
                     }
 
                     StoreLastTextChange(null);
-                    StoreSuggestions(null);
+                    ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     suppressNextAutoSpace = true;
                     break;
@@ -101,55 +107,51 @@ namespace JuliusSweetland.ETTA.Services
                 case FunctionKeys.ClearOutput:
                     Text = null;
                     StoreLastTextChange(null);
-                    StoreSuggestions(null);
+                    ClearSuggestions();
                     AutoPressShiftIfAppropriate();
                     suppressNextAutoSpace = true;
                     break;
 
                 case FunctionKeys.Suggestion1:
-                    SwapLastCaptureForSuggestion(0);
+                    SwapLastTextChangeForSuggestion(0);
                     break;
 
                 case FunctionKeys.Suggestion2:
-                    SwapLastCaptureForSuggestion(1);
+                    SwapLastTextChangeForSuggestion(1);
                     break;
 
                 case FunctionKeys.Suggestion3:
-                    SwapLastCaptureForSuggestion(2);
+                    SwapLastTextChangeForSuggestion(2);
                     break;
 
                 case FunctionKeys.Suggestion4:
-                    SwapLastCaptureForSuggestion(3);
+                    SwapLastTextChangeForSuggestion(3);
                     break;
 
                 case FunctionKeys.Suggestion5:
-                    SwapLastCaptureForSuggestion(4);
+                    SwapLastTextChangeForSuggestion(4);
                     break;
 
                 case FunctionKeys.Suggestion6:
-                    SwapLastCaptureForSuggestion(5);
+                    SwapLastTextChangeForSuggestion(5);
                     break;
 
                 default:
-                    //No Text modification from any other function key
-                    PublishKeyStroke(functionKey, null);
-                    //ReleaseUnlockedModifiers();
-                    //StoreLastTextChange(null);
-                    //StoreSuggestions(null);
+                    PublishKeyStroke(functionKey, null); //No Text modification from any other function key - just publish key stroke if possible
                     break;
             }
         }
 
-        public void ProcessCapture(string textCapture)
+        public void ProcessCapture(string capturedText)
         {
-            Log.Debug(string.Format("Processing captured text '{0}'", textCapture));
+            Log.Debug(string.Format("Processing captured text '{0}'", capturedText));
 
-            if (string.IsNullOrEmpty(textCapture)) return;
+            if (string.IsNullOrEmpty(capturedText)) return;
 
             //Suppress auto space if... 
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                || (lastTextChange.Length == 1 && textCapture.Length == 1) //we are capturing char by char (after 1st char)
-                || (textCapture.Length == 1 && !char.IsLetter(textCapture.First())) //we have captured a single char which is not a letter
+                || (lastTextChange.Length == 1 && capturedText.Length == 1) //we are capturing char by char (after 1st char)
+                || (capturedText.Length == 1 && !char.IsLetter(capturedText.First())) //we have captured a single char which is not a letter
                 || new[] { " ", "\n", "\r", "\n\r", "\r\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
                 Log.Debug("Suppressing next auto space.");
@@ -158,8 +160,8 @@ namespace JuliusSweetland.ETTA.Services
             }
 
             //Modify the capture and apply to Text
-            var modifiedText = ModifyCapturedText(textCapture);
-            if (!string.IsNullOrEmpty(modifiedText))
+            var modifiedCaptureText = ModifyCapturedText(capturedText);
+            if (!string.IsNullOrEmpty(modifiedCaptureText))
             {
                 var spaceAdded = AutoAddSpace();
                 if (spaceAdded)
@@ -170,22 +172,31 @@ namespace JuliusSweetland.ETTA.Services
                     if (shiftPressed)
                     {
                         //Shift has been auto-pressed - re-apply modifiers to captured text and suggestions
-                        modifiedText = ModifyCapturedText(textCapture);
-                        ApplyModifiersAndStoreSuggestions(modifiedText, keyboardStateManager.Suggestions);
+                        modifiedCaptureText = ModifyCapturedText(capturedText);
+                        StoreSuggestions(ModifySuggestions(keyboardStateManager.Suggestions));
+
+                        //Ensure suggestions do not contain the modifiedText
+                        if (!string.IsNullOrEmpty(modifiedCaptureText)
+                            && keyboardStateManager.Suggestions != null
+                            && keyboardStateManager.Suggestions.Contains(modifiedCaptureText))
+                        {
+                            keyboardStateManager.Suggestions = keyboardStateManager.Suggestions.Where(s => s != modifiedCaptureText).ToList();
+                        }
                     }
                 }
-                
-                Text = string.Concat(Text, modifiedText);
+
+                dictionaryService.IncrementEntryUsageCount(modifiedCaptureText);
+                Text = string.Concat(Text, modifiedCaptureText);
             }
 
             //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
-            foreach (char c in textCapture)
+            foreach (char c in capturedText)
             {
                 PublishKeyStroke(null, c);
                 ReleaseUnlockedModifiers();
             }
 
-            StoreLastTextChange(modifiedText);
+            StoreLastTextChange(modifiedCaptureText);
             AutoPressShiftIfAppropriate();
             suppressNextAutoSpace = false;
         }
@@ -197,16 +208,12 @@ namespace JuliusSweetland.ETTA.Services
 
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
 
-            var bestMatch = captureAndSuggestions.First();
+            StoreSuggestions(
+                ModifySuggestions(captureAndSuggestions.Count > 1
+                    ? captureAndSuggestions.Skip(1).ToList()
+                    : null));
 
-            var suggestions = captureAndSuggestions.Count > 1
-                ? captureAndSuggestions
-                    .Skip(1)
-                    .ToList()
-                : null;
-
-            ApplyModifiersAndStoreSuggestions(bestMatch, suggestions);
-            ProcessCapture(bestMatch);
+            ProcessCapture(captureAndSuggestions.First());
         }
 
         #endregion
@@ -219,25 +226,27 @@ namespace JuliusSweetland.ETTA.Services
             lastTextChange = textChange;
         }
 
-        private void ApplyModifiersAndStoreSuggestions(string current, List<string> suggestions)
+        private void ClearSuggestions()
         {
-            Log.Debug(string.Format("Applying modifiers to {0} suggestions.", suggestions != null ? suggestions.Count : 0));
+            Log.Debug("Clearing suggestions.");
+            keyboardStateManager.Suggestions = null;
+        }
 
-            var modifiedSuggestions = suggestions != null && suggestions.Any()
-                ? suggestions
-                    .Select(ModifyCapturedText)
-                    .Where(s => !string.IsNullOrEmpty(s))
-                    .Distinct()
-                    .ToList()
-                : null;
+        private List<string> ModifySuggestions(List<string> suggestions)
+        {
+            Log.Debug(string.Format("Modifying {0} suggestions.", suggestions != null ? suggestions.Count : 0));
 
-            if (modifiedSuggestions != null)
-            {
-                //Ensure suggestions do not contain the current entry with the same casing
-                modifiedSuggestions = modifiedSuggestions.Where(ms => ms != current).ToList();
-            }
+            if(suggestions == null || !suggestions.Any()) return null;
 
-            StoreSuggestions(modifiedSuggestions);
+            var modifiedSuggestions = suggestions
+                .Select(ModifyCapturedText)
+                .Where(s => !string.IsNullOrEmpty(s))
+                .Distinct()
+                .ToList();
+
+            Log.Debug(string.Format("After applying modifiers there are {0} modified suggestions.", modifiedSuggestions.Count));
+
+            return modifiedSuggestions.Any() ? modifiedSuggestions : null;
         }
 
         private void StoreSuggestions(List<string> suggestions)
@@ -248,7 +257,7 @@ namespace JuliusSweetland.ETTA.Services
                 ? suggestions
                 : null;
         }
-
+        
         private void PublishKeyStroke(FunctionKeys? functionKey, char? character)
         {
             if (Settings.Default.PublishingKeys)
@@ -338,9 +347,9 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void SwapLastCaptureForSuggestion(int index)
+        private void SwapLastTextChangeForSuggestion(int index)
         {
-            Log.Debug(string.Format("SwapLastCaptureForSuggestion called with index {0}", index));
+            Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with index {0}", index));
 
             if (!string.IsNullOrEmpty(lastTextChange))
             {
@@ -348,7 +357,7 @@ namespace JuliusSweetland.ETTA.Services
                 if (keyboardStateManager.Suggestions.Count > suggestionIndex)
                 {
                     var replacedText = lastTextChange;
-                    SwapLastCaptureForSuggestion(keyboardStateManager.Suggestions[suggestionIndex]);
+                    SwapLastTextChangeForSuggestion(keyboardStateManager.Suggestions[suggestionIndex]);
                     var newSuggestions = keyboardStateManager.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
                     StoreSuggestions(newSuggestions);
@@ -356,14 +365,17 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void SwapLastCaptureForSuggestion(string suggestion)
+        private void SwapLastTextChangeForSuggestion(string suggestion)
         {
-            Log.Debug(string.Format("SwapLastCaptureForSuggestion called with suggestion '{0}'", suggestion));
+            Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with suggestion '{0}'", suggestion));
 
             if (!string.IsNullOrEmpty(lastTextChange)
                 && !string.IsNullOrEmpty(suggestion))
             {
+                dictionaryService.DecrementEntryUsageCount(lastTextChange);
                 Text = Text.Substring(0, Text.Length - lastTextChange.Length);
+
+                dictionaryService.IncrementEntryUsageCount(suggestion);
                 Text = string.Concat(Text, suggestion);
 
                 for (int i = 0; i < lastTextChange.Length; i++)

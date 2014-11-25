@@ -21,7 +21,7 @@ namespace JuliusSweetland.ETTA.Services
         void IncrementEntryUsageCount(string entry);
         void DecrementEntryUsageCount(string entry);
         List<string> MapCaptureToEntries(List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
-            string reducedCapture, bool firstSequenceLetterIsReliable, 
-            bool lastSequenceLetterIsReliable, ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
+            string reducedCapture, bool firstSequenceLetterIsReliable, bool lastSequenceLetterIsReliable, 
+            ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
     }
 }

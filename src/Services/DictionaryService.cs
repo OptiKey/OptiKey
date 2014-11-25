@@ -389,9 +389,7 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PerformIncrementOrDecrementOfEntryUsageCount(string entry, bool isIncrement)
         {
-            Log.Debug(
-                string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", 
-                    entry, isIncrement));
+            Log.Debug(string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", entry, isIncrement));
 
             if (!string.IsNullOrWhiteSpace(entry)
                 && dictionary != null)
@@ -401,21 +399,34 @@ namespace JuliusSweetland.ETTA.Services
                 if (hash != null
                     && dictionary.ContainsKey(hash))
                 {
-                    var usageCountAndEntry = dictionary[hash].FirstOrDefault(entryWithUsageCount => entryWithUsageCount.Entry == entry);
-                    if (usageCountAndEntry != null)
+                    bool saveDictionary = false;
+
+                    foreach (var match in dictionary[hash].Where(entryWithUsageCount =>
+                                string.Equals(entryWithUsageCount.Entry, entry, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         if (isIncrement)
                         {
-                            usageCountAndEntry.UsageCount++;
+                            Log.Debug(string.Format("Incrementing the usage count of entry '{0}'.", match.Entry));
+                            match.UsageCount++;
                         }
                         else
                         {
-                            if (usageCountAndEntry.UsageCount > 0)
+                            if (match.UsageCount > 0)
                             {
-                                usageCountAndEntry.UsageCount--;
+                                Log.Debug(string.Format("Decrementing the usage count of entry '{0}'.", match.Entry));
+                                match.UsageCount--;
+                            }
+                            else
+                            {
+                                Log.Warn(string.Format("An attempt was made to decrement the usage count of entry '{0}', but the usage count was zero so no action was taken.", match.Entry));
                             }
                         }
 
+                        saveDictionary = true;
+                    }
+
+                    if (saveDictionary)
+                    {
                         SaveUserDictionaryToFile();
                     }
                 }
@@ -438,10 +449,10 @@ namespace JuliusSweetland.ETTA.Services
 
             try
             {
-                Log.Debug(string.Format("Mapping capture to dictionary entries with {0} timestamped points and the reduced sequence: {1}",
-                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence));
+                //N.B. The timestamped points (and key values) are not currently used, but could be useful to improve accuracy
 
-                //N.B. The timestamped points (and key values) are not currently used, but could provide better info
+                Log.Debug(string.Format("Mapping capture to dictionary entries with {0} timestamped points/key values and the reduced sequence: {1}",
+                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence));
 
                 if (reducedSequence != null && reducedSequence.Any())
                 {
@@ -452,22 +463,21 @@ namespace JuliusSweetland.ETTA.Services
 
                     //Reduce again - by removing diacritics we might now have adjacent 
                     //letters which are the same (the dictionary hashes do not)
-                    var reducedSequence2Chars = new List<Char>();
+                    var reducedAgainCharSequence = new List<Char>();
                     foreach (char c in reducedSequence)
                     {
-                        if (!reducedSequence2Chars.Any() || !reducedSequence2Chars[reducedSequence2Chars.Count - 1].Equals(c))
+                        if (!reducedAgainCharSequence.Any() || !reducedAgainCharSequence[reducedAgainCharSequence.Count - 1].Equals(c))
                         {
-                            reducedSequence2Chars.Add(c);
+                            reducedAgainCharSequence.Add(c);
                         }
                     }
-
-                    reducedSequence = new string(reducedSequence2Chars.ToArray());
+                    reducedSequence = new string(reducedAgainCharSequence.ToArray());
 
                     Log.Debug(string.Format("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence));
 
                     cancellationTokenSource = new CancellationTokenSource();
 
-                    this.GetHashes()
+                    GetHashes()
                         .AsParallel()
                         .WithCancellation(cancellationTokenSource.Token)
                         .Where(s => !firstSequenceLetterIsReliable || s.First() == reducedSequence.First())
@@ -483,9 +493,8 @@ namespace JuliusSweetland.ETTA.Services
                             };
                         })
                         .OrderByDescending(x => x.Similarity)
-                        //.ThenBy(x => x.Hash.Length) //Shorter dictionary words are preferred (larger ratio of dictionary word which matches is better)
                         .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
-                        .SelectMany(x => this.GetEntries(x.Hash))
+                        .SelectMany(x => GetEntries(x.Hash))
                         .Take(Settings.Default.MultiKeySelectionMaxDictionaryMatches)
                         .ToList()
                         .ForEach(matches.Add);
