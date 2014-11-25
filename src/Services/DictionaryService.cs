@@ -202,8 +202,7 @@ namespace JuliusSweetland.ETTA.Services
 
         private void AddEntryToDictionary(string entry, bool isNewEntry, int usageCount = 0)
         {
-            Log.Debug(
-                string.Format("AddEntryToDictionary called with entry '{0}', isNewEntry={1}, usageCount={2}", 
+            Log.Debug(string.Format("AddEntryToDictionary called with entry '{0}', isNewEntry={1}, usageCount={2}", 
                     entry, isNewEntry, usageCount));
 
             if (dictionary != null

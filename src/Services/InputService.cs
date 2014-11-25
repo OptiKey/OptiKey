@@ -721,7 +721,7 @@ namespace JuliusSweetland.ETTA.Services
                                     }
                                     else
                                     {
-                                        Log.Debug("Selection mode is KEY, but the key on which the trigger occurred is disabled.");
+                                        Log.Debug("Selection mode is KEY, but the trigger occurred off a key or over a disabled key.");
                                         audioService.PlaySound(Settings.Default.ErrorSoundFile);
                                     }
                                 }
