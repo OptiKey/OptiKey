@@ -394,7 +394,7 @@ namespace JuliusSweetland.ETTA.Services
             if (!string.IsNullOrWhiteSpace(entry)
                 && dictionary != null)
             {
-                var hash = entry.CreateDictionaryEntryHash(log: true);
+                var hash = entry.CreateDictionaryEntryHash(log: false);
 
                 if (hash != null
                     && dictionary.ContainsKey(hash))

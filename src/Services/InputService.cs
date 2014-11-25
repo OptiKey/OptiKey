@@ -30,6 +30,7 @@ namespace JuliusSweetland.ETTA.Services
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
         private readonly IDictionaryService dictionaryService;
+        private readonly IAudioService audioService;
         private readonly IPointAndKeyValueSource pointAndKeyValueSource;
         private readonly ITriggerSignalSource keySelectionTriggerSource;
         private readonly ITriggerSignalSource pointSelectionTriggerSource;
@@ -48,11 +49,13 @@ namespace JuliusSweetland.ETTA.Services
 
         public InputService(
             IDictionaryService dictionaryService,
+            IAudioService audioService,
             IPointAndKeyValueSource pointAndKeyValueSource,
             ITriggerSignalSource keySelectionTriggerSource,
             ITriggerSignalSource pointSelectionTriggerSource)
         {
             this.dictionaryService = dictionaryService;
+            this.audioService = audioService;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
@@ -396,7 +399,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (selectionResultEvent != null)
             {
-                Log.Debug(string.Format("Publishing Selection Result event with {0} points, FunctionKey:{1}, String:{2}, Match {3} (count:{4})",
+                Log.Debug(string.Format("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
                         selectionResult.Item2, selectionResult.Item3,
                         selectionResult.Item4 != null ? selectionResult.Item4.First() : null,
@@ -532,187 +535,194 @@ namespace JuliusSweetland.ETTA.Services
                             {
                                 Log.Debug("Selection trigger signal (with relevent PointAndKeyValue) detected.");
 
-                                if (SelectionMode == SelectionModes.Key
-                                    && ts.PointAndKeyValue.Value.KeyValue != null
-                                    && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value]))
+                                if (SelectionMode == SelectionModes.Key)
                                 {
-                                    Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
-
-                                    if (Settings.Default.MultiKeySelectionEnabled
-                                        && ts.PointAndKeyValue.Value.StringIsLetter)
+                                    if (ts.PointAndKeyValue.Value.KeyValue != null
+                                        && (KeyEnabledStates == null || KeyEnabledStates[ts.PointAndKeyValue.Value.KeyValue.Value]))
                                     {
-                                        Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
+                                        Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
-                                        //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
-                                        var startTriggerSignal = ts;
-                                        stopTriggerSignal = null;
+                                        if (Settings.Default.MultiKeySelectionEnabled
+                                            && ts.PointAndKeyValue.Value.StringIsLetter)
+                                        {
+                                            Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
 
-                                        CapturingMultiKeySelection = true;
+                                            //Multi-key selection is allowed and the trigger occurred on a letter - start a capture
+                                            var startTriggerSignal = ts;
+                                            stopTriggerSignal = null;
 
-                                        PublishSelection(ts.PointAndKeyValue.Value);
+                                            CapturingMultiKeySelection = true;
 
-                                        multiKeySelectionPointsSubscription =
-                                            Observable.Create<IList<Timestamped<PointAndKeyValue>>>(observer =>
-                                            {
-                                                bool disposed = false;
+                                            PublishSelection(ts.PointAndKeyValue.Value);
 
-                                                Action disposeAllSubscriptions = null;
-
-                                                var intervalSubscription =
-                                                    Observable.Interval(Settings.Default.MultiKeySelectionMaxDuration)
-                                                        .Where(_ => disposed == false)
-                                                        .Subscribe(i => observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
-
-                                                var pointAndKeyValueSubscription = pointAndKeyValueSource.Sequence
-                                                    .Where(tp => tp.Value != null) //Filter out stale indicators
-                                                    .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
-                                                    .TakeWhile(tp => stopTriggerSignal == null)
-                                                    .ToList()
-                                                    .Subscribe(points =>
-                                                    {
-                                                        observer.OnNext(points);
-                                                        observer.OnCompleted();
-                                                    });
-
-                                                disposeAllSubscriptions = () =>
+                                            multiKeySelectionPointsSubscription =
+                                                Observable.Create<IList<Timestamped<PointAndKeyValue>>>(observer =>
                                                 {
-                                                    disposed = true;
+                                                    bool disposed = false;
 
-                                                    if (intervalSubscription != null)
-                                                    {
-                                                        intervalSubscription.Dispose();
-                                                        intervalSubscription = null;
-                                                    }
+                                                    Action disposeAllSubscriptions = null;
 
-                                                    if (pointAndKeyValueSubscription != null)
-                                                    {
-                                                        pointAndKeyValueSubscription.Dispose();
-                                                        pointAndKeyValueSubscription = null;
-                                                    }
-                                                };
+                                                    var intervalSubscription =
+                                                        Observable.Interval(Settings.Default.MultiKeySelectionMaxDuration)
+                                                            .Where(_ => disposed == false)
+                                                            .Subscribe(i => observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
 
-                                                return disposeAllSubscriptions;
-                                            })
-                                            .ObserveOnDispatcher()
-                                            .Subscribe(pointsAndKeyValues =>
-                                            {
-                                                Log.Debug(string.Format("Multi-key selection capture has returned a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
-
-                                                if (pointsAndKeyValues.Any())
-                                                {
-                                                    var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
-
-                                                    var sequenceThreshold = (int)Math.Round(
-                                                        ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
-                                                        * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
-
-                                                    Log.Debug(string.Format(
-                                                        "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
-                                                        timeSpan.TotalMilliseconds,
-                                                        Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
-                                                        sequenceThreshold));
-
-                                                    string reliableFirstLetter =
-                                                        startTriggerSignal.PointAndKeyValue != null
-                                                        && startTriggerSignal.PointAndKeyValue.Value.StringIsLetter
-                                                            ? startTriggerSignal.PointAndKeyValue.Value.String
-                                                            : null;
-
-                                                    Log.Debug(string.Format(
-                                                        "First letter ('{0}') of multi-key selection capture {1} reliable.", 
-                                                        reliableFirstLetter,
-                                                        reliableFirstLetter != null ? "IS" : "IS NOT"));
-
-                                                    //If we are using a fixation trigger and the stop trigger has
-                                                    //occurred on a letter then it is reliable - use it
-                                                    string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
-                                                        && stopTriggerSignal != null
-                                                        && stopTriggerSignal.Value.PointAndKeyValue != null
-                                                        && stopTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
-                                                            ? stopTriggerSignal.Value.PointAndKeyValue.Value.String
-                                                            : null;
-
-                                                    Log.Debug(string.Format(
-                                                            "Last letter ('{0}') of multi-key selection capture {1} reliable.",
-                                                            reliableLastLetter,
-                                                            reliableLastLetter != null ? "IS" : "IS NOT"));
-
-                                                    if (reliableLastLetter != null)
-                                                    {
-                                                        Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
-
-                                                        PublishSelection(stopTriggerSignal.Value.PointAndKeyValue.Value);
-                                                    }
-
-                                                    var reducedSequence = pointsAndKeyValues
-                                                        .Where(tp => tp.Value.KeyValue != null)
-                                                        .Select(tp => tp.Value.KeyValue.Value)
+                                                    var pointAndKeyValueSubscription = pointAndKeyValueSource.Sequence
+                                                        .Where(tp => tp.Value != null) //Filter out stale indicators
+                                                        .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                                                        .TakeWhile(tp => stopTriggerSignal == null)
                                                         .ToList()
-                                                        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
-                                                    
-                                                    if (string.IsNullOrEmpty(reducedSequence))
+                                                        .Subscribe(points =>
+                                                        {
+                                                            observer.OnNext(points);
+                                                            observer.OnCompleted();
+                                                        });
+
+                                                    disposeAllSubscriptions = () =>
                                                     {
-                                                        //No useful selection
-                                                        Log.Debug("Multi-key selection capture reduces to nothing useful.");
+                                                        disposed = true;
 
-                                                        PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                                                new List<Point> { ts.PointAndKeyValue.Value.Point },
-                                                                null, null, null));
-                                                    }
-                                                    else if (reducedSequence.Length == 1)
+                                                        if (intervalSubscription != null)
+                                                        {
+                                                            intervalSubscription.Dispose();
+                                                            intervalSubscription = null;
+                                                        }
+
+                                                        if (pointAndKeyValueSubscription != null)
+                                                        {
+                                                            pointAndKeyValueSubscription.Dispose();
+                                                            pointAndKeyValueSubscription = null;
+                                                        }
+                                                    };
+
+                                                    return disposeAllSubscriptions;
+                                                })
+                                                .ObserveOnDispatcher()
+                                                .Subscribe(pointsAndKeyValues =>
+                                                {
+                                                    Log.Debug(string.Format("Multi-key selection capture has returned a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
+
+                                                    if (pointsAndKeyValues.Any())
                                                     {
-                                                        //The user fixated on one letter - output it
-                                                        Log.Debug("Multi-key selection capture reduces to a single letter.");
+                                                        var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
 
-                                                        PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                                                                null, reducedSequence, null));
+                                                        var sequenceThreshold = (int)Math.Round(
+                                                            ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
+                                                            * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
+
+                                                        Log.Debug(string.Format(
+                                                            "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
+                                                            timeSpan.TotalMilliseconds,
+                                                            Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
+                                                            sequenceThreshold));
+
+                                                        string reliableFirstLetter =
+                                                            startTriggerSignal.PointAndKeyValue != null
+                                                            && startTriggerSignal.PointAndKeyValue.Value.StringIsLetter
+                                                                ? startTriggerSignal.PointAndKeyValue.Value.String
+                                                                : null;
+
+                                                        Log.Debug(string.Format(
+                                                            "First letter ('{0}') of multi-key selection capture {1} reliable.",
+                                                            reliableFirstLetter,
+                                                            reliableFirstLetter != null ? "IS" : "IS NOT"));
+
+                                                        //If we are using a fixation trigger and the stop trigger has
+                                                        //occurred on a letter then it is reliable - use it
+                                                        string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
+                                                            && stopTriggerSignal != null
+                                                            && stopTriggerSignal.Value.PointAndKeyValue != null
+                                                            && stopTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
+                                                                ? stopTriggerSignal.Value.PointAndKeyValue.Value.String
+                                                                : null;
+
+                                                        Log.Debug(string.Format(
+                                                                "Last letter ('{0}') of multi-key selection capture {1} reliable.",
+                                                                reliableLastLetter,
+                                                                reliableLastLetter != null ? "IS" : "IS NOT"));
+
+                                                        if (reliableLastLetter != null)
+                                                        {
+                                                            Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
+
+                                                            PublishSelection(stopTriggerSignal.Value.PointAndKeyValue.Value);
+                                                        }
+
+                                                        var reducedSequence = pointsAndKeyValues
+                                                            .Where(tp => tp.Value.KeyValue != null)
+                                                            .Select(tp => tp.Value.KeyValue.Value)
+                                                            .ToList()
+                                                            .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
+
+                                                        if (string.IsNullOrEmpty(reducedSequence))
+                                                        {
+                                                            //No useful selection
+                                                            Log.Debug("Multi-key selection capture reduces to nothing useful.");
+
+                                                            PublishSelectionResult(
+                                                                new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                                                    new List<Point> { ts.PointAndKeyValue.Value.Point },
+                                                                    null, null, null));
+                                                        }
+                                                        else if (reducedSequence.Length == 1)
+                                                        {
+                                                            //The user fixated on one letter - output it
+                                                            Log.Debug("Multi-key selection capture reduces to a single letter.");
+
+                                                            PublishSelectionResult(
+                                                                new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                                                    pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                                                                    null, reducedSequence, null));
+                                                        }
+                                                        else
+                                                        {
+                                                            //The user fixated on multiple letters - map to dictionary word
+                                                            Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
+
+                                                            List<string> dictionaryMatches =
+                                                                dictionaryService.MapCaptureToEntries(
+                                                                    pointsAndKeyValues.ToList(), reducedSequence,
+                                                                    true, reliableLastLetter != null,
+                                                                    ref mapToDictionaryMatchesCancellationTokenSource,
+                                                                    exception => PublishError(this, exception));
+
+                                                            PublishSelectionResult(
+                                                                new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                                                    pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                                                                    null, null, dictionaryMatches));
+                                                        }
                                                     }
-                                                    else
-                                                    {
-                                                        //The user fixated on multiple letters - map to dictionary word
-                                                        Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
+                                                },
+                                                (exception =>
+                                                {
+                                                    PublishError(this, exception);
 
-                                                        List<string> dictionaryMatches =
-                                                            dictionaryService.MapCaptureToEntries(
-                                                                pointsAndKeyValues.ToList(), reducedSequence, 
-                                                                true, reliableLastLetter != null,
-                                                                ref mapToDictionaryMatchesCancellationTokenSource,
-                                                                exception => PublishError(this, exception));
+                                                    stopTriggerSignal = null;
+                                                    CapturingMultiKeySelection = false;
+                                                }),
+                                                () =>
+                                                {
+                                                    Log.Debug("Multi-key selection capture has completed.");
 
-                                                        PublishSelectionResult(
-                                                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                                                                null, null, dictionaryMatches));
-                                                    }
-                                                }
-                                            },
-                                            (exception =>
-                                            {
-                                                PublishError(this, exception);
+                                                    stopTriggerSignal = null;
+                                                    CapturingMultiKeySelection = false;
+                                                });
+                                        }
+                                        else
+                                        {
+                                            PublishSelection(ts.PointAndKeyValue.Value);
 
-                                                stopTriggerSignal = null;
-                                                CapturingMultiKeySelection = false;
-                                            }),
-                                            () =>
-                                            {
-                                                Log.Debug("Multi-key selection capture has completed.");
-
-                                                stopTriggerSignal = null;
-                                                CapturingMultiKeySelection = false;
-                                            });
+                                            PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                                new List<Point> { ts.PointAndKeyValue.Value.Point },
+                                                ts.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
+                                                ts.PointAndKeyValue.Value.KeyValue.Value.String,
+                                                null));
+                                        }
                                     }
                                     else
                                     {
-                                        PublishSelection(ts.PointAndKeyValue.Value);
-
-                                        PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                            new List<Point> { ts.PointAndKeyValue.Value.Point },
-                                            ts.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                            ts.PointAndKeyValue.Value.KeyValue.Value.String,
-                                            null));
+                                        Log.Debug("Selection mode is KEY, but the key on which the trigger occurred is disabled.");
+                                        audioService.PlaySound(Settings.Default.ErrorSoundFile);
                                     }
                                 }
                                 else if (SelectionMode == SelectionModes.Point)
@@ -727,6 +737,7 @@ namespace JuliusSweetland.ETTA.Services
                             {
                                 Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
                                         + "Discarding trigger request as point source is down, or producing stale points.");
+                                audioService.PlaySound(Settings.Default.ErrorSoundFile);
                             }
                         }
                         else if (CapturingMultiKeySelection)

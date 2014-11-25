@@ -1,7 +1,6 @@
 ﻿NEXT STEPS:
 
-Sound when start trigger not usable (disabled keys, out of bounds, old data, etc)
-	? New event for incorrect trigger?
+Change 'AddToDictionary' icon to something which doesn't look like a bible
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
 More keyboard
 	+ Buttons for Publish & Diacritic keyboards

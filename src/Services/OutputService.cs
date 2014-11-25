@@ -61,7 +61,7 @@ namespace JuliusSweetland.ETTA.Services
                 case FunctionKeys.BackMany:
                     var backManyCount = Text.CountBackToLastCharCategoryBoundary();
 
-                    dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount - 1, backManyCount));
+                    dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
                     Text = Text.Substring(0, Text.Length - backManyCount);
 
                     for (int i = 0; i < backManyCount; i++)
@@ -88,7 +88,7 @@ namespace JuliusSweetland.ETTA.Services
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
 
-                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount - 1, backOneCount));
+                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
                         Text = Text.Substring(0, Text.Length - backOneCount);
 
                         for (int i = 0; i < backOneCount; i++)
