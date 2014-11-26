@@ -177,7 +177,7 @@
         </controls:Key>
 
         <controls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource AddPhraseIcon}" 
+                      SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />

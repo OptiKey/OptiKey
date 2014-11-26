@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg6950"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="AddToDictionary.svg">
+  <defs
+     id="defs6952" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.5"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:current-layer="svg6950"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata6955">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:#000000;fill-opacity:1;stroke-width:0.2;stroke-linejoin:round"
+     inkscape:connector-curvature="0"
+     d="m 33.090909,40.727273 7.636364,0 0,-7.636364 5.454545,0 0,7.636364 7.636364,0 0,5.454545 -7.636364,0 0,7.636364 -5.454545,0 0,-7.636364 -7.636364,0 0,-5.454545 z m -8.727273,-22.909091 7.636364,0 0,-7.636364 5.454545,0 0,7.636364 7.636364,0 0,5.454545 -7.636364,0 0,7.636364 -5.454545,0 0,-7.636364 -7.636364,0 0,-5.454545 z m -14.181818,15.272727 7.636364,0 0,-7.636364 5.454545,0 0,7.636364 7.636364,0 0,5.454546 -7.636364,0 0,7.636363 -5.454545,0 0,-7.636363 -7.636364,0 0,-5.454546 z"
+     id="path4" />
+</svg>

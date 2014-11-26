@@ -252,7 +252,8 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Icons\Source Files\AddPhrase.svg" />
+    <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
+    <Content Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
     <Content Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
     <Content Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
     <Content Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
@@ -308,7 +309,7 @@
     <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="Resources\Icons\Source Files\Space.svg" />
-    <None Include="Resources\Icons\Source Files\AddPhrase - Alt 1.svg" />
+    <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 1.svg" />
     <None Include="Resources\Icons\Source Files\BackMany.svg" />
     <None Include="Resources\Icons\Source Files\BackOne.svg" />
     <None Include="Resources\Icons\Source Files\Clear.svg" />
