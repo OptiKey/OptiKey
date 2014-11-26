@@ -8,9 +8,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("JuliusSweetland.ETTA")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Eye Tracking Transcription Assistant")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("JuliusSweetland")]
 [assembly: AssemblyProduct("JuliusSweetland.ETTA")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]

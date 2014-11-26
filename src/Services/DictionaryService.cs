@@ -15,8 +15,7 @@ namespace JuliusSweetland.ETTA.Services
     {
         #region Constants
 
-        private const string ApplicationDataSubPath = @"JuliusSweetland\ETTA\";
-        private const string UserDictionaryFileSuffix = "_customised";
+        private const string ApplicationDataSubPath = @"JuliusSweetland\ETTA\Dictionaries\";
         private const string OriginalDictionariesSubPath = @"Dictionaries\";
         private const string DictionaryFileType = ".dic";
 
@@ -107,7 +106,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
             Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists
-            return Path.Combine(applicationDataPath, string.Format("{0}{1}{2}", Settings.Default.Language, UserDictionaryFileSuffix, DictionaryFileType));
+            return Path.Combine(applicationDataPath, string.Format("{0}{1}", Settings.Default.Language, DictionaryFileType));
         }
 
         private void LoadUserDictionaryFromFile(string filePath)

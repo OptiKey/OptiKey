@@ -2,151 +2,151 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.ETTA.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Type="System.Windows.Forms.Keys" Scope="User">
+    <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">LControlKey</Value>
     </Setting>
-    <Setting Name="SelectionTriggerStopSignal" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
+    <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextLow</Value>
     </Setting>
-    <Setting Name="SelectionTriggerMouseDownUpButton" Type="System.Windows.Forms.MouseButtons" Scope="User">
+    <Setting Name="SelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+    <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
     </Setting>
-    <Setting Name="SettingsUpgradeRequired" Type="System.Boolean" Scope="User">
+    <Setting Name="SettingsUpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="PointsMousePositionSampleInterval" Type="System.TimeSpan" Scope="User">
+    <Setting Name="PointsMousePositionSampleInterval" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.0130000</Value>
     </Setting>
-    <Setting Name="PointsSource" Type="JuliusSweetland.ETTA.Enums.PointsSources" Scope="User">
+    <Setting Name="PointsSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.PointsSources" Scope="User">
       <Value Profile="(Default)">MousePosition</Value>
     </Setting>
-    <Setting Name="PointTtl" Type="System.TimeSpan" Scope="User">
+    <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationRadius" Type="System.Double" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationMinPoints" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
     </Setting>
-    <Setting Name="GazeTrackerUdpPort" Type="System.Int32" Scope="User">
+    <Setting Name="GazeTrackerUdpPort" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6666</Value>
     </Setting>
-    <Setting Name="GazeTrackerUdpRegex" Type="System.String" Scope="User">
+    <Setting Name="GazeTrackerUdpRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionEnabled" Type="System.Boolean" Scope="User">
+    <Setting Name="MultiKeySelectionEnabled" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionFixationMinDwellTime" Type="System.TimeSpan" Scope="User">
+    <Setting Name="MultiKeySelectionFixationMinDwellTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.0500000</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionMaxDictionaryMatches" Type="System.Int32" Scope="User">
+    <Setting Name="MultiKeySelectionMaxDictionaryMatches" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">40</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionMaxDuration" Type="System.TimeSpan" Scope="User">
+    <Setting Name="MultiKeySelectionMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
-    <Setting Name="Language" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
+    <Setting Name="Language" Roaming="true" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
       <Value Profile="(Default)">BritishEnglish</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerSource" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerFixationMinPoints" Type="System.Int32" Scope="User">
+    <Setting Name="KeySelectionTriggerFixationMinPoints" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerFixationTime" Type="System.TimeSpan" Scope="User">
+    <Setting Name="KeySelectionTriggerFixationTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
     </Setting>
-    <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
+    <Setting Name="MainWindowHeight" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
-    <Setting Name="MainWindowLeft" Type="System.Double" Scope="User">
+    <Setting Name="MainWindowLeft" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="MainWindowState" Type="System.Windows.WindowState" Scope="User">
+    <Setting Name="MainWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="MainWindowTop" Type="System.Double" Scope="User">
+    <Setting Name="MainWindowTop" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="MainWindowWidth" Type="System.Double" Scope="User">
+    <Setting Name="MainWindowWidth" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">800</Value>
     </Setting>
-    <Setting Name="ToastNotificationTitleFontSize" Type="System.Int32" Scope="User">
+    <Setting Name="ToastNotificationTitleFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="ToastNotificationContentFontSize" Type="System.Int32" Scope="User">
+    <Setting Name="ToastNotificationContentFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">16</Value>
     </Setting>
-    <Setting Name="ToastNotificationCharactersPerLine" Type="System.Int32" Scope="User">
+    <Setting Name="ToastNotificationCharactersPerLine" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="ToastNotificationSecondsPerLine" Type="System.Int32" Scope="User">
+    <Setting Name="ToastNotificationSecondsPerLine" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="ToastNotificationAdditionalSeconds" Type="System.Int32" Scope="User">
+    <Setting Name="ToastNotificationAdditionalSeconds" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="PublishingKeys" Type="System.Boolean" Scope="User">
+    <Setting Name="PublishingKeys" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Theme" Type="System.String" Scope="User">
+    <Setting Name="Theme" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
     </Setting>
-    <Setting Name="Debug" Type="System.Boolean" Scope="User">
+    <Setting Name="Debug" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="FontFamily" Type="System.String" Scope="User">
+    <Setting Name="FontFamily" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
     </Setting>
-    <Setting Name="FontStretch" Type="System.String" Scope="User">
+    <Setting Name="FontStretch" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Condensed</Value>
     </Setting>
-    <Setting Name="FontWeight" Type="System.String" Scope="User">
+    <Setting Name="FontWeight" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Regular</Value>
     </Setting>
-    <Setting Name="ScratchpadNumberOfLines" Type="System.Int32" Scope="User">
+    <Setting Name="ScratchpadNumberOfLines" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="AutoAddSpace" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoAddSpace" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="AutoCapitalise" Type="System.Boolean" Scope="User">
+    <Setting Name="AutoCapitalise" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="SpeechRate" Type="System.Int32" Scope="User">
+    <Setting Name="SpeechRate" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="SpeechVoice" Type="System.String" Scope="User">
+    <Setting Name="SpeechVoice" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="SpeechVolume" Type="System.Int32" Scope="User">
+    <Setting Name="SpeechVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="ErrorSoundFile" Type="System.String" Scope="User">
+    <Setting Name="ErrorSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Error1.wav</Value>
     </Setting>
-    <Setting Name="InfoSoundFile" Type="System.String" Scope="User">
+    <Setting Name="InfoSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Info1.wav</Value>
     </Setting>
-    <Setting Name="SelectionSoundFile" Type="System.String" Scope="User">
+    <Setting Name="SelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Selection1.wav</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionCaptureEndSoundFile" Type="System.String" Scope="User">
+    <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureEnd1.wav</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionCaptureStartSoundFile" Type="System.String" Scope="User">
+    <Setting Name="MultiKeySelectionCaptureStartSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureStart1.wav</Value>
     </Setting>
-    <Setting Name="WordRegex" Type="System.String" Scope="User">
+    <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
     </Setting>
   </Settings>

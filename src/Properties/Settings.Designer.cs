@@ -26,6 +26,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("LControlKey")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.Forms.Keys SelectionTriggerKeyboardKeyDownUpKey {
             get {
                 return ((global::System.Windows.Forms.Keys)(this["SelectionTriggerKeyboardKeyDownUpKey"]));
@@ -38,6 +39,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextLow")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals SelectionTriggerStopSignal {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["SelectionTriggerStopSignal"]));
@@ -50,6 +52,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Left")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.Forms.MouseButtons SelectionTriggerMouseDownUpButton {
             get {
                 return ((global::System.Windows.Forms.MouseButtons)(this["SelectionTriggerMouseDownUpButton"]));
@@ -62,6 +65,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));
@@ -74,6 +78,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool SettingsUpgradeRequired {
             get {
                 return ((bool)(this["SettingsUpgradeRequired"]));
@@ -86,6 +91,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0130000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan PointsMousePositionSampleInterval {
             get {
                 return ((global::System.TimeSpan)(this["PointsMousePositionSampleInterval"]));
@@ -98,6 +104,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("MousePosition")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.PointsSources PointsSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.PointsSources)(this["PointsSource"]));
@@ -110,6 +117,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1500000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan PointTtl {
             get {
                 return ((global::System.TimeSpan)(this["PointTtl"]));
@@ -122,6 +130,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double PointSelectionTriggerFixationRadius {
             get {
                 return ((double)(this["PointSelectionTriggerFixationRadius"]));
@@ -134,6 +143,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int PointSelectionTriggerFixationMinPoints {
             get {
                 return ((int)(this["PointSelectionTriggerFixationMinPoints"]));
@@ -146,6 +156,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.5000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan PointSelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["PointSelectionTriggerFixationTime"]));
@@ -158,6 +169,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("6666")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int GazeTrackerUdpPort {
             get {
                 return ((int)(this["GazeTrackerUdpPort"]));
@@ -171,6 +183,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("^STREAM_DATA\\s(?<instanceTime>\\d+)\\s(?<x>-?\\d+(\\.[0-9]+)?)\\s(?<y>-?\\d+(\\.[0-9]+)?" +
             ")")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string GazeTrackerUdpRegex {
             get {
                 return ((string)(this["GazeTrackerUdpRegex"]));
@@ -183,6 +196,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool MultiKeySelectionEnabled {
             get {
                 return ((bool)(this["MultiKeySelectionEnabled"]));
@@ -195,6 +209,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0500000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan MultiKeySelectionFixationMinDwellTime {
             get {
                 return ((global::System.TimeSpan)(this["MultiKeySelectionFixationMinDwellTime"]));
@@ -207,6 +222,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int MultiKeySelectionMaxDictionaryMatches {
             get {
                 return ((int)(this["MultiKeySelectionMaxDictionaryMatches"]));
@@ -219,6 +235,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:01:00")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan MultiKeySelectionMaxDuration {
             get {
                 return ((global::System.TimeSpan)(this["MultiKeySelectionMaxDuration"]));
@@ -231,6 +248,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("BritishEnglish")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.Languages Language {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.Languages)(this["Language"]));
@@ -243,6 +261,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources PointSelectionTriggerSource {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
@@ -255,6 +274,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int KeySelectionTriggerFixationMinPoints {
             get {
                 return ((int)(this["KeySelectionTriggerFixationMinPoints"]));
@@ -267,6 +287,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.5000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan KeySelectionTriggerFixationTime {
             get {
                 return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationTime"]));
@@ -279,6 +300,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MainWindowHeight {
             get {
                 return ((double)(this["MainWindowHeight"]));
@@ -291,6 +313,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MainWindowLeft {
             get {
                 return ((double)(this["MainWindowLeft"]));
@@ -303,6 +326,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.WindowState MainWindowState {
             get {
                 return ((global::System.Windows.WindowState)(this["MainWindowState"]));
@@ -315,6 +339,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MainWindowTop {
             get {
                 return ((double)(this["MainWindowTop"]));
@@ -327,6 +352,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("800")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double MainWindowWidth {
             get {
                 return ((double)(this["MainWindowWidth"]));
@@ -339,6 +365,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationTitleFontSize {
             get {
                 return ((int)(this["ToastNotificationTitleFontSize"]));
@@ -351,6 +378,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("16")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationContentFontSize {
             get {
                 return ((int)(this["ToastNotificationContentFontSize"]));
@@ -363,6 +391,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationCharactersPerLine {
             get {
                 return ((int)(this["ToastNotificationCharactersPerLine"]));
@@ -375,6 +404,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationSecondsPerLine {
             get {
                 return ((int)(this["ToastNotificationSecondsPerLine"]));
@@ -387,6 +417,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationAdditionalSeconds {
             get {
                 return ((int)(this["ToastNotificationAdditionalSeconds"]));
@@ -399,6 +430,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool PublishingKeys {
             get {
                 return ((bool)(this["PublishingKeys"]));
@@ -411,6 +443,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/Resources/Themes/Android_Dark.xaml")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string Theme {
             get {
                 return ((string)(this["Theme"]));
@@ -423,6 +456,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool Debug {
             get {
                 return ((bool)(this["Debug"]));
@@ -435,6 +469,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/Resources/Fonts/#Roboto")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string FontFamily {
             get {
                 return ((string)(this["FontFamily"]));
@@ -447,6 +482,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Condensed")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string FontStretch {
             get {
                 return ((string)(this["FontStretch"]));
@@ -459,6 +495,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Regular")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string FontWeight {
             get {
                 return ((string)(this["FontWeight"]));
@@ -471,6 +508,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ScratchpadNumberOfLines {
             get {
                 return ((int)(this["ScratchpadNumberOfLines"]));
@@ -483,6 +521,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool AutoAddSpace {
             get {
                 return ((bool)(this["AutoAddSpace"]));
@@ -495,6 +534,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool AutoCapitalise {
             get {
                 return ((bool)(this["AutoCapitalise"]));
@@ -507,6 +547,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int SpeechRate {
             get {
                 return ((int)(this["SpeechRate"]));
@@ -519,6 +560,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string SpeechVoice {
             get {
                 return ((string)(this["SpeechVoice"]));
@@ -531,6 +573,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int SpeechVolume {
             get {
                 return ((int)(this["SpeechVolume"]));
@@ -543,6 +586,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Error1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string ErrorSoundFile {
             get {
                 return ((string)(this["ErrorSoundFile"]));
@@ -555,6 +599,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Info1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string InfoSoundFile {
             get {
                 return ((string)(this["InfoSoundFile"]));
@@ -567,6 +612,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Selection1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string SelectionSoundFile {
             get {
                 return ((string)(this["SelectionSoundFile"]));
@@ -579,6 +625,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureEnd1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MultiKeySelectionCaptureEndSoundFile {
             get {
                 return ((string)(this["MultiKeySelectionCaptureEndSoundFile"]));
@@ -591,6 +638,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureStart1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MultiKeySelectionCaptureStartSoundFile {
             get {
                 return ((string)(this["MultiKeySelectionCaptureStartSoundFile"]));
@@ -604,6 +652,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("(?:\\s*)(([_a-zA-Z0-9-\\+]+(\\.[_a-zA-Z0-9-\\+]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\." +
             "[a-zA-Z]{2,6}))|(([a-zA-Z]\\.){2,})|([a-zA-Z]+([\'-][a-zA-Z]+)*))(?:\\s*)")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string WordRegex {
             get {
                 return ((string)(this["WordRegex"]));

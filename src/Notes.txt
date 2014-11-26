@@ -1,5 +1,7 @@
 ﻿NEXT STEPS:
 
+Think about where user dictionary, settings and logs should be stored within AppData.
+	? How is the AppData\Local\JuliusSweetland\ directory determined?
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
 More keyboard
 	+ Buttons for Publish & Diacritic keyboards
