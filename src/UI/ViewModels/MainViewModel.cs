@@ -11,7 +11,6 @@ using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
-using JuliusSweetland.ETTA.UI.Views.Keyboards.English;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;

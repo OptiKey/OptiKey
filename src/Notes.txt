@@ -14,7 +14,7 @@ Dictionary management window
 	+ Remove
 Add high contrast theme
 
-Profile and optimise
+Profile and optimise (and refactor any remaining large classes, e.g. MainViewModel)
 
 --------------------------------------------------------------------------------
 

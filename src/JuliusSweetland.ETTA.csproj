@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="Services\IDictionaryService.cs" />
+    <Compile Include="Services\InputService.subscriptions.cs" />
     <Compile Include="Services\IOutputService.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
