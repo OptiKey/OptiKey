@@ -53,17 +53,19 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public MainViewModel()
         {
-            //Initialise fields
-            audioService = new AudioService();
-            dictionaryService = new DictionaryService();
-            inputService = CreateInputService();
-            publishService = new PublishService();
-            outputService = new OutputService(this, publishService, dictionaryService);
+            //Fields
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
+
+            //Services
+            audioService = new AudioService();
+            dictionaryService = new DictionaryService();
+            inputService = CreateInputService();
+            publishService = new PublishService();
+            outputService = new OutputService(this, publishService, dictionaryService);
             
             //Initialise state properties
             SelectionMode = SelectionModes.Key;
@@ -348,6 +350,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("Initialising InputService.");
 
+            inputService.Error += HandleServiceError;
+
             inputService.KeyEnabledStates = keyEnabledStates;
 
             inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
@@ -431,8 +435,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     //TODO: Handle point selection result
                 }
             };
-
-            inputService.Error += HandleServiceError;
         }
 
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)

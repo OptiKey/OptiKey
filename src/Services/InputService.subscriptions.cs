@@ -205,8 +205,10 @@ namespace JuliusSweetland.ETTA.Services
                 else
                 {
                     Log.Error("TriggerSignal.Signal==1, but TriggerSignal.PointAndKeyValue is null. "
-                            + "Discarding trigger request as point source is down, or producing stale points.");
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                            + "Discarding trigger as point source is down, or producing stale points. "
+                            + "Publishing error instead.");
+
+                    PublishError(this, new ApplicationException("I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?"));
                 }
             }
             else if (CapturingMultiKeySelection)

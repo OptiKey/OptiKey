@@ -90,7 +90,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="ToastNotificationSecondsPerLine" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ToastNotificationAdditionalSeconds" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>

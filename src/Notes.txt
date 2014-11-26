@@ -1,7 +1,5 @@
 ﻿NEXT STEPS:
 
-Display notification if trigger happens, but points are stale or off (currently just plays sound)
-
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)
 More keyboard
 	+ Buttons for Publish & Diacritic keyboards
@@ -21,6 +19,7 @@ Profile and optimise (and refactor any remaining large classes, e.g. MainViewMod
 
 TO DO?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
+Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
 Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
