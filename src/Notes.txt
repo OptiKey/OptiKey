@@ -1,6 +1,5 @@
 ﻿NEXT STEPS:
 
-Change log location to appdata or equivalent
 Display notification if trigger happens, but points are stale or off (currently just plays sound)
 
 Add diactritic keyboard(s). I guess this would be alphabet specific (e.g. latin alphabet)

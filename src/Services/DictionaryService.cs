@@ -97,7 +97,7 @@ namespace JuliusSweetland.ETTA.Services
                     if (!string.IsNullOrWhiteSpace(line) 
                         && line.Trim().Length > 1)
                     {
-                        AddEntryToDictionary(line.Trim(), isNewEntry: false, usageCount: 0);
+                        AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace JuliusSweetland.ETTA.Services
                         {
                             var entry = entryWithUsageCount[0];
                             var usageCount = int.Parse(entryWithUsageCount[1]);
-                            AddEntryToDictionary(entry, isNewEntry: false, usageCount: usageCount);
+                            AddEntryToDictionary(entry, loadedFromDictionaryFile: true, usageCount: usageCount);
                         }
                     }
                 }
@@ -197,24 +197,17 @@ namespace JuliusSweetland.ETTA.Services
 
         public void AddNewEntryToDictionary(string entry)
         {
-            AddEntryToDictionary(entry, isNewEntry: true, usageCount: 1);
+            AddEntryToDictionary(entry, loadedFromDictionaryFile: false, usageCount: 1);
         }
 
-        private void AddEntryToDictionary(string entry, bool isNewEntry, int usageCount = 0)
+        private void AddEntryToDictionary(string entry, bool loadedFromDictionaryFile, int usageCount = 0)
         {
-            Log.Debug(string.Format("AddEntryToDictionary called with entry '{0}', isNewEntry={1}, usageCount={2}", 
-                    entry, isNewEntry, usageCount));
-
             if (dictionary != null
-                && entry != null)
+                && !string.IsNullOrWhiteSpace(entry)
+                && (loadedFromDictionaryFile || !ExistsInDictionary(entry)))
             {
-                if (isNewEntry && ExistsInDictionary(entry)) //Don't add new custom entries if they already exist in the dictionary
-                {
-                    return;
-                }
-
                 //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
-                var hash = entry.CreateDictionaryEntryHash(log: isNewEntry);
+                var hash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
 
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
@@ -232,10 +225,9 @@ namespace JuliusSweetland.ETTA.Services
                         dictionary.Add(hash, new List<DictionaryEntryWithUsageCount> { newEntryWithUsageCount });
                     }
 
-                    if (isNewEntry)
+                    if (!loadedFromDictionaryFile)
                     {
-                        Log.Debug(string.Format("Adding new (user supplied) entry '{0}' to dictionary and saving to disk", entry));
-
+                        Log.Debug(string.Format("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash));
                         SaveUserDictionaryToFile();
                     }
                 }
