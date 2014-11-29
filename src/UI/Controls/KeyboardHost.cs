@@ -126,6 +126,30 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.Symbols2 { DataContext = Keyboard };
                     }
+                    else if (Keyboard is Symbols3)
+                    {
+                        newContent = new Views.Keyboards.English.Symbols3 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Currency1)
+                    {
+                        newContent = new Views.Keyboards.English.Currency1 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Currency2)
+                    {
+                        newContent = new Views.Keyboards.English.Currency2 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is DiacriticLetters1)
+                    {
+                        newContent = new Views.Keyboards.English.DiacriticLetters1 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is DiacriticLetters2)
+                    {
+                        newContent = new Views.Keyboards.English.DiacriticLetters2 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is DiacriticLetters3)
+                    {
+                        newContent = new Views.Keyboards.English.DiacriticLetters3 { DataContext = Keyboard };
+                    }
                     else if (Keyboard is Publish)
                     {
                         newContent = new Views.Keyboards.English.Publish { DataContext = Keyboard };

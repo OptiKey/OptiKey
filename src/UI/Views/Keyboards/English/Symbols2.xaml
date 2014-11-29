@@ -61,24 +61,24 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      Text="•"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="•" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="°"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="°" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="~"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="~" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="¬"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="¬" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
@@ -124,32 +124,32 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="2of2"
+                      Text="2of3"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="NumericAndSymbols1Keyboard" />
+                <models:KeyValue FunctionKey="Symbols3Keyboard" />
             </controls:Key.Value>
         </controls:Key>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="µ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="µ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="©"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="©" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="®"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="®" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="™"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="™" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
@@ -217,31 +217,31 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="€"
+                      Text="℗"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="€" />
+                <models:KeyValue String="℗" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="$"
+                      Text="™"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="$" />
+                <models:KeyValue String="™" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="¢"
+                      Text="℠"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="¢" />
+                <models:KeyValue String="℠" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="¥"
+                      Text="℡"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="¥" />
+                <models:KeyValue String="℡" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
@@ -309,10 +309,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text=","
+                      Text="∴"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="," />
+                <models:KeyValue String="∴" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="6"
@@ -324,10 +324,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="."
+                      Text="∵"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="." />
+                <models:KeyValue String="∵" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"

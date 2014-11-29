@@ -520,6 +520,31 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
+                    case FunctionKeys.Currency1Keyboard:
+                        Log.Debug("Changing keyboard to Currency1.");
+                        Keyboard = new Currency1();
+                        break;
+
+                    case FunctionKeys.Currency2Keyboard:
+                        Log.Debug("Changing keyboard to Currency2.");
+                        Keyboard = new Currency2();
+                        break;
+
+                    case FunctionKeys.DiacriticLetters1Keyboard:
+                        Log.Debug("Changing keyboard to DiacriticLetters1.");
+                        Keyboard = new DiacriticLetters1();
+                        break;
+
+                    case FunctionKeys.DiacriticLetters2Keyboard:
+                        Log.Debug("Changing keyboard to DiacriticLetters2.");
+                        Keyboard = new DiacriticLetters2();
+                        break;
+
+                    case FunctionKeys.DiacriticLetters3Keyboard:
+                        Log.Debug("Changing keyboard to DiacriticLetters3.");
+                        Keyboard = new DiacriticLetters3();
+                        break;
+
                     case FunctionKeys.NoQuestionResult:
                         HandleYesNoQuestionResult(false);
                         break;
@@ -563,8 +588,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.Symbols2Keyboard:
                         Log.Debug("Changing keyboard to Symbols2.");
-
                         Keyboard = new Symbols2();
+                        break;
+
+                    case FunctionKeys.Symbols3Keyboard:
+                        Log.Debug("Changing keyboard to Symbols3.");
+                        Keyboard = new Symbols3();
                         break;
 
                     case FunctionKeys.ToggleMultiKeySelectionSupported:

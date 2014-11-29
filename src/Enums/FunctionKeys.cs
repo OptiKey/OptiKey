@@ -58,6 +58,12 @@
         AlphaKeyboard,
         NumericAndSymbols1Keyboard,
         Symbols2Keyboard,
+        Symbols3Keyboard,
+        Currency1Keyboard,
+        Currency2Keyboard,
+        DiacriticLetters1Keyboard,
+        DiacriticLetters2Keyboard,
+        DiacriticLetters3Keyboard,
         MoreKeyboard,
         PublishKeyboard
     }

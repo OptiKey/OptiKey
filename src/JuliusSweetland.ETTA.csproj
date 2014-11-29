@@ -205,6 +205,12 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currency2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currency1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Publish.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols2.cs" />
@@ -212,6 +218,12 @@
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\English\DiacriticLetters1.xaml.cs">
+      <DependentUpon>DiacriticLetters1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Currency2.xaml.cs">
+      <DependentUpon>Currency2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\English\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
@@ -221,6 +233,12 @@
     <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Currency1.xaml.cs">
+      <DependentUpon>Currency1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Symbols3.xaml.cs">
+      <DependentUpon>Symbols3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
@@ -389,6 +407,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Views\Keyboards\English\DiacriticLetters1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Currency2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\English\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -400,6 +426,14 @@
     <Page Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Currency1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Symbols3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\YesNoQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
