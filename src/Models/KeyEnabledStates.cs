@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Data;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.UI.Controls;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
@@ -30,6 +31,7 @@ namespace JuliusSweetland.ETTA.Models
             keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             
             Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.Sleeping).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -40,6 +42,13 @@ namespace JuliusSweetland.ETTA.Models
         {
             get
             {
+                //Key is not Sleep, but we are sleeping
+                if (Settings.Default.Sleeping
+                    && keyValue != KeyValues.SleepKey)
+                {
+                    return false;
+                }
+
                 //Key is publish only, but we are not publishing
                 if (!Settings.Default.PublishingKeys
                     && KeyValueCollections.PublishOnlyKeys.Contains(keyValue))

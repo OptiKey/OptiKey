@@ -1,6 +1,6 @@
 ﻿namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
 {
-    public class Currency2 : IKeyboard
+    public class Currencies1 : IKeyboard
     {
     }
 }

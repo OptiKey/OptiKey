@@ -1,51 +1,7 @@
 ﻿NEXT STEPS:
 
-Add diactritic keyboard. I guess this would be alphabet specific (e.g. latin alphabet)
-http://unicodelookup.com/
-
-A ĂĄÃÄÅÆĀÀÁÂ (10)
-a ăąãäåæāàáâ
-C ČÇĆ (3)
-c čçć
-D ĐÐĎ (3)
-d đðď
-E ƏĘĚÊËĒĖÈÉ (9)
-e əęěêëēėèé
-G ĜĞĢ (3)
-g ĝğģ
-H ĦĤ (2)
-h ħĥ				 = 30 (AtoH)
-I ỊĮĪÏÎÍÌ (7)
-i ịįīïîíì
-K Ķ (1)
-k ķ
-L ŁĽĻĹ (4)
-l łľļĺ
-N ŇŅŃÑ (4)
-n ňņńñ
-O ƠŒŐŌØÖÕÔÓÒ (10)
-o ơœőōøöõôóò
-R ŔŘ (2)
-r ŕř				 = 28 (ItoR)
-S ŞŠȘßŚŜ (6)
-s şšșßśŝ
-T ŤȚŢÞ (4)
-t ťțţþ
-U ỤƯŲŰŮŪÜÛÚÙ (10)
-u ụưųűůūüûúù
-W Ŵ (1)
-w ŵ
-Y ŶŸÝ (3)
-y ŷÿý
-Z ŹŻŽ (3)
-z źżž				 = 27 (UtoZ)
-
-
-
-
-
 More keyboard
-	+ Buttons for Publish & Diacritic keyboards
+	+ Buttons for Publish & AltAlpha(3) & Currency(2) keyboards
 	+ Settings button
 	+ Rest button
 Add settings

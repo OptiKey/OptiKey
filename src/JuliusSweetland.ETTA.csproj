@@ -205,11 +205,11 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters3.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters2.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\DiacriticLetters1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Currency2.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Currency1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Publish.cs" />
@@ -218,11 +218,17 @@
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\English\DiacriticLetters1.xaml.cs">
-      <DependentUpon>DiacriticLetters1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml.cs">
+      <DependentUpon>AlternativeAlpha3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Currency2.xaml.cs">
-      <DependentUpon>Currency2.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha2.xaml.cs">
+      <DependentUpon>AlternativeAlpha2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha1.xaml.cs">
+      <DependentUpon>AlternativeAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Currencies2.xaml.cs">
+      <DependentUpon>Currencies2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
@@ -234,8 +240,8 @@
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Currency1.xaml.cs">
-      <DependentUpon>Currency1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Currencies1.xaml.cs">
+      <DependentUpon>Currencies1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Symbols3.xaml.cs">
       <DependentUpon>Symbols3.xaml</DependentUpon>
@@ -285,6 +291,7 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
     <Content Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
     <Content Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
@@ -407,11 +414,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\DiacriticLetters1.xaml">
+    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Currency2.xaml">
+    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Currencies2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -427,7 +442,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Currency1.xaml">
+    <Page Include="UI\Views\Keyboards\English\Currencies1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

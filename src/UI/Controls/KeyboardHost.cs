@@ -130,25 +130,25 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.Symbols3 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is Currency1)
+                    else if (Keyboard is Currencies1)
                     {
-                        newContent = new Views.Keyboards.English.Currency1 { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.Currencies1 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is Currency2)
+                    else if (Keyboard is Currencies2)
                     {
-                        newContent = new Views.Keyboards.English.Currency2 { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.Currencies2 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is DiacriticLetters1)
+                    else if (Keyboard is AlternativeAlpha1)
                     {
-                        newContent = new Views.Keyboards.English.DiacriticLetters1 { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.AlternativeAlpha1 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is DiacriticLetters2)
+                    else if (Keyboard is AlternativeAlpha2)
                     {
-                        newContent = new Views.Keyboards.English.DiacriticLetters2 { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.AlternativeAlpha2 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is DiacriticLetters3)
+                    else if (Keyboard is AlternativeAlpha3)
                     {
-                        newContent = new Views.Keyboards.English.DiacriticLetters3 { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.AlternativeAlpha3 { DataContext = Keyboard };
                     }
                     else if (Keyboard is Publish)
                     {

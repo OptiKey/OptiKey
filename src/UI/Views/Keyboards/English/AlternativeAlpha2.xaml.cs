@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for Currency1.xaml
+    /// Interaction logic for AlternativeAlpha2.xaml
     /// </summary>
-    public partial class Currency1 : UserControl
+    public partial class AlternativeAlpha2 : UserControl
     {
-        public Currency1()
+        public AlternativeAlpha2()
         {
             InitializeComponent();
         }

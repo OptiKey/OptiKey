@@ -661,5 +661,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["WordRegex"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Sleeping {
+            get {
+                return ((bool)(this["Sleeping"]));
+            }
+            set {
+                this["Sleeping"] = value;
+            }
+        }
     }
 }

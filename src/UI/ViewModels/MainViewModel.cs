@@ -485,6 +485,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
+                    case FunctionKeys.AlternativeAlpha1Keyboard:
+                        Log.Debug("Changing keyboard to AlternativeAlpha1.");
+                        Keyboard = new AlternativeAlpha1();
+                        break;
+
+                    case FunctionKeys.AlternativeAlpha2Keyboard:
+                        Log.Debug("Changing keyboard to AlternativeAlpha2.");
+                        Keyboard = new AlternativeAlpha2();
+                        break;
+
+                    case FunctionKeys.AlternativeAlpha3Keyboard:
+                        Log.Debug("Changing keyboard to AlternativeAlpha3.");
+                        Keyboard = new AlternativeAlpha3();
+                        break;
+
                     case FunctionKeys.Alt:
                     case FunctionKeys.Ctrl:
                     case FunctionKeys.Shift:
@@ -520,29 +535,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
-                    case FunctionKeys.Currency1Keyboard:
-                        Log.Debug("Changing keyboard to Currency1.");
-                        Keyboard = new Currency1();
+                    case FunctionKeys.Currencies1Keyboard:
+                        Log.Debug("Changing keyboard to Currencies1.");
+                        Keyboard = new Currencies1();
                         break;
 
-                    case FunctionKeys.Currency2Keyboard:
-                        Log.Debug("Changing keyboard to Currency2.");
-                        Keyboard = new Currency2();
-                        break;
-
-                    case FunctionKeys.DiacriticLetters1Keyboard:
-                        Log.Debug("Changing keyboard to DiacriticLetters1.");
-                        Keyboard = new DiacriticLetters1();
-                        break;
-
-                    case FunctionKeys.DiacriticLetters2Keyboard:
-                        Log.Debug("Changing keyboard to DiacriticLetters2.");
-                        Keyboard = new DiacriticLetters2();
-                        break;
-
-                    case FunctionKeys.DiacriticLetters3Keyboard:
-                        Log.Debug("Changing keyboard to DiacriticLetters3.");
-                        Keyboard = new DiacriticLetters3();
+                    case FunctionKeys.Currencies2Keyboard:
+                        Log.Debug("Changing keyboard to Currencies2.");
+                        Keyboard = new Currencies2();
                         break;
 
                     case FunctionKeys.NoQuestionResult:
@@ -576,6 +576,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.PublishKeyboard:
                         Log.Debug("Changing keyboard to Publish.");
                         Keyboard = new Publish();
+                        break;
+
+                    case FunctionKeys.Sleep:
+                        Settings.Default.Sleeping = !Settings.Default.Sleeping;
                         break;
 
                     case FunctionKeys.Speak:
