@@ -205,6 +205,7 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\More.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
@@ -218,6 +219,9 @@
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\English\More.xaml.cs">
+      <DependentUpon>More.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml.cs">
       <DependentUpon>AlternativeAlpha3.xaml</DependentUpon>
     </Compile>
@@ -293,14 +297,15 @@
     </Content>
     <None Include="Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
-    <Content Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
-    <Content Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
-    <Content Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
-    <Content Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
-    <Content Include="Resources\Icons\Source Files\No.svg" />
-    <Content Include="Resources\Icons\Source Files\Sleep.svg" />
-    <Content Include="Resources\Icons\Source Files\Win.svg" />
-    <Content Include="Resources\Icons\Source Files\Yes.svg" />
+    <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
+    <None Include="Resources\Icons\Source Files\Back.svg" />
+    <None Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
+    <None Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
+    <None Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
+    <None Include="Resources\Icons\Source Files\No.svg" />
+    <None Include="Resources\Icons\Source Files\Sleep.svg" />
+    <None Include="Resources\Icons\Source Files\Win.svg" />
+    <None Include="Resources\Icons\Source Files\Yes.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -326,12 +331,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Notes.txt" />
-    <Content Include="Resources\Icons\Source Files\DownArrow.svg" />
-    <Content Include="Resources\Icons\Source Files\LeftArrow.svg" />
-    <Content Include="Resources\Icons\Source Files\RightArrow.svg" />
-    <Content Include="Resources\Icons\Source Files\Speak.svg" />
-    <Content Include="Resources\Icons\Source Files\UpArrow.svg" />
-    <Content Include="Resources\Icons\Source Files\Win - Alt 1.svg" />
+    <None Include="Resources\Icons\Source Files\DownArrow.svg" />
+    <None Include="Resources\Icons\Source Files\LeftArrow.svg" />
+    <None Include="Resources\Icons\Source Files\RightArrow.svg" />
+    <None Include="Resources\Icons\Source Files\Speak.svg" />
+    <None Include="Resources\Icons\Source Files\UpArrow.svg" />
+    <None Include="Resources\Icons\Source Files\Win - Alt 1.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -413,6 +418,10 @@
     <Page Include="Resources\Themes\Colours\Android.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\More.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml">
       <Generator>MSBuild:Compile</Generator>

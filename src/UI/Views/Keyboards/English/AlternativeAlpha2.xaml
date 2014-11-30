@@ -324,9 +324,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
+                      ShiftUpText="ş" ShiftDownText="Ş"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ş" />
+            </controls:Key.Value>
+        </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
+                      ShiftUpText="š" ShiftDownText="Š"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="š" />
+            </controls:Key.Value>
+        </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       WidthSpan="2"

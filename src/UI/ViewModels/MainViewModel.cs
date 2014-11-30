@@ -535,6 +535,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
+                    case FunctionKeys.BackFromMoreKeyboard:
+                        Log.Debug("Reverting to 'BackFromMoreKeyboard'.");
+                        var moreKeyboard = Keyboard as More;
+                        if (moreKeyboard != null
+                            && moreKeyboard.BackToKeyboard != null)
+                        {
+                            Keyboard = moreKeyboard.BackToKeyboard;
+                        }
+                        else
+                        {
+                            Keyboard = new Alpha();
+                        }
+                        break;
+
                     case FunctionKeys.Currencies1Keyboard:
                         Log.Debug("Changing keyboard to Currencies1.");
                         Keyboard = new Currencies1();
@@ -543,6 +557,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.Currencies2Keyboard:
                         Log.Debug("Changing keyboard to Currencies2.");
                         Keyboard = new Currencies2();
+                        break;
+
+                    case FunctionKeys.MoreKeyboard:
+                        Log.Debug("Changing keyboard to More.");
+                        Keyboard = new More(Keyboard);
                         break;
 
                     case FunctionKeys.NoQuestionResult:

@@ -1,9 +1,6 @@
 ﻿NEXT STEPS:
 
-More keyboard
-	+ Buttons for Publish & AltAlpha(3) & Currency(2) keyboards
-	+ Settings button
-	+ Rest button
+!Correct casing on alt-alpha keys - not outputting uppercase letters correctly!
 Add settings
 	+ normal settings (hotkey window)
 	+ accessible settings - keyboard style

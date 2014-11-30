@@ -150,6 +150,10 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.AlternativeAlpha3 { DataContext = Keyboard };
                     }
+                    else if (Keyboard is More)
+                    {
+                        newContent = new Views.Keyboards.English.More { DataContext = Keyboard };
+                    }
                     else if (Keyboard is Publish)
                     {
                         newContent = new Views.Keyboards.English.Publish { DataContext = Keyboard };

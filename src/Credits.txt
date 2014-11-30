@@ -20,6 +20,7 @@ Fonts, icons and other artwork:
   Yes icon from: Right by Raúl Santos from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
   Sleep icon: Sleep designed by Rémy Médard from the Noun Project (thenounproject.com)
+  Back icon: Arrow designed by Jamison Wieser from the Noun Project (thenounproject.com)
 
 Sound effects - royalty free from:
 	soundbible.com

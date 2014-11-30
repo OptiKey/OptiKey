@@ -2,6 +2,7 @@
 {
     public enum FunctionKeys
     {
+        BackFromMoreKeyboard,
         BackOne,
         BackMany,
         PreviousSuggestions,
