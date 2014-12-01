@@ -1,6 +1,13 @@
 ﻿NEXT STEPS:
 
-!Correct casing on alt-alpha keys - not outputting uppercase letters correctly!
+!Last size/location not being saved!
+!Backspace not publishing as expected - back spacing whole word at a time!
+!Backspace not publishing with modifier (e.g. shift)!
+!Win key should be tri-state - it is a modifier so add to all modifier logic!
+!Win key not being published on its own!
+!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
+!PgUp/PgDown not publishing as expected!
+
 Add settings
 	+ normal settings (hotkey window)
 	+ accessible settings - keyboard style
@@ -20,5 +27,7 @@ Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
 Predict next word
+
+Known limitation; cannot hold down a modifier, e.g. holding down Alt and toggling with Tab, then releasing Alt when selection is as we want it. This would be solved by simulating key downs (for modifiers) and then key ups as they are released, but this requires synchronising all key states on startup and shutdown (could manage this from the KeyDownStates class). Need to test this again as previously this didn’t work.
 
 --------------------------------------------------------------------------------

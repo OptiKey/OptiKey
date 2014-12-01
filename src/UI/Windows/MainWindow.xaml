@@ -4,7 +4,6 @@
         xmlns:views="clr-namespace:JuliusSweetland.ETTA.UI.Views"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviours="clr-namespace:JuliusSweetland.ETTA.UI.Behaviours"
-        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="ETTA"
         Topmost="True"

@@ -25,7 +25,7 @@ namespace JuliusSweetland.ETTA.Extensions
 
         public static CharCategories ToCharCategory(this char c)
         {
-            if (new[] { '\n', '\r' }.Contains(c))
+            if (new[] { '\n' }.Contains(c))
             {
                 return CharCategories.NewLine;
             }
@@ -195,7 +195,6 @@ namespace JuliusSweetland.ETTA.Extensions
                     return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.TAB } };
 
                 case '\n':
-                case '\r':
                     return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.RETURN } };
 
                 case ',':

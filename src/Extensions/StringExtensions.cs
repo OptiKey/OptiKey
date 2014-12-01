@@ -4,12 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
 using log4net;
 
 namespace JuliusSweetland.ETTA.Extensions
@@ -82,7 +80,7 @@ namespace JuliusSweetland.ETTA.Extensions
                                 .Where(sanitisedMatch => sanitisedMatch != null)
                                 .ToList();
 
-            var lines = text.Split('\n', '\r')
+            var lines = text.Split('\n')
                             .Select(line => line.CleanupPossibleDictionaryEntry())
                             .Where(sanitisedMatch => sanitisedMatch != null)
                             .ToList();
@@ -253,23 +251,6 @@ namespace JuliusSweetland.ETTA.Extensions
                 "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove));
 
             return charsToRemove;
-        }
-
-        //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
-        //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
-        public static VirtualKeyCodeSet? ToVirtualKeyCodeSet(this string chars)
-        {
-            switch (chars)
-            {
-                case "\n":
-                case "\r":
-                case "\r\n":
-                case "\n\r":
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.RETURN}};
-
-                default:
-                    return null; //No other strings can be converted to a single KeyCodeSet (effectively a single key stroke)
-            }
         }
     }
 }

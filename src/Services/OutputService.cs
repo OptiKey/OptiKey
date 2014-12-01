@@ -62,17 +62,27 @@ namespace JuliusSweetland.ETTA.Services
                     var backManyCount = Text.CountBackToLastCharCategoryBoundary();
 
                     dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
-                    Text = Text.Substring(0, Text.Length - backManyCount);
+                    
+                    var textAfterBackMany = Text.Substring(0, Text.Length - backManyCount);
+                    var textChangedByBackMany = Text != textAfterBackMany;
+                    Text = textAfterBackMany;
+
+                    if (backManyCount == 0) backManyCount = 1; //Always publish at least one backspace
 
                     for (int i = 0; i < backManyCount; i++)
                     {
-                        PublishKeyStroke(FunctionKeys.BackOne, null);
+                        PublishKeyStroke(FunctionKeys.BackOne);
                         ReleaseUnlockedModifiers();
                     }
 
                     StoreLastTextChange(null);
                     ClearSuggestions();
-                    AutoPressShiftIfAppropriate();
+
+                    if (textChangedByBackMany)
+                    {
+                        AutoPressShiftIfAppropriate();
+                    }
+
                     suppressNextAutoSpace = true;
                     break;
 
@@ -80,6 +90,8 @@ namespace JuliusSweetland.ETTA.Services
                     var backOneCount = string.IsNullOrEmpty(lastTextChange)
                         ? 1
                         : lastTextChange.Length;
+
+                    var textChangedByBackOne = false;
 
                     if (!string.IsNullOrEmpty(Text))
                     {
@@ -89,18 +101,26 @@ namespace JuliusSweetland.ETTA.Services
                         }
 
                         dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
-                        Text = Text.Substring(0, Text.Length - backOneCount);
 
-                        for (int i = 0; i < backOneCount; i++)
-                        {
-                            PublishKeyStroke(FunctionKeys.BackOne, null);
-                            ReleaseUnlockedModifiers();
-                        }
+                        var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
+                        textChangedByBackOne = Text != textAfterBackOne;
+                        Text = textAfterBackOne;
+                    }
+
+                    for (int i = 0; i < backOneCount; i++)
+                    {
+                        PublishKeyStroke(FunctionKeys.BackOne);
+                        ReleaseUnlockedModifiers();
                     }
 
                     StoreLastTextChange(null);
                     ClearSuggestions();
-                    AutoPressShiftIfAppropriate();
+
+                    if (textChangedByBackOne)
+                    {
+                        AutoPressShiftIfAppropriate();
+                    }
+
                     suppressNextAutoSpace = true;
                     break;
 
@@ -137,7 +157,7 @@ namespace JuliusSweetland.ETTA.Services
                     break;
 
                 default:
-                    PublishKeyStroke(functionKey, null); //No Text modification from any other function key - just publish key stroke if possible
+                    PublishKeyStroke(functionKey); //No Text modification from any other function key - just publish key stroke if possible
                     break;
             }
         }
@@ -152,7 +172,7 @@ namespace JuliusSweetland.ETTA.Services
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
                 || (lastTextChange.Length == 1 && capturedText.Length == 1) //we are capturing char by char (after 1st char)
                 || (capturedText.Length == 1 && !char.IsLetter(capturedText.First())) //we have captured a single char which is not a letter
-                || new[] { " ", "\n", "\r", "\n\r", "\r\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
+                || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
                 Log.Debug("Suppressing next auto space.");
 
@@ -190,9 +210,13 @@ namespace JuliusSweetland.ETTA.Services
             }
 
             //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
-            foreach (char c in capturedText)
+            for (int index = 0; index < capturedText.Length; index++)
             {
-                PublishKeyStroke(null, c);
+                PublishKeyStroke(capturedText[index], 
+                    modifiedCaptureText != null && modifiedCaptureText.Length == capturedText.Length
+                        ? modifiedCaptureText[index]
+                        : (char?)null);
+
                 ReleaseUnlockedModifiers();
             }
 
@@ -258,32 +282,36 @@ namespace JuliusSweetland.ETTA.Services
                 : null;
         }
         
-        private void PublishKeyStroke(FunctionKeys? functionKey, char? character)
+        private void PublishKeyStroke(FunctionKeys functionKey)
         {
             if (Settings.Default.PublishingKeys)
             {
-                Log.Debug(string.Format("PublishKeyStroke called with functionKey '{0}' and character '{1}'",  functionKey, character));
+                Log.Debug(string.Format("PublishKeyStroke called with functionKey '{0}'.",  functionKey));
 
-                if (functionKey != null)
+                var virtualKeyCodeSet = functionKey.ToVirtualKeyCodeSet();
+                if (virtualKeyCodeSet != null)
                 {
-                    var virtualKeyCodeSet = functionKey.Value.ToVirtualKeyCodeSet();
-                    if (virtualKeyCodeSet != null)
-                    {
-                        PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
-                    }
+                    PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
                 }
+            }
+        }
 
-                if (character != null)
+        private void PublishKeyStroke(char character, char? modifiedCharacter)
+        {
+            if (Settings.Default.PublishingKeys)
+            {
+                Log.Debug(string.Format("PublishKeyStroke called with character '{0}' and modified character '{1}'", character, modifiedCharacter));
+
+                var virtualKeyCodeSet = character.ToVirtualKeyCodeSet();
+                if (virtualKeyCodeSet != null)
                 {
-                    var virtualKeyCodeSet = character.Value.ToVirtualKeyCodeSet();
-                    if (virtualKeyCodeSet != null)
-                    {
-                        PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
-                    }
-                    else
-                    {
-                        publishService.PublishText(character.ToString());
-                    }
+                    PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                }
+                else
+                {
+                    publishService.PublishText(modifiedCharacter != null 
+                        ? modifiedCharacter.ToString() 
+                        : character.ToString());
                 }
             }
         }
@@ -380,12 +408,12 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < lastTextChange.Length; i++)
                 {
-                    PublishKeyStroke(FunctionKeys.BackOne, null);
+                    PublishKeyStroke(FunctionKeys.BackOne);
                 }
 
                 foreach (char c in suggestion)
                 {
-                    PublishKeyStroke(null, c);
+                    PublishKeyStroke(c, null);
                 }
 
                 StoreLastTextChange(suggestion);
@@ -400,7 +428,7 @@ namespace JuliusSweetland.ETTA.Services
                 && !suppressNextAutoSpace)
             {
                 Log.Debug("Publishing auto space and adding auto space to Text.");
-                PublishKeyStroke(null, ' ');
+                PublishKeyStroke(' ', null);
                 Text = string.Concat(Text, " ");
                 return true;
             }
