@@ -1,6 +1,5 @@
 ﻿NEXT STEPS:
 
-!Last size/location not being saved!
 !Backspace not publishing as expected - back spacing whole word at a time!
 !Backspace not publishing with modifier (e.g. shift)!
 !Win key should be tri-state - it is a modifier so add to all modifier logic!

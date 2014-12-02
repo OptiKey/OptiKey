@@ -307,11 +307,9 @@ namespace JuliusSweetland.ETTA.Services
                 {
                     PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
                 }
-                else
+                else if (modifiedCharacter != null)
                 {
-                    publishService.PublishText(modifiedCharacter != null 
-                        ? modifiedCharacter.ToString() 
-                        : character.ToString());
+                    publishService.PublishText(modifiedCharacter.ToString());
                 }
             }
         }
