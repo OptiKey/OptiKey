@@ -1,27 +1,37 @@
 ﻿NEXT STEPS:
 
-!Backspace not publishing as expected - back spacing whole word at a time!
-!Backspace not publishing with modifier (e.g. shift)!
-!Win key should be tri-state - it is a modifier so add to all modifier logic!
-!Win key not being published on its own!
-!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
-!PgUp/PgDown not publishing as expected!
+Fix publish bugs (timing between key presses?)
+	!Backspace not publishing as expected - back spacing whole word at a time!
+	!Backspace not publishing with modifier (e.g. shift)!
+	!Win key should be tri-state - it is a modifier so add to all modifier logic!
+	!Win key not being published on its own!
+	!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
+	!PgUp/PgDown not publishing as expected!
+
+Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
+
+Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
 
 Add settings
 	+ normal settings (hotkey window)
 	+ accessible settings - keyboard style
+		* include ability to move and resize keyboard
+
+Recalibrate
+	
 Dictionary management window
 	+ Add
 	+ Remove
+	
 Add high contrast theme
 
-Profile and optimise (and refactor any remaining large classes, e.g. MainViewModel)
+Profile and optimise, especially keyboard transitions
+Refactor any remaining large classes, e.g. MainViewModel
 
 --------------------------------------------------------------------------------
 
 TO DO?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
-Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
 Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
