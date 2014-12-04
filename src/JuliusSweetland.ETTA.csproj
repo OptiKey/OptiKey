@@ -295,7 +295,7 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Keyboard Designs.xlsx" />
+    <None Include="Solution Files\Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\Source Files\Back.svg" />
@@ -330,7 +330,7 @@
     <Content Include="Resources\Sounds\Selection2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Notes.txt" />
+    <Resource Include="Solution Files\Notes.txt" />
     <None Include="Resources\Icons\Source Files\DownArrow.svg" />
     <None Include="Resources\Icons\Source Files\LeftArrow.svg" />
     <None Include="Resources\Icons\Source Files\RightArrow.svg" />

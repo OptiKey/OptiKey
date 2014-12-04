@@ -83,6 +83,7 @@ namespace JuliusSweetland.ETTA.Services
                         AutoPressShiftIfAppropriate();
                     }
 
+                    Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     break;
 
@@ -121,6 +122,7 @@ namespace JuliusSweetland.ETTA.Services
                         AutoPressShiftIfAppropriate();
                     }
 
+                    Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     break;
 
@@ -129,6 +131,8 @@ namespace JuliusSweetland.ETTA.Services
                     StoreLastTextChange(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
+
+                    Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     break;
 
@@ -175,7 +179,6 @@ namespace JuliusSweetland.ETTA.Services
                 || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
                 Log.Debug("Suppressing next auto space.");
-
                 suppressNextAutoSpace = true;
             }
 
