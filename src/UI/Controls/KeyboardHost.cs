@@ -215,7 +215,10 @@ namespace JuliusSweetland.ETTA.UI.Controls
                         Size = (Size)key.GetTransformToDevice().Transform((Vector)key.RenderSize)
                     };
 
-                    pointToKeyValueMap.Add(rect, key.Value);
+                    if (rect.Size.Width != 0 && rect.Size.Height != 0)
+                    {
+                        pointToKeyValueMap.Add(rect, key.Value);
+                    }
                 }
             }
 
