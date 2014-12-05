@@ -3,11 +3,16 @@
 Simplify OutputService.PublishModifiedVirtualKeyCodeSet
 	Create DISTINCT set of all keys from supplied FunctionKey/Char KeyDownStates which are ON (not lock) + have a virtual key code set.
 	Convert to extension method.
-	
-Change OutputService interface:
-	UseAndPublish(FunctionKey/String)
-	PublishKeyDown(FunctionKey/String)
-	PublishKeyUp(FunctionKey/String)
+
+Make Multi-key capture & publish Lock instead of On
+
+OutputService changes:
+	ReleaseUnlockedModifiers(); every time UseAndPublish is called as a key was pressed.
+		EXCEPT when modifier (Shift,Ctrl,Alt,Win) is pressed - make these a special case in the switch to do nothing.
+	Change OutputService interface:
+		UseAndPublish(FunctionKey/String)
+		PublishKeyDown(FunctionKey/String)
+		PublishKeyUp(FunctionKey/String)
 
 Change MainVM to publish keydown/keyup when key down states move to/from LOCK. This provides the ability to hold down keys (e.g. Alt+Tab+Tab+Tab).
 	This should solve: Known limitation; cannot hold down a modifier, e.g. holding down Alt and toggling with Tab, then releasing Alt when selection is as we want it. This would be solved by simulating key downs (for modifiers) and then key ups as they are released, but this requires synchronising all key states on startup and shutdown (could manage this from the KeyDownStates class). Need to test this again as previously this didn’t work.
