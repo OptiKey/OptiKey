@@ -1,7 +1,8 @@
 ﻿NEXT STEPS:
 
 Simplify OutputService.PublishModifiedVirtualKeyCodeSet
-	Create DISTINCT set of all keys rom KeyDownStates which are ON (not lock) + have a virtual key code set.
+	Create DISTINCT set of all keys from supplied FunctionKey/Char KeyDownStates which are ON (not lock) + have a virtual key code set.
+	Convert to extension method.
 	
 Change OutputService interface:
 	UseAndPublish(FunctionKey/String)
@@ -20,10 +21,6 @@ Fix publish bugs (timing between key presses?)
 	!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
 	!PgUp/PgDown not publishing as expected!
 	
-	
-
-
-
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
 Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
