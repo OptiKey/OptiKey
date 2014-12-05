@@ -39,6 +39,7 @@ Dictionary management window
 Add high contrast theme
 
 Profile and optimise, especially keyboard transitions
+
 Refactor any remaining large classes, e.g. MainViewModel
 
 --------------------------------------------------------------------------------
