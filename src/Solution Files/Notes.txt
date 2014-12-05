@@ -1,12 +1,28 @@
 ﻿NEXT STEPS:
 
+Simplify OutputService.PublishModifiedVirtualKeyCodeSet
+	Create DISTINCT set of all keys rom KeyDownStates which are ON (not lock) + have a virtual key code set.
+	
+Change OutputService interface:
+	UseAndPublish(FunctionKey/String)
+	PublishKeyDown(FunctionKey/String)
+	PublishKeyUp(FunctionKey/String)
+
+Change MainVM to publish keydown/keyup when key down states move to/from LOCK. This provides the ability to hold down keys (e.g. Alt+Tab+Tab+Tab).
+	This should solve: Known limitation; cannot hold down a modifier, e.g. holding down Alt and toggling with Tab, then releasing Alt when selection is as we want it. This would be solved by simulating key downs (for modifiers) and then key ups as they are released, but this requires synchronising all key states on startup and shutdown (could manage this from the KeyDownStates class). Need to test this again as previously this didn’t work.
+
+Win key should be tri-state - it can be used as a modifier so add to all modifier logic.
+
 Fix publish bugs (timing between key presses?)
 	!Backspace not publishing as expected - back spacing whole word at a time!
 	!Backspace not publishing with modifier (e.g. shift)!
-	!Win key should be tri-state - it is a modifier so add to all modifier logic!
 	!Win key not being published on its own!
 	!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
 	!PgUp/PgDown not publishing as expected!
+	
+	
+
+
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
@@ -36,7 +52,8 @@ Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
 Predict next word
-
-Known limitation; cannot hold down a modifier, e.g. holding down Alt and toggling with Tab, then releasing Alt when selection is as we want it. This would be solved by simulating key downs (for modifiers) and then key ups as they are released, but this requires synchronising all key states on startup and shutdown (could manage this from the KeyDownStates class). Need to test this again as previously this didn’t work.
+Defend user against moving to Metro interface - i.e. LWIN/RWIN/WIN pressed on its own (in Win 8/8.1/later versions?)
+	Make them confirm that they want to do this?
+	Provide a way back from Metro - can I still detect point location and provide a way back?
 
 --------------------------------------------------------------------------------
