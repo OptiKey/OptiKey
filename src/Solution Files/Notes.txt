@@ -29,6 +29,7 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	Add param to SendSimulatedInput and flesh it out:
 		bool compatibilityMode (dispatches inputs individually with conditional delays after each in an attempt to simulator MS' On-Screen Keyboard behaviour)
 	Change the content of ki INPUT to match OSK.exe
+	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
