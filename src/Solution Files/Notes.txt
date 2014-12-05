@@ -19,13 +19,17 @@ Change MainVM to publish keydown/keyup when key down states move to/from LOCK. T
 
 Win key should be tri-state - it can be used as a modifier so add to all modifier logic.
 
-Fix publish bugs (timing between key presses?)
-	!Backspace not publishing as expected - back spacing whole word at a time!
-	!Backspace not publishing with modifier (e.g. shift)!
-	!Win key not being published on its own!
-	!Arrow keys not publishing as expected - jumping left/right whole line, as if Ctrl is on!
-	!PgUp/PgDown not publishing as expected!
-	
+Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
+	Move InputSimulator 'WindowsInput' project into solution.
+	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
+	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
+	Rename InputBuilder.ToArray() to InputBuilder.Build() - it is the builder pattern after all
+	Remove Sleep and other methods I am not using - the fixes can be back ported later, which needs to be manual anyway.
+	Reorder InputBuilder and KeyboardSimulator methods to group them together in a nicer way - lots of overloads at the moment
+	Add param to SendSimulatedInput and flesh it out:
+		bool compatibilityMode (dispatches inputs individually with conditional delays after each in an attempt to simulator MS' On-Screen Keyboard behaviour)
+	Change the content of ki INPUT to match OSK.exe
+
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
 Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
