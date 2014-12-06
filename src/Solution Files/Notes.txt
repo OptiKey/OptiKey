@@ -36,7 +36,10 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	Change SendSimulatedInput to dispatch inputs individually with conditional delays after each (down NOT up) in an attempt to simulator MS' On-Screen Keyboard behaviour.
 	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
 	Add logging to show KEYBDINPUT structure as it is being published (translate flags to strings if possible).
-	Publish reset on startup and shutdown.
+	Publish reset state of ALL VIRTUAL KEY CODES when:
+		Publish key down state is set to on
+		Publish key down state is set to off
+		Shutdown (if Publishing setting is true)
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
