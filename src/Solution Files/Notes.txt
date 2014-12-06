@@ -1,24 +1,21 @@
 ﻿NEXT STEPS:
 
-Simplify OutputService.PublishModifiedVirtualKeyCodeSet
-	Create DISTINCT set of all keys from supplied FunctionKey/Char KeyDownStates which are ON (not lock) + have a virtual key code set.
-	Convert to extension method.
+Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going to be applied like this anymore. Instead modifiers will be published automatically as they are pressed.
+	Change PublishService methods - publish VirtualKeyCode, or string
+	Remove multiple command keys; SelectAll, Copy, Cut, Paste
+	Refactor to remove VirtualKeyCodeSet
 
-Make Multi-key capture & publish Lock instead of On
+Make Multi-key capture & publish LOCK instead of ON
+
+Win key can be used as a modifier so add to all modifier logic.
 
 OutputService changes:
-	ReleaseUnlockedModifiers(); every time UseAndPublish is called as a key was pressed.
-		EXCEPT when modifier (Shift,Ctrl,Alt,Win) is pressed - make these a special case in the switch to do nothing.
-	Change OutputService interface:
-		UseAndPublish(FunctionKey/String)
-		PublishKeyDown(FunctionKey/String)
-		PublishKeyUp(FunctionKey/String)
-
-Change MainVM to publish keydown/keyup when key down states move to/from LOCK. This provides the ability to hold down keys (e.g. Alt+Tab+Tab+Tab).
-	This should solve: Known limitation; cannot hold down a modifier, e.g. holding down Alt and toggling with Tab, then releasing Alt when selection is as we want it. This would be solved by simulating key downs (for modifiers) and then key ups as they are released, but this requires synchronising all key states on startup and shutdown (could manage this from the KeyDownStates class). Need to test this again as previously this didn’t work.
-
-Win key should be tri-state - it can be used as a modifier so add to all modifier logic.
-
+	Change OutputService interface: Output(FunctionKey/String)
+	OutputService should monitor KeyDownStates and publish key down/up when states change to On/Off
+	Rename ReleaseUnlockedModifiers to ReleaseUnlockedKeys
+	ReleaseUnlockedModifiers(); every time Output is called as a key was pressed.
+		Modifiers (Shift,Ctrl,Alt,Win) should no longer ReleaseUnlockedKeys as they are not passed to OutputService directly.
+		
 Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
 	Move InputSimulator 'WindowsInput' project into solution.
 	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
@@ -26,10 +23,20 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	Rename InputBuilder.ToArray() to InputBuilder.Build() - it is the builder pattern after all
 	Remove Sleep and other methods I am not using - the fixes can be back ported later, which needs to be manual anyway.
 	Reorder InputBuilder and KeyboardSimulator methods to group them together in a nicer way - lots of overloads at the moment
-	Add param to SendSimulatedInput and flesh it out:
-		bool compatibilityMode (dispatches inputs individually with conditional delays after each in an attempt to simulator MS' On-Screen Keyboard behaviour)
-	Change the content of ki INPUT to match OSK.exe
+	Change InputBuilder logic which creates INPUT:
+		http://www.ownedcore.com/forums/mmo/warhammer-online/186390-sendinput-example-c.html
+		[DllImport("user32.dll")]
+        public static extern uint MapVirtualKey(uint uCode, uint uMapType);
+		
+		byte vk = WindowsAPI.VkKeyScan(ch);
+        ushort scanCode = (ushort)WindowsAPI.MapVirtualKey(vk, 0);
+		inputs[0].ki.wScan = (ushort)(scanCode & 0xff); //Only apply 0xff on key down, not key up
+	Double check EXTENDEDKEY logic;
+		"The extended-key flag indicates whether the keystroke message originated from one of the additional keys on the enhanced keyboard. The extended keys consist of the ALT and CTRL keys on the right-hand side of the keyboard; the INS, DEL, HOME, END, PAGE UP, PAGE DOWN, and arrow keys in the clusters to the left of the numeric keypad; the NUM LOCK key; the BREAK (CTRL+PAUSE) key; the PRINT SCRN key; and the divide (/) and ENTER keys in the numeric keypad. The extended-key flag is set if the key is an extended key." from http://msdn.microsoft.com/en-us/library/ms646267(v=vs.85).aspx
+	Change SendSimulatedInput to dispatch inputs individually with conditional delays after each (down NOT up) in an attempt to simulator MS' On-Screen Keyboard behaviour.
 	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
+	Add logging to show KEYBDINPUT structure as it is being published (translate flags to strings if possible).
+	Publish reset on startup and shutdown.
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 

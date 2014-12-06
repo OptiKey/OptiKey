@@ -43,7 +43,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private bool noKeyStrokesSinceModifierOn;
 
         private bool turnOnMultiKeySelectionWhenCtrlAndAltReleased;
         
@@ -444,9 +443,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
                 Log.Debug(string.Format("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String));
-
                 OutputService.ProcessCapture(singleKeyValue.Value.String);
-                noKeyStrokesSinceModifierOn = false;
             }
 
             //Single key function key
@@ -454,7 +451,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && singleKeyValue.Value.FunctionKey != null)
             {
                 Log.Debug(string.Format("KeySelectionResult received with function key value '{0}'", singleKeyValue.Value.FunctionKey));
-
                 HandleFunctionKeySelectionResult(singleKeyValue);
             }
 
@@ -465,7 +461,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 Log.Debug(string.Format("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count));
 
                 OutputService.ProcessCapture(multiKeySelection);
-                noKeyStrokesSinceModifierOn = false;
             }
         }
 
@@ -503,11 +498,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.Alt:
                     case FunctionKeys.Ctrl:
                     case FunctionKeys.Shift:
+                    case FunctionKeys.Win:
                         if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off)
                         {
                             Log.Debug(string.Format("Changing key down state of '{0}' key to ON.", singleKeyValue.Value));
                             KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.On;
-                            noKeyStrokesSinceModifierOn = true;
                         }
                         else if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On)
                         {
@@ -518,20 +513,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         {
                             Log.Debug(string.Format("Changing key down state of '{0}' key to OFF.", singleKeyValue.Value));
                             KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Off;
-
-                            if (noKeyStrokesSinceModifierOn
-                                && KeyDownStates[KeyValues.AltKey].Value == Enums.KeyDownStates.Off
-                                && KeyDownStates[KeyValues.CtrlKey].Value == Enums.KeyDownStates.Off
-                                && KeyDownStates[KeyValues.ShiftKey].Value == Enums.KeyDownStates.Off)
-                            {
-                                Log.Debug(string.Format(
-                                    "On->Lock->Off cycle of '{0}' key detected without any other key strokes so publishing '{0}' keypress.", 
-                                    singleKeyValue.Value));
-
-                                OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
-
-                                noKeyStrokesSinceModifierOn = false;
-                            }
                         }
                         break;
 
@@ -635,7 +616,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     default:
                         OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
-                        noKeyStrokesSinceModifierOn = false;
                         break;
                 }
             }
@@ -767,7 +747,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         ? Enums.KeyDownStates.On 
                         : Enums.KeyDownStates.Off;
                     
-                    CalculateAltAndCtrlKeysDownState();
+                    CalculateAltAndCtrlAndWinKeysDownState();
                 });
                     
 
@@ -777,31 +757,38 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         ? Enums.KeyDownStates.On 
                         : Enums.KeyDownStates.Off);
 
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[KeyValues.AltKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 {
                     CalculateMultiKeySelectionSupported();
                     CalculateScratchpadIsDisabled();
                 });
 
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[KeyValues.CtrlKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 {
                     CalculateMultiKeySelectionSupported();
                     CalculateScratchpadIsDisabled();
                 });
+            
+            KeyDownStates[KeyValues.WinKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            {
+                CalculateMultiKeySelectionSupported();
+                CalculateScratchpadIsDisabled();
+            });
 
-            CalculateAltAndCtrlKeysDownState();
+            CalculateAltAndCtrlAndWinKeysDownState();
             CalculateMultiKeySelectionSupported();
             CalculateScratchpadIsDisabled();
         }
 
-        private void CalculateAltAndCtrlKeysDownState()
+        private void CalculateAltAndCtrlAndWinKeysDownState()
         {
             if (!Settings.Default.PublishingKeys)
             {
-                Log.Debug("CalculateAltAndCtrlKeysDownState called. Not publishing so changing Alt/Ctrl key down states to off.");
+                Log.Debug("CalculateAltAndCtrlAndWinKeysDownState called. Not publishing so changing Alt/Ctrl/Win key down states to off.");
 
                 KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value = Enums.KeyDownStates.Off;
                 KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value = Enums.KeyDownStates.Off;
+                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value = Enums.KeyDownStates.Off;
             }
         }
 
@@ -810,19 +797,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             Log.Debug("CalculateMultiKeySelectionSupported called.");
 
             if ((KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
-                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock())
+                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
+                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock())
                 && Settings.Default.MultiKeySelectionEnabled)
             {
-                Log.Debug("Alt or Ctrl are on or locked, so toggling setting MultiKeySelectionSupported to false.");
+                Log.Debug("Alt/Ctrl/Win are on or locked, so toggling setting MultiKeySelectionSupported to false.");
 
                 Settings.Default.MultiKeySelectionEnabled = false;
                 turnOnMultiKeySelectionWhenCtrlAndAltReleased = true;
             }
             else if (!KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
                 && !KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
+                && !KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock()
                 && turnOnMultiKeySelectionWhenCtrlAndAltReleased)
             {
-                Log.Debug("Alt and Ctrl are both off, returing setting MultiKeySelectionSupported to true.");
+                Log.Debug("Alt/Ctrl/Win are all off, returing setting MultiKeySelectionSupported to true.");
 
                 Settings.Default.MultiKeySelectionEnabled = true;
                 turnOnMultiKeySelectionWhenCtrlAndAltReleased = false;
@@ -832,7 +821,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void CalculateScratchpadIsDisabled()
         {
             ScratchpadIsDisabled = KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
-                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock();
+                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
+                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock();
         }
 
         private void ResetSelectionProgress()

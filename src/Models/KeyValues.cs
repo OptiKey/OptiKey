@@ -7,6 +7,7 @@ namespace JuliusSweetland.ETTA.Models
         public static readonly KeyValue AltKey = new KeyValue { FunctionKey = FunctionKeys.Alt };
         public static readonly KeyValue CtrlKey = new KeyValue { FunctionKey = FunctionKeys.Ctrl };
         public static readonly KeyValue ShiftKey = new KeyValue { FunctionKey = FunctionKeys.Shift };
+        public static readonly KeyValue WinKey = new KeyValue { FunctionKey = FunctionKeys.Win };
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
         public static readonly KeyValue SleepKey = new KeyValue { FunctionKey = FunctionKeys.Sleep };

@@ -55,23 +55,12 @@ namespace JuliusSweetland.ETTA.Models
                 {
                     return false;
                 }
-
-                //Ctrl or Alt are on or locked and the Key has a string value which cannot be converted to a VirtualKeyCode.
-                //This suggests that it isn't a physical keyboard key. (exclude keys with a FunctionKey
-                //value as these might have nothing to do with being modified, e.g. keys to change keyboard)
-                if (keyValue.String != null
-                    && (keyValue.String.Length > 1 
-                        || (keyValue.String.Length == 1 && keyValue.String.First().ToVirtualKeyCodeSet() == null))
-                    && (keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
-                        || keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()))
-                {
-                    return false;
-                }
-
-                //Key is MultiKeySelection, but Ctrl or Alt are on or locked 
+                
+                //Key is MultiKeySelection, but Alt/Ctrl/Win are on or locked 
                 if (keyValue == KeyValues.ToggleMultiKeySelectionSupportedKey
                     && (keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
-                        || keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()))
+                        || keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()
+                        || keyValueboardStateInfo.KeyDownStates[KeyValues.WinKey].Value.IsOnOrLock()))
                 {
                     return false;
                 }
