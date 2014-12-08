@@ -17,6 +17,7 @@ OutputService changes:
 		Modifiers (Shift,Ctrl,Alt,Win) should no longer ReleaseUnlockedKeys as they are not passed to OutputService directly.
 		
 Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
+	!Publishing Hello and swapping for hugely did not remove all letters, it left Hehugely!
 	Move InputSimulator 'WindowsInput' project into solution.
 	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
 	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
@@ -40,6 +41,41 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 		Publish key down state is set to on
 		Publish key down state is set to off
 		Shutdown (if Publishing setting is true)
+
+
+OSK debugging:
+	NO VK+Scan+SCANCODE flag:
+		Del
+		Left, Right, Up, Down (arrow keys) - ETTA is currently sending VK only (+ EXTENDEDKEY)
+		Menu key (not alt)
+		Home
+		End
+		Insert
+		PrntScrn
+		PgUp
+		PgDown
+
+	VK ONLY (no scan):
+		LSHIFT
+		RSHIFT
+		RMENU (not LMENU, which is VK+SCANCODE)
+		PAUSE
+
+	VK+Scan+SCANCODE flag:
+		All other keys
+
+	+ EXTENDED FLAG:
+		LWIN
+		Right control (which is represented as LCONTROL, but with the extended flag)
+		+ plus all keys in "NO VK+Scan+SCANCODE flag" group
+
+	WHY is the cbsize 40 when InputSimulator sends 28? Maybe not important though.
+
+	SHUTDOWN:
+		LWIN - Vk only
+		85 - Vk only
+		85 - Vk only + KEYUP
+		LWIN - Vk only + KEYUP
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
