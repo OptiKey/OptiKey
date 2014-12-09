@@ -29,7 +29,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// Returns the list of <see cref="INPUT"/> messages as a <see cref="System.Array"/> of <see cref="INPUT"/> messages.
         /// </summary>
         /// <returns>The <see cref="System.Array"/> of <see cref="INPUT"/> messages.</returns>
-        public INPUT[] ToArray()
+        public INPUT[] Build()
         {
             return inputList.ToArray();
         }

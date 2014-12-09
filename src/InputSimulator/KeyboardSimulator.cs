@@ -92,7 +92,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="keyCode">The <see cref="VirtualKeyCode"/> to press</param>
         public IKeyboardSimulator KeyDown(VirtualKeyCode keyCode)
         {
-            var inputList = new InputBuilder().AddKeyDown(keyCode).ToArray();
+            var inputList = new InputBuilder().AddKeyDown(keyCode).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -103,7 +103,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="keyCode">The <see cref="VirtualKeyCode"/> to lift up</param>
         public IKeyboardSimulator KeyUp(VirtualKeyCode keyCode)
         {
-            var inputList = new InputBuilder().AddKeyUp(keyCode).ToArray();
+            var inputList = new InputBuilder().AddKeyUp(keyCode).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -114,7 +114,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="keyCode">The <see cref="VirtualKeyCode"/> to press</param>
         public IKeyboardSimulator KeyPress(VirtualKeyCode keyCode)
         {
-            var inputList = new InputBuilder().AddKeyPress(keyCode).ToArray();
+            var inputList = new InputBuilder().AddKeyPress(keyCode).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -127,7 +127,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         {
             var builder = new InputBuilder();
             KeysPress(builder, keyCodes);
-            SendSimulatedInput(builder.ToArray());
+            SendSimulatedInput(builder.Build());
             return this;
         }
 
@@ -180,7 +180,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
             KeysPress(builder, keyCodes);
             ModifiersUp(builder, modifierKeyCodes);
 
-            SendSimulatedInput(builder.ToArray());
+            SendSimulatedInput(builder.Build());
             return this;
         }
 
@@ -191,7 +191,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         public IKeyboardSimulator TextEntry(string text)
         {
             if (text.Length > UInt32.MaxValue / 2) throw new ArgumentException(string.Format("The text parameter is too long. It must be less than {0} characters.", UInt32.MaxValue / 2), "text");
-            var inputList = new InputBuilder().AddCharacters(text).ToArray();
+            var inputList = new InputBuilder().AddCharacters(text).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -202,7 +202,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="character">The unicode character to be simulated.</param>
         public IKeyboardSimulator TextEntry(char character)
         {
-            var inputList = new InputBuilder().AddCharacter(character).ToArray();
+            var inputList = new InputBuilder().AddCharacter(character).Build();
             SendSimulatedInput(inputList);
             return this;
         }

@@ -73,7 +73,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="pixelDeltaY">The distance in pixels to move the mouse vertically.</param>
         public IMouseSimulator MoveMouseBy(int pixelDeltaX, int pixelDeltaY)
         {
-            var inputList = new InputBuilder().AddRelativeMouseMovement(pixelDeltaX, pixelDeltaY).ToArray();
+            var inputList = new InputBuilder().AddRelativeMouseMovement(pixelDeltaX, pixelDeltaY).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -85,7 +85,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="absoluteY">The destination's absolute Y-coordinate on the primary display device where 0 is the top of the display device and 65535 is the bottom of the display device.</param>
         public IMouseSimulator MoveMouseTo(double absoluteX, double absoluteY)
         {
-            var inputList = new InputBuilder().AddAbsoluteMouseMovement((int)Math.Truncate(absoluteX), (int)Math.Truncate(absoluteY)).ToArray();
+            var inputList = new InputBuilder().AddAbsoluteMouseMovement((int)Math.Truncate(absoluteX), (int)Math.Truncate(absoluteY)).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -97,7 +97,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="absoluteY">The destination's absolute Y-coordinate on the virtual desktop where 0 is the top of the virtual desktop and 65535 is the bottom of the virtual desktop.</param>
         public IMouseSimulator MoveMouseToPositionOnVirtualDesktop(double absoluteX, double absoluteY)
         {
-            var inputList = new InputBuilder().AddAbsoluteMouseMovementOnVirtualDesktop((int)Math.Truncate(absoluteX), (int)Math.Truncate(absoluteY)).ToArray();
+            var inputList = new InputBuilder().AddAbsoluteMouseMovementOnVirtualDesktop((int)Math.Truncate(absoluteX), (int)Math.Truncate(absoluteY)).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -107,7 +107,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator LeftButtonDown()
         {
-            var inputList = new InputBuilder().AddMouseButtonDown(MouseButton.LeftButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonDown(MouseButton.LeftButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -117,7 +117,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator LeftButtonUp()
         {
-            var inputList = new InputBuilder().AddMouseButtonUp(MouseButton.LeftButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonUp(MouseButton.LeftButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -127,7 +127,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator LeftButtonClick()
         {
-            var inputList = new InputBuilder().AddMouseButtonClick(MouseButton.LeftButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonClick(MouseButton.LeftButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -137,7 +137,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator LeftButtonDoubleClick()
         {
-            var inputList = new InputBuilder().AddMouseButtonDoubleClick(MouseButton.LeftButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonDoubleClick(MouseButton.LeftButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -147,7 +147,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator RightButtonDown()
         {
-            var inputList = new InputBuilder().AddMouseButtonDown(MouseButton.RightButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonDown(MouseButton.RightButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -157,7 +157,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator RightButtonUp()
         {
-            var inputList = new InputBuilder().AddMouseButtonUp(MouseButton.RightButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonUp(MouseButton.RightButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -167,7 +167,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator RightButtonClick()
         {
-            var inputList = new InputBuilder().AddMouseButtonClick(MouseButton.RightButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonClick(MouseButton.RightButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -177,7 +177,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// </summary>
         public IMouseSimulator RightButtonDoubleClick()
         {
-            var inputList = new InputBuilder().AddMouseButtonDoubleClick(MouseButton.RightButton).ToArray();
+            var inputList = new InputBuilder().AddMouseButtonDoubleClick(MouseButton.RightButton).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -188,7 +188,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="buttonId">The button id.</param>
         public IMouseSimulator XButtonDown(int buttonId)
         {
-            var inputList = new InputBuilder().AddMouseXButtonDown(buttonId).ToArray();
+            var inputList = new InputBuilder().AddMouseXButtonDown(buttonId).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -199,7 +199,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="buttonId">The button id.</param>
         public IMouseSimulator XButtonUp(int buttonId)
         {
-            var inputList = new InputBuilder().AddMouseXButtonUp(buttonId).ToArray();
+            var inputList = new InputBuilder().AddMouseXButtonUp(buttonId).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -210,7 +210,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="buttonId">The button id.</param>
         public IMouseSimulator XButtonClick(int buttonId)
         {
-            var inputList = new InputBuilder().AddMouseXButtonClick(buttonId).ToArray();
+            var inputList = new InputBuilder().AddMouseXButtonClick(buttonId).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -221,7 +221,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="buttonId">The button id.</param>
         public IMouseSimulator XButtonDoubleClick(int buttonId)
         {
-            var inputList = new InputBuilder().AddMouseXButtonDoubleClick(buttonId).ToArray();
+            var inputList = new InputBuilder().AddMouseXButtonDoubleClick(buttonId).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -232,7 +232,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user.</param>
         public IMouseSimulator VerticalScroll(int scrollAmountInClicks)
         {
-            var inputList = new InputBuilder().AddMouseVerticalWheelScroll(scrollAmountInClicks * MouseWheelClickSize).ToArray();
+            var inputList = new InputBuilder().AddMouseVerticalWheelScroll(scrollAmountInClicks * MouseWheelClickSize).Build();
             SendSimulatedInput(inputList);
             return this;
         }
@@ -243,7 +243,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// <param name="scrollAmountInClicks">The amount to scroll in clicks. A positive value indicates that the wheel was rotated to the right; a negative value indicates that the wheel was rotated to the left.</param>
         public IMouseSimulator HorizontalScroll(int scrollAmountInClicks)
         {
-            var inputList = new InputBuilder().AddMouseHorizontalWheelScroll(scrollAmountInClicks * MouseWheelClickSize).ToArray();
+            var inputList = new InputBuilder().AddMouseHorizontalWheelScroll(scrollAmountInClicks * MouseWheelClickSize).Build();
             SendSimulatedInput(inputList);
             return this;
         }

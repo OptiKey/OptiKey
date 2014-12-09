@@ -17,6 +17,7 @@ namespace JuliusSweetland.ETTA.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private readonly IKeyboardStateManager keyboardStateManager;
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
         private readonly IPointAndKeyValueSource pointAndKeyValueSource;
@@ -36,12 +37,14 @@ namespace JuliusSweetland.ETTA.Services
         #region Ctor
 
         public InputService(
+            IKeyboardStateManager keyboardStateManager,
             IDictionaryService dictionaryService,
             IAudioService audioService,
             IPointAndKeyValueSource pointAndKeyValueSource,
             ITriggerSignalSource keySelectionTriggerSource,
             ITriggerSignalSource pointSelectionTriggerSource)
         {
+            this.keyboardStateManager = keyboardStateManager;
             this.dictionaryService = dictionaryService;
             this.audioService = audioService;
             this.pointAndKeyValueSource = pointAndKeyValueSource;

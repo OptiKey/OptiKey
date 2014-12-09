@@ -1,11 +1,16 @@
 ﻿NEXT STEPS:
 
-Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going to be applied like this anymore. Instead modifiers will be published automatically as they are pressed.
-	Change PublishService methods - publish VirtualKeyCode, or string
-	Remove multiple command keys; SelectAll, Copy, Cut, Paste
-	Refactor to remove VirtualKeyCodeSet
-
 OutputService changes:
+	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
+	It cannot be one of the keys which can be pressed/locked as there is seperate logic to monitor and react to that
+	It must be explicitly expected, i.e. BackOne, BackMany, SwapSuggestion, ClearOutput
+	OR be convertible to a VirtualKeyCode
+
+	Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going to be applied like this anymore. Instead modifiers will be published automatically as they are pressed.
+		Change PublishService methods - publish VirtualKeyCode, or string
+		Remove multiple command keys; SelectAll, Copy, Cut, Paste
+		Refactor to remove VirtualKeyCodeSet
+
 	Change OutputService interface: Output(FunctionKey/String)
 	OutputService should monitor KeyDownStates and publish key down/up when states change to On/Off
 	Rename ReleaseUnlockedModifiers to ReleaseUnlockedKeys
@@ -16,7 +21,6 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	!Publishing Hello and swapping for hugely did not remove all letters, it left Hehugely!
 	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
 	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
-	Rename InputBuilder.ToArray() to InputBuilder.Build() - it is the builder pattern after all
 	Remove Sleep and other methods I am not using - the fixes can be back ported later, which needs to be manual anyway.
 	Reorder InputBuilder and KeyboardSimulator methods to group them together in a nicer way - lots of overloads at the moment
 	Change InputBuilder logic which creates INPUT:
@@ -98,5 +102,6 @@ Predict next word
 Defend user against moving to Metro interface - i.e. LWIN/RWIN/WIN pressed on its own (in Win 8/8.1/later versions?)
 	Make them confirm that they want to do this?
 	Provide a way back from Metro - can I still detect point location and provide a way back?
+	Make ETTA stay on top. Requires Admin in Click2Speak, but it's possible
 
 --------------------------------------------------------------------------------

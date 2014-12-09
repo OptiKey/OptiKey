@@ -144,7 +144,7 @@ namespace JuliusSweetland.ETTA.Services
                         {
                             Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
-                            if (Settings.Default.MultiKeySelectionEnabled
+                            if (keyboardStateManager.KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown()
                                 && triggerSignal.PointAndKeyValue.Value.StringIsLetter)
                             {
                                 Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");

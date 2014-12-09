@@ -342,7 +342,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         + "Please correct and restart ETTA.");
             }
 
-            return new InputService(dictionaryService, audioService, pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+            return new InputService(this, dictionaryService, audioService, 
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
 
         private void InitialiseInputService()
