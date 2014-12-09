@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
+using VirtualKeyCode = JuliusSweetland.ETTA.Native.Enums.VirtualKeyCode;
 
 namespace JuliusSweetland.ETTA.Extensions
 {
@@ -16,16 +16,16 @@ namespace JuliusSweetland.ETTA.Extensions
                 case FunctionKeys.BackOne:
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.BACK}};
 
-                case FunctionKeys.Shift:
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.SHIFT}};
+                case FunctionKeys.LeftShift:
+                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LSHIFT}};
 
-                case FunctionKeys.Alt:
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LMENU}}; //This is not a typo
+                case FunctionKeys.LeftAlt:
+                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LMENU}}; //This is not a typo ALT=MENU
 
-                case FunctionKeys.Ctrl:
+                case FunctionKeys.LeftCtrl:
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LCONTROL}};
 
-                case FunctionKeys.Win:
+                case FunctionKeys.LeftWin:
                     return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.LWIN}};
 
                 case FunctionKeys.F1:

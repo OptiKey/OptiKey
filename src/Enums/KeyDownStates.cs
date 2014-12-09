@@ -2,8 +2,8 @@
 {
     public enum KeyDownStates
     {
-        Off,
-        On,
-        Lock
+        Up,
+        Down,
+        LockedDown
     }
 }

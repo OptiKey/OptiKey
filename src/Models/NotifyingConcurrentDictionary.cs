@@ -1,4 +1,6 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
@@ -30,6 +32,11 @@ namespace JuliusSweetland.ETTA.Models
                     return existingValue;
                 });
             }
+        }
+
+        public ICollection<TKey> Keys
+        {
+            get { return dictionary.Keys; }
         }
     }
 }

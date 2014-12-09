@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
 
-        private bool turnOnMultiKeySelectionWhenCtrlAndAltReleased;
+        private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
         #endregion
 
@@ -70,7 +70,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
             InitialiseKeyDownStates();
-            SetupStateChangeHandlers();
+            AddKeyDownStatesChangeHandlers();
             
             //Setup services
             audioService.Error += HandleServiceError;
@@ -79,7 +79,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             InitialiseInputService();
             
             //Set initial shift state to on
-            HandleFunctionKeySelectionResult(new KeyValue { FunctionKey = FunctionKeys.Shift });
+            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
         }
 
         #endregion
@@ -451,7 +451,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && singleKeyValue.Value.FunctionKey != null)
             {
                 Log.Debug(string.Format("KeySelectionResult received with function key value '{0}'", singleKeyValue.Value.FunctionKey));
-                HandleFunctionKeySelectionResult(singleKeyValue);
+                HandleFunctionKeySelectionResult(singleKeyValue.Value);
             }
 
             //Multi key selection
@@ -464,12 +464,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        private void HandleFunctionKeySelectionResult(KeyValue? singleKeyValue)
+        private void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
-            if (singleKeyValue != null
-                && singleKeyValue.Value.FunctionKey != null)
+            if (singleKeyValue.FunctionKey != null)
             {
-                switch (singleKeyValue.Value.FunctionKey.Value)
+                ProgressKeyDownState(singleKeyValue);
+
+                switch (singleKeyValue.FunctionKey.Value)
                 {
                     case FunctionKeys.AddToDictionary:
                         AddTextToDictionary();
@@ -493,27 +494,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.AlternativeAlpha3Keyboard:
                         Log.Debug("Changing keyboard to AlternativeAlpha3.");
                         Keyboard = new AlternativeAlpha3();
-                        break;
-
-                    case FunctionKeys.Alt:
-                    case FunctionKeys.Ctrl:
-                    case FunctionKeys.Shift:
-                    case FunctionKeys.Win:
-                        if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.Off)
-                        {
-                            Log.Debug(string.Format("Changing key down state of '{0}' key to ON.", singleKeyValue.Value));
-                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.On;
-                        }
-                        else if (KeyDownStates[singleKeyValue.Value].Value == Enums.KeyDownStates.On)
-                        {
-                            Log.Debug(string.Format("Changing key down state of '{0}' key to LOCK.", singleKeyValue.Value));
-                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Lock;
-                        }
-                        else
-                        {
-                            Log.Debug(string.Format("Changing key down state of '{0}' key to OFF.", singleKeyValue.Value));
-                            KeyDownStates[singleKeyValue.Value].Value = Enums.KeyDownStates.Off;
-                        }
                         break;
 
                     case FunctionKeys.BackFromMoreKeyboard:
@@ -578,10 +558,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Publish();
                         break;
 
-                    case FunctionKeys.Sleep:
-                        Settings.Default.Sleeping = !Settings.Default.Sleeping;
-                        break;
-
                     case FunctionKeys.Speak:
                         audioService.Speak(
                             OutputService.Text, 
@@ -600,14 +576,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Symbols3();
                         break;
 
-                    case FunctionKeys.ToggleMultiKeySelectionSupported:
-                        Log.Debug(string.Format("Changing setting MultiKeySelectionSupported to '{0}'.", !Settings.Default.MultiKeySelectionEnabled));
-                        Settings.Default.MultiKeySelectionEnabled = !Settings.Default.MultiKeySelectionEnabled;
-                        break;
-
-                    case FunctionKeys.TogglePublish:
-                        Log.Debug(string.Format("Changing setting PublishingKeys to '{0}'.", !Settings.Default.PublishingKeys));
-                        Settings.Default.PublishingKeys = !Settings.Default.PublishingKeys;
+                    case FunctionKeys.Publish:
+                    case FunctionKeys.MultiKeySelectionEnabled:
+                    case FunctionKeys.Sleep:
+                        //Do nothing - the key just needs to progress
                         break;
 
                     case FunctionKeys.YesQuestionResult:
@@ -615,9 +587,42 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         break;
 
                     default:
-                        OutputService.ProcessCapture(singleKeyValue.Value.FunctionKey.Value);
+                        OutputService.ProcessCapture(singleKeyValue.FunctionKey.Value);
                         break;
                 }
+            }
+        }
+
+        private void ProgressKeyDownState(KeyValue keyValue)
+        {
+            if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+            }
+            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                     && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+            }
+            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+            }
+            else
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from {1} to UP.", keyValue,
+                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
+                        ? "UP"
+                        : KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
+                            ? "DOWN"
+                            : "LOCKED DOWN"));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
             }
         }
 
@@ -730,65 +735,59 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("Initialising KeyDownStates.");
 
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }].Value =
-                Settings.Default.PublishingKeys ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+            KeyDownStates[KeyValues.PublishKey].Value =
+                Settings.Default.PublishingKeys ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
             
-            KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }].Value =
-                Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.On : Enums.KeyDownStates.Off;
+            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
+                Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+
+            KeyDownStates[KeyValues.SleepKey].Value =
+                Settings.Default.Sleeping ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
         }
 
-        private void SetupStateChangeHandlers()
+        private void AddKeyDownStatesChangeHandlers()
         {
-            Log.Debug("Setting up state change handlers.");
+            Log.Debug("Adding KeyDownStates change handlers.");
 
-            Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(value =>
-                {
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.TogglePublish }].Value = value 
-                        ? Enums.KeyDownStates.On 
-                        : Enums.KeyDownStates.Off;
-                    
-                    CalculateAltAndCtrlAndWinKeysDownState();
-                });
-                    
-
-            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled)
-                .Subscribe(value =>
-                    KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.ToggleMultiKeySelectionSupported }].Value = value 
-                        ? Enums.KeyDownStates.On 
-                        : Enums.KeyDownStates.Off);
-
-            KeyDownStates[KeyValues.AltKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                {
-                    CalculateMultiKeySelectionSupported();
-                    CalculateScratchpadIsDisabled();
-                });
-
-            KeyDownStates[KeyValues.CtrlKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                {
-                    CalculateMultiKeySelectionSupported();
-                    CalculateScratchpadIsDisabled();
-                });
-            
-            KeyDownStates[KeyValues.WinKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
-                CalculateMultiKeySelectionSupported();
-                CalculateScratchpadIsDisabled();
+                Settings.Default.PublishingKeys = KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown();
+                ReleasePublishOnlyKeysIfNotPublishing();
             });
 
-            CalculateAltAndCtrlAndWinKeysDownState();
+            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown());
+
+            KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                Settings.Default.Sleeping = KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown());
+            
+            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv => 
+                KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                {
+                    CalculateMultiKeySelectionSupported();
+                    CalculateScratchpadIsDisabled();
+                }));
+            
+            ReleasePublishOnlyKeysIfNotPublishing();
             CalculateMultiKeySelectionSupported();
             CalculateScratchpadIsDisabled();
         }
 
-        private void CalculateAltAndCtrlAndWinKeysDownState()
+        private void ReleasePublishOnlyKeysIfNotPublishing()
         {
-            if (!Settings.Default.PublishingKeys)
-            {
-                Log.Debug("CalculateAltAndCtrlAndWinKeysDownState called. Not publishing so changing Alt/Ctrl/Win key down states to off.");
+            Log.Debug("ReleasePublishOnlyKeysIfNotPublishing called.");
 
-                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value = Enums.KeyDownStates.Off;
-                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value = Enums.KeyDownStates.Off;
-                KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value = Enums.KeyDownStates.Off;
+            if (!KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            {
+                foreach (var keyValue in KeyDownStates.Keys)
+                {
+                    if (KeyValues.PublishOnlyKeys.Contains(keyValue)
+                        && KeyDownStates[keyValue].Value.IsDownOrLockedDown())
+                    {
+                        Log.Debug(string.Format("Releasing '{0}' as we are not publishing.", keyValue));
+                        KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                    }
+                }
             }
         }
 
@@ -796,33 +795,28 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("CalculateMultiKeySelectionSupported called.");
 
-            if ((KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
-                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
-                 || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock())
-                && Settings.Default.MultiKeySelectionEnabled)
+            if (KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown()
+                && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug("Alt/Ctrl/Win are on or locked, so toggling setting MultiKeySelectionSupported to false.");
+                Log.Debug("A key which prevents text capture is down - toggling MultiKeySelectionEnabled to false.");
 
-                Settings.Default.MultiKeySelectionEnabled = false;
-                turnOnMultiKeySelectionWhenCtrlAndAltReleased = true;
+                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
+                turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = true;
             }
-            else if (!KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
-                && !KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
-                && !KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock()
-                && turnOnMultiKeySelectionWhenCtrlAndAltReleased)
+            else if (turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased
+                && !KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug("Alt/Ctrl/Win are all off, returing setting MultiKeySelectionSupported to true.");
+                Log.Debug("No keys which prevents text capture is down - returing setting MultiKeySelectionEnabled to true.");
 
-                Settings.Default.MultiKeySelectionEnabled = true;
-                turnOnMultiKeySelectionWhenCtrlAndAltReleased = false;
+                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.LockedDown;
+                turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = false;
             }
         }
 
         private void CalculateScratchpadIsDisabled()
         {
-            ScratchpadIsDisabled = KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Alt }].Value.IsOnOrLock()
-                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Ctrl }].Value.IsOnOrLock()
-                                   || KeyDownStates[new KeyValue { FunctionKey = FunctionKeys.Win }].Value.IsOnOrLock();
+            ScratchpadIsDisabled = 
+                KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown());
         }
 
         private void ResetSelectionProgress()

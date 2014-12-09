@@ -21,13 +21,13 @@
             <StaticResource x:Key="KeySelectionBorder" ResourceKey="Grey"/>
             <StaticResource x:Key="KeySelectionBackground" ResourceKey="Grey"/>
             
-            <SolidColorBrush x:Key="KeyDownStateIsOnForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeyDownStateIsOnBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="KeyDownStateIsOnBackgroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="KeyDownStateIsDownForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeyDownStateIsDownBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDownStateIsDownBackgroundBrush" Color="{StaticResource White}" />
 
-            <SolidColorBrush x:Key="KeyDownStateIsLockForegroundBrush" Color="{StaticResource Blue}" />
-            <SolidColorBrush x:Key="KeyDownStateIsLockBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="KeyDownStateIsLockBackgroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockedDownForegroundBrush" Color="{StaticResource Blue}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockedDownBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDownStateIsLockedDownBackgroundBrush" Color="{StaticResource White}" />
 
             <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
@@ -77,14 +77,14 @@
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
 
-                    <!--This key is in a key down state of On-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
-                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
+                    <!--This key is in a key down state of Down-->
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Down}">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsDownForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--This key is in a key down state of Lock-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
-                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
+                    <!--This key is in a key down state of Locked Down-->
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.LockedDown}">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDownStateIsDownForegroundBrush}" />
                     </DataTrigger>
 
                     <!--The Shift key is down-->
@@ -121,14 +121,14 @@
                         <Setter Property="Visibility" Value="Visible" />
                     </DataTrigger>
 
-                    <!--This key is in a key down state of On-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
-                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsOnForegroundBrush}" />
+                    <!--This key is in a key down state of Down-->
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Down}">
+                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsDownForegroundBrush}" />
                     </DataTrigger>
 
-                    <!--This key is in a key down state of Lock-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
-                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
+                    <!--This key is in a key down state of Locked Down-->
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.LockedDown}">
+                        <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockedDownForegroundBrush}" />
                     </DataTrigger>
 
                     <!--Is Key Valid-->
@@ -138,16 +138,22 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="KeyLockBarStyle" TargetType="{x:Type Path}">
+            <Style x:Key="KeyLockIconStyle" TargetType="{x:Type Path}">
                 <Setter Property="Visibility" Value="Hidden" />
-                <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockForegroundBrush}" />
+                <Setter Property="Fill" Value="{StaticResource KeyDownStateIsLockedDownForegroundBrush}" />
                 <Setter Property="Stretch" Value="Uniform" />
-                <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Data" Value="{StaticResource LockBarIcon}" />
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="Data" Value="{StaticResource PadlockIcon}" />
                 <Style.Triggers>
-                    <!--This key is in a key down state of Lock-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
+                    <!--This key is in a key down state of Locked Down-->
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.LockedDown}">
                         <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+
+                    <!--Is Key Valid-->
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
+                        <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -190,15 +196,15 @@
                 </Setter>
                 <Style.Triggers>
                     <!--This key is in a key down state of On-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.On}">
-                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsOnBorderBrush}" />
-                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsOnBackgroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Down}">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsDownBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsDownBackgroundBrush}" />
                     </DataTrigger>
 
                     <!--This key is in a key down state of Lock-->
-                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.Lock}">
-                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsLockBorderBrush}" />
-                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockBackgroundBrush}" />
+                    <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:KeyDownStates.LockedDown}">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsLockedDownBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockedDownBackgroundBrush}" />
                     </DataTrigger>
 
                     <!--Is Key Valid-->
@@ -239,11 +245,11 @@
                                 <Border Style="{StaticResource KeyBorderStyle}">
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition SharedSizeGroup="LockBarSharedHeight" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition SharedSizeGroup="LockBarSharedHeight" />
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="2*" />
+                                            <RowDefinition Height="1*" />
                                         </Grid.RowDefinitions>
-                                        <ContentControl Grid.Row="1">
+                                        <ContentControl Grid.RowSpan="3">
                                             <!--Enforce size limits of one key high/wide using the Span info on the key-->
                                             <ContentControl.MaxWidth>
                                                 <MultiBinding Converter="{StaticResource LengthDividedBySpan}">
@@ -282,7 +288,7 @@
                                                 </Viewbox>
                                             </Grid>
                                         </ContentControl>
-                                        <Path Grid.Row="2" Style="{StaticResource KeyLockBarStyle}" />
+                                        <Path Grid.Row="2" Style="{StaticResource KeyLockIconStyle}" />
                                     </Grid>
                                 </Border>
                                 <Border Style="{StaticResource KeyBorderHighlightStyle}" />

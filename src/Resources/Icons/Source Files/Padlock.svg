@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg7134"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="Lock Bar.svg">
+  <defs
+     id="defs7136" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.5"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:current-layer="svg7134"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7139">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:#000000"
+     inkscape:connector-curvature="0"
+     d="M 48.368646,56.518509 H 15.995544 c -1.154068,0 -2.088945,-0.934878 -2.088945,-2.089498 V 33.333662 c 0,-1.153514 0.934877,-2.088391 2.088945,-2.088391 h 2.088391 v -8.938623 c 0,-7.785663 6.311667,-14.0978838 14.098437,-14.0978838 7.785109,0 14.097883,6.3116678 14.097883,14.0978838 v 8.938623 h 2.088391 c 1.153514,0 2.088391,0.934877 2.088391,2.088391 v 21.094795 c 5.54e-4,1.155174 -0.934877,2.090052 -2.088391,2.090052 z M 39.644232,22.723994 c 0,-4.120877 -3.341537,-7.461306 -7.46186,-7.461306 -4.121431,0 -7.46186,3.340429 -7.46186,7.461306 v 8.521277 h 14.924273 v -8.521277 z"
+     id="path3" />
+</svg>

@@ -1,5 +1,4 @@
 ﻿using System;
-using WindowsInput;
 using JuliusSweetland.ETTA.Models;
 using log4net;
 
@@ -7,14 +6,14 @@ namespace JuliusSweetland.ETTA.Services
 {
     public class PublishService : IPublishService
     {
-        private readonly InputSimulator inputSimulator;
+        private readonly InputSimulator.InputSimulator inputSimulator;
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public event EventHandler<Exception> Error;
 
         public PublishService()
         {
-            inputSimulator = new InputSimulator();
+            inputSimulator = new InputSimulator.InputSimulator();
         }
 
         public void PublishModifiedKeyStroke(VirtualKeyCodeSet virtualKeyCodeSet)

@@ -21,6 +21,7 @@ Fonts, icons and other artwork:
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
   Sleep icon: Sleep designed by Rémy Médard from the Noun Project (thenounproject.com)
   Back icon: Arrow designed by Jamison Wieser from the Noun Project (thenounproject.com)
+  Lock icon: Lock designed by Ugur Akdemir from the Noun Project (thenounproject.com)
 
 Sound effects - royalty free from:
 	soundbible.com
@@ -30,4 +31,5 @@ All icon manipulation/editing achieved with the excellent, free, and open source
 The StackOverflow community for providing the answer more times than I can count.
 Scott Logic for his excellent work on the circular progress bar (http://www.scottlogic.com/blog/2011/02/07/a-circular-progressbar-style-using-an-attached-viewmodel.html).
 d.moncada for their custom caret tutorial which inspired the CaretElement text box behaviour (http://www.codeproject.com/Articles/633935/Customizing-the-Caret-of-a-WPF-TextBox).
+michaelnoonan (and any other contributors) for the Windows Input Simulator (http://inputsimulator.codeplex.com/) from which a lot of publishing logic was taken.
 My wife Kate for keeping a convincing "tell me more" face on every time I talk about this too much.

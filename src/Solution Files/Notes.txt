@@ -5,10 +5,6 @@ Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going 
 	Remove multiple command keys; SelectAll, Copy, Cut, Paste
 	Refactor to remove VirtualKeyCodeSet
 
-Make Multi-key capture & publish LOCK instead of ON
-
-Win key can be used as a modifier so add to all modifier logic.
-
 OutputService changes:
 	Change OutputService interface: Output(FunctionKey/String)
 	OutputService should monitor KeyDownStates and publish key down/up when states change to On/Off
@@ -18,7 +14,6 @@ OutputService changes:
 		
 Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
 	!Publishing Hello and swapping for hugely did not remove all letters, it left Hehugely!
-	Move InputSimulator 'WindowsInput' project into solution.
 	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
 	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
 	Rename InputBuilder.ToArray() to InputBuilder.Build() - it is the builder pattern after all
@@ -38,9 +33,9 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
 	Add logging to show KEYBDINPUT structure as it is being published (translate flags to strings if possible).
 	Sync key down state:
-		Publish key down state is set to on - publish key downs for any keys which are On/Lock at the point of changing Publish state (make sure we publish key downs BEFORE any keys are automatically set to On/Lock by other reacting logic).
-		Publish key down state is set to off - publish key ups for all keys which are down at the point of changing Publish state.
-		Shutdown (if Publishing setting is true) - publish key ups for all keys which are down.
+		Publish to ON = release all potentially held keys (check state for every virtualkeycode and release if down)
+						+ publish key down for any keys with on/lock state
+		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 		
 OSK debugging:
 	NO VK+Scan+SCANCODE flag:
@@ -54,14 +49,14 @@ OSK debugging:
 		PgUp
 		PgDown
 
+	VK+Scan+SCANCODE flag:
+		All other keys
+
 	VK ONLY (no scan):
 		LSHIFT
 		RSHIFT
 		RMENU (not LMENU, which is VK+SCANCODE)
 		PAUSE
-
-	VK+Scan+SCANCODE flag:
-		All other keys
 
 	+ EXTENDED FLAG:
 		LWIN
@@ -70,15 +65,10 @@ OSK debugging:
 
 	WHY is the cbsize 40 when InputSimulator sends 28? Maybe not important though.
 
-	SHUTDOWN:
-		LWIN - Vk only
-		85 - Vk only
-		85 - Vk only + KEYUP
-		LWIN - Vk only + KEYUP
 
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
-Instantiate services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
+Bootstrap services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
 
 Add settings
 	+ normal settings (hotkey window)

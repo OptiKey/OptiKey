@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
+using VirtualKeyCode = JuliusSweetland.ETTA.Native.Enums.VirtualKeyCode;
 
 namespace JuliusSweetland.ETTA.Services
 {
@@ -126,7 +125,7 @@ namespace JuliusSweetland.ETTA.Services
                     suppressNextAutoSpace = true;
                     break;
 
-                case FunctionKeys.ClearOutput:
+                case FunctionKeys.ClearScratchpad:
                     Text = null;
                     StoreLastTextChange(null);
                     ClearSuggestions();
@@ -194,7 +193,7 @@ namespace JuliusSweetland.ETTA.Services
 
                     if (shiftPressed)
                     {
-                        //Shift has been auto-pressed - re-apply modifiers to captured text and suggestions
+                        //LeftShift has been auto-pressed - re-apply modifiers to captured text and suggestions
                         modifiedCaptureText = ModifyCapturedText(capturedText);
                         StoreSuggestions(ModifySuggestions(keyboardStateManager.Suggestions));
 
@@ -287,7 +286,7 @@ namespace JuliusSweetland.ETTA.Services
         
         private void PublishKeyStroke(FunctionKeys functionKey)
         {
-            if (Settings.Default.PublishingKeys)
+            if (keyboardStateManager.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
             {
                 Log.Debug(string.Format("PublishKeyStroke called with functionKey '{0}'.",  functionKey));
 
@@ -301,7 +300,7 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PublishKeyStroke(char character, char? modifiedCharacter)
         {
-            if (Settings.Default.PublishingKeys)
+            if (keyboardStateManager.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
             {
                 Log.Debug(string.Format("PublishKeyStroke called with character '{0}' and modified character '{1}'", character, modifiedCharacter));
 
@@ -326,22 +325,22 @@ namespace JuliusSweetland.ETTA.Services
                 virtualKeyCodeSet.ModifierKeyCodes = new List<VirtualKeyCode>();
             }
 
-            var altVirtualKeyCode = FunctionKeys.Alt.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
+            var altVirtualKeyCode = FunctionKeys.LeftAlt.ToVirtualKeyCodeSet().Value.KeyCodes.First();
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftAltKey].Value.IsDownOrLockedDown()
                 && !virtualKeyCodeSet.ModifierKeyCodes.Contains(altVirtualKeyCode))
             {
                 virtualKeyCodeSet.ModifierKeyCodes.Add(altVirtualKeyCode);
             }
 
-            var ctrlVirtualKeyCode = FunctionKeys.Ctrl.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()
+            var ctrlVirtualKeyCode = FunctionKeys.LeftCtrl.ToVirtualKeyCodeSet().Value.KeyCodes.First();
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftCtrlKey].Value.IsDownOrLockedDown()
                 && !virtualKeyCodeSet.ModifierKeyCodes.Contains(ctrlVirtualKeyCode))
             {
                 virtualKeyCodeSet.ModifierKeyCodes.Add(ctrlVirtualKeyCode);
             }
 
-            var shiftVirtualKeyCode = FunctionKeys.Shift.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value.IsOnOrLock()
+            var shiftVirtualKeyCode = FunctionKeys.LeftShift.ToVirtualKeyCodeSet().Value.KeyCodes.First();
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()
                 && !virtualKeyCodeSet.ModifierKeyCodes.Contains(shiftVirtualKeyCode))
             {
                 virtualKeyCodeSet.ModifierKeyCodes.Add(shiftVirtualKeyCode);
@@ -354,25 +353,25 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Debug("ReleaseUnlockedModifiers called.");
 
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Down)
             {
-                Log.Debug("Releasing Alt key.");
+                Log.Debug("Releasing LeftAlt key.");
 
-                keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
             }
 
-            if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Down)
             {
-                Log.Debug("Releasing Ctrl key.");
+                Log.Debug("Releasing LeftCtrl key.");
 
-                keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
             }
 
-            if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
+            if (keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
             {
-                Log.Debug("Releasing Shift key.");
+                Log.Debug("Releasing LeftShift key.");
 
-                keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.Off;
+                keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
             }
         }
 
@@ -441,10 +440,10 @@ namespace JuliusSweetland.ETTA.Services
         {
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
-                && keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Off)
+                && keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
             {
                 Log.Debug("Auto-pressing shift.");
-                keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value = KeyDownStates.On;
+                keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
                 return true;
             }
 
@@ -453,32 +452,28 @@ namespace JuliusSweetland.ETTA.Services
 
         private string ModifyCapturedText(string capturedText)
         {
-            if (keyboardStateManager.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock())
-            {
-                //TODO Handle Alt modified captures - Alt+Code = unicode characters
-                Log.Debug(string.Format("Alt is on or locked on so modifying '{0}' to null.", capturedText));
-                return null;
-            }
+            //TODO Handle LeftAlt modified captures - LeftAlt+Code = unicode characters
 
-            if (keyboardStateManager.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock())
+            if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
+                keyboardStateManager.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug(string.Format("Ctrl is on or locked on so modifying '{0}' to null.", capturedText));
+                Log.Debug(string.Format("A key which prevents text capture is down - modifying '{0}' to null.", capturedText));
                 return null;
             }
 
             if (!string.IsNullOrEmpty(capturedText))
             {
-                if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.On)
+                if (keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
                     var modifiedText = capturedText.FirstCharToUpper();
-                    Log.Debug(string.Format("Shift is on so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    Log.Debug(string.Format("LeftShift is on so modifying '{0}' to '{1}.", capturedText, modifiedText));
                     return modifiedText;
                 }
 
-                if (keyboardStateManager.KeyDownStates[KeyValues.ShiftKey].Value == KeyDownStates.Lock)
+                if (keyboardStateManager.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
                 {
                     var modifiedText = capturedText.ToUpper();
-                    Log.Debug(string.Format("Shift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    Log.Debug(string.Format("LeftShift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText));
                     return modifiedText;
                 }
             }

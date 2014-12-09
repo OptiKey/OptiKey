@@ -4,9 +4,9 @@ namespace JuliusSweetland.ETTA.Extensions
 {
     public static class KeyDownStatesExtensions
     {
-        public static bool IsOnOrLock(this KeyDownStates value)
+        public static bool IsDownOrLockedDown(this KeyDownStates value)
         {
-            return value == KeyDownStates.On || value == KeyDownStates.Lock;
+            return value == KeyDownStates.Down || value == KeyDownStates.LockedDown;
         }
     }
 }

@@ -65,17 +65,17 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 //Calculate DisplayShiftDownText
                 Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
                     (shiftDownState, capturingMultiKeySelection) => 
-                        DisplayShiftDownText = shiftDownState == KeyDownStates.Lock
-                        || (shiftDownState == KeyDownStates.On && !capturingMultiKeySelection);
+                        DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
+                        || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
 
                 mainViewModel.OnPropertyChanges(vm => vm.CapturingMultiKeySelection)
-                    .Subscribe(value => calculateDisplayShiftDownText(mainViewModel.KeyDownStates[KeyValues.ShiftKey].Value, value));
+                    .Subscribe(value => calculateDisplayShiftDownText(mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
 
-                mainViewModel.KeyDownStates[KeyValues.ShiftKey].OnPropertyChanges(sds => sds.Value)
+                mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
                     .Subscribe(value => calculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
 
                 calculateDisplayShiftDownText(
-                    mainViewModel.KeyDownStates[KeyValues.ShiftKey].Value,
+                    mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].Value,
                     mainViewModel.CapturingMultiKeySelection);
 
                 //Publish own version of KeySelection event

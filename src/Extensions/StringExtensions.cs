@@ -4,9 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
 

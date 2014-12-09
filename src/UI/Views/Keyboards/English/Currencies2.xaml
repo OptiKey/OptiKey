@@ -163,7 +163,7 @@
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Shift}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
@@ -206,21 +206,21 @@
                       Text="CTRL"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Ctrl}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftCtrl}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource WinIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Win}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftWin}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ALT"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Alt}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"

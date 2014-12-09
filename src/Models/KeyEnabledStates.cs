@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Data;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.UI.Controls;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models
@@ -27,11 +26,11 @@ namespace JuliusSweetland.ETTA.Models
             keyValueboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             keyValueboardStateInfo.OnPropertyChanges(ksi => ksi.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
-            keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            
-            Settings.Default.OnPropertyChanges(s => s.PublishingKeys).Subscribe(_ => NotifyStateChanged());
-            Settings.Default.OnPropertyChanges(s => s.Sleeping).Subscribe(_ => NotifyStateChanged());
+            keyValueboardStateInfo.KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyValueboardStateInfo.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+
+            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
+                keyValueboardStateInfo.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
         }
 
         #endregion
@@ -43,24 +42,23 @@ namespace JuliusSweetland.ETTA.Models
             get
             {
                 //Key is not Sleep, but we are sleeping
-                if (Settings.Default.Sleeping
+                if (keyValueboardStateInfo.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey)
                 {
                     return false;
                 }
 
                 //Key is publish only, but we are not publishing
-                if (!Settings.Default.PublishingKeys
-                    && KeyValueCollections.PublishOnlyKeys.Contains(keyValue))
+                if (!keyValueboardStateInfo.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown()
+                    && KeyValues.PublishOnlyKeys.Contains(keyValue))
                 {
                     return false;
                 }
                 
-                //Key is MultiKeySelection, but Alt/Ctrl/Win are on or locked 
-                if (keyValue == KeyValues.ToggleMultiKeySelectionSupportedKey
-                    && (keyValueboardStateInfo.KeyDownStates[KeyValues.AltKey].Value.IsOnOrLock()
-                        || keyValueboardStateInfo.KeyDownStates[KeyValues.CtrlKey].Value.IsOnOrLock()
-                        || keyValueboardStateInfo.KeyDownStates[KeyValues.WinKey].Value.IsOnOrLock()))
+                //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
+                if (keyValue == KeyValues.MultiKeySelectionEnabledKey
+                    && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
+                        keyValueboardStateInfo.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
                     return false;
                 }
@@ -127,7 +125,7 @@ namespace JuliusSweetland.ETTA.Models
                 
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (keyValueboardStateInfo.CapturingMultiKeySelection
-                    && !KeyValueCollections.LetterKeys.Contains(keyValue))
+                    && !KeyValues.LetterKeys.Contains(keyValue))
                 {
                     return false;
                 }
