@@ -79,7 +79,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             InitialiseInputService();
             
             //Set initial shift state to on
-            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
+            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
         }
 
         #endregion

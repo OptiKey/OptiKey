@@ -162,8 +162,8 @@ namespace JuliusSweetland.ETTA.InputSimulator
         {
             var keyCodeParam = GetKeyCodeForInclusion(keyCode);
             var scanCode = GetScanCodeForInclusion(keyCode);
-            var scanParam = scanCode != default(UInt32) ? (UInt16) (scanCode) : (UInt16) 0;
-            var flagParam = scanCode != default(UInt32) ? (UInt32) KeyboardFlag.ScanCode : 0;
+            var scanParam = scanCode != default(UInt32) ? (UInt16)(scanCode & 0xff) : (UInt16)0;
+            var flagParam = scanCode != default(UInt32) ? (UInt32)KeyboardFlag.ScanCode : 0;
             if (IsExtendedKey(keyCode))
             {
                 flagParam |= (UInt32) KeyboardFlag.ExtendedKey;
@@ -198,7 +198,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         {
             var keyCodeParam = GetKeyCodeForInclusion(keyCode);
             var scanCode = GetScanCodeForInclusion(keyCode);
-            var scanParam = scanCode != default(UInt32) ? (UInt16)(scanCode) : (UInt16)0;
+            var scanParam = scanCode != default(UInt32) ? (UInt16)(scanCode & 0xff) : (UInt16)0;
             var flagParam = scanCode != default(UInt32) ? (UInt32)KeyboardFlag.ScanCode : 0;
             if (IsExtendedKey(keyCode))
             {

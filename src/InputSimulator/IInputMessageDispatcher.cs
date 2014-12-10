@@ -1,5 +1,4 @@
 ﻿using System;
-using JuliusSweetland.ETTA.Native;
 using JuliusSweetland.ETTA.Native.Structs;
 
 namespace JuliusSweetland.ETTA.InputSimulator

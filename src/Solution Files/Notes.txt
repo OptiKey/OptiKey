@@ -23,17 +23,7 @@ Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pres
 	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
 	Remove Sleep and other methods I am not using - the fixes can be back ported later, which needs to be manual anyway.
 	Reorder InputBuilder and KeyboardSimulator methods to group them together in a nicer way - lots of overloads at the moment
-	Change InputBuilder logic which creates INPUT:
-		http://www.ownedcore.com/forums/mmo/warhammer-online/186390-sendinput-example-c.html
-		[DllImport("user32.dll")]
-        public static extern uint MapVirtualKey(uint uCode, uint uMapType);
-		
-		byte vk = WindowsAPI.VkKeyScan(ch);
-        ushort scanCode = (ushort)WindowsAPI.MapVirtualKey(vk, 0);
-		inputs[0].ki.wScan = (ushort)(scanCode & 0xff); //Only apply 0xff on key down, not key up
-	Double check EXTENDEDKEY logic;
-		"The extended-key flag indicates whether the keystroke message originated from one of the additional keys on the enhanced keyboard. The extended keys consist of the ALT and CTRL keys on the right-hand side of the keyboard; the INS, DEL, HOME, END, PAGE UP, PAGE DOWN, and arrow keys in the clusters to the left of the numeric keypad; the NUM LOCK key; the BREAK (CTRL+PAUSE) key; the PRINT SCRN key; and the divide (/) and ENTER keys in the numeric keypad. The extended-key flag is set if the key is an extended key." from http://msdn.microsoft.com/en-us/library/ms646267(v=vs.85).aspx
-	Change SendSimulatedInput to dispatch inputs individually with conditional delays after each (down NOT up) in an attempt to simulator MS' On-Screen Keyboard behaviour.
+	Change SendSimulatedInput to dispatch inputs with conditional delays after each (down NOT up) in an attempt to simulator MS' On-Screen Keyboard behaviour.
 	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
 	Add logging to show KEYBDINPUT structure as it is being published (translate flags to strings if possible).
 	Sync key down state:

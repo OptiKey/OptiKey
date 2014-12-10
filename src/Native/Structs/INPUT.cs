@@ -26,6 +26,13 @@ namespace JuliusSweetland.ETTA.Native.Structs
         /// The data structure that contains information about the simulated Mouse, Keyboard or Hardware event.
         /// </summary>
         public MOUSEKEYBDHARDWAREINPUT Data;
+
+        public override string ToString()
+        {
+            return string.Format("\tType:{0}({1})" +
+                                 "\n\tData:\n{2}", 
+                                 Type, (InputType)Type, Data);
+        }
     }
 #pragma warning restore 649
 }

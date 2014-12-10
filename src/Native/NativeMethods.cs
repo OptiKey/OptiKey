@@ -107,5 +107,16 @@ namespace JuliusSweetland.ETTA.Native
         /// <returns></returns>
         [DllImport("user32.dll")]
         internal static extern UInt32 MapVirtualKey(UInt32 uCode, UInt32 uMapType);
+
+        /// <summary>
+        /// Synthesizes a keystroke. The system can use such a synthesized keystroke to generate a WM_KEYUP or WM_KEYDOWN message. The keyboard driver's interrupt handler calls the keybd_event function.
+        /// </summary>
+        /// <param name="bVk">A virtual-key code. The code must be a value in the range 1 to 254.</param>
+        /// <param name="bScan">A hardware scan code for the key.</param>
+        /// <param name="dwFlags">Controls various aspects of function operation. This parameter can be one or more of the following values: KEYEVENTF_EXTENDEDKEY, KEYEVENTF_KEYUP</param>
+        /// <param name="dwExtraInfo">An additional value associated with the key stroke.</param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        internal static extern bool keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
     }
 }

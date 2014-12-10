@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using JuliusSweetland.ETTA.Native;
 using JuliusSweetland.ETTA.Native.Structs;
 
 namespace JuliusSweetland.ETTA.InputSimulator
@@ -61,6 +60,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// Sends the list of <see cref="INPUT"/> messages using the <see cref="IInputMessageDispatcher"/> instance.
         /// </summary>
         /// <param name="inputList">The <see cref="System.Array"/> of <see cref="INPUT"/> messages to send.</param>
+        /// /// /// <param name="sendInputsIndividually">If true SendInput is called for each element individually. These events may be interspersed with other keyboard or mouse input events inserted either by the user (with the keyboard or mouse) or by calls to keybd_event, mouse_event, or other calls to SendInput. If false these events are not interspersed with other keyboard or mouse input events.</param>
         private void SendSimulatedInput(INPUT[] inputList)
         {
             messageDispatcher.DispatchInput(inputList);

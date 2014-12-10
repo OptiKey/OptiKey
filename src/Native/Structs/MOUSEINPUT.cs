@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using JuliusSweetland.ETTA.Native.Enums;
 
 namespace JuliusSweetland.ETTA.Native.Structs
 {
@@ -51,6 +53,106 @@ namespace JuliusSweetland.ETTA.Native.Structs
         /// Specifies an additional value associated with the mouse event. An application calls GetMessageExtraInfo to obtain this extra information. 
         /// </summary>
         public IntPtr ExtraInfo;
+
+        public override string ToString()
+        {
+            var moveFlag = (Flags & (UInt32)MouseFlag.Move) != 0;
+            var leftDownFlag = (Flags & (UInt32)MouseFlag.LeftDown) != 0;
+            var leftUpFlag = (Flags & (UInt32)MouseFlag.LeftUp) != 0;
+            var rightDownFlag = (Flags & (UInt32)MouseFlag.RightDown) != 0;
+            var rightUpFlag = (Flags & (UInt32)MouseFlag.RightUp) != 0;
+            var middleDownFlag = (Flags & (UInt32)MouseFlag.MiddleDown) != 0;
+            var middleUpFlag = (Flags & (UInt32)MouseFlag.MiddleUp) != 0;
+            var xDownFlag = (Flags & (UInt32)MouseFlag.XDown) != 0;
+            var xUpFlag = (Flags & (UInt32)MouseFlag.XUp) != 0;
+            var verticalWheelFlag = (Flags & (UInt32)MouseFlag.VerticalWheel) != 0;
+            var horizontalWheelFlag = (Flags & (UInt32)MouseFlag.HorizontalWheel) != 0;
+            var virtualDeskFlag = (Flags & (UInt32)MouseFlag.VirtualDesk) != 0;
+            var absoluteFlag = (Flags & (UInt32)MouseFlag.Absolute) != 0;
+
+            var flagSb = new StringBuilder();
+
+            if (moveFlag) { flagSb.Append("Move"); }
+
+            if (leftDownFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("LeftDown");
+            }
+
+            if (leftUpFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("LeftUp");
+            }
+
+            if (rightDownFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("RightDown");
+            }
+
+            if (rightUpFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("RightUp");
+            }
+
+            if (middleDownFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("MiddleDown");
+            }
+
+            if (middleUpFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("MiddleUp");
+            }
+
+            if (xDownFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("XDown");
+            }
+
+            if (xUpFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("XUp");
+            }
+
+            if (verticalWheelFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("VerticalWheel");
+            }
+
+            if (horizontalWheelFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("HorizontalWheel");
+            }
+
+            if (virtualDeskFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("VirtualDesk");
+            }
+
+            if (absoluteFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("Absolute");
+            }
+
+            return string.Format("\t\t\t\tX:{0}" +
+                                 "\n\t\t\t\tY:{1}" +
+                                 "\n\t\t\t\tMouseData:{2}" +
+                                 "\n\t\t\t\tFlags:{3} ({4})" +
+                                 "\n\t\t\t\tTime:{5}",
+                                 X, Y, MouseData, Flags, flagSb, Time);
+        }
     }
 #pragma warning restore 649
 }

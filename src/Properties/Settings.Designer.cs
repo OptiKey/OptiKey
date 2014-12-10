@@ -673,5 +673,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["Sleeping"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SendInputsIndividually {
+            get {
+                return ((bool)(this["SendInputsIndividually"]));
+            }
+            set {
+                this["SendInputsIndividually"] = value;
+            }
+        }
     }
 }

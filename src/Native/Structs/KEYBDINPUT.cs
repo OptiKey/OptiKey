@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using JuliusSweetland.ETTA.Native.Enums;
 
 namespace JuliusSweetland.ETTA.Native.Structs
 {
@@ -41,6 +43,43 @@ namespace JuliusSweetland.ETTA.Native.Structs
         /// Specifies an additional value associated with the keystroke. Use the GetMessageExtraInfo function to obtain this information. 
         /// </summary>
         public IntPtr ExtraInfo;
+
+        public override string ToString()
+        {
+            var extendedKeyFlag = (Flags & (UInt32)KeyboardFlag.ExtendedKey) != 0;
+            var keyUpFlag = (Flags & (UInt32)KeyboardFlag.KeyUp) != 0;
+            var unicodeFlag = (Flags & (UInt32)KeyboardFlag.Unicode) != 0;
+            var scanCodeFlag = (Flags & (UInt32)KeyboardFlag.ScanCode) != 0;
+            
+            var flagSb = new StringBuilder();
+            
+            if (extendedKeyFlag) { flagSb.Append("KEYEVENTF_EXTENDEDKEY"); }
+
+            if (keyUpFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("KEYEVENTF_KEYUP");
+            }
+
+            if (unicodeFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("KEYEVENTF_UNICODE");
+            }
+
+            if (scanCodeFlag)
+            {
+                if (flagSb.Length > 0) { flagSb.Append(" | "); }
+                flagSb.Append("KEYEVENTF_SCANCODE");
+            }
+
+            return string.Format("\t\t\t\tKeyCode:{0}({1})" +
+                                 "\n\t\t\t\tScan:{2}" +
+                                 "\n\t\t\t\tFlags:{3} ({4})" +
+                                 "\n\t\t\t\tTime:{5}" +
+                                 "\n\t\t\t\tExtraInfo:{6}",
+                                 KeyCode, (VirtualKeyCode)KeyCode, Scan, Flags, flagSb, Time, ExtraInfo);
+        }
     }
 #pragma warning restore 649
 }

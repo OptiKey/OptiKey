@@ -26,6 +26,14 @@ namespace JuliusSweetland.ETTA.Native.Structs
         /// </summary>
         [FieldOffset(0)]
         public HARDWAREINPUT Hardware;
+
+        public override string ToString()
+        {
+            return string.Format("\t\tMOUSEINPUT:\n{0}" +
+                                 "\n\t\tKEYBDINPUT:\n{1}" +
+                                 "\n\t\tHARDWAREINPUT:\n{2}", 
+                                 Mouse, Keyboard, Hardware);
+        }
     }
 #pragma warning restore 649
 }

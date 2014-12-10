@@ -23,6 +23,14 @@ namespace JuliusSweetland.ETTA.Native.Structs
         /// Specifies the high-order word of the lParam parameter for uMsg. 
         /// </summary>
         public UInt16 ParamH;
+
+        public override string ToString()
+        {
+            return string.Format("\t\t\t\tMsg:{0}" +
+                                 "\n\t\t\t\tParamL:{1}" +
+                                 "\n\t\t\t\tParamH:{2}", 
+                                 Msg, ParamL, ParamH);
+        }
     }
 #pragma warning restore 649
 }
