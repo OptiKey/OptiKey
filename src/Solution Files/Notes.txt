@@ -16,51 +16,11 @@ OutputService changes:
 	Rename ReleaseUnlockedModifiers to ReleaseUnlockedKeys
 	ReleaseUnlockedModifiers(); every time Output is called as a key was pressed.
 		Modifiers (Shift,Ctrl,Alt,Win) should no longer ReleaseUnlockedKeys as they are not passed to OutputService directly.
-		
-Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
-	KEEP MY CODE IN PLACE, BUT DO NOT SPLIT OUT CALLS TO SENDINPUT - 
-	!Publishing Hello and swapping for hugely did not remove all letters, it left Hehugely!
-	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
-	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit
-	Remove Sleep and other methods I am not using - the fixes can be back ported later, which needs to be manual anyway.
-	Reorder InputBuilder and KeyboardSimulator methods to group them together in a nicer way - lots of overloads at the moment
-	Change SendSimulatedInput to dispatch inputs with conditional delays after each (down NOT up) in an attempt to simulator MS' On-Screen Keyboard behaviour.
-	Add method to KeyboardSimulator and InputBuilder to reset keys (accepts set of virtual key codes).
-	Add logging to show KEYBDINPUT structure as it is being published (translate flags to strings if possible).
 	Sync key down state:
 		Publish to ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 						+ publish key down for any keys with on/lock state
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 		
-OSK debugging:
-	NO VK+Scan+SCANCODE flag:
-		Del
-		Left, Right, Up, Down (arrow keys) - ETTA is currently sending VK only (+ EXTENDEDKEY)
-		Menu key (not alt)
-		Home
-		End
-		Insert
-		PrntScrn
-		PgUp
-		PgDown
-
-	VK+Scan+SCANCODE flag:
-		All other keys
-
-	VK ONLY (no scan):
-		LSHIFT
-		RSHIFT
-		RMENU (not LMENU, which is VK+SCANCODE)
-		PAUSE
-
-	+ EXTENDED FLAG:
-		LWIN
-		Right control (which is represented as LCONTROL, but with the extended flag)
-		+ plus all keys in "NO VK+Scan+SCANCODE flag" group
-
-	WHY is the cbsize 40 when InputSimulator sends 28? Maybe not important though.
-
-
 Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
 
 Bootstrap services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
