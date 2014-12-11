@@ -30,7 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -118,6 +118,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsInput">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -176,7 +179,7 @@
     <Compile Include="Native\Enums\KeyboardFlag.cs" />
     <Compile Include="Native\Enums\MouseFlag.cs" />
     <Compile Include="Native\Structs\MOUSEINPUT.cs" />
-    <Compile Include="Native\Structs\MOUSEKEYBDHARDWAREINPUT.cs" />
+    <Compile Include="Native\Structs\MOUSEKEYBDHARDWAREINPUTUNION.cs" />
     <Compile Include="Native\NativeMethods.cs" />
     <Compile Include="Native\Enums\VirtualKeyCode.cs" />
     <Compile Include="Native\Enums\XButton.cs" />

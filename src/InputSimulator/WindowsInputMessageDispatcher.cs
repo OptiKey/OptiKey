@@ -50,7 +50,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
                 pInputsSb.AppendLine(string.Format("[{0}]:\n{1}", index, inputs[index]));
             }
             
-            var cbSize = Marshal.SizeOf(typeof (INPUT));
+            var cbSize = INPUT.Size;
             
             Log.Debug(string.Format("Calling native method SendInput with params:" +
                                     "\nnInputs:{0}" +

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using JuliusSweetland.ETTA.Native;
 using JuliusSweetland.ETTA.Native.Enums;
 using JuliusSweetland.ETTA.Native.Structs;
@@ -139,18 +140,18 @@ namespace JuliusSweetland.ETTA.InputSimulator
         /// Gets the scan code to be included in the keyboard input for the supplied <see cref="VirtualKeyCode"/>
         /// </summary>
         /// <param name="keyCode">The key code.</param>
-        /// <returns>UInt32 != 0 if a scancode should be included and can be determined</returns>
-        public static UInt32 GetScanCodeForInclusion(VirtualKeyCode keyCode)
+        /// <returns>UInt16 != 0 if a scancode should be included and can be determined</returns>
+        public static UInt16 GetScanCodeForInclusion(VirtualKeyCode keyCode)
         {
             if (keyCode == VirtualKeyCode.LSHIFT ||
                 keyCode == VirtualKeyCode.RSHIFT ||
                 keyCode == VirtualKeyCode.RMENU ||
                 keyCode == VirtualKeyCode.PAUSE)
             {
-                return default(UInt32); //JS: OSK does not pass scan codes for these keys
+                return default(UInt16); //JS: OSK does not pass scan codes for these keys
             }
 
-            return NativeMethods.MapVirtualKey((UInt32)(keyCode), (UInt32)(MapVirtualKeyType.VirtualKeyCodeToScanCode));
+            return (UInt16)NativeMethods.MapVirtualKey((UInt32)(keyCode), (UInt32)(MapVirtualKeyType.VirtualKeyCodeToScanCode));
         }
 
         /// <summary>
@@ -162,8 +163,8 @@ namespace JuliusSweetland.ETTA.InputSimulator
         {
             var keyCodeParam = GetKeyCodeForInclusion(keyCode);
             var scanCode = GetScanCodeForInclusion(keyCode);
-            var scanParam = scanCode != default(UInt32) ? (UInt16)(scanCode & 0xff) : (UInt16)0;
-            var flagParam = scanCode != default(UInt32) ? (UInt32)KeyboardFlag.ScanCode : 0;
+            var scanParam = scanCode != default(UInt16) ? scanCode : (UInt16)0;
+            var flagParam = scanCode != default(UInt16) ? (UInt32)KeyboardFlag.ScanCode : 0;
             if (IsExtendedKey(keyCode))
             {
                 flagParam |= (UInt32) KeyboardFlag.ExtendedKey;
@@ -171,7 +172,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
 
             var down = new INPUT
                 {
-                    Type = (UInt32) InputType.Keyboard,
+                    Type = (uint) InputType.Keyboard,
                     Data =
                         {
                             Keyboard = new KEYBDINPUT
@@ -198,7 +199,7 @@ namespace JuliusSweetland.ETTA.InputSimulator
         {
             var keyCodeParam = GetKeyCodeForInclusion(keyCode);
             var scanCode = GetScanCodeForInclusion(keyCode);
-            var scanParam = scanCode != default(UInt32) ? (UInt16)(scanCode & 0xff) : (UInt16)0;
+            var scanParam = scanCode != default(UInt16) ? scanCode : (UInt16)0;
             var flagParam = scanCode != default(UInt32) ? (UInt32)KeyboardFlag.ScanCode : 0;
             if (IsExtendedKey(keyCode))
             {
