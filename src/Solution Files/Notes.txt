@@ -81,6 +81,9 @@ Profile and optimise, especially keyboard transitions
 
 Refactor any remaining large classes, e.g. MainViewModel
 
+Package ETTA to install to Program Files directory (required to stay on top)
+	Stay on top of everything (including Metro start menu): http://stackoverflow.com/questions/14629406/how-can-i-make-my-own-application-on-top-in-the-start-menu
+
 --------------------------------------------------------------------------------
 
 TO DO?
@@ -89,9 +92,5 @@ Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
 Predict next word
-Defend user against moving to Metro interface - i.e. LWIN/RWIN/WIN pressed on its own (in Win 8/8.1/later versions?)
-	Make them confirm that they want to do this?
-	Provide a way back from Metro - can I still detect point location and provide a way back?
-	Make ETTA stay on top. Requires Admin in Click2Speak, but it's possible
 
 --------------------------------------------------------------------------------
