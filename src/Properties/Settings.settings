@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">LControlKey</Value>
+      <Value Profile="(Default)">Pause</Value>
     </Setting>
     <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextLow</Value>
@@ -55,9 +55,6 @@
     </Setting>
     <Setting Name="Language" Roaming="true" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
       <Value Profile="(Default)">BritishEnglish</Value>
-    </Setting>
-    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
-      <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationMinPoints" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
@@ -149,11 +146,8 @@
     <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
     </Setting>
-    <Setting Name="Sleeping" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="SendInputsIndividually" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+      <Value Profile="(Default)">Fixations</Value>
     </Setting>
   </Settings>
 </SettingsFile>

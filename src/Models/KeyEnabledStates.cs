@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Data;
 using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Properties;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.Models

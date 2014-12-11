@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VirtualKeyCode = JuliusSweetland.ETTA.Native.Enums.VirtualKeyCode;
+using WindowsInput.Native;
 
 namespace JuliusSweetland.ETTA.Models
 {

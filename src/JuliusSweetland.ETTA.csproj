@@ -30,7 +30,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -147,18 +147,6 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
-    <Compile Include="InputSimulator\IInputDeviceStateAdaptor.cs" />
-    <Compile Include="InputSimulator\IInputMessageDispatcher.cs" />
-    <Compile Include="InputSimulator\IInputSimulator.cs" />
-    <Compile Include="InputSimulator\IKeyboardSimulator.cs" />
-    <Compile Include="InputSimulator\IMouseSimulator.cs" />
-    <Compile Include="InputSimulator\InputBuilder.cs" />
-    <Compile Include="InputSimulator\InputSimulator.cs" />
-    <Compile Include="InputSimulator\KeyboardSimulator.cs" />
-    <Compile Include="InputSimulator\MouseButton.cs" />
-    <Compile Include="InputSimulator\MouseSimulator.cs" />
-    <Compile Include="InputSimulator\WindowsInputDeviceStateAdaptor.cs" />
-    <Compile Include="InputSimulator\WindowsInputMessageDispatcher.cs" />
     <Compile Include="Models\IKeyboardStateManager.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
@@ -171,18 +159,6 @@
     <Compile Include="Models\ThemeResourceDictionary.cs" />
     <Compile Include="Models\TriggerSignal.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
-    <Compile Include="Native\Enums\MapVirtualKeyType.cs" />
-    <Compile Include="Native\Structs\HARDWAREINPUT.cs" />
-    <Compile Include="Native\Structs\INPUT.cs" />
-    <Compile Include="Native\Enums\InputType.cs" />
-    <Compile Include="Native\Structs\KEYBDINPUT.cs" />
-    <Compile Include="Native\Enums\KeyboardFlag.cs" />
-    <Compile Include="Native\Enums\MouseFlag.cs" />
-    <Compile Include="Native\Structs\MOUSEINPUT.cs" />
-    <Compile Include="Native\Structs\MOUSEKEYBDHARDWAREINPUTUNION.cs" />
-    <Compile Include="Native\NativeMethods.cs" />
-    <Compile Include="Native\Enums\VirtualKeyCode.cs" />
-    <Compile Include="Native\Enums\XButton.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\IPointAndKeyValueSource.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointAndKeyValueSources\MousePositionSource.cs" />

@@ -25,7 +25,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LControlKey")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pause")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.Forms.Keys SelectionTriggerKeyboardKeyDownUpKey {
             get {
@@ -255,19 +255,6 @@ namespace JuliusSweetland.ETTA.Properties {
             }
             set {
                 this["Language"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.TriggerSources PointSelectionTriggerSource {
-            get {
-                return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
-            }
-            set {
-                this["PointSelectionTriggerSource"] = value;
             }
         }
         
@@ -664,25 +651,14 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Sleeping {
+        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.ETTA.Enums.TriggerSources PointSelectionTriggerSource {
             get {
-                return ((bool)(this["Sleeping"]));
+                return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
             }
             set {
-                this["Sleeping"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SendInputsIndividually {
-            get {
-                return ((bool)(this["SendInputsIndividually"]));
-            }
-            set {
-                this["SendInputsIndividually"] = value;
+                this["PointSelectionTriggerSource"] = value;
             }
         }
     }

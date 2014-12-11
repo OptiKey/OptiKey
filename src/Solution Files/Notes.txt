@@ -18,8 +18,7 @@ OutputService changes:
 		Modifiers (Shift,Ctrl,Alt,Win) should no longer ReleaseUnlockedKeys as they are not passed to OutputService directly.
 		
 Fix publish bugs (timing between key presses?) (keys behaving as if Ctrl is pressed):
-	Correct struct etc definitions (P/INVOKE addin) - test
-	If not working also build for 64 bit architecture - test
+	KEEP MY CODE IN PLACE, BUT DO NOT SPLIT OUT CALLS TO SENDINPUT - 
 	!Publishing Hello and swapping for hugely did not remove all letters, it left Hehugely!
 	Remove InputBuilder.AddKeyPress - replace calls from KeyboardSimulator with chained AddKeyDown(x).AddKeyUp(x)
 	Remove InputBuilder helper methods such as ModifiersDown/ModifiersUp/KeyPress(builder, keyCodes) - make the logic more explicit

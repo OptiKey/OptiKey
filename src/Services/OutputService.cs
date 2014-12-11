@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
-using VirtualKeyCode = JuliusSweetland.ETTA.Native.Enums.VirtualKeyCode;
 
 namespace JuliusSweetland.ETTA.Services
 {

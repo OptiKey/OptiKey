@@ -741,9 +741,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
                 Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
-
-            KeyDownStates[KeyValues.SleepKey].Value =
-                Settings.Default.Sleeping ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
         }
 
         private void AddKeyDownStatesChangeHandlers()
@@ -758,9 +755,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown());
-
-            KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                Settings.Default.Sleeping = KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown());
             
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv => 
                 KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value =>

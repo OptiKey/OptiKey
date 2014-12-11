@@ -7,7 +7,6 @@ namespace JuliusSweetland.ETTA.Services
 {
     public class PublishService : IPublishService
     {
-        //private readonly InputSimulator.InputSimulator inputSimulator;
         private readonly WindowsInput.InputSimulator inputSimulator;
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -15,7 +14,6 @@ namespace JuliusSweetland.ETTA.Services
 
         public PublishService()
         {
-            //inputSimulator = new InputSimulator.InputSimulator();
             inputSimulator = new WindowsInput.InputSimulator();
         }
 
@@ -25,10 +23,7 @@ namespace JuliusSweetland.ETTA.Services
             {
                 Log.Debug(string.Format("Publishing virtualKeyCodeSet '{0}'", virtualKeyCodeSet));
 
-                inputSimulator.Keyboard.ModifiedKeyStroke(
-                    //virtualKeyCodeSet.ModifierKeyCodes, virtualKeyCodeSet.KeyCodes);
-                virtualKeyCodeSet.ModifierKeyCodes.Select(mkc => (WindowsInput.Native.VirtualKeyCode)mkc).ToList(),
-                virtualKeyCodeSet.KeyCodes.Select(mkc => (WindowsInput.Native.VirtualKeyCode)mkc).ToList());
+                inputSimulator.Keyboard.ModifiedKeyStroke(virtualKeyCodeSet.ModifierKeyCodes, virtualKeyCodeSet.KeyCodes);
             }
             catch (Exception exception)
             {
