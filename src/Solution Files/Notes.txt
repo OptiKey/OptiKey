@@ -1,5 +1,11 @@
 ﻿NEXT STEPS:
 
+Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
+	TEST
+	
+Bootstrap services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
+	TEST
+
 OutputService changes:
 	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
 	It cannot be one of the keys which can be pressed/locked as there is seperate logic to monitor and react to that
@@ -21,16 +27,11 @@ OutputService changes:
 						+ publish key down for any keys with on/lock state
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 		
-Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
-	TEST
-	
-Bootstrap services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
-
 Add settings
-	+ normal settings (hotkey window)
+	Icon: http://thenounproject.com/term/repair/81170/ Norbert Kucsera of Noun project
 	+ accessible settings - keyboard style
 		* include ability to move and resize keyboard
-	Icon: http://thenounproject.com/term/repair/81170/ Norbert Kucsera of Noun project
+	? normal settings (hotkey window)
 
 Recalibrate
 	Icon: http://thenounproject.com/term/settings/56313/ Arthur Shlain of Noun project
