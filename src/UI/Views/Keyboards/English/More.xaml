@@ -52,12 +52,9 @@
                       SharedSizeGroup="KeyWithDescription"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      SharedSizeGroup="KeyWithDescription">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      Text="RE-CALIBRATE"
+                      SharedSizeGroup="KeyWithDescription"
+                      IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource BackIcon}"
                       SharedSizeGroup="KeyWithDescription">
