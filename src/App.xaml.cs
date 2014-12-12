@@ -82,7 +82,24 @@ namespace JuliusSweetland.ETTA
                 
                 //Compose main window and apply theme
                 var mainWindow = new MainWindow();
-                mainWindow.MainView.DataContext = new MainViewModel();
+                var mainViewModel = new MainViewModel();
+                mainWindow.MainView.DataContext = mainViewModel;
+                
+                if(mainWindow.MainView.IsLoaded)
+                {
+                    mainViewModel.Initialise();
+                }
+                else
+                {
+                    RoutedEventHandler loadedHandler = null;
+                    loadedHandler = (sender, args) =>
+                    {
+                        mainViewModel.Initialise();
+                        mainViewModel.Loaded -= loadedHandler; //Ensure this handler only triggers once
+                    };
+                    mainViewModel.Loaded += loadedHandler;
+                }
+                
                 mainWindow.Show();
             }
             catch (Exception ex)
