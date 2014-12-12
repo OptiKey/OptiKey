@@ -32,6 +32,62 @@ Add settings
 	+ accessible settings - keyboard style
 		* include ability to move and resize keyboard
 	? normal settings (hotkey window)
+	
+Look & feel:		
+Theme	System.String	/Resources/Themes/Android_Dark.xaml
+FontFamily	System.String	/Resources/Fonts/#Roboto
+FontStretch	System.String	Condensed
+FontWeight	System.String	Regular
+ScratchpadNumberOfLines	System.Int32	2
+ToastNotificationTitleFontSize	System.Int32	25
+ToastNotificationContentFontSize	System.Int32	16
+ToastNotificationCharactersPerLine	System.Int32	50
+ToastNotificationSecondsPerLine	System.Int32	2
+ToastNotificationAdditionalSeconds	System.Int32	2
+		
+Position:		
+MainWindowTop	System.Double	0
+MainWindowLeft	System.Double	0
+MainWindowHeight	System.Double	400
+MainWindowWidth	System.Double	800
+MainWindowState	System.Windows.WindowState	Normal
+		
+Words:		
+Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
+AutoAddSpace	System.Boolean	TRUE
+AutoCapitalise	System.Boolean	TRUE
+MultiKeySelectionMaxDictionaryMatches	System.Int32	40
+		
+Sounds:		
+SpeechVoice	System.String	
+SpeechVolume	System.Int32	100
+SpeechRate	System.Int32	0
+InfoSoundFile	System.String	Resources\Sounds\Info1.wav
+SelectionSoundFile	System.String	Resources\Sounds\Selection1.wav
+ErrorSoundFile	System.String	Resources\Sounds\Error1.wav
+MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
+MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
+		
+Pointing & Selection:		
+PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
+PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
+PointTtl	System.TimeSpan	00:00.150
+KeySelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	KeyboardKeyDownsUps
+PointSelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	Fixations
+SelectionTriggerKeyboardKeyDownUpKey	System.Windows.Forms.Keys	Pause
+SelectionTriggerMouseDownUpButton	System.Windows.Forms.MouseButtons	Left
+KeySelectionTriggerFixationMinPoints	System.Int32	10
+PointSelectionTriggerFixationMinPoints	System.Int32	10
+PointSelectionTriggerFixationRadius	System.Double	50
+KeySelectionTriggerFixationTime	System.TimeSpan	00:01.500
+PointSelectionTriggerFixationTime	System.TimeSpan	00:01.500
+SelectionTriggerStopSignal	JuliusSweetland.ETTA.Enums.TriggerStopSignals	NextLow
+MultiKeySelectionFixationMinDwellTime	System.TimeSpan	00:00.050
+MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
+		
+Other:		
+Debug	System.Boolean	TRUE
+
 
 Recalibrate
 	Icon: http://thenounproject.com/term/settings/56313/ Arthur Shlain of Noun project
