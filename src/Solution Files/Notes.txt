@@ -45,6 +45,8 @@ Refactor any remaining large classes, e.g. MainViewModel
 Package ETTA to install to Program Files directory (required to stay on top)
 	Stay on top of everything (including Metro start menu): http://stackoverflow.com/questions/14629406/how-can-i-make-my-own-application-on-top-in-the-start-menu
 
+Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
+
 --------------------------------------------------------------------------------
 
 TO DO?
