@@ -58,28 +58,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             keyEnabledStates = new KeyEnabledStates(this);
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
-
-            //Services
-            audioService = new AudioService();
-            dictionaryService = new DictionaryService();
-            inputService = CreateInputService();
-            publishService = new PublishService();
-            outputService = new OutputService(this, publishService, dictionaryService);
-            
-            //Initialise state properties
-            SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
-            InitialiseKeyDownStates();
-            AddKeyDownStatesChangeHandlers();
-            
-            //Setup services
-            audioService.Error += HandleServiceError;
-            dictionaryService.Error += HandleServiceError;
-            publishService.Error += HandleServiceError;
-            InitialiseInputService();
-            
-            //Set initial shift state to on
-            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
         }
 
         #endregion
@@ -345,8 +323,48 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             return new InputService(this, dictionaryService, audioService, 
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
+        
+        public void Initialise()
+        {
+            //Initialise state properties
+            SelectionMode = SelectionModes.Key;
+            Keyboard = new Alpha();
+            InitialiseKeyDownStates();
+            AddKeyDownStatesChangeHandlers();
+            
+            //Instantiate services
+            audioService = new AudioService();
+            dictionaryService = new DictionaryService();
+            inputService = CreateInputService();
+            publishService = new PublishService();
+            outputService = new OutputService(this, publishService, dictionaryService);
+            
+            //Setup services
+            SetupAudioService();
+            SetupDictionaryService();
+            SetupPublishService();
+            SetupInputService();
+            
+            //Set initial shift state to on - CHANGE THIS TO BE AWARE OF SYNCHRONISING (with current key state) LOGIC IF PUBLISHING IS ON
+            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
+        }
+        
+        private void SetupAudioService()
+        {
+            audioService.Error += HandleServiceError;
+        }
 
-        private void InitialiseInputService()
+        private void SetupDictionaryService()
+        {
+            dictionaryService.Error += HandleServiceError;
+        }
+        
+        private void SetupPublishService()
+        {
+            publishService.Error += HandleServiceError;
+        }
+
+        private void SetupInputService()
         {
             Log.Debug("Initialising InputService.");
 
@@ -403,7 +421,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (KeySelection != null)
                     {
                         Log.Debug(string.Format("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value));
-
                         KeySelection(this, value.KeyValue.Value);
                     }
                 }
@@ -460,7 +477,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && multiKeySelection.Any())
             {
                 Log.Debug(string.Format("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count));
-
                 OutputService.ProcessCapture(multiKeySelection);
             }
         }
