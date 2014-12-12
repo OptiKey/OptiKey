@@ -313,40 +313,27 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Menu}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="6"
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                           SymbolGeometry="{StaticResource SpaceIcon}"
-                          WidthSpan="3" 
+                          WidthSpan="2" 
                           SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                          Text="SLCT&#x0a;ALL"
-                          SharedSizeGroup="KeyWithDescription">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SelectAll}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
-                          Text="CUT"
-                          SharedSizeGroup="KeyWithDescription">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Cut}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
-                          Text="COPY"
-                          SharedSizeGroup="KeyWithDescription">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Copy}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                          Text="PASTE"
-                          SharedSizeGroup="KeyWithDescription">
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Paste}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
