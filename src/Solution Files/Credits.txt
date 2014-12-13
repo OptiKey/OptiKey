@@ -26,6 +26,7 @@ Fonts, icons and other artwork:
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
   Accented Letters icon: World by Janique Le Bail from the Noun Project (thenounproject.com)
   Currencies icon: Money by Piotrek Chuchla from the Noun Project (thenounproject.com)
+  Physical Keys icon: Keybord by Arthur Shlain from the Noun Project (thenounproject.com)
 
 Sound effects - royalty free from:
 	soundbible.com

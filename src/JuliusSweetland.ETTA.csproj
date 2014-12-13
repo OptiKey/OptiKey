@@ -310,6 +310,7 @@
     <None Include="Resources\Icons\Source Files\Settings.svg" />
     <None Include="Resources\Icons\Source Files\AccentedLetters.svg" />
     <None Include="Resources\Icons\Source Files\Currencies.svg" />
+    <None Include="Resources\Icons\Source Files\PhysicalKeys.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
