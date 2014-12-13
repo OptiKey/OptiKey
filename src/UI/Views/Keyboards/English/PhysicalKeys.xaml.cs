@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for Publish.xaml
+    /// Interaction logic for PhysicalKeys.xaml
     /// </summary>
-    public partial class Publish : UserControl
+    public partial class PhysicalKeys : UserControl
     {
-        public Publish()
+        public PhysicalKeys()
         {
             InitializeComponent();
         }

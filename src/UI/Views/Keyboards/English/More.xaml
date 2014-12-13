@@ -40,24 +40,32 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="2"
-                      Text="PUBLISH ONLY&#x0a;F1 → ESC"
+                      Text="OTHER KEYS&#x0a;F1 → ESC"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PublishKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
 
         <controls:Key Grid.Row="1" Grid.Column="0"
-                      Text="SETTINGS"
-                      SharedSizeGroup="KeyWithDescription"
-                      IsEnabled="False" />
+                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      IsEnabled="False">
+            <!--<controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
+            </controls:Key.Value>-->
+        </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      Text="RE-CALIBRATE"
-                      SharedSizeGroup="KeyWithDescription"
-                      IsEnabled="False" />
+                      SymbolGeometry="{StaticResource SettingsIcon}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      IsEnabled="False">
+            <!--<controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Settings}" />
+            </controls:Key.Value>-->    
+        </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource BackIcon}"
-                      SharedSizeGroup="KeyWithDescription">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromMoreKeyboard}" />
             </controls:Key.Value>

@@ -210,9 +210,9 @@
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Publish.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
@@ -246,15 +246,14 @@
     <Compile Include="UI\Views\Keyboards\English\Currencies1.xaml.cs">
       <DependentUpon>Currencies1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\English\PhysicalKeys.xaml.cs">
+      <DependentUpon>PhysicalKeys.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\English\Symbols3.xaml.cs">
       <DependentUpon>Symbols3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Publish.xaml.cs">
-      <DependentUpon>Publish.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Symbols2.xaml.cs">
       <DependentUpon>Symbols2.xaml</DependentUpon>
@@ -307,6 +306,8 @@
     <None Include="Resources\Icons\Source Files\Yes.svg" />
     <None Include="Resources\Icons\Source Files\Padlock.svg" />
     <None Include="Resources\Icons\Source Files\Dot.svg" />
+    <None Include="Resources\Icons\Source Files\Calibrate.svg" />
+    <None Include="Resources\Icons\Source Files\Settings.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -385,7 +386,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -454,6 +455,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\English\PhysicalKeys.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\English\Symbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -461,10 +466,6 @@
     <Page Include="UI\Views\Keyboards\English\YesNoQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\English\Publish.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\English\Symbols2.xaml">
       <SubType>Designer</SubType>

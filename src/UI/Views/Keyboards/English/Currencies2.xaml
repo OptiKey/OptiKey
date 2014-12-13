@@ -242,7 +242,7 @@
                       WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue String="\n" />
+                <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"

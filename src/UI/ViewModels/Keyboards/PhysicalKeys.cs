@@ -1,6 +1,6 @@
 ﻿namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
 {
-    public class Publish : IKeyboard
+    public class PhysicalKeys : IKeyboard
     {
     }
 }

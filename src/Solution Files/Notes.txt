@@ -1,8 +1,5 @@
 ﻿NEXT STEPS:
 
-Move sleep into keyboards (replace Sleep in More keyboard with Recalibrate). Make Space 2 keys wide and add Sleep in bottom right?
-	TEST
-	
 Bootstrap services AFTER View has loaded - this gives us the chance to display a notification message if services error during initialisation (e.g. InputService can publish an Error event if the TET service is not running, but this will not be displayed. It also prevents clean shutdown.)
 	TEST
 

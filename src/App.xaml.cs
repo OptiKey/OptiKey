@@ -92,12 +92,12 @@ namespace JuliusSweetland.ETTA
                 else
                 {
                     RoutedEventHandler loadedHandler = null;
-                    loadedHandler = (sender, args) =>
+                    loadedHandler = (s, a) =>
                     {
                         mainViewModel.Initialise();
-                        mainViewModel.Loaded -= loadedHandler; //Ensure this handler only triggers once
+                        mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
-                    mainViewModel.Loaded += loadedHandler;
+                    mainWindow.MainView.Loaded += loadedHandler;
                 }
                 
                 mainWindow.Show();

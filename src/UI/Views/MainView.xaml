@@ -55,7 +55,6 @@
                                       PointsToDisplay="{Binding SelectionResultPoints, Mode=OneWay}" />
 
             <TextBlock Text="{Binding PointsPerSecond, StringFormat='{}{0} points per second'}" 
-                       Margin="{Binding Source={x:Static properties:Settings.Default}, Path=FrameThickness}" 
                        Foreground="{DynamicResource PointsPerSecondForegroundBrush}"
                        Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                             Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"

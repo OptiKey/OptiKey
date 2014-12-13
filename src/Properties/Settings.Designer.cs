@@ -25,7 +25,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Pause")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ins")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.Windows.Forms.Keys SelectionTriggerKeyboardKeyDownUpKey {
             get {

@@ -56,6 +56,7 @@
         MultiKeySelectionEnabled,
         Sleep,
         Speak,
+        PhysicalKeysKeyboard,
         Publish,
         AlphaKeyboard,
         NumericAndSymbols1Keyboard,
@@ -66,7 +67,6 @@
         AlternativeAlpha1Keyboard,
         AlternativeAlpha2Keyboard,
         AlternativeAlpha3Keyboard,
-        MoreKeyboard,
-        PublishKeyboard
+        MoreKeyboard
     }
 }

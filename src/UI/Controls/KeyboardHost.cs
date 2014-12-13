@@ -154,9 +154,9 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.More { DataContext = Keyboard };
                     }
-                    else if (Keyboard is Publish)
+                    else if (Keyboard is PhysicalKeys)
                     {
-                        newContent = new Views.Keyboards.English.Publish { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.PhysicalKeys { DataContext = Keyboard };
                     }
                     else if (Keyboard is YesNoQuestion)
                     {

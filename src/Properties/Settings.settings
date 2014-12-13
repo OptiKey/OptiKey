@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Pause</Value>
+      <Value Profile="(Default)">Ins</Value>
     </Setting>
     <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextLow</Value>

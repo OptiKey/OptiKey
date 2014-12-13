@@ -16,7 +16,6 @@ using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
 using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
-using Publish = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Publish;
 using Symbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Symbols2;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
@@ -28,11 +27,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly IAudioService audioService;
-        private readonly IDictionaryService dictionaryService;
-        private readonly IInputService inputService;
-        private readonly IPublishService publishService;
-        private readonly IOutputService outputService;
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
@@ -43,6 +37,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
+        private Dictionary<Rect, KeyValue> pointToKeyValueMap;
+
+        private IAudioService audioService;
+        private IDictionaryService dictionaryService;
+        private IInputService inputService;
+        private IPublishService publishService;
+        private IOutputService outputService;
 
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
@@ -52,12 +53,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public MainViewModel()
         {
-            //Fields
+            Log.Debug("Ctor called.");
+
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this);
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
+
+            SelectionMode = SelectionModes.Key;
+            Keyboard = new Alpha();
+            InitialiseKeyDownStates();
+            AddKeyDownStatesChangeHandlers();
         }
 
         #endregion
@@ -70,8 +77,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         #region Properties
 
-        public IInputService InputService { get { return inputService; } }
-        public IOutputService OutputService { get { return outputService; } }
+        public IInputService InputService
+        {
+            get { return inputService; }
+            set { SetProperty(ref inputService, value); }
+        }
+
+        public IOutputService OutputService
+        {
+            get { return outputService; }
+            set { SetProperty(ref outputService, value); }
+        }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
@@ -84,10 +100,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             set
             {
-                inputService.PointToKeyValueMap = value;
+                if (pointToKeyValueMap != value)
+                {
+                    pointToKeyValueMap = value;
 
-                //The last selection result points cannot be valid if this has changed (window has moved or resized)
-                SelectionResultPoints = null;
+                    if (inputService != null)
+                    {
+                        inputService.PointToKeyValueMap = value;
+                    }
+
+                    //The last selection result points cannot be valid if this has changed (window has moved or resized)
+                    SelectionResultPoints = null;
+                }
             }
         }
 
@@ -101,7 +125,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     Log.Debug(string.Format("SelectionMode changed to {0}", value));
 
                     ResetSelectionProgress();
-                    InputService.SelectionMode = value;
+
+                    if (inputService != null)
+                    {
+                        inputService.SelectionMode = value;
+                    }
                 }
             }
         }
@@ -116,9 +144,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     Log.Debug(string.Format("CapturingMultiKeySelection changed to {0}", value));
 
-                    audioService.PlaySound(value 
-                        ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
-                        : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
+                    if (audioService != null)
+                    {
+                        audioService.PlaySound(value
+                            ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
+                            : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
+                    }
                 }
             }
         }
@@ -217,6 +248,111 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         #endregion
 
         #region Methods
+
+        public void Initialise()
+        {
+            Log.Debug("Initialise called.");
+
+            audioService = new AudioService();
+            dictionaryService = new DictionaryService();
+            InputService = CreateInputService();
+            publishService = new PublishService();
+            OutputService = new OutputService(this, publishService, dictionaryService);
+
+            audioService.Error += HandleServiceError;
+            dictionaryService.Error += HandleServiceError;
+            publishService.Error += HandleServiceError;
+            inputService.Error += HandleServiceError;
+
+            inputService.KeyEnabledStates = keyEnabledStates;
+
+            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
+                        .Subscribe(value => CapturingMultiKeySelection = value);
+
+            inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
+
+            inputService.CurrentPosition += (o, tuple) =>
+            {
+                CurrentPositionPoint = tuple.Item1;
+                CurrentPositionKey = tuple.Item2;
+            };
+
+            inputService.SelectionProgress += (o, progress) =>
+            {
+                if (progress.Item2 == 0)
+                {
+                    ResetSelectionProgress();
+                }
+                else if (progress.Item1 != null)
+                {
+                    if (SelectionMode == SelectionModes.Key
+                        && progress.Item1.Value.KeyValue != null)
+                    {
+                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                            new NotifyingProxy<double>(progress.Item2);
+                    }
+                    else if (SelectionMode == SelectionModes.Point)
+                    {
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                    }
+                }
+            };
+
+            inputService.Selection += (o, value) =>
+            {
+                Log.Debug("Selection event received from InputService.");
+
+                SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
+
+                if (!CapturingMultiKeySelection)
+                {
+                    audioService.PlaySound(Settings.Default.SelectionSoundFile);
+                }
+
+                if (SelectionMode == SelectionModes.Key
+                    && value.KeyValue != null)
+                {
+                    if (KeySelection != null)
+                    {
+                        Log.Debug(string.Format("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value));
+                        KeySelection(this, value.KeyValue.Value);
+                    }
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    //TODO: Handle point selection
+                }
+            };
+
+            inputService.SelectionResult += (o, tuple) =>
+            {
+                Log.Debug("SelectionResult event received from InputService.");
+
+                var points = tuple.Item1;
+                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
+                    ? new KeyValue { FunctionKey = tuple.Item2, String = tuple.Item3 }
+                    : (KeyValue?)null;
+                var multiKeySelection = tuple.Item4;
+
+                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
+
+                if (SelectionMode == SelectionModes.Key
+                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
+                {
+                    KeySelectionResult(singleKeyValue, multiKeySelection);
+                }
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    //TODO: Handle point selection result
+                }
+            };
+
+            inputService.PointToKeyValueMap = pointToKeyValueMap;
+            inputService.SelectionMode = SelectionMode;
+
+            //Set initial shift state to on - CHANGE THIS TO BE AWARE OF SYNCHRONISING (with current key state) LOGIC IF PUBLISHING IS ON
+            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
+        }
 
         private IInputService CreateInputService()
         {
@@ -320,140 +456,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         + "Please correct and restart ETTA.");
             }
 
-            return new InputService(this, dictionaryService, audioService, 
+            return new InputService(this, dictionaryService, audioService,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
         
-        public void Initialise()
-        {
-            //Initialise state properties
-            SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
-            InitialiseKeyDownStates();
-            AddKeyDownStatesChangeHandlers();
-            
-            //Instantiate services
-            audioService = new AudioService();
-            dictionaryService = new DictionaryService();
-            inputService = CreateInputService();
-            publishService = new PublishService();
-            outputService = new OutputService(this, publishService, dictionaryService);
-            
-            //Setup services
-            SetupAudioService();
-            SetupDictionaryService();
-            SetupPublishService();
-            SetupInputService();
-            
-            //Set initial shift state to on - CHANGE THIS TO BE AWARE OF SYNCHRONISING (with current key state) LOGIC IF PUBLISHING IS ON
-            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
-        }
-        
-        private void SetupAudioService()
-        {
-            audioService.Error += HandleServiceError;
-        }
-
-        private void SetupDictionaryService()
-        {
-            dictionaryService.Error += HandleServiceError;
-        }
-        
-        private void SetupPublishService()
-        {
-            publishService.Error += HandleServiceError;
-        }
-
-        private void SetupInputService()
-        {
-            Log.Debug("Initialising InputService.");
-
-            inputService.Error += HandleServiceError;
-
-            inputService.KeyEnabledStates = keyEnabledStates;
-
-            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
-                .Subscribe(value => CapturingMultiKeySelection = value);
-
-            inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
-
-            inputService.CurrentPosition += (o, tuple) =>
-            {
-                CurrentPositionPoint = tuple.Item1;
-                CurrentPositionKey = tuple.Item2;
-            };
-
-            inputService.SelectionProgress += (o, progress) =>
-            {
-                if (progress.Item2 == 0)
-                {
-                    ResetSelectionProgress();
-                }
-                else if (progress.Item1 != null)
-                {
-                    if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.Value.KeyValue != null)
-                    {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
-                            new NotifyingProxy<double>(progress.Item2);
-                    }
-                    else if (SelectionMode == SelectionModes.Point)
-                    {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
-                    }
-                }
-            };
-
-            inputService.Selection += (o, value) =>
-            {
-                Log.Debug("Selection event received from InputService.");
-
-                SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
-
-                if (!CapturingMultiKeySelection)
-                {
-                    audioService.PlaySound(Settings.Default.SelectionSoundFile);
-                }
-
-                if (SelectionMode == SelectionModes.Key
-                    && value.KeyValue != null)
-                {
-                    if (KeySelection != null)
-                    {
-                        Log.Debug(string.Format("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value));
-                        KeySelection(this, value.KeyValue.Value);
-                    }
-                }
-                else if (SelectionMode == SelectionModes.Point)
-                {
-                    //TODO: Handle point selection
-                }
-            };
-
-            inputService.SelectionResult += (o, tuple) =>
-            {
-                Log.Debug("SelectionResult event received from InputService.");
-
-                var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue { FunctionKey = tuple.Item2, String = tuple.Item3 }
-                    : (KeyValue?)null;
-                var multiKeySelection = tuple.Item4;
-
-                SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
-
-                if (SelectionMode == SelectionModes.Key
-                    && (singleKeyValue != null || (multiKeySelection != null && multiKeySelection.Any())))
-                {
-                    KeySelectionResult(singleKeyValue, multiKeySelection);
-                }
-                else if (SelectionMode == SelectionModes.Point)
-                {
-                    //TODO: Handle point selection result
-                }
-            };
-        }
-
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
             //Single key string
@@ -570,17 +576,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
-                    case FunctionKeys.PublishKeyboard:
-                        Log.Debug("Changing keyboard to Publish.");
-                        Keyboard = new Publish();
+                    case FunctionKeys.PhysicalKeysKeyboard:
+                        Log.Debug("Changing keyboard to PhysicalKeys.");
+                        Keyboard = new PhysicalKeys();
                         break;
 
                     case FunctionKeys.Speak:
-                        audioService.Speak(
-                            OutputService.Text, 
-                            Settings.Default.SpeechVolume, 
-                            Settings.Default.SpeechRate, 
-                            Settings.Default.SpeechVoice);
+                        if (audioService != null)
+                        {
+                            audioService.Speak(
+                                OutputService.Text,
+                                Settings.Default.SpeechVolume,
+                                Settings.Default.SpeechRate,
+                                Settings.Default.SpeechVoice);
+                        }
                         break;
 
                     case FunctionKeys.Symbols2Keyboard:
@@ -649,7 +658,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             var possibleEntries = OutputService.Text.ExtractWordsAndLines();
 
-            if (possibleEntries != null)
+            if (possibleEntries != null
+                && dictionaryService != null)
             {
                 var candidates = possibleEntries.Where(pe => !dictionaryService.ExistsInDictionary(pe)).ToList();
 
@@ -667,7 +677,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
                     });
 
-                    audioService.PlaySound(Settings.Default.InfoSoundFile);
+                    if (audioService != null)
+                    {
+                        audioService.PlaySound(Settings.Default.InfoSoundFile);
+                    }
                 }
             }
             else
@@ -680,13 +693,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
                 });
 
-                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                if (audioService != null)
+                {
+                    audioService.PlaySound(Settings.Default.InfoSoundFile);
+                }
             }
         }
 
         private void PromptToAddCandidatesToDictionary(List<string> candidates, IKeyboard originalKeyboard)
         {
-            if (candidates.Any())
+            if (candidates.Any()
+                && dictionaryService != null)
             {
                 var candidate = candidates.First();
 
@@ -716,13 +733,16 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     prompt,
                     () =>
                     {
-                        dictionaryService.AddNewEntryToDictionary(candidate);
-
-                        NotificationRequest.Raise(new Notification
+                        if (dictionaryService != null)
                         {
-                            Title = "Added",
-                            Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
-                        });
+                            dictionaryService.AddNewEntryToDictionary(candidate);
+
+                            NotificationRequest.Raise(new Notification
+                            {
+                                Title = "Added",
+                                Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
+                            });
+                        }
 
                         nextAction();
                     },
@@ -846,7 +866,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 Content = exception.Message
             });
 
-            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+            if (audioService != null)
+            {
+                audioService.PlaySound(Settings.Default.ErrorSoundFile);
+            }
         }
 
         #endregion

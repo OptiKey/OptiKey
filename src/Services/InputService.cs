@@ -60,7 +60,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             set
             {
-                Log.Debug("PointToKeyValueMap property changed (setter called).");
+                Log.Debug(string.Format("PointToKeyValueMap property changed (setter called with {0} map).", value != null ? "non-null" : "null"));
 
                 if (pointAndKeyValueSource != null)
                 {
