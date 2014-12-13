@@ -24,6 +24,8 @@ Fonts, icons and other artwork:
   Lock icon: Lock designed by Ugur Akdemir from the Noun Project (thenounproject.com)
   Settings icon: Settings by Mundo from the Noun Project (thenounproject.com)
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
+  Accented Letters icon: World by Janique Le Bail from the Noun Project (thenounproject.com)
+  Currencies icon: Money by Piotrek Chuchla from the Noun Project (thenounproject.com)
 
 Sound effects - royalty free from:
 	soundbible.com
