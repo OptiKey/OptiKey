@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.More"
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.SettingCategories"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -26,46 +26,49 @@
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource AccentedLettersIcon}"
-                      Text="á → ž"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                      SymbolGeometry="{StaticResource ThemeSettingsIcon}"
+                      Text="THEME &amp; FONTS"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlternativeAlpha1Keyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ThemeSettingsKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
-                      SymbolGeometry="{StaticResource CurrenciesIcon}"
-                      Text="£ → €"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                      SymbolGeometry="{StaticResource LayoutSettingsIcon}"
+                      Text="LAYOUT, POSITION  &amp; SIZE"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LayoutSettingsKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="2"
-                      SymbolGeometry="{StaticResource PhysicalKeysIcon}"
-                      Text="F1 → ESC"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                      SymbolGeometry="{StaticResource WordSettingsIcon}"
+                      Text="WORDS"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.WordSettingsKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
 
         <controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="CALIBRATE"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
-            <!--<controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
-            </controls:Key.Value>-->
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource SettingsIcon}"
-                      Text="SETTINGS"
+                      SymbolGeometry="{StaticResource SoundSettingsIcon}"
+                      Text="SOUNDS"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SettingCategoriesKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SoundSettingsKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="1"
+                      SymbolGeometry="{StaticResource PointingAndSelectingSettingsIcon}"
+                      Text="POINTING &amp; SELECTION"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      IsEnabled="False">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PointingAndSelectingSettingsKeyboard}" />
             </controls:Key.Value>    
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"

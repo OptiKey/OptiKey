@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for Symbols3.xaml
+    /// Interaction logic for NumericAndSymbols2.xaml
     /// </summary>
-    public partial class Symbols3 : UserControl
+    public partial class NumericAndSymbols2 : UserControl
     {
-        public Symbols3()
+        public NumericAndSymbols2()
         {
             InitializeComponent();
         }

@@ -27,7 +27,12 @@ Fonts, icons and other artwork:
   Accented Letters icon: World by Janique Le Bail from the Noun Project (thenounproject.com)
   Currencies icon: Money by Piotrek Chuchla from the Noun Project (thenounproject.com)
   Physical Keys icon: Keybord by Arthur Shlain from the Noun Project (thenounproject.com)
-
+  Theme Settings icon: Graphic-Design by Anna Weiss from the Noun Project (thenounproject.com) and Lowercase-Text by iconsmind.com from the Noun Project (thenounproject.com)
+  Layout Settings icon: News-Layout by Mike Rowe from the Noun Project (thenounproject.com)
+  Word Settings icon: Left-Quote by P.J. Onori from the Noun Project (thenounproject.com)
+  Sound Settings icon: Sound by Dimitry Sunseifer from the Noun Project (thenounproject.com)
+  Pointing & Selecting Settings icon: Pointer by Arthur Shlain from the Noun Project (thenounproject.com)
+  
 Sound effects - royalty free from:
 	soundbible.com
 	soundjig.com

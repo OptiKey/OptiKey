@@ -1,10 +1,10 @@
 ﻿namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
 {
-    public class More : IKeyboard, INavigableKeyboard
+    public class SettingCategories : IKeyboard, INavigableKeyboard
     {
         private readonly IKeyboard back;
 
-        public More(IKeyboard back)
+        public SettingCategories(IKeyboard back)
         {
             this.back = back;
         }

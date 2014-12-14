@@ -26,24 +26,21 @@ Add settings
 		* include ability to move and resize keyboard
 	? normal settings (hotkey window)
 	
-Look & feel:		
+Theme:		
 Theme	System.String	/Resources/Themes/Android_Dark.xaml
 FontFamily	System.String	/Resources/Fonts/#Roboto
 FontStretch	System.String	Condensed
 FontWeight	System.String	Regular
-ScratchpadNumberOfLines	System.Int32	2
-ToastNotificationTitleFontSize	System.Int32	25
-ToastNotificationContentFontSize	System.Int32	16
-ToastNotificationCharactersPerLine	System.Int32	50
-ToastNotificationSecondsPerLine	System.Int32	2
-ToastNotificationAdditionalSeconds	System.Int32	2
 		
-Position:		
+Layout:
 MainWindowTop	System.Double	0
 MainWindowLeft	System.Double	0
 MainWindowHeight	System.Double	400
 MainWindowWidth	System.Double	800
 MainWindowState	System.Windows.WindowState	Normal
+ScratchpadNumberOfLines	System.Int32	2
+ToastNotificationTitleFontSize	System.Int32	25
+ToastNotificationContentFontSize	System.Int32	16
 		
 Words:		
 Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
@@ -61,7 +58,7 @@ ErrorSoundFile	System.String	Resources\Sounds\Error1.wav
 MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
 MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
 		
-Pointing & Selection:		
+Pointing & Selecting:		
 PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
 PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
 PointTtl	System.TimeSpan	00:00.150
@@ -79,7 +76,7 @@ MultiKeySelectionFixationMinDwellTime	System.TimeSpan	00:00.050
 MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
 		
 Other:		
-Debug	System.Boolean	TRUE
+Debug	System.Boolean	TRUE - SHORTCUT, RATHER THAN MENU ITEM
 
 
 Recalibrate

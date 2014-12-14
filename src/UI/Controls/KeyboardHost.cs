@@ -118,26 +118,6 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.Alpha { DataContext = Keyboard };
                     }
-                    else if (Keyboard is NumericAndSymbols1)
-                    {
-                        newContent = new Views.Keyboards.English.NumericAndSymbols1 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Symbols2)
-                    {
-                        newContent = new Views.Keyboards.English.Symbols2 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Symbols3)
-                    {
-                        newContent = new Views.Keyboards.English.Symbols3 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Currencies1)
-                    {
-                        newContent = new Views.Keyboards.English.Currencies1 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Currencies2)
-                    {
-                        newContent = new Views.Keyboards.English.Currencies2 { DataContext = Keyboard };
-                    }
                     else if (Keyboard is AlternativeAlpha1)
                     {
                         newContent = new Views.Keyboards.English.AlternativeAlpha1 { DataContext = Keyboard };
@@ -150,13 +130,37 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.AlternativeAlpha3 { DataContext = Keyboard };
                     }
+                    else if (Keyboard is Currencies1)
+                    {
+                        newContent = new Views.Keyboards.English.Currencies1 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Currencies2)
+                    {
+                        newContent = new Views.Keyboards.English.Currencies2 { DataContext = Keyboard };
+                    }
                     else if (Keyboard is More)
                     {
                         newContent = new Views.Keyboards.English.More { DataContext = Keyboard };
                     }
+                    else if (Keyboard is NumericAndSymbols1)
+                    {
+                        newContent = new Views.Keyboards.English.NumericAndSymbols1 { DataContext = Keyboard };
+                    }
                     else if (Keyboard is PhysicalKeys)
                     {
                         newContent = new Views.Keyboards.English.PhysicalKeys { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is SettingCategories)
+                    {
+                        newContent = new Views.Keyboards.English.SettingCategories { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is NumericAndSymbols2)
+                    {
+                        newContent = new Views.Keyboards.English.NumericAndSymbols2 { DataContext = Keyboard };
+                    }
+                    else if (Keyboard is Symbols3)
+                    {
+                        newContent = new Views.Keyboards.English.NumericAndSymbols3 { DataContext = Keyboard };
                     }
                     else if (Keyboard is YesNoQuestion)
                     {

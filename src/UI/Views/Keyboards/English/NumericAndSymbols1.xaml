@@ -132,7 +132,7 @@
                       Text="1of3"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="Symbols2Keyboard" />
+                <models:KeyValue FunctionKey="NumericAndSymbols2Keyboard" />
             </controls:Key.Value>
         </controls:Key>
         

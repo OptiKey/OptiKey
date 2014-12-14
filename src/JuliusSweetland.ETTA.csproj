@@ -204,6 +204,8 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\SettingCategories.cs" />
     <Compile Include="UI\ViewModels\Keyboards\More.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
@@ -213,11 +215,14 @@
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Symbols2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\English\SettingCategories.xaml.cs">
+      <DependentUpon>SettingCategories.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\English\More.xaml.cs">
       <DependentUpon>More.xaml</DependentUpon>
     </Compile>
@@ -249,14 +254,14 @@
     <Compile Include="UI\Views\Keyboards\English\PhysicalKeys.xaml.cs">
       <DependentUpon>PhysicalKeys.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Symbols3.xaml.cs">
-      <DependentUpon>Symbols3.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols3.xaml.cs">
+      <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Symbols2.xaml.cs">
-      <DependentUpon>Symbols2.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols2.xaml.cs">
+      <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
@@ -311,6 +316,11 @@
     <None Include="Resources\Icons\Source Files\AccentedLetters.svg" />
     <None Include="Resources\Icons\Source Files\Currencies.svg" />
     <None Include="Resources\Icons\Source Files\PhysicalKeys.svg" />
+    <None Include="Resources\Icons\Source Files\LayoutSettings.svg" />
+    <None Include="Resources\Icons\Source Files\PointingAndSelectingSettings.svg" />
+    <None Include="Resources\Icons\Source Files\SoundSettings.svg" />
+    <None Include="Resources\Icons\Source Files\ThemeSettings.svg" />
+    <None Include="Resources\Icons\Source Files\WordSettings.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -422,6 +432,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Views\Keyboards\English\SettingCategories.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\English\More.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -462,7 +476,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Symbols3.xaml">
+    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -470,7 +484,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Symbols2.xaml">
+    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

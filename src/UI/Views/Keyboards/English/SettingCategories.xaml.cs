@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for Symbols2.xaml
+    /// Interaction logic for SettingCategories.xaml
     /// </summary>
-    public partial class Symbols2 : UserControl
+    public partial class SettingCategories : UserControl
     {
-        public Symbols2()
+        public SettingCategories()
         {
             InitializeComponent();
         }

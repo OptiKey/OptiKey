@@ -2,9 +2,10 @@
 {
     public enum FunctionKeys
     {
-        BackFromMoreKeyboard,
+        BackFromKeyboard,
         BackOne,
         BackMany,
+        Calibrate,
         PreviousSuggestions,
         NextSuggestions,
         Suggestion1,
@@ -56,17 +57,23 @@
         MultiKeySelectionEnabled,
         Sleep,
         Speak,
-        PhysicalKeysKeyboard,
         Publish,
         AlphaKeyboard,
-        NumericAndSymbols1Keyboard,
-        Symbols2Keyboard,
-        Symbols3Keyboard,
-        Currencies1Keyboard,
-        Currencies2Keyboard,
         AlternativeAlpha1Keyboard,
         AlternativeAlpha2Keyboard,
         AlternativeAlpha3Keyboard,
-        MoreKeyboard
+        Currencies1Keyboard,
+        Currencies2Keyboard,
+        ThemeSettingsKeyboard,
+        MoreKeyboard,
+        NumericAndSymbols1Keyboard,
+        NumericAndSymbols2Keyboard,
+        NumericAndSymbols3Keyboard,
+        PhysicalKeysKeyboard,
+        PointingAndSelectingSettingsKeyboard,
+        LayoutSettingsKeyboard,
+        SettingCategoriesKeyboard,
+        SoundSettingsKeyboard,
+        WordSettingsKeyboard
     }
 }

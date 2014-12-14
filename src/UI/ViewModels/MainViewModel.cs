@@ -16,7 +16,6 @@ using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
 using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
-using Symbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Symbols2;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
@@ -519,13 +518,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new AlternativeAlpha3();
                         break;
 
-                    case FunctionKeys.BackFromMoreKeyboard:
-                        Log.Debug("Reverting to 'BackFromMoreKeyboard'.");
-                        var moreKeyboard = Keyboard as More;
-                        if (moreKeyboard != null
-                            && moreKeyboard.BackToKeyboard != null)
+                    case FunctionKeys.BackFromKeyboard:
+                        Log.Debug("Navigating back from keyboard.");
+                        var navigableKeyboard = Keyboard as INavigableKeyboard;
+                        if (navigableKeyboard != null
+                            && navigableKeyboard.Back != null)
                         {
-                            Keyboard = moreKeyboard.BackToKeyboard;
+                            Keyboard = navigableKeyboard.Back;
                         }
                         else
                         {
@@ -592,12 +591,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
-                    case FunctionKeys.Symbols2Keyboard:
-                        Log.Debug("Changing keyboard to Symbols2.");
-                        Keyboard = new Symbols2();
+                    case FunctionKeys.SettingCategoriesKeyboard:
+                        Log.Debug("Changing keyboard to SettingCategories.");
+                        Keyboard = new SettingCategories(Keyboard);
                         break;
 
-                    case FunctionKeys.Symbols3Keyboard:
+                    case FunctionKeys.NumericAndSymbols2Keyboard:
+                        Log.Debug("Changing keyboard to NumericAndSymbols2.");
+                        Keyboard = new NumericAndSymbols2();
+                        break;
+
+                    case FunctionKeys.NumericAndSymbols3Keyboard:
                         Log.Debug("Changing keyboard to Symbols3.");
                         Keyboard = new Symbols3();
                         break;
