@@ -86,7 +86,7 @@ Mode/Complexity - Basic (speaking only), or Full (speaking & publishing)
 What happens if the user changes something like the points source, but it is not working - no way to change back
 	?Factory reset - just delete user settings folder?
 	?Hot keys to toggle settings, e.g. position, point source, trigger source, etc.
-		?Does the application support changing the point source at runtime? IT SHOULD.
+		!ETTA does not support changing input sources at runtime - restart required!
 
 Recalibrate
 	
