@@ -2,10 +2,11 @@
 
 OutputService changes:
 	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
-	It cannot be one of the keys which can be pressed/locked as there is seperate logic to monitor and react to that
-	It must be explicitly expected, i.e. BackOne, BackMany, SwapSuggestion, ClearOutput
-	OR be convertible to a VirtualKeyCode
-
+		Switch on explicitly expected case i.e. BackOne, BackMany, SwapSuggestion, ClearOutput
+		Default case: 
+			Cannot be one of the keys which can be pressed/locked as there is seperate logic to monitor and react to that
+			Must be convertible to a VirtualKeyCode to Publish it
+	
 	Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going to be applied like this anymore. Instead modifiers will be published automatically as they are pressed.
 		Change PublishService methods - publish VirtualKeyCode, or string
 		Remove multiple command keys; SelectAll, Copy, Cut, Paste
@@ -22,7 +23,7 @@ OutputService changes:
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 
 Prevent key capture while popup notifications are shown
-	Sleep on/off - actually I think this is insufficient as not keys should be available for selection. Add methods to KeyEnabledStates to DisableAll() and EnableAll()
+	Sleep on/off - actually I think this is insufficient as no keys should be available for selection. Add methods to KeyEnabledStates to DisableAll() and EnableAll()
 	
 Add settings
 	+ accessible settings - keyboard style
