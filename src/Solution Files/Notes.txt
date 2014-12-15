@@ -79,6 +79,15 @@ Other:
 Debug	System.Boolean	TRUE - SHORTCUT, RATHER THAN MENU ITEM
 
 
+Mode/Complexity - Basic (speaking only), or Full (speaking & publishing)
+	?Command line args - Application level property storage?
+	?Hotkey to toggle and store in Settings - e.g. Ctrl+M (mode)?
+
+What happens if the user changes something like the points source, but it is not working - no way to change back
+	?Factory reset - just delete user settings folder?
+	?Hot keys to toggle settings, e.g. position, point source, trigger source, etc.
+		?Does the application support changing the point source at runtime? IT SHOULD.
+
 Recalibrate
 	
 Dictionary management window
