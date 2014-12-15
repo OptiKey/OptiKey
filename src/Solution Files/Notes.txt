@@ -1,5 +1,12 @@
 ﻿NEXT STEPS:
 
+Abstract the IKeyboardStateManager into separate class (KeyboardService), containing;
+	KeySelectionProgress, KeyDownStates, KeyEnabledStates, Keyboard properties
+	Init key down states (etc) logic in the service
+	Disabled automatically means release key
+
+Split Suggestion properties out into SuggestionService
+
 OutputService changes:
 	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
 		Switch on explicitly expected case i.e. BackOne, BackMany, SwapSuggestion, ClearOutput
