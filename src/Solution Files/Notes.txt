@@ -20,7 +20,10 @@ OutputService changes:
 		Publish to ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 						+ publish key down for any keys with on/lock state
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
-		
+
+Prevent key capture while popup notifications are shown
+	Sleep on/off
+	
 Add settings
 	+ accessible settings - keyboard style
 		* include ability to move and resize keyboard
@@ -78,18 +81,24 @@ MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
 Other:		
 Debug	System.Boolean	TRUE - SHORTCUT, RATHER THAN MENU ITEM
 
+Hot keys/shortcut keys:
+	1. FeatureLevel - Simplified (speaking only, maybe no AddToDictionary)/Full
+		- Hotkey to toggle and store in Settings - e.g. Ctrl+F
+		- When switching to Basic mode disable everything irrelevent
+			- Publishing off (which should reset down keys)
+			- Multi-key selection off
 
-Mode/Complexity - Basic (speaking only), or Full (speaking & publishing)
-	?Command line args - Application level property storage?
-	?Hotkey to toggle and store in Settings - e.g. Ctrl+M (mode)?
+	2. What happens if the user changes something like the points source, but it is not working - no way to change back
+		(Factory reset - just delete user settings folder)
+		- Hot keys to toggle settings, e.g. position, point source, trigger source, etc.
+			!ETTA does not support changing input sources at runtime - restart required - TELL USERS IN POPUP!
 
-What happens if the user changes something like the points source, but it is not working - no way to change back
-	?Factory reset - just delete user settings folder?
-	?Hot keys to toggle settings, e.g. position, point source, trigger source, etc.
-		!ETTA does not support changing input sources at runtime - restart required!
+	3. Debug setting
 
-Recalibrate
+	4. Recalibrate
 	
+Recalibrate functionality
+
 Dictionary management window
 	+ Add
 	+ Remove
