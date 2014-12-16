@@ -1,6 +1,7 @@
 ﻿NEXT STEPS:
 
-Change ... icon to hamburger? http://thenounproject.com/term/menu/79068/
+Change "..." icon to hamburger? http://thenounproject.com/term/menu/79068/
+	+ Rename "More" to "Menu"
 
 Abstract the IKeyboardStateManager into separate class (KeyboardService), containing;
 	KeySelectionProgress, KeyDownStates, KeyEnabledStates, Keyboard properties
