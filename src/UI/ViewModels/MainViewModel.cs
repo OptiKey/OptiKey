@@ -654,11 +654,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", OutputService.Text));
 
+                    if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
+
                     NotificationRequest.Raise(new Notification
                     {
                         Title = "Hmm",
                         Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
-                    });
+                    }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
 
                     if (audioService != null)
                     {
@@ -670,11 +672,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", OutputService.Text));
 
+                if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true; 
+
                 NotificationRequest.Raise(new Notification
                 {
                     Title = "Hmm",
                     Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
-                });
+                }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
 
                 if (audioService != null)
                 {
@@ -720,11 +724,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         {
                             dictionaryService.AddNewEntryToDictionary(candidate);
 
+                            if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
+
                             NotificationRequest.Raise(new Notification
                             {
                                 Title = "Added",
                                 Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
-                            });
+                            }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
                         }
 
                         nextAction();
@@ -767,11 +773,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
+            if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
+
             ErrorNotificationRequest.Raise(new Notification
             {
                 Title = "Uh-oh!",
                 Content = exception.Message
-            });
+            }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
 
             if (audioService != null)
             {

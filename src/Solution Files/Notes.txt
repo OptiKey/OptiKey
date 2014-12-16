@@ -22,8 +22,6 @@ OutputService changes:
 						+ publish key down for any keys with on/lock state
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 
-Prevent key capture while popup notifications are shown
-	Sleep on/off - actually I think this is insufficient as no keys should be available for selection. Add methods to KeyEnabledStates to DisableAll() and EnableAll()
 
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 
