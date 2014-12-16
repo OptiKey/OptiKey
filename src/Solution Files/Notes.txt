@@ -22,6 +22,7 @@ OutputService changes:
 						+ publish key down for any keys with on/lock state
 		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
 
+Get rid of null checks on services in MainViewModel?
 
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 

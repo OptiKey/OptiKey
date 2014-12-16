@@ -14,9 +14,6 @@ using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
-using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
-using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
-using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
@@ -315,16 +312,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
 
-            //Set initial shift state to on - CHANGE THIS TO BE AWARE OF SYNCHRONISING (with current key state) LOGIC IF PUBLISHING IS ON
-            //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
+            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
 
-            EvaluateScratchpadState();
-        }
-
-        private void EvaluateScratchpadState()
-        {
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value => CalculateScratchpadIsDisabled()));
+                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
+                    .Subscribe(value => CalculateScratchpadIsDisabled()));
 
             CalculateScratchpadIsDisabled();
         }
@@ -466,7 +458,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             if (singleKeyValue.FunctionKey != null)
             {
-                ProgressKeyDownState(singleKeyValue);
+                keyboardService.ProgressKeyDownState(singleKeyValue);
 
                 switch (singleKeyValue.FunctionKey.Value)
                 {
@@ -599,39 +591,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         OutputService.ProcessCapture(singleKeyValue.FunctionKey.Value);
                         break;
                 }
-            }
-        }
-
-        private void ProgressKeyDownState(KeyValue keyValue)
-        {
-            if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
-            {
-                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to DOWN.", keyValue));
-                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
-            }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                     && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
-            {
-                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue));
-                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
-            {
-                Log.Debug(string.Format("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue));
-                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
-            }
-            else
-            {
-                Log.Debug(string.Format("Changing key down state of '{0}' key from {1} to UP.", keyValue,
-                    keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
-                        ? "UP"
-                        : keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
-                            ? "DOWN"
-                            : "LOCKED DOWN"));
-                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
             }
         }
 

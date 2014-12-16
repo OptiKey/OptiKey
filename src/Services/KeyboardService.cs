@@ -11,6 +11,8 @@ namespace JuliusSweetland.ETTA.Services
 {
     public class KeyboardService : BindableBase, IKeyboardService
     {
+        #region Fields
+
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
@@ -19,9 +21,17 @@ namespace JuliusSweetland.ETTA.Services
 
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
 
+        #endregion
+
+        #region Properties
+
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
         public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
+
+        #endregion
+
+        #region Ctor
 
         public KeyboardService(ISuggestionService suggestionService, ICapturingStateManager capturingStateManager)
         {
@@ -32,6 +42,47 @@ namespace JuliusSweetland.ETTA.Services
             InitialiseKeyDownStates();
             AddKeyDownStatesChangeHandlers();
         }
+
+        #endregion
+
+        #region Public Methods
+
+        public void ProgressKeyDownState(KeyValue keyValue)
+        {
+            if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+            }
+            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                     && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+            }
+            else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+            }
+            else
+            {
+                Log.Debug(string.Format("Changing key down state of '{0}' key from {1} to UP.", keyValue,
+                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
+                        ? "UP"
+                        : KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
+                            ? "DOWN"
+                            : "LOCKED DOWN"));
+                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private void InitialiseKeyDownStates()
         {
@@ -103,5 +154,7 @@ namespace JuliusSweetland.ETTA.Services
                 turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = false;
             }
         }
+
+        #endregion
     }
 }
