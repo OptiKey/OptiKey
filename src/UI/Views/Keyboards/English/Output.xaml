@@ -64,9 +64,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>0</system:Int32>
@@ -82,9 +82,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>1</system:Int32>
@@ -100,9 +100,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>2</system:Int32>
@@ -118,9 +118,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>3</system:Int32>
@@ -136,9 +136,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>4</system:Int32>
@@ -154,9 +154,9 @@
                       SharedSizeGroup="KeyWithSuggestion">
             <controls:Key.Text>
                 <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionService" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                    <Binding Path="DataContext.SuggestionServicePerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
                     <Binding>
                         <Binding.Source>
                             <system:Int32>5</system:Int32>

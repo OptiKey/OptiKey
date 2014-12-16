@@ -11,6 +11,7 @@ using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
+using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
 
 namespace JuliusSweetland.ETTA.UI.Controls
 {
@@ -138,9 +139,9 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     {
                         newContent = new Views.Keyboards.English.Currencies2 { DataContext = Keyboard };
                     }
-                    else if (Keyboard is More)
+                    else if (Keyboard is Menu)
                     {
-                        newContent = new Views.Keyboards.English.More { DataContext = Keyboard };
+                        newContent = new Views.Keyboards.English.Menu { DataContext = Keyboard };
                     }
                     else if (Keyboard is NumericAndSymbols1)
                     {

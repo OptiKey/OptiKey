@@ -34,25 +34,33 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 ? keyboardHost.DataContext as MainViewModel
                 : null;
 
-            if (mainViewModel != null)
+            var keyboardService = mainViewModel != null
+                ? mainViewModel.KeyboardService
+                : null;
+
+            var capturingStateManager = mainViewModel != null
+                ? mainViewModel as ICapturingStateManager
+                : null;
+
+            if (keyboardService != null)
             {
                 //Calculate KeyDownState
-                mainViewModel.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+                keyboardService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
                     .Subscribe(value => KeyDownState = value);
 
-                KeyDownState = mainViewModel.KeyDownStates[Value].Value;
+                KeyDownState = keyboardService.KeyDownStates[Value].Value;
 
                 //Calculate SelectionProgress
-                mainViewModel.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+                keyboardService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
                     .Subscribe(value => SelectionProgress = value);
 
-                SelectionProgress = mainViewModel.KeySelectionProgress[Value].Value;
+                SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
 
                 //Calculate IsEnabled
-                mainViewModel.KeyEnabledStates.OnAnyPropertyChanges()
-                    .Subscribe(value => IsEnabled = mainViewModel.KeyEnabledStates[Value]);
+                keyboardService.KeyEnabledStates.OnAnyPropertyChanges()
+                    .Subscribe(value => IsEnabled = keyboardService.KeyEnabledStates[Value]);
 
-                IsEnabled = mainViewModel.KeyEnabledStates[Value];
+                IsEnabled = keyboardService.KeyEnabledStates[Value];
                 
                 //Calculate IsCurrent
                 Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
@@ -68,15 +76,15 @@ namespace JuliusSweetland.ETTA.UI.Controls
                         DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
                         || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
 
-                mainViewModel.OnPropertyChanges(vm => vm.CapturingMultiKeySelection)
-                    .Subscribe(value => calculateDisplayShiftDownText(mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
+                capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
+                    .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
 
-                mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
+                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
                     .Subscribe(value => calculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
 
                 calculateDisplayShiftDownText(
-                    mainViewModel.KeyDownStates[KeyValues.LeftShiftKey].Value,
-                    mainViewModel.CapturingMultiKeySelection);
+                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,
+                    capturingStateManager.CapturingMultiKeySelection);
 
                 //Publish own version of KeySelection event
                 mainViewModel.KeySelection += (o, value) =>

@@ -1,0 +1,29 @@
+﻿using System.Collections.Generic;
+using Microsoft.Practices.Prism.Mvvm;
+
+namespace JuliusSweetland.ETTA.Services
+{
+    public class SuggestionService : BindableBase, ISuggestionService
+    {
+        private List<string> suggestions;
+        public List<string> Suggestions
+        {
+            get { return suggestions; }
+            set { SetProperty(ref suggestions, value); }
+        }
+
+        private int suggestionsPage;
+        public int SuggestionsPage
+        {
+            get { return suggestionsPage; }
+            set { SetProperty(ref suggestionsPage, value); }
+        }
+
+        private int suggestionsPerPage;
+        public int SuggestionsPerPage
+        {
+            get { return suggestionsPerPage; }
+            set { SetProperty(ref suggestionsPerPage, value); }
+        }
+    }
+}

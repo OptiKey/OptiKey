@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for More.xaml
+    /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class More : UserControl
+    public partial class Menu : UserControl
     {
-        public More()
+        public Menu()
         {
             InitializeComponent();
         }

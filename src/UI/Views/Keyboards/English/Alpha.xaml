@@ -200,10 +200,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MoreIcon}"
+                      SymbolGeometry="{StaticResource MenuIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoreKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
 

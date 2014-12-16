@@ -20,15 +20,12 @@ using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class MainViewModel : BindableBase, IKeyboardStateManager
+    public class MainViewModel : BindableBase, ICapturingStateManager
     {
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
-        private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
-        private readonly KeyEnabledStates keyEnabledStates;
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
 
@@ -40,11 +37,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private IAudioService audioService;
         private IDictionaryService dictionaryService;
-        private IInputService inputService;
         private IPublishService publishService;
+        private IKeyboardService keyboardService;
+        private ISuggestionService suggestionService;
+        private IInputService inputService;
         private IOutputService outputService;
-
-        private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
         #endregion
 
@@ -54,16 +51,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("Ctor called.");
 
-            keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
-            keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this);
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
 
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
-            InitialiseKeyDownStates();
-            AddKeyDownStatesChangeHandlers();
         }
 
         #endregion
@@ -86,6 +78,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             get { return outputService; }
             set { SetProperty(ref outputService, value); }
+        }
+
+        public IKeyboardService KeyboardService
+        {
+            get { return keyboardService; }
+            set { SetProperty(ref keyboardService, value); }
+        }
+
+        public ISuggestionService SuggestionService
+        {
+            get { return suggestionService; }
+            set { SetProperty(ref suggestionService, value); }
         }
 
         private IKeyboard keyboard;
@@ -177,11 +181,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress
-        {
-            get { return keySelectionProgress; }
-        }
-
         private List<Point> selectionResultPoints;
         public List<Point> SelectionResultPoints
         {
@@ -196,16 +195,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref pointsPerSecond, value); }
         }
 
-        public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates
-        {
-            get { return keyDownStates; }
-        }
-
-        public KeyEnabledStates KeyEnabledStates
-        {
-            get { return keyEnabledStates; }
-        }
-
         private bool scratchpadIsDisabled;
         public bool ScratchpadIsDisabled
         {
@@ -213,36 +202,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref scratchpadIsDisabled, value); }
         }
 
-        private List<string> suggestions;
-        public List<string> Suggestions
-        {
-            get { return suggestions; }
-            set { SetProperty(ref suggestions, value); }
-        }
-
-        private int suggestionsPage;
-        public int SuggestionsPage
-        {
-            get { return suggestionsPage; }
-            set { SetProperty(ref suggestionsPage, value); }
-        }
-
-        private int suggestionsPerPage;
-        public int SuggestionsPerPage
-        {
-            get { return suggestionsPerPage; }
-            set { SetProperty(ref suggestionsPerPage, value); }
-        }
-
-        public InteractionRequest<Notification> NotificationRequest
-        {
-            get { return notificationRequest; }
-        }
-
-        public InteractionRequest<Notification> ErrorNotificationRequest
-        {
-            get { return errorNotificationRequest; }
-        }
+        public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
+        public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
 
         #endregion
 
@@ -254,16 +215,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             audioService = new AudioService();
             dictionaryService = new DictionaryService();
-            InputService = CreateInputService();
             publishService = new PublishService();
-            OutputService = new OutputService(this, publishService, dictionaryService);
+            SuggestionService = new SuggestionService();
+            keyboardService = new KeyboardService(suggestionService, this);
+            InputService = CreateInputService();
+            OutputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
 
             audioService.Error += HandleServiceError;
             dictionaryService.Error += HandleServiceError;
             publishService.Error += HandleServiceError;
             inputService.Error += HandleServiceError;
 
-            inputService.KeyEnabledStates = keyEnabledStates;
+            inputService.KeyEnabledStates = keyboardService.KeyEnabledStates;
 
             inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
                         .Subscribe(value => CapturingMultiKeySelection = value);
@@ -287,8 +250,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
-                            new NotifyingProxy<double>(progress.Item2);
+                        if (KeyboardService != null)
+                        {
+                            KeyboardService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                                new NotifyingProxy<double>(progress.Item2);
+                        }
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
@@ -351,6 +317,16 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             //Set initial shift state to on - CHANGE THIS TO BE AWARE OF SYNCHRONISING (with current key state) LOGIC IF PUBLISHING IS ON
             //HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey);
+
+            EvaluateScratchpadState();
+        }
+
+        private void EvaluateScratchpadState()
+        {
+            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
+                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value => CalculateScratchpadIsDisabled()));
+
+            CalculateScratchpadIsDisabled();
         }
 
         private IInputService CreateInputService()
@@ -455,7 +431,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         + "Please correct and restart ETTA.");
             }
 
-            return new InputService(this, dictionaryService, audioService,
+            return new InputService(keyboardService, dictionaryService, audioService,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
         
@@ -542,9 +518,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Currencies2();
                         break;
 
-                    case FunctionKeys.MoreKeyboard:
-                        Log.Debug("Changing keyboard to More.");
-                        Keyboard = new More(Keyboard);
+                    case FunctionKeys.MenuKeyboard:
+                        Log.Debug("Changing keyboard to Menu.");
+                        Keyboard = new Menu(Keyboard);
                         break;
 
                     case FunctionKeys.NoQuestionResult:
@@ -559,19 +535,22 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.NextSuggestions:
                         Log.Debug("Incrementing suggestions page.");
 
-                        if (Suggestions != null
-                            && (Suggestions.Count > (SuggestionsPage + 1) * SuggestionsPerPage))
+                        if (suggestionService != null
+                            && suggestionService.Suggestions != null
+                            && (suggestionService.Suggestions.Count >
+                                (suggestionService.SuggestionsPage + 1) * SuggestionService.SuggestionsPerPage))
                         {
-                            SuggestionsPage++;
+                            suggestionService.SuggestionsPage++;
                         }
                         break;
 
                     case FunctionKeys.PreviousSuggestions:
                         Log.Debug("Decrementing suggestions page.");
 
-                        if (SuggestionsPage > 0)
+                        if (suggestionService != null
+                            && suggestionService.SuggestionsPage > 0)
                         {
-                            SuggestionsPage--;
+                            suggestionService.SuggestionsPage--;
                         }
                         break;
 
@@ -626,33 +605,33 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void ProgressKeyDownState(KeyValue keyValue)
         {
             if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
             {
                 Log.Debug(string.Format("Changing key down state of '{0}' key from UP to DOWN.", keyValue));
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
+                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
             }
             else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
                      && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
+                     && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
             {
                 Log.Debug(string.Format("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue));
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
             }
             else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
+                     && keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
             {
                 Log.Debug(string.Format("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue));
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
+                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
             }
             else
             {
                 Log.Debug(string.Format("Changing key down state of '{0}' key from {1} to UP.", keyValue,
-                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
+                    keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
                         ? "UP"
-                        : KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
+                        : keyboardService.KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
                             ? "DOWN"
                             : "LOCKED DOWN"));
-                KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                keyboardService.KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
             }
         }
 
@@ -771,93 +750,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 }
             }
         }
-
-        private void InitialiseKeyDownStates()
-        {
-            Log.Debug("Initialising KeyDownStates.");
-
-            KeyDownStates[KeyValues.PublishKey].Value =
-                Settings.Default.PublishingKeys ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
-            
-            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
-                Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
-        }
-
-        private void AddKeyDownStatesChangeHandlers()
-        {
-            Log.Debug("Adding KeyDownStates change handlers.");
-
-            KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-            {
-                Settings.Default.PublishingKeys = KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown();
-                ReleasePublishOnlyKeysIfNotPublishing();
-            });
-
-            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown());
-            
-            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv => 
-                KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                {
-                    CalculateMultiKeySelectionSupported();
-                    CalculateScratchpadIsDisabled();
-                }));
-            
-            ReleasePublishOnlyKeysIfNotPublishing();
-            CalculateMultiKeySelectionSupported();
-            CalculateScratchpadIsDisabled();
-        }
-
-        private void ReleasePublishOnlyKeysIfNotPublishing()
-        {
-            Log.Debug("ReleasePublishOnlyKeysIfNotPublishing called.");
-
-            if (!KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
-            {
-                foreach (var keyValue in KeyDownStates.Keys)
-                {
-                    if (KeyValues.PublishOnlyKeys.Contains(keyValue)
-                        && KeyDownStates[keyValue].Value.IsDownOrLockedDown())
-                    {
-                        Log.Debug(string.Format("Releasing '{0}' as we are not publishing.", keyValue));
-                        KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
-                    }
-                }
-            }
-        }
-
-        private void CalculateMultiKeySelectionSupported()
-        {
-            Log.Debug("CalculateMultiKeySelectionSupported called.");
-
-            if (KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown()
-                && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
-            {
-                Log.Debug("A key which prevents text capture is down - toggling MultiKeySelectionEnabled to false.");
-
-                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
-                turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = true;
-            }
-            else if (turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased
-                && !KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
-            {
-                Log.Debug("No keys which prevents text capture is down - returing setting MultiKeySelectionEnabled to true.");
-
-                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.LockedDown;
-                turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = false;
-            }
-        }
-
+        
         private void CalculateScratchpadIsDisabled()
         {
-            ScratchpadIsDisabled = 
-                KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown());
+            ScratchpadIsDisabled = KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => 
+                keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
         }
 
         private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
-            KeySelectionProgress.Clear();
+            keyboardService.KeySelectionProgress.Clear();
         }
 
         private void HandleServiceError(object sender, Exception exception)

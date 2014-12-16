@@ -1,15 +1,5 @@
 ﻿NEXT STEPS:
 
-Change "..." icon to hamburger? http://thenounproject.com/term/menu/79068/
-	+ Rename "More" to "Menu"
-
-Abstract the IKeyboardStateManager into separate class (KeyboardService), containing;
-	KeySelectionProgress, KeyDownStates, KeyEnabledStates, Keyboard properties
-	Init key down states (etc) logic in the service
-	Disabled key automatically sets key down state (if down/locked) to up). External logic can manage it being reinstated.
-
-Split Suggestion properties out into SuggestionService
-
 OutputService changes:
 	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
 		Switch on explicitly expected case i.e. BackOne, BackMany, SwapSuggestion, ClearOutput

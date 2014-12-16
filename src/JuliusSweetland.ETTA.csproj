@@ -147,7 +147,9 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
-    <Compile Include="Models\IKeyboardStateManager.cs" />
+    <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Services\KeyboardService.cs" />
+    <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
     <Compile Include="Models\VirtualKeyCodeSet.cs" />
@@ -184,9 +186,11 @@
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
+    <Compile Include="Services\ISuggestionService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
+    <Compile Include="Services\SuggestionService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -206,7 +210,7 @@
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SettingCategories.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\More.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
@@ -223,8 +227,8 @@
     <Compile Include="UI\Views\Keyboards\English\SettingCategories.xaml.cs">
       <DependentUpon>SettingCategories.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\More.xaml.cs">
-      <DependentUpon>More.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml.cs">
       <DependentUpon>AlternativeAlpha3.xaml</DependentUpon>
@@ -321,6 +325,7 @@
     <None Include="Resources\Icons\Source Files\SoundSettings.svg" />
     <None Include="Resources\Icons\Source Files\ThemeSettings.svg" />
     <None Include="Resources\Icons\Source Files\WordSettings.svg" />
+    <None Include="Resources\Icons\Source Files\Menu.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -436,7 +441,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\More.xaml">
+    <Page Include="UI\Views\Keyboards\English\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

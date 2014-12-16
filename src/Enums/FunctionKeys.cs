@@ -65,7 +65,7 @@
         Currencies1Keyboard,
         Currencies2Keyboard,
         ThemeSettingsKeyboard,
-        MoreKeyboard,
+        MenuKeyboard,
         NumericAndSymbols1Keyboard,
         NumericAndSymbols2Keyboard,
         NumericAndSymbols3Keyboard,
