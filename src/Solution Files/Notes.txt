@@ -1,5 +1,7 @@
 ﻿NEXT STEPS:
 
+Change ... icon to hamburger? http://thenounproject.com/term/menu/79068/
+
 Abstract the IKeyboardStateManager into separate class (KeyboardService), containing;
 	KeySelectionProgress, KeyDownStates, KeyEnabledStates, Keyboard properties
 	Init key down states (etc) logic in the service
