@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Extensions
 {
@@ -50,164 +48,164 @@ namespace JuliusSweetland.ETTA.Extensions
 
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
         //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
-        public static VirtualKeyCodeSet? ToVirtualKeyCodeSet(this char character)
+        public static VirtualKeyCode? ToVirtualKeyCode(this char character)
         {
             switch (character)
             {
                 case 'a':
                 case 'A':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_A}};
+                    return VirtualKeyCode.VK_A;
 
                 case 'b':
                 case 'B':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_B}};
+                    return VirtualKeyCode.VK_B;
 
                 case 'c':
                 case 'C':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_C}};
+                    return VirtualKeyCode.VK_C;
 
                 case 'd':
                 case 'D':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_D}};
+                    return VirtualKeyCode.VK_D;
 
                 case 'e':
                 case 'E':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_E}};
+                    return VirtualKeyCode.VK_E;
 
                 case 'f':
                 case 'F':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_F}};
+                    return VirtualKeyCode.VK_F;
 
                 case 'g':
                 case 'G':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_G}};
+                    return VirtualKeyCode.VK_G;
 
                 case 'h':
                 case 'H':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_H}};
+                    return VirtualKeyCode.VK_H;
 
                 case 'i':
                 case 'I':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_I}};
+                    return VirtualKeyCode.VK_I;
 
                 case 'j':
                 case 'J':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_J}};
+                    return VirtualKeyCode.VK_J;
 
                 case 'k':
                 case 'K':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_K}};
+                    return VirtualKeyCode.VK_K;
 
                 case 'l':
                 case 'L':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_L}};
+                    return VirtualKeyCode.VK_L;
 
                 case 'm':
                 case 'M':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_M}};
+                    return VirtualKeyCode.VK_M;
 
                 case 'n':
                 case 'N':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_N}};
+                    return VirtualKeyCode.VK_N;
 
                 case 'o':
                 case 'O':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_O}};
+                    return VirtualKeyCode.VK_O;
 
                 case 'p':
                 case 'P':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_P}};
+                    return VirtualKeyCode.VK_P;
 
                 case 'q':
                 case 'Q':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_Q}};
+                    return VirtualKeyCode.VK_Q;
 
                 case 'r':
                 case 'R':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_R}};
+                    return VirtualKeyCode.VK_R;
 
                 case 's':
                 case 'S':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_S}};
+                    return VirtualKeyCode.VK_S;
 
                 case 't':
                 case 'T':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_T}};
+                    return VirtualKeyCode.VK_T;
 
                 case 'u':
                 case 'U':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_U}};
+                    return VirtualKeyCode.VK_U;
 
                 case 'v':
                 case 'V':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_V}};
+                    return VirtualKeyCode.VK_V;
 
                 case 'w':
                 case 'W':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_W}};
+                    return VirtualKeyCode.VK_W;
 
                 case 'x':
                 case 'X':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_X}};
+                    return VirtualKeyCode.VK_X;
 
                 case 'y':
                 case 'Y':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_Y}};
+                    return VirtualKeyCode.VK_Y;
 
                 case 'z':
                 case 'Z':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_Z}};
+                    return VirtualKeyCode.VK_Z;
 
                 case '1':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_1}};
+                    return VirtualKeyCode.VK_1;
 
                 case '2':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_2}};
+                    return VirtualKeyCode.VK_2;
 
                 case '3':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_3}};
+                    return VirtualKeyCode.VK_3;
 
                 case '4':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_4}};
+                    return VirtualKeyCode.VK_4;
 
                 case '5':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_5}};
+                    return VirtualKeyCode.VK_5;
 
                 case '6':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_6}};
+                    return VirtualKeyCode.VK_6;
 
                 case '7':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_7}};
+                    return VirtualKeyCode.VK_7;
 
                 case '8':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_8}};
+                    return VirtualKeyCode.VK_8;
 
                 case '9':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_9}};
+                    return VirtualKeyCode.VK_9;
 
                 case '0':
-                    return new VirtualKeyCodeSet {KeyCodes = new List<VirtualKeyCode> {VirtualKeyCode.VK_0}};
+                    return VirtualKeyCode.VK_0;
 
                 case ' ':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.SPACE } };
+                    return VirtualKeyCode.SPACE ;
 
                 case '\t':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.TAB } };
+                    return VirtualKeyCode.TAB ;
 
                 case '\n':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.RETURN } };
+                    return VirtualKeyCode.RETURN ;
 
                 case ',':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.OEM_COMMA } };
+                    return VirtualKeyCode.OEM_COMMA ;
 
                 case '.':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.OEM_PERIOD } };
+                    return VirtualKeyCode.OEM_PERIOD ;
 
                 case '+':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.OEM_PLUS } };
+                    return VirtualKeyCode.OEM_PLUS ;
 
                 case '-':
-                    return new VirtualKeyCodeSet { KeyCodes = new List<VirtualKeyCode> { VirtualKeyCode.OEM_MINUS } };
+                    return VirtualKeyCode.OEM_MINUS ;
 
                 default:
                     return null;

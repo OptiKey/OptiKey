@@ -1,28 +1,12 @@
 ﻿NEXT STEPS:
 
-OutputService changes:
-	Pass everything (function keys) to output service. It should make a decision if the key is useful, i.e.
-		Switch on explicitly expected case i.e. BackOne, BackMany, SwapSuggestion, ClearOutput
-		Default case: 
-			Cannot be one of the keys which can be pressed/locked as there is seperate logic to monitor and react to that
-			Must be convertible to a VirtualKeyCode to Publish it
-	
-	Remove OutputService.PublishModifiedVirtualKeyCodeSet - modifiers are not going to be applied like this anymore. Instead modifiers will be published automatically as they are pressed.
-		Change PublishService methods - publish VirtualKeyCode, or string
-		Remove multiple command keys; SelectAll, Copy, Cut, Paste
-		Refactor to remove VirtualKeyCodeSet
-
-	Change OutputService interface: Output(FunctionKey/String)
-	OutputService should monitor KeyDownStates and publish key down/up when states change to On/Off
-	Rename ReleaseUnlockedModifiers to ReleaseUnlockedKeys
-	ReleaseUnlockedModifiers(); every time Output is called as a key was pressed.
-		Modifiers (Shift,Ctrl,Alt,Win) should no longer ReleaseUnlockedKeys as they are not passed to OutputService directly.
-	Sync key down state:
-		Publish to ON = release all potentially held keys (check state for every virtualkeycode and release if down)
-						+ publish key down for any keys with on/lock state
-		Publish to OFF/Shutdown if publish is ON = release all potentially held keys (check state for every virtualkeycode and release if down)
-
-Get rid of null checks on services in MainViewModel?
+Test changes to publish and output services:
+	Key down/up should publish accordingly
+	Publish on/off should reset all down keys and then publish any which are now down
+	Application exit should release all down keys if publishing
+	Check I can publish strings of keys, e.g. Ctrl+A, Alt+Tab, single key presses (e.g. Win)
+	Test when keys are released (e.g. press down shift, ctrl and then press a key to release shift/ctrl)
+	Test down keys are not released for other keys, e.g. MultiKeySelectionEnabled/Publish keys
 
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 

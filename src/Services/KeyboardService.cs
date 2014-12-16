@@ -23,14 +23,6 @@ namespace JuliusSweetland.ETTA.Services
 
         #endregion
 
-        #region Properties
-
-        public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
-        public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
-        public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
-
-        #endregion
-
         #region Ctor
 
         public KeyboardService(ISuggestionService suggestionService, ICapturingStateManager capturingStateManager)
@@ -42,6 +34,14 @@ namespace JuliusSweetland.ETTA.Services
             InitialiseKeyDownStates();
             AddKeyDownStatesChangeHandlers();
         }
+
+        #endregion
+
+        #region Properties
+
+        public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
+        public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
+        public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
 
         #endregion
 

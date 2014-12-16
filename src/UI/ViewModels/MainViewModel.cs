@@ -104,7 +104,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     pointToKeyValueMap = value;
 
-                    if (inputService != null)
+                    if (inputService != null) //This can be called before Initialise()
                     {
                         inputService.PointToKeyValueMap = value;
                     }
@@ -144,12 +144,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     Log.Debug(string.Format("CapturingMultiKeySelection changed to {0}", value));
 
-                    if (audioService != null)
-                    {
-                        audioService.PlaySound(value
-                            ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
-                            : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
-                    }
+                    audioService.PlaySound(value
+                        ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
+                        : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
                 }
             }
         }
@@ -247,11 +244,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        if (KeyboardService != null)
-                        {
-                            KeyboardService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
-                                new NotifyingProxy<double>(progress.Item2);
-                        }
+                        keyboardService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                            new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
@@ -312,13 +306,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
 
+            AttachScratchpadEnabledListener();
+
             HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
 
-            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
-                    .Subscribe(value => CalculateScratchpadIsDisabled()));
-
-            CalculateScratchpadIsDisabled();
+            ReleaseKeysOnApplicationExit();
         }
 
         private IInputService CreateInputService()
@@ -426,6 +418,26 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             return new InputService(keyboardService, dictionaryService, audioService,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
+
+        private void AttachScratchpadEnabledListener()
+        {
+            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
+                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
+                    .Subscribe(value => CalculateScratchpadIsDisabled()));
+
+            CalculateScratchpadIsDisabled();
+        }
+
+        private void ReleaseKeysOnApplicationExit()
+        {
+            Application.Current.Exit += (o, args) =>
+            {
+                if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+                {
+                    publishService.ReleaseAllDownKeys();
+                }
+            };
+        }
         
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
@@ -434,7 +446,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
                 Log.Debug(string.Format("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String));
-                OutputService.ProcessCapture(singleKeyValue.Value.String);
+                outputService.ProcessCapture(singleKeyValue.Value.String);
             }
 
             //Single key function key
@@ -450,7 +462,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && multiKeySelection.Any())
             {
                 Log.Debug(string.Format("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count));
-                OutputService.ProcessCapture(multiKeySelection);
+                outputService.ProcessCapture(multiKeySelection);
             }
         }
 
@@ -489,15 +501,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.BackFromKeyboard:
                         Log.Debug("Navigating back from keyboard.");
                         var navigableKeyboard = Keyboard as INavigableKeyboard;
-                        if (navigableKeyboard != null
-                            && navigableKeyboard.Back != null)
-                        {
-                            Keyboard = navigableKeyboard.Back;
-                        }
-                        else
-                        {
-                            Keyboard = new Alpha();
-                        }
+                        Keyboard = navigableKeyboard != null && navigableKeyboard.Back != null
+                            ? navigableKeyboard.Back
+                            : new Alpha();
                         break;
 
                     case FunctionKeys.Currencies1Keyboard:
@@ -527,10 +533,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.NextSuggestions:
                         Log.Debug("Incrementing suggestions page.");
 
-                        if (suggestionService != null
-                            && suggestionService.Suggestions != null
-                            && (suggestionService.Suggestions.Count >
-                                (suggestionService.SuggestionsPage + 1) * SuggestionService.SuggestionsPerPage))
+                        if (suggestionService.Suggestions != null
+                            && (suggestionService.Suggestions.Count > (suggestionService.SuggestionsPage + 1) * SuggestionService.SuggestionsPerPage))
                         {
                             suggestionService.SuggestionsPage++;
                         }
@@ -539,8 +543,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     case FunctionKeys.PreviousSuggestions:
                         Log.Debug("Decrementing suggestions page.");
 
-                        if (suggestionService != null
-                            && suggestionService.SuggestionsPage > 0)
+                        if (suggestionService.SuggestionsPage > 0)
                         {
                             suggestionService.SuggestionsPage--;
                         }
@@ -552,14 +555,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         break;
 
                     case FunctionKeys.Speak:
-                        if (audioService != null)
-                        {
-                            audioService.Speak(
-                                OutputService.Text,
-                                Settings.Default.SpeechVolume,
-                                Settings.Default.SpeechRate,
-                                Settings.Default.SpeechVoice);
-                        }
+                        audioService.Speak(
+                            outputService.Text,
+                            Settings.Default.SpeechVolume,
+                            Settings.Default.SpeechRate,
+                            Settings.Default.SpeechVoice);
                         break;
 
                     case FunctionKeys.SettingCategoriesKeyboard:
@@ -577,20 +577,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Symbols3();
                         break;
 
-                    case FunctionKeys.Publish:
-                    case FunctionKeys.MultiKeySelectionEnabled:
-                    case FunctionKeys.Sleep:
-                        //Do nothing - the key just needs to progress
-                        break;
-
                     case FunctionKeys.YesQuestionResult:
                         HandleYesNoQuestionResult(true);
                         break;
-
-                    default:
-                        OutputService.ProcessCapture(singleKeyValue.FunctionKey.Value);
-                        break;
                 }
+
+                outputService.ProcessCapture(singleKeyValue.FunctionKey.Value);
             }
         }
 
@@ -598,10 +590,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("AddTextToDictionary called.");
 
-            var possibleEntries = OutputService.Text.ExtractWordsAndLines();
+            var possibleEntries = outputService.Text.ExtractWordsAndLines();
 
-            if (possibleEntries != null
-                && dictionaryService != null)
+            if (possibleEntries != null)
             {
                 var candidates = possibleEntries.Where(pe => !dictionaryService.ExistsInDictionary(pe)).ToList();
 
@@ -611,45 +602,38 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 }
                 else
                 {
-                    Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", OutputService.Text));
+                    Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
-                    if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
+                    keyboardService.KeyEnabledStates.DisableAll = true;
 
                     NotificationRequest.Raise(new Notification
                     {
                         Title = "Hmm",
                         Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
-                    }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
+                    }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
 
-                    if (audioService != null)
-                    {
-                        audioService.PlaySound(Settings.Default.InfoSoundFile);
-                    }
+                    audioService.PlaySound(Settings.Default.InfoSoundFile);
                 }
             }
             else
             {
-                Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", OutputService.Text));
+                Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
-                if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true; 
+                keyboardService.KeyEnabledStates.DisableAll = true; 
 
                 NotificationRequest.Raise(new Notification
                 {
                     Title = "Hmm",
                     Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
-                }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
+                }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
 
-                if (audioService != null)
-                {
-                    audioService.PlaySound(Settings.Default.InfoSoundFile);
-                }
+                audioService.PlaySound(Settings.Default.InfoSoundFile);
             }
         }
 
         private void PromptToAddCandidatesToDictionary(List<string> candidates, IKeyboard originalKeyboard)
         {
-            if (candidates.Any()
-                && dictionaryService != null)
+            if (candidates.Any())
             {
                 var candidate = candidates.First();
 
@@ -679,18 +663,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     prompt,
                     () =>
                     {
-                        if (dictionaryService != null)
+                        dictionaryService.AddNewEntryToDictionary(candidate);
+
+                        keyboardService.KeyEnabledStates.DisableAll = true;
+
+                        NotificationRequest.Raise(new Notification
                         {
-                            dictionaryService.AddNewEntryToDictionary(candidate);
-
-                            if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
-
-                            NotificationRequest.Raise(new Notification
-                            {
-                                Title = "Added",
-                                Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
-                            }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
-                        }
+                            Title = "Added",
+                            Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
+                        }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
 
                         nextAction();
                     },
@@ -732,18 +713,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
-            if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = true;
+            keyboardService.KeyEnabledStates.DisableAll = true;
 
             ErrorNotificationRequest.Raise(new Notification
             {
                 Title = "Uh-oh!",
                 Content = exception.Message
-            }, notification => { if (KeyboardService != null) KeyboardService.KeyEnabledStates.DisableAll = false; });
+            }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
 
-            if (audioService != null)
-            {
-                audioService.PlaySound(Settings.Default.ErrorSoundFile);
-            }
+            audioService.PlaySound(Settings.Default.ErrorSoundFile);
         }
 
         #endregion

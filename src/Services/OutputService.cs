@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
@@ -38,6 +38,9 @@ namespace JuliusSweetland.ETTA.Services
             this.suggestionService = suggestionService;
             this.publishService = publishService;
             this.dictionaryService = dictionaryService;
+
+            ReactToPublishingStateChanges();
+            ReactToPublishableKeyDownStateChanges();
         }
 
         #endregion
@@ -51,7 +54,7 @@ namespace JuliusSweetland.ETTA.Services
         }
 
         #endregion
-        
+
         #region Methods - IOutputService
 
         public void ProcessCapture(FunctionKeys functionKey)
@@ -73,8 +76,8 @@ namespace JuliusSweetland.ETTA.Services
 
                     for (int i = 0; i < backManyCount; i++)
                     {
-                        PublishKeyStroke(FunctionKeys.BackOne);
-                        ReleaseUnlockedModifiers();
+                        PublishKeyPress(FunctionKeys.BackOne);
+                        ReleaseUnlockedKeys();
                     }
 
                     StoreLastTextChange(null);
@@ -112,8 +115,8 @@ namespace JuliusSweetland.ETTA.Services
 
                     for (int i = 0; i < backOneCount; i++)
                     {
-                        PublishKeyStroke(FunctionKeys.BackOne);
-                        ReleaseUnlockedModifiers();
+                        PublishKeyPress(FunctionKeys.BackOne);
+                        ReleaseUnlockedKeys();
                     }
 
                     StoreLastTextChange(null);
@@ -163,7 +166,18 @@ namespace JuliusSweetland.ETTA.Services
                     break;
 
                 default:
-                    PublishKeyStroke(functionKey); //No Text modification from any other function key - just publish key stroke if possible
+                    //If the function key translates to a virtual key code which cannot be pressed or locked down
+                    //(these are handled elsewhere) then publish it and release unlocked keys.
+                    var keyValue = new KeyValue {FunctionKey = functionKey};
+                    if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                        && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
+                    {
+                        if (functionKey.ToVirtualKeyCode() != null)
+                        {
+                            PublishKeyPress(functionKey);
+                            ReleaseUnlockedKeys();
+                        }
+                    }
                     break;
             }
         }
@@ -217,12 +231,12 @@ namespace JuliusSweetland.ETTA.Services
             //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
             for (int index = 0; index < capturedText.Length; index++)
             {
-                PublishKeyStroke(capturedText[index], 
+                PublishKeyPress(capturedText[index], 
                     modifiedCaptureText != null && modifiedCaptureText.Length == capturedText.Length
                         ? modifiedCaptureText[index]
                         : (char?)null);
 
-                ReleaseUnlockedModifiers();
+                ReleaseUnlockedKeys();
             }
 
             StoreLastTextChange(modifiedCaptureText);
@@ -248,6 +262,61 @@ namespace JuliusSweetland.ETTA.Services
         #endregion
 
         #region Methods - private
+
+        private void ReactToPublishingStateChanges()
+        {
+            keyboardService.KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(s => s.Value)
+                .Subscribe(value =>
+                {
+                    if (value.IsDownOrLockedDown()) //Publishing has been turned on
+                    {
+                        publishService.ReleaseAllDownKeys();
+
+                        foreach (var key in KeyValues.KeysWhichCanBePressedOrLockedDown)
+                        {
+                            if (keyboardService.KeyDownStates[key].Value.IsDownOrLockedDown()
+                                && key.FunctionKey != null)
+                            {
+                                PublishKeyDown(key.FunctionKey.Value);
+                            }
+                        }
+                    }
+                    else //Publishing has been turned off
+                    {
+                        publishService.ReleaseAllDownKeys();
+                    }
+                });
+        }
+
+        private void ReactToPublishableKeyDownStateChanges()
+        {
+            foreach (var key in 
+                KeyValues.KeysWhichCanBePressedOrLockedDown.Where(k => 
+                    k.FunctionKey != null && k.FunctionKey.Value.ToVirtualKeyCode() != null))
+            {
+                var keyCopy = key; //Access to foreach variable in modified
+
+                keyboardService.KeyDownStates[key].OnPropertyChanges(s => s.Value)
+                    .Subscribe(value =>
+                    {
+                        if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+                        {
+// ReSharper disable PossibleInvalidOperationException
+                            var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
+// ReSharper restore PossibleInvalidOperationException
+
+                            if (value.IsDownOrLockedDown())
+                            {
+                                publishService.PublishKeyDown(virtualKeyCode);
+                            }
+                            else
+                            {
+                                publishService.PublishKeyUp(virtualKeyCode);
+                            }
+                        }
+                    });
+            }
+        }
 
         private void StoreLastTextChange(string textChange)
         {
@@ -287,30 +356,58 @@ namespace JuliusSweetland.ETTA.Services
                 : null;
         }
         
-        private void PublishKeyStroke(FunctionKeys functionKey)
+        private void PublishKeyPress(FunctionKeys functionKey)
         {
             if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyStroke called with functionKey '{0}'.",  functionKey));
+                Log.Debug(string.Format("PublishKeyPress called with functionKey '{0}'.",  functionKey));
 
-                var virtualKeyCodeSet = functionKey.ToVirtualKeyCodeSet();
-                if (virtualKeyCodeSet != null)
+                var virtualKeyCode = functionKey.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
                 {
-                    PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                    publishService.PublishKeyPress(virtualKeyCode.Value);
                 }
             }
         }
 
-        private void PublishKeyStroke(char character, char? modifiedCharacter)
+        private void PublishKeyDown(FunctionKeys functionKey)
         {
             if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyStroke called with character '{0}' and modified character '{1}'", character, modifiedCharacter));
+                Log.Debug(string.Format("PublishKeyDown called with functionKey '{0}'.", functionKey));
 
-                var virtualKeyCodeSet = character.ToVirtualKeyCodeSet();
-                if (virtualKeyCodeSet != null)
+                var virtualKeyCode = functionKey.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
                 {
-                    PublishModifiedVirtualKeyCodeSet(virtualKeyCodeSet.Value);
+                    publishService.PublishKeyDown(virtualKeyCode.Value);
+                }
+            }
+        }
+
+        private void PublishKeyUp(FunctionKeys functionKey)
+        {
+            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            {
+                Log.Debug(string.Format("PublishKeyDown called with functionKey '{0}'.", functionKey));
+
+                var virtualKeyCode = functionKey.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
+                {
+                    publishService.PublishKeyDown(virtualKeyCode.Value);
+                }
+            }
+        }
+
+        private void PublishKeyPress(char character, char? modifiedCharacter)
+        {
+            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            {
+                Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'", character, modifiedCharacter));
+
+                var virtualKeyCode = character.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
+                {
+                    publishService.PublishKeyPress(virtualKeyCode.Value);
                 }
                 else if (modifiedCharacter != null)
                 {
@@ -319,62 +416,17 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void PublishModifiedVirtualKeyCodeSet(VirtualKeyCodeSet virtualKeyCodeSet)
+        private void ReleaseUnlockedKeys()
         {
-            Log.Debug(string.Format("PublishModifiedVirtualKeyCodeSet called with virtualKeyCodeSet '{0}'", virtualKeyCodeSet));
+            Log.Debug("ReleaseUnlockedKeys called.");
 
-            if (virtualKeyCodeSet.ModifierKeyCodes == null)
+            foreach (var key in keyboardService.KeyDownStates.Keys)
             {
-                virtualKeyCodeSet.ModifierKeyCodes = new List<VirtualKeyCode>();
-            }
-
-            var altVirtualKeyCode = FunctionKeys.LeftAlt.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value.IsDownOrLockedDown()
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(altVirtualKeyCode))
-            {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(altVirtualKeyCode);
-            }
-
-            var ctrlVirtualKeyCode = FunctionKeys.LeftCtrl.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value.IsDownOrLockedDown()
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(ctrlVirtualKeyCode))
-            {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(ctrlVirtualKeyCode);
-            }
-
-            var shiftVirtualKeyCode = FunctionKeys.LeftShift.ToVirtualKeyCodeSet().Value.KeyCodes.First();
-            if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()
-                && !virtualKeyCodeSet.ModifierKeyCodes.Contains(shiftVirtualKeyCode))
-            {
-                virtualKeyCodeSet.ModifierKeyCodes.Add(shiftVirtualKeyCode);
-            }
-
-            publishService.PublishModifiedKeyStroke(virtualKeyCodeSet);
-        }
-
-        private void ReleaseUnlockedModifiers()
-        {
-            Log.Debug("ReleaseUnlockedModifiers called.");
-
-            if (keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Down)
-            {
-                Log.Debug("Releasing LeftAlt key.");
-
-                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
-            }
-
-            if (keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Down)
-            {
-                Log.Debug("Releasing LeftCtrl key.");
-
-                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
-            }
-
-            if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
-            {
-                Log.Debug("Releasing LeftShift key.");
-
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                if (keyboardService.KeyDownStates[key].Value == KeyDownStates.Down)
+                {
+                    Log.Debug(string.Format("Releasing {0} key.", key));
+                    keyboardService.KeyDownStates[key].Value = KeyDownStates.Up;
+                }
             }
         }
 
@@ -411,12 +463,12 @@ namespace JuliusSweetland.ETTA.Services
 
                 for (int i = 0; i < lastTextChange.Length; i++)
                 {
-                    PublishKeyStroke(FunctionKeys.BackOne);
+                    PublishKeyPress(FunctionKeys.BackOne);
                 }
 
                 foreach (char c in suggestion)
                 {
-                    PublishKeyStroke(c, null);
+                    PublishKeyPress(c, null);
                 }
 
                 StoreLastTextChange(suggestion);
@@ -431,7 +483,7 @@ namespace JuliusSweetland.ETTA.Services
                 && !suppressNextAutoSpace)
             {
                 Log.Debug("Publishing auto space and adding auto space to Text.");
-                PublishKeyStroke(' ', null);
+                PublishKeyPress(' ', null);
                 Text = string.Concat(Text, " ");
                 return true;
             }

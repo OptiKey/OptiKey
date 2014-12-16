@@ -1,5 +1,5 @@
 ﻿using System;
-using JuliusSweetland.ETTA.Models;
+using WindowsInput.Native;
 
 namespace JuliusSweetland.ETTA.Services
 {
@@ -7,7 +7,10 @@ namespace JuliusSweetland.ETTA.Services
     {
         event EventHandler<Exception> Error;
 
-        void PublishModifiedKeyStroke(VirtualKeyCodeSet virtualKeyCodeSet);
+        void ReleaseAllDownKeys();
+        void PublishKeyDown(VirtualKeyCode virtualKeyCode);
+        void PublishKeyUp(VirtualKeyCode virtualKeyCode);
+        void PublishKeyPress(VirtualKeyCode virtualKeyCode);
         void PublishText(string text);
     }
 }

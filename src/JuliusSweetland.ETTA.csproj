@@ -152,7 +152,6 @@
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
-    <Compile Include="Models\VirtualKeyCodeSet.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
     <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
     <Compile Include="Models\KeyValue.cs" />

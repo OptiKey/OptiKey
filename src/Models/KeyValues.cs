@@ -53,6 +53,14 @@ namespace JuliusSweetland.ETTA.Models
             }
         }
 
+        public static List<KeyValue> KeysWhichCanBePressedOrLockedDown
+        {
+            get
+            {
+                return KeysWhichCanBePressedDown.Concat(KeysWhichCanBeLockedDown).Distinct().ToList();
+            }
+        }
+
         public static List<KeyValue> KeysWhichPreventTextCaptureIfDownOrLocked
         {
             get

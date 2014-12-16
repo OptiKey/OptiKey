@@ -61,65 +61,11 @@
                        HorizontalAlignment="Right" VerticalAlignment="Bottom" />
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <ComboBox Grid.Row="0" Grid.ColumnSpan="2"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
-                <ComboBox.Items>
-                    <system:String>/Resources/Themes/Android_Dark.xaml</system:String>
-                    <system:String>/Resources/Themes/Android_Light.xaml</system:String>
-                </ComboBox.Items>
-            </ComboBox>
-
-            <Label Grid.Row="1" Grid.Column="0" Content="Key:" />
-            <ComboBox Grid.Row="2" Grid.Column="0"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}">
-                <ComboBox.Items>
-                    <system:String>Black</system:String>
-                    <system:String>Bold</system:String>
-                    <system:String>Medium</system:String>
-                    <system:String>Regular</system:String>
-                    <system:String>Light</system:String>
-                    <system:String>Thin</system:String>
-                </ComboBox.Items>
-            </ComboBox>
-            <ComboBox Grid.Row="3" Grid.Column="0"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
-                <ComboBox.Items>
-                    <system:String>Normal</system:String>
-                    <system:String>Condensed</system:String>
-                </ComboBox.Items>
-            </ComboBox>
-
-            <Label Grid.Row="1" Grid.Column="1" Content="Output:" />
-            <ComboBox Grid.Row="2" Grid.Column="1"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}">
-                <ComboBox.Items>
-                    <system:String>Black</system:String>
-                    <system:String>Bold</system:String>
-                    <system:String>Medium</system:String>
-                    <system:String>Regular</system:String>
-                    <system:String>Light</system:String>
-                    <system:String>Thin</system:String>
-                </ComboBox.Items>
-            </ComboBox>
-            <ComboBox Grid.Row="3" Grid.Column="1"
-                      SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}">
-                <ComboBox.Items>
-                    <system:String>Normal</system:String>
-                    <system:String>Condensed</system:String>
-                </ComboBox.Items>
-            </ComboBox>
-        </Grid>
+        <ComboBox Grid.Row="1" SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
+            <ComboBox.Items>
+                <system:String>/Resources/Themes/Android_Dark.xaml</system:String>
+                <system:String>/Resources/Themes/Android_Light.xaml</system:String>
+            </ComboBox.Items>
+        </ComboBox>
     </Grid>
 </UserControl>

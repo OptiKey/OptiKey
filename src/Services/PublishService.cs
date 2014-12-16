@@ -1,29 +1,77 @@
 ﻿using System;
 using System.Linq;
-using JuliusSweetland.ETTA.Models;
+using WindowsInput.Native;
 using log4net;
 
 namespace JuliusSweetland.ETTA.Services
 {
     public class PublishService : IPublishService
     {
-        private readonly WindowsInput.InputSimulator inputSimulator;
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
+        private readonly WindowsInput.InputSimulator inputSimulator;
+        private readonly WindowsInput.WindowsInputDeviceStateAdaptor inputDeviceStateAdaptor;
 
         public event EventHandler<Exception> Error;
-
+        
         public PublishService()
         {
             inputSimulator = new WindowsInput.InputSimulator();
+            inputDeviceStateAdaptor = new WindowsInput.WindowsInputDeviceStateAdaptor();
         }
 
-        public void PublishModifiedKeyStroke(VirtualKeyCodeSet virtualKeyCodeSet)
+        public void ReleaseAllDownKeys()
         {
             try
             {
-                Log.Debug(string.Format("Publishing virtualKeyCodeSet '{0}'", virtualKeyCodeSet));
+                Log.Debug(string.Format("Checking all virtual key codes and releasing any which are down."));
+                foreach (var virtualKeyCode in Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>())
+                {
+                    if (inputDeviceStateAdaptor.IsHardwareKeyDown(virtualKeyCode))
+                    {
+                        Log.Debug(string.Format("{0} is down - calling PublishKeyUp", virtualKeyCode));
+                        PublishKeyUp(virtualKeyCode);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
 
-                inputSimulator.Keyboard.ModifiedKeyStroke(virtualKeyCodeSet.ModifierKeyCodes, virtualKeyCodeSet.KeyCodes);
+        public void PublishKeyDown(VirtualKeyCode virtualKeyCode)
+        {
+            try
+            {
+                Log.Debug(string.Format("Publishing key down {0}", virtualKeyCode));
+                inputSimulator.Keyboard.KeyUp(virtualKeyCode);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void PublishKeyUp(VirtualKeyCode virtualKeyCode)
+        {
+            try
+            {
+                Log.Debug(string.Format("Publishing key up: {0}", virtualKeyCode));
+                inputSimulator.Keyboard.KeyUp(virtualKeyCode);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void PublishKeyPress(VirtualKeyCode virtualKeyCode)
+        {
+            try
+            {
+                Log.Debug(string.Format("Publishing key press: {0}", virtualKeyCode));
+                inputSimulator.Keyboard.KeyPress(virtualKeyCode);
             }
             catch (Exception exception)
             {
@@ -36,7 +84,6 @@ namespace JuliusSweetland.ETTA.Services
             try
             {
                 Log.Debug(string.Format("Publishing text '{0}'", text));
-
                 inputSimulator.Keyboard.TextEntry(text);
             }
             catch (Exception exception)
@@ -50,7 +97,6 @@ namespace JuliusSweetland.ETTA.Services
             if (Error != null)
             {
                 Log.Error("Publishing Error event", ex);
-
                 Error(sender, ex);
             }
         }
