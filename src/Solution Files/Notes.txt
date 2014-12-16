@@ -5,7 +5,7 @@ Change ... icon to hamburger? http://thenounproject.com/term/menu/79068/
 Abstract the IKeyboardStateManager into separate class (KeyboardService), containing;
 	KeySelectionProgress, KeyDownStates, KeyEnabledStates, Keyboard properties
 	Init key down states (etc) logic in the service
-	Disabled automatically means release key
+	Disabled key automatically sets key down state (if down/locked) to up). External logic can manage it being reinstated.
 
 Split Suggestion properties out into SuggestionService
 
@@ -33,7 +33,9 @@ OutputService changes:
 
 Prevent key capture while popup notifications are shown
 	Sleep on/off - actually I think this is insufficient as no keys should be available for selection. Add methods to KeyEnabledStates to DisableAll() and EnableAll()
-	
+
+TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
+
 Add settings
 	+ accessible settings - keyboard style
 		* include ability to move and resize keyboard
