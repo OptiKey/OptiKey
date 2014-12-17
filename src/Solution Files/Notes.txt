@@ -12,12 +12,14 @@ TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 
 Add "PUBLISH" & "FLUID" labels to keys?
 
+Change default settings: Publish = false, MultiKeyCapturing = false, Complexity = Basic
+
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
 
 Hot keys/shortcut keys:
-	1. FeatureLevel - Simplified (speaking only, maybe no AddToDictionary)/Full
+	1. Complexity - Basic (speaking only, maybe no AddToDictionary) -> Advanced
 		- Hotkey to toggle and store in Settings - e.g. Ctrl+F
-		- When switching to Basic mode disable everything irrelevent
+		- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
 			- Publishing off (which should reset down keys)
 			- Multi-key selection off
 
