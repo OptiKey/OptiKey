@@ -10,8 +10,6 @@ Test changes to publish and output services:
 
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 
-Clarify concept of KeyDownStates - maybe rename to HeldDown and LockedDown (including KeyValues collections)
-
 Add "PUBLISH" & "FLUID" labels to keys?
 
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
