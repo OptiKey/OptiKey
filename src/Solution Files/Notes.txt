@@ -22,6 +22,7 @@ Hot keys/shortcut keys:
 		- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
 			- Publishing off (which should reset down keys)
 			- Multi-key selection off
+			? Leave Sleep and Recalibrate in?
 
 	2. What happens if the user changes something like the points source, but it is not working - no way to change back
 		(Factory reset - just delete user settings folder)
