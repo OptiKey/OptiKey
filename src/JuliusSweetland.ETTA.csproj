@@ -132,6 +132,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CharCategories.cs" />
+    <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
     <Compile Include="Enums\FunctionKeys.cs" />
@@ -295,11 +296,11 @@
     </Compile>
     <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.dll">
       <Link>TheEyeTribe\Newtonsoft.Json.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.xml">
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Solution Files\Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />

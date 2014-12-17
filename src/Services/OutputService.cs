@@ -184,7 +184,7 @@ namespace JuliusSweetland.ETTA.Services
 
         public void ProcessCapture(string capturedText)
         {
-            Log.Debug(string.Format("Processing captured text '{0}'", capturedText));
+            Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
 
             if (string.IsNullOrEmpty(capturedText)) return;
 
@@ -239,9 +239,13 @@ namespace JuliusSweetland.ETTA.Services
                 ReleaseUnlockedKeys();
             }
 
+            if (!string.IsNullOrEmpty(modifiedCaptureText))
+            {
+                AutoPressShiftIfAppropriate();
+                suppressNextAutoSpace = false;
+            }
+
             StoreLastTextChange(modifiedCaptureText);
-            AutoPressShiftIfAppropriate();
-            suppressNextAutoSpace = false;
         }
 
         public void ProcessCapture(List<string> captureAndSuggestions)
@@ -277,7 +281,12 @@ namespace JuliusSweetland.ETTA.Services
                             if (keyboardService.KeyDownStates[key].Value.IsDownOrLockedDown()
                                 && key.FunctionKey != null)
                             {
-                                PublishKeyDown(key.FunctionKey.Value);
+                                var virtualKeyCode = key.FunctionKey.Value.ToVirtualKeyCode();
+
+                                if (virtualKeyCode != null)
+                                {
+                                    publishService.PublishKeyDown(virtualKeyCode.Value);
+                                }
                             }
                         }
                     }
@@ -290,9 +299,9 @@ namespace JuliusSweetland.ETTA.Services
 
         private void ReactToPublishableKeyDownStateChanges()
         {
-            foreach (var key in 
-                KeyValues.KeysWhichCanBePressedOrLockedDown.Where(k => 
-                    k.FunctionKey != null && k.FunctionKey.Value.ToVirtualKeyCode() != null))
+            foreach (var key in KeyValues.KeysWhichCanBePressedOrLockedDown
+                                    .Where(k => k.FunctionKey != null 
+                                        && k.FunctionKey.Value.ToVirtualKeyCode() != null))
             {
                 var keyCopy = key; //Access to foreach variable in modified
 
@@ -370,39 +379,13 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        private void PublishKeyDown(FunctionKeys functionKey)
-        {
-            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
-            {
-                Log.Debug(string.Format("PublishKeyDown called with functionKey '{0}'.", functionKey));
-
-                var virtualKeyCode = functionKey.ToVirtualKeyCode();
-                if (virtualKeyCode != null)
-                {
-                    publishService.PublishKeyDown(virtualKeyCode.Value);
-                }
-            }
-        }
-
-        private void PublishKeyUp(FunctionKeys functionKey)
-        {
-            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
-            {
-                Log.Debug(string.Format("PublishKeyDown called with functionKey '{0}'.", functionKey));
-
-                var virtualKeyCode = functionKey.ToVirtualKeyCode();
-                if (virtualKeyCode != null)
-                {
-                    publishService.PublishKeyDown(virtualKeyCode.Value);
-                }
-            }
-        }
-
         private void PublishKeyPress(char character, char? modifiedCharacter)
         {
             if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'", character, modifiedCharacter));
+                Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'",
+                    character.ConvertEscapedCharToLiteral(), 
+                    modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral()));
 
                 var virtualKeyCode = character.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
@@ -512,7 +495,8 @@ namespace JuliusSweetland.ETTA.Services
             if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                 keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug(string.Format("A key which prevents text capture is down - modifying '{0}' to null.", capturedText));
+                Log.Debug(string.Format("A key which prevents text capture is down - modifying '{0}' to null.", 
+                    capturedText.ConvertEscapedCharsToLiterals()));
                 return null;
             }
 

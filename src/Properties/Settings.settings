@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
-      <Value Profile="(Default)">KeyboardKeyDownsUps</Value>
+      <Value Profile="(Default)">AggregatedFixations</Value>
     </Setting>
     <Setting Name="SettingsUpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -42,7 +42,7 @@
       <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
     </Setting>
     <Setting Name="MultiKeySelectionEnabled" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MultiKeySelectionFixationMinDwellTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.0500000</Value>
@@ -148,6 +148,9 @@
     </Setting>
     <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
+    </Setting>
+    <Setting Name="UiComplexity" Type="JuliusSweetland.ETTA.Enums.UiComplexity" Scope="User">
+      <Value Profile="(Default)">Basic</Value>
     </Setting>
   </Settings>
 </SettingsFile>

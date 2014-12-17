@@ -21,7 +21,14 @@ namespace JuliusSweetland.ETTA.Services
 
         public TheEyeTribePointService()
         {
-            GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+            try
+            {
+                GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+            }
+            catch(Exception ex)
+            {
+                Log.Error("Exception when attempting to active TheEyeTribe - is it running?", ex);
+            }
         }
 
         #endregion
@@ -38,7 +45,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 if (!GazeManager.Instance.IsActivated)
                 {
-                    PublishError(this, new ApplicationException("TET server is not activated (not running)! Please start the TET server and try again! Attempting to connect anyway."));
+                    PublishError(this, new ApplicationException("TheEyeTribe server is not activated (not running)! Please start the TET server and try again! Attempting to connect anyway."));
                 }
 
                 if (!GazeManager.Instance.HasGazeListener(this))
@@ -48,7 +55,7 @@ namespace JuliusSweetland.ETTA.Services
                     if (GazeManager.Instance.IsActivated
                         && !GazeManager.Instance.IsCalibrated)
                     {
-                        PublishError(this, new ApplicationException("TET has not been calibrated. No data will be received until calibration is completed."));
+                        PublishError(this, new ApplicationException("TheEyeTribe has not been calibrated. No data will be received until calibration is completed."));
                     }
 
                     GazeManager.Instance.AddGazeListener(this);

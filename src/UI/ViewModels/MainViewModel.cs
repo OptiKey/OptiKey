@@ -445,7 +445,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             if (singleKeyValue != null
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
-                Log.Debug(string.Format("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String));
+                Log.Debug(string.Format("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String.ConvertEscapedCharsToLiterals()));
                 outputService.ProcessCapture(singleKeyValue.Value.String);
             }
 

@@ -213,6 +213,8 @@ namespace JuliusSweetland.ETTA.Extensions
 
         public static string ConvertEscapedCharsToLiterals(this string input)
         {
+            if (input == null) return null;
+
             return input
                 .Replace("\0", @"\0")
                 .Replace("\a", @"\a")

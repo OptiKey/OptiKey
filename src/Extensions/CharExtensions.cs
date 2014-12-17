@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using WindowsInput.Native;
 using JuliusSweetland.ETTA.Enums;
 
@@ -44,6 +45,18 @@ namespace JuliusSweetland.ETTA.Extensions
             }
 
             return CharCategories.SomethingElse;
+        }
+
+        public static string ConvertEscapedCharToLiteral(this char input)
+        {
+            return input.ToString(CultureInfo.InvariantCulture)
+                .Replace("\0", @"\0")
+                .Replace("\a", @"\a")
+                .Replace("\b", @"\b")
+                .Replace("\t", @"\t")
+                .Replace("\f", @"\f")
+                .Replace("\n", @"\n")
+                .Replace("\r", @"\r");
         }
 
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs

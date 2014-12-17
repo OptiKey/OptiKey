@@ -45,7 +45,7 @@ namespace JuliusSweetland.ETTA.Services
             try
             {
                 Log.Debug(string.Format("Publishing key down {0}", virtualKeyCode));
-                inputSimulator.Keyboard.KeyUp(virtualKeyCode);
+                inputSimulator.Keyboard.KeyDown(virtualKeyCode);
             }
             catch (Exception exception)
             {

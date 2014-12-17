@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
 using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
@@ -392,7 +393,8 @@ namespace JuliusSweetland.ETTA.Services
             {
                 Log.Debug(string.Format("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
-                        selectionResult.Item2, selectionResult.Item3,
+                        selectionResult.Item2, 
+                        selectionResult.Item3.ConvertEscapedCharsToLiterals(),
                         selectionResult.Item4 != null ? selectionResult.Item4.First() : null,
                         selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null));
 

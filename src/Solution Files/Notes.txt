@@ -1,18 +1,10 @@
 ﻿NEXT STEPS:
 
-Test changes to publish and output services:
-	Key down/up should publish accordingly
-	Publish on/off should reset all down keys and then publish any which are now down
-	Application exit should release all down keys if publishing
-	Check I can publish strings of keys, e.g. Ctrl+A, Alt+Tab, single key presses (e.g. Win)
-	Test when keys are released (e.g. press down shift, ctrl and then press a key to release shift/ctrl)
-	Test down keys are not released for other keys, e.g. MultiKeySelectionEnabled/Publish keys
+TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! Yes, but plenty of consistency/accuracy problems.
 
-TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
+AggregateFixation trigger is removing older fixation progress as you move on - why?
 
-Add "PUBLISH" & "FLUID" labels to keys?
-
-Change default settings: Publish = false, MultiKeyCapturing = false, Complexity = Basic
+!Alt + Tab not working - this suggests that it should: http://inputsimulator.codeplex.com/discussions/545723!
 
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
 
@@ -32,6 +24,8 @@ Hot keys/shortcut keys:
 	3. Debug setting
 
 	4. Recalibrate
+
+!Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
 
 Add settings
 	+ accessible settings - keyboard style
@@ -117,3 +111,5 @@ Add high contrast theme
 
 SMALL THINGS:
 !Start up with TheEyeTribe as point source, but not running - displays error correctly, but process doesn't end cleanly and there is a big pause before anything is displayed.
+	Delay = trying to Activate?
+	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.

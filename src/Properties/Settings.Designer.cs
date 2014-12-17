@@ -64,7 +64,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("KeyboardKeyDownsUps")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AggregatedFixations")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
@@ -195,7 +195,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool MultiKeySelectionEnabled {
             get {
@@ -659,6 +659,18 @@ namespace JuliusSweetland.ETTA.Properties {
             }
             set {
                 this["PointSelectionTriggerSource"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Basic")]
+        public global::JuliusSweetland.ETTA.Enums.UiComplexity UiComplexity {
+            get {
+                return ((global::JuliusSweetland.ETTA.Enums.UiComplexity)(this["UiComplexity"]));
+            }
+            set {
+                this["UiComplexity"] = value;
             }
         }
     }
