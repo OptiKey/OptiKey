@@ -5,6 +5,7 @@ TEST AGGREGATE KEY FIXATION TRIGGER AGAIN
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! 
 	Assuming the user sits approximately 60 cm away (at a distance of 45 - 75 cm).
 	Match calibration area with keyboard area, i.e. don't try to use keyboard outside the calibrated area.
+	Match calibration background colour to keyboard background colour.
 	Use head rest.
 
 AggregateFixation trigger is removing older fixation progress as you move on - why?
