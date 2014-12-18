@@ -9,6 +9,7 @@ TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 	Use head rest.
 	Is TET more/less accurate at 30fps/60fps?
 	Try TET with mouse control - is it smooth and accurate?
+	Increase number of calibration points (and time on each point?)?
 
 AggregateFixation trigger is removing older fixation progress as you move on - why?
 
