@@ -133,9 +133,12 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
                                     var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)fixationTriggerTime.Ticks);
 
-                                    //Publish a high signal if progress is 1 (100%), otherwise just publish progress
-                                    observer.OnNext(new TriggerSignal(
-                                        progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
+                                    //Publish a high signal if progress is 1 (100%), otherwise just publish progress (if > 0 as 0 is a reset signal for progress across all keys)
+                                    if(progress > 0)
+                                    {
+                                        observer.OnNext(new TriggerSignal(
+                                            progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
+                                    }
 
                                     //Reset if we've just published a high signal
                                     if (progress >= 1)
