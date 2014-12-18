@@ -1,5 +1,7 @@
 ﻿NEXT STEPS:
 
+TEST AGGREGATE KEY FIXATION TRIGGER AGAIN
+
 TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! Yes, but plenty of consistency/accuracy problems.
 
 AggregateFixation trigger is removing older fixation progress as you move on - why?
