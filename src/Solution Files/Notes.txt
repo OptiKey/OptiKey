@@ -2,7 +2,9 @@
 
 TEST AGGREGATE KEY FIXATION TRIGGER AGAIN
 
-TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! Yes, but plenty of consistency/accuracy problems.
+TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! 
+Yes, but plenty of consistency/accuracy problems. TET: Assuming the user sits approximately 60 cm away (at a distance of 45 - 75 cm)
+TRY AGAIN WITH HEAD REST.
 
 AggregateFixation trigger is removing older fixation progress as you move on - why?
 
