@@ -18,7 +18,9 @@ TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 AggregateFixation trigger is removing older fixation progress as you move on - why?
 
 !Alt + Tab not working - this suggests that it should: http://inputsimulator.codeplex.com/discussions/545723!
-
+	UI Access is restricted in Windows 8: https://inputsimulator.codeplex.com/workitem/13005
+	Solution appears to be the same as being topmost over Metro interface
+	
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
 
 Hot keys/shortcut keys:
