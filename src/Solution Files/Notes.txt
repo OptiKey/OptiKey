@@ -128,6 +128,7 @@ Auto complete words
 Predict next word
 Add high contrast theme
 Test http://www.cameramouse.org/
+Get and test the Tobii EyeX: http://www.tobii.com/en/eye-experience/#.UwMlifl5OkF
 
 --------------------------------------------------------------------------------
 
