@@ -12,6 +12,9 @@ TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 	Increase number of calibration points (and time on each point?)?
 	http://www.youtube.com/watch?v=0PvtbHz_arE
 
+	Shift-M, enable/disable mouse cursor redirect
+	- Added option in config file to enable/disable auto-starting of the server, located in tetbasicsettings.xml. Corresponding tag is <ServerAutoStart>True</ServerAutoStart>
+
 AggregateFixation trigger is removing older fixation progress as you move on - why?
 
 !Alt + Tab not working - this suggests that it should: http://inputsimulator.codeplex.com/discussions/545723!
