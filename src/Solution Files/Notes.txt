@@ -8,6 +8,7 @@ TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?!
 	Match calibration background colour to keyboard's average colour.
 	Use head rest.
 	Is TET more/less accurate at 30fps/60fps?
+	Try TET with mouse control - is it smooth and accurate?
 
 AggregateFixation trigger is removing older fixation progress as you move on - why?
 
