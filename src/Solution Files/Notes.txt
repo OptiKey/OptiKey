@@ -33,6 +33,7 @@ Hot keys/shortcut keys:
 	3. Debug setting
 
 	4. Recalibrate
+		http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
 
