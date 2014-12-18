@@ -113,6 +113,10 @@ Refactor any remaining large classes, e.g. MainViewModel
 Package ETTA to install to Program Files directory (required to stay on top)
 	Stay on top of everything (including Metro start menu): http://stackoverflow.com/questions/14629406/how-can-i-make-my-own-application-on-top-in-the-start-menu
 	signtool signwizard
+	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
+		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
+	Creating a self-signed certificate and storing it in the Windows Certificate Store: http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows
+	
 
 --------------------------------------------------------------------------------
 
