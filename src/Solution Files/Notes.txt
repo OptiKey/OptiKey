@@ -127,6 +127,7 @@ Auto complete words
 	+ auto correct words
 Predict next word
 Add high contrast theme
+Test http://www.cameramouse.org/
 
 --------------------------------------------------------------------------------
 
