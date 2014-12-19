@@ -1,26 +1,11 @@
 ﻿NEXT STEPS:
 
-TEST AGGREGATE KEY FIXATION TRIGGER AGAIN
+KeySelectionTriggerFixationMinPoints/PointSelectionTriggerFixationMinPoints - convert to timespan
 
-TEST WITH EYE TRIBE - DOES THIS WHOLE THING WORK?! 
-	Assuming the user sits approximately 60 cm away (at a distance of 45 - 75 cm).
-	Match calibration area with keyboard area, i.e. don't try to use keyboard outside the calibrated area.
-	Match calibration background colour to keyboard's average colour.
-	Use head rest.
-	Is TET more/less accurate at 30fps/60fps?
-	Try TET with mouse control - is it smooth and accurate?
-	Increase number of calibration points (and time on each point?)?
-	http://www.youtube.com/watch?v=0PvtbHz_arE
+!Start up with TheEyeTribe as point source, but not running - displays error correctly, but process doesn't end cleanly and there is a big pause before anything is displayed.
+	Delay = trying to Activate?
+	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.
 
-	Shift-M, enable/disable mouse cursor redirect
-	- Added option in config file to enable/disable auto-starting of the server, located in tetbasicsettings.xml. Corresponding tag is <ServerAutoStart>True</ServerAutoStart>
-
-AggregateFixation trigger is removing older fixation progress as you move on - why?
-
-!Alt + Tab not working - this suggests that it should: http://inputsimulator.codeplex.com/discussions/545723!
-	UI Access is restricted in Windows 8: https://inputsimulator.codeplex.com/workitem/13005
-	Solution appears to be the same as being topmost over Metro interface
-	
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
 
 Hot keys/shortcut keys:
@@ -110,13 +95,7 @@ Profile and optimise, especially keyboard transitions
 
 Refactor any remaining large classes, e.g. MainViewModel
 
-Package ETTA to install to Program Files directory (required to stay on top)
-	Stay on top of everything (including Metro start menu): http://stackoverflow.com/questions/14629406/how-can-i-make-my-own-application-on-top-in-the-start-menu
-	signtool signwizard
-	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
-		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
-	Creating a self-signed certificate and storing it in the Windows Certificate Store: http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows
-	
+Add support for USB (hardware) buttons (to act as triggers)?
 
 --------------------------------------------------------------------------------
 
@@ -130,15 +109,7 @@ Add high contrast theme
 Test http://www.cameramouse.org/
 Get and test the Tobii EyeX: http://www.tobii.com/en/eye-experience/#.UwMlifl5OkF
 
---------------------------------------------------------------------------------
-
-SMALL THINGS:
-!Start up with TheEyeTribe as point source, but not running - displays error correctly, but process doesn't end cleanly and there is a big pause before anything is displayed.
-	Delay = trying to Activate?
-	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.
-
----------------------------------------------------------------------------------
-
-BRANDING/DOMAIN IDEAS:
-Fluid Eye - all available
-Fluid Eyes - .com available
+Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
+	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
+		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
+	Steps to sign are in file "Certificates and Signing.txt"

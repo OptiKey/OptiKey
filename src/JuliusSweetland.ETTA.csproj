@@ -54,6 +54,9 @@
   <PropertyGroup>
     <ApplicationIcon>EyeIcon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -196,7 +199,6 @@
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
-    <Compile Include="UI\Behaviours\WindowAlwaysOnTopBehavior.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
     <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\QuestionText.cs" />
@@ -302,7 +304,10 @@
       <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Solution Files\Keyboard Designs.xlsx" />
+    <Content Include="Solution Files\Certificates and Signing.txt" />
+    <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
+    <None Include="app.manifest" />
+    <Content Include="Solution Files\Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\Source Files\Back.svg" />
@@ -350,7 +355,7 @@
     <Content Include="Resources\Sounds\Selection2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Solution Files\Notes.txt" />
+    <Content Include="Solution Files\Notes.txt" />
     <None Include="Resources\Icons\Source Files\DownArrow.svg" />
     <None Include="Resources\Icons\Source Files\LeftArrow.svg" />
     <None Include="Resources\Icons\Source Files\RightArrow.svg" />
@@ -387,7 +392,9 @@
     <None Include="Resources\Icons\Source Files\Shift.svg" />
     <None Include="Resources\Icons\Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <None Include="Solution Files\Credits.txt" />
+    <Content Include="Solution Files\Credits.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

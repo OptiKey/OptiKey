@@ -446,7 +446,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
                 Log.Debug(string.Format("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String.ConvertEscapedCharsToLiterals()));
-                outputService.ProcessCapture(singleKeyValue.Value.String);
+                outputService.ProcessSingleKeyText(singleKeyValue.Value.String);
             }
 
             //Single key function key
@@ -462,7 +462,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 && multiKeySelection.Any())
             {
                 Log.Debug(string.Format("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count));
-                outputService.ProcessCapture(multiKeySelection);
+                outputService.ProcessMultiKeyTextAndSuggestions(multiKeySelection);
             }
         }
 
@@ -582,7 +582,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         break;
                 }
 
-                outputService.ProcessCapture(singleKeyValue.FunctionKey.Value);
+                outputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
             }
         }
 

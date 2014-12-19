@@ -7,8 +7,8 @@ namespace JuliusSweetland.ETTA.Services
     {
         string Text { get; }
         
-        void ProcessCapture(FunctionKeys functionKey);
-        void ProcessCapture(string capturedText);
-        void ProcessCapture(List<string> captureAndSuggestions);
+        void ProcessFunctionKey(FunctionKeys functionKey);
+        void ProcessSingleKeyText(string capturedText);
+        void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions);
     }
 }

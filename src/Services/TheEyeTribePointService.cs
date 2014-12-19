@@ -45,7 +45,7 @@ namespace JuliusSweetland.ETTA.Services
 
                 if (!GazeManager.Instance.IsActivated)
                 {
-                    PublishError(this, new ApplicationException("TheEyeTribe server is not activated (not running)! Please start the TET server and try again! Attempting to connect anyway."));
+                    PublishError(this, new ApplicationException("TheEyeTribe server is not running! Please start the TET server and try again. Attempting to connect anyway."));
                 }
 
                 if (!GazeManager.Instance.HasGazeListener(this))

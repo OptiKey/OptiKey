@@ -57,7 +57,7 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Methods - IOutputService
 
-        public void ProcessCapture(FunctionKeys functionKey)
+        public void ProcessFunctionKey(FunctionKeys functionKey)
         {
             Log.Debug(string.Format("Processing captured function key '{0}'", functionKey));
 
@@ -166,13 +166,15 @@ namespace JuliusSweetland.ETTA.Services
                     break;
 
                 default:
-                    //If the function key translates to a virtual key code which cannot be pressed or locked down
-                    //(these are handled elsewhere) then publish it and release unlocked keys.
-                    var keyValue = new KeyValue {FunctionKey = functionKey};
-                    if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                        && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
+                    if (functionKey.ToVirtualKeyCode() != null)
                     {
-                        if (functionKey.ToVirtualKeyCode() != null)
+                        //Key corresponds to physical keyboard key
+                        ClearSuggestions();
+
+                        //If the key cannot be pressed or locked down (these are handled elsewhere) then publish it and release unlocked keys.
+                        var keyValue = new KeyValue { FunctionKey = functionKey };
+                        if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                            && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
                         {
                             PublishKeyPress(functionKey);
                             ReleaseUnlockedKeys();
@@ -182,7 +184,34 @@ namespace JuliusSweetland.ETTA.Services
             }
         }
 
-        public void ProcessCapture(string capturedText)
+        public void ProcessSingleKeyText(string capturedText)
+        {
+            Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
+
+            ClearSuggestions();
+            ProcessText(capturedText);
+        }
+
+        public void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions)
+        {
+            Log.Debug(string.Format("Processing {0} captured multi-key selection results", 
+                captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
+
+            if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
+
+            StoreSuggestions(
+                ModifySuggestions(captureAndSuggestions.Count > 1
+                    ? captureAndSuggestions.Skip(1).ToList()
+                    : null));
+
+            ProcessText(captureAndSuggestions.First());
+        }
+
+        #endregion
+
+        #region Methods - private
+
+        private void ProcessText(string capturedText)
         {
             Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
 
@@ -231,7 +260,7 @@ namespace JuliusSweetland.ETTA.Services
             //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
             for (int index = 0; index < capturedText.Length; index++)
             {
-                PublishKeyPress(capturedText[index], 
+                PublishKeyPress(capturedText[index],
                     modifiedCaptureText != null && modifiedCaptureText.Length == capturedText.Length
                         ? modifiedCaptureText[index]
                         : (char?)null);
@@ -247,25 +276,6 @@ namespace JuliusSweetland.ETTA.Services
 
             StoreLastTextChange(modifiedCaptureText);
         }
-
-        public void ProcessCapture(List<string> captureAndSuggestions)
-        {
-            Log.Debug(string.Format("Processing {0} captured multi-key selection results", 
-                captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
-
-            if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
-
-            StoreSuggestions(
-                ModifySuggestions(captureAndSuggestions.Count > 1
-                    ? captureAndSuggestions.Skip(1).ToList()
-                    : null));
-
-            ProcessCapture(captureAndSuggestions.First());
-        }
-
-        #endregion
-
-        #region Methods - private
 
         private void ReactToPublishingStateChanges()
         {
