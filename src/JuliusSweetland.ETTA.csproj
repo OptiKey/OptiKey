@@ -392,7 +392,7 @@
     <None Include="Resources\Icons\Source Files\Shift.svg" />
     <None Include="Resources\Icons\Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Solution Files\Credits.txt">
+    <Content Include="Credits.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\BritishEnglish.dic">

@@ -6,6 +6,9 @@ KeySelectionTriggerFixationMinPoints/PointSelectionTriggerFixationMinPoints - co
 	Delay = trying to Activate?
 	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.
 
+Pause point source when doing work, e.g.matching capture to words. Maybe just disable all in KeyEnabledStates? This is to prevent selection when you don't mean to select anything
+	?Potentially also add a small pause after selection when using fixation triggers - this is to prevent the next selection starting immediately on the same key we just selected?
+
 Change equality comparisons for floating point types (float, double) back to near-equality (subtract them, Abs the result and check if < tolerance). Some arithmatic may work in Debug where the JIT compiler cannot use the full float range, but fail in Release.
 
 Hot keys/shortcut keys:

@@ -3,7 +3,6 @@
     public enum TriggerSources
     {
         Fixations,
-        AggregatedFixations,
         KeyboardKeyDownsUps,
         MouseButtonDownUps
     }

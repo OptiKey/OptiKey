@@ -235,9 +235,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.SelectionProgress += (o, progress) =>
             {
-                if (progress.Item2 == 0)
+                if (progress.Item1 == null
+                    && progress.Item2 == 0)
                 {
-                    ResetSelectionProgress();
+                    ResetSelectionProgress(); //Reset all keys
                 }
                 else if (progress.Item1 != null)
                 {
@@ -349,19 +350,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ITriggerSignalSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
             {
-                case TriggerSources.AggregatedFixations:
-                    keySelectionTriggerSource = new AggregateKeyFixationSource(
-                        Settings.Default.KeySelectionTriggerFixationMinPoints,
-                        Settings.Default.KeySelectionTriggerFixationTime,
-                        Settings.Default.PointTtl,
-                        pointSource.Sequence);
-                    break;
-
                 case TriggerSources.Fixations:
-                    keySelectionTriggerSource = new KeyFixationSource(
-                        Settings.Default.KeySelectionTriggerFixationMinPoints,
-                        Settings.Default.KeySelectionTriggerFixationTime,
-                        pointSource.Sequence);
+                    keySelectionTriggerSource = new AggregateKeyFixationSource(
+                       Settings.Default.KeySelectionTriggerFixationMinPoints,
+                       Settings.Default.KeySelectionTriggerFixationTime,
+                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                       pointSource.Sequence);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
@@ -385,10 +379,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ITriggerSignalSource pointSelectionTriggerSource;
             switch (Settings.Default.PointSelectionTriggerSource)
             {
-                case TriggerSources.AggregatedFixations:
-                    throw new ArgumentException(
-                        "'PointSelectionTriggerSource' setting is AggregatedFixations which is not supported! Please correct and restart ETTA.");
-
                 case TriggerSources.Fixations:
                     pointSelectionTriggerSource = new PointFixationSource(
                         Settings.Default.PointSelectionTriggerFixationMinPoints,

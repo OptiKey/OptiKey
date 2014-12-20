@@ -64,7 +64,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AggregatedFixations")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
             get {
@@ -671,6 +671,18 @@ namespace JuliusSweetland.ETTA.Properties {
             }
             set {
                 this["UiComplexity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
+        public global::System.TimeSpan KeySelectionTriggerIncompleteFixationTtl {
+            get {
+                return ((global::System.TimeSpan)(this["KeySelectionTriggerIncompleteFixationTtl"]));
+            }
+            set {
+                this["KeySelectionTriggerIncompleteFixationTtl"] = value;
             }
         }
     }

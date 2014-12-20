@@ -18,9 +18,10 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
         private readonly int detectFixationBufferSize;
         private readonly TimeSpan fixationTriggerTime;
-        private readonly TimeSpan pointTtl;
+        private readonly TimeSpan incompletedFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
-        private readonly Dictionary<KeyValue, long> keyAggregateFixationTicks;
+        private readonly Dictionary<KeyValue, long> incompleteFixationProgress;
+        private readonly Dictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
 
         private IObservable<TriggerSignal> sequence;
 
@@ -31,15 +32,16 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         public AggregateKeyFixationSource(
             int detectFixationBufferSize,
             TimeSpan fixationTriggerTime,
-            TimeSpan pointTtl,
+            TimeSpan incompletedFixationTtl,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
             this.detectFixationBufferSize = detectFixationBufferSize;
             this.fixationTriggerTime = fixationTriggerTime;
-            this.pointTtl = pointTtl;
+            this.incompletedFixationTtl = incompletedFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
             
-            keyAggregateFixationTicks = new Dictionary<KeyValue, long>();
+            incompleteFixationProgress = new Dictionary<KeyValue, long>();
+            incompleteFixationTimeouts = new Dictionary<KeyValue, IDisposable>();
         }
 
         #endregion
@@ -104,15 +106,30 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
                                             
-                                            if (keyAggregateFixationTicks.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                            if (incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
                                             {
-                                                keyAggregateFixationTicks[fixationCentrePointAndKeyValue.Value.KeyValue.Value] = 
-                                                    keyAggregateFixationTicks[fixationCentrePointAndKeyValue.Value.KeyValue.Value] + fixationSpan.Ticks;
+                                                incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] = 
+                                                    incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] + fixationSpan.Ticks;
                                             }
                                             else
                                             {
-                                                keyAggregateFixationTicks.Add(fixationCentrePointAndKeyValue.Value.KeyValue.Value, fixationSpan.Ticks);
+                                                incompleteFixationProgress.Add(fixationCentrePointAndKeyValue.Value.KeyValue.Value, fixationSpan.Ticks);
                                             }
+
+                                            //Setup incomplete fixation timeout
+                                            if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                            {
+                                                incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
+                                            }
+
+                                            PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
+                                            incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value] =
+                                                Observable.Timer(incompletedFixationTtl).Subscribe(_ =>
+                                                {
+                                                    incompleteFixationProgress[fixationCentrePointAndKeyValueCopy.KeyValue.Value] = 0;
+                                                    incompleteFixationTimeouts.Remove(fixationCentrePointAndKeyValueCopy.KeyValue.Value);
+                                                    observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
+                                                });
                                         }
 
                                         //Clear the current fixation and return
@@ -127,9 +144,15 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     var fixationSpan = latestPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
 
                                     var storedProgress =
-                                        keyAggregateFixationTicks.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value)
-                                            ? keyAggregateFixationTicks[fixationCentrePointAndKeyValue.Value.KeyValue.Value]
+                                        incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value)
+                                            ? incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value]
                                             : 0;
+
+                                    //Dispose of the expiry timer for the current fixation as it is in progress again
+                                    if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                    {
+                                        incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
+                                    }
 
                                     var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)fixationTriggerTime.Ticks);
 
@@ -144,7 +167,14 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     if (progress >= 1)
                                     {
                                         fixationCentrePointAndKeyValue = null;
-                                        keyAggregateFixationTicks.Clear();
+                                        incompleteFixationProgress.Clear();
+
+                                        foreach (var key in incompleteFixationTimeouts.Keys)
+                                        {
+                                            incompleteFixationTimeouts[key].Dispose();
+                                        }
+                                        incompleteFixationTimeouts.Clear();
+                                        
                                         observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
