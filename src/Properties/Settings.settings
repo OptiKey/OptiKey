@@ -152,8 +152,8 @@
     <Setting Name="UiComplexity" Type="JuliusSweetland.ETTA.Enums.UiComplexity" Scope="User">
       <Value Profile="(Default)">Basic</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:01</Value>
+    <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

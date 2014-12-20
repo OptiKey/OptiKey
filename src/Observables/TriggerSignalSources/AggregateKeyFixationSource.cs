@@ -18,7 +18,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
         private readonly int detectFixationBufferSize;
         private readonly TimeSpan fixationTriggerTime;
-        private readonly TimeSpan incompletedFixationTtl;
+        private readonly TimeSpan incompleteFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
         private readonly Dictionary<KeyValue, long> incompleteFixationProgress;
         private readonly Dictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
@@ -32,12 +32,12 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         public AggregateKeyFixationSource(
             int detectFixationBufferSize,
             TimeSpan fixationTriggerTime,
-            TimeSpan incompletedFixationTtl,
+            TimeSpan incompleteFixationTtl,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
             this.detectFixationBufferSize = detectFixationBufferSize;
             this.fixationTriggerTime = fixationTriggerTime;
-            this.incompletedFixationTtl = incompletedFixationTtl;
+            this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
             
             incompleteFixationProgress = new Dictionary<KeyValue, long>();
@@ -124,7 +124,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 
                                             PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value] =
-                                                Observable.Timer(incompletedFixationTtl).Subscribe(_ =>
+                                                Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
                                                 {
                                                     incompleteFixationProgress[fixationCentrePointAndKeyValueCopy.KeyValue.Value] = 0;
                                                     incompleteFixationTimeouts.Remove(fixationCentrePointAndKeyValueCopy.KeyValue.Value);
