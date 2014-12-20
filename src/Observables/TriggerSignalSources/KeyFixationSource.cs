@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -7,13 +8,20 @@ using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
 {
+    /// <summary>
+    /// Aggregates fixations on keys, allowing you to move away and return to complete a key fixation.
+    /// Point fixations have to be completed in one go, i.e. if you move away from a point fixation it is lost.
+    /// </summary>
     public class KeyFixationSource : ITriggerSignalSource, IFixationTriggerSource
     {
         #region Fields
 
-        private readonly int detectFixationBufferSize;
-        private readonly TimeSpan fixationTriggerTime;
+        private readonly TimeSpan timeToStartTrigger;
+        private readonly TimeSpan timeToCompleteTrigger;
+        private readonly TimeSpan incompleteFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
+        private readonly Dictionary<KeyValue, long> incompleteFixationProgress;
+        private readonly Dictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
 
         private IObservable<TriggerSignal> sequence;
 
@@ -22,13 +30,18 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #region Ctor
 
         public KeyFixationSource(
-            int detectFixationBufferSize,
-            TimeSpan fixationTriggerTime,
+            TimeSpan timeToStartTrigger,
+            TimeSpan timeToCompleteTrigger,
+            TimeSpan incompleteFixationTtl,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.detectFixationBufferSize = detectFixationBufferSize;
-            this.fixationTriggerTime = fixationTriggerTime;
+            this.timeToStartTrigger = timeToStartTrigger;
+            this.timeToCompleteTrigger = timeToCompleteTrigger;
+            this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
+            
+            incompleteFixationProgress = new Dictionary<KeyValue, long>();
+            incompleteFixationTimeouts = new Dictionary<KeyValue, IDisposable>();
         }
 
         #endregion
@@ -47,55 +60,83 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                     {
                         bool disposed = false;
 
-                        Timestamped<PointAndKeyValue>? latestPointAndKeyValue;
+                        Timestamped<PointAndKeyValue>? fixationCandidateStart = null; 
+                        DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue? fixationCentrePointAndKeyValue = null;
-                        DateTimeOffset fixationStart = DateTimeOffset.Now;
-
+                        
                         Action disposeAllSubscriptions = null;
 
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
-                            .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
-                            .Subscribe(nullableTps =>
+                            .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
+                            .Where(tp => tp.Value.Value.KeyValue != null) //Filter out points without key values
+                            .Where(tp => KeyEnabledStates == null || KeyEnabledStates[tp.Value.Value.KeyValue.Value]) //Filter out points over disabled keys
+                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                            .Buffer(2, 1) //Sliding buffer of 2 (last & current) that moves by 1 value at a time
+                            .Subscribe(tps =>
                             {
-                                //If any of the PointAndKeyValues received are null then the points feed is considered stale - reset
-                                if (nullableTps.Any(tp => tp.Value == null))
+                                Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
+                                    
+                                if (fixationCentrePointAndKeyValue == null)
                                 {
-                                    fixationCentrePointAndKeyValue = null;
-                                    observer.OnNext(new TriggerSignal(null, 0, null));
-                                    return;
-                                }
-
-                                //We know all buffered points are non-null now
-                                var tps = nullableTps
-                                    .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
-                                    .ToList();
-
-                                latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
-
-                                if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points are eligable to initiate a fixation:
-                                {
-                                    if (tps.All(t => t.Value.KeyValue != null)
-                                        && tps.Select(t => t.Value.KeyValue).Distinct().Count() == 1
-                                        && (KeyEnabledStates == null || KeyEnabledStates[tps.First().Value.KeyValue.Value]))
+                                    if (fixationCandidateStart == null
+                                        || latestPointAndKeyValue.Value.KeyValue != fixationCandidateStart.Value.Value.KeyValue)
                                     {
-                                        //All buffered tps have the same key value and that key is enabled
-                                        var centrePoint = tps.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
-                                        var keyValue = tps.Last().Value.KeyValue;
-                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, keyValue);
-                                        fixationStart = tps.Last().Timestamp;
+                                        //Start a new fixation candidate
+                                        fixationCandidateStart = latestPointAndKeyValue;
+                                    }
+                                    else if (latestPointAndKeyValue.Timestamp.Subtract(fixationCandidateStart.Value.Timestamp) >= timeToStartTrigger)
+                                    {
+                                        //Start a new fixation
+                                        fixationStart = latestPointAndKeyValue.Timestamp;
+                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(fixationCandidateStart.Value.Value.Point, fixationCandidateStart.Value.Value.KeyValue);
                                     }
                                 }
                                 else
                                 {
-                                    //We are building a fixation based on a key value and the latest pointAndKeyValue is not on that key, or the key is now disabled
-                                    if (fixationCentrePointAndKeyValue.Value.KeyValue != null
-                                        && (latestPointAndKeyValue.Value.Value.KeyValue == null
-                                            || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.Value.KeyValue)
-                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.Value.KeyValue.Value])))
+                                    //We are building a fixation and the latest pointAndKeyValue is not over the same key, or the key is now disabled
+                                    if (latestPointAndKeyValue.Value.KeyValue == null
+                                        || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
+                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
                                     {
+                                        //Get the last point which was part of the current fixation, i.e. over the previously fixated key
+                                        Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps.Count > 1
+                                                ? tps[tps.Count - 2]
+                                                : (Timestamped<PointAndKeyValue>?)null;
+
+                                        if (previousPointAndKeyValue != null)
+                                        {
+                                            //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
+                                            var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
+                                            
+                                            if (incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                            {
+                                                incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] = 
+                                                    incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] + fixationSpan.Ticks;
+                                            }
+                                            else
+                                            {
+                                                incompleteFixationProgress.Add(fixationCentrePointAndKeyValue.Value.KeyValue.Value, fixationSpan.Ticks);
+                                            }
+
+                                            //Setup incomplete fixation timeout
+                                            if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                            {
+                                                incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
+                                            }
+
+                                            PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
+                                            incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value] =
+                                                Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
+                                                {
+                                                    incompleteFixationProgress[fixationCentrePointAndKeyValueCopy.KeyValue.Value] = 0;
+                                                    incompleteFixationTimeouts.Remove(fixationCentrePointAndKeyValueCopy.KeyValue.Value);
+                                                    observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
+                                                });
+                                        }
+
+                                        //Clear the current fixation and return
                                         fixationCentrePointAndKeyValue = null;
-                                        observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }
                                 }
@@ -103,17 +144,41 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                 if (fixationCentrePointAndKeyValue != null)
                                 {
                                     //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
-                                    var fixationSpan = latestPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
-                                    var progress = (double)fixationSpan.Ticks / (double)fixationTriggerTime.Ticks;
+                                    var fixationSpan = latestPointAndKeyValue.Timestamp.Subtract(fixationStart);
 
-                                    //Publish a high signal if progress is 1 (100%), otherwise just publish progress
-                                    observer.OnNext(new TriggerSignal(
-                                        progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
+                                    var storedProgress =
+                                        incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value)
+                                            ? incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value]
+                                            : 0;
+
+                                    //Dispose of the expiry timer for the current fixation as it is in progress again
+                                    if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                    {
+                                        incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
+                                    }
+
+                                    var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
+
+                                    //Publish a high signal if progress is 1 (100%), otherwise just publish progress (if > 0 as 0 is a reset signal for progress across all keys)
+                                    if(progress > 0)
+                                    {
+                                        observer.OnNext(new TriggerSignal(
+                                            progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
+                                    }
 
                                     //Reset if we've just published a high signal
                                     if (progress >= 1)
                                     {
+                                        foreach (var key in incompleteFixationTimeouts.Keys)
+                                        {
+                                            incompleteFixationTimeouts[key].Dispose();
+                                        }
+
                                         fixationCentrePointAndKeyValue = null;
+                                        incompleteFixationProgress.Clear();
+                                        incompleteFixationTimeouts.Clear();
+                                        fixationCandidateStart = null;
+
                                         observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }

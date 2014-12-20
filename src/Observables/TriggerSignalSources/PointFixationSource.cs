@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -11,8 +12,8 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
     {
         #region Fields
 
-        private readonly int detectFixationBufferSize;
-        private readonly TimeSpan fixationTriggerTime;
+        private readonly TimeSpan timeToStartTrigger;
+        private readonly TimeSpan timeToCompleteTrigger;
         private readonly double fixationRadiusSquared;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
 
@@ -23,14 +24,14 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #region Ctor
 
         public PointFixationSource(
-            int detectFixationBufferSize,
+            TimeSpan timeToStartTrigger,
+            TimeSpan timeToCompleteTrigger,
             double fixationRadius,
-            TimeSpan fixationTriggerTime,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.detectFixationBufferSize = detectFixationBufferSize;
+            this.timeToStartTrigger = timeToStartTrigger;
+            this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.fixationRadiusSquared = fixationRadius * fixationRadius;
-            this.fixationTriggerTime = fixationTriggerTime;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
         }
 
@@ -50,7 +51,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                     {
                         bool disposed = false;
 
-                        Timestamped<PointAndKeyValue>? latestPointAndKeyValue = null;
+                        var buffer = new List<Timestamped<PointAndKeyValue>>();
                         PointAndKeyValue? fixationCentrePointAndKeyValue = null;
                         DateTimeOffset fixationStart = DateTimeOffset.Now;
 
@@ -58,60 +59,73 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                         
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
-                            .Buffer(detectFixationBufferSize, 1) //Sliding buffer that moves by 1 value at a time
-                            .Subscribe(nullablePoints =>
+                            .Subscribe(point =>
                             {
                                 //If any of the points received are null then the points feed is considered stale - reset
-                                if (nullablePoints.Any(tp => tp.Value == null))
+                                if (point.Value == null)
                                 {
                                     fixationCentrePointAndKeyValue = null;
+                                    buffer.Clear();
                                     observer.OnNext(new TriggerSignal(null, 0, null));
                                     return;
                                 }
 
-                                //We know all buffered points are non-null now
-                                var points = nullablePoints.Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp));
+                                //Maintain a buffer which contains points which fill the timeToStartTrigger 
+                                buffer.Add(new Timestamped<PointAndKeyValue>(point.Value.Value, point.Timestamp));
+                                var startTriggerTime = point.Timestamp.Subtract(timeToStartTrigger);
+                                int? bufferUsefulLimit = null;
+                                for (int index = buffer.Count - 1; index >= 0; index--)
+                                {
+                                    if (buffer[index].Timestamp < startTriggerTime)
+                                    {
+                                        bufferUsefulLimit = index;
+                                        break;
+                                    }
+                                }
 
-                                latestPointAndKeyValue = points.Last(); //Store latest timeStampedPointAndKeyValue
-
+                                if (bufferUsefulLimit != null)
+                                {
+                                    buffer.RemoveRange(0, bufferUsefulLimit.Value);
+                                }
+                                
                                 if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points are eligable to initiate a fixation
                                 {
-                                    //All the pointAndKeyValues are within an acceptable radius of their centre point?
-                                    var centrePoint = points.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
-                                    if (points.All(t =>
+                                    if (bufferUsefulLimit != null) //The buffer is useful, i.e. it contains at least 1 point which predates the time to start trigger
+                                    {
+                                        //All the buffered points are within an acceptable radius of their centre point?
+                                        var centrePoint = buffer.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
+                                        if (buffer.All(t =>
                                         {
-                                            //Right angled triangle hypotenuse (c): c squared = a squared + b squared
+                                            //Bit of right-angled triangle maths: a squared + b squared = c squared
                                             var xDiff = centrePoint.X - t.Value.Point.X;
                                             var yDiff = centrePoint.Y - t.Value.Point.Y;
-                                            return ((xDiff*xDiff) + (yDiff*yDiff)) <= fixationRadiusSquared;
+                                            return ((xDiff * xDiff) + (yDiff * yDiff)) <= fixationRadiusSquared;
                                         }))
-                                    {
-                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
-                                        fixationStart = points.Last().Timestamp;
+                                        {
+                                            fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
+                                            fixationStart = point.Timestamp;
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    //We are building a fixation based on a centre point and the latest pointAndKeyValue falls outside the acceptable radius
-                                    if (fixationCentrePointAndKeyValue.Value.KeyValue == null)
-                                    {
-                                        var xDiff = fixationCentrePointAndKeyValue.Value.Point.X - latestPointAndKeyValue.Value.Value.Point.X;
-                                        var yDiff = fixationCentrePointAndKeyValue.Value.Point.Y - latestPointAndKeyValue.Value.Value.Point.Y;
+                                    var xDiff = fixationCentrePointAndKeyValue.Value.Point.X - point.Value.Value.Point.X;
+                                    var yDiff = fixationCentrePointAndKeyValue.Value.Point.Y - point.Value.Value.Point.Y;
 
-                                        if (((xDiff*xDiff) + (yDiff*yDiff)) > fixationRadiusSquared)
-                                        {
-                                            fixationCentrePointAndKeyValue = null;
-                                            observer.OnNext(new TriggerSignal(null, 0, null));
-                                            return;
-                                        }
+                                    //We are building a fixation based on a centre point and the latest pointAndKeyValue falls outside the acceptable radius
+                                    if (((xDiff*xDiff) + (yDiff*yDiff)) > fixationRadiusSquared)
+                                    {
+                                        fixationCentrePointAndKeyValue = null;
+                                        observer.OnNext(new TriggerSignal(null, 0, null));
+                                        return;
                                     }
                                 }
 
                                 if (fixationCentrePointAndKeyValue != null)
                                 {
                                     //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
-                                    var fixationSpan = latestPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
-                                    var progress = (double)fixationSpan.Ticks / (double)fixationTriggerTime.Ticks;
+                                    var fixationSpan = point.Timestamp.Subtract(fixationStart);
+                                    var progress = (double)fixationSpan.Ticks / (double)timeToCompleteTrigger.Ticks;
 
                                     //Publish a high signal if progress is 1 (100%), otherwise just publish progress
                                     observer.OnNext(new TriggerSignal(
@@ -121,6 +135,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     if (progress >= 1)
                                     {
                                         fixationCentrePointAndKeyValue = null;
+                                        buffer.Clear();
                                         observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
                                     }

@@ -1,7 +1,5 @@
 ﻿NEXT STEPS:
 
-KeySelectionTriggerFixationMinPoints/PointSelectionTriggerFixationMinPoints - convert to timespan
-
 !Start up with TheEyeTribe as point source, but not running - displays error correctly, but process doesn't end cleanly and there is a big pause before anything is displayed.
 	Delay = trying to Activate?
 	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.

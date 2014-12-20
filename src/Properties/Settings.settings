@@ -29,10 +29,7 @@
     <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationMinPoints" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
-    <Setting Name="PointSelectionTriggerFixationTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
     </Setting>
     <Setting Name="GazeTrackerUdpPort" Roaming="true" Type="System.Int32" Scope="User">
@@ -56,10 +53,7 @@
     <Setting Name="Language" Roaming="true" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
       <Value Profile="(Default)">BritishEnglish</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerFixationMinPoints" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
-    <Setting Name="KeySelectionTriggerFixationTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+    <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
     </Setting>
     <Setting Name="MainWindowHeight" Roaming="true" Type="System.Double" Scope="User">
@@ -153,7 +147,13 @@
       <Value Profile="(Default)">Basic</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00</Value>
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1000000</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

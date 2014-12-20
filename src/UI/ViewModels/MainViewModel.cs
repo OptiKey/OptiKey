@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -351,9 +352,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
-                    keySelectionTriggerSource = new AggregateKeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationMinPoints,
-                       Settings.Default.KeySelectionTriggerFixationTime,
+                    keySelectionTriggerSource = new KeyFixationSource(
+                       Settings.Default.KeySelectionTriggerFixationStartTime,
+                       Settings.Default.KeySelectionTriggerFixationCompleteTime,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
                     break;
@@ -381,9 +382,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 case TriggerSources.Fixations:
                     pointSelectionTriggerSource = new PointFixationSource(
-                        Settings.Default.PointSelectionTriggerFixationMinPoints,
+                        Settings.Default.PointSelectionTriggerFixationStartTime,
+                        Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerFixationRadius,
-                        Settings.Default.PointSelectionTriggerFixationTime,
                         pointSource.Sequence);
                     break;
 
@@ -696,7 +697,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
-            keyboardService.KeySelectionProgress.Clear();
+
+            if (keyboardService != null)
+            {
+                keyboardService.KeySelectionProgress.Clear();
+            }
         }
 
         private void HandleServiceError(object sender, Exception exception)

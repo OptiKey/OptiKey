@@ -170,7 +170,6 @@
     <Compile Include="Observables\PointAndKeyValueSources\TheEyeTribeSource.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Observables\TriggerSignalSources\AggregateKeyFixationSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\KeyFixationSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\PointFixationSource.cs" />
     <Compile Include="Observables\TriggerSignalSources\IFixationTriggerSource.cs" />
