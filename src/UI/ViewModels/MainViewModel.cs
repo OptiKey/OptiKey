@@ -63,7 +63,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
 
-            SelectionMode = SelectionModes.Point;
+            SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
         }
 

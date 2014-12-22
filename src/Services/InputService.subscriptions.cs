@@ -277,98 +277,107 @@ namespace JuliusSweetland.ETTA.Services
         private void ProcessMultiKeySelectionResult(IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, TriggerSignal startSelectionTriggerSignal)
         {
             Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
+            
+            //keyboardService.KeyEnabledStates.DisableAll = true;
 
-            if (pointsAndKeyValues.Any())
-            {
-                var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
-
-                var sequenceThreshold = (int)Math.Round(
-                    ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
-                    * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
-
-                Log.Debug(string.Format(
-                    "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
-                    timeSpan.TotalMilliseconds,
-                    Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
-                    sequenceThreshold));
-
-                string reliableFirstLetter =
-                    startMultiKeySelectionTriggerSignal != null
-                    && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
-                    && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
-                        ? startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
-                        : null;
-
-                Log.Debug(string.Format(
-                    "First letter ('{0}') of multi-key selection capture {1} reliable.",
-                    reliableFirstLetter,
-                    reliableFirstLetter != null ? "IS" : "IS NOT"));
-
-                //If we are using a fixation trigger and the stop trigger has
-                //occurred on a letter then it is reliable - use it
-                string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
-                    && stopMultiKeySelectionTriggerSignal != null
-                    && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
-                    && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
-                        ? stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
-                        : null;
-
-                Log.Debug(string.Format(
-                        "Last letter ('{0}') of multi-key selection capture {1} reliable.",
-                        reliableLastLetter,
-                        reliableLastLetter != null ? "IS" : "IS NOT"));
-
-                if (reliableLastLetter != null)
+            //try
+            //{
+                if (pointsAndKeyValues.Any())
                 {
-                    Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
+                    var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
 
-                    PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value);
+                    var sequenceThreshold = (int)Math.Round(
+                        ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
+                        * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
+
+                    Log.Debug(string.Format(
+                        "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
+                        timeSpan.TotalMilliseconds,
+                        Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
+                        sequenceThreshold));
+
+                    string reliableFirstLetter =
+                        startMultiKeySelectionTriggerSignal != null
+                        && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
+                        && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
+                            ? startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
+                            : null;
+
+                    Log.Debug(string.Format(
+                        "First letter ('{0}') of multi-key selection capture {1} reliable.",
+                        reliableFirstLetter,
+                        reliableFirstLetter != null ? "IS" : "IS NOT"));
+
+                    //If we are using a fixation trigger and the stop trigger has
+                    //occurred on a letter then it is reliable - use it
+                    string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
+                        && stopMultiKeySelectionTriggerSignal != null
+                        && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
+                        && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
+                            ? stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
+                            : null;
+
+                    Log.Debug(string.Format(
+                            "Last letter ('{0}') of multi-key selection capture {1} reliable.",
+                            reliableLastLetter,
+                            reliableLastLetter != null ? "IS" : "IS NOT"));
+
+                    if (reliableLastLetter != null)
+                    {
+                        Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
+
+                        PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value);
+                    }
+
+                    var reducedSequence = pointsAndKeyValues
+                        .Where(tp => tp.Value.KeyValue != null)
+                        .Select(tp => tp.Value.KeyValue.Value)
+                        .ToList()
+                        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
+
+                    if (string.IsNullOrEmpty(reducedSequence))
+                    {
+                        //No useful selection
+                        Log.Debug("Multi-key selection capture reduces to nothing useful.");
+
+                        PublishSelectionResult(
+                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                new List<Point> { startSelectionTriggerSignal.PointAndKeyValue.Value.Point },
+                                null, null, null));
+                    }
+                    else if (reducedSequence.Length == 1)
+                    {
+                        //The user fixated on one letter - output it
+                        Log.Debug("Multi-key selection capture reduces to a single letter.");
+
+                        PublishSelectionResult(
+                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                                null, reducedSequence, null));
+                    }
+                    else
+                    {
+                        //The user fixated on multiple letters - map to dictionary word
+                        Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
+
+                        List<string> dictionaryMatches =
+                            dictionaryService.MapCaptureToEntries(
+                                pointsAndKeyValues.ToList(), reducedSequence,
+                                true, reliableLastLetter != null,
+                                ref mapToDictionaryMatchesCancellationTokenSource,
+                                exception => PublishError(this, exception));
+
+                        PublishSelectionResult(
+                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                                null, null, dictionaryMatches));
+                    }
                 }
-
-                var reducedSequence = pointsAndKeyValues
-                    .Where(tp => tp.Value.KeyValue != null)
-                    .Select(tp => tp.Value.KeyValue.Value)
-                    .ToList()
-                    .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
-
-                if (string.IsNullOrEmpty(reducedSequence))
-                {
-                    //No useful selection
-                    Log.Debug("Multi-key selection capture reduces to nothing useful.");
-
-                    PublishSelectionResult(
-                        new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                            new List<Point> { startSelectionTriggerSignal.PointAndKeyValue.Value.Point },
-                            null, null, null));
-                }
-                else if (reducedSequence.Length == 1)
-                {
-                    //The user fixated on one letter - output it
-                    Log.Debug("Multi-key selection capture reduces to a single letter.");
-
-                    PublishSelectionResult(
-                        new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                            pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                            null, reducedSequence, null));
-                }
-                else
-                {
-                    //The user fixated on multiple letters - map to dictionary word
-                    Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
-
-                    List<string> dictionaryMatches =
-                        dictionaryService.MapCaptureToEntries(
-                            pointsAndKeyValues.ToList(), reducedSequence,
-                            true, reliableLastLetter != null,
-                            ref mapToDictionaryMatchesCancellationTokenSource,
-                            exception => PublishError(this, exception));
-
-                    PublishSelectionResult(
-                        new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                            pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                            null, null, dictionaryMatches));
-                }
-            }
+            //}
+            //finally
+            //{
+            //    keyboardService.KeyEnabledStates.DisableAll = false;
+            //}
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿NEXT STEPS:
 
 Pause point source when doing work, e.g.matching capture to words. Maybe just disable all in KeyEnabledStates? This is to prevent selection when you don't mean to select anything
-	?Potentially also add a small pause after selection when using fixation triggers - this is to prevent the next selection starting immediately on the same key we just selected?
+	!Disabling the keys prevents selection animation!
 
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
