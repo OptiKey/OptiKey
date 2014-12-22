@@ -3,6 +3,7 @@
 !Start up with TheEyeTribe as point source, but not running - displays error correctly, but process doesn't end cleanly and there is a big pause before anything is displayed.
 	Delay = trying to Activate?
 	Shutdown prevented = need to Deactivate on shutdown? GazeManager.Instance.Deactivate(); Add everything that needs cleaning up to an Rx CompositeDisposable, including TheEyeTribePointService, which could be made disposable to Deactive connection.
+		OR, just hook into Application.Shutdown within the TET server class and hook up the Deactivate()?
 
 Pause point source when doing work, e.g.matching capture to words. Maybe just disable all in KeyEnabledStates? This is to prevent selection when you don't mean to select anything
 	?Potentially also add a small pause after selection when using fixation triggers - this is to prevent the next selection starting immediately on the same key we just selected?
