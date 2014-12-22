@@ -23,7 +23,14 @@ namespace JuliusSweetland.ETTA.Services
         {
             try
             {
+                Log.Debug("Activating TheEyeTribe's GazeManager.");
                 GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+                
+                Application.Current.Exit += (sender, args) =>
+                {
+                    Log.Debug("Deactivating TheEyeTribe's GazeManager.");
+                    GazeManager.Instance.Deactivate();
+                };
             }
             catch(Exception ex)
             {

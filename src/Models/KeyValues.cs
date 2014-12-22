@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using JuliusSweetland.ETTA.Enums;
 
@@ -125,7 +126,7 @@ namespace JuliusSweetland.ETTA.Models
             {
                 return "abcdefghijklmnopqrstuvwxyz"
                     .ToCharArray()
-                    .Select(c => new KeyValue { String = c.ToString() })
+                    .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
                     .ToList();
             }
         }

@@ -23,8 +23,8 @@ namespace JuliusSweetland.ETTA.UI.Behaviours
 
                 textBox.OnPropertyChanges<string>(TextBox.TextProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
                 textBox.OnPropertyChanges<double>(Control.FontSizeProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
-                textBox.OnPropertyChanges<double>(Control.ActualWidthProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
-                textBox.OnPropertyChanges<double>(Control.ActualHeightProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
+                textBox.OnPropertyChanges<double>(FrameworkElement.ActualWidthProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
+                textBox.OnPropertyChanges<double>(FrameworkElement.ActualHeightProperty).Subscribe(_ => PositionCaret(textBox, caretElement));
             }
         }
 

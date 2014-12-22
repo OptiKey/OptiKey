@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -15,6 +14,18 @@ using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
+using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
+using AlternativeAlpha1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha1;
+using AlternativeAlpha2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha2;
+using AlternativeAlpha3 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha3;
+using Currencies1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Currencies1;
+using Currencies2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Currencies2;
+using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
+using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
+using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
+using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
+using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.SettingCategories;
+using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
@@ -52,7 +63,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
 
-            SelectionMode = SelectionModes.Key;
+            SelectionMode = SelectionModes.Point;
             Keyboard = new Alpha();
         }
 
@@ -171,6 +182,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 if (SetProperty(ref pointSelectionProgress, value))
                 {
+                    //if (value != null)
+                    //{
+                    //    Debug.Print("Point:{0}, Progrss:{1}", value.Item1, value.Item2);
+                    //}
+                    
                     throw new NotImplementedException("Handling of PointSelection progress has not been implemented yet");
                 }
             }

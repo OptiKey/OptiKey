@@ -202,7 +202,7 @@ namespace JuliusSweetland.ETTA.Extensions
         {
             if (string.IsNullOrEmpty(input)) return input;
 
-            return string.Concat(input.First().ToString().ToUpper(), input.Substring(1));
+            return string.Concat(input.First().ToString(CultureInfo.InvariantCulture).ToUpper(), input.Substring(1));
         }
 
         public static bool NextCharacterWouldBeStartOfNewSentence(this string input)

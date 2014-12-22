@@ -10,7 +10,7 @@ namespace JuliusSweetland.ETTA.Extensions
         public static char ToUpperAndRemoveDiacritics(this char c)
         {
             //Convert char to string (for the next operations)
-            var cAsString = c.ToString();
+            var cAsString = c.ToString(CultureInfo.InvariantCulture);
 
             //Remove diacritics
             cAsString.RemoveDiacritics();

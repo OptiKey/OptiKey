@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources

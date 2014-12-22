@@ -51,7 +51,7 @@
 
         <english:Output Grid.Row="0" Grid.Column="0"
                         Grid.RowSpan="2" Grid.ColumnSpan="22" 
-                        NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
+                        NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWayToSource}" />
         
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="¤"
