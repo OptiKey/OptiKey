@@ -25,11 +25,14 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Ctor
 
-        public KeyboardService(ISuggestionService suggestionService, ICapturingStateManager capturingStateManager)
+        public KeyboardService(
+            ISuggestionService suggestionService, 
+            ICapturingStateManager capturingStateManager, 
+            ICalibrateStateManager calibrateStateManager)
         {
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager);
+            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrateStateManager);
 
             InitialiseKeyDownStates();
             AddKeyDownStatesChangeHandlers();

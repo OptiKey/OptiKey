@@ -53,8 +53,7 @@
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="CALIBRATE"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
             </controls:Key.Value>

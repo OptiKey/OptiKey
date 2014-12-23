@@ -115,6 +115,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TETControls">
+      <HintPath>..\packages\TheEyeTribe.1.0.0\TETControls.dll</HintPath>
+    </Reference>
     <Reference Include="TETCSharpClient">
       <HintPath>..\packages\TheEyeTribe.1.0.0\TETCSharpClient.dll</HintPath>
     </Reference>
@@ -152,7 +155,9 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
+    <Compile Include="Models\ICalibrateStateManager.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Services\ICalibrateService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
@@ -194,6 +199,7 @@
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
+    <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -296,16 +302,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.dll">
-      <Link>TheEyeTribe\Newtonsoft.Json.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\packages\TheEyeTribe.1.0.0\Newtonsoft.Json.xml">
-      <Link>TheEyeTribe\Newtonsoft.Json.xml</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Solution Files\Certificates and Signing.txt" />
     <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
+    <Content Include="TheEyeTribe\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TheEyeTribe\Newtonsoft.Json.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TheEyeTribe\TETControls.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TheEyeTribe\TETCSharpClient.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.manifest" />
     <Content Include="Solution Files\Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
@@ -422,7 +432,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="EyeIcon.ico" />

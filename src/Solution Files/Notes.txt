@@ -1,5 +1,10 @@
 ﻿NEXT STEPS:
 
+Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
+	Test errored calibrations
+	Test successful calibration only fires once
+	Make keyboard see-through during calibration
+
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
 		MainWindowTop	System.Double	0
@@ -63,8 +68,6 @@ Complexity views - Basic (speaking only, maybe no AddToDictionary) -> Advanced
 		- Publishing off (which should reset down keys)
 		- Multi-key selection off
 		? Leave Sleep and Recalibrate in?
-
-Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
 
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 

@@ -21,7 +21,7 @@
       <Value Profile="(Default)">00:00:00.0130000</Value>
     </Setting>
     <Setting Name="PointsSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.PointsSources" Scope="User">
-      <Value Profile="(Default)">MousePosition</Value>
+      <Value Profile="(Default)">TheEyeTribe</Value>
     </Setting>
     <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1500000</Value>
@@ -154,6 +154,9 @@
     </Setting>
     <Setting Name="PointSelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
+    </Setting>
+    <Setting Name="CalibrationAutoRetryCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
     </Setting>
   </Settings>
 </SettingsFile>

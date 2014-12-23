@@ -14,6 +14,7 @@ namespace JuliusSweetland.ETTA.Models
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
+        private readonly ICalibrateStateManager calibrateStateManager;
         private bool disableAll;
 
         #endregion
@@ -23,11 +24,13 @@ namespace JuliusSweetland.ETTA.Models
         public KeyEnabledStates(
             IKeyboardService keyboardService, 
             ISuggestionService suggestionService,
-            ICapturingStateManager capturingStateManager)
+            ICapturingStateManager capturingStateManager,
+            ICalibrateStateManager calibrateStateManager)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
+            this.calibrateStateManager = calibrateStateManager;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -40,6 +43,8 @@ namespace JuliusSweetland.ETTA.Models
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(i => i.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+
+            calibrateStateManager.OnPropertyChanges(i => i.CalibrateService).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -83,6 +88,13 @@ namespace JuliusSweetland.ETTA.Models
                 if (keyValue == KeyValues.MultiKeySelectionEnabledKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                         keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
+                {
+                    return false;
+                }
+
+                //Key is Calibrate, but not calibrate service available
+                if (keyValue == KeyValues.CalibrateKey
+                    && calibrateStateManager.CalibrateService == null)
                 {
                     return false;
                 }

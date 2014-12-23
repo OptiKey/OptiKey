@@ -29,7 +29,7 @@ using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class MainViewModel : BindableBase, ICapturingStateManager
+    public class MainViewModel : BindableBase, ICapturingStateManager, ICalibrateStateManager
     {
         #region Fields
 
@@ -99,6 +99,34 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             get { return suggestionService; }
             set { SetProperty(ref suggestionService, value); }
+        }
+
+        private ICalibrateService calibrateService;
+        public ICalibrateService CalibrateService
+        {
+            get { return calibrateService; }
+            set
+            {
+                SetProperty(ref calibrateService, value);
+
+                if (calibrateService != null)
+                {
+                    calibrateService.Info += (sender, info) =>
+                    {
+                        keyboardService.KeyEnabledStates.DisableAll = true;
+
+                        NotificationRequest.Raise(new Notification
+                        {
+                            //Title = "Calibration result...",
+                            Content = info
+                        }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+
+                        audioService.PlaySound(Settings.Default.InfoSoundFile);
+                    };
+
+                    calibrateService.Error += HandleServiceError;
+                }
+            }
         }
 
         private IKeyboard keyboard;
@@ -228,7 +256,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             dictionaryService = new DictionaryService();
             publishService = new PublishService();
             SuggestionService = new SuggestionService();
-            keyboardService = new KeyboardService(suggestionService, this);
+            keyboardService = new KeyboardService(suggestionService, this, this);
             InputService = CreateInputService();
             OutputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
 
@@ -350,7 +378,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     var eyeTribePointsService = new TheEyeTribePointService();
                     eyeTribePointsService.Error += HandleServiceError;
                     pointSource = new TheEyeTribeSource(
-                        Settings.Default.PointTtl, eyeTribePointsService);
+                        Settings.Default.PointTtl, 
+                        eyeTribePointsService);
                     break;
 
                 case PointsSources.MousePosition:
@@ -361,6 +390,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 default:
                     throw new ArgumentException(
                         "'PointsSource' settings is missing or not recognised! Please correct and restart ETTA.");
+            }
+
+            //Instantiate calibrate service
+            switch (Settings.Default.PointsSource)
+            {
+                case PointsSources.TheEyeTribe:
+                    CalibrateService = new TheEyeTribeCalibrationService();
+                    break;
             }
 
             //Instantiate key trigger source
@@ -511,6 +548,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = navigableKeyboard != null && navigableKeyboard.Back != null
                             ? navigableKeyboard.Back
                             : new Alpha();
+                        break;
+
+                    case FunctionKeys.Calibrate:
+                        if (CalibrateService != null)
+                        {
+                            Log.Debug("Calibrate requested.");
+                            KeyboardService.KeyEnabledStates.DisableAll = true;
+                            CalibrateService.Calibrate(0, () => KeyboardService.KeyEnabledStates.DisableAll = false);
+                        }
                         break;
 
                     case FunctionKeys.Currencies1Keyboard:

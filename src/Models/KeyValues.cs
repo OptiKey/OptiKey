@@ -7,21 +7,22 @@ namespace JuliusSweetland.ETTA.Models
 {
     public static class KeyValues
     {
+        public static readonly KeyValue CalibrateKey = new KeyValue { FunctionKey = FunctionKeys.Calibrate };
         public static readonly KeyValue LeftAltKey = new KeyValue { FunctionKey = FunctionKeys.LeftAlt };
         public static readonly KeyValue LeftCtrlKey = new KeyValue { FunctionKey = FunctionKeys.LeftCtrl };
         public static readonly KeyValue LeftShiftKey = new KeyValue { FunctionKey = FunctionKeys.LeftShift };
         public static readonly KeyValue LeftWinKey = new KeyValue { FunctionKey = FunctionKeys.LeftWin };
+        public static readonly KeyValue MultiKeySelectionEnabledKey = new KeyValue { FunctionKey = FunctionKeys.MultiKeySelectionEnabled };
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
-        public static readonly KeyValue SleepKey = new KeyValue { FunctionKey = FunctionKeys.Sleep };
+        public static readonly KeyValue PublishKey = new KeyValue { FunctionKey = FunctionKeys.Publish };
         public static readonly KeyValue Suggestion1Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion1 };
         public static readonly KeyValue Suggestion2Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion2 };
         public static readonly KeyValue Suggestion3Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion3 };
         public static readonly KeyValue Suggestion4Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion4 };
         public static readonly KeyValue Suggestion5Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion5 };
         public static readonly KeyValue Suggestion6Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion6 };
-        public static readonly KeyValue PublishKey = new KeyValue { FunctionKey = FunctionKeys.Publish };
-        public static readonly KeyValue MultiKeySelectionEnabledKey = new KeyValue { FunctionKey = FunctionKeys.MultiKeySelectionEnabled };
+        public static readonly KeyValue SleepKey = new KeyValue { FunctionKey = FunctionKeys.Sleep };
 
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
