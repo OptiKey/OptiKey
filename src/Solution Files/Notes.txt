@@ -3,6 +3,19 @@
 Pause point source when doing work, e.g.matching capture to words. Maybe just disable all in KeyEnabledStates? This is to prevent selection when you don't mean to select anything
 	!Disabling the keys prevents selection animation!
 
+	Selection animation is not taking precedence over data trigger setting forground etc to disabled values. Try using Interaction EventTrigger:
+	<Interactivity:Interaction.Triggers>
+	    <Interactivity:EventTrigger SourceObject="{Binding}" EventName="MyEvent">
+	        <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+	            <ei:ControlStoryboardAction.Storyboard>
+	                <Storyboard>
+	                    ....
+	                </Storyboard>
+	            </ei:ControlStoryboardAction.Storyboard>
+        	</ei:ControlStoryboardAction>
+	    </Interactivity:EventTrigger>
+	</Interactivity:Interaction.Triggers>
+
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
 		MainWindowTop	System.Double	0
