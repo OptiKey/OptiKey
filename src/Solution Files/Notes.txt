@@ -68,6 +68,8 @@ Management (new window accessed with hotkey)
 
 Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
 
+Disable keys when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
+
 Profile and optimise, especially keyboard transitions
 
 Refactor any remaining large classes, e.g. MainViewModel
