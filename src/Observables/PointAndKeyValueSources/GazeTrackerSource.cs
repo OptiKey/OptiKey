@@ -8,6 +8,7 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using log4net;
@@ -58,7 +59,7 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
             get
             {
                 if (sequence == null)
-                { 
+                {                    
                     sequence = Observable.Using(() =>
                         {
                             var udpClient = new UdpClient();
@@ -68,7 +69,8 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                         }, 
                         udpClient => Observable
                             .Defer(() => udpClient.ReceiveAsync().ToObservable())
-                            .Repeat() 
+                            .Repeat()
+                            .Where(_ => State == PointAndKeyValueSourceStates.Running)
                             .Select(udpReceiveResult =>
                             {
                                 var receivedString = Encoding.ASCII.GetString(udpReceiveResult.Buffer, 0, udpReceiveResult.Buffer.Length);
@@ -99,6 +101,8 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                 return sequence;
             }
         }
+
+        public PointAndKeyValueSourceStates State { get; set; }
 
         #endregion
     }

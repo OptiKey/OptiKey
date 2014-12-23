@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Services;
@@ -45,6 +46,7 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                     sequence = Observable.FromEventPattern<Timestamped<Point>>(
                             eh => theEyeTribePointService.Point += eh,
                             eh => theEyeTribePointService.Point -= eh)
+                        .Where(_ => State == PointAndKeyValueSourceStates.Running)
                         .Select(ep => ep.EventArgs)
                         .PublishLivePointsOnly(pointTtl)
                         .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))
@@ -55,6 +57,8 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                 return sequence;
             }
         }
+
+        public PointAndKeyValueSourceStates State { get; set; }
 
         #endregion
     }

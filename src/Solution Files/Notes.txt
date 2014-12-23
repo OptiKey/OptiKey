@@ -1,10 +1,5 @@
 ﻿NEXT STEPS:
 
-Pause point source when doing work, e.g.matching capture to words. Maybe just disable all in KeyEnabledStates? This is to prevent selection when you don't mean to select anything
-	!Disabling the keys prevents selection animation!
-		!Selection animation is not taking precedence over data trigger setting forground etc to disabled values!
-		Using Interaction Triggers does not help.
-	
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
 		MainWindowTop	System.Double	0
@@ -13,7 +8,6 @@ Simplify settings keyboard access to just: Move & Resize
 		MainWindowWidth	System.Double	800
 
 Management (new window accessed with hotkey)
-	
 		Visuals:		
 		Theme	System.String	/Resources/Themes/Android_Dark.xaml
 		FontFamily	System.String	/Resources/Fonts/#Roboto
@@ -22,11 +16,7 @@ Management (new window accessed with hotkey)
 		ScratchpadNumberOfLines	System.Int32	2
 		ToastNotificationTitleFontSize	System.Int32	25
 		ToastNotificationContentFontSize	System.Int32	16
-		Complexity - Basic (speaking only, maybe no AddToDictionary) -> Advanced
-			- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
-				- Publishing off (which should reset down keys)
-				- Multi-key selection off
-				? Leave Sleep and Recalibrate in?
+		Complexity setting - Basic/Advanced
 		
 		Words:		
 		Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
@@ -68,9 +58,15 @@ Management (new window accessed with hotkey)
 		Other:
 		Debug mode (setting) (or command line arg?)
 
+Complexity views - Basic (speaking only, maybe no AddToDictionary) -> Advanced
+	- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
+		- Publishing off (which should reset down keys)
+		- Multi-key selection off
+		? Leave Sleep and Recalibrate in?
+
 Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
 
-Disable keys when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
+Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 
 Profile and optimise, especially keyboard transitions
 
@@ -89,7 +85,7 @@ Auto complete words
 	+ auto correct words
 Predict next word
 Add high contrast theme
-Test http://www.cameramouse.org/
+Test this product: http://www.cameramouse.org/
 Get and test the Tobii EyeX: http://www.tobii.com/en/eye-experience/#.UwMlifl5OkF
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
