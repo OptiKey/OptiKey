@@ -25,6 +25,8 @@ namespace JuliusSweetland.ETTA.Services
 
         public void Speak(string textToSpeak, int? volume = null, int? rate = null, string voice = null)
         {
+            if (string.IsNullOrEmpty(textToSpeak)) return;
+
             try
             {
                 Log.Debug(string.Format("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", 
