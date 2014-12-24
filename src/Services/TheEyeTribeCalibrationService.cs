@@ -37,7 +37,7 @@ namespace JuliusSweetland.ETTA.Services
                 {
                     case CalibrationRunnerResult.Success:
                         PublishInfo(this, 
-                            string.Format("Calibration success! Accuracy (Avg Error Degree) = {0})", 
+                            string.Format("Calibration success! Accuracy (Avg Error Degree = {0})", 
                                 args.CalibrationResult.AverageErrorDegree));
                         break;
 
