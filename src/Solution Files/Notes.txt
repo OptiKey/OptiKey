@@ -88,6 +88,7 @@ Complexity views - Basic (speaking only, maybe no AddToDictionary) -> Advanced
 	- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
 		- Publishing off (which should reset down keys)
 		- Multi-key selection off
+		- Set Keyboard back to Alpha
 		? Leave Sleep and Recalibrate in?
 
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
