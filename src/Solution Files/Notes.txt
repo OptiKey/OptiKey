@@ -1,5 +1,23 @@
 ﻿NEXT STEPS:
 
+Rename Calibrate Service (interface and TET class) to CalibrationService
+Remove locked key border style to allow selection animation to show on background?
+Change ICalibrationStateManager:
+	Expose CalibrationService and extension method CanCalibrate (CalibrationService exists)
+	Convert Calibrate method to async/await
+		private TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+		tcs.SetResult(true); // complete task in event
+		await tcs.Task; // wait for task somewhere else
+	Add Window arg to Calibrate method (to set as parent)
+	Add Interaction logic to MainVM/MainView
+	Calibrate key press -> check state manager to see if we can calibrate -> If so raise calibration request with calibration service -> Interaction request logic calls Calibrate method and WAITS for it to return
+		IF this causes deadlocks then consider this: http://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
+		a)Don't return to calling context when awaiting inside Calibrate method: await client.GetStringAsync(uri).ConfigureAwait(false);
+		b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
+	MainVM just raises an interaction request - passing ICalibrationService
+
+Add transparency - accessible from keyboard?
+
 Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
 	Test errored calibrations
 	Test successful calibration only fires once
