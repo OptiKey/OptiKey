@@ -1,28 +1,27 @@
 ﻿NEXT STEPS:
 
-Rename Calibrate Service (interface and TET class) to CalibrationService
-
-Change ICalibrationStateManager:
-	Expose CalibrationService and extension method CanCalibrate (CalibrationService exists)
-	Convert Calibrate method to async/await
-		private TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
-		tcs.SetResult(true); // complete task in event
-		await tcs.Task; // wait for task somewhere else
-	Add Window arg to Calibrate method (to set as parent)
-	Add Interaction logic to MainVM/MainView
-	Calibrate key press -> check state manager to see if we can calibrate -> If so raise calibration request with calibration service -> Interaction request logic calls Calibrate method and WAITS for it to return (using an await like this is just a way of blocking - could use signals)
-		IF this causes deadlocks then consider this: http://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
-		a)Don't return to calling context when awaiting inside Calibrate method: await client.GetStringAsync(uri).ConfigureAwait(false);
-		b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
-	MainVM just raises an interaction request - passing ICalibrationService
-	
-	Make Calibrate method synchronous? Await OnResult event using either awaited TaskCompletionSource or a bit of Rx (http://stackoverflow.com/questions/23254964/iobservablet-totaskt-method-returns-task-awaiting-activation)
-		Returns a CalibrationResult object (bool success, string message)
-
-Test calibration:
-	Test errored calibrations
-	Test successful calibration only fires once
-	Make calibration visible above/through keyboard
+CALIBRATION:
+	Ask user before recalibrating - expensive, and time consuming process
+	Rename Calibrate Service (interface and TET class) to CalibrationService
+	Change ICalibrationStateManager:
+		Expose CalibrationService and extension method CanCalibrate (CalibrationService exists)
+		Convert Calibrate method to async/await
+			private TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+			tcs.SetResult(true); // complete task in event
+			await tcs.Task; // wait for task somewhere else
+		Add Window arg to Calibrate method (to set as parent)
+		Add Interaction logic to MainVM/MainView
+		Calibrate key press -> check state manager to see if we can calibrate -> If so raise calibration request with calibration service -> Interaction request logic calls Calibrate method and WAITS for it to return (using an await like this is just a way of blocking - could use signals)
+			IF this causes deadlocks then consider this: http://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
+			a)Don't return to calling context when awaiting inside Calibrate method: await client.GetStringAsync(uri).ConfigureAwait(false);
+			b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
+		MainVM just raises an interaction request - passing ICalibrationService
+		Make Calibrate method synchronous? Await OnResult event using either awaited TaskCompletionSource or a bit of Rx (http://stackoverflow.com/questions/23254964/iobservablet-totaskt-method-returns-task-awaiting-activation)
+			Returns a CalibrationResult object (bool success, string message)
+	Test calibration:
+		Test errored calibrations
+		Test successful calibration only fires once
+		Make calibration visible above/through keyboard
 
 Remove locked key border style to allow selection animation to show on background?
 
@@ -42,7 +41,7 @@ Management (new window accessed with hotkey)
 		ScratchpadNumberOfLines	System.Int32	2
 		ToastNotificationTitleFontSize	System.Int32	25
 		ToastNotificationContentFontSize	System.Int32	16
-		Complexity setting - Basic/Advanced
+		VisualMode setting - SpeechOnly / Standard
 		
 		Words:		
 		Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
@@ -84,12 +83,12 @@ Management (new window accessed with hotkey)
 		Other:
 		Debug mode (setting) (or command line arg?)
 
-Complexity views - Basic (speaking only, maybe no AddToDictionary) -> Advanced
-	- When switching to Basic mode removes everything irrelevent (Publishing, MultiKeyCapturing, AddToDictionary, PublishOnly, Menu, Symbols)
-		- Publishing off (which should reset down keys)
+VisualMode setting - SpeechOnly / Standard
+	- When switching mode make sure KeyDownStates (which should automatically change settings also?) are reset:
+		- Publishing off (which should release down keys automatically?)
 		- Multi-key selection off
 		- Set Keyboard back to Alpha
-		? Leave Sleep and Recalibrate in?
+		- Leave Sleep and Recalibrate in
 
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 
