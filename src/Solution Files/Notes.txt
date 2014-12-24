@@ -15,6 +15,9 @@ Change ICalibrationStateManager:
 		a)Don't return to calling context when awaiting inside Calibrate method: await client.GetStringAsync(uri).ConfigureAwait(false);
 		b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
 	MainVM just raises an interaction request - passing ICalibrationService
+	
+	Make Calibrate method synchronous? Await OnResult event using either awaited TaskCompletionSource or a bit of Rx (http://stackoverflow.com/questions/23254964/iobservablet-totaskt-method-returns-task-awaiting-activation)
+		Returns a CalibrationResult object (bool success, string message)
 
 Test calibration:
 	Test errored calibrations
