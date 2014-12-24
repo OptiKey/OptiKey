@@ -10,7 +10,7 @@ Change ICalibrationStateManager:
 		await tcs.Task; // wait for task somewhere else
 	Add Window arg to Calibrate method (to set as parent)
 	Add Interaction logic to MainVM/MainView
-	Calibrate key press -> check state manager to see if we can calibrate -> If so raise calibration request with calibration service -> Interaction request logic calls Calibrate method and WAITS for it to return
+	Calibrate key press -> check state manager to see if we can calibrate -> If so raise calibration request with calibration service -> Interaction request logic calls Calibrate method and WAITS for it to return (using an await like this is just a way of blocking - could use signals)
 		IF this causes deadlocks then consider this: http://blog.stephencleary.com/2012/07/dont-block-on-async-code.html
 		a)Don't return to calling context when awaiting inside Calibrate method: await client.GetStringAsync(uri).ConfigureAwait(false);
 		b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
