@@ -1,7 +1,7 @@
 ﻿NEXT STEPS:
 
 Rename Calibrate Service (interface and TET class) to CalibrationService
-Remove locked key border style to allow selection animation to show on background?
+
 Change ICalibrationStateManager:
 	Expose CalibrationService and extension method CanCalibrate (CalibrationService exists)
 	Convert Calibrate method to async/await
@@ -16,12 +16,12 @@ Change ICalibrationStateManager:
 		b)Make it async as far back as possible, e.g. https://github.com/xperiandri/PortablePrism/blob/master/Prism.StoreProfile.Interactivity/InteractionRequest/PopupDialogActionBase.cs
 	MainVM just raises an interaction request - passing ICalibrationService
 
-Add transparency - accessible from keyboard?
-
-Recalibrate functionality http://theeyetribe.com/forum/viewtopic.php?f=11&t=62&sid=1804a4fa79b7972f5cbb45211cd73279
+Test calibration:
 	Test errored calibrations
 	Test successful calibration only fires once
-	Make keyboard see-through during calibration
+	Make calibration visible above/through keyboard
+
+Remove locked key border style to allow selection animation to show on background?
 
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
@@ -98,6 +98,7 @@ Refactor any remaining large classes, e.g. MainViewModel
 --------------------------------------------------------------------------------
 
 TO DO?
+Add transparency - accessible from keyboard?
 Prevent minimising/maximising - must be windowed at all times
 Add support for USB (hardware) buttons (to act as triggers)?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
