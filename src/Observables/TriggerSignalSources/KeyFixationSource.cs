@@ -59,7 +59,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                     {
                         bool disposed = false;
 
-                        Timestamped<PointAndKeyValue>? fixationCandidateStart = null; 
+                        Timestamped<PointAndKeyValue>? lockOnStart = null; 
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
                         PointAndKeyValue? fixationCentrePointAndKeyValue = null;
                         
@@ -68,8 +68,6 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
-                            .Where(tp => tp.Value.Value.KeyValue != null) //Filter out points without key values
-                            .Where(tp => KeyEnabledStates == null || KeyEnabledStates[tp.Value.Value.KeyValue.Value]) //Filter out points over disabled keys
                             .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
                             .Buffer(2, 1) //Sliding buffer of 2 (last & current) that moves by 1 value at a time
                             .Subscribe(tps =>
@@ -78,17 +76,31 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     
                                 if (fixationCentrePointAndKeyValue == null)
                                 {
-                                    if (fixationCandidateStart == null
-                                        || latestPointAndKeyValue.Value.KeyValue != fixationCandidateStart.Value.Value.KeyValue)
+                                    //Lock-on in progress, but latest point breaks the lock-on
+                                    if (lockOnStart != null
+                                        && (latestPointAndKeyValue.Value.KeyValue == null
+                                            || !lockOnStart.Value.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
+                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value])))
                                     {
-                                        //Start a new fixation candidate
-                                        fixationCandidateStart = latestPointAndKeyValue;
+                                        lockOnStart = null;
                                     }
-                                    else if (latestPointAndKeyValue.Timestamp.Subtract(fixationCandidateStart.Value.Timestamp) >= lockOnTime)
+
+                                    //We have no current lock-on - start a new one
+                                    if (lockOnStart == null
+                                        && latestPointAndKeyValue.Value.KeyValue != null
+                                        && (KeyEnabledStates == null || KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
                                     {
-                                        //Start a new fixation
+                                        lockOnStart = latestPointAndKeyValue;
+                                    }
+
+                                    //Check if the current lock-on is complete - if so start a new fixation
+                                    if (lockOnStart != null
+                                        && latestPointAndKeyValue.Value.KeyValue != null
+                                        && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= lockOnTime)
+                                    {
                                         fixationStart = latestPointAndKeyValue.Timestamp;
-                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(fixationCandidateStart.Value.Value.Point, fixationCandidateStart.Value.Value.KeyValue);
+                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
+                                        lockOnStart = null;
                                     }
                                 }
                                 else
@@ -176,7 +188,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                         fixationCentrePointAndKeyValue = null;
                                         incompleteFixationProgress.Clear();
                                         incompleteFixationTimeouts.Clear();
-                                        fixationCandidateStart = null;
+                                        lockOnStart = null;
 
                                         observer.OnNext(new TriggerSignal(null, 0, null));
                                         return;
