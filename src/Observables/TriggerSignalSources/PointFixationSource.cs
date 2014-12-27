@@ -12,7 +12,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
     {
         #region Fields
 
-        private readonly TimeSpan timeToStartTrigger;
+        private readonly TimeSpan lockOnTime;
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly double fixationRadiusSquared;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
@@ -24,12 +24,12 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #region Ctor
 
         public PointFixationSource(
-            TimeSpan timeToStartTrigger,
+            TimeSpan lockOnTime,
             TimeSpan timeToCompleteTrigger,
             double fixationRadius,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.timeToStartTrigger = timeToStartTrigger;
+            this.lockOnTime = lockOnTime;
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.fixationRadiusSquared = fixationRadius * fixationRadius;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
@@ -70,9 +70,9 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                     return;
                                 }
 
-                                //Maintain a buffer which contains points which fill the timeToStartTrigger 
+                                //Maintain a buffer which contains points which fill the lockOnTime 
                                 buffer.Add(new Timestamped<PointAndKeyValue>(point.Value.Value, point.Timestamp));
-                                var startTriggerTime = point.Timestamp.Subtract(timeToStartTrigger);
+                                var startTriggerTime = point.Timestamp.Subtract(lockOnTime);
                                 int? bufferUsefulLimit = null;
                                 for (int index = buffer.Count - 1; index >= 0; index--)
                                 {

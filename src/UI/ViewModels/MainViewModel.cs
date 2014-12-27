@@ -247,8 +247,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             publishService.Error += HandleServiceError;
             inputService.Error += HandleServiceError;
 
-            inputService.KeyEnabledStates = keyboardService.KeyEnabledStates;
-
             inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
                         .Subscribe(value => CapturingMultiKeySelection = value);
 
@@ -388,7 +386,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 case TriggerSources.Fixations:
                     keySelectionTriggerSource = new KeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationStartTime,
+                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationCompleteTime,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
@@ -417,7 +415,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 case TriggerSources.Fixations:
                     pointSelectionTriggerSource = new PointFixationSource(
-                        Settings.Default.PointSelectionTriggerFixationStartTime,
+                        Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerFixationRadius,
                         pointSource.Sequence);

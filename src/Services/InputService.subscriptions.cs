@@ -140,7 +140,7 @@ namespace JuliusSweetland.ETTA.Services
                     if (SelectionMode == SelectionModes.Key)
                     {
                         if (triggerSignal.PointAndKeyValue.Value.KeyValue != null
-                            && (KeyEnabledStates == null || KeyEnabledStates[triggerSignal.PointAndKeyValue.Value.KeyValue.Value]))
+                            && (keyboardService.KeyEnabledStates == null || keyboardService.KeyEnabledStates[triggerSignal.PointAndKeyValue.Value.KeyValue.Value]))
                         {
                             Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
@@ -277,8 +277,8 @@ namespace JuliusSweetland.ETTA.Services
         private void ProcessMultiKeySelectionResult(IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, TriggerSignal startSelectionTriggerSignal)
         {
             Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
-            
-            pointAndKeyValueSource.State = PointAndKeyValueSourceStates.Paused;
+
+            keyboardService.KeyEnabledStates.DisableAll = true;
 
             try
             {
@@ -376,7 +376,7 @@ namespace JuliusSweetland.ETTA.Services
             }
             finally
             {
-                pointAndKeyValueSource.State = PointAndKeyValueSourceStates.Running;
+                keyboardService.KeyEnabledStates.DisableAll = false;
             }
         }
 

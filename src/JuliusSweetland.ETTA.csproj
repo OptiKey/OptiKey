@@ -138,7 +138,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CharCategories.cs" />
-    <Compile Include="Enums\PointAndKeyValueSourceStates.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />

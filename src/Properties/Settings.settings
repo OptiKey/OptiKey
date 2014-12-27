@@ -149,10 +149,10 @@
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+    <Setting Name="KeySelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
   </Settings>

@@ -665,12 +665,12 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.TimeSpan KeySelectionTriggerFixationStartTime {
+        public global::System.TimeSpan KeySelectionTriggerFixationLockOnTime {
             get {
-                return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationStartTime"]));
+                return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationLockOnTime"]));
             }
             set {
-                this["KeySelectionTriggerFixationStartTime"] = value;
+                this["KeySelectionTriggerFixationLockOnTime"] = value;
             }
         }
         
@@ -678,12 +678,12 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.TimeSpan PointSelectionTriggerFixationStartTime {
+        public global::System.TimeSpan PointSelectionTriggerFixationLockOnTime {
             get {
-                return ((global::System.TimeSpan)(this["PointSelectionTriggerFixationStartTime"]));
+                return ((global::System.TimeSpan)(this["PointSelectionTriggerFixationLockOnTime"]));
             }
             set {
-                this["PointSelectionTriggerFixationStartTime"] = value;
+                this["PointSelectionTriggerFixationLockOnTime"] = value;
             }
         }
     }

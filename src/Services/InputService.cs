@@ -51,6 +51,13 @@ namespace JuliusSweetland.ETTA.Services
             this.pointAndKeyValueSource = pointAndKeyValueSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
+
+            //Fixation key triggers also need the enabled state info
+            var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
+            if (fixationTrigger != null)
+            {
+                fixationTrigger.KeyEnabledStates = keyboardService.KeyEnabledStates;
+            }
         }
 
         #endregion
@@ -69,22 +76,6 @@ namespace JuliusSweetland.ETTA.Services
                 }
 
                 DisposeMultiKeySelection();
-            }
-        }
-
-        public KeyEnabledStates KeyEnabledStates 
-        {
-            get { return keyEnabledStates; }
-            set
-            {
-                keyEnabledStates = value;
-
-                //Fixation key triggers also need the enabled state info
-                var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
-                if (fixationTrigger != null)
-                {
-                    fixationTrigger.KeyEnabledStates = value;
-                }
             }
         }
 

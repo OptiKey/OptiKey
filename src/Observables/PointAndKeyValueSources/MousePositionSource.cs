@@ -32,7 +32,6 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                 {
                     sequence = Observable
                         .Interval(Settings.Default.PointsMousePositionSampleInterval)
-                        .Where(_ => State == PointAndKeyValueSourceStates.Running)
                         .Select(_ => new Point(Cursor.Position.X, Cursor.Position.Y))
                         .Timestamp()
                         .PublishLivePointsOnly(pointTtl)
@@ -44,7 +43,5 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                 return sequence;
             }
         }
-
-        public PointAndKeyValueSourceStates State { get; set; }
     }
 }

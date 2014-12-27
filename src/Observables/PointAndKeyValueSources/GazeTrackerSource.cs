@@ -70,7 +70,6 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                         udpClient => Observable
                             .Defer(() => udpClient.ReceiveAsync().ToObservable())
                             .Repeat()
-                            .Where(_ => State == PointAndKeyValueSourceStates.Running)
                             .Select(udpReceiveResult =>
                             {
                                 var receivedString = Encoding.ASCII.GetString(udpReceiveResult.Buffer, 0, udpReceiveResult.Buffer.Length);
@@ -101,8 +100,6 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
                 return sequence;
             }
         }
-
-        public PointAndKeyValueSourceStates State { get; set; }
 
         #endregion
     }

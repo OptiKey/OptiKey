@@ -1,8 +1,6 @@
 ﻿NEXT STEPS:
 
-Rename fixation trigger start time -> lock on time
-
-Remove point source state. Just disable keys.
+!Sleep button activate/deactive is too quick - why is it not waiting for a full fixation trigger?
 
 Remove locked key border style to allow selection animation to show on background?
 

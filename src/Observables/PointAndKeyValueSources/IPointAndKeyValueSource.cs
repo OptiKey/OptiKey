@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reactive;
 using System.Windows;
-using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
@@ -11,6 +10,5 @@ namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
     {
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         IObservable<Timestamped<PointAndKeyValue?>> Sequence { get; }
-        PointAndKeyValueSourceStates State { get; set; }
     }
 }

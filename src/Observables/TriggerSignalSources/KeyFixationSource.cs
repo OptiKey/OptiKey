@@ -15,7 +15,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
     {
         #region Fields
 
-        private readonly TimeSpan timeToStartTrigger;
+        private readonly TimeSpan lockOnTime;
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
@@ -29,12 +29,12 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
         #region Ctor
 
         public KeyFixationSource(
-            TimeSpan timeToStartTrigger,
+            TimeSpan lockOnTime,
             TimeSpan timeToCompleteTrigger,
             TimeSpan incompleteFixationTtl,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.timeToStartTrigger = timeToStartTrigger;
+            this.lockOnTime = lockOnTime;
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
@@ -84,7 +84,7 @@ namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
                                         //Start a new fixation candidate
                                         fixationCandidateStart = latestPointAndKeyValue;
                                     }
-                                    else if (latestPointAndKeyValue.Timestamp.Subtract(fixationCandidateStart.Value.Timestamp) >= timeToStartTrigger)
+                                    else if (latestPointAndKeyValue.Timestamp.Subtract(fixationCandidateStart.Value.Timestamp) >= lockOnTime)
                                     {
                                         //Start a new fixation
                                         fixationStart = latestPointAndKeyValue.Timestamp;
