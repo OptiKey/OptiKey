@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.Models
 
             capturingStateManager.OnPropertyChanges(i => i.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
 
-            calibrateStateManager.OnPropertyChanges(i => i.CalibrateService).Subscribe(_ => NotifyStateChanged());
+            calibrateStateManager.OnAnyPropertyChanges().Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -94,7 +94,7 @@ namespace JuliusSweetland.ETTA.Models
 
                 //Key is Calibrate, but not calibrate service available
                 if (keyValue == KeyValues.CalibrateKey
-                    && calibrateStateManager.CalibrateService == null)
+                    && !calibrateStateManager.CanCalibrate())
                 {
                     return false;
                 }

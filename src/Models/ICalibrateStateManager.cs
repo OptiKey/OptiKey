@@ -5,6 +5,6 @@ namespace JuliusSweetland.ETTA.Models
 {
     public interface ICalibrateStateManager : INotifyPropertyChanged
     {
-        ICalibrateService CalibrateService { get; }
+        ICalibrationService CalibrationService { get; }
     }
 }

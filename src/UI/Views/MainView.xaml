@@ -24,6 +24,9 @@
                                                           ToastForegroundBrush="White"
                                                           ToastBorderBrush="Black" />
         </interactionRequest:InteractionRequestTrigger>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
+            <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
+        </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 
     <Grid>

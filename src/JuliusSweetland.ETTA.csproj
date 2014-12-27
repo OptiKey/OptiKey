@@ -147,6 +147,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\CalibrateStateManagerExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
@@ -155,9 +156,10 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
+    <Compile Include="Models\CalibrationResult.cs" />
     <Compile Include="Models\ICalibrateStateManager.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
-    <Compile Include="Services\ICalibrateService.cs" />
+    <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
@@ -211,6 +213,7 @@
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
+    <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
@@ -311,6 +314,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TheEyeTribe\TETControls.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TheEyeTribe\TETControls.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TheEyeTribe\TETCSharpClient.dll">

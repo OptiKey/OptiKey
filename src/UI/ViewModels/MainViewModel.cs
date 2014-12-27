@@ -37,7 +37,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
-
+        private readonly InteractionRequest<CalibrationResult> calibrateRequest;
+        
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
         private KeyValue? currentPositionKey;
@@ -45,6 +46,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
 
         private IAudioService audioService;
+        private ICalibrationService calibrationService;
         private IDictionaryService dictionaryService;
         private IPublishService publishService;
         private IKeyboardService keyboardService;
@@ -62,6 +64,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
+            calibrateRequest = new InteractionRequest<CalibrationResult>();
 
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
@@ -101,32 +104,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             set { SetProperty(ref suggestionService, value); }
         }
 
-        private ICalibrateService calibrateService;
-        public ICalibrateService CalibrateService
+        public ICalibrationService CalibrationService
         {
-            get { return calibrateService; }
-            set
-            {
-                SetProperty(ref calibrateService, value);
-
-                if (calibrateService != null)
-                {
-                    calibrateService.Info += (sender, info) =>
-                    {
-                        keyboardService.KeyEnabledStates.DisableAll = true;
-
-                        NotificationRequest.Raise(new Notification
-                        {
-                            //Title = "Calibration result...",
-                            Content = info
-                        }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
-
-                        audioService.PlaySound(Settings.Default.InfoSoundFile);
-                    };
-
-                    calibrateService.Error += HandleServiceError;
-                }
-            }
+            get { return calibrationService; }
+            set { SetProperty(ref calibrationService, value); }
         }
 
         private IKeyboard keyboard;
@@ -243,6 +224,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
         public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
+        public InteractionRequest<CalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
 
         #endregion
 
@@ -396,7 +378,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             switch (Settings.Default.PointsSource)
             {
                 case PointsSources.TheEyeTribe:
-                    CalibrateService = new TheEyeTribeCalibrationService();
+                    CalibrationService = new TheEyeTribeCalibrationService();
                     break;
             }
 
@@ -551,11 +533,53 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         break;
 
                     case FunctionKeys.Calibrate:
-                        if (CalibrateService != null)
+                        if (CalibrationService != null)
                         {
                             Log.Debug("Calibrate requested.");
-                            KeyboardService.KeyEnabledStates.DisableAll = true;
-                            CalibrateService.Calibrate(0, () => KeyboardService.KeyEnabledStates.DisableAll = false);
+
+                            var previousKeyboard = Keyboard;
+
+                            Keyboard = new YesNoQuestion(
+                                "Are you sure you would like to re-calibrate?",
+                                () =>
+                                {
+                                    keyboardService.KeyEnabledStates.DisableAll = true;
+
+                                    CalibrateRequest.Raise(new CalibrationResult(), calibrationResult =>
+                                    {
+                                        if (calibrationResult.Success)
+                                        {
+                                            NotificationRequest.Raise(new Notification
+                                            {
+                                                Title = "Success",
+                                                Content = calibrationResult.Message
+                                            }, __ => { keyboardService.KeyEnabledStates.DisableAll = false; });
+
+                                            audioService.PlaySound(Settings.Default.InfoSoundFile);
+                                        }
+                                        else
+                                        {
+                                            if (calibrationResult.Exception != null)
+                                            {
+                                                keyboardService.KeyEnabledStates.DisableAll = true;
+
+                                                ErrorNotificationRequest.Raise(new Notification
+                                                {
+                                                    Title = "Uh-oh!",
+                                                    Content = calibrationResult.Exception.Message
+                                                }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+
+                                                audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                                            }
+                                        }
+                                    });
+
+                                    Keyboard = previousKeyboard;
+                                },
+                                () =>
+                                {
+                                    Keyboard = previousKeyboard;
+                                });
                         }
                         break;
 

@@ -155,8 +155,5 @@
     <Setting Name="PointSelectionTriggerFixationStartTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
-    <Setting Name="CalibrationAutoRetryCount" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

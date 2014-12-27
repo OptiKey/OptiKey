@@ -4,9 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
-             xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
-             xmlns:english="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
