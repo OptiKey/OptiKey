@@ -137,6 +137,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\VisualModes.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
@@ -234,49 +235,55 @@
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\English\SettingCategories.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\SettingCategories.xaml.cs">
       <DependentUpon>SettingCategories.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Menu.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\AlternativeAlpha3.xaml.cs">
       <DependentUpon>AlternativeAlpha3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\AlternativeAlpha2.xaml.cs">
       <DependentUpon>AlternativeAlpha2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\AlternativeAlpha1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\AlternativeAlpha1.xaml.cs">
       <DependentUpon>AlternativeAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Currencies2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\Currencies2.xaml.cs">
       <DependentUpon>Currencies2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Output.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Currencies1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\Currencies1.xaml.cs">
       <DependentUpon>Currencies1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\PhysicalKeys.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\PhysicalKeys.xaml.cs">
       <DependentUpon>PhysicalKeys.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols3.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\NumericAndSymbols3.xaml.cs">
       <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\YesNoQuestion.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\NumericAndSymbols2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Default\NumericAndSymbols2.xaml.cs">
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\SpeechOnly\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\SpeechOnly\Output.xaml.cs">
+      <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -461,61 +468,69 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\SettingCategories.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\SettingCategories.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Menu.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha3.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\AlternativeAlpha3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha2.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\AlternativeAlpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\AlternativeAlpha1.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\AlternativeAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Currencies2.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\Currencies2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Output.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\Alpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols1.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Currencies1.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\Currencies1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\PhysicalKeys.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\PhysicalKeys.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols3.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\NumericAndSymbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\YesNoQuestion.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\YesNoQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\NumericAndSymbols2.xaml">
+    <Page Include="UI\Views\Keyboards\English\Default\NumericAndSymbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\SpeechOnly\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\SpeechOnly\Output.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\MainView.xaml">
       <SubType>Designer</SubType>
@@ -547,6 +562,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

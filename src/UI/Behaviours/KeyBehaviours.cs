@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using JuliusSweetland.ETTA.UI.Controls;
 
@@ -29,14 +30,14 @@ namespace JuliusSweetland.ETTA.UI.Behaviours
             }
         }
 
-        public static void SetBeginAnimationOnKeySelectionEvent(UIElement element, string value)
+        public static void SetBeginAnimationOnKeySelectionEvent(DependencyObject element, Storyboard value)
         {
             element.SetValue(BeginAnimationOnKeySelectionEventProperty, value);
         }
 
-        public static string GetBeginAnimationOnKeySelectionEvent(UIElement element)
+        public static Storyboard GetBeginAnimationOnKeySelectionEvent(DependencyObject element)
         {
-            return (string) element.GetValue(BeginAnimationOnKeySelectionEventProperty);
+            return (Storyboard)element.GetValue(BeginAnimationOnKeySelectionEventProperty);
         }
     }
 }

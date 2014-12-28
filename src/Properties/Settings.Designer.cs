@@ -686,5 +686,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["PointSelectionTriggerFixationLockOnTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SpeechOnly")]
+        public global::JuliusSweetland.ETTA.Enums.VisualModes VisualMode {
+            get {
+                return ((global::JuliusSweetland.ETTA.Enums.VisualModes)(this["VisualMode"]));
+            }
+            set {
+                this["VisualMode"] = value;
+            }
+        }
     }
 }

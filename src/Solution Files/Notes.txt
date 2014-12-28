@@ -1,7 +1,5 @@
 ﻿NEXT STEPS:
 
-Remove locked key border style to allow selection animation to show on background?
-
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case)
 		MainWindowTop	System.Double	0
@@ -60,13 +58,17 @@ Management (new window accessed with hotkey)
 		Other:
 		Debug mode (setting) (or command line arg?)
 
-VisualMode setting - SpeechOnly / Standard
+X VisualMode setting - Standard / SpeechOnly
 	- When switching mode make sure KeyDownStates (which should automatically change settings also?) are reset:
-		- Publishing off (which should release down keys automatically?)
-		- Multi-key selection off
-		- Set Keyboard back to Alpha
-		- Leave Sleep and Recalibrate in
+		X - Publishing off (which should release down keys automatically?)
+		X - Multi-key selection off
+		X - Set Keyboard back to Alpha
+		X - Leave Sleep and Recalibrate in
+	TEST SWITCHING MODES
 
+Think about how to pause/prevent the point source during multi-key selection processing.
+	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
+		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 
 Profile and optimise, especially keyboard transitions

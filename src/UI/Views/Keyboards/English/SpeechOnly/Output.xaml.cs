@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
+namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English.SpeechOnly
 {
     /// <summary>
     /// Interaction logic for Output.xaml
@@ -12,7 +12,7 @@ namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English
         {
             InitializeComponent();
 
-            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 6;
+            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
         }
 
         public static readonly DependencyProperty NumberOfSuggestionsDisplayedProperty =

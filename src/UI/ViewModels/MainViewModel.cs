@@ -68,6 +68,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
+
+            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
+            {
+                //Listen to VisualMode changes and reset keyboard to Alpha if mode changed to SpeechOnly
+                if (visualMode == VisualModes.SpeechOnly)
+                {
+                    Keyboard = new Alpha();
+                }
+            });
         }
 
         #endregion

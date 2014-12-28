@@ -185,11 +185,11 @@
                     <Setter.Value>
                         <Storyboard>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
                                 <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBorder}" KeyTime="0:0:0" />
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                                   Duration="0:0:0.2" FillBehavior="Stop">
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
                                 <DiscreteColorKeyFrame Value="{StaticResource KeySelectionBackground}" KeyTime="0:0:0" />
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>

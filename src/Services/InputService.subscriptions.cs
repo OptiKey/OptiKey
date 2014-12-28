@@ -278,10 +278,10 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
 
-            keyboardService.KeyEnabledStates.DisableAll = true;
+            //keyboardService.KeyEnabledStates.DisableAll = true;
 
-            try
-            {
+            //try
+            //{
                 if (pointsAndKeyValues.Any())
                 {
                     var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
@@ -373,11 +373,11 @@ namespace JuliusSweetland.ETTA.Services
                                 null, null, dictionaryMatches));
                     }
                 }
-            }
-            finally
-            {
-                keyboardService.KeyEnabledStates.DisableAll = false;
-            }
+            //}
+            //finally
+            //{
+            //    keyboardService.KeyEnabledStates.DisableAll = false;
+            //}
         }
 
         #endregion

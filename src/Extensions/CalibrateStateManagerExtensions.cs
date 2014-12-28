@@ -1,8 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
-using WindowsInput.Native;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
+﻿using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Extensions
 {

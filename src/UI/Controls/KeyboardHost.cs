@@ -10,8 +10,20 @@ using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
+using JuliusSweetland.ETTA.UI.Views.Keyboards.English.Default;
 using log4net;
+using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
+using AlternativeAlpha1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha1;
+using AlternativeAlpha2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha2;
+using AlternativeAlpha3 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha3;
+using Currencies1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Currencies1;
+using Currencies2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Currencies2;
 using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
+using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
+using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
+using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
+using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.SettingCategories;
+using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.Controls
 {
@@ -27,8 +39,8 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         public KeyboardHost()
         {
-            Settings.Default.OnPropertyChanges(s => s.Language)
-                            .Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.Language).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
         }
@@ -110,66 +122,85 @@ namespace JuliusSweetland.ETTA.UI.Controls
         {
             object newContent = ErrorContent;
 
-            switch (Settings.Default.Language)
+            switch (Settings.Default.VisualMode)
             {
-                case Languages.AmericanEnglish:
-                case Languages.BritishEnglish:
-                case Languages.CanadianEnglish:
-                    if (Keyboard is Alpha)
+                case VisualModes.Standard:
+                    switch (Settings.Default.Language)
                     {
-                        newContent = new Views.Keyboards.English.Alpha { DataContext = Keyboard };
+                        case Languages.AmericanEnglish:
+                        case Languages.BritishEnglish:
+                        case Languages.CanadianEnglish:
+                            if (Keyboard is Alpha)
+                            {
+                                newContent = new Views.Keyboards.English.Default.Alpha { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is AlternativeAlpha1)
+                            {
+                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha1 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is AlternativeAlpha2)
+                            {
+                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha2 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is AlternativeAlpha3)
+                            {
+                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha3 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is Currencies1)
+                            {
+                                newContent = new Views.Keyboards.English.Default.Currencies1 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is Currencies2)
+                            {
+                                newContent = new Views.Keyboards.English.Default.Currencies2 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is Menu)
+                            {
+                                newContent = new Views.Keyboards.English.Default.Menu { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is NumericAndSymbols1)
+                            {
+                                newContent = new Views.Keyboards.English.Default.NumericAndSymbols1 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is PhysicalKeys)
+                            {
+                                newContent = new Views.Keyboards.English.Default.PhysicalKeys { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is SettingCategories)
+                            {
+                                newContent = new Views.Keyboards.English.Default.SettingCategories { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is NumericAndSymbols2)
+                            {
+                                newContent = new Views.Keyboards.English.Default.NumericAndSymbols2 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is Symbols3)
+                            {
+                                newContent = new NumericAndSymbols3 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is YesNoQuestion)
+                            {
+                                newContent = new Views.Keyboards.English.Default.YesNoQuestion { DataContext = Keyboard };
+                            }
+                            break;
                     }
-                    else if (Keyboard is AlternativeAlpha1)
+                    break;
+
+                case VisualModes.SpeechOnly:
+                    switch (Settings.Default.Language)
                     {
-                        newContent = new Views.Keyboards.English.AlternativeAlpha1 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is AlternativeAlpha2)
-                    {
-                        newContent = new Views.Keyboards.English.AlternativeAlpha2 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is AlternativeAlpha3)
-                    {
-                        newContent = new Views.Keyboards.English.AlternativeAlpha3 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Currencies1)
-                    {
-                        newContent = new Views.Keyboards.English.Currencies1 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Currencies2)
-                    {
-                        newContent = new Views.Keyboards.English.Currencies2 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Menu)
-                    {
-                        newContent = new Views.Keyboards.English.Menu { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is NumericAndSymbols1)
-                    {
-                        newContent = new Views.Keyboards.English.NumericAndSymbols1 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is PhysicalKeys)
-                    {
-                        newContent = new Views.Keyboards.English.PhysicalKeys { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is SettingCategories)
-                    {
-                        newContent = new Views.Keyboards.English.SettingCategories { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is NumericAndSymbols2)
-                    {
-                        newContent = new Views.Keyboards.English.NumericAndSymbols2 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is Symbols3)
-                    {
-                        newContent = new Views.Keyboards.English.NumericAndSymbols3 { DataContext = Keyboard };
-                    }
-                    else if (Keyboard is YesNoQuestion)
-                    {
-                        newContent = new Views.Keyboards.English.YesNoQuestion { DataContext = Keyboard };
+                        case Languages.AmericanEnglish:
+                        case Languages.BritishEnglish:
+                        case Languages.CanadianEnglish:
+                            if (Keyboard is Alpha)
+                            {
+                                newContent = new Views.Keyboards.English.SpeechOnly.Alpha { DataContext = Keyboard };
+                            }
+                            break;
                     }
                     break;
             }
-
+            
             var contentAsFrameworkElement = newContent as FrameworkElement;
             if (contentAsFrameworkElement != null)
             {

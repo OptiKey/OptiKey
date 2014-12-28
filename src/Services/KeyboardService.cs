@@ -35,6 +35,7 @@ namespace JuliusSweetland.ETTA.Services
             keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrateStateManager);
 
             InitialiseKeyDownStates();
+            AddVisualModeChangeHandlers();
             AddKeyDownStatesChangeHandlers();
         }
 
@@ -71,14 +72,10 @@ namespace JuliusSweetland.ETTA.Services
                 Log.Debug(string.Format("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue));
                 KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
             }
-            else
+            else if (KeyDownStates[keyValue].Value != Enums.KeyDownStates.Up)
             {
                 Log.Debug(string.Format("Changing key down state of '{0}' key from {1} to UP.", keyValue,
-                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up
-                        ? "UP"
-                        : KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down
-                            ? "DOWN"
-                            : "LOCKED DOWN"));
+                    KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down ? "DOWN" : "LOCKED DOWN"));
                 KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
             }
         }
@@ -96,6 +93,20 @@ namespace JuliusSweetland.ETTA.Services
 
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
                 Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+        }
+
+        private void AddVisualModeChangeHandlers()
+        {
+            Log.Debug("Adding VisualMode setting change handlers.");
+
+            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
+            {
+                if (visualMode == VisualModes.SpeechOnly)
+                {
+                    KeyDownStates[KeyValues.PublishKey].Value = Enums.KeyDownStates.Up;
+                    KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
+                }
+            });
         }
 
         private void AddKeyDownStatesChangeHandlers()
