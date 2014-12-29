@@ -21,21 +21,15 @@ namespace JuliusSweetland.ETTA.Services
 
         public TheEyeTribePointService()
         {
-            try
+            //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
+            Application.Current.Exit += (sender, args) =>
             {
-                Log.Debug("Activating TheEyeTribe's GazeManager.");
-                GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
-                
-                Application.Current.Exit += (sender, args) =>
+                if (GazeManager.Instance.IsActivated)
                 {
                     Log.Debug("Deactivating TheEyeTribe's GazeManager.");
                     GazeManager.Instance.Deactivate();
-                };
-            }
-            catch(Exception ex)
-            {
-                Log.Error("Exception when attempting to active TheEyeTribe - is it running?", ex);
-            }
+                }
+            };
         }
 
         #endregion
@@ -48,25 +42,34 @@ namespace JuliusSweetland.ETTA.Services
         {
             add
             {
-                pointEvent += value;
-
-                if (!GazeManager.Instance.IsActivated)
+                if (pointEvent == null)
                 {
-                    PublishError(this, new ApplicationException("TheEyeTribe server is not running! Please start the TET server and try again. Attempting to connect anyway."));
-                }
+                    Log.Debug("Point event has first subscriber.");
 
-                if (!GazeManager.Instance.HasGazeListener(this))
-                {
-                    Log.Info("Point event has first subscriber. Connecting to server.");
+                    //Activate TET if required
+                    if (!GazeManager.Instance.IsActivated)
+                    {
+                        Log.Debug("Attempting to activate TheEyeTribe's GazeManager.");
+                        GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+                    }
 
+                    //Add this class as a gaze listener for TET updates
+                    if (GazeManager.Instance.IsActivated
+                        && !GazeManager.Instance.HasGazeListener(this))
+                    {
+                        Log.Info("Attempting to add myself as a gaze listener to TheEyeTribe server.");
+                        GazeManager.Instance.AddGazeListener(this);
+                    }
+
+                    //Publish error if TET not calibrated
                     if (GazeManager.Instance.IsActivated
                         && !GazeManager.Instance.IsCalibrated)
                     {
                         PublishError(this, new ApplicationException("TheEyeTribe has not been calibrated. No data will be received until calibration is completed."));
                     }
-
-                    GazeManager.Instance.AddGazeListener(this);
                 }
+
+                pointEvent += value;
             }
             remove
             {

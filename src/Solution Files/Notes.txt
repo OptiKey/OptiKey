@@ -1,7 +1,10 @@
 ﻿NEXT STEPS:
 
+Move Activation out of TET point source ctor - do it when first event listener attaches.
+	Inject services again, i.e. make a composition root again and pass them into MainVM.
+
 Simplify settings keyboard access to just: Move & Resize
-	Remove 'outer' settings keyboard (keep the icons in case)
+	Remove 'outer' settings keyboard (keep the icons in case?)
 		MainWindowTop	System.Double	0
 		MainWindowLeft	System.Double	0
 		MainWindowHeight	System.Double	400

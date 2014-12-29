@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English.Default
+namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard
 {
     /// <summary>
     /// Interaction logic for Currencies2.xaml

@@ -10,7 +10,7 @@ using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
-using JuliusSweetland.ETTA.UI.Views.Keyboards.English.Default;
+using JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard;
 using log4net;
 using Alpha = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Alpha;
 using AlternativeAlpha1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.AlternativeAlpha1;
@@ -132,47 +132,47 @@ namespace JuliusSweetland.ETTA.UI.Controls
                         case Languages.CanadianEnglish:
                             if (Keyboard is Alpha)
                             {
-                                newContent = new Views.Keyboards.English.Default.Alpha { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.Alpha { DataContext = Keyboard };
                             }
                             else if (Keyboard is AlternativeAlpha1)
                             {
-                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha1 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.AlternativeAlpha1 { DataContext = Keyboard };
                             }
                             else if (Keyboard is AlternativeAlpha2)
                             {
-                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha2 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.AlternativeAlpha2 { DataContext = Keyboard };
                             }
                             else if (Keyboard is AlternativeAlpha3)
                             {
-                                newContent = new Views.Keyboards.English.Default.AlternativeAlpha3 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.AlternativeAlpha3 { DataContext = Keyboard };
                             }
                             else if (Keyboard is Currencies1)
                             {
-                                newContent = new Views.Keyboards.English.Default.Currencies1 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.Currencies1 { DataContext = Keyboard };
                             }
                             else if (Keyboard is Currencies2)
                             {
-                                newContent = new Views.Keyboards.English.Default.Currencies2 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.Currencies2 { DataContext = Keyboard };
                             }
                             else if (Keyboard is Menu)
                             {
-                                newContent = new Views.Keyboards.English.Default.Menu { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.Menu { DataContext = Keyboard };
                             }
                             else if (Keyboard is NumericAndSymbols1)
                             {
-                                newContent = new Views.Keyboards.English.Default.NumericAndSymbols1 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.NumericAndSymbols1 { DataContext = Keyboard };
                             }
                             else if (Keyboard is PhysicalKeys)
                             {
-                                newContent = new Views.Keyboards.English.Default.PhysicalKeys { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.PhysicalKeys { DataContext = Keyboard };
                             }
                             else if (Keyboard is SettingCategories)
                             {
-                                newContent = new Views.Keyboards.English.Default.SettingCategories { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.SettingCategories { DataContext = Keyboard };
                             }
                             else if (Keyboard is NumericAndSymbols2)
                             {
-                                newContent = new Views.Keyboards.English.Default.NumericAndSymbols2 { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.NumericAndSymbols2 { DataContext = Keyboard };
                             }
                             else if (Keyboard is Symbols3)
                             {
@@ -180,7 +180,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                             }
                             else if (Keyboard is YesNoQuestion)
                             {
-                                newContent = new Views.Keyboards.English.Default.YesNoQuestion { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.YesNoQuestion { DataContext = Keyboard };
                             }
                             break;
                     }

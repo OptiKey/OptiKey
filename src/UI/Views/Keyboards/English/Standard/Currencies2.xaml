@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.Default.NumericAndSymbols2"
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard.Currencies2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
              xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
              xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
              xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
-             xmlns:default="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English.Default"
+             xmlns:standard="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -49,158 +49,108 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <default:Output Grid.Row="0" Grid.Column="0"
+        <standard:Output Grid.Row="0" Grid.Column="0"
                         Grid.RowSpan="2" Grid.ColumnSpan="22" 
                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
         
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="·"
+                      Text="₸"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="·" />
+                <models:KeyValue String="₸" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="•"
+                      Text="₮"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="•" />
+                <models:KeyValue String="₮" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="°"
+                      Text="₩"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="°" />
+                <models:KeyValue String="₩" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="~"
+                      Text="¥"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="~" />
+                <models:KeyValue String="¥" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="^"
+                      Text="ман"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="^" />
+                <models:KeyValue String="ман" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="±"
+                      Text="лв"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="±" />
+                <models:KeyValue String="лв" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="«"
+                      Text="﷼"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="«" />
+                <models:KeyValue String="﷼" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="»"
+                      Text="ден"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="»" />
+                <models:KeyValue String="ден" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="{}{"
+                      Text="zł"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="{}{" />
+                <models:KeyValue String="zł" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="{}}"
+                      Text="Дин."
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="{}}" />
+                <models:KeyValue String="Дин." />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="2of3"
+                      Text="2of2"
                       SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="NumericAndSymbols3Keyboard" />
+                <models:KeyValue FunctionKey="Currencies1Keyboard" />
             </controls:Key.Value>
         </controls:Key>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="µ"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="µ" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="©"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="©" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="®"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="®" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="\"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="\" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="|"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="|" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="¦"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="¦" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="["
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="[" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="]"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="]" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="&lt;"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="&lt;" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="&gt;"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="&gt;" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -217,54 +167,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="℗"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="℗" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="™"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="™" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="℠"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="℠" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="℡"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="℡" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="`"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="`" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="&amp;"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="&amp;" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="¡"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="¡" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -309,12 +224,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="∴"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="∴" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       WidthSpan="2" 
@@ -324,19 +234,9 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="∵"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="∵" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="¿"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="¿" />
-            </controls:Key.Value>
-        </controls:Key>
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       WidthSpan="2"
