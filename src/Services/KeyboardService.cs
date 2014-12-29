@@ -28,11 +28,11 @@ namespace JuliusSweetland.ETTA.Services
         public KeyboardService(
             ISuggestionService suggestionService, 
             ICapturingStateManager capturingStateManager, 
-            ICalibrateStateManager calibrateStateManager)
+            ICalibrationService calibrationService)
         {
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrateStateManager);
+            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrationService);
 
             InitialiseKeyDownStates();
             AddVisualModeChangeHandlers();

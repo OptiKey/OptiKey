@@ -1,13 +1,11 @@
-﻿using System;
+﻿using JuliusSweetland.ETTA.Services;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.Models
 {
-    public class CalibrationResult : INotification
+    public class NotificationWithDictionaryService : INotification
     {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public Exception Exception { get; set; }
+        public IDictionaryService DictionaryService { get; set; }
 
         #region INotification
 

@@ -8,6 +8,7 @@ using JuliusSweetland.ETTA.Annotations;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels;
 
@@ -39,7 +40,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 : null;
 
             var capturingStateManager = mainViewModel != null
-                ? mainViewModel as ICapturingStateManager
+                ? mainViewModel.CapturingStateManager
                 : null;
 
             if (keyboardService != null)
@@ -80,7 +81,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                     .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
 
                 keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
-                    .Subscribe(value => calculateDisplayShiftDownText(value, mainViewModel.CapturingMultiKeySelection));
+                    .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
 
                 calculateDisplayShiftDownText(
                     keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,

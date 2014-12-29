@@ -698,5 +698,70 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["VisualMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.Windows.WindowState ControlPanelWindowState {
+            get {
+                return ((global::System.Windows.WindowState)(this["ControlPanelWindowState"]));
+            }
+            set {
+                this["ControlPanelWindowState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double ControlPanelWindowHeight {
+            get {
+                return ((double)(this["ControlPanelWindowHeight"]));
+            }
+            set {
+                this["ControlPanelWindowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double ControlPanelWindowLeft {
+            get {
+                return ((double)(this["ControlPanelWindowLeft"]));
+            }
+            set {
+                this["ControlPanelWindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double ControlPanelWindowTop {
+            get {
+                return ((double)(this["ControlPanelWindowTop"]));
+            }
+            set {
+                this["ControlPanelWindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("600")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double ControlPanelWindowWidth {
+            get {
+                return ((double)(this["ControlPanelWindowWidth"]));
+            }
+            set {
+                this["ControlPanelWindowWidth"] = value;
+            }
+        }
     }
 }

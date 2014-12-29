@@ -49,8 +49,17 @@ namespace JuliusSweetland.ETTA.Services
                     //Activate TET if required
                     if (!GazeManager.Instance.IsActivated)
                     {
-                        Log.Debug("Attempting to activate TheEyeTribe's GazeManager.");
-                        GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+                        Log.Debug("Attempting to activate TheEyeTribe's GazeManager...");
+
+                        var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+                        if (success)
+                        {
+                            Log.Info(string.Format("...activation {0}", success ? "was successful." : "failed!"));
+                        }
+                        else
+                        {
+                            PublishError(this, new ApplicationException("TheEyeTribe cannot be reached! Please check that the server is running."));
+                        }
                     }
 
                     //Add this class as a gaze listener for TET updates
@@ -78,9 +87,7 @@ namespace JuliusSweetland.ETTA.Services
                 if (pointEvent == null)
                 {
                     Log.Info("Last listener of Point event has unsubscribed. Disconnecting from server...");
-
                     var success = GazeManager.Instance.RemoveGazeListener(this);
-
                     Log.Info(string.Format("...disconnect {0}", success ? "was successful." : "failed!"));
                 }
             }
@@ -107,10 +114,9 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PublishError(object sender, Exception ex)
         {
+            Log.Error("Publishing Error event (if there are any listeners)", ex);
             if (Error != null)
             {
-                Log.Error("Publishing Error event", ex);
-
                 Error(sender, ex);
             }
         }

@@ -158,5 +158,20 @@
     <Setting Name="VisualMode" Type="JuliusSweetland.ETTA.Enums.VisualModes" Scope="User">
       <Value Profile="(Default)">SpeechOnly</Value>
     </Setting>
+    <Setting Name="ControlPanelWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="ControlPanelWindowHeight" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">400</Value>
+    </Setting>
+    <Setting Name="ControlPanelWindowLeft" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ControlPanelWindowTop" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ControlPanelWindowWidth" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

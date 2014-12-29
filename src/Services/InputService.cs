@@ -21,6 +21,7 @@ namespace JuliusSweetland.ETTA.Services
         private readonly IKeyboardService keyboardService;
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
+        private readonly ICapturingStateManager capturingStateManager;
         private readonly IPointSource pointSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
@@ -41,6 +42,7 @@ namespace JuliusSweetland.ETTA.Services
             IKeyboardService keyboardService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
+            ICapturingStateManager capturingStateManager,
             IPointSource pointSource,
             ITriggerSource keySelectionTriggerSource,
             ITriggerSource pointSelectionTriggerSource)
@@ -48,6 +50,7 @@ namespace JuliusSweetland.ETTA.Services
             this.keyboardService = keyboardService;
             this.dictionaryService = dictionaryService;
             this.audioService = audioService;
+            this.capturingStateManager = capturingStateManager;
             this.pointSource = pointSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
@@ -127,7 +130,11 @@ namespace JuliusSweetland.ETTA.Services
         public bool CapturingMultiKeySelection
         {
             get { return capturingMultiKeySelection; }
-            set { SetProperty(ref capturingMultiKeySelection, value); }
+            set
+            {
+                SetProperty(ref capturingMultiKeySelection, value);
+                capturingStateManager.CapturingMultiKeySelection = value;
+            }
         }
 
         #endregion
@@ -399,10 +406,9 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PublishError(object sender, Exception ex)
         {
+            Log.Error("Publishing Error event (if there are any listeners)", ex);
             if (Error != null)
             {
-                Log.Error("Publishing Error event", ex);
-
                 Error(sender, ex);
             }
         }

@@ -147,7 +147,6 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
-    <Compile Include="Extensions\CalibrateStateManagerExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
@@ -156,8 +155,9 @@
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
-    <Compile Include="Models\CalibrationResult.cs" />
-    <Compile Include="Models\ICalibrateStateManager.cs" />
+    <Compile Include="Models\CapturingStateManager.cs" />
+    <Compile Include="Models\NotificationWithCalibrationResult.cs" />
+    <Compile Include="Models\NotificationWithDictionaryService.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
@@ -213,6 +213,7 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\OpenSettingsWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
@@ -288,6 +289,9 @@
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\ControlPanelWindow.xaml.cs">
+      <DependentUpon>ControlPanelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -540,6 +544,10 @@
     <Page Include="UI\Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\ControlPanelWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>

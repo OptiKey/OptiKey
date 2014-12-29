@@ -2,6 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:views="clr-namespace:JuliusSweetland.ETTA.UI.Views"
+        xmlns:interactionRequest="http://www.codeplex.com/prism"
+        xmlns:triggerActions="clr-namespace:JuliusSweetland.ETTA.UI.TriggerActions"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         WindowStyle="None"
         Title="ETTA"
         Topmost="True"
@@ -9,5 +12,12 @@
     
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
 
+    <i:Interaction.Triggers>
+        <interactionRequest:InteractionRequestTrigger 
+            SourceObject="{Binding Path=ControlPanelRequest, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
+            <triggerActions:OpenSettingsWindowAction />
+        </interactionRequest:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+    
     <views:MainView x:Name="MainView" />
 </Window>

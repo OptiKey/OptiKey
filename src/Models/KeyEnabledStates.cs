@@ -14,7 +14,8 @@ namespace JuliusSweetland.ETTA.Models
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
-        private readonly ICalibrateStateManager calibrateStateManager;
+        private readonly ICalibrationService calibrationService;
+        
         private bool disableAll;
 
         #endregion
@@ -25,12 +26,12 @@ namespace JuliusSweetland.ETTA.Models
             IKeyboardService keyboardService, 
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
-            ICalibrateStateManager calibrateStateManager)
+            ICalibrationService calibrationService)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
-            this.calibrateStateManager = calibrateStateManager;
+            this.calibrationService = calibrationService;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -43,8 +44,6 @@ namespace JuliusSweetland.ETTA.Models
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(i => i.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
-
-            calibrateStateManager.OnAnyPropertyChanges().Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -94,7 +93,7 @@ namespace JuliusSweetland.ETTA.Models
 
                 //Key is Calibrate, but not calibrate service available
                 if (keyValue == KeyValues.CalibrateKey
-                    && !calibrateStateManager.CanCalibrate())
+                    && calibrationService == null)
                 {
                     return false;
                 }

@@ -95,10 +95,9 @@ namespace JuliusSweetland.ETTA.Services
 
         private void PublishError(object sender, Exception ex)
         {
+            Log.Error("Publishing Error event (if there are any listeners)", ex);
             if (Error != null)
             {
-                Log.Error("Publishing Error event", ex);
-
                 Error(sender, ex);
             }
         }

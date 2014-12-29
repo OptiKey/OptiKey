@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointSources;
-using JuliusSweetland.ETTA.Observables.TriggerSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
@@ -29,15 +26,25 @@ using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
 {
-    public class MainViewModel : BindableBase, ICapturingStateManager, ICalibrateStateManager
+    public class MainViewModel : BindableBase
     {
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private readonly IAudioService audioService;
+        private readonly ICalibrationService calibrationService;
+        private readonly IDictionaryService dictionaryService;
+        private readonly IPublishService publishService;
+        private readonly IKeyboardService keyboardService;
+        private readonly ISuggestionService suggestionService;
+        private readonly ICapturingStateManager capturingStateManager;
+        private readonly IInputService inputService;
+        private readonly IOutputService outputService;
+
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
-        private readonly InteractionRequest<CalibrationResult> calibrateRequest;
+        private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
@@ -45,27 +52,37 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
 
-        private IAudioService audioService;
-        private ICalibrationService calibrationService;
-        private IDictionaryService dictionaryService;
-        private IPublishService publishService;
-        private IKeyboardService keyboardService;
-        private ISuggestionService suggestionService;
-        private IInputService inputService;
-        private IOutputService outputService;
-        
         #endregion
 
         #region Ctor
 
-        public MainViewModel()
+        public MainViewModel(
+            IAudioService audioService,
+            ICalibrationService calibrationService,
+            IDictionaryService dictionaryService,
+            IPublishService publishService,
+            IKeyboardService keyboardService,
+            ISuggestionService suggestionService,
+            ICapturingStateManager capturingStateManager,
+            IInputService inputService,
+            IOutputService outputService)
         {
             Log.Debug("Ctor called.");
 
+            this.audioService = audioService;
+            this.calibrationService = calibrationService;
+            this.dictionaryService = dictionaryService;
+            this.publishService = publishService;
+            this.keyboardService = keyboardService;
+            this.suggestionService = suggestionService;
+            this.capturingStateManager = capturingStateManager;
+            this.inputService = inputService;
+            this.outputService = outputService;
+            
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
-            calibrateRequest = new InteractionRequest<CalibrationResult>();
-
+            calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
+            
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
 
@@ -89,35 +106,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         #region Properties
 
-        public IInputService InputService
-        {
-            get { return inputService; }
-            set { SetProperty(ref inputService, value); }
-        }
-
-        public IOutputService OutputService
-        {
-            get { return outputService; }
-            set { SetProperty(ref outputService, value); }
-        }
-
-        public IKeyboardService KeyboardService
-        {
-            get { return keyboardService; }
-            set { SetProperty(ref keyboardService, value); }
-        }
-
-        public ISuggestionService SuggestionService
-        {
-            get { return suggestionService; }
-            set { SetProperty(ref suggestionService, value); }
-        }
-
-        public ICalibrationService CalibrationService
-        {
-            get { return calibrationService; }
-            set { SetProperty(ref calibrationService, value); }
-        }
+        public IInputService InputService { get { return inputService; } }
+        public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
+        public IOutputService OutputService { get { return outputService; } }
+        public IKeyboardService KeyboardService { get { return keyboardService; } }
+        public ISuggestionService SuggestionService { get { return suggestionService; } }
+        public ICalibrationService CalibrationService { get { return calibrationService; } }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
@@ -134,13 +128,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     pointToKeyValueMap = value;
 
-                    if (inputService != null) //This can be called before Initialise()
-                    {
-                        inputService.PointToKeyValueMap = value;
-                    }
-
-                    //The last selection result points cannot be valid if this has changed (window has moved or resized)
-                    SelectionResultPoints = null;
+                    inputService.PointToKeyValueMap = value;
+                    SelectionResultPoints = null; //The last selection result points cannot be valid if this has changed (window has moved or resized)
                 }
             }
         }
@@ -160,23 +149,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     {
                         inputService.SelectionMode = value;
                     }
-                }
-            }
-        }
-
-        private bool capturingMultiKeySelection;
-        public bool CapturingMultiKeySelection
-        {
-            get { return capturingMultiKeySelection; }
-            set
-            {
-                if (SetProperty(ref capturingMultiKeySelection, value))
-                {
-                    Log.Debug(string.Format("CapturingMultiKeySelection changed to {0}", value));
-
-                    audioService.PlaySound(value
-                        ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
-                        : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
                 }
             }
         }
@@ -233,32 +205,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
         public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
-        public InteractionRequest<CalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
-
+        public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
+        
         #endregion
 
         #region Methods
 
-        public void Initialise()
+        public void AttachServiceEventHandlers()
         {
-            Log.Debug("Initialise called.");
-
-            audioService = new AudioService();
-            dictionaryService = new DictionaryService();
-            publishService = new PublishService();
-            SuggestionService = new SuggestionService();
-            keyboardService = new KeyboardService(suggestionService, this, this);
-            InputService = CreateInputService();
-            OutputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
+            Log.Debug("AttachServiceEventHandlers called.");
 
             audioService.Error += HandleServiceError;
             dictionaryService.Error += HandleServiceError;
             publishService.Error += HandleServiceError;
             inputService.Error += HandleServiceError;
-
-            inputService.OnPropertyChanges(i => i.CapturingMultiKeySelection)
-                        .Subscribe(value => CapturingMultiKeySelection = value);
-
+            
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
 
             inputService.CurrentPosition += (o, tuple) =>
@@ -295,7 +256,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
-                if (!CapturingMultiKeySelection)
+                if (!capturingStateManager.CapturingMultiKeySelection)
                 {
                     audioService.PlaySound(Settings.Default.SelectionSoundFile);
                 }
@@ -347,111 +308,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             ReleaseKeysOnApplicationExit();
         }
-
-        private IInputService CreateInputService()
-        {
-            Log.Debug("Creating InputService.");
-
-            //Instantiate point source
-            IPointSource pointSource;
-            switch (Settings.Default.PointsSource)
-            {
-                case PointsSources.GazeTracker:
-                    pointSource = new GazeTrackerSource(
-                        Settings.Default.PointTtl,
-                        Settings.Default.GazeTrackerUdpPort,
-                        new Regex(Settings.Default.GazeTrackerUdpRegex));
-                    break;
-
-                case PointsSources.TheEyeTribe:
-                    var eyeTribePointsService = new TheEyeTribePointService();
-                    eyeTribePointsService.Error += HandleServiceError;
-                    pointSource = new TheEyeTribeSource(
-                        Settings.Default.PointTtl, 
-                        eyeTribePointsService);
-                    break;
-
-                case PointsSources.MousePosition:
-                    pointSource = new MousePositionSource(
-                        Settings.Default.PointTtl);
-                    break;
-
-                default:
-                    throw new ArgumentException(
-                        "'PointsSource' settings is missing or not recognised! Please correct and restart ETTA.");
-            }
-
-            //Instantiate calibrate service
-            switch (Settings.Default.PointsSource)
-            {
-                case PointsSources.TheEyeTribe:
-                    CalibrationService = new TheEyeTribeCalibrationService();
-                    break;
-            }
-
-            //Instantiate key trigger source
-            ITriggerSource keySelectionTriggerSource;
-            switch (Settings.Default.KeySelectionTriggerSource)
-            {
-                case TriggerSources.Fixations:
-                    keySelectionTriggerSource = new KeyFixationSource(
-                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTime,
-                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
-                       pointSource.Sequence);
-                    break;
-
-                case TriggerSources.KeyboardKeyDownsUps:
-                    keySelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
-                    break;
-
-                case TriggerSources.MouseButtonDownUps:
-                    keySelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.SelectionTriggerMouseDownUpButton,
-                        pointSource.Sequence);
-                    break;
-
-                default:
-                    throw new ArgumentException(
-                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart ETTA.");
-            }
-
-            //Instantiate point trigger source
-            ITriggerSource pointSelectionTriggerSource;
-            switch (Settings.Default.PointSelectionTriggerSource)
-            {
-                case TriggerSources.Fixations:
-                    pointSelectionTriggerSource = new PointFixationSource(
-                        Settings.Default.PointSelectionTriggerFixationLockOnTime,
-                        Settings.Default.PointSelectionTriggerFixationCompleteTime,
-                        Settings.Default.PointSelectionTriggerFixationRadius,
-                        pointSource.Sequence);
-                    break;
-
-                case TriggerSources.KeyboardKeyDownsUps:
-                    pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
-                    break;
-
-                case TriggerSources.MouseButtonDownUps:
-                    pointSelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.SelectionTriggerMouseDownUpButton,
-                        pointSource.Sequence);
-                    break;
-
-                default:
-                    throw new ArgumentException(
-                        "'PointSelectionTriggerSource' setting is missing or not recognised! "
-                        + "Please correct and restart ETTA.");
-            }
-
-            return new InputService(keyboardService, dictionaryService, audioService,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
-        }
-
+        
         private void AttachScratchpadEnabledListener()
         {
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
@@ -552,7 +409,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                                 {
                                     keyboardService.KeyEnabledStates.DisableAll = true;
 
-                                    CalibrateRequest.Raise(new CalibrationResult(), calibrationResult =>
+                                    CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                     {
                                         if (calibrationResult.Success)
                                         {
@@ -797,7 +654,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
         }
 
-        private void HandleServiceError(object sender, Exception exception)
+        public void HandleServiceError(object sender, Exception exception)
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 

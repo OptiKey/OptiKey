@@ -18,6 +18,5 @@ namespace JuliusSweetland.ETTA.Services
 
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         SelectionModes SelectionMode { set; }
-        bool CapturingMultiKeySelection { get; }
     }
 }

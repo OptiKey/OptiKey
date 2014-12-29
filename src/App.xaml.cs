@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.ETTA.Observables.PointSources;
+using JuliusSweetland.ETTA.Observables.TriggerSources;
 using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
 using log4net;
@@ -88,21 +93,38 @@ namespace JuliusSweetland.ETTA
                 //Apply theme
                 applyTheme();
                 
-                //Compose main window and apply theme
-                var mainWindow = new MainWindow();
-                var mainViewModel = new MainViewModel();
+                //Compose services
+                List<Action<MainViewModel>> vmLoadedActions;
+                IAudioService audioService = new AudioService();
+                IDictionaryService dictionaryService = new DictionaryService();
+                IPublishService publishService = new PublishService();
+                ISuggestionService suggestionService = new SuggestionService();
+                ICalibrationService calibrationService = CreateCalibrationService();
+                ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
+                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService);
+                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, out vmLoadedActions);
+                IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
+
+                //Compose UI
+                var mainWindow = new MainWindow(dictionaryService, keyboardService);
+
+                var mainViewModel = new MainViewModel(
+                    audioService, calibrationService, dictionaryService, publishService, 
+                    keyboardService, suggestionService, capturingStateManager, inputService, outputService);
+
                 mainWindow.MainView.DataContext = mainViewModel;
                 
                 if(mainWindow.MainView.IsLoaded)
                 {
-                    mainViewModel.Initialise();
+                    mainViewModel.AttachServiceEventHandlers();
+                    vmLoadedActions.ForEach(action => action(mainViewModel));
                 }
                 else
                 {
                     RoutedEventHandler loadedHandler = null;
                     loadedHandler = (s, a) =>
                     {
-                        mainViewModel.Initialise();
+                        mainViewModel.AttachServiceEventHandlers();
                         mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
                     mainWindow.MainView.Loaded += loadedHandler;
@@ -115,6 +137,123 @@ namespace JuliusSweetland.ETTA
                 Log.Error("Error starting up application", ex);
                 throw;
             }
+        }
+
+        #endregion
+
+        #region Create Service Methods
+
+        private ICalibrationService CreateCalibrationService()
+        {
+            switch (Settings.Default.PointsSource)
+            {
+                case PointsSources.TheEyeTribe:
+                    return new TheEyeTribeCalibrationService();
+            }
+
+            return null;
+        }
+
+        private IInputService CreateInputService(
+            IKeyboardService keyboardService,
+            IDictionaryService dictionaryService,
+            IAudioService audioService,
+            ICapturingStateManager capturingStateManager,
+            out List<Action<MainViewModel>> vmLoadedActions)
+        {
+            Log.Debug("Creating InputService.");
+            
+            vmLoadedActions = new List<Action<MainViewModel>>();
+
+            //Instantiate point source
+            IPointSource pointSource;
+            switch (Settings.Default.PointsSource)
+            {
+                case PointsSources.GazeTracker:
+                    pointSource = new GazeTrackerSource(
+                        Settings.Default.PointTtl,
+                        Settings.Default.GazeTrackerUdpPort,
+                        new Regex(Settings.Default.GazeTrackerUdpRegex));
+                    break;
+
+                case PointsSources.TheEyeTribe:
+                    var eyeTribePointsService = new TheEyeTribePointService();
+                    vmLoadedActions.Add(vm => eyeTribePointsService.Error += vm.HandleServiceError);
+                    pointSource = new TheEyeTribeSource(
+                        Settings.Default.PointTtl,
+                        eyeTribePointsService);
+                    break;
+
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
+                default:
+                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart ETTA.");
+            }
+
+            //Instantiate key trigger source
+            ITriggerSource keySelectionTriggerSource;
+            switch (Settings.Default.KeySelectionTriggerSource)
+            {
+                case TriggerSources.Fixations:
+                    keySelectionTriggerSource = new KeyFixationSource(
+                       Settings.Default.KeySelectionTriggerFixationLockOnTime,
+                       Settings.Default.KeySelectionTriggerFixationCompleteTime,
+                       Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
+                       pointSource.Sequence);
+                    break;
+
+                case TriggerSources.KeyboardKeyDownsUps:
+                    keySelectionTriggerSource = new KeyboardKeyDownUpSource(
+                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.MouseButtonDownUps:
+                    keySelectionTriggerSource = new MouseButtonDownUpSource(
+                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        pointSource.Sequence);
+                    break;
+
+                default:
+                    throw new ArgumentException(
+                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart ETTA.");
+            }
+
+            //Instantiate point trigger source
+            ITriggerSource pointSelectionTriggerSource;
+            switch (Settings.Default.PointSelectionTriggerSource)
+            {
+                case TriggerSources.Fixations:
+                    pointSelectionTriggerSource = new PointFixationSource(
+                        Settings.Default.PointSelectionTriggerFixationLockOnTime,
+                        Settings.Default.PointSelectionTriggerFixationCompleteTime,
+                        Settings.Default.PointSelectionTriggerFixationRadius,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.KeyboardKeyDownsUps:
+                    pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
+                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        pointSource.Sequence);
+                    break;
+
+                case TriggerSources.MouseButtonDownUps:
+                    pointSelectionTriggerSource = new MouseButtonDownUpSource(
+                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        pointSource.Sequence);
+                    break;
+
+                default:
+                    throw new ArgumentException(
+                        "'PointSelectionTriggerSource' setting is missing or not recognised! "
+                        + "Please correct and restart ETTA.");
+            }
+
+            return new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
 
         #endregion
@@ -140,7 +279,7 @@ namespace JuliusSweetland.ETTA
                 try
                 {
                     Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
-                    MessageBox.Show("An unhandled error has occurred and the application needs to close. Please check the logs for details.");
+                    MessageBox.Show("A problem has occurred and the application cannot continue. Please check the logs for details.");
                 }
                 catch {} //Swallow exception with logging or displaying messagebox to avoid looped errors
             }

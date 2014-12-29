@@ -1,0 +1,11 @@
+﻿<Window x:Class="JuliusSweetland.ETTA.UI.Windows.ControlPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Control Panel"
+        Topmost="True"
+        Icon="..\..\EyeIcon.ico">
+
+    <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
+
+    <!--<views:ControlPanelView x:Name="ControlPanelView" />-->
+</Window>

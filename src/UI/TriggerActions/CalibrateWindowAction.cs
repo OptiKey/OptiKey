@@ -41,7 +41,7 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                 }
             }
 
-            var calibrationResult = args.Context as CalibrationResult;
+            var calibrationResult = args.Context as NotificationWithCalibrationResult;
 
             try
             {

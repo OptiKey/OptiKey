@@ -1,6 +1,10 @@
 ﻿using System.Windows;
+using System.Windows.Input;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.UI.Windows
 {
@@ -9,11 +13,19 @@ namespace JuliusSweetland.ETTA.UI.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IDictionaryService dictionaryService;
+        private readonly IKeyboardService keyboardService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
+        private readonly InteractionRequest<NotificationWithDictionaryService> controlPanelRequest;
 
-        public MainWindow()
+        public MainWindow(
+            IDictionaryService dictionaryService,
+            IKeyboardService keyboardService)
         {
             InitializeComponent();
+
+            this.dictionaryService = dictionaryService;
+            this.keyboardService = keyboardService;
 
             //Instantiate window state persistence service and provide accessors to the appropriate settings for this window
             windowStatePersistenceService = new WindowStatePersistenceService(
@@ -23,6 +35,17 @@ namespace JuliusSweetland.ETTA.UI.Windows
                 () => Settings.Default.MainWindowWidth, d => Settings.Default.MainWindowWidth = d,
                 () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                 Settings.Default);
+
+            controlPanelRequest = new InteractionRequest<NotificationWithDictionaryService>();
+
+            //Setup key binding (Alt-C) to open settings
+            var openSettingsKeyBinding = new KeyBinding
+            {
+                Command = new DelegateCommand(RaiseControlPanelRequest),
+                Modifiers = ModifierKeys.Alt,
+                Key = Key.C
+            };
+            InputBindings.Add(openSettingsKeyBinding);
 
             //Apply window settings from window state persistence service
             Height = windowStatePersistenceService.WindowHeight;
@@ -45,6 +68,15 @@ namespace JuliusSweetland.ETTA.UI.Windows
                     windowStatePersistenceService.Save();
                 }
             };
+        }
+
+        public InteractionRequest<NotificationWithDictionaryService> ControlPanelRequest { get { return controlPanelRequest; } }
+
+        private void RaiseControlPanelRequest()
+        {
+            keyboardService.KeyEnabledStates.DisableAll = true;
+            ControlPanelRequest.Raise(new NotificationWithDictionaryService { DictionaryService = dictionaryService },
+                _ => { keyboardService.KeyEnabledStates.DisableAll = false; });
         }
     }
 }
