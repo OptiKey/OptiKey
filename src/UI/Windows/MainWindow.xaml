@@ -14,8 +14,8 @@
 
     <i:Interaction.Triggers>
         <interactionRequest:InteractionRequestTrigger 
-            SourceObject="{Binding Path=ControlPanelRequest, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
-            <triggerActions:OpenSettingsWindowAction />
+            SourceObject="{Binding Path=ManagementWindowRequest, RelativeSource={RelativeSource AncestorType=Window}, Mode=OneWay}">
+            <triggerActions:OpenManagementWindowAction />
         </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
     

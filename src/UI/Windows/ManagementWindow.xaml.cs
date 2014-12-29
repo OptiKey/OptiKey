@@ -5,14 +5,14 @@ using JuliusSweetland.ETTA.Services;
 namespace JuliusSweetland.ETTA.UI.Windows
 {
     /// <summary>
-    /// Interaction logic for ControlPanelWindow.xaml
+    /// Interaction logic for ManagementWindow.xaml
     /// </summary>
-    public partial class ControlPanelWindow : Window
+    public partial class ManagementWindow : Window
     {
         private readonly IDictionaryService dictionaryService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
 
-        public ControlPanelWindow(IDictionaryService dictionaryService)
+        public ManagementWindow(IDictionaryService dictionaryService)
         {
             InitializeComponent();
 

@@ -213,7 +213,7 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
-    <Compile Include="UI\TriggerActions\OpenSettingsWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
@@ -290,8 +290,8 @@
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\ControlPanelWindow.xaml.cs">
-      <DependentUpon>ControlPanelWindow.xaml</DependentUpon>
+    <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
+      <DependentUpon>ManagementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -545,7 +545,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Windows\ControlPanelWindow.xaml">
+    <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

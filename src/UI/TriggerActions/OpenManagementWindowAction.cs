@@ -9,7 +9,7 @@ using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.UI.TriggerActions
 {
-    public class OpenSettingsWindowAction : TriggerAction<FrameworkElement>
+    public class OpenManagementWindowAction : TriggerAction<FrameworkElement>
     {
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
@@ -26,7 +26,7 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                     throw new ApplicationException("Dictionary service was not supplied to the settings window");
                 }
 
-                var childWindow = new ControlPanelWindow(notificationWithDictionaryService.DictionaryService);
+                var childWindow = new ManagementWindow(notificationWithDictionaryService.DictionaryService);
                 EventHandler closeHandler = null;
                 closeHandler = (sender, e) =>
                 {

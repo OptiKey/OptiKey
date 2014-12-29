@@ -16,7 +16,7 @@ namespace JuliusSweetland.ETTA.UI.Windows
         private readonly IDictionaryService dictionaryService;
         private readonly IKeyboardService keyboardService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
-        private readonly InteractionRequest<NotificationWithDictionaryService> controlPanelRequest;
+        private readonly InteractionRequest<NotificationWithDictionaryService> managementWindowRequest;
 
         public MainWindow(
             IDictionaryService dictionaryService,
@@ -36,14 +36,14 @@ namespace JuliusSweetland.ETTA.UI.Windows
                 () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                 Settings.Default);
 
-            controlPanelRequest = new InteractionRequest<NotificationWithDictionaryService>();
+            managementWindowRequest = new InteractionRequest<NotificationWithDictionaryService>();
 
             //Setup key binding (Alt-C) to open settings
             var openSettingsKeyBinding = new KeyBinding
             {
-                Command = new DelegateCommand(RaiseControlPanelRequest),
+                Command = new DelegateCommand(RequestManagementWindow),
                 Modifiers = ModifierKeys.Alt,
-                Key = Key.C
+                Key = Key.M
             };
             InputBindings.Add(openSettingsKeyBinding);
 
@@ -70,12 +70,12 @@ namespace JuliusSweetland.ETTA.UI.Windows
             };
         }
 
-        public InteractionRequest<NotificationWithDictionaryService> ControlPanelRequest { get { return controlPanelRequest; } }
+        public InteractionRequest<NotificationWithDictionaryService> ManagementWindowRequest { get { return managementWindowRequest; } }
 
-        private void RaiseControlPanelRequest()
+        private void RequestManagementWindow()
         {
             keyboardService.KeyEnabledStates.DisableAll = true;
-            ControlPanelRequest.Raise(new NotificationWithDictionaryService { DictionaryService = dictionaryService },
+            ManagementWindowRequest.Raise(new NotificationWithDictionaryService { DictionaryService = dictionaryService },
                 _ => { keyboardService.KeyEnabledStates.DisableAll = false; });
         }
     }
