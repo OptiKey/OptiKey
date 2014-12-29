@@ -6,7 +6,7 @@ using System.Reactive.Linq;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
+namespace JuliusSweetland.ETTA.Observables.TriggerSources
 {
     public class PointFixationSource : IFixationTriggerSource
     {

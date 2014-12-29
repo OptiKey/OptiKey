@@ -1,9 +1,9 @@
 ﻿using System;
 using JuliusSweetland.ETTA.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
+namespace JuliusSweetland.ETTA.Observables.TriggerSources
 {
-    public interface ITriggerSignalSource
+    public interface ITriggerSource
     {
         IObservable<TriggerSignal> Sequence { get; }
     }

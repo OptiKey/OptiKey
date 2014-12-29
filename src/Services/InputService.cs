@@ -5,8 +5,8 @@ using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
-using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
+using JuliusSweetland.ETTA.Observables.PointSources;
+using JuliusSweetland.ETTA.Observables.TriggerSources;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -21,9 +21,9 @@ namespace JuliusSweetland.ETTA.Services
         private readonly IKeyboardService keyboardService;
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
-        private readonly IPointAndKeyValueSource pointAndKeyValueSource;
-        private readonly ITriggerSignalSource keySelectionTriggerSource;
-        private readonly ITriggerSignalSource pointSelectionTriggerSource;
+        private readonly IPointSource pointSource;
+        private readonly ITriggerSource keySelectionTriggerSource;
+        private readonly ITriggerSource pointSelectionTriggerSource;
         
         private KeyEnabledStates keyEnabledStates;
         
@@ -41,14 +41,14 @@ namespace JuliusSweetland.ETTA.Services
             IKeyboardService keyboardService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
-            IPointAndKeyValueSource pointAndKeyValueSource,
-            ITriggerSignalSource keySelectionTriggerSource,
-            ITriggerSignalSource pointSelectionTriggerSource)
+            IPointSource pointSource,
+            ITriggerSource keySelectionTriggerSource,
+            ITriggerSource pointSelectionTriggerSource)
         {
             this.keyboardService = keyboardService;
             this.dictionaryService = dictionaryService;
             this.audioService = audioService;
-            this.pointAndKeyValueSource = pointAndKeyValueSource;
+            this.pointSource = pointSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
 
@@ -70,9 +70,9 @@ namespace JuliusSweetland.ETTA.Services
             {
                 Log.Debug(string.Format("PointToKeyValueMap property changed (setter called with {0} map).", value != null ? "non-null" : "null"));
 
-                if (pointAndKeyValueSource != null)
+                if (pointSource != null)
                 {
-                    pointAndKeyValueSource.PointToKeyValueMap = value;
+                    pointSource.PointToKeyValueMap = value;
                 }
 
                 DisposeMultiKeySelection();

@@ -8,7 +8,7 @@ using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
+using JuliusSweetland.ETTA.Observables.TriggerSources;
 using JuliusSweetland.ETTA.Properties;
 
 namespace JuliusSweetland.ETTA.Services
@@ -24,7 +24,7 @@ namespace JuliusSweetland.ETTA.Services
         private IDisposable multiKeySelectionSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
-        private ITriggerSignalSource selectionTriggerSource;
+        private ITriggerSource selectionTriggerSource;
 
         private TriggerSignal? startMultiKeySelectionTriggerSignal;
         private TriggerSignal? stopMultiKeySelectionTriggerSignal;
@@ -37,7 +37,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Info("Creating subscription to PointAndKeyValueSource for points per second.");
 
-            pointsPerSecondSubscription = pointAndKeyValueSource.Sequence
+            pointsPerSecondSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null) //Filter out stale indicators - we only want 'live'/useful points in our count
                 .Buffer(new TimeSpan(0, 0, 0, 1))
                 .Select(points => points.Count)
@@ -53,7 +53,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Info("Creating subscription to PointAndKeyValueSource for current position.");
 
-            currentPositionSubscription = pointAndKeyValueSource.Sequence
+            currentPositionSubscription = pointSource.Sequence
                 .Select(tp => new Tuple<Point?, KeyValue?>(
                     tp.Value != null && SelectionMode == SelectionModes.Point 
                         ? tp.Value.Value.Point 
@@ -74,7 +74,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Info(string.Format("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode));
 
-            ITriggerSignalSource selectionTriggerSource = null;
+            ITriggerSource selectionTriggerSource = null;
 
             switch (mode)
             {
@@ -242,7 +242,7 @@ namespace JuliusSweetland.ETTA.Services
                         .Where(_ => disposed == false)
                         .Subscribe(i => observer.OnError(new TimeoutException("Multi-key capture has exceeded the maximum duration")));
 
-                var pointAndKeyValueSubscription = pointAndKeyValueSource.Sequence
+                var pointAndKeyValueSubscription = pointSource.Sequence
                     .Where(tp => tp.Value != null) //Filter out stale indicators
                     .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
                     .TakeWhile(tp => stopMultiKeySelectionTriggerSignal == null)

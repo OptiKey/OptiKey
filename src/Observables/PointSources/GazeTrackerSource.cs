@@ -8,14 +8,13 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
+namespace JuliusSweetland.ETTA.Observables.PointSources
 {
-    public class GazeTrackerSource : IPointAndKeyValueSource
+    public class GazeTrackerSource : IPointSource
     {
         #region Fields
 

@@ -6,8 +6,8 @@ using System.Windows;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointAndKeyValueSources;
-using JuliusSweetland.ETTA.Observables.TriggerSignalSources;
+using JuliusSweetland.ETTA.Observables.PointSources;
+using JuliusSweetland.ETTA.Observables.TriggerSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
@@ -353,7 +353,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             Log.Debug("Creating InputService.");
 
             //Instantiate point source
-            IPointAndKeyValueSource pointSource;
+            IPointSource pointSource;
             switch (Settings.Default.PointsSource)
             {
                 case PointsSources.GazeTracker:
@@ -390,7 +390,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
 
             //Instantiate key trigger source
-            ITriggerSignalSource keySelectionTriggerSource;
+            ITriggerSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
             {
                 case TriggerSources.Fixations:
@@ -419,7 +419,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
 
             //Instantiate point trigger source
-            ITriggerSignalSource pointSelectionTriggerSource;
+            ITriggerSource pointSelectionTriggerSource;
             switch (Settings.Default.PointSelectionTriggerSource)
             {
                 case TriggerSources.Fixations:

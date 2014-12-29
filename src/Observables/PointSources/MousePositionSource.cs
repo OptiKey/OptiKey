@@ -4,14 +4,13 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Forms;
-using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 
-namespace JuliusSweetland.ETTA.Observables.PointAndKeyValueSources
+namespace JuliusSweetland.ETTA.Observables.PointSources
 {
-    public class MousePositionSource : IPointAndKeyValueSource
+    public class MousePositionSource : IPointSource
     {
         private readonly TimeSpan pointTtl;
 

@@ -159,6 +159,10 @@
     <Compile Include="Models\CalibrationResult.cs" />
     <Compile Include="Models\ICalibrateStateManager.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
+    <Compile Include="Observables\PointSources\IPointSource.cs" />
+    <Compile Include="Observables\PointSources\MousePositionSource.cs" />
+    <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
@@ -172,18 +176,12 @@
     <Compile Include="Models\ThemeResourceDictionary.cs" />
     <Compile Include="Models\TriggerSignal.cs" />
     <Compile Include="Extensions\ObservableExtensions.cs" />
-    <Compile Include="Observables\PointAndKeyValueSources\IPointAndKeyValueSource.cs" />
-    <Compile Include="Observables\PointAndKeyValueSources\GazeTrackerSource.cs" />
-    <Compile Include="Observables\PointAndKeyValueSources\MousePositionSource.cs" />
-    <Compile Include="Observables\PointAndKeyValueSources\TheEyeTribeSource.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Observables\TriggerSignalSources\KeyFixationSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\PointFixationSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\IFixationTriggerSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\ITriggerSignalSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\MouseButtonDownUpSource.cs" />
-    <Compile Include="Observables\TriggerSignalSources\KeyboardKeyDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\KeyFixationSource.cs" />
+    <Compile Include="Observables\TriggerSources\PointFixationSource.cs" />
+    <Compile Include="Observables\TriggerSources\IFixationTriggerSource.cs" />
+    <Compile Include="Observables\TriggerSources\ITriggerSource.cs" />
+    <Compile Include="Observables\TriggerSources\MouseButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\KeyboardKeyDownUpSource.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\AudioService.cs" />
     <Compile Include="Services\DictionaryService.cs">

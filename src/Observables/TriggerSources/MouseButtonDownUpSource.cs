@@ -6,9 +6,9 @@ using JuliusSweetland.ETTA.Models;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
+namespace JuliusSweetland.ETTA.Observables.TriggerSources
 {
-    public class MouseButtonDownUpSource : ITriggerSignalSource
+    public class MouseButtonDownUpSource : ITriggerSource
     {
         #region Fields
 

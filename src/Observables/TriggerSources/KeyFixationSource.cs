@@ -5,13 +5,13 @@ using System.Reactive;
 using System.Reactive.Linq;
 using JuliusSweetland.ETTA.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSignalSources
+namespace JuliusSweetland.ETTA.Observables.TriggerSources
 {
     /// <summary>
     /// Aggregates fixations on keys, allowing you to move away and return to complete a key fixation.
     /// Point fixations have to be completed in one go, i.e. if you move away from a point fixation it is lost.
     /// </summary>
-    public class KeyFixationSource : ITriggerSignalSource, IFixationTriggerSource
+    public class KeyFixationSource : ITriggerSource, IFixationTriggerSource
     {
         #region Fields
 
