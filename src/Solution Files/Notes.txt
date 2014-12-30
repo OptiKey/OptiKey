@@ -3,6 +3,20 @@
 Move Activation out of TET point source ctor - do it when first event listener attaches.
 	TEST TET POINT SOURCE
 
+Pass List<INotifyOnError> to MainView - attaches during AttachServiceEventHandlers
+AttachServiceEventHandlers called in App.cs when mainView has loaded
+
+Create WindowMoveAndResizeService
+	MoveLeft(double pixels)
+	MoveRight(double pixels)
+	MoveUp(double pixels)
+	MoveDown(double pixels)
+	ReSizeLeft(double pixels)
+	ReSizeRight(double pixels)
+	ReSizeUp(double pixels)
+	ReSizeDown(double pixels)
+	+ Coerce adjustments
+
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case?)
 		MainWindowTop	System.Double	0
