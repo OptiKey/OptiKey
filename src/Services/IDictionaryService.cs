@@ -6,10 +6,8 @@ using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Services
 {
-    public interface IDictionaryService
+    public interface IDictionaryService : INotifyErrors
     {
-        event EventHandler<Exception> Error;
-
         void LoadDictionary();
         bool ExistsInDictionary(string entryToFind);
         IEnumerable<string> GetHashes();

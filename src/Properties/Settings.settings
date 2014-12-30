@@ -143,7 +143,7 @@
     <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
-    <Setting Name="UiComplexity" Type="JuliusSweetland.ETTA.Enums.UiComplexity" Scope="User">
+    <Setting Name="UiComplexity" Roaming="true" Type="JuliusSweetland.ETTA.Enums.UiComplexity" Scope="User">
       <Value Profile="(Default)">Basic</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -155,8 +155,8 @@
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
-    <Setting Name="VisualMode" Type="JuliusSweetland.ETTA.Enums.VisualModes" Scope="User">
-      <Value Profile="(Default)">SpeechOnly</Value>
+    <Setting Name="VisualMode" Roaming="true" Type="JuliusSweetland.ETTA.Enums.VisualModes" Scope="User">
+      <Value Profile="(Default)">Standard</Value>
     </Setting>
     <Setting Name="ControlPanelWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>

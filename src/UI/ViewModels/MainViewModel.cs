@@ -41,6 +41,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
+        private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
@@ -65,7 +66,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
-            IOutputService outputService)
+            IOutputService outputService,
+            List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
 
@@ -78,7 +80,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
-            
+            this.notifyErrorServices = notifyErrorServices;
+
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
@@ -86,14 +89,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
 
-            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
-            {
-                //Listen to VisualMode changes and reset keyboard to Alpha if mode changed to SpeechOnly
-                if (visualMode == VisualModes.SpeechOnly)
-                {
-                    Keyboard = new Alpha();
-                }
-            });
+            SelectKeyboardOnVisualModeChanges();
+            AttachScratchpadEnabledListener();
+
+            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
         }
 
         #endregion
@@ -215,11 +214,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Debug("AttachServiceEventHandlers called.");
 
-            audioService.Error += HandleServiceError;
-            dictionaryService.Error += HandleServiceError;
-            publishService.Error += HandleServiceError;
-            inputService.Error += HandleServiceError;
-            
+            if (notifyErrorServices != null)
+            {
+                notifyErrorServices.ForEach(s => s.Error += HandleServiceError);
+            }
+
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
 
             inputService.CurrentPosition += (o, tuple) =>
@@ -301,32 +300,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
-
-            AttachScratchpadEnabledListener();
-
-            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
-
-            ReleaseKeysOnApplicationExit();
-        }
-        
-        private void AttachScratchpadEnabledListener()
-        {
-            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
-                    .Subscribe(value => CalculateScratchpadIsDisabled()));
-
-            CalculateScratchpadIsDisabled();
-        }
-
-        private void ReleaseKeysOnApplicationExit()
-        {
-            Application.Current.Exit += (o, args) =>
-            {
-                if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
-                {
-                    publishService.ReleaseAllDownKeys();
-                }
-            };
         }
         
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
@@ -637,11 +610,32 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 }
             }
         }
-        
+
+        private void AttachScratchpadEnabledListener()
+        {
+            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
+                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
+                    .Subscribe(value => CalculateScratchpadIsDisabled()));
+
+            CalculateScratchpadIsDisabled();
+        }
+
         private void CalculateScratchpadIsDisabled()
         {
             ScratchpadIsDisabled = KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => 
                 keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
+        }
+
+        private void SelectKeyboardOnVisualModeChanges()
+        {
+            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
+            {
+                //Listen to VisualMode changes and reset keyboard to Alpha if mode changed to SpeechOnly
+                if (visualMode == VisualModes.SpeechOnly)
+                {
+                    Keyboard = new Alpha();
+                }
+            });
         }
 
         private void ResetSelectionProgress()

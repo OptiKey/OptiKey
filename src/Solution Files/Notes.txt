@@ -1,10 +1,7 @@
 ﻿NEXT STEPS:
 
 Move Activation out of TET point source ctor - do it when first event listener attaches.
-	TEST TET POINT SOURCE
-
-Pass List<INotifyOnError> to MainView - attaches during AttachServiceEventHandlers
-AttachServiceEventHandlers called in App.cs when mainView has loaded
+	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
 
 Create WindowMoveAndResizeService
 	MoveLeft(double pixels)

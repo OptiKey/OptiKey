@@ -639,6 +639,7 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Basic")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.UiComplexity UiComplexity {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.UiComplexity)(this["UiComplexity"]));
@@ -689,7 +690,8 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SpeechOnly")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Standard")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.ETTA.Enums.VisualModes VisualMode {
             get {
                 return ((global::JuliusSweetland.ETTA.Enums.VisualModes)(this["VisualMode"]));

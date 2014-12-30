@@ -5,9 +5,8 @@ using TETCSharpClient;
 
 namespace JuliusSweetland.ETTA.Services
 {
-    public interface ITheEyeTribePointService : IGazeListener
+    public interface ITheEyeTribePointService : IGazeListener, INotifyErrors
     {
-        event EventHandler<Exception> Error;
         event EventHandler<Timestamped<Point>> Point;
     }
 }

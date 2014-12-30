@@ -3,10 +3,8 @@ using WindowsInput.Native;
 
 namespace JuliusSweetland.ETTA.Services
 {
-    public interface IPublishService
+    public interface IPublishService : INotifyErrors
     {
-        event EventHandler<Exception> Error;
-
         void ReleaseAllDownKeys();
         void PublishKeyDown(VirtualKeyCode virtualKeyCode);
         void PublishKeyUp(VirtualKeyCode virtualKeyCode);

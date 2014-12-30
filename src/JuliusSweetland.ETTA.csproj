@@ -164,6 +164,7 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
+    <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />

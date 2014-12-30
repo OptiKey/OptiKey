@@ -34,6 +34,26 @@ namespace JuliusSweetland.ETTA
 
         public App()
         {
+            //Attach unhandled exception handlers
+            Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
+            //Attach shutdown handler
+            Application.Current.Exit += (o, args) => Log.Info("ETTA SHUTTING DOWN");
+
+            //Upgrade settings (if required) - this ensures that user settings migrate between version changes
+            if (Settings.Default.SettingsUpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.SettingsUpgradeRequired = false;
+                Settings.Default.Save();
+            }
+
+            //Adjust log4net logging level if in debug mode
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+
+            //Logic to initially apply the theme and change the theme on setting changes
             applyTheme = () =>
             {
                 var themeDictionary = new ThemeResourceDictionary
@@ -71,30 +91,11 @@ namespace JuliusSweetland.ETTA
             {
                 Log.Info("ETTA STARTING UP");
 
-                //Attach unhandled exception handlers
-                Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
-                AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
-
-                //Attach shutdown handler
-                Application.Current.Exit += (o, args) => Log.Info("ETTA SHUTTING DOWN");
-
-                //Adjust log4net logging level if in debug mode
-                ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
-                ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
-                
-                //Upgrade settings (if required) - this ensures that user settings migrate between version changes
-                if (Settings.Default.SettingsUpgradeRequired)
-                {
-                    Settings.Default.Upgrade();
-                    Settings.Default.SettingsUpgradeRequired = false;
-                    Settings.Default.Save();
-                }
-                
                 //Apply theme
                 applyTheme();
                 
-                //Compose services
-                List<Action<MainViewModel>> vmLoadedActions;
+                //Create services
+                var notifyErrorServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
                 IDictionaryService dictionaryService = new DictionaryService();
                 IPublishService publishService = new PublishService();
@@ -102,34 +103,45 @@ namespace JuliusSweetland.ETTA
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, out vmLoadedActions);
+                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, notifyErrorServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
+                notifyErrorServices.Add(audioService);
+                notifyErrorServices.Add(dictionaryService);
+                notifyErrorServices.Add(publishService);
+                notifyErrorServices.Add(inputService);
+
+                //Release keys on application exit
+                ReleaseKeysOnApplicationExit(keyboardService, publishService);
 
                 //Compose UI
                 var mainWindow = new MainWindow(dictionaryService, keyboardService);
 
                 var mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, publishService, 
-                    keyboardService, suggestionService, capturingStateManager, inputService, outputService);
+                    keyboardService, suggestionService, capturingStateManager,
+                    inputService, outputService, notifyErrorServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
-                
+
+                //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
+                Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
+
                 if(mainWindow.MainView.IsLoaded)
                 {
-                    mainViewModel.AttachServiceEventHandlers();
-                    vmLoadedActions.ForEach(action => action(mainViewModel));
+                    postMainViewLoaded();
                 }
                 else
                 {
                     RoutedEventHandler loadedHandler = null;
                     loadedHandler = (s, a) =>
                     {
-                        mainViewModel.AttachServiceEventHandlers();
+                        postMainViewLoaded();
                         mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
                 
+                //Show the main window
                 mainWindow.Show();
             }
             catch (Exception ex)
@@ -159,11 +171,9 @@ namespace JuliusSweetland.ETTA
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
-            out List<Action<MainViewModel>> vmLoadedActions)
+            List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Creating InputService.");
-            
-            vmLoadedActions = new List<Action<MainViewModel>>();
 
             //Instantiate point source
             IPointSource pointSource;
@@ -177,11 +187,11 @@ namespace JuliusSweetland.ETTA
                     break;
 
                 case PointsSources.TheEyeTribe:
-                    var eyeTribePointsService = new TheEyeTribePointService();
-                    vmLoadedActions.Add(vm => eyeTribePointsService.Error += vm.HandleServiceError);
+                    var theEyeTribePointService = new TheEyeTribePointService();
+                    notifyErrorServices.Add(theEyeTribePointService);
                     pointSource = new TheEyeTribeSource(
                         Settings.Default.PointTtl,
-                        eyeTribePointsService);
+                        theEyeTribePointService);
                     break;
 
                 case PointsSources.MousePosition:
@@ -254,6 +264,21 @@ namespace JuliusSweetland.ETTA
 
             return new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+        }
+
+        #endregion
+
+        #region Release Keys On App Exit
+
+        private void ReleaseKeysOnApplicationExit(IKeyboardService keyboardService, IPublishService publishService)
+        {
+            Application.Current.Exit += (o, args) =>
+            {
+                if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+                {
+                    publishService.ReleaseAllDownKeys();
+                }
+            };
         }
 
         #endregion
