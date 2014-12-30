@@ -16,6 +16,9 @@ Create WindowMoveAndResizeService
 	ReSizeUp(double pixels)
 	ReSizeDown(double pixels)
 	+ Coerce adjustments
+	How to get current screen bounds:
+		http://stackoverflow.com/questions/254197/how-can-i-get-the-active-screen-dimensions
+		http://stackoverflow.com/questions/1927540/how-to-get-the-size-of-the-current-screen-in-wpf
 
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case?)
