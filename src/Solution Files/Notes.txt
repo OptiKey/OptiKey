@@ -75,6 +75,8 @@ Management (new window accessed with hotkey)
 		Other:
 		Debug mode (setting) (or command line arg?)
 
+	Application.Restart(); after changing some of the settings? Prompt user to restart (after saving) if certain settings have been changed.
+
 X VisualMode setting - Standard / SpeechOnly
 	- When switching mode make sure KeyDownStates (which should automatically change settings also?) are reset:
 		X - Publishing off (which should release down keys automatically?)
