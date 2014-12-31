@@ -235,6 +235,7 @@
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\English\SpeechOnly\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
@@ -290,6 +291,9 @@
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\ManagementView.xaml.cs">
+      <DependentUpon>ManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
@@ -543,6 +547,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\ManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
