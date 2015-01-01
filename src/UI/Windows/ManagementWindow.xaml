@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Management Console"
         Topmost="True"
-        Icon="..\..\EyeIcon.ico">
+        Icon="..\..\Resources\Icons\Management.ico">
 
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
 

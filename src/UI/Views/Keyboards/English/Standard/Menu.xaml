@@ -59,12 +59,12 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource SettingsIcon}"
-                      Text="SETTINGS"
+                      SymbolGeometry="{StaticResource MoveAndResizeIcon}"
+                      Text="MOVE &amp; RESIZE"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SettingCategoriesKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeKeyboard}" />
             </controls:Key.Value>    
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"

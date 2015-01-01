@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard.SettingCategories"
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard.MoveAndResize"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,7 +25,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <controls:Key Grid.Row="0" Grid.Column="0"
+        <!--<controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource ThemeSettingsIcon}"
                       Text="THEME &amp; FONTS"
                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -34,7 +34,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ThemeSettingsKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="1"
+       <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource LayoutSettingsIcon}"
                       Text="LAYOUT, POSITION  &amp; SIZE"
                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -51,9 +51,9 @@
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.WordSettingsKeyboard}" />
             </controls:Key.Value>
-        </controls:Key>
+        </controls:Key>-->
 
-        <controls:Key Grid.Row="1" Grid.Column="0"
+        <!--<controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource SoundSettingsIcon}"
                       Text="SOUNDS"
                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -70,7 +70,7 @@
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PointingAndSelectingSettingsKeyboard}" />
             </controls:Key.Value>    
-        </controls:Key>
+        </controls:Key>-->
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="RETURN"

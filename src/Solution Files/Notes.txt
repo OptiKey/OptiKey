@@ -3,11 +3,7 @@
 Move Activation out of TET point source ctor - do it when first event listener attaches.
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
 
-Create new directory "3rd party Dlls" and move TheEyeTribe dlls in there
-
-Create ico file using http://www.convertico.com/ from https://thenounproject.com/icon/79386/file-options/
-
-Delete LayoutSettings svn and path and credit
+Pass language into dictionary service methods LoadDictionary + any other methods that directly reference Settings.Default.Language
 
 Create new move & resize icon:
 	Window outline: http://thenounproject.com/term/transform/68338/ or http://thenounproject.com/term/transform/71552/

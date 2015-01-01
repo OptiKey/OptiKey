@@ -52,7 +52,8 @@
     <StartupObject>JuliusSweetland.ETTA.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>EyeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -220,13 +221,13 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\SettingCategories.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\MoveAndResize.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
@@ -239,8 +240,8 @@
     <Compile Include="UI\Views\Keyboards\English\SpeechOnly\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Standard\SettingCategories.xaml.cs">
-      <DependentUpon>SettingCategories.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Standard\MoveAndResize.xaml.cs">
+      <DependentUpon>MoveAndResize.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Standard\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -321,48 +322,50 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Icons\Management.ico" />
+    <Resource Include="Resources\Icons\Main.ico" />
+    <None Include="Resources\Icons\SVG Source Files\MoveAndResize.svg" />
     <Content Include="Solution Files\Certificates and Signing.txt" />
     <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
-    <Content Include="TheEyeTribe\Newtonsoft.Json.dll">
+    <Content Include="External Libraries\Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TheEyeTribe\Newtonsoft.Json.xml">
+    <Content Include="External Libraries\Newtonsoft.Json.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TheEyeTribe\TETControls.dll">
+    <Content Include="External Libraries\TETControls.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TheEyeTribe\TETControls.pdb">
+    <Content Include="External Libraries\TETControls.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TheEyeTribe\TETCSharpClient.dll">
+    <Content Include="External Libraries\TETCSharpClient.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.manifest" />
     <Content Include="Solution Files\Keyboard Designs.xlsx" />
-    <None Include="Resources\Icons\Source Files\AddToDictionary.svg" />
-    <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 2.svg" />
-    <None Include="Resources\Icons\Source Files\Back.svg" />
-    <None Include="Resources\Icons\Source Files\Clear - Alt 1.svg" />
-    <None Include="Resources\Icons\Source Files\Clear - Alt 2.svg" />
-    <None Include="Resources\Icons\Source Files\Clear - Alt 3.svg" />
-    <None Include="Resources\Icons\Source Files\No.svg" />
-    <None Include="Resources\Icons\Source Files\Sleep.svg" />
-    <None Include="Resources\Icons\Source Files\Win.svg" />
-    <None Include="Resources\Icons\Source Files\Yes.svg" />
-    <None Include="Resources\Icons\Source Files\Padlock.svg" />
-    <None Include="Resources\Icons\Source Files\Dot.svg" />
-    <None Include="Resources\Icons\Source Files\Calibrate.svg" />
-    <None Include="Resources\Icons\Source Files\Settings.svg" />
-    <None Include="Resources\Icons\Source Files\AccentedLetters.svg" />
-    <None Include="Resources\Icons\Source Files\Currencies.svg" />
-    <None Include="Resources\Icons\Source Files\PhysicalKeys.svg" />
-    <None Include="Resources\Icons\Source Files\LayoutSettings.svg" />
-    <None Include="Resources\Icons\Source Files\PointingAndSelectingSettings.svg" />
-    <None Include="Resources\Icons\Source Files\SoundSettings.svg" />
-    <None Include="Resources\Icons\Source Files\ThemeSettings.svg" />
-    <None Include="Resources\Icons\Source Files\WordSettings.svg" />
-    <None Include="Resources\Icons\Source Files\Menu.svg" />
+    <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Back.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 1.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 2.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 3.svg" />
+    <None Include="Resources\Icons\SVG Source Files\No.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Sleep.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Win.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Yes.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Padlock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Dot.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Calibrate.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Settings.svg" />
+    <None Include="Resources\Icons\SVG Source Files\AccentedLetters.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
+    <None Include="Resources\Icons\SVG Source Files\PhysicalKeys.svg" />
+    <None Include="Resources\Icons\SVG Source Files\PointingAndSelectingSettings.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SoundSettings.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ThemeSettings.svg" />
+    <None Include="Resources\Icons\SVG Source Files\WordSettings.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -388,12 +391,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Solution Files\Notes.txt" />
-    <None Include="Resources\Icons\Source Files\DownArrow.svg" />
-    <None Include="Resources\Icons\Source Files\LeftArrow.svg" />
-    <None Include="Resources\Icons\Source Files\RightArrow.svg" />
-    <None Include="Resources\Icons\Source Files\Speak.svg" />
-    <None Include="Resources\Icons\Source Files\UpArrow.svg" />
-    <None Include="Resources\Icons\Source Files\Win - Alt 1.svg" />
+    <None Include="Resources\Icons\SVG Source Files\DownArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\LeftArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\RightArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Speak.svg" />
+    <None Include="Resources\Icons\SVG Source Files\UpArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Win - Alt 1.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -410,19 +413,19 @@
     <Resource Include="Resources\Fonts\RobotoCondensed-Light.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
-    <None Include="Resources\Icons\Source Files\Space.svg" />
-    <None Include="Resources\Icons\Source Files\AddToDictionary - Alt 1.svg" />
-    <None Include="Resources\Icons\Source Files\BackMany.svg" />
-    <None Include="Resources\Icons\Source Files\BackOne.svg" />
-    <None Include="Resources\Icons\Source Files\Clear.svg" />
-    <None Include="Resources\Icons\Source Files\SuggestionsLeft.svg" />
-    <None Include="Resources\Icons\Source Files\Lock Bar.svg" />
-    <None Include="Resources\Icons\Source Files\More.svg" />
-    <None Include="Resources\Icons\Source Files\MultiKeySelection.svg" />
-    <None Include="Resources\Icons\Source Files\Enter.svg" />
-    <None Include="Resources\Icons\Source Files\SuggestionsRight.svg" />
-    <None Include="Resources\Icons\Source Files\Shift.svg" />
-    <None Include="Resources\Icons\Source Files\Tab.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Space.svg" />
+    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 1.svg" />
+    <None Include="Resources\Icons\SVG Source Files\BackMany.svg" />
+    <None Include="Resources\Icons\SVG Source Files\BackOne.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Clear.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SuggestionsLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Lock Bar.svg" />
+    <None Include="Resources\Icons\SVG Source Files\More.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MultiKeySelection.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Enter.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SuggestionsRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Shift.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
     <Content Include="Credits.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -459,9 +462,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="EyeIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Resources\Icons\KeySymbols.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -482,7 +482,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Standard\SettingCategories.xaml">
+    <Page Include="UI\Views\Keyboards\English\Standard\MoveAndResize.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

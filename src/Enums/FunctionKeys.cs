@@ -64,16 +64,11 @@
         AlternativeAlpha3Keyboard,
         Currencies1Keyboard,
         Currencies2Keyboard,
-        ThemeSettingsKeyboard,
         MenuKeyboard,
+        MoveAndResizeKeyboard,
         NumericAndSymbols1Keyboard,
         NumericAndSymbols2Keyboard,
         NumericAndSymbols3Keyboard,
-        PhysicalKeysKeyboard,
-        PointingAndSelectingSettingsKeyboard,
-        LayoutSettingsKeyboard,
-        SettingCategoriesKeyboard,
-        SoundSettingsKeyboard,
-        WordSettingsKeyboard
+        PhysicalKeysKeyboard
     }
 }

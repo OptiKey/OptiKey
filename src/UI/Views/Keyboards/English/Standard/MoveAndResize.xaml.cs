@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.English.Standard
 {
     /// <summary>
-    /// Interaction logic for SettingCategories.xaml
+    /// Interaction logic for MoveAndResize.xaml
     /// </summary>
-    public partial class SettingCategories : UserControl
+    public partial class MoveAndResize : UserControl
     {
-        public SettingCategories()
+        public MoveAndResize()
         {
             InitializeComponent();
         }

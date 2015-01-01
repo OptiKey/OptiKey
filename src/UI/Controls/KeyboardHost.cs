@@ -22,7 +22,7 @@ using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
 using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
 using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
-using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.SettingCategories;
+using MoveAndResize = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.MoveAndResize;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.Controls
@@ -166,9 +166,9 @@ namespace JuliusSweetland.ETTA.UI.Controls
                             {
                                 newContent = new Views.Keyboards.English.Standard.PhysicalKeys { DataContext = Keyboard };
                             }
-                            else if (Keyboard is SettingCategories)
+                            else if (Keyboard is MoveAndResize)
                             {
-                                newContent = new Views.Keyboards.English.Standard.SettingCategories { DataContext = Keyboard };
+                                newContent = new Views.Keyboards.English.Standard.MoveAndResize { DataContext = Keyboard };
                             }
                             else if (Keyboard is NumericAndSymbols2)
                             {

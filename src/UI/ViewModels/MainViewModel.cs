@@ -21,7 +21,7 @@ using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
 using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
 using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
-using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.SettingCategories;
+using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.MoveAndResize;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
@@ -476,9 +476,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                             Settings.Default.SpeechVoice);
                         break;
 
-                    case FunctionKeys.SettingCategoriesKeyboard:
-                        Log.Debug("Changing keyboard to SettingCategories.");
-                        Keyboard = new SettingCategories(Keyboard);
+                    case FunctionKeys.MoveAndResizeKeyboard:
+                        Log.Debug("Changing keyboard to MoveAndResize.");
+                        Keyboard = new MoveAndResize(Keyboard);
                         break;
 
                     case FunctionKeys.NumericAndSymbols2Keyboard:
