@@ -165,7 +165,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource UpArrowIcon}"
+                          SymbolGeometry="{StaticResource UpArrowKeyIcon}"
                           SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowUp}" />
@@ -236,21 +236,21 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource LeftArrowIcon}"
+                          SymbolGeometry="{StaticResource LeftArrowKeyIcon}"
                           SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource DownArrowIcon}"
+                          SymbolGeometry="{StaticResource DownArrowKeyIcon}"
                           SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowDown}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource RightArrowIcon}"
+                          SymbolGeometry="{StaticResource RightArrowKeyIcon}"
                           SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowRight}" />
