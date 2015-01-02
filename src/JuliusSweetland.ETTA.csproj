@@ -227,9 +227,10 @@
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\MoveAndResize.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Resize.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Move.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Symbols3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
@@ -240,8 +241,11 @@
     <Compile Include="UI\Views\Keyboards\English\SpeechOnly\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Standard\MoveAndResize.xaml.cs">
-      <DependentUpon>MoveAndResize.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Standard\Resize.xaml.cs">
+      <DependentUpon>Resize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Standard\Move.xaml.cs">
+      <DependentUpon>Move.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Standard\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -324,7 +328,10 @@
     </Compile>
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
-    <None Include="Resources\Icons\SVG Source Files\MoveAndResize.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Maximise.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Move.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Resize.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Restore.svg" />
     <Content Include="Solution Files\Certificates and Signing.txt" />
     <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
     <Content Include="External Libraries\Newtonsoft.Json.dll">
@@ -482,7 +489,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Standard\MoveAndResize.xaml">
+    <Page Include="UI\Views\Keyboards\English\Standard\Resize.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Standard\Move.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

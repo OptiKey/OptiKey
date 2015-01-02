@@ -21,7 +21,7 @@ using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
 using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
 using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
-using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.MoveAndResize;
+using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Move;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
@@ -429,19 +429,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Log.Debug("Changing keyboard to Currencies2.");
                         Keyboard = new Currencies2();
                         break;
-
+                        
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");
                         Keyboard = new Menu(Keyboard);
                         break;
-
-                    case FunctionKeys.NoQuestionResult:
-                        HandleYesNoQuestionResult(false);
-                        break;
-
-                    case FunctionKeys.NumericAndSymbols1Keyboard:
-                        Log.Debug("Changing keyboard to NumericAndSymbols1.");
-                        Keyboard = new NumericAndSymbols1();
+                    
+                    case FunctionKeys.MoveKeyboard:
+                        Log.Debug("Changing keyboard to Move.");
+                        Keyboard = new Move(Keyboard);
                         break;
 
                     case FunctionKeys.NextSuggestions:
@@ -454,31 +450,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
-                    case FunctionKeys.PreviousSuggestions:
-                        Log.Debug("Decrementing suggestions page.");
-
-                        if (suggestionService.SuggestionsPage > 0)
-                        {
-                            suggestionService.SuggestionsPage--;
-                        }
+                    case FunctionKeys.NoQuestionResult:
+                        HandleYesNoQuestionResult(false);
                         break;
 
-                    case FunctionKeys.PhysicalKeysKeyboard:
-                        Log.Debug("Changing keyboard to PhysicalKeys.");
-                        Keyboard = new PhysicalKeys();
-                        break;
-
-                    case FunctionKeys.Speak:
-                        audioService.Speak(
-                            outputService.Text,
-                            Settings.Default.SpeechVolume,
-                            Settings.Default.SpeechRate,
-                            Settings.Default.SpeechVoice);
-                        break;
-
-                    case FunctionKeys.MoveAndResizeKeyboard:
-                        Log.Debug("Changing keyboard to MoveAndResize.");
-                        Keyboard = new MoveAndResize(Keyboard);
+                    case FunctionKeys.NumericAndSymbols1Keyboard:
+                        Log.Debug("Changing keyboard to NumericAndSymbols1.");
+                        Keyboard = new NumericAndSymbols1();
                         break;
 
                     case FunctionKeys.NumericAndSymbols2Keyboard:
@@ -488,7 +466,34 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.NumericAndSymbols3Keyboard:
                         Log.Debug("Changing keyboard to Symbols3.");
-                        Keyboard = new Symbols3();
+                        Keyboard = new NumericAndSymbols3();
+                        break;
+
+                    case FunctionKeys.PhysicalKeysKeyboard:
+                        Log.Debug("Changing keyboard to PhysicalKeys.");
+                        Keyboard = new PhysicalKeys();
+                        break;
+
+                    case FunctionKeys.PreviousSuggestions:
+                        Log.Debug("Decrementing suggestions page.");
+
+                        if (suggestionService.SuggestionsPage > 0)
+                        {
+                            suggestionService.SuggestionsPage--;
+                        }
+                        break;
+
+                    case FunctionKeys.ResizeKeyboard:
+                        Log.Debug("Changing keyboard to Resize.");
+                        Keyboard = new Resize(Keyboard);
+                        break;
+
+                    case FunctionKeys.Speak:
+                        audioService.Speak(
+                            outputService.Text,
+                            Settings.Default.SpeechVolume,
+                            Settings.Default.SpeechRate,
+                            Settings.Default.SpeechVoice);
                         break;
 
                     case FunctionKeys.YesQuestionResult:

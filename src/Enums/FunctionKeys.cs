@@ -65,10 +65,11 @@
         Currencies1Keyboard,
         Currencies2Keyboard,
         MenuKeyboard,
-        MoveAndResizeKeyboard,
+        MoveKeyboard,
         NumericAndSymbols1Keyboard,
         NumericAndSymbols2Keyboard,
         NumericAndSymbols3Keyboard,
-        PhysicalKeysKeyboard
+        PhysicalKeysKeyboard,
+        ResizeKeyboard
     }
 }
