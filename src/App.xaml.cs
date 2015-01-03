@@ -97,7 +97,7 @@ namespace JuliusSweetland.ETTA
                 //Create services
                 var notifyErrorServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
-                IDictionaryService dictionaryService = new DictionaryService();
+                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.Language);
                 IPublishService publishService = new PublishService();
                 ISuggestionService suggestionService = new SuggestionService();
                 ICalibrationService calibrationService = CreateCalibrationService();
@@ -116,10 +116,13 @@ namespace JuliusSweetland.ETTA
                 //Compose UI
                 var mainWindow = new MainWindow(dictionaryService, keyboardService);
 
+                IMoveAndResizeService moveAndResizeService = new MoveAndResizeService(mainWindow);
+                notifyErrorServices.Add(moveAndResizeService);
+
                 var mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, publishService, 
                     keyboardService, suggestionService, capturingStateManager,
-                    inputService, outputService, notifyErrorServices);
+                    inputService, outputService, moveAndResizeService, notifyErrorServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 

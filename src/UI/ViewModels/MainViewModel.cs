@@ -41,6 +41,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
+        private readonly IMoveAndResizeService moveAndResizeService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
@@ -67,6 +68,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
             IOutputService outputService,
+            IMoveAndResizeService moveAndResizeService,
             List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
@@ -80,6 +82,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
+            this.moveAndResizeService = moveAndResizeService;
             this.notifyErrorServices = notifyErrorServices;
 
             notificationRequest = new InteractionRequest<Notification>();
@@ -429,15 +432,55 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Log.Debug("Changing keyboard to Currencies2.");
                         Keyboard = new Currencies2();
                         break;
+
+                    case FunctionKeys.ExpandToBottom:
+                        Log.Debug(string.Format("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        moveAndResizeService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.MaximiseSize:
+                        Log.Debug("Maximising size.");
+                        moveAndResizeService.Maximise();
+                        break;
                         
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");
                         Keyboard = new Menu(Keyboard);
                         break;
+
+                    case FunctionKeys.MoveAndResizeAdjustmentAmount:
+                        Log.Debug("Progressing MoveAndResizeAdjustmentAmount.");
+                        switch (Settings.Default.MoveAndResizeAdjustmentAmountInPixels)
+                        {
+                            case 1:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 5;
+                                break;
+
+                            case 5:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 10;
+                                break;
+
+                            case 10:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 25;
+                                break;
+
+                            case 25:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 50;
+                                break;
+
+                            case 50:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 100;
+                                break;
+
+                            default:
+                                Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 1;
+                                break;
+                        }
+                        break;
                     
                     case FunctionKeys.MoveKeyboard:
                         Log.Debug("Changing keyboard to Move.");
-                        Keyboard = new Move(Settings.Default.MoveAndResizeAdjustmentAmountInPixels, Keyboard);
+                        Keyboard = new Move(Keyboard);
                         break;
 
                     case FunctionKeys.NextSuggestions:
@@ -485,7 +528,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.ResizeKeyboard:
                         Log.Debug("Changing keyboard to Resize.");
-                        Keyboard = new Resize(Settings.Default.MoveAndResizeAdjustmentAmountInPixels, Keyboard);
+                        Keyboard = new Resize(Keyboard);
+                        break;
+
+                    case FunctionKeys.RestoreSize:
+                        Log.Debug("Restoring size.");
+                        moveAndResizeService.Restore();
                         break;
 
                     case FunctionKeys.Speak:
