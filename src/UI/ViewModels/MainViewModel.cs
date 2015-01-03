@@ -41,7 +41,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
-        private readonly IMoveAndResizeService moveAndResizeService;
+        private readonly IMoveAndResizeService mainWindowMoveAndResizeService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
@@ -68,7 +68,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
             IOutputService outputService,
-            IMoveAndResizeService moveAndResizeService,
+            IMoveAndResizeService mainWindowMoveAndResizeService,
             List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
@@ -82,7 +82,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
-            this.moveAndResizeService = moveAndResizeService;
+            this.mainWindowMoveAndResizeService = mainWindowMoveAndResizeService;
             this.notifyErrorServices = notifyErrorServices;
 
             notificationRequest = new InteractionRequest<Notification>();
@@ -435,12 +435,47 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.ExpandToBottom:
                         Log.Debug(string.Format("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        moveAndResizeService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowMoveAndResizeService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToBottomAndLeft:
+                        Log.Debug(string.Format("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToBottomAndRight:
+                        Log.Debug(string.Format("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToLeft:
+                        Log.Debug(string.Format("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToRight:
+                        Log.Debug(string.Format("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToTop:
+                        Log.Debug(string.Format("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToTopAndLeft:
+                        Log.Debug(string.Format("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ExpandToTopAndRight:
+                        Log.Debug(string.Format("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MaximiseSize:
                         Log.Debug("Maximising size.");
-                        moveAndResizeService.Maximise();
+                        mainWindowMoveAndResizeService.Maximise();
                         break;
                         
                     case FunctionKeys.MenuKeyboard:
@@ -533,7 +568,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.RestoreSize:
                         Log.Debug("Restoring size.");
-                        moveAndResizeService.Restore();
+                        mainWindowMoveAndResizeService.Restore();
                         break;
 
                     case FunctionKeys.Speak:

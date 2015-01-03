@@ -6,6 +6,9 @@ namespace JuliusSweetland.ETTA.Extensions
 {
     public static class UiElementExtensions
     {
+        /// <summary>
+        /// Returns the transformation matrix which converts WPF resolution independent co-ords to device (screen) co-ords
+        /// </summary>
         public static Matrix GetTransformToDevice(this UIElement element)
         {
             //http://stackoverflow.com/questions/3286175/how-do-i-convert-a-wpf-size-to-physical-pixels
@@ -24,6 +27,29 @@ namespace JuliusSweetland.ETTA.Extensions
             }
 
             return transformToDevice;
+        }
+
+        /// <summary>
+        /// Returns the transformation matrix which converts device (screen) co-ords to WPF resolution independent co-ords
+        /// </summary>
+        public static Matrix GetTransformFromDevice(this UIElement element)
+        {
+            //http://stackoverflow.com/questions/3286175/how-do-i-convert-a-wpf-size-to-physical-pixels
+            Matrix transformFromDevice;
+            var source = PresentationSource.FromVisual(element);
+            if (source != null)
+            {
+                transformFromDevice = source.CompositionTarget.TransformFromDevice;
+            }
+            else
+            {
+                using (var altSource = new HwndSource(new HwndSourceParameters()))
+                {
+                    transformFromDevice = altSource.CompositionTarget.TransformFromDevice;
+                }
+            }
+
+            return transformFromDevice;
         }
     }
 }

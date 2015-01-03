@@ -7,10 +7,7 @@ namespace JuliusSweetland.ETTA.Extensions
     {
         public static System.Windows.Forms.Screen GetScreen(this Window window)
         {
-            var screen = System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(window).Handle);
-            //screen.
-
-            return screen;
+            return System.Windows.Forms.Screen.FromHandle(new WindowInteropHelper(window).Handle);
         }
     }
 }

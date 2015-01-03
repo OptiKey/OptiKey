@@ -148,6 +148,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
