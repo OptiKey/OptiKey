@@ -561,6 +561,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
                     : string.Format("Would you like to add the word '{0}' to the dictionary?", candidate);
 
+                if (candidate.Any(Char.IsUpper))
+                {
+                    prompt = string.Concat(prompt, "\n(The new dictionary entry will contain capital letters)");
+                }
+
                 var similarEntries = dictionaryService.GetAllEntriesWithUsageCounts()
                     .Where(de => string.Equals(de.Entry, candidate, StringComparison.InvariantCultureIgnoreCase))
                     .Select(de => de.Entry)
