@@ -328,10 +328,10 @@
     </Compile>
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
-    <None Include="Resources\Icons\SVG Source Files\Maximise.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\Move.svg" />
     <None Include="Resources\Icons\SVG Source Files\Resize.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Restore.svg" />
+    <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />

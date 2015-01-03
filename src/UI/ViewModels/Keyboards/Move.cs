@@ -1,12 +1,22 @@
-﻿namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
+﻿using Microsoft.Practices.Prism.Mvvm;
+
+namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
 {
-    public class Move : IKeyboard, INavigableKeyboard
+    public class Move : BindableBase, IKeyboard, INavigableKeyboard
     {
         private readonly IKeyboard back;
+        private int adjustmentAmountInPixels;
 
-        public Move(IKeyboard back)
+        public Move(int adjustmentAmountInPixels, IKeyboard back)
         {
+            this.adjustmentAmountInPixels = adjustmentAmountInPixels;
             this.back = back;
+        }
+
+        public int AdjustmentAmountInPixels
+        {
+            get { return adjustmentAmountInPixels; }
+            set { SetProperty(ref adjustmentAmountInPixels, value); }
         }
 
         public IKeyboard Back

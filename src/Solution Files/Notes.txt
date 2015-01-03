@@ -5,11 +5,6 @@ Move Activation out of TET point source ctor - do it when first event listener a
 
 Pass language into dictionary service methods LoadDictionary + any other methods that directly reference Settings.Default.Language
 
-Create new move & resize icon:
-	Window outline: http://thenounproject.com/term/transform/68338/ or http://thenounproject.com/term/transform/71552/
-	Move: http://thenounproject.com/term/move/55457/
-	Resize: http://thenounproject.com/term/fullscreen/21332/
-
 Create WindowMoveAndResizeService
 	MoveLeft(double pixels)
 	MoveLeftToBoundary()

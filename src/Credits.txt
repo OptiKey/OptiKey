@@ -16,7 +16,7 @@ Icons...
   Lock Bar icon modified from: Minus designed by Icomatic from the Noun Project (thenounproject.com)
   Main application icon: Keyboard by useiconic.com from the Noun Project (thenounproject.com)
   Management Console icon: Settings by Mundo from the Noun Project (thenounproject.com)
-  Maximise icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
+  Maximise Size icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Menu icon: Menu by Jamison Wieser from the Noun Project (thenounproject.com)
   More icon: Dots designed by Alex S. Lakas from the Noun Project (thenounproject.com)
   Move icon: Move by TukTuk Design from the Noun Project (thenounproject.com)
@@ -26,7 +26,7 @@ Icons...
   Pointing & Selecting Settings icon: Pointer by Arthur Shlain from the Noun Project (thenounproject.com)
   Publish icon: Modern UI Icons - appbar.stream from Modern UI Icons - modernuiicons.com
   Resize icon modified from: Move by TukTuk Design from the Noun Project (thenounproject.com)
-  Restore icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
+  Restore Size icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Return/Enter icon: Arrow designed by Sam Vermette from the Noun Project (thenounproject.com)
   Shift icon: Arrow designed by Mateo Zlatar from the Noun Project (thenounproject.com)
   Sleep icon: Sleep designed by Rémy Médard from the Noun Project (thenounproject.com)

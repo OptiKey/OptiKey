@@ -765,5 +765,17 @@ namespace JuliusSweetland.ETTA.Properties {
                 this["ControlPanelWindowWidth"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int MoveAndResizeAdjustmentAmountInPixels {
+            get {
+                return ((int)(this["MoveAndResizeAdjustmentAmountInPixels"]));
+            }
+            set {
+                this["MoveAndResizeAdjustmentAmountInPixels"] = value;
+            }
+        }
     }
 }

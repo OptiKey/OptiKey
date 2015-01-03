@@ -437,7 +437,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     
                     case FunctionKeys.MoveKeyboard:
                         Log.Debug("Changing keyboard to Move.");
-                        Keyboard = new Move(Keyboard);
+                        Keyboard = new Move(Settings.Default.MoveAndResizeAdjustmentAmountInPixels, Keyboard);
                         break;
 
                     case FunctionKeys.NextSuggestions:
@@ -485,7 +485,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
                     case FunctionKeys.ResizeKeyboard:
                         Log.Debug("Changing keyboard to Resize.");
-                        Keyboard = new Resize(Keyboard);
+                        Keyboard = new Resize(Settings.Default.MoveAndResizeAdjustmentAmountInPixels, Keyboard);
                         break;
 
                     case FunctionKeys.Speak:

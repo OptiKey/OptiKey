@@ -18,60 +18,160 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!--<controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ThemeSettingsIcon}"
-                      Text="THEME &amp; FONTS"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+        <controls:Key Grid.Row="0" Grid.Column="0"
+                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ThemeSettingsKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUpAndLeft}" />
             </controls:Key.Value>
         </controls:Key>
-       <controls:Key Grid.Row="0" Grid.Column="1"
-                      SymbolGeometry="{StaticResource LayoutSettingsIcon}"
-                      Text="LAYOUT, POSITION  &amp; SIZE"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+        <controls:Key Grid.Row="0" Grid.Column="1"
+                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LayoutSettingsKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUp}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="2"
-                      SymbolGeometry="{StaticResource WordSettingsIcon}"
-                      Text="WORDS"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+                      SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.WordSettingsKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUpAndRight}" />
             </controls:Key.Value>
-        </controls:Key>-->
-
-        <!--<controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource SoundSettingsIcon}"
-                      Text="SOUNDS"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="3"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="0" Grid.Column="4"
+                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SoundSettingsKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUpAndLeftToBoundaries}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="5"
+                      SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUpToBoundary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="6"
+                      SymbolGeometry="{StaticResource ArrowPointingToTopRightBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveUpAndRightToBoundaries}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="7"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="0" Grid.Column="8"
+                      IsEnabled="False" />
+
+        <controls:Key Grid.Row="1" Grid.Column="0"
+                      SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource PointingAndSelectingSettingsIcon}"
-                      Text="POINTING &amp; SELECTION"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+                      Text="{Binding AdjustmentAmountInPixels, StringFormat={}{0}px}"
+                      SharedSizeGroup="KeyWithText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PointingAndSelectingSettingsKeyboard}" />
-            </controls:Key.Value>    
-        </controls:Key>-->
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
+            </controls:Key.Value>
+        </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
+                      SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveRight}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="3"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="1" Grid.Column="4"
+                      SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveLeftToBoundary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="5"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="1" Grid.Column="6"
+                      SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveRightToBoundary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="7"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="1" Grid.Column="8"
+                      IsEnabled="False" />
+
+        <controls:Key Grid.Row="2" Grid.Column="0"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDownAndLeft}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="1"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDown}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="2"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDownAndRight}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="3"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="2" Grid.Column="4"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDownAndLeftToBoundaries}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="5"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDownToBoundary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="6"
+                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightBoundaryIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveDownAndRightToBoundaries}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="7"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="2" Grid.Column="8"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       SharedSizeGroup="KeyWithSymbolAndText">
