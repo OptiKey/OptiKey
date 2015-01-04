@@ -571,6 +571,46 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         mainWindowMoveAndResizeService.Restore();
                         break;
 
+                    case FunctionKeys.ShrinkFromBottom:
+                        Log.Debug(string.Format("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromBottomAndLeft:
+                        Log.Debug(string.Format("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromBottomAndRight:
+                        Log.Debug(string.Format("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromLeft:
+                        Log.Debug(string.Format("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromRight:
+                        Log.Debug(string.Format("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromTop:
+                        Log.Debug(string.Format("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromTopAndLeft:
+                        Log.Debug(string.Format("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.ShrinkFromTopAndRight:
+                        Log.Debug(string.Format("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
+                        mainWindowMoveAndResizeService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
                     case FunctionKeys.Speak:
                         audioService.Speak(
                             outputService.Text,

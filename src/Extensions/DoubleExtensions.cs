@@ -1,9 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
-using WindowsInput.Native;
-using JuliusSweetland.ETTA.Enums;
-
-namespace JuliusSweetland.ETTA.Extensions
+﻿namespace JuliusSweetland.ETTA.Extensions
 {
     public static class DoubleExtensions
     {

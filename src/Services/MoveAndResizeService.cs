@@ -26,12 +26,12 @@ namespace JuliusSweetland.ETTA.Services
             {
                 var screen = window.GetScreen();
                 var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
-                var windowBottom = window.Top
-                                   + window.ActualHeight;
-                                   //+ (SystemParameters.WindowNonClientFrameThickness.Bottom / SystemParameters.BorderWidth); //BorderWidth is a multiplier based on DPI (e.g. scaling factor 100% = 1.0, scaling factor 125% = 0.8, etc)
-                var distanceToBoundary = screenBottomLeftInWpfCoords.Y - windowBottom;
+                var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
+
                 window.Height += yAdjustment;
+                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
+                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
             }
             catch (Exception ex)
             {
@@ -61,8 +61,14 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-                window.Left -= xAdjustment;
+
+                var widthBeforeAdjustment = window.ActualWidth;
                 window.Width += xAdjustment;
+                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
+                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
+                var actualXAdjustment = widthBeforeAdjustment - window.ActualWidth; //WPF may have coerced the adjustment
+                window.Left -= actualXAdjustment;
+                
             }
             catch (Exception ex)
             {
@@ -78,12 +84,12 @@ namespace JuliusSweetland.ETTA.Services
             {   
                 var screen = window.GetScreen();
                 var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
-                var windowRight = window.Left
-                                  + window.ActualWidth;
-                                  //+ (SystemParameters.WindowNonClientFrameThickness.Right / SystemParameters.BorderWidth); //BorderWidth is a multiplier based on DPI (e.g. scaling factor 100% = 1.0, scaling factor 125% = 0.8, etc)
-                var distanceToBoundary = screenTopRightInWpfCoords.X - windowRight;
+                var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
+                
                 window.Width += xAdjustment;
+                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
+                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
             }
             catch (Exception ex)
             {
@@ -101,8 +107,13 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-                window.Top -= yAdjustment;
+
+                var heightBeforeAdjustment = window.ActualHeight;
                 window.Height += yAdjustment;
+                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
+                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
+                var actualYAdjustment = heightBeforeAdjustment - window.ActualHeight; //WPF may have coerced the adjustment
+                window.Top -= actualYAdjustment;
             }
             catch (Exception ex)
             {
@@ -175,41 +186,115 @@ namespace JuliusSweetland.ETTA.Services
         public void ShrinkFromBottom(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+
+            try
+            {
+                var screen = window.GetScreen();
+                var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
+                var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
+                var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
+
+                window.Height += yAdjustment;
+                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
+                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
         }
 
         public void ShrinkFromBottomAndLeft(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+            ShrinkFromBottom(pixels);
+            ShrinkFromLeft(pixels);
         }
 
         public void ShrinkFromBottomAndRight(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+            ShrinkFromBottom(pixels);
+            ShrinkFromRight(pixels);
         }
 
         public void ShrinkFromLeft(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
+                var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
+
+                var widthBeforeAdjustment = window.ActualWidth;
+                window.Width += xAdjustment;
+                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
+                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
+                var actualXAdjustment = widthBeforeAdjustment - window.ActualWidth; //WPF may have coerced the adjustment
+                window.Left -= actualXAdjustment;
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
         }
 
         public void ShrinkFromRight(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
+                var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
+                var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
+
+                window.Width += xAdjustment;
+                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
+                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
         }
 
         public void ShrinkFromTop(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
+                var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
+
+                var heightBeforeAdjustment = window.ActualHeight;
+                window.Height += yAdjustment;
+                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
+                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
+                var actualYAdjustment = heightBeforeAdjustment - window.ActualHeight; //WPF may have coerced the adjustment
+                window.Top -= actualYAdjustment;
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
         }
 
         public void ShrinkFromTopAndLeft(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+            ShrinkFromTop(pixels);
+            ShrinkFromLeft(pixels);
         }
 
         public void ShrinkFromTopAndRight(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+            ShrinkFromTop(pixels);
+            ShrinkFromRight(pixels);
         }
 
         #region Publish Error

@@ -4,31 +4,7 @@ Move Activation out of TET point source ctor - do it when first event listener a
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
 
 Create WindowMoveAndResizeService
-MoveDown,
-        MoveDownAndLeft,
-        MoveDownAndLeftToBoundaries,
-        MoveDownAndRight,
-        MoveDownAndRightToBoundaries,
-        MoveDownToBoundary,
-        MoveKeyboard,
-        MoveLeft,
-        MoveLeftToBoundary,
-        MoveRight,
-        MoveRightToBoundary,
-        MoveUp,
-        MoveUpAndLeft,
-        MoveUpAndLeftToBoundaries,
-        MoveUpAndRight,
-        MoveUpAndRightToBoundaries,
-        MoveUpToBoundary,
-ShrinkFromBottom,
-        ShrinkFromBottomAndLeft,
-        ShrinkFromBottomAndRight,
-        ShrinkFromLeft,
-        ShrinkFromRight,
-        ShrinkFromTop,
-        ShrinkFromTopAndLeft,
-        ShrinkFromTopAndRight,
+
 
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case?)

@@ -5,6 +5,7 @@
         xmlns:interactionRequest="http://www.codeplex.com/prism"
         xmlns:triggerActions="clr-namespace:JuliusSweetland.ETTA.UI.TriggerActions"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        MinWidth="300" MinHeight="200"
         WindowStyle="None"
         Title="ETTA"
         Topmost="True"
