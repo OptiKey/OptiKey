@@ -24,23 +24,14 @@ namespace JuliusSweetland.ETTA.Services
 
             try
             {
-                //Calculate adjustment in device (screen) co-ordinates
-                var screenBottom = window.GetScreen().Bounds.Bottom;
-                var windowBottom = window.PointToScreen(new Point(0, window.Top + window.ActualHeight)).Y;
-                var distanceToBoundary = screenBottom - windowBottom;
+                var screen = window.GetScreen();
+                var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
+                var windowBottom = window.Top
+                                   + window.ActualHeight;
+                                   //+ (SystemParameters.WindowNonClientFrameThickness.Bottom / SystemParameters.BorderWidth); //BorderWidth is a multiplier based on DPI (e.g. scaling factor 100% = 1.0, scaling factor 125% = 0.8, etc)
+                var distanceToBoundary = screenBottomLeftInWpfCoords.Y - windowBottom;
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-                
-                //Convert back into resolution independent co-ord system
-                var wpfAdjustment = (Size) window.GetTransformFromDevice().Transform(new Vector(0, yAdjustment));
-
-                if (yAdjustment > 0)
-                {
-                    window.Height += wpfAdjustment.Height;
-                }
-                else
-                {
-                    window.Height -= wpfAdjustment.Height;
-                }
+                window.Height += yAdjustment;
             }
             catch (Exception ex)
             {
@@ -66,12 +57,10 @@ namespace JuliusSweetland.ETTA.Services
 
             try
             {
-                var screenLeftInDeviceCoords = window.GetScreen().Bounds.Left;
-                var screenLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screenLeftInDeviceCoords, 0)).X;
-                
-                var distanceToBoundary = window.Left - screenLeftInWpfCoords;
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
                 window.Left -= xAdjustment;
                 window.Width += xAdjustment;
             }
@@ -86,13 +75,14 @@ namespace JuliusSweetland.ETTA.Services
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
-            {
-                var screenRightInDeviceCoords = window.GetScreen().Bounds.Right;
-                var screenRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screenRightInDeviceCoords, 0)).X;
-                var windowRight = window.Left + window.ActualWidth;
-                var distanceToBoundary = screenRightInWpfCoords - windowRight;
+            {   
+                var screen = window.GetScreen();
+                var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
+                var windowRight = window.Left
+                                  + window.ActualWidth;
+                                  //+ (SystemParameters.WindowNonClientFrameThickness.Right / SystemParameters.BorderWidth); //BorderWidth is a multiplier based on DPI (e.g. scaling factor 100% = 1.0, scaling factor 125% = 0.8, etc)
+                var distanceToBoundary = screenTopRightInWpfCoords.X - windowRight;
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
                 window.Width += xAdjustment;
             }
             catch (Exception ex)
@@ -107,25 +97,12 @@ namespace JuliusSweetland.ETTA.Services
 
             try
             {
-                //Calculate adjustment in device (screen) co-ordinates
-                var screenTop = window.GetScreen().Bounds.Top;
-                var windowTop = window.PointToScreen(new Point(0, window.Top)).Y;
-                var distanceToBoundary = windowTop - screenTop;
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
-                //Convert back into resolution independent co-ord system
-                var wpfAdjustment = (Size)window.GetTransformFromDevice().Transform(new Vector(0, yAdjustment));
-
-                if (yAdjustment > 0)
-                {
-                    window.Top -= wpfAdjustment.Height;
-                    window.Height += wpfAdjustment.Height;
-                }
-                else
-                {
-                    window.Top += wpfAdjustment.Height;
-                    window.Height -= wpfAdjustment.Height;
-                }
+                window.Top -= yAdjustment;
+                window.Height += yAdjustment;
             }
             catch (Exception ex)
             {

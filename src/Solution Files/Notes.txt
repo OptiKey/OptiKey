@@ -4,28 +4,31 @@ Move Activation out of TET point source ctor - do it when first event listener a
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
 
 Create WindowMoveAndResizeService
-	MoveLeft(double pixels)
-	MoveLeftToBoundary()
-	MoveRight(double pixels)
-	MoveRightToBoundary()
-	MoveUp(double pixels)
-	MoveUpToBoundary()
-	MoveDown(double pixels)
-	MoveDownToBoundary()
-	ReSizeLeft(double pixels)
-	ResizeLeftToBoundary()
-	ReSizeRight(double pixels)
-	ResizeRightToBoundary()
-	ReSizeUp(double pixels)
-	ResizeUpToBoundary()
-	ReSizeDown(double pixels)
-	ResizeDownToBoundary()
-	+ Coerce adjustments
-	How to get current screen bounds:
-		http://stackoverflow.com/questions/254197/how-can-i-get-the-active-screen-dimensions
-		http://stackoverflow.com/questions/1927540/how-to-get-the-size-of-the-current-screen-in-wpf
-
-Correct boundary coerce logic - currently it's a bit off
+MoveDown,
+        MoveDownAndLeft,
+        MoveDownAndLeftToBoundaries,
+        MoveDownAndRight,
+        MoveDownAndRightToBoundaries,
+        MoveDownToBoundary,
+        MoveKeyboard,
+        MoveLeft,
+        MoveLeftToBoundary,
+        MoveRight,
+        MoveRightToBoundary,
+        MoveUp,
+        MoveUpAndLeft,
+        MoveUpAndLeftToBoundaries,
+        MoveUpAndRight,
+        MoveUpAndRightToBoundaries,
+        MoveUpToBoundary,
+ShrinkFromBottom,
+        ShrinkFromBottomAndLeft,
+        ShrinkFromBottomAndRight,
+        ShrinkFromLeft,
+        ShrinkFromRight,
+        ShrinkFromTop,
+        ShrinkFromTopAndLeft,
+        ShrinkFromTopAndRight,
 
 Simplify settings keyboard access to just: Move & Resize
 	Remove 'outer' settings keyboard (keep the icons in case?)
