@@ -73,7 +73,8 @@ Pause point source when switching keyboards - on unload/load of content of Keybo
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
-
+	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
+	
 Refactor any remaining large classes, e.g. MainViewModel
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
