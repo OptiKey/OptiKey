@@ -66,7 +66,7 @@ namespace JuliusSweetland.ETTA.Services
                 window.Width += xAdjustment;
                 window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
                 window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
-                var actualXAdjustment = widthBeforeAdjustment - window.ActualWidth; //WPF may have coerced the adjustment
+                var actualXAdjustment = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Left -= actualXAdjustment;
                 
             }
@@ -112,7 +112,7 @@ namespace JuliusSweetland.ETTA.Services
                 window.Height += yAdjustment;
                 window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
                 window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
-                var actualYAdjustment = heightBeforeAdjustment - window.ActualHeight; //WPF may have coerced the adjustment
+                var actualYAdjustment = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Top -= actualYAdjustment;
             }
             catch (Exception ex)
@@ -148,7 +148,6 @@ namespace JuliusSweetland.ETTA.Services
                 var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
                 window.Top += yAdjustment;
             }
             catch (Exception ex)
@@ -163,10 +162,10 @@ namespace JuliusSweetland.ETTA.Services
             MoveToLeft(pixels);
         }
         
-        public void MoveToBottomAndLeftBoundaries(double pixels)
+        public void MoveToBottomAndLeftBoundaries()
         {
-            MoveToBottomBoundary(pixels);
-            MoveToLeftBoundary(pixels);
+            MoveToBottomBoundary();
+            MoveToLeftBoundary();
         }
         
         public void MoveToBottomAndRight(double pixels)
@@ -175,10 +174,10 @@ namespace JuliusSweetland.ETTA.Services
             MoveToRight(pixels);
         }
         
-        public void MoveToBottomAndRightBoundaries(double pixels)
+        public void MoveToBottomAndRightBoundaries()
         {
-            MoveToBottomBoundary(pixels);
-            MoveToRightBoundary(pixels);
+            MoveToBottomBoundary();
+            MoveToRightBoundary();
         }
         
         public void MoveToBottomBoundary()
@@ -191,7 +190,6 @@ namespace JuliusSweetland.ETTA.Services
                 var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary;
-
                 window.Top += yAdjustment;
             }
             catch (Exception ex)
@@ -210,8 +208,7 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
-                window.Left -= actualXAdjustment;
+                window.Left -= xAdjustment;
                 
             }
             catch (Exception ex)
@@ -230,8 +227,7 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary;
-
-                window.Left -= actualXAdjustment;
+                window.Left -= xAdjustment;
                 
             }
             catch (Exception ex)
@@ -250,7 +246,6 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-                
                 window.Left += xAdjustment;
             }
             catch (Exception ex)
@@ -269,7 +264,6 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary;
-                
                 window.Left += xAdjustment;
             }
             catch (Exception ex)
@@ -288,8 +282,7 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
-                window.Top -= actualYAdjustment;
+                window.Top -= yAdjustment;
             }
             catch (Exception ex)
             {
@@ -303,10 +296,10 @@ namespace JuliusSweetland.ETTA.Services
             MoveToLeft(pixels);
         }
         
-        public void MoveToTopAndLeftBoundaries(double pixels)
+        public void MoveToTopAndLeftBoundaries()
         {
-            MoveToTopBoundary(pixels);
-            MoveToLeftBoundary(pixels);
+            MoveToTopBoundary();
+            MoveToLeftBoundary();
         }
         
         public void MoveToTopAndRight(double pixels)
@@ -315,10 +308,10 @@ namespace JuliusSweetland.ETTA.Services
             MoveToRight(pixels);
         }
         
-        public void MoveToTopAndRightBoundaries(double pixels)
+        public void MoveToTopAndRightBoundaries()
         {
-            MoveToTopBoundary(pixels);
-            MoveToRightBoundary(pixels);
+            MoveToTopBoundary();
+            MoveToRightBoundary();
         }
 
         public void MoveToTopBoundary()
@@ -331,8 +324,7 @@ namespace JuliusSweetland.ETTA.Services
                 var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
                 var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary;
-
-                window.Top -= actualYAdjustment;
+                window.Top -= yAdjustment;
             }
             catch (Exception ex)
             {
@@ -393,7 +385,7 @@ namespace JuliusSweetland.ETTA.Services
                 window.Width += xAdjustment;
                 window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth
                 window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth
-                var actualXAdjustment = widthBeforeAdjustment - window.ActualWidth; //WPF may have coerced the adjustment
+                var actualXAdjustment = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Left -= actualXAdjustment;
             }
             catch (Exception ex)
@@ -438,7 +430,7 @@ namespace JuliusSweetland.ETTA.Services
                 window.Height += yAdjustment;
                 window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight
                 window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight
-                var actualYAdjustment = heightBeforeAdjustment - window.ActualHeight; //WPF may have coerced the adjustment
+                var actualYAdjustment = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Top -= actualYAdjustment;
             }
             catch (Exception ex)

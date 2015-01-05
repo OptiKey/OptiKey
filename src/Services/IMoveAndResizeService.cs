@@ -16,7 +16,7 @@
         void MoveToBottomAndLeftBoundaries();
         void MoveToBottomAndRight(double pixels);
         void MoveToBottomAndRightBoundaries();
-        void MoveToButtomBoundary();
+        void MoveToBottomBoundary();
         void MoveToLeft(double pixels);
         void MoveToLeftBoundary();
         void MoveToRight(double pixels);
