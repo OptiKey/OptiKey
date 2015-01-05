@@ -81,6 +81,9 @@ Refactor any remaining large classes, e.g. MainViewModel
 
 Prevent minimising? Listen to state change and restore?
 
+Publish as ClickOnce
+	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
+
 --------------------------------------------------------------------------------
 
 TO DO?
