@@ -3,15 +3,7 @@
 Move Activation out of TET point source ctor - do it when first event listener attaches.
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
 
-Create WindowMoveAndResizeService
-
-
-Simplify settings keyboard access to just: Move & Resize
-	Remove 'outer' settings keyboard (keep the icons in case?)
-		MainWindowTop	System.Double	0
-		MainWindowLeft	System.Double	0
-		MainWindowHeight	System.Double	400
-		MainWindowWidth	System.Double	800
+TEST WindowMoveAndResizeService
 
 Management (new window accessed with hotkey)
 		Visuals:		
@@ -62,7 +54,7 @@ Management (new window accessed with hotkey)
 		Remove
 
 		Other:
-		Debug mode (setting) (or command line arg?)
+		Debug mode (setting)
 
 	Application.Restart(); after changing some of the settings? Prompt user to restart (after saving) if certain settings have been changed.
 
@@ -85,11 +77,12 @@ Refactor any remaining large classes, e.g. MainViewModel
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
 
+Prevent minimising? Listen to state change and restore?
+
 --------------------------------------------------------------------------------
 
 TO DO?
 Add transparency - accessible from keyboard?
-Prevent minimising/maximising - must be windowed at all times
 Add support for USB (hardware) buttons (to act as triggers)?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
 Character codes – ALT on/lock, then numbers, then ALT off
