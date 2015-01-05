@@ -156,7 +156,31 @@ namespace JuliusSweetland.ETTA.Services
                 PublishError(this, ex);
             }
         }
-
+        
+        public void MoveToBottomAndLeft(double pixels)
+        {
+            MoveToBottom(pixels);
+            MoveToLeft(pixels);
+        }
+        
+        public void MoveToBottomAndLeftBoundaries(double pixels)
+        {
+            MoveToBottomBoundary(pixels);
+            MoveToLeftBoundary(pixels);
+        }
+        
+        public void MoveToBottomAndRight(double pixels)
+        {
+            MoveToBottom(pixels);
+            MoveToRight(pixels);
+        }
+        
+        public void MoveToBottomAndRightBoundaries(double pixels)
+        {
+            MoveToBottomBoundary(pixels);
+            MoveToRightBoundary(pixels);
+        }
+        
         public void MoveToBottomBoundary()
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
@@ -271,6 +295,30 @@ namespace JuliusSweetland.ETTA.Services
             {
                 PublishError(this, ex);
             }
+        }
+        
+        public void MoveToTopAndLeft(double pixels)
+        {
+            MoveToTop(pixels);
+            MoveToLeft(pixels);
+        }
+        
+        public void MoveToTopAndLeftBoundaries(double pixels)
+        {
+            MoveToTopBoundary(pixels);
+            MoveToLeftBoundary(pixels);
+        }
+        
+        public void MoveToTopAndRight(double pixels)
+        {
+            MoveToTop(pixels);
+            MoveToRight(pixels);
+        }
+        
+        public void MoveToTopAndRightBoundaries(double pixels)
+        {
+            MoveToTopBoundary(pixels);
+            MoveToRightBoundary(pixels);
         }
 
         public void MoveToTopBoundary()
