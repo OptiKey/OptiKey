@@ -72,6 +72,7 @@ Think about how to pause/prevent the point source during multi-key selection pro
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 
 Profile and optimise, especially keyboard transitions
+	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 
 Refactor any remaining large classes, e.g. MainViewModel
 
