@@ -70,7 +70,7 @@
         MoveToTopAndLeftBoundaries,
         MoveToTopAndRight,
         MoveToTopAndRightBoundaries,
-        MoveToTopToBoundary,
+        MoveToTopBoundary,
         MultiKeySelectionEnabled,
         NextSuggestions,
         NoQuestionResult,
