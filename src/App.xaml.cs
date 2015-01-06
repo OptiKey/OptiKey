@@ -38,6 +38,8 @@ namespace JuliusSweetland.ETTA
             Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
+            LogApplicationStart();
+
             //Attach shutdown handler
             Application.Current.Exit += (o, args) => Log.Info("ETTA SHUTTING DOWN");
 
@@ -89,7 +91,7 @@ namespace JuliusSweetland.ETTA
         {
             try
             {
-                Log.Info("ETTA STARTING UP");
+                Log.Info("Boot strapping the services and UI.");
 
                 //Apply theme
                 applyTheme();
@@ -269,6 +271,27 @@ namespace JuliusSweetland.ETTA
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
         }
 
+        #endregion
+        
+        #region Log Application Start
+        
+        private void LogApplicationStart()
+        {
+            Log.Info("ETTA STARTING UP");
+            
+            var assemblyVersion = string.Format("Assembly version: {0}", ((System.Reflection.AssemblyVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(System.Reflection.AssemblyVersionAttribute), false)[0])).Version);
+            Log.Info(assemblyVersion);
+            
+            var assemblyFileVersion = string.Format("Assembly file version: {0}", ((System.Reflection.AssemblyFileVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(System.Reflection.AssemblyFileVersionAttribute), false)[0])).Version);
+            Log.Info(assemblyFileVersion);
+
+            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            {
+                var clickOnceVersion = string.Format("ClickOnce version: {0}", System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion);
+                Log.Info(clickOnceVersion);
+            }
+        }
+        
         #endregion
 
         #region Release Keys On App Exit
