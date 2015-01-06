@@ -38,6 +38,7 @@ namespace JuliusSweetland.ETTA
             Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
+            //Log out version info
             LogApplicationStart();
 
             //Attach shutdown handler
