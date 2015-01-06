@@ -54,3 +54,8 @@ using System.Windows;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.*")]
+
+//I don't think there's any point to specifying the AssemblyFileVersion attribute.
+//If not specified the AssemblyFileVersion == AssemblyVersion.
+//Also note that the 1.0.* does NOT work on this attribute.
+//[assembly: AssemblyFileVersion("1.0.0.0")]

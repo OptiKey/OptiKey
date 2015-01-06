@@ -281,7 +281,11 @@ namespace JuliusSweetland.ETTA
         private void LogDiagnosticInfo()
         {
             Log.Info(string.Format("Assembly version: {0}", DiagnosticInfo.AssemblyVersion));
-            Log.Info(string.Format("Assembly file version: {0}", DiagnosticInfo.AssemblyFileVersion));
+            var assemblyFileVersion = DiagnosticInfo.AssemblyFileVersion;
+            if (!string.IsNullOrEmpty(assemblyFileVersion))
+            {
+                Log.Info(string.Format("Assembly file version: {0}", assemblyFileVersion));
+            }
             if(DiagnosticInfo.IsApplicationNetworkDeployed)
             {
                 Log.Info(string.Format("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion));
