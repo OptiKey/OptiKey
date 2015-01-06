@@ -289,6 +289,7 @@ namespace JuliusSweetland.ETTA
             Log.Info(string.Format("OS version: {0}", DiagnosticInfo.OperatingSystemVersion));
             Log.Info(string.Format("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack));
             Log.Info(string.Format("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness));
+            Log.Info(string.Format("Running as administrator: {0}", DiagnosticInfo.RunningAsAdministrator));
         }
         
         #endregion
