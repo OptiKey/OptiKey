@@ -129,23 +129,41 @@ public static class DiagnosticInfo
                 {
                     throw new ApplicationException("Could not get process token.  Win32 Error Code: " + Marshal.GetLastWin32Error());
                 }
-
-                var elevationResult = TOKEN_ELEVATION_TYPE.TokenElevationTypeDefault;
-
-                int elevationResultSize = Marshal.SizeOf((int)elevationResult);
-                uint returnedSize = 0;
-                IntPtr elevationTypePtr = Marshal.AllocHGlobal(elevationResultSize);
-
-                bool success = GetTokenInformation(tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType, elevationTypePtr, (uint)elevationResultSize, out returnedSize);
-                if (success)
+                
+                try
                 {
-                    elevationResult = (TOKEN_ELEVATION_TYPE)Marshal.ReadInt32(elevationTypePtr);
-                    bool isProcessAdmin = elevationResult == TOKEN_ELEVATION_TYPE.TokenElevationTypeFull;
-                    return isProcessAdmin;
+                    var elevationResult = TOKEN_ELEVATION_TYPE.TokenElevationTypeDefault;
+
+                    int elevationResultSize = Marshal.SizeOf((int) elevationResult);
+                    uint returnedSize = 0;
+
+                    IntPtr elevationTypePtr = Marshal.AllocHGlobal(elevationResultSize);
+                    try
+                    {
+                        bool success = GetTokenInformation(tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType,
+                                                           elevationTypePtr, (uint) elevationResultSize,
+                                                           out returnedSize);
+                        if (success)
+                        {
+                            elevationResult = (TOKEN_ELEVATION_TYPE) Marshal.ReadInt32(elevationTypePtr);
+                            bool isProcessAdmin = elevationResult == TOKEN_ELEVATION_TYPE.TokenElevationTypeFull;
+                            return isProcessAdmin;
+                        }
+                        else
+                        {
+                            throw new ApplicationException("Unable to determine the current elevation.");
+                        }
+                    }
+                    finally
+                    {
+                        if (elevationTypePtr != IntPtr.Zero)
+                            Marshal.FreeHGlobal(elevationTypePtr);
+                    }
                 }
-                else
+                finally
                 {
-                    throw new ApplicationException("Unable to determine the current elevation.");
+                    if (tokenHandle != IntPtr.Zero)
+                        CloseHandle(tokenHandle);
                 }
             }
             else
