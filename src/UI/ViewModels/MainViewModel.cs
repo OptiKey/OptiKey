@@ -197,6 +197,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return pointsPerSecond; }
             set { SetProperty(ref pointsPerSecond, value); }
         }
+        
+        public string ApplicationAndSystemInfo
+        {
+            get 
+            { 
+                return string.Format("v{0}|{1}|P:{2}|OS:{3}|{4}({5})",
+                    DiagnosticInfo.AssemblyVersion,
+                    DiagnosticInfo.RunningAsAdministrator ? "admin" : "not admin",
+                    DiagnosticInfo.ProcessBitness,
+                    DiagnosticInfo.OperatingSystemBitness,
+                    DiagnosticInfo.OperatingSystemVersion,
+                    DiagnosticInfo.OperatingSystemServicePack)
+            }
+        }
 
         private bool scratchpadIsDisabled;
         public bool ScratchpadIsDisabled
