@@ -1,0 +1,125 @@
+public static class DiagnosticInfo
+{
+    public static string AssemblyVersion
+    {
+        get
+        {
+            return ((System.Reflection.AssemblyVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(
+                typeof(System.Reflection.AssemblyVersionAttribute), false)[0])).Version;
+        }
+    }
+
+    public static string AssemblyFileVersion
+    {
+        get
+        {
+            return ((System.Reflection.AssemblyFileVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(
+                typeof(System.Reflection.AssemblyFileVersionAttribute), false)[0])).Version;
+        }
+    }
+
+    public static bool IsApplicationNetworkDeployed
+    {
+        get
+        {
+            return System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed;
+        }
+    }
+
+    public static string DeploymentVersion
+    {
+        get
+        {
+            return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+        }
+    }
+
+    public static string ProcessBitness
+    {
+        get { return Environment.Is64BitProcess ? "64-Bit" : "32-Bit"; }
+    }
+
+    public static string OperatingSystemBitness
+    {
+        get { return Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit"; }
+    }
+
+    public static string OperatingSystemVersion
+    {
+        get
+        {
+            Version vs = Environment.OSVersion.Version;
+
+            switch (vs.Major)
+            {
+                case 3:
+                    return "Windows NT 3.51";
+
+                case 4:
+                    return "Windows NT 4.0";
+
+                case 5:
+                    if (vs.Minor == 0) return "Windows 2000";
+
+                    if (vs.Minor == 1) return "Windows XP";
+
+                    if (IsServerVersion())
+                    {
+                        if (WindowsAPI.GetSystemMetrics(89) == 0) return "Windows Server 2003";
+
+                        return "Windows Server 2003 R2";
+                    }
+
+                    return "Windows XP";
+
+                case 6:
+                    if (vs.Minor == 0)
+                    {
+                        if (IsServerVersion()) return "Windows Server 2008";
+
+                        return "Windows Vista";
+                    }
+
+                    if (vs.Minor == 1)
+                    {
+                        if (IsServerVersion()) return "Windows Server 2008 R2";
+
+                        return "Windows 7";
+                    }
+
+                    if (vs.Minor == 2) return "Windows 8";
+
+                    if (IsServerVersion()) return "Windows Server 2012 R2";
+
+                    return "Windows 8.1";
+            }
+        }
+    }
+
+    public static string OperatingSystemServicePack
+    {
+        get
+        {
+            var os = new OSVERSIONINFO { dwOSVersionInfoSize = Marshal.SizeOf(typeof (OSVERSIONINFO)) };
+            WindowsAPI.GetVersionEx(ref os); 
+            return string.IsNullOrEmpty(os.szCSDVersion) ? "No Service Pack" : os.szCSDVersion; 
+        }
+    }
+
+    private static bool IsServerVersion() 
+    { 
+        using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem")) 
+        { 
+            foreach (ManagementObject managementObject in searcher.Get()) 
+            { 
+                // ProductType will be one of: 
+                // 1: Workstation 
+                // 2: Domain Controller 
+                // 3: Server 
+                uint productType = (uint)managementObject.GetPropertyValue("ProductType"); 
+                return productType != 1; 
+            } 
+        } 
+        return false; 
+    } 
+}
