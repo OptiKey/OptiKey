@@ -1,5 +1,12 @@
 public static class DiagnosticInfo
 {
+    private static const string uacRegistryKey = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System";
+    private static const string uacRegistryValue = "EnableLUA";
+
+    private static uint STANDARD_RIGHTS_READ = 0x00020000;
+    private static uint TOKEN_QUERY = 0x0008;
+    private static uint TOKEN_READ = (STANDARD_RIGHTS_READ | TOKEN_QUERY);
+
     public static string AssemblyVersion
     {
         get
@@ -111,6 +118,45 @@ public static class DiagnosticInfo
         }
     }
 
+    public static bool IsProcessElevated
+    {
+        get
+        {
+            if (IsUacEnabled)
+            {
+                IntPtr tokenHandle;
+                if (!OpenProcessToken(Process.GetCurrentProcess().Handle, TOKEN_READ, out tokenHandle))
+                {
+                    throw new ApplicationException("Could not get process token.  Win32 Error Code: " + Marshal.GetLastWin32Error());
+                }
+
+                var elevationResult = TOKEN_ELEVATION_TYPE.TokenElevationTypeDefault;
+
+                int elevationResultSize = Marshal.SizeOf((int)elevationResult);
+                uint returnedSize = 0;
+                IntPtr elevationTypePtr = Marshal.AllocHGlobal(elevationResultSize);
+
+                bool success = GetTokenInformation(tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType, elevationTypePtr, (uint)elevationResultSize, out returnedSize);
+                if (success)
+                {
+                    elevationResult = (TOKEN_ELEVATION_TYPE)Marshal.ReadInt32(elevationTypePtr);
+                    bool isProcessAdmin = elevationResult == TOKEN_ELEVATION_TYPE.TokenElevationTypeFull;
+                    return isProcessAdmin;
+                }
+                else
+                {
+                    throw new ApplicationException("Unable to determine the current elevation.");
+                }
+            }
+            else
+            {
+                WindowsIdentity identity = WindowsIdentity.GetCurrent();
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+        }
+    }
+    
     private static bool IsServerVersion() 
     { 
         using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem")) 
@@ -127,4 +173,13 @@ public static class DiagnosticInfo
         } 
         return false; 
     } 
+    
+    private static bool IsUacEnabled
+    {
+        get
+        {
+            RegistryKey uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
+            return uacKey.GetValue(uacRegistryValue).Equals(1);
+        }
+    }
 }
