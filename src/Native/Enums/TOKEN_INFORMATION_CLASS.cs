@@ -1,3 +1,5 @@
+namespace JuliusSweetland.ETTA.Native.Enums
+{
     public enum TOKEN_INFORMATION_CLASS
     {
         TokenUser = 1,
@@ -30,3 +32,4 @@
         TokenLogonSid,
         MaxTokenInfoClass
     }
+}

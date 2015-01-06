@@ -11,6 +11,7 @@ using JuliusSweetland.ETTA.Observables.PointSources;
 using JuliusSweetland.ETTA.Observables.TriggerSources;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.Static;
 using JuliusSweetland.ETTA.UI.ViewModels;
 using JuliusSweetland.ETTA.UI.Windows;
 using log4net;
@@ -39,7 +40,7 @@ namespace JuliusSweetland.ETTA
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
             //Log startup diagnostic info
-            Log.Info("STARTING UP.")
+            Log.Info("STARTING UP.");
             LogDiagnosticInfo();
 
             //Attach shutdown handler

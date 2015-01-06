@@ -7,6 +7,7 @@ using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.Static;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
@@ -200,15 +201,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         public string ApplicationAndSystemInfo
         {
-            get 
-            { 
-                return string.Format("v{0}|P:{1} ({2})|OS:{3}|{4}({5})",
+            get
+            {
+                return string.Format("v{0} | P:{1} ({2}) | OS:{3} | {4} ({5})",
                     DiagnosticInfo.AssemblyVersion,
                     DiagnosticInfo.ProcessBitness,
                     DiagnosticInfo.IsProcessElevated ? "elevated" : "not elevated",
                     DiagnosticInfo.OperatingSystemBitness,
                     DiagnosticInfo.OperatingSystemVersion,
-                    DiagnosticInfo.OperatingSystemServicePack)
+                    DiagnosticInfo.OperatingSystemServicePack);
             }
         }
 
