@@ -1,0 +1,8 @@
+public class WindowsAPI 
+{ 
+  [DllImport("kernel32.Dll")] 
+  public static extern short GetVersionEx(ref OSVERSIONINFO o); 
+
+  [DllImport("user32.dll")] 
+  public static extern int GetSystemMetrics(int smIndex); 
+} 
