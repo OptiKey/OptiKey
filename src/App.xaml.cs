@@ -38,11 +38,12 @@ namespace JuliusSweetland.ETTA
             Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-            //Log out version info
-            LogApplicationStart();
+            //Log startup diagnostic info
+            Log.Info("STARTING UP.")
+            LogDiagnosticInfo();
 
             //Attach shutdown handler
-            Application.Current.Exit += (o, args) => Log.Info("ETTA SHUTTING DOWN");
+            Application.Current.Exit += (o, args) => Log.Info("SHUTTING DOWN.");
 
             //Upgrade settings (if required) - this ensures that user settings migrate between version changes
             if (Settings.Default.SettingsUpgradeRequired)
@@ -274,23 +275,20 @@ namespace JuliusSweetland.ETTA
 
         #endregion
         
-        #region Log Application Start
+        #region Log Diagnostic Info
         
-        private void LogApplicationStart()
+        private void LogDiagnosticInfo()
         {
-            Log.Info("ETTA STARTING UP");
-            
-            var assemblyVersion = string.Format("Assembly version: {0}", ((System.Reflection.AssemblyVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(System.Reflection.AssemblyVersionAttribute), false)[0])).Version);
-            Log.Info(assemblyVersion);
-            
-            var assemblyFileVersion = string.Format("Assembly file version: {0}", ((System.Reflection.AssemblyFileVersionAttribute)(System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(System.Reflection.AssemblyFileVersionAttribute), false)[0])).Version);
-            Log.Info(assemblyFileVersion);
-
-            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            Log.Info(string.Format("Assembly version: {0}", DiagnosticInfo.AssemblyVersion));
+            Log.Info(string.Format("Assembly file version: {0}", DiagnosticInfo.AssemblyFileVersion));
+            if(DiagnosticInfo.IsApplicationNetworkDeployed)
             {
-                var clickOnceVersion = string.Format("ClickOnce version: {0}", System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion);
-                Log.Info(clickOnceVersion);
+                Log.Info(string.Format("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion));
             }
+            Log.Info(string.Format("Process bitness: {0}", DiagnosticInfo.ProcessBitness));
+            Log.Info(string.Format("OS version: {0}", DiagnosticInfo.OperatingSystemVersion));
+            Log.Info(string.Format("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack));
+            Log.Info(string.Format("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness));
         }
         
         #endregion
