@@ -162,7 +162,9 @@ namespace JuliusSweetland.ETTA.Static
                         try
                         {
                             uint returnedSize;
-                            var success = WindowsAPI.GetTokenInformation(tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType, elevationTypePtr, (uint) elevationResultSize, out returnedSize);
+                            var success = WindowsAPI.GetTokenInformation(
+                                tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType, elevationTypePtr, 
+                                (uint) elevationResultSize, out returnedSize);
 
                             if (success)
                             {

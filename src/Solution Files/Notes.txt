@@ -1,9 +1,5 @@
-﻿NEXT STEPS:
-
-Move Activation out of TET point source ctor - do it when first event listener attaches.
+﻿Move Activation out of TET point source ctor - do it when first event listener attaches.
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
-
-TEST WindowMoveAndResizeService
 
 Management (new window accessed with hotkey)
 		Visuals:		

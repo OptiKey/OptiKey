@@ -651,7 +651,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.7500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan KeySelectionTriggerIncompleteFixationTtl {
             get {

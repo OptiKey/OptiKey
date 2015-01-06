@@ -290,8 +290,8 @@ namespace JuliusSweetland.ETTA
             {
                 Log.Info(string.Format("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion));
             }
-            Log.Info(string.Format("Process bitness: {0}", DiagnosticInfo.ProcessBitness));
             Log.Info(string.Format("Process elevated: {0}", DiagnosticInfo.IsProcessElevated));
+            Log.Info(string.Format("Process bitness: {0}", DiagnosticInfo.ProcessBitness));
             Log.Info(string.Format("OS version: {0}", DiagnosticInfo.OperatingSystemVersion));
             Log.Info(string.Format("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack));
             Log.Info(string.Format("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness));

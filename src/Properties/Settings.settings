@@ -147,7 +147,7 @@
       <Value Profile="(Default)">Basic</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:01</Value>
+      <Value Profile="(Default)">00:00:00.7500000</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
