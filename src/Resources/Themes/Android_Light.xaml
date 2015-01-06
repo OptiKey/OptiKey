@@ -48,7 +48,7 @@
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
 
-            <SolidColorBrush x:Key="PointsPerSecondForegroundBrush" Color="{StaticResource Green}" />
+            <SolidColorBrush x:Key="DebugTextForegroundBrush" Color="{StaticResource Green}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
