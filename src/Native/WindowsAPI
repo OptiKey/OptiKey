@@ -10,6 +10,10 @@ public class WindowsAPI
   [return: MarshalAs(UnmanagedType.Bool)]
   static extern bool OpenProcessToken(IntPtr ProcessHandle, UInt32 DesiredAccess, out IntPtr TokenHandle);
 
+  [DllImport("kernel32.dll", SetLastError = true)]
+  [return: MarshalAs(UnmanagedType.Bool)]
+  static extern bool CloseHandle(IntPtr hObject);
+
   [DllImport("advapi32.dll", SetLastError = true)]
   public static extern bool GetTokenInformation(IntPtr TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, IntPtr TokenInformation, uint TokenInformationLength, out uint ReturnLength);
 } 
