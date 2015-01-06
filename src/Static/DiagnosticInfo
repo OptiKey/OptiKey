@@ -33,6 +33,11 @@ public static class DiagnosticInfo
             return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
         }
     }
+    
+    public static bool RunningAsAdministrator
+    {
+        get { return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator); }
+    }
 
     public static string ProcessBitness
     {
