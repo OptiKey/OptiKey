@@ -206,7 +206,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 return string.Format("v{0} | P:{1} ({2}) | OS:{3} | {4} ({5})",
                     DiagnosticInfo.AssemblyVersion,
                     DiagnosticInfo.ProcessBitness,
-                    DiagnosticInfo.IsProcessElevated ? "elevated" : "not elevated",
+                    DiagnosticInfo.IsProcessElevated ? "Elevated" : "Not elevated",
                     DiagnosticInfo.OperatingSystemBitness,
                     DiagnosticInfo.OperatingSystemVersion,
                     DiagnosticInfo.OperatingSystemServicePack);
