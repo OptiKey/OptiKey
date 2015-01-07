@@ -83,6 +83,10 @@ namespace JuliusSweetland.ETTA.Static
             {
                 var vs = Environment.OSVersion.Version;
 
+                //http://msdn.microsoft.com/en-gb/library/windows/desktop/ms724832%28v=vs.85%29.aspx
+                //N.B. If the manifest file does not specify compatibility with Windows 8.1/Windows 10/later versions
+                //then the call to Environment.OSVersion.Version will lie and return 6.2 (Windows 8).
+                //Workaround detailed here: http://msdn.microsoft.com/en-us/library/windows/desktop/dn302074.aspx
                 switch (vs.Major)
                 {
                     case 3:
@@ -120,14 +124,22 @@ namespace JuliusSweetland.ETTA.Static
                             return "Windows 7";
                         }
 
-                        if (vs.Minor == 2) return "Windows 8";
+                        if (vs.Minor == 2)
+                        {
+                            if (IsServerVersion()) return "Windows Server 2012";
+                            
+                            return "Windows 8";
+                        }
 
-                        if (IsServerVersion()) return "Windows Server 2012 R2";
-
-                        return "Windows 8.1";
+                        if (vs.Minor == 3)
+                        {
+                            if (IsServerVersion()) return "Windows Server 2012 R2";
+                            
+                            return "Windows 8.1";
+                        }
                 }
 
-                return "Unknown";
+                return string.Format("OS v{0}.{1}", vs.Major, vs.Minor);
             }
         }
 
