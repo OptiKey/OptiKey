@@ -10,7 +10,6 @@
         Title="ETTA"
         Topmost="True"
         Icon="..\..\Resources\Icons\Main.ico">
-    
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
 
     <i:Interaction.Triggers>

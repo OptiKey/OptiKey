@@ -110,3 +110,2363 @@ Get a certificate (1), sign the release build (2) and package ETTA to install to
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
 		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
 	Steps to sign are in file "Certificates and Signing.txt"
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using JuliusSweetland.ETTA.Model.Enums;
+using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.Services;
+using log4net;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Microsoft.Practices.Prism.ViewModel;
+
+namespace JuliusSweetland.ETTA.UI.ViewModels
+{
+    public class UserSettingsViewModel : NotificationObject
+    {
+        private readonly IDictionaryService dictionaryService;
+
+        #region Private Member Vars
+
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly Action<int, int> beep;
+
+        #endregion
+
+        #region Ctor
+
+        public UserSettingsViewModel(IDictionaryService dictionaryService)
+        {
+            this.dictionaryService = dictionaryService;
+
+            if (dictionaryService == null)
+            {
+                throw new ApplicationException("IDictionaryService not supplied to UserSettingsViewModel - unable to continue");
+            }
+
+            //Setup beep delegate
+            beep = Console.Beep;
+
+            //Instantiate notification request(s)
+            ConfirmationRequest = new InteractionRequest<Confirmation>();
+
+            //Instantiate commands
+            PlayBeepOnCaptureStateIsIdleCommand = new DelegateCommand(PlayBeepOnCaptureStateIsIdle);
+            PlayBeepOnCaptureStateIsCapturingCommand = new DelegateCommand(PlayBeepOnCaptureStateIsCapturing);
+            PlayBeepOnCaptureStateIsEndingCaptureCommand = new DelegateCommand(PlayBeepOnCaptureStateIsEndingCapture);
+            PlayBeepOnCaptureStateIsProcessingCommand = new DelegateCommand(PlayBeepOnCaptureStateIsProcessing);
+            PlayBeepOnNoMatchesCommand = new DelegateCommand(PlayBeepOnNoMatches);
+            TestSpeechCommand = new DelegateCommand(TestSpeech);
+            OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
+            CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
+
+            this.PropertyChanged += OnPropertyChanged;
+
+            LoadSettings();
+        }
+
+        #endregion
+
+        #region On Property Changed
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            switch (propertyChangedEventArgs.PropertyName)
+            {
+                case "SpeechSynthesiser":
+                    RaisePropertyChanged(() => SpeechSynthesiserVoices);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Properties
+
+        private Languages language;
+        public Languages Language
+        {
+            get
+            {
+                return language;
+            }
+            set
+            {
+                if (language != value)
+                {
+                    language = value;
+                    RaisePropertyChanged(() => Language);
+                }
+            }
+        }
+
+        private double keyFontSize;
+        public double KeyFontSize
+        {
+            get
+            {
+                return keyFontSize;
+            }
+            set
+            {
+                if (keyFontSize != value)
+                {
+                    keyFontSize = value;
+                    RaisePropertyChanged(() => KeyFontSize);
+                }
+            }
+        }
+
+        private FontFamily keyFontFamily;
+        public FontFamily KeyFontFamily
+        {
+            get
+            {
+                return keyFontFamily;
+            }
+            set
+            {
+                if (keyFontFamily != value)
+                {
+                    keyFontFamily = value;
+                    RaisePropertyChanged(() => KeyFontFamily);
+                }
+            }
+        }
+
+        private FontStyle keyFontStyle;
+        public FontStyle KeyFontStyle
+        {
+            get
+            {
+                return keyFontStyle;
+            }
+            set
+            {
+                if (keyFontStyle != value)
+                {
+                    keyFontStyle = value;
+                    RaisePropertyChanged(() => KeyFontStyle);
+                }
+            }
+        }
+
+        private FontWeight keyFontWeight;
+        public FontWeight KeyFontWeight
+        {
+            get
+            {
+                return keyFontWeight;
+            }
+            set
+            {
+                if (keyFontWeight != value)
+                {
+                    keyFontWeight = value;
+                    RaisePropertyChanged(() => KeyFontWeight);
+                }
+            }
+        }
+
+        private Color keyForegroundColour;
+        public Color KeyForegroundColour
+        {
+            get
+            {
+                return keyForegroundColour;
+            }
+            set
+            {
+                if (keyForegroundColour != value)
+                {
+                    keyForegroundColour = value;
+                    RaisePropertyChanged(() => KeyForegroundColour);
+                }
+            }
+        }
+
+        private Color keyBackgroundColour;
+        public Color KeyBackgroundColour
+        {
+            get
+            {
+                return keyBackgroundColour;
+            }
+            set
+            {
+                if (keyBackgroundColour != value)
+                {
+                    keyBackgroundColour = value;
+                    RaisePropertyChanged(() => KeyBackgroundColour);
+                }
+            }
+        }
+
+        private Color keyBorderColour;
+        public Color KeyBorderColour
+        {
+            get
+            {
+                return keyBorderColour;
+            }
+            set
+            {
+                if (keyBorderColour != value)
+                {
+                    keyBorderColour = value;
+                    RaisePropertyChanged(() => KeyBorderColour);
+                }
+            }
+        }
+
+        private double keyBorderThickness;
+        public double KeyBorderThickness
+        {
+            get
+            {
+                return keyBorderThickness;
+            }
+            set
+            {
+                if (keyBorderThickness != value)
+                {
+                    keyBorderThickness = value;
+                    RaisePropertyChanged(() => KeyBorderThickness);
+                }
+            }
+        }
+
+        private double matchesFontSize;
+        public double MatchesFontSize
+        {
+            get
+            {
+                return matchesFontSize;
+            }
+            set
+            {
+                if (matchesFontSize != value)
+                {
+                    matchesFontSize = value;
+                    RaisePropertyChanged(() => MatchesFontSize);
+                }
+            }
+        }
+
+        private FontFamily matchesFontFamily;
+        public FontFamily MatchesFontFamily
+        {
+            get
+            {
+                return matchesFontFamily;
+            }
+            set
+            {
+                if (matchesFontFamily != value)
+                {
+                    matchesFontFamily = value;
+                    RaisePropertyChanged(() => MatchesFontFamily);
+                }
+            }
+        }
+
+        private FontStyle matchesFontStyle;
+        public FontStyle MatchesFontStyle
+        {
+            get
+            {
+                return matchesFontStyle;
+            }
+            set
+            {
+                if (matchesFontStyle != value)
+                {
+                    matchesFontStyle = value;
+                    RaisePropertyChanged(() => MatchesFontStyle);
+                }
+            }
+        }
+
+        private FontWeight matchesFontWeight;
+        public FontWeight MatchesFontWeight
+        {
+            get
+            {
+                return matchesFontWeight;
+            }
+            set
+            {
+                if (matchesFontWeight != value)
+                {
+                    matchesFontWeight = value;
+                    RaisePropertyChanged(() => MatchesFontWeight);
+                }
+            }
+        }
+
+        private Color matchesForegroundColour;
+        public Color MatchesForegroundColour
+        {
+            get
+            {
+                return matchesForegroundColour;
+            }
+            set
+            {
+                if (matchesForegroundColour != value)
+                {
+                    matchesForegroundColour = value;
+                    RaisePropertyChanged(() => MatchesForegroundColour);
+                }
+            }
+        }
+
+        private Color matchesBackgroundColour;
+        public Color MatchesBackgroundColour
+        {
+            get
+            {
+                return matchesBackgroundColour;
+            }
+            set
+            {
+                if (matchesBackgroundColour != value)
+                {
+                    matchesBackgroundColour = value;
+                    RaisePropertyChanged(() => MatchesBackgroundColour);
+                }
+            }
+        }
+
+        private Color matchesBorderColour;
+        public Color MatchesBorderColour
+        {
+            get
+            {
+                return matchesBorderColour;
+            }
+            set
+            {
+                if (matchesBorderColour != value)
+                {
+                    matchesBorderColour = value;
+                    RaisePropertyChanged(() => MatchesBorderColour);
+                }
+            }
+        }
+
+        private double matchesBorderThickness;
+        public double MatchesBorderThickness
+        {
+            get
+            {
+                return matchesBorderThickness;
+            }
+            set
+            {
+                if (matchesBorderThickness != value)
+                {
+                    matchesBorderThickness = value;
+                    RaisePropertyChanged(() => MatchesBorderThickness);
+                }
+            }
+        }
+
+        private double currentEntryFontSize;
+        public double CurrentEntryFontSize
+        {
+            get
+            {
+                return currentEntryFontSize;
+            }
+            set
+            {
+                if (currentEntryFontSize != value)
+                {
+                    currentEntryFontSize = value;
+                    RaisePropertyChanged(() => CurrentEntryFontSize);
+                }
+            }
+        }
+
+        private FontFamily currentEntryFontFamily;
+        public FontFamily CurrentEntryFontFamily
+        {
+            get
+            {
+                return currentEntryFontFamily;
+            }
+            set
+            {
+                if (currentEntryFontFamily != value)
+                {
+                    currentEntryFontFamily = value;
+                    RaisePropertyChanged(() => CurrentEntryFontFamily);
+                }
+            }
+        }
+
+        private FontStyle currentEntryFontStyle;
+        public FontStyle CurrentEntryFontStyle
+        {
+            get
+            {
+                return currentEntryFontStyle;
+            }
+            set
+            {
+                if (currentEntryFontStyle != value)
+                {
+                    currentEntryFontStyle = value;
+                    RaisePropertyChanged(() => CurrentEntryFontStyle);
+                }
+            }
+        }
+
+        private FontWeight currentEntryFontWeight;
+        public FontWeight CurrentEntryFontWeight
+        {
+            get
+            {
+                return currentEntryFontWeight;
+            }
+            set
+            {
+                if (currentEntryFontWeight != value)
+                {
+                    currentEntryFontWeight = value;
+                    RaisePropertyChanged(() => CurrentEntryFontWeight);
+                }
+            }
+        }
+
+        private Color currentEntryForegroundColour;
+        public Color CurrentEntryForegroundColour
+        {
+            get
+            {
+                return currentEntryForegroundColour;
+            }
+            set
+            {
+                if (currentEntryForegroundColour != value)
+                {
+                    currentEntryForegroundColour = value;
+                    RaisePropertyChanged(() => CurrentEntryForegroundColour);
+                }
+            }
+        }
+
+        private Color currentEntryBackgroundColour;
+        public Color CurrentEntryBackgroundColour
+        {
+            get
+            {
+                return currentEntryBackgroundColour;
+            }
+            set
+            {
+                if (currentEntryBackgroundColour != value)
+                {
+                    currentEntryBackgroundColour = value;
+                    RaisePropertyChanged(() => CurrentEntryBackgroundColour);
+                }
+            }
+        }
+
+        private Color currentEntryBorderColour;
+        public Color CurrentEntryBorderColour
+        {
+            get
+            {
+                return currentEntryBorderColour;
+            }
+            set
+            {
+                if (currentEntryBorderColour != value)
+                {
+                    currentEntryBorderColour = value;
+                    RaisePropertyChanged(() => CurrentEntryBorderColour);
+                }
+            }
+        }
+
+        private double currentEntryBorderThickness;
+        public double CurrentEntryBorderThickness
+        {
+            get
+            {
+                return currentEntryBorderThickness;
+            }
+            set
+            {
+                if (currentEntryBorderThickness != value)
+                {
+                    currentEntryBorderThickness = value;
+                    RaisePropertyChanged(() => CurrentEntryBorderThickness);
+                }
+            }
+        }
+
+        private double outputFontSize;
+        public double OutputFontSize
+        {
+            get
+            {
+                return outputFontSize;
+            }
+            set
+            {
+                if (outputFontSize != value)
+                {
+                    outputFontSize = value;
+                    RaisePropertyChanged(() => OutputFontSize);
+                }
+            }
+        }
+
+        private FontFamily outputFontFamily;
+        public FontFamily OutputFontFamily
+        {
+            get
+            {
+                return outputFontFamily;
+            }
+            set
+            {
+                if (outputFontFamily != value)
+                {
+                    outputFontFamily = value;
+                    RaisePropertyChanged(() => OutputFontFamily);
+                }
+            }
+        }
+
+        private FontStyle outputFontStyle;
+        public FontStyle OutputFontStyle
+        {
+            get
+            {
+                return outputFontStyle;
+            }
+            set
+            {
+                if (outputFontStyle != value)
+                {
+                    outputFontStyle = value;
+                    RaisePropertyChanged(() => OutputFontStyle);
+                }
+            }
+        }
+
+        private FontWeight outputFontWeight;
+        public FontWeight OutputFontWeight
+        {
+            get
+            {
+                return outputFontWeight;
+            }
+            set
+            {
+                if (outputFontWeight != value)
+                {
+                    outputFontWeight = value;
+                    RaisePropertyChanged(() => OutputFontWeight);
+                }
+            }
+        }
+
+        private Color outputBackgroundColour;
+        public Color OutputBackgroundColour
+        {
+            get
+            {
+                return outputBackgroundColour;
+            }
+            set
+            {
+                if (outputBackgroundColour != value)
+                {
+                    outputBackgroundColour = value;
+                    RaisePropertyChanged(() => OutputBackgroundColour);
+                }
+            }
+        }
+
+        private Color outputForegroundColour;
+        public Color OutputForegroundColour
+        {
+            get
+            {
+                return outputForegroundColour;
+            }
+            set
+            {
+                if (outputForegroundColour != value)
+                {
+                    outputForegroundColour = value;
+                    RaisePropertyChanged(() => OutputForegroundColour);
+                }
+            }
+        }
+
+        private Color outputBorderColour;
+        public Color OutputBorderColour
+        {
+            get
+            {
+                return outputBorderColour;
+            }
+            set
+            {
+                if (outputBorderColour != value)
+                {
+                    outputBorderColour = value;
+                    RaisePropertyChanged(() => OutputBorderColour);
+                }
+            }
+        }
+
+        private double outputBorderThickness;
+        public double OutputBorderThickness
+        {
+            get
+            {
+                return outputBorderThickness;
+            }
+            set
+            {
+                if (outputBorderThickness != value)
+                {
+                    outputBorderThickness = value;
+                    RaisePropertyChanged(() => OutputBorderThickness);
+                }
+            }
+        }
+
+        private double frameThickness;
+        public double FrameThickness
+        {
+            get
+            {
+                return frameThickness;
+            }
+            set
+            {
+                if (frameThickness != value)
+                {
+                    frameThickness = value;
+                    RaisePropertyChanged(() => FrameThickness);
+                }
+            }
+        }
+
+        private Color frameDefaultColour;
+        public Color FrameDefaultColour
+        {
+            get
+            {
+                return frameDefaultColour;
+            }
+            set
+            {
+                if (frameDefaultColour != value)
+                {
+                    frameDefaultColour = value;
+                    RaisePropertyChanged(() => FrameDefaultColour);
+                }
+            }
+        }
+
+        private bool frameChangesColourWithCaptureState;
+        public bool FrameChangesColourWithCaptureState
+        {
+            get
+            {
+                return frameChangesColourWithCaptureState;
+            }
+            set
+            {
+                if (frameChangesColourWithCaptureState != value)
+                {
+                    frameChangesColourWithCaptureState = value;
+                    RaisePropertyChanged(() => FrameChangesColourWithCaptureState);
+                }
+            }
+        }
+
+        private Color frameCaptureStateIdleColour;
+        public Color FrameCaptureStateIdleColour
+        {
+            get
+            {
+                return frameCaptureStateIdleColour;
+            }
+            set
+            {
+                if (frameCaptureStateIdleColour != value)
+                {
+                    frameCaptureStateIdleColour = value;
+                    RaisePropertyChanged(() => FrameCaptureStateIdleColour);
+                }
+            }
+        }
+
+        private Color frameCaptureStateCapturingColour;
+        public Color FrameCaptureStateCapturingColour
+        {
+            get
+            {
+                return frameCaptureStateCapturingColour;
+            }
+            set
+            {
+                if (frameCaptureStateCapturingColour != value)
+                {
+                    frameCaptureStateCapturingColour = value;
+                    RaisePropertyChanged(() => FrameCaptureStateCapturingColour);
+                }
+            }
+        }
+
+        private Color frameCaptureStateEndingCaptureColour;
+        public Color FrameCaptureStateEndingCaptureColour
+        {
+            get
+            {
+                return frameCaptureStateEndingCaptureColour;
+            }
+            set
+            {
+                if (frameCaptureStateEndingCaptureColour != value)
+                {
+                    frameCaptureStateEndingCaptureColour = value;
+                    RaisePropertyChanged(() => FrameCaptureStateEndingCaptureColour);
+                }
+            }
+        }
+
+        private Color frameCaptureStateProcessingColour;
+        public Color FrameCaptureStateProcessingColour
+        {
+            get
+            {
+                return frameCaptureStateProcessingColour;
+            }
+            set
+            {
+                if (frameCaptureStateProcessingColour != value)
+                {
+                    frameCaptureStateProcessingColour = value;
+                    RaisePropertyChanged(() => FrameCaptureStateProcessingColour);
+                }
+            }
+        }
+
+        private CaptureTriggerSources captureTriggerSource;
+        public CaptureTriggerSources CaptureTriggerSource
+        {
+            get
+            {
+                return captureTriggerSource;
+            }
+            set
+            {
+                if (captureTriggerSource != value)
+                {
+                    captureTriggerSource = value;
+                    RaisePropertyChanged(() => CaptureTriggerSource);
+                }
+            }
+        }
+
+        private Key captureTriggerKeyboardSignal;
+        public Key CaptureTriggerKeyboardSignal
+        {
+            get
+            {
+                return captureTriggerKeyboardSignal;
+            }
+            set
+            {
+                if (captureTriggerKeyboardSignal != value)
+                {
+                    captureTriggerKeyboardSignal = value;
+                    RaisePropertyChanged(() => CaptureTriggerKeyboardSignal);
+                }
+            }
+        }
+
+        private CaptureCoordinatesSources captureCoordinatesSource;
+        public CaptureCoordinatesSources CaptureCoordinatesSource
+        {
+            get
+            {
+                return captureCoordinatesSource;
+            }
+            set
+            {
+                if (captureCoordinatesSource != value)
+                {
+                    captureCoordinatesSource = value;
+                    RaisePropertyChanged(() => CaptureCoordinatesSource);
+                }
+            }
+        }
+
+        private int captureMouseCoordinatesOnIntervalInMilliseconds;
+        public int CaptureMouseCoordinatesOnIntervalInMilliseconds
+        {
+            get
+            {
+                return captureMouseCoordinatesOnIntervalInMilliseconds;
+            }
+            set
+            {
+                if (captureMouseCoordinatesOnIntervalInMilliseconds != value)
+                {
+                    captureMouseCoordinatesOnIntervalInMilliseconds = value;
+                    RaisePropertyChanged(() => CaptureMouseCoordinatesOnIntervalInMilliseconds);
+                }
+            }
+        }
+
+        private int captureCoordinatesTimeoutInMilliseconds;
+        public int CaptureCoordinatesTimeoutInMilliseconds
+        {
+            get
+            {
+                return captureCoordinatesTimeoutInMilliseconds;
+            }
+            set
+            {
+                if (captureCoordinatesTimeoutInMilliseconds != value)
+                {
+                    captureCoordinatesTimeoutInMilliseconds = value;
+                    RaisePropertyChanged(() => CaptureCoordinatesTimeoutInMilliseconds);
+                }
+            }
+        }
+
+        private int captureMinDwellTimeInMilliseconds;
+        public int CaptureMinDwellTimeInMilliseconds
+        {
+            get
+            {
+                return captureMinDwellTimeInMilliseconds;
+            }
+            set
+            {
+                if (captureMinDwellTimeInMilliseconds != value)
+                {
+                    captureMinDwellTimeInMilliseconds = value;
+                    RaisePropertyChanged(() => CaptureMinDwellTimeInMilliseconds);
+                }
+            }
+        }
+
+        private int maximumProcessorResults;
+        public int MaximumProcessorResults
+        {
+            get
+            {
+                return maximumProcessorResults;
+            }
+            set
+            {
+                if (maximumProcessorResults != value)
+                {
+                    maximumProcessorResults = value;
+                    RaisePropertyChanged(() => MaximumProcessorResults);
+                }
+            }
+        }
+
+        private int matchHistory;
+        public int MatchHistory
+        {
+            get
+            {
+                return matchHistory;
+            }
+            set
+            {
+                if (matchHistory != value)
+                {
+                    matchHistory = value;
+                    RaisePropertyChanged(() => MatchHistory);
+                }
+            }
+        }
+
+        private bool beepOnNoMatches;
+        public bool BeepOnNoMatches
+        {
+            get
+            {
+                return beepOnNoMatches;
+            }
+            set
+            {
+                if (beepOnNoMatches != value)
+                {
+                    beepOnNoMatches = value;
+                    RaisePropertyChanged(() => BeepOnNoMatches);
+                }
+            }
+        }
+
+        private int beepFrequencyOnNoMatches;
+        public int BeepFrequencyOnNoMatches
+        {
+            get
+            {
+                return beepFrequencyOnNoMatches;
+            }
+            set
+            {
+                if (beepFrequencyOnNoMatches != value)
+                {
+                    beepFrequencyOnNoMatches = value;
+                    RaisePropertyChanged(() => BeepFrequencyOnNoMatches);
+                }
+            }
+        }
+
+        private int beepOnNoMatchesDurationInMilliseconds;
+        public int BeepOnNoMatchesDurationInMilliseconds
+        {
+            get
+            {
+                return beepOnNoMatchesDurationInMilliseconds;
+            }
+            set
+            {
+                if (beepOnNoMatchesDurationInMilliseconds != value)
+                {
+                    beepOnNoMatchesDurationInMilliseconds = value;
+                    RaisePropertyChanged(() => BeepOnNoMatchesDurationInMilliseconds);
+                }
+            }
+        }
+
+        private bool beepOnCaptureStateIsIdle;
+        public bool BeepOnCaptureStateIsIdle
+        {
+            get
+            {
+                return beepOnCaptureStateIsIdle;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsIdle != value)
+                {
+                    beepOnCaptureStateIsIdle = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsIdle);
+                }
+            }
+        }
+
+        private int beepOnCaptureStateIsIdleDurationInMilliseconds;
+        public int BeepOnCaptureStateIsIdleDurationInMilliseconds
+        {
+            get
+            {
+                return beepOnCaptureStateIsIdleDurationInMilliseconds;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsIdleDurationInMilliseconds != value)
+                {
+                    beepOnCaptureStateIsIdleDurationInMilliseconds = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsIdleDurationInMilliseconds);
+                }
+            }
+        }
+
+        private int beepFrequencyOnCaptureStateIsIdle;
+        public int BeepFrequencyOnCaptureStateIsIdle
+        {
+            get
+            {
+                return beepFrequencyOnCaptureStateIsIdle;
+            }
+            set
+            {
+                if (beepFrequencyOnCaptureStateIsIdle != value)
+                {
+                    beepFrequencyOnCaptureStateIsIdle = value;
+                    RaisePropertyChanged(() => BeepFrequencyOnCaptureStateIsIdle);
+                }
+            }
+        }
+
+        private bool beepOnCaptureStateIsCapturing;
+        public bool BeepOnCaptureStateIsCapturing
+        {
+            get
+            {
+                return beepOnCaptureStateIsCapturing;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsCapturing != value)
+                {
+                    beepOnCaptureStateIsCapturing = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsCapturing);
+                }
+            }
+        }
+
+        private int beepOnCaptureStateIsCapturingDurationInMilliseconds;
+        public int BeepOnCaptureStateIsCapturingDurationInMilliseconds
+        {
+            get
+            {
+                return beepOnCaptureStateIsCapturingDurationInMilliseconds;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsCapturingDurationInMilliseconds != value)
+                {
+                    beepOnCaptureStateIsCapturingDurationInMilliseconds = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsCapturingDurationInMilliseconds);
+                }
+            }
+        }
+
+        private int beepFrequencyOnCaptureStateIsCapturing;
+        public int BeepFrequencyOnCaptureStateIsCapturing
+        {
+            get
+            {
+                return beepFrequencyOnCaptureStateIsCapturing;
+            }
+            set
+            {
+                if (beepFrequencyOnCaptureStateIsCapturing != value)
+                {
+                    beepFrequencyOnCaptureStateIsCapturing = value;
+                    RaisePropertyChanged(() => BeepFrequencyOnCaptureStateIsCapturing);
+                }
+            }
+        }
+
+        private bool beepOnCaptureStateIsEndingCapture;
+        public bool BeepOnCaptureStateIsEndingCapture
+        {
+            get
+            {
+                return beepOnCaptureStateIsEndingCapture;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsEndingCapture != value)
+                {
+                    beepOnCaptureStateIsEndingCapture = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsEndingCapture);
+                }
+            }
+        }
+
+        private int beepOnCaptureStateIsEndingCaptureDurationInMilliseconds;
+        public int BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds
+        {
+            get
+            {
+                return beepOnCaptureStateIsEndingCaptureDurationInMilliseconds;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsEndingCaptureDurationInMilliseconds != value)
+                {
+                    beepOnCaptureStateIsEndingCaptureDurationInMilliseconds = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds);
+                }
+            }
+        }
+
+        private int beepFrequencyOnCaptureStateIsEndingCapture;
+        public int BeepFrequencyOnCaptureStateIsEndingCapture
+        {
+            get
+            {
+                return beepFrequencyOnCaptureStateIsEndingCapture;
+            }
+            set
+            {
+                if (beepFrequencyOnCaptureStateIsEndingCapture != value)
+                {
+                    beepFrequencyOnCaptureStateIsEndingCapture = value;
+                    RaisePropertyChanged(() => BeepFrequencyOnCaptureStateIsEndingCapture);
+                }
+            }
+        }
+
+        private bool beepOnCaptureStateIsProcessing;
+        public bool BeepOnCaptureStateIsProcessing
+        {
+            get
+            {
+                return beepOnCaptureStateIsProcessing;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsProcessing != value)
+                {
+                    beepOnCaptureStateIsProcessing = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsProcessing);
+                }
+            }
+        }
+
+        private int beepOnCaptureStateIsProcessingDurationInMilliseconds;
+        public int BeepOnCaptureStateIsProcessingDurationInMilliseconds
+        {
+            get
+            {
+                return beepOnCaptureStateIsProcessingDurationInMilliseconds;
+            }
+            set
+            {
+                if (beepOnCaptureStateIsProcessingDurationInMilliseconds != value)
+                {
+                    beepOnCaptureStateIsProcessingDurationInMilliseconds = value;
+                    RaisePropertyChanged(() => BeepOnCaptureStateIsProcessingDurationInMilliseconds);
+                }
+            }
+        }
+
+        private int beepFrequencyOnCaptureStateIsProcessing;
+        public int BeepFrequencyOnCaptureStateIsProcessing
+        {
+            get
+            {
+                return beepFrequencyOnCaptureStateIsProcessing;
+            }
+            set
+            {
+                if (beepFrequencyOnCaptureStateIsProcessing != value)
+                {
+                    beepFrequencyOnCaptureStateIsProcessing = value;
+                    RaisePropertyChanged(() => BeepFrequencyOnCaptureStateIsProcessing);
+                }
+            }
+        }
+
+        private SpeechSynthesisers speechSynthesiser;
+        public SpeechSynthesisers SpeechSynthesiser
+        {
+            get
+            {
+                return speechSynthesiser;
+            }
+            set
+            {
+                if (speechSynthesiser != value)
+                {
+                    speechSynthesiser = value;
+                    RaisePropertyChanged(() => SpeechSynthesiser);
+                }
+            }
+        }
+
+        private string speechSynthesiserVoice;
+        public string SpeechSynthesiserVoice
+        {
+            get
+            {
+                return speechSynthesiserVoice;
+            }
+            set
+            {
+                if (speechSynthesiserVoice != value)
+                {
+                    speechSynthesiserVoice = value;
+                    RaisePropertyChanged(() => SpeechSynthesiserVoice);
+                }
+            }
+        }
+
+        public List<string> SpeechSynthesiserVoices
+        {
+            get
+            {
+                var synthesiser = GetSynthesiserInstance();
+                return synthesiser != null
+                    ? synthesiser.GetAvailableVoices()
+                    : null;
+            }
+        }
+
+        private int speechSynthesiserRate;
+        public int SpeechSynthesiserRate
+        {
+            get
+            {
+                return speechSynthesiserRate;
+            }
+            set
+            {
+                if (speechSynthesiserRate != value)
+                {
+                    speechSynthesiserRate = value;
+                    RaisePropertyChanged(() => SpeechSynthesiserRate);
+                }
+            }
+        }
+
+        private int speechSynthesiserVolume;
+        public int SpeechSynthesiserVolume
+        {
+            get
+            {
+                return speechSynthesiserVolume;
+            }
+            set
+            {
+                if (speechSynthesiserVolume != value)
+                {
+                    speechSynthesiserVolume = value;
+                    RaisePropertyChanged(() => SpeechSynthesiserVolume);
+                }
+            }
+        }
+
+        private bool speakEntryByEntry;
+        public bool SpeakEntryByEntry
+        {
+            get
+            {
+                return speakEntryByEntry;
+            }
+            set
+            {
+                if (speakEntryByEntry != value)
+                {
+                    speakEntryByEntry = value;
+                    RaisePropertyChanged(() => SpeakEntryByEntry);
+                }
+            }
+        }
+
+        private bool speakSentenceBySentence;
+        public bool SpeakSentenceBySentence
+        {
+            get
+            {
+                return speakSentenceBySentence;
+            }
+            set
+            {
+                if (speakSentenceBySentence != value)
+                {
+                    speakSentenceBySentence = value;
+                    RaisePropertyChanged(() => SpeakSentenceBySentence);
+                }
+            }
+        }
+
+        private bool showDebuggingVisuals;
+        public bool ShowDebuggingVisuals
+        {
+            get
+            {
+                return showDebuggingVisuals;
+            }
+            set
+            {
+                if (showDebuggingVisuals != value)
+                {
+                    showDebuggingVisuals = value;
+                    RaisePropertyChanged(() => ShowDebuggingVisuals);
+                }
+            }
+        }
+
+        private Color pointsPerSecondColour;
+        public Color PointsPerSecondColour
+        {
+            get
+            {
+                return pointsPerSecondColour;
+            }
+            set
+            {
+                if (pointsPerSecondColour != value)
+                {
+                    pointsPerSecondColour = value;
+                    RaisePropertyChanged(() => PointsPerSecondColour);
+                }
+            }
+        }
+
+        public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
+
+        public DelegateCommand PlayBeepOnCaptureStateIsIdleCommand { get; private set; }
+        public DelegateCommand PlayBeepOnCaptureStateIsCapturingCommand { get; private set; }
+        public DelegateCommand PlayBeepOnCaptureStateIsEndingCaptureCommand { get; private set; }
+        public DelegateCommand PlayBeepOnCaptureStateIsProcessingCommand { get; private set; }
+        public DelegateCommand PlayBeepOnNoMatchesCommand { get; private set; }
+        public DelegateCommand TestSpeechCommand { get; private set; }
+        public DelegateCommand<Window> OkCommand { get; private set; }
+        public DelegateCommand<Window> CancelCommand { get; private set; }
+        
+        #endregion
+
+        #region Get Synthesiser Instance
+
+        private ISpeechSynthesisService GetSynthesiserInstance()
+        {
+            switch (SpeechSynthesiser)
+            {
+                case SpeechSynthesisers.WindowsSpeechSynthesiser:
+                    return new WindowsSpeechSynthesisService();
+            }
+
+            return null;
+        }
+
+        #endregion
+
+        #region Load / Save Settings
+
+        private void LoadSettings()
+        {
+            Language = Settings.Default.Language;
+
+            KeyFontSize = Settings.Default.KeyFontSize;
+            KeyFontFamily = Settings.Default.KeyFontFamily;
+            KeyFontStyle = Settings.Default.KeyFontStyle;
+            KeyFontWeight = Settings.Default.KeyFontWeight;
+            KeyForegroundColour = Settings.Default.KeyForegroundColour;
+            KeyBackgroundColour = Settings.Default.KeyBackgroundColour;
+            KeyBorderColour = Settings.Default.KeyBorderColour;
+            KeyBorderThickness = Settings.Default.KeyBorderThickness;
+            
+            MatchesFontSize = Settings.Default.MatchesFontSize;
+            MatchesFontFamily = Settings.Default.MatchesFontFamily;
+            MatchesFontStyle = Settings.Default.MatchesFontStyle;
+            MatchesFontWeight = Settings.Default.MatchesFontWeight;
+            MatchesForegroundColour = Settings.Default.MatchesForegroundColour;
+            MatchesBackgroundColour = Settings.Default.MatchesBackgroundColour;
+            MatchesBorderColour = Settings.Default.MatchesBorderColour;
+            MatchesBorderThickness = Settings.Default.MatchesBorderThickness;
+
+            CurrentEntryFontSize = Settings.Default.CurrentEntryFontSize;
+            CurrentEntryFontFamily = Settings.Default.CurrentEntryFontFamily;
+            CurrentEntryFontStyle = Settings.Default.CurrentEntryFontStyle;
+            CurrentEntryFontWeight = Settings.Default.CurrentEntryFontWeight;
+            CurrentEntryForegroundColour = Settings.Default.CurrentEntryForegroundColour;
+            CurrentEntryBackgroundColour = Settings.Default.CurrentEntryBackgroundColour;
+            CurrentEntryBorderColour = Settings.Default.CurrentEntryBorderColour;
+            CurrentEntryBorderThickness = Settings.Default.CurrentEntryBorderThickness;
+            
+            OutputFontSize = Settings.Default.OutputFontSize;
+            OutputFontFamily = Settings.Default.OutputFontFamily;
+            OutputFontStyle = Settings.Default.OutputFontStyle;
+            OutputFontWeight = Settings.Default.OutputFontWeight;
+            OutputBackgroundColour = Settings.Default.OutputBackgroundColour;
+            OutputForegroundColour = Settings.Default.OutputForegroundColour;
+            OutputBorderColour = Settings.Default.OutputBorderColour;
+            OutputBorderThickness = Settings.Default.OutputBorderThickness;
+
+            FrameThickness = Settings.Default.FrameThickness;
+            FrameDefaultColour = Settings.Default.FrameDefaultColour;
+            FrameChangesColourWithCaptureState = Settings.Default.FrameChangesColourWithCaptureState;
+            FrameCaptureStateIdleColour = Settings.Default.FrameCaptureStateIdleColour;
+            FrameCaptureStateCapturingColour = Settings.Default.FrameCaptureStateCapturingColour;
+            FrameCaptureStateEndingCaptureColour = Settings.Default.FrameCaptureStateEndingCaptureColour;
+            FrameCaptureStateProcessingColour = Settings.Default.FrameCaptureStateProcessingColour;
+
+            CaptureTriggerSource = Settings.Default.CaptureTriggerSource;
+            CaptureTriggerKeyboardSignal = (Key)Enum.Parse(typeof(Key), Settings.Default.CaptureTriggerKeyboardSignal);
+            CaptureCoordinatesSource = Settings.Default.CaptureCoordinatesSource;
+            CaptureMouseCoordinatesOnIntervalInMilliseconds = Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds;
+            CaptureCoordinatesTimeoutInMilliseconds = Settings.Default.CaptureCoordinatesTimeoutInMilliseconds;
+            
+            CaptureMinDwellTimeInMilliseconds = Settings.Default.CaptureMinDwellTimeInMilliseconds;
+            MaximumProcessorResults = Settings.Default.MaximumProcessorResults;
+
+            BeepOnNoMatches = Settings.Default.BeepOnNoMatches;
+            BeepFrequencyOnNoMatches = Settings.Default.BeepFrequencyOnNoMatches;
+            BeepOnNoMatchesDurationInMilliseconds = Settings.Default.BeepOnNoMatchesDurationInMilliseconds;
+            BeepOnCaptureStateIsIdle = Settings.Default.BeepOnCaptureStateIsIdle;
+            BeepOnCaptureStateIsIdleDurationInMilliseconds = Settings.Default.BeepOnCaptureStateIsIdleDurationInMilliseconds;
+            BeepFrequencyOnCaptureStateIsIdle = Settings.Default.BeepFrequencyOnCaptureStateIsIdle;
+            BeepOnCaptureStateIsCapturing = Settings.Default.BeepOnCaptureStateIsCapturing;
+            BeepOnCaptureStateIsCapturingDurationInMilliseconds = Settings.Default.BeepOnCaptureStateIsCapturingDurationInMilliseconds;
+            BeepFrequencyOnCaptureStateIsCapturing = Settings.Default.BeepFrequencyOnCaptureStateIsCapturing;
+            BeepOnCaptureStateIsEndingCapture = Settings.Default.BeepOnCaptureStateIsEndingCapture;
+            BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds = Settings.Default.BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds;
+            BeepFrequencyOnCaptureStateIsEndingCapture = Settings.Default.BeepFrequencyOnCaptureStateIsEndingCapture;
+            BeepOnCaptureStateIsProcessing = Settings.Default.BeepOnCaptureStateIsProcessing;
+            BeepOnCaptureStateIsProcessingDurationInMilliseconds = Settings.Default.BeepOnCaptureStateIsProcessingDurationInMilliseconds;
+            BeepFrequencyOnCaptureStateIsProcessing = Settings.Default.BeepFrequencyOnCaptureStateIsProcessing;
+            SpeechSynthesiser = Settings.Default.SpeechSynthesiser;
+            SpeechSynthesiserVoice = Settings.Default.SpeechSynthesiserVoice;
+            SpeechSynthesiserRate = Settings.Default.SpeechSynthesiserRate;
+            SpeechSynthesiserVolume = Settings.Default.SpeechSynthesiserVolume;
+            SpeakEntryByEntry = Settings.Default.SpeakEntryByEntry;
+            SpeakSentenceBySentence = Settings.Default.SpeakSentenceBySentence;
+            
+            ShowDebuggingVisuals = Settings.Default.ShowDebuggingVisuals;
+            PointsPerSecondColour = Settings.Default.PointsPerSecondColour;
+        }
+
+        private void SaveSettings()
+        {
+            Settings.Default.Language = Language;
+
+            Settings.Default.KeyFontSize = KeyFontSize;
+            Settings.Default.KeyFontFamily = KeyFontFamily;
+            Settings.Default.KeyFontStyle = KeyFontStyle;
+            Settings.Default.KeyFontWeight = KeyFontWeight;
+            Settings.Default.KeyForegroundColour = KeyForegroundColour;
+            Settings.Default.KeyBackgroundColour = KeyBackgroundColour;
+            Settings.Default.KeyBorderColour = KeyBorderColour;
+            Settings.Default.KeyBorderThickness = KeyBorderThickness;
+            
+            Settings.Default.MatchesFontSize = MatchesFontSize;
+            Settings.Default.MatchesFontFamily = MatchesFontFamily;
+            Settings.Default.MatchesFontStyle = MatchesFontStyle;
+            Settings.Default.MatchesFontWeight = MatchesFontWeight;
+            Settings.Default.MatchesForegroundColour = MatchesForegroundColour;
+            Settings.Default.MatchesBackgroundColour = MatchesBackgroundColour;
+            Settings.Default.MatchesBorderColour = MatchesBorderColour;
+            Settings.Default.MatchesBorderThickness = MatchesBorderThickness;
+
+            Settings.Default.CurrentEntryFontSize = CurrentEntryFontSize;
+            Settings.Default.CurrentEntryFontFamily = CurrentEntryFontFamily;
+            Settings.Default.CurrentEntryFontStyle = CurrentEntryFontStyle;
+            Settings.Default.CurrentEntryFontWeight = CurrentEntryFontWeight;
+            Settings.Default.CurrentEntryForegroundColour = CurrentEntryForegroundColour;
+            Settings.Default.CurrentEntryBackgroundColour = CurrentEntryBackgroundColour;
+            Settings.Default.CurrentEntryBorderColour = CurrentEntryBorderColour;
+            Settings.Default.CurrentEntryBorderThickness = CurrentEntryBorderThickness;
+            
+            Settings.Default.OutputFontSize = OutputFontSize;
+            Settings.Default.OutputFontFamily = OutputFontFamily;
+            Settings.Default.OutputFontStyle = OutputFontStyle;
+            Settings.Default.OutputFontWeight = OutputFontWeight;
+            Settings.Default.OutputBackgroundColour = OutputBackgroundColour;
+            Settings.Default.OutputForegroundColour = OutputForegroundColour;
+            Settings.Default.OutputBorderColour = OutputBorderColour;
+            Settings.Default.OutputBorderThickness = OutputBorderThickness;
+
+            Settings.Default.FrameThickness = FrameThickness;
+            Settings.Default.FrameDefaultColour = FrameDefaultColour;
+            Settings.Default.FrameChangesColourWithCaptureState = FrameChangesColourWithCaptureState;
+            Settings.Default.FrameCaptureStateIdleColour = FrameCaptureStateIdleColour;
+            Settings.Default.FrameCaptureStateCapturingColour = FrameCaptureStateCapturingColour;
+            Settings.Default.FrameCaptureStateEndingCaptureColour = FrameCaptureStateEndingCaptureColour;
+            Settings.Default.FrameCaptureStateProcessingColour = FrameCaptureStateProcessingColour;
+
+            Settings.Default.CaptureTriggerSource = CaptureTriggerSource;
+            Settings.Default.CaptureTriggerKeyboardSignal = CaptureTriggerKeyboardSignal.ToString();
+            Settings.Default.CaptureCoordinatesSource = CaptureCoordinatesSource;
+            Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds = CaptureMouseCoordinatesOnIntervalInMilliseconds;
+            Settings.Default.CaptureCoordinatesTimeoutInMilliseconds = CaptureCoordinatesTimeoutInMilliseconds;
+            Settings.Default.CaptureMinDwellTimeInMilliseconds = CaptureMinDwellTimeInMilliseconds;
+            Settings.Default.MaximumProcessorResults = MaximumProcessorResults;
+
+            Settings.Default.BeepOnNoMatches = BeepOnNoMatches;
+            Settings.Default.BeepFrequencyOnNoMatches = BeepFrequencyOnNoMatches;
+            Settings.Default.BeepOnNoMatchesDurationInMilliseconds = BeepOnNoMatchesDurationInMilliseconds;
+            Settings.Default.BeepOnCaptureStateIsIdle = BeepOnCaptureStateIsIdle;
+            Settings.Default.BeepOnCaptureStateIsIdleDurationInMilliseconds = BeepOnCaptureStateIsIdleDurationInMilliseconds;
+            Settings.Default.BeepFrequencyOnCaptureStateIsIdle = BeepFrequencyOnCaptureStateIsIdle;
+            Settings.Default.BeepOnCaptureStateIsCapturing = BeepOnCaptureStateIsCapturing;
+            Settings.Default.BeepOnCaptureStateIsCapturingDurationInMilliseconds = BeepOnCaptureStateIsCapturingDurationInMilliseconds;
+            Settings.Default.BeepFrequencyOnCaptureStateIsCapturing = BeepFrequencyOnCaptureStateIsCapturing;
+            Settings.Default.BeepOnCaptureStateIsEndingCapture = BeepOnCaptureStateIsEndingCapture;
+            Settings.Default.BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds = BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds;
+            Settings.Default.BeepFrequencyOnCaptureStateIsEndingCapture = BeepFrequencyOnCaptureStateIsEndingCapture;
+            Settings.Default.BeepOnCaptureStateIsProcessing = BeepOnCaptureStateIsProcessing;
+            Settings.Default.BeepOnCaptureStateIsProcessingDurationInMilliseconds = BeepOnCaptureStateIsProcessingDurationInMilliseconds;
+            Settings.Default.BeepFrequencyOnCaptureStateIsProcessing = BeepFrequencyOnCaptureStateIsProcessing;
+
+            Settings.Default.SpeechSynthesiser = SpeechSynthesiser;
+            Settings.Default.SpeechSynthesiserVoice = SpeechSynthesiserVoice;
+            Settings.Default.SpeechSynthesiserRate = SpeechSynthesiserRate;
+            Settings.Default.SpeechSynthesiserVolume = SpeechSynthesiserVolume;
+            Settings.Default.SpeakEntryByEntry = SpeakEntryByEntry;
+            Settings.Default.SpeakSentenceBySentence = SpeakSentenceBySentence;
+            
+            Settings.Default.ShowDebuggingVisuals = ShowDebuggingVisuals;
+            Settings.Default.PointsPerSecondColour = PointsPerSecondColour;
+
+            Settings.Default.Save();
+        }
+
+        #endregion
+
+        #region Play Beep
+
+        private void PlayBeepOnCaptureStateIsIdle()
+        {
+            beep.BeginInvoke(BeepFrequencyOnCaptureStateIsIdle, BeepOnCaptureStateIsIdleDurationInMilliseconds, null, null);
+        }
+
+        private void PlayBeepOnCaptureStateIsCapturing()
+        {
+            beep.BeginInvoke(BeepFrequencyOnCaptureStateIsCapturing, BeepOnCaptureStateIsCapturingDurationInMilliseconds, null, null);
+        }
+
+        private void PlayBeepOnCaptureStateIsEndingCapture()
+        {
+            beep.BeginInvoke(BeepFrequencyOnCaptureStateIsEndingCapture, BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds, null, null);
+        }
+
+        private void PlayBeepOnCaptureStateIsProcessing()
+        {
+            beep.BeginInvoke(BeepFrequencyOnCaptureStateIsProcessing, BeepOnCaptureStateIsProcessingDurationInMilliseconds, null, null);
+        }
+
+        private void PlayBeepOnNoMatches()
+        {
+            beep.BeginInvoke(BeepFrequencyOnNoMatches, BeepOnNoMatchesDurationInMilliseconds, null, null);
+        }
+
+        #endregion
+
+        #region Test Speech
+
+        private void TestSpeech()
+        {
+            ISpeechSynthesisService speechSynthesisService = null;
+
+            switch (SpeechSynthesiser)
+            {
+                case SpeechSynthesisers.WindowsSpeechSynthesiser:
+                    speechSynthesisService = new WindowsSpeechSynthesisService();
+                    break;
+            }
+
+            if (speechSynthesisService != null)
+            {
+                speechSynthesisService.Speak("Testing testing 1 2 3", SpeechSynthesiserVolume, SpeechSynthesiserRate, SpeechSynthesiserVoice);
+            }
+        }
+
+        #endregion
+
+        #region Rebuild Dictionary
+
+        private void RebuildDictionary()
+        {
+            dictionaryService.LoadDictionary();
+        }
+
+        #endregion
+
+        #region Ok / Cancel
+
+        private void Ok(Window window)
+        {
+            //Check which settings have been changed
+            bool restartRequired = Settings.Default.CaptureTriggerSource != CaptureTriggerSource
+                                   || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
+                                   || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
+                                   || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
+                                   || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+            
+            //Warn if restart required and prompt for Confirmation before restarting
+            if (restartRequired)
+            {
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = "Restart required",
+                        Content = "ETTA needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            SaveSettings();
+                            System.Windows.Forms.Application.Restart();
+                            Application.Current.Shutdown();
+                        }
+                    });
+            }
+            else
+            {
+                if (Settings.Default.Language != Language)
+                {
+                    RebuildDictionary();
+                }
+                SaveSettings();
+                window.Close();
+            }
+        }
+
+        private void Cancel(Window window)
+        {
+            window.Close();
+        }
+
+        #endregion
+    }
+}
+
+
+
+
+<Window x:Class="JuliusSweetland.ETTA.UI.Windows.UserSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:interactionRequest="http://www.codeplex.com/prism"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Model.Enums"
+        xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
+        xmlns:valueConverters="clr-namespace:JuliusSweetland.ETTA.UI.ValueConverters"
+        mc:Ignorable="d" 
+        d:DesignHeight="300" d:DesignWidth="500"
+        Height="600" Width="Auto" MinWidth="300"
+        SizeToContent="Width"
+        WindowStartupLocation="CenterOwner"
+        Name="userSettingsWindow">
+
+    <i:Interaction.Triggers>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ConfirmationRequest, Mode=OneWay}">
+            <controls:ConfirmationWindowAction />
+        </interactionRequest:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <valueConverters:CaptureTriggerSourceIsKeyboardToVisibility x:Key="CaptureTriggerSourceIsKeyboardToVisibility" />
+        <valueConverters:CaptureCoordinatesSourceIsMousePositionToVisibility x:Key="CaptureCoordinatesSourceIsMousePositionToVisibility" />
+        <valueConverters:ColorToSolidColorBrush x:Key="ColorToSolidColorBrush" />
+
+        <Style TargetType="{x:Type xctk:DoubleUpDown}" BasedOn="{StaticResource {x:Type xctk:DoubleUpDown}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:IntegerUpDown}" BasedOn="{StaticResource {x:Type xctk:IntegerUpDown}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:ColorPicker}" BasedOn="{StaticResource {x:Type xctk:ColorPicker}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <ObjectDataProvider x:Key="keyboardSources" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:Languages"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        
+        <ObjectDataProvider x:Key="captureTriggerSources" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:CaptureTriggerSources"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="captureTriggerKeyboardSignals" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Key"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="captureCoordinatesSources" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:CaptureCoordinatesSources"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="speechSynthesisers" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:SpeechSynthesisers"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Settings" FontSize="20" FontWeight="Bold" Margin="10,5,5,5" />
+
+        <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch" IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Language" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Language" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Source={StaticResource keyboardSources}}" 
+                                  SelectedValue="{Binding Language}" />
+                        
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="Text Look &amp; Feel" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Content="Key Font Size" />
+                        <xctk:DoubleUpDown Grid.Row="0" Grid.Column="1" Minimum="1" Value="{Binding KeyFontSize, StringFormat={}{0:0}, Mode=TwoWay}" />
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Content="Key Font Family" />
+                        <controls:FontComboBox Grid.Row="1" Grid.Column="1" SelectedValue="{Binding KeyFontFamily, Mode=TwoWay}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Key Font Style" />
+                        <ComboBox Grid.Row="2" Grid.Column="1" SelectedValue="{Binding KeyFontStyle, Mode=TwoWay}">
+                            <x:Static Member="FontStyles.Normal"/>
+                            <x:Static Member="FontStyles.Italic"/>
+                            <x:Static Member="FontStyles.Oblique"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Key Font Weight" />
+                        <ComboBox Grid.Row="3" Grid.Column="1" SelectedValue="{Binding KeyFontWeight, Mode=TwoWay}">
+                            <x:Static Member="FontWeights.Black"/>
+                            <x:Static Member="FontWeights.Bold"/>
+                            <x:Static Member="FontWeights.DemiBold"/>
+                            <x:Static Member="FontWeights.ExtraBlack"/>
+                            <x:Static Member="FontWeights.ExtraBold"/>
+                            <x:Static Member="FontWeights.ExtraLight"/>
+                            <x:Static Member="FontWeights.Heavy"/>
+                            <x:Static Member="FontWeights.Light"/>
+                            <x:Static Member="FontWeights.Medium"/>
+                            <x:Static Member="FontWeights.Normal"/>
+                            <x:Static Member="FontWeights.Regular"/>
+                            <x:Static Member="FontWeights.SemiBold"/>
+                            <x:Static Member="FontWeights.Thin"/>
+                            <x:Static Member="FontWeights.UltraBlack"/>
+                            <x:Static Member="FontWeights.UltraBold"/>
+                            <x:Static Member="FontWeights.UltraLight"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Key Foreground Colour" />
+                        <xctk:ColorPicker Grid.Row="4" Grid.Column="1" SelectedColor="{Binding KeyForegroundColour, Mode=TwoWay}" />
+                        
+                        <Label Grid.Row="5" Grid.Column="0" Content="Key Background Colour" />
+                        <xctk:ColorPicker Grid.Row="5" Grid.Column="1" SelectedColor="{Binding KeyBackgroundColour, Mode=TwoWay}" />
+                       
+                        <Label Grid.Row="6" Grid.Column="0" Content="Key Border Colour" />
+                        <xctk:ColorPicker Grid.Row="6" Grid.Column="1" SelectedColor="{Binding KeyBorderColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="7" Grid.Column="0" Content="Key Border Thickness" />
+                        <xctk:DoubleUpDown Grid.Row="7" Grid.Column="1" Minimum="0" Value="{Binding KeyBorderThickness, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Border Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" 
+                                BorderThickness="{Binding KeyBorderThickness, Mode=OneWay}" 
+                                BorderBrush="{Binding KeyBorderColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" 
+                                Background="{Binding KeyBackgroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}">
+                            <Label Content="Sample text 1,2,3" 
+                                   FontFamily="{Binding KeyFontFamily, Mode=OneWay}" 
+                                   FontSize="{Binding KeyFontSize, Mode=OneWay}" 
+                                   FontStyle="{Binding KeyFontStyle, Mode=OneWay}" 
+                                   FontWeight="{Binding KeyFontWeight, Mode=OneWay}"
+                                   Foreground="{Binding KeyForegroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" />
+                        </Border>
+
+                        <Label Grid.Row="9" Grid.Column="0" Content="Matches Font Size" />
+                        <xctk:DoubleUpDown Grid.Row="9" Grid.Column="1" Minimum="1" Value="{Binding MatchesFontSize, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="10" Grid.Column="0" Content="Matches Font Family" />
+                        <controls:FontComboBox Grid.Row="10" Grid.Column="1" SelectedValue="{Binding MatchesFontFamily, Mode=TwoWay}" />
+
+                        <Label Grid.Row="11" Grid.Column="0" Content="Matches Font Style" />
+                        <ComboBox Grid.Row="11" Grid.Column="1" SelectedValue="{Binding MatchesFontStyle, Mode=TwoWay}">
+                            <x:Static Member="FontStyles.Normal"/>
+                            <x:Static Member="FontStyles.Italic"/>
+                            <x:Static Member="FontStyles.Oblique"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="12" Grid.Column="0" Content="Matches Font Weight" />
+                        <ComboBox Grid.Row="12" Grid.Column="1" SelectedValue="{Binding MatchesFontWeight, Mode=TwoWay}">
+                            <x:Static Member="FontWeights.Black"/>
+                            <x:Static Member="FontWeights.Bold"/>
+                            <x:Static Member="FontWeights.DemiBold"/>
+                            <x:Static Member="FontWeights.ExtraBlack"/>
+                            <x:Static Member="FontWeights.ExtraBold"/>
+                            <x:Static Member="FontWeights.ExtraLight"/>
+                            <x:Static Member="FontWeights.Heavy"/>
+                            <x:Static Member="FontWeights.Light"/>
+                            <x:Static Member="FontWeights.Medium"/>
+                            <x:Static Member="FontWeights.Normal"/>
+                            <x:Static Member="FontWeights.Regular"/>
+                            <x:Static Member="FontWeights.SemiBold"/>
+                            <x:Static Member="FontWeights.Thin"/>
+                            <x:Static Member="FontWeights.UltraBlack"/>
+                            <x:Static Member="FontWeights.UltraBold"/>
+                            <x:Static Member="FontWeights.UltraLight"/>
+                        </ComboBox>
+                        
+                        <Label Grid.Row="13" Grid.Column="0" Content="Matches Foreground Colour" />
+                        <xctk:ColorPicker Grid.Row="13" Grid.Column="1" SelectedColor="{Binding MatchesForegroundColour, Mode=TwoWay}" />
+                        
+                        <Label Grid.Row="14" Grid.Column="0" Content="Matches Background Colour" />
+                        <xctk:ColorPicker Grid.Row="14" Grid.Column="1" SelectedColor="{Binding MatchesBackgroundColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="15" Grid.Column="0" Content="Matches Border Colour" />
+                        <xctk:ColorPicker Grid.Row="15" Grid.Column="1" SelectedColor="{Binding MatchesBorderColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="16" Grid.Column="0" Content="Matches Border Thickness" />
+                        <xctk:DoubleUpDown Grid.Row="16" Grid.Column="1" Minimum="0" Value="{Binding MatchesBorderThickness, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Border Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" 
+                                BorderThickness="{Binding MatchesBorderThickness, Mode=OneWay}" 
+                                BorderBrush="{Binding MatchesBorderColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" 
+                                Background="{Binding MatchesBackgroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}">
+                            <Label Content="Sample text 1,2,3" 
+                                   FontFamily="{Binding MatchesFontFamily, Mode=OneWay}" 
+                                   FontSize="{Binding MatchesFontSize, Mode=OneWay}" 
+                                   FontStyle="{Binding MatchesFontStyle, Mode=OneWay}" 
+                                   FontWeight="{Binding MatchesFontWeight, Mode=OneWay}" 
+                                   Foreground="{Binding MatchesForegroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" />
+                        </Border>
+
+                        <Label Grid.Row="18" Grid.Column="0" Content="Current Word Font Size" />
+                        <xctk:DoubleUpDown Grid.Row="18" Grid.Column="1" Minimum="1" Value="{Binding CurrentEntryFontSize, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="19" Grid.Column="0" Content="Current Word Font Family" />
+                        <controls:FontComboBox Grid.Row="19" Grid.Column="1" SelectedValue="{Binding CurrentEntryFontFamily, Mode=TwoWay}" />
+
+                        <Label Grid.Row="20" Grid.Column="0" Content="Current Word Font Style" />
+                        <ComboBox Grid.Row="20" Grid.Column="1" SelectedValue="{Binding CurrentEntryFontStyle, Mode=TwoWay}">
+                            <x:Static Member="FontStyles.Normal"/>
+                            <x:Static Member="FontStyles.Italic"/>
+                            <x:Static Member="FontStyles.Oblique"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="21" Grid.Column="0" Content="Current Word Font Weight" />
+                        <ComboBox Grid.Row="21" Grid.Column="1" SelectedValue="{Binding CurrentEntryFontWeight, Mode=TwoWay}">
+                            <x:Static Member="FontWeights.Black"/>
+                            <x:Static Member="FontWeights.Bold"/>
+                            <x:Static Member="FontWeights.DemiBold"/>
+                            <x:Static Member="FontWeights.ExtraBlack"/>
+                            <x:Static Member="FontWeights.ExtraBold"/>
+                            <x:Static Member="FontWeights.ExtraLight"/>
+                            <x:Static Member="FontWeights.Heavy"/>
+                            <x:Static Member="FontWeights.Light"/>
+                            <x:Static Member="FontWeights.Medium"/>
+                            <x:Static Member="FontWeights.Normal"/>
+                            <x:Static Member="FontWeights.Regular"/>
+                            <x:Static Member="FontWeights.SemiBold"/>
+                            <x:Static Member="FontWeights.Thin"/>
+                            <x:Static Member="FontWeights.UltraBlack"/>
+                            <x:Static Member="FontWeights.UltraBold"/>
+                            <x:Static Member="FontWeights.UltraLight"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="22" Grid.Column="0" Content="Current Word Foreground Colour" />
+                        <xctk:ColorPicker Grid.Row="22" Grid.Column="1" SelectedColor="{Binding CurrentEntryForegroundColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="23" Grid.Column="0" Content="Current Word Background Colour" />
+                        <xctk:ColorPicker Grid.Row="23" Grid.Column="1" SelectedColor="{Binding CurrentEntryBackgroundColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="24" Grid.Column="0" Content="Current Word Border Colour" />
+                        <xctk:ColorPicker Grid.Row="24" Grid.Column="1" SelectedColor="{Binding CurrentEntryBorderColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="25" Grid.Column="0" Content="Current Word Border Thickness" />
+                        <xctk:DoubleUpDown Grid.Row="25" Grid.Column="1" Minimum="0" Value="{Binding CurrentEntryBorderThickness, StringFormat={}{0:0}, Mode=TwoWay}" />
+                        
+                        <Border Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" 
+                                BorderThickness="{Binding CurrentEntryBorderThickness, Mode=OneWay}" 
+                                BorderBrush="{Binding CurrentEntryBorderColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" 
+                                Background="{Binding CurrentEntryBackgroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}">
+                            <Label Content="Sample text 1,2,3" 
+                                   FontFamily="{Binding CurrentEntryFontFamily, Mode=OneWay}" 
+                                   FontSize="{Binding CurrentEntryFontSize, Mode=OneWay}" 
+                                   FontStyle="{Binding CurrentEntryFontStyle, Mode=OneWay}" 
+                                   FontWeight="{Binding CurrentEntryFontWeight, Mode=OneWay}" 
+                                   Foreground="{Binding CurrentEntryForegroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" />
+                        </Border>
+
+                        <Label Grid.Row="27" Grid.Column="0" Content="Output Font Size" />
+                        <xctk:DoubleUpDown Grid.Row="27" Grid.Column="1" Minimum="1" Value="{Binding OutputFontSize, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="28" Grid.Column="0" Content="Output Font Family" />
+                        <controls:FontComboBox Grid.Row="28" Grid.Column="1" SelectedValue="{Binding OutputFontFamily, Mode=TwoWay}" />
+
+                        <Label Grid.Row="29" Grid.Column="0" Content="Output Font Style" />
+                        <ComboBox Grid.Row="29" Grid.Column="1" SelectedValue="{Binding OutputFontStyle, Mode=TwoWay}">
+                            <x:Static Member="FontStyles.Normal"/>
+                            <x:Static Member="FontStyles.Italic"/>
+                            <x:Static Member="FontStyles.Oblique"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="30" Grid.Column="0" Content="Output Font Weight" />
+                        <ComboBox Grid.Row="30" Grid.Column="1" SelectedValue="{Binding OutputFontWeight, Mode=TwoWay}">
+                            <x:Static Member="FontWeights.Black"/>
+                            <x:Static Member="FontWeights.Bold"/>
+                            <x:Static Member="FontWeights.DemiBold"/>
+                            <x:Static Member="FontWeights.ExtraBlack"/>
+                            <x:Static Member="FontWeights.ExtraBold"/>
+                            <x:Static Member="FontWeights.ExtraLight"/>
+                            <x:Static Member="FontWeights.Heavy"/>
+                            <x:Static Member="FontWeights.Light"/>
+                            <x:Static Member="FontWeights.Medium"/>
+                            <x:Static Member="FontWeights.Normal"/>
+                            <x:Static Member="FontWeights.Regular"/>
+                            <x:Static Member="FontWeights.SemiBold"/>
+                            <x:Static Member="FontWeights.Thin"/>
+                            <x:Static Member="FontWeights.UltraBlack"/>
+                            <x:Static Member="FontWeights.UltraBold"/>
+                            <x:Static Member="FontWeights.UltraLight"/>
+                        </ComboBox>
+
+                        <Label Grid.Row="31" Grid.Column="0" Content="Output Background Colour" />
+                        <xctk:ColorPicker Grid.Row="31" Grid.Column="1" SelectedColor="{Binding OutputBackgroundColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="32" Grid.Column="0" Content="Output Foreground Colour" />
+                        <xctk:ColorPicker Grid.Row="32" Grid.Column="1" SelectedColor="{Binding OutputForegroundColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="33" Grid.Column="0" Content="Output Border Colour" />
+                        <xctk:ColorPicker Grid.Row="33" Grid.Column="1" SelectedColor="{Binding OutputBorderColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="34" Grid.Column="0" Content="Output Border Thickness" />
+                        <xctk:DoubleUpDown Grid.Row="34" Grid.Column="1" Minimum="0" Value="{Binding OutputBorderThickness, StringFormat={}{0:0}, Mode=TwoWay}" />
+                        
+                        <Border Grid.Row="35" Grid.Column="0" Grid.ColumnSpan="2" 
+                                BorderThickness="{Binding OutputBorderThickness, Mode=OneWay}" 
+                                BorderBrush="{Binding OutputBorderColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" 
+                                Background="{Binding OutputBackgroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}">
+                            <Label Content="Sample text 1,2,3" 
+                                   FontFamily="{Binding OutputFontFamily, Mode=OneWay}" 
+                                   FontSize="{Binding OutputFontSize, Mode=OneWay}"
+                                   FontStyle="{Binding OutputFontStyle, Mode=OneWay}"
+                                   FontWeight="{Binding OutputFontWeight, Mode=OneWay}"
+                                   Foreground="{Binding OutputForegroundColour, Converter={StaticResource ColorToSolidColorBrush}, Mode=OneWay}" />
+                        </Border>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Frame" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Frame Default Colour" />
+                        <xctk:ColorPicker Grid.Row="0" Grid.Column="1" SelectedColor="{Binding FrameDefaultColour, Mode=TwoWay}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Frame Thickness (1/96th inch per unit)" />
+                        <xctk:DoubleUpDown Grid.Row="1" Grid.Column="1" Minimum="1"
+                                           Value="{Binding FrameThickness, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Frame Changes Colour With Capture State?" />
+                        <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding FrameChangesColourWithCaptureState, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Frame CaptureState = Idle Colour"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:ColorPicker Grid.Row="3" Grid.Column="1" SelectedColor="{Binding FrameCaptureStateIdleColour, Mode=TwoWay}"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Frame CaptureState = Capturing Colour"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:ColorPicker Grid.Row="4" Grid.Column="1" SelectedColor="{Binding FrameCaptureStateCapturingColour, Mode=TwoWay}"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Frame CaptureState = EndingCapture Colour"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:ColorPicker Grid.Row="5" Grid.Column="1" SelectedColor="{Binding FrameCaptureStateEndingCaptureColour, Mode=TwoWay}"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="Frame CaptureState = Processing Colour"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:ColorPicker Grid.Row="6" Grid.Column="1" SelectedColor="{Binding FrameCaptureStateProcessingColour, Mode=TwoWay}"
+                                Visibility="{Binding FrameChangesColourWithCaptureState, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="Capturing" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Capture Trigger Source" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Source={StaticResource captureTriggerSources}}" 
+                                    SelectedValue="{Binding CaptureTriggerSource}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Capture Trigger Keyboard Signal"
+                               Visibility="{Binding CaptureTriggerSource, Converter={StaticResource CaptureTriggerSourceIsKeyboardToVisibility}, Mode=OneWay}" />
+                        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource captureTriggerKeyboardSignals}}" 
+                                  SelectedValue="{Binding CaptureTriggerKeyboardSignal}"
+                                  Visibility="{Binding CaptureTriggerSource, Converter={StaticResource CaptureTriggerSourceIsKeyboardToVisibility}, Mode=OneWay}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Capture Coordinates Source" />
+                        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Source={StaticResource captureCoordinatesSources}}" 
+                                    SelectedValue="{Binding CaptureCoordinatesSource}" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Capture Mouse Coordinates On Interval (Milliseconds)"
+                               Visibility="{Binding CaptureCoordinatesSource, Converter={StaticResource CaptureCoordinatesSourceIsMousePositionToVisibility}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="3" Grid.Column="1" Minimum="1"
+                                            Value="{Binding CaptureMouseCoordinatesOnIntervalInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding CaptureCoordinatesSource, Converter={StaticResource CaptureCoordinatesSourceIsMousePositionToVisibility}, Mode=OneWay}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Capture Coordinates Timeout (Milliseconds)" />
+                        <xctk:IntegerUpDown Grid.Row="4" Grid.Column="1" Minimum="1"
+                                            Value="{Binding CaptureCoordinatesTimeoutInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Capture Min Dwell Time (Milliseconds)" />
+                        <xctk:IntegerUpDown Grid.Row="5" Grid.Column="1" Minimum="1"
+                                            Value="{Binding CaptureMinDwellTimeInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="4" Header="Processing" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Maximum Processor Results" />
+                        <xctk:IntegerUpDown Grid.Row="0" Grid.Column="1" Minimum="1"
+                                            Value="{Binding MaximumProcessorResults, StringFormat={}{0:0}, Mode=TwoWay}" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="5" Header="Audio" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Beep On Capture State Changing To Idle" />
+                        <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding BeepOnCaptureStateIsIdle, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Beep Duration On Capture State Changing To Idle (Milliseconds)"
+                               Visibility="{Binding BeepOnCaptureStateIsIdle, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="1" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepOnCaptureStateIsIdleDurationInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsIdle, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Beep Frequency On Capture State Changing To Idle (Hz)"
+                               Visibility="{Binding BeepOnCaptureStateIsIdle, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepFrequencyOnCaptureStateIsIdle, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsIdle, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Play Tone" Command="{Binding PlayBeepOnCaptureStateIsIdleCommand}"
+                                Visibility="{Binding BeepOnCaptureStateIsIdle, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        
+                        <Label Grid.Row="4" Grid.Column="0" Content="Beep On Capture State Changing To Capturing" />
+                        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding BeepOnCaptureStateIsCapturing, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Beep Duration On Capture State Changing To Capturing (Milliseconds)"
+                               Visibility="{Binding BeepOnCaptureStateIsCapturing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="5" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepOnCaptureStateIsCapturingDurationInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsCapturing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="Beep Frequency On Capture State Changing To Capturing (Hz)"
+                               Visibility="{Binding BeepOnCaptureStateIsCapturing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="6" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepFrequencyOnCaptureStateIsCapturing, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsCapturing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Content="Play Tone" Command="{Binding PlayBeepOnCaptureStateIsCapturingCommand}"
+                                Visibility="{Binding BeepOnCaptureStateIsCapturing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        
+                        <Label Grid.Row="8" Grid.Column="0" Content="Beep On Capture State Changing To Ending Capture" />
+                        <CheckBox Grid.Row="8" Grid.Column="1" IsChecked="{Binding BeepOnCaptureStateIsEndingCapture, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="9" Grid.Column="0" Content="Beep Duration On Capture State Changing To Ending Capture (Milliseconds)"
+                               Visibility="{Binding BeepOnCaptureStateIsEndingCapture, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="9" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepOnCaptureStateIsEndingCaptureDurationInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsEndingCapture, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="10" Grid.Column="0" Content="Beep Frequency On Capture State Changing To Ending Capture (Hz)"
+                               Visibility="{Binding BeepOnCaptureStateIsEndingCapture, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="10" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepFrequencyOnCaptureStateIsEndingCapture, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsEndingCapture, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Button Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Content="Play Tone" Command="{Binding PlayBeepOnCaptureStateIsEndingCaptureCommand}"
+                                Visibility="{Binding BeepOnCaptureStateIsEndingCapture, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        
+                        <Label Grid.Row="12" Grid.Column="0" Content="Beep On Capture State Changing To Processing" />
+                        <CheckBox Grid.Row="12" Grid.Column="1" IsChecked="{Binding BeepOnCaptureStateIsProcessing, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="13" Grid.Column="0" Content="Beep Duration On Capture State Changing To Processing (Milliseconds)"
+                               Visibility="{Binding BeepOnCaptureStateIsProcessing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="13" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepOnCaptureStateIsProcessingDurationInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsProcessing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="14" Grid.Column="0" Content="Beep Frequency On Capture State Changing To Processing (Hz)"
+                               Visibility="{Binding BeepOnCaptureStateIsProcessing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="14" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepFrequencyOnCaptureStateIsProcessing, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnCaptureStateIsProcessing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Content="Play Tone" Command="{Binding PlayBeepOnCaptureStateIsProcessingCommand}"
+                                Visibility="{Binding BeepOnCaptureStateIsProcessing, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="16" Grid.Column="0" Content="Beep On No Matches" />
+                        <CheckBox Grid.Row="16" Grid.Column="1" IsChecked="{Binding BeepOnNoMatches, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="17" Grid.Column="0" Content="Beep Duration On No Matches (Milliseconds)"
+                               Visibility="{Binding BeepOnCaptureStateChanges, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="17" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepOnNoMatchesDurationInMilliseconds, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnNoMatches, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="18" Grid.Column="0" Content="Frequency On No Matches (Hz)"
+                               Visibility="{Binding BeepOnCaptureStateChanges, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:IntegerUpDown Grid.Row="18" Grid.Column="1" Minimum="1"
+                                            Value="{Binding BeepFrequencyOnNoMatches, StringFormat={}{0:0}, Mode=TwoWay}" 
+                                            Visibility="{Binding BeepOnNoMatches, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Button Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" Content="Play Tone" Command="{Binding PlayBeepOnNoMatchesCommand}"
+                                Visibility="{Binding BeepOnNoMatches, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                        <Label Grid.Row="20" Grid.Column="0" Content="Speech Synthesiser" />
+                        <ComboBox Grid.Row="20" Grid.Column="1" ItemsSource="{Binding Source={StaticResource speechSynthesisers}}" 
+                                    SelectedValue="{Binding SpeechSynthesiser}" />
+
+                        <Label Grid.Row="21" Grid.Column="0" Content="Voice" />
+                        <ComboBox Grid.Row="21" Grid.Column="1" ItemsSource="{Binding SpeechSynthesiserVoices}" 
+                                    SelectedValue="{Binding SpeechSynthesiserVoice}" />
+
+                        <Label Grid.Row="22" Grid.Column="0" Content="Speech Rate (-10 to +10)" />
+                        <xctk:IntegerUpDown Grid.Row="22" Grid.Column="1"
+                                            Minimum="-10" Maximum="10"
+                                            Value="{Binding SpeechSynthesiserRate, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Label Grid.Row="23" Grid.Column="0" Content="Speech Volume (0 to 100)" />
+                        <xctk:IntegerUpDown Grid.Row="23" Grid.Column="1"
+                                            Minimum="0" Maximum="100"
+                                            Value="{Binding SpeechSynthesiserVolume, StringFormat={}{0:0}, Mode=TwoWay}" />
+
+                        <Button Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2" Content="Test speech" Command="{Binding TestSpeechCommand}" />
+
+                        <Label Grid.Row="25" Grid.Column="0" Content="Speak Entry-By-Entry (word or phrase)" />
+                        <CheckBox Grid.Row="25" Grid.Column="1" IsChecked="{Binding SpeakEntryByEntry, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="26" Grid.Column="0" Content="Speak Sentence-By-Sentence" />
+                        <CheckBox Grid.Row="26" Grid.Column="1" IsChecked="{Binding SpeakSentenceBySentence, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="6" Header="Debugging" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="Column2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Show Debugging Visuals" />
+                        <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding ShowDebuggingVisuals, Mode=TwoWay}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Points Per Second Colour"
+                               Visibility="{Binding ShowDebuggingVisuals, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                        <xctk:ColorPicker Grid.Row="1" Grid.Column="1" SelectedColor="{Binding PointsPerSecondColour, Mode=TwoWay}"
+                                          Visibility="{Binding ShowDebuggingVisuals, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button Command="{Binding OkCommand}" CommandParameter="{Binding ElementName=userSettingsWindow}" 
+                    Content="OK" Width="80" Margin="5" HorizontalAlignment="Right" />
+            
+            <Button Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=userSettingsWindow}" 
+                    Content="Cancel" Width="80" Margin="5" HorizontalAlignment="Right" />
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+
+<av:ComboBox x:Class="JuliusSweetland.ETTA.UI.Controls.FontComboBox"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             ItemTemplate="{DynamicResource FontTemplate}">
+    
+    <av:ComboBox.Resources>
+        <av:CollectionViewSource x:Key="myFonts" Source="{Binding Source={x:Static av:Fonts.SystemFontFamilies}}">
+            <av:CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="Source" />
+            </av:CollectionViewSource.SortDescriptions>
+        </av:CollectionViewSource>
+
+        <av:Style x:Key="FontStyle">
+            <av:Setter Property="av:Control.FontFamily" Value="{Binding Source}" />
+            <av:Setter Property="av:Control.FontSize" Value="16" />
+        </av:Style>
+
+        <av:DataTemplate x:Key="FontTemplate">
+            <av:StackPanel av:VirtualizingStackPanel.IsVirtualizing="True">
+                <av:TextBlock Style="{StaticResource FontStyle}"
+                             Text="{av:Binding Source}"
+                             ToolTip="{av:Binding Source}" />
+            </av:StackPanel>
+        </av:DataTemplate>
+    </av:ComboBox.Resources>
+
+    <av:ComboBox.ItemsSource>
+        <av:Binding Source="{StaticResource myFonts}" />
+    </av:ComboBox.ItemsSource>
+</av:ComboBox>

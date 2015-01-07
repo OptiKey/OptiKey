@@ -53,9 +53,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.*")]
 
-//I don't think there's any point to specifying the AssemblyFileVersion attribute.
-//If not specified the AssemblyFileVersion == AssemblyVersion.
-//Also note that the 1.0.* does NOT work on this attribute.
-//[assembly: AssemblyFileVersion("1.0.0.0")]
+//This will become a full version number with Build & Revision parts. Both will be 0.
+//I don't need Build and Revision numbers for the moment, so let's keep this simple.
+[assembly: AssemblyVersion("1.0")] 
