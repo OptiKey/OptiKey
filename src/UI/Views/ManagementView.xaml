@@ -5,6 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="TabSymbolStyle" TargetType="{x:Type Path}">
+                        <Setter Property="Stretch" Value="Uniform" />
+                        <Setter Property="Width" Value="32" />
+                        <Setter Property="Height" Value="32" />
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="Fill" Value="Black" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+             
     <Grid>
         <Grid.RowDefinitions>
              <RowDefinition/>
@@ -12,12 +29,47 @@
         </Grid.RowDefinitions>
          
         <TabControl Margin="5 5 5 0">
-             
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Visual" Margin="2,0,0,0" VerticalAlignment="Center" />
+                        <Path Data="{StaticResource ThemeSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/VisualView-->
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Words" Margin="2,0,0,0" VerticalAlignment="Center" />
+                        <Path Data="{StaticResource WordSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/WordView-->
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Sounds" Margin="2,0,0,0" VerticalAlignment="Center" />
+                        <Path Data="{StaticResource SoundSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/SoundView-->
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Pointing &amp; Selecting" Margin="2,0,0,0" VerticalAlignment="Center" />
+                        <Path Data="{StaticResource PointingAndSelectingSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/PointingAndSelectingView-->
+            </TabItem>
         </TabControl>
  
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-             <Button Width="100" Margin="5 10">OK</Button>
-             <Button Width="100" Margin="5 10">Cancel</Button>
+             <Button Command="{Binding OkCommand}" Width="100" Margin="5 10">OK</Button>
+             <Button Command="{Binding CancelCommand}" Width="100" Margin="5 10">Cancel</Button>
         </StackPanel>
     </Grid>
 </UserControl>
