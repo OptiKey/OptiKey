@@ -6,6 +6,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+             <RowDefinition/>
+             <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+         
+        <TabControl Margin="5 5 5 0">
+             
+        </TabControl>
+ 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+             <Button Width="100" Margin="5 10">OK</Button>
+             <Button Width="100" Margin="5 10">Cancel</Button>
+        </StackPanel>
     </Grid>
 </UserControl>
