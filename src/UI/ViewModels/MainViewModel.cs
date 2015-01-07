@@ -203,10 +203,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             get
             {
-                return string.Format("v{0} | {1} | P:{2} | OS:{3} | {4} ({5})",
+                return string.Format("v{0} | P:{1} {2} | OS:{3} {4} ({5})",
                     DiagnosticInfo.AssemblyVersion,
-                    DiagnosticInfo.IsProcessElevated ? "Elevated" : "Not elevated",
                     DiagnosticInfo.ProcessBitness,
+                    DiagnosticInfo.IsProcessElevated ? "Elevated Permissions" : "Non-Elevated Permissions",
                     DiagnosticInfo.OperatingSystemBitness,
                     DiagnosticInfo.OperatingSystemVersion,
                     DiagnosticInfo.OperatingSystemServicePack);

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="500">
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,12 +12,10 @@
                 <ResourceDictionary>
                     <Style x:Key="TabSymbolStyle" TargetType="{x:Type Path}">
                         <Setter Property="Stretch" Value="Uniform" />
-                        <Setter Property="Width" Value="20" />
-                        <Setter Property="Height" Value="20" />
+                        <Setter Property="Width" Value="32" />
+                        <Setter Property="Height" Value="32" />
                         <Setter Property="Margin" Value="2" />
                         <Setter Property="Fill" Value="Black" />
-                        <Setter Property="HorizontalAlignment" Value="Right" />
-                        <Setter Property="VerticalAlignment" Value="Center" />
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -30,42 +28,51 @@
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
          
-        <TabControl Margin="5 5 5 0">
+        <TabControl>
             <TabItem>
                 <TabItem.Header>
-                    <DockPanel LastChildFill="False">
-                        <TextBlock DockPanel.Dock="Left" Text="Visual" VerticalAlignment="Center" Margin="10,0,10,0" />
-                        <Path DockPanel.Dock="Right" Data="{StaticResource ThemeSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" MinWidth="100">
+                        <Path Data="{StaticResource ThemeSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                        <TextBlock Text="Visual" Margin="10,0,10,0" VerticalAlignment="Center" />
+                    </StackPanel>
                 </TabItem.Header>
                 <!--ManagementViews/VisualView-->
             </TabItem>
             <TabItem>
                 <TabItem.Header>
-                    <DockPanel LastChildFill="False">
-                        <TextBlock DockPanel.Dock="Left" Text="Words" VerticalAlignment="Center" Margin="10,0,10,0" />
-                        <Path DockPanel.Dock="Right" Data="{StaticResource WordSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                    </DockPanel>
-                </TabItem.Header>
-                <!--ManagementViews/WordView-->
-            </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <DockPanel LastChildFill="False">
-                        <TextBlock DockPanel.Dock="Left" Text="Sounds" VerticalAlignment="Center" Margin="10,0,10,0" />
-                        <Path DockPanel.Dock="Right" Data="{StaticResource SoundSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" MinWidth="100">
+                        <Path Data="{StaticResource SoundSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                        <TextBlock Text="Sounds" Margin="10,0,10,0" VerticalAlignment="Center" />
+                    </StackPanel>
                 </TabItem.Header>
                 <!--ManagementViews/SoundView-->
             </TabItem>
             <TabItem>
                 <TabItem.Header>
-                    <DockPanel LastChildFill="False">
-                        <TextBlock DockPanel.Dock="Left" Text="Pointing &amp; Selecting" VerticalAlignment="Center" Margin="10,0,10,0" />
-                        <Path DockPanel.Dock="Right" Data="{StaticResource PointingAndSelectingSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" MinWidth="100">
+                        <Path Data="{StaticResource WordSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                        <TextBlock Text="Words" Margin="10,0,10,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/WordView-->
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" MinWidth="100">
+                        <Path Data="{StaticResource PointingAndSelectingSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
+                        <TextBlock Text="Pointing &amp; Selecting" Margin="10,0,10,0" VerticalAlignment="Center" />
+                    </StackPanel>
                 </TabItem.Header>
                 <!--ManagementViews/PointingAndSelectingView-->
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" MinWidth="100">
+                        <Path Data="{StaticResource DictionaryIcon}" Style="{StaticResource TabSymbolStyle}" />
+                        <TextBlock Text="Dictionary" Margin="10,0,10,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!--ManagementViews/DictionaryView-->
             </TabItem>
         </TabControl>
  

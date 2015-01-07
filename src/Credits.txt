@@ -10,6 +10,7 @@ Icons...
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
   Clear icon: Trash designed by Garrett Knoll from the Noun Project (thenounproject.com)
   Currencies icon: Money by Piotrek Chuchla from the Noun Project (thenounproject.com)
+  Dictionary icon: Book by Travis Yunis from the Noun Project (thenounproject.com)
   Left & Right Arrow icons: Arrow designed by Stefan Parnarov from the Noun Project (thenounproject.com)
   Left, Right, Up, Down arrow key icons modified from: Arrow by Milo Miloezger from the Noun Project (thenounproject.com)
   Lock icon: Lock designed by Ugur Akdemir from the Noun Project (thenounproject.com)

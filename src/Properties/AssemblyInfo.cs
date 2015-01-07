@@ -53,7 +53,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-
-//This will become a full version number with Build & Revision parts. Both will be 0.
-//I don't need Build and Revision numbers for the moment, so let's keep this simple.
-[assembly: AssemblyVersion("1.0")] 
+//
+// Later Build and Revision numbers may become useful to represent the release stage (alpha, beta, etc)
+// and revision (fix 1, 2, 3, etc), but let's keep things simple for now.
+[assembly: AssemblyVersion("1.0")]

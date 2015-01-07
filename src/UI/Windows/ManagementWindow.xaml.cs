@@ -1,13 +1,14 @@
 ﻿using System.Windows;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using MahApps.Metro.Controls;
 
 namespace JuliusSweetland.ETTA.UI.Windows
 {
     /// <summary>
     /// Interaction logic for ManagementWindow.xaml
     /// </summary>
-    public partial class ManagementWindow : Window
+    public partial class ManagementWindow : MetroWindow
     {
         private readonly IDictionaryService dictionaryService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
