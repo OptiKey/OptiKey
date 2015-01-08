@@ -97,7 +97,7 @@ publish/
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+packages/
 
 # Windows Azure Build Output
 csx
@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 .DS_Store
 *.DotSettings
 /packages/MahApps.Metro.1.0.0.0
+packages/log4net.2.0.3/lib/net10-full/log4net.xml
+packages/log4net.2.0.3/lib/net11-full/log4net.xml

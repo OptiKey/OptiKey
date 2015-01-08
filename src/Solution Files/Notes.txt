@@ -123,7 +123,7 @@ Get a certificate (1), sign the release build (2) and package ETTA to install to
 
 
 
-
+!!! If DropBox creates another conflicted copy: http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master
 
 
 
