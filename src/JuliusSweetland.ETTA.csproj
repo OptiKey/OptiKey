@@ -365,21 +365,22 @@
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\Dictionary.svg" />
+    <None Include="External Libraries\TET\Info.txt" />
     <Content Include="Solution Files\Certificates and Signing.txt" />
     <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
-    <Content Include="External Libraries\Newtonsoft.Json.dll">
+    <Content Include="External Libraries\TET\Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="External Libraries\Newtonsoft.Json.xml">
+    <Content Include="External Libraries\TET\Newtonsoft.Json.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="External Libraries\TETControls.dll">
+    <Content Include="External Libraries\TET\TETControls.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="External Libraries\TETControls.pdb">
+    <Content Include="External Libraries\TET\TETControls.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="External Libraries\TETCSharpClient.dll">
+    <Content Include="External Libraries\TET\TETCSharpClient.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.manifest" />
