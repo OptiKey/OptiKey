@@ -69,8 +69,9 @@ Think about how to pause/prevent the point source during multi-key selection pro
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 	Need to make sure KeyValueMap is nulled out when a keyboard changes, and only gets set again when the view is rendered fully?
-	Do some testing around when the newContent.Loaded event fires, compared to when the Content is set, and the ContentRendered event fires. Maybe the ContentRendered event would be better?
-	http://msdn.microsoft.com/en-us/library/ms748948.aspx#Window_Lifetime_Events
+	Do some testing around when the newContent.Loaded event fires, compared to when the Content is set, and the ContentRendered event fires. I think Loaded on the content is best, but still test.
+		http://msdn.microsoft.com/en-us/library/ms748948.aspx#Window_Lifetime_Events
+		http://msdn.microsoft.com/en-us/library/system.windows.frameworkelement.loaded(v=vs.110).aspx
 	In GenerateContent - set PointToKeyValueMap = null; before changing the content.
 	Optimise RebuildPointToKeyMap:
 		a)If Content == null then PointToKeyValueMap = null
