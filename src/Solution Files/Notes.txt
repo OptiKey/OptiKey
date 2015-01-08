@@ -135,63 +135,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 {
     public class UserSettingsViewModel : NotificationObject
     {
-        private readonly IDictionaryService dictionaryService;
-
-        #region Private Member Vars
-
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly Action<int, int> beep;
-
-        #endregion
-
-        #region Ctor
-
-        public UserSettingsViewModel(IDictionaryService dictionaryService)
-        {
-            this.dictionaryService = dictionaryService;
-
-            if (dictionaryService == null)
-            {
-                throw new ApplicationException("IDictionaryService not supplied to UserSettingsViewModel - unable to continue");
-            }
-
-            //Setup beep delegate
-            beep = Console.Beep;
-
-            //Instantiate notification request(s)
-            ConfirmationRequest = new InteractionRequest<Confirmation>();
-
-            //Instantiate commands
-            PlayBeepOnCaptureStateIsIdleCommand = new DelegateCommand(PlayBeepOnCaptureStateIsIdle);
-            PlayBeepOnCaptureStateIsCapturingCommand = new DelegateCommand(PlayBeepOnCaptureStateIsCapturing);
-            PlayBeepOnCaptureStateIsEndingCaptureCommand = new DelegateCommand(PlayBeepOnCaptureStateIsEndingCapture);
-            PlayBeepOnCaptureStateIsProcessingCommand = new DelegateCommand(PlayBeepOnCaptureStateIsProcessing);
-            PlayBeepOnNoMatchesCommand = new DelegateCommand(PlayBeepOnNoMatches);
-            TestSpeechCommand = new DelegateCommand(TestSpeech);
-            OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
-            CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
-
-            this.PropertyChanged += OnPropertyChanged;
-
-            LoadSettings();
-        }
-
-        #endregion
-
-        #region On Property Changed
-
-        private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
-        {
-            switch (propertyChangedEventArgs.PropertyName)
-            {
-                case "SpeechSynthesiser":
-                    RaisePropertyChanged(() => SpeechSynthesiserVoices);
-                    break;
-            }
-        }
-
-        #endregion
-
         #region Properties
 
         private Languages language;
@@ -1658,62 +1601,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 speechSynthesisService.Speak("Testing testing 1 2 3", SpeechSynthesiserVolume, SpeechSynthesiserRate, SpeechSynthesiserVoice);
             }
-        }
-
-        #endregion
-
-        #region Rebuild Dictionary
-
-        private void RebuildDictionary()
-        {
-            dictionaryService.LoadDictionary();
-        }
-
-        #endregion
-
-        #region Ok / Cancel
-
-        private void Ok(Window window)
-        {
-            //Check which settings have been changed
-            bool restartRequired = Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                                   || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                                   || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                                   || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                                   || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
-            
-            //Warn if restart required and prompt for Confirmation before restarting
-            if (restartRequired)
-            {
-                ConfirmationRequest.Raise(
-                    new Confirmation
-                    {
-                        Title = "Restart required",
-                        Content = "ETTA needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
-                    }, confirmation =>
-                    {
-                        if (confirmation.Confirmed)
-                        {
-                            SaveSettings();
-                            System.Windows.Forms.Application.Restart();
-                            Application.Current.Shutdown();
-                        }
-                    });
-            }
-            else
-            {
-                if (Settings.Default.Language != Language)
-                {
-                    RebuildDictionary();
-                }
-                SaveSettings();
-                window.Close();
-            }
-        }
-
-        private void Cancel(Window window)
-        {
-            window.Close();
         }
 
         #endregion
