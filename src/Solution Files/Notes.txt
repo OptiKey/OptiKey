@@ -68,6 +68,7 @@ Think about how to pause/prevent the point source during multi-key selection pro
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
+	Need to make sure KeyValueMap is nulled out when a keyboard changes, and only gets set again when the view is rendered fully?
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
