@@ -30,7 +30,8 @@ Management (new window accessed with hotkey)
 		MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
 		MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
 		
-		Pointing & Selecting:		
+		Pointing & Selecting:	
+		! PointSelectionTriggerFixationLockOnTime & CompleteTime & PointSelectionTriggerFixationLockOnTime & CompleteTime	
 		PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
 		PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
 		PointTtl	System.TimeSpan	00:00.150
