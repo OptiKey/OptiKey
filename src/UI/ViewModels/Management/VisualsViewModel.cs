@@ -1,10 +1,6 @@
 using System.Windows;
 using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
 using log4net;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
-using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 {
