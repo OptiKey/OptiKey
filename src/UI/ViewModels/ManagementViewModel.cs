@@ -34,45 +34,42 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         #region Properties
         
+        private bool debug;
+        public bool Debug
+        {
+            get { return debug; }
+            set { SetProperty(ref debug, value); }
+        }
+        
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
         public DelegateCommand<Window> CancelCommand { get; private set; }
         
         #endregion
         
-        #region Load / Save Settings
+        #region Methods
 
         private void LoadSettings()
         {
-            
+            Debug = Settings.Default.Debug;
         }
 
         private void SaveSettings()
         {
+            Settings.Default.Debug = Debug;
             
             Settings.Default.Save();
         }
-        
-        #endregion
-        
-        #region Ok / Cancel
 
         private void Ok(Window window)
         {
-            //Check which settings have been changed
-            bool restartRequired = true;//Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-            //                       || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-            //                       || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-            //                       || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-            //                       || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
-            
             //Warn if restart required and prompt for Confirmation before restarting
-            if (restartRequired)
+            if (ChangesRequireRestart())
             {
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = "May I restart?",
+                        Title = "May I restart ETTA?",
                         Content = "ETTA needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
                     }, confirmation =>
                     {
@@ -98,6 +95,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void Cancel(Window window)
         {
             window.Close();
+        }
+        
+        private bool ChangesRequireRestart()
+        {
+            return false;
+            
+            //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
+            //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
+            //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
+            //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
+            //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
         }
 
         #endregion
