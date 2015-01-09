@@ -22,7 +22,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         public ManagementViewModel(IDictionaryService dictionaryService)
         {
             this.dictionaryService = dictionaryService;
+            
+            //Instantiate child VMs
+            VisualsViewModel = new VisualsViewModel();
+            WordsViewModel = new WordsViewModel();
+            SoundsViewModel = new SoundsViewModel();
+            PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
+            DictionaryViewModel = new DictionaryViewModel();
 
+            //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
             OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
             CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
@@ -40,6 +48,23 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             get { return debug; }
             set { SetProperty(ref debug, value); }
         }
+        
+        public bool ChangesRequireRestart
+        {
+            return false;
+            
+            //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
+            //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
+            //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
+            //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
+            //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+        }
+        
+        public VisualsViewModel VisualsViewModel { public get; private set; }
+        public WordsViewModel WordsViewModel { public get; private set; }
+        public SoundsViewModel SoundsViewModel { public get; private set; }
+        public PointingAndSelectingViewModel PointingAndSelectingViewModel { public get; private set; }
+        public DictionaryViewModel DictionaryViewModel { public get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
@@ -63,8 +88,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void Ok(Window window)
         {
+            var restartRequired = ChangesRequireRestart
+                || VisualViewModel.ChangesRequireRestart
+                || WordsViewModel.ChangesRequireRestart
+                || SoundsViewModel.ChangesRequireRestart
+                || PointingAndSelectingViewModel.ChangesRequireRestart
+                || DictionaryViewModel.ChangesRequireRestart;
+            
             //Warn if restart required and prompt for Confirmation before restarting
-            if (ChangesRequireRestart())
+            if (restartRequired)
             {
                 ConfirmationRequest.Raise(
                     new Confirmation
@@ -95,17 +127,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void Cancel(Window window)
         {
             window.Close();
-        }
-        
-        private bool ChangesRequireRestart()
-        {
-            return false;
-            
-            //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-            //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-            //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-            //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-            //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
         }
 
         #endregion
