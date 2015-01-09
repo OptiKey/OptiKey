@@ -76,9 +76,15 @@
             </TabItem>
         </TabControl>
  
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-             <Button Command="{Binding OkCommand}" Width="100" Margin="5 10">OK</Button>
-             <Button Command="{Binding CancelCommand}" Width="100" Margin="5 10">Cancel</Button>
-        </StackPanel>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Left">
+                <Label Content="Debugging mode: " VerticalAlignment="Center" />
+                <CheckBox IsChecked="{Binding Debug, Mode=TwoWay}" VerticalAlignment="Center" />
+            </Stackpanel>
+            <StackPanel DockPanel.Dock="Right">
+                 <Button Command="{Binding OkCommand}" Width="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
+                 <Button Command="{Binding CancelCommand}" Width="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
