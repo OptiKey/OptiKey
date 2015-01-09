@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.UI.ViewModels;
 using MahApps.Metro.Controls;
 
 namespace JuliusSweetland.ETTA.UI.Windows
@@ -18,6 +19,10 @@ namespace JuliusSweetland.ETTA.UI.Windows
             InitializeComponent();
 
             this.dictionaryService = dictionaryService;
+
+            //Instantiate ManagementViewModel and set as DataContext of ManagementView
+            var managementViewModel = new ManagementViewModel(dictionaryService);
+            this.ManagementView.DataContext = managementViewModel;
 
             //Instantiate window state persistence service and provide accessors to the appropriate settings for this window
             windowStatePersistenceService = new WindowStatePersistenceService(

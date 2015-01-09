@@ -1,6 +1,5 @@
-using System.Windows;
-using JuliusSweetland.ETTA.Properties;
 using log4net;
+using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 {
@@ -22,16 +21,19 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         #endregion
         
         #region Properties
-        
+
         public bool ChangesRequireRestart
         {
-            return false;
-            
-            //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-            //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-            //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-            //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-            //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+            get
+            {
+                return false;
+
+                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
+                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
+                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
+                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
+                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+            }
         }
         
         #endregion

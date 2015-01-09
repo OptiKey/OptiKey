@@ -249,6 +249,11 @@
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\English\SpeechOnly\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
@@ -310,6 +315,21 @@
     </Compile>
     <Compile Include="UI\Views\ManagementView.xaml.cs">
       <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
+      <DependentUpon>DictionaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
+      <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\SoundsView.xaml.cs">
+      <DependentUpon>SoundsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\VisualsView.xaml.cs">
+      <DependentUpon>VisualsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\WordsView.xaml.cs">
+      <DependentUpon>WordsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
@@ -599,6 +619,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Views\Management\DictionaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\PointingAndSelectingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\SoundsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\VisualsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\WordsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -641,10 +681,7 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\ViewModels\Management\" />
-    <Folder Include="UI\Views\Management\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.ETTA.UI.ViewModels.Management;
 using log4net;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
@@ -51,20 +52,23 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         public bool ChangesRequireRestart
         {
-            return false;
-            
-            //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-            //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-            //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-            //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-            //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+            get
+            {
+                return false;
+
+                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
+                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
+                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
+                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
+                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+            }
         }
         
-        public VisualsViewModel VisualsViewModel { public get; private set; }
-        public WordsViewModel WordsViewModel { public get; private set; }
-        public SoundsViewModel SoundsViewModel { public get; private set; }
-        public PointingAndSelectingViewModel PointingAndSelectingViewModel { public get; private set; }
-        public DictionaryViewModel DictionaryViewModel { public get; private set; }
+        public VisualsViewModel VisualsViewModel { get; private set; }
+        public WordsViewModel WordsViewModel { get; private set; }
+        public SoundsViewModel SoundsViewModel { get; private set; }
+        public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
+        public DictionaryViewModel DictionaryViewModel { get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
@@ -89,7 +93,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private void Ok(Window window)
         {
             var restartRequired = ChangesRequireRestart
-                || VisualViewModel.ChangesRequireRestart
+                || VisualsViewModel.ChangesRequireRestart
                 || WordsViewModel.ChangesRequireRestart
                 || SoundsViewModel.ChangesRequireRestart
                 || PointingAndSelectingViewModel.ChangesRequireRestart

@@ -3,16 +3,11 @@
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                      xmlns:views="clr-namespace:JuliusSweetland.ETTA.UI.Views"
-                     xmlns:viewModels="clr-namespace:JuliusSweetland.ETTA.UI.ViewModels"
                      Title="Management Console"
                      Topmost="True"
                      MinWidth="300" MinHeight="200"
                      Icon="..\..\Resources\Icons\Management.ico">
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
 
-    <views:ManagementView>
-        <views:ManagementView.DataContext>
-            <viewModels:ManagementViewModel />
-        </views:ManagementView.DataContext>    
-    </views:ManagementView>
+    <views:ManagementView x:Name="ManagementView" />
 </mahapps:MetroWindow>
