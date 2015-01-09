@@ -28,7 +28,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             WordsViewModel = new WordsViewModel();
             SoundsViewModel = new SoundsViewModel();
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
-            DictionaryViewModel = new DictionaryViewModel();
+            DictionaryViewModel = new DictionaryViewModel(dictionaryService);
 
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
