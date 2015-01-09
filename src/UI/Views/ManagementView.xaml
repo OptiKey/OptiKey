@@ -36,7 +36,7 @@
                         <TextBlock Text="Visual" Margin="10,0,10,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--ManagementViews/VisualView-->
+                <managementViews:VisualView DataContext="{Binding VisualViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -45,7 +45,7 @@
                         <TextBlock Text="Sounds" Margin="10,0,10,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--ManagementViews/SoundView-->
+                <managementViews:SoundView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -54,7 +54,7 @@
                         <TextBlock Text="Words" Margin="10,0,10,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--ManagementViews/WordView-->
+                <managementViews:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -63,7 +63,7 @@
                         <TextBlock Text="Pointing &amp; Selecting" Margin="10,0,10,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--ManagementViews/PointingAndSelectingView-->
+                <managementViews:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -72,7 +72,7 @@
                         <TextBlock Text="Dictionary" Margin="10,0,10,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--ManagementViews/DictionaryView-->
+                <managementViews:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
             </TabItem>
         </TabControl>
  
