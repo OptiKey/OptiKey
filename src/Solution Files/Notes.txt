@@ -10,7 +10,7 @@ Management (new window accessed with hotkey)
 		X FontFamily	System.String	/Resources/Fonts/#Roboto
 		X FontStretch	System.String	Condensed
 		X FontWeight	System.String	Regular
-		ScratchpadNumberOfLines	System.Int32	2
+		X ScratchpadNumberOfLines	System.Int32	2
 		ToastNotificationTitleFontSize	System.Int32	25
 		ToastNotificationContentFontSize	System.Int32	16
 		VisualMode setting - SpeechOnly / Standard

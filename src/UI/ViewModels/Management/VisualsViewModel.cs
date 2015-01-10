@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
@@ -85,6 +87,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
+        public List<KeyValuePair<string, VisualModes>> VisualModes
+        {
+            get
+            {
+                return new List<KeyValuePair<string, VisualModes>>
+                {
+                    new KeyValuePair<string, VisualModes>("Standard", Enums.VisualModes.Standard),
+                    new KeyValuePair<string, VisualModes>("Speech Only", Enums.VisualModes.SpeechOnly)
+                };
+            }
+        }
+
         private string theme;
         public string Theme
         {
@@ -122,6 +136,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             set { SetProperty(ref fontWeight, value); }
         }
 
+        private int scratchpadNumberOfLines;
+        public int ScratchpadNumberOfLines
+        {
+            get { return scratchpadNumberOfLines; }
+            set { SetProperty(ref scratchpadNumberOfLines, value); }
+        }
+
+        private VisualModes visualMode;
+        public VisualModes VisualMode
+        {
+            get { return visualMode; }
+            set { SetProperty(ref visualMode, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get { return false; }
@@ -137,6 +165,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             FontFamily = Settings.Default.FontFamily;
             FontStretch = Settings.Default.FontStretch;
             FontWeight = Settings.Default.FontWeight;
+            ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
+            VisualMode = Settings.Default.VisualMode;
         }
 
         public void ApplyChanges()
@@ -145,6 +175,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             Settings.Default.FontFamily = FontFamily;
             Settings.Default.FontStretch = FontStretch;
             Settings.Default.FontWeight = fontWeight;
+            Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
+            Settings.Default.VisualMode = VisualMode;
             Settings.Default.Save();
         }
 
