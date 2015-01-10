@@ -6,90 +6,38 @@
              xmlns:management="clr-namespace:JuliusSweetland.ETTA.UI.Views.Management"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
-                <ResourceDictionary>
-                    <Style x:Key="TabSymbolStyle" TargetType="{x:Type Path}">
-                        <Setter Property="Stretch" Value="Uniform" />
-                        <Setter Property="Width" Value="32" />
-                        <Setter Property="Height" Value="32" />
-                        <Setter Property="Margin" Value="2" />
-                        <Setter Property="Fill" Value="Black" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-             
     <Grid>
         <Grid.RowDefinitions>
-             <RowDefinition/>
+             <RowDefinition Height="*"/>
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-         
         <TabControl>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" MinWidth="100">
-                        <Path Data="{StaticResource ThemeSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                        <TextBlock Text="Visual" Margin="10,0,10,0" VerticalAlignment="Center" />
-                    </StackPanel>
-                </TabItem.Header>
-                <management:VisualsView DataContext="{Binding VisualViewModel, Mode=OneWay}" />
+            <TabItem Header="Visuals">
+                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" MinWidth="100">
-                        <Path Data="{StaticResource SoundSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                        <TextBlock Text="Sounds" Margin="10,0,10,0" VerticalAlignment="Center" />
-                    </StackPanel>
-                </TabItem.Header>
+            <TabItem Header="Sounds">
                 <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" MinWidth="100">
-                        <Path Data="{StaticResource WordSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                        <TextBlock Text="Words" Margin="10,0,10,0" VerticalAlignment="Center" />
-                    </StackPanel>
-                </TabItem.Header>
+            <TabItem Header="Words">
                 <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" MinWidth="100">
-                        <Path Data="{StaticResource PointingAndSelectingSettingsIcon}" Style="{StaticResource TabSymbolStyle}" />
-                        <TextBlock Text="Pointing &amp; Selecting" Margin="10,0,10,0" VerticalAlignment="Center" />
-                    </StackPanel>
-                </TabItem.Header>
+            <TabItem Header="Pointing &amp; Selecting">
                 <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal" MinWidth="100">
-                        <Path Data="{StaticResource DictionaryIcon}" Style="{StaticResource TabSymbolStyle}" />
-                        <TextBlock Text="Dictionary" Margin="10,0,10,0" VerticalAlignment="Center" />
-                    </StackPanel>
-                </TabItem.Header>
+            <TabItem Header="Dictionary">
                 <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
             </TabItem>
+            <TabItem Header="Other">
+                <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
+            </TabItem>
         </TabControl>
- 
-        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" LastChildFill="True">
-            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
-                <Label Content="Debugging mode: " VerticalAlignment="Center" />
-                <CheckBox IsChecked="{Binding Debug, Mode=TwoWay}" VerticalAlignment="Center" />
-            </StackPanel>
-            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                 <Button Command="{Binding OkCommand}" 
-                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                         Width="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
-                 <Button Command="{Binding CancelCommand}" 
-                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                         Width="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
-            </StackPanel>
-        </DockPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding OkCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                        Width="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
+                <Button Command="{Binding CancelCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                        Width="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

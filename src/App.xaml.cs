@@ -102,7 +102,7 @@ namespace JuliusSweetland.ETTA
                 //Create services
                 var notifyErrorServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
-                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.Language);
+                IDictionaryService dictionaryService = new DictionaryService();
                 IPublishService publishService = new PublishService();
                 ISuggestionService suggestionService = new SuggestionService();
                 ICalibrationService calibrationService = CreateCalibrationService();

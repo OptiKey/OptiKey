@@ -5,7 +5,45 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="Visuals View" />
+    
+    <Grid IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
+                   VerticalAlignment="Center" Margin="5" />
+        <ComboBox Grid.Row="0" Grid.Column="1" 
+                  ItemsSource="{Binding Themes}"
+                  DisplayMemberPath="Key"
+                  SelectedValuePath="Value"
+                  SelectedValue="{Binding Theme, Mode=TwoWay}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Font family:" 
+                   VerticalAlignment="Center" Margin="5" />
+        <ComboBox Grid.Row="1" Grid.Column="1" 
+                  ItemsSource="{Binding FontFamilies}"
+                  DisplayMemberPath="Key"
+                  SelectedValuePath="Value"
+                  SelectedValue="{Binding FontFamily, Mode=TwoWay}" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Font stretch:" 
+                   VerticalAlignment="Center" Margin="5" />
+        <ComboBox Grid.Row="2" Grid.Column="1" 
+                  ItemsSource="{Binding FontStretches}"
+                  SelectedValue="{Binding FontStretch, Mode=TwoWay}" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Font weight:" 
+                   VerticalAlignment="Center" Margin="5" />
+        <ComboBox Grid.Row="3" Grid.Column="1" 
+                  ItemsSource="{Binding FontWeights}"
+                  SelectedValue="{Binding FontWeight, Mode=TwoWay}" />
     </Grid>
 </UserControl>

@@ -14,7 +14,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly IDictionaryService dictionaryService;
 
         #endregion
         
@@ -22,53 +21,43 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         public ManagementViewModel(IDictionaryService dictionaryService)
         {
-            this.dictionaryService = dictionaryService;
-            
             //Instantiate child VMs
-            VisualsViewModel = new VisualsViewModel();
-            WordsViewModel = new WordsViewModel();
-            SoundsViewModel = new SoundsViewModel();
-            PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
-
+            OtherViewModel = new OtherViewModel();
+            PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
+            SoundsViewModel = new SoundsViewModel();
+            VisualsViewModel = new VisualsViewModel();
+            WordsViewModel = new WordsViewModel(dictionaryService);
+            
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
             OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
             CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
-            
-            LoadSettings();
         }
         
         #endregion
         
         #region Properties
         
-        private bool debug;
-        public bool Debug
-        {
-            get { return debug; }
-            set { SetProperty(ref debug, value); }
-        }
-        
         public bool ChangesRequireRestart
         {
             get
             {
-                return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+                return DictionaryViewModel.ChangesRequireRestart
+                    || OtherViewModel.ChangesRequireRestart
+                    || PointingAndSelectingViewModel.ChangesRequireRestart
+                    || SoundsViewModel.ChangesRequireRestart
+                    || VisualsViewModel.ChangesRequireRestart
+                    || WordsViewModel.ChangesRequireRestart;
             }
         }
-        
+
+        public DictionaryViewModel DictionaryViewModel { get; private set; }
+        public OtherViewModel OtherViewModel { get; private set; }
+        public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
+        public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModel VisualsViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
-        public SoundsViewModel SoundsViewModel { get; private set; }
-        public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
-        public DictionaryViewModel DictionaryViewModel { get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
@@ -78,30 +67,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         #region Methods
 
-        private void LoadSettings()
+        private void ApplyChanges()
         {
-            Debug = Settings.Default.Debug;
-        }
-
-        private void SaveSettings()
-        {
-            Settings.Default.Debug = Debug;
-            
-            Settings.Default.Save();
+            DictionaryViewModel.ApplyChanges();
+            OtherViewModel.ApplyChanges();
+            PointingAndSelectingViewModel.ApplyChanges();
+            SoundsViewModel.ApplyChanges();
+            VisualsViewModel.ApplyChanges();
+            WordsViewModel.ApplyChanges();
         }
 
         private void Ok(Window window)
         {
-            var restartRequired = ChangesRequireRestart
-                || VisualsViewModel.ChangesRequireRestart
-                || WordsViewModel.ChangesRequireRestart
-                || SoundsViewModel.ChangesRequireRestart
-                || PointingAndSelectingViewModel.ChangesRequireRestart
-                || DictionaryViewModel.ChangesRequireRestart;
-            
-            //Warn if restart required and prompt for Confirmation before restarting
-            if (restartRequired)
+            if (ChangesRequireRestart)
             {
+                //Warn if restart required and prompt for Confirmation before restarting
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
@@ -111,7 +91,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     {
                         if (confirmation.Confirmed)
                         {
-                            SaveSettings();
+                            ApplyChanges();
                             System.Windows.Forms.Application.Restart();
                             Application.Current.Shutdown();
                         }
@@ -119,11 +99,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             }
             else
             {
-                //if (Settings.Default.Language != Language)
-                //{
-                //    dictionaryService.LoadDictionary(Language);
-                //}
-                SaveSettings();
+                ApplyChanges();
                 window.Close();
             }
         }

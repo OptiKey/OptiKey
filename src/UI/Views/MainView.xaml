@@ -30,51 +30,37 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" >
-            <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                                   PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
-                <controls:KeyboardHost.ErrorContent>
-                    <Border Background="Black">
-                        <Viewbox>
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <TextBlock Text="PROBLEM LOADING KEYBOARD" HorizontalAlignment="Center" 
-                                                VerticalAlignment="Center" Foreground="DarkRed"  Margin="10" />
-                                <TextBlock Text="The current keyboard &amp; language combination is not valid"
-                                                HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                                Foreground="DarkRed" Margin="10" />
-                            </StackPanel>
-                        </Viewbox>
-                    </Border>
-                </controls:KeyboardHost.ErrorContent>
-            </controls:KeyboardHost>
+        <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
+                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+            <controls:KeyboardHost.ErrorContent>
+                <Border Background="Black">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <TextBlock Text="PROBLEM LOADING KEYBOARD" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" Foreground="DarkRed"  Margin="10" />
+                            <TextBlock Text="The current keyboard &amp; language combination is not valid"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                            Foreground="DarkRed" Margin="10" />
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+            </controls:KeyboardHost.ErrorContent>
+        </controls:KeyboardHost>
             
-            <controls:PointVisualiser Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
-                                                           Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                                      PointsToDisplay="{Binding SelectionResultPoints, Mode=OneWay}" />
+        <controls:PointVisualiser Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
+                                                       Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                                  PointsToDisplay="{Binding SelectionResultPoints, Mode=OneWay}" />
 
-             <TextBlock Text="{Binding ApplicationAndSystemInfo}" 
+            <TextBlock Text="{Binding ApplicationAndSystemInfo}" 
                        Foreground="{DynamicResource DebugTextForegroundBrush}"
                        Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                             Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                        HorizontalAlignment="Left" VerticalAlignment="Bottom" />
 
-            <TextBlock Text="{Binding PointsPerSecond, StringFormat='{}{0} points per second'}" 
-                       Foreground="{DynamicResource DebugTextForegroundBrush}"
-                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
-                                            Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                       HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-        </Grid>
-
-        <ComboBox Grid.Row="1" SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Theme}">
-            <ComboBox.Items>
-                <system:String>/Resources/Themes/Android_Dark.xaml</system:String>
-                <system:String>/Resources/Themes/Android_Light.xaml</system:String>
-            </ComboBox.Items>
-        </ComboBox>
+        <TextBlock Text="{Binding PointsPerSecond, StringFormat='{}{0} points per second'}" 
+                   Foreground="{DynamicResource DebugTextForegroundBrush}"
+                   Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
+                                        Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom" />
     </Grid>
 </UserControl>

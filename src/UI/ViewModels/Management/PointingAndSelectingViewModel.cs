@@ -45,7 +45,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             //Debug = Settings.Default.Debug;
         }
 
-        private void SaveSettings()
+        public void ApplyChanges()
         {
             //Settings.Default.Debug = Debug;
             

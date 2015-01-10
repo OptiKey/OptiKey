@@ -9,7 +9,7 @@ namespace JuliusSweetland.ETTA.Services
 {
     public interface IDictionaryService : INotifyErrors
     {
-        void LoadDictionary(Languages language);
+        void LoadDictionary();
         bool ExistsInDictionary(string entryToFind);
         IEnumerable<string> GetHashes();
         IEnumerable<DictionaryEntryWithUsageCount> GetAllEntriesWithUsageCounts();

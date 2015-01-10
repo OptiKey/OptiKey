@@ -11,14 +11,11 @@ namespace JuliusSweetland.ETTA.UI.Windows
     /// </summary>
     public partial class ManagementWindow : MetroWindow
     {
-        private readonly IDictionaryService dictionaryService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
 
         public ManagementWindow(IDictionaryService dictionaryService)
         {
             InitializeComponent();
-
-            this.dictionaryService = dictionaryService;
 
             //Instantiate ManagementViewModel and set as DataContext of ManagementView
             var managementViewModel = new ManagementViewModel(dictionaryService);

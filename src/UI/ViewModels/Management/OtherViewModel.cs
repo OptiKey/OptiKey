@@ -1,9 +1,10 @@
+using JuliusSweetland.ETTA.Properties;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 {
-    public class SoundsViewModel : BindableBase
+    public class OtherViewModel : BindableBase
     {
         #region Private Member Vars
 
@@ -13,7 +14,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Ctor
 
-        public SoundsViewModel()
+        public OtherViewModel()
         {
             LoadSettings();
         }
@@ -22,17 +23,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
 
+        private bool debug;
+        public bool Debug
+        {
+            get { return debug; }
+            set { SetProperty(ref debug, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get
             {
                 return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
             }
         }
         
@@ -42,14 +44,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private void LoadSettings()
         {
-            //Debug = Settings.Default.Debug;
+            Debug = Settings.Default.Debug;
         }
 
         public void ApplyChanges()
         {
-            //Settings.Default.Debug = Debug;
-            
-            //Settings.Default.Save();
+            Settings.Default.Debug = Debug;
+            Settings.Default.Save();
         }
 
         #endregion

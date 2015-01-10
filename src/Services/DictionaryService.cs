@@ -25,8 +25,7 @@ namespace JuliusSweetland.ETTA.Services
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private Languages? loadedLanguage;
+        
         private Dictionary<string, List<DictionaryEntryWithUsageCount>> dictionary;
 
         #endregion
@@ -39,40 +38,38 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Ctor
 
-        public DictionaryService(Languages language)
+        public DictionaryService()
         {
-            LoadDictionary(language);
+            LoadDictionary();
         }
 
         #endregion
 
         #region Load / Save Dictionary
 
-        public void LoadDictionary(Languages language)
+        public void LoadDictionary()
         {
-            Log.Debug(string.Format("LoadDictionary called with language '{0}'.", language));
+            Log.Debug(string.Format("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language));
 
             try
             {
                 dictionary = new Dictionary<string, List<DictionaryEntryWithUsageCount>>();
 
                 //Load the user dictionary
-                var userDictionaryPath = GetUserDictionaryPath(language);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
 
                 if (File.Exists(userDictionaryPath))
                 {
                     LoadUserDictionaryFromFile(userDictionaryPath);
-                    loadedLanguage = language;
                 }
                 else
                 {
                     //Load the original dictionary
-                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, language, DictionaryFileType));
+                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.Language, DictionaryFileType));
 
                     if (File.Exists(originalDictionaryPath))
                     {
                         LoadOriginalDictionaryFromFile(originalDictionaryPath);
-                        loadedLanguage = language;
                         SaveUserDictionaryToFile(); //Create a user specific version of the dictionary
                     }
                     else
@@ -140,12 +137,7 @@ namespace JuliusSweetland.ETTA.Services
         {
             try
             {
-                if (loadedLanguage == null)
-                {
-                    throw new ArgumentException("No language is currently loaded. Unable to save user dictionary.");
-                }
-
-                var userDictionaryPath = GetUserDictionaryPath(loadedLanguage);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
 
                 Log.Debug(string.Format("Saving user dictionary to file '{0}'", userDictionaryPath));
 

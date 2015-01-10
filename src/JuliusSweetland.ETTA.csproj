@@ -253,6 +253,7 @@
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\English\SpeechOnly\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
@@ -315,6 +316,9 @@
     </Compile>
     <Compile Include="UI\Views\ManagementView.xaml.cs">
       <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\OtherView.xaml.cs">
+      <DependentUpon>OtherView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
       <DependentUpon>DictionaryView.xaml</DependentUpon>
@@ -384,7 +388,6 @@
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Dictionary.svg" />
     <None Include="External Libraries\TET\Info.txt" />
     <Content Include="Solution Files\Certificates and Signing.txt" />
     <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
@@ -418,14 +421,9 @@
     <None Include="Resources\Icons\SVG Source Files\Padlock.svg" />
     <None Include="Resources\Icons\SVG Source Files\Dot.svg" />
     <None Include="Resources\Icons\SVG Source Files\Calibrate.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Settings.svg" />
     <None Include="Resources\Icons\SVG Source Files\AccentedLetters.svg" />
     <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
     <None Include="Resources\Icons\SVG Source Files\PhysicalKeys.svg" />
-    <None Include="Resources\Icons\SVG Source Files\PointingAndSelectingSettings.svg" />
-    <None Include="Resources\Icons\SVG Source Files\SoundSettings.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ThemeSettings.svg" />
-    <None Include="Resources\Icons\SVG Source Files\WordSettings.svg" />
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -618,6 +616,10 @@
     <Page Include="UI\Views\ManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Management\OtherView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\DictionaryView.xaml">
       <Generator>MSBuild:Compile</Generator>

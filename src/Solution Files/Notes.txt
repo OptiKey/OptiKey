@@ -1,12 +1,15 @@
-﻿Move Activation out of TET point source ctor - do it when first event listener attaches.
+﻿X Move Activation out of TET point source ctor - do it when first event listener attaches.
 	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
+
+Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
+	Ok when exe run directly, but not when run using visual studio debugging.
 
 Management (new window accessed with hotkey)
 		Visuals:		
-		Theme	System.String	/Resources/Themes/Android_Dark.xaml
-		FontFamily	System.String	/Resources/Fonts/#Roboto
-		FontStretch	System.String	Condensed
-		FontWeight	System.String	Regular
+		X Theme	System.String	/Resources/Themes/Android_Dark.xaml
+		X FontFamily	System.String	/Resources/Fonts/#Roboto
+		X FontStretch	System.String	Condensed
+		X FontWeight	System.String	Regular
 		ScratchpadNumberOfLines	System.Int32	2
 		ToastNotificationTitleFontSize	System.Int32	25
 		ToastNotificationContentFontSize	System.Int32	16
@@ -1478,7 +1481,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             PointsPerSecondColour = Settings.Default.PointsPerSecondColour;
         }
 
-        private void SaveSettings()
+        private void ApplyChanges()
         {
             Settings.Default.Language = Language;
 

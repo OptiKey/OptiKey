@@ -1,3 +1,6 @@
+using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.Services;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -5,6 +8,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 {
     public class WordsViewModel : BindableBase
     {
+        private readonly IDictionaryService dictionaryService;
+
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -13,15 +18,24 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Ctor
 
-        public WordsViewModel()
+        public WordsViewModel(IDictionaryService dictionaryService)
         {
+            this.dictionaryService = dictionaryService;
+
             LoadSettings();
         }
-        
+
         #endregion
         
         #region Properties
         
+        private Languages language;
+        public Languages Language
+        {
+            get { return language; }
+            set { SetProperty(ref this.language, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get
@@ -42,14 +56,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private void LoadSettings()
         {
-            //Debug = Settings.Default.Debug;
+            Language = Settings.Default.Language;
         }
 
-        private void SaveSettings()
+        public void ApplyChanges()
         {
-            //Settings.Default.Debug = Debug;
-            
-            //Settings.Default.Save();
+            bool reloadDictionary = Settings.Default.Language != Language;
+
+            Settings.Default.Language = Language;
+            Settings.Default.Save();
+
+            if (reloadDictionary)
+            {
+                dictionaryService.LoadDictionary();
+            }
         }
 
         #endregion
