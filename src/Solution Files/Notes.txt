@@ -53,7 +53,7 @@ Management (new window accessed with hotkey)
 		Dictionary management:
 		Add
 		Remove
-			Do we need 2 remove entry methods? What's the point of not saving after removing?
+			Do we need 2 remove entry methods? What's the point of not saving after removing? void RemoveEntryFromDictionary(string entry) NOT used
 			Entry+State class (AddRemovedStates enum and AddRemovedStates? State property = null, added, deleted)
 
 		X Other:
