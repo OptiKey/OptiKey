@@ -55,8 +55,8 @@ Management (new window accessed with hotkey)
 		Remove
 			Do we need 2 remove entry methods? What's the point of not saving after removing?
 
-		Other:
-		Debug mode (setting)
+		X Other:
+		X Debug mode (setting)
 
 	Application.Restart(); after changing some of the settings? Prompt user to restart (after saving) if certain settings have been changed.
 
