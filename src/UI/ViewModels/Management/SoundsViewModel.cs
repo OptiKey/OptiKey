@@ -31,6 +31,64 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             get { return audioService.GetAvailableVoices(); }
         }
         
+        public List<KeyValuePair<string, string>> InfoSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Info 1", "Resources\Sounds\Info1.wav"),
+                    new KeyValuePair<string, string>("Info 2", "Resources\Sounds\Info2.wav")
+                };
+            }
+        }
+        
+        public List<KeyValuePair<string, string>> SelectionSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Selection 1", "Resources\Sounds\Selection1.wav"),
+                    new KeyValuePair<string, string>("Selection 2", "Resources\Sounds\Selection2.wav")
+                };
+            }
+        }
+        
+        public List<KeyValuePair<string, string>> ErrorSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Error 1", "Resources\Sounds\Error1.wav"),
+                    new KeyValuePair<string, string>("Error 2", "Resources\Sounds\Error2.wav")
+                };
+            }
+        }
+        
+        public List<KeyValuePair<string, string>> MultiKeySelectionCaptureStartSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Start Capture 1", "Resources\Sounds\MultiKeyCaptureStart1.wav")
+                };
+            }
+        }
+        
+        public List<KeyValuePair<string, string>> MultiKeySelectionCaptureEndSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("End Capture 1", "Resources\Sounds\MultiKeyCaptureEnd1.wav")
+                };
+            }
+        }
+        
         private string speechVoice;
         public string SpeechVoice
         {
