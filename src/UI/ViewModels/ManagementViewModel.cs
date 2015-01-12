@@ -19,13 +19,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         
         #region Ctor
 
-        public ManagementViewModel(IDictionaryService dictionaryService)
+        public ManagementViewModel(
+            IAudioService audioService,
+            IDictionaryService dictionaryService)
         {
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
             OtherViewModel = new OtherViewModel();
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
-            SoundsViewModel = new SoundsViewModel();
+            SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
             
