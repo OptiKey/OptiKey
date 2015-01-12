@@ -214,8 +214,8 @@ namespace JuliusSweetland.ETTA.Services
             else if (CapturingMultiKeySelection)
             {
                 //We are capturing and may have received the stop capturing signal
-                if ((triggerSignal.Signal >= 1 && Settings.Default.SelectionTriggerStopSignal == TriggerStopSignals.NextHigh)
-                    || (triggerSignal.Signal <= -1 && Settings.Default.SelectionTriggerStopSignal == TriggerStopSignals.NextLow))
+                if ((triggerSignal.Signal >= 1 && Settings.Default.MultiKeySelectionTriggerStopSignal == TriggerStopSignals.NextHigh)
+                    || (triggerSignal.Signal <= -1 && Settings.Default.MultiKeySelectionTriggerStopSignal == TriggerStopSignals.NextLow))
                 {
                     //If we are using a fixation trigger source then the stop signal must occur on a letter
                     if (!(selectionTriggerSource is IFixationTriggerSource)
