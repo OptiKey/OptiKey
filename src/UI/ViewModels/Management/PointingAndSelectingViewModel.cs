@@ -26,13 +26,29 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             get
             {
-                return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
+                Settings.Default.PointsSource != PointsSource
+                  || (Settings.Default.PointsMousePositionSampleInterval != PointsMousePositionSampleInterval 
+                     && PointsSource == PointSources.MousePosition)
+                  || Settings.Default.PointTtl != PointTtl
+                  || Settings.Default.KeySelectionTriggerSource != KeySelectionTriggerSource
+                  || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
+                  || (Settings.Default.SelectionTriggerKeyboardKeyDownUpKey != SelectionTriggerKeyboardKeyDownUpKey 
+                     && (KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps || PointSelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps))
+                  || (Settings.Default.SelectionTriggerMouseDownUpButton != SelectionTriggerMouseDownUpButton
+                     && (KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps || PointSelectionTriggerSource == TriggerSources.MouseButtonDownUps))
+                  || (Settings.Default.PointSelectionTriggerFixationLockOnTime != PointSelectionTriggerFixationLockOnTime 
+                     && PointSelectionTriggerSource == TriggerSources.Fixations)
+                  || (Settings.Default.PointSelectionTriggerFixationCompleteTime != PointSelectionTriggerFixationCompleteTime 
+                     && PointSelectionTriggerSource == TriggerSources.Fixations)
+                  || (Settings.Default.PointSelectionTriggerFixationRadius != PointSelectionTriggerFixationRadius 
+                     && PointSelectionTriggerSource == TriggerSources.Fixations)
+                  || (Settings.Default.KeySelectionTriggerFixationLockOnTime != KeySelectionTriggerFixationLockOnTime 
+                     && KeySelectionTriggerSource == TriggerSources.Fixations)
+                  || (Settings.Default.KeySelectionTriggerFixationCompleteTime != KeySelectionTriggerFixationCompleteTime 
+                     && KeySelectionTriggerSource == TriggerSources.Fixations)
+                  || Settings.Default.SelectionTriggerStopSignal != SelectionTriggerStopSignal
+                  || Settings.Default.MultiKeySelectionFixationMinDwellTime != MultiKeySelectionFixationMinDwellTime
+                  || Settings.Default.MultiKeySelectionMaxDuration != MultiKeySelectionMaxDuration;
             }
         }
         
