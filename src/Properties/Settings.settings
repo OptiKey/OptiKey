@@ -5,7 +5,7 @@
     <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ins</Value>
     </Setting>
-    <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
+    <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
     </Setting>
     <Setting Name="SelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
