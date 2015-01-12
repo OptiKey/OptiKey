@@ -16,7 +16,7 @@ namespace JuliusSweetland.ETTA.UI.Windows
         private readonly IDictionaryService dictionaryService;
         private readonly IKeyboardService keyboardService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
-        private readonly InteractionRequest<NotificationWithDictionaryService> managementWindowRequest;
+        private readonly InteractionRequest<NotificationWithServices> managementWindowRequest;
 
         public MainWindow(
             IDictionaryService dictionaryService,
@@ -36,7 +36,7 @@ namespace JuliusSweetland.ETTA.UI.Windows
                 () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                 Settings.Default);
 
-            managementWindowRequest = new InteractionRequest<NotificationWithDictionaryService>();
+            managementWindowRequest = new InteractionRequest<NotificationWithServices>();
 
             //Setup key binding (Alt-C) to open settings
             var openSettingsKeyBinding = new KeyBinding
@@ -70,12 +70,13 @@ namespace JuliusSweetland.ETTA.UI.Windows
             };
         }
 
-        public InteractionRequest<NotificationWithDictionaryService> ManagementWindowRequest { get { return managementWindowRequest; } }
+        public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }
 
         private void RequestManagementWindow()
         {
             keyboardService.KeyEnabledStates.DisableAll = true;
-            ManagementWindowRequest.Raise(new NotificationWithDictionaryService { DictionaryService = dictionaryService },
+            ManagementWindowRequest.Raise(new NotificationWithServices 
+                { AudioService = audioService, DictionaryService = dictionaryService },
                 _ => { keyboardService.KeyEnabledStates.DisableAll = false; });
         }
     }
