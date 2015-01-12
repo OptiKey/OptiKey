@@ -99,7 +99,7 @@ Publish as ClickOnce
 --------------------------------------------------------------------------------
 
 TO DO?
-Add transparency - accessible from keyboard?
+Add transparency - accessible from keyboard? Just sent Window.Opacity?
 Add support for USB (hardware) buttons (to act as triggers)?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
 Character codes – ALT on/lock, then numbers, then ALT off
