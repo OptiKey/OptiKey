@@ -315,6 +315,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Stop signal:" 
@@ -329,6 +330,11 @@
                        VerticalAlignment="Center" Margin="5"/>
             <TimeSpanControl Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                              Value="{Binding MultiKeySelectionFixationMinDwellTime, Mode=TwoWay}"/>
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Maxmimum capture time (timeout):" 
+                       VerticalAlignment="Center" Margin="5"/>
+            <TimeSpanControl Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding MultiKeySelectionMaxDuration, Mode=TwoWay}"/>
         </GroupBox>
     </Grid>
 </UserControl>
