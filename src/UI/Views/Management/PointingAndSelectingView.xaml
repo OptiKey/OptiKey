@@ -302,10 +302,10 @@
                         <Style TargetType="{x:Type ComboBox}">
                             <Setter Property="Visibility" Value="Collapsed" />
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding MouseButtonDownUps}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
+                                <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
                                     <Setter Property="Visibility" Value="Visible" />
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding MouseButtonDownUps}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
+                                <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
                                     <Setter Property="Visibility" Value="Visible" />
                                 </DataTrigger>
                             </Style.Triggers>
