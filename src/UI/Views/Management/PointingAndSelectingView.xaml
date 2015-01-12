@@ -62,11 +62,10 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Time until point becomes irrelevent:" 
                        VerticalAlignment="Center" Margin="5" />
             <TimeSpanControl Grid.Row="2" Grid.Column="1" TextAlignment="Left"
-                                    Minimum="-10" Maximum="10" Interval="1"
-                                    Value="{Binding PointTtl, Mode=TwoWay}" />
+                             Value="{Binding PointTtl, Mode=TwoWay}" />
         </GroupBox>
         
-        <GroupBox Grid.Row="1" Header="Sound effects">
+        <GroupBox Grid.Row="1" Header="Selection">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -77,47 +76,25 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Info:" 
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Key selection source:" 
                        VerticalAlignment="Center" Margin="5" />
             <ComboBox Grid.Row="0" Grid.Column="1" 
-                      ItemsSource="{Binding InfoSoundFiles}"
+                      ItemsSource="{Binding TriggerSources}"
                       DisplayMemberPath="Key"
                       SelectedValuePath="Value"
-                      SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
+                      SelectedValue="{Binding KeySelectionTriggerSource, Mode=TwoWay}" />
     
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Selection:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="1" Grid.Column="1" 
-                      ItemsSource="{Binding SelectionSoundFiles}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding SelectionSoundFile, Mode=TwoWay}" />
-            
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Error:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="2" Grid.Column="1" 
-                      ItemsSource="{Binding ErrorSoundFiles}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
-            
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Muli-key selection starting:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="3" Grid.Column="1" 
-                      ItemsSource="{Binding MultiKeySelectionCaptureStartSoundFiles}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding MultiKeySelectionCaptureStartSoundFile, Mode=TwoWay}" />
-            
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Muli-key selection ending:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="4" Grid.Column="1" 
-                      ItemsSource="{Binding MultiKeySelectionCaptureEndSoundFiles}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding MultiKeySelectionCaptureEndSoundFile, Mode=TwoWay}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Key fixation lock-on time:" 
+                       VerticalAlignment="Center" Margin="5">
+             
+            <TimeSpanControl Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding KeySelectionTriggerFixationLockOnTime, Mode=TwoWay}" />
         </GroupBox>
     </Grid>
 </UserControl>
