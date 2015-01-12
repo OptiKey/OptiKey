@@ -5,7 +5,7 @@ Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
 	Ok when exe run directly, but not when run using visual studio debugging.
 
 Management (new window accessed with hotkey)
-		Visuals:		
+		X Visuals:		
 		X Theme	System.String	/Resources/Themes/Android_Dark.xaml
 		X FontFamily	System.String	/Resources/Fonts/#Roboto
 		X FontStretch	System.String	Condensed
@@ -15,7 +15,7 @@ Management (new window accessed with hotkey)
 		X ToastNotificationContentFontSize	System.Int32	16
 		X VisualMode setting - SpeechOnly / Standard
 		
-		Words:		
+		X Words:		
 		X Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
 			http://stackoverflow.com/questions/6145888/how-to-bind-an-enum-to-a-combobox-control-in-wpf
 			
@@ -23,15 +23,15 @@ Management (new window accessed with hotkey)
 		X AutoCapitalise	System.Boolean	TRUE
 		X MultiKeySelectionMaxDictionaryMatches	System.Int32	40
 		
-		Sounds:		
-		SpeechVoice	System.String	
-		SpeechVolume	System.Int32	100
-		SpeechRate	System.Int32	0
-		InfoSoundFile	System.String	Resources\Sounds\Info1.wav
-		SelectionSoundFile	System.String	Resources\Sounds\Selection1.wav
-		ErrorSoundFile	System.String	Resources\Sounds\Error1.wav
-		MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
-		MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
+		X Sounds:		
+		X SpeechVoice	System.String	
+		X SpeechVolume	System.Int32	100
+		X SpeechRate	System.Int32	0
+		X InfoSoundFile	System.String	Resources\Sounds\Info1.wav
+		X SelectionSoundFile	System.String	Resources\Sounds\Selection1.wav
+		X ErrorSoundFile	System.String	Resources\Sounds\Error1.wav
+		X MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
+		X MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
 		
 		Pointing & Selecting:	
 		PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
