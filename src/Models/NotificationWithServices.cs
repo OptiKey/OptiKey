@@ -3,8 +3,9 @@ using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.ETTA.Models
 {
-    public class NotificationWithDictionaryService : INotification
+    public class NotificationWithServices : INotification
     {
+        public IAudioService AudioService { get; set; }
         public IDictionaryService DictionaryService { get; set; }
 
         #region INotification
