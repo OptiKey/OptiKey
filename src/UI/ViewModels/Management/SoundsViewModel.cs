@@ -26,18 +26,70 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
 
+        public List<string> SpeechVoices
+        {
+            get { return audioService.GetAvailableVoices(); }
+        }
+        
+        private string speechVoice;
+        public string SpeechVoice
+        {
+            get { return speechVoice; }
+            set { SetProperty(ref speechVoice, value); }
+        }
+        
+        private int speechVolume;
+        public int SpeechVolume
+        {
+            get { return speechVolume; }
+            set { SetProperty(ref speechVolume, value); }
+        }
+
+        private int speechRate;
+        public int SpeechRate
+        {
+            get { return speechRate; }
+            set { SetProperty(ref speechRate, value); }
+        }
+        
+        private int infoSoundFile;
+        public int InfoSoundFile
+        {
+            get { return infoSoundFile; }
+            set { SetProperty(ref infoSoundFile, value); }
+        }
+        
+        private int selectionSoundFile;
+        public int SelectionSoundFile
+        {
+            get { return selectionSoundFile; }
+            set { SetProperty(ref selectionSoundFile, value); }
+        }
+        
+        private int errorSoundFile;
+        public int ErrorSoundFile
+        {
+            get { return errorSoundFile; }
+            set { SetProperty(ref errorSoundFile, value); }
+        }
+        
+        private int multiKeySelectionCaptureStartSoundFile;
+        public int MultiKeySelectionCaptureStartSoundFile
+        {
+            get { return multiKeySelectionCaptureStartSoundFile; }
+            set { SetProperty(ref multiKeySelectionCaptureStartSoundFile, value); }
+        }
+        
+        private int multiKeySelectionCaptureEndSoundFile;
+        public int MultiKeySelectionCaptureEndSoundFile
+        {
+            get { return multiKeySelectionCaptureEndSoundFile; }
+            set { SetProperty(ref multiKeySelectionCaptureEndSoundFile, value); }
+        }
+
         public bool ChangesRequireRestart
         {
-            get
-            {
-                return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
-            }
+            get { return false; }
         }
         
         #endregion
@@ -46,14 +98,27 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private void LoadSettings()
         {
-            //Debug = Settings.Default.Debug;
+            SpeechVoice = Settings.Default.SpeechVoice;
+            SpeechVolume = Settings.Default.SpeechVolume;
+            SpeechRate = Settings.Default.SpeechRate;
+            InfoSoundFile = Settings.Default.InfoSoundFile;
+            SelectionSoundFile = Settings.Default.SelectionSoundFile;
+            ErrorSoundFile = Settings.Default.ErrorSoundFile;
+            MultiKeySelectionCaptureStartSoundFile = Settings.Default.MultiKeySelectionCaptureStartSoundFile;
+            MultiKeySelectionCaptureEndSoundFile = Settings.Default.MultiKeySelectionCaptureEndSoundFile;
         }
 
         public void ApplyChanges()
         {
-            //Settings.Default.Debug = Debug;
-            
-            //Settings.Default.Save();
+            Settings.Default.SpeechVoice = SpeechVoice;
+            Settings.Default.SpeechVolume = SpeechVolume;
+            Settings.Default.SpeechRate = SpeechRate;
+            Settings.Default.InfoSoundFile = InfoSoundFile;
+            Settings.Default.SelectionSoundFile = SelectionSoundFile;
+            Settings.Default.ErrorSoundFile = ErrorSoundFile;
+            Settings.Default.MultiKeySelectionCaptureStartSoundFile = MultiKeySelectionCaptureStartSoundFile;
+            Settings.Default.MultiKeySelectionCaptureEndSoundFile = MultiKeySelectionCaptureEndSoundFile;
+            Settings.Default.Save();
         }
 
         #endregion
