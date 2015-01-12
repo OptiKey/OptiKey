@@ -51,21 +51,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
-        public List<string> FontStretches
+        public List<FontStretches> FontStretches
         {
             get
             {
                 switch (FontFamily)
                 {
                     case RobotoUrl:
-                        return new List<string> { "Normal", "Condensed" };
+                        return new List<FontStretches> { FontStretches.Normal, FontStretches.Condensed };
                 }
 
                 return null;
             }
         }
 
-        public List<string> FontWeights
+        public List<FontWeights> FontWeights
         {
             get
             {
@@ -74,11 +74,24 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                     case RobotoUrl:
                         switch (FontStretch)
                         {
-                            case "Normal":
-                                return new List<string> { "Thin", "Light", "Regular", "Medium", "Bold", "Black" };
+                            case FontStretches.Normal:
+                                return new List<FontWeights> 
+                                            { 
+                                                FontWeights.Thin, 
+                                                FontWeights.Light, 
+                                                FontWeights.Regular, 
+                                                FontWeights.Medium, 
+                                                FontWeights.Bold, 
+                                                FontWeights.Black 
+                                            };
 
-                            case "Condensed":
-                                return new List<string> { "Light", "Regular", "Bold" };
+                            case FontStretches.Condensed:
+                                return new List<FontWeights> 
+                                            { 
+                                                FontWeights.Light, 
+                                                FontWeights.Regular, 
+                                                FontWeights.Bold
+                                            };
                         }
                         break;
                 }
@@ -118,8 +131,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
-        private string fontStretch;
-        public string FontStretch
+        private FontStretches fontStretch;
+        public FontStretches FontStretch
         {
             get { return fontStretch; }
             set
@@ -129,8 +142,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
-        private string fontWeight;
-        public string FontWeight
+        private FontWeights fontWeight;
+        public FontWeights FontWeight
         {
             get { return fontWeight; }
             set { SetProperty(ref fontWeight, value); }
