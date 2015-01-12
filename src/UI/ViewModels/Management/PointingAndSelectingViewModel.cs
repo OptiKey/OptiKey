@@ -16,6 +16,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         public PointingAndSelectingViewModel()
         {
             LoadSettings();
+            
+            //Set up property defaulting logic
+            this.PropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts => 
+                {
+                    switch(ts) 
+                    {
+                        case TriggerSources.Fixations:
+                            MultiKeySelectionTriggerStopSignal = TriggerStopSignals.NextHigh;
+                        break;
+                    }
+                });
         }
         
         #endregion
