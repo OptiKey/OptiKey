@@ -144,8 +144,6 @@
                 </TimeSpanControl.Style>
             </TimeSpanControl>
             
-            
-            
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Point selection source:" 
                        VerticalAlignment="Center" Margin="5" />
             <ComboBox Grid.Row="3" Grid.Column="1" 
@@ -235,6 +233,78 @@
                     </Style>
                 </controls:NumericUpDow.Style>
             </controls:NumericUpDown>
+            
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Selection keyboard key:" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.KeyboardKeyDownsUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.KeyboardKeyDownsUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <ComboBox Grid.Row="7" Grid.Column="1" 
+                      ItemsSource="{Binding Keys}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding SelectionTriggerKeyboardKeyDownUpKey, Mode=TwoWay}">
+                <ComboBox.Style>
+                    <Style TargetType="{x:Type ComboBox}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.KeyboardKeyDownsUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.KeyboardKeyDownsUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
+            
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="Selection mouse button:" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.MouseButtonDownUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.MouseButtonDownUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <ComboBox Grid.Row="8" Grid.Column="1" 
+                      ItemsSource="{Binding MouseButtons}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding SelectionTriggerMouseDownUpButton, Mode=TwoWay}">
+                <ComboBox.Style>
+                    <Style TargetType="{x:Type ComboBox}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding MouseButtonDownUps}" Value="{x:Static TriggerSources.MouseButtonDownUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MouseButtonDownUps}" Value="{x:Static TriggerSources.MouseButtonDownUps}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
         </GroupBox>
     </Grid>
 </UserControl>
