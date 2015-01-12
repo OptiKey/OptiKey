@@ -13,12 +13,14 @@ namespace JuliusSweetland.ETTA.UI.Windows
     {
         private readonly WindowStatePersistenceService windowStatePersistenceService;
 
-        public ManagementWindow(IDictionaryService dictionaryService)
+        public ManagementWindow(
+            IAudioService audioService,
+            IDictionaryService dictionaryService)
         {
             InitializeComponent();
 
             //Instantiate ManagementViewModel and set as DataContext of ManagementView
-            var managementViewModel = new ManagementViewModel(dictionaryService);
+            var managementViewModel = new ManagementViewModel(audioService, dictionaryService);
             this.ManagementView.DataContext = managementViewModel;
 
             //Instantiate window state persistence service and provide accessors to the appropriate settings for this window
