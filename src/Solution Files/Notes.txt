@@ -1,7 +1,4 @@
-﻿X Move Activation out of TET point source ctor - do it when first event listener attaches.
-	TEST TET POINT SOURCE, INCLUDING THROWING ERRORS
-
-Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
+﻿Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
 	Ok when exe run directly, but not when run using visual studio debugging.
 	
 Management (new window accessed with hotkey)
@@ -59,8 +56,6 @@ Management (new window accessed with hotkey)
 		X Other:
 		X Debug mode (setting)
 
-	Application.Restart(); after changing some of the settings? Prompt user to restart (after saving) if certain settings have been changed.
-
 X VisualMode setting - Standard / SpeechOnly
 	- When switching mode make sure KeyDownStates (which should automatically change settings also?) are reset:
 		X - Publishing off (which should release down keys automatically?)
@@ -68,6 +63,8 @@ X VisualMode setting - Standard / SpeechOnly
 		X - Set Keyboard back to Alpha
 		X - Leave Sleep and Recalibrate in
 	TEST SWITCHING MODES
+
+Preview settings in management console
 
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
