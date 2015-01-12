@@ -58,7 +58,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                 switch (FontFamily)
                 {
                     case RobotoUrl:
-                        return new List<FontStretches> { FontStretches.Normal, FontStretches.Condensed };
+                        return new List<FontStretch> { FontStretches.Normal, FontStretches.Condensed };
                 }
 
                 return null;
@@ -75,7 +75,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                         switch (FontStretch)
                         {
                             case FontStretches.Normal:
-                                return new List<FontWeights> 
+                                return new List<FontWeight> 
                                             { 
                                                 FontWeights.Thin, 
                                                 FontWeights.Light, 
@@ -86,7 +86,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                                             };
 
                             case FontStretches.Condensed:
-                                return new List<FontWeights> 
+                                return new List<FontWeight> 
                                             { 
                                                 FontWeights.Light, 
                                                 FontWeights.Regular, 
