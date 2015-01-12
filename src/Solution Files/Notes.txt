@@ -53,6 +53,7 @@ Management (new window accessed with hotkey)
 		Dictionary management:
 		Add
 		Remove
+			Do we need 2 remove entry methods? What's the point of not saving after removing?
 
 		Other:
 		Debug mode (setting)
