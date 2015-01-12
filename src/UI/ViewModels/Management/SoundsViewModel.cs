@@ -9,12 +9,16 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private IAudioService audioService;
+
         #endregion
         
         #region Ctor
 
-        public SoundsViewModel()
+        public SoundsViewModel(IAudioService audioService)
         {
+            this.audioService = audioService;
+            
             LoadSettings();
         }
         
