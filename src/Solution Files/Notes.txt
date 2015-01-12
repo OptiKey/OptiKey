@@ -11,9 +11,9 @@ Management (new window accessed with hotkey)
 		X FontStretch	System.String	Condensed
 		X FontWeight	System.String	Regular
 		X ScratchpadNumberOfLines	System.Int32	2
-		ToastNotificationTitleFontSize	System.Int32	25
-		ToastNotificationContentFontSize	System.Int32	16
-		VisualMode setting - SpeechOnly / Standard
+		X ToastNotificationTitleFontSize	System.Int32	25
+		X ToastNotificationContentFontSize	System.Int32	16
+		X VisualMode setting - SpeechOnly / Standard
 		
 		Words:		
 		Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
