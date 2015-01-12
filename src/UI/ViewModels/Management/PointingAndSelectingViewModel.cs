@@ -26,7 +26,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             get
             {
-                return new List<KeyValuePair<string, string>>
+                return new List<KeyValuePair<string, PointsSources>>
                 {
                     new KeyValuePair<string, string>("Gaze Tracker", PointsSources.GazeTracker),
                     new KeyValuePair<string, string>("The Eye Tribe", PointsSources.TheEyeTribe),
@@ -39,7 +39,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             get
             {
-                return new List<KeyValuePair<string, string>>
+                return new List<KeyValuePair<string, TriggerSources>>
                 {
                     new KeyValuePair<string, string>("Fixations", TriggerSources.Fixations),
                     new KeyValuePair<string, string>("Keyboard Key", TriggerSources.KeyboardKeyDownsUps),
@@ -56,6 +56,18 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         public List<MouseButtons> MouseButtons
         {
             get { return Enum.GetValues(typeof(MouseButtons)).Cast<MouseButtons>().ToList(); }
+        }
+        
+        public List<KeyValuePair<string, TriggerStopSignals>> TriggerStopSignals
+        {
+            get
+            {
+                return new List<KeyValuePair<string, TriggerStopSignals>>
+                {
+                    new KeyValuePair<string, string>("Trigger button/key pressed again", TriggerStopSignals.NextHigh),
+                    new KeyValuePair<string, string>("Trigger button/key released", TriggerStopSignals.NextLow)
+                };
+            }
         }
         
         private PointsSources pointSource;
@@ -141,6 +153,27 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             get { return keySelectionTriggerFixationCompleteTime; }
             set { SetProperty(ref keySelectionTriggerFixationCompleteTime, value); }
         }
+        
+        private TriggerStopSignals selectionTriggerStopSignal;
+        public TriggerStopSignals SelectionTriggerStopSignal
+        {
+            get { return selectionTriggerStopSignal; }
+            set { SetProperty(ref selectionTriggerStopSignal, value); }
+        }
+        
+        private TimeSpan multiKeySelectionFixationMinDwellTime;
+        public TimeSpan MultiKeySelectionFixationMinDwellTime
+        {
+            get { return multiKeySelectionFixationMinDwellTime; }
+            set { SetProperty(ref multiKeySelectionFixationMinDwellTime, value); }
+        }
+        
+        private TimeSpan multiKeySelectionMaxDuration;
+        public TimeSpan MultiKeySelectionMaxDuration
+        {
+            get { return multiKeySelectionMaxDuration; }
+            set { SetProperty(ref multiKeySelectionMaxDuration, value); }
+        }
 
         public bool ChangesRequireRestart
         {
@@ -190,6 +223,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             PointSelectionTriggerFixationRadius = Settings.Default.PointSelectionTriggerFixationRadius;
             KeySelectionTriggerFixationLockOnTime = Settings.Default.KeySelectionTriggerFixationLockOnTime;
             KeySelectionTriggerFixationCompleteTime = Settings.Default.KeySelectionTriggerFixationCompleteTime;
+            SelectionTriggerStopSignal = Settings.Default.SelectionTriggerStopSignal;
+            MultiKeySelectionFixationMinDwellTime = Settings.Default.MultiKeySelectionFixationMinDwellTime;
+            MultiKeySelectionMaxDuration = Settings.Default.MultiKeySelectionMaxDuration;
         }
 
         public void ApplyChanges()
@@ -206,6 +242,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             Settings.Default.PointSelectionTriggerFixationRadius = PointSelectionTriggerFixationRadius;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = KeySelectionTriggerFixationLockOnTime;
             Settings.Default.KeySelectionTriggerFixationCompleteTime = KeySelectionTriggerFixationCompleteTime;
+            Settings.Default.SelectionTriggerStopSignal = SelectionTriggerStopSignal;
+            Settings.Default.MultiKeySelectionFixationMinDwellTime = MultiKeySelectionFixationMinDwellTime;
+            Settings.Default.MultiKeySelectionMaxDuration = MultiKeySelectionMaxDuration;
             Settings.Default.Save();
         }
 
