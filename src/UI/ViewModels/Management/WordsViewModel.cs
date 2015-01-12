@@ -29,25 +29,50 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
         
+        public List<KeyValuePair<string, string>> Languages
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("American English", Languages.AmericanEnglish),
+                    new KeyValuePair<string, string>("British English", Languages.BritishEnglish),
+                    new KeyValuePair<string, string>("Canadian English", Languages.CanadianEnglish)
+                };
+            }
+        }
+        
         private Languages language;
         public Languages Language
         {
             get { return language; }
             set { SetProperty(ref this.language, value); }
         }
+        
+        private bool autoAddSpace;
+        public bool AutoAddSpace
+        {
+            get { return autoAddSpace; }
+            set { SetProperty(ref autoAddSpace, value); }
+        }
+        
+        private bool autoCapitalise;
+        public bool AutoCapitalise
+        {
+            get { return autoCapitalise; }
+            set { SetProperty(ref autoCapitalise, value); }
+        }
+        
+        private int multiKeySelectionMaxDictionaryMatches;
+        public int MultiKeySelectionMaxDictionaryMatches
+        {
+            get { return multiKeySelectionMaxDictionaryMatches; }
+            set { SetProperty(ref multiKeySelectionMaxDictionaryMatches, value); }
+        }
 
         public bool ChangesRequireRestart
         {
-            get
-            {
-                return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
-            }
+            get { return false; }
         }
         
         #endregion
@@ -57,6 +82,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         private void LoadSettings()
         {
             Language = Settings.Default.Language;
+            AutoAddSpace = Settings.Default.AutoAddSpace;
+            AutoCapitalise = Settings.Default.AutoCapitalise;
+            MultiKeySelectionMaxDictionaryMatches = Settings.Default.MultiKeySelectionMaxDictionaryMatches;
         }
 
         public void ApplyChanges()
@@ -64,6 +92,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             bool reloadDictionary = Settings.Default.Language != Language;
 
             Settings.Default.Language = Language;
+            Settings.Default.AutoAddSpace = AutoAddSpace;
+            Settings.Default.AutoCapitalise = AutoCapitalise;
+            Settings.Default.MultiKeySelectionMaxDictionaryMatches = MultiKeySelectionMaxDictionaryMatches;
             Settings.Default.Save();
 
             if (reloadDictionary)
