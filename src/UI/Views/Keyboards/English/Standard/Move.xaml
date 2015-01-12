@@ -42,7 +42,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTop}" />
             </controls:Key.Value>
@@ -65,7 +65,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="5"
                       SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopBoundary}" />
             </controls:Key.Value>
@@ -84,7 +84,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeft}" />
             </controls:Key.Value>
@@ -98,7 +98,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRight}" />
             </controls:Key.Value>
@@ -107,7 +107,7 @@
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="4"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeftBoundary}" />
             </controls:Key.Value>
@@ -116,7 +116,7 @@
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="6"
                       SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
             </controls:Key.Value>
@@ -135,7 +135,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="1"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottom}" />
             </controls:Key.Value>
@@ -158,7 +158,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="5"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithNarrowSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomBoundary}" />
             </controls:Key.Value>
@@ -175,7 +175,7 @@
         <controls:Key Grid.Row="2" Grid.Column="8"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                      SharedSizeGroup="KeyWithNarrowSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
             </controls:Key.Value>
