@@ -56,6 +56,7 @@ Management (new window accessed with hotkey)
 		Add
 		Remove
 			Do we need 2 remove entry methods? What's the point of not saving after removing?
+			Entry+State class (AddRemovedStates enum and AddRemovedStates? State property = null, added, deleted)
 
 		X Other:
 		X Debug mode (setting)
