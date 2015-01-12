@@ -5,7 +5,95 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="Sounds View" />
+             
+    <Grid IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <GroupBox Grid.Row="0" Header="Speech">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Voice:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="0" Grid.Column="1" 
+                      ItemsSource="{Binding SpeechVoices}"
+                      SelectedValue="{Binding SpeechVoice, Mode=TwoWay}" />
+                      
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Volume:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                    Minimum="0" Maximum="100" Interval="1"
+                                    Value="{Binding SpeechVolume, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Rate:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+                                    Minimum="-10" Maximum="10" Interval="1"
+                                    Value="{Binding SpeechRate, Mode=TwoWay}" />
+        </GroupBox>
+        
+        <GroupBox Grid.Row="1" Header="Sound effects">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Info:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="0" Grid.Column="1" 
+                      ItemsSource="{Binding InfoSoundFiles}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
+    
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Selection:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="1" Grid.Column="1" 
+                      ItemsSource="{Binding SelectionSoundFiles}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding SelectionSoundFile, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Error:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="2" Grid.Column="1" 
+                      ItemsSource="{Binding ErrorSoundFiles}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Muli-key selection starting:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="3" Grid.Column="1" 
+                      ItemsSource="{Binding MultiKeySelectionCaptureStartSoundFiles}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding MultiKeySelectionCaptureStartSoundFile, Mode=TwoWay}" />
+            
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Muli-key selection ending:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="4" Grid.Column="1" 
+                      ItemsSource="{Binding MultiKeySelectionCaptureEndSoundFiles}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding MultiKeySelectionCaptureEndSoundFile, Mode=TwoWay}" />
+        </GroupBox>
     </Grid>
 </UserControl>
