@@ -6,19 +6,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
-    <Grid IsSharedSizeScope="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Debugging mode:" 
-                   VerticalAlignment="Center" Margin="5" />
-        <CheckBox Grid.Row="0" Grid.Column="1" 
-                  VerticalAlignment="Center"
-                  IsChecked="{Binding Debug, Mode=TwoWay}" />
-    </Grid>
+    <GroupBox Header="Misc">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Debugging mode:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <CheckBox Grid.Row="0" Grid.Column="1" 
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding Debug, Mode=TwoWay}" />
+        </Grid>
+    </GroupBox>
 </UserControl>

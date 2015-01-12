@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
-    <Grid IsSharedSizeScope="True">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -16,93 +15,99 @@
         </Grid.RowDefinitions>
         
         <GroupBox Grid.Row="0" Header="Look">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
             
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="0" Grid.Column="1" 
-                      ItemsSource="{Binding Themes}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding Theme, Mode=TwoWay}" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <ComboBox Grid.Row="0" Grid.Column="1" 
+                          ItemsSource="{Binding Themes}"
+                          DisplayMemberPath="Key"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Theme, Mode=TwoWay}" />
                       
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Scratchpad # of lines:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
-                                    Minimum="1" Interval="1"
-                                    Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Scratchpad # of lines:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                        Minimum="1" Interval="1"
+                                        Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
             
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Visual mode:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="2" Grid.Column="1" 
-                      ItemsSource="{Binding VisualModes}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding VisualMode, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Visual mode:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <ComboBox Grid.Row="2" Grid.Column="1" 
+                          ItemsSource="{Binding VisualModes}"
+                          DisplayMemberPath="Key"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding VisualMode, Mode=TwoWay}" />
+            </Grid>
         </GroupBox>
         
         <GroupBox Grid.Row="1" Header="Font">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
             
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Font family:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="0" Grid.Column="1" 
-                      ItemsSource="{Binding FontFamilies}"
-                      DisplayMemberPath="Key"
-                      SelectedValuePath="Value"
-                      SelectedValue="{Binding FontFamily, Mode=TwoWay}" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Font family:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <ComboBox Grid.Row="0" Grid.Column="1" 
+                          ItemsSource="{Binding FontFamilies}"
+                          DisplayMemberPath="Key"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding FontFamily, Mode=TwoWay}" />
     
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Font stretch:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="1" Grid.Column="1" 
-                      ItemsSource="{Binding FontStretches}"
-                      SelectedValue="{Binding FontStretch, Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Font stretch:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <ComboBox Grid.Row="1" Grid.Column="1" 
+                          ItemsSource="{Binding FontStretches}"
+                          SelectedValue="{Binding FontStretch, Mode=TwoWay}" />
     
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Font weight:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <ComboBox Grid.Row="2" Grid.Column="1" 
-                      ItemsSource="{Binding FontWeights}"
-                      SelectedValue="{Binding FontWeight, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Font weight:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <ComboBox Grid.Row="2" Grid.Column="1" 
+                          ItemsSource="{Binding FontWeights}"
+                          SelectedValue="{Binding FontWeight, Mode=TwoWay}" />
+            </Grid>
         </GroupBox>
     
         <GroupBox Grid.Row="2" Header="Notifications">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
             
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Title font size:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
-                                    Minimum="1" Interval="1"
-                                    Value="{Binding ToastNotificationTitleFontSize, Mode=TwoWay}" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Title font size:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
+                                        Minimum="1" Interval="1"
+                                        Value="{Binding ToastNotificationTitleFontSize, Mode=TwoWay}" />
                                     
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Content font size:" 
-                       VerticalAlignment="Center" Margin="5" />
-            <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
-                                    Minimum="1" Interval="1"
-                                    Value="{Binding ToastNotificationContentFontSize, Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Content font size:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                                        Minimum="1" Interval="1"
+                                        Value="{Binding ToastNotificationContentFontSize, Mode=TwoWay}" />
+            </Grid>
         </GroupBox>
     </Grid>
 </UserControl>

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.Services;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -37,8 +40,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Info 1", "Resources\Sounds\Info1.wav"),
-                    new KeyValuePair<string, string>("Info 2", "Resources\Sounds\Info2.wav")
+                    new KeyValuePair<string, string>("Info 1", @"Resources\Sounds\Info1.wav"),
+                    new KeyValuePair<string, string>("Info 2", @"Resources\Sounds\Info2.wav")
                 };
             }
         }
@@ -49,8 +52,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Selection 1", "Resources\Sounds\Selection1.wav"),
-                    new KeyValuePair<string, string>("Selection 2", "Resources\Sounds\Selection2.wav")
+                    new KeyValuePair<string, string>("Selection 1", @"Resources\Sounds\Selection1.wav"),
+                    new KeyValuePair<string, string>("Selection 2", @"Resources\Sounds\Selection2.wav")
                 };
             }
         }
@@ -61,8 +64,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Error 1", "Resources\Sounds\Error1.wav"),
-                    new KeyValuePair<string, string>("Error 2", "Resources\Sounds\Error2.wav")
+                    new KeyValuePair<string, string>("Error 1", @"Resources\Sounds\Error1.wav"),
+                    new KeyValuePair<string, string>("Error 2", @"Resources\Sounds\Error2.wav")
                 };
             }
         }
@@ -73,7 +76,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Start Capture 1", "Resources\Sounds\MultiKeyCaptureStart1.wav")
+                    new KeyValuePair<string, string>("Start Capture 1", @"Resources\Sounds\MultiKeyCaptureStart1.wav")
                 };
             }
         }
@@ -84,7 +87,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("End Capture 1", "Resources\Sounds\MultiKeyCaptureEnd1.wav")
+                    new KeyValuePair<string, string>("End Capture 1", @"Resources\Sounds\MultiKeyCaptureEnd1.wav")
                 };
             }
         }
@@ -110,36 +113,36 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             set { SetProperty(ref speechRate, value); }
         }
         
-        private int infoSoundFile;
-        public int InfoSoundFile
+        private string infoSoundFile;
+        public string InfoSoundFile
         {
             get { return infoSoundFile; }
             set { SetProperty(ref infoSoundFile, value); }
         }
-        
-        private int selectionSoundFile;
-        public int SelectionSoundFile
+
+        private string selectionSoundFile;
+        public string SelectionSoundFile
         {
             get { return selectionSoundFile; }
             set { SetProperty(ref selectionSoundFile, value); }
         }
-        
-        private int errorSoundFile;
-        public int ErrorSoundFile
+
+        private string errorSoundFile;
+        public string ErrorSoundFile
         {
             get { return errorSoundFile; }
             set { SetProperty(ref errorSoundFile, value); }
         }
-        
-        private int multiKeySelectionCaptureStartSoundFile;
-        public int MultiKeySelectionCaptureStartSoundFile
+
+        private string multiKeySelectionCaptureStartSoundFile;
+        public string MultiKeySelectionCaptureStartSoundFile
         {
             get { return multiKeySelectionCaptureStartSoundFile; }
             set { SetProperty(ref multiKeySelectionCaptureStartSoundFile, value); }
         }
-        
-        private int multiKeySelectionCaptureEndSoundFile;
-        public int MultiKeySelectionCaptureEndSoundFile
+
+        private string multiKeySelectionCaptureEndSoundFile;
+        public string MultiKeySelectionCaptureEndSoundFile
         {
             get { return multiKeySelectionCaptureEndSoundFile; }
             set { SetProperty(ref multiKeySelectionCaptureEndSoundFile, value); }

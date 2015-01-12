@@ -13,7 +13,7 @@ namespace JuliusSweetland.ETTA.UI.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IAudioService audioService,
+        private readonly IAudioService audioService;
         private readonly IDictionaryService dictionaryService;
         private readonly IKeyboardService keyboardService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;

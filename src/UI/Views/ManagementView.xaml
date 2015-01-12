@@ -4,31 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:management="clr-namespace:JuliusSweetland.ETTA.UI.Views.Management"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:interactionRequest="http://www.codeplex.com/prism"
+             xmlns:triggerActions="clr-namespace:JuliusSweetland.ETTA.UI.TriggerActions"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <i:Interaction.Triggers>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ConfirmationRequest, Mode=OneWay}">
+            <triggerActions:ConfirmationWindowAction />
+        </interactionRequest:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid>
         <Grid.RowDefinitions>
              <RowDefinition Height="*"/>
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TabControl>
+        <TabControl Grid.IsSharedSizeScope="True">
             <TabItem Header="Visuals">
-                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Sounds">
-                <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Words">
-                <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Pointing &amp; Selecting">
-                <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Dictionary">
-                <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Other">
-                <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
+                </ScrollViewer>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">

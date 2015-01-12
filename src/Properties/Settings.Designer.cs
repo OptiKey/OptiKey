@@ -40,12 +40,12 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals SelectionTriggerStopSignal {
+        public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals MultiKeySelectionTriggerStopSignal {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["SelectionTriggerStopSignal"]));
+                return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["MultiKeySelectionTriggerStopSignal"]));
             }
             set {
-                this["SelectionTriggerStopSignal"] = value;
+                this["MultiKeySelectionTriggerStopSignal"] = value;
             }
         }
         
@@ -775,6 +775,18 @@ namespace JuliusSweetland.ETTA.Properties {
             }
             set {
                 this["MoveAndResizeAdjustmentAmountInPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
+        public string SelectionTriggerStopSignal {
+            get {
+                return ((string)(this["SelectionTriggerStopSignal"]));
+            }
+            set {
+                this["SelectionTriggerStopSignal"] = value;
             }
         }
     }

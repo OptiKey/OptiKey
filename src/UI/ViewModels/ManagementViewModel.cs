@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.ViewModels.Management;
 using log4net;

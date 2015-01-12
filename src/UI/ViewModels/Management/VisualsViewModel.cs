@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms.VisualStyles;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Properties;
 using log4net;
@@ -58,7 +58,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                 switch (FontFamily)
                 {
                     case RobotoUrl:
-                        return new List<FontStretch> { FontStretches.Normal, FontStretches.Condensed };
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal, 
+                            Enums.FontStretches.Condensed
+                        };
                 }
 
                 return null;
@@ -74,23 +78,23 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                     case RobotoUrl:
                         switch (FontStretch)
                         {
-                            case FontStretches.Normal:
-                                return new List<FontWeight> 
+                            case Enums.FontStretches.Normal:
+                                return new List<FontWeights> 
                                             { 
-                                                FontWeights.Thin, 
-                                                FontWeights.Light, 
-                                                FontWeights.Regular, 
-                                                FontWeights.Medium, 
-                                                FontWeights.Bold, 
-                                                FontWeights.Black 
+                                                Enums.FontWeights.Thin, 
+                                                Enums.FontWeights.Light, 
+                                                Enums.FontWeights.Regular, 
+                                                Enums.FontWeights.Medium, 
+                                                Enums.FontWeights.Bold, 
+                                                Enums.FontWeights.Black 
                                             };
 
-                            case FontStretches.Condensed:
-                                return new List<FontWeight> 
+                            case Enums.FontStretches.Condensed:
+                                return new List<FontWeights> 
                                             { 
-                                                FontWeights.Light, 
-                                                FontWeights.Regular, 
-                                                FontWeights.Bold
+                                                Enums.FontWeights.Light, 
+                                                Enums.FontWeights.Regular, 
+                                                Enums.FontWeights.Bold
                                             };
                         }
                         break;
@@ -190,8 +194,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             Theme = Settings.Default.Theme;
             FontFamily = Settings.Default.FontFamily;
-            FontStretch = Settings.Default.FontStretch;
-            FontWeight = Settings.Default.FontWeight;
+            FontStretch = (FontStretches)Enum.Parse(typeof(FontStretches), Settings.Default.FontStretch);
+            FontWeight = (FontWeights)Enum.Parse(typeof(FontWeights), Settings.Default.FontWeight);
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
             ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
@@ -202,8 +206,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             Settings.Default.Theme = Theme;
             Settings.Default.FontFamily = FontFamily;
-            Settings.Default.FontStretch = FontStretch;
-            Settings.Default.FontWeight = fontWeight;
+            Settings.Default.FontStretch = FontStretch.ToString();
+            Settings.Default.FontWeight = FontWeight.ToString();
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
             Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;

@@ -65,6 +65,7 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.Prism.Composition">
       <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
     </Reference>
@@ -145,6 +146,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\FontStretches.cs" />
+    <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\VisualModes.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
@@ -167,8 +170,8 @@
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
-    <Compile Include="Models\NotificationWithDictionaryService.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
@@ -225,6 +228,7 @@
     <Compile Include="UI\Controls\Key.cs" />
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
@@ -334,6 +338,9 @@
     </Compile>
     <Compile Include="UI\Views\Management\WordsView.xaml.cs">
       <DependentUpon>WordsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
+      <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
@@ -640,6 +647,10 @@
     <Page Include="UI\Views\Management\WordsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\ConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

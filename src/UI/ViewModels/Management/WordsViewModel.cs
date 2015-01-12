@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
@@ -29,15 +30,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
         
-        public List<KeyValuePair<string, string>> Languages
+        public List<KeyValuePair<string, Languages>> Languages
         {
             get
             {
-                return new List<KeyValuePair<string, string>>
+                return new List<KeyValuePair<string, Languages>>
                 {
-                    new KeyValuePair<string, string>("American English", Languages.AmericanEnglish),
-                    new KeyValuePair<string, string>("British English", Languages.BritishEnglish),
-                    new KeyValuePair<string, string>("Canadian English", Languages.CanadianEnglish)
+                    new KeyValuePair<string, Languages>("American English", Enums.Languages.AmericanEnglish),
+                    new KeyValuePair<string, Languages>("British English", Enums.Languages.BritishEnglish),
+                    new KeyValuePair<string, Languages>("Canadian English", Enums.Languages.CanadianEnglish)
                 };
             }
         }

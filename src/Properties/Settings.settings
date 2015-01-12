@@ -98,10 +98,10 @@
     <Setting Name="FontFamily" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
     </Setting>
-    <Setting Name="FontStretch" Roaming="true" Type="System.Windows.FontStretches" Scope="User">
+    <Setting Name="FontStretch" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Condensed</Value>
     </Setting>
-    <Setting Name="FontWeight" Roaming="true" Type="System.Windows.FontWeights" Scope="User">
+    <Setting Name="FontWeight" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Regular</Value>
     </Setting>
     <Setting Name="ScratchpadNumberOfLines" Roaming="true" Type="System.Int32" Scope="User">
@@ -175,6 +175,9 @@
     </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="SelectionTriggerStopSignal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NextHigh</Value>
     </Setting>
   </Settings>
 </SettingsFile>
