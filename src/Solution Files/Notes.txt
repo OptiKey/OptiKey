@@ -35,22 +35,22 @@ Management (new window accessed with hotkey)
 		X MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
 		X MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
 		
-		Pointing & Selecting:	
-		PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
-		PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
-		PointTtl	System.TimeSpan	00:00.150
-		KeySelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	KeyboardKeyDownsUps
-		PointSelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	Fixations
-		SelectionTriggerKeyboardKeyDownUpKey	System.Windows.Forms.Keys	Pause
-		SelectionTriggerMouseDownUpButton	System.Windows.Forms.MouseButtons	Left
-		PointSelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
-		PointSelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
-		PointSelectionTriggerFixationRadius	System.Double	50
-		KeySelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
-		KeySelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
-		MultiKeySelectionTriggerStopSignal	JuliusSweetland.ETTA.Enums.TriggerStopSignals	NextLow - RESET TO NEXTHIGH if using a trigger which doesn't support low signals, eg fixation triggers
-		MultiKeySelectionFixationMinDwellTime	System.TimeSpan	00:00.050
-		MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
+		X Pointing & Selecting:	
+		X PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
+		X PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
+		X PointTtl	System.TimeSpan	00:00.150
+		X KeySelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	KeyboardKeyDownsUps
+		X PointSelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	Fixations
+		X SelectionTriggerKeyboardKeyDownUpKey	System.Windows.Forms.Keys	Pause
+		X SelectionTriggerMouseDownUpButton	System.Windows.Forms.MouseButtons	Left
+		X PointSelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
+		X PointSelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
+		X PointSelectionTriggerFixationRadius	System.Double	50
+		X KeySelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
+		X KeySelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
+		X MultiKeySelectionTriggerStopSignal	JuliusSweetland.ETTA.Enums.TriggerStopSignals	NextLow - RESET TO NEXTHIGH if using a trigger which doesn't support low signals, eg fixation triggers
+		X MultiKeySelectionFixationMinDwellTime	System.TimeSpan	00:00.050
+		X MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
 		
 		Dictionary management:
 		Add
