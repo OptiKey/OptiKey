@@ -46,7 +46,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Roboto", "/Resources/Fonts/#Roboto")
+                    new KeyValuePair<string, string>("Roboto", RobotoUrl)
                 };
             }
         }
