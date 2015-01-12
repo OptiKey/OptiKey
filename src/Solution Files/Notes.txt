@@ -16,12 +16,12 @@ Management (new window accessed with hotkey)
 		X VisualMode setting - SpeechOnly / Standard
 		
 		Words:		
-		Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
+		X Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
 			http://stackoverflow.com/questions/6145888/how-to-bind-an-enum-to-a-combobox-control-in-wpf
 			
-		AutoAddSpace	System.Boolean	TRUE
-		AutoCapitalise	System.Boolean	TRUE
-		MultiKeySelectionMaxDictionaryMatches	System.Int32	40
+		X AutoAddSpace	System.Boolean	TRUE
+		X AutoCapitalise	System.Boolean	TRUE
+		X MultiKeySelectionMaxDictionaryMatches	System.Int32	40
 		
 		Sounds:		
 		SpeechVoice	System.String	
