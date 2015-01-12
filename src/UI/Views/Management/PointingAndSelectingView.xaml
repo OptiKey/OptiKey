@@ -328,13 +328,35 @@
                 </Grid.RowDefinitions>
             
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Stop signal:" 
-                           VerticalAlignment="Center" Margin="5" />
+                           VerticalAlignment="Center" Margin="5">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>    
+                </TextBlock>
                 <ComboBox Grid.Row="0" Grid.Column="1" 
                           ItemsSource="{Binding TriggerStopSignals}"
                           DisplayMemberPath="Key"
                           SelectedValuePath="Value"
-                          SelectedValue="{Binding MultiKeySelectionTriggerStopSignal, Mode=TwoWay}" />
-
+                          SelectedValue="{Binding MultiKeySelectionTriggerStopSignal, Mode=TwoWay}">
+                    <ComboBox.Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
+                
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Minimum dwell time on a key to include in capture (ms):" 
                            VerticalAlignment="Center" Margin="5"/>
                 <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
