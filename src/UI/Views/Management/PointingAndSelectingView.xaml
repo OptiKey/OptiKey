@@ -90,11 +90,151 @@
                       SelectedValuePath="Value"
                       SelectedValue="{Binding KeySelectionTriggerSource, Mode=TwoWay}" />
     
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Key fixation lock-on time:" 
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Key fixation time to lock-on:" 
                        VerticalAlignment="Center" Margin="5">
-             
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TimeSpanControl Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding KeySelectionTriggerFixationLockOnTime, Mode=TwoWay}">
+                <TimeSpanControl.Style>
+                    <Style TargetType="{x:Type TimeSpanControl}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TimeSpanControl.Style>
+            </TimeSpanControl>
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Key fixation time to complete:" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
             <TimeSpanControl Grid.Row="2" Grid.Column="1" TextAlignment="Left"
-                             Value="{Binding KeySelectionTriggerFixationLockOnTime, Mode=TwoWay}" />
+                             Value="{Binding KeySelectionTriggerFixationCompleteTime, Mode=TwoWay}">
+                <TimeSpanControl.Style>
+                    <Style TargetType="{x:Type TimeSpanControl}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TimeSpanControl.Style>
+            </TimeSpanControl>
+            
+            
+            
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Point selection source:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="3" Grid.Column="1" 
+                      ItemsSource="{Binding TriggerSources}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" />
+    
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Point fixation time to lock-on:" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TimeSpanControl Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding PointSelectionTriggerFixationLockOnTime, Mode=TwoWay}">
+                <TimeSpanControl.Style>
+                    <Style TargetType="{x:Type TimeSpanControl}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TimeSpanControl.Style>
+            </TimeSpanControl>
+            
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Point fixation time to complete:" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TimeSpanControl Grid.Row="5" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding PointSelectionTriggerFixationCompleteTime, Mode=TwoWay}">
+                <TimeSpanControl.Style>
+                    <Style TargetType="{x:Type TimeSpanControl}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TimeSpanControl.Style>
+            </TimeSpanControl>
+            
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Point fixation radius (pixels):" 
+                       VerticalAlignment="Center" Margin="5">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
+                                    Minimum="1" Maximum="10000" Interval="1"
+                                    Value="{Binding PointSelectionTriggerFixationRadius, Mode=TwoWay}">
+                <controls:NumericUpDow.Style>
+                    <Style TargetType="{x:Type controls:NumericUpDow}">
+                        <Style.Triggers>
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static TriggerSources.Fixations}">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Trigger>
+                    </Style>
+                </controls:NumericUpDow.Style>
+            </controls:NumericUpDown>
         </GroupBox>
     </Grid>
 </UserControl>
