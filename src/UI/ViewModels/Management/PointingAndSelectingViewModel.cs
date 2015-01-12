@@ -22,6 +22,26 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
 
+        public List<KeyValuePair<string, string>> PointsSources
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Gaze Tracker", PointsSources.GazeTracker),
+                    new KeyValuePair<string, string>("The Eye Tribe", PointsSources.TheEyeTribe),
+                    new KeyValuePair<string, string>("Mouse Position", PointsSources.MousePosition)
+                };
+            }
+        }
+        
+        private PointsSources pointSource;
+        public PointsSources PointsSource
+        {
+            get { return pointSource; }
+            set { SetProperty(ref pointSource, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get
@@ -58,14 +78,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private void LoadSettings()
         {
-            //Debug = Settings.Default.Debug;
+            PointsSource = Settings.Default.PointsSource;
         }
 
         public void ApplyChanges()
         {
-            //Settings.Default.Debug = Debug;
-            
-            //Settings.Default.Save();
+            Settings.Default.PointsSource = PointsSource;
+            Settings.Default.Save();
         }
 
         #endregion
