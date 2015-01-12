@@ -65,7 +65,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="5"
                       SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopBoundary}" />
             </controls:Key.Value>
@@ -107,7 +107,7 @@
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="4"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeftBoundary}" />
             </controls:Key.Value>
@@ -116,7 +116,7 @@
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="6"
                       SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
             </controls:Key.Value>
@@ -158,7 +158,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="5"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomBoundary}" />
             </controls:Key.Value>
