@@ -18,15 +18,17 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
             var args = parameter as InteractionRequestedEventArgs;
             if (args != null)
             {
-                var notificationWithDictionaryService = args.Context as NotificationWithDictionaryService;
+                var notificationWithServices = args.Context as NotificationWithServices;
 
-                if (notificationWithDictionaryService == null
-                    || notificationWithDictionaryService.DictionaryService == null)
+                if (notificationWithServices == null
+                    || notificationWithServices.AudioService == null
+                    || notificationWithServices.DictionaryService == null)
                 {
-                    throw new ApplicationException("Dictionary service was not supplied to the settings window");
+                    throw new ApplicationException("Audio and/or Dictionary service(s) were/was not supplied to the management window action.");
                 }
 
-                var childWindow = new ManagementWindow(notificationWithDictionaryService.DictionaryService);
+                var childWindow = new ManagementWindow(notificationWithServices.AudioService, notificationWithServices.DictionaryService);
+                
                 EventHandler closeHandler = null;
                 closeHandler = (sender, e) =>
                 {
