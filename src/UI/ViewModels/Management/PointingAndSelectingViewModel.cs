@@ -154,11 +154,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationCompleteTime, value); }
         }
         
-        private TriggerStopSignals selectionTriggerStopSignal;
-        public TriggerStopSignals SelectionTriggerStopSignal
+        private TriggerStopSignals multiKeySelectionTriggerStopSignal;
+        public TriggerStopSignals MultiKeySelectionTriggerStopSignal
         {
-            get { return selectionTriggerStopSignal; }
-            set { SetProperty(ref selectionTriggerStopSignal, value); }
+            get { return multiKeySelectionTriggerStopSignal; }
+            set { SetProperty(ref multiKeySelectionTriggerStopSignal, value); }
         }
         
         private TimeSpan multiKeySelectionFixationMinDwellTime;
@@ -199,7 +199,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                      && KeySelectionTriggerSource == TriggerSources.Fixations)
                   || (Settings.Default.KeySelectionTriggerFixationCompleteTime != KeySelectionTriggerFixationCompleteTime 
                      && KeySelectionTriggerSource == TriggerSources.Fixations)
-                  || Settings.Default.SelectionTriggerStopSignal != SelectionTriggerStopSignal
+                  || Settings.Default.MultiKeySelectionTriggerStopSignal != MultiKeySelectionTriggerStopSignal
                   || Settings.Default.MultiKeySelectionFixationMinDwellTime != MultiKeySelectionFixationMinDwellTime
                   || Settings.Default.MultiKeySelectionMaxDuration != MultiKeySelectionMaxDuration;
             }
@@ -223,7 +223,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             PointSelectionTriggerFixationRadius = Settings.Default.PointSelectionTriggerFixationRadius;
             KeySelectionTriggerFixationLockOnTime = Settings.Default.KeySelectionTriggerFixationLockOnTime;
             KeySelectionTriggerFixationCompleteTime = Settings.Default.KeySelectionTriggerFixationCompleteTime;
-            SelectionTriggerStopSignal = Settings.Default.SelectionTriggerStopSignal;
+            MultiKeySelectionTriggerStopSignal = Settings.Default.MultiKeySelectionTriggerStopSignal;
             MultiKeySelectionFixationMinDwellTime = Settings.Default.MultiKeySelectionFixationMinDwellTime;
             MultiKeySelectionMaxDuration = Settings.Default.MultiKeySelectionMaxDuration;
         }
