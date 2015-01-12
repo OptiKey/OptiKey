@@ -306,5 +306,29 @@
                 </ComboBox.Style>
             </ComboBox>
         </GroupBox>
+        
+        <GroupBox Grid.Row="2" Header="Multi-key Selection">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Stop signal:" 
+                       VerticalAlignment="Center" Margin="5" />
+            <ComboBox Grid.Row="0" Grid.Column="1" 
+                      ItemsSource="{Binding TriggerStopSignals}"
+                      DisplayMemberPath="Key"
+                      SelectedValuePath="Value"
+                      SelectedValue="{Binding MultiKeySelectionTriggerStopSignal, Mode=TwoWay}" />
+                      
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Minimum dwell time on a key to include in capture:" 
+                       VerticalAlignment="Center" Margin="5"/>
+            <TimeSpanControl Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                             Value="{Binding MultiKeySelectionFixationMinDwellTime, Mode=TwoWay}"/>
+        </GroupBox>
     </Grid>
 </UserControl>
