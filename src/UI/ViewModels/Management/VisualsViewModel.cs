@@ -155,6 +155,20 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             get { return scratchpadNumberOfLines; }
             set { SetProperty(ref scratchpadNumberOfLines, value); }
         }
+        
+        private int toastNotificationTitleFontSize;
+        public int ToastNotificationTitleFontSize
+        {
+            get { return toastNotificationTitleFontSize; }
+            set { SetProperty(ref toastNotificationTitleFontSize, value); }
+        }
+        
+        private int toastNotificationContentFontSize;
+        public int ToastNotificationContentFontSize
+        {
+            get { return toastNotificationContentFontSize; }
+            set { SetProperty(ref toastNotificationContentFontSize, value); }
+        }
 
         private VisualModes visualMode;
         public VisualModes VisualMode
@@ -179,6 +193,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             FontStretch = Settings.Default.FontStretch;
             FontWeight = Settings.Default.FontWeight;
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
+            ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
+            ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
             VisualMode = Settings.Default.VisualMode;
         }
 
@@ -189,6 +205,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             Settings.Default.FontStretch = FontStretch;
             Settings.Default.FontWeight = fontWeight;
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
+            Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
+            Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
             Settings.Default.VisualMode = VisualMode;
             Settings.Default.Save();
         }
