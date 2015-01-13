@@ -1,5 +1,9 @@
+using System.Collections.ObjectModel;
+using System.Linq;
+using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Services;
 using log4net;
+using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels.Management
@@ -20,8 +24,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             this.dictionaryService = dictionaryService;
         
-            AddCommand = new DelegateCommand<string>(Add, s => !string.IsNullOrEmpty(s));
-            ToggleDeleteCommand = new DelegateCommand(ToggleDelete, () => !string.IsNullOrEmpty(NewEntry));
+            AddCommand = new DelegateCommand(Add, () => !string.IsNullOrEmpty(NewEntry));
+            ToggleDeleteCommand = new DelegateCommand<string>(ToggleDelete, e => !string.IsNullOrEmpty(e));
         
             Load();
         }
@@ -30,9 +34,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
 
-        //Tuple signature is <entry, added, deleted>
-        private ObservableCollection<Tuple<string, bool, bool>> entries;
-        public ObservableCollection<Tuple<string, bool, bool>> Entries
+        private ObservableCollection<DictionaryEntryAndState> entries;
+        public ObservableCollection<DictionaryEntryAndState> Entries
         {
             get { return entries; }
             set { SetProperty(ref entries, value); }
@@ -44,8 +47,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             get { return newEntry; }
             set 
             { 
-                SetProperty(ref newEntry, value); 
-                ToggleDeleteCommand.RaiseCanExecuteChanged();
+                SetProperty(ref newEntry, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -54,7 +57,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             get { return false; }
         }
         
-        public DelegateCommand<string> AddCommand { get; private set; }
+        public DelegateCommand AddCommand { get; private set; }
         public DelegateCommand<string> ToggleDeleteCommand { get; private set; }        
         
         #endregion
@@ -65,10 +68,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             var allDictionaryEntries = dictionaryService.GetAllEntriesWithUsageCounts();
             Entries = allDictionaryEntries != null
-                ? new ObservableCollection<Tuple<string, bool, bool>(
+                ? new ObservableCollection<DictionaryEntryAndState>(
                     allDictionaryEntries
-                        .Select(e => new Tuple<string, bool, bool> { Item1 = e.Entry })
-                        .OrderBy(tuple => tuple.Item1)
+                        .Select(e => new DictionaryEntryAndState {Entry = e.Entry})
+                        .OrderBy(e => e.Entry)
                         .ToList())
                 : null;
         }
@@ -76,9 +79,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         private void Add()
         {
             if(Entries != null
-               && !Entries.Any(e => e == NewEntry))
+               && !Entries.Any(e => e.Entry == NewEntry))
             {
-                Entries.Add(new Tuple<string, bool, bool> { Item1 = NewEntry, Item2 = true });
+                Entries.Add(new DictionaryEntryAndState {Entry = NewEntry, Added = true});
             }
             
             NewEntry = null;
@@ -88,10 +91,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             if(Entries != null)
             {
-                var match = Entries.FirstOrDefault(e => e == entry))
+                var match = Entries.FirstOrDefault(e => e.Entry == entry);
                 if(match != null)
                 {
-                    match.Item3 = !match.Item3;
+                    match.Deleted = !match.Deleted;
                 }
             }
         }
@@ -101,15 +104,15 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             if(Entries != null)
             {
                 //Add new entries
-                foreach(var newEntry in Entries.Where(e => e.Item2))
+                foreach(var addedEntry in Entries.Where(e => e.Added).Select(e => e.Entry))
                 {
-                    dictionaryService.AddNewEntryToDictionary(newEntry);
+                    dictionaryService.AddNewEntryToDictionary(addedEntry);
                 }
                 
                 //Remove deleted entries
-                foreach(var deletedEntry in Entries.Where(e => e.Item3))
+                foreach(var deletedEntry in Entries.Where(e => e.Deleted).Select(e => e.Entry))
                 {
-                    dictionaryService.RemoveEntryFromDictionary(newEntry);
+                    dictionaryService.RemoveEntryFromDictionary(deletedEntry);
                 }
             }
         }

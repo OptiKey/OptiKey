@@ -16,10 +16,21 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Content="Add new entry: " VerticalAlignment="Center" />
-            <TextBox MinWidth="150" Text="{Binding NewEntry, Mode=TwoWay}" VerticalAlignment="Center" />
-            <Button Content="Add" Command="{Binding AddCommand}" VerticalAlignment="Center" />
+        <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Label Content="Add new entry:" 
+                   FontWeight="Bold"
+                   Margin="2" 
+                   VerticalAlignment="Center" />
+            <TextBox MinWidth="150" 
+                     Text="{Binding NewEntry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="2" 
+                     VerticalAlignment="Center" />
+            <Button Content="Add" 
+                    Command="{Binding AddCommand}" 
+                    Margin="2" 
+                    VerticalAlignment="Center" />
         </StackPanel>
         
         <ItemsControl Grid.Row="1"
@@ -34,16 +45,19 @@
                             <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleDeleteButtonColumn" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Content="{Binding Item1}"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2">
+                        <TextBlock Grid.Column="0" 
+                                   Text="{Binding Entry}"
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" 
+                                   Margin="50,2,50,2">
                             <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Item3" Value="True">
+                                        <DataTrigger Binding="{Binding Deleted}" Value="True">
                                             <Setter Property="Foreground" Value="Red" />
                                             <Setter Property="TextDecorations" Value="Strikethrough" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Item2" Value="True">
+                                        <DataTrigger Binding="{Binding Added}" Value="True">
                                             <Setter Property="Foreground" Value="Green" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -51,14 +65,17 @@
                             </TextBlock.Style>        
                        </TextBlock>
 
-                        <Button Grid.Column="1" VerticalAlignment="Center" Margin="2"
-                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.RemoveEntryWithUsageCountCommand}" 
-                                CommandParameter="{Binding Item1}">
+                        <Button Grid.Column="1" 
+                                VerticalAlignment="Center" 
+                                MinWidth="100" 
+                                Margin="50,2,50,2"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.ToggleDeleteCommand}" 
+                                CommandParameter="{Binding Entry}">
                             <Button.Style>
-                                <Style TargetType="{x:Type Button}">
+                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Content" Value="Delete" />
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Item3" Value="True">
+                                        <DataTrigger Binding="{Binding Deleted}" Value="True">
                                             <Setter Property="Content" Value="Restore" />
                                         </DataTrigger>
                                     </Style.Triggers>

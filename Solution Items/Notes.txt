@@ -1,76 +1,8 @@
 Try running VS as administrator & request uAccess in manifest if it works:
 	Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
 	Ok when exe run directly, but not when run using visual studio debugging.
-	
-
-Move Keyboard Design spreadsheet to the 'docs' folder and link this into the project
 
 Group the arrows to make them the same size
-
-Management (new window accessed with hotkey)
-		X Visuals:		
-		X Theme	System.String	/Resources/Themes/Android_Dark.xaml
-		X FontFamily	System.String	/Resources/Fonts/#Roboto
-		X FontStretch	System.String	Condensed
-		X FontWeight	System.String	Regular
-		X ScratchpadNumberOfLines	System.Int32	2
-		X ToastNotificationTitleFontSize	System.Int32	25
-		X ToastNotificationContentFontSize	System.Int32	16
-		X VisualMode setting - SpeechOnly / Standard
-		
-		X Words:		
-		X Language	JuliusSweetland.ETTA.Enums.Languages	BritishEnglish
-			http://stackoverflow.com/questions/6145888/how-to-bind-an-enum-to-a-combobox-control-in-wpf
-			
-		X AutoAddSpace	System.Boolean	TRUE
-		X AutoCapitalise	System.Boolean	TRUE
-		X MultiKeySelectionMaxDictionaryMatches	System.Int32	40
-		
-		X Sounds:		
-		X SpeechVoice	System.String	
-		X SpeechVolume	System.Int32	100
-		X SpeechRate	System.Int32	0
-		X InfoSoundFile	System.String	Resources\Sounds\Info1.wav
-		X SelectionSoundFile	System.String	Resources\Sounds\Selection1.wav
-		X ErrorSoundFile	System.String	Resources\Sounds\Error1.wav
-		X MultiKeySelectionCaptureStartSoundFile	System.String	Resources\Sounds\MultiKeyCaptureStart1.wav
-		X MultiKeySelectionCaptureEndSoundFile	System.String	Resources\Sounds\MultiKeyCaptureEnd1.wav
-		
-		X Pointing & Selecting:	
-		X PointsSource	JuliusSweetland.ETTA.Enums.PointsSources	MousePosition
-		X PointsMousePositionSampleInterval	System.TimeSpan	00:00.013
-		X PointTtl	System.TimeSpan	00:00.150
-		X KeySelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	KeyboardKeyDownsUps
-		X PointSelectionTriggerSource	JuliusSweetland.ETTA.Enums.TriggerSources	Fixations
-		X SelectionTriggerKeyboardKeyDownUpKey	System.Windows.Forms.Keys	Pause
-		X SelectionTriggerMouseDownUpButton	System.Windows.Forms.MouseButtons	Left
-		X PointSelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
-		X PointSelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
-		X PointSelectionTriggerFixationRadius	System.Double	50
-		X KeySelectionTriggerFixationLockOnTime	System.TimeSpan	00:00.500
-		X KeySelectionTriggerFixationCompleteTime	System.TimeSpan	00:01.500
-		X MultiKeySelectionTriggerStopSignal	JuliusSweetland.ETTA.Enums.TriggerStopSignals	NextLow - RESET TO NEXTHIGH if using a trigger which doesn't support low signals, eg fixation triggers
-		X MultiKeySelectionFixationMinDwellTime	System.TimeSpan	00:00.050
-		X MultiKeySelectionMaxDuration	System.TimeSpan	01:00.000
-		
-		Dictionary management:
-		Add
-		Remove
-			Do we need 2 remove entry methods? What's the point of not saving after removing? void RemoveEntryFromDictionary(string entry) NOT used
-			Entry+State class (AddRemovedStates enum and AddRemovedStates? State property = null, added, deleted)
-
-		X Other:
-		X Debug mode (setting)
-
-X VisualMode setting - Standard / SpeechOnly
-	- When switching mode make sure KeyDownStates (which should automatically change settings also?) are reset:
-		X - Publishing off (which should release down keys automatically?)
-		X - Multi-key selection off
-		X - Set Keyboard back to Alpha
-		X - Leave Sleep and Recalibrate in
-	TEST SWITCHING MODES
-
-Preview settings in management console
 
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
@@ -90,6 +22,8 @@ Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
 	
 Refactor any remaining large classes, e.g. MainViewModel
+
+Preview settings in management console
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
 

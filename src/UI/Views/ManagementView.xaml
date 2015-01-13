@@ -23,43 +23,31 @@
         </Grid.RowDefinitions>
         <TabControl Grid.IsSharedSizeScope="True">
             <TabItem Header="Visuals">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="Sounds">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="Words">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="Pointing &amp; Selecting">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="Dictionary">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="Other">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                    <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
-                </ScrollViewer>
+                <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Command="{Binding OkCommand}" 
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                        Width="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
-                <Button Command="{Binding CancelCommand}" 
-                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                        Width="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
+            <Button Command="{Binding OkCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
+            <Button Command="{Binding CancelCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
         </StackPanel>
     </Grid>
 </UserControl>

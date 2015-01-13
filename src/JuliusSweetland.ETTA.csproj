@@ -169,6 +169,7 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
+    <Compile Include="Models\DictionaryEntryAndState.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
@@ -396,8 +397,6 @@
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
     <None Include="External Libraries\TET\Info.txt" />
-    <Content Include="Solution Files\Certificates and Signing.txt" />
-    <Content Include="Solution Files\Eye Tracking Setup Notes.txt" />
     <Content Include="External Libraries\TET\Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -414,7 +413,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.manifest" />
-    <Content Include="Solution Files\Keyboard Designs.xlsx" />
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\SVG Source Files\Back.svg" />
@@ -456,7 +454,6 @@
     <Content Include="Resources\Sounds\Selection2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Solution Files\Notes.txt" />
     <None Include="Resources\Icons\SVG Source Files\DownArrow.svg" />
     <None Include="Resources\Icons\SVG Source Files\LeftArrow.svg" />
     <None Include="Resources\Icons\SVG Source Files\RightArrow.svg" />
@@ -493,9 +490,6 @@
     <None Include="Resources\Icons\SVG Source Files\Shift.svg" />
     <None Include="Resources\Icons\SVG Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Credits.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dictionaries\BritishEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

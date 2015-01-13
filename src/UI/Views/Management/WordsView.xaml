@@ -7,68 +7,70 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
         
-        <GroupBox Grid.Row="0" Header="Language">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <GroupBox Grid.Row="0" Header="Language">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
             
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Language:" 
-                           VerticalAlignment="Center" Margin="5" />
-                <ComboBox Grid.Row="0" Grid.Column="1" 
-                          ItemsSource="{Binding Languages}"
-                          DisplayMemberPath="Key"
-                          SelectedValuePath="Value"
-                          SelectedValue="{Binding Language, Mode=TwoWay}" />
-            </Grid>
-        </GroupBox>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Language:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" 
+                              ItemsSource="{Binding Languages}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding Language, Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
         
-        <GroupBox Grid.Row="1" Header="Automatic sentence adjustments">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+            <GroupBox Grid.Row="1" Header="Automatic sentence adjustments">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
             
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Add spaces between words:" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="0" Grid.Column="1" 
-                      VerticalAlignment="Center"
-                      IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Add spaces between words:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
             
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Capitalise start of sentences:" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="1" Grid.Column="1" 
-                      VerticalAlignment="Center"
-                      IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
-            </Grid>
-        </GroupBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Capitalise start of sentences:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="1" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
     
-        <GroupBox Grid.Row="2" Header="Mulit-key captures">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <GroupBox Grid.Row="2" Header="Mulit-key captures">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
             
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Maximum number of dictionary matches:" 
-                           VerticalAlignment="Center" Margin="5" />
-                <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
-                                        Minimum="1" Interval="1"
-                                        Value="{Binding MultiKeySelectionMaxDictionaryMatches, Mode=TwoWay}" />
-            </Grid>
-        </GroupBox>
-    </Grid>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Maximum number of dictionary matches:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="1"
+                                            Value="{Binding MultiKeySelectionMaxDictionaryMatches, Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

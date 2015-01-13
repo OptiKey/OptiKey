@@ -330,15 +330,7 @@ namespace JuliusSweetland.ETTA
 
         private void HandleUnhandledException(Exception exception)
         {
-            if (exception != null)
-            {
-                try
-                {
-                    Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
-                    MessageBox.Show("A problem has occurred and the application cannot continue. Please check the logs for details.");
-                }
-                catch {} //Swallow exception with logging or displaying messagebox to avoid looped errors
-            }
+            Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
         }
 
         #endregion

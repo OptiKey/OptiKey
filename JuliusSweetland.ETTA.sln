@@ -5,6 +5,14 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.ETTA", "src\JuliusSweetland.ETTA.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Certificates and Signing.txt = Solution Items\Certificates and Signing.txt
+		Solution Items\Eye Tracker Physical Setup Notes.txt = Solution Items\Eye Tracker Physical Setup Notes.txt
+		Solution Items\Keyboard Designs.xlsx = Solution Items\Keyboard Designs.xlsx
+		Solution Items\Notes.txt = Solution Items\Notes.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

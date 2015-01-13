@@ -42,7 +42,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTop}" />
             </controls:Key.Value>
@@ -84,7 +84,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeft}" />
             </controls:Key.Value>
@@ -98,7 +98,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRight}" />
             </controls:Key.Value>
@@ -135,7 +135,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="1"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                      SharedSizeGroup="KeyWithNarrowSymbol">
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottom}" />
             </controls:Key.Value>
@@ -175,7 +175,7 @@
         <controls:Key Grid.Row="2" Grid.Column="8"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
-                      SharedSizeGroup="KeyWithNarrowSymbolAndText">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
             </controls:Key.Value>
