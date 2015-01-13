@@ -5,7 +5,87 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="Dictionary View" />
+    
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="EntriesCollectionViewSource" Source="{Binding Entries}" />
+    </UserControl.Resources>
+    
+    <Grid IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="Add new entry: " VerticalAlignment="Center" />
+            <TextBox MinWidth="150" Text="{Binding NewEntry, Mode=TwoWay}" VerticalAlignment="Center" />
+            <Button Content="Add" Command="{Binding AddCommand}" VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <ItemsControl Grid.Row="1"
+                      VirtualizingStackPanel.IsVirtualizing="True"
+                      ScrollViewer.CanContentScroll="True"
+                      ItemsSource="{Binding Source={StaticResource EntriesCollectionViewSource}, Mode=OneWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="ToggleDeleteButtonColumn" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Content="{Binding Item1}"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Item3" Value="True">
+                                            <Setter Property="Foreground" Value="Red" />
+                                            <Setter Property="TextDecorations" Value="Strikethrough" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Item2" Value="True">
+                                            <Setter Property="Foreground" Value="Green" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>        
+                       </TextBlock>
+
+                        <Button Grid.Column="1" VerticalAlignment="Center" Margin="2"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.RemoveEntryWithUsageCountCommand}" 
+                                CommandParameter="{Binding Item1}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Content" Value="Delete" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Item3" Value="True">
+                                            <Setter Property="Content" Value="Restore" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>        
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                            Padding="{TemplateBinding Control.Padding}"
+                            BorderBrush="{TemplateBinding Border.BorderBrush}"
+                            Background="{TemplateBinding Panel.Background}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
     </Grid>
 </UserControl>
