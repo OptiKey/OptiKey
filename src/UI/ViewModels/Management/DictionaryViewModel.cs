@@ -80,6 +80,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             {
                 Entries.Add(new Tuple<string, bool, bool> { Item1 = NewEntry, Item2 = true });
             }
+            
+            NewEntry = null;
         }
         
         private void ToggleDelete(string entry)
