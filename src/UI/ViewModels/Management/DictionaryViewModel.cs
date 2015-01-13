@@ -21,7 +21,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             this.dictionaryService = dictionaryService;
         
             AddCommand = new DelegateCommand<string>(Add, s => !string.IsNullOrEmpty(s));
-            ToggleDeleteCommand = new DelegateCommand<string>(ToggleDelete, s => !string.IsNullOrEmpty(s));
+            ToggleDeleteCommand = new DelegateCommand(ToggleDelete, () => !string.IsNullOrEmpty(NewEntry));
         
             Load();
         }
@@ -36,6 +36,17 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             get { return entries; }
             set { SetProperty(ref entries, value); }
+        }
+        
+        private string newEntry;
+        public string NewEntry
+        {
+            get { return newEntry; }
+            set 
+            { 
+                SetProperty(ref newEntry, value); 
+                ToggleDeleteCommand.RaiseCanExecuteChanged();
+            }
         }
 
         public bool ChangesRequireRestart
@@ -62,12 +73,12 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
                 : null;
         }
         
-        private void Add(string entry)
+        private void Add()
         {
             if(Entries != null
-               && !Entries.Any(e => e == entry))
+               && !Entries.Any(e => e == NewEntry))
             {
-                Entries.Add(new Tuple<string, bool, bool> { Item1 = entry, Item2 = true });
+                Entries.Add(new Tuple<string, bool, bool> { Item1 = NewEntry, Item2 = true });
             }
         }
         
