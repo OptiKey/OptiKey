@@ -692,12 +692,12 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Standard")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.VisualModes VisualMode {
+        public global::JuliusSweetland.ETTA.Enums.KeyboardsSets KeyboardSet {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.VisualModes)(this["VisualMode"]));
+                return ((global::JuliusSweetland.ETTA.Enums.KeyboardsSets)(this["KeyboardSet"]));
             }
             set {
-                this["VisualMode"] = value;
+                this["KeyboardSet"] = value;
             }
         }
         

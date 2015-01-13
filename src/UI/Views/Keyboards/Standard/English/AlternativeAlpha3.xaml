@@ -1,0 +1,331 @@
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
+             xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
+             xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
+             xmlns:english="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
+    </UserControl.Resources>
+    
+    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
+          Grid.IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <english:Output Grid.Row="0" Grid.Column="0"
+                        Grid.RowSpan="2" Grid.ColumnSpan="22" 
+                        NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+        
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="ș" ShiftDownText="Ș"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ș" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      ShiftUpText="ß" ShiftDownText="ß"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ß" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      ShiftUpText="ś" ShiftDownText="Ś"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ś" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+                      ShiftUpText="ŝ" ShiftDownText="Ŝ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ŝ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+                      ShiftUpText="ť" ShiftDownText="Ť"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ť" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                      ShiftUpText="ț" ShiftDownText="Ț"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ț" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+                      ShiftUpText="ţ" ShiftDownText="Ţ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ţ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+                      ShiftUpText="þ" ShiftDownText="Þ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="þ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ụ" ShiftDownText="Ụ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ụ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+                      ShiftUpText="ư" ShiftDownText="Ư"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ư" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="3of3"
+                      SharedSizeGroup="KeyWithDescription">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="AlternativeAlpha1Keyboard" />
+            </controls:Key.Value>
+        </controls:Key>
+
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                      ShiftUpText="ų" ShiftDownText="Ų"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ų" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                      ShiftUpText="ű" ShiftDownText="Ű"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ű" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+                      ShiftUpText="ů" ShiftDownText="Ů"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ů" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+                      ShiftUpText="ū" ShiftDownText="Ū"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ū" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
+                      ShiftUpText="ü" ShiftDownText="Ü"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ü" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
+                      ShiftUpText="û" ShiftDownText="Û"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="û" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
+                      ShiftUpText="ú" ShiftDownText="Ú"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ú" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+                      ShiftUpText="ù" ShiftDownText="Ù"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ù" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="ŵ" ShiftDownText="Ŵ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ŵ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+                      ShiftUpText="ŷ" ShiftDownText="Ŷ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ŷ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource MenuIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource ShiftIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                      ShiftUpText="ÿ" ShiftDownText="Ÿ"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ÿ" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+                      ShiftUpText="ý" ShiftDownText="Ý"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ý" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+                      ShiftUpText="ź" ShiftDownText="Ź"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ź" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+                      ShiftUpText="ż" ShiftDownText="Ż"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ż" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+                      ShiftUpText="ž" ShiftDownText="Ž"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="ž" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BackOneIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BackManyIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="ABC"
+                      SharedSizeGroup="KeyWithDescription">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+
+        <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="CTRL"
+                      SharedSizeGroup="KeyWithDescription">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftCtrl}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource WinIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftWin}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
+                      Text="ALT"
+                      SharedSizeGroup="KeyWithDescription">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
+                      SymbolGeometry="{StaticResource SpaceIcon}"
+                      WidthSpan="2" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue String=" " />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
+                      SymbolGeometry="{StaticResource EnterIcon}"
+                      WidthSpan="2"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+            </controls:Key.Value>
+        </controls:Key>
+    </Grid>
+</UserControl>

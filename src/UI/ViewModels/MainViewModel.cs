@@ -856,10 +856,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
 
         private void SelectKeyboardOnVisualModeChanges()
         {
-            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
+            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
             {
                 //Listen to VisualMode changes and reset keyboard to Alpha if mode changed to SpeechOnly
-                if (visualMode == VisualModes.SpeechOnly)
+                if (visualMode == KeyboardsSets.SpeechOnly)
                 {
                     Keyboard = new Alpha();
                 }

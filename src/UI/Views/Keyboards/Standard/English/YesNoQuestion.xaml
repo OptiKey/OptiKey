@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.YesNoQuestion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
+             xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
+    </UserControl.Resources>
+    
+    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
+          Grid.IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <controls:QuestionText Grid.Row="0" Grid.Column="0" 
+                           Grid.RowSpan="3" Grid.ColumnSpan="22"
+                           Text="{Binding Text, Mode=OneWay}" />
+        
+        <controls:Key Grid.Row="4" Grid.Column="2" 
+                      Grid.RowSpan="3" Grid.ColumnSpan="8"
+                      SymbolGeometry="{StaticResource YesIcon}"
+                      HeightSpan="3" WidthSpan="4" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="YesQuestionResult" />
+            </controls:Key.Value>
+        </controls:Key>
+
+        <controls:Key Grid.Row="4" Grid.Column="12" 
+                      Grid.RowSpan="3" Grid.ColumnSpan="8"
+                      SymbolGeometry="{StaticResource NoIcon}"
+                      HeightSpan="3" WidthSpan="4" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="NoQuestionResult" />
+            </controls:Key.Value>
+        </controls:Key>
+    </Grid>
+</UserControl>

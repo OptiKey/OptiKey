@@ -155,7 +155,7 @@
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
-    <Setting Name="VisualMode" Roaming="true" Type="JuliusSweetland.ETTA.Enums.VisualModes" Scope="User">
+    <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.ETTA.Enums.KeyboardsSets" Scope="User">
       <Value Profile="(Default)">Standard</Value>
     </Setting>
     <Setting Name="ControlPanelWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">

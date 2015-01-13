@@ -79,7 +79,7 @@ namespace JuliusSweetland.ETTA
             Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());
 
             //Correct incorrect settings (e.g. unexpected combinations)
-            if (Settings.Default.VisualMode == VisualModes.SpeechOnly)
+            if (Settings.Default.KeyboardSet == KeyboardsSets.SpeechOnly)
             {
                 if (Settings.Default.PublishingKeys) Settings.Default.PublishingKeys = false;
                 if (Settings.Default.MultiKeySelectionEnabled) Settings.Default.MultiKeySelectionEnabled = false;

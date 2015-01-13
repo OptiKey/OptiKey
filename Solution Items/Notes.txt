@@ -5,6 +5,7 @@ Try running VS as administrator & request uAccess in manifest if it works:
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
+
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 	Need to make sure KeyValueMap is nulled out when a keyboard changes, and only gets set again when the view is rendered fully?
 	Do some testing around when the newContent.Loaded event fires, compared to when the Content is set, and the ContentRendered event fires. I think Loaded on the content is best, but still test.

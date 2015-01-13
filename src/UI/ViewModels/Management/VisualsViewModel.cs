@@ -104,14 +104,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
-        public List<KeyValuePair<string, VisualModes>> VisualModes
+        public List<KeyValuePair<string, KeyboardsSets>> VisualModes
         {
             get
             {
-                return new List<KeyValuePair<string, VisualModes>>
+                return new List<KeyValuePair<string, KeyboardsSets>>
                 {
-                    new KeyValuePair<string, VisualModes>("Standard", Enums.VisualModes.Standard),
-                    new KeyValuePair<string, VisualModes>("Speech Only", Enums.VisualModes.SpeechOnly)
+                    new KeyValuePair<string, KeyboardsSets>("Standard", Enums.KeyboardsSets.Standard),
+                    new KeyValuePair<string, KeyboardsSets>("Speech Only", Enums.KeyboardsSets.SpeechOnly)
                 };
             }
         }
@@ -174,8 +174,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             set { SetProperty(ref toastNotificationContentFontSize, value); }
         }
 
-        private VisualModes visualMode;
-        public VisualModes VisualMode
+        private KeyboardsSets visualMode;
+        public KeyboardsSets VisualMode
         {
             get { return visualMode; }
             set { SetProperty(ref visualMode, value); }
@@ -199,7 +199,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
             ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
-            VisualMode = Settings.Default.VisualMode;
+            VisualMode = Settings.Default.KeyboardSet;
         }
 
         public void ApplyChanges()
@@ -211,7 +211,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
             Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
-            Settings.Default.VisualMode = VisualMode;
+            Settings.Default.KeyboardSet = VisualMode;
             Settings.Default.Save();
         }
 

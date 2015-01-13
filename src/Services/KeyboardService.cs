@@ -99,9 +99,9 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Debug("Adding VisualMode setting change handlers.");
 
-            Settings.Default.OnPropertyChanges(s => s.VisualMode).Subscribe(visualMode =>
+            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
             {
-                if (visualMode == VisualModes.SpeechOnly)
+                if (visualMode == KeyboardsSets.SpeechOnly)
                 {
                     KeyDownStates[KeyValues.PublishKey].Value = Enums.KeyDownStates.Up;
                     KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
