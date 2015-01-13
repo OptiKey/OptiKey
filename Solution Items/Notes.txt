@@ -2,8 +2,6 @@ Try running VS as administrator & request uAccess in manifest if it works:
 	Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
 	Ok when exe run directly, but not when run using visual studio debugging.
 
-Group the arrows to make them the same size
-
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
