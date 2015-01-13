@@ -22,7 +22,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             this.audioService = audioService;
             
-            LoadSettings();
+            Load();
         }
         
         #endregion
@@ -157,7 +157,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             SpeechVoice = Settings.Default.SpeechVoice;
             SpeechVolume = Settings.Default.SpeechVolume;
