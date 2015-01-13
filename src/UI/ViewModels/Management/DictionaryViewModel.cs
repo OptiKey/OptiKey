@@ -55,7 +55,10 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             var allDictionaryEntries = dictionaryService.GetAllEntriesWithUsageCounts();
             Entries = allDictionaryEntries != null
                 ? new ObservableCollection<Tuple<string, bool, bool>(
-                    allDictionaryEntries.Select(e => new Tuple<string, bool, bool> { Item1 = e.Entry }).ToList())
+                    allDictionaryEntries
+                        .Select(e => new Tuple<string, bool, bool> { Item1 = e.Entry })
+                        .OrderBy(tuple => tuple.Item1)
+                        .ToList())
                 : null;
         }
         
