@@ -16,7 +16,6 @@ namespace JuliusSweetland.ETTA.Services
         IEnumerable<string> GetEntries(string hash);
         void AddNewEntryToDictionary(string entry);
         void RemoveEntryFromDictionary(string entry);
-        void RemoveEntryFromDictionary(DictionaryEntryWithUsageCount entryWithUsageCount);
         void IncrementEntryUsageCount(string entry);
         void DecrementEntryUsageCount(string entry);
         List<string> MapCaptureToEntries(List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
