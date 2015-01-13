@@ -23,7 +23,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             this.dictionaryService = dictionaryService;
 
-            LoadSettings();
+            Load();
         }
 
         #endregion
@@ -80,7 +80,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             Language = Settings.Default.Language;
             AutoAddSpace = Settings.Default.AutoAddSpace;
