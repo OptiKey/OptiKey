@@ -9,6 +9,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
         private readonly IDictionaryService dictionaryService;
         
         #endregion
@@ -19,6 +20,9 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             this.dictionaryService = dictionaryService;
         
+            AddCommand = new DelegateCommand<string>(Add, s => !string.IsNullOrEmpty(s));
+            RemoveCommand = new DelegateCommand<string>(Remove, s => !string.IsNullOrEmpty(s));
+        
             Load();
         }
         
@@ -26,19 +30,21 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Properties
 
+        //Tuple signature is <entry, added, deleted>
+        private ObservableCollection<Tuple<string, bool, bool>> entries;
+        public ObservableCollection<Tuple<string, bool, bool>> Entries
+        {
+            get { return entries; }
+            set { SetProperty(ref entries, value); }
+        }
+
         public bool ChangesRequireRestart
         {
-            get
-            {
-                return false;
-
-                //Settings.Default.CaptureTriggerSource != CaptureTriggerSource
-                //  || Settings.Default.CaptureTriggerKeyboardSignal != CaptureTriggerKeyboardSignal.ToString()
-                //  || Settings.Default.CaptureCoordinatesSource != CaptureCoordinatesSource
-                //  || Settings.Default.CaptureMouseCoordinatesOnIntervalInMilliseconds != CaptureMouseCoordinatesOnIntervalInMilliseconds
-                //  || Settings.Default.CaptureCoordinatesTimeoutInMilliseconds != CaptureCoordinatesTimeoutInMilliseconds;
-            }
+            get { return false; }
         }
+        
+        public DelegateCommand<string> AddCommand { get; private set; }
+        public DelegateCommand<string> RemoveCommand { get; private set; }        
         
         #endregion
         
@@ -46,14 +52,50 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         private void Load()
         {
-            //Debug = Settings.Default.Debug;
+            var allDictionaryEntries = dictionaryService.GetAllEntriesWithUsageCounts();
+            Entries = allDictionaryEntries != null
+                ? new ObservableCollection<Tuple<string, bool, bool>(
+                    allDictionaryEntries.Select(e => new Tuple<string, bool, bool> { Item1 = e.Entry }).ToList())
+                : null;
+        }
+        
+        private void Add(string entry)
+        {
+            if(Entries != null
+               && !Entries.Any(e => e == entry))
+            {
+                Entries.Add(new Tuple<string, bool, bool> { Item1 = entry, Item2 = true });
+            }
+        }
+        
+        private void Remove(string entry)
+        {
+            if(Entries != null)
+            {
+                var match = Entries.FirstOrDefault(e => e == entry))
+                if(match != null)
+                {
+                    match.Item3 = true;
+                }
+            }
         }
 
         public void ApplyChanges()
         {
-            //Settings.Default.Debug = Debug;
-            
-            //Settings.Default.Save();
+            if(Entries != null)
+            {
+                //Add new entries
+                foreach(var newEntry in Entries.Where(e => e.Item2))
+                {
+                    dictionaryService.AddNewEntryToDictionary(newEntry);
+                }
+                
+                //Remove deleted entries
+                foreach(var deletedEntry in Entries.Where(e => e.Item3))
+                {
+                    dictionaryService.RemoveEntryFromDictionary(newEntry);
+                }
+            }
         }
 
         #endregion
