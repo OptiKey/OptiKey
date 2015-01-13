@@ -19,7 +19,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         {
             this.dictionaryService = dictionaryService;
         
-            LoadSettings();
+            Load();
         }
         
         #endregion
@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             //Debug = Settings.Default.Debug;
         }
