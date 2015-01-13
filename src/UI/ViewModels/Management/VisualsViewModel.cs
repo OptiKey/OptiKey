@@ -21,7 +21,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         public VisualsViewModel()
         {
-            LoadSettings();
+            Load();
         }
         
         #endregion
@@ -190,7 +190,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             Theme = Settings.Default.Theme;
             FontFamily = Settings.Default.FontFamily;
