@@ -16,7 +16,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         public OtherViewModel()
         {
-            LoadSettings();
+            Load();
         }
         
         #endregion
@@ -42,7 +42,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             Debug = Settings.Default.Debug;
         }
