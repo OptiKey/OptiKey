@@ -21,7 +21,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             this.dictionaryService = dictionaryService;
         
             AddCommand = new DelegateCommand<string>(Add, s => !string.IsNullOrEmpty(s));
-            RemoveCommand = new DelegateCommand<string>(Remove, s => !string.IsNullOrEmpty(s));
+            ToggleDeleteCommand = new DelegateCommand<string>(ToggleDelete, s => !string.IsNullOrEmpty(s));
         
             Load();
         }
@@ -44,7 +44,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         }
         
         public DelegateCommand<string> AddCommand { get; private set; }
-        public DelegateCommand<string> RemoveCommand { get; private set; }        
+        public DelegateCommand<string> ToggleDeleteCommand { get; private set; }        
         
         #endregion
         
@@ -71,14 +71,14 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
         
-        private void Remove(string entry)
+        private void ToggleDelete(string entry)
         {
             if(Entries != null)
             {
                 var match = Entries.FirstOrDefault(e => e == entry))
                 if(match != null)
                 {
-                    match.Item3 = true;
+                    match.Item3 = !match.Item3;
                 }
             }
         }
