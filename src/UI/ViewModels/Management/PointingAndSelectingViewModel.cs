@@ -22,7 +22,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
 
         public PointingAndSelectingViewModel()
         {
-            LoadSettings();
+            Load();
             
             //Set up property defaulting logic
             this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts => 
@@ -219,7 +219,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
         
         #region Methods
 
-        private void LoadSettings()
+        private void Load()
         {
             PointsSource = Settings.Default.PointsSource;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
