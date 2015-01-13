@@ -93,7 +93,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
 
-            SelectKeyboardOnVisualModeChanges();
+            SelectKeyboardOnKeyboardSetChanges();
             AttachScratchpadEnabledListener();
 
             HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
@@ -854,11 +854,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
         }
 
-        private void SelectKeyboardOnVisualModeChanges()
+        private void SelectKeyboardOnKeyboardSetChanges()
         {
             Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
             {
-                //Listen to VisualMode changes and reset keyboard to Alpha if mode changed to SpeechOnly
+                //Listen to KeyboardSet changes and reset keyboard to Alpha if mode changed to SpeechOnly
                 if (visualMode == KeyboardsSets.SpeechOnly)
                 {
                     Keyboard = new Alpha();

@@ -35,7 +35,7 @@ namespace JuliusSweetland.ETTA.Services
             keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrationService);
 
             InitialiseKeyDownStates();
-            AddVisualModeChangeHandlers();
+            AddKeyboardSetChangeHandlers();
             AddKeyDownStatesChangeHandlers();
         }
 
@@ -95,9 +95,9 @@ namespace JuliusSweetland.ETTA.Services
                 Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
         }
 
-        private void AddVisualModeChangeHandlers()
+        private void AddKeyboardSetChangeHandlers()
         {
-            Log.Debug("Adding VisualMode setting change handlers.");
+            Log.Debug("Adding KeyboardSet setting change handlers.");
 
             Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
             {

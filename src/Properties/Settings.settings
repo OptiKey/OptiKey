@@ -93,7 +93,7 @@
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
     </Setting>
     <Setting Name="Debug" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="FontFamily" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>

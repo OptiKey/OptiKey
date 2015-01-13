@@ -376,6 +376,15 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\WindowsAPI.cs" />
+    <None Include="..\CREDITS.md">
+      <Link>CREDITS.md</Link>
+    </None>
+    <None Include="..\LICENSE.md">
+      <Link>LICENSE.md</Link>
+    </None>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\Move.svg" />
     <None Include="Resources\Icons\SVG Source Files\Resize.svg" />

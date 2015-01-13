@@ -44,10 +44,10 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Visual mode:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="2" Grid.Column="1" 
-                              ItemsSource="{Binding VisualModes}"
+                              ItemsSource="{Binding KeyboardSets}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding VisualMode, Mode=TwoWay}" />
+                              SelectedValue="{Binding KeyboardSet, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         

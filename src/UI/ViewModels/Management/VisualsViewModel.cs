@@ -104,7 +104,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             }
         }
 
-        public List<KeyValuePair<string, KeyboardsSets>> VisualModes
+        public List<KeyValuePair<string, KeyboardsSets>> KeyboardSets
         {
             get
             {
@@ -174,11 +174,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             set { SetProperty(ref toastNotificationContentFontSize, value); }
         }
 
-        private KeyboardsSets visualMode;
-        public KeyboardsSets VisualMode
+        private KeyboardsSets keyboardSet;
+        public KeyboardsSets KeyboardSet
         {
-            get { return visualMode; }
-            set { SetProperty(ref visualMode, value); }
+            get { return keyboardSet; }
+            set { SetProperty(ref keyboardSet, value); }
         }
 
         public bool ChangesRequireRestart
@@ -199,7 +199,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
             ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
-            VisualMode = Settings.Default.KeyboardSet;
+            KeyboardSet = Settings.Default.KeyboardSet;
         }
 
         public void ApplyChanges()
@@ -211,7 +211,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels.Management
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
             Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
-            Settings.Default.KeyboardSet = VisualMode;
+            Settings.Default.KeyboardSet = KeyboardSet;
             Settings.Default.Save();
         }
 
