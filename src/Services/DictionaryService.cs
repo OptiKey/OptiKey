@@ -263,37 +263,9 @@ namespace JuliusSweetland.ETTA.Services
                         {
                             dictionary.Remove(hash);
                         }
+                        
+                        SaveUserDictionaryToFile();
                     }
-                }
-            }
-        }
-
-        public void RemoveEntryFromDictionary(DictionaryEntryWithUsageCount entryWithUsageCount)
-        {
-            Log.Debug(
-                string.Format("RemoveEntryFromDictionary called with entryWithUsageCount.Entry '{0}'", 
-                    entryWithUsageCount != null ? entryWithUsageCount.Entry : null));
-
-            if (dictionary != null
-                && entryWithUsageCount != null
-                && !string.IsNullOrWhiteSpace(entryWithUsageCount.Entry)
-                && ExistsInDictionary(entryWithUsageCount.Entry))
-            {
-                var hash = entryWithUsageCount.Entry.CreateDictionaryEntryHash(log: false);
-
-                if (!string.IsNullOrWhiteSpace(hash)
-                    && dictionary.ContainsKey(hash))
-                {
-                    Log.Debug(string.Format("Removing entry '{0}' from dictionary", entryWithUsageCount.Entry));
-
-                    dictionary[hash].Remove(entryWithUsageCount);
-
-                    if (!dictionary[hash].Any())
-                    {
-                        dictionary.Remove(hash);
-                    }
-
-                    SaveUserDictionaryToFile();
                 }
             }
         }
