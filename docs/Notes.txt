@@ -1,6 +1,7 @@
-Try running VS ad administrator:
+Try running VS as administrator & request uAccess in manifest if it works:
 	Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
 	Ok when exe run directly, but not when run using visual studio debugging.
+	
 
 Move Keyboard Design spreadsheet to the 'docs' folder and link this into the project
 
