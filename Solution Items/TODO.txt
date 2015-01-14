@@ -4,6 +4,10 @@ Try running VS as administrator & request uAccess in manifest if it works:
 
 Start contacting people.
 
+Combine move and resize keyboards
+	Rename MoveAndResizeService to WindowManipulationService
+	Test opacity then add opacity logic to WindowManipulationService and keys
+
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
