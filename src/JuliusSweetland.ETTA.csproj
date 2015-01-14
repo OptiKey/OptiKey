@@ -376,11 +376,11 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\WindowsAPI.cs" />
-    <None Include="..\Solution Items\Credits.txt">
-      <Link>Credits.txt</Link>
+    <None Include="..\Solution Items\CREDITS.txt">
+      <Link>CREDITS.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\LICENSE.txt">
+    <None Include="..\Solution Items\LICENSE.txt">
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
