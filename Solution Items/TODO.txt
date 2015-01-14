@@ -23,6 +23,7 @@ Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
 	
 Refactor any remaining large classes, e.g. MainViewModel
+	Create new 'InputBroker'/'InputHandler'/'InputRouter' class which takes the view model, input service, outputservice, etc and coordinates the response
 
 Preview settings in management console
 
