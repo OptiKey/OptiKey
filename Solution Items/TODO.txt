@@ -7,6 +7,17 @@ Combine move and resize keyboards
 	Rename MoveAndResizeService to WindowManipulationService
 	Test opacity then add opacity logic to WindowManipulationService and keys
 
+Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
+	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
+		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
+	Steps to sign are in file "Certificates and Signing.txt".
+	Sign in post-build?
+	
+Set a different manifest if building in Release mode - including uiAccess request.
+
+Publish as ClickOnce
+	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
+
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
@@ -34,9 +45,6 @@ Preview settings in management console
 
 Prevent minimising? Listen to state change and restore?
 
-Publish as ClickOnce
-	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
-
 --------------------------------------------------------------------------------
 
 TO DO?
@@ -62,11 +70,6 @@ No position input possible - automatically cycle through groups of keys, then ke
 	Each key group should contain a 'back' key to return from group selection?
 	
 Add support for T9 style selection; either individual keys, or multi key select?
-
-Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
-	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
-		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
-	Steps to sign are in file "Certificates and Signing.txt"
 
 
 
