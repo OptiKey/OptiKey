@@ -90,6 +90,10 @@
     <Reference Include="MouseKeyboardActivityMonitor">
       <HintPath>..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External Libraries\TET\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -405,21 +409,11 @@
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
     <None Include="External Libraries\TET\Info.txt" />
-    <Content Include="External Libraries\TET\Newtonsoft.Json.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="External Libraries\TET\Newtonsoft.Json.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="External Libraries\TET\TETControls.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="External Libraries\TET\TETControls.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="External Libraries\TET\TETCSharpClient.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="External Libraries\TET\Newtonsoft.Json.dll" />
+    <None Include="External Libraries\TET\Newtonsoft.Json.xml" />
+    <None Include="External Libraries\TET\TETControls.dll" />
+    <None Include="External Libraries\TET\TETControls.pdb" />
+    <None Include="External Libraries\TET\TETCSharpClient.dll" />
     <None Include="app.manifest" />
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />

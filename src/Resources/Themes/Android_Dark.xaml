@@ -53,7 +53,7 @@
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
-
+            
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="TextAlignment" Value="Center" />
