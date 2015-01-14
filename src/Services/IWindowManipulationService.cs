@@ -1,6 +1,6 @@
 ﻿namespace JuliusSweetland.ETTA.Services
 {
-    public interface IMoveAndResizeService : INotifyErrors
+    public interface IWindowManipulationService : INotifyErrors
     {
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);
@@ -36,5 +36,7 @@
         void ShrinkFromTop(double pixels);
         void ShrinkFromTopAndLeft(double pixels);
         void ShrinkFromTopAndRight(double pixels);
+        void IncreaseOpacity();
+        void DecreaseOpacity();
     }
 }

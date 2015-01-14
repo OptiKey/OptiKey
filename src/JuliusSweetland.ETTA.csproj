@@ -182,7 +182,7 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
-    <Compile Include="Services\IMoveAndResizeService.cs" />
+    <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
@@ -216,7 +216,7 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
-    <Compile Include="Services\MoveAndResizeService.cs" />
+    <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
@@ -247,8 +247,7 @@
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Resize.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Move.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ManipulateWindow.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
@@ -267,11 +266,8 @@
     <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Resize.xaml.cs">
-      <DependentUpon>Resize.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Move.xaml.cs">
-      <DependentUpon>Move.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml.cs">
+      <DependentUpon>ManipulateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -389,8 +385,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Move.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Resize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
@@ -414,7 +408,9 @@
     <None Include="External Libraries\TET\TETControls.dll" />
     <None Include="External Libraries\TET\TETControls.pdb" />
     <None Include="External Libraries\TET\TETCSharpClient.dll" />
-    <None Include="app.manifest" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\SVG Source Files\Back.svg" />
@@ -432,6 +428,9 @@
     <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
     <None Include="Resources\Icons\SVG Source Files\PhysicalKeys.svg" />
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
+    <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
+    <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ManipulateWindow.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -544,11 +543,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Resize.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Move.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

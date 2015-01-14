@@ -23,16 +23,9 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
-                      IsEnabled="False" />
-        <controls:Key Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AccentedLettersIcon}"
                       Text="á → ž"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -40,7 +33,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlternativeAlpha1Keyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource CurrenciesIcon}"
                       Text="£ → €"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -48,7 +41,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="0" Grid.Column="2"
                       SymbolGeometry="{StaticResource PhysicalKeysIcon}"
                       Text="F1 → ESC"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -56,10 +49,8 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="7"
-                      IsEnabled="False" />
 
-        <controls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="CALIBRATE"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -67,25 +58,16 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MoveIcon}"
-                      Text="MOVE"
+        <controls:Key Grid.Row="1" Grid.Column="1"
+                      SymbolGeometry="{StaticResource ManipulateWindowIcon}"
+                      Text="MANIPULATE WINDOW"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ManipulateWindowKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource ResizeIcon}"
-                      Text="RESIZE"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ResizeKeyboard}" />
-            </controls:Key.Value>    
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       SharedSizeGroup="KeyWithSymbolAndText">

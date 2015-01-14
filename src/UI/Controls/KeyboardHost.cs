@@ -17,13 +17,12 @@ using AlternativeAlpha2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.Engli
 using AlternativeAlpha3 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha3;
 using Currencies1 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Currencies1;
 using Currencies2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Currencies2;
+using ManipulateWindow = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.ManipulateWindow;
 using Menu = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Menu;
-using Move = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Move;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols1;
 using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols2;
 using NumericAndSymbols3 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols3;
 using PhysicalKeys = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.PhysicalKeys;
-using Resize = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Resize;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.Controls
@@ -155,9 +154,21 @@ namespace JuliusSweetland.ETTA.UI.Controls
                             {
                                 newContent = new Currencies2 { DataContext = Keyboard };
                             }
+                            else if (Keyboard is ViewModels.Keyboards.ManipulateWindow)
+                            {
+                                newContent = new ManipulateWindow { DataContext = Keyboard };
+                            }
                             else if (Keyboard is ViewModels.Keyboards.Menu)
                             {
                                 newContent = new Menu { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols2)
+                            {
+                                newContent = new NumericAndSymbols2 { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols3)
+                            {
+                                newContent = new NumericAndSymbols3 { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols1)
                             {
@@ -166,22 +177,6 @@ namespace JuliusSweetland.ETTA.UI.Controls
                             else if (Keyboard is ViewModels.Keyboards.PhysicalKeys)
                             {
                                 newContent = new PhysicalKeys { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModels.Keyboards.Move)
-                            {
-                                newContent = new Move { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols2)
-                            {
-                                newContent = new NumericAndSymbols2 { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModels.Keyboards.Resize)
-                            {
-                                newContent = new Resize { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols3)
-                            {
-                                newContent = new NumericAndSymbols3 { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModels.Keyboards.YesNoQuestion)
                             {

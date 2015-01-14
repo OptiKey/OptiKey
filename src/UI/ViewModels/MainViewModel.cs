@@ -22,7 +22,7 @@ using Menu = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Menu;
 using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols1;
 using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.NumericAndSymbols2;
 using PhysicalKeys = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.PhysicalKeys;
-using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.Move;
+using SettingCategories = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.ManipulateWindow;
 using YesNoQuestion = JuliusSweetland.ETTA.UI.ViewModels.Keyboards.YesNoQuestion;
 
 namespace JuliusSweetland.ETTA.UI.ViewModels
@@ -42,7 +42,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
-        private readonly IMoveAndResizeService mainWindowMoveAndResizeService;
+        private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
@@ -69,7 +69,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
             IOutputService outputService,
-            IMoveAndResizeService mainWindowMoveAndResizeService,
+            IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
@@ -83,7 +83,7 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
-            this.mainWindowMoveAndResizeService = mainWindowMoveAndResizeService;
+            this.mainWindowManipulationService = mainWindowManipulationService;
             this.notifyErrorServices = notifyErrorServices;
 
             notificationRequest = new InteractionRequest<Notification>();
@@ -448,49 +448,64 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         Keyboard = new Currencies2();
                         break;
 
+                    case FunctionKeys.DecreaseOpacity:
+                        Log.Debug("Decreasing opacity.");
+                        mainWindowManipulationService.DecreaseOpacity();
+                        break;
+
                     case FunctionKeys.ExpandToBottom:
                         Log.Debug(string.Format("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndLeft:
                         Log.Debug(string.Format("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndRight:
                         Log.Debug(string.Format("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToLeft:
                         Log.Debug(string.Format("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToRight:
                         Log.Debug(string.Format("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTop:
                         Log.Debug(string.Format("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndLeft:
                         Log.Debug(string.Format("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndRight:
                         Log.Debug(string.Format("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.IncreaseOpacity:
+                        Log.Debug("Increasing opacity.");
+                        mainWindowManipulationService.IncreaseOpacity();
+                        break;
+
+                    case FunctionKeys.ManipulateWindowKeyboard:
+                        Log.Debug("Changing keyboard to ManipulateWindow.");
+                        Keyboard = new ManipulateWindow(Keyboard);
                         break;
 
                     case FunctionKeys.MaximiseSize:
                         Log.Debug("Maximising size.");
-                        mainWindowMoveAndResizeService.Maximise();
+                        mainWindowManipulationService.Maximise();
                         break;
                         
                     case FunctionKeys.MenuKeyboard:
@@ -527,90 +542,85 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                                 break;
                         }
                         break;
-                    
-                    case FunctionKeys.MoveKeyboard:
-                        Log.Debug("Changing keyboard to Move.");
-                        Keyboard = new Move(Keyboard);
-                        break;
 
                     case FunctionKeys.MoveToBottom:
                         Log.Debug(string.Format("Moving to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndLeft:
                         Log.Debug(string.Format("Moving to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndLeftBoundaries:
                         Log.Debug("Moving to bottom and left boundaries.");
-                        mainWindowMoveAndResizeService.MoveToBottomAndLeftBoundaries();
+                        mainWindowManipulationService.MoveToBottomAndLeftBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToBottomAndRight:
                         Log.Debug(string.Format("Moving to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndRightBoundaries:
                         Log.Debug("Moving to bottom and right boundaries.");
-                        mainWindowMoveAndResizeService.MoveToBottomAndRightBoundaries();
+                        mainWindowManipulationService.MoveToBottomAndRightBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToBottomBoundary:
                         Log.Debug("Moving to bottom boundary.");
-                        mainWindowMoveAndResizeService.MoveToBottomBoundary();
+                        mainWindowManipulationService.MoveToBottomBoundary();
                         break;
                         
                     case FunctionKeys.MoveToLeft:
                         Log.Debug(string.Format("Moving to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToLeftBoundary:
                         Log.Debug("Moving to left boundary.");
-                        mainWindowMoveAndResizeService.MoveToLeftBoundary();
+                        mainWindowManipulationService.MoveToLeftBoundary();
                         break;
                         
                     case FunctionKeys.MoveToRight:
                         Log.Debug(string.Format("Moving to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToRightBoundary:
                         Log.Debug("Moving to right boundary.");
-                        mainWindowMoveAndResizeService.MoveToRightBoundary();
+                        mainWindowManipulationService.MoveToRightBoundary();
                         break;
                         
                     case FunctionKeys.MoveToTop:
                         Log.Debug(string.Format("Moving to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndLeft:
                         Log.Debug(string.Format("Moving to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndLeftBoundaries:
                         Log.Debug("Moving to top and left boundaries.");
-                        mainWindowMoveAndResizeService.MoveToTopAndLeftBoundaries();
+                        mainWindowManipulationService.MoveToTopAndLeftBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToTopAndRight:
                         Log.Debug(string.Format("Moving to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.MoveToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.MoveToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndRightBoundaries:
                         Log.Debug("Moving to top and right boundaries.");
-                        mainWindowMoveAndResizeService.MoveToTopAndRightBoundaries();
+                        mainWindowManipulationService.MoveToTopAndRightBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToTopBoundary:
                         Log.Debug("Moving to top boundary.");
-                        mainWindowMoveAndResizeService.MoveToTopBoundary();
+                        mainWindowManipulationService.MoveToTopBoundary();
                         break;
 
                     case FunctionKeys.NextSuggestions:
@@ -656,54 +666,49 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                         }
                         break;
 
-                    case FunctionKeys.ResizeKeyboard:
-                        Log.Debug("Changing keyboard to Resize.");
-                        Keyboard = new Resize(Keyboard);
-                        break;
-
                     case FunctionKeys.RestoreSize:
                         Log.Debug("Restoring size.");
-                        mainWindowMoveAndResizeService.Restore();
+                        mainWindowManipulationService.Restore();
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:
                         Log.Debug(string.Format("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndLeft:
                         Log.Debug(string.Format("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndRight:
                         Log.Debug(string.Format("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromLeft:
                         Log.Debug(string.Format("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromRight:
                         Log.Debug(string.Format("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTop:
                         Log.Debug(string.Format("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndLeft:
                         Log.Debug(string.Format("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndRight:
                         Log.Debug(string.Format("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowMoveAndResizeService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.Speak:

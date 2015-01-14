@@ -121,7 +121,7 @@ namespace JuliusSweetland.ETTA
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, keyboardService);
 
-                IMoveAndResizeService moveAndResizeService = new MoveAndResizeService(mainWindow);
+                IWindowManipulationService moveAndResizeService = new WindowManipulationService(mainWindow);
                 notifyErrorServices.Add(moveAndResizeService);
 
                 var mainViewModel = new MainViewModel(

@@ -5,13 +5,13 @@ using log4net;
 
 namespace JuliusSweetland.ETTA.Services
 {
-    public class MoveAndResizeService : IMoveAndResizeService
+    public class WindowManipulationService : IWindowManipulationService
     {
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly Window window;
 
-        public MoveAndResizeService(Window window)
+        public WindowManipulationService(Window window)
         {
             this.window = window;
         }
@@ -449,6 +449,24 @@ namespace JuliusSweetland.ETTA.Services
         {
             ShrinkFromTop(pixels);
             ShrinkFromRight(pixels);
+        }
+
+        public void IncreaseOpacity()
+        {
+            window.Opacity += 0.1;
+            if (window.Opacity > 1)
+            {
+                window.Opacity = 1;
+            }
+        }
+
+        public void DecreaseOpacity()
+        {
+            window.Opacity -= 0.1;
+            if (window.Opacity < 0.1)
+            {
+                window.Opacity = 0.1;
+            }
         }
 
         #region Publish Error

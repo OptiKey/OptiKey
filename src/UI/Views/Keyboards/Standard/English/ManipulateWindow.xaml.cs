@@ -3,11 +3,11 @@
 namespace JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English
 {
     /// <summary>
-    /// Interaction logic for Move.xaml
+    /// Interaction logic for ManipulateWindow.xaml
     /// </summary>
-    public partial class Move : UserControl
+    public partial class ManipulateWindow : UserControl
     {
-        public Move()
+        public ManipulateWindow()
         {
             InitializeComponent();
         }
