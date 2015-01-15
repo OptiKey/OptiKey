@@ -25,6 +25,9 @@ TEST UIACCESS: Do I need admin privileges?
 			2a.Be trusted by the system and run with administrative privileges.
 			2b.The application must be installed in a secure location that requires a user account control (UAC) prompt to write to (for example, the Program Files folder).
 			3.Be built with a manifest file that includes the UIAccess flag.
+			
+TEST UIACCESS: Can I change the manifest post-build?
+	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
