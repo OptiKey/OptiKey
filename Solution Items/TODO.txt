@@ -12,6 +12,7 @@ UIACCESS: Can I change the manifest post-build? DOESN'T APPEAR LIKE I CAN - I TH
 	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
 
 READ UP ABOUT THE MANIFEST NOT BEING DETECTED/USED WHEN DEBUGGER IS ATTACHED
+	IT WORKS IF I TURN OFF THE VISUAL STUDIO HOSTING PROCESS UNDER BUILD OPTIONS - WHAT IS THE POINT OF THIS?
 	i.e. if I run ETTA standalone I get the correct OS Version (my manifest is being detected), but if I run with the debugger attached (a vshost wrapper) I get the wrong version, as if my manifest is not being used.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
