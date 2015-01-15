@@ -1,5 +1,8 @@
 TEST the 8 vs 8.1 version problem
-	Is it resolved by running as admin, or running when not attached to Visual Studio?
+	Is it resolved by;
+	1.Running as admin?
+	2.Running when not attached to Visual Studio?
+	3.Running with uiAccess?
 
 TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
 	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
