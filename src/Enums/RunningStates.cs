@@ -1,6 +1,6 @@
 namespace JuliusSweetland.ETTA.Enums
 {
-    public enum ServicesStates
+    public enum RunningStates
     {
         Running,
         Paused
