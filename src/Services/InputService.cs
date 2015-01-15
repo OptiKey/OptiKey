@@ -26,6 +26,7 @@ namespace JuliusSweetland.ETTA.Services
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         
+        private ServiceStates state;
         private KeyEnabledStates keyEnabledStates;
         
         private event EventHandler<int> pointsPerSecondEvent;
@@ -66,6 +67,20 @@ namespace JuliusSweetland.ETTA.Services
         #endregion
 
         #region Properties
+        
+        public ServiceStates State
+        {
+            get { return state; }
+            set 
+            { 
+                SetProperty(ref state, value); 
+                
+                if (pointSource != null)
+                {
+                    pointSource.State = state;
+                }
+            }
+        }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
         {
