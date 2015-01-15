@@ -294,32 +294,36 @@
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                      Text="- OPACITY"
                       WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                      Text="+ OPACITY"
                       WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource RestoreSizeIcon}"
+                      Text="RESTORE"
                       WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreSize}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource MaximiseSizeIcon}"
+                      Text="MAXIMISE"
                       WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MaximiseSize}" />
             </controls:Key.Value>
