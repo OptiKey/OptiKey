@@ -1,4 +1,7 @@
-TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
+TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. 
+	Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
+	Click2Speak runs from C:\Users\Julius\AppData\Local\Apps\2.0\51EBCVV8.OV4\4363V1M5.AQ1 and DOES require elevated privileges at startup.
+
 	This article suggests no admin needed: http://blogs.msdn.com/b/cjacks/archive/2009/10/15/using-the-uiaccess-attribute-of-requestedexecutionlevel-to-improve-applications-providing-remote-control-of-the-desktop.aspx
 		If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
 	This article suggests that uiaccess DOES need admin privilege AND for the app to be installed in Program Files (or other trusted directory). HOW DOES CLICK2SPEAK DO IT? http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
