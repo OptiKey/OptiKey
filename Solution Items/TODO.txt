@@ -3,6 +3,9 @@ Sort out look of manipulate window keyboard icons (arrows rendered to different 
 	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
 
 Window is no longer TopMost after spawning child window (ManagementWindow) and coming back - fix
+	Test again
+		1.Toast notification
+		2.Management window
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
