@@ -60,21 +60,31 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
             }
 
             bool parentWindowHadFocus = false;
+            bool parentWindowWasTopmost = false;
             if (parentWindow != null)
             {
                 childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
                 parentWindowHadFocus = parentWindow.IsFocused;
+                parentWindowWasTopmost = parentWindow.Topmost;
             }
 
             Log.Debug(string.Format("Showing ToastNotificationWindow with content '{0}' for {1} seconds", contentAsString, displayTimeInSeconds));
 
             childWindow.Show();
 
-            if (parentWindow != null
-                && parentWindowHadFocus)
+            if (parentWindow != null)
             {
-                Log.Debug("Parent Window was previously focussed - giving it focus again.");
-                parentWindow.Focus();
+                if(parentWindowHadFocus)
+                {
+                    Log.Debug("Parent Window was previously focussed - giving it focus again.");
+                    parentWindow.Focus();
+                }
+                
+                if(parentWindowWasTopmost)
+                {
+                    Log.Debug("Parent Window was previously top most - setting it back to top most window.");
+                    parentWindow.Topmost = true;
+                }
             }
         }
 
