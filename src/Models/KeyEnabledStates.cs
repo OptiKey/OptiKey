@@ -15,8 +15,6 @@ namespace JuliusSweetland.ETTA.Models
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ICalibrationService calibrationService;
-        
-        private bool disableAll;
 
         #endregion
 
@@ -50,25 +48,10 @@ namespace JuliusSweetland.ETTA.Models
 
         #region Properties
 
-        public bool DisableAll
-        {
-            get { return disableAll; }
-            set
-            {
-                disableAll = value;
-                NotifyStateChanged();
-            }
-        }
-
         public bool this[KeyValue keyValue]
         {
             get
             {
-                if (DisableAll)
-                {
-                    return false;
-                }
-
                 //Key is not Sleep, but we are sleeping
                 if (keyboardService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey)
