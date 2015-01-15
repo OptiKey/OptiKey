@@ -1,3 +1,6 @@
+TEST the 8 vs 8.1 version problem
+	Is it resolved by running as admin, or running when not attached to Visual Studio?
+
 Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
 	Replace diagonal arrows
 	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
