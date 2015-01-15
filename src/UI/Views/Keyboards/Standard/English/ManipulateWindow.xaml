@@ -285,9 +285,8 @@
         </controls:Key>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, StringFormat={}{0}px}"
-                      WidthSpan="2"
-                      SharedSizeGroup="KeyWithText">
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, StringFormat={}Adjust by&#x0a;{0} pixels}"
+                      WidthSpan="2">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
             </controls:Key.Value>
