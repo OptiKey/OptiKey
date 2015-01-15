@@ -8,6 +8,7 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
 {
     public interface IPointSource
     {
+        RunningStates State { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         IObservable<Timestamped<PointAndKeyValue?>> Sequence { get; }
     }
