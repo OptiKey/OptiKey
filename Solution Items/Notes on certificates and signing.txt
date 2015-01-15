@@ -1,4 +1,8 @@
-﻿CREATING A CERTIFICATE AND SIGNING ETTA:
+As the manifest *should* be the same for Debug and Release builds, I think I will have to manually change the manifest before deploying a build (to require highestAvailable permissions and uiAccess).
+  
+-----------------------------------------------------------------------------------------------------------------
+
+CREATING A CERTIFICATE AND SIGNING ETTA:
 (Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
 
 1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
