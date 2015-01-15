@@ -56,8 +56,8 @@
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
 
-            <Style TargetType="{x:Type windows:MainWindow}">
-                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
+            <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
+                <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
             </Style>
             

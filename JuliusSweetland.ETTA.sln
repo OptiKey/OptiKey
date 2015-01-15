@@ -7,9 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.ETTA", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\Certificates and Signing.txt = Solution Items\Certificates and Signing.txt
-		Solution Items\Eye Tracker Physical Setup Notes.txt = Solution Items\Eye Tracker Physical Setup Notes.txt
 		Solution Items\Keyboard Designs.xlsx = Solution Items\Keyboard Designs.xlsx
+		Solution Items\Notes on certificates and signing.txt = Solution Items\Notes on certificates and signing.txt
+		Solution Items\Notes on icon design.txt = Solution Items\Notes on icon design.txt
+		Solution Items\Notes on physical setup of eye trackers.txt = Solution Items\Notes on physical setup of eye trackers.txt
 		Solution Items\TODO.txt = Solution Items\TODO.txt
 	EndProjectSection
 EndProject

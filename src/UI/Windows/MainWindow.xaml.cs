@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
 using JuliusSweetland.ETTA.Services;
@@ -15,20 +16,20 @@ namespace JuliusSweetland.ETTA.UI.Windows
     {
         private readonly IAudioService audioService;
         private readonly IDictionaryService dictionaryService;
-        private readonly IKeyboardService keyboardService;
+        private readonly IInputService inputService;
         private readonly WindowStatePersistenceService windowStatePersistenceService;
         private readonly InteractionRequest<NotificationWithServices> managementWindowRequest;
 
         public MainWindow(
             IAudioService audioService,
             IDictionaryService dictionaryService,
-            IKeyboardService keyboardService)
+            IInputService inputService)
         {
             InitializeComponent();
 
             this.audioService = audioService;
             this.dictionaryService = dictionaryService;
-            this.keyboardService = keyboardService;
+            this.inputService = inputService;
 
             //Instantiate window state persistence service and provide accessors to the appropriate settings for this window
             windowStatePersistenceService = new WindowStatePersistenceService(
@@ -77,10 +78,10 @@ namespace JuliusSweetland.ETTA.UI.Windows
 
         private void RequestManagementWindow()
         {
-            keyboardService.KeyEnabledStates.DisableAll = true;
+            inputService.State = RunningStates.Paused;
             ManagementWindowRequest.Raise(new NotificationWithServices 
                 { AudioService = audioService, DictionaryService = dictionaryService },
-                _ => { keyboardService.KeyEnabledStates.DisableAll = false; });
+                _ => { inputService.State = RunningStates.Running; });
         }
     }
 }

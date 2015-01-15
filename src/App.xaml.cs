@@ -119,7 +119,7 @@ namespace JuliusSweetland.ETTA
                 ReleaseKeysOnApplicationExit(keyboardService, publishService);
 
                 //Compose UI
-                var mainWindow = new MainWindow(audioService, dictionaryService, keyboardService);
+                var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
                 IWindowManipulationService moveAndResizeService = new WindowManipulationService(mainWindow);
                 notifyErrorServices.Add(moveAndResizeService);

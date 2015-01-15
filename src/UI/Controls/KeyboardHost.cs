@@ -8,6 +8,7 @@ using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.ETTA.Services;
 using JuliusSweetland.ETTA.UI.Utilities;
 using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
 using log4net;

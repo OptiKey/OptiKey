@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive;
 using System.Windows;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Models;
 
 namespace JuliusSweetland.ETTA.Observables.PointSources

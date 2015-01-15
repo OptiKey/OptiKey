@@ -8,6 +8,7 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using log4net;

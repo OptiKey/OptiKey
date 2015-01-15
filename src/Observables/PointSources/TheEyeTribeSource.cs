@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Services;

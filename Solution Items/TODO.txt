@@ -1,22 +1,4 @@
-Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
-	Replace diagonal arrows
-	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
-
-TEST Window is TopMost after spawning child window
-	1.Toast notification
-	2.Management window
-	If not try this http://stackoverflow.com/questions/1705109/how-to-stop-wpf-topmost-flag-on-parent-window-from-being-inherited-by-the-child
-
-TEST Window styling from theme
-	It's because each window is not of type Window, but instead derives from Window. Styles are not applied to derived types.
-
-TEST the 8 vs 8.1 version problem
-	Is it resolved by;
-	1.Running as admin?
-	2.Running when not attached to Visual Studio?
-	3.Running with uiAccess?
-
-TEST UIACCESS: Do I need admin privileges? 
+TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
 	This article suggests no admin needed: http://blogs.msdn.com/b/cjacks/archive/2009/10/15/using-the-uiaccess-attribute-of-requestedexecutionlevel-to-improve-applications-providing-remote-control-of-the-desktop.aspx
 		If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
 	This article suggests that uiaccess DOES need admin privilege AND for the app to be installed in Program Files (or other trusted directory). HOW DOES CLICK2SPEAK DO IT? http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
@@ -26,25 +8,11 @@ TEST UIACCESS: Do I need admin privileges?
 			2b.The application must be installed in a secure location that requires a user account control (UAC) prompt to write to (for example, the Program Files folder).
 			3.Be built with a manifest file that includes the UIAccess flag.
 			
-TEST UIACCESS: Can I change the manifest post-build?
+UIACCESS: Can I change the manifest post-build? DOESN'T APPEAR LIKE I CAN - I THINK THE MANIFEST IS BUILT INTO THE EXE. LOOK INTO PRE-PUBLISH, OR RELEASE BUILD MANIFEST CHANGES
 	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
 
-TEST Expose running state on input service.
-	Replace all calls to disable all with pausing the input service.
-	Refactor to remove unnecessary references to KeyboardService, or KeyEnabledStates to disable all keys
-^^^ Think about how to pause/prevent the point source during multi-key selection processing.
-	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
-		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
-
-TEST Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
-	Need to make sure KeyValueMap is nulled out when a keyboard changes, and only gets set again when the view is rendered fully?
-	Do some testing around when the newContent.Loaded event fires, compared to when the Content is set, and the ContentRendered event fires. I think Loaded on the content is best, but still test.
-		http://msdn.microsoft.com/en-us/library/ms748948.aspx#Window_Lifetime_Events
-		http://msdn.microsoft.com/en-us/library/system.windows.frameworkelement.loaded(v=vs.110).aspx
-	In GenerateContent - set PointToKeyValueMap = null; before changing the content.
-	Optimise RebuildPointToKeyMap:
-		a)If Content == null then PointToKeyValueMap = null
-		b)Find Keys from Content, not from top layer. There won't be any and this is extra work.
+READ UP ABOUT THE MANIFEST NOT BEING DETECTED/USED WHEN DEBUGGER IS ATTACHED
+	i.e. if I run ETTA standalone I get the correct OS Version (my manifest is being detected), but if I run with the debugger attached (a vshost wrapper) I get the wrong version, as if my manifest is not being used.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml

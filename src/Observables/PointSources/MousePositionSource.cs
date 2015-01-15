@@ -4,6 +4,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Forms;
+using JuliusSweetland.ETTA.Enums;
 using JuliusSweetland.ETTA.Extensions;
 using JuliusSweetland.ETTA.Models;
 using JuliusSweetland.ETTA.Properties;

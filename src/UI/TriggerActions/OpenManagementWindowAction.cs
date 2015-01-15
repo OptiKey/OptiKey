@@ -37,11 +37,9 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                 };
                 childWindow.Closed += closeHandler;
 
-                Window parentWindow = null;
-                if (AssociatedObject != null)
-                {
-                    parentWindow = AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject);
-                }
+                var parentWindow = AssociatedObject != null
+                    ? AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject)
+                    : null;
 
                 bool parentWindowHadFocus = false;
                 bool parentWindowWasTopmost = false;
@@ -50,11 +48,11 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                     childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
                     parentWindowHadFocus = parentWindow.IsFocused;
                     parentWindowWasTopmost = parentWindow.Topmost;
+                    parentWindow.Topmost = false; //Topmost must be revoked otherwise it cannot be reinstated correctly once the child window is closed
                 }
 
                 Log.Debug("Showing Management window");
-
-                childWindow.Show();
+                childWindow.ShowDialog();
     
                 if (parentWindow != null)
                 {

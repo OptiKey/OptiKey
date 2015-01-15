@@ -1,4 +1,4 @@
-As the manifest *should* be the same for Debug and Release builds, I think I will have to manually change the manifest before deploying a build (to require highestAvailable permissions and uiAccess).
+As the manifest *should* be the same for Debug and Release builds, I think I will have to manually change the manifest before deploying a build (to require uiAccess).
   
 -----------------------------------------------------------------------------------------------------------------
 
@@ -19,6 +19,8 @@ pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
 
 5.SIGN THE EXE FILE WITH NEW PFX FILE:
 signtool sign /v /f JuliusTestSPC.pfx "C:\Program Files (x86)\JuliusSweetland\ETTA\JuliusSweetland.ETTA.exe"
+
+Test certification is here: "C:\Users\Julius\Dropbox\Software Stuff\Eye Tracking Software stuff\Test Certificates"
 
 -----------------------------------------------------------------------------------------------------------------
 
