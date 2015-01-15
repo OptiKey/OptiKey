@@ -21,6 +21,8 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
             this.pointTtl = pointTtl;
         }
 
+        public RunningStates State { get; set; }
+
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
         public IObservable<Timestamped<PointAndKeyValue?>> Sequence
@@ -31,6 +33,7 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
                 {
                     sequence = Observable
                         .Interval(Settings.Default.PointsMousePositionSampleInterval)
+                        .Where(_ => State == RunningStates.Running)
                         .Select(_ => new Point(Cursor.Position.X, Cursor.Position.Y))
                         .Timestamp()
                         .PublishLivePointsOnly(pointTtl)
