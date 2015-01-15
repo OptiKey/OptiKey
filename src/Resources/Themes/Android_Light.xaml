@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:behaviours="clr-namespace:JuliusSweetland.ETTA.UI.Behaviours"
                     xmlns:valueConverters="clr-namespace:JuliusSweetland.ETTA.UI.ValueConverters"
+                    xmlns:windows="clr-namespace:JuliusSweetland.ETTA.UI.Windows"
                     xmlns:properties="clr-namespace:JuliusSweetland.ETTA.Properties"
                     xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
                     xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls">
@@ -9,6 +10,8 @@
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Android.xaml" />
         <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
+            <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource Grey}" />
+            
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource White}" />
@@ -53,6 +56,11 @@
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
 
+            <Style TargetType="{x:Type windows:MainWindow}">
+                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+            
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="Foreground" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="TextAlignment" Value="Center" />
