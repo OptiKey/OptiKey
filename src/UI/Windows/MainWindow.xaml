@@ -11,8 +11,6 @@
         Topmost="True"
         Icon="..\..\Resources\Icons\Main.ico"
         AllowsTransparency="True"
-        BorderThickness="1"
-        BorderBrush="Gray"
         ResizeMode="CanResizeWithGrip">
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
     
