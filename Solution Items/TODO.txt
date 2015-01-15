@@ -16,11 +16,16 @@ TEST the 8 vs 8.1 version problem
 	2.Running when not attached to Visual Studio?
 	3.Running with uiAccess?
 
-TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
+TEST UIACCESS: Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
 	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
 	http://msdn.microsoft.com/en-us/library/ms742884(v=vs.110).aspx
 	This article suggests that uiaccess DOES need admin privilege AND for the app to be installed in Program Files (or other trusted directory). HOW DOES CLICK2SPEAK DO IT?
 		http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
+		To use UIAccess, an assistive technology application needs to:
+		1.Be signed with a certificate to interact with applications running at a higher privilege level.
+		2a.Be trusted by the system and run with administrative privileges.
+		2b.The application must be installed in a secure location that requires a user account control (UAC) prompt to write to (for example, the Program Files folder).
+		3.Be built with a manifest file that includes the UIAccess flag.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
