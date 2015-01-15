@@ -23,7 +23,9 @@ Set a different manifest if building in Release mode - including uiAccess reques
 
 Publish as ClickOnce
 	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
-	Investigate signing assemblies and signing clickonce manifest for uiAccess
+	Investigate certificate signing the application and deployment manifests for uiAccess
+	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
+		http://msdn.microsoft.com/en-us/library/h4fa028b(en-US,VS.80).aspx
 
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
