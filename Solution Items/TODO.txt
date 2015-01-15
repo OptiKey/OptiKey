@@ -1,13 +1,3 @@
-TEST the 8 vs 8.1 version problem
-	Is it resolved by;
-	1.Running as admin?
-	2.Running when not attached to Visual Studio?
-	3.Running with uiAccess?
-
-TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
-	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
-	http://msdn.microsoft.com/en-us/library/ms742884(v=vs.110).aspx
-
 Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
 	Replace diagonal arrows
 	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
@@ -19,6 +9,18 @@ TEST Window is TopMost after spawning child window
 
 TEST Window styling from theme
 	It's because each window is not of type Window, but instead derives from Window. Styles are not applied to derived types.
+
+TEST the 8 vs 8.1 version problem
+	Is it resolved by;
+	1.Running as admin?
+	2.Running when not attached to Visual Studio?
+	3.Running with uiAccess?
+
+TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
+	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
+	http://msdn.microsoft.com/en-us/library/ms742884(v=vs.110).aspx
+	This article suggests that uiaccess DOES need admin privilege AND for the app to be installed in Program Files (or other trusted directory). HOW DOES CLICK2SPEAK DO IT?
+		http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
