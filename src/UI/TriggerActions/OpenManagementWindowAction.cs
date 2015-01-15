@@ -37,11 +37,29 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
                 };
                 childWindow.Closed += closeHandler;
 
-                childWindow.Owner = AssociatedObject != null
-                    ? AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject)
-                    : childWindow.Owner;
+                Window parentWindow = null;
+                if (AssociatedObject != null)
+                {
+                    parentWindow = AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject);
+                }
 
-                childWindow.ShowDialog();
+                bool parentWindowHadFocus = false;
+                if (parentWindow != null)
+                {
+                    childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
+                    parentWindowHadFocus = parentWindow.IsFocused;
+                }
+
+                Log.Debug("Showing Management window");
+
+                childWindow.Show();
+    
+                if (parentWindow != null
+                    && parentWindowHadFocus)
+                {
+                    Log.Debug("Parent Window was previously focussed - giving it focus again.");
+                    parentWindow.Focus();
+                }
             }
         }
     }
