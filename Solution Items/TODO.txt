@@ -2,11 +2,13 @@ Sort out look of manipulate window keyboard icons (arrows rendered to different 
 	Replace diagonal arrows
 	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
 
-Window is no longer TopMost after spawning child window (ManagementWindow) and coming back - fix
-	Test again
-		1.Toast notification
-		2.Management window
+TEST Window is no longer TopMost after spawning child window (ManagementWindow) and coming back - fix
+	1.Toast notification
+	2.Management window
 	If not try this http://stackoverflow.com/questions/1705109/how-to-stop-wpf-topmost-flag-on-parent-window-from-being-inherited-by-the-child
+
+TEST Window styling from theme doesn't work.
+	It's because each window is not of type Window, but instead derives from Window. Styles are not applied to derived types.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
@@ -22,8 +24,6 @@ Publish as ClickOnce
 Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
-
-Investigate why window styling from theme doesn't work. Related to why animation precedence doesn't work? Try setting window theme in app resources.
 
 Pause point source when switching keyboards - on unload/load of content of Keyboard host, i.e. when KeyboardHost.Content changes
 	Need to make sure KeyValueMap is nulled out when a keyboard changes, and only gets set again when the view is rendered fully?
