@@ -26,7 +26,7 @@ namespace JuliusSweetland.ETTA.Services
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         
-        private ServiceStates state;
+        private RunningStates state;
         private KeyEnabledStates keyEnabledStates;
         
         private event EventHandler<int> pointsPerSecondEvent;
@@ -68,7 +68,7 @@ namespace JuliusSweetland.ETTA.Services
 
         #region Properties
         
-        public ServiceStates State
+        public RunningStates State
         {
             get { return state; }
             set 
