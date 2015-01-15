@@ -6,6 +6,7 @@ Window is no longer TopMost after spawning child window (ManagementWindow) and c
 	Test again
 		1.Toast notification
 		2.Management window
+	If not try this http://stackoverflow.com/questions/1705109/how-to-stop-wpf-topmost-flag-on-parent-window-from-being-inherited-by-the-child
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
