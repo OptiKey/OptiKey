@@ -30,3 +30,6 @@ http://msdn.microsoft.com/en-us/library/aa730868(v=vs.80).aspx
 
 How to: Sign Application and Deployment Manifests:
 http://msdn.microsoft.com/en-us/library/che5h906.aspx
+
+What's the Difference - certificate signing vs strong naming:
+http://blogs.msdn.com/b/ericlippert/archive/2009/09/03/what-s-the-difference-part-five-certificate-signing-vs-strong-naming.aspx
