@@ -1,7 +1,7 @@
 ﻿CREATING A CERTIFICATE AND SIGNING ETTA:
 (Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
 
-1.CREATE A SELF_SIGNED CERTIFICATE AUTHORITY (CA):
+1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
 makecert -r -pe -n "CN=Julius Test CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv JuliusTestCA.pvk JuliusTestCA.cer
 
 2.IMPORT THE CA:
