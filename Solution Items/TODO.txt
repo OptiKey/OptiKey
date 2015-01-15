@@ -1,18 +1,19 @@
 TEST the 8 vs 8.1 version problem
 	Is it resolved by running as admin, or running when not attached to Visual Studio?
 
-TEST Do I actually need admin privileges? I only added them for uiAccess, so if this isn't needed, then no problem.
+TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
+	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
 
 Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
 	Replace diagonal arrows
 	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
 
-TEST Window is no longer TopMost after spawning child window (ManagementWindow) and coming back - fix
+TEST Window is TopMost after spawning child window
 	1.Toast notification
 	2.Management window
 	If not try this http://stackoverflow.com/questions/1705109/how-to-stop-wpf-topmost-flag-on-parent-window-from-being-inherited-by-the-child
 
-TEST Window styling from theme doesn't work.
+TEST Window styling from theme
 	It's because each window is not of type Window, but instead derives from Window. Styles are not applied to derived types.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
