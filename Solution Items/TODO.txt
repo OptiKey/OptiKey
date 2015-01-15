@@ -1,4 +1,6 @@
 Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
+	Replace diagonal arrows
+	OR Make all arrows fill a bounding box, i.e. make long (not diagonal) arrows stumpier/cut off their tail so they are square.
 
 Window is no longer TopMost after spawning child window (ManagementWindow) and coming back - fix
 
