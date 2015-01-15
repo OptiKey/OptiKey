@@ -49,6 +49,16 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         #region Properties
 
+        public static readonly DependencyProperty InputServiceProperty =
+            DependencyProperty.Register("InputService", typeof(IInputService),
+                typeof(KeyboardHost), new PropertyMetadata(default(IInputService)));
+
+        public IInputService InputService
+        {
+            get { return (InputService)GetValue(InputServiceProperty); }
+            set { SetValue(InputServiceProperty, value); }
+        }
+
         public static readonly DependencyProperty KeyboardProperty =
             DependencyProperty.Register("Keyboard", typeof (IKeyboard), typeof (KeyboardHost),
                 new PropertyMetadata(default(IKeyboard),
@@ -94,7 +104,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
         {
             Log.Debug("KeyboardHost loaded.");
 
-            RebuildPointToKeyMap();
+            BuildPointToKeyMap();
 
             SubscribeToSizeChanges();
 
@@ -120,6 +130,16 @@ namespace JuliusSweetland.ETTA.UI.Controls
 
         private void GenerateContent()
         {
+            Log.Debug(string.Format("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
+                Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null));
+            
+            //Clear out point to key map and pause input service
+            PointToKeyValueMap = null;
+            if(InputService != null)
+            {
+                InputService.State = RunningStates.Paused;
+            }
+            
             object newContent = ErrorContent;
 
             switch (Settings.Default.KeyboardSet)
@@ -206,33 +226,44 @@ namespace JuliusSweetland.ETTA.UI.Controls
             {
                 if (contentAsFrameworkElement.IsLoaded)
                 {
-                    RebuildPointToKeyMap();
+                    ReactToNewContentLoaded();
                 }
                 else
                 {
                     RoutedEventHandler loaded = null;
                     loaded = (sender, args) =>
                     {
-                        RebuildPointToKeyMap();
+                        ReactToNewContentLoaded();
                         contentAsFrameworkElement.Loaded -= loaded;
                     };
                     contentAsFrameworkElement.Loaded += loaded;
                 }
             }
 
-            Log.Debug(string.Format("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
-                Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null));
-
             Content = newContent;
         }
 
         #endregion
-
-        #region Rebuild Point To Key Map
-
-        private void RebuildPointToKeyMap()
+        
+        #region React To New Content Loaded
+        
+        private void ReactToNewContentLoaded()
         {
-            Log.Debug("Rebuilding PointToKeyMap.");
+            BuildPointToKeyMap();
+            
+            if(InputService != null)
+            {
+                InputService.State = RunningStates.Running;
+            }
+        }
+        
+        #endregion
+
+        #region Build Point To Key Map
+
+        private void BuildPointToKeyMap()
+        {
+            Log.Debug("Building PointToKeyMap.");
 
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
 
@@ -276,7 +307,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 {
                     Log.Debug("SizeChanged event detected.");
 
-                    RebuildPointToKeyMap();
+                    BuildPointToKeyMap();
                 });
         }
 
@@ -295,7 +326,7 @@ namespace JuliusSweetland.ETTA.UI.Controls
                 .Subscribe(_ =>
                 {
                     Log.Debug("Window's LocationChanged event detected.");
-                    RebuildPointToKeyMap();
+                    BuildPointToKeyMap();
                 });
         }
 
