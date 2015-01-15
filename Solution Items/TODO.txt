@@ -36,6 +36,10 @@ Profile and optimise, especially keyboard transitions
 Refactor any remaining large classes, e.g. MainViewModel
 	Create new 'InputBroker'/'InputHandler'/'InputRouter' class which takes the view model, input service, outputservice, etc and coordinates the response
 
+Sort out sizing/layout of suggestions
+	Phrases should wrap
+	Individually size? OR Size consistently, but wrap letters (breaking words) so as large as possible
+
 Preview settings in management console
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
