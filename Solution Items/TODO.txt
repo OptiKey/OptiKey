@@ -40,7 +40,9 @@ Publish as ClickOnce
 	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
 		http://msdn.microsoft.com/en-us/library/h4fa028b(en-US,VS.80).aspx
 
-Think about how to pause/prevent the point source during multi-key selection processing.
+Expose running state on input service.
+	Replace all calls to disable all with pausing the input service.
+^^^ Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
 
@@ -55,6 +57,7 @@ Pause point source when switching keyboards - on unload/load of content of Keybo
 		b)Find Keys from Content, not from top layer. There won't be any and this is extra work.
 
 Profile and optimise, especially keyboard transitions
+	Wrap parallel word match into another thread
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
 	
