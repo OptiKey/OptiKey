@@ -24,3 +24,9 @@ Windows uses .pvk for a private key file. These are in a proprietary format. Som
 You should never disclose your private key. These keys are contained in .pfx and .pvk files.
 
 Generally, you only exchange your certificate (.cer) and the certificates of any intermediate issuers (i.e., the certificates of all of your CAs, except the root CA) with other parties.
+
+ClickOnce Manifest Signing and Strong-Name Assembly Signing Using Visual Studio Project Designer's Signing Page:
+http://msdn.microsoft.com/en-us/library/aa730868(v=vs.80).aspx
+
+How to: Sign Application and Deployment Manifests:
+http://msdn.microsoft.com/en-us/library/che5h906.aspx
