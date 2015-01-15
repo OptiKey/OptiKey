@@ -44,6 +44,8 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
 
         #region Properties
 
+        public RunningStates State { get; set; }
+
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
         /// <summary>
@@ -69,6 +71,7 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
                         udpClient => Observable
                             .Defer(() => udpClient.ReceiveAsync().ToObservable())
                             .Repeat()
+                            .Where(_ => State == RunningStates.Running)
                             .Select(udpReceiveResult =>
                             {
                                 var receivedString = Encoding.ASCII.GetString(udpReceiveResult.Buffer, 0, udpReceiveResult.Buffer.Length);
