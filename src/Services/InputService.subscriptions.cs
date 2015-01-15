@@ -278,10 +278,10 @@ namespace JuliusSweetland.ETTA.Services
         {
             Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
 
-            //keyboardService.KeyEnabledStates.DisableAll = true;
+            State = RunningStates.Paused; //Pause everything (i.e. processing new points) while we perform the (CPU bound) word matching
 
-            //try
-            //{
+            try
+            {
                 if (pointsAndKeyValues.Any())
                 {
                     var timeSpan = pointsAndKeyValues.Last().Timestamp.Subtract(pointsAndKeyValues.First().Timestamp);
@@ -373,11 +373,11 @@ namespace JuliusSweetland.ETTA.Services
                                 null, null, dictionaryMatches));
                     }
                 }
-            //}
-            //finally
-            //{
-            //    keyboardService.KeyEnabledStates.DisableAll = false;
-            //}
+            }
+            finally
+            {
+                State = RunningStates.Running;
+            }
         }
 
         #endregion
