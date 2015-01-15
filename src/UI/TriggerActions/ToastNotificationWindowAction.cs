@@ -54,14 +54,12 @@ namespace JuliusSweetland.ETTA.UI.TriggerActions
             childWindow.Closed += handler;
 
             Window parentWindow = null;
-         
             if (AssociatedObject != null)
             {
                 parentWindow = AssociatedObject as Window ?? VisualAndLogicalTreeHelper.FindVisualParent<Window>(AssociatedObject);
             }
 
             bool parentWindowHadFocus = false;
-
             if (parentWindow != null)
             {
                 childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
