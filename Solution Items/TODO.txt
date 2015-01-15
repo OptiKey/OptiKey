@@ -3,6 +3,7 @@ TEST the 8 vs 8.1 version problem
 
 TEST Do I actually need admin privileges? I only added this for uiAccess, but I don't think this is a requirement.
 	If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
+	http://msdn.microsoft.com/en-us/library/ms742884(v=vs.110).aspx
 
 Sort out look of manipulate window keyboard icons (arrows rendered to different sizes).
 	Replace diagonal arrows
