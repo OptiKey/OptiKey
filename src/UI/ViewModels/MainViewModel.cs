@@ -398,8 +398,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                                 "Are you sure you would like to re-calibrate?",
                                 () =>
                                 {
-                                    keyboardService.KeyEnabledStates.DisableAll = true;
-
+                                    inputService.State = RunningStates.Paused;
+                                    
                                     CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                     {
                                         if (calibrationResult.Success)
@@ -408,24 +408,23 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                                             {
                                                 Title = "Success",
                                                 Content = calibrationResult.Message
-                                            }, __ => { keyboardService.KeyEnabledStates.DisableAll = false; });
+                                            }, __ => { inputService.State = RunningStates.Running; });
 
                                             audioService.PlaySound(Settings.Default.InfoSoundFile);
                                         }
                                         else
                                         {
-                                            if (calibrationResult.Exception != null)
+                                            ErrorNotificationRequest.Raise(new Notification
                                             {
-                                                keyboardService.KeyEnabledStates.DisableAll = true;
+                                                Title = "Uh-oh!",
+                                                Content = calibrationResult.Exception != null
+                                                            ? calibrationResult.Exception.Message
+                                                            : calibrationResult.Message != null
+                                                                ? calibrationResult.Message
+                                                                : "Something went wrong, but I don't know what - please check the logs"
+                                            }, notification => { inputService.State = RunningStates.Running; });
 
-                                                ErrorNotificationRequest.Raise(new Notification
-                                                {
-                                                    Title = "Uh-oh!",
-                                                    Content = calibrationResult.Exception.Message
-                                                }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
-
-                                                audioService.PlaySound(Settings.Default.ErrorSoundFile);
-                                            }
+                                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
                                         }
                                     });
 
@@ -746,13 +745,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 {
                     Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
-                    keyboardService.KeyEnabledStates.DisableAll = true;
+                    inputService.State = RunningStates.Paused;
 
                     NotificationRequest.Raise(new Notification
                     {
                         Title = "Hmm",
                         Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
-                    }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+                    }, notification => { inputService.State = RunningStates.Running; });
 
                     audioService.PlaySound(Settings.Default.InfoSoundFile);
                 }
@@ -761,13 +760,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
-                keyboardService.KeyEnabledStates.DisableAll = true; 
+                inputService.State = RunningStates.Paused;
 
                 NotificationRequest.Raise(new Notification
                 {
                     Title = "Hmm",
                     Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
-                }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+                }, notification => { inputService.State = RunningStates.Running; });
 
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
             }
@@ -812,13 +811,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                     {
                         dictionaryService.AddNewEntryToDictionary(candidate);
 
-                        keyboardService.KeyEnabledStates.DisableAll = true;
+                        inputService.State = RunningStates.Paused;
 
                         NotificationRequest.Raise(new Notification
                         {
                             Title = "Added",
                             Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
-                        }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+                        }, notification => { inputService.State = RunningStates.Running; });
 
                         nextAction();
                     },
@@ -885,13 +884,13 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
-            keyboardService.KeyEnabledStates.DisableAll = true;
+            inputService.State = RunningStates.Paused;
 
             ErrorNotificationRequest.Raise(new Notification
             {
                 Title = "Uh-oh!",
                 Content = exception.Message
-            }, notification => { keyboardService.KeyEnabledStates.DisableAll = false; });
+            }, notification => { inputService.State = RunningStates.Running; });
 
             audioService.PlaySound(Settings.Default.ErrorSoundFile);
         }
