@@ -34,6 +34,8 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
 
         #region Properties
 
+        public RunningStates State { get; set; }
+
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
         public IObservable<Timestamped<PointAndKeyValue?>> Sequence
@@ -45,6 +47,7 @@ namespace JuliusSweetland.ETTA.Observables.PointSources
                     sequence = Observable.FromEventPattern<Timestamped<Point>>(
                             eh => theEyeTribePointService.Point += eh,
                             eh => theEyeTribePointService.Point -= eh)
+                        .Where(_ => State == RunningStates.Running)
                         .Select(ep => ep.EventArgs)
                         .PublishLivePointsOnly(pointTtl)
                         .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))
