@@ -42,6 +42,7 @@ Publish as ClickOnce
 
 Expose running state on input service.
 	Replace all calls to disable all with pausing the input service.
+	Refactor to remove unnecessary references to KeyboardService, or KeyEnabledStates to disable all keys
 ^^^ Think about how to pause/prevent the point source during multi-key selection processing.
 	Disabling all points prevents the Multi-key selection trigger storyboard from playing as the disabled datatrigger is taking precedence.
 		CAN I MAKE THE ANIMATION TAKE CORRECT PRECEDENCE?
