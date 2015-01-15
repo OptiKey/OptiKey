@@ -15,6 +15,7 @@ namespace JuliusSweetland.ETTA.Services
         event EventHandler<PointAndKeyValue> Selection;
         event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult;
 
+        ServiceStates State { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         SelectionModes SelectionMode { set; }
     }
