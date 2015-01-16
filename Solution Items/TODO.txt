@@ -58,6 +58,13 @@ Refactor any remaining large classes, e.g. MainViewModel
 
 Buy OptiKey.com
 
+Rename everything in project to OptiKey:
+	Namespaces
+	Anything else in project
+	Add assembly info (project properties)
+	GitHub project
+	Folder structure
+
 Create gmail account for OptiKey
 
 Create skeleton website (on Azure?)
