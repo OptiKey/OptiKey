@@ -60,7 +60,6 @@ Predict next word
 Add high contrast theme
 Test this product: http://www.cameramouse.org/
 Get and test the Tobii EyeX: http://www.tobii.com/en/eye-experience/#.UwMlifl5OkF
-
 No position input possible - automatically cycle through groups of keys, then keys in group: 
 	Keyboards could define ordered set of KeyValues; the key "groups"
 	New SelectionMode = KeyGroups - this then changes to PositionSource to a source which automatically loops through the current keyboard's groups.
@@ -70,11 +69,9 @@ No position input possible - automatically cycle through groups of keys, then ke
 		Selection => normal key selection and reset mode back to KeyGroups.
 		? If no selection in X iterations through the keys then output a special selection, e.g. a null selection (the trigger can watch the position source, like the fixation triggers.
 	Each key group should contain a 'back' key to return from group selection?
-	
 Add support for T9 style selection; either individual keys, or multi key select?
+Consider releasing a version which does not require admin privileges
 
-Why is windows 8.1 reporting itself as 6.2 (Windows 8) rather than 6.3.
-	Ok when exe run directly, but not when run using visual studio debugging.
 
 
 !!! If DropBox creates another conflicted copy: http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master
