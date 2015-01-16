@@ -1,9 +1,9 @@
 Rename everything in project to OptiKey:
-	Namespaces
-	Anything else in project
+	GitHub repo and all references in github (readme etc)
+	Download repo again to make sure everything works as expected on a fresh checkout
+	Rename folders and repair project
+	Rename files/projects/namespaces/anything else in project
 	Add assembly info (project properties)
-	GitHub project
-	Folder structure
 	TEST!
 
 UiAccess requirements:
