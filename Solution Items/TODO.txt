@@ -42,6 +42,8 @@ OptiKey.org/OptiKey.co.uk
 
 Profile and optimise, especially keyboard transitions
 	Wrap parallel word match into another thread
+		await Task.Run(() => Parallel.ForEach(...));
+		Parallel code includes the calling thread in its pool of threads that it uses to do the parallel processing. This is true for both Parallel LINQ and the Parallel class.
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
 	
