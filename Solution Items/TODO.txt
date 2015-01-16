@@ -1,7 +1,26 @@
-Unable to debug with UiAccess true. It also asks for administrator privileges, so maybe it was only working from Program Files as my user (Julius) is special?
-UiAccess=true does NOT work if Start Without Debugger is attemped.
+Make some notes before RHN meeting;
+	What I want to achieve:
+		For this to rival and become a viable alternative to commercial/paid for products.
+		Build a community to support it.
+		Be able to suggest accompanying hardware (tablet/laptop + eye tracker) for a low cost DIY solution.
+	What I think the next steps are:
+		Trial & improve.
+	How I imagine they could help:
+		Offer advice.
+		Trial the software and provide feedback.
+		Have patients trial the software and provide feedback.
+		Regular SDLC involving them trialing each release candidate. Possible joint future?
+	Initial questions:
+		Does it work?
+		Glaring problems/issues?
+		What support will I need to offer?
+		Obvious next steps?
 
-TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. 
+TEST UIACCESS:
+	Unable to debug with UiAccess true. It also asks for administrator privileges, so maybe it was only working from Program Files as my user (Julius) is special?
+	UiAccess=true does NOT work if Start Without Debugger is attemped.
+
+	Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. 
 	Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
 	Click2Speak runs from C:\Users\Julius\AppData\Local\Apps\2.0\51EBCVV8.OV4\4363V1M5.AQ1 and DOES require elevated privileges at startup.
 
@@ -16,10 +35,6 @@ TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCE
 			
 UIACCESS: Can I change the manifest post-build? DOESN'T APPEAR LIKE I CAN - I THINK THE MANIFEST IS BUILT INTO THE EXE. LOOK INTO PRE-PUBLISH, OR RELEASE BUILD MANIFEST CHANGES
 	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
-
-READ UP ABOUT THE MANIFEST NOT BEING DETECTED/USED WHEN DEBUGGER IS ATTACHED
-	IT WORKS IF I TURN OFF THE VISUAL STUDIO HOSTING PROCESS UNDER BUILD OPTIONS - WHAT IS THE POINT OF THIS?
-	i.e. if I run ETTA standalone I get the correct OS Version (my manifest is being detected), but if I run with the debugger attached (a vshost wrapper) I get the wrong version, as if my manifest is not being used.
 
 Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
 	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
@@ -39,6 +54,15 @@ Profile and optimise, especially keyboard transitions
 	
 Refactor any remaining large classes, e.g. MainViewModel
 	Create new 'InputBroker'/'InputHandler'/'InputRouter' class which takes the view model, input service, outputservice, etc and coordinates the response
+
+Buy OptiKey.com
+
+Create gmail account for OptiKey
+
+Create skeleton website (on Azure?)
+
+Add details on how to provide feedback in README.md file
+	How to turn on debugging mode and find logs to include in email
 
 Sort out sizing/layout of suggestions
 	Phrases should wrap
