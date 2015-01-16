@@ -35,6 +35,9 @@ Generally, you only exchange your certificate (.cer) and the certificates of any
 
 -----------------------------------------------------------------------------------------------------------------
 
+Signing ClickOnce applications and manifests:
+http://blogs.msdn.com/b/vsto/archive/2009/04/29/signing-and-re-signing-manifests-in-clickonce.aspx
+
 ClickOnce Manifest Signing and Strong-Name Assembly Signing Using Visual Studio Project Designer's Signing Page:
 http://msdn.microsoft.com/en-us/library/aa730868(v=vs.80).aspx
 
