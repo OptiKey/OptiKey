@@ -1,3 +1,6 @@
+Unable to debug with UiAccess true. It also asks for administrator privileges, so maybe it was only working from Program Files as my user (Julius) is special?
+UiAccess=true does NOT work if Start Without Debugger is attemped.
+
 TEST UIACCESS: Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. 
 	Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
 	Click2Speak runs from C:\Users\Julius\AppData\Local\Apps\2.0\51EBCVV8.OV4\4363V1M5.AQ1 and DOES require elevated privileges at startup.
