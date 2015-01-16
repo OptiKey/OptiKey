@@ -16,25 +16,20 @@ Make some notes before RHN meeting;
 		What support will I need to offer?
 		Obvious next steps?
 
-TEST UIACCESS:
-	Unable to debug with UiAccess true. It also asks for administrator privileges, so maybe it was only working from Program Files as my user (Julius) is special?
-	UiAccess=true does NOT work if Start Without Debugger is attemped.
+UiAccess requirements:
+	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
+	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
+	3."Secure location" - ??? Test clickonce (is it just a case of FullTrust?)
+	4.UiAccess="True" flag - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
 
-	Do I need admin privileges? NO "asInvoker" works fine, BUT UIACCESS & SECURE LOCATION APPEAR TO BE REQUIRED. 
+	Notes:
+	Visual Studio can't debug with UiAccess="True". Is there a workaround?
+	UiAccess actually works without admin privileges on my laptop, but only when run from Program Files
 	Setting requireAdministrator only requires confirmation before starting. It does NOT allow an insecure location to work.
 	Click2Speak runs from C:\Users\Julius\AppData\Local\Apps\2.0\51EBCVV8.OV4\4363V1M5.AQ1 and DOES require elevated privileges at startup.
-
-	This article suggests no admin needed: http://blogs.msdn.com/b/cjacks/archive/2009/10/15/using-the-uiaccess-attribute-of-requestedexecutionlevel-to-improve-applications-providing-remote-control-of-the-desktop.aspx
-		If not then modifying the app manifest to request uiAccess could be done in the pre-publish stage, before signing occurs?
-	This article suggests that uiaccess DOES need admin privilege AND for the app to be installed in Program Files (or other trusted directory). HOW DOES CLICK2SPEAK DO IT? http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
-		To use UIAccess, an assistive technology application needs to:
-			1.Be signed with a certificate to interact with applications running at a higher privilege level.
-			2a.Be trusted by the system and run with administrative privileges.
-			2b.The application must be installed in a secure location that requires a user account control (UAC) prompt to write to (for example, the Program Files folder).
-			3.Be built with a manifest file that includes the UIAccess flag.
-			
-UIACCESS: Can I change the manifest post-build? DOESN'T APPEAR LIKE I CAN - I THINK THE MANIFEST IS BUILT INTO THE EXE. LOOK INTO PRE-PUBLISH, OR RELEASE BUILD MANIFEST CHANGES
-	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
+	MSDN article: http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
+	* http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
+	** http://msdn.microsoft.com/en-us/library/ke5z92ks.aspx (How to change manifest in post-build event)
 
 SIGN ASSEMBLY:
 	Download my cert here (store in solution folder, but EXCLUDE FROM GITHUB): https://cservices.certum.pl/muc-customer/customerCertificate/list
