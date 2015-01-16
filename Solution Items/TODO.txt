@@ -36,10 +36,11 @@ TEST UIACCESS:
 UIACCESS: Can I change the manifest post-build? DOESN'T APPEAR LIKE I CAN - I THINK THE MANIFEST IS BUILT INTO THE EXE. LOOK INTO PRE-PUBLISH, OR RELEASE BUILD MANIFEST CHANGES
 	If yes, then set up a pre-publish event to change the manifest: http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
 
-Get a certificate (1), sign the release build (2) and package ETTA to install to Program Files directory (3) - required to be get UI Access and stay on top of Metro
-	Free (1 year trial?) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
-		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
-	Steps to sign are in file "Certificates and Signing.txt".
+SIGN ASSEMBLY:
+	Download my cert here (store in solution folder, but EXCLUDE FROM GITHUB): https://cservices.certum.pl/muc-customer/customerCertificate/list
+	Set up a post build event to sign the assembly
+		http://stackoverflow.com/questions/19879812/signing-exe-with-cer-file-what-is-my-certificates-name-that-signtool-exe-is
+		Certmgr.msc
 
 Publish as ClickOnce
 	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
