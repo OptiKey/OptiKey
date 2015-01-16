@@ -13,9 +13,8 @@ UiAccess requirements:
 	* http://stackoverflow.com/questions/3887050/can-visual-studio-post-build-events-be-used-with-clickonce-publishing
 	** http://msdn.microsoft.com/en-us/library/ke5z92ks.aspx (How to change manifest in post-build event)
 
-SIGN ASSEMBLY:
-	Download my cert here (store in solution folder, but EXCLUDE FROM GITHUB): https://cservices.certum.pl/muc-customer/customerCertificate/list
-	Set up a post build event to sign the assembly
+	SIGN ASSEMBLY:
+		Download my cert here (store in solution folder, but EXCLUDE FROM GITHUB): https://cservices.certum.pl/muc-customer/customerCertificate/list
 		http://stackoverflow.com/questions/19879812/signing-exe-with-cer-file-what-is-my-certificates-name-that-signtool-exe-is
 		Certmgr.msc
 
