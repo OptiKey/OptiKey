@@ -1,3 +1,11 @@
+Rename everything in project to OptiKey:
+	Namespaces
+	Anything else in project
+	Add assembly info (project properties)
+	GitHub project
+	Folder structure
+	TEST!
+
 UiAccess requirements:
 	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
 	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
@@ -24,6 +32,14 @@ Publish as ClickOnce
 	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
 		http://msdn.microsoft.com/en-us/library/h4fa028b(en-US,VS.80).aspx
 
+Create gmail account for OptiKey
+
+OptiKey.org/OptiKey.co.uk
+	Create landing page: https://pages.github.com/
+	Include link to run ClickOnce (pointing to Azure)
+	Include email link to new OptiKey account
+	Point .co.uk to .org and .org to github landing page
+
 Profile and optimise, especially keyboard transitions
 	Wrap parallel word match into another thread
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
@@ -31,19 +47,6 @@ Profile and optimise, especially keyboard transitions
 	
 Refactor any remaining large classes, e.g. MainViewModel
 	Create new 'InputBroker'/'InputHandler'/'InputRouter' class which takes the view model, input service, outputservice, etc and coordinates the response
-
-Buy OptiKey.com
-
-Rename everything in project to OptiKey:
-	Namespaces
-	Anything else in project
-	Add assembly info (project properties)
-	GitHub project
-	Folder structure
-
-Create gmail account for OptiKey
-
-Create skeleton website (on Azure?)
 
 Add details on how to provide feedback in README.md file
 	How to turn on debugging mode and find logs to include in email
