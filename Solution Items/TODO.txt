@@ -1,21 +1,3 @@
-Make some notes before RHN meeting;
-	What I want to achieve:
-		For this to rival and become a viable alternative to commercial/paid for products.
-		Build a community to support it.
-		Be able to suggest accompanying hardware (tablet/laptop + eye tracker) for a low cost DIY solution.
-	What I think the next steps are:
-		Trial & improve.
-	How I imagine they could help:
-		Offer advice.
-		Trial the software and provide feedback.
-		Have patients trial the software and provide feedback.
-		Regular SDLC involving them trialing each release candidate. Possible joint future?
-	Initial questions:
-		Does it work?
-		Glaring problems/issues?
-		What support will I need to offer?
-		Obvious next steps?
-
 UiAccess requirements:
 	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
 	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
