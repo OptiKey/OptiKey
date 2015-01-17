@@ -175,11 +175,6 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
             {
                 if (SetProperty(ref pointSelectionProgress, value))
                 {
-                    //if (value != null)
-                    //{
-                    //    Debug.Print("Point:{0}, Progrss:{1}", value.Item1, value.Item2);
-                    //}
-                    
                     throw new NotImplementedException("Handling of PointSelection progress has not been implemented yet");
                 }
             }
@@ -203,10 +198,11 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
         {
             get
             {
-                return string.Format("v{0} | P:{1} {2} | OS:{3} {4} ({5})",
+                return string.Format("v:{0} (Deploy v:{1}) | P:{2} {3} | OS:{4} {5} ({6})",
                     DiagnosticInfo.AssemblyVersion,
+                    DiagnosticInfo.IsApplicationNetworkDeployed ? DiagnosticInfo.DeploymentVersion : "N/A",
                     DiagnosticInfo.ProcessBitness,
-                    DiagnosticInfo.IsProcessElevated ? "Elevated Permissions" : "Non-Elevated Permissions",
+                    DiagnosticInfo.IsProcessElevated ? "(Elevated)" : "(Not Elevated)",
                     DiagnosticInfo.OperatingSystemBitness,
                     DiagnosticInfo.OperatingSystemVersion,
                     DiagnosticInfo.OperatingSystemServicePack);

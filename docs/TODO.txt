@@ -1,3 +1,5 @@
+Add deployment version to debugging info (logged and displayed)
+
 Rename everything in project to OptiKey:
 	GitHub repo and all references in github (readme etc)
 	Download repo again to make sure everything works as expected on a fresh checkout
@@ -7,9 +9,9 @@ Rename everything in project to OptiKey:
 	TEST!
 
 UiAccess requirements:
-	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
+	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only** - Click2Speak does NOT need elevated privileges except when installing (access to Program Files?)
 	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
-	3."Secure location" - ??? Test clickonce (is it just a case of FullTrust?)
+	3."Secure location" - Click2Speak appears to install a shill in the ClickOnce location and the rest of the files in Program Files
 	4.UiAccess="True" flag - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only**
 
 	Notes:
@@ -26,19 +28,28 @@ UiAccess requirements:
 		http://stackoverflow.com/questions/19879812/signing-exe-with-cer-file-what-is-my-certificates-name-that-signtool-exe-is
 		Certmgr.msc
 
-Publish as ClickOnce
+Publish as ClickOnce? Or use setup?
 	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
 	Investigate certificate signing the application and deployment manifests for uiAccess
 	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
 		http://msdn.microsoft.com/en-us/library/h4fa028b(en-US,VS.80).aspx
+	http://dennis.bloggingabout.net/2007/11/05/manual-check-for-updates-with-clickonce/
+	Possible alternative: http://stackoverflow.com/questions/780594/how-can-i-make-my-c-sharp-application-check-for-updates
+		wyBuild is free for open source projects: http://wyday.com/wybuild/buy/special-prices.php
 
 Create gmail account for OptiKey
+	optikeyfeedback@gmail.com
 
 OptiKey.org/OptiKey.co.uk
 	Create landing page: https://pages.github.com/
 	Include link to run ClickOnce (pointing to Azure)
 	Include email link to new OptiKey account
 	Point .co.uk to .org and .org to github landing page
+
+Creating releases in github; 
+	https://help.github.com/articles/creating-releases/
+	https://github.com/blog/1547-release-your-software
+	A release doesn't need to contain binary files. Mine could be source code and notes each time.
 
 Profile and optimise, especially keyboard transitions
 	Wrap parallel word match into another thread
