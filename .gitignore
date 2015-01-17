@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 
+# Certificates for signing assemblies/manifests
+certificates/
+
 # Build results
 
 [Dd]ebug/

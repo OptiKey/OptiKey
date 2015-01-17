@@ -1,5 +1,3 @@
-Add deployment version to debugging info (logged and displayed)
-
 Rename everything in project to OptiKey:
 	GitHub repo and all references in github (readme etc)
 	Download repo again to make sure everything works as expected on a fresh checkout
