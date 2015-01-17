@@ -1,11 +1,3 @@
-Rename everything in project to OptiKey:
-	GitHub repo and all references in github (readme etc)
-	Download repo again to make sure everything works as expected on a fresh checkout
-	Rename folders and repair project
-	Rename files/projects/namespaces/anything else in project
-	Add assembly info (project properties)
-	TEST!
-
 UiAccess requirements:
 	1.Elevated privileges - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only** - Click2Speak does NOT need elevated privileges except when installing (access to Program Files?)
 	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
@@ -46,10 +38,8 @@ Creating releases in github;
 	https://github.com/blog/1547-release-your-software
 	A release doesn't need to contain binary files. Mine could be source code and notes each time.
 
+
 Profile and optimise, especially keyboard transitions
-	Wrap parallel word match into another thread
-		await Task.Run(() => Parallel.ForEach(...));
-		Parallel code includes the calling thread in its pool of threads that it uses to do the parallel processing. This is true for both Parallel LINQ and the Parallel class.
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
 	

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -159,23 +160,23 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 multiKeySelectionSubscription =
                                     CreateMultiKeySelectionSubscription()
-                                    .ObserveOnDispatcher()
-                                    .Subscribe(
-                                        pointsAndKeyValues => ProcessMultiKeySelectionResult(pointsAndKeyValues, triggerSignal),
-                                        (exception =>
-                                        {
-                                            PublishError(this, exception);
+                                        .ObserveOnDispatcher()
+                                        .Subscribe(
+                                            async pointsAndKeyValues => await ProcessMultiKeySelectionResult(pointsAndKeyValues, triggerSignal),
+                                            (exception =>
+                                            {
+                                                PublishError(this, exception);
 
-                                            stopMultiKeySelectionTriggerSignal = null;
-                                            CapturingMultiKeySelection = false;
-                                        }),
-                                        () =>
-                                        {
-                                            Log.Debug("Multi-key selection capture has completed.");
+                                                stopMultiKeySelectionTriggerSignal = null;
+                                                CapturingMultiKeySelection = false;
+                                            }),
+                                            () =>
+                                            {
+                                                Log.Debug("Multi-key selection capture has completed.");
 
-                                            stopMultiKeySelectionTriggerSignal = null;
-                                            CapturingMultiKeySelection = false;
-                                        });
+                                                stopMultiKeySelectionTriggerSignal = null;
+                                                CapturingMultiKeySelection = false;
+                                            });
                             }
                             else
                             {
@@ -274,7 +275,9 @@ namespace JuliusSweetland.OptiKey.Services
             });
         }
 
-        private void ProcessMultiKeySelectionResult(IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, TriggerSignal startSelectionTriggerSignal)
+        private async Task ProcessMultiKeySelectionResult(
+            IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, 
+            TriggerSignal startSelectionTriggerSignal)
         {
             Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
 
@@ -360,13 +363,21 @@ namespace JuliusSweetland.OptiKey.Services
                         //The user fixated on multiple letters - map to dictionary word
                         Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
 
-                        List<string> dictionaryMatches =
-                            dictionaryService.MapCaptureToEntries(
-                                pointsAndKeyValues.ToList(), reducedSequence,
-                                true, reliableLastLetter != null,
-                                ref mapToDictionaryMatchesCancellationTokenSource,
-                                exception => PublishError(this, exception));
+                        List<string> dictionaryMatches = null;
 
+                        //Why am I wrapping this call in a Task.Run?
+                        //Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
+                        //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
+                        await Task.Run(() =>
+                        {
+                            dictionaryMatches =
+                                dictionaryService.MapCaptureToEntries(
+                                    pointsAndKeyValues.ToList(), reducedSequence,
+                                    true, reliableLastLetter != null,
+                                    ref mapToDictionaryMatchesCancellationTokenSource,
+                                    exception => PublishError(this, exception));
+                        });
+                        
                         PublishSelectionResult(
                             new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                 pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
