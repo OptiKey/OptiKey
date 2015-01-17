@@ -15,6 +15,6 @@ Thanks for your interest.
 Julius
 
 
-¹ The following eye trackers are currently supported, but the OptiKey has been designed so adding support for new input sources is straightforward. This is also an open source project, so if your tracker is not supported why not get involved? Drop me an email and I'll give you more info on how to get started.
+¹ The following eye trackers are currently supported, but OptiKey has been designed so adding support for new input sources is straightforward. This is also an open source project, so if your tracker is not supported why not get involved? Drop me an email and I'll give you more info on how to get started.
 * TheEyeTribe
 * GazeTracker
