@@ -8,7 +8,7 @@ Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29 June 2007). A copy 
 
 OptiKey is nearly ready for public testing and updates will appear here.
 
-I can be contacted here if you have any questions or would like to get involved: optikeyfeedback@gmail.com
+I can be contacted here if you have any questions, find a bug, have a suggestion, or would like to get involved: optikeyfeedback@gmail.com
 
 Thanks for your interest.
 
