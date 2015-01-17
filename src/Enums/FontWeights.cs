@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.ETTA.Enums
+﻿namespace JuliusSweetland.OptiKey.Enums
 {
     public enum FontWeights
     {

@@ -1,13 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace JuliusSweetland.ETTA.UI.Windows
+namespace JuliusSweetland.OptiKey.UI.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

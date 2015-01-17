@@ -2,7 +2,7 @@
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
     public class YesNoQuestion : BindableBase, IKeyboard
     {

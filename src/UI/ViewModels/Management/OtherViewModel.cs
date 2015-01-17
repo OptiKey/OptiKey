@@ -1,8 +1,8 @@
-using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.UI.ViewModels.Management
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class OtherViewModel : BindableBase
     {

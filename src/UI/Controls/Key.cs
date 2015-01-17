@@ -4,15 +4,14 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using JuliusSweetland.ETTA.Annotations;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.UI.Utilities;
-using JuliusSweetland.ETTA.UI.ViewModels;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.ViewModels;
 
-namespace JuliusSweetland.ETTA.UI.Controls
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class Key : UserControl, INotifyPropertyChanged
     {

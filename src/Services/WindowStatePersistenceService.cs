@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.OptiKey.Properties;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class WindowStatePersistenceService
     {

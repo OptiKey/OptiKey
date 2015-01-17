@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace JuliusSweetland.ETTA.UI.Controls
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class ProgressPie : Canvas
     {

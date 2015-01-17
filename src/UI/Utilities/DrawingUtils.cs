@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace JuliusSweetland.ETTA.UI.Utilities
+namespace JuliusSweetland.OptiKey.UI.Utilities
 {
     class DrawingUtils
     {

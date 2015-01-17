@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Interactivity;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.UI.Utilities;
-using JuliusSweetland.ETTA.UI.Windows;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace JuliusSweetland.ETTA.UI.TriggerActions
+namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {
     public class OpenManagementWindowAction : TriggerAction<FrameworkElement>
     {

@@ -4,11 +4,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class StringExtensions
     {

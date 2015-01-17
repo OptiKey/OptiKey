@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Data;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Services;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class KeyEnabledStates : BindableBase
     {

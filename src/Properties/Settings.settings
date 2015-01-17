@@ -1,17 +1,17 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.ETTA.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.OptiKey.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ins</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerStopSignals" Scope="User">
+    <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
     </Setting>
     <Setting Name="SelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+    <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
     <Setting Name="SettingsUpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
@@ -20,7 +20,7 @@
     <Setting Name="PointsMousePositionSampleInterval" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.0130000</Value>
     </Setting>
-    <Setting Name="PointsSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.PointsSources" Scope="User">
+    <Setting Name="PointsSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.PointsSources" Scope="User">
       <Value Profile="(Default)">MousePosition</Value>
     </Setting>
     <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -50,7 +50,7 @@
     <Setting Name="MultiKeySelectionMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
-    <Setting Name="Language" Roaming="true" Type="JuliusSweetland.ETTA.Enums.Languages" Scope="User">
+    <Setting Name="Language" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
       <Value Profile="(Default)">BritishEnglish</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -102,7 +102,7 @@
       <Value Profile="(Default)">Condensed</Value>
     </Setting>
     <Setting Name="FontWeight" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Regular</Value>
+      <Value Profile="(Default)">Light</Value>
     </Setting>
     <Setting Name="ScratchpadNumberOfLines" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
@@ -140,10 +140,10 @@
     <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.ETTA.Enums.TriggerSources" Scope="User">
+    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
-    <Setting Name="UiComplexity" Roaming="true" Type="JuliusSweetland.ETTA.Enums.UiComplexity" Scope="User">
+    <Setting Name="UiComplexity" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.UiComplexity" Scope="User">
       <Value Profile="(Default)">Basic</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -155,8 +155,8 @@
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
-    <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.ETTA.Enums.KeyboardsSets" Scope="User">
-      <Value Profile="(Default)">Standard</Value>
+    <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
+      <Value Profile="(Default)">SpeechOnly</Value>
     </Setting>
     <Setting Name="ControlPanelWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class SuggestionService : BindableBase, ISuggestionService
     {

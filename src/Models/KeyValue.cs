@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public struct KeyValue
     {

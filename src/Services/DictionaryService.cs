@@ -4,19 +4,19 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Threading;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Properties;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class DictionaryService : IDictionaryService
     {
         #region Constants
 
-        private const string ApplicationDataSubPath = @"JuliusSweetland\ETTA\Dictionaries\";
+        private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Dictionaries\";
         private const string OriginalDictionariesSubPath = @"Dictionaries\";
         private const string DictionaryFileType = ".dic";
 

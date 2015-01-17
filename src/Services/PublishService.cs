@@ -3,7 +3,7 @@ using System.Linq;
 using WindowsInput.Native;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class PublishService : IPublishService
     {

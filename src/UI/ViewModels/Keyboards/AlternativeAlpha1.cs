@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.ETTA.UI.ViewModels.Keyboards
+﻿namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
     public class AlternativeAlpha1 : IKeyboard
     {

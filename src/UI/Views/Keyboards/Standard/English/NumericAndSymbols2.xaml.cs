@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English
+namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English
 {
     /// <summary>
     /// Interaction logic for NumericAndSymbols2.xaml

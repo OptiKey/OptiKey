@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface INotifyErrors
     {

@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace JuliusSweetland.ETTA.Native.Structs
+namespace JuliusSweetland.OptiKey.Native.Structs
 {
     public struct OSVERSIONINFO 
     { 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Reactive;
 using System.Windows;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Observables.PointSources
+namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
     public interface IPointSource
     {

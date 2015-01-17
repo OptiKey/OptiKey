@@ -1,17 +1,17 @@
-﻿<UserControl x:Class="JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha1"
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha1"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:models="clr-namespace:JuliusSweetland.ETTA.Models"
-             xmlns:enums="clr-namespace:JuliusSweetland.ETTA.Enums"
-             xmlns:controls="clr-namespace:JuliusSweetland.ETTA.UI.Controls"
-             xmlns:english="clr-namespace:JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English"
+             xmlns:english="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
+             xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.Resources>
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
+        <ResourceDictionary Source="/JuliusSweetland.OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
     
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"

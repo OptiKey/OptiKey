@@ -4,29 +4,29 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.UI.Utilities;
-using JuliusSweetland.ETTA.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
-using Alpha = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Alpha;
-using AlternativeAlpha1 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha1;
-using AlternativeAlpha2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha2;
-using AlternativeAlpha3 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.AlternativeAlpha3;
-using Currencies1 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Currencies1;
-using Currencies2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Currencies2;
-using ManipulateWindow = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.ManipulateWindow;
-using Menu = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.Menu;
-using NumericAndSymbols1 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols1;
-using NumericAndSymbols2 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols2;
-using NumericAndSymbols3 = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.NumericAndSymbols3;
-using PhysicalKeys = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.PhysicalKeys;
-using YesNoQuestion = JuliusSweetland.ETTA.UI.Views.Keyboards.Standard.English.YesNoQuestion;
+using Alpha = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Alpha;
+using AlternativeAlpha1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha1;
+using AlternativeAlpha2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha2;
+using AlternativeAlpha3 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha3;
+using Currencies1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Currencies1;
+using Currencies2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Currencies2;
+using ManipulateWindow = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.ManipulateWindow;
+using Menu = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Menu;
+using NumericAndSymbols1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols1;
+using NumericAndSymbols2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols2;
+using NumericAndSymbols3 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols3;
+using PhysicalKeys = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.PhysicalKeys;
+using YesNoQuestion = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.YesNoQuestion;
 
-namespace JuliusSweetland.ETTA.UI.Controls
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class KeyboardHost : ContentControl
     {
@@ -216,6 +216,10 @@ namespace JuliusSweetland.ETTA.UI.Controls
                             if (Keyboard is ViewModels.Keyboards.Alpha)
                             {
                                 newContent = new Views.Keyboards.SpeechOnly.English.Alpha { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModels.Keyboards.YesNoQuestion)
+                            {
+                                newContent = new Views.Keyboards.SpeechOnly.English.YesNoQuestion { DataContext = Keyboard };
                             }
                             break;
                     }

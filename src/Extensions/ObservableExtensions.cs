@@ -7,7 +7,7 @@ using System.Reactive.Linq;
 using System.Windows;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class ObservableExtensions
     {

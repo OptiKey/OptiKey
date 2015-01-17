@@ -2,11 +2,11 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Models;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSources
+namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
     public class MouseButtonDownUpSource : ITriggerSource
     {

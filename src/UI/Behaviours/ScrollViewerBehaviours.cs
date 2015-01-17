@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Behaviours
+namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
     public static class ScrollViewerBehaviours
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface ICalibrationService
     {

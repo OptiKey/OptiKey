@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Xaml;
 using log4net;
 
-namespace JuliusSweetland.ETTA.UI.Controls
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class TextBlockScaler : ContentControl
     {

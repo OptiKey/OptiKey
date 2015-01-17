@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows;
 using System.Linq;
-using JuliusSweetland.ETTA.Models;
+using System.Windows;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class PointExtensions
     {

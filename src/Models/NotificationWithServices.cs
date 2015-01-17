@@ -1,7 +1,7 @@
-﻿using JuliusSweetland.ETTA.Services;
+﻿using JuliusSweetland.OptiKey.Services;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class NotificationWithServices : INotification
     {

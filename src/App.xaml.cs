@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointSources;
-using JuliusSweetland.ETTA.Observables.TriggerSources;
-using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.Static;
-using JuliusSweetland.ETTA.UI.ViewModels;
-using JuliusSweetland.ETTA.UI.Windows;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Observables.TriggerSources;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.UI.ViewModels;
+using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using log4net.Core;
 
-namespace JuliusSweetland.ETTA
+namespace JuliusSweetland.OptiKey
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -208,7 +208,7 @@ namespace JuliusSweetland.ETTA
                     break;
 
                 default:
-                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart ETTA.");
+                    throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
             //Instantiate key trigger source
@@ -237,7 +237,7 @@ namespace JuliusSweetland.ETTA
 
                 default:
                     throw new ArgumentException(
-                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart ETTA.");
+                        "'KeySelectionTriggerSource' setting is missing or not recognised! Please correct and restart OptiKey.");
             }
 
             //Instantiate point trigger source
@@ -267,7 +267,7 @@ namespace JuliusSweetland.ETTA
                 default:
                     throw new ArgumentException(
                         "'PointSelectionTriggerSource' setting is missing or not recognised! "
-                        + "Please correct and restart ETTA.");
+                        + "Please correct and restart OptiKey.");
             }
 
             return new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,

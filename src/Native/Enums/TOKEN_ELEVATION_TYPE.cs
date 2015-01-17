@@ -1,4 +1,4 @@
-namespace JuliusSweetland.ETTA.Native.Enums
+namespace JuliusSweetland.OptiKey.Native.Enums
 {
     public enum TOKEN_ELEVATION_TYPE
     {

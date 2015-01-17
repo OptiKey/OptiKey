@@ -5,12 +5,12 @@ using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
-using JuliusSweetland.ETTA.Native;
-using JuliusSweetland.ETTA.Native.Enums;
-using JuliusSweetland.ETTA.Native.Structs;
+using JuliusSweetland.OptiKey.Native;
+using JuliusSweetland.OptiKey.Native.Enums;
+using JuliusSweetland.OptiKey.Native.Structs;
 using Microsoft.Win32;
 
-namespace JuliusSweetland.ETTA.Static
+namespace JuliusSweetland.OptiKey.Static
 {
     public static class DiagnosticInfo
     {

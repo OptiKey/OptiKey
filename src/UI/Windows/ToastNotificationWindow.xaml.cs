@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace JuliusSweetland.ETTA.UI.Windows
+namespace JuliusSweetland.OptiKey.UI.Windows
 {
     /// <summary>
     /// Interaction logic for ToastNotificationWindow.xaml

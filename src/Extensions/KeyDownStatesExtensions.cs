@@ -1,6 +1,6 @@
-﻿using JuliusSweetland.ETTA.Enums;
+﻿using JuliusSweetland.OptiKey.Enums;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class KeyDownStatesExtensions
     {

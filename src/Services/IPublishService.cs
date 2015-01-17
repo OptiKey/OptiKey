@@ -1,7 +1,6 @@
-﻿using System;
-using WindowsInput.Native;
+﻿using WindowsInput.Native;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface IPublishService : INotifyErrors
     {

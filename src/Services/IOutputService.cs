@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.OptiKey.Enums;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface IOutputService
     {

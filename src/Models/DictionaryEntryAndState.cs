@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class DictionaryEntryAndState : BindableBase
     {

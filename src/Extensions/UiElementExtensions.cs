@@ -2,7 +2,7 @@
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class UiElementExtensions
     {

@@ -2,7 +2,7 @@ As the manifest *should* be the same for Debug and Release builds, I think I wil
   
 -----------------------------------------------------------------------------------------------------------------
 
-CREATING A CERTIFICATE AND SIGNING ETTA:
+CREATING A CERTIFICATE AND SIGNING OptiKey:
 (Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
 
 1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
@@ -18,7 +18,7 @@ makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic Julius
 pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
 
 5.SIGN THE EXE FILE WITH NEW PFX FILE:
-signtool sign /v /f JuliusTestSPC.pfx "C:\Program Files (x86)\JuliusSweetland\ETTA\JuliusSweetland.ETTA.exe"
+signtool sign /v /f JuliusTestSPC.pfx "C:\Program Files (x86)\JuliusSweetland\OptiKey\OptiKey.exe"
 
 Test certification is here: "C:\Users\Julius\Dropbox\Software Stuff\Eye Tracking Software stuff\Test Certificates"
 

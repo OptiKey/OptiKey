@@ -3,10 +3,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using JuliusSweetland.ETTA.UI.Utilities;
+using JuliusSweetland.OptiKey.UI.Utilities;
 using log4net;
 
-namespace JuliusSweetland.ETTA.UI.Controls
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class PointVisualiser : Canvas
     {

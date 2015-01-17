@@ -1,9 +1,9 @@
-﻿using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
+﻿using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class CapturingStateManager : BindableBase, ICapturingStateManager
     {

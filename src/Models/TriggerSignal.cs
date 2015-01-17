@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.ETTA.Models
+﻿namespace JuliusSweetland.OptiKey.Models
 {
     public struct TriggerSignal
     {

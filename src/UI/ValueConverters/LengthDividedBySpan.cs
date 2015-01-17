@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
-namespace JuliusSweetland.ETTA.UI.ValueConverters
+namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
     public class LengthDividedBySpan : IMultiValueConverter
     {

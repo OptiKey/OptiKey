@@ -6,7 +6,7 @@ using System.Windows;
 using log4net;
 using TETControls.Calibration;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class TheEyeTribeCalibrationService : ICalibrationService
     {

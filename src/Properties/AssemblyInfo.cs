@@ -5,12 +5,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JuliusSweetland.ETTA")]
-[assembly: AssemblyDescription("Eye Tracking Transcription Assistant")]
+[assembly: AssemblyTitle("OptiKey")]
+[assembly: AssemblyDescription("Free, Open Source, Assistive On-Screen Keyboard")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JuliusSweetland")]
-[assembly: AssemblyProduct("JuliusSweetland.ETTA")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("OptiKey")]
+[assembly: AssemblyCopyright("Licensed under the terms of the GNU GPL v3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JuliusSweetland.ETTA.Properties {
+namespace JuliusSweetland.OptiKey.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -40,9 +40,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.TriggerStopSignals MultiKeySelectionTriggerStopSignal {
+        public global::JuliusSweetland.OptiKey.Enums.TriggerStopSignals MultiKeySelectionTriggerStopSignal {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.TriggerStopSignals)(this["MultiKeySelectionTriggerStopSignal"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.TriggerStopSignals)(this["MultiKeySelectionTriggerStopSignal"]));
             }
             set {
                 this["MultiKeySelectionTriggerStopSignal"] = value;
@@ -66,9 +66,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.TriggerSources KeySelectionTriggerSource {
+        public global::JuliusSweetland.OptiKey.Enums.TriggerSources KeySelectionTriggerSource {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.TriggerSources)(this["KeySelectionTriggerSource"]));
             }
             set {
                 this["KeySelectionTriggerSource"] = value;
@@ -105,9 +105,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("MousePosition")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.PointsSources PointsSource {
+        public global::JuliusSweetland.OptiKey.Enums.PointsSources PointsSource {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.PointsSources)(this["PointsSource"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.PointsSources)(this["PointsSource"]));
             }
             set {
                 this["PointsSource"] = value;
@@ -236,9 +236,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("BritishEnglish")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.Languages Language {
+        public global::JuliusSweetland.OptiKey.Enums.Languages Language {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.Languages)(this["Language"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["Language"]));
             }
             set {
                 this["Language"] = value;
@@ -455,7 +455,7 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Regular")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string FontWeight {
             get {
@@ -627,9 +627,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.TriggerSources PointSelectionTriggerSource {
+        public global::JuliusSweetland.OptiKey.Enums.TriggerSources PointSelectionTriggerSource {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.TriggerSources)(this["PointSelectionTriggerSource"]));
             }
             set {
                 this["PointSelectionTriggerSource"] = value;
@@ -640,9 +640,9 @@ namespace JuliusSweetland.ETTA.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Basic")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.UiComplexity UiComplexity {
+        public global::JuliusSweetland.OptiKey.Enums.UiComplexity UiComplexity {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.UiComplexity)(this["UiComplexity"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.UiComplexity)(this["UiComplexity"]));
             }
             set {
                 this["UiComplexity"] = value;
@@ -690,11 +690,11 @@ namespace JuliusSweetland.ETTA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Standard")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SpeechOnly")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.ETTA.Enums.KeyboardsSets KeyboardSet {
+        public global::JuliusSweetland.OptiKey.Enums.KeyboardsSets KeyboardSet {
             get {
-                return ((global::JuliusSweetland.ETTA.Enums.KeyboardsSets)(this["KeyboardSet"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.KeyboardsSets)(this["KeyboardSet"]));
             }
             set {
                 this["KeyboardSet"] = value;

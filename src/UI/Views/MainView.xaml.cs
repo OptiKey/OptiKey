@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Views
+namespace JuliusSweetland.OptiKey.UI.Views
 {
     /// <summary>
     /// Interaction logic for MainView.xaml

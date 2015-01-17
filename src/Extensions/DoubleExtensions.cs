@@ -1,4 +1,4 @@
-﻿namespace JuliusSweetland.ETTA.Extensions
+﻿namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class DoubleExtensions
     {

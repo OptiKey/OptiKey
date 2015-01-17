@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface IKeyboardService : INotifyPropertyChanged
     {

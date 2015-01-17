@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class KeyValueExtensions
     {

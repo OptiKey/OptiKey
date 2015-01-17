@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSources
+namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
     public class PointFixationSource : IFixationTriggerSource
     {

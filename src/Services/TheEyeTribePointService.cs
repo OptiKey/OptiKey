@@ -5,7 +5,7 @@ using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class TheEyeTribePointService : ITheEyeTribePointService
     {

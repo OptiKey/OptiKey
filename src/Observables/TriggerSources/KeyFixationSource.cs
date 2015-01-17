@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSources
+namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
     /// <summary>
     /// Aggregates fixations on keys, allowing you to move away and return to complete a key fixation.

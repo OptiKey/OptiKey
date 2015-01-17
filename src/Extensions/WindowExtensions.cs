@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Interop;
 
-namespace JuliusSweetland.ETTA.Extensions
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class WindowExtensions
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JuliusSweetland.ETTA.Properties;
-using log4net;
 using System.Speech.Synthesis;
+using JuliusSweetland.OptiKey.Properties;
+using log4net;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class AudioService : IAudioService
     {

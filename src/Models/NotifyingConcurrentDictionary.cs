@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class NotifyingConcurrentDictionary<TKey, TValue> : BindableBase
     {

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using JuliusSweetland.ETTA.UI.Controls;
+using JuliusSweetland.OptiKey.UI.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Behaviours
+namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
     public static class KeyBehaviours
     {

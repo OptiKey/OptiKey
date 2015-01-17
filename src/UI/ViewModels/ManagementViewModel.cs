@@ -1,12 +1,12 @@
 ﻿using System.Windows;
-using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.UI.ViewModels.Management;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.UI.ViewModels
+namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     public class ManagementViewModel : BindableBase
     {
@@ -86,8 +86,8 @@ namespace JuliusSweetland.ETTA.UI.ViewModels
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = "May I restart ETTA?",
-                        Content = "ETTA needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
+                        Title = "May I restart OptiKey?",
+                        Content = "OptiKey needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
                     }, confirmation =>
                     {
                         if (confirmation.Confirmed)

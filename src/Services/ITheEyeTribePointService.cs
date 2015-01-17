@@ -3,7 +3,7 @@ using System.Reactive;
 using System.Windows;
 using TETCSharpClient;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface ITheEyeTribePointService : IGazeListener, INotifyErrors
     {

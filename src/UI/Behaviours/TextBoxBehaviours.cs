@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using JuliusSweetland.ETTA.Extensions;
+using JuliusSweetland.OptiKey.Extensions;
 
-namespace JuliusSweetland.ETTA.UI.Behaviours
+namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
     public static class TextBoxBehaviours
     {

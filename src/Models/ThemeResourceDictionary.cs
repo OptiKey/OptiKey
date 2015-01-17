@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class ThemeResourceDictionary : ResourceDictionary
     {

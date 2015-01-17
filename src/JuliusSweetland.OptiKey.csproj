@@ -7,8 +7,8 @@
     <ProjectGuid>{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JuliusSweetland.ETTA</RootNamespace>
-    <AssemblyName>JuliusSweetland.ETTA</AssemblyName>
+    <RootNamespace>JuliusSweetland.OptiKey</RootNamespace>
+    <AssemblyName>JuliusSweetland.OptiKey</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -51,11 +51,10 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JuliusSweetland.ETTA.App</StartupObject>
+    <StartupObject>JuliusSweetland.OptiKey.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\Main.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -268,6 +267,7 @@
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml.cs">
       <DependentUpon>ManipulateWindow.xaml</DependentUpon>
@@ -379,14 +379,6 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\WindowsAPI.cs" />
-    <None Include="..\Solution Items\CREDITS.txt">
-      <Link>CREDITS.txt</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\Solution Items\LICENSE.txt">
-      <Link>LICENSE.txt</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
@@ -434,6 +426,14 @@
     <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\ManipulateWindow.svg" />
+    <None Include="..\docs\CREDITS.txt">
+      <Link>CREDITS.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\docs\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -543,8 +543,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

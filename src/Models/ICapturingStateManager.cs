@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public interface ICapturingStateManager : INotifyPropertyChanged
     {

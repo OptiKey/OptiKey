@@ -1,7 +1,7 @@
 ﻿using System;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Observables.TriggerSources
+namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
     public interface ITriggerSource
     {

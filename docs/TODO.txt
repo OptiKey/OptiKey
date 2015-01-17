@@ -35,9 +35,6 @@ Publish as ClickOnce? Or use setup?
 	Possible alternative: http://stackoverflow.com/questions/780594/how-can-i-make-my-c-sharp-application-check-for-updates
 		wyBuild is free for open source projects: http://wyday.com/wybuild/buy/special-prices.php
 
-Create gmail account for OptiKey
-	optikeyfeedback@gmail.com
-
 OptiKey.org/OptiKey.co.uk
 	Create landing page: https://pages.github.com/
 	Include link to run ClickOnce (pointing to Azure)

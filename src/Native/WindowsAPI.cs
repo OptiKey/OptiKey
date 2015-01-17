@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
-using JuliusSweetland.ETTA.Native.Enums;
-using JuliusSweetland.ETTA.Native.Structs;
+using JuliusSweetland.OptiKey.Native.Enums;
+using JuliusSweetland.OptiKey.Native.Structs;
 
-namespace JuliusSweetland.ETTA.Native
+namespace JuliusSweetland.OptiKey.Native
 {
     public class WindowsAPI 
     { 

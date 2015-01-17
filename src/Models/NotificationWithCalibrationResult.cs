@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public class NotificationWithCalibrationResult : INotification
     {

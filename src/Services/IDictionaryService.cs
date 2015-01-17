@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Reactive;
 using System.Threading;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Models;
+using JuliusSweetland.OptiKey.Models;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface IDictionaryService : INotifyErrors
     {

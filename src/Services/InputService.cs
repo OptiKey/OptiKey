@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using JuliusSweetland.ETTA.Enums;
-using JuliusSweetland.ETTA.Extensions;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Observables.PointSources;
-using JuliusSweetland.ETTA.Observables.TriggerSources;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
+using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using log4net;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public partial class InputService : BindableBase, IInputService
     {

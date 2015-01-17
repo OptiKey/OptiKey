@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
-using JuliusSweetland.ETTA.Extensions;
+using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
-namespace JuliusSweetland.ETTA.Services
+namespace JuliusSweetland.OptiKey.Services
 {
     public class WindowManipulationService : IWindowManipulationService
     {

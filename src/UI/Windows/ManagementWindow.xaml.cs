@@ -1,10 +1,10 @@
 ﻿using System.Windows;
-using JuliusSweetland.ETTA.Properties;
-using JuliusSweetland.ETTA.Services;
-using JuliusSweetland.ETTA.UI.ViewModels;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.UI.ViewModels;
 using MahApps.Metro.Controls;
 
-namespace JuliusSweetland.ETTA.UI.Windows
+namespace JuliusSweetland.OptiKey.UI.Windows
 {
     /// <summary>
     /// Interaction logic for ManagementWindow.xaml

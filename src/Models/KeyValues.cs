@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using JuliusSweetland.ETTA.Enums;
+using JuliusSweetland.OptiKey.Enums;
 
-namespace JuliusSweetland.ETTA.Models
+namespace JuliusSweetland.OptiKey.Models
 {
     public static class KeyValues
     {

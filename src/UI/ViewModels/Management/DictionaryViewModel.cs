@@ -1,12 +1,12 @@
 using System.Collections.ObjectModel;
 using System.Linq;
-using JuliusSweetland.ETTA.Models;
-using JuliusSweetland.ETTA.Services;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Services;
 using log4net;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace JuliusSweetland.ETTA.UI.ViewModels.Management
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
     public class DictionaryViewModel : BindableBase
     {
