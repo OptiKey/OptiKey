@@ -18,7 +18,7 @@ UiAccess requirements:
 		http://stackoverflow.com/questions/19879812/signing-exe-with-cer-file-what-is-my-certificates-name-that-signtool-exe-is
 		Certmgr.msc
 
-Publish as ClickOnce? Or use setup?
+How to deploy? Publish as ClickOnce or use setup?
 	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
 	Investigate certificate signing the application and deployment manifests for uiAccess
 	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
@@ -29,15 +29,19 @@ Publish as ClickOnce? Or use setup?
 
 OptiKey.org/OptiKey.co.uk
 	Create landing page: https://pages.github.com/
-	Include link to run ClickOnce (pointing to Azure)
-	Include email link to new OptiKey account
+	Include email address
+	Link to releases
 	Point .co.uk to .org and .org to github landing page
+	Add page: How to use (and change settings)
+	Add page: How to report problems/bugs (turn on debugging mode and where to find logs + screenshots if possible)
 
 Creating releases in github; 
 	https://help.github.com/articles/creating-releases/
 	https://github.com/blog/1547-release-your-software
 	A release doesn't need to contain binary files. Mine could be source code and notes each time.
 
+Automatic updates:
+	http://wyday.com/wybuild/
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx

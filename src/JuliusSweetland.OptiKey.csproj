@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JuliusSweetland.OptiKey</RootNamespace>
-    <AssemblyName>JuliusSweetland.OptiKey</AssemblyName>
+    <AssemblyName>OptiKey</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,8 +56,16 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\Icons\Main.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
@@ -117,6 +125,7 @@
       <HintPath>..\packages\Rx-XAML.2.2.4\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Speech" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -379,6 +388,7 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\WindowsAPI.cs" />
+    <None Include="JuliusTestSPC.pfx" />
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />

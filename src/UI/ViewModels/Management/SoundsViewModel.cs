@@ -40,6 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
+                    new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Info 1", @"Resources\Sounds\Info1.wav"),
                     new KeyValuePair<string, string>("Info 2", @"Resources\Sounds\Info2.wav")
                 };
@@ -52,6 +53,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
+                    new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Selection 1", @"Resources\Sounds\Selection1.wav"),
                     new KeyValuePair<string, string>("Selection 2", @"Resources\Sounds\Selection2.wav")
                 };
@@ -64,6 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
+                    new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Error 1", @"Resources\Sounds\Error1.wav"),
                     new KeyValuePair<string, string>("Error 2", @"Resources\Sounds\Error2.wav")
                 };
@@ -76,6 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
+                    new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Start Capture 1", @"Resources\Sounds\MultiKeyCaptureStart1.wav")
                 };
             }
@@ -87,6 +91,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
+                    new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("End Capture 1", @"Resources\Sounds\MultiKeyCaptureEnd1.wav")
                 };
             }

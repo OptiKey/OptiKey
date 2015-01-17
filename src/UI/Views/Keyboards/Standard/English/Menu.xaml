@@ -10,7 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.Resources>
-        <ResourceDictionary Source="/JuliusSweetland.OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
     
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
