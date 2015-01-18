@@ -15,6 +15,7 @@ OptiKey.org/OptiKey.co.uk
 	Include email address
 	Add link to pages from README.md (explaining that it provides info on use, what to do with problems, contributing and how to get in touch)
 	Figure out how Google Analytics works
+	Jekyll: https://help.github.com/articles/using-jekyll-with-pages/
 
 Splash screen on first run - tell user about Alt+M
 
