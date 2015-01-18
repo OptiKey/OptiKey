@@ -41,7 +41,7 @@
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
             
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Visual mode:" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Keyboard set:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding KeyboardSets}"

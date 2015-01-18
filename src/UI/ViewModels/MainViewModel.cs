@@ -186,9 +186,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             get
             {
-                return string.Format("v:{0} (Deploy v:{1}) | P:{2} {3} | OS:{4} {5} ({6})",
+                return string.Format("v:{0} | P:{1} {2} | OS:{3} {4} ({5})",
                     DiagnosticInfo.AssemblyVersion,
-                    DiagnosticInfo.IsApplicationNetworkDeployed ? DiagnosticInfo.DeploymentVersion : "N/A",
                     DiagnosticInfo.ProcessBitness,
                     DiagnosticInfo.IsProcessElevated ? "(Elevated)" : "(Not Elevated)",
                     DiagnosticInfo.OperatingSystemBitness,

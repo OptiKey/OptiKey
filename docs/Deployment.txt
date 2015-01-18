@@ -1,12 +1,15 @@
 1.Set the AssemblyVersion in AssemblyInfo
 2.Change app.manifest to include uiAccess="true" flag
 3.Build in Release config
-4.Sign the exe: signtool sign /v /f "MY_CERTIFICATE.pfx" "OptiKey.exe"
-5.Create setup file:
-  i)Set version number
-  ii)Compile Inno script
-6.Test locally
-7.If good then commit source to GitHub
-8.Create release (tag) on GitHub including;
+4.Clean staging area and copy files to staging area "Binaries" folder (batch file to do this)
+5.Sign the exe
+	Open command prompt at "release staging" folder: "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool" sign /v /f "Certificates\JuliusTestSPC.pfx" "Binaries\OptiKey.exe"
+6.Create setup file (Inno Script Studio):
+  i)Manually clean Output directory (batch file from step 4 will have done this)
+  ii)Set version number
+  iii)Compile Inno script
+7.Test locally
+8.If good then commit source to GitHub
+9.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer

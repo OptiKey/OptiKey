@@ -6,8 +6,8 @@
 *.user
 *.sln.docstates
 
-# Certificates for signing assemblies/manifests
-certificates/
+# Release staging, including certificates, etc
+staging/
 
 # Build results
 

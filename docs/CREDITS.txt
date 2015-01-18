@@ -47,7 +47,7 @@ Some image editing done using the free online editor LunaPic - http://www165.lun
 
 Icon files (.ico) created with IcoFX - http://icofx.ro/
 
-Setup tool: Inno Setup Compiler & Inno Script Studio - http://www.jrsoftware.org/
+Setup tool: Inno Setup Compiler & Inno Script Studio - http://www.jrsoftware.org/ (Script Studio is available under 3rd party files)
 
 The StackOverflow community for providing the answer more times than I can count.
 
