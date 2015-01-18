@@ -1,0 +1,9 @@
+Specified as a flag within the application manifest on the requestedExecutionLevel key.
+
+MSDN article: http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
+
+Requirements to work:
+	1.Elevated privileges - Click2Speak does NOT need elevated privileges. My tests also suggest that this is not required.
+	2.Signed assembly (by a trusted certificate) - use the Signing tab on project properties to sign manifests (deployment and application manifests) AND assembly
+	3."Secure location" - Click2Speak appears to install a shill in the ClickOnce location and the rest of the files in Program Files
+	4.UiAccess="True" flag - this prevents debugging so set in Release mode Post-Build/Pre-Publish* only

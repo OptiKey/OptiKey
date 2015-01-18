@@ -388,7 +388,6 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\WindowsAPI.cs" />
-    <None Include="JuliusTestSPC.pfx" />
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
