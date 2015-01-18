@@ -1,10 +1,20 @@
+Signing:
+	Get certificate working
+	Sign assembly when deploying
+	Sign installer when deploying
+
+Add dependency on latest .Net Framework 4.5 to Inno setup
+	http://stackoverflow.com/questions/20752882/how-can-i-install-net-framework-as-a-prerequisite-using-innosetup
+
 OptiKey.org/OptiKey.co.uk
 	Create landing page: https://pages.github.com/
-	Include email address
 	Link to releases
-	Point .co.uk to .org and .org to github landing page
-	Add page: How to use (and change settings)
+	Add page: How to use (including changing settings)
 	Add page: How to report problems/bugs (turn on debugging mode and where to find logs + screenshots if possible)
+	Add page: How to contribute
+	Include email address
+	Add link to pages from README.md (explaining that it provides info on use, what to do with problems, contributing and how to get in touch)
+	Figure out how Google Analytics works
 
 Splash screen on first run - tell user about Alt+M
 
@@ -21,9 +31,6 @@ Profile and optimise, especially keyboard transitions
 	
 Refactor any remaining large classes, e.g. MainViewModel
 	Create new 'InputBroker'/'InputHandler'/'InputRouter' class which takes the view model, input service, outputservice, etc and coordinates the response
-
-Add details on how to provide feedback in README.md file
-	How to turn on debugging mode and find logs to include in email
 
 Sort out sizing/layout of suggestions
 	Phrases should wrap
