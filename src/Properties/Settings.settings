@@ -158,19 +158,19 @@
     <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
       <Value Profile="(Default)">SpeechOnly</Value>
     </Setting>
-    <Setting Name="ControlPanelWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
+    <Setting Name="ManagementConsoleWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="ControlPanelWindowHeight" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="ManagementConsoleWindowHeight" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
-    <Setting Name="ControlPanelWindowLeft" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="ManagementConsoleWindowLeft" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="ControlPanelWindowTop" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="ManagementConsoleWindowTop" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="ControlPanelWindowWidth" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="ManagementConsoleWindowWidth" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Type="System.Int32" Scope="User">

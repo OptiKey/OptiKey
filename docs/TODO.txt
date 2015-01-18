@@ -18,14 +18,15 @@ UiAccess requirements:
 		http://stackoverflow.com/questions/19879812/signing-exe-with-cer-file-what-is-my-certificates-name-that-signtool-exe-is
 		Certmgr.msc
 
-How to deploy? Publish as ClickOnce or use setup?
+Once solved create notes on UiAccess
+
+Deployment strategy (ClickOnce vs Installer)
 	http://elbruno.com/2013/06/01/azure-howto-publish-a-clickonce-application-using-and-azure-website/
 	Investigate certificate signing the application and deployment manifests for uiAccess
 	Investigate strong naming the application and deployment manifests as a requirement of ClickOnce deployment
 		http://msdn.microsoft.com/en-us/library/h4fa028b(en-US,VS.80).aspx
 	http://dennis.bloggingabout.net/2007/11/05/manual-check-for-updates-with-clickonce/
-	Possible alternative: http://stackoverflow.com/questions/780594/how-can-i-make-my-c-sharp-application-check-for-updates
-		wyBuild is free for open source projects: http://wyday.com/wybuild/buy/special-prices.php
+	Setup project choices: http://stackoverflow.com/questions/14621093/how-can-i-create-setup-package-for-wpf-4-5-application-using-some-script
 
 OptiKey.org/OptiKey.co.uk
 	Create landing page: https://pages.github.com/
@@ -35,13 +36,9 @@ OptiKey.org/OptiKey.co.uk
 	Add page: How to use (and change settings)
 	Add page: How to report problems/bugs (turn on debugging mode and where to find logs + screenshots if possible)
 
-Creating releases in github; 
-	https://help.github.com/articles/creating-releases/
-	https://github.com/blog/1547-release-your-software
-	A release doesn't need to contain binary files. Mine could be source code and notes each time.
-
 Automatic updates:
 	http://wyday.com/wybuild/
+	Do I need a proper website to support this? If so then look at Azure again.
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx

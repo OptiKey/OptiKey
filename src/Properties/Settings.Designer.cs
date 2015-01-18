@@ -705,12 +705,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.WindowState ControlPanelWindowState {
+        public global::System.Windows.WindowState ManagementConsoleWindowState {
             get {
-                return ((global::System.Windows.WindowState)(this["ControlPanelWindowState"]));
+                return ((global::System.Windows.WindowState)(this["ManagementConsoleWindowState"]));
             }
             set {
-                this["ControlPanelWindowState"] = value;
+                this["ManagementConsoleWindowState"] = value;
             }
         }
         
@@ -718,38 +718,38 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("400")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ControlPanelWindowHeight {
+        public double ManagementConsoleWindowHeight {
             get {
-                return ((double)(this["ControlPanelWindowHeight"]));
+                return ((double)(this["ManagementConsoleWindowHeight"]));
             }
             set {
-                this["ControlPanelWindowHeight"] = value;
+                this["ManagementConsoleWindowHeight"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ControlPanelWindowLeft {
+        public double ManagementConsoleWindowLeft {
             get {
-                return ((double)(this["ControlPanelWindowLeft"]));
+                return ((double)(this["ManagementConsoleWindowLeft"]));
             }
             set {
-                this["ControlPanelWindowLeft"] = value;
+                this["ManagementConsoleWindowLeft"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ControlPanelWindowTop {
+        public double ManagementConsoleWindowTop {
             get {
-                return ((double)(this["ControlPanelWindowTop"]));
+                return ((double)(this["ManagementConsoleWindowTop"]));
             }
             set {
-                this["ControlPanelWindowTop"] = value;
+                this["ManagementConsoleWindowTop"] = value;
             }
         }
         
@@ -757,12 +757,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("600")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ControlPanelWindowWidth {
+        public double ManagementConsoleWindowWidth {
             get {
-                return ((double)(this["ControlPanelWindowWidth"]));
+                return ((double)(this["ManagementConsoleWindowWidth"]));
             }
             set {
-                this["ControlPanelWindowWidth"] = value;
+                this["ManagementConsoleWindowWidth"] = value;
             }
         }
         

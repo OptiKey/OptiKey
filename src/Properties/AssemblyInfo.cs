@@ -54,6 +54,9 @@ using System.Windows;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 //
-// Later Build and Revision numbers may become useful to represent the release stage (alpha, beta, etc)
-// and revision (fix 1, 2, 3, etc), but let's keep things simple for now.
-[assembly: AssemblyVersion("1.0")]
+//SEMANTIC VERSIONING (http://semver.org)
+//Given a version number MAJOR.MINOR.PATCH, increment the:
+//MAJOR version when you make incompatible API changes,
+//MINOR version when you add functionality in a backwards-compatible manner, and
+//PATCH version when you make backwards-compatible bug fixes.
+[assembly: AssemblyVersion("1.0.0")]

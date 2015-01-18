@@ -25,11 +25,11 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
             //Instantiate window state persistence service and provide accessors to the appropriate settings for this window
             windowStatePersistenceService = new WindowStatePersistenceService(
-                () => Settings.Default.ControlPanelWindowTop, d => Settings.Default.ControlPanelWindowTop = d,
-                () => Settings.Default.ControlPanelWindowLeft, d => Settings.Default.ControlPanelWindowLeft = d,
-                () => Settings.Default.ControlPanelWindowHeight, d => Settings.Default.ControlPanelWindowHeight = d,
-                () => Settings.Default.ControlPanelWindowWidth, d => Settings.Default.ControlPanelWindowWidth = d,
-                () => Settings.Default.ControlPanelWindowState, s => Settings.Default.ControlPanelWindowState = s,
+                () => Settings.Default.ManagementConsoleWindowTop, d => Settings.Default.ManagementConsoleWindowTop = d,
+                () => Settings.Default.ManagementConsoleWindowLeft, d => Settings.Default.ManagementConsoleWindowLeft = d,
+                () => Settings.Default.ManagementConsoleWindowHeight, d => Settings.Default.ManagementConsoleWindowHeight = d,
+                () => Settings.Default.ManagementConsoleWindowWidth, d => Settings.Default.ManagementConsoleWindowWidth = d,
+                () => Settings.Default.ManagementConsoleWindowState, s => Settings.Default.ManagementConsoleWindowState = s,
                 Settings.Default);
 
             //Apply window settings from window state persistence service

@@ -5,6 +5,7 @@
                      xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
                      Title="Management Console"
                      Topmost="True"
+                     WindowStartupLocation="CenterScreen"
                      MinWidth="300" MinHeight="200"
                      Icon="..\..\Resources\Icons\Management.ico">
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
