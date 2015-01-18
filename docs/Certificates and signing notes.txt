@@ -18,7 +18,7 @@ makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic Julius
 pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
 
 5.SIGN THE EXE FILE WITH NEW PFX FILE: (Run from exe location)
-signtool sign /v /f "C:\OptiKey Release Staging\Certificate\JuliusTestSPC.pfx" "C:\OptiKey Release Staging\Binaries\OptiKey.exe"
+signtool sign /v /f "C:\OptiKey Release Staging\Certificates\JuliusTestSPC.pfx" "C:\OptiKey Release Staging\Binaries\OptiKey.exe"
 
 -----------------------------------------------------------------------------------------------------------------
 

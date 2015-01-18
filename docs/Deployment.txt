@@ -1,9 +1,12 @@
 1.Set the AssemblyVersion in AssemblyInfo
-2.Commit to GitHub
-3.Change app.manifest to include uiAccess="true" flag
-4.Build in Release config
-5.Sign the exe: signtool sign /v /f "MY_CERTIFICATE.pfx" "OptiKey.exe"
-6.Create setup for this version
-7.Create release (tag) on GitHub including;
+2.Change app.manifest to include uiAccess="true" flag
+3.Build in Release config
+4.Sign the exe: signtool sign /v /f "MY_CERTIFICATE.pfx" "OptiKey.exe"
+5.Create setup file:
+  i)Set version number
+  ii)Compile Inno script
+6.Test locally
+7.If good then commit source to GitHub
+8.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer

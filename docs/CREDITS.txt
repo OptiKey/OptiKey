@@ -41,19 +41,21 @@ Icons
 
 Sound effects - royalty free from soundbible.com and soundjig.com
 
-Vector graphic manipulation/editing achieved with the excellent, free, and open source Inkscape - https://inkscape.org/.
+Vector graphic manipulation/editing achieved with the excellent, free, and open source Inkscape - https://inkscape.org/
 
-Some image editing done using the free online editor LunaPic - http://www165.lunapic.com/editor/.
+Some image editing done using the free online editor LunaPic - http://www165.lunapic.com/editor/
 
-Icon files (.ico) created with IcoFX - http://icofx.ro/.
+Icon files (.ico) created with IcoFX - http://icofx.ro/
+
+Setup tool: Inno Setup Compiler & Inno Script Studio - http://www.jrsoftware.org/
 
 The StackOverflow community for providing the answer more times than I can count.
 
-Scott Logic for his excellent work on the circular progress bar (http://www.scottlogic.com/blog/2011/02/07/a-circular-progressbar-style-using-an-attached-viewmodel.html).
+Scott Logic for his excellent work on the circular progress bar (http://www.scottlogic.com/blog/2011/02/07/a-circular-progressbar-style-using-an-attached-viewmodel.html)
 
-d.moncada for their custom caret tutorial which inspired the CaretElement text box behaviour (http://www.codeproject.com/Articles/633935/Customizing-the-Caret-of-a-WPF-TextBox).
+d.moncada for their custom caret tutorial which inspired the CaretElement text box behaviour (http://www.codeproject.com/Articles/633935/Customizing-the-Caret-of-a-WPF-TextBox)
 
-michaelnoonan (and any other contributors) for the Windows Input Simulator (http://inputsimulator.codeplex.com/).
+michaelnoonan (and any other contributors) for the Windows Input Simulator (http://inputsimulator.codeplex.com/)
 
 My wife Kate for keeping a convincing "tell me more" face on every time I talk about this too much.
 

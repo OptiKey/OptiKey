@@ -43,6 +43,8 @@ Automatic updates:
 	http://wyday.com/wybuild/
 	Do I need a proper website to support this? If so then look at Azure again.
 
+Splash screen on first run - tell user about Alt+M
+
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
