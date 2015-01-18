@@ -61,6 +61,6 @@ No position input possible - automatically cycle through groups of keys, then ke
 Add support for T9 style selection; either individual keys, or multi key select?
 Prevent minimising, or at least ask before allowing it?
 
-
+--------------------------------------------------------------------------------
 
 !!! If DropBox creates another conflicted copy: http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master
