@@ -1,4 +1,11 @@
-Specified as a flag within the application manifest on the requestedExecutionLevel key.
+The UiAccess flag (basically) allows OptiKey to stay on top of every window, including the start (menu) interface in Windows 8.
+This is obviously required for an on screen keyboard.
+
+The flag is specified in the application manifest (app.manifest in the root of the project) on the requestedExecutionLevel key.
+
+WHY IS IT SET TO FALSE IN THE OptiKey PROJECT? This is because Visual Studio has trouble debugging the application when it is on.
+This is because for UiAccess to work there are 4 (actually I think 3) requirements (detailed below), which are difficult to do during a
+standard debugging run. I, therefore, leave it off and turn it on during deployment of OptiKey.
 
 MSDN article: http://msdn.microsoft.com/en-us/library/windows/desktop/ee671610(v=vs.85).aspx
 

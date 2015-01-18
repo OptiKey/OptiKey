@@ -17,7 +17,6 @@
             compatibility then delete the requestedExecutionLevel node.
         -->
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
-        <!--<requestedExecutionLevel  level="asInvoker" uiAccess="true" />-->
       </requestedPrivileges>
     </security>
   </trustInfo>
