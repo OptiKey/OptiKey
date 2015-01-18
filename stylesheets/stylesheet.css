@@ -152,10 +152,13 @@ a.button span {
   padding-left: 50px;
 }
 
-#download-zip span {
+#releases span {
+  background: transparent url(../images/icon-installer.png) 12px 50% no-repeat;
+}
+#download-source-zip span {
   background: transparent url(../images/zip-icon.png) 12px 50% no-repeat;
 }
-#download-tar-gz span {
+#download-source-tar-gz span {
   background: transparent url(../images/tar-gz-icon.png) 12px 50% no-repeat;
 }
 #view-on-github span {
@@ -357,7 +360,7 @@ footer a:hover {
   #downloads {
     margin-bottom: 25px;
   }
-  #download-zip, #download-tar-gz {
+  #releases, #download-source-zip, #download-source-tar-gz {
     display: none;
   }
   .inner {
