@@ -1,26 +1,8 @@
-Why I cannot install Certum certificate on Windows 8, but fine on Windows 7. Home edition vs something else?
-
 Signing:
 	Get certificate working
 	Sign assembly as part of buld (VS project config)
 	Sign assembly when building? Otherwise when deploying.
 	Sign installer when deploying (Inno setup: http://www.codenewsfast.com/cnf/article/0/waArticleBookmark.7282453 / http://revolution.screenstepslive.com/s/revolution/m/10695/l/95041-signing-installers-you-create-with-inno-setup)
-
-TEST Add minimum windows version to Inno setup (>= 6.0.6002):
-	Windows Vista, Service Pack 2: 6.0.6002
-	Windows Server 2008 SP2: 6.0.6002
-	Windows Server 2008 R2 SP1: 6.1.7601
-
-Add dependency on latest .Net Framework 4.5 to Inno setup:
-	http://stackoverflow.com/questions/20752882/how-can-i-install-net-framework-as-a-prerequisite-using-innosetup
-	Where to find the reg key: http://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx#net_b
-		Software\Microsoft\NET Framework Setup\NDP\Release >= 378389
-	SOLUTION 1: http://www.kynosarges.de/DotNetVersion.html & http://stackoverflow.com/questions/4104011/innosetup-verify-that-net-4-0-is-installed / https://innosetupnet.codeplex.com/
-	SOLUTION 2: http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup
-		Needs ISTool installed (http://www.istool.org/default.aspx)
-	Add chosen solution to CREDITS.txt
-		SOLUTION 2 = "Inno setup dependency installer by 'stfx' from http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup")
-			+ "ISTool by 'bhenden' from http://sourceforge.net/projects/istool/"
 
 Change links at top to "Latest Version" and "Source on GitHub"
 	Add screenshot(s)

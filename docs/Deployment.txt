@@ -15,7 +15,13 @@
   ii)Binary installer
 
 ---------------------------------------------------------------------------------------------------  
-  
+
+INNO notes:
+.Net Framework dependencies (and auto download/install) taken from http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup
+	A copy of the original scripts is included in the deployment folder 'innodependencyinstaller.zip'
+
+---------------------------------------------------------------------------------------------------  
+
 The application targets .Net 4.5 and so requires that .Net Framework 4.5 (or later) is installed.
 
 .Net Framework 4.5 is supported on (from http://msdn.microsoft.com/en-us/library/8z6watww%28v=vs.110%29.aspx):
