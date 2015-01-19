@@ -1,3 +1,9 @@
+Why I cannot install on Windows 8, but fine on Windows 7.
+What are the prerequisites for an application which targets .net 4.5
+Can I reliably detect the presence of any requirements? 
+Can I supply people with a link to install the requirements if missing (but allow them to continue with the installation anyway)? 
+
+
 Search for any remaining references to ETTA
 
 Signing:
@@ -18,6 +24,7 @@ OptiKey.org/OptiKey.co.uk
 	Add page: Usage Guide (including changing settings) ("Usage", "Guides", "How To", "Instructions", "Features", "Help", "Usage Guide")
 	Add page: Troubleshooting
 	Add: How to contribute
+	Add: pre-requisites
 	Jekyll: https://help.github.com/articles/using-jekyll-with-pages/
 	Get optikey.org/.co.uk listed on Google
 
