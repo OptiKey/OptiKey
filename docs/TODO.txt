@@ -1,4 +1,4 @@
-Why I cannot install on Windows 8, but fine on Windows 7.
+Why I cannot install Certum certificate on Windows 8, but fine on Windows 7.
 
 What are the prerequisites for an application which targets .net 4.5?
 	Add minimum windows version to installer?
