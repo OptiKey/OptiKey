@@ -1,2 +1,2 @@
 The application targets .Net 4.5 and so requires that .Net Framework 4.5 (or later) is installed.
-.Net Framework 4.5 is supported on operating systems from Windows Vista SP2 onwards.
+.Net Framework 4.5 is supported on operating systems from Windows Vista SP2/Windows Server 2008 SP2 (or R2 SP1) onwards (http://msdn.microsoft.com/en-us/library/8z6watww%28v=vs.110%29.aspx).
