@@ -28,6 +28,8 @@ Add dependency on latest .Net Framework 4.5 to Inno setup:
 	SOLUTION 2: http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup
 		Needs ISTool installed (http://www.istool.org/default.aspx)
 	Add chosen solution to CREDITS.txt
+		SOLUTION 2 = "Inno setup dependency installer by 'stfx' from http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup")
+			+ "ISTool by 'bhenden' from http://sourceforge.net/projects/istool/"
 
 Change icons:
 	Publish - and rename to SimulateKeyStrokes
