@@ -1,6 +1,7 @@
 Why I cannot install Certum certificate on Windows 8, but fine on Windows 7. Home edition vs something else?
 
-Search for any remaining references to ETTA
+TEST theme change
+	+ Search for any remaining references to ETTA
 
 Signing:
 	Get certificate working
