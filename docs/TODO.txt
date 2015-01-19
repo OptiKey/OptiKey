@@ -1,3 +1,5 @@
+Search for any remaining references to ETTA
+
 Signing:
 	Get certificate working
 	Sign assembly when deploying
