@@ -7,8 +7,8 @@
                     xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                     xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Themes/Colours/Android.xaml" />
-        <ResourceDictionary Source="/JuliusSweetland.ETTA;component/Resources/Icons/KeySymbols.xaml" />
+        <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource Grey}" />
             
