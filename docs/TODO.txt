@@ -4,8 +4,9 @@ Search for any remaining references to ETTA
 
 Signing:
 	Get certificate working
-	Sign assembly when deploying
-	Sign installer when deploying
+	Sign assembly as part of buld (VS project config)
+	Sign assembly when building? Otherwise when deploying.
+	Sign installer when deploying (Inno setup: http://www.codenewsfast.com/cnf/article/0/waArticleBookmark.7282453 / http://revolution.screenstepslive.com/s/revolution/m/10695/l/95041-signing-installers-you-create-with-inno-setup)
 
 Add minimum windows version to Inno setup (>= 6.0.6002):
 	Windows Vista, Service Pack 2: 6.0.6002
