@@ -4,9 +4,9 @@ The application targets .Net 4.5 and so requires that .Net Framework 4.5 (or lat
   Client operating systems from Windows Vista SP2 onwards
   Server operating systems from Windows Server 2008 SP2/Windows Server 2008 R2 SP1 onwards
   The above 2 requirements can be expressed as needing a minimum windows version number of 6.0.6002
-    Windows Vista, Service Pack 2	  6.0.6002
-    Windows Server 2008 SP2		      6.0.6002
-    Windows Server 2008 R2 SP1	    6.1.7601
+    Windows Vista, Service Pack 2: 6.0.6002
+    Windows Server 2008 SP2: 6.0.6002
+    Windows Server 2008 R2 SP1: 6.1.7601
 
 Windows version numbers: 
   http://www.gaijin.at/en/lstwinver.php
