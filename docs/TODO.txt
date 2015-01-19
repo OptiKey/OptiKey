@@ -33,10 +33,8 @@ Change icons:
 		http://thenounproject.com/term/keyboard/91580/ Keyboard by Konrad Michalik
 		http://thenounproject.com/term/keyboard/47116/ Keyboard by Björn Andersson
 	MultiKeySelection
-		http://thenounproject.com/term/linear-interaction/24520/
-		http://thenounproject.com/term/line-graph/21097/
-		http://thenounproject.com/term/route/81349/
-		http://thenounproject.com/term/route/17321/
+		http://thenounproject.com/term/line-graph/21097/ Line-Graph by Jason D. Rowley
+		http://thenounproject.com/term/linear-interaction/24520/ Linear-Interaction by Attilio Baghino
 
 OptiKey.org/OptiKey.co.uk
 	Change links at top to "Latest Version" and "Source on GitHub"
