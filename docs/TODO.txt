@@ -6,14 +6,18 @@ Signing:
 Add dependency on latest .Net Framework 4.5 to Inno setup
 	http://stackoverflow.com/questions/20752882/how-can-i-install-net-framework-as-a-prerequisite-using-innosetup
 
+Change icons:
+	Publish - and rename to SimulateKeyStrokes
+	MultiKeySelection
+
 OptiKey.org/OptiKey.co.uk
 	Change links at top to "Latest Version" and "Source on GitHub"
 	Add screenshot(s)
-	Add page: Usage guide (including changing settings) ("Usage", "Guides", "How To", "Instructions", "Features", "Help")
-	Add: How to report problems/bugs (turn on debugging mode and where to find logs + screenshots if possible)
+	Add page: Usage Guide (including changing settings) ("Usage", "Guides", "How To", "Instructions", "Features", "Help", "Usage Guide")
+	Add page: Troubleshooting
 	Add: How to contribute
 	Jekyll: https://help.github.com/articles/using-jekyll-with-pages/
-	Get optikey.org listed on Google
+	Get optikey.org/.co.uk listed on Google
 
 Splash screen on first run - tell user about Alt+M
 
