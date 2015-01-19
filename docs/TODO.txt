@@ -13,6 +13,8 @@ Signing:
 
 Add dependency on latest .Net Framework 4.5 to Inno setup
 	http://stackoverflow.com/questions/20752882/how-can-i-install-net-framework-as-a-prerequisite-using-innosetup
+	Where to find the reg key: http://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx#net_b
+		Software\Microsoft\NET Framework Setup\NDP\Release >= 378389
 
 Change icons:
 	Publish - and rename to SimulateKeyStrokes
