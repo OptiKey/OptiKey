@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey
             //Correct incorrect settings (e.g. unexpected combinations)
             if (Settings.Default.KeyboardSet == KeyboardsSets.SpeechOnly)
             {
-                if (Settings.Default.PublishingKeys) Settings.Default.PublishingKeys = false;
+                if (Settings.Default.SimulateKeyStrokes) Settings.Default.SimulateKeyStrokes = false;
                 if (Settings.Default.MultiKeySelectionEnabled) Settings.Default.MultiKeySelectionEnabled = false;
             }
         }
@@ -305,7 +305,7 @@ namespace JuliusSweetland.OptiKey
         {
             Application.Current.Exit += (o, args) =>
             {
-                if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+                if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                 {
                     publishService.ReleaseAllDownKeys();
                 }

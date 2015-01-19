@@ -88,8 +88,8 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Initialising KeyDownStates.");
 
-            KeyDownStates[KeyValues.PublishKey].Value =
-                Settings.Default.PublishingKeys ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+            KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
+                Settings.Default.SimulateKeyStrokes ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
                 Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (visualMode == KeyboardsSets.SpeechOnly)
                 {
-                    KeyDownStates[KeyValues.PublishKey].Value = Enums.KeyDownStates.Up;
+                    KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = Enums.KeyDownStates.Up;
                     KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
                 }
             });
@@ -113,9 +113,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Adding KeyDownStates change handlers.");
 
-            KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
-                Settings.Default.PublishingKeys = KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown();
+                Settings.Default.SimulateKeyStrokes = KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown();
                 ReleasePublishOnlyKeysIfNotPublishing();
             });
 
@@ -133,7 +133,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("ReleasePublishOnlyKeysIfNotPublishing called.");
 
-            if (!KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            if (!KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
                 foreach (var keyValue in KeyDownStates.Keys)
                 {

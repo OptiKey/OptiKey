@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue MultiKeySelectionEnabledKey = new KeyValue { FunctionKey = FunctionKeys.MultiKeySelectionEnabled };
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
-        public static readonly KeyValue PublishKey = new KeyValue { FunctionKey = FunctionKeys.Publish };
+        public static readonly KeyValue SimulateKeyStrokesKey = new KeyValue { FunctionKey = FunctionKeys.SimulateKeyStrokes };
         public static readonly KeyValue Suggestion1Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion1 };
         public static readonly KeyValue Suggestion2Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion2 };
         public static readonly KeyValue Suggestion3Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion3 };
@@ -48,7 +48,7 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
-                    PublishKey,
+                    SimulateKeyStrokesKey,
                     MultiKeySelectionEnabledKey,
                     SleepKey
                 };

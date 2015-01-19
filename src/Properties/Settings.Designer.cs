@@ -392,12 +392,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool PublishingKeys {
+        public bool SimulateKeyStrokes {
             get {
-                return ((bool)(this["PublishingKeys"]));
+                return ((bool)(this["SimulateKeyStrokes"]));
             }
             set {
-                this["PublishingKeys"] = value;
+                this["SimulateKeyStrokes"] = value;
             }
         }
         

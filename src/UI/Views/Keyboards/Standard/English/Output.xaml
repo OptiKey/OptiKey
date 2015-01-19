@@ -202,10 +202,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource PublishIcon}" 
+                      SymbolGeometry="{StaticResource SimulateKeyStrokes}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Publish}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

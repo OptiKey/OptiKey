@@ -257,7 +257,7 @@ namespace JuliusSweetland.OptiKey.Services
                 Text = string.Concat(Text, modifiedCaptureText);
             }
 
-            //Publish each character (if publishing), releasing on (but not locked) modifier keys as appropriate
+            //Publish each character (if SimulatingKeyStrokes), releasing on (but not locked) modifier keys as appropriate
             for (int index = 0; index < capturedText.Length; index++)
             {
                 PublishKeyPress(capturedText[index],
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToPublishingStateChanges()
         {
-            keyboardService.KeyDownStates[KeyValues.PublishKey].OnPropertyChanges(s => s.Value)
+            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
                 .Subscribe(value =>
                 {
                     if (value.IsDownOrLockedDown()) //Publishing has been turned on
@@ -318,7 +318,7 @@ namespace JuliusSweetland.OptiKey.Services
                 keyboardService.KeyDownStates[key].OnPropertyChanges(s => s.Value)
                     .Subscribe(value =>
                     {
-                        if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                         {
 // ReSharper disable PossibleInvalidOperationException
                             var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
@@ -377,7 +377,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         private void PublishKeyPress(FunctionKeys functionKey)
         {
-            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
                 Log.Debug(string.Format("PublishKeyPress called with functionKey '{0}'.",  functionKey));
 
@@ -391,7 +391,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PublishKeyPress(char character, char? modifiedCharacter)
         {
-            if (keyboardService.KeyDownStates[KeyValues.PublishKey].Value.IsDownOrLockedDown())
+            if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
                 Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
