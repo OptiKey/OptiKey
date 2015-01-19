@@ -10,5 +10,5 @@ The application targets .Net 4.5 and so requires that .Net Framework 4.5 (or lat
 
 Windows version numbers: 
   http://www.gaijin.at/en/lstwinver.php
-  http://msdn.microsoft.com/en-us/library/aa370556%28v=vs.85%29.aspx)
+  http://msdn.microsoft.com/en-us/library/aa370556%28v=vs.85%29.aspx
   http://www.techrepublic.com/blog/the-enterprise-cloud/a-guide-to-common-microsoft-software-versions/
