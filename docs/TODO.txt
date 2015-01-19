@@ -27,6 +27,7 @@ Add dependency on latest .Net Framework 4.5 to Inno setup:
 
 Change icons:
 	Publish - and rename to SimulateKeyStrokes
+		http://thenounproject.com/term/keyboard/87632/ Keyboard by Arthur Shlain
 		http://thenounproject.com/term/keyboard/91580/ Keyboard by Konrad Michalik
 		http://thenounproject.com/term/keyboard/47116/ Keyboard by Björn Andersson
 	MultiKeySelection
