@@ -12,3 +12,5 @@ Windows version numbers:
   http://www.gaijin.at/en/lstwinver.php
   http://msdn.microsoft.com/en-us/library/aa370556%28v=vs.85%29.aspx
   http://www.techrepublic.com/blog/the-enterprise-cloud/a-guide-to-common-microsoft-software-versions/
+
+MSDN developer deployment guide: http://msdn.microsoft.com/en-us/library/ee942965%28v=vs.110%29.aspx
