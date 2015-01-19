@@ -6,8 +6,7 @@
 *.user
 *.sln.docstates
 
-# Release staging/deployment, including certificates, etc
-staging/
+# Release deployment, including certificates, etc
 deployment/
 
 # Build results
