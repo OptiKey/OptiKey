@@ -1,5 +1,10 @@
 Why I cannot install on Windows 8, but fine on Windows 7.
-What are the prerequisites for an application which targets .net 4.5
+
+What are the prerequisites for an application which targets .net 4.5?
+	Add minimum windows version to installer?
+	http://msdn.microsoft.com/en-us/library/8z6watww%28v=vs.110%29.aspx
+		Vista SP2, Windows 7 SP1, Windows 8, Windows 8.1
+		
 Can I reliably detect the presence of any requirements? 
 Can I supply people with a link to install the requirements if missing (but allow them to continue with the installation anyway)? 
 
