@@ -19,12 +19,13 @@ Signing:
 Add minimum windows version to Inno setup:
 	Vista SP2 is 6.0.6002
 
-Add dependency on latest .Net Framework 4.5 to Inno setup
+Add dependency on latest .Net Framework 4.5 to Inno setup:
 	http://stackoverflow.com/questions/20752882/how-can-i-install-net-framework-as-a-prerequisite-using-innosetup
 	Where to find the reg key: http://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx#net_b
 		Software\Microsoft\NET Framework Setup\NDP\Release >= 378389
-	THIS: http://www.kynosarges.de/DotNetVersion.html & http://stackoverflow.com/questions/4104011/innosetup-verify-that-net-4-0-is-installed
+	SOLUTION 1: http://www.kynosarges.de/DotNetVersion.html & http://stackoverflow.com/questions/4104011/innosetup-verify-that-net-4-0-is-installed
 	https://innosetupnet.codeplex.com/
+	SOLUTION 2: http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup
 
 Change icons:
 	Publish - and rename to SimulateKeyStrokes
