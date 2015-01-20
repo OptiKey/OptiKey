@@ -26,7 +26,7 @@ OptiKey target the .Net 4.5 Framework, which is available from Windows Vista SP2
 * If you want to build from source then download the master ZIP file [here](https://github.com/JuliusSweetland/OptiKey/archive/master.zip)
 * If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork](https://github.com/JuliusSweetland/OptiKey/fork) the repo and start enhancing the code.
 
-Please check out the OptiKey landing page for more information on how to get it, how to use it, how to contact me, and how to get involved: [OptiKey.org](http://www.optikey.org).
+Please check out the [OptiKey website](http://www.optikey.org) for more information on how to get it, how to use it, how to contact me, and how to get involved.
 
 # Problems?
 
