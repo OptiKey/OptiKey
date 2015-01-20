@@ -99,9 +99,9 @@
     <Reference Include="MouseKeyboardActivityMonitor">
       <HintPath>..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>External Libraries\TET\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -139,10 +139,10 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="TETControls">
-      <HintPath>..\packages\TheEyeTribe.1.0.0\TETControls.dll</HintPath>
+      <HintPath>..\ext\TheEyeTribe\TETControls.dll</HintPath>
     </Reference>
     <Reference Include="TETCSharpClient">
-      <HintPath>..\packages\TheEyeTribe.1.0.0\TETCSharpClient.dll</HintPath>
+      <HintPath>..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
