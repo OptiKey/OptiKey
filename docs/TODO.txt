@@ -1,4 +1,5 @@
 Move external libraries into top level 'ext' folder
+	Make sure all (4?) files continue to be included as either references, or ina  way which copies them to output
 
 Add nuget.exe and cmd etc to solution so it would work on a build server (not that I need that yet): NuGetPowerTools 
 	http://stackoverflow.com/questions/7514264/how-to-configure-where-nuget-exe-command-tool-line-looks-for-packages
