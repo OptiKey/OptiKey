@@ -4,11 +4,9 @@ Free, Open Source, Assistive On-Screen Keyboard
 
 OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlled by any combination of eye movement (using eye-tracking devices), mouse movement, keyboard presses, and mouse clicks giving everyone the ability to fully interact with a computer and communicate freely.
 
-
 # Supported Platforms
 
 * Windows Vista SP2 / Windows Server 2008 SP2 or later (so Windows 7, Windows 8, Windows 8.1, etc)
-
 
 # Getting Started
 
@@ -17,7 +15,6 @@ OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlle
 * If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork](https://github.com/JuliusSweetland/OptiKey/fork) the repo and start enhancing the code.
 
 Please check out the OptiKey landing page for more information on how to get it, how to use it, how to contact me, and how to get involved: [OptiKey.org](http://www.optikey.org).
-
 
 # Problems?
 
@@ -33,11 +30,9 @@ When creating an issue, please clearly explain
 * Steps to reproduce the problem.
 * Also include any other information you think is relevant to reproduce the problem (such as screenshots).
 
-
 # License
 
 Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
-
 
 # Contact
 
