@@ -22,12 +22,11 @@ Splash screen on first run - tell user about Alt+M
 
 Automatic updates:
 	Install Octokit from NuGet (or download and build octokit.net: https://github.com/octokit/octokit.net)
-	Manually check latest GitHub release version
-		Display notification if update available - they can update manually
-		Add setting to disable checks
-	http://wyday.com/wybuild/
-	Do I need a proper website to support this? If so then look at Azure again.
-
+	On startup call releases and compare version number of latest (tag_name) with assembly version number (DiagnosticInfo.AssemblyVersion) formatted as "v1.0.0"
+	Display notification if update available ("Please download the latest version from OptiKey.org")
+	Add setting to disable checks
+	https://api.github.com/repos/juliussweetland/optikey/releases
+	
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
