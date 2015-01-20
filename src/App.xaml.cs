@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
@@ -16,6 +17,10 @@ using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using log4net.Core;
+using Octokit;
+using Octokit.Reactive;
+using Application = System.Windows.Application;
+using InteractionRequest = Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -151,6 +156,17 @@ namespace JuliusSweetland.OptiKey
                 
                 //Show the main window
                 mainWindow.Show();
+
+                UpdateCheck(latestReleaseVersion =>
+                {
+                    inputService.State = RunningStates.Paused;
+                    audioService.PlaySound(Settings.Default.InfoSoundFile);
+                    mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
+                    {
+                        Title = "UPDATE AVAILABLE!",
+                        Content = string.Format("Please visit www.optikey.org to download latest version ({0}).\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
+                    }, __ => { inputService.State = RunningStates.Running; });
+                });
             }
             catch (Exception ex)
             {
@@ -297,6 +313,35 @@ namespace JuliusSweetland.OptiKey
             Log.Info(string.Format("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness));
         }
         
+        #endregion
+
+        #region  Update Check
+
+        private void UpdateCheck(Action<string> executeIfUpdateAvailable)
+        {
+            new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
+                .GetAll("juliussweetland", "optikey")
+                .Take(1)
+                .ObserveOnDispatcher()
+                .Subscribe(release =>
+                {
+                    var versionNumbers = DiagnosticInfo.AssemblyVersion.Split('.');
+
+                    var assemblyVersionString = versionNumbers.Count() >= 3
+                        ? string.Format("v{0}.{1}.{2}", versionNumbers[0], versionNumbers[1], versionNumbers[2])
+                        : DiagnosticInfo.AssemblyVersion;
+                    
+                    if(!string.IsNullOrEmpty(release.TagName)
+                        && !string.Equals(release.TagName, assemblyVersionString, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}", 
+                            assemblyVersionString, release.TagName));
+
+                        executeIfUpdateAvailable(release.TagName);
+                    }
+                });
+        }
+
         #endregion
 
         #region Release Keys On App Exit

@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
+using Notification = Microsoft.Practices.Prism.Interactivity.InteractionRequest.Notification;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -382,21 +383,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 () =>
                                 {
                                     inputService.State = RunningStates.Paused;
-                                    
+                                    Keyboard = previousKeyboard;
                                     CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                     {
                                         if (calibrationResult.Success)
                                         {
+                                            audioService.PlaySound(Settings.Default.InfoSoundFile);
                                             NotificationRequest.Raise(new Notification
                                             {
                                                 Title = "Success",
                                                 Content = calibrationResult.Message
                                             }, __ => { inputService.State = RunningStates.Running; });
-
-                                            audioService.PlaySound(Settings.Default.InfoSoundFile);
                                         }
                                         else
                                         {
+                                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
                                             ErrorNotificationRequest.Raise(new Notification
                                             {
                                                 Title = "Uh-oh!",
@@ -406,12 +407,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                                 ? calibrationResult.Message
                                                                 : "Something went wrong, but I don't know what - please check the logs"
                                             }, notification => { inputService.State = RunningStates.Running; });
-
-                                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
                                         }
                                     });
-
-                                    Keyboard = previousKeyboard;
                                 },
                                 () =>
                                 {
@@ -729,14 +726,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
                     inputService.State = RunningStates.Paused;
-
+                    audioService.PlaySound(Settings.Default.InfoSoundFile);
                     NotificationRequest.Raise(new Notification
                     {
                         Title = "Hmm",
                         Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
                     }, notification => { inputService.State = RunningStates.Running; });
-
-                    audioService.PlaySound(Settings.Default.InfoSoundFile);
                 }
             }
             else
@@ -744,14 +739,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text));
 
                 inputService.State = RunningStates.Paused;
-
+                audioService.PlaySound(Settings.Default.InfoSoundFile);
                 NotificationRequest.Raise(new Notification
                 {
                     Title = "Hmm",
                     Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
                 }, notification => { inputService.State = RunningStates.Running; });
-
-                audioService.PlaySound(Settings.Default.InfoSoundFile);
             }
         }
 
@@ -793,16 +786,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     () =>
                     {
                         dictionaryService.AddNewEntryToDictionary(candidate);
-
                         inputService.State = RunningStates.Paused;
-
+                        nextAction();
                         NotificationRequest.Raise(new Notification
                         {
                             Title = "Added",
                             Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
                         }, notification => { inputService.State = RunningStates.Running; });
-
-                        nextAction();
                     },
                     () => nextAction());
             }
@@ -868,14 +858,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
             inputService.State = RunningStates.Paused;
-
+            audioService.PlaySound(Settings.Default.ErrorSoundFile);
             ErrorNotificationRequest.Raise(new Notification
             {
                 Title = "Uh-oh!",
                 Content = exception.Message
             }, notification => { inputService.State = RunningStates.Running; });
-
-            audioService.PlaySound(Settings.Default.ErrorSoundFile);
         }
 
         #endregion

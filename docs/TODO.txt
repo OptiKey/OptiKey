@@ -1,6 +1,3 @@
-Move external libraries into top level 'ext' folder
-	Make sure all (4?) files continue to be included as either references, or ina  way which copies them to output
-
 Add nuget.exe and cmd etc to solution so it would work on a build server (not that I need that yet): NuGetPowerTools 
 	http://stackoverflow.com/questions/7514264/how-to-configure-where-nuget-exe-command-tool-line-looks-for-packages
 
@@ -20,13 +17,6 @@ Website (Github Pages):
 
 Splash screen on first run - tell user about Alt+M
 
-Automatic updates:
-	Install Octokit from NuGet (or download and build octokit.net: https://github.com/octokit/octokit.net)
-	On startup call releases and compare version number of latest (tag_name) with assembly version number (DiagnosticInfo.AssemblyVersion) formatted as "v1.0.0"
-	Display notification if update available ("Please download the latest version from OptiKey.org")
-	Add setting to disable checks
-	https://api.github.com/repos/juliussweetland/optikey/releases
-	
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
@@ -64,6 +54,7 @@ No position input possible - automatically cycle through groups of keys, then ke
 	Each key group should contain a 'back' key to return from group selection?
 	Need a setting to determine whether a key group should be used directly (for T9 style matching), or only to reduce the key map (which will be iterated through to make the next selection).
 	Key groups can have sub groups to allow the selection of a row, then a group of keys on that row, then a key (for example)
+BCI - eg "Communication by BCI based on EEG": http://youtu.be/k98_1jSnEv4
 
 Add support for T9 style selection; either individual keys, or multi key select?
 Prevent minimising, or at least ask before allowing it?

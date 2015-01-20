@@ -23,6 +23,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
+        private bool checkForUpdates;
+        public bool CheckForUpdates
+        {
+            get { return checkForUpdates; }
+            set { SetProperty(ref checkForUpdates, value); }
+        }
+
         private bool debug;
         public bool Debug
         {
@@ -44,11 +51,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            CheckForUpdates = Settings.Default.CheckForUpdates;
             Debug = Settings.Default.Debug;
         }
 
         public void ApplyChanges()
         {
+            Settings.Default.CheckForUpdates = CheckForUpdates;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();
         }
