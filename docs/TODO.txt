@@ -56,6 +56,9 @@ No position input possible - automatically cycle through groups of keys, then ke
 		Selection => normal key selection and reset mode back to KeyGroups.
 		? If no selection in X iterations through the keys then output a special selection, e.g. a null selection (the trigger can watch the position source, like the fixation triggers.
 	Each key group should contain a 'back' key to return from group selection?
+	Need a setting to determine whether a key group should be used directly (for T9 style matching), or only to reduce the key map (which will be iterated through to make the next selection).
+	Key groups can have sub groups to allow the selection of a row, then a group of keys on that row, then a key (for example)
+
 Add support for T9 style selection; either individual keys, or multi key select?
 Prevent minimising, or at least ask before allowing it?
 
