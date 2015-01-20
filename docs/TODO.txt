@@ -68,6 +68,7 @@ No position input possible - automatically cycle through groups of keys, then ke
 
 Add support for T9 style selection; either individual keys, or multi key select?
 Prevent minimising, or at least ask before allowing it?
+Continuous integration - octokit uses QED: https://github.com/half-ogre/qed/
 
 --------------------------------------------------------------------------------
 
