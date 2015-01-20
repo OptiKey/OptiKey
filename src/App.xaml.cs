@@ -164,7 +164,7 @@ namespace JuliusSweetland.OptiKey
                     mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
                     {
                         Title = "UPDATE AVAILABLE!",
-                        Content = string.Format("Please visit www.optikey.org to download latest version ({0}).\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
+                        Content = string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
                     }, __ => { inputService.State = RunningStates.Running; });
                 });
             }
@@ -321,23 +321,25 @@ namespace JuliusSweetland.OptiKey
         {
             new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
                 .GetAll("juliussweetland", "optikey")
+                .Where(release => !release.Prerelease)
                 .Take(1)
                 .ObserveOnDispatcher()
                 .Subscribe(release =>
                 {
-                    var versionNumbers = DiagnosticInfo.AssemblyVersion.Split('.');
+                    var currentVersion = new Version(DiagnosticInfo.AssemblyVersion); //Convert from string
+                    currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build); //Discard revision (4th number) as my GitHub releases are tagged with "vMAJOR.MINOR.PATCH"
 
-                    var assemblyVersionString = versionNumbers.Count() >= 3
-                        ? string.Format("v{0}.{1}.{2}", versionNumbers[0], versionNumbers[1], versionNumbers[2])
-                        : DiagnosticInfo.AssemblyVersion;
-                    
-                    if(!string.IsNullOrEmpty(release.TagName)
-                        && !string.Equals(release.TagName, assemblyVersionString, StringComparison.InvariantCultureIgnoreCase))
+                    if (!string.IsNullOrEmpty(release.TagName))
                     {
-                        Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}", 
-                            assemblyVersionString, release.TagName));
+                        var tagNameWithoutLetters = new string(release.TagName.ToCharArray().Where(c => !char.IsLetter(c)).ToArray());
+                        var latestAvailableVersion = new Version(tagNameWithoutLetters);
+                        if (latestAvailableVersion > currentVersion)
+                        {
+                            Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                currentVersion, latestAvailableVersion));
 
-                        executeIfUpdateAvailable(release.TagName);
+                            executeIfUpdateAvailable(release.TagName);
+                        }
                     }
                 });
         }
