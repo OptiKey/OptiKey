@@ -157,16 +157,19 @@ namespace JuliusSweetland.OptiKey
                 //Show the main window
                 mainWindow.Show();
 
-                UpdateCheck(latestReleaseVersion =>
+                if (Settings.Default.CheckForUpdates)
                 {
-                    inputService.State = RunningStates.Paused;
-                    audioService.PlaySound(Settings.Default.InfoSoundFile);
-                    mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
+                    UpdateCheck(latestReleaseVersion =>
                     {
-                        Title = "UPDATE AVAILABLE!",
-                        Content = string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
-                    }, __ => { inputService.State = RunningStates.Running; });
-                });
+                        inputService.State = RunningStates.Paused;
+                        audioService.PlaySound(Settings.Default.InfoSoundFile);
+                        mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
+                        {
+                            Title = "UPDATE AVAILABLE!",
+                            Content = string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
+                        }, __ => { inputService.State = RunningStates.Running; });
+                    });
+                }
             }
             catch (Exception ex)
             {
