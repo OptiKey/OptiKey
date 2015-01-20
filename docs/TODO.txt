@@ -1,3 +1,10 @@
+Move external libraries into top level 'ext' folder
+
+Add nuget.exe and cmd etc to solution so it would work on a build server (not that I need that yet): NuGetPowerTools 
+	http://stackoverflow.com/questions/7514264/how-to-configure-where-nuget-exe-command-tool-line-looks-for-packages
+
+Download and build octokit.net: https://github.com/octokit/octokit.net
+
 Signing:
 	Get certificate working
 	Sign assembly as part of buld (VS project config)
