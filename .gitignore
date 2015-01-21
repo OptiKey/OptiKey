@@ -7,7 +7,11 @@
 *.sln.docstates
 
 # Release staging, including certificates, etc
-staging/
+deployment/
+
+# Master branch folders
+ext/
+.nuget/
 
 # Build results
 
