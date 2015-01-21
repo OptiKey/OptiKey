@@ -9,6 +9,9 @@
 # Release deployment, including certificates, etc
 deployment/
 
+# Jekyll site
+_site/
+
 # Build results
 
 [Dd]ebug/
