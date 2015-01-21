@@ -3,7 +3,7 @@ Add nuget.exe and cmd etc to solution so it would work on a build server (not th
 
 Signing:
 	Get certificate working
-	Sign assembly as part of buld (VS project config)
+	Sign assembly as part of build (VS project config)
 	Sign assembly when building? Otherwise when deploying.
 	Sign installer when deploying (Inno setup: http://www.codenewsfast.com/cnf/article/0/waArticleBookmark.7282453 / http://revolution.screenstepslive.com/s/revolution/m/10695/l/95041-signing-installers-you-create-with-inno-setup)
 
