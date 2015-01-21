@@ -13,6 +13,9 @@ deployment/
 ext/
 .nuget/
 
+# Jekyll generated site
+_site/
+
 # Build results
 
 [Dd]ebug/
