@@ -23,6 +23,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         
         #region Properties
 
+        private bool showSplashScreen;
+        public bool ShowSplashScreen
+        {
+            get { return showSplashScreen; }
+            set { SetProperty(ref showSplashScreen, value); }
+        }
+
         private bool checkForUpdates;
         public bool CheckForUpdates
         {
@@ -51,12 +58,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
             Debug = Settings.Default.Debug;
         }
 
         public void ApplyChanges()
         {
+            Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();

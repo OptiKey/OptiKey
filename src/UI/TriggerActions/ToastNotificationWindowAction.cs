@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
             var contentAsString = args.Context != null ? args.Context.Content as string : null;
 
             var displayTimeInSeconds = contentAsString != null
-                ? (contentAsString.Length / Settings.Default.ToastNotificationCharactersPerLine) 
+                ? Convert.ToInt32(Math.Ceiling((double)contentAsString.Length / (double)Settings.Default.ToastNotificationCharactersPerLine))
                     * Settings.Default.ToastNotificationSecondsPerLine
                 : 0;
 

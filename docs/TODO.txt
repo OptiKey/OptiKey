@@ -14,9 +14,7 @@ Website (Github Pages):
 	Add: How to contribute
 	Add: pre-requisites
 	Jekyll: https://help.github.com/articles/using-jekyll-with-pages/
-
-Splash screen on first run - tell user about Alt+M
-
+	
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
@@ -29,6 +27,8 @@ Sort out sizing/layout of suggestions
 	Individually size? OR Size consistently, but wrap letters (breaking words) so as large as possible
 
 Preview settings in management console
+
+Make toast notifications themable
 
 !Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
 

@@ -84,7 +84,7 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ToastNotificationAdditionalSeconds" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="SimulateKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -156,7 +156,7 @@
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
     <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
-      <Value Profile="(Default)">SpeechOnly</Value>
+      <Value Profile="(Default)">Standard</Value>
     </Setting>
     <Setting Name="ManagementConsoleWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
@@ -181,6 +181,15 @@
     </Setting>
     <Setting Name="CheckForUpdates" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowSplashScreen" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="GitHubRepoOwner" Type="System.String" Scope="User">
+      <Value Profile="(Default)">juliussweetland</Value>
+    </Setting>
+    <Setting Name="GitHubRepoName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">optikey</Value>
     </Setting>
   </Settings>
 </SettingsFile>

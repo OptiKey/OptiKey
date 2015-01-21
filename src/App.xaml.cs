@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
@@ -95,7 +96,7 @@ namespace JuliusSweetland.OptiKey
 
         #region On Startup
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             try
             {
@@ -157,19 +158,8 @@ namespace JuliusSweetland.OptiKey
                 //Show the main window
                 mainWindow.Show();
 
-                if (Settings.Default.CheckForUpdates)
-                {
-                    UpdateCheck(latestReleaseVersion =>
-                    {
-                        inputService.State = RunningStates.Paused;
-                        audioService.PlaySound(Settings.Default.InfoSoundFile);
-                        mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
-                        {
-                            Title = "UPDATE AVAILABLE!",
-                            Content = string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the management console.", latestReleaseVersion)
-                        }, __ => { inputService.State = RunningStates.Running; });
-                    });
-                }
+                await ShowSplashScreen(inputService, audioService, mainViewModel);
+                await CheckForUpdates(inputService, audioService, mainViewModel);
             }
             catch (Exception ex)
             {
@@ -318,33 +308,94 @@ namespace JuliusSweetland.OptiKey
         
         #endregion
 
-        #region  Update Check
+        #region Show Splash Screen
 
-        private void UpdateCheck(Action<string> executeIfUpdateAvailable)
+        private async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
-            new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
-                .GetAll("juliussweetland", "optikey")
-                .Where(release => !release.Prerelease)
-                .Take(1)
-                .ObserveOnDispatcher()
-                .Subscribe(release =>
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (Settings.Default.ShowSplashScreen)
+            {
+                Log.Debug("Showing splash screen.");
+
+                inputService.State = RunningStates.Paused;
+                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
                 {
-                    var currentVersion = new Version(DiagnosticInfo.AssemblyVersion); //Convert from string
-                    currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build); //Discard revision (4th number) as my GitHub releases are tagged with "vMAJOR.MINOR.PATCH"
-
-                    if (!string.IsNullOrEmpty(release.TagName))
-                    {
-                        var tagNameWithoutLetters = new string(release.TagName.ToCharArray().Where(c => !char.IsLetter(c)).ToArray());
-                        var latestAvailableVersion = new Version(tagNameWithoutLetters);
-                        if (latestAvailableVersion > currentVersion)
-                        {
-                            Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
-                                currentVersion, latestAvailableVersion));
-
-                            executeIfUpdateAvailable(release.TagName);
-                        }
-                    }
+                    Title = "Welcome to Optikey!",
+                    Content = "Website: www.optikey.org\n" +
+                              "Settings: press ALT + M"
+                }, _ =>
+                {
+                    inputService.State = RunningStates.Running;
+                    taskCompletionSource.SetResult(true);
                 });
+            }
+            else
+            {
+                taskCompletionSource.SetResult(false);
+            }
+
+            return await taskCompletionSource.Task;
+        }
+
+        #endregion
+
+        #region  Check For Updates
+
+        private async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (Settings.Default.CheckForUpdates)
+            {
+                Log.Info(string.Format("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
+                    Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName));
+
+                new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
+                    .GetAll(Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName)
+                    .Where(release => !release.Prerelease)
+                    .Take(1)
+                    .ObserveOnDispatcher()
+                    .Subscribe(release =>
+                    {
+                        var currentVersion = new Version(DiagnosticInfo.AssemblyVersion); //Convert from string
+
+                        //Discard revision (4th number) as my GitHub releases are tagged with "vMAJOR.MINOR.PATCH"
+                        currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build);
+
+                        if (!string.IsNullOrEmpty(release.TagName))
+                        {
+                            var tagNameWithoutLetters =
+                                new string(release.TagName.ToCharArray().Where(c => !char.IsLetter(c)).ToArray());
+                            var latestAvailableVersion = new Version(tagNameWithoutLetters);
+                            if (latestAvailableVersion > currentVersion)
+                            {
+                                Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                    currentVersion, latestAvailableVersion));
+
+                                inputService.State = RunningStates.Paused;
+                                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
+                                {
+                                    Title = "UPDATE AVAILABLE!",
+                                    Content = string.Format(
+                                        "Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName)
+                                }, _ =>
+                                {
+                                    inputService.State = RunningStates.Running;
+                                    taskCompletionSource.SetResult(true);
+                                });
+                            }
+                        }
+                    }, exception => Log.Info(string.Format("Error when checking for updates. Exception message:{0}", exception.Message)));
+            }
+            else
+            {
+                taskCompletionSource.SetResult(false);
+            }
+
+            return await taskCompletionSource.Task;
         }
 
         #endregion

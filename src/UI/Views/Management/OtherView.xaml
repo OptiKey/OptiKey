@@ -16,16 +16,22 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Check for updates on startup:" 
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Show splash screen on startup:" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="0" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Debugging mode:" 
+                          IsChecked="{Binding ShowSplashScreen, Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Check for updates on startup:" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="1" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Debugging mode:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
             </Grid>

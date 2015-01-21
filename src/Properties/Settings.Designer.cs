@@ -377,7 +377,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int ToastNotificationAdditionalSeconds {
             get {
@@ -690,7 +690,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SpeechOnly")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Standard")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.KeyboardsSets KeyboardSet {
             get {
@@ -799,6 +799,43 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["CheckForUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool ShowSplashScreen {
+            get {
+                return ((bool)(this["ShowSplashScreen"]));
+            }
+            set {
+                this["ShowSplashScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("juliussweetland")]
+        public string GitHubRepoOwner {
+            get {
+                return ((string)(this["GitHubRepoOwner"]));
+            }
+            set {
+                this["GitHubRepoOwner"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("optikey")]
+        public string GitHubRepoName {
+            get {
+                return ((string)(this["GitHubRepoName"]));
+            }
+            set {
+                this["GitHubRepoName"] = value;
             }
         }
     }
