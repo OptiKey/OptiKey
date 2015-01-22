@@ -53,9 +53,15 @@ Problem?
 
 See the troubleshooting page.
 
+
+
 TROUBLESHOOTING:
 
 I can't open the Management Console.
+
+Eye tracker not working or stops working.
+
+Poor eye tracking performance/accuracy.
 
 Crash? Unexpected behaviour? Something else wrong?  
 If something isn't working as you'd expect, you encounter a crash, a freeze, or something else horrible then let me know and I'll get it fixed for you. I need something from you though; as much information about the problem as you can muster. Here's the ideal list of things your email will contain;
@@ -66,6 +72,7 @@ Grab the latest log file (the modified date on the file will be the most recent)
 3. What is the problem? A crash? OptiKey did one thing and you were expecting something else? 
 4. Anything else that you think is useful. Screenshots are amazing.
 I know it's demanding, but if you give me great info then I'll fix it and no-one else will have to send be that lot again.
+
+My problem isn't answered here!
 OptiKey didn't meet my needs! 
-I'm sorry to hear that.
-please email me at optikeyfeedback@gmail.com if the available themes and layouts do not meet your needs
+I'm sorry to hear that. Please email me at optikeyfeedback@gmail.com.
