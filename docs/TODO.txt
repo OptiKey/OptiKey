@@ -1,4 +1,4 @@
-BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. Why?
+BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. Why? Not enough repuation? (SmartScreen filter)
 BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation, but ran through it too quickly.
 
 Website (Github Pages):
