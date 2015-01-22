@@ -3,20 +3,19 @@
 PAGES:
   Index
     What is it? - refine this
-    How do I get it?
-    Which eye trackers are supported?
+    How do I get it? - link to 'Latest Version'
     How do I use it? - link to 'Usage Guide'
+    What if I have problems? - link to 'Troubleshooting'
+    Questions, feedback, want to write some code? - link to email address
+    Technical stuff - Which eye trackers are supported? Which operating system does it run on?
 
 ICON LINKS:
   Latest Version
-  Usage Guide
   View on GitHub
 
-SUB LINKS:
-  Troublshooting
-  Screenshots
-  Contact
-
+New batch file:
+  jekyll serve --watch
+  start http://localhost:4000
 
 
 Overview
