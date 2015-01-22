@@ -6,8 +6,8 @@ OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlle
 
 # Getting Started
 
-* If you want to install and use OptiKey on Windows then download the latest installer from [here](https://github.com/JuliusSweetland/OptiKey/releases/latest)
-* If you want to build from source then download the master ZIP file [here](https://github.com/JuliusSweetland/OptiKey/archive/master.zip)
+* If you want to install and use OptiKey on Windows then download the [OptiKey latest installer](https://github.com/JuliusSweetland/OptiKey/releases/latest)
+* If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip)
 * If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork](https://github.com/JuliusSweetland/OptiKey/fork) the repo and start enhancing the code.
 
 Please check out the [OptiKey website](http://www.optikey.org) for more information on how to get it, how to use it, how to contact me, and how to get involved.
@@ -48,7 +48,7 @@ Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
 # Contact
 
-Want to get in touch, ask a question, or talk to me about anything else which isn't on the [website](http://www.optikey.org) then my email address is <optikeyfeedback@gmail.com>.
+Want to get in touch, ask a question, or talk to me about anything else which isn't on the [OptiKey website](http://www.optikey.org) then my email address is <optikeyfeedback@gmail.com>.
 
 Thanks for your interest,
 Julius
