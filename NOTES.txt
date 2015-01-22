@@ -1,3 +1,24 @@
+* Contextualise the preview screenshot
+
+PAGES:
+  Index
+    What is it? - refine this
+    How do I get it?
+    Which eye trackers are supported?
+    How do I use it? - link to 'Usage Guide'
+
+ICON LINKS:
+  Latest Version
+  Usage Guide
+  View on GitHub
+
+SUB LINKS:
+  Troublshooting
+  Screenshots
+  Contact
+
+
+
 Overview
 OptiKey displays a keyboard on your screen, which can be used to replace a physical keyboard. Instead of typing The difference is in the way you interact with the keyboard; using eye tracking devices or the mouse cursor to select which keys to press, and extended looks, mouse clicks, or button presses to actually press the keys.
 OptiKey can be used to simulate physical key presses (so you can type your favourite email application, web browsers, etc), as well as speak your input out loud, or both.
