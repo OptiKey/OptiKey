@@ -4,6 +4,14 @@ Free, Open Source, Assistive On-Screen Keyboard
 
 OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlled by any combination of eye movement (using eye-tracking devices), mouse movement, keyboard presses, and mouse clicks giving everyone the ability to fully interact with a computer and communicate freely.
 
+# Getting Started
+
+* If you want to install and use OptiKey on Windows then download the latest installer from [here](https://github.com/JuliusSweetland/OptiKey/releases/latest)
+* If you want to build from source then download the master ZIP file [here](https://github.com/JuliusSweetland/OptiKey/archive/master.zip)
+* If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork](https://github.com/JuliusSweetland/OptiKey/fork) the repo and start enhancing the code.
+
+Please check out the [OptiKey website](http://www.optikey.org) for more information on how to get it, how to use it, how to contact me, and how to get involved.
+
 # Supported Platforms
 
 OptiKey target the .Net 4.5 Framework, which is available from Windows Vista SP2 onwards. I believe this is the current list, but it should run anywhere the .Net 4.5 Framework can be installed:
@@ -19,14 +27,6 @@ OptiKey target the .Net 4.5 Framework, which is available from Windows Vista SP2
 * Windows Server 2012
 * Windows Server 2012 R2
 * and anything later, so Windows 10...
-
-# Getting Started
-
-* If you want to install and use OptiKey on Windows then download the latest installer from [here](https://github.com/JuliusSweetland/OptiKey/releases/latest)
-* If you want to build from source then download the master ZIP file [here](https://github.com/JuliusSweetland/OptiKey/archive/master.zip)
-* If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork](https://github.com/JuliusSweetland/OptiKey/fork) the repo and start enhancing the code.
-
-Please check out the [OptiKey website](http://www.optikey.org) for more information on how to get it, how to use it, how to contact me, and how to get involved.
 
 # Problems?
 
