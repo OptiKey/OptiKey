@@ -257,13 +257,14 @@ namespace JuliusSweetland.OptiKey.Services
                 Text = string.Concat(Text, modifiedCaptureText);
             }
 
-            //Publish each character (if SimulatingKeyStrokes), releasing on (but not locked) modifier keys as appropriate
+            //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
             for (int index = 0; index < capturedText.Length; index++)
             {
                 PublishKeyPress(capturedText[index],
                     modifiedCaptureText != null && modifiedCaptureText.Length == capturedText.Length
                         ? modifiedCaptureText[index]
-                        : (char?)null);
+                        : (char?)null,
+                        capturedText.Length > 1); //Publish each character as TEXT (not key presses) if the capture is a multi-key capture. This preserves casing from the dictionary entry.
 
                 ReleaseUnlockedKeys();
             }
@@ -389,7 +390,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PublishKeyPress(char character, char? modifiedCharacter)
+        private void PublishKeyPress(char character, char? modifiedCharacter, bool publishAsText)
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
@@ -398,7 +399,8 @@ namespace JuliusSweetland.OptiKey.Services
                     modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral()));
 
                 var virtualKeyCode = character.ToVirtualKeyCode();
-                if (virtualKeyCode != null)
+                if (virtualKeyCode != null
+                    && !publishAsText)
                 {
                     publishService.PublishKeyPress(virtualKeyCode.Value);
                 }
@@ -461,7 +463,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 foreach (char c in suggestion)
                 {
-                    PublishKeyPress(c, null);
+                    PublishKeyPress(c, null, true);
                 }
 
                 StoreLastTextChange(suggestion);
@@ -476,7 +478,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && !suppressNextAutoSpace)
             {
                 Log.Debug("Publishing auto space and adding auto space to Text.");
-                PublishKeyPress(' ', null);
+                PublishKeyPress(' ', null, true);
                 Text = string.Concat(Text, " ");
                 return true;
             }
