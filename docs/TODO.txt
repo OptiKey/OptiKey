@@ -23,11 +23,12 @@ Preview settings in management console
 
 Make toast notifications themable
 
-!Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown!
+!Release down keys logic seems to release keys which aren't down, e.g. F4 on shutdown why?!
 
 --------------------------------------------------------------------------------
 
-POSSIBLE THINGS TO DO:
+FUTURE PLANS:
+Mouse control
 Add support for USB (hardware) buttons (to act as triggers)?
 Store usage statistics in a case sensitive way? Would need to keep track of originally cased entries (incl. suggestions). Does this have any benefit? Think about whole advantage of storing usage statistics. 
 Character codes – ALT on/lock, then numbers, then ALT off
