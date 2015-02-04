@@ -4,13 +4,10 @@ BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation,
 Rename point source settings to mouse click or something similar
 
 Website (Github Pages):
-	Add screenshot(s) - UI, eye trackers, usage scenario - as dividers on page between text?
+	Add screenshot(s) - UI, eye trackers, usage scenario (showing condition?) - as dividers on page between text?
 	Add page: Usage Guide (including changing settings) ("Usage", "Guides", "How To", "Instructions", "Features", "Help", "Usage Guide")
 	Add page: Troubleshooting
-	Add: How to contribute
-	Add: pre-requisites
-	Jekyll: https://help.github.com/articles/using-jekyll-with-pages/
-	
+
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
