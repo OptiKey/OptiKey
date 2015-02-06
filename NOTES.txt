@@ -46,6 +46,8 @@ See the troubleshooting page.
 
 TROUBLESHOOTING:
 
+If you are installing on Windows 8 you may see a Windows SmartScreen warning saying that OptiKey is an unrecognised app - click "MORE INFO" and then "RUN ANYWAY"
+
 I can't open the Management Console.
 
 Eye tracker not working or stops working.
