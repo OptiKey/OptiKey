@@ -2,7 +2,7 @@ ICON LINKS:
   View on GitHub
   Downloads - http://www.softicons.com/system-icons/windows-8-metro-invert-icons-by-dakirby309/folder-downloads-folder-icon
 
-+ SCREENSHOT
++ Replace 2nd screenshot with transparent version
 
 + USAGE GUIDE page
 + TROUBLESHOOTING page
