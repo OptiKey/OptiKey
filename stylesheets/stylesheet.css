@@ -157,6 +157,15 @@ p img {
   border: none;
 }
 
+.image-container {
+	text-align: center;
+	width: 100%;
+}
+
+.image-container img {
+	width: 100%;
+}
+
 pre, code {
   width: 100%;
   color: #222;
