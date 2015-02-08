@@ -1,6 +1,10 @@
 BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. Why? Not enough repuation? (SmartScreen filter)
 BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation, but ran through it too quickly.
 
+Laptop and desktop - move GitHub reo location to Documents\GitHub\OptiKey directory
+	Leave only OptiKey\deployment in dropbox
+	Change deployment scripts to point to Documents\GitHub\OptiKey directory
+
 Rename point source settings to mouse click or something similar
 
 Website (Github Pages):
