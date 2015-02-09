@@ -11,7 +11,7 @@
         Topmost="True"
         Icon="..\..\Resources\Icons\Main.ico"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
         Style="{DynamicResource MainWindowStyle}">
     <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
     
