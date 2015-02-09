@@ -27,7 +27,6 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly ITriggerSource pointSelectionTriggerSource;
         
         private RunningStates state;
-        private KeyEnabledStates keyEnabledStates;
         
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
