@@ -2,14 +2,8 @@ BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. W
 BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation, but ran through it too quickly.
 
 Laptop and desktop - move GitHub repo location to Documents\GitHub\OptiKey directory
-	Change deployment scripts to point to Documents\GitHub\OptiKey directory
-
-Rename point source settings to mouse click or something similar
-
-Website (Github Pages):
-	Add screenshot(s) - UI, eye trackers, usage scenario (showing condition?) - as dividers on page between text?
-	Add page: Usage Guide (including changing settings) ("Usage", "Guides", "How To", "Instructions", "Features", "Help", "Usage Guide")
-	Add page: Troubleshooting
+	
+Website (Github Pages) - see gh-pages branch todo list
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
@@ -22,7 +16,10 @@ Sort out sizing/layout of suggestions
 	Phrases should wrap
 	Individually size? OR Size consistently, but wrap letters (breaking words) so as large as possible
 
-Preview settings in management console
+Clarify settings
+	Rename point source settings to mouse click or something similar
+	Preview images/render of settings?
+	Add help prompts in management console
 
 Make toast notifications themable
 
