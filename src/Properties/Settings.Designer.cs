@@ -838,5 +838,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["GitHubRepoName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:03")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan TETCalibrationCheckTimeSpan {
+            get {
+                return ((global::System.TimeSpan)(this["TETCalibrationCheckTimeSpan"]));
+            }
+            set {
+                this["TETCalibrationCheckTimeSpan"] = value;
+            }
+        }
     }
 }

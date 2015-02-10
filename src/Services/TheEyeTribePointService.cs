@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;
@@ -74,7 +76,26 @@ namespace JuliusSweetland.OptiKey.Services
                     if (GazeManager.Instance.IsActivated
                         && !GazeManager.Instance.IsCalibrated)
                     {
-                        PublishError(this, new ApplicationException("TheEyeTribe has not been calibrated. No data will be received until calibration is completed."));
+                        Log.Debug(string.Format("TheEyeTribe server is reporting that it is not calibrated - retrying for up to {0}ms", 
+                            Settings.Default.TETCalibrationCheckTimeSpan.TotalMilliseconds));
+
+                        var calibrated = false;
+                        var retryStart = DateTimeOffset.Now.ToUniversalTime();
+                        while (DateTimeOffset.Now.ToUniversalTime().Subtract(retryStart.ToUniversalTime()) 
+                            < Settings.Default.TETCalibrationCheckTimeSpan)
+                        {
+                            if (GazeManager.Instance.IsCalibrated)
+                            {
+                                Log.Debug("TheEyeTribe server is now reporting that it is calibrated - moving on");
+                                calibrated = true;
+                                break;
+                            }
+                        }
+
+                        if (!calibrated)
+                        {
+                            PublishError(this, new ApplicationException("TheEyeTribe has not been calibrated. No data will be received until calibration is completed."));
+                        }
                     }
                 }
 

@@ -191,5 +191,8 @@
     <Setting Name="GitHubRepoName" Type="System.String" Scope="User">
       <Value Profile="(Default)">optikey</Value>
     </Setting>
+    <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:03</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

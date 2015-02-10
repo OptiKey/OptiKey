@@ -48,7 +48,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
-                return false;
+                return Settings.Default.Debug != Debug;
             }
         }
         

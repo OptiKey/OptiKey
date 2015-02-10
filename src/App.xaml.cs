@@ -390,8 +390,12 @@ namespace JuliusSweetland.OptiKey
                                     inputService.State = RunningStates.Running;
                                     taskCompletionSource.SetResult(true);
                                 });
+
+                                return;
                             }
                         }
+
+                        Log.Info("No update found.");
                     }, exception => Log.Info(string.Format("Error when checking for updates. Exception message:{0}", exception.Message)));
             }
             else
