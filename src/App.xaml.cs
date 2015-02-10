@@ -159,6 +159,7 @@ namespace JuliusSweetland.OptiKey
                 mainWindow.Show();
 
                 await ShowSplashScreen(inputService, audioService, mainViewModel);
+                inputService.State = RunningStates.Running; //Start the input service
                 await CheckForUpdates(inputService, audioService, mainViewModel);
             }
             catch (Exception ex)
@@ -280,7 +281,10 @@ namespace JuliusSweetland.OptiKey
             }
 
             return new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource)
+            {
+                State = RunningStates.Paused //Instantiate the InputService and immediately set to paused
+            };
         }
 
         #endregion
