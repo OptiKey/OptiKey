@@ -1,5 +1,4 @@
-BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. Why? Not enough repuation? (SmartScreen filter)
-BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation, but ran through it too quickly.
+Change Manipulate Window icon
 	
 Website (Github Pages) - see gh-pages branch todo list
 
@@ -52,6 +51,12 @@ BCI - eg "Communication by BCI based on EEG": http://youtu.be/k98_1jSnEv4
 Add support for T9 style selection; either individual keys, or multi key select?
 Prevent minimising, or at least ask before allowing it?
 Continuous integration - octokit uses QED: https://github.com/half-ogre/qed/
+
+--------------------------------------------------------------------------------
+
+POSSIBLE THINGS:
+BUG FIX: v1.0.5 installer still untrusted on Lee's Microsoft Signature tablet. Why? Not enough repuation? (SmartScreen filter)
+BUG FIX: Installer listed .Net framework 4.5.2 as a requirement of installation, but ran through it too quickly.
 
 --------------------------------------------------------------------------------
 
