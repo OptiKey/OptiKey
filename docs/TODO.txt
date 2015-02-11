@@ -1,5 +1,3 @@
-Change Manipulate Window icon
-	
 Website (Github Pages) - see gh-pages branch todo list
 
 Profile and optimise, especially keyboard transitions
