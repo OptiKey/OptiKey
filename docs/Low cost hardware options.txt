@@ -25,9 +25,9 @@ http://www.cnet.com/news/get-a-nextbook-10-1-inch-windows-hybrid-for-179/
 11/13 inch laptop - £179/£199
 http://www.cnet.com/uk/products/hp-stream-11-6/
 
-* Linx 10 inch tablet - £169
-Intel Atom Quad Core Z3735F, 2Gb RAM, 32Gb storage, camera, WLAN, BT, Windows 8, Black
-http://www.amazon.co.uk/Linx-Tablet-Z3735F-storage-Windows/dp/B00O636WPY/ref=sr_1_1?s=computers&ie=UTF8&qid=1422215113&sr=1-1
+* Linx 10 inch tablet - £150 http://www.amazon.co.uk/Linx-Tablet-Z3735F-storage-Windows/dp/B00O636WPY/ref=sr_1_1?s=computers&ie=UTF8&qid=1422215113&sr=1-1
+	Intel Atom Quad Core Z3735F
+	1280x800 resolution
 
 * Windows tablets 10 inch+
 http://www.amazon.co.uk/s/ref=sr_nr_p_n_feature_keywords_5?fst=as%3Aoff&rh=n%3A340831031%2Cn%3A%21340832031%2Cn%3A429892031%2Cp_28%3AWindows+8%2Cp_n_feature_keywords_two_browse-bin%3A2748841031%7C2748842031&bbn=429892031&ie=UTF8&qid=1422215072&rnid=1828080031
