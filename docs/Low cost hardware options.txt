@@ -1,7 +1,7 @@
 TheEyeTribe requires USB 3.0!
 
 * Lenovo Miix 3 10.1-inch Detachable Laptop £200
-	Intel Atom Z3745
+	Intel Atom Quad Core Z3745
 	10.1-inch screen, 1920x1200 pixel display, Windows 8.1
 	X USB 3.0? NO!
 
@@ -14,6 +14,11 @@ TheEyeTribe requires USB 3.0!
 	Intel Atom Quad Core Z3735F
 	1280x800 resolution
 	USB 3.0? Doesn't look like it, but not clear
+
+* Zoostorm Plex 2in1 Tablet PC - £230 http://www.ebuyer.com/644862-zoostorm-plex-2in1-tablet-pc-7260-9000
+	Intel Celeron N2807 1.58GHz (burst 2.16GHz)
+	1280 x 800 resolution
+	USB 3.0? Yes, 1
 
 * E Fun Nextbook - $179 (Wal-Mart)
 10 inch Windows 8.1 tablet with detachable keyboard.
