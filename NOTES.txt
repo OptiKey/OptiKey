@@ -23,6 +23,8 @@ How do I stimulate physical keyboard presses? I want to type into another applic
 
 Do I have to type each letter in a word individually? 
 
+Auto space & Auto capitalisation
+
 Can I customise the dictionary? 
 
 How do I move and resize OptiKey, or change it's transparency? 
