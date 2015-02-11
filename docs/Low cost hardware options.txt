@@ -1,13 +1,13 @@
 TheEyeTribe requires USB 3.0!
 
-* Lenovo Miix 3 10.1-inch Detachable Laptop £200
+N Lenovo Miix 3 10.1-inch Detachable Laptop £200
 	Intel Atom Quad Core Z3745
 	10.1-inch screen, 1920x1200 pixel display, Windows 8.1
 	2GB RAM
 	32GB HDD
 	X USB 3.0? NO!
 
-* Asus X200 - £200
+- Asus X200 - £200
 	Intel Celeron Dual Core 1007U 1.5Ghz 
 	11.6" screen, 1366X768
 	4GB RAM
@@ -15,27 +15,34 @@ TheEyeTribe requires USB 3.0!
 	USB 3.0? Yes, 1
 	X Laptop, not tablet
 	
-* Linx 10 inch tablet - £150 http://www.amazon.co.uk/Linx-Tablet-Z3735F-storage-Windows/dp/B00O636WPY/ref=sr_1_1?s=computers&ie=UTF8&qid=1422215113&sr=1-1
+N? Linx 10 inch tablet - £150 http://www.amazon.co.uk/Linx-Tablet-Z3735F-storage-Windows/dp/B00O636WPY/ref=sr_1_1?s=computers&ie=UTF8&qid=1422215113&sr=1-1
 	Intel Atom Quad Core Z3735F
 	10.1" screen, 1280x800 resolution
 	2GB RAM
 	32GB HDD
 	USB 3.0? Doesn't look like it, but not clear
 
-=> Zoostorm Plex 2in1 Tablet PC - £230 http://www.ebuyer.com/644862-zoostorm-plex-2in1-tablet-pc-7260-9000
+Y Zoostorm Plex 2in1 Tablet PC - £230 http://www.ebuyer.com/644862-zoostorm-plex-2in1-tablet-pc-7260-9000
 	Intel Celeron Dual Core N2807 1.58GHz (burst 2.16GHz)
 	10.1" screen, 1280 x 800 resolution
 	2GB RAM
 	64GB SSD
 	USB 3.0? Yes, 1
 
-* E Fun Nextbook - $179 (Wal-Mart)
-10 inch Windows 8.1 tablet with detachable keyboard.
-Intel Atom Z3735G quad-core processor, 1,280x800 IPS touchscreen, and 32GB of built-in storage; it does include only 1GB of RAM, though so do iPads. You also get 802.11b/g/n Wi-Fi, micro HDMI port and microSD card slot, and front- and rear-facing cameras, albeit low-resolution ones. Finally, a year's worth of Office 365 and 20GB of OneDrive cloud storage are thrown in.
-http://www.cnet.com/news/get-a-nextbook-10-1-inch-windows-hybrid-for-179/
+N E Fun Nextbook - $179 (Wal-Mart)
+	10 inch Windows 8.1 tablet with detachable keyboard.
+	Intel Atom Z3735G quad-core processor, 1,280x800 IPS touchscreen, and 32GB of built-in storage; it does include only 1GB of RAM, though so do iPads. You also get 802.11b/g/n Wi-Fi, micro HDMI port and microSD card slot, and front- and rear-facing cameras, albeit low-resolution ones. Finally, a year's worth of Office 365 and 20GB of OneDrive cloud storage are thrown in.
+	http://www.cnet.com/news/get-a-nextbook-10-1-inch-windows-hybrid-for-179/
+	X USB 3.0? No.
 
 * HP Stream 11/13
 11/13 inch laptop - £179/£199
 http://www.cnet.com/uk/products/hp-stream-11-6/
 
-~ Lenovo Flex 10 10.1-inch Touchscreen Convertible Laptop 219.99 [CHEAPEST]
+Y Lenovo Flex 10 - £220
+	Intel Celeron N2840 processor( 2.16GHz 1333MHz 1MB)
+	10.1" HD LED Multitouch 1366x768 
+	4GB RAM
+	320GB 5400 rpm HDD
+	USB 3.0? Yes, 1
+	X Screen stays attached, but folds back MOST of the way - cannot be made completely flat in "tablet mode"
