@@ -16,7 +16,7 @@ TheEyeTribe requires USB 3.0!
 	USB 3.0? Doesn't look like it, but not clear
 
 * Zoostorm Plex 2in1 Tablet PC - £230 http://www.ebuyer.com/644862-zoostorm-plex-2in1-tablet-pc-7260-9000
-	Intel Celeron N2807 1.58GHz (burst 2.16GHz)
+	Intel Celeron Dual Core N2807 1.58GHz (burst 2.16GHz)
 	1280 x 800 resolution
 	USB 3.0? Yes, 1
 
