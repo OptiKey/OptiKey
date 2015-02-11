@@ -2,6 +2,18 @@ ICON LINKS:
   View on GitHub
   Downloads - http://www.softicons.com/system-icons/windows-8-metro-invert-icons-by-dakirby309/folder-downloads-folder-icon
 
++ Features summary on home page:
+  Free
+  Open source & easy to extend - want to modify how something works or looks, or need something extra? You can change it. (input sources, keyboard sets, behaviour, look and feel, etc)
+  Keyboard control - simulate key strokes into any other application (e.g. write an email)
+  Mouse control (coming soon)
+  Speaks  
+  Whole word/phrase matches + auto space / auto capitalisation
+  Supports multiple input sources (pointing and selection - eye trackers, etc)
+  Themeable
+  Customisable - many settings to change how you interact with OptiKey (e.g. changing dwell start, complete, decay timings)
+  Support - just me for the moment
+  
 + USAGE GUIDE page
 + TROUBLESHOOTING page
 
@@ -21,7 +33,7 @@ HOW TO STIMULATE PHYSICAL KEYBOARD STROKES
 
 How do I stimulate physical keyboard presses? I want to type into another application...
 
-Do I have to type each letter in a word individually? 
+Do I have to type each letter in a word individually (word/phrase matching)? 
 
 Auto space & Auto capitalisation
 
