@@ -1,7 +1,10 @@
 TheEyeTribe requires USB 3.0!
 
-* Asus X200 - £230
+* Asus X200 - £200
 http://www.expertreviews.co.uk/laptops/53120/asus-vivobook-x200ca-review
+	Intel Celeron 1007U 1.5Ghz 
+	USB 3.0? Yes, 1
+	Laptop, not tablet
 
 * E Fun Nextbook - $179 (Wal-Mart)
 10 inch Windows 8.1 tablet with detachable keyboard.
