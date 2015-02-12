@@ -6,7 +6,7 @@ Mouse control
 		Right
 		Double (Left)
 		Drag (Left down @ pos1, up @ pos2)
-		Scroll horizontal/vertical by x units
+		Scroll horizontal/vertical by x units = 5 buttons?
 	Select a key -> 
 		Change mode to position source = point
 		Display cursor at point source position
