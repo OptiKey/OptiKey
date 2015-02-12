@@ -10,7 +10,7 @@ Mouse control
 	Select a key -> 
 		Change mode to position source = point
 		Display cursor at point source position
-		Change cursor to something customisable
+		Change cursor to something customisable - is this even required? This is possible within windows.
 			Size/shape from settings?
 			Colour from theme?
 			Set of cursor images the user can select?
