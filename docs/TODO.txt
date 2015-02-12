@@ -1,5 +1,29 @@
 Website (Github Pages) - see gh-pages branch todo list
 
+Mouse control
+	Add keyboard for mouse clicks:
+		Left
+		Right
+		Double (Left)
+		Drag (Left down @ pos1, up @ pos2)
+		Scroll wheel up/down (by x units)
+		? Scroll (freely - scroll wheel click to enter scrolling mode, then look to one of arrow directions)
+	Select a key -> 
+		Change mode to position source = point
+		Display cursor at point source position
+		Change cursor to something customisable
+			Size/shape from settings?
+			Colour from theme?
+		Dwell in an area to register interest at this point
+			Take the action at this point (click, scroll etc)
+			Test and improve this to make sure it is consistent before moving on
+		Add magnification functionality (setting to turn on/off, for each possible click event, e.g. on for left/right clicks, off for free scrolling)
+			Display magnification of area in center of screen - screenshot or live view?
+			Options:
+				Register interest again to complete action
+				Zoom in / zoom out (if zoomed in more than 1 level already)
+				Back (discard mouse action and return to keyboard)
+
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
