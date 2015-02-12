@@ -7,7 +7,6 @@ Mouse control
 		Double (Left)
 		Drag (Left down @ pos1, up @ pos2)
 		Scroll horizontal/vertical by x units
-		? Scroll (freely - scroll wheel click to enter scrolling mode, then look to one of arrow directions)
 	Select a key -> 
 		Change mode to position source = point
 		Display cursor at point source position
