@@ -4,6 +4,7 @@ Website (Github Pages) - see gh-pages branch todo list
 
 Mouse control
 	Add keyboard for mouse clicks:
+		http://thenounproject.com/term/mouse/69255/ or maybe http://thenounproject.com/term/mouse-right-click/90012/
 		Left
 		Right
 		Double (Left)
