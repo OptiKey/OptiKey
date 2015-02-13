@@ -12,7 +12,7 @@ Sort out sizing/layout of suggestions
 	Individually size? OR Size consistently, but wrap letters (breaking words) so as large as possible
 
 Clarify settings
-	Rename point source settings to mouse click or something similar
+	Rename point source settings to mouse click or something similar?
 	Preview images/render of settings?
 	Add help prompts in management console
 
@@ -30,10 +30,14 @@ Store usage statistics in a case sensitive way? Would need to keep track of orig
 Character codes – ALT on/lock, then numbers, then ALT off
 Auto complete words
 	+ auto correct words
+Improve multi key selection algorithm
+	Split out a method to create a "similarity score" / "accuracy score" / "match score" / other
+	Similar method for auto-complete/auto-correct?
 Predict next word
 Add high contrast theme
 Get and test the Tobii EyeX: http://www.tobii.com/en/eye-experience/#.UwMlifl5OkF
-No position input possible - automatically cycle through groups of keys, then keys in group: 
+Pointing source = Scan
+	If no position input possible - automatically cycle through groups of keys, then keys in group...
 	Keyboards could define ordered set of KeyValues; the key "groups"
 	New SelectionMode = KeyGroups - this then changes to PositionSource to a source which automatically loops through the current keyboard's groups.
 	Position source can output more than one current point: CurrentKey would become a set (allowing the highlighting of a group of keys)
