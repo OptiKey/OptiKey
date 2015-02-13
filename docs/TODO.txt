@@ -1,5 +1,7 @@
 Website (Github Pages) - see gh-pages branch todo list
 
++Images
+
 Mouse control
 	Add keyboard for mouse clicks:
 		Left
