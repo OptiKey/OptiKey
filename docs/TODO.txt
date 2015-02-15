@@ -1,3 +1,7 @@
+! Typing into Word/notepad/any application(?):
+	Replacement word not output
+	Spaces not being output
+
 Website (Github Pages) - see gh-pages branch todo list
 
 Profile and optimise, especially keyboard transitions
