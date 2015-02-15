@@ -27,7 +27,10 @@ Icons
   More icon: Dots by Alex S. Lakas from the Noun Project (thenounproject.com)
   Mouse drag icon from Move by TukTuk Design from the Noun Project (thenounproject.com) 
   Mouse left click, left double click, right click icons modified from: Mouse by iconsmind.com from the Noun Project (thenounproject.com)
-  Move, Expand and Resize icons modified from Play by Mateo Zlatar from the Noun Project (thenounproject.com)
+  Mouse zoom icon modified from: Zoom by José Campos
+  Mouse zoom in icon: Zoom by José Campos
+  Mouse zoom out icon: Zoom-out by José Campos
+  Move, Expand and Resize icons modified from: Play by Mateo Zlatar from the Noun Project (thenounproject.com)
   MultiKeySelection icon modified from: Line-Graph by Jason D. Rowley from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
   Physical Keys icon: Keybord by Arthur Shlain from the Noun Project (thenounproject.com)
