@@ -451,6 +451,11 @@
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Icons\SVG Source Files\MouseDoubleLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScroll.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SimulateKeyStrokes.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

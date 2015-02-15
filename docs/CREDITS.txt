@@ -25,6 +25,7 @@ Icons
   Maximise Size icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Menu icon: Menu by Jamison Wieser from the Noun Project (thenounproject.com)
   More icon: Dots by Alex S. Lakas from the Noun Project (thenounproject.com)
+  Mouse icons modified from: Mouse by iconsmind.com from the Noun Project (thenounproject.com)
   Move, Expand and Resize icons modified from Play by Mateo Zlatar from the Noun Project (thenounproject.com)
   MultiKeySelection icon modified from: Line-Graph by Jason D. Rowley from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
