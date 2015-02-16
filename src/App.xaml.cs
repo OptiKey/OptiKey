@@ -384,7 +384,7 @@ namespace JuliusSweetland.OptiKey
                                 {
                                     Title = "UPDATE AVAILABLE!",
                                     Content = string.Format(
-                                        "Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName)
+                                        "Please visit www.optikey.org to download latest version ({0})\n(You can turn off update checks from the Management Console: ALT + M)", release.TagName)
                                 }, _ =>
                                 {
                                     inputService.State = RunningStates.Running;
