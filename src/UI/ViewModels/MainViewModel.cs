@@ -492,6 +492,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Menu(Keyboard);
                         break;
 
+                    case FunctionKeys.MouseKeyboard:
+                        Log.Debug("Changing keyboard to Mouse.");
+                        Keyboard = new Mouse(Keyboard);
+                        break;
+
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:
                         Log.Debug("Progressing MoveAndResizeAdjustmentAmount.");
                         switch (Settings.Default.MoveAndResizeAdjustmentAmountInPixels)

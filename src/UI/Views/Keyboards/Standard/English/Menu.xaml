@@ -23,6 +23,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -49,6 +50,14 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="3"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="MOUSE"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
@@ -67,9 +76,10 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ManipulateWindowKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2"
+        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
+                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />

@@ -266,6 +266,7 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
@@ -291,6 +292,9 @@
     <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
+      <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml.cs">
       <DependentUpon>ManipulateWindow.xaml</DependentUpon>
@@ -460,6 +464,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseZoom.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseZoomIn.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -571,6 +576,10 @@
     <Page Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Standard\English\Mouse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,6 +1,7 @@
 Website (Github Pages) - see gh-pages branch todo list
 
 Mouse control
+	Correct mouse icons - slight overlap on lines at the moment
 	Add keyboard for mouse clicks:
 		Left
 		Right
