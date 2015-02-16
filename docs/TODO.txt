@@ -8,6 +8,11 @@ Mouse control
 		Double (Left)
 		Drag (Left down @ pos1, up @ pos2)
 		Scroll horizontal/vertical by x units = 5 buttons (left, up, right, down, qty)
+		3 x methods of scrolling:
+			i)You select the scroll direction and then click on the target
+			NO, TOO COMPLEX ii)You lock the target and then can select to apply a scroll to the target until you release the target (requires a 'scroll' button which can be locked on)
+			iii)General button to repeat the last mouse action
+		Repeat? (useful when scrolling)
 	Select a key -> 
 		Change mode to position source = point
 		Display cursor at point source position
