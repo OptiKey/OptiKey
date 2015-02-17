@@ -194,5 +194,8 @@
     <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:03</Value>
     </Setting>
+    <Setting Name="ScrollAmountInClicks" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

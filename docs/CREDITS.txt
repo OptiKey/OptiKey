@@ -34,6 +34,7 @@ Icons
   MultiKeySelection icon modified from: Line-Graph by Jason D. Rowley from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
   Physical Keys icon: Keybord by Arthur Shlain from the Noun Project (thenounproject.com)
+  Repeat Last Mouse Action icon: Replay by Arthur Shlain from the Noun Project (thenounproject.com)
   Restore Size icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Return/Enter icon: Arrow by Sam Vermette from the Noun Project (thenounproject.com)
   Shift icon: Arrow by Mateo Zlatar from the Noun Project (thenounproject.com)

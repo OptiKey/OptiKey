@@ -17,40 +17,40 @@
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="10*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="10*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"

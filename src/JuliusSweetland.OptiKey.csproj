@@ -465,6 +465,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseZoomIn.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
