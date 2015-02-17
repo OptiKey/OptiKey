@@ -91,7 +91,7 @@
         <controls:Key Grid.Row="0" Grid.Column="16" 
                       Grid.ColumnSpan="4" Grid.RowSpan="2"
                       SymbolGeometry="{StaticResource MouseZoomIcon}"
-                      Text="MAGNIFY?"
+                      Text="ZOOM?"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseZoom}" />
@@ -115,7 +115,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2"
-                      Text="Scroll"
+                      Text="SCROLL"
                       SharedSizeGroup="KeyWithText"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="2"
@@ -177,7 +177,7 @@
         </controls:Key>
         
         <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="6"
-                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=ScrollAmountInClicks, StringFormat={}Adjust by&#x0a;{0} clicks}">
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=ScrollAmountInClicks, StringFormat={}Scroll by&#x0a;{0} clicks}">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollAmountInClicks}" />
             </controls:Key.Value>

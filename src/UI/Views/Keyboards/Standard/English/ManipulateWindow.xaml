@@ -146,7 +146,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="Expand"
+                      Text="EXPAND"
                       SharedSizeGroup="KeyWithText"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
@@ -164,7 +164,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="2"
-                      Text="Shrink"
+                      Text="SHRINK"
                       SharedSizeGroup="KeyWithText"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2"
@@ -182,7 +182,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="Move"
+                      Text="MOVE"
                       SharedSizeGroup="KeyWithText"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
@@ -200,7 +200,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="23" Grid.ColumnSpan="2"
-                      Text="Jump"
+                      Text="JUMP"
                       SharedSizeGroup="KeyWithText"
                       IsEnabled="False" />
         <controls:Key Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="2"
