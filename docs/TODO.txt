@@ -2,6 +2,7 @@ Website (Github Pages) - see gh-pages branch todo list
 
 Mouse control
 	Correct mouse icons - slight overlap on lines at the moment
+		http://thenounproject.com/term/mouse/29404/
 	Add keyboard for mouse clicks:
 		Left
 		Right
