@@ -44,7 +44,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="2"
                       SymbolGeometry="{StaticResource PhysicalKeysIcon}"
-                      Text="F1 → ESC"
+                      Text="PHYSICAL KEYS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
