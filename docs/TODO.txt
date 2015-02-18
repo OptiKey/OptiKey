@@ -1,7 +1,11 @@
 Website (Github Pages) - see gh-pages branch todo list
 
 Split out ManipulateWindow -> Position / Size & Opacity
+	Copy MouseDrag.svg to Position.svg
+	Rename ManipulateWindow (all, including icons & function keys) to SizeAndOpacity
+	Move Opacity buttons to right and move Maximise/Restore buttons to where Opacity buttons are now
 Rename AlternativeAlpha to Diacritic (+function keys +logging +anything else)
+Add enabled/disabled logic to control maximise/restore buttons based on current state of window
 
 Mouse control
 	Add keyboard for mouse clicks:
