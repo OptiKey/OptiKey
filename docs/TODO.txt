@@ -1,5 +1,7 @@
 Website (Github Pages) - see gh-pages branch todo list
 
+Test OptiKey stays on top when displaying popup notifications
+
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx
 	http://blogs.msdn.com/b/visualstudio/archive/2014/06/12/new-memory-usage-tool-for-wpf-and-win32-applications.aspx
