@@ -348,19 +348,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
-                    case FunctionKeys.AlternativeAlpha1Keyboard:
-                        Log.Debug("Changing keyboard to AlternativeAlpha1.");
-                        Keyboard = new AlternativeAlpha1();
+                    case FunctionKeys.Diacritic1Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic1.");
+                        Keyboard = new Diacritic1();
                         break;
 
-                    case FunctionKeys.AlternativeAlpha2Keyboard:
-                        Log.Debug("Changing keyboard to AlternativeAlpha2.");
-                        Keyboard = new AlternativeAlpha2();
+                    case FunctionKeys.Diacritic2Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic2.");
+                        Keyboard = new Diacritic2();
                         break;
 
-                    case FunctionKeys.AlternativeAlpha3Keyboard:
-                        Log.Debug("Changing keyboard to AlternativeAlpha3.");
-                        Keyboard = new AlternativeAlpha3();
+                    case FunctionKeys.Diacritic3Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic3.");
+                        Keyboard = new Diacritic3();
                         break;
 
                     case FunctionKeys.BackFromKeyboard:
@@ -475,11 +475,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.IncreaseOpacity:
                         Log.Debug("Increasing opacity.");
                         mainWindowManipulationService.IncreaseOpacity();
-                        break;
-
-                    case FunctionKeys.ManipulateWindowKeyboard:
-                        Log.Debug("Changing keyboard to ManipulateWindow.");
-                        Keyboard = new ManipulateWindow(Keyboard);
                         break;
 
                     case FunctionKeys.MaximiseSize:
@@ -641,6 +636,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new PhysicalKeys();
                         break;
 
+                    case FunctionKeys.PositionKeyboard:
+                        Log.Debug("Changing keyboard to Position.");
+                        Keyboard = new Position(Keyboard);
+                        break;
+
                     case FunctionKeys.PreviousSuggestions:
                         Log.Debug("Decrementing suggestions page.");
 
@@ -693,6 +693,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.ShrinkFromTopAndRight:
                         Log.Debug(string.Format("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
                         mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
+
+                    case FunctionKeys.SizeAndOpacityKeyboard:
+                        Log.Debug("Changing keyboard to SizeAndOpacity.");
+                        Keyboard = new SizeAndOpacity(Keyboard);
                         break;
 
                     case FunctionKeys.Speak:

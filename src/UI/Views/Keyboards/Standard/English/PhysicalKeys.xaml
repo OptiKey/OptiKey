@@ -309,13 +309,15 @@
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
                       IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
-                          SymbolGeometry="{StaticResource SpaceIcon}"
-                          WidthSpan="2" 
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource SpaceIcon}"
+                      WidthSpan="2" 
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
+                      IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
                           Text="MENU"
                           SharedSizeGroup="KeyWithDescription">

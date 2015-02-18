@@ -1,6 +1,6 @@
 ﻿namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class AlternativeAlpha2 : IKeyboard
+    public class Diacritic2 : IKeyboard
     {
     }
 }

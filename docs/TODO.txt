@@ -1,12 +1,5 @@
 Website (Github Pages) - see gh-pages branch todo list
 
-Split out ManipulateWindow -> Position / Size & Opacity
-	Copy MouseDrag.svg to Position.svg
-	Rename ManipulateWindow (all, including icons & function keys) to SizeAndOpacity
-	Move Opacity buttons to right and move Maximise/Restore buttons to where Opacity buttons are now
-Rename AlternativeAlpha to Diacritic (+function keys +logging +anything else)
-Add enabled/disabled logic to control maximise/restore buttons based on current state of window
-
 Mouse control
 	Add keyboard for mouse clicks:
 		Left
@@ -40,7 +33,8 @@ Mouse control
 			Register interest again to complete action
 			Zoom in / zoom out (if zoomed in more than 1 level already)
 			Back (discard mouse action and return to keyboard)
-		
+	
+Add enabled/disabled logic to control maximise/restore buttons based on current state of window
 
 Profile and optimise, especially keyboard transitions
 	http://blogs.msdn.com/b/visualstudioalm/archive/2014/02/28/new-cpu-usage-tool-in-the-performance-and-diagnostics-hub-in-visual-studio-2013.aspx

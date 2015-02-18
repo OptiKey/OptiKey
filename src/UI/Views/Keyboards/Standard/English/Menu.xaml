@@ -31,7 +31,7 @@
                       Text="DIACRITICS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlternativeAlpha1Keyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Diacritic1Keyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
@@ -68,18 +68,26 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource ManipulateWindowIcon}"
-                      Text="MANIPULATE WINDOW"
+                      SymbolGeometry="{StaticResource SizeAndOpacity}"
+                      Text="SIZE &amp; OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ManipulateWindowKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndOpacityKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="2"
+                      SymbolGeometry="{StaticResource PositionIcon}"
+                      Text="POSITION"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      IsEnabled="False">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PositionKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
-                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
