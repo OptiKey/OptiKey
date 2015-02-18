@@ -1,8 +1,9 @@
 Website (Github Pages) - see gh-pages branch todo list
 
+Split out ManipulateWindow -> Position / Size and transparency
+Rename AlternativeAlpha to Diacritic (+function keys +logging +anything else)
+
 Mouse control
-	Correct mouse icons - slight overlap on lines at the moment
-		http://thenounproject.com/term/mouse/29404/
 	Add keyboard for mouse clicks:
 		Left
 		Right
@@ -17,8 +18,8 @@ Mouse control
 	Select a key -> 
 		Change mode to position source = point
 		Display cursor at point source position
-		Change cursor to something customisable - is this even required? This is possible within windows.
-			Size/shape from settings?
+		Change cursor to something customisable - to show selection progress. Popup at cursor position + hide cursor?
+			Size from settings?
 			Colour from theme?
 			Set of cursor images the user can select?
 		Store mouse action to perform on trigger ("Action OnNextSelection"?)
