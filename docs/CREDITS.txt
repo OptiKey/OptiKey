@@ -4,14 +4,12 @@ Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
 
 Icons
-  Accented Letters icon: World by Janique Le Bail from the Noun Project (thenounproject.com)
   Add Phrase icon modified from: Book by Danilo Gusmão Silveira from the Noun Project (thenounproject.com)
   Back icon: Arrow by Jamison Wieser from the Noun Project (thenounproject.com)
   Backspace (Single) icon: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Backspace (Multiple) icon modified from: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
   Clear icon: Trash by Garrett Knoll from the Noun Project (thenounproject.com)
-  Currencies icon: Money by Piotrek Chuchla from the Noun Project (thenounproject.com)
   Decrease Opacity icon modified from: Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
   Increase Opacity icon modified from: Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
   Jump icons modified from Move by TukTuk Design from the Noun Project (thenounproject.com)
@@ -33,7 +31,7 @@ Icons
   Move, Expand and Resize icons modified from: Play by Mateo Zlatar from the Noun Project (thenounproject.com)
   MultiKeySelection icon modified from: Line-Graph by Jason D. Rowley from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
-  Physical Keys icon: Keybord by Arthur Shlain from the Noun Project (thenounproject.com)
+  Physical Keys icon: Keybord by Paul te Kortschot from the Noun Project (thenounproject.com)
   Repeat Last Mouse Action icon: Replay by Arthur Shlain from the Noun Project (thenounproject.com)
   Restore Size icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Return/Enter icon: Arrow by Sam Vermette from the Noun Project (thenounproject.com)
