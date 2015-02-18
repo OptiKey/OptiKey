@@ -28,7 +28,7 @@
 
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource AccentedLettersIcon}"
-                      Text="Á → Ž"
+                      Text="DIACRITICS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlternativeAlpha1Keyboard}" />
@@ -36,7 +36,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource CurrenciesIcon}"
-                      Text="£ → €"
+                      Text="CURRENCIES"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
