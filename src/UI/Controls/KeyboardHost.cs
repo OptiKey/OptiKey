@@ -189,9 +189,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new StandardViews.English.PhysicalKeys { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.Position)
+                            else if (Keyboard is ViewModelKeyboards.PositionAndOpacity)
                             {
-                                newContent = new StandardViews.English.Position { DataContext = Keyboard };
+                                newContent = new StandardViews.English.PositionAndOpacity { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.SizeAndOpacity)
                             {
