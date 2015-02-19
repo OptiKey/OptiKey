@@ -20,9 +20,17 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -83,7 +91,7 @@
         <controls:Key Grid.Row="0" Grid.Column="14" 
                       Grid.ColumnSpan="3" Grid.RowSpan="2"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="- OPACITY"
+                      Text="DECREASE&#x0a;OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
@@ -92,7 +100,7 @@
         <controls:Key Grid.Row="0" Grid.Column="17" 
                       Grid.ColumnSpan="3" Grid.RowSpan="2"
                       SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="+ OPACITY"
+                      Text="INCREASE&#x0a;OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
@@ -179,7 +187,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="14" 
-                      Grid.ColumnSpan="6" Grid.RowSpan="2"
+                      Grid.ColumnSpan="6" Grid.RowSpan="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       WidthSpan="2"
@@ -189,13 +197,13 @@
             </controls:Key.Value>
         </controls:Key>
 
-        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6"
                       Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, StringFormat={}Adjust by&#x0a;{0} pixels}">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="3"
+        <controls:Key Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource RestoreSizeIcon}"
                       WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
@@ -203,7 +211,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreSize}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="3"
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource MaximiseSizeIcon}"
                       WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">

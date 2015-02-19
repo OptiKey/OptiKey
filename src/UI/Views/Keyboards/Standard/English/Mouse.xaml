@@ -20,6 +20,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -127,7 +128,7 @@
         </controls:Key>
 
         <controls:Key Grid.Row="2" Grid.Column="0" 
-                      Grid.ColumnSpan="4" Grid.RowSpan="2"
+                      Grid.ColumnSpan="4" Grid.RowSpan="3"
                       SymbolGeometry="{StaticResource MouseDoubleLeftClickIcon}"
                       Text="LEFT CLICK X2"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -136,7 +137,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="4" 
-                      Grid.ColumnSpan="4" Grid.RowSpan="2"
+                      Grid.ColumnSpan="4" Grid.RowSpan="3"
                       SymbolGeometry="{StaticResource MouseDragIcon}"
                       Text="CLICK &amp; DRAG"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -166,7 +167,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="16" 
-                      Grid.ColumnSpan="8" Grid.RowSpan="2"
+                      Grid.ColumnSpan="8" Grid.RowSpan="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       WidthSpan="2"
@@ -176,7 +177,7 @@
             </controls:Key.Value>
         </controls:Key>
         
-        <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="6"
+        <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="6"
                       Text="{Binding Source={x:Static properties:Settings.Default}, Path=ScrollAmountInClicks, StringFormat={}Scroll by&#x0a;{0} clicks}">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollAmountInClicks}" />
