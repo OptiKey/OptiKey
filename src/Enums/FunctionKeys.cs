@@ -92,7 +92,7 @@
         PgDn,
         PgUp,
         PhysicalKeysKeyboard,
-        PositionKeyboard,
+        PositionAndOpacityKeyboard,
         PreviousSuggestions,
         PrintScreen,
         ReplayLastMouseAction,
