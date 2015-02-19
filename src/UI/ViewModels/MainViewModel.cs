@@ -636,9 +636,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new PhysicalKeys();
                         break;
 
-                    case FunctionKeys.PositionKeyboard:
-                        Log.Debug("Changing keyboard to Position.");
-                        Keyboard = new Position(Keyboard);
+                    case FunctionKeys.PositionAndOpacityKeyboard:
+                        Log.Debug("Changing keyboard to PositionAndOpacity.");
+                        Keyboard = new PositionAndOpacity(Keyboard);
                         break;
 
                     case FunctionKeys.PreviousSuggestions:
