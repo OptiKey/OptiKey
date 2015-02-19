@@ -450,7 +450,7 @@
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ManipulateWindow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SizeAndOpacity.svg" />
     <None Include="..\docs\CREDITS.txt">
       <Link>CREDITS.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
