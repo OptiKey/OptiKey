@@ -273,7 +273,7 @@
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Position.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\PositionAndOpacity.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SizeAndOpacity.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
@@ -297,8 +297,8 @@
     <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Position.xaml.cs">
-      <DependentUpon>Position.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\PositionAndOpacity.xaml.cs">
+      <DependentUpon>PositionAndOpacity.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\SizeAndOpacity.xaml.cs">
       <DependentUpon>SizeAndOpacity.xaml</DependentUpon>
@@ -470,7 +470,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
     <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Position.svg" />
+    <None Include="Resources\Icons\SVG Source Files\PositionAndOpacity.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -587,7 +587,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Position.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\PositionAndOpacity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
