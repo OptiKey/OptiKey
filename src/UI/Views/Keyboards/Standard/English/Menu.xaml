@@ -77,12 +77,12 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource PositionIcon}"
-                      Text="POSITION"
+                      SymbolGeometry="{StaticResource PositionAndOpacityIcon}"
+                      Text="POSITION &amp; OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       IsEnabled="False">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PositionKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PositionAndOpacityKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="3"
