@@ -43,6 +43,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
+        private Action pointSelectionAction;
 
         #endregion
 
@@ -160,13 +161,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public Tuple<Point, double> PointSelectionProgress
         {
             get { return pointSelectionProgress; }
-            private set
-            {
-                if (SetProperty(ref pointSelectionProgress, value))
-                {
-                    throw new NotImplementedException("Handling of PointSelection progress has not been implemented yet");
-                }
-            }
+            private set { SetProperty(ref pointSelectionProgress, value); }
         }
 
         private List<Point> selectionResultPoints;
@@ -273,7 +268,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    //TODO: Handle point selection
+                    if (pointSelectionAction != null)
+                    {
+                        pointSelectionAction();
+                    }
                 }
             };
 
@@ -294,10 +292,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     KeySelectionResult(singleKeyValue, multiKeySelection);
                 }
-                else if (SelectionMode == SelectionModes.Point)
-                {
-                    //TODO: Handle point selection result
-                }
+                //N.B. No SelectionResult is expected if SelectionMode == SelectionModes.Point
             };
 
             inputService.PointToKeyValueMap = pointToKeyValueMap;
@@ -403,9 +398,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 Title = "Uh-oh!",
                                                 Content = calibrationResult.Exception != null
                                                             ? calibrationResult.Exception.Message
-                                                            : calibrationResult.Message != null
-                                                                ? calibrationResult.Message
-                                                                : "Something went wrong, but I don't know what - please check the logs"
+                                                            : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs"
                                             }, notification => { inputService.State = RunningStates.Running; });
                                         }
                                     });
@@ -490,6 +483,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
                         Keyboard = new Mouse(Keyboard);
+                        break;
+
+                    case FunctionKeys.MouseLeftClick:
+                        Log.Debug("Mouse left click selected.");
+                        pointSelectionAction = () =>
+                        {
+                            MessageBox.Show("Mouse left click selected!");
+                            pointSelectionAction = null;
+                            SelectionMode = SelectionModes.Key;
+                        };
+                        SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:

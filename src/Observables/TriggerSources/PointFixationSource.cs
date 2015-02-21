@@ -72,25 +72,20 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                                 //Maintain a buffer which contains points which fill the lockOnTime 
                                 buffer.Add(new Timestamped<PointAndKeyValue>(point.Value.Value, point.Timestamp));
-                                var startTriggerTime = point.Timestamp.Subtract(lockOnTime);
-                                int? bufferUsefulLimit = null;
-                                for (int index = buffer.Count - 1; index >= 0; index--)
-                                {
-                                    if (buffer[index].Timestamp < startTriggerTime)
-                                    {
-                                        bufferUsefulLimit = index;
-                                        break;
-                                    }
-                                }
+                                var lockOnStartTime = point.Timestamp.Subtract(lockOnTime);
+                                var bufferFullFromIndex = buffer.FindLastIndex(tpakv => tpakv.Timestamp < lockOnStartTime);
+                                bool bufferIsFull = bufferFullFromIndex > -1;
 
-                                if (bufferUsefulLimit != null)
+                                //Limit the buffer length - only keep lock on period
+                                if (bufferFullFromIndex > 0)
                                 {
-                                    buffer.RemoveRange(0, bufferUsefulLimit.Value);
+                                    buffer.RemoveRange(0, bufferFullFromIndex);
                                 }
                                 
-                                if (fixationCentrePointAndKeyValue == null) //We don't have a fixation - check if the buffered points are eligable to initiate a fixation
+                                if (fixationCentrePointAndKeyValue == null)
                                 {
-                                    if (bufferUsefulLimit != null) //The buffer is useful, i.e. it contains at least 1 point which predates the time to start trigger
+                                    //We don't have a fixation - check if the buffered points are eligable to initiate a fixation
+                                    if (bufferIsFull)
                                     {
                                         //All the buffered points are within an acceptable radius of their centre point?
                                         var centrePoint = buffer.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
@@ -109,10 +104,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 }
                                 else
                                 {
+                                    //We are building a fixation based on a centre point and the latest pointAndKeyValue falls outside the acceptable radius
                                     var xDiff = fixationCentrePointAndKeyValue.Value.Point.X - point.Value.Value.Point.X;
                                     var yDiff = fixationCentrePointAndKeyValue.Value.Point.Y - point.Value.Value.Point.Y;
 
-                                    //We are building a fixation based on a centre point and the latest pointAndKeyValue falls outside the acceptable radius
                                     if (((xDiff*xDiff) + (yDiff*yDiff)) > fixationRadiusSquared)
                                     {
                                         fixationCentrePointAndKeyValue = null;
