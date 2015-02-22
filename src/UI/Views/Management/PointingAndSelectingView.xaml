@@ -6,7 +6,7 @@
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="600">
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -89,6 +89,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Key selection source:" 
@@ -155,7 +157,35 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Selection keyboard key:" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Incomplete key fixation time to live (ms):" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="10" StringFormat="###,##0"
+                                            Value="{Binding KeySelectionTriggerIncompleteFixationTtlInMs, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Selection keyboard key:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -168,7 +198,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="3" Grid.Column="1" 
+                    <ComboBox Grid.Row="4" Grid.Column="1" 
                               ItemsSource="{Binding Keys}"
                               SelectedValue="{Binding SelectionTriggerKeyboardKeyDownUpKey, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -183,43 +213,15 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Point selection source:" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Point selection source:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="4" Grid.Column="1" 
+                    <ComboBox Grid.Row="5" Grid.Column="1" 
                               ItemsSource="{Binding TriggerSources}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Point fixation time to lock-on (ms):" 
-                               VerticalAlignment="Center" Margin="5">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding PointSelectionTriggerFixationLockOnTimeInMs, Mode=TwoWay}">
-                        <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </controls:NumericUpDown.Style>
-                    </controls:NumericUpDown>
-
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Point fixation time to complete (ms):" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Point fixation time to lock-on (ms):" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -234,7 +236,7 @@
                     </TextBlock>
                     <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding PointSelectionTriggerFixationCompleteTimeInMs, Mode=TwoWay}">
+                                            Value="{Binding PointSelectionTriggerFixationLockOnTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}">
                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -246,8 +248,8 @@
                             </Style>
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
-            
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Point fixation radius (pixels):" 
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Point fixation time to complete (ms):" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -261,6 +263,62 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="10" StringFormat="###,##0"
+                                            Value="{Binding PointSelectionTriggerFixationCompleteTimeInMs, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Incomplete point fixation time to live (ms):" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="8" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="10" StringFormat="###,##0"
+                                            Value="{Binding PointSelectionTriggerIncompleteFixationTtlInMs, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Point fixation radius (pixels):" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationRadius, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
@@ -275,7 +333,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
             
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Selection keyboard key:" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Selection keyboard key:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -288,7 +346,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="8" Grid.Column="1" 
+                    <ComboBox Grid.Row="10" Grid.Column="1" 
                               ItemsSource="{Binding Keys}"
                               SelectedValue="{Binding SelectionTriggerKeyboardKeyDownUpKey, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -303,7 +361,7 @@
                         </ComboBox.Style>
                     </ComboBox>
             
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Selection mouse button:" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="Selection mouse button:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -319,7 +377,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="9" Grid.Column="1" 
+                    <ComboBox Grid.Row="11" Grid.Column="1" 
                               ItemsSource="{Binding MouseButtons}"
                               SelectedValue="{Binding SelectionTriggerMouseDownUpButton, Mode=TwoWay}">
                         <ComboBox.Style>

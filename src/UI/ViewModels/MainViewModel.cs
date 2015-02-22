@@ -268,10 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    if (pointSelectionAction != null)
-                    {
-                        pointSelectionAction();
-                    }
+                    //TODO: React to point selection?
                 }
             };
 
@@ -292,7 +289,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     KeySelectionResult(singleKeyValue, multiKeySelection);
                 }
-                //N.B. No SelectionResult is expected if SelectionMode == SelectionModes.Point
+                else if (SelectionMode == SelectionModes.Point)
+                {
+                    if (pointSelectionAction != null)
+                    {
+                        pointSelectionAction();
+                    }
+                }
             };
 
             inputService.PointToKeyValueMap = pointToKeyValueMap;

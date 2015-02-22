@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (selectionProgressSubscription != null)
                     {
                         Log.Debug("Disposing of selection progress subscription");
-                        selectionTriggerSubscription.Dispose();
+                        selectionProgressSubscription.Dispose();
                     }
 
                     if (selectionTriggerSubscription != null)
