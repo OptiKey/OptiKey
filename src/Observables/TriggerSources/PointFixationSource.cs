@@ -18,12 +18,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan incompleteFixationTtl;
         private readonly double fixationRadiusSquared;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
-        private readonly Object incompleteFixationProgressLock = new Object();
-        private readonly Object incompleteFixationTimeoutLock = new Object();
         
         private IObservable<TriggerSignal> sequence;
         private Tuple<Point, long> incompleteFixationProgress;
-        private Tuple<Point, IDisposable> incompleteFixationTimeout;
 
         #endregion
 
@@ -96,6 +93,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Lock-on complete - start a new fixation
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
                                             fixationStart = point.Timestamp;
+
+                                            if (incompleteFixationProgress != null
+                                                && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
+                                                    + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
+                                                    > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                            {
+                                                //Existing incomplete fixation is not relevent to new fixation - clear it
+                                                incompleteFixationProgress = null;
+                                            }
                                         }
                                     }
                                 }
@@ -115,40 +121,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
                                             long previouslyStoredProgress = GetIncompleteFixationProgressForPoint(fixationCentrePointAndKeyValue.Value.Point);
-                                            lock (incompleteFixationProgressLock)
-                                            {
-                                                incompleteFixationProgress = new Tuple<Point, long>(
-                                                    fixationCentrePointAndKeyValue.Value.Point, previouslyStoredProgress + fixationSpan.Ticks);
-                                            }
-                                            
-                                            //Setup incomplete fixation timeout
-                                            lock (incompleteFixationTimeoutLock)
-                                            {
-                                                if (incompleteFixationTimeout != null
-                                                    && incompleteFixationTimeout.Item2 != null)
-                                                {
-                                                    incompleteFixationTimeout.Item2.Dispose();
-                                                }
-                                            }
-                                            
-                                            PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
-                                            lock (incompleteFixationTimeoutLock)
-                                            {
-                                                incompleteFixationTimeout = new Tuple<Point, IDisposable>(
-                                                fixationCentrePointAndKeyValueCopy.Point,
-                                                Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
-                                                {
-                                                    lock (incompleteFixationProgress)
-                                                    {
-                                                        incompleteFixationProgress = null;
-                                                    }
-                                                    lock (incompleteFixationTimeoutLock)
-                                                    {
-                                                        incompleteFixationTimeout = null;
-                                                    }
-                                                    observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
-                                                }));
-                                            }
+                                            incompleteFixationProgress = new Tuple<Point, long>(
+                                                fixationCentrePointAndKeyValue.Value.Point, previouslyStoredProgress + fixationSpan.Ticks);
                                         }
                                         
                                         //Clear the current fixation
@@ -158,16 +132,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     {
                                         //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
                                         var fixationSpan = point.Timestamp.Subtract(fixationStart);
-
                                         var storedProgress = GetIncompleteFixationProgressForPoint(fixationCentrePointAndKeyValue.Value.Point);
-
-                                        //Dispose of the timeout for the current fixation as it is in progress again
-                                        var timeout = GetIncompleteFixationTimeoutForPoint(fixationCentrePointAndKeyValue.Value.Point);
-                                        if (timeout != null)
-                                        {
-                                            timeout.Dispose();
-                                        }
-
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
@@ -180,26 +145,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //Reset if we've just published a high signal
                                         if (progress >= 1)
                                         {
-                                            lock (incompleteFixationTimeoutLock)
-                                            {
-                                                if (incompleteFixationTimeout != null
-                                                    && incompleteFixationTimeout.Item2 != null)
-                                                {
-                                                    incompleteFixationTimeout.Item2.Dispose();
-                                                }
-                                            }
-
                                             fixationCentrePointAndKeyValue = null;
-
-                                            lock (incompleteFixationProgressLock)
-                                            {
-                                                incompleteFixationProgress = null;
-                                            }
-
-                                            lock (incompleteFixationTimeoutLock)
-                                            {
-                                                incompleteFixationTimeout = null;
-                                            }
+                                            incompleteFixationProgress = null;
                                             buffer.Clear();
                                             observer.OnNext(new TriggerSignal(null, 0, null));
                                             return;
@@ -240,36 +187,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private long GetIncompleteFixationProgressForPoint(Point point)
         {
-            lock (incompleteFixationProgressLock)
+            if (incompleteFixationProgress != null
+                && ((Math.Pow((incompleteFixationProgress.Item1.X - point.X), 2)
+                    + Math.Pow((incompleteFixationProgress.Item1.Y - point.Y), 2))
+                    < fixationRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
             {
-                if (incompleteFixationProgress != null
-                    && ((Math.Pow((incompleteFixationProgress.Item1.X - point.X), 2)
-                        + Math.Pow((incompleteFixationProgress.Item1.Y - point.Y), 2))
-                        < fixationRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
-                {
-                    //The fixation is within the acceptable radius of an incomplete fixation - get previous progress
-                    return incompleteFixationProgress.Item2;
-                }
+                //The fixation is within the acceptable radius of an incomplete fixation - get previous progress
+                return incompleteFixationProgress.Item2;
             }
 
             return 0;
-        }
-
-        private IDisposable GetIncompleteFixationTimeoutForPoint(Point point)
-        {
-            lock (incompleteFixationTimeoutLock)
-            {
-                if (incompleteFixationTimeout != null
-                    && ((Math.Pow((incompleteFixationTimeout.Item1.X - point.X), 2)
-                        + Math.Pow((incompleteFixationTimeout.Item1.Y - point.Y), 2))
-                        < fixationRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
-                {
-                    //The fixation is within the acceptable radius of an incomplete fixation - get previous progress
-                    return incompleteFixationTimeout.Item2;
-                }
-            }
-
-            return null;
         }
 
         #endregion

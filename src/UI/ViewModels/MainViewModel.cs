@@ -268,7 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    //TODO: React to point selection?
+                    //TODO: React to point selection - show click animation
                 }
             };
 
