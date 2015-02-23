@@ -93,26 +93,27 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Lock-on complete - start a new fixation
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
                                             fixationStart = point.Timestamp;
-
-                                            if (incompleteFixationProgress != null
-                                                && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
-                                                    + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
-                                                    > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
-                                            {
-                                                //Existing incomplete fixation is not relevent to new fixation - clear it
-                                                incompleteFixationProgress = null;
-                                            }
                                         }
                                     }
                                 }
                                 else
                                 {
                                     //We have a current fixation
+                                    
+                                    //Discard any incomplete fixation progress which is not revelant to the current fixation
+                                    if (incompleteFixationProgress != null
+                                        && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
+                                            + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
+                                            > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                    {
+                                        incompleteFixationProgress = null;
+                                    }
+                                    
+                                    //Latest point breaks the current fixation (is outside the acceptable radius of the current fixation)
                                     if ((Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - point.Value.Point.X), 2)
                                         + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - point.Value.Point.Y), 2)) 
                                         > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                     {
-                                        //Latest point is outside the acceptable radius of the current fixation
                                         if (buffer.Count > 1)
                                         {
                                             //We have a buffer which contains the previous (within acceptable radius) point
@@ -121,8 +122,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
                                             long previouslyStoredProgress = GetIncompleteFixationProgressForPoint(fixationCentrePointAndKeyValue.Value.Point);
-                                            incompleteFixationProgress = new Tuple<Point, long>(
-                                                fixationCentrePointAndKeyValue.Value.Point, previouslyStoredProgress + fixationSpan.Ticks);
+                                            incompleteFixationProgress = new Tuple<Point, long>(fixationCentrePointAndKeyValue.Value.Point, previouslyStoredProgress + fixationSpan.Ticks);
                                         }
                                         
                                         //Clear the current fixation
