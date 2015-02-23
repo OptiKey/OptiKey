@@ -45,7 +45,7 @@ Icons
   Windows icon: appbar.os.windows.8 from Modern UI Icons - modernuiicons.com
   Yes icon from: Right by Raúl Santos from the Noun Project (thenounproject.com)
 
-Sound effects - royalty free from soundbible.com and soundjig.com
+Sound effects - royalty free from soundbible.com, salamisound.com and soundjig.com
 
 Vector graphic manipulation/editing achieved with the excellent, free, and open source Inkscape - https://inkscape.org/
 
