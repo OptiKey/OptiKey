@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
         Title="Notification Toast" 
+        Topmost="True"
         Width="600" 
         SizeToContent="Height"
         WindowStyle="None" 
