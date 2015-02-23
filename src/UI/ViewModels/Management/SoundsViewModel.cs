@@ -47,15 +47,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
         
-        public List<KeyValuePair<string, string>> SelectionSoundFiles
+        public List<KeyValuePair<string, string>> KeySelectionSoundFiles
         {
             get
             {
                 return new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("None", null),
-                    new KeyValuePair<string, string>("Selection 1", @"Resources\Sounds\Selection1.wav"),
-                    new KeyValuePair<string, string>("Selection 2", @"Resources\Sounds\Selection2.wav")
+                    new KeyValuePair<string, string>("Key Selection 1", @"Resources\Sounds\KeySelection1.wav"),
+                    new KeyValuePair<string, string>("Key Selection 2", @"Resources\Sounds\KeySelection2.wav")
                 };
             }
         }
@@ -125,11 +125,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref infoSoundFile, value); }
         }
 
-        private string selectionSoundFile;
-        public string SelectionSoundFile
+        private string keySelectionSoundFile;
+        public string KeySelectionSoundFile
         {
-            get { return selectionSoundFile; }
-            set { SetProperty(ref selectionSoundFile, value); }
+            get { return keySelectionSoundFile; }
+            set { SetProperty(ref keySelectionSoundFile, value); }
         }
 
         private string errorSoundFile;
@@ -168,7 +168,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SpeechVolume = Settings.Default.SpeechVolume;
             SpeechRate = Settings.Default.SpeechRate;
             InfoSoundFile = Settings.Default.InfoSoundFile;
-            SelectionSoundFile = Settings.Default.SelectionSoundFile;
+            KeySelectionSoundFile = Settings.Default.KeySelectionSoundFile;
             ErrorSoundFile = Settings.Default.ErrorSoundFile;
             MultiKeySelectionCaptureStartSoundFile = Settings.Default.MultiKeySelectionCaptureStartSoundFile;
             MultiKeySelectionCaptureEndSoundFile = Settings.Default.MultiKeySelectionCaptureEndSoundFile;
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
             Settings.Default.InfoSoundFile = InfoSoundFile;
-            Settings.Default.SelectionSoundFile = SelectionSoundFile;
+            Settings.Default.KeySelectionSoundFile = KeySelectionSoundFile;
             Settings.Default.ErrorSoundFile = ErrorSoundFile;
             Settings.Default.MultiKeySelectionCaptureStartSoundFile = MultiKeySelectionCaptureStartSoundFile;
             Settings.Default.MultiKeySelectionCaptureEndSoundFile = MultiKeySelectionCaptureEndSoundFile;

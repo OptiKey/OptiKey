@@ -44,6 +44,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private Action pointSelectionAction;
+        private Action pointSelectionResultAction;
 
         #endregion
 
@@ -252,14 +253,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
-                if (!capturingStateManager.CapturingMultiKeySelection)
-                {
-                    audioService.PlaySound(Settings.Default.SelectionSoundFile);
-                }
-
                 if (SelectionMode == SelectionModes.Key
                     && value.KeyValue != null)
                 {
+                    if (!capturingStateManager.CapturingMultiKeySelection)
+                    {
+                        audioService.PlaySound(Settings.Default.KeySelectionSoundFile);
+                    }
+
                     if (KeySelection != null)
                     {
                         Log.Debug(string.Format("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value));
@@ -268,7 +269,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    //TODO: React to point selection - show click animation
+                    //TODO: Trigger pointSelectionAction
+                    //TODO: Fire point selection event - triggers animation
+                    if (pointSelectionAction != null)
+                    {
+                        pointSelectionAction();
+                    }
                 }
             };
 
@@ -291,9 +297,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    if (pointSelectionAction != null)
+                    if (pointSelectionResultAction != null)
                     {
-                        pointSelectionAction();
+                        pointSelectionResultAction();
                     }
                 }
             };
@@ -492,9 +498,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse left click selected.");
                         pointSelectionAction = () =>
                         {
-                            MessageBox.Show("Mouse left click selected!");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                             pointSelectionAction = null;
+                        };
+                        pointSelectionResultAction = () =>
+                        {
                             SelectionMode = SelectionModes.Key;
+                            pointSelectionResultAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;

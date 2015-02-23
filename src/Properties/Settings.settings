@@ -128,8 +128,8 @@
     <Setting Name="InfoSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Info1.wav</Value>
     </Setting>
-    <Setting Name="SelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Selection1.wav</Value>
+    <Setting Name="KeySelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\KeySelection1.wav</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureEnd1.wav</Value>
@@ -199,6 +199,15 @@
     </Setting>
     <Setting Name="PointSelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.7500000</Value>
+    </Setting>
+    <Setting Name="MouseClickSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseClick.wav</Value>
+    </Setting>
+    <Setting Name="MouseDoubleSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDoubleClick.wav</Value>
+    </Setting>
+    <Setting Name="MouseScrollSoundFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseScroll.wav</Value>
     </Setting>
   </Settings>
 </SettingsFile>

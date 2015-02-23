@@ -572,14 +572,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Selection1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\KeySelection1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string SelectionSoundFile {
+        public string KeySelectionSoundFile {
             get {
-                return ((string)(this["SelectionSoundFile"]));
+                return ((string)(this["KeySelectionSoundFile"]));
             }
             set {
-                this["SelectionSoundFile"] = value;
+                this["KeySelectionSoundFile"] = value;
             }
         }
         
@@ -880,6 +880,42 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["PointSelectionTriggerIncompleteFixationTtl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseClick.wav")]
+        public string MouseClickSoundFile {
+            get {
+                return ((string)(this["MouseClickSoundFile"]));
+            }
+            set {
+                this["MouseClickSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseDoubleClick.wav")]
+        public string MouseDoubleSoundFile {
+            get {
+                return ((string)(this["MouseDoubleSoundFile"]));
+            }
+            set {
+                this["MouseDoubleSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseScroll.wav")]
+        public string MouseScrollSoundFile {
+            get {
+                return ((string)(this["MouseScrollSoundFile"]));
+            }
+            set {
+                this["MouseScrollSoundFile"] = value;
             }
         }
     }

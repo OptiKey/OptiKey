@@ -68,22 +68,22 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
     
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Selection:" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Error:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="1" Grid.Column="1" 
-                              ItemsSource="{Binding SelectionSoundFiles}"
-                              DisplayMemberPath="Key"
-                              SelectedValuePath="Value"
-                              SelectedValue="{Binding SelectionSoundFile, Mode=TwoWay}" />
-            
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Error:" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding ErrorSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
-            
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Key Selection:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="2" Grid.Column="1" 
+                              ItemsSource="{Binding KeySelectionSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeySelectionSoundFile, Mode=TwoWay}" />
+
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Muli-key selection starting:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="3" Grid.Column="1" 
