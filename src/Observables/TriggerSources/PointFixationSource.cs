@@ -93,21 +93,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             //Lock-on complete - start a new fixation
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
                                             fixationStart = point.Timestamp;
+                                            
+                                            //Discard any incomplete fixation progress which is not revelant to the new fixation
+                                            //This way we know that if we have incomplete fixation progress then it is relevant to the current fixation
+                                            if (incompleteFixationProgress != null
+                                                && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
+                                                    + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
+                                                    > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                            {
+                                                incompleteFixationProgress = null;
+                                            }
                                         }
                                     }
                                 }
                                 else
                                 {
                                     //We have a current fixation
-                                    
-                                    //Discard any incomplete fixation progress which is not revelant to the current fixation
-                                    if (incompleteFixationProgress != null
-                                        && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
-                                            + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
-                                            > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
-                                    {
-                                        incompleteFixationProgress = null;
-                                    }
                                     
                                     //Latest point breaks the current fixation (is outside the acceptable radius of the current fixation)
                                     if ((Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - point.Value.Point.X), 2)
@@ -132,7 +133,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     {
                                         //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
                                         var fixationSpan = point.Timestamp.Subtract(fixationStart);
-                                        var storedProgress = GetIncompleteFixationProgressForPoint(fixationCentrePointAndKeyValue.Value.Point);
+                                        var storedProgress = incompleteFixationProgress != null 
+                                            ? incompleteFixationProgress.Item2
+                                            : 0;
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
                                         //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
@@ -179,24 +182,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                 return sequence;
             }
-        }
-
-        #endregion
-
-        #region Private methods
-
-        private long GetIncompleteFixationProgressForPoint(Point point)
-        {
-            if (incompleteFixationProgress != null
-                && ((Math.Pow((incompleteFixationProgress.Item1.X - point.X), 2)
-                    + Math.Pow((incompleteFixationProgress.Item1.Y - point.Y), 2))
-                    < fixationRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
-            {
-                //The fixation is within the acceptable radius of an incomplete fixation - get previous progress
-                return incompleteFixationProgress.Item2;
-            }
-
-            return 0;
         }
 
         #endregion
