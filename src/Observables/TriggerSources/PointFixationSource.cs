@@ -16,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan lockOnTime;
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly TimeSpan incompleteFixationTtl;
+        private readonly double lockOnRadiusSquared;
         private readonly double fixationRadiusSquared;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
         
@@ -30,12 +31,14 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             TimeSpan lockOnTime,
             TimeSpan timeToCompleteTrigger,
             TimeSpan incompleteFixationTtl,
+            double lockOnRadius,
             double fixationRadius,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
             this.lockOnTime = lockOnTime;
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.incompleteFixationTtl = incompleteFixationTtl;
+            this.lockOnRadiusSquared = lockOnRadius * lockOnRadius;
             this.fixationRadiusSquared = fixationRadius * fixationRadius;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
         }
@@ -88,7 +91,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         if (buffer.All(t => 
                                             (Math.Pow((centrePoint.X - t.Value.Point.X), 2)
                                             + Math.Pow((centrePoint.Y - t.Value.Point.Y), 2)) 
-                                            < fixationRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                            < lockOnRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                         {
                                             //Lock-on complete - start a new fixation
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
@@ -99,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             if (incompleteFixationProgress != null
                                                 && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
                                                     + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
-                                                    > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                                    > lockOnRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                             {
                                                 incompleteFixationProgress = null;
                                             }
