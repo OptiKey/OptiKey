@@ -125,7 +125,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
-                                            long previouslyStoredProgress = GetIncompleteFixationProgressForPoint(fixationCentrePointAndKeyValue.Value.Point);
+                                            long previouslyStoredProgress = incompleteFixationProgress != null
+                                                ? incompleteFixationProgress.Item2
+                                                : 0;
                                             incompleteFixationProgress = new Tuple<Point, long>(fixationCentrePointAndKeyValue.Value.Point, previouslyStoredProgress + fixationSpan.Ticks);
                                         }
                                         

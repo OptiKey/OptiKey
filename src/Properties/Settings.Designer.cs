@@ -131,7 +131,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("150")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double PointSelectionTriggerFixationRadius {
+        public double PointSelectionTriggerLockOnRadius
+        {
             get {
                 return ((double)(this["PointSelectionTriggerLockOnRadius"]));
             }

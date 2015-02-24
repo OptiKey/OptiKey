@@ -30,7 +30,7 @@
 
     <Grid>
         <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
                     <Viewbox>
@@ -61,5 +61,11 @@
                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+
+        <Popup IsHitTestVisible="False"
+               Placement="AbsolutePoint"
+               AllowsTransparency="True">
+            <controls:Cursor />
+        </Popup>
     </Grid>
 </UserControl>
