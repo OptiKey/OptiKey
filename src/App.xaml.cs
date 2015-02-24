@@ -259,6 +259,7 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerIncompleteFixationTtl,
+                        Settings.Default.PointSelectionTriggerLockOnRadius,
                         Settings.Default.PointSelectionTriggerFixationRadius,
                         pointSource.Sequence);
                     break;
