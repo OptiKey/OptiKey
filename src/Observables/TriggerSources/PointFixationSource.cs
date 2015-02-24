@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     //No fixation in progress - we are in the "lock on" phase
                                     if (bufferIsFull)
                                     {
-                                        //Test if all buffered points (enough for a lock-on) are within an acceptable radius of their centre point
+                                        //Test if all buffered points (enough for a lock-on) are within an acceptable lock-on radius of their centre point
                                         var centrePoint = buffer.Select(t => t.Value.Point).ToList().CalculateCentrePoint();
                                         if (buffer.All(t => 
                                             (Math.Pow((centrePoint.X - t.Value.Point.X), 2)
@@ -97,12 +97,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
                                             fixationStart = point.Timestamp;
                                             
-                                            //Discard any incomplete fixation progress which is not revelant to the new fixation
+                                            //Discard any incomplete fixation progress which is not revelant to the new fixation - using fixation radius
                                             //This way we know that if we have incomplete fixation progress then it is relevant to the current fixation
                                             if (incompleteFixationProgress != null
                                                 && (Math.Pow((fixationCentrePointAndKeyValue.Value.Point.X - incompleteFixationProgress.Item1.X), 2)
                                                     + Math.Pow((fixationCentrePointAndKeyValue.Value.Point.Y - incompleteFixationProgress.Item1.Y), 2))
-                                                    > lockOnRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
+                                                    > fixationRadiusSquared) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                             {
                                                 incompleteFixationProgress = null;
                                             }
