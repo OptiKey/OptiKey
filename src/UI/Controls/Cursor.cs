@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
-            var popupHost = VisualAndLogicalTreeHelper.FindVisualParent<Popup>(this);
+            var popupHost = VisualAndLogicalTreeHelper.FindLogicalParent<Popup>(this);
 
             var mainViewModel = popupHost != null
                 ? popupHost.DataContext as MainViewModel
