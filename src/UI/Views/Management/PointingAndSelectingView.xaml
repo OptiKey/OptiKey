@@ -91,6 +91,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Key selection source:" 
@@ -305,7 +306,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Point fixation radius (pixels):" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Point lock-on radius (pixels):" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -320,6 +321,34 @@
                     </TextBlock>
                     <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1" StringFormat="###,##0"
+                                            Value="{Binding PointSelectionTriggerLockOnRadius, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+                    
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Point fixation radius (pixels):" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationRadius, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}">
@@ -333,7 +362,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
             
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Selection keyboard key:" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="Selection keyboard key:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -346,7 +375,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="10" Grid.Column="1" 
+                    <ComboBox Grid.Row="11" Grid.Column="1" 
                               ItemsSource="{Binding Keys}"
                               SelectedValue="{Binding SelectionTriggerKeyboardKeyDownUpKey, Mode=TwoWay}">
                         <ComboBox.Style>
@@ -361,7 +390,7 @@
                         </ComboBox.Style>
                     </ComboBox>
             
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="Selection mouse button:" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Selection mouse button:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -377,7 +406,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <ComboBox Grid.Row="11" Grid.Column="1" 
+                    <ComboBox Grid.Row="12" Grid.Column="1" 
                               ItemsSource="{Binding MouseButtons}"
                               SelectedValue="{Binding SelectionTriggerMouseDownUpButton, Mode=TwoWay}">
                         <ComboBox.Style>
