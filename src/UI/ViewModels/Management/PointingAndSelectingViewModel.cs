@@ -158,6 +158,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref pointSelectionTriggerIncompleteFixationTtlInMs, value); }
         }
         
+        private double pointSelectionTriggerLockOnRadius;
+        public double PointSelectionTriggerLockOnRadius
+        {
+            get { return pointSelectionTriggerLockOnRadius; }
+            set { SetProperty(ref pointSelectionTriggerLockOnRadius, value); }
+        }
+        
         private double pointSelectionTriggerFixationRadius;
         public double PointSelectionTriggerFixationRadius
         {
@@ -221,6 +228,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.PointSelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.PointSelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.PointSelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(PointSelectionTriggerIncompleteFixationTtlInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.PointSelectionTriggerLockOnRadius != PointSelectionTriggerLockOnRadius && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.PointSelectionTriggerFixationRadius != PointSelectionTriggerFixationRadius && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
@@ -247,6 +255,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointSelectionTriggerFixationLockOnTimeInMs = Settings.Default.PointSelectionTriggerFixationLockOnTime.TotalMilliseconds;
             PointSelectionTriggerFixationCompleteTimeInMs = Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds;
             PointSelectionTriggerIncompleteFixationTtlInMs = Settings.Default.PointSelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
+            PointSelectionTriggerLockOnRadius = Settings.Default.PointSelectionTriggerLockOnRadius;
             PointSelectionTriggerFixationRadius = Settings.Default.PointSelectionTriggerFixationRadius;
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds;
@@ -268,6 +277,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointSelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.PointSelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs);
             Settings.Default.PointSelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(PointSelectionTriggerIncompleteFixationTtlInMs);
+            Settings.Default.PointSelectionTriggerLockOnRadius = PointSelectionTriggerLockOnRadius;
             Settings.Default.PointSelectionTriggerFixationRadius = PointSelectionTriggerFixationRadius;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs);
