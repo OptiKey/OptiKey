@@ -26,8 +26,11 @@
     <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="PointSelectionTriggerLockOnRadius" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">150</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
