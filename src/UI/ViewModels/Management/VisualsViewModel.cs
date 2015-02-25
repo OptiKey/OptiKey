@@ -174,6 +174,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref toastNotificationContentFontSize, value); }
         }
 
+        private int cursorWidth;
+        public int CursorWidth
+        {
+            get { return cursorWidth; }
+            set { SetProperty(ref cursorWidth, value); }
+        }
+
+        private int cursorHeight;
+        public int CursorHeight
+        {
+            get { return cursorHeight; }
+            set { SetProperty(ref cursorHeight, value); }
+        }
+
         private KeyboardsSets keyboardSet;
         public KeyboardsSets KeyboardSet
         {
@@ -199,6 +213,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
             ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
+            CursorWidth = Settings.Default.CursorWidth;
+            CursorHeight = Settings.Default.CursorHeight;
             KeyboardSet = Settings.Default.KeyboardSet;
         }
 
@@ -211,6 +227,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
             Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
+            Settings.Default.CursorWidth = CursorWidth;
+            Settings.Default.CursorHeight = CursorHeight;
             Settings.Default.KeyboardSet = KeyboardSet;
             Settings.Default.Save();
         }

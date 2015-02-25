@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         public List<KeyValuePair<string, string>> MultiKeySelectionCaptureStartSoundFiles
         {
             get
@@ -93,6 +93,42 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("End Capture 1", @"Resources\Sounds\MultiKeyCaptureEnd1.wav")
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> MouseClickSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("None", null),
+                    new KeyValuePair<string, string>("Mouse Click 1", @"Resources\Sounds\MouseClick1.wav")
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> MouseDoubleClickSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("None", null),
+                    new KeyValuePair<string, string>("Mouse Double Click 1", @"Resources\Sounds\MouseDoubleClick1.wav")
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> MouseScrollSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("None", null),
+                    new KeyValuePair<string, string>("Mouse Scroll 1", @"Resources\Sounds\MouseScroll1.wav")
                 };
             }
         }
@@ -153,6 +189,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref multiKeySelectionCaptureEndSoundFile, value); }
         }
 
+        private string mouseClickSoundFile;
+        public string MouseClickSoundFile
+        {
+            get { return mouseClickSoundFile; }
+            set { SetProperty(ref mouseClickSoundFile, value); }
+        }
+
+        private string mouseDoubleClickSoundFile;
+        public string MouseDoubleClickSoundFile
+        {
+            get { return mouseDoubleClickSoundFile; }
+            set { SetProperty(ref mouseDoubleClickSoundFile, value); }
+        }
+
+        private string mouseScrollSoundFile;
+        public string MouseScrollSoundFile
+        {
+            get { return mouseScrollSoundFile; }
+            set { SetProperty(ref mouseScrollSoundFile, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get { return false; }
@@ -172,6 +229,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ErrorSoundFile = Settings.Default.ErrorSoundFile;
             MultiKeySelectionCaptureStartSoundFile = Settings.Default.MultiKeySelectionCaptureStartSoundFile;
             MultiKeySelectionCaptureEndSoundFile = Settings.Default.MultiKeySelectionCaptureEndSoundFile;
+            MouseClickSoundFile = Settings.Default.MouseClickSoundFile;
+            MouseDoubleClickSoundFile = Settings.Default.MouseDoubleClickSoundFile;
+            MouseScrollSoundFile = Settings.Default.MouseScrollSoundFile;
         }
 
         public void ApplyChanges()
@@ -184,6 +244,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ErrorSoundFile = ErrorSoundFile;
             Settings.Default.MultiKeySelectionCaptureStartSoundFile = MultiKeySelectionCaptureStartSoundFile;
             Settings.Default.MultiKeySelectionCaptureEndSoundFile = MultiKeySelectionCaptureEndSoundFile;
+            Settings.Default.MouseClickSoundFile = MouseClickSoundFile;
+            Settings.Default.MouseDoubleClickSoundFile = MouseDoubleClickSoundFile;
+            Settings.Default.MouseScrollSoundFile = MouseScrollSoundFile;
             Settings.Default.Save();
         }
 

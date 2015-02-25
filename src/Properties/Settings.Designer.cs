@@ -129,10 +129,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double PointSelectionTriggerLockOnRadius
-        {
+        public double PointSelectionTriggerLockOnRadius {
             get {
                 return ((double)(this["PointSelectionTriggerLockOnRadius"]));
             }
@@ -143,7 +142,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double PointSelectionTriggerFixationRadius {
             get {
@@ -899,7 +898,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseClick.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseClick1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MouseClickSoundFile {
             get {
                 return ((string)(this["MouseClickSoundFile"]));
@@ -911,25 +911,53 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseDoubleClick.wav")]
-        public string MouseDoubleSoundFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseDoubleClick1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MouseDoubleClickSoundFile {
             get {
-                return ((string)(this["MouseDoubleSoundFile"]));
+                return ((string)(this["MouseDoubleClickSoundFile"]));
             }
             set {
-                this["MouseDoubleSoundFile"] = value;
+                this["MouseDoubleClickSoundFile"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseScroll.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseScroll1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MouseScrollSoundFile {
             get {
                 return ((string)(this["MouseScrollSoundFile"]));
             }
             set {
                 this["MouseScrollSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CursorWidth {
+            get {
+                return ((int)(this["CursorWidth"]));
+            }
+            set {
+                this["CursorWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CursorHeight {
+            get {
+                return ((int)(this["CursorHeight"]));
+            }
+            set {
+                this["CursorHeight"] = value;
             }
         }
     }

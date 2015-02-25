@@ -203,14 +203,20 @@
     <Setting Name="PointSelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.7500000</Value>
     </Setting>
-    <Setting Name="MouseClickSoundFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\MouseClick.wav</Value>
+    <Setting Name="MouseClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseClick1.wav</Value>
     </Setting>
-    <Setting Name="MouseDoubleSoundFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\MouseDoubleClick.wav</Value>
+    <Setting Name="MouseDoubleClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDoubleClick1.wav</Value>
     </Setting>
-    <Setting Name="MouseScrollSoundFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\MouseScroll.wav</Value>
+    <Setting Name="MouseScrollSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
+    </Setting>
+    <Setting Name="CursorWidth" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
     </Setting>
   </Settings>
 </SettingsFile>

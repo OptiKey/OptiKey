@@ -62,10 +62,10 @@
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
 
-        <Popup IsHitTestVisible="False"
-               Placement="AbsolutePoint"
-               AllowsTransparency="True">
+        <controls:CursorHost IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True"
+                             MaxWidth="{Binding Source={x:Static properties:Settings.Default}, Path=CursorWidth}" 
+                             MaxHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}">
             <controls:Cursor />
-        </Popup>
+        </controls:CursorHost>
     </Grid>
 </UserControl>
