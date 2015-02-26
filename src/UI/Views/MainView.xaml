@@ -65,7 +65,10 @@
         <controls:CursorHost IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True"
                              MaxWidth="{Binding Source={x:Static properties:Settings.Default}, Path=CursorWidth}" 
                              MaxHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}">
-            <controls:Cursor />
+            <Grid>
+                <controls:Cursor />
+                <TextBlock Background="Yellow" Text="TEST" />
+            </Grid>
         </controls:CursorHost>
     </Grid>
 </UserControl>

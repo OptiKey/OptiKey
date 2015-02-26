@@ -3,15 +3,19 @@ using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.UI.ViewModels;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class CursorHost : Popup
     {
         #region Private member vars
+
+        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private Window window;
         private Screen screen;
@@ -42,9 +46,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var mainViewModel = DataContext as MainViewModel;
             
             //IsOpen
-            Action<KeyValue?> calculateIsOpen = value => value == SelectionModes.Point;
+            Action<SelectionModes> calculateIsOpen = selectionMode => IsOpen = selectionMode == SelectionModes.Point;
             mainViewModel.OnPropertyChanges(vm => vm.SelectionMode).Subscribe(calculateIsOpen);
-            calculateIsOpen();
+            calculateIsOpen(mainViewModel.SelectionMode);
             
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
@@ -157,7 +161,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 //N.B. Offsets are in the WPF coordinate system, so we now need to compare everything in that system
                 //DIPs = pixels / (DPI/96.0) from https://msdn.microsoft.com/en-us/library/windows/desktop/dd371316(v=vs.85).aspx / https://msdn.microsoft.com/en-us/library/windows/desktop/ff684173(v=vs.85).aspx
-                var dpiPoint = new Point((pointCopy.X / (Graphics.DpiX / 96)), (pointCopy.Y / (Graphics.DpiY / 96)));
+                var dpiPoint = new Point(((double)pointCopy.X / ((double)Graphics.DpiX / (double)96)), ((double)pointCopy.Y / ((double)Graphics.DpiY / (double)96)));
 
                 //Coerce horizontal offset
                 var horizontalAdjustmentAmount = 0d;
