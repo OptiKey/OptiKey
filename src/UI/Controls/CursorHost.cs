@@ -22,9 +22,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Point point = new Point(0,0);
         private bool selectionInProgress;
         private Point screenTopLeft;
+        private Point screenTopLeftInWpfCoords;
         private Point screenBottomRight;
-        private Point screenBottomRightInWpfCoords;
-
+        private Point screenBottomLeftInWpfCoords;
+        
         #endregion
 
         #region Ctor
@@ -57,9 +58,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             
             //Calculate position based on PointSelectionProgress
             mainViewModel.OnPropertyChanges(vm => vm.PointSelectionProgress)
-                .Subscribe(psp => 
+                .Subscribe(psp =>
                 {
-                    if(psp == null)
+                    if (psp == null)
                     {
                         //Selection/fixation not in progress
                         selectionInProgress = false;
@@ -103,8 +104,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     screen = value;
 
                     screenTopLeft = new Point(screen.Bounds.Left, screen.Bounds.Top);
+                    screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(screenTopLeft);
                     screenBottomRight = new Point(screen.Bounds.Right, screen.Bounds.Bottom);
-                    screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(screenBottomRight);
+                    screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(screenBottomRight);
                     
                     CalculatePosition();
                 }
@@ -147,6 +149,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Calculate Position
 
+        //N.B. Despite the MSDN documentation popup with Placement=AbsolutePosition aligns with the point at the top RIGHT
         private void CalculatePosition()
         {
             //Copy point locally as point is not threadsafe
@@ -165,9 +168,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                 //Coerce horizontal offset
                 var horizontalAdjustmentAmount = 0d;
-                if(dpiPoint.X + ActualWidth > screenBottomRightInWpfCoords.X)
+                if(dpiPoint.X - Width < screenTopLeftInWpfCoords.X) //Cannot use ActualWidth as it will be 0 (due to it being a Popup)
                 {
-                    horizontalAdjustmentAmount = 0 - ActualWidth;
+                    horizontalAdjustmentAmount = Width;
                     IsPivottedHorizontally = true;
                 }
                 else
@@ -178,16 +181,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 
                 //Coerce vertical offset
                 var verticalAdjustmentAmount = 0d;
-                if(dpiPoint.Y + ActualHeight > screenBottomRightInWpfCoords.Y)
+                if (dpiPoint.Y + Height > screenBottomLeftInWpfCoords.Y) //Cannot use ActualWidth as it will be 0 (due to it being a Popup)
                 {
-                    verticalAdjustmentAmount = 0 - ActualHeight;
+                    verticalAdjustmentAmount = Height;
                     IsPivottedVertically = true;
                 }
                 else
                 {
                     IsPivottedVertically = false;
                 }
-                VerticalOffset = dpiPoint.Y + verticalAdjustmentAmount;
+                VerticalOffset = dpiPoint.Y - verticalAdjustmentAmount;
             }
         }
 

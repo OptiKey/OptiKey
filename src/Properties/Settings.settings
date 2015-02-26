@@ -200,9 +200,6 @@
     <Setting Name="ScrollAmountInClicks" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.7500000</Value>
-    </Setting>
     <Setting Name="MouseClickSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MouseClick1.wav</Value>
     </Setting>

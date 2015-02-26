@@ -885,19 +885,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.7500000")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.TimeSpan PointSelectionTriggerIncompleteFixationTtl {
-            get {
-                return ((global::System.TimeSpan)(this["PointSelectionTriggerIncompleteFixationTtl"]));
-            }
-            set {
-                this["PointSelectionTriggerIncompleteFixationTtl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseClick1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MouseClickSoundFile {

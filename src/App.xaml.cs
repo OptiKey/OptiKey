@@ -258,7 +258,6 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new PointFixationSource(
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
-                        Settings.Default.PointSelectionTriggerIncompleteFixationTtl,
                         Settings.Default.PointSelectionTriggerLockOnRadius,
                         Settings.Default.PointSelectionTriggerFixationRadius,
                         pointSource.Sequence);
