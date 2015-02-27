@@ -171,13 +171,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     //Do not adjust horizontal offset - default position of popup is to the left of the point
                     HorizontalOffset = dpiPoint.X;
-                    IsPivottedHorizontally = true;
+                    CursorHorizontalPointPosition = CursorHorizontalPointPositions.ToRight;
                 }
                 else
                 {
                     //Manually adjust popup to the right of the point (default position of popup is to the left of the point)
                     HorizontalOffset = dpiPoint.X + Width;
-                    IsPivottedHorizontally = false;
+                    CursorHorizontalPointPosition = CursorHorizontalPointPositions.ToLeft;
                 }
                 
                 //Coerce vertical offset
@@ -185,12 +185,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     //Manually adjust popup to be above the point (default position of popup is below the point)
                     VerticalOffset = dpiPoint.Y - Height;
-                    IsPivottedVertically = true;
+                    CursorVerticalPointPosition = CursorVerticalPointPositions.ToBottom;
                 }
                 else
                 {
                     //Do not adjust vertical offset - default position of popup is below the point
-                    IsPivottedVertically = false;
+                    CursorVerticalPointPosition = CursorVerticalPointPositions.ToTop;
                 }
             }
         }
