@@ -130,7 +130,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public static readonly DependencyProperty CursorHorizontalPointPositionProperty =
             DependencyProperty.Register("CursorHorizontalPointPosition", typeof(CursorHorizontalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorHorizontalPointPositions)));
 
-        public bool CursorHorizontalPointPosition
+        public CursorHorizontalPointPositions CursorHorizontalPointPosition
         {
             get { return (CursorHorizontalPointPositions)GetValue(CursorHorizontalPointPositionProperty); }
             set { SetValue(CursorHorizontalPointPositionProperty, value); }
@@ -139,7 +139,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public static readonly DependencyProperty CursorVerticalPointPositionProperty =
             DependencyProperty.Register("CursorVerticalPointPosition", typeof(CursorVerticalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorVerticalPointPositions)));
 
-        public bool CursorVerticalPointPosition
+        public CursorVerticalPointPositions CursorVerticalPointPosition
         {
             get { return (CursorVerticalPointPositions)GetValue(CursorVerticalPointPositionProperty); }
             set { SetValue(CursorVerticalPointPositionProperty, value); }
@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 }
                 
                 //Coerce vertical offset
-                if (dpiPoint.Y + Height > screenBottomLeftInWpfCoords.Y) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
+                if (dpiPoint.Y + Height > screenBottomRightInWpfCoords.Y) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
                     //Manually adjust popup to be above the point (default position of popup is below the point)
                     VerticalOffset = dpiPoint.Y - Height;
@@ -190,6 +190,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 else
                 {
                     //Do not adjust vertical offset - default position of popup is below the point
+                    VerticalOffset = dpiPoint.Y;
                     CursorVerticalPointPosition = CursorVerticalPointPositions.ToTop;
                 }
             }
