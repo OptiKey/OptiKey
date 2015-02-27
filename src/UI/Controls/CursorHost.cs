@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Point screenTopLeft;
         private Point screenTopLeftInWpfCoords;
         private Point screenBottomRight;
-        private Point screenBottomLeftInWpfCoords;
+        private Point screenBottomRightInWpfCoords;
         
         #endregion
 
@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     screenTopLeft = new Point(screen.Bounds.Left, screen.Bounds.Top);
                     screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(screenTopLeft);
                     screenBottomRight = new Point(screen.Bounds.Right, screen.Bounds.Bottom);
-                    screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(screenBottomRight);
+                    screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(screenBottomRight);
                     
                     CalculatePosition();
                 }
@@ -127,29 +127,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
-        public static readonly DependencyProperty IsPivottedHorizontallyProperty =
-            DependencyProperty.Register("IsPivottedHorizontally", typeof(bool), typeof(CursorHost), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CursorHorizontalPointPositionProperty =
+            DependencyProperty.Register("CursorHorizontalPointPosition", typeof(CursorHorizontalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorHorizontalPointPositions)));
 
-        public bool IsPivottedHorizontally
+        public bool CursorHorizontalPointPosition
         {
-            get { return (bool)GetValue(IsPivottedHorizontallyProperty); }
-            set { SetValue(IsPivottedHorizontallyProperty, value); }
+            get { return (CursorHorizontalPointPositions)GetValue(CursorHorizontalPointPositionProperty); }
+            set { SetValue(CursorHorizontalPointPositionProperty, value); }
         }
 
-        public static readonly DependencyProperty IsPivottedVerticallyProperty =
-            DependencyProperty.Register("IsPivottedVertically", typeof(bool), typeof(CursorHost), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CursorVerticalPointPositionProperty =
+            DependencyProperty.Register("CursorVerticalPointPosition", typeof(CursorVerticalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorVerticalPointPositions)));
 
-        public bool IsPivottedVertically
+        public bool CursorVerticalPointPosition
         {
-            get { return (bool)GetValue(IsPivottedVerticallyProperty); }
-            set { SetValue(IsPivottedVerticallyProperty, value); }
+            get { return (CursorVerticalPointPositions)GetValue(CursorVerticalPointPositionProperty); }
+            set { SetValue(CursorVerticalPointPositionProperty, value); }
         }
 
         #endregion
 
         #region Calculate Position
 
-        //N.B. Despite the MSDN documentation popup with Placement=AbsolutePosition aligns with the point at the top RIGHT
+        //N.B. Despite the MSDN documentation popup with Placement=AbsolutePosition aligns to the BOTTOM LEFT of the point, i.e. the offset point is at the TOP RIGHT
         private void CalculatePosition()
         {
             //Copy point locally as point is not threadsafe
@@ -167,30 +167,31 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 var dpiPoint = new Point(((double)pointCopy.X / ((double)Graphics.DpiX / (double)96)), ((double)pointCopy.Y / ((double)Graphics.DpiY / (double)96)));
 
                 //Coerce horizontal offset
-                var horizontalAdjustmentAmount = 0d;
-                if(dpiPoint.X - Width < screenTopLeftInWpfCoords.X) //Cannot use ActualWidth as it will be 0 (due to it being a Popup)
+                if(dpiPoint.X + Width > screenBottomRightInWpfCoords.X) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
-                    horizontalAdjustmentAmount = Width;
+                    //Do not adjust horizontal offset - default position of popup is to the left of the point
+                    HorizontalOffset = dpiPoint.X;
                     IsPivottedHorizontally = true;
                 }
                 else
                 {
+                    //Manually adjust popup to the right of the point (default position of popup is to the left of the point)
+                    HorizontalOffset = dpiPoint.X + Width;
                     IsPivottedHorizontally = false;
                 }
-                HorizontalOffset = dpiPoint.X + horizontalAdjustmentAmount;
                 
                 //Coerce vertical offset
-                var verticalAdjustmentAmount = 0d;
-                if (dpiPoint.Y + Height > screenBottomLeftInWpfCoords.Y) //Cannot use ActualWidth as it will be 0 (due to it being a Popup)
+                if (dpiPoint.Y + Height > screenBottomLeftInWpfCoords.Y) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
-                    verticalAdjustmentAmount = Height;
+                    //Manually adjust popup to be above the point (default position of popup is below the point)
+                    VerticalOffset = dpiPoint.Y - Height;
                     IsPivottedVertically = true;
                 }
                 else
                 {
+                    //Do not adjust vertical offset - default position of popup is below the point
                     IsPivottedVertically = false;
                 }
-                VerticalOffset = dpiPoint.Y - verticalAdjustmentAmount;
             }
         }
 
