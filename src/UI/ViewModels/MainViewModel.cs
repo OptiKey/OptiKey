@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
-        private Action nextClickAction;
+        private Action<Point> nextClickAction;
 
         #endregion
 
@@ -94,6 +94,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         #region Events
 
         public event EventHandler<KeyValue> KeySelection;
+        public event EventHandler<Point> PointSelection;
 
         #endregion
 
@@ -268,7 +269,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    //TODO: Fire point selection event - triggers animation
+                    if (PointSelection != null)
+                    {
+                        Log.Debug(string.Format("Firing PointSelection event with Point '{0}'", value.Point));
+                        PointSelection(this, value.Point);
+                    }
                 }
             };
 
@@ -293,7 +298,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (nextClickAction != null)
                     {
-                        nextClickAction();
+                        nextClickAction(points.First());
                     }
                 }
             };
@@ -490,10 +495,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        nextClickAction = () =>
+                        nextClickAction = (Point point) =>
                         {
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                            //TODO:Actual mouse click
+                            outputService.LeftButtonClick(point);
                             SelectionMode = SelectionModes.Key;
                             nextClickAction = null;
                         };

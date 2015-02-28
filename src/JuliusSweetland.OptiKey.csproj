@@ -251,6 +251,7 @@
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="Static\Graphics.cs" />
+    <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />

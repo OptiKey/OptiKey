@@ -52,6 +52,7 @@
 
             <SolidColorBrush x:Key="CursorDefaultStrokeBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="CursorDefaultFillBrush" Color="{StaticResource White}" />
+            <StaticResource x:Key="PointSelectionForeground" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
@@ -423,6 +424,16 @@
                 <Setter Property="Stretch" Value="Fill" />
                 <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
                 <Setter Property="Data" Value="{StaticResource CursorIcon}" />
+                <Setter Property="behaviours:CursorBehaviours.BeginAnimationOnPointSelectionEvent">
+                    <Setter.Value>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" 
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource PointSelectionForeground}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToTopRight}">
                         <Setter Property="RenderTransform">

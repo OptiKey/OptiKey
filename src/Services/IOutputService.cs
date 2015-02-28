@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -11,6 +12,6 @@ namespace JuliusSweetland.OptiKey.Services
         void ProcessSingleKeyText(string capturedText);
         void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions);
 
-        //void 
+        void LeftButtonClick(Point point);
     }
 }

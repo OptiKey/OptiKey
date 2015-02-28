@@ -30,6 +30,7 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
+                //N.B. This does NOT work for me, but is recommended here; http://stackoverflow.com/questions/5977445/how-to-get-windows-display-settings
                 var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero);
                 var desktop = g.GetHdc();
                 int logicalScreenWidth = PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.HORZRES);
@@ -43,6 +44,7 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
+                //N.B. This does NOT work for me, but is recommended here; http://stackoverflow.com/questions/5977445/how-to-get-windows-display-settings
                 var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero);
                 var desktop = g.GetHdc();
                 int logicalScreenHeight = PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.VERTRES);

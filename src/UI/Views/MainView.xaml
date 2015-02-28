@@ -69,7 +69,7 @@
                              MinHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
                              Height="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
                              MaxHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}">
-            <controls:Cursor />
+            <controls:Cursor IsHitTestVisible="False" />
         </controls:CursorHost>
     </Grid>
 </UserControl>

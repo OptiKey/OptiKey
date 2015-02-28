@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -15,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly IPublishService publishService;
@@ -207,6 +209,13 @@ namespace JuliusSweetland.OptiKey.Services
             ProcessText(captureAndSuggestions.First());
         }
 
+        public void LeftButtonClick(Point point)
+        {
+            Log.Debug(string.Format("Generating a left mouse click at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.LeftButtonClick();
+        }
+
         #endregion
 
         #region Methods - private
@@ -296,7 +305,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 if (virtualKeyCode != null)
                                 {
-                                    publishService.PublishKeyDown(virtualKeyCode.Value);
+                                    publishService.KeyDown(virtualKeyCode.Value);
                                 }
                             }
                         }
@@ -321,17 +330,17 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                         {
-// ReSharper disable PossibleInvalidOperationException
+                            // ReSharper disable PossibleInvalidOperationException
                             var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
-// ReSharper restore PossibleInvalidOperationException
+                            // ReSharper restore PossibleInvalidOperationException
 
                             if (value.IsDownOrLockedDown())
                             {
-                                publishService.PublishKeyDown(virtualKeyCode);
+                                publishService.KeyDown(virtualKeyCode);
                             }
                             else
                             {
-                                publishService.PublishKeyUp(virtualKeyCode);
+                                publishService.KeyUp(virtualKeyCode);
                             }
                         }
                     });
@@ -380,12 +389,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyPress called with functionKey '{0}'.",  functionKey));
+                Log.Debug(string.Format("KeyDownUp called with functionKey '{0}'.",  functionKey));
 
                 var virtualKeyCode = functionKey.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
                 {
-                    publishService.PublishKeyPress(virtualKeyCode.Value);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
                 }
             }
         }
@@ -394,7 +403,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'",
+                Log.Debug(string.Format("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
                     modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral()));
 
@@ -402,11 +411,11 @@ namespace JuliusSweetland.OptiKey.Services
                 if (virtualKeyCode != null
                     && !publishAsText)
                 {
-                    publishService.PublishKeyPress(virtualKeyCode.Value);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
                 }
                 else if (modifiedCharacter != null)
                 {
-                    publishService.PublishText(modifiedCharacter.ToString());
+                    publishService.TypeText(modifiedCharacter.ToString());
                 }
             }
         }
