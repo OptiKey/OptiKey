@@ -103,6 +103,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var scaledVirtualScreenWidth = SystemParameters.VirtualScreenWidth * ((double) Graphics.DpiX / (double) 96);
                 var scaledVirtualScreenHeight = SystemParameters.VirtualScreenHeight * ((double)Graphics.DpiY / (double)96);
 
+                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535.
+                //https://inputsimulator.codeplex.com/discussions/86530
                 inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
                     ((double)65535 * point.X) / (double)scaledVirtualScreenWidth,
                     ((double)65535 * point.Y) / (double)scaledVirtualScreenHeight);
