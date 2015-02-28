@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Forms;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Static;
-using JuliusSweetland.OptiKey.UI.Controls;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -108,7 +106,6 @@ namespace JuliusSweetland.OptiKey.Services
                 inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
                     ((double)65535 * point.X) / (double)scaledVirtualScreenWidth,
                     ((double)65535 * point.Y) / (double)scaledVirtualScreenHeight);
-                //System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)point.X, (int)point.Y);
             }
             catch (Exception exception)
             {
