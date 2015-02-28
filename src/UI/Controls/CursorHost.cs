@@ -20,9 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private Window window;
         private Screen screen;
         private Point point = new Point(0,0);
-        private bool selectionInProgress;
         private Point screenTopLeft;
-        private Point screenTopLeftInWpfCoords;
         private Point screenBottomRight;
         private Point screenBottomRightInWpfCoords;
         
@@ -53,25 +51,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
-                .Where(cpp => cpp != null && !selectionInProgress) //Only set current Point if we are not within a selection/fixation
+                .Where(cpp => cpp != null && SelectionProgress == 0) //Only set current Point if we are not within a selection/fixation
                 .Subscribe(cpp => Point = cpp.Value);
             
-            //Calculate position based on PointSelectionProgress
+            //Calculate selection progress and position based on PointSelectionProgress
             mainViewModel.OnPropertyChanges(vm => vm.PointSelectionProgress)
                 .Subscribe(psp =>
                 {
                     if (psp == null)
                     {
                         //Selection/fixation not in progress
-                        selectionInProgress = false;
+                        SelectionProgress = 0;
                     }
                     else
                     {
                         //Selection/fixation in progress
-                        selectionInProgress = true;
                         Point = psp.Item1;
+                        SelectionProgress = psp.Item2;
                     }
                 });
+
+            SelectionProgress = mainViewModel.PointSelectionProgress != null
+                ? mainViewModel.PointSelectionProgress.Item2
+                : 0;
             
             //Subscribe to window location changes and re-evaluate the current screen and current position
             Observable.FromEventPattern<EventHandler, EventArgs>
@@ -104,7 +106,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     screen = value;
 
                     screenTopLeft = new Point(screen.Bounds.Left, screen.Bounds.Top);
-                    screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(screenTopLeft);
                     screenBottomRight = new Point(screen.Bounds.Right, screen.Bounds.Bottom);
                     screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(screenBottomRight);
                     
@@ -127,22 +128,22 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
-        public static readonly DependencyProperty CursorHorizontalPointPositionProperty =
-            DependencyProperty.Register("CursorHorizontalPointPosition", typeof(CursorHorizontalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorHorizontalPointPositions)));
+        public static readonly DependencyProperty CursorPointPositionProperty =
+            DependencyProperty.Register("CursorPointPosition", typeof(CursorPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorPointPositions)));
 
-        public CursorHorizontalPointPositions CursorHorizontalPointPosition
+        public CursorPointPositions CursorPointPosition
         {
-            get { return (CursorHorizontalPointPositions)GetValue(CursorHorizontalPointPositionProperty); }
-            set { SetValue(CursorHorizontalPointPositionProperty, value); }
+            get { return (CursorPointPositions)GetValue(CursorPointPositionProperty); }
+            set { SetValue(CursorPointPositionProperty, value); }
         }
 
-        public static readonly DependencyProperty CursorVerticalPointPositionProperty =
-            DependencyProperty.Register("CursorVerticalPointPosition", typeof(CursorVerticalPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorVerticalPointPositions)));
+        public static readonly DependencyProperty SelectionProgressProperty =
+            DependencyProperty.Register("SelectionProgress", typeof(double), typeof(CursorHost), new PropertyMetadata(default(double)));
 
-        public CursorVerticalPointPositions CursorVerticalPointPosition
+        public double SelectionProgress
         {
-            get { return (CursorVerticalPointPositions)GetValue(CursorVerticalPointPositionProperty); }
-            set { SetValue(CursorVerticalPointPositionProperty, value); }
+            get { return (double)GetValue(SelectionProgressProperty); }
+            set { SetValue(SelectionProgressProperty, value); }
         }
 
         #endregion
@@ -166,18 +167,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 //DIPs = pixels / (DPI/96.0) from https://msdn.microsoft.com/en-us/library/windows/desktop/dd371316(v=vs.85).aspx / https://msdn.microsoft.com/en-us/library/windows/desktop/ff684173(v=vs.85).aspx
                 var dpiPoint = new Point(((double)pointCopy.X / ((double)Graphics.DpiX / (double)96)), ((double)pointCopy.Y / ((double)Graphics.DpiY / (double)96)));
 
+                bool cursorPointsToLeft;
+                bool cursorPointsToTop;
+
                 //Coerce horizontal offset
                 if(dpiPoint.X + Width > screenBottomRightInWpfCoords.X) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
                     //Do not adjust horizontal offset - default position of popup is to the left of the point
                     HorizontalOffset = dpiPoint.X;
-                    CursorHorizontalPointPosition = CursorHorizontalPointPositions.ToRight;
+                    cursorPointsToLeft = false;
                 }
                 else
                 {
                     //Manually adjust popup to the right of the point (default position of popup is to the left of the point)
                     HorizontalOffset = dpiPoint.X + Width;
-                    CursorHorizontalPointPosition = CursorHorizontalPointPositions.ToLeft;
+                    cursorPointsToLeft = true;
                 }
                 
                 //Coerce vertical offset
@@ -185,14 +189,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     //Manually adjust popup to be above the point (default position of popup is below the point)
                     VerticalOffset = dpiPoint.Y - Height;
-                    CursorVerticalPointPosition = CursorVerticalPointPositions.ToBottom;
+                    cursorPointsToTop = false;
                 }
                 else
                 {
                     //Do not adjust vertical offset - default position of popup is below the point
                     VerticalOffset = dpiPoint.Y;
-                    CursorVerticalPointPosition = CursorVerticalPointPositions.ToTop;
+                    cursorPointsToTop = true;
                 }
+
+                CursorPointPosition = cursorPointsToTop && cursorPointsToLeft ? CursorPointPositions.ToTopLeft
+                    : cursorPointsToTop && !cursorPointsToLeft ? CursorPointPositions.ToTopRight
+                        : !cursorPointsToTop && cursorPointsToLeft ? CursorPointPositions.ToBottomLeft
+                            : CursorPointPositions.ToBottomRight;
             }
         }
 

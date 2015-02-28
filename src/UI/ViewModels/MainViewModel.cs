@@ -43,8 +43,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
-        private Action pointSelectionAction;
-        private Action pointSelectionResultAction;
+        private Action nextClickAction;
 
         #endregion
 
@@ -269,12 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    //TODO: Trigger pointSelectionAction
                     //TODO: Fire point selection event - triggers animation
-                    if (pointSelectionAction != null)
-                    {
-                        pointSelectionAction();
-                    }
                 }
             };
 
@@ -297,9 +291,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    if (pointSelectionResultAction != null)
+                    if (nextClickAction != null)
                     {
-                        pointSelectionResultAction();
+                        nextClickAction();
                     }
                 }
             };
@@ -496,15 +490,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        pointSelectionAction = () =>
+                        nextClickAction = () =>
                         {
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                            pointSelectionAction = null;
-                        };
-                        pointSelectionResultAction = () =>
-                        {
+                            //TODO:Actual mouse click
                             SelectionMode = SelectionModes.Key;
-                            pointSelectionResultAction = null;
+                            nextClickAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;

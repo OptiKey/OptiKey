@@ -37,9 +37,6 @@
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
-            <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
-            <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
-
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
@@ -53,6 +50,10 @@
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource Black}" />
 
             <SolidColorBrush x:Key="DebugTextForegroundBrush" Color="{StaticResource Yellow}" />
+
+            <SolidColorBrush x:Key="CursorDefaultStrokeBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="CursorDefaultFillBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
@@ -167,7 +168,7 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="SelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+            <Style x:Key="KeySelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
                 <Setter Property="Fill" Value="{StaticResource KeySelectionProgressBrush}" />
                 <Setter Property="MaxValue" Value="1" />
                 <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
@@ -283,7 +284,7 @@
                                                     <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
                                                 <controls:ProgressPie Grid.ColumnSpan="3" 
-                                                                      Style="{StaticResource SelectionProgressStyle}" />
+                                                                      Style="{StaticResource KeySelectionProgressStyle}" />
                                                 <Viewbox Grid.Column="1">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -370,10 +371,9 @@
                                                             <EventTrigger RoutedEvent="Border.Loaded">
                                                                 <BeginStoryboard>
                                                                     <Storyboard  x:Name="CaretStoryBoard" RepeatBehavior="Forever">
-                                                                        <ColorAnimationUsingKeyFrames 
-                                                                    Storyboard.TargetProperty="Background.Color"
-                                                                    Duration="0:0:0:1"
-                                                                    FillBehavior="HoldEnd">
+                                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Background.Color"
+                                                                                                      Duration="0:0:0:1"
+                                                                                                      FillBehavior="HoldEnd">
                                                                             <ColorAnimationUsingKeyFrames.KeyFrames >
                                                                                 <DiscreteColorKeyFrame KeyTime="0:0:0.750" Value="Transparent" />
                                                                                 <DiscreteColorKeyFrame KeyTime="0:0:0.000" Value="{StaticResource ScratchpadCaretBackgroundBrush}"/>
@@ -412,6 +412,62 @@
                                            Foreground="{StaticResource QuestionForegroundBrush}"
                                            Background="{StaticResource QuestionBackgroundBrush}" />
                             </controls:TextBlockScaler>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CursorIconStyle" TargetType="{x:Type Path}">
+                <Setter Property="Stroke" Value="{StaticResource CursorDefaultStrokeBrush}" />
+                <Setter Property="Fill" Value="{StaticResource CursorDefaultFillBrush}" />
+                <Setter Property="Stretch" Value="Fill" />
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                <Setter Property="Data" Value="{StaticResource CursorIcon}" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToTopRight}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToBottomLeft}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleY="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToBottomRight}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="-1" ScaleY="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="PointSelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+                <Setter Property="Fill" Value="{StaticResource PointSelectionProgressBrush}" />
+                <Setter Property="MaxValue" Value="1" />
+                <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:CursorHost}}, Mode=OneWay}" />
+                <Style.Triggers>
+                    <!--Progress is 0-->
+                    <Trigger Property="Value" Value="0">
+                        <Setter Property="Visibility" Value="Hidden" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="{x:Type controls:Cursor}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:Cursor}">
+                            <Grid>
+                                <Path Style="{StaticResource CursorIconStyle}" />
+                                <controls:ProgressPie Style="{StaticResource PointSelectionProgressStyle}" />
+                            </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

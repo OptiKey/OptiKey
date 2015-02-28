@@ -174,8 +174,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Enums\CursorHorizontalPointPositions.cs" />
-    <Compile Include="Enums\CursorVerticalPointPositions.cs" />
+    <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\KeyboardsSets.cs" />
@@ -477,7 +476,7 @@
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
     <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
     <None Include="Resources\Icons\SVG Source Files\PositionAndOpacity.svg" />
-    <None Include="Resources\Icons\SVG Source Files\PointSelectionCursor.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

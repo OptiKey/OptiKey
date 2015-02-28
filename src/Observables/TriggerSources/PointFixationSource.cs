@@ -89,8 +89,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             + Math.Pow((centrePoint.Y - t.Value.Point.Y), 2)) 
                                             < lockOnRadiusSquared)) //Bit of right-angled triangle maths: a squared + b squared = c squared
                                         {
-                                            //Lock-on complete - start a new fixation
-                                            fixationCentrePointAndKeyValue = new PointAndKeyValue(centrePoint, null);
+                                            //Lock-on complete - start a new fixation from the last (most recent) acceptable point
+                                            fixationCentrePointAndKeyValue = new PointAndKeyValue(buffer.Last().Value.Point, null);
                                             fixationStart = point.Timestamp;
                                         }
                                     }

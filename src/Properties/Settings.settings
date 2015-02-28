@@ -30,7 +30,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
@@ -156,7 +156,7 @@
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
     <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
       <Value Profile="(Default)">Standard</Value>
@@ -210,10 +210,10 @@
       <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
     </Setting>
     <Setting Name="CursorWidth" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">150</Value>
     </Setting>
   </Settings>
 </SettingsFile>

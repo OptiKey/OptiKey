@@ -69,13 +69,7 @@
                              MinHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
                              Height="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
                              MaxHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}">
-            <Grid Background="Red" IsHitTestVisible="False">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=controls:CursorHost}, Path=CursorHorizontalPointPosition}" />
-                    <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=controls:CursorHost}, Path=CursorVerticalPointPosition}" />
-                </StackPanel>
-                <!--<controls:Cursor />-->
-            </Grid>
+            <controls:Cursor />
         </controls:CursorHost>
     </Grid>
 </UserControl>
