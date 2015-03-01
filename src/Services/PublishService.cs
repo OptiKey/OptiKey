@@ -115,12 +115,140 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void LeftButtonClick()
+        public void LeftMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonClick()
         {
             try
             {
                 Log.Debug("Simulating clicking the left mouse button click");
                 inputSimulator.Mouse.LeftButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonDoubleClick()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down twice");
+                inputSimulator.Mouse.LeftButtonDoubleClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void RightMouseButtonClick()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the right mouse button down");
+                inputSimulator.Mouse.RightButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelUp(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel up by {0} clicks", clicks));
+                inputSimulator.Mouse.VerticalScroll(clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelUpAndLeft(int clicks)
+        {
+            ScrollMouseWheelUp(clicks);
+            ScrollMouseWheelLeft(clicks);
+        }
+
+        public void ScrollMouseWheelUpAndRight(int clicks)
+        {
+            ScrollMouseWheelUp(clicks);
+            ScrollMouseWheelRight(clicks);
+        }
+
+        public void ScrollMouseWheelDown(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel down by {0} clicks", clicks));
+                inputSimulator.Mouse.VerticalScroll(0 - clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelDownAndLeft(int clicks)
+        {
+            ScrollMouseWheelDown(clicks);
+            ScrollMouseWheelLeft(clicks);
+        }
+
+        public void ScrollMouseWheelDownAndRight(int clicks)
+        {
+            ScrollMouseWheelDown(clicks);
+            ScrollMouseWheelRight(clicks);
+        }
+
+        public void ScrollMouseWheelLeft(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel left by {0} clicks", clicks));
+                inputSimulator.Mouse.HorizontalScroll(0 - clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelRight(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel right by {0} clicks", clicks));
+                inputSimulator.Mouse.HorizontalScroll(clicks);
             }
             catch (Exception exception)
             {

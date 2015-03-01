@@ -12,7 +12,6 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
-using Notification = Microsoft.Practices.Prism.Interactivity.InteractionRequest.Notification;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -495,8 +494,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        nextClickAction = (Point point) =>
+                        nextClickAction = point =>
                         {
+                            //var nextClickActionCopy = nextClickAction; //Copy before nextClickAction reference is changed/nulled
+                            //repeatLastMouseAction = () => nextClickActionCopy(point);
+
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                             outputService.LeftButtonClick(point);
                             SelectionMode = SelectionModes.Key;

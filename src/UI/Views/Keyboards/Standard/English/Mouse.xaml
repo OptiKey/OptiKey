@@ -72,21 +72,21 @@
                       SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToTopAndLeft}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToTopAndLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToTop}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToTop}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToTopAndRight}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToTopAndRight}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="16" 
@@ -112,7 +112,7 @@
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToLeft}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="2"
@@ -123,7 +123,7 @@
                       SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToRight}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToRight}" />
             </controls:Key.Value>
         </controls:Key>
 
@@ -149,21 +149,21 @@
                       SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToBottomAndLeft}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToBottomAndLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToBottom}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToBottom}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollToBottomAndRight}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToBottomAndRight}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="16" 
@@ -178,9 +178,9 @@
         </controls:Key>
         
         <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="6"
-                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=ScrollAmountInClicks, StringFormat={}Scroll by&#x0a;{0} clicks}">
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, StringFormat={}Scroll by&#x0a;{0} clicks}">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollAmountInClicks}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollAmountInClicks}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

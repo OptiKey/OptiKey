@@ -213,7 +213,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug(string.Format("Generating a left mouse click at point '{0}'", point));
             publishService.MouseMouseToPoint(point);
-            publishService.LeftButtonClick();
+            publishService.LeftMouseButtonClick();
         }
 
         #endregion

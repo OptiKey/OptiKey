@@ -177,7 +177,7 @@
       <Value Profile="(Default)">600</Value>
     </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">25</Value>
     </Setting>
     <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
@@ -197,8 +197,8 @@
     <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:03</Value>
     </Setting>
-    <Setting Name="ScrollAmountInClicks" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="MouseScrollAmountInClicks" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="MouseClickSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MouseClick1.wav</Value>
@@ -214,6 +214,12 @@
     </Setting>
     <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">150</Value>
+    </Setting>
+    <Setting Name="MouseZoom" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
