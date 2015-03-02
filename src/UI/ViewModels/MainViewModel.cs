@@ -42,7 +42,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
-        private Action<Point> nextClickAction;
+        private Action<Point> nextPointSelectionAction;
 
         #endregion
 
@@ -270,8 +270,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (PointSelection != null)
                     {
-                        Log.Debug(string.Format("Firing PointSelection event with Point '{0}'", value.Point));
+                        
                         PointSelection(this, value.Point);
+
+                        if (nextPointSelectionAction != null)
+                        {
+                            Log.Debug(string.Format("Executing nextPointSelectionAction delegate with point '{0}'", value.Point));
+                            nextPointSelectionAction(value.Point);
+                        }
                     }
                 }
             };
@@ -295,10 +301,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else if (SelectionMode == SelectionModes.Point)
                 {
-                    if (nextClickAction != null)
-                    {
-                        nextClickAction(points.First());
-                    }
+                    //SelectionResult event has no real meaning when dealing with point selection
                 }
             };
 
@@ -494,12 +497,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseDoubleLeftClick:
                         Log.Debug("Mouse double left click selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile);
                             outputService.LeftMouseButtonDoubleClick(point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
@@ -510,27 +513,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
-                            //var nextClickActionCopy = nextClickAction; //Copy before nextClickAction reference is changed/nulled
+                            //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
                             //repeatLastMouseAction = () => nextClickActionCopy(point);
 
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                             outputService.LeftMouseButtonClick(point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
-
+                        
                     case FunctionKeys.MouseRightClick:
                         Log.Debug("Mouse right click selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                             outputService.RightMouseButtonClick(point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
@@ -543,15 +546,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Settings.Default.MouseScrollAmountInClicks = 3;
                                 break;
 
-                            case 5:
+                            case 3:
                                 Settings.Default.MouseScrollAmountInClicks = 5;
                                 break;
 
-                            case 10:
+                            case 5:
                                 Settings.Default.MouseScrollAmountInClicks = 10;
                                 break;
 
-                            case 25:
+                            case 10:
                                 Settings.Default.MouseScrollAmountInClicks = 25;
                                 break;
 
@@ -563,102 +566,98 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseScrollToBottom:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToBottomAndLeft:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelDownAndLeft(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToBottomAndRight:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelDownAndRight(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToLeft:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToRight:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToTop:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToTopAndLeft:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;
 
                     case FunctionKeys.MouseScrollToTopAndRight:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextClickAction = point =>
+                        nextPointSelectionAction = point =>
                         {
                             audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
                             outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, point);
                             SelectionMode = SelectionModes.Key;
-                            nextClickAction = null;
+                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
-                        break;
-
-                    case FunctionKeys.MouseZoom:
-                        throw new NotImplementedException();
                         break;
 
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:

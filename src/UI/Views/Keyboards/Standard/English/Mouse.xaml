@@ -91,11 +91,11 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="16" 
                       Grid.ColumnSpan="4" Grid.RowSpan="2"
-                      SymbolGeometry="{StaticResource MouseZoomIcon}"
-                      Text="ZOOM?"
+                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                      Text="MAGNIFIER"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseZoom}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="20" 

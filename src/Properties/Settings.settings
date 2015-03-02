@@ -215,7 +215,7 @@
     <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">150</Value>
     </Setting>
-    <Setting Name="MouseZoom" Type="System.Boolean" Scope="User">
+    <Setting Name="MouseMagnifier" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Setting" Type="System.String" Scope="User">

@@ -69,7 +69,7 @@
         MouseScrollToTop,
         MouseScrollToTopAndLeft,
         MouseScrollToTopAndRight,
-        MouseZoom,
+        MouseMagnifier,
         MoveAndResizeAdjustmentAmount,
         MoveToBottom,
         MoveToBottomAndLeft,

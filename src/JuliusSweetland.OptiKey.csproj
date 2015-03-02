@@ -471,7 +471,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseScroll.svg" />
     <None Include="Resources\Icons\SVG Source Files\SimulateKeyStrokes.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MouseZoom.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMagnifier.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseZoomIn.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />

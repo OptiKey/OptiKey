@@ -23,9 +23,9 @@ Icons
   Maximise Size icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Menu icon: Menu by Jamison Wieser from the Noun Project (thenounproject.com)
   More icon: Dots by Alex S. Lakas from the Noun Project (thenounproject.com)
-  Mouse drag icon from Move by TukTuk Design from the Noun Project (thenounproject.com) 
   Mouse, mouse left click, mouse left double click, mouse right click icons modified from: Mouse by Rediffusion from the Noun Project (thenounproject.com)
-  Mouse zoom icon modified from: Zoom by José Campos
+  Mouse drag icon from Move by TukTuk Design from the Noun Project (thenounproject.com) 
+  Mouse magnifier icon modified from: Zoom by José Campos
   Mouse zoom in icon: Zoom by José Campos
   Mouse zoom out icon: Zoom-out by José Campos
   Move, Expand and Resize icons modified from: Play by Mateo Zlatar from the Noun Project (thenounproject.com)

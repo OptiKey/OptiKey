@@ -951,12 +951,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MouseZoom {
+        public bool MouseMagnifier {
             get {
-                return ((bool)(this["MouseZoom"]));
+                return ((bool)(this["MouseMagnifier"]));
             }
             set {
-                this["MouseZoom"] = value;
+                this["MouseMagnifier"] = value;
             }
         }
         
