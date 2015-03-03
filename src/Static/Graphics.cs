@@ -15,6 +15,11 @@ namespace JuliusSweetland.OptiKey.Static
                 return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSX);
             }
         }
+        
+        public static int ScalingFactorX
+        {
+            get { return DpiX / 96; }
+        }
 
         public static int DpiY
         {
@@ -24,6 +29,11 @@ namespace JuliusSweetland.OptiKey.Static
                 var desktop = g.GetHdc();
                 return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
             }
+        }
+        
+        public static int ScalingFactorY
+        {
+            get { return DpiY / 96; }
         }
     }
 }
