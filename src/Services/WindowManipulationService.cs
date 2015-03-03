@@ -41,8 +41,8 @@ namespace JuliusSweetland.OptiKey.Services
             Func<WindowState> getWindowStateSetting,
             Action<WindowState> setWindowStateSetting,
             Settings settings,
-            bool autoLoadState = false,
-            bool saveSettingsOnClose = false)
+            bool loadSavedState = false,
+            bool saveStateOnClose = false)
         {
             this.window = window;
             this.getWindowTopSetting = getWindowTopSetting;
@@ -57,12 +57,12 @@ namespace JuliusSweetland.OptiKey.Services
             this.setWindowStateSetting = setWindowStateSetting;
             this.settings = settings;
             
-            if(autoLoadState)
+            if(loadSavedState)
             {
                 LoadState();
             }
             
-            if(saveSettingsOnClose)
+            if(saveStateOnClose)
             {
                 window.Closing += (sender, args) => SaveState());
             }
