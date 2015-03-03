@@ -216,14 +216,14 @@ namespace JuliusSweetland.OptiKey.Services
                 var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
                 var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
 
-                var distanceFromLeftBoundary = ((1d - horizontalPercentage) / 2d) * screenWidth;
-                var distanceFromTopBoundary = ((1d - verticalPercentage) / 2d) * screenHeight;
+                var distanceFromLeftBoundary = ((1d - (horizontalPercentage / 100)) / 2d) * screenWidth;
+                var distanceFromTopBoundary = ((1d - (verticalPercentage / 100)) / 2d) * screenHeight;
 
                 window.Left = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
                 window.Top = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
 
-                var width = horizontalPercentage * screenWidth;
-                var height = verticalPercentage * screenHeight;
+                var width = (horizontalPercentage / 100) * screenWidth;
+                var height = (verticalPercentage / 100) * screenHeight;
 
                 window.Width = width;
                 window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
