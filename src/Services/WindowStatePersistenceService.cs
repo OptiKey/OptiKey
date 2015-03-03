@@ -112,43 +112,43 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void SizeToFit()
         {
-            var virtualScreenHeightInDpi = SystemParameters.VirtualScreenHeight / Graphics.ScalingFactorY;
-            if (windowHeight > virtualScreenHeightInDpi)
+            var virtualScreenHeightInDip = SystemParameters.VirtualScreenHeight / Graphics.DipScalingFactorY;
+            if (windowHeight > virtualScreenHeightInDip)
             {
-                windowHeight = virtualScreenHeightInDpi;
+                windowHeight = virtualScreenHeightInDip;
             }
 
-            var virtualScreenWidthInDpi = SystemParameters.VirtualScreenWidth / Graphics.ScalingFactorX;
-            if (windowWidth > virtualScreenWidthInDpi)
+            var virtualScreenWidthInDip = SystemParameters.VirtualScreenWidth / Graphics.DipScalingFactorX;
+            if (windowWidth > virtualScreenWidthInDip)
             {
-                windowWidth = virtualScreenWidthInDpi;
+                windowWidth = virtualScreenWidthInDip;
             }
         }
 
         public void MoveIntoView()
         {
-            var virtualScreenTopInDpi = SystemParameters.VirtualScreenTop / Graphics.ScalingFactorY;
-            var virtualScreenHeightInDpi = SystemParameters.VirtualScreenHeight / Graphics.ScalingFactorY;
+            var virtualScreenTopInDip = SystemParameters.VirtualScreenTop / Graphics.DipScalingFactorY;
+            var virtualScreenHeightInDip = SystemParameters.VirtualScreenHeight / Graphics.DipScalingFactorY;
             
-            if (windowTop < virtualScreenTopInDpi)
+            if (windowTop < virtualScreenTopInDip)
             {
-                windowTop = virtualScreenTopInDpi;
+                windowTop = virtualScreenTopInDip;
             }
-            else if (windowTop + windowHeight > virtualScreenTopInDpi + virtualScreenHeightInDpi)
+            else if (windowTop + windowHeight > virtualScreenTopInDip + virtualScreenHeightInDip)
             {
-                windowTop = virtualScreenTopInDpi + virtualScreenHeightInDpit - windowHeight;
+                windowTop = virtualScreenTopInDip + virtualScreenHeightInDip - windowHeight;
             }
 
-            var virtualScreenLeftInDpi = SystemParameters.VirtualScreenLeft / Graphics.ScalingFactorX;
-            var virtualScreenWidthInDpi = SystemParameters.VirtualScreenWidth / Graphics.ScalingFactorX;
+            var virtualScreenLeftInDip = SystemParameters.VirtualScreenLeft / Graphics.DipScalingFactorX;
+            var virtualScreenWidthInDip = SystemParameters.VirtualScreenWidth / Graphics.DipScalingFactorX;
 
-            if (windowLeft < virtualScreenLeftInDpi)
+            if (windowLeft < virtualScreenLeftInDip)
             {
-                windowLeft = virtualScreenLeftInDpi;
+                windowLeft = virtualScreenLeftInDip;
             }
-            else if (windowLeft + windowWidth > virtualScreenLeftInDpi + virtualScreenWidthInDpi)
+            else if (windowLeft + windowWidth > virtualScreenLeftInDip + virtualScreenWidthInDip)
             {
-                windowLeft = virtualScreenLeftInDpi + virtualScreenWidthInDpi - windowWidth;
+                windowLeft = virtualScreenLeftInDip + virtualScreenWidthInDip - windowWidth;
             }
         }
 
