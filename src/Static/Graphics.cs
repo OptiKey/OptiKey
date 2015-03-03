@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Static
             }
         }
         
-        public static double ScalingFactorX
+        public static double DipScalingFactorX
         {
             get { return (double)DpiX / (double)96; }
         }
@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Static
             }
         }
         
-        public static double ScalingFactorY
+        public static double DipScalingFactorY
         {
             get { return (double)DpiY / (double)96; }
         }
