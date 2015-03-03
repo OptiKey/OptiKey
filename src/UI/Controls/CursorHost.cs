@@ -165,7 +165,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 //N.B. Offsets are in the WPF coordinate system, so we now need to compare everything in that system
                 //DIPs = pixels / (DPI/96.0) from https://msdn.microsoft.com/en-us/library/windows/desktop/dd371316(v=vs.85).aspx / https://msdn.microsoft.com/en-us/library/windows/desktop/ff684173(v=vs.85).aspx
-                var dpiPoint = new Point(((double)pointCopy.X / ((double)Graphics.DpiX / (double)96)), ((double)pointCopy.Y / ((double)Graphics.DpiY / (double)96)));
+                var dpiPoint = new Point((pointCopy.X / Graphics.ScalingFactorX), (pointCopy.Y / Graphics.ScalingFactorY));
 
                 bool cursorPointsToLeft;
                 bool cursorPointsToTop;
