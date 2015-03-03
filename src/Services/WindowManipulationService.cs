@@ -7,13 +7,52 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class WindowManipulationService : IWindowManipulationService
     {
+        #region Private Member Vars
+
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        
+        private readonly Func<double> getWindowTopSetting;
+        private readonly Action<double> setWindowTopSetting;
+        private readonly Func<double> getWindowLeftSetting;
+        private readonly Action<double> setWindowLeftSetting;
+        private readonly Func<double> getWindowHeightSetting;
+        private readonly Action<double> setWindowHeightSetting;
+        private readonly Func<double> getWindowWidthSetting;
+        private readonly Action<double> setWindowWidthSetting;
+        private readonly Func<WindowState> getWindowStateSetting;
+        private readonly Action<WindowState> setWindowStateSetting;
+        private readonly Settings settings;
+
+        #endregion
 
         private readonly Window window;
 
-        public WindowManipulationService(Window window)
+        public WindowManipulationService(
+            Window window,
+            Func<double> getWindowTopSetting,
+            Action<double> setWindowTopSetting,
+            Func<double> getWindowLeftSetting,
+            Action<double> setWindowLeftSetting,
+            Func<double> getWindowHeightSetting,
+            Action<double> setWindowHeightSetting,
+            Func<double> getWindowWidthSetting,
+            Action<double> setWindowWidthSetting,
+            Func<WindowState> getWindowStateSetting,
+            Action<WindowState> setWindowStateSetting,
+            Settings settings)
         {
             this.window = window;
+            this.getWindowTopSetting = getWindowTopSetting;
+            this.setWindowTopSetting = setWindowTopSetting;
+            this.getWindowLeftSetting = getWindowLeftSetting;
+            this.setWindowLeftSetting = setWindowLeftSetting;
+            this.getWindowHeightSetting = getWindowHeightSetting;
+            this.setWindowHeightSetting = setWindowHeightSetting;
+            this.getWindowWidthSetting = getWindowWidthSetting;
+            this.setWindowWidthSetting = setWindowWidthSetting;
+            this.getWindowStateSetting = getWindowStateSetting;
+            this.setWindowStateSetting = setWindowStateSetting;
+            this.settings = settings;
         }
 
         public event EventHandler<Exception> Error;
@@ -168,6 +207,52 @@ namespace JuliusSweetland.OptiKey.Services
         {
             ExpandToTop(pixels);
             ExpandToRight(pixels);
+        }
+        
+        public void LoadState()
+        {
+            var windowTop = getWindowTopSetting();
+            var windowLeft = getWindowLeftSetting();
+            var windowHeight = getWindowHeightSetting();
+            var windowWidth = getWindowWidthSetting();
+            var windowState = getWindowStateSetting();
+
+            var virtualScreenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop));
+            var virtualScreenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight));
+
+            //Coerce window height - cannot be taller than virtual screen height
+            var virtualScreenHeight = virtualScreenBottomRightInWpfCoords.Y - virtualScreenTopLeftInWpfCoords.Y;
+            if (windowHeight > virtualScreenHeight)
+            {
+                windowHeight = virtualScreenHeight;
+            }
+
+            //Coerce window width - cannot be wider than virtual screen width
+            var virtualScreenWidth = virtualScreenBottomRightInWpfCoords.X - virtualScreenTopLeftInWpfCoords.X;
+            if (windowWidth > virtualScreenWidth)
+            {
+                windowWidth = virtualScreenWidth;
+            }
+            
+            //Coerce vertical position - cannot be outside virtual screen
+            if (windowTop < virtualScreenTopLeftInWpfCoords.Y)
+            {
+                windowTop = virtualScreenTopLeftInWpfCoords.Y;
+            }
+            else if (windowTop + windowHeight > virtualScreenBottomRightInWpfCoords.Y)
+            {
+                windowTop = virtualScreenBottomRightInWpfCoords.Y - windowHeight;
+            }
+
+            //Coerce horizontal position - cannot be outside virtual screen
+            if (windowLeft < virtualScreenTopLeftInWpfCoords.X)
+            {
+                windowLeft = virtualScreenTopLeftInWpfCoords.X;
+            }
+            else if (windowLeft + windowWidth > virtualScreenBottomRightInWpfCoords.Y)
+            {
+                windowLeft = virtualScreenBottomRightInWpfCoords.Y - windowWidth;
+            }
         }
 
         public void Maximise()
@@ -372,6 +457,20 @@ namespace JuliusSweetland.OptiKey.Services
         public void Restore()
         {
             window.WindowState = WindowState.Normal;
+        }
+        
+        public void SaveState()
+        {
+            if (windowState != WindowState.Minimized)
+            {
+                setWindowTopSetting(window.Top);
+                setWindowLeftSetting(window.Left);
+                setWindowHeightSetting(window.Height);
+                setWindowWidthSetting(window.Width);
+                setWindowStateSetting(window.State);
+
+                settings.Save();
+            }
         }
 
         public void ShrinkFromBottom(double pixels)
