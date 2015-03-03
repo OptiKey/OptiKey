@@ -716,71 +716,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.WindowState ManagementConsoleWindowState {
-            get {
-                return ((global::System.Windows.WindowState)(this["ManagementConsoleWindowState"]));
-            }
-            set {
-                this["ManagementConsoleWindowState"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowHeight {
-            get {
-                return ((double)(this["ManagementConsoleWindowHeight"]));
-            }
-            set {
-                this["ManagementConsoleWindowHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowLeft {
-            get {
-                return ((double)(this["ManagementConsoleWindowLeft"]));
-            }
-            set {
-                this["ManagementConsoleWindowLeft"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowTop {
-            get {
-                return ((double)(this["ManagementConsoleWindowTop"]));
-            }
-            set {
-                this["ManagementConsoleWindowTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("600")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowWidth {
-            get {
-                return ((double)(this["ManagementConsoleWindowWidth"]));
-            }
-            set {
-                this["ManagementConsoleWindowWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("25")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int MoveAndResizeAdjustmentAmountInPixels {
@@ -969,6 +904,58 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["Setting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MagnifyHorizontalPixels {
+            get {
+                return ((int)(this["MagnifyHorizontalPixels"]));
+            }
+            set {
+                this["MagnifyHorizontalPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("108")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MagnifyVerticalPixels {
+            get {
+                return ((int)(this["MagnifyVerticalPixels"]));
+            }
+            set {
+                this["MagnifyVerticalPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifyWindowFillHorizontalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifyWindowFillHorizontalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifyWindowFillHorizontalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifyWindowFillVerticalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifyWindowFillVerticalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifyWindowFillVerticalPercentageOfScreen"] = value;
             }
         }
     }

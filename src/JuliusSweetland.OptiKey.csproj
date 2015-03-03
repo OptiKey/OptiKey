@@ -202,6 +202,7 @@
     <Compile Include="Models\DictionaryEntryAndState.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Models\NotificationWithMagnificationArgs.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
@@ -209,8 +210,8 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
-    <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
+    <Compile Include="Services\IWindowStateService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
@@ -243,13 +244,12 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
-    <Compile Include="Services\WindowManipulationService.cs" />
+    <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
-    <Compile Include="Services\WindowStatePersistenceService.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -265,6 +265,7 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\MagnifyWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
@@ -382,6 +383,9 @@
     </Compile>
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\MagnifyWindow.xaml.cs">
+      <DependentUpon>MagnifyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
@@ -706,6 +710,10 @@
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\MagnifyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

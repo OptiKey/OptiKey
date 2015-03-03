@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class WindowManipulationService : IWindowManipulationService, INotifyPropertyChanged
+    public class WindowStateService : IWindowStateService, INotifyPropertyChanged
     {
         #region Private Member Vars
 
@@ -28,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
         
-        public WindowManipulationService(
+        internal WindowStateService(
             Window window,
             Func<double> getWindowTopSetting,
             Action<double> setWindowTopSetting,
@@ -64,7 +67,7 @@ namespace JuliusSweetland.OptiKey.Services
             
             if(saveStateOnClose)
             {
-                window.Closing += (sender, args) => SaveState());
+                window.Closing += (sender, args) => SaveState();
             }
         }
         
@@ -118,43 +121,6 @@ namespace JuliusSweetland.OptiKey.Services
             ExpandToRight(pixels);
         }
         
-        public void ExpandToFillPercentageOfScreen(double horizontalPercentage, double verticalPercentage)
-        {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
-
-            try
-            {
-                var screen = window.GetScreen();
-                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
-                var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
-                
-                var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
-                var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
-                
-                var distanceFromLeftBoundary = ((1d - horizontalPercentage) / 2d) * screenWidth;
-                var distanceFromTopBoundary = ((1d - verticalPercentage) / 2d) * screenHeight;
-                
-                window.Left = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
-                window.Top = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
-                
-                var width = horizontalPercentage * screenWidth;
-                var height = verticalPercentage * screenHeight;
-                
-                window.Width = width;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                
-                window.Height = height;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Height property out of sync with the ActualHeight
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinWHeight - not doing this leaves the Height property out of sync with the ActualHeight
-                
-            }
-            catch (Exception ex)
-            {
-                PublishError(this, ex);
-            }
-        }
-
         public void ExpandToLeft(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
@@ -236,6 +202,43 @@ namespace JuliusSweetland.OptiKey.Services
             ExpandToTop(pixels);
             ExpandToRight(pixels);
         }
+
+        public void FillPercentageOfScreen(double horizontalPercentage, double verticalPercentage)
+        {
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
+
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
+
+                var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
+                var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
+
+                var distanceFromLeftBoundary = ((1d - horizontalPercentage) / 2d) * screenWidth;
+                var distanceFromTopBoundary = ((1d - verticalPercentage) / 2d) * screenHeight;
+
+                window.Left = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
+                window.Top = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
+
+                var width = horizontalPercentage * screenWidth;
+                var height = verticalPercentage * screenHeight;
+
+                window.Width = width;
+                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
+                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
+
+                window.Height = height;
+                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Height property out of sync with the ActualHeight
+                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinWHeight - not doing this leaves the Height property out of sync with the ActualHeight
+
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
         
         public void LoadState()
         {
@@ -245,41 +248,37 @@ namespace JuliusSweetland.OptiKey.Services
             var windowWidth = getWindowWidthSetting();
             var windowState = getWindowStateSetting();
 
-            var virtualScreenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop));
-            var virtualScreenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight));
-
             //Coerce window height - cannot be taller than virtual screen height
-            var virtualScreenHeight = virtualScreenBottomRightInWpfCoords.Y - virtualScreenTopLeftInWpfCoords.Y;
-            if (windowHeight > virtualScreenHeight)
+
+            if (windowHeight > SystemParameters.VirtualScreenHeight) //N.B. Virtual screen height/width are already is DIP
             {
-                windowHeight = virtualScreenHeight;
+                windowHeight = SystemParameters.VirtualScreenHeight;
             }
 
             //Coerce window width - cannot be wider than virtual screen width
-            var virtualScreenWidth = virtualScreenBottomRightInWpfCoords.X - virtualScreenTopLeftInWpfCoords.X;
-            if (windowWidth > virtualScreenWidth)
+            if (windowWidth > SystemParameters.VirtualScreenWidth)
             {
-                windowWidth = virtualScreenWidth;
+                windowWidth = SystemParameters.VirtualScreenWidth;
             }
             
             //Coerce vertical position - cannot be outside virtual screen
-            if (windowTop < virtualScreenTopLeftInWpfCoords.Y)
+            if (windowTop < SystemParameters.VirtualScreenTop)
             {
-                windowTop = virtualScreenTopLeftInWpfCoords.Y;
+                windowTop = SystemParameters.VirtualScreenTop;
             }
-            else if (windowTop + windowHeight > virtualScreenBottomRightInWpfCoords.Y)
+            else if ((windowTop + windowHeight) > (SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight))
             {
-                windowTop = virtualScreenBottomRightInWpfCoords.Y - windowHeight;
+                windowTop = (SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight) - windowHeight;
             }
 
             //Coerce horizontal position - cannot be outside virtual screen
-            if (windowLeft < virtualScreenTopLeftInWpfCoords.X)
+            if (windowLeft < SystemParameters.VirtualScreenLeft)
             {
-                windowLeft = virtualScreenTopLeftInWpfCoords.X;
+                windowLeft = SystemParameters.VirtualScreenLeft;
             }
-            else if (windowLeft + windowWidth > virtualScreenBottomRightInWpfCoords.Y)
+            else if ((windowLeft + windowWidth) > (SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth))
             {
-                windowLeft = virtualScreenBottomRightInWpfCoords.Y - windowWidth;
+                windowLeft = (SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth) - windowWidth;
             }
             
             window.Height = windowHeight;
@@ -499,13 +498,13 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void SaveState()
         {
-            if (windowState != WindowState.Minimized)
+            if (window.WindowState != WindowState.Minimized)
             {
                 setWindowTopSetting(window.Top);
                 setWindowLeftSetting(window.Left);
                 setWindowHeightSetting(window.Height);
                 setWindowWidthSetting(window.Width);
-                setWindowStateSetting(window.State);
+                setWindowStateSetting(window.WindowState);
 
                 settings.Save();
             }

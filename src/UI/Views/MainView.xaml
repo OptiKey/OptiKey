@@ -26,6 +26,9 @@
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
             <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
         </interactionRequest:InteractionRequestTrigger>
+        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding MagnifyRequest, Mode=OneWay}">
+            <triggerActions:MagnifyWindowAction />
+        </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 
     <Grid>

@@ -161,21 +161,6 @@
     <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
       <Value Profile="(Default)">Standard</Value>
     </Setting>
-    <Setting Name="ManagementConsoleWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowHeight" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">400</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowLeft" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowTop" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowWidth" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">600</Value>
-    </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
@@ -220,6 +205,18 @@
     </Setting>
     <Setting Name="Setting" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MagnifyHorizontalPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">192</Value>
+    </Setting>
+    <Setting Name="MagnifyVerticalPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">108</Value>
+    </Setting>
+    <Setting Name="MagnifyWindowFillHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="MagnifyWindowFillVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">80</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,6 +1,6 @@
 ﻿namespace JuliusSweetland.OptiKey.Services
 {
-    public interface IWindowManipulationService : INotifyErrors
+    public interface IWindowStateService : INotifyErrors
     {
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);

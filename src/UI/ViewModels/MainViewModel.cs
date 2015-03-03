@@ -24,18 +24,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IAudioService audioService;
         private readonly ICalibrationService calibrationService;
         private readonly IDictionaryService dictionaryService;
-        private readonly IPublishService publishService;
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
-        private readonly IWindowManipulationService mainWindowManipulationService;
+        private readonly IWindowStateService mainWindowManipulationService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
+        private readonly InteractionRequest<NotificationWithMagnificationArgs> magnifyRequest;
         
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
@@ -52,13 +52,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IAudioService audioService,
             ICalibrationService calibrationService,
             IDictionaryService dictionaryService,
-            IPublishService publishService,
             IKeyboardService keyboardService,
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
             IOutputService outputService,
-            IWindowManipulationService mainWindowManipulationService,
+            IWindowStateService mainWindowManipulationService,
             List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
@@ -66,7 +65,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.audioService = audioService;
             this.calibrationService = calibrationService;
             this.dictionaryService = dictionaryService;
-            this.publishService = publishService;
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
@@ -78,6 +76,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
+            magnifyRequest = new InteractionRequest<NotificationWithMagnificationArgs>();
             
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
@@ -202,6 +201,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
         public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
+        public InteractionRequest<NotificationWithMagnificationArgs> MagnifyRequest { get { return magnifyRequest; } }
         
         #endregion
 
@@ -515,13 +515,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse left click selected.");
                         nextPointSelectionAction = point =>
                         {
+                            Action<Point?> clickAction = clickPoint =>
+                            {
+                                if (clickPoint != null)
+                                {
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    outputService.LeftMouseButtonClick(clickPoint.Value);
+                                }
+
+                                SelectionMode = SelectionModes.Key;
+                                nextPointSelectionAction = null;
+                            };
+
+                            if (Settings.Default.MouseMagnifier)
+                            {
+                                MagnifyRequest.Raise(new NotificationWithMagnificationArgs
+                                {
+                                    Point = point,
+                                    FillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen,
+                                    FillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen,
+                                    HorizontalPixels = Settings.Default.MagnifyHorizontalPixels,
+                                    VerticalPixels = Settings.Default.MagnifyVerticalPixels,
+                                    OnSelectionAction = clickAction
+                                });
+                            }
                             //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
                             //repeatLastMouseAction = () => nextClickActionCopy(point);
-
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                            outputService.LeftMouseButtonClick(point);
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
                         };
                         SelectionMode = SelectionModes.Point;
                         break;

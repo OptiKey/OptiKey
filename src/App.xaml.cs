@@ -127,11 +127,18 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowManipulationService moveAndResizeService = new WindowManipulationService(mainWindow);
+                IWindowStateService moveAndResizeService = new WindowStateService(mainWindow,
+                    () => Settings.Default.MainWindowTop, d => Settings.Default.MainWindowTop = d,
+                    () => Settings.Default.MainWindowLeft, d => Settings.Default.MainWindowLeft = d,
+                    () => Settings.Default.MainWindowHeight, d => Settings.Default.MainWindowHeight = d,
+                    () => Settings.Default.MainWindowWidth, d => Settings.Default.MainWindowWidth = d,
+                    () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
+                    Settings.Default, true, true);
+                
                 notifyErrorServices.Add(moveAndResizeService);
 
                 var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, publishService, 
+                    audioService, calibrationService, dictionaryService, 
                     keyboardService, suggestionService, capturingStateManager,
                     inputService, outputService, moveAndResizeService, notifyErrorServices);
 

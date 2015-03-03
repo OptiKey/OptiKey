@@ -40,6 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             window = Window.GetWindow(this);
+
             Screen = window.GetScreen();
             
             var mainViewModel = DataContext as MainViewModel;
@@ -163,9 +164,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 && pointCopy.Y >= screenTopLeft.Y
                 && pointCopy.Y <= screenBottomRight.Y)
             {
-                //N.B. Offsets are in device independent pixels (DIP), but this Point is in pixels (the observable point sources are all in pixels)
-                //DIPs = pixel value / scaling factor (where scaling factor = (DPI setting / 96.0)) from https://msdn.microsoft.com/en-us/library/windows/desktop/dd371316(v=vs.85).aspx / https://msdn.microsoft.com/en-us/library/windows/desktop/ff684173(v=vs.85).aspx
-                var dpiPoint = new Point((pointCopy.X / Graphics.DipScalingFactorX), (pointCopy.Y / Graphics.DipScalingFactorY));
+                var dpiPoint = this.GetTransformFromDevice().Transform(pointCopy); //Offsets are in device independent pixels (DIP), but the incoming Point is in pixels
 
                 bool cursorPointsToLeft;
                 bool cursorPointsToTop;
