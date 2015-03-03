@@ -39,7 +39,9 @@ namespace JuliusSweetland.OptiKey.Services
             Action<double> setWindowWidthSetting,
             Func<WindowState> getWindowStateSetting,
             Action<WindowState> setWindowStateSetting,
-            Settings settings)
+            Settings settings,
+            bool autoLoadState = false,
+            bool saveSettingsOnClose = false)
         {
             this.window = window;
             this.getWindowTopSetting = getWindowTopSetting;
@@ -53,6 +55,16 @@ namespace JuliusSweetland.OptiKey.Services
             this.getWindowStateSetting = getWindowStateSetting;
             this.setWindowStateSetting = setWindowStateSetting;
             this.settings = settings;
+            
+            if(autoLoadState)
+            {
+                LoadState();
+            }
+            
+            if(saveSettingsOnClose)
+            {
+                window.Closing += (sender, args) => SaveState());
+            }
         }
 
         public event EventHandler<Exception> Error;
