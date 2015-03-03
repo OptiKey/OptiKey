@@ -253,6 +253,12 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 windowLeft = virtualScreenBottomRightInWpfCoords.Y - windowWidth;
             }
+            
+            window.Height = windowHeight;
+            window.Width = windowWidth;
+            window.Top = windowTop;
+            window.Left = windowLeft;
+            window.WindowState = windowState;
         }
 
         public void Maximise()
