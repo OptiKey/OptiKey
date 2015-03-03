@@ -112,35 +112,43 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void SizeToFit()
         {
-            if (windowHeight > SystemParameters.VirtualScreenHeight)
+            var virtualScreenHeightInDpi = SystemParameters.VirtualScreenHeight / Graphics.ScalingFactorY;
+            if (windowHeight > virtualScreenHeightInDpi)
             {
-                windowHeight = SystemParameters.VirtualScreenHeight;
+                windowHeight = virtualScreenHeightInDpi;
             }
 
-            if (windowWidth > SystemParameters.VirtualScreenWidth)
+            var virtualScreenWidthInDpi = SystemParameters.VirtualScreenWidth / Graphics.ScalingFactorX;
+            if (windowWidth > virtualScreenWidthInDpi)
             {
-                windowWidth = SystemParameters.VirtualScreenWidth;
+                windowWidth = virtualScreenWidthInDpi;
             }
         }
 
         public void MoveIntoView()
         {
-            if (windowTop < SystemParameters.VirtualScreenTop)
+            var virtualScreenTopInDpi = SystemParameters.VirtualScreenTop / Graphics.ScalingFactorY;
+            var virtualScreenHeightInDpi = SystemParameters.VirtualScreenHeight / Graphics.ScalingFactorY;
+            
+            if (windowTop < virtualScreenTopInDpi)
             {
-                windowTop = SystemParameters.VirtualScreenTop;
+                windowTop = virtualScreenTopInDpi;
             }
-            else if (windowTop + windowHeight > SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight)
+            else if (windowTop + windowHeight > virtualScreenTopInDpi + virtualScreenHeightInDpi)
             {
-                windowTop = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight - windowHeight;
+                windowTop = virtualScreenTopInDpi + virtualScreenHeightInDpit - windowHeight;
             }
 
-            if (windowLeft < SystemParameters.VirtualScreenLeft)
+            var virtualScreenLeftInDpi = SystemParameters.VirtualScreenLeft / Graphics.ScalingFactorX;
+            var virtualScreenWidthInDpi = SystemParameters.VirtualScreenWidth / Graphics.ScalingFactorX;
+
+            if (windowLeft < virtualScreenLeftInDpi)
             {
-                windowLeft = SystemParameters.VirtualScreenLeft;
+                windowLeft = virtualScreenLeftInDpi;
             }
-            else if (windowLeft + windowWidth > SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth)
+            else if (windowLeft + windowWidth > virtualScreenLeftInDpi + virtualScreenWidthInDpi)
             {
-                windowLeft = SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth - windowWidth;
+                windowLeft = virtualScreenLeftInDpi + virtualScreenWidthInDpi - windowWidth;
             }
         }
 
