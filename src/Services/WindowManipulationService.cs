@@ -5,12 +5,13 @@ using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class WindowManipulationService : IWindowManipulationService
+    public class WindowManipulationService : IWindowManipulationService, INotifyPropertyChanged
     {
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
+        private readonly Window window;
         private readonly Func<double> getWindowTopSetting;
         private readonly Action<double> setWindowTopSetting;
         private readonly Func<double> getWindowLeftSetting;
@@ -25,8 +26,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        private readonly Window window;
-
+        #region Ctor
+        
         public WindowManipulationService(
             Window window,
             Func<double> getWindowTopSetting,
@@ -66,8 +67,23 @@ namespace JuliusSweetland.OptiKey.Services
                 window.Closing += (sender, args) => SaveState());
             }
         }
+        
+        #endregion
+        
+        #region Events
 
         public event EventHandler<Exception> Error;
+
+        #endregion
+        
+        #region Properties
+        
+        public bool CanRestore { get { return window.WindowState != WindowState.Normal; } }
+        public bool CanMaximise { get { return window.WindowState != WindowState.Maximized; } }
+        
+        #endregion
+        
+        #region Public Methods
 
         public void ExpandToBottom(double pixels)
         {
@@ -276,6 +292,8 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             window.WindowState = WindowState.Maximized;
+            OnPropertyChanged("CanRestore");
+            OnPropertyChanged("CanMaximise");
         }
         
         public void MoveToBottom(double pixels)
@@ -475,6 +493,8 @@ namespace JuliusSweetland.OptiKey.Services
         public void Restore()
         {
             window.WindowState = WindowState.Normal;
+            OnPropertyChanged("CanRestore");
+            OnPropertyChanged("CanMaximise");
         }
         
         public void SaveState()
@@ -622,7 +642,9 @@ namespace JuliusSweetland.OptiKey.Services
                 window.Opacity = 0.1;
             }
         }
-
+        
+        #endregion
+        
         #region Publish Error
 
         private void PublishError(object sender, Exception ex)
@@ -632,6 +654,19 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Error(sender, ex);
             }
+        }
+
+        #endregion
+        
+        #region OnPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #endregion
