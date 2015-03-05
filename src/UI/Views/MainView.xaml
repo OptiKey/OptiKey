@@ -26,9 +26,6 @@
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
             <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
         </interactionRequest:InteractionRequestTrigger>
-        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding MagnifyRequest, Mode=OneWay}">
-            <triggerActions:MagnifyWindowAction />
-        </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 
     <Grid>
@@ -65,8 +62,12 @@
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
 
-        <controls:CursorHost IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
+        <controls:CursorPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
             <controls:Cursor IsHitTestVisible="False" />
-        </controls:CursorHost>
+        </controls:CursorPopup>
+
+        <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Yellow" Width="400" Height="400" />
+        </controls:MagnifyPopup>
     </Grid>
 </UserControl>

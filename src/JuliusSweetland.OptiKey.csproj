@@ -202,7 +202,6 @@
     <Compile Include="Models\DictionaryEntryAndState.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
-    <Compile Include="Models\NotificationWithMagnificationArgs.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
@@ -256,7 +255,8 @@
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
-    <Compile Include="UI\Controls\CursorHost.cs" />
+    <Compile Include="UI\Controls\MagnifyPopup.cs" />
+    <Compile Include="UI\Controls\CursorPopup.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
     <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\QuestionText.cs" />
@@ -265,7 +265,6 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
-    <Compile Include="UI\TriggerActions\MagnifyWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
@@ -383,9 +382,6 @@
     </Compile>
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Windows\MagnifyWindow.xaml.cs">
-      <DependentUpon>MagnifyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
@@ -710,10 +706,6 @@
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Windows\MagnifyWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

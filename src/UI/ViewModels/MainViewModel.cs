@@ -35,7 +35,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly InteractionRequest<Notification> notificationRequest; 
         private readonly InteractionRequest<Notification> errorNotificationRequest;
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
-        private readonly InteractionRequest<NotificationWithMagnificationArgs> magnifyRequest;
         
         private SelectionModes selectionMode;
         private Point? currentPositionPoint;
@@ -79,7 +78,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             notificationRequest = new InteractionRequest<Notification>();
             errorNotificationRequest = new InteractionRequest<Notification>();
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
-            magnifyRequest = new InteractionRequest<NotificationWithMagnificationArgs>();
             
             SelectionMode = SelectionModes.Key;
             Keyboard = new Alpha();
@@ -222,7 +220,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
         public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
-        public InteractionRequest<NotificationWithMagnificationArgs> MagnifyRequest { get { return magnifyRequest; } }
         
         #endregion
 
@@ -542,6 +539,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                                     outputService.LeftMouseButtonClick(clickPoint.Value);
+
+                                    //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
+                                    //repeatLastMouseAction = () => nextClickActionCopy(point);
                                 }
 
                                 //Reset and clean up
@@ -554,7 +554,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                             if (Settings.Default.MouseMagnifier)
                             {
-                                ShowCursor = false; //Ensure cursor is not showing when setting MagnifyAtPoint as the magnification popup takes a screenshot
+                                ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
+                                //1.This triggers a screen capture, which shouldn't have the cursor in it.
+                                //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
                                 MagnifiedPointSelectionAction = clickAction;
                                 MagnifyAtPoint = point;
                                 ShowCursor = true;
@@ -575,9 +577,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             nextPointSelectionAction = null;
-
-                            //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
-                            //repeatLastMouseAction = () => nextClickActionCopy(point);
                         };
                         SelectionMode = SelectionModes.Point;
                         ShowCursor = true;

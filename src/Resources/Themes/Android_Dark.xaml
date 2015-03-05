@@ -435,21 +435,21 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToTopRight}">
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToTopRight}">
                         <Setter Property="RenderTransform">
                             <Setter.Value>
                                 <ScaleTransform ScaleX="-1" />
                             </Setter.Value>
                         </Setter>
                     </DataTrigger>
-                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToBottomLeft}">
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToBottomLeft}">
                         <Setter Property="RenderTransform">
                             <Setter.Value>
                                 <ScaleTransform ScaleY="-1" />
                             </Setter.Value>
                         </Setter>
                     </DataTrigger>
-                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorHost}}" Value="{x:Static enums:CursorPointPositions.ToBottomRight}">
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToBottomRight}">
                         <Setter Property="RenderTransform">
                             <Setter.Value>
                                 <ScaleTransform ScaleX="-1" ScaleY="-1" />
@@ -462,7 +462,7 @@
             <Style x:Key="PointSelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
                 <Setter Property="Fill" Value="{StaticResource PointSelectionProgressBrush}" />
                 <Setter Property="MaxValue" Value="1" />
-                <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:CursorHost}}, Mode=OneWay}" />
+                <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:CursorPopup}}, Mode=OneWay}" />
                 <Style.Triggers>
                     <!--Progress is 0-->
                     <Trigger Property="Value" Value="0">

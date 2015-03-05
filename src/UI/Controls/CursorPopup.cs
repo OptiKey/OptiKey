@@ -5,14 +5,13 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using log4net;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
-    public class CursorHost : Popup
+    public class CursorPopup : Popup
     {
         #region Private member vars
 
@@ -29,7 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Ctor
 
-        public CursorHost()
+        public CursorPopup()
         {
             Loaded += OnLoaded;
         }
@@ -64,9 +63,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var mainViewModel = DataContext as MainViewModel;
 
             //IsOpen
-            Action<SelectionModes> calculateIsOpen = selectionMode => IsOpen = selectionMode == SelectionModes.Point;
-            mainViewModel.OnPropertyChanges(vm => vm.SelectionMode).Subscribe(calculateIsOpen);
-            calculateIsOpen(mainViewModel.SelectionMode);
+            Action<bool> calculateIsOpen = showCursor => IsOpen = showCursor;
+            mainViewModel.OnPropertyChanges(vm => vm.ShowCursor).Subscribe(calculateIsOpen);
+            calculateIsOpen(mainViewModel.ShowCursor);
             
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
@@ -144,7 +143,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CursorPointPositionProperty =
-            DependencyProperty.Register("CursorPointPosition", typeof(CursorPointPositions), typeof(CursorHost), new PropertyMetadata(default(CursorPointPositions)));
+            DependencyProperty.Register("CursorPointPosition", typeof(CursorPointPositions), typeof(CursorPopup), new PropertyMetadata(default(CursorPointPositions)));
 
         public CursorPointPositions CursorPointPosition
         {
@@ -153,7 +152,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty SelectionProgressProperty =
-            DependencyProperty.Register("SelectionProgress", typeof(double), typeof(CursorHost), new PropertyMetadata(default(double)));
+            DependencyProperty.Register("SelectionProgress", typeof(double), typeof(CursorPopup), new PropertyMetadata(default(double)));
 
         public double SelectionProgress
         {
