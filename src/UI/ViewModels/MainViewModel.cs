@@ -42,7 +42,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
+        private bool showCursor;
         private Action<Point> nextPointSelectionAction;
+        private Point? magnifyAtPoint;
+        private Action<Point?> magnifiedPointSelectionAction;
 
         #endregion
 
@@ -143,6 +146,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                 }
             }
+        }
+
+        public bool ShowCursor
+        {
+            get { return showCursor; }
+            set { SetProperty(ref showCursor, value); }
+        }
+
+        public Point? MagnifyAtPoint
+        {
+            get { return magnifyAtPoint; }
+            set { SetProperty(ref magnifyAtPoint, value); }
+        }
+
+        public Action<Point?> MagnifiedPointSelectionAction
+        {
+            get { return magnifiedPointSelectionAction; }
+            set { SetProperty(ref magnifiedPointSelectionAction, value); }
         }
 
         public Point? CurrentPositionPoint
@@ -523,26 +544,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.LeftMouseButtonClick(clickPoint.Value);
                                 }
 
+                                //Reset and clean up
                                 SelectionMode = SelectionModes.Key;
                                 nextPointSelectionAction = null;
+                                ShowCursor = false;
+                                MagnifyAtPoint = null;
+                                MagnifiedPointSelectionAction = null;                                
                             };
 
                             if (Settings.Default.MouseMagnifier)
                             {
-                                MagnifyRequest.Raise(new NotificationWithMagnificationArgs
-                                {
-                                    Point = point,
-                                    FillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen,
-                                    FillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen,
-                                    HorizontalPixels = Settings.Default.MagnifyHorizontalPixels,
-                                    VerticalPixels = Settings.Default.MagnifyVerticalPixels,
-                                    OnSelectionAction = clickAction
-                                });
+                                ShowCursor = false; //Ensure cursor is not showing when setting MagnifyAtPoint as the magnification popup takes a screenshot
+                                MagnifiedPointSelectionAction = clickAction;
+                                MagnifyAtPoint = point;
+                                ShowCursor = true;
+
+                                //MagnifyRequest.Raise(new NotificationWithMagnificationArgs
+                                //{
+                                //    Point = point,
+                                //    FillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen,
+                                //    FillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen,
+                                //    HorizontalPixels = Settings.Default.MagnifyHorizontalPixels,
+                                //    VerticalPixels = Settings.Default.MagnifyVerticalPixels,
+                                //    OnSelectionAction = clickAction
+                                //});
                             }
+                            else
+                            {
+                                clickAction(point);
+                            }
+
                             //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
                             //repeatLastMouseAction = () => nextClickActionCopy(point);
                         };
                         SelectionMode = SelectionModes.Point;
+                        ShowCursor = true;
                         break;
                         
                     case FunctionKeys.MouseRightClick:

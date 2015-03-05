@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using log4net;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -39,12 +40,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            window = Window.GetWindow(this);
+            //Apply and subscribe to cursor height setting changes
+            Action applyCursorHeight = () =>
+            {
+                MaxHeight = MinHeight = Height = Settings.Default.CursorHeight;
+                CalculatePosition();
+            };
+            Settings.Default.OnPropertyChanges(s => s.CursorHeight).Subscribe(_ => applyCursorHeight());
+            applyCursorHeight();
 
+            //Apply and subscribe to cursor width setting changes
+            Action applyCursorWidth = () =>
+            {
+                MaxWidth = MinWidth = Width = Settings.Default.CursorWidth;
+                CalculatePosition();
+            };
+            Settings.Default.OnPropertyChanges(s => s.CursorWidth).Subscribe(_ => applyCursorWidth());
+            applyCursorWidth();
+
+            //Get references to window, screen and mainViewModel
+            window = Window.GetWindow(this);
             Screen = window.GetScreen();
-            
             var mainViewModel = DataContext as MainViewModel;
-            
+
             //IsOpen
             Action<SelectionModes> calculateIsOpen = selectionMode => IsOpen = selectionMode == SelectionModes.Point;
             mainViewModel.OnPropertyChanges(vm => vm.SelectionMode).Subscribe(calculateIsOpen);
@@ -87,10 +105,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Log.Debug("Window's LocationChanged event detected.");
                     Screen = window.GetScreen();
                 });
-
-            //Re-calculate cursor host position on size changes
-            this.OnPropertyChanges<double>(ActualWidthProperty).Subscribe(_ => CalculatePosition());
-            this.OnPropertyChanges<double>(ActualHeightProperty).Subscribe(_ => CalculatePosition());
         }
 
         #endregion

@@ -65,13 +65,7 @@
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
 
-        <controls:CursorHost IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True"
-                             Width="{Binding Source={x:Static properties:Settings.Default}, Path=CursorWidth}" 
-                             MinWidth="{Binding Source={x:Static properties:Settings.Default}, Path=CursorWidth}"
-                             MaxWidth="{Binding Source={x:Static properties:Settings.Default}, Path=CursorWidth}" 
-                             MinHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
-                             Height="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}"
-                             MaxHeight="{Binding Source={x:Static properties:Settings.Default}, Path=CursorHeight}">
+        <controls:CursorHost IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
             <controls:Cursor IsHitTestVisible="False" />
         </controls:CursorHost>
     </Grid>
