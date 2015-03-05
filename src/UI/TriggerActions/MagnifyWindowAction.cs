@@ -21,8 +21,8 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
             {
                 var magnificationArgs = args.Context as NotificationWithMagnificationArgs;
 
-                var childWindow = new MagnifyWindow(
-                    magnificationArgs.Point, magnificationArgs.HorizontalPixels, magnificationArgs.VerticalPixels, magnificationArgs.OnSelectionAction);
+                var childWindow = new MagnifyWindow(magnificationArgs.Point, magnificationArgs.HorizontalPixels, 
+                    magnificationArgs.VerticalPixels, magnificationArgs.OnSelectionAction);
 
                 //Size the window to fill the configured horizontal/vertical percentages of the screen
                 var windowStateService = new WindowStateService(childWindow, null, null, null, null, null, null, null, null, null, null, null);

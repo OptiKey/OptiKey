@@ -574,6 +574,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 clickAction(point);
                             }
 
+                            nextPointSelectionAction = null;
+
                             //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
                             //repeatLastMouseAction = () => nextClickActionCopy(point);
                         };
