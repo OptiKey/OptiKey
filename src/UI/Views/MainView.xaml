@@ -67,7 +67,8 @@
         </controls:CursorPopup>
 
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Yellow" Width="400" Height="400" />
+            <!--<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Yellow" />-->
+            <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </controls:MagnifyPopup>
     </Grid>
 </UserControl>

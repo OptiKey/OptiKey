@@ -18,8 +18,20 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             var key = frameworkElement.TemplatedParent as Key;
                 
             EventHandler selectionHandler = (sender, args) => storyboard.Begin(frameworkElement);
-            frameworkElement.Loaded += (sender, args) => key.Selection += selectionHandler;
-            frameworkElement.Unloaded += (sender, args) => key.Selection -= selectionHandler;
+            frameworkElement.Loaded += (sender, args) =>
+            {
+                if (key != null)
+                {
+                    key.Selection += selectionHandler;
+                }
+            };
+            frameworkElement.Unloaded += (sender, args) =>
+            {
+                if (key != null)
+                {
+                    key.Selection -= selectionHandler;
+                }
+            };
         }
 
         public static void SetBeginAnimationOnKeySelectionEvent(DependencyObject element, Storyboard value)
