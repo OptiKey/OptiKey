@@ -14,8 +14,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 ms.Position = 0;
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                //ms.Seek(0, SeekOrigin.Begin); //This may not be necessary
-                bitmapImage.StreamSource = ms; //If this doesn't work try bitmapImage.StreamSource = new MemoryStream(ms.ToArray());
+                bitmapImage.StreamSource = ms;
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
                 return bitmapImage;
