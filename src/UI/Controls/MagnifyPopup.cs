@@ -127,16 +127,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void DisplayScaledScreenshot(Point point)
         {
-            var capture = CaptureScreenshot(point);
-            
-            //TODO:Display the System.Drawing.Bitmap somehow (presumably in a UIElement?)
-            //TODO:Alternatively is there a WPF way to capture screenshots that doesn't need the System.Drawing namespace?
-
-            //var bitmapImage = new BitmapImage();
-            //bitmapImage.StreamSource = new MemoryStream();
-            //var image = new Image();
-            //image.Source = new  ;
-            //this.Child = capture;
+            var bitmap = CaptureScreenshot(point);
+            Child = new Image {Source = bitmap.ToBitmapImage()};
         }
 
         private Bitmap CaptureScreenshot(Point point)
