@@ -65,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         mainViewModel.PointSelection -= pointSelectionHandler; //Only react to one PointSelection event
 
-                        Point? destinationPoint = null; //TODO - calculate destination point from sourceArea and point
+                        Point? destinationPoint = sourcePoint; //TODO - calculate destination point from sourceArea and point
                         
                         if (mainViewModel.MagnifiedPointSelectionAction != null)
                         {

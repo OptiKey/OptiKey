@@ -533,12 +533,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse left click selected.");
                         nextPointSelectionAction = point =>
                         {
-                            Action<Point?> clickAction = clickPoint =>
+                            Action<Point?> finalClickAction = finalPoint =>
                             {
-                                if (clickPoint != null)
+                                if (finalPoint != null)
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                    outputService.LeftMouseButtonClick(clickPoint.Value);
+                                    outputService.LeftMouseButtonClick(finalPoint.Value);
 
                                     //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
                                     //repeatLastMouseAction = () => nextClickActionCopy(point);
@@ -557,23 +557,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
                                 //1.This triggers a screen capture, which shouldn't have the cursor in it.
                                 //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
-                                MagnifiedPointSelectionAction = clickAction;
+                                MagnifiedPointSelectionAction = finalClickAction;
                                 MagnifyAtPoint = point;
                                 ShowCursor = true;
-
-                                //MagnifyRequest.Raise(new NotificationWithMagnificationArgs
-                                //{
-                                //    Point = point,
-                                //    FillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen,
-                                //    FillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen,
-                                //    HorizontalPixels = Settings.Default.MagnifyHorizontalPixels,
-                                //    VerticalPixels = Settings.Default.MagnifyVerticalPixels,
-                                //    OnSelectionAction = clickAction
-                                //});
                             }
                             else
                             {
-                                clickAction(point);
+                                finalClickAction(point);
                             }
 
                             nextPointSelectionAction = null;
