@@ -59,25 +59,25 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeight, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify horizontal pixels around selected point:" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source area - horizontal percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MagnifyHorizontalPixels, Mode=TwoWay}" />
+                                            Value="{Binding MagnifySourceAreaHorizontalPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnify number of vertical pixels around selected point:" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnify source area - vertical percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MagnifyVerticalPixels, Mode=TwoWay}" />
+                                            Value="{Binding MagnifySourceAreaVerticalPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Magnify fills horizontal percentage of screen:" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Magnifier fills horizontal percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyWindowFillHorizontalPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Magnify fills vertical percentage of screen:" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Magnifier fills vertical percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"

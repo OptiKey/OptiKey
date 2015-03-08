@@ -133,10 +133,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private Bitmap CaptureScreenshot(Point point)
         {
-            var captureWidth = (double)Settings.Default.MagnifyHorizontalPixels;
+            var captureWidth = (Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen / 100d) * screen.Bounds.Width;
             captureWidth.CoerceToUpperLimit(screen.Bounds.Width);
 
-            var captureHeight = (double)Settings.Default.MagnifyVerticalPixels;
+            var captureHeight = (Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen / 100d) * screen.Bounds.Height;
             captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
 
             var captureX = point.X - (captureWidth/2d);

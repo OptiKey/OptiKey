@@ -188,18 +188,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeight, value); }
         }
 
-        private int magnifyHorizontalPixels;
-        public int MagnifyHorizontalPixels
+        private double magnifySourceAreaHorizontalPercentageOfScreen;
+        public double MagnifySourceAreaHorizontalPercentageOfScreen
         {
-            get { return magnifyHorizontalPixels; }
-            set { SetProperty(ref magnifyHorizontalPixels, value); }
+            get { return magnifySourceAreaHorizontalPercentageOfScreen; }
+            set { SetProperty(ref magnifySourceAreaHorizontalPercentageOfScreen, value); }
         }
 
-        private int magnifyVerticalPixels;
-        public int MagnifyVerticalPixels
+        private double magnifySourceAreaVerticalPercentageOfScreen;
+        public double MagnifySourceAreaVerticalPercentageOfScreen
         {
-            get { return magnifyVerticalPixels; }
-            set { SetProperty(ref magnifyVerticalPixels, value); }
+            get { return magnifySourceAreaVerticalPercentageOfScreen; }
+            set { SetProperty(ref magnifySourceAreaVerticalPercentageOfScreen, value); }
         }
 
         private double magnifyWindowFillHorizontalPercentageOfScreen;
@@ -243,8 +243,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
             CursorWidth = Settings.Default.CursorWidth;
             CursorHeight = Settings.Default.CursorHeight;
-            MagnifyHorizontalPixels = Settings.Default.MagnifyHorizontalPixels;
-            MagnifyVerticalPixels = Settings.Default.MagnifyVerticalPixels;
+            MagnifySourceAreaHorizontalPercentageOfScreen = Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen;
+            MagnifySourceAreaVerticalPercentageOfScreen = Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen;
             MagnifyWindowFillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen;
             MagnifyWindowFillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen;
             KeyboardSet = Settings.Default.KeyboardSet;
@@ -261,8 +261,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
             Settings.Default.CursorWidth = CursorWidth;
             Settings.Default.CursorHeight = CursorHeight;
-            Settings.Default.MagnifyHorizontalPixels = MagnifyHorizontalPixels;
-            Settings.Default.MagnifyVerticalPixels = MagnifyVerticalPixels;
+            Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen = MagnifySourceAreaHorizontalPercentageOfScreen;
+            Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen = MagnifySourceAreaVerticalPercentageOfScreen;
             Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen = MagnifyWindowFillHorizontalPercentageOfScreen;
             Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen = MagnifyWindowFillVerticalPercentageOfScreen;
             Settings.Default.KeyboardSet = KeyboardSet;
