@@ -532,17 +532,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        nextPointSelectionAction = point =>
+                        nextPointSelectionAction = nextPoint =>
                         {
                             Action<Point?> finalClickAction = finalPoint =>
                             {
                                 if (finalPoint != null)
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                    outputService.LeftMouseButtonClick(finalPoint.Value);
-
-                                    var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
-                                    repeatLastMouseAction = () => nextClickActionCopy(point);
+                                    Action<Point> simulateClick = fp =>
+                                    {
+                                        audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                        outputService.LeftMouseButtonClick(fp);
+                                    };
+                                    
+                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                    
+                                    simulateClick(finalPoint.Value);
                                 }
 
                                 //Reset and clean up
@@ -559,16 +563,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 //1.This triggers a screen capture, which shouldn't have the cursor in it.
                                 //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
                                 MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = point;
+                                MagnifyAtPoint = nextPoint;
                                 ShowCursor = true;
                             }
                             else
                             {
-                                finalClickAction(point);
+                                finalClickAction(nextPoint);
                             }
 
                             nextPointSelectionAction = null;
                         };
+
                         SelectionMode = SelectionModes.Point;
                         ShowCursor = true;
                         break;
