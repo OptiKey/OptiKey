@@ -135,14 +135,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
 
             var captureX = point.X - (captureWidth / 2d);
-            captureX.CoerceToLowerLimit(screen.Bounds.Left);
+            captureX = captureX.CoerceToLowerLimit(screen.Bounds.Left);
             if (captureX + captureWidth > screen.Bounds.Right)
             {
                 captureX = screen.Bounds.Right - captureWidth;
             }
 
             var captureY = point.Y - (captureHeight / 2d);
-            captureY.CoerceToLowerLimit(screen.Bounds.Top);
+            captureY = captureY.CoerceToLowerLimit(screen.Bounds.Top);
             if (captureY + captureHeight > screen.Bounds.Bottom)
             {
                 captureY = screen.Bounds.Bottom - captureHeight;
