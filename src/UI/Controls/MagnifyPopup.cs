@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Utilities;
@@ -27,7 +24,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private Window window;
         private Screen screen;
-        private Canvas canvas;
         private Rect sourceArea;
         
         #endregion
@@ -48,7 +44,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //Get references to window, screen and mainViewModel
             window = Window.GetWindow(this);
             screen = window.GetScreen();
-            canvas = VisualAndLogicalTreeHelper.FindLogicalChildren<Canvas>(this).First();
             var mainViewModel = DataContext as MainViewModel;
 
             //Listen for MagnifyPoint changes
@@ -64,8 +59,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     pointSelectionHandler = (pointSelectionSender, point) =>
                     {
                         mainViewModel.PointSelection -= pointSelectionHandler; //Only react to one PointSelection event
-
-                        Point? destinationPoint = sourcePoint; //TODO - calculate destination point from sourceArea and point
+                        
+                        Point? destinationPoint = TranslateMagnifiedSelectionPoint(point);
                         
                         if (mainViewModel.MagnifiedPointSelectionAction != null)
                         {
@@ -123,7 +118,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #endregion
 
-        #region Take Screenshot At Point
+        #region Capture & Display Scaled Screenshot
 
         private void DisplayScaledScreenshot(Point point)
         {
@@ -139,7 +134,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var captureHeight = (Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen / 100d) * screen.Bounds.Height;
             captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
 
-            var captureX = point.X - (captureWidth/2d);
+            var captureX = point.X - (captureWidth / 2d);
             captureX.CoerceToLowerLimit(screen.Bounds.Left);
             if (captureX + captureWidth > screen.Bounds.Right)
             {
@@ -169,6 +164,36 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
 
             return bitmap;
+        }
+
+        #endregion
+
+        #region Translate Magnified Selection Point
+
+        private Point? TranslateMagnifiedSelectionPoint(Point point)
+        {
+            Point? translatedPoint = null;
+
+            var image = VisualAndLogicalTreeHelper.FindLogicalChildren<Image>(this).First();
+
+            var imagePoint = image.PointFromScreen(point); //Convert screen to point on image co-ord system
+            var imageWidth = image.ActualWidth;
+            var imageHeight = image.ActualHeight;
+            
+            if (imagePoint.X >= 0 && imagePoint.X < imageWidth
+                && imagePoint.Y >= 0 && imagePoint.Y < imageHeight)
+            {
+                //Point is within the magnified image
+                var sourceXRatio = imagePoint.X / imageWidth;
+                var sourceYRatio = imagePoint.Y / imageHeight;
+
+                var destX = (sourceXRatio * sourceArea.Width) + sourceArea.X;
+                var destY = (sourceYRatio * sourceArea.Height) + sourceArea.Y;
+
+                translatedPoint = new Point(destX, destY);
+            }
+
+            return translatedPoint;
         }
 
         #endregion

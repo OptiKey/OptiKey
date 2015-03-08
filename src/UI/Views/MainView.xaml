@@ -66,9 +66,6 @@
             <controls:Cursor IsHitTestVisible="False" />
         </controls:CursorPopup>
 
-        <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
-            <!--<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Yellow" />-->
-            <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        </controls:MagnifyPopup>
+        <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
     </Grid>
 </UserControl>
