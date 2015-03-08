@@ -45,6 +45,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
+        private Action repeatLastMouseAction;
 
         #endregion
 
@@ -540,8 +541,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile);
                                     outputService.LeftMouseButtonClick(finalPoint.Value);
 
-                                    //var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
-                                    //repeatLastMouseAction = () => nextClickActionCopy(point);
+                                    var nextClickActionCopy = nextPointSelectionAction; //Copy before nextPointSelectionAction reference is changed/nulled
+                                    repeatLastMouseAction = () => nextClickActionCopy(point);
                                 }
 
                                 //Reset and clean up
@@ -861,6 +862,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (suggestionService.SuggestionsPage > 0)
                         {
                             suggestionService.SuggestionsPage--;
+                        }
+                        break;
+
+                    case FunctionKeys.RepeatLastMouseAction:
+                        if (repeatLastMouseAction != null)
+                        {
+                            repeatLastMouseAction();
                         }
                         break;
 

@@ -101,10 +101,10 @@
         <controls:Key Grid.Row="0" Grid.Column="20" 
                       Grid.ColumnSpan="4" Grid.RowSpan="2"
                       SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
-                      Text="REPLAY LAST"
+                      Text="REPEAT LAST"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ReplayLastMouseAction}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
             </controls:Key.Value>
         </controls:Key>
 

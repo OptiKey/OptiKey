@@ -62,12 +62,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         
                         Point? destinationPoint = TranslateMagnifiedSelectionPoint(point);
                         
+                        IsOpen = false; //Close popup before clicking - destination point may be under the magnified image
+                        
                         if (mainViewModel.MagnifiedPointSelectionAction != null)
                         {
                             mainViewModel.MagnifiedPointSelectionAction(destinationPoint);
                         }
-
-                        IsOpen = false;
                     };
                     mainViewModel.PointSelection += pointSelectionHandler;
 

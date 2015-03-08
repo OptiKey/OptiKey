@@ -101,7 +101,7 @@
         PositionAndOpacityKeyboard,
         PreviousSuggestions,
         PrintScreen,
-        ReplayLastMouseAction,
+        RepeatLastMouseAction,
         RestoreSize,
         ScrollLock,
         SelectAll,
