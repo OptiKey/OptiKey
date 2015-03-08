@@ -27,7 +27,7 @@
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerLockOnRadius" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
+      <Value Profile="(Default)">25</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -195,10 +195,10 @@
       <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
     </Setting>
     <Setting Name="CursorWidth" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">90</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="MouseMagnifier" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
