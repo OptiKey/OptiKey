@@ -315,7 +315,90 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseDrag:
-                        throw new NotImplementedException();
+                        Log.Debug("Mouse drag selected.");
+                        nextPointSelectionAction = nextPoint1 =>
+                        {
+                            Action<Point?> finalClickAction1 = finalPoint1 =>
+                            {
+                                if (finalPoint1 != null)
+                                {
+                                    //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
+                                    //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
+                                    //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
+                                    //The workaround is to set the nextPointSelectionAction to a lambda which sets the NEXT
+                                    //nextPointSelectionAction. This means the immediate call to the lambda just sets up the
+                                    //delegate for the subsequent call.
+                                    nextPointSelectionAction = (_) => nextPointSelectionAction = nextPoint2 =>
+                                    {
+                                        Action<Point?> finalClickAction2 = finalPoint2 =>
+                                        {
+                                            if (finalPoint2 != null)
+                                            {
+                                                Action<Point, Point> simulateDrag = (fp1, fp2) =>
+                                                {
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    outputService.LeftMouseButtonDown(fp1);
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    outputService.LeftMouseButtonUp(fp2);
+                                                };
+
+                                                repeatLastMouseAction = () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
+                                                simulateDrag(finalPoint1.Value, finalPoint2.Value);
+                                            }
+
+                                            //Reset and clean up
+                                            SelectionMode = SelectionModes.Key;
+                                            nextPointSelectionAction = null;
+                                            ShowCursor = false;
+                                            MagnifyAtPoint = null;
+                                            MagnifiedPointSelectionAction = null;
+                                        };
+
+                                        if (Settings.Default.MouseMagnifier)
+                                        {
+                                            ShowCursor = false; //See MouseLeftClick case for explanation of this
+                                            MagnifiedPointSelectionAction = finalClickAction2;
+                                            MagnifyAtPoint = nextPoint2;
+                                            ShowCursor = true;
+                                        }
+                                        else
+                                        {
+                                            finalClickAction2(nextPoint2);
+                                        }
+
+                                        nextPointSelectionAction = null;
+                                    };
+                                }
+                                else
+                                {
+                                    //Reset and clean up if we are not continuing to 2nd point
+                                    SelectionMode = SelectionModes.Key;
+                                    nextPointSelectionAction = null;
+                                    ShowCursor = false;
+                                }
+
+                                //Reset and clean up
+                                MagnifyAtPoint = null;
+                                MagnifiedPointSelectionAction = null;
+                            };
+
+                            if (Settings.Default.MouseMagnifier)
+                            {
+                                ShowCursor = false; //See MouseLeftClick case for explanation of this
+                                MagnifiedPointSelectionAction = finalClickAction1;
+                                MagnifyAtPoint = nextPoint1;
+                                ShowCursor = true;
+                            }
+                            else
+                            {
+                                finalClickAction1(nextPoint1);
+                            }
+
+                            nextPointSelectionAction = null;
+                        };
+
+                        SelectionMode = SelectionModes.Point;
+                        ShowCursor = true;
                         break;
 
                     case FunctionKeys.MouseLeftClick:
@@ -333,7 +416,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -342,7 +424,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 nextPointSelectionAction = null;
                                 ShowCursor = false;
                                 MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
+                                MagnifiedPointSelectionAction = null;
                             };
 
                             if (Settings.Default.MouseMagnifier)
@@ -381,7 +463,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -453,7 +534,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -499,7 +579,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -545,7 +624,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -591,7 +669,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -637,7 +714,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -683,7 +759,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -729,7 +804,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
@@ -775,7 +849,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     };
                                     
                                     repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    
                                     simulateClick(finalPoint.Value);
                                 }
 
