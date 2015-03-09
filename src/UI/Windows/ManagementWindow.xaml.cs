@@ -11,8 +11,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
     /// </summary>
     public partial class ManagementWindow : MetroWindow
     {
-        private readonly WindowStateService windowStateService;
-
         public ManagementWindow(
             IAudioService audioService,
             IDictionaryService dictionaryService)

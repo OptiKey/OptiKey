@@ -27,10 +27,10 @@
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerLockOnRadius" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">25</Value>
+      <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
@@ -207,16 +207,16 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MagnifySourceAreaHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="MagnifySourceAreaVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="MagnifyWindowFillHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">80</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="MagnifyWindowFillVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">80</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
   </Settings>
 </SettingsFile>

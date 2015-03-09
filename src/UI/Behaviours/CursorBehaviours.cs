@@ -17,24 +17,28 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             var storyboard = dependencyPropertyChangedEventArgs.NewValue as Storyboard;
             var frameworkElement = dependencyObject as FrameworkElement;
             var cursor = frameworkElement.TemplatedParent as Cursor;
-            var mainViewModel = cursor.DataContext as MainViewModel;
 
-            EventHandler<Point> selectionHandler = (sender, point) => storyboard.Begin(frameworkElement);
-            frameworkElement.Loaded += (sender, args) =>
+            if (cursor != null)
             {
-                if (mainViewModel != null)
+                var mainViewModel = cursor.DataContext as MainViewModel;
+
+                EventHandler<Point> selectionHandler = (sender, point) => storyboard.Begin(frameworkElement);
+                frameworkElement.Loaded += (sender, args) =>
                 {
-                    mainViewModel.PointSelection += selectionHandler;
-                }
-            };
-            
-            frameworkElement.Unloaded += (sender, args) =>
-            {
-                if (mainViewModel != null)
+                    if (mainViewModel != null)
+                    {
+                        mainViewModel.PointSelection += selectionHandler;
+                    }
+                };
+
+                frameworkElement.Unloaded += (sender, args) =>
                 {
-                    mainViewModel.PointSelection -= selectionHandler;
-                }
-            };
+                    if (mainViewModel != null)
+                    {
+                        mainViewModel.PointSelection -= selectionHandler;
+                    }
+                };
+            }
         }
 
         public static void SetBeginAnimationOnPointSelectionEvent(DependencyObject element, Storyboard value)
