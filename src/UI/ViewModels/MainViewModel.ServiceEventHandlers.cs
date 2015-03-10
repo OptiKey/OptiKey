@@ -239,57 +239,57 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.DecreaseOpacity:
                         Log.Debug("Decreasing opacity.");
-                        mainWindowManipulationService.DecreaseOpacity();
+                        mainWindowStateService.DecreaseOpacity();
                         break;
 
                     case FunctionKeys.ExpandToBottom:
                         Log.Debug(string.Format("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndLeft:
                         Log.Debug(string.Format("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndRight:
                         Log.Debug(string.Format("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToLeft:
                         Log.Debug(string.Format("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToRight:
                         Log.Debug(string.Format("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTop:
                         Log.Debug(string.Format("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndLeft:
                         Log.Debug(string.Format("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndRight:
                         Log.Debug(string.Format("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.IncreaseOpacity:
                         Log.Debug("Increasing opacity.");
-                        mainWindowManipulationService.IncreaseOpacity();
+                        mainWindowStateService.IncreaseOpacity();
                         break;
 
                     case FunctionKeys.MaximiseSize:
                         Log.Debug("Maximising size.");
-                        mainWindowManipulationService.Maximise();
+                        mainWindowStateService.Maximise();
                         break;
                         
                     case FunctionKeys.MenuKeyboard:
@@ -304,193 +304,145 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseDoubleLeftClick:
                         Log.Debug("Mouse double left click selected.");
-                        nextPointSelectionAction = point =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile);
-                            outputService.LeftMouseButtonDoubleClick(point);
+                            if (finalPoint != null)
+                            {
+                                Action<Point> simulateClick = fp =>
+                                {
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    outputService.LeftMouseButtonClick(fp);
+                                };
+
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
+                            }
+
+                            //Reset and clean up
                             SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-                        SelectionMode = SelectionModes.Point;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseDrag:
                         Log.Debug("Mouse drag selected.");
-                        nextPointSelectionAction = nextPoint1 =>
+                        SetupFinalClickAction(finalPoint1 =>
                         {
-                            Action<Point?> finalClickAction1 = finalPoint1 =>
+                            if (finalPoint1 != null)
                             {
-                                if (finalPoint1 != null)
+                                //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
+                                //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
+                                //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
+                                //The workaround is to set the nextPointSelectionAction to a lambda which sets the NEXT
+                                //nextPointSelectionAction. This means the immediate call to the lambda just sets up the
+                                //delegate for the subsequent call.
+                                nextPointSelectionAction = (_) => nextPointSelectionAction = nextPoint2 =>
                                 {
-                                    //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
-                                    //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
-                                    //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
-                                    //The workaround is to set the nextPointSelectionAction to a lambda which sets the NEXT
-                                    //nextPointSelectionAction. This means the immediate call to the lambda just sets up the
-                                    //delegate for the subsequent call.
-                                    nextPointSelectionAction = (_) => nextPointSelectionAction = nextPoint2 =>
+                                    Action<Point?> finalClickAction2 = finalPoint2 =>
                                     {
-                                        Action<Point?> finalClickAction2 = finalPoint2 =>
+                                        if (finalPoint2 != null)
                                         {
-                                            if (finalPoint2 != null)
+                                            Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                             {
-                                                Action<Point, Point> simulateDrag = (fp1, fp2) =>
-                                                {
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                                    outputService.LeftMouseButtonDown(fp1);
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                                    outputService.LeftMouseButtonUp(fp2);
-                                                };
+                                                audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                outputService.LeftMouseButtonDown(fp1);
+                                                audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                outputService.LeftMouseButtonUp(fp2);
+                                            };
 
-                                                repeatLastMouseAction = () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
-                                                simulateDrag(finalPoint1.Value, finalPoint2.Value);
-                                            }
-
-                                            //Reset and clean up
-                                            SelectionMode = SelectionModes.Key;
-                                            nextPointSelectionAction = null;
-                                            ShowCursor = false;
-                                            MagnifyAtPoint = null;
-                                            MagnifiedPointSelectionAction = null;
-                                        };
-
-                                        if (Settings.Default.MouseMagnifier)
-                                        {
-                                            ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                            MagnifiedPointSelectionAction = finalClickAction2;
-                                            MagnifyAtPoint = nextPoint2;
-                                            ShowCursor = true;
-                                        }
-                                        else
-                                        {
-                                            finalClickAction2(nextPoint2);
+                                            repeatLastMouseAction =
+                                                () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
+                                            simulateDrag(finalPoint1.Value, finalPoint2.Value);
                                         }
 
+                                        //Reset and clean up
+                                        SelectionMode = SelectionModes.Key;
                                         nextPointSelectionAction = null;
+                                        ShowCursor = false;
+                                        MagnifyAtPoint = null;
+                                        MagnifiedPointSelectionAction = null;
                                     };
-                                }
-                                else
-                                {
-                                    //Reset and clean up if we are not continuing to 2nd point
-                                    SelectionMode = SelectionModes.Key;
+
+                                    if (Settings.Default.MouseMagnifier)
+                                    {
+                                        ShowCursor = false; //See MouseLeftClick case for explanation of this
+                                        MagnifiedPointSelectionAction = finalClickAction2;
+                                        MagnifyAtPoint = nextPoint2;
+                                        ShowCursor = true;
+                                    }
+                                    else
+                                    {
+                                        finalClickAction2(nextPoint2);
+                                    }
+
                                     nextPointSelectionAction = null;
-                                    ShowCursor = false;
-                                }
-
-                                //Reset and clean up
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction1;
-                                MagnifyAtPoint = nextPoint1;
-                                ShowCursor = true;
+                                };
                             }
                             else
                             {
-                                finalClickAction1(nextPoint1);
+                                //Reset and clean up if we are not continuing to 2nd point
+                                SelectionMode = SelectionModes.Key;
+                                nextPointSelectionAction = null;
+                                ShowCursor = false;
                             }
 
-                            nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            //Reset and clean up
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                        outputService.LeftMouseButtonClick(fp);
-                                    };
-                                    
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    outputService.LeftMouseButtonClick(fp);
+                                };
 
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
-                                //1.This triggers a screen capture, which shouldn't have the cursor in it.
-                                //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
                         
                     case FunctionKeys.MouseRightClick:
                         Log.Debug("Mouse right click selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                        outputService.RightMouseButtonClick(fp);
-                                    };
-                                    
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    outputService.RightMouseButtonClick(fp);
+                                };
 
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollAmountInClicks:
@@ -521,362 +473,204 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseScrollToBottom:
                         Log.Debug("Mouse scroll to bottom selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
-                                    
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
 
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToBottomAndLeft:
                         Log.Debug("Mouse scroll to bottom and left selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelDownAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
-                                    
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelDownAndLeft(
+                                        Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
 
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToBottomAndRight:
                         Log.Debug("Mouse scroll to bottom and right selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelDownAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
-                                    
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelDownAndRight(
+                                        Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
 
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToLeft:
                         Log.Debug("Mouse scroll to left selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
                                     
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
-
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;                                
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToRight:
                         Log.Debug("Mouse scroll to right selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
                                     
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
-
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;                                
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToTop:
                         Log.Debug("Mouse scroll to top selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
                                     
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
-
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;                                
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToTopAndLeft:
                         Log.Debug("Mouse scroll to top and left selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
                                     
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
-
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;                                
+                        });
                         break;
 
                     case FunctionKeys.MouseScrollToTopAndRight:
                         Log.Debug("Mouse scroll to top and right selected.");
-                        nextPointSelectionAction = nextPoint =>
+                        SetupFinalClickAction(finalPoint =>
                         {
-                            Action<Point?> finalClickAction = finalPoint =>
+                            if (finalPoint != null)
                             {
-                                if (finalPoint != null)
+                                Action<Point> simulateClick = fp =>
                                 {
-                                    Action<Point> simulateClick = fp =>
-                                    {
-                                        audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
-                                        outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
-                                    };
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
+                                };
                                     
-                                    repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                    simulateClick(finalPoint.Value);
-                                }
-
-                                //Reset and clean up
-                                SelectionMode = SelectionModes.Key;
-                                nextPointSelectionAction = null;
-                                ShowCursor = false;
-                                MagnifyAtPoint = null;
-                                MagnifiedPointSelectionAction = null;                                
-                            };
-
-                            if (Settings.Default.MouseMagnifier)
-                            {
-                                ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                MagnifiedPointSelectionAction = finalClickAction;
-                                MagnifyAtPoint = nextPoint;
-                                ShowCursor = true;
-                            }
-                            else
-                            {
-                                finalClickAction(nextPoint);
+                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
                             }
 
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
                             nextPointSelectionAction = null;
-                        };
-
-                        SelectionMode = SelectionModes.Point;
-                        ShowCursor = true;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;                                
+                        });
                         break;
 
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:
@@ -911,82 +705,82 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MoveToBottom:
                         Log.Debug(string.Format("Moving to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndLeft:
                         Log.Debug(string.Format("Moving to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndLeftBoundaries:
                         Log.Debug("Moving to bottom and left boundaries.");
-                        mainWindowManipulationService.MoveToBottomAndLeftBoundaries();
+                        mainWindowStateService.MoveToBottomAndLeftBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToBottomAndRight:
                         Log.Debug(string.Format("Moving to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToBottomAndRightBoundaries:
                         Log.Debug("Moving to bottom and right boundaries.");
-                        mainWindowManipulationService.MoveToBottomAndRightBoundaries();
+                        mainWindowStateService.MoveToBottomAndRightBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToBottomBoundary:
                         Log.Debug("Moving to bottom boundary.");
-                        mainWindowManipulationService.MoveToBottomBoundary();
+                        mainWindowStateService.MoveToBottomBoundary();
                         break;
                         
                     case FunctionKeys.MoveToLeft:
                         Log.Debug(string.Format("Moving to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToLeftBoundary:
                         Log.Debug("Moving to left boundary.");
-                        mainWindowManipulationService.MoveToLeftBoundary();
+                        mainWindowStateService.MoveToLeftBoundary();
                         break;
                         
                     case FunctionKeys.MoveToRight:
                         Log.Debug(string.Format("Moving to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToRightBoundary:
                         Log.Debug("Moving to right boundary.");
-                        mainWindowManipulationService.MoveToRightBoundary();
+                        mainWindowStateService.MoveToRightBoundary();
                         break;
                         
                     case FunctionKeys.MoveToTop:
                         Log.Debug(string.Format("Moving to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndLeft:
                         Log.Debug(string.Format("Moving to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndLeftBoundaries:
                         Log.Debug("Moving to top and left boundaries.");
-                        mainWindowManipulationService.MoveToTopAndLeftBoundaries();
+                        mainWindowStateService.MoveToTopAndLeftBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToTopAndRight:
                         Log.Debug(string.Format("Moving to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.MoveToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.MoveToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
                         
                     case FunctionKeys.MoveToTopAndRightBoundaries:
                         Log.Debug("Moving to top and right boundaries.");
-                        mainWindowManipulationService.MoveToTopAndRightBoundaries();
+                        mainWindowStateService.MoveToTopAndRightBoundaries();
                         break;
                         
                     case FunctionKeys.MoveToTopBoundary:
                         Log.Debug("Moving to top boundary.");
-                        mainWindowManipulationService.MoveToTopBoundary();
+                        mainWindowStateService.MoveToTopBoundary();
                         break;
 
                     case FunctionKeys.NextSuggestions:
@@ -1046,47 +840,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.RestoreSize:
                         Log.Debug("Restoring size.");
-                        mainWindowManipulationService.Restore();
+                        mainWindowStateService.Restore();
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:
                         Log.Debug(string.Format("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndLeft:
                         Log.Debug(string.Format("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndRight:
                         Log.Debug(string.Format("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromLeft:
                         Log.Debug(string.Format("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromRight:
                         Log.Debug(string.Format("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTop:
                         Log.Debug(string.Format("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndLeft:
                         Log.Debug(string.Format("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndRight:
                         Log.Debug(string.Format("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels));
-                        mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowStateService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.SizeAndOpacityKeyboard:
@@ -1110,6 +904,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 outputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
             }
         }
+
+        private void SetupFinalClickAction(Action<Point?> finalClickAction)
+        {
+            nextPointSelectionAction = nextPoint =>
+            {
+                if (Settings.Default.MouseMagnifier)
+                {
+                    ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
+                    //1.This triggers a screen capture, which shouldn't have the cursor in it.
+                    //2.Last popup open stays on top (I know the VM in MVVM shouldn't care about this, so pretend it's all reason 1).
+                    MagnifiedPointSelectionAction = finalClickAction;
+                    MagnifyAtPoint = nextPoint;
+                    ShowCursor = true;
+                }
+                else
+                {
+                    finalClickAction(nextPoint);
+                }
+
+                nextPointSelectionAction = null;
+            };
+
+            SelectionMode = SelectionModes.Point;
+            ShowCursor = true;
+        }
+
         public void HandleServiceError(object sender, Exception exception)
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
