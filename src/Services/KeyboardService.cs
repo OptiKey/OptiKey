@@ -28,11 +28,12 @@ namespace JuliusSweetland.OptiKey.Services
         public KeyboardService(
             ISuggestionService suggestionService, 
             ICapturingStateManager capturingStateManager, 
-            ICalibrationService calibrationService)
+            ICalibrationService calibrationService,
+            IWindowStateService mainWindowStateService)
         {
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrationService);
+            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrationService, mainWindowStateService);
 
             InitialiseKeyDownStates();
             AddKeyboardSetChangeHandlers();

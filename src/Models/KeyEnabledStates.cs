@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Services;
@@ -15,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ICalibrationService calibrationService;
+        private readonly IWindowStateService mainWindowStateService;
         private bool repeatLastMouseActionIsValid;
 
         #endregion
@@ -25,12 +27,14 @@ namespace JuliusSweetland.OptiKey.Models
             IKeyboardService keyboardService, 
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
-            ICalibrationService calibrationService)
+            ICalibrationService calibrationService,
+            IWindowStateService mainWindowStateService)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.calibrationService = calibrationService;
+            this.mainWindowStateService = mainWindowStateService;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -42,7 +46,9 @@ namespace JuliusSweetland.OptiKey.Models
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
-            capturingStateManager.OnPropertyChanges(i => i.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+            capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+
+            mainWindowStateService.OnPropertyChanges(mwss => mwss.WindowState).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -152,6 +158,20 @@ namespace JuliusSweetland.OptiKey.Models
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (capturingStateManager.CapturingMultiKeySelection
                     && !KeyValues.LetterKeys.Contains(keyValue))
+                {
+                    return false;
+                }
+
+                //Key is Maximise, but the window is already maximised
+                if (keyValue == KeyValues.MaximiseSizeKey
+                    && mainWindowStateService.WindowState == WindowState.Maximized)
+                {
+                    return false;
+                }
+
+                //Key is Restore, but the window is already normal
+                if (keyValue == KeyValues.RestoreSizeKey
+                    && mainWindowStateService.WindowState == WindowState.Normal)
                 {
                     return false;
                 }

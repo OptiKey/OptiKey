@@ -113,7 +113,8 @@ namespace JuliusSweetland.OptiKey
                 ISuggestionService suggestionService = new SuggestionService();
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService);
+                IWindowStateService mainWindowStateService = new WindowStateService();
+                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService, mainWindowStateService);
                 IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, notifyErrorServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
                 notifyErrorServices.Add(audioService);
@@ -127,7 +128,9 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowStateService moveAndResizeService = new WindowStateService(mainWindow,
+                mainWindowStateService.Window = mainWindow;
+
+                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
                     () => Settings.Default.MainWindowTop, d => Settings.Default.MainWindowTop = d,
                     () => Settings.Default.MainWindowLeft, d => Settings.Default.MainWindowLeft = d,
                     () => Settings.Default.MainWindowHeight, d => Settings.Default.MainWindowHeight = d,
@@ -135,12 +138,12 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                     Settings.Default, true, true);
                 
-                notifyErrorServices.Add(moveAndResizeService);
+                notifyErrorServices.Add(mainWindowManipulationService);
 
                 var mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, 
                     keyboardService, suggestionService, capturingStateManager,
-                    inputService, outputService, moveAndResizeService, notifyErrorServices);
+                    inputService, outputService, mainWindowManipulationService, notifyErrorServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 

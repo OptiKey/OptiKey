@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
-        private readonly IWindowStateService mainWindowStateService;
+        private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
         private readonly InteractionRequest<Notification> notificationRequest; 
@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             IInputService inputService,
             IOutputService outputService,
-            IWindowStateService mainWindowStateService,
+            IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> notifyErrorServices)
         {
             Log.Debug("Ctor called.");
@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
-            this.mainWindowStateService = mainWindowStateService;
+            this.mainWindowManipulationService = mainWindowManipulationService;
             this.notifyErrorServices = notifyErrorServices;
 
             notificationRequest = new InteractionRequest<Notification>();

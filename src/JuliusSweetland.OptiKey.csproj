@@ -211,6 +211,7 @@
     <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
+    <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\IWindowStateService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Services\ISuggestionService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStateService.cs" />
+    <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
