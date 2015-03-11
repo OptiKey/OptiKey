@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ICalibrationService calibrationService;
+        private bool repeatLastMouseActionIsValid;
 
         #endregion
 
@@ -81,7 +82,14 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Previous suggestions if no suggestions, or on page 1
+                //Key is Repeat Last Mouse Action, but KeyEnabledStates.RepeatLastMouseActionIsValid is not true
+                if (keyValue == KeyValues.RepeatLastMouseActionKey
+                    && !RepeatLastMouseActionIsValid)
+                {
+                    return false;
+                }
+
+                //Key is Previous suggestions, but no suggestions, or on page 1
                 if (keyValue == KeyValues.PreviousSuggestionsKey
                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
@@ -90,7 +98,7 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Next suggestions if no suggestions, or on last page
+                //Key is Next suggestions but no suggestions, or on last page
                 if (keyValue == KeyValues.NextSuggestionsKey
                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
@@ -99,42 +107,42 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Suggestion 1 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 1 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion1Key
                     && !SuggestionKeyIsValid(0))
                 {
                     return false;
                 }
 
-                //Suggestion 2 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 2 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion2Key
                     && !SuggestionKeyIsValid(1))
                 {
                     return false;
                 }
 
-                //Suggestion 3 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 3 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion3Key
                     && !SuggestionKeyIsValid(2))
                 {
                     return false;
                 }
 
-                //Suggestion 4 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 4 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion4Key
                     && !SuggestionKeyIsValid(3))
                 {
                     return false;
                 }
 
-                //Suggestion 5 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 5 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion5Key
                     && !SuggestionKeyIsValid(4))
                 {
                     return false;
                 }
 
-                //Suggestion 6 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 6 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion6Key
                     && !SuggestionKeyIsValid(5))
                 {
@@ -151,6 +159,20 @@ namespace JuliusSweetland.OptiKey.Models
                 return true;
             }
         }
+
+        public bool RepeatLastMouseActionIsValid
+        {
+            get { return repeatLastMouseActionIsValid; }
+            set
+            {
+                repeatLastMouseActionIsValid = value;
+                NotifyStateChanged();
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private bool SuggestionKeyIsValid(int index)
         {
