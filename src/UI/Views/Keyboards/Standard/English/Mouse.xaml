@@ -7,11 +7,19 @@
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.Resources>
-        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:IntToSingularPluralStringFormatter x:Key="IntToSingularPluralStringFormatter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
@@ -178,7 +186,7 @@
         </controls:Key>
         
         <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="6"
-                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, StringFormat={}Scroll by&#x0a;{0} clicks}">
+                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='Scroll by&#x0a;{0} click|Scroll by&#x0a;{0} clicks'">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollAmountInClicks}" />
             </controls:Key.Value>
