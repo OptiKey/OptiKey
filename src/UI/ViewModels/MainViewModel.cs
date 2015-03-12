@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
+        private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
@@ -45,7 +46,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
-        private Action repeatLastMouseAction;
 
         #endregion
 
@@ -58,6 +58,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IKeyboardService keyboardService,
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
+            ILastMouseActionStateManager lastMouseActionStateManager,
             IInputService inputService,
             IOutputService outputService,
             IWindowManipulationService mainWindowManipulationService,
@@ -71,6 +72,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
+            this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
             this.outputService = outputService;
             this.mainWindowManipulationService = mainWindowManipulationService;

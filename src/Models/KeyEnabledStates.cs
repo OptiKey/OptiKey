@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
+        private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
         private readonly IWindowStateService mainWindowStateService;
         private bool repeatLastMouseActionIsValid;
@@ -27,12 +28,14 @@ namespace JuliusSweetland.OptiKey.Models
             IKeyboardService keyboardService, 
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
+            ILastMouseActionStateManager lastMouseActionStateManager,
             ICalibrationService calibrationService,
             IWindowStateService mainWindowStateService)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
+            this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.calibrationService = calibrationService;
             this.mainWindowStateService = mainWindowStateService;
 
@@ -47,6 +50,8 @@ namespace JuliusSweetland.OptiKey.Models
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+
+            lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
 
             mainWindowStateService.OnPropertyChanges(mwss => mwss.WindowState).Subscribe(_ => NotifyStateChanged());
         }
@@ -90,7 +95,7 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Key is Repeat Last Mouse Action, but KeyEnabledStates.RepeatLastMouseActionIsValid is not true
                 if (keyValue == KeyValues.RepeatLastMouseActionKey
-                    && !RepeatLastMouseActionIsValid)
+                    && !lastMouseActionStateManager.LastMouseActionExists)
                 {
                     return false;
                 }
@@ -177,16 +182,6 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 return true;
-            }
-        }
-
-        public bool RepeatLastMouseActionIsValid
-        {
-            get { return repeatLastMouseActionIsValid; }
-            set
-            {
-                repeatLastMouseActionIsValid = value;
-                NotifyStateChanged();
             }
         }
 

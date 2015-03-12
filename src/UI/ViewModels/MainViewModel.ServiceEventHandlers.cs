@@ -313,8 +313,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.LeftMouseButtonClick(fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -353,8 +352,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 outputService.LeftMouseButtonUp(fp2);
                                             };
 
-                                            repeatLastMouseAction = () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
-                                            keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                            lastMouseActionStateManager.LastMouseAction = () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
                                             simulateDrag(finalPoint1.Value, finalPoint2.Value);
                                         }
 
@@ -407,8 +405,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.LeftMouseButtonClick(fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -433,8 +430,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.RightMouseButtonClick(fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -485,8 +481,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -512,8 +507,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -539,8 +533,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
 
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -565,8 +558,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -591,8 +583,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -617,8 +608,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -643,8 +633,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -669,8 +658,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
-                                repeatLastMouseAction = () => simulateClick(finalPoint.Value);
-                                keyboardService.KeyEnabledStates.RepeatLastMouseActionIsValid = true;
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
 
@@ -842,9 +830,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.RepeatLastMouseAction:
-                        if (repeatLastMouseAction != null)
+                        if (lastMouseActionStateManager.LastMouseAction != null)
                         {
-                            repeatLastMouseAction();
+                            lastMouseActionStateManager.LastMouseAction();
                         }
                         break;
 

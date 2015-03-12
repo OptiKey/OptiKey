@@ -113,8 +113,9 @@ namespace JuliusSweetland.OptiKey
                 ISuggestionService suggestionService = new SuggestionService();
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
+                ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IWindowStateService mainWindowStateService = new WindowStateService();
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService, mainWindowStateService);
+                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
                 IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, notifyErrorServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
                 notifyErrorServices.Add(audioService);
@@ -141,8 +142,8 @@ namespace JuliusSweetland.OptiKey
                 notifyErrorServices.Add(mainWindowManipulationService);
 
                 var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, 
-                    keyboardService, suggestionService, capturingStateManager,
+                    audioService, calibrationService, dictionaryService, keyboardService, 
+                    suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, outputService, mainWindowManipulationService, notifyErrorServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
