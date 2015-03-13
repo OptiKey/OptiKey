@@ -180,6 +180,7 @@
     <Compile Include="Enums\KeyboardsSets.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\RunningStates.cs" />
+    <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
+    <Compile Include="Models\NotificationEventArgs.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
@@ -259,7 +261,9 @@
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
+    <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
     <Compile Include="UI\Controls\MagnifyPopup.cs" />
     <Compile Include="UI\Controls\CursorPopup.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
@@ -270,7 +274,6 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
-    <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />

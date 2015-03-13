@@ -2,7 +2,7 @@
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
-    public class Cursor : UserControl
+    public class ToastNotification : UserControl
     {
     }
 }

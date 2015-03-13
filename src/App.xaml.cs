@@ -336,16 +336,13 @@ namespace JuliusSweetland.OptiKey
 
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
-                {
-                    Title = "Welcome to Optikey!",
-                    Content = "Website: www.optikey.org\n" +
-                              "Settings: press ALT + M"
-                }, _ =>
-                {
-                    inputService.State = RunningStates.Running;
-                    taskCompletionSource.SetResult(true);
-                });
+                mainViewModel.RaiseToastNotification("Welcome to Optikey!", 
+                    "Website: www.optikey.org\n" + "Settings: press ALT + M", NotificationTypes.Normal,
+                    () =>
+                        {
+                            inputService.State = RunningStates.Running;
+                            taskCompletionSource.SetResult(true);
+                        });
             }
             else
             {
@@ -392,16 +389,14 @@ namespace JuliusSweetland.OptiKey
 
                                 inputService.State = RunningStates.Paused;
                                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
-                                {
-                                    Title = "UPDATE AVAILABLE!",
-                                    Content = string.Format(
-                                        "Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName)
-                                }, _ =>
-                                {
-                                    inputService.State = RunningStates.Running;
-                                    taskCompletionSource.SetResult(true);
-                                });
+                                mainViewModel.RaiseToastNotification("A NEW VERSION OF OPTIKEY IS AVAILABLE!",
+                                    string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
+                                    NotificationTypes.Normal,
+                                    () => 
+                                        {
+                                            inputService.State = RunningStates.Running;
+                                            taskCompletionSource.SetResult(true);
+                                        });
 
                                 return;
                             }

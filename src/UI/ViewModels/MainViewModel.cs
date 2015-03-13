@@ -33,8 +33,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> notifyErrorServices; 
 
-        private readonly InteractionRequest<Notification> notificationRequest; 
-        private readonly InteractionRequest<Notification> errorNotificationRequest;
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
         private SelectionModes selectionMode;
@@ -78,8 +76,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.notifyErrorServices = notifyErrorServices;
 
-            notificationRequest = new InteractionRequest<Notification>();
-            errorNotificationRequest = new InteractionRequest<Notification>();
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             
             SelectionMode = SelectionModes.Key;
@@ -95,6 +91,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Events
 
+        public event EventHandler<NotificationEventArgs> ToastNotification;
         public event EventHandler<KeyValue> KeySelection;
         public event EventHandler<Point> PointSelection;
 
@@ -220,8 +217,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref scratchpadIsDisabled, value); }
         }
 
-        public InteractionRequest<Notification> NotificationRequest { get { return notificationRequest; } }
-        public InteractionRequest<Notification> ErrorNotificationRequest { get { return errorNotificationRequest; } }
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
         
         #endregion
@@ -248,11 +243,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     inputService.State = RunningStates.Paused;
                     audioService.PlaySound(Settings.Default.InfoSoundFile);
-                    NotificationRequest.Raise(new Notification
-                    {
-                        Title = "Hmm",
-                        Content = "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary."
-                    }, notification => { inputService.State = RunningStates.Running; });
+                    RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
+                        NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
                 }
             }
             else
@@ -261,11 +253,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                NotificationRequest.Raise(new Notification
-                {
-                    Title = "Hmm",
-                    Content = "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary."
-                }, notification => { inputService.State = RunningStates.Running; });
+                RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary.", 
+                    NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
             }
         }
 
@@ -309,11 +298,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         dictionaryService.AddNewEntryToDictionary(candidate);
                         inputService.State = RunningStates.Paused;
                         nextAction();
-                        NotificationRequest.Raise(new Notification
-                        {
-                            Title = "Added",
-                            Content = string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate)
-                        }, notification => { inputService.State = RunningStates.Running; });
+
+                        RaiseToastNotification("Added", string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate),
+                            NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
                     },
                     () => nextAction());
             }
@@ -371,6 +358,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (keyboardService != null)
             {
                 keyboardService.KeySelectionProgress.Clear();
+            }
+        }
+
+        internal void RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
+        {
+            if (ToastNotification != null)
+            {
+                ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
             }
         }
 

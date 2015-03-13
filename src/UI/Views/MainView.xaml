@@ -15,14 +15,6 @@
     </UserControl.Resources>
 
     <i:Interaction.Triggers>
-        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
-            <triggerActions:ToastNotificationWindowAction />
-        </interactionRequest:InteractionRequestTrigger>
-        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ErrorNotificationRequest, Mode=OneWay}">
-            <triggerActions:ToastNotificationWindowAction ToastBackgroundBrush="DarkRed" 
-                                                          ToastForegroundBrush="White"
-                                                          ToastBorderBrush="Black" />
-        </interactionRequest:InteractionRequestTrigger>
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
             <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
         </interactionRequest:InteractionRequestTrigger>
@@ -67,5 +59,23 @@
         </controls:CursorPopup>
 
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
+        
+        <controls:ToastNotificationPopup>
+            <controls:ToastNotificationPopup.Resources>
+                <Storyboard x:Key="ToastNotificationStoryboard">
+                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                     From="0" To="1" Duration="0:0:0.5"/>
+                    <DoubleAnimation x:Name="CloseAnimation" Storyboard.TargetProperty="(UIElement.Opacity)" 
+                                     BeginTime="0:0:2" From="1" To="0" Duration="0:0:0.5" />
+                </Storyboard>
+            </controls:ToastNotificationPopup.Resources>
+            <Grid RenderTransformOrigin="0,1">
+                <Grid.RenderTransform>
+                    <ScaleTransform ScaleY="1" />
+                </Grid.RenderTransform>
+                <controls:ToastNotification />
+                <Grid Background="Yellow" Height="100" Width="100" />
+            </Grid>
+        </controls:ToastNotificationPopup>
     </Grid>
 </UserControl>

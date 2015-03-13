@@ -76,7 +76,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (PointSelection != null)
                     {
-                        
                         PointSelection(this, value.Point);
 
                         if (nextPointSelectionAction != null)
@@ -200,22 +199,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         if (calibrationResult.Success)
                                         {
                                             audioService.PlaySound(Settings.Default.InfoSoundFile);
-                                            NotificationRequest.Raise(new Notification
-                                            {
-                                                Title = "Success",
-                                                Content = calibrationResult.Message
-                                            }, __ => { inputService.State = RunningStates.Running; });
+                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
                                         }
                                         else
                                         {
                                             audioService.PlaySound(Settings.Default.ErrorSoundFile);
-                                            ErrorNotificationRequest.Raise(new Notification
-                                            {
-                                                Title = "Uh-oh!",
-                                                Content = calibrationResult.Exception != null
-                                                            ? calibrationResult.Exception.Message
-                                                            : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs"
-                                            }, notification => { inputService.State = RunningStates.Running; });
+                                            RaiseToastNotification("Uh-oh!", calibrationResult.Exception != null
+                                                    ? calibrationResult.Exception.Message
+                                                    : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs", 
+                                                NotificationTypes.Error, 
+                                                () => { inputService.State = RunningStates.Running; });
                                         }
                                     });
                                 },
@@ -934,11 +927,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.State = RunningStates.Paused;
             audioService.PlaySound(Settings.Default.ErrorSoundFile);
-            ErrorNotificationRequest.Raise(new Notification
-            {
-                Title = "Uh-oh!",
-                Content = exception.Message
-            }, notification => { inputService.State = RunningStates.Running; });
+            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => { inputService.State = RunningStates.Running; });
         }
     }
 }
