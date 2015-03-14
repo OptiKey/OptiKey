@@ -5,14 +5,14 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class ToastNotificationPopup : Popup
     {
-        private Storyboard storyboard;
-        private DoubleAnimation closeAnimation;
+        private ToastNotification toastNotification;
         private Action onPopupClose;
 
         public ToastNotificationPopup()
@@ -24,9 +24,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            storyboard = this.Resources["ToastNotificationStoryboard"] as Storyboard;
-            closeAnimation = storyboard.Children.First(c => c.Name == "CloseAnimation") as DoubleAnimation;
-            
+            toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
             var mainViewModel = DataContext as MainViewModel;
 
             //Handle ToastNotification event
@@ -40,18 +38,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 onPopupClose = args.OnPopupClose;
 
                 var displayTimeInSeconds = Content != null
-                ? Convert.ToInt32(Math.Ceiling((double)Content.Length / (double)Settings.Default.ToastNotificationCharactersPerLine))
-                    * Settings.Default.ToastNotificationSecondsPerLine
-                : 0;
+                    ? (Convert.ToInt32(Math.Ceiling((double)Content.Length / (double)Settings.Default.ToastNotificationCharactersPerLine)) 
+                        * Settings.Default.ToastNotificationSecondsPerLine) 
+                        + Settings.Default.ToastNotificationAdditionalSeconds
+                    : Settings.Default.ToastNotificationAdditionalSeconds;
 
                 displayTimeInSeconds += Settings.Default.ToastNotificationAdditionalSeconds;
                 
-                closeAnimation.BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds);
+                //outroAnimation.BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds);
 
                 EventHandler closeAnimationCompletedHander = null;
                 closeAnimationCompletedHander = (sender2, e2) =>
                 {
-                    closeAnimation.Completed -= closeAnimationCompletedHander;
+                    //outroAnimation.Completed -= closeAnimationCompletedHander;
                     IsOpen = false;
                     if (onPopupClose != null)
                     {
@@ -59,7 +58,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                 };
 
-                closeAnimation.Completed += closeAnimationCompletedHander;
+                //outroAnimation.Completed += closeAnimationCompletedHander;
+
+                //storyboard.Begin();
 
                 IsOpen = true;
             };

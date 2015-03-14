@@ -15,7 +15,7 @@
         <Grid.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                 <BeginStoryboard>
-                    <Storyboard>
+                    <Storyboard TargetName="toastNotification">
                         <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                          From="0" To="1" Duration="0:0:0.5"/>
                         <DoubleAnimation x:Name="OpacityAnimation" Storyboard.TargetProperty="(UIElement.Opacity)" 
