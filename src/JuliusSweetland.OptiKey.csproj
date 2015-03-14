@@ -399,9 +399,6 @@
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
-      <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Utilities\DrawingUtils.cs" />
     <Compile Include="UI\Utilities\VisualAndLogicalTreeHelper.cs" />
   </ItemGroup>
@@ -724,10 +721,6 @@
     <Page Include="UI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Windows\ToastNotificationWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

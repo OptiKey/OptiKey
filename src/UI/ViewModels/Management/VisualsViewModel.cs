@@ -159,19 +159,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return scratchpadNumberOfLines; }
             set { SetProperty(ref scratchpadNumberOfLines, value); }
         }
-        
-        private int toastNotificationTitleFontSize;
-        public int ToastNotificationTitleFontSize
+
+        private int toastNotificationHorizontalFillPercentage;
+        public int ToastNotificationHorizontalFillPercentage
         {
-            get { return toastNotificationTitleFontSize; }
-            set { SetProperty(ref toastNotificationTitleFontSize, value); }
+            get { return toastNotificationHorizontalFillPercentage; }
+            set { SetProperty(ref toastNotificationHorizontalFillPercentage, value); }
         }
         
-        private int toastNotificationContentFontSize;
-        public int ToastNotificationContentFontSize
+        private int toastNotificationVerticalFillPercentage;
+        public int ToastNotificationVerticalFillPercentage
         {
-            get { return toastNotificationContentFontSize; }
-            set { SetProperty(ref toastNotificationContentFontSize, value); }
+            get { return toastNotificationVerticalFillPercentage; }
+            set { SetProperty(ref toastNotificationVerticalFillPercentage, value); }
         }
 
         private int cursorWidth;
@@ -239,8 +239,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             FontStretch = (FontStretches)Enum.Parse(typeof(FontStretches), Settings.Default.FontStretch);
             FontWeight = (FontWeights)Enum.Parse(typeof(FontWeights), Settings.Default.FontWeight);
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
-            ToastNotificationTitleFontSize = Settings.Default.ToastNotificationTitleFontSize;
-            ToastNotificationContentFontSize = Settings.Default.ToastNotificationContentFontSize;
+            ToastNotificationVerticalFillPercentage = Settings.Default.ToastNotificationVerticalFillPercentage;
+            ToastNotificationHorizontalFillPercentage = Settings.Default.ToastNotificationHorizontalFillPercentage;
             CursorWidth = Settings.Default.CursorWidth;
             CursorHeight = Settings.Default.CursorHeight;
             MagnifySourceAreaHorizontalPercentageOfScreen = Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen;
@@ -257,8 +257,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.FontStretch = FontStretch.ToString();
             Settings.Default.FontWeight = FontWeight.ToString();
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
-            Settings.Default.ToastNotificationTitleFontSize = ToastNotificationTitleFontSize;
-            Settings.Default.ToastNotificationContentFontSize = ToastNotificationContentFontSize;
+            Settings.Default.ToastNotificationVerticalFillPercentage = ToastNotificationVerticalFillPercentage;
+            Settings.Default.ToastNotificationHorizontalFillPercentage = ToastNotificationHorizontalFillPercentage;
             Settings.Default.CursorWidth = CursorWidth;
             Settings.Default.CursorHeight = CursorHeight;
             Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen = MagnifySourceAreaHorizontalPercentageOfScreen;

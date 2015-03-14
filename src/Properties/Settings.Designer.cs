@@ -338,27 +338,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationTitleFontSize {
+        public int ToastNotificationVerticalFillPercentage {
             get {
-                return ((int)(this["ToastNotificationTitleFontSize"]));
+                return ((int)(this["ToastNotificationVerticalFillPercentage"]));
             }
             set {
-                this["ToastNotificationTitleFontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("16")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationContentFontSize {
-            get {
-                return ((int)(this["ToastNotificationContentFontSize"]));
-            }
-            set {
-                this["ToastNotificationContentFontSize"] = value;
+                this["ToastNotificationVerticalFillPercentage"] = value;
             }
         }
         
@@ -958,6 +945,19 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["MagnifyWindowFillVerticalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int ToastNotificationHorizontalFillPercentage {
+            get {
+                return ((int)(this["ToastNotificationHorizontalFillPercentage"]));
+            }
+            set {
+                this["ToastNotificationHorizontalFillPercentage"] = value;
             }
         }
     }

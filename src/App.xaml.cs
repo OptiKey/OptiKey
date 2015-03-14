@@ -21,7 +21,6 @@ using log4net.Core;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
-using InteractionRequest = Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -390,7 +389,7 @@ namespace JuliusSweetland.OptiKey
                                 inputService.State = RunningStates.Paused;
                                 audioService.PlaySound(Settings.Default.InfoSoundFile);
                                 mainViewModel.RaiseToastNotification("A NEW VERSION OF OPTIKEY IS AVAILABLE!",
-                                    string.Format("Please visit www.optikey.org to download latest version ({0})\n\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
+                                    string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
                                     NotificationTypes.Normal,
                                     () => 
                                         {

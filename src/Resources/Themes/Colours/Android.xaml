@@ -6,6 +6,7 @@
     <Color x:Key="Grey">#575757</Color>
     <Color x:Key="Blue">#46A3E4</Color>
     <Color x:Key="Red">#FB6043</Color>
+    <Color x:Key="DarkRed">DarkRed</Color>
     <Color x:Key="Green">#3CAC6F</Color>
     <Color x:Key="Yellow">Yellow</Color>
 </ResourceDictionary>

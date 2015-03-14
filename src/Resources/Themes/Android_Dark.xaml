@@ -56,6 +56,14 @@
             <StaticResource x:Key="PointSelectionForeground" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
 
+            <SolidColorBrush x:Key="ToastNotificationForegroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="ToastNotificationBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ToastNotificationBackgroundBrush" Color="{StaticResource Black}" />
+
+            <SolidColorBrush x:Key="ToastErrorNotificationForegroundBrush" Color="{StaticResource White}" />
+            <SolidColorBrush x:Key="ToastErrorNotificationBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ToastErrorNotificationBackgroundBrush" Color="{StaticResource DarkRed}" />
+
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
             
@@ -479,6 +487,59 @@
                                 <Path Style="{StaticResource CursorIconStyle}" />
                                 <controls:ProgressPie Style="{StaticResource PointSelectionProgressStyle}" />
                             </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type controls:ToastNotification}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:ToastNotification}">
+                            <Viewbox Stretch="Uniform">
+                                <Border BorderThickness="2" CornerRadius="10">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="BorderBrush" Value="{StaticResource ToastNotificationBorderBrush}" />
+                                            <Setter Property="Background" Value="{StaticResource ToastNotificationBackgroundBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                    <Setter Property="BorderBrush" Value="{StaticResource ToastErrorNotificationBorderBrush}" />
+                                                    <Setter Property="Background" Value="{StaticResource ToastErrorNotificationBackgroundBrush}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel Margin="20">
+                                        <TextBlock TextWrapping="Wrap" FontWeight="Bold" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"
+                                                   Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                            <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="Wrap" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16"
+                                                   Text="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                            <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>    
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Viewbox>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

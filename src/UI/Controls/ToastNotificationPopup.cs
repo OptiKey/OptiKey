@@ -12,9 +12,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class ToastNotificationPopup : Popup
     {
-        private ToastNotification toastNotification;
-        private Action onPopupClose;
-
         public ToastNotificationPopup()
         {
             Loaded += OnLoaded;
@@ -24,47 +21,36 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
+            var window = VisualAndLogicalTreeHelper.FindLogicalParent<Window>(this);
+            var toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
             var mainViewModel = DataContext as MainViewModel;
+
+            //Set size and position
+            SetSize(toastNotification, window);
+            SetPosition(window);
 
             //Handle ToastNotification event
             mainViewModel.ToastNotification += (o, args) =>
             {
-                ClosePopup(); //Close the popup so it can be re-opened
-
                 Title = args.Title;
                 Content = args.Content;
                 NotificationType = args.NotificationType;
-                onPopupClose = args.OnPopupClose;
 
-                var displayTimeInSeconds = Content != null
-                    ? (Convert.ToInt32(Math.Ceiling((double)Content.Length / (double)Settings.Default.ToastNotificationCharactersPerLine)) 
-                        * Settings.Default.ToastNotificationSecondsPerLine) 
-                        + Settings.Default.ToastNotificationAdditionalSeconds
-                    : Settings.Default.ToastNotificationAdditionalSeconds;
-
-                displayTimeInSeconds += Settings.Default.ToastNotificationAdditionalSeconds;
-                
-                //outroAnimation.BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds);
-
-                EventHandler closeAnimationCompletedHander = null;
-                closeAnimationCompletedHander = (sender2, e2) =>
+                Action closePopup = () =>
                 {
-                    //outroAnimation.Completed -= closeAnimationCompletedHander;
-                    IsOpen = false;
-                    if (onPopupClose != null)
+                    if (IsOpen)
                     {
-                        onPopupClose();
+                        IsOpen = false;
+                        if (args.Callback != null)
+                        {
+                            args.Callback();
+                        }
                     }
                 };
 
-                //outroAnimation.Completed += closeAnimationCompletedHander;
-
-                //storyboard.Begin();
-
+                AnimateTarget(args.Content, toastNotification, closePopup);
                 IsOpen = true;
             };
-
         }
 
         #endregion
@@ -100,18 +86,76 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #endregion
 
-        #region Close Popup
+        #region Set Size
 
-        private void ClosePopup()
+        private void SetSize(FrameworkElement target, FrameworkElement parent)
         {
-            if (IsOpen)
+            target.MaxHeight = target.MinHeight = target.Height = 
+                parent.ActualHeight * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+
+            target.MaxWidth = target.MinWidth = target.Width =
+                parent.ActualWidth * Settings.Default.ToastNotificationHorizontalFillPercentage / 100;
+        }
+
+        #endregion
+
+        #region Set Position
+
+        private void SetPosition(FrameworkElement parent)
+        {
+            VerticalOffset = 
+                parent.ActualHeight / 2 * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+        }
+
+        #endregion
+
+        #region Animate Target
+
+        private void AnimateTarget(string text, FrameworkElement target, Action onPopupClose)
+        {
+            var storyboard = new Storyboard();
+
+            var introAnimation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop);
+            Storyboard.SetTarget(introAnimation, target);
+            Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.RenderTransform).(ScaleTransform.ScaleY)"));
+            storyboard.Children.Add(introAnimation);
+
+            var displayTimeInSeconds = text != null
+                    ? (Convert.ToInt32(Math.Ceiling((double)text.Length / (double)Settings.Default.ToastNotificationCharactersPerLine))
+                        * Settings.Default.ToastNotificationSecondsPerLine)
+                        + Settings.Default.ToastNotificationAdditionalSeconds
+                    : Settings.Default.ToastNotificationAdditionalSeconds;
+
+            displayTimeInSeconds += Settings.Default.ToastNotificationAdditionalSeconds;
+
+            var outroAnimation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop)
             {
-                IsOpen = false;
-                if (onPopupClose != null)
-                {
-                    onPopupClose();
-                }
-            }
+                BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds)
+            };
+            outroAnimation.Completed += (_, __) => onPopupClose();
+            Storyboard.SetTarget(outroAnimation, target);
+            Storyboard.SetTargetProperty(outroAnimation, new PropertyPath("(UIElement.Opacity)"));
+            storyboard.Children.Add(outroAnimation);
+
+            storyboard.Begin(target);
+
+            
+
+            //outroAnimation.BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds);
+
+            //EventHandler closeAnimationCompletedHander = null;
+            //closeAnimationCompletedHander = (sender2, e2) =>
+            //{
+            //    //outroAnimation.Completed -= closeAnimationCompletedHander;
+            //    IsOpen = false;
+            //    if (onPopupClose != null)
+            //    {
+            //        onPopupClose();
+            //    }
+            //};
+
+            //outroAnimation.Completed += closeAnimationCompletedHander;
+
         }
 
         #endregion

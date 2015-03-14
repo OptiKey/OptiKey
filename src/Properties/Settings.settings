@@ -74,11 +74,8 @@
     <Setting Name="MainWindowWidth" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">800</Value>
     </Setting>
-    <Setting Name="ToastNotificationTitleFontSize" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">25</Value>
-    </Setting>
-    <Setting Name="ToastNotificationContentFontSize" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">16</Value>
+    <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="ToastNotificationCharactersPerLine" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
@@ -217,6 +214,9 @@
     </Setting>
     <Setting Name="MagnifyWindowFillVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="ToastNotificationHorizontalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
     </Setting>
   </Settings>
 </SettingsFile>

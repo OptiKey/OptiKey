@@ -60,23 +60,13 @@
 
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
         
-        <controls:ToastNotificationPopup Placement="Center" AllowsTransparency="True">
-            <controls:ToastNotificationPopup.Resources>
-                <DoubleAnimation x:Key="introAnimation" 
-                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                 From="0" To="1" Duration="0:0:0.5"/>
-                <DoubleAnimation x:Key="outroAnimation" 
-                                 Storyboard.TargetProperty="(UIElement.Opacity)" 
-                                 BeginTime="0:0:2" From="1" To="0" Duration="0:0:0.5" />
-            </controls:ToastNotificationPopup.Resources>
-            <Grid RenderTransformOrigin="0,1">
-                <Grid.RenderTransform>
+        <controls:ToastNotificationPopup PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                         Placement="Center" AllowsTransparency="True" IsOpen="False">
+            <controls:ToastNotification RenderTransformOrigin="0,1">
+                <controls:ToastNotification.RenderTransform>
                     <ScaleTransform ScaleY="1" />
-                </Grid.RenderTransform>
-                <controls:ToastNotification>
-                    <Grid Background="Yellow" Height="100" Width="100" />
-                </controls:ToastNotification>
-            </Grid>
+                </controls:ToastNotification.RenderTransform>
+            </controls:ToastNotification>
         </controls:ToastNotificationPopup>
     </Grid>
 </UserControl>
