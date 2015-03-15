@@ -489,7 +489,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PublishKeyPress(char character, char? modifiedCharacter, bool publishAsText)
+        private void PublishKeyPress(char character, char? modifiedCharacter, bool publishModifiedCharacterAsText)
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
@@ -499,7 +499,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var virtualKeyCode = character.ToVirtualKeyCode();
                 if (virtualKeyCode != null
-                    && !publishAsText)
+                    && !publishModifiedCharacterAsText)
                 {
                     publishService.KeyDownUp(virtualKeyCode.Value);
                 }
@@ -562,7 +562,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 foreach (char c in suggestion)
                 {
-                    PublishKeyPress(c, null, true);
+                    PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
                 }
 
                 StoreLastTextChange(suggestion);
@@ -577,7 +577,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && !suppressNextAutoSpace)
             {
                 Log.Debug("Publishing auto space and adding auto space to Text.");
-                PublishKeyPress(' ', null, true);
+                PublishKeyPress(' ', ' ', true); //It's a space
                 Text = string.Concat(Text, " ");
                 return true;
             }

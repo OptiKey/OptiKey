@@ -7,7 +7,10 @@
   ii)Compile Inno script
 6.Run script 3 to sign the installer
 7.Test locally
-8.If good then commit source to GitHub (Debug mode)
+8.If good then;
+  i)Revert app.manifest uiAccess flag back to "false"
+  ii)Update TODO.txt files etc to remove anything about to be removed (so no longer relevant)
+  iii)Commit source to GitHub (Debug mode)
 9.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer
