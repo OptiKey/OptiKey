@@ -7,7 +7,7 @@
   ii)Compile Inno script
 6.Run script 3 to sign the installer
 7.Test locally
-8.If good then;
+8.If good then...
   i)Revert app.manifest uiAccess flag back to "false"
   ii)Commit source to GitHub (Debug mode)
 9.Create release (tag) on GitHub including;
