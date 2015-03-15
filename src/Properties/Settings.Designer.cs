@@ -129,7 +129,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double PointSelectionTriggerLockOnRadius {
+            get {
+                return ((double)(this["PointSelectionTriggerLockOnRadius"]));
+            }
+            set {
+                this["PointSelectionTriggerLockOnRadius"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double PointSelectionTriggerFixationRadius {
             get {
@@ -325,27 +338,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationTitleFontSize {
+        public int ToastNotificationVerticalFillPercentage {
             get {
-                return ((int)(this["ToastNotificationTitleFontSize"]));
+                return ((int)(this["ToastNotificationVerticalFillPercentage"]));
             }
             set {
-                this["ToastNotificationTitleFontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("16")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationContentFontSize {
-            get {
-                return ((int)(this["ToastNotificationContentFontSize"]));
-            }
-            set {
-                this["ToastNotificationContentFontSize"] = value;
+                this["ToastNotificationVerticalFillPercentage"] = value;
             }
         }
         
@@ -572,14 +572,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Selection1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\KeySelection1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string SelectionSoundFile {
+        public string KeySelectionSoundFile {
             get {
-                return ((string)(this["SelectionSoundFile"]));
+                return ((string)(this["KeySelectionSoundFile"]));
             }
             set {
-                this["SelectionSoundFile"] = value;
+                this["KeySelectionSoundFile"] = value;
             }
         }
         
@@ -677,7 +677,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.1000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.2500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan PointSelectionTriggerFixationLockOnTime {
             get {
@@ -703,72 +703,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.WindowState ManagementConsoleWindowState {
-            get {
-                return ((global::System.Windows.WindowState)(this["ManagementConsoleWindowState"]));
-            }
-            set {
-                this["ManagementConsoleWindowState"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowHeight {
-            get {
-                return ((double)(this["ManagementConsoleWindowHeight"]));
-            }
-            set {
-                this["ManagementConsoleWindowHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowLeft {
-            get {
-                return ((double)(this["ManagementConsoleWindowLeft"]));
-            }
-            set {
-                this["ManagementConsoleWindowLeft"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowTop {
-            get {
-                return ((double)(this["ManagementConsoleWindowTop"]));
-            }
-            set {
-                this["ManagementConsoleWindowTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("600")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double ManagementConsoleWindowWidth {
-            get {
-                return ((double)(this["ManagementConsoleWindowWidth"]));
-            }
-            set {
-                this["ManagementConsoleWindowWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int MoveAndResizeAdjustmentAmountInPixels {
             get {
                 return ((int)(this["MoveAndResizeAdjustmentAmountInPixels"]));
@@ -781,6 +717,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NextHigh")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string SelectionTriggerStopSignal {
             get {
                 return ((string)(this["SelectionTriggerStopSignal"]));
@@ -793,6 +730,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool CheckForUpdates {
             get {
                 return ((bool)(this["CheckForUpdates"]));
@@ -818,6 +756,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("juliussweetland")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string GitHubRepoOwner {
             get {
                 return ((string)(this["GitHubRepoOwner"]));
@@ -830,6 +769,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("optikey")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string GitHubRepoName {
             get {
                 return ((string)(this["GitHubRepoName"]));
@@ -849,6 +789,175 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["TETCalibrationCheckTimeSpan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseScrollAmountInClicks {
+            get {
+                return ((int)(this["MouseScrollAmountInClicks"]));
+            }
+            set {
+                this["MouseScrollAmountInClicks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseClick1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MouseClickSoundFile {
+            get {
+                return ((string)(this["MouseClickSoundFile"]));
+            }
+            set {
+                this["MouseClickSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseDoubleClick1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MouseDoubleClickSoundFile {
+            get {
+                return ((string)(this["MouseDoubleClickSoundFile"]));
+            }
+            set {
+                this["MouseDoubleClickSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MouseScroll1.wav")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MouseScrollSoundFile {
+            get {
+                return ((string)(this["MouseScrollSoundFile"]));
+            }
+            set {
+                this["MouseScrollSoundFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CursorWidth {
+            get {
+                return ((int)(this["CursorWidth"]));
+            }
+            set {
+                this["CursorWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int CursorHeight {
+            get {
+                return ((int)(this["CursorHeight"]));
+            }
+            set {
+                this["CursorHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool MouseMagnifier {
+            get {
+                return ((bool)(this["MouseMagnifier"]));
+            }
+            set {
+                this["MouseMagnifier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string Setting {
+            get {
+                return ((string)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifySourceAreaHorizontalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifySourceAreaHorizontalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifySourceAreaHorizontalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifySourceAreaVerticalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifySourceAreaVerticalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifySourceAreaVerticalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifyWindowFillHorizontalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifyWindowFillHorizontalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifyWindowFillHorizontalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MagnifyWindowFillVerticalPercentageOfScreen {
+            get {
+                return ((double)(this["MagnifyWindowFillVerticalPercentageOfScreen"]));
+            }
+            set {
+                this["MagnifyWindowFillVerticalPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int ToastNotificationHorizontalFillPercentage {
+            get {
+                return ((int)(this["ToastNotificationHorizontalFillPercentage"]));
+            }
+            set {
+                this["ToastNotificationHorizontalFillPercentage"] = value;
             }
         }
     }

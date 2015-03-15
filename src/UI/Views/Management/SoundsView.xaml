@@ -58,6 +58,9 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Info:" 
@@ -68,22 +71,22 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
     
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Selection:" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Error:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="1" Grid.Column="1" 
-                              ItemsSource="{Binding SelectionSoundFiles}"
-                              DisplayMemberPath="Key"
-                              SelectedValuePath="Value"
-                              SelectedValue="{Binding SelectionSoundFile, Mode=TwoWay}" />
-            
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Error:" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding ErrorSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
-            
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Key Selection:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="2" Grid.Column="1" 
+                              ItemsSource="{Binding KeySelectionSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeySelectionSoundFile, Mode=TwoWay}" />
+
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Muli-key selection starting:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="3" Grid.Column="1" 
@@ -99,6 +102,30 @@
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MultiKeySelectionCaptureEndSoundFile, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Mouse click:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="5" Grid.Column="1" 
+                              ItemsSource="{Binding MouseClickSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseClickSoundFile, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Mouse double click:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="6" Grid.Column="1" 
+                              ItemsSource="{Binding MouseDoubleClickSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseDoubleClickSoundFile, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Mouse scroll:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="7" Grid.Column="1" 
+                              ItemsSource="{Binding MouseScrollSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseScrollSoundFile, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         </Grid>

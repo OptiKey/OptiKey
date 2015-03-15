@@ -5,7 +5,7 @@ using JuliusSweetland.OptiKey.Native.Structs;
 
 namespace JuliusSweetland.OptiKey.Native
 {
-    public class WindowsAPI 
+    public class PInvoke 
     { 
         [DllImport("kernel32.Dll")] 
         public static extern short GetVersionEx(ref OSVERSIONINFO o); 
@@ -23,5 +23,8 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("advapi32.dll", SetLastError = true)]
         public static extern bool GetTokenInformation(IntPtr TokenHandle, TOKEN_INFORMATION_CLASS TokenInformationClass, IntPtr TokenInformation, uint TokenInformationLength, out uint ReturnLength);
+
+        [DllImport("gdi32.dll")]
+        public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
     }
 } 

@@ -36,9 +36,6 @@
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource LightGrey}" />
 
-            <!--<SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
-            <SolidColorBrush x:Key="PointSelectionBrush" Color="{StaticResource Blue}" />-->
-
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
@@ -50,15 +47,28 @@
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
-
+            
             <SolidColorBrush x:Key="DebugTextForegroundBrush" Color="{StaticResource Green}" />
+
+            <SolidColorBrush x:Key="CursorDefaultStrokeBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="CursorDefaultFillBrush" Color="{StaticResource White}" />
+            <StaticResource x:Key="PointSelectionForeground" ResourceKey="Blue"/>
+            <SolidColorBrush x:Key="PointSelectionProgressBrush" Color="{StaticResource Red}" />
+
+            <SolidColorBrush x:Key="ToastNotificationForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ToastNotificationBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ToastNotificationBackgroundBrush" Color="{StaticResource White}" />
+
+            <SolidColorBrush x:Key="ToastErrorNotificationForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="ToastErrorNotificationBorderBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ToastErrorNotificationBackgroundBrush" Color="{StaticResource Red}" />
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
 
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
-                <Setter Property="BorderThickness" Value="5" />
+                <Setter Property="BorderThickness" Value="2" />
             </Style>
             
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">
@@ -166,7 +176,7 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="SelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+            <Style x:Key="KeySelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
                 <Setter Property="Fill" Value="{StaticResource KeySelectionProgressBrush}" />
                 <Setter Property="MaxValue" Value="1" />
                 <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
@@ -282,7 +292,7 @@
                                                     <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
                                                 <controls:ProgressPie Grid.ColumnSpan="3" 
-                                                                      Style="{StaticResource SelectionProgressStyle}" />
+                                                                      Style="{StaticResource KeySelectionProgressStyle}" />
                                                 <Viewbox Grid.Column="1">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -411,6 +421,125 @@
                                            Foreground="{StaticResource QuestionForegroundBrush}"
                                            Background="{StaticResource QuestionBackgroundBrush}" />
                             </controls:TextBlockScaler>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CursorIconStyle" TargetType="{x:Type Path}">
+                <Setter Property="Stroke" Value="{StaticResource CursorDefaultStrokeBrush}" />
+                <Setter Property="Fill" Value="{StaticResource CursorDefaultFillBrush}" />
+                <Setter Property="Stretch" Value="Fill" />
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                <Setter Property="Data" Value="{StaticResource CursorIcon}" />
+                <Setter Property="behaviours:CursorBehaviours.BeginAnimationOnPointSelectionEvent">
+                    <Setter.Value>
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" 
+                                                          Duration="0:0:0.2" FillBehavior="Stop">
+                                <DiscreteColorKeyFrame Value="{StaticResource PointSelectionForeground}" KeyTime="0:0:0" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToTopRight}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToBottomLeft}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleY="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=CursorPointPosition, RelativeSource={RelativeSource AncestorType=controls:CursorPopup}}" Value="{x:Static enums:CursorPointPositions.ToBottomRight}">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="-1" ScaleY="-1" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="PointSelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+                <Setter Property="Fill" Value="{StaticResource PointSelectionProgressBrush}" />
+                <Setter Property="MaxValue" Value="1" />
+                <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:CursorPopup}}, Mode=OneWay}" />
+                <Style.Triggers>
+                    <!--Progress is 0-->
+                    <Trigger Property="Value" Value="0">
+                        <Setter Property="Visibility" Value="Hidden" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="{x:Type controls:Cursor}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:Cursor}">
+                            <Grid>
+                                <Path Style="{StaticResource CursorIconStyle}" />
+                                <controls:ProgressPie Style="{StaticResource PointSelectionProgressStyle}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type controls:ToastNotification}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:ToastNotification}">
+                            <Viewbox Stretch="Uniform">
+                                <Border BorderThickness="2" CornerRadius="10">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="BorderBrush" Value="{StaticResource ToastNotificationBorderBrush}" />
+                                            <Setter Property="Background" Value="{StaticResource ToastNotificationBackgroundBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                    <Setter Property="BorderBrush" Value="{StaticResource ToastErrorNotificationBorderBrush}" />
+                                                    <Setter Property="Background" Value="{StaticResource ToastErrorNotificationBackgroundBrush}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel Margin="20">
+                                        <TextBlock TextWrapping="Wrap" FontWeight="Bold" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25"
+                                                   Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                            <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <TextBlock TextWrapping="Wrap" Margin="5" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16"
+                                                   Text="{Binding Path=Content, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="{StaticResource ToastNotificationForegroundBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=NotificationType, RelativeSource={RelativeSource AncestorType={x:Type controls:ToastNotificationPopup}}, Mode=OneWay}" Value="{x:Static enums:NotificationTypes.Error}">
+                                                            <Setter Property="Foreground" Value="{StaticResource ToastErrorNotificationForegroundBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Viewbox>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

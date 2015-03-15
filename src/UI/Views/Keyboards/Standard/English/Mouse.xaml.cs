@@ -3,11 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English
 {
     /// <summary>
-    /// Interaction logic for ManipulateWindow.xaml
+    /// Interaction logic for Mouse.xaml
     /// </summary>
-    public partial class ManipulateWindow : UserControl
+    public partial class Mouse : UserControl
     {
-        public ManipulateWindow()
+        public Mouse()
         {
             InitializeComponent();
         }

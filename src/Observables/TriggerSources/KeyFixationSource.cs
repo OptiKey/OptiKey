@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
@@ -19,8 +20,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
-        private readonly Dictionary<KeyValue, long> incompleteFixationProgress;
-        private readonly Dictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
+        private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
+        private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
 
         private IObservable<TriggerSignal> sequence;
 
@@ -38,9 +39,9 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
-            
-            incompleteFixationProgress = new Dictionary<KeyValue, long>();
-            incompleteFixationTimeouts = new Dictionary<KeyValue, IDisposable>();
+
+            incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
+            incompleteFixationTimeouts = new ConcurrentDictionary<KeyValue, IDisposable>();
         }
 
         #endregion
@@ -76,122 +77,125 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     
                                 if (fixationCentrePointAndKeyValue == null)
                                 {
-                                    //Lock-on in progress, but latest point breaks the lock-on
-                                    if (lockOnStart != null
-                                        && (latestPointAndKeyValue.Value.KeyValue == null
+                                    //No fixation in progress - we are in the "lock on" phase
+                                    if (lockOnStart == null)
+                                    {
+                                        //We have no current lock-on - start a new one
+                                        if (latestPointAndKeyValue.Value.KeyValue != null
+                                            && (KeyEnabledStates == null || KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
+                                        {
+                                            lockOnStart = latestPointAndKeyValue;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //Lock-on in progress, but latest point breaks the lock-on
+                                        if (latestPointAndKeyValue.Value.KeyValue == null
                                             || !lockOnStart.Value.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
-                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value])))
-                                    {
-                                        lockOnStart = null;
-                                    }
+                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
+                                        {
+                                            lockOnStart = null;
+                                        }
 
-                                    //We have no current lock-on - start a new one
-                                    if (lockOnStart == null
-                                        && latestPointAndKeyValue.Value.KeyValue != null
-                                        && (KeyEnabledStates == null || KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
-                                    {
-                                        lockOnStart = latestPointAndKeyValue;
-                                    }
-
-                                    //Check if the current lock-on is complete - if so start a new fixation
-                                    if (lockOnStart != null
-                                        && latestPointAndKeyValue.Value.KeyValue != null
-                                        && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= lockOnTime)
-                                    {
-                                        fixationStart = latestPointAndKeyValue.Timestamp;
-                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
-                                        lockOnStart = null;
+                                        //Check if the current lock-on is complete - if so start a new fixation
+                                        if (lockOnStart != null
+                                            && latestPointAndKeyValue.Value.KeyValue != null
+                                            && latestPointAndKeyValue.Timestamp.Subtract(lockOnStart.Value.Timestamp) >= lockOnTime)
+                                        {
+                                            fixationStart = latestPointAndKeyValue.Timestamp;
+                                            fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
+                                            lockOnStart = null;
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    //We are building a fixation and the latest pointAndKeyValue is not over the same key, or the key is now disabled
+                                    //We have a current fixation
                                     if (latestPointAndKeyValue.Value.KeyValue == null
                                         || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
                                         || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
                                     {
-                                        //Get the last point which was part of the current fixation, i.e. over the previously fixated key
-                                        Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps.Count > 1
-                                                ? tps[tps.Count - 2]
-                                                : (Timestamped<PointAndKeyValue>?)null;
-
-                                        if (previousPointAndKeyValue != null)
+                                        //Latest pointAndKeyValue is not over the fixation key, or the key is now disabled
+                                        if (tps.Count > 1)
                                         {
+                                            //We have a buffer which contains the previous (over fixation key) point
+                                            Timestamped<PointAndKeyValue>? previousPointAndKeyValue = tps[tps.Count - 2];
+
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
-                                            
-                                            if (incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                            incompleteFixationProgress.AddOrUpdate(fixationCentrePointAndKeyValue.Value.KeyValue.Value,
+                                                    _ => fixationSpan.Ticks,
+                                                    (_, existingProgress) => existingProgress + fixationSpan.Ticks);
+
+                                            //Dispose of existing incomplete fixation timeout for this key
+                                            IDisposable timeout;
+                                            if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out timeout))
                                             {
-                                                incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] = 
-                                                    incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value] + fixationSpan.Ticks;
-                                            }
-                                            else
-                                            {
-                                                incompleteFixationProgress.Add(fixationCentrePointAndKeyValue.Value.KeyValue.Value, fixationSpan.Ticks);
+                                                if (timeout != null)
+                                                {
+                                                    timeout.Dispose();
+                                                }
                                             }
 
-                                            //Setup incomplete fixation timeout
-                                            if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
-                                            {
-                                                incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
-                                            }
-
+                                            //Setup new incomplete fixation timeout
                                             PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
                                             incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value] =
                                                 Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
                                                 {
-                                                    incompleteFixationProgress[fixationCentrePointAndKeyValueCopy.KeyValue.Value] = 0;
-                                                    incompleteFixationTimeouts.Remove(fixationCentrePointAndKeyValueCopy.KeyValue.Value);
+                                                    long removedProgress;
+                                                    IDisposable removedTimeout;
+                                                    incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue.Value, out removedProgress);
+                                                    incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue.Value, out removedTimeout);
                                                     observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
                                                 });
                                         }
 
-                                        //Clear the current fixation and return
+                                        //Clear the current fixation
                                         fixationCentrePointAndKeyValue = null;
-                                        return;
                                     }
-                                }
-
-                                if (fixationCentrePointAndKeyValue != null)
-                                {
-                                    //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
-                                    var fixationSpan = latestPointAndKeyValue.Timestamp.Subtract(fixationStart);
-
-                                    var storedProgress =
-                                        incompleteFixationProgress.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value)
-                                            ? incompleteFixationProgress[fixationCentrePointAndKeyValue.Value.KeyValue.Value]
-                                            : 0;
-
-                                    //Dispose of the expiry timer for the current fixation as it is in progress again
-                                    if (incompleteFixationTimeouts.ContainsKey(fixationCentrePointAndKeyValue.Value.KeyValue.Value))
+                                    else
                                     {
-                                        incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value].Dispose();
-                                    }
+                                        //We have created or added to a fixation - update state vars, publish our progress and reset if necessary
+                                        var fixationSpan = latestPointAndKeyValue.Timestamp.Subtract(fixationStart);
 
-                                    var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
+                                        long storedProgress;
+                                        incompleteFixationProgress.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out storedProgress);
 
-                                    //Publish a high signal if progress is 1 (100%), otherwise just publish progress (if > 0 as 0 is a reset signal for progress across all keys)
-                                    if(progress > 0)
-                                    {
-                                        observer.OnNext(new TriggerSignal(
-                                            progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
-                                    }
-
-                                    //Reset if we've just published a high signal
-                                    if (progress >= 1)
-                                    {
-                                        foreach (var key in incompleteFixationTimeouts.Keys)
+                                        //Dispose of the timeout for the current fixation as it is in progress again
+                                        IDisposable timeout;
+                                        if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out timeout))
                                         {
-                                            incompleteFixationTimeouts[key].Dispose();
+                                            if (timeout != null)
+                                            {
+                                                timeout.Dispose();
+                                            }
                                         }
 
-                                        fixationCentrePointAndKeyValue = null;
-                                        incompleteFixationProgress.Clear();
-                                        incompleteFixationTimeouts.Clear();
-                                        lockOnStart = null;
+                                        var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
-                                        observer.OnNext(new TriggerSignal(null, 0, null));
-                                        return;
+                                        //Publish a high signal if progress is 1 (100%), otherwise just publish progress (filter out 0 as this is a progress reset signal)
+                                        if (progress > 0)
+                                        {
+                                            observer.OnNext(new TriggerSignal(
+                                                progress >= 1 ? 1 : (double?)null, progress >= 1 ? 1 : progress, fixationCentrePointAndKeyValue));
+                                        }
+
+                                        //Reset if we've just published a high signal
+                                        if (progress >= 1)
+                                        {
+                                            foreach (var t in incompleteFixationTimeouts.Values)
+                                            {
+                                                t.Dispose();
+                                            }
+
+                                            fixationCentrePointAndKeyValue = null;
+                                            incompleteFixationProgress.Clear();
+                                            incompleteFixationTimeouts.Clear();
+                                            lockOnStart = null;
+
+                                            observer.OnNext(new TriggerSignal(null, 0, null));
+                                            return;
+                                        }
                                     }
                                 }
                             },

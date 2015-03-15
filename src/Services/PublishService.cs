@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using WindowsInput.Native;
+using JuliusSweetland.OptiKey.Static;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -24,13 +26,13 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Checking all virtual key codes and releasing any which are down."));
+                Log.Debug(string.Format("Checking all virtual key codes and simulating release of any which are down."));
                 foreach (var virtualKeyCode in Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>())
                 {
                     if (inputDeviceStateAdaptor.IsHardwareKeyDown(virtualKeyCode))
                     {
-                        Log.Debug(string.Format("{0} is down - calling PublishKeyUp", virtualKeyCode));
-                        PublishKeyUp(virtualKeyCode);
+                        Log.Debug(string.Format("{0} is down - calling KeyUp", virtualKeyCode));
+                        KeyUp(virtualKeyCode);
                     }
                 }
             }
@@ -40,11 +42,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void PublishKeyDown(VirtualKeyCode virtualKeyCode)
+        public void KeyDown(VirtualKeyCode virtualKeyCode)
         {
             try
             {
-                Log.Debug(string.Format("Publishing key down {0}", virtualKeyCode));
+                Log.Debug(string.Format("Simulating key down {0}", virtualKeyCode));
                 inputSimulator.Keyboard.KeyDown(virtualKeyCode);
             }
             catch (Exception exception)
@@ -53,11 +55,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void PublishKeyUp(VirtualKeyCode virtualKeyCode)
+        public void KeyUp(VirtualKeyCode virtualKeyCode)
         {
             try
             {
-                Log.Debug(string.Format("Publishing key up: {0}", virtualKeyCode));
+                Log.Debug(string.Format("Simulating key up: {0}", virtualKeyCode));
                 inputSimulator.Keyboard.KeyUp(virtualKeyCode);
             }
             catch (Exception exception)
@@ -66,11 +68,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void PublishKeyPress(VirtualKeyCode virtualKeyCode)
+        public void KeyDownUp(VirtualKeyCode virtualKeyCode)
         {
             try
             {
-                Log.Debug(string.Format("Publishing key press: {0}", virtualKeyCode));
+                Log.Debug(string.Format("Simulating key press (down & up): {0}", virtualKeyCode));
                 inputSimulator.Keyboard.KeyPress(virtualKeyCode);
             }
             catch (Exception exception)
@@ -79,12 +81,174 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void PublishText(string text)
+        public void TypeText(string text)
         {
             try
             {
-                Log.Debug(string.Format("Publishing text '{0}'", text));
+                Log.Debug(string.Format("Simulating typing text '{0}'", text));
                 inputSimulator.Keyboard.TextEntry(text);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void MouseMouseToPoint(Point point)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating moving mouse to point '{0}'", point));
+
+                var virtualScreenWidthInPixels = SystemParameters.VirtualScreenWidth * Graphics.DipScalingFactorX;
+                var virtualScreenHeightInPixels = SystemParameters.VirtualScreenHeight * Graphics.DipScalingFactorY;
+
+                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535.
+                //https://inputsimulator.codeplex.com/discussions/86530
+                inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
+                    ((double)65535 * point.X) / (double)virtualScreenWidthInPixels,
+                    ((double)65535 * point.Y) / (double)virtualScreenHeightInPixels);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonClick()
+        {
+            try
+            {
+                Log.Debug("Simulating clicking the left mouse button click");
+                inputSimulator.Mouse.LeftButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonDoubleClick()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down twice");
+                inputSimulator.Mouse.LeftButtonDoubleClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void RightMouseButtonClick()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the right mouse button down");
+                inputSimulator.Mouse.RightButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelUp(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel up by {0} clicks", clicks));
+                inputSimulator.Mouse.VerticalScroll(clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelUpAndLeft(int clicks)
+        {
+            ScrollMouseWheelUp(clicks);
+            ScrollMouseWheelLeft(clicks);
+        }
+
+        public void ScrollMouseWheelUpAndRight(int clicks)
+        {
+            ScrollMouseWheelUp(clicks);
+            ScrollMouseWheelRight(clicks);
+        }
+
+        public void ScrollMouseWheelDown(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel down by {0} clicks", clicks));
+                inputSimulator.Mouse.VerticalScroll(0 - clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelDownAndLeft(int clicks)
+        {
+            ScrollMouseWheelDown(clicks);
+            ScrollMouseWheelLeft(clicks);
+        }
+
+        public void ScrollMouseWheelDownAndRight(int clicks)
+        {
+            ScrollMouseWheelDown(clicks);
+            ScrollMouseWheelRight(clicks);
+        }
+
+        public void ScrollMouseWheelLeft(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel left by {0} clicks", clicks));
+                inputSimulator.Mouse.HorizontalScroll(0 - clicks);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void ScrollMouseWheelRight(int clicks)
+        {
+            try
+            {
+                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel right by {0} clicks", clicks));
+                inputSimulator.Mouse.HorizontalScroll(clicks);
             }
             catch (Exception exception)
             {

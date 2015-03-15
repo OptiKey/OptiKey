@@ -29,73 +29,61 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
+            var mainViewModel = keyboardHost.DataContext as MainViewModel;
+            var keyboardService = mainViewModel.KeyboardService;
+            var capturingStateManager = mainViewModel.CapturingStateManager;
 
-            var mainViewModel = keyboardHost != null
-                ? keyboardHost.DataContext as MainViewModel
-                : null;
+            //Calculate KeyDownState
+            keyboardService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+                .Subscribe(value => KeyDownState = value);
 
-            var keyboardService = mainViewModel != null
-                ? mainViewModel.KeyboardService
-                : null;
+            KeyDownState = keyboardService.KeyDownStates[Value].Value;
 
-            var capturingStateManager = mainViewModel != null
-                ? mainViewModel.CapturingStateManager
-                : null;
+            //Calculate SelectionProgress
+            keyboardService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+                .Subscribe(value => SelectionProgress = value);
 
-            if (keyboardService != null)
+            SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
+
+            //Calculate IsEnabled
+            keyboardService.KeyEnabledStates.OnAnyPropertyChanges()
+                .Subscribe(value => IsEnabled = keyboardService.KeyEnabledStates[Value]);
+
+            IsEnabled = keyboardService.KeyEnabledStates[Value];
+            
+            //Calculate IsCurrent
+            Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
+
+            mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
+                .Subscribe(calculateIsCurrent);
+
+            calculateIsCurrent(mainViewModel.CurrentPositionKey);
+            
+            //Calculate DisplayShiftDownText
+            Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
+                (shiftDownState, capturingMultiKeySelection) => 
+                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
+                    || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
+
+            capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
+                .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
+
+            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
+                .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
+
+            calculateDisplayShiftDownText(
+                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,
+                capturingStateManager.CapturingMultiKeySelection);
+
+            //Publish own version of KeySelection event
+            mainViewModel.KeySelection += (o, value) =>
             {
-                //Calculate KeyDownState
-                keyboardService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
-                    .Subscribe(value => KeyDownState = value);
-
-                KeyDownState = keyboardService.KeyDownStates[Value].Value;
-
-                //Calculate SelectionProgress
-                keyboardService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
-                    .Subscribe(value => SelectionProgress = value);
-
-                SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
-
-                //Calculate IsEnabled
-                keyboardService.KeyEnabledStates.OnAnyPropertyChanges()
-                    .Subscribe(value => IsEnabled = keyboardService.KeyEnabledStates[Value]);
-
-                IsEnabled = keyboardService.KeyEnabledStates[Value];
-                
-                //Calculate IsCurrent
-                Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
-
-                mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
-                    .Subscribe(calculateIsCurrent);
-
-                calculateIsCurrent(mainViewModel.CurrentPositionKey);
-                
-                //Calculate DisplayShiftDownText
-                Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
-                    (shiftDownState, capturingMultiKeySelection) => 
-                        DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
-                        || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
-
-                capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
-                    .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
-
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
-                    .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
-
-                calculateDisplayShiftDownText(
-                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,
-                    capturingStateManager.CapturingMultiKeySelection);
-
-                //Publish own version of KeySelection event
-                mainViewModel.KeySelection += (o, value) =>
+                if (value.Equals(Value)
+                    && Selection != null)
                 {
-                    if (value.Equals(Value)
-                        && Selection != null)
-                    {
-                        Selection(this, null);
-                    }
-                };
-            }
+                    Selection(this, null);
+                }
+            };
         }
 
         #endregion

@@ -12,19 +12,9 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
-using Alpha = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Alpha;
-using AlternativeAlpha1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha1;
-using AlternativeAlpha2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha2;
-using AlternativeAlpha3 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.AlternativeAlpha3;
-using Currencies1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Currencies1;
-using Currencies2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Currencies2;
-using ManipulateWindow = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.ManipulateWindow;
-using Menu = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.Menu;
-using NumericAndSymbols1 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols1;
-using NumericAndSymbols2 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols2;
-using NumericAndSymbols3 = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.NumericAndSymbols3;
-using PhysicalKeys = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.PhysicalKeys;
-using YesNoQuestion = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English.YesNoQuestion;
+using StandardViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard;
+using SpeechOnlyViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.SpeechOnly;
+using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -151,57 +141,65 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         case Languages.AmericanEnglish:
                         case Languages.BritishEnglish:
                         case Languages.CanadianEnglish:
-                            if (Keyboard is ViewModels.Keyboards.Alpha)
+                            if (Keyboard is ViewModelKeyboards.Alpha)
                             {
-                                newContent = new Alpha { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Alpha { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.AlternativeAlpha1)
+                            else if (Keyboard is ViewModelKeyboards.Diacritic1)
                             {
-                                newContent = new AlternativeAlpha1 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Diacritic1 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.AlternativeAlpha2)
+                            else if (Keyboard is ViewModelKeyboards.Diacritic2)
                             {
-                                newContent = new AlternativeAlpha2 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Diacritic2 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.AlternativeAlpha3)
+                            else if (Keyboard is ViewModelKeyboards.Diacritic3)
                             {
-                                newContent = new AlternativeAlpha3 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Diacritic3 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.Currencies1)
+                            else if (Keyboard is ViewModelKeyboards.Currencies1)
                             {
-                                newContent = new Currencies1 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Currencies1 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.Currencies2)
+                            else if (Keyboard is ViewModelKeyboards.Currencies2)
                             {
-                                newContent = new Currencies2 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Currencies2 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.ManipulateWindow)
+                            else if (Keyboard is ViewModelKeyboards.Menu)
                             {
-                                newContent = new ManipulateWindow { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Menu { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.Menu)
+                            else if (Keyboard is ViewModelKeyboards.Mouse)
                             {
-                                newContent = new Menu { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Mouse { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols2)
+                            else if (Keyboard is ViewModelKeyboards.NumericAndSymbols2)
                             {
-                                newContent = new NumericAndSymbols2 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.NumericAndSymbols2 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols3)
+                            else if (Keyboard is ViewModelKeyboards.NumericAndSymbols3)
                             {
-                                newContent = new NumericAndSymbols3 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.NumericAndSymbols3 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.NumericAndSymbols1)
+                            else if (Keyboard is ViewModelKeyboards.NumericAndSymbols1)
                             {
-                                newContent = new NumericAndSymbols1 { DataContext = Keyboard };
+                                newContent = new StandardViews.English.NumericAndSymbols1 { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.PhysicalKeys)
+                            else if (Keyboard is ViewModelKeyboards.PhysicalKeys)
                             {
-                                newContent = new PhysicalKeys { DataContext = Keyboard };
+                                newContent = new StandardViews.English.PhysicalKeys { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.YesNoQuestion)
+                            else if (Keyboard is ViewModelKeyboards.PositionAndOpacity)
                             {
-                                newContent = new YesNoQuestion { DataContext = Keyboard };
+                                newContent = new StandardViews.English.PositionAndOpacity { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModelKeyboards.SizeAndOpacity)
+                            {
+                                newContent = new StandardViews.English.SizeAndOpacity { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
+                            {
+                                newContent = new StandardViews.English.YesNoQuestion { DataContext = Keyboard };
                             }
                             break;
                     }
@@ -213,13 +211,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         case Languages.AmericanEnglish:
                         case Languages.BritishEnglish:
                         case Languages.CanadianEnglish:
-                            if (Keyboard is ViewModels.Keyboards.Alpha)
+                            if (Keyboard is ViewModelKeyboards.Alpha)
                             {
-                                newContent = new Views.Keyboards.SpeechOnly.English.Alpha { DataContext = Keyboard };
+                                newContent = new SpeechOnlyViews.English.Alpha { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModels.Keyboards.YesNoQuestion)
+                            else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
-                                newContent = new Views.Keyboards.SpeechOnly.English.YesNoQuestion { DataContext = Keyboard };
+                                newContent = new SpeechOnlyViews.English.YesNoQuestion { DataContext = Keyboard };
                             }
                             break;
                     }

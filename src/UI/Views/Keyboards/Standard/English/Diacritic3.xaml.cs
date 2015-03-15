@@ -3,11 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English
 {
     /// <summary>
-    /// Interaction logic for AlternativeAlpha3.xaml
+    /// Interaction logic for Diacritic3.xaml
     /// </summary>
-    public partial class AlternativeAlpha3 : UserControl
+    public partial class Diacritic3 : UserControl
     {
-        public AlternativeAlpha3()
+        public Diacritic3()
         {
             InitializeComponent();
         }

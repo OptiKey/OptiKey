@@ -2,11 +2,11 @@
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class ManipulateWindow : BindableBase, IKeyboard, INavigableKeyboard
+    public class SizeAndOpacity : BindableBase, IKeyboard, INavigableKeyboard
     {
         private readonly IKeyboard back;
 
-        public ManipulateWindow(IKeyboard back)
+        public SizeAndOpacity(IKeyboard back)
         {
             this.back = back;
         }

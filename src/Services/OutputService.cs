@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -15,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly IPublishService publishService;
@@ -207,6 +209,103 @@ namespace JuliusSweetland.OptiKey.Services
             ProcessText(captureAndSuggestions.First());
         }
 
+        public void LeftMouseButtonDown(Point point)
+        {
+            Log.Debug(string.Format("Pressing down left mouse at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.LeftMouseButtonDown();
+        }
+
+        public void LeftMouseButtonUp(Point point)
+        {
+            Log.Debug(string.Format("Releasing left mouse at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.LeftMouseButtonUp();
+        }
+
+        public void LeftMouseButtonClick(Point point)
+        {
+            Log.Debug(string.Format("Generating a left mouse click at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.LeftMouseButtonClick();
+        }
+
+        public void LeftMouseButtonDoubleClick(Point point)
+        {
+            Log.Debug(string.Format("Generating a left mouse double click at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.LeftMouseButtonDoubleClick();
+        }
+
+        public void MoveMouseTo(Point point)
+        {
+            Log.Debug(string.Format("Moving mouse to point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+        }
+
+        public void RightMouseButtonClick(Point point)
+        {
+            Log.Debug(string.Format("Generating a right mouse click at point '{0}'", point));
+            publishService.MouseMouseToPoint(point);
+            publishService.RightMouseButtonClick();
+        }
+
+        public void ScrollMouseWheelUp(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating a vertical mouse scroll of {0} clicks up at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelUp(clicks);
+        }
+
+        public void ScrollMouseWheelUpAndLeft(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks up and left at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelUpAndLeft(clicks);
+        }
+
+        public void ScrollMouseWheelUpAndRight(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks up and right at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelUpAndRight(clicks);
+        }
+
+        public void ScrollMouseWheelDown(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating a vertical mouse scroll of {0} clicks down at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelDown(clicks);
+        }
+
+        public void ScrollMouseWheelDownAndLeft(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks down and left at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelDownAndLeft(clicks);
+        }
+
+        public void ScrollMouseWheelDownAndRight(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks down and right at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelDownAndRight(clicks);
+        }
+
+        public void ScrollMouseWheelLeft(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating a horizontal mouse scroll of {0} clicks left at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelLeft(clicks);
+        }
+
+        public void ScrollMouseWheelRight(int clicks, Point point)
+        {
+            Log.Debug(string.Format("Generating a horizontal mouse scroll of {0} clicks right at point '{1}'", clicks, point));
+            publishService.MouseMouseToPoint(point);
+            publishService.ScrollMouseWheelRight(clicks);
+        }
+
         #endregion
 
         #region Methods - private
@@ -296,7 +395,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 if (virtualKeyCode != null)
                                 {
-                                    publishService.PublishKeyDown(virtualKeyCode.Value);
+                                    publishService.KeyDown(virtualKeyCode.Value);
                                 }
                             }
                         }
@@ -321,17 +420,17 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                         {
-// ReSharper disable PossibleInvalidOperationException
+                            // ReSharper disable PossibleInvalidOperationException
                             var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
-// ReSharper restore PossibleInvalidOperationException
+                            // ReSharper restore PossibleInvalidOperationException
 
                             if (value.IsDownOrLockedDown())
                             {
-                                publishService.PublishKeyDown(virtualKeyCode);
+                                publishService.KeyDown(virtualKeyCode);
                             }
                             else
                             {
-                                publishService.PublishKeyUp(virtualKeyCode);
+                                publishService.KeyUp(virtualKeyCode);
                             }
                         }
                     });
@@ -380,12 +479,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyPress called with functionKey '{0}'.",  functionKey));
+                Log.Debug(string.Format("KeyDownUp called with functionKey '{0}'.",  functionKey));
 
                 var virtualKeyCode = functionKey.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
                 {
-                    publishService.PublishKeyPress(virtualKeyCode.Value);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
                 }
             }
         }
@@ -394,7 +493,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("PublishKeyPress called with character '{0}' and modified character '{1}'",
+                Log.Debug(string.Format("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
                     modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral()));
 
@@ -402,11 +501,11 @@ namespace JuliusSweetland.OptiKey.Services
                 if (virtualKeyCode != null
                     && !publishModifiedCharacterAsText)
                 {
-                    publishService.PublishKeyPress(virtualKeyCode.Value);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
                 }
                 else if (modifiedCharacter != null)
                 {
-                    publishService.PublishText(modifiedCharacter.ToString());
+                    publishService.TypeText(modifiedCharacter.ToString());
                 }
             }
         }

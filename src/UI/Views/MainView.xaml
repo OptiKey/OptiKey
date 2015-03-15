@@ -15,14 +15,6 @@
     </UserControl.Resources>
 
     <i:Interaction.Triggers>
-        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
-            <triggerActions:ToastNotificationWindowAction />
-        </interactionRequest:InteractionRequestTrigger>
-        <interactionRequest:InteractionRequestTrigger SourceObject="{Binding ErrorNotificationRequest, Mode=OneWay}">
-            <triggerActions:ToastNotificationWindowAction ToastBackgroundBrush="DarkRed" 
-                                                          ToastForegroundBrush="White"
-                                                          ToastBorderBrush="Black" />
-        </interactionRequest:InteractionRequestTrigger>
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
             <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
         </interactionRequest:InteractionRequestTrigger>
@@ -30,7 +22,7 @@
 
     <Grid>
         <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                                PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
                     <Viewbox>
@@ -61,5 +53,20 @@
                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+
+        <controls:CursorPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
+            <controls:Cursor IsHitTestVisible="False" />
+        </controls:CursorPopup>
+
+        <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
+        
+        <controls:ToastNotificationPopup PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+                                         Placement="Center" AllowsTransparency="True" IsOpen="False">
+            <controls:ToastNotification RenderTransformOrigin="0,1">
+                <controls:ToastNotification.RenderTransform>
+                    <ScaleTransform ScaleY="1" />
+                </controls:ToastNotification.RenderTransform>
+            </controls:ToastNotification>
+        </controls:ToastNotificationPopup>
     </Grid>
 </UserControl>

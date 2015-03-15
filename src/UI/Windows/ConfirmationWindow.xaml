@@ -4,6 +4,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         Title="{Binding Title}"
+        Topmost="True"
         Width="400"
         MinHeight="150"
         ResizeMode="NoResize"

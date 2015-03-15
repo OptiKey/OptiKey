@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Services;
@@ -14,7 +15,10 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly IKeyboardService keyboardService;
         private readonly ISuggestionService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
+        private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
+        private readonly IWindowStateService mainWindowStateService;
+        private bool repeatLastMouseActionIsValid;
 
         #endregion
 
@@ -24,12 +28,16 @@ namespace JuliusSweetland.OptiKey.Models
             IKeyboardService keyboardService, 
             ISuggestionService suggestionService,
             ICapturingStateManager capturingStateManager,
-            ICalibrationService calibrationService)
+            ILastMouseActionStateManager lastMouseActionStateManager,
+            ICalibrationService calibrationService,
+            IWindowStateService mainWindowStateService)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
+            this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.calibrationService = calibrationService;
+            this.mainWindowStateService = mainWindowStateService;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -41,7 +49,11 @@ namespace JuliusSweetland.OptiKey.Models
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
-            capturingStateManager.OnPropertyChanges(i => i.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+            capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
+
+            lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
+
+            mainWindowStateService.OnPropertyChanges(mwss => mwss.WindowState).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -81,7 +93,14 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Previous suggestions if no suggestions, or on page 1
+                //Key is Repeat Last Mouse Action, but KeyEnabledStates.RepeatLastMouseActionIsValid is not true
+                if (keyValue == KeyValues.RepeatLastMouseActionKey
+                    && !lastMouseActionStateManager.LastMouseActionExists)
+                {
+                    return false;
+                }
+
+                //Key is Previous suggestions, but no suggestions, or on page 1
                 if (keyValue == KeyValues.PreviousSuggestionsKey
                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
@@ -90,7 +109,7 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Next suggestions if no suggestions, or on last page
+                //Key is Next suggestions but no suggestions, or on last page
                 if (keyValue == KeyValues.NextSuggestionsKey
                     && (suggestionService.Suggestions == null
                         || !suggestionService.Suggestions.Any()
@@ -99,42 +118,42 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Suggestion 1 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 1 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion1Key
                     && !SuggestionKeyIsValid(0))
                 {
                     return false;
                 }
 
-                //Suggestion 2 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 2 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion2Key
                     && !SuggestionKeyIsValid(1))
                 {
                     return false;
                 }
 
-                //Suggestion 3 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 3 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion3Key
                     && !SuggestionKeyIsValid(2))
                 {
                     return false;
                 }
 
-                //Suggestion 4 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 4 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion4Key
                     && !SuggestionKeyIsValid(3))
                 {
                     return false;
                 }
 
-                //Suggestion 5 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 5 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion5Key
                     && !SuggestionKeyIsValid(4))
                 {
                     return false;
                 }
 
-                //Suggestion 6 is only valid if suggestions exist for the appropriate index
+                //Key is Suggestion 6 but no suggestion exist for that index
                 if (keyValue == KeyValues.Suggestion6Key
                     && !SuggestionKeyIsValid(5))
                 {
@@ -148,9 +167,27 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                //Key is Maximise, but the window is already maximised
+                if (keyValue == KeyValues.MaximiseSizeKey
+                    && mainWindowStateService.WindowState == WindowState.Maximized)
+                {
+                    return false;
+                }
+
+                //Key is Restore, but the window is already normal
+                if (keyValue == KeyValues.RestoreSizeKey
+                    && mainWindowStateService.WindowState == WindowState.Normal)
+                {
+                    return false;
+                }
+
                 return true;
             }
         }
+
+        #endregion
+
+        #region Private Methods
 
         private bool SuggestionKeyIsValid(int index)
         {

@@ -27,12 +27,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         public KeyboardService(
             ISuggestionService suggestionService, 
-            ICapturingStateManager capturingStateManager, 
-            ICalibrationService calibrationService)
+            ICapturingStateManager capturingStateManager,
+            ILastMouseActionStateManager lastMouseActionStateManager,
+            ICalibrationService calibrationService,
+            IWindowStateService mainWindowStateService)
         {
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, calibrationService);
+            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
 
             InitialiseKeyDownStates();
             AddKeyboardSetChangeHandlers();
@@ -91,6 +93,9 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
                 Settings.Default.SimulateKeyStrokes ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
+            KeyDownStates[KeyValues.MouseMagnifierKey].Value =
+                Settings.Default.MouseMagnifier ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
                 Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
         }
@@ -118,6 +123,9 @@ namespace JuliusSweetland.OptiKey.Services
                 Settings.Default.SimulateKeyStrokes = KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown();
                 ReleasePublishOnlyKeysIfNotPublishing();
             });
+
+            KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+                Settings.Default.MouseMagnifier = KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown());
 
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown());

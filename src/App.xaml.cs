@@ -21,7 +21,6 @@ using log4net.Core;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
-using InteractionRequest = Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -113,7 +112,9 @@ namespace JuliusSweetland.OptiKey
                 ISuggestionService suggestionService = new SuggestionService();
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, calibrationService);
+                ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
+                IWindowStateService mainWindowStateService = new WindowStateService();
+                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
                 IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, notifyErrorServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
                 notifyErrorServices.Add(audioService);
@@ -127,13 +128,22 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowManipulationService moveAndResizeService = new WindowManipulationService(mainWindow);
-                notifyErrorServices.Add(moveAndResizeService);
+                mainWindowStateService.Window = mainWindow;
+
+                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
+                    () => Settings.Default.MainWindowTop, d => Settings.Default.MainWindowTop = d,
+                    () => Settings.Default.MainWindowLeft, d => Settings.Default.MainWindowLeft = d,
+                    () => Settings.Default.MainWindowHeight, d => Settings.Default.MainWindowHeight = d,
+                    () => Settings.Default.MainWindowWidth, d => Settings.Default.MainWindowWidth = d,
+                    () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
+                    Settings.Default, true, true);
+                
+                notifyErrorServices.Add(mainWindowManipulationService);
 
                 var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, publishService, 
-                    keyboardService, suggestionService, capturingStateManager,
-                    inputService, outputService, moveAndResizeService, notifyErrorServices);
+                    audioService, calibrationService, dictionaryService, keyboardService, 
+                    suggestionService, capturingStateManager, lastMouseActionStateManager,
+                    inputService, outputService, mainWindowManipulationService, notifyErrorServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 
@@ -258,6 +268,7 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new PointFixationSource(
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
+                        Settings.Default.PointSelectionTriggerLockOnRadius,
                         Settings.Default.PointSelectionTriggerFixationRadius,
                         pointSource.Sequence);
                     break;
@@ -324,16 +335,13 @@ namespace JuliusSweetland.OptiKey
 
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
-                {
-                    Title = "Welcome to Optikey!",
-                    Content = "Website: www.optikey.org\n" +
-                              "Settings: press ALT + M"
-                }, _ =>
-                {
-                    inputService.State = RunningStates.Running;
-                    taskCompletionSource.SetResult(true);
-                });
+                mainViewModel.RaiseToastNotification("Welcome to Optikey!", 
+                    "Website: www.optikey.org\n" + "Settings: press ALT + M", NotificationTypes.Normal,
+                    () =>
+                        {
+                            inputService.State = RunningStates.Running;
+                            taskCompletionSource.SetResult(true);
+                        });
             }
             else
             {
@@ -380,16 +388,14 @@ namespace JuliusSweetland.OptiKey
 
                                 inputService.State = RunningStates.Paused;
                                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                                mainViewModel.NotificationRequest.Raise(new InteractionRequest.Notification
-                                {
-                                    Title = "UPDATE AVAILABLE!",
-                                    Content = string.Format(
-                                        "Please visit www.optikey.org to download latest version ({0})\n(You can turn off update checks from the Management Console: ALT + M)", release.TagName)
-                                }, _ =>
-                                {
-                                    inputService.State = RunningStates.Running;
-                                    taskCompletionSource.SetResult(true);
-                                });
+                                mainViewModel.RaiseToastNotification("UPDATE AVAILABLE!",
+                                    string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
+                                    NotificationTypes.Normal,
+                                    () => 
+                                        {
+                                            inputService.State = RunningStates.Running;
+                                            taskCompletionSource.SetResult(true);
+                                        });
 
                                 return;
                             }

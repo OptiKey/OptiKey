@@ -174,11 +174,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\KeyboardsSets.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\RunningStates.cs" />
+    <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
@@ -187,6 +189,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
@@ -197,18 +200,23 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
+    <Compile Include="Models\ILastMouseActionStateManager.cs" />
+    <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\DictionaryEntryAndState.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
+    <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Native\Enums\DeviceCaps.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
-    <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
+    <Compile Include="Services\IWindowManipulationService.cs" />
+    <Compile Include="Services\IWindowStateService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
@@ -241,16 +249,23 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
+    <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
-    <Compile Include="Services\WindowStatePersistenceService.cs" />
+    <Compile Include="Static\Graphics.cs" />
+    <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\ToastNotification.cs" />
+    <Compile Include="UI\Controls\Cursor.cs" />
+    <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
+    <Compile Include="UI\Controls\MagnifyPopup.cs" />
+    <Compile Include="UI\Controls\CursorPopup.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
     <Compile Include="UI\Controls\ProgressPie.cs" />
     <Compile Include="UI\Controls\QuestionText.cs" />
@@ -259,20 +274,22 @@
     <Compile Include="UI\Controls\TextBlockScaler.cs" />
     <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
-    <Compile Include="UI\TriggerActions\ToastNotificationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\ManipulateWindow.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\PositionAndOpacity.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\SizeAndOpacity.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
@@ -280,6 +297,7 @@
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
@@ -292,20 +310,26 @@
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml.cs">
-      <DependentUpon>ManipulateWindow.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
+      <DependentUpon>Mouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Standard\English\PositionAndOpacity.xaml.cs">
+      <DependentUpon>PositionAndOpacity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Standard\English\SizeAndOpacity.xaml.cs">
+      <DependentUpon>SizeAndOpacity.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha3.xaml.cs">
-      <DependentUpon>AlternativeAlpha3.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml.cs">
+      <DependentUpon>Diacritic3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha2.xaml.cs">
-      <DependentUpon>AlternativeAlpha2.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml.cs">
+      <DependentUpon>Diacritic2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha1.xaml.cs">
-      <DependentUpon>AlternativeAlpha1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml.cs">
+      <DependentUpon>Diacritic1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\Currencies2.xaml.cs">
       <DependentUpon>Currencies2.xaml</DependentUpon>
@@ -375,9 +399,6 @@
     <Compile Include="UI\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\ToastNotificationWindow.xaml.cs">
-      <DependentUpon>ToastNotificationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Utilities\DrawingUtils.cs" />
     <Compile Include="UI\Utilities\VisualAndLogicalTreeHelper.cs" />
   </ItemGroup>
@@ -401,7 +422,7 @@
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
-    <Compile Include="Native\WindowsAPI.cs" />
+    <Compile Include="Native\PInvoke.cs" />
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
@@ -442,7 +463,7 @@
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ManipulateWindow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SizeAndOpacity.svg" />
     <None Include="..\docs\CREDITS.txt">
       <Link>CREDITS.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -451,29 +472,51 @@
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Icons\SVG Source Files\MouseDoubleLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScroll.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SimulateKeyStrokes.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMagnifier.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseZoomIn.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
+    <None Include="Resources\Icons\SVG Source Files\PositionAndOpacity.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\Error2.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\Info1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\Info2.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDoubleClick1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\MultiKeyCaptureEnd1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\MultiKeyCaptureStart1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\Selection1.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Resources\Sounds\KeySelection1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\Selection2.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Resources\Sounds\KeySelection2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icons\SVG Source Files\DownArrow.svg" />
     <None Include="Resources\Icons\SVG Source Files\LeftArrow.svg" />
@@ -563,7 +606,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\ManipulateWindow.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\Mouse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Standard\English\PositionAndOpacity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Standard\English\SizeAndOpacity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -571,15 +622,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha3.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha2.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\AlternativeAlpha1.xaml">
+    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -670,10 +721,6 @@
     <Page Include="UI\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Windows\ToastNotificationWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

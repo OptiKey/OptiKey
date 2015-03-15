@@ -26,8 +26,11 @@
     <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
+    <Setting Name="PointSelectionTriggerLockOnRadius" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
     <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.5000000</Value>
@@ -71,11 +74,8 @@
     <Setting Name="MainWindowWidth" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">800</Value>
     </Setting>
-    <Setting Name="ToastNotificationTitleFontSize" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">25</Value>
-    </Setting>
-    <Setting Name="ToastNotificationContentFontSize" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">16</Value>
+    <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="ToastNotificationCharactersPerLine" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
@@ -128,8 +128,8 @@
     <Setting Name="InfoSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Info1.wav</Value>
     </Setting>
-    <Setting Name="SelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Selection1.wav</Value>
+    <Setting Name="KeySelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\KeySelection1.wav</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureEnd1.wav</Value>
@@ -153,46 +153,70 @@
       <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
     <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
       <Value Profile="(Default)">Standard</Value>
     </Setting>
-    <Setting Name="ManagementConsoleWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
+    <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="ManagementConsoleWindowHeight" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">400</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowLeft" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowTop" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="ManagementConsoleWindowWidth" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">600</Value>
-    </Setting>
-    <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
-    </Setting>
-    <Setting Name="SelectionTriggerStopSignal" Type="System.String" Scope="User">
+    <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
     </Setting>
-    <Setting Name="CheckForUpdates" Type="System.Boolean" Scope="User">
+    <Setting Name="CheckForUpdates" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ShowSplashScreen" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="GitHubRepoOwner" Type="System.String" Scope="User">
+    <Setting Name="GitHubRepoOwner" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">juliussweetland</Value>
     </Setting>
-    <Setting Name="GitHubRepoName" Type="System.String" Scope="User">
+    <Setting Name="GitHubRepoName" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">optikey</Value>
     </Setting>
     <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:03</Value>
+    </Setting>
+    <Setting Name="MouseScrollAmountInClicks" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="MouseClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseClick1.wav</Value>
+    </Setting>
+    <Setting Name="MouseDoubleClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDoubleClick1.wav</Value>
+    </Setting>
+    <Setting Name="MouseScrollSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
+    </Setting>
+    <Setting Name="CursorWidth" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="MouseMagnifier" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Setting" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MagnifySourceAreaHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="MagnifySourceAreaVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="MagnifyWindowFillHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="MagnifyWindowFillVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="ToastNotificationHorizontalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
     </Setting>
   </Settings>
 </SettingsFile>

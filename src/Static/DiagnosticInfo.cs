@@ -102,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Static
 
                         if (IsServerVersion())
                         {
-                            if (WindowsAPI.GetSystemMetrics(89) == 0) return "Windows Server 2003";
+                            if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
 
                             return "Windows Server 2003 R2";
                         }
@@ -150,7 +150,7 @@ namespace JuliusSweetland.OptiKey.Static
             get
             {
                 var os = new OSVERSIONINFO { dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFO)) };
-                WindowsAPI.GetVersionEx(ref os); 
+                PInvoke.GetVersionEx(ref os); 
                 return string.IsNullOrEmpty(os.szCSDVersion) ? "No Service Pack" : os.szCSDVersion; 
             }
         }
@@ -162,7 +162,7 @@ namespace JuliusSweetland.OptiKey.Static
                 if (IsUacEnabled)
                 {
                     IntPtr tokenHandle;
-                    if (!WindowsAPI.OpenProcessToken(Process.GetCurrentProcess().Handle, TOKEN_READ, out tokenHandle))
+                    if (!PInvoke.OpenProcessToken(Process.GetCurrentProcess().Handle, TOKEN_READ, out tokenHandle))
                     {
                         throw new ApplicationException("Could not get process token.  Win32 Error Code: " + Marshal.GetLastWin32Error());
                     }
@@ -176,7 +176,7 @@ namespace JuliusSweetland.OptiKey.Static
                         try
                         {
                             uint returnedSize;
-                            var success = WindowsAPI.GetTokenInformation(
+                            var success = PInvoke.GetTokenInformation(
                                 tokenHandle, TOKEN_INFORMATION_CLASS.TokenElevationType, elevationTypePtr, 
                                 (uint) elevationResultSize, out returnedSize);
 
@@ -203,7 +203,7 @@ namespace JuliusSweetland.OptiKey.Static
                     {
                         if (tokenHandle != IntPtr.Zero)
                         {
-                            WindowsAPI.CloseHandle(tokenHandle);
+                            PInvoke.CloseHandle(tokenHandle);
                         }
                     }
                 }
