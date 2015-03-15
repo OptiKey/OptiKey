@@ -388,7 +388,7 @@ namespace JuliusSweetland.OptiKey
 
                                 inputService.State = RunningStates.Paused;
                                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                                mainViewModel.RaiseToastNotification("A NEW VERSION OF OPTIKEY IS AVAILABLE!",
+                                mainViewModel.RaiseToastNotification("UPDATE AVAILABLE!",
                                     string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
                                     NotificationTypes.Normal,
                                     () => 

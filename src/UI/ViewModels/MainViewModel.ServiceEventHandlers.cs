@@ -303,7 +303,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                    outputService.LeftMouseButtonClick(fp);
+                                    outputService.LeftMouseButtonDoubleClick(fp);
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
