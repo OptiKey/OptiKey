@@ -2,7 +2,7 @@
 
 Free, Open Source, Assistive On-Screen Keyboard
 
-OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlled by any combination of eye movement (using eye-tracking devices), mouse movement, keyboard presses, and mouse clicks giving everyone the ability to fully interact with a computer and communicate freely.
+OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlled by any number of input devices, including eye-tracking devices and assistive buttons, as well as more conventional devices like the mouse and keyboard. OptiKey can simulate a physical keyboard and mouse, as well as generate speech, giving everyone the ability to fully interact with a computer and communicate freely.
 
 # Getting Started
 
