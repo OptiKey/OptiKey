@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.Models
         #region Fields
 
         private readonly IKeyboardService keyboardService;
-        private readonly ISuggestionService suggestionService;
+        private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public KeyEnabledStates(
             IKeyboardService keyboardService, 
-            ISuggestionService suggestionService,
+            ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             ICalibrationService calibrationService,

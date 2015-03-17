@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IKeyboardService keyboardService;
-        private readonly ISuggestionService suggestionService;
+        private readonly ISuggestionStateService suggestionService;
         private readonly IPublishService publishService;
         private readonly IDictionaryService dictionaryService;
 
@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public OutputService(
             IKeyboardService keyboardService,
-            ISuggestionService suggestionService,
+            ISuggestionStateService suggestionService,
             IPublishService publishService,
             IDictionaryService dictionaryService)
         {

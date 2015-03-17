@@ -101,6 +101,10 @@
     <Reference Include="MouseKeyboardActivityMonitor">
       <HintPath>..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
+    <Reference Include="NBug, Version=1.2.0.0, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NBug.1.2.2\lib\net40-client\NBug.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
@@ -247,13 +251,13 @@
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
-    <Compile Include="Services\ISuggestionService.cs" />
+    <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\ITheEyeTribePointService.cs" />
     <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\OutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
-    <Compile Include="Services\SuggestionService.cs" />
+    <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
@@ -423,6 +427,10 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\PInvoke.cs" />
+    <None Include="nbug.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
@@ -570,7 +578,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
