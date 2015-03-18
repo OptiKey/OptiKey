@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -190,24 +191,17 @@ namespace JuliusSweetland.OptiKey
 
         private static void AttachUnhandledExceptionHandlers()
         {
-            Application.Current.DispatcherUnhandledException +=
-                (sender, args) => Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", args.Exception);
+            Application.Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
 
             Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
-
-            AppDomain.CurrentDomain.UnhandledException +=
-                (sender, args) => Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", args.ExceptionObject as Exception);
-
             AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
-
-            TaskScheduler.UnobservedTaskException +=
-                (sender, args) => Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", args.Exception);
-
             TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
 
             NBug.Settings.ProcessingException += (exception, report) =>
             {
-                //Add latest log file as custom info in error report
+                //Add latest log file contents as custom info in the error report
                 var rootAppender = ((Hierarchy)LogManager.GetRepository())
                     .Root.Appenders.OfType<FileAppender>()
                     .FirstOrDefault();
@@ -227,9 +221,17 @@ namespace JuliusSweetland.OptiKey
 
             NBug.Settings.CustomUIEvent += (sender, args) =>
             {
-                MessageBox.Show("CustomUIEvent!");
                 args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.Send);
-                //TODO: RESTART APPLICATION HERE
+
+                var crashWindow = new CrashWindow { Topmost = true };
+                crashWindow.Show();
+                crashWindow.Activate();
+                Thread.Sleep(Settings.Default.CrashMessageDisplayTimeSpan);
+                if (Settings.Default.AutomaticallyRestartAfterCrash)
+                {
+                    System.Windows.Forms.Application.Restart();
+                }
+                Application.Current.Shutdown();
             };
         }
 

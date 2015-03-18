@@ -101,8 +101,7 @@
     <Reference Include="MouseKeyboardActivityMonitor">
       <HintPath>..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
-    <Reference Include="NBug, Version=1.2.0.0, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NBug">
       <HintPath>..\packages\NBug.1.2.2\lib\net40-client\NBug.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -394,6 +393,9 @@
     <Compile Include="UI\Views\Management\WordsView.xaml.cs">
       <DependentUpon>WordsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\CrashWindow.xaml.cs">
+      <DependentUpon>CrashWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
@@ -584,7 +586,7 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -715,6 +717,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\WordsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\CrashWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
