@@ -11,5 +11,10 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             InitializeComponent();
         }
+
+        private void OkButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

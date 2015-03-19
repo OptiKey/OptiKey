@@ -218,12 +218,6 @@
     <Setting Name="ToastNotificationHorizontalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">75</Value>
     </Setting>
-    <Setting Name="CrashMessageDisplayTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:10</Value>
-    </Setting>
-    <Setting Name="AutomaticallyRestartAfterCrash" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>

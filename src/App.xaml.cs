@@ -102,7 +102,6 @@ namespace JuliusSweetland.OptiKey
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
-            throw new Exception("Some test exception - 4");
             try
             {
                 Log.Info("Boot strapping the services and UI.");
@@ -221,17 +220,15 @@ namespace JuliusSweetland.OptiKey
 
             NBug.Settings.CustomUIEvent += (sender, args) =>
             {
-                args.Result = new UIDialogResult(ExecutionFlow.ContinueExecution, SendReport.Send);
-
-                var crashWindow = new CrashWindow { Topmost = true };
-                crashWindow.Show();
-                crashWindow.Activate();
-                Thread.Sleep(Settings.Default.CrashMessageDisplayTimeSpan);
-                if (Settings.Default.AutomaticallyRestartAfterCrash)
+                var crashWindow = new CrashWindow
                 {
-                    System.Windows.Forms.Application.Restart();
-                }
-                Application.Current.Shutdown();
+                    Topmost = true,
+                    ShowActivated = true
+                };
+                crashWindow.ShowDialog();
+
+                //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
+                args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
             };
         }
 
