@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public KeyboardService(
-            ISuggestionService suggestionService, 
+            ISuggestionStateService suggestionService, 
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             ICalibrationService calibrationService,

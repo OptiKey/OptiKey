@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -17,10 +19,14 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
+using log4net.Repository.Hierarchy;
+using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
+using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -40,9 +46,8 @@ namespace JuliusSweetland.OptiKey
 
         public App()
         {
-            //Attach unhandled exception handlers
-            Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            //Setup unhandled exception handling and NBug
+            AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
             Log.Info("STARTING UP.");
@@ -109,7 +114,7 @@ namespace JuliusSweetland.OptiKey
                 IAudioService audioService = new AudioService();
                 IDictionaryService dictionaryService = new DictionaryService();
                 IPublishService publishService = new PublishService();
-                ISuggestionService suggestionService = new SuggestionService();
+                ISuggestionStateService suggestionService = new SuggestionStateService();
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
@@ -177,6 +182,54 @@ namespace JuliusSweetland.OptiKey
                 Log.Error("Error starting up application", ex);
                 throw;
             }
+        }
+
+        #endregion
+
+        #region Attach Unhandled Exception Handlers
+
+        private static void AttachUnhandledExceptionHandlers()
+        {
+            Application.Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+
+            Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
+            TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
+
+            NBug.Settings.ProcessingException += (exception, report) =>
+            {
+                //Add latest log file contents as custom info in the error report
+                var rootAppender = ((Hierarchy)LogManager.GetRepository())
+                    .Root.Appenders.OfType<FileAppender>()
+                    .FirstOrDefault();
+
+                if (rootAppender != null)
+                {
+                    using (var fs = new FileStream(rootAppender.File, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    {
+                        using (var sr = new StreamReader(fs, Encoding.Default))
+                        {
+                            var logFileText = sr.ReadToEnd();
+                            report.CustomInfo = logFileText;
+                        }
+                    }
+                }
+            };
+
+            NBug.Settings.CustomUIEvent += (sender, args) =>
+            {
+                var crashWindow = new CrashWindow
+                {
+                    Topmost = true,
+                    ShowActivated = true
+                };
+                crashWindow.ShowDialog();
+
+                //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
+                args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
+            };
         }
 
         #endregion
@@ -425,27 +478,6 @@ namespace JuliusSweetland.OptiKey
                     publishService.ReleaseAllDownKeys();
                 }
             };
-        }
-
-        #endregion
-
-        #region Unhandled Exception Handlers
-
-        private void CurrentOnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs dispatcherUnhandledExceptionEventArgs)
-        {
-            HandleUnhandledException(dispatcherUnhandledExceptionEventArgs.Exception);
-            Application.Current.Shutdown();
-        }
-
-        private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            HandleUnhandledException(unhandledExceptionEventArgs.ExceptionObject as Exception);
-            Application.Current.Shutdown();
-        }
-
-        private void HandleUnhandledException(Exception exception)
-        {
-            Log.Error("An unhandled error has occurred and the application needs to close. Exception details...", exception);
         }
 
         #endregion
