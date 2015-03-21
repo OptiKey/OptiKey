@@ -83,8 +83,7 @@ namespace JuliusSweetland.OptiKey.Services
                         ReleaseUnlockedKeys();
                     }
 
-                    StoreLastTextChange(null);
-                    UpdateCurrentWord(null);
+                    UpdateLastTextChangeAndCurrentWord(null);
 
                     ClearSuggestions();
 
@@ -124,9 +123,8 @@ namespace JuliusSweetland.OptiKey.Services
                         ReleaseUnlockedKeys();
                     }
 
-                    StoreLastTextChange(null);
-                    UpdateCurrentWord(null);
-                    ClearSuggestions();
+                    UpdateLastTextChangeAndCurrentWord(null);
+                    GenerateAutoCompleteSuggestions(true);
 
                     if (textChangedByBackOne)
                     {
@@ -139,8 +137,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
-                    StoreLastTextChange(null);
-                    UpdateCurrentWord(null);
+                    UpdateLastTextChangeAndCurrentWord(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
 
@@ -379,9 +376,8 @@ namespace JuliusSweetland.OptiKey.Services
                 suppressNextAutoSpace = false;
             }
 
-            StoreLastTextChange(modifiedCaptureText);
-            UpdateCurrentWord(modifiedCaptureText);
-            GenerateAutoCompleteSuggestions();
+            UpdateLastTextChangeAndCurrentWord(modifiedCaptureText);
+            GenerateAutoCompleteSuggestions(true);
         }
 
         private void ReactToPublishingStateChanges()
@@ -443,37 +439,40 @@ namespace JuliusSweetland.OptiKey.Services
                     });
             }
         }
-
-        private void StoreLastTextChange(string textChange)
+        
+        private void UpdateLastTextChangeAndCurrentWord(string textChange)
         {
             Log.Debug(string.Format("Storing last text change '{0}'", textChange));
             lastTextChange = textChange;
-        }
 
-        private void UpdateCurrentWord(string textChange)
-        {
             if (textChange != null
                 && textChange.Length == 1
                 && lastTextChange != null
                 && lastTextChange.Length == 1)
             {
-                currentWord = string.Format("{0}{1}", currentWord, textChange);
-                Log.Debug(string.Format("Updating current word to '{0}'", currentWord));
+                var newCurrentWord = string.Format("{0}{1}", currentWord, textChange);
+                Log.Debug(string.Format("Updating current word to '{0}'", newCurrentWord));
+                currentWord = newCurrentWord;
             }
             else
             {
-                currentWord = null;
                 Log.Debug("Clearing current word");
+                currentWord = null;
             }
         }
 
-        private void GenerateAutoCompleteSuggestions()
+        private void GenerateAutoCompleteSuggestions(bool clearSuggestionsIfNoCurrentWord)
         {
             if (currentWord != null)
             {
-                var suggestions = dictionaryService.GetAutoCompleteSuggestions(currentWord)
+                suggestionService.Suggestions = dictionaryService.GetAutoCompleteSuggestions(currentWord)
                     .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                    .Select(de => de.Entry);
+                    .Select(de => de.Entry)
+                    .ToList();
+            }
+            else if(clearSuggestionsIfNoCurrentWord)
+            {
+                ClearSuggestions();
             }
         }
 
@@ -599,8 +598,7 @@ namespace JuliusSweetland.OptiKey.Services
                     PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
                 }
 
-                StoreLastTextChange(suggestion);
-                UpdateCurrentWord(suggestion);
+                UpdateLastTextChangeAndCurrentWord(suggestion);
             }
         }
 
