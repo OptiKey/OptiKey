@@ -274,7 +274,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     prompt = string.Concat(prompt, "\n(The new dictionary entry will contain capital letters)");
                 }
 
-                var similarEntries = dictionaryService.GetAllEntriesWithUsageCounts()
+                var similarEntries = dictionaryService.GetAllEntries()
                     .Where(de => string.Equals(de.Entry, candidate, StringComparison.InvariantCultureIgnoreCase))
                     .Select(de => de.Entry)
                     .ToList();

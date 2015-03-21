@@ -66,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
-            var allDictionaryEntries = dictionaryService.GetAllEntriesWithUsageCounts();
+            var allDictionaryEntries = dictionaryService.GetAllEntries();
             Entries = allDictionaryEntries != null
                 ? new ObservableCollection<DictionaryEntryAndState>(
                     allDictionaryEntries

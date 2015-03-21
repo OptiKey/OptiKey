@@ -10,9 +10,8 @@ namespace JuliusSweetland.OptiKey.Services
     {
         void LoadDictionary();
         bool ExistsInDictionary(string entryToFind);
-        IEnumerable<string> GetHashes();
-        IEnumerable<DictionaryEntryWithUsageCount> GetAllEntriesWithUsageCounts();
-        IEnumerable<string> GetEntries(string hash);
+        IEnumerable<DictionaryEntry> GetAllEntries();
+        IEnumerable<DictionaryEntry> GetAutoCompleteSuggestions(string root);
         void AddNewEntryToDictionary(string entry);
         void RemoveEntryFromDictionary(string entry);
         void IncrementEntryUsageCount(string entry);

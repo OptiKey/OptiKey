@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Language = Settings.Default.Language;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
-            MultiKeySelectionMaxDictionaryMatches = Settings.Default.MultiKeySelectionMaxDictionaryMatches;
+            MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
         }
 
         public void ApplyChanges()
@@ -95,7 +95,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.Language = Language;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
-            Settings.Default.MultiKeySelectionMaxDictionaryMatches = MultiKeySelectionMaxDictionaryMatches;
+            Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
             Settings.Default.Save();
 
             if (reloadDictionary)

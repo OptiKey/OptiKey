@@ -58,7 +58,34 @@ namespace JuliusSweetland.OptiKey.Extensions
                 {
                     if (log)
                     {
-                        Log.Debug(string.Format("User entered entry of '{0}' hashed to '{1}'", entry, hash));
+                        Log.Debug(string.Format("Entry of '{0}' hashed to '{1}'", entry, hash));
+                    }
+
+                    return hash;
+                }
+            }
+
+            return null;
+        }
+
+        public static string CreateAutoCompleteDictionaryEntryHash(this string entry, bool log = true)
+        {
+            if (!string.IsNullOrWhiteSpace(entry))
+            {
+                //Trim white space
+                string hash = entry.Trim();
+                
+                //Hashes are stored without diacritics (accents etc)
+                hash = hash.RemoveDiacritics();
+
+                //Hashes are stored as uppercase
+                hash = hash.ToUpper();
+                
+                if (!string.IsNullOrWhiteSpace(hash))
+                {
+                    if (log)
+                    {
+                        Log.Debug(string.Format("Entry of '{0}' hashed to '{1}'", entry, hash));
                     }
 
                     return hash;

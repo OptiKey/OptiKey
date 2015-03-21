@@ -24,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private string text;
         private string lastTextChange;
+        private string currentWord;
         private bool suppressNextAutoSpace = true;
         
         #endregion
@@ -83,6 +84,8 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     StoreLastTextChange(null);
+                    UpdateCurrentWord(null);
+
                     ClearSuggestions();
 
                     if (textChangedByBackMany)
@@ -122,6 +125,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     StoreLastTextChange(null);
+                    UpdateCurrentWord(null);
                     ClearSuggestions();
 
                     if (textChangedByBackOne)
@@ -136,6 +140,7 @@ namespace JuliusSweetland.OptiKey.Services
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
                     StoreLastTextChange(null);
+                    UpdateCurrentWord(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
 
@@ -375,6 +380,8 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             StoreLastTextChange(modifiedCaptureText);
+            UpdateCurrentWord(modifiedCaptureText);
+            GenerateAutoCompleteSuggestions();
         }
 
         private void ReactToPublishingStateChanges()
@@ -441,6 +448,33 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug(string.Format("Storing last text change '{0}'", textChange));
             lastTextChange = textChange;
+        }
+
+        private void UpdateCurrentWord(string textChange)
+        {
+            if (textChange != null
+                && textChange.Length == 1
+                && lastTextChange != null
+                && lastTextChange.Length == 1)
+            {
+                currentWord = string.Format("{0}{1}", currentWord, textChange);
+                Log.Debug(string.Format("Updating current word to '{0}'", currentWord));
+            }
+            else
+            {
+                currentWord = null;
+                Log.Debug("Clearing current word");
+            }
+        }
+
+        private void GenerateAutoCompleteSuggestions()
+        {
+            if (currentWord != null)
+            {
+                var suggestions = dictionaryService.GetAutoCompleteSuggestions(currentWord)
+                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                    .Select(de => de.Entry);
+            }
         }
 
         private void ClearSuggestions()
@@ -566,6 +600,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
 
                 StoreLastTextChange(suggestion);
+                UpdateCurrentWord(suggestion);
             }
         }
 
