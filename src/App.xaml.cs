@@ -230,6 +230,8 @@ namespace JuliusSweetland.OptiKey
                 //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
                 args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
             };
+
+            NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
         }
 
         #endregion
@@ -357,21 +359,21 @@ namespace JuliusSweetland.OptiKey
         
         private void LogDiagnosticInfo()
         {
-            Log.Info(string.Format("Assembly version: {0}", DiagnosticInfo.AssemblyVersion));
+            Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);
             var assemblyFileVersion = DiagnosticInfo.AssemblyFileVersion;
             if (!string.IsNullOrEmpty(assemblyFileVersion))
             {
-                Log.Info(string.Format("Assembly file version: {0}", assemblyFileVersion));
+                Log.InfoFormat("Assembly file version: {0}", assemblyFileVersion);
             }
             if(DiagnosticInfo.IsApplicationNetworkDeployed)
             {
-                Log.Info(string.Format("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion));
+                Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
             }
-            Log.Info(string.Format("Process elevated: {0}", DiagnosticInfo.IsProcessElevated));
-            Log.Info(string.Format("Process bitness: {0}", DiagnosticInfo.ProcessBitness));
-            Log.Info(string.Format("OS version: {0}", DiagnosticInfo.OperatingSystemVersion));
-            Log.Info(string.Format("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack));
-            Log.Info(string.Format("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness));
+            Log.InfoFormat("Process elevated: {0}", DiagnosticInfo.IsProcessElevated);
+            Log.InfoFormat("Process bitness: {0}", DiagnosticInfo.ProcessBitness);
+            Log.InfoFormat("OS version: {0}", DiagnosticInfo.OperatingSystemVersion);
+            Log.InfoFormat("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack);
+            Log.InfoFormat("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness);
         }
         
         #endregion
@@ -414,8 +416,8 @@ namespace JuliusSweetland.OptiKey
 
             if (Settings.Default.CheckForUpdates)
             {
-                Log.Info(string.Format("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
-                    Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName));
+                Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
+                    Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName);
 
                 new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
                     .GetAll(Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName)
@@ -436,8 +438,8 @@ namespace JuliusSweetland.OptiKey
                             var latestAvailableVersion = new Version(tagNameWithoutLetters);
                             if (latestAvailableVersion > currentVersion)
                             {
-                                Log.Info(string.Format("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
-                                    currentVersion, latestAvailableVersion));
+                                Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                    currentVersion, latestAvailableVersion);
 
                                 inputService.State = RunningStates.Paused;
                                 audioService.PlaySound(Settings.Default.InfoSoundFile);
@@ -455,7 +457,7 @@ namespace JuliusSweetland.OptiKey
                         }
 
                         Log.Info("No update found.");
-                    }, exception => Log.Info(string.Format("Error when checking for updates. Exception message:{0}", exception.Message)));
+                    }, exception => Log.InfoFormat("Error when checking for updates. Exception message:{0}", exception.Message));
             }
             else
             {

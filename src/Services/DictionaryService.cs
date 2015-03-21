@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LoadDictionary()
         {
-            Log.Debug(string.Format("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language));
+            Log.DebugFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language);
 
             try
             {
@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadOriginalDictionaryFromFile(string filePath)
         {
-            Log.Debug(string.Format("Loading original dictionary from file '{0}'", filePath));
+            Log.DebugFormat("Loading original dictionary from file '{0}'", filePath);
 
             using (var reader = File.OpenText(filePath))
             {
@@ -112,7 +112,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadUserDictionaryFromFile(string filePath)
         {
-            Log.Debug(string.Format("Loading user dictionary from file '{0}'", filePath));
+            Log.DebugFormat("Loading user dictionary from file '{0}'", filePath);
 
             using (var reader = File.OpenText(filePath))
             {
@@ -139,7 +139,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
 
-                Log.Debug(string.Format("Saving user dictionary to file '{0}'", userDictionaryPath));
+                Log.DebugFormat("Saving user dictionary to file '{0}'", userDictionaryPath);
 
                 StreamWriter writer = null;
                 try
@@ -171,7 +171,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public bool ExistsInDictionary(string entryToFind)
         {
-            Log.Debug(string.Format("ExistsInDictionary called with '{0}'.", entryToFind));
+            Log.DebugFormat("ExistsInDictionary called with '{0}'.", entryToFind);
 
             if (dictionary != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
@@ -227,7 +227,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (!loadedFromDictionaryFile)
                     {
-                        Log.Debug(string.Format("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash));
+                        Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
                         SaveUserDictionaryToFile();
                     }
                 }
@@ -240,7 +240,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void RemoveEntryFromDictionary(string entry)
         {
-            Log.Debug(string.Format("RemoveEntryFromDictionary called with entry '{0}'", entry));
+            Log.DebugFormat("RemoveEntryFromDictionary called with entry '{0}'", entry);
 
             if (dictionary != null
                 && !string.IsNullOrWhiteSpace(entry)
@@ -255,7 +255,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (entryWithUsageCount != null)
                     {
-                        Log.Debug(string.Format("Removing entry '{0}' from dictionary", entry));
+                        Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
                         dictionary[hash].Remove(entryWithUsageCount);
 
@@ -318,7 +318,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public IEnumerable<string> GetEntries(string hash)
         {
-            Log.Debug(string.Format("GetEntries called with hash '{0}'", hash));
+            Log.DebugFormat("GetEntries called with hash '{0}'", hash);
 
             if (dictionary != null
                 && dictionary.ContainsKey(hash))
@@ -352,7 +352,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PerformIncrementOrDecrementOfEntryUsageCount(string entry, bool isIncrement)
         {
-            Log.Debug(string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", entry, isIncrement));
+            Log.DebugFormat("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", entry, isIncrement);
 
             if (!string.IsNullOrWhiteSpace(entry)
                 && dictionary != null)
@@ -369,14 +369,14 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (isIncrement)
                         {
-                            Log.Debug(string.Format("Incrementing the usage count of entry '{0}'.", match.Entry));
+                            Log.DebugFormat("Incrementing the usage count of entry '{0}'.", match.Entry);
                             match.UsageCount++;
                         }
                         else
                         {
                             if (match.UsageCount > 0)
                             {
-                                Log.Debug(string.Format("Decrementing the usage count of entry '{0}'.", match.Entry));
+                                Log.DebugFormat("Decrementing the usage count of entry '{0}'.", match.Entry);
                                 match.UsageCount--;
                             }
                             else
@@ -414,15 +414,15 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 //N.B. The timestamped points (and key values) are not currently used, but could be useful to improve accuracy
 
-                Log.Debug(string.Format("Mapping capture to dictionary entries with {0} timestamped points/key values and the reduced sequence: {1}",
-                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence));
+                Log.DebugFormat("Mapping capture to dictionary entries with {0} timestamped points/key values and the reduced sequence: {1}",
+                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence);
 
                 if (reducedSequence != null && reducedSequence.Any())
                 {
                     //Remove diacritics and make uppercase
                     reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
 
-                    Log.Debug(string.Format("Removing diacritics leaves us with '{0}'", reducedSequence));
+                    Log.DebugFormat("Removing diacritics leaves us with '{0}'", reducedSequence);
 
                     //Reduce again - by removing diacritics we might now have adjacent 
                     //letters which are the same (the dictionary hashes do not)
@@ -436,7 +436,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     reducedSequence = new string(reducedAgainCharSequence.ToArray());
 
-                    Log.Debug(string.Format("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence));
+                    Log.DebugFormat("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence);
 
                     cancellationTokenSource = new CancellationTokenSource();
 
@@ -465,7 +465,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (matches.Any())
                 {
-                    matches.ForEach(match => Log.Debug(string.Format("Returning dictionary match: {0}", match)));
+                    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
                     return matches;
                 }
             }

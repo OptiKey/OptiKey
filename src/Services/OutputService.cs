@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
-            Log.Debug(string.Format("Processing captured function key '{0}'", functionKey));
+            Log.DebugFormat("Processing captured function key '{0}'", functionKey);
 
             switch (functionKey)
             {
@@ -188,7 +188,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessSingleKeyText(string capturedText)
         {
-            Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
+            Log.DebugFormat("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
 
             ClearSuggestions();
             ProcessText(capturedText);
@@ -196,8 +196,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions)
         {
-            Log.Debug(string.Format("Processing {0} captured multi-key selection results", 
-                captureAndSuggestions != null ? captureAndSuggestions.Count : 0));
+            Log.DebugFormat("Processing {0} captured multi-key selection results", 
+                captureAndSuggestions != null ? captureAndSuggestions.Count : 0);
 
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
 
@@ -211,97 +211,97 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LeftMouseButtonDown(Point point)
         {
-            Log.Debug(string.Format("Pressing down left mouse at point '{0}'", point));
+            Log.DebugFormat("Pressing down left mouse at point '{0}'", point);
             publishService.MouseMouseToPoint(point);
             publishService.LeftMouseButtonDown();
         }
 
         public void LeftMouseButtonUp(Point point)
         {
-            Log.Debug(string.Format("Releasing left mouse at point '{0}'", point));
+            Log.DebugFormat("Releasing left mouse at point '{0}'", point);
             publishService.MouseMouseToPoint(point);
             publishService.LeftMouseButtonUp();
         }
 
         public void LeftMouseButtonClick(Point point)
         {
-            Log.Debug(string.Format("Generating a left mouse click at point '{0}'", point));
+            Log.DebugFormat("Generating a left mouse click at point '{0}'", point);
             publishService.MouseMouseToPoint(point);
             publishService.LeftMouseButtonClick();
         }
 
         public void LeftMouseButtonDoubleClick(Point point)
         {
-            Log.Debug(string.Format("Generating a left mouse double click at point '{0}'", point));
+            Log.DebugFormat("Generating a left mouse double click at point '{0}'", point);
             publishService.MouseMouseToPoint(point);
             publishService.LeftMouseButtonDoubleClick();
         }
 
         public void MoveMouseTo(Point point)
         {
-            Log.Debug(string.Format("Moving mouse to point '{0}'", point));
+            Log.DebugFormat("Moving mouse to point '{0}'", point);
             publishService.MouseMouseToPoint(point);
         }
 
         public void RightMouseButtonClick(Point point)
         {
-            Log.Debug(string.Format("Generating a right mouse click at point '{0}'", point));
+            Log.DebugFormat("Generating a right mouse click at point '{0}'", point);
             publishService.MouseMouseToPoint(point);
             publishService.RightMouseButtonClick();
         }
 
         public void ScrollMouseWheelUp(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating a vertical mouse scroll of {0} clicks up at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks up at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelUp(clicks);
         }
 
         public void ScrollMouseWheelUpAndLeft(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks up and left at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks up and left at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelUpAndLeft(clicks);
         }
 
         public void ScrollMouseWheelUpAndRight(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks up and right at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks up and right at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelUpAndRight(clicks);
         }
 
         public void ScrollMouseWheelDown(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating a vertical mouse scroll of {0} clicks down at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks down at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelDown(clicks);
         }
 
         public void ScrollMouseWheelDownAndLeft(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks down and left at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks down and left at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelDownAndLeft(clicks);
         }
 
         public void ScrollMouseWheelDownAndRight(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating vertical and horizontal mouse scrolls of {0} clicks down and right at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks down and right at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelDownAndRight(clicks);
         }
 
         public void ScrollMouseWheelLeft(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating a horizontal mouse scroll of {0} clicks left at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks left at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelLeft(clicks);
         }
 
         public void ScrollMouseWheelRight(int clicks, Point point)
         {
-            Log.Debug(string.Format("Generating a horizontal mouse scroll of {0} clicks right at point '{1}'", clicks, point));
+            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks right at point '{1}'", clicks, point);
             publishService.MouseMouseToPoint(point);
             publishService.ScrollMouseWheelRight(clicks);
         }
@@ -312,7 +312,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ProcessText(string capturedText)
         {
-            Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
+            Log.DebugFormat("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
 
             if (string.IsNullOrEmpty(capturedText)) return;
 
@@ -439,7 +439,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void StoreLastTextChange(string textChange)
         {
-            Log.Debug(string.Format("Storing last text change '{0}'", textChange));
+            Log.DebugFormat("Storing last text change '{0}'", textChange);
             lastTextChange = textChange;
         }
 
@@ -451,7 +451,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private List<string> ModifySuggestions(List<string> suggestions)
         {
-            Log.Debug(string.Format("Modifying {0} suggestions.", suggestions != null ? suggestions.Count : 0));
+            Log.DebugFormat("Modifying {0} suggestions.", suggestions != null ? suggestions.Count : 0);
 
             if(suggestions == null || !suggestions.Any()) return null;
 
@@ -461,14 +461,14 @@ namespace JuliusSweetland.OptiKey.Services
                 .Distinct()
                 .ToList();
 
-            Log.Debug(string.Format("After applying modifiers there are {0} modified suggestions.", modifiedSuggestions.Count));
+            Log.DebugFormat("After applying modifiers there are {0} modified suggestions.", modifiedSuggestions.Count);
 
             return modifiedSuggestions.Any() ? modifiedSuggestions : null;
         }
 
         private void StoreSuggestions(List<string> suggestions)
         {
-            Log.Debug(string.Format("Storing {0} suggestions.", suggestions != null ? suggestions.Count : 0));
+            Log.DebugFormat("Storing {0} suggestions.", suggestions != null ? suggestions.Count : 0);
 
             suggestionService.Suggestions = suggestions != null && suggestions.Any()
                 ? suggestions
@@ -479,7 +479,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("KeyDownUp called with functionKey '{0}'.",  functionKey));
+                Log.DebugFormat("KeyDownUp called with functionKey '{0}'.",  functionKey);
 
                 var virtualKeyCode = functionKey.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
@@ -493,9 +493,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
-                Log.Debug(string.Format("KeyDownUp called with character '{0}' and modified character '{1}'",
+                Log.DebugFormat("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
-                    modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral()));
+                    modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral());
 
                 var virtualKeyCode = character.ToVirtualKeyCode();
                 if (virtualKeyCode != null
@@ -518,7 +518,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (keyboardService.KeyDownStates[key].Value == KeyDownStates.Down)
                 {
-                    Log.Debug(string.Format("Releasing {0} key.", key));
+                    Log.DebugFormat("Releasing {0} key.", key);
                     keyboardService.KeyDownStates[key].Value = KeyDownStates.Up;
                 }
             }
@@ -526,7 +526,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void SwapLastTextChangeForSuggestion(int index)
         {
-            Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with index {0}", index));
+            Log.DebugFormat("SwapLastTextChangeForSuggestion called with index {0}", index);
 
             if (!string.IsNullOrEmpty(lastTextChange))
             {
@@ -544,7 +544,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void SwapLastTextChangeForSuggestion(string suggestion)
         {
-            Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with suggestion '{0}'", suggestion));
+            Log.DebugFormat("SwapLastTextChangeForSuggestion called with suggestion '{0}'", suggestion);
 
             if (!string.IsNullOrEmpty(lastTextChange)
                 && !string.IsNullOrEmpty(suggestion))
@@ -606,8 +606,8 @@ namespace JuliusSweetland.OptiKey.Services
             if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                 keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug(string.Format("A key which prevents text capture is down - modifying '{0}' to null.", 
-                    capturedText.ConvertEscapedCharsToLiterals()));
+                Log.DebugFormat("A key which prevents text capture is down - modifying '{0}' to null.", 
+                    capturedText.ConvertEscapedCharsToLiterals());
                 return null;
             }
 
@@ -616,14 +616,14 @@ namespace JuliusSweetland.OptiKey.Services
                 if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
                     var modifiedText = capturedText.FirstCharToUpper();
-                    Log.Debug(string.Format("LeftShift is on so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    Log.DebugFormat("LeftShift is on so modifying '{0}' to '{1}.", capturedText, modifiedText);
                     return modifiedText;
                 }
 
                 if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
                 {
                     var modifiedText = capturedText.ToUpper();
-                    Log.Debug(string.Format("LeftShift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    Log.DebugFormat("LeftShift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText);
                     return modifiedText;
                 }
             }

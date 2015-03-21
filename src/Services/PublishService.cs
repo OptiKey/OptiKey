@@ -26,12 +26,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Checking all virtual key codes and simulating release of any which are down."));
+                Log.DebugFormat("Checking all virtual key codes and simulating release of any which are down.");
                 foreach (var virtualKeyCode in Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>())
                 {
                     if (inputDeviceStateAdaptor.IsHardwareKeyDown(virtualKeyCode))
                     {
-                        Log.Debug(string.Format("{0} is down - calling KeyUp", virtualKeyCode));
+                        Log.DebugFormat("{0} is down - calling KeyUp", virtualKeyCode);
                         KeyUp(virtualKeyCode);
                     }
                 }
@@ -46,7 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating key down {0}", virtualKeyCode));
+                Log.DebugFormat("Simulating key down {0}", virtualKeyCode);
                 inputSimulator.Keyboard.KeyDown(virtualKeyCode);
             }
             catch (Exception exception)
@@ -59,7 +59,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating key up: {0}", virtualKeyCode));
+                Log.DebugFormat("Simulating key up: {0}", virtualKeyCode);
                 inputSimulator.Keyboard.KeyUp(virtualKeyCode);
             }
             catch (Exception exception)
@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating key press (down & up): {0}", virtualKeyCode));
+                Log.DebugFormat("Simulating key press (down & up): {0}", virtualKeyCode);
                 inputSimulator.Keyboard.KeyPress(virtualKeyCode);
             }
             catch (Exception exception)
@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating typing text '{0}'", text));
+                Log.DebugFormat("Simulating typing text '{0}'", text);
                 inputSimulator.Keyboard.TextEntry(text);
             }
             catch (Exception exception)
@@ -98,7 +98,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating moving mouse to point '{0}'", point));
+                Log.DebugFormat("Simulating moving mouse to point '{0}'", point);
 
                 var virtualScreenWidthInPixels = SystemParameters.VirtualScreenWidth * Graphics.DipScalingFactorX;
                 var virtualScreenHeightInPixels = SystemParameters.VirtualScreenHeight * Graphics.DipScalingFactorY;
@@ -184,7 +184,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel up by {0} clicks", clicks));
+                Log.DebugFormat("Simulating scrolling the vertical mouse wheel up by {0} clicks", clicks);
                 inputSimulator.Mouse.VerticalScroll(clicks);
             }
             catch (Exception exception)
@@ -209,7 +209,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating scrolling the vertical mouse wheel down by {0} clicks", clicks));
+                Log.DebugFormat("Simulating scrolling the vertical mouse wheel down by {0} clicks", clicks);
                 inputSimulator.Mouse.VerticalScroll(0 - clicks);
             }
             catch (Exception exception)
@@ -234,7 +234,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel left by {0} clicks", clicks));
+                Log.DebugFormat("Simulating scrolling the horizontal mouse wheel left by {0} clicks", clicks);
                 inputSimulator.Mouse.HorizontalScroll(0 - clicks);
             }
             catch (Exception exception)
@@ -247,7 +247,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug(string.Format("Simulating scrolling the horizontal mouse wheel right by {0} clicks", clicks));
+                Log.DebugFormat("Simulating scrolling the horizontal mouse wheel right by {0} clicks", clicks);
                 inputSimulator.Mouse.HorizontalScroll(clicks);
             }
             catch (Exception exception)

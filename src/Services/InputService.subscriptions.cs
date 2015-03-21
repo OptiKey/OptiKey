@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateSelectionProgressSubscription(SelectionModes mode)
         {
-            Log.Info(string.Format("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode));
+            Log.InfoFormat("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode);
 
             ITriggerSource selectionTriggerSource = null;
 
@@ -107,7 +107,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateSelectionSubscriptions(SelectionModes mode)
         {
-            Log.Info(string.Format("Creating subscription to {0} SelectionTriggerSource for selections & results.", SelectionMode));
+            Log.InfoFormat("Creating subscription to {0} SelectionTriggerSource for selections & results.", SelectionMode);
 
             switch (mode)
             {
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.Services
             IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, 
             TriggerSignal startSelectionTriggerSignal)
         {
-            Log.Debug(string.Format("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count));
+            Log.DebugFormat("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count);
 
             State = RunningStates.Paused; //Pause everything (i.e. processing new points) while we perform the (CPU bound) word matching
 
@@ -293,11 +293,11 @@ namespace JuliusSweetland.OptiKey.Services
                         ((double)pointsAndKeyValues.Count / (double)timeSpan.TotalMilliseconds)
                         * Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds);
 
-                    Log.Debug(string.Format(
+                    Log.DebugFormat(
                         "Multi-key selection capture lasted {0}ms. Minimum dwell time is {1}ms, or {2} points.",
                         timeSpan.TotalMilliseconds,
                         Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
-                        sequenceThreshold));
+                        sequenceThreshold);
 
                     string reliableFirstLetter =
                         startMultiKeySelectionTriggerSignal != null
@@ -306,10 +306,10 @@ namespace JuliusSweetland.OptiKey.Services
                             ? startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
                             : null;
 
-                    Log.Debug(string.Format(
+                    Log.DebugFormat(
                         "First letter ('{0}') of multi-key selection capture {1} reliable.",
                         reliableFirstLetter,
-                        reliableFirstLetter != null ? "IS" : "IS NOT"));
+                        reliableFirstLetter != null ? "IS" : "IS NOT");
 
                     //If we are using a fixation trigger and the stop trigger has
                     //occurred on a letter then it is reliable - use it
@@ -320,10 +320,10 @@ namespace JuliusSweetland.OptiKey.Services
                             ? stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
                             : null;
 
-                    Log.Debug(string.Format(
+                    Log.DebugFormat(
                             "Last letter ('{0}') of multi-key selection capture {1} reliable.",
                             reliableLastLetter,
-                            reliableLastLetter != null ? "IS" : "IS NOT"));
+                            reliableLastLetter != null ? "IS" : "IS NOT");
 
                     if (reliableLastLetter != null)
                     {
@@ -361,7 +361,7 @@ namespace JuliusSweetland.OptiKey.Services
                     else
                     {
                         //The user fixated on multiple letters - map to dictionary word
-                        Log.Debug(string.Format("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence));
+                        Log.DebugFormat("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence);
 
                         List<string> dictionaryMatches = null;
 
