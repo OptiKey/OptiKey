@@ -458,34 +458,54 @@ namespace JuliusSweetland.OptiKey.Services
                         .ToList();
 
                     //Correctly case auto complete suggestions
-                    suggestions = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown 
-                        ? suggestions.Select(s => s.ToUpper()).ToList() 
-                        : suggestions.Select(s => s.ToLower()).ToList();
+                    suggestions = suggestions.Select(s => s.ToLower()).ToList(); //Start lower
 
+                    //Then case each suggestion letter to match what has already been typed
                     for (var index = 0; index < inProgressWord.Length; index++)
                     {
                         if (Char.IsUpper(inProgressWord[index]))
                         {
-                            suggestions = suggestions.Select(s => string.Concat(
-                                s.Substring(0, index), 
-                                s.Substring(index, 1).ToUpper(), 
-                                s.Length > index + 1 ? 
-                                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
-                                    ? s.Substring(index + 1, s.Length - (index + 1)).FirstCharToUpper()
-                                    : keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
-                                        ? s.Substring(index + 1, s.Length - (index + 1)).ToUpper()
-                                        : s.Substring(index + 1, s.Length - (index + 1))
-                                    : null))
-                                .ToList();
+                            int indexCopy = index;
+                            suggestions = suggestions.Select(s =>
+                            {
+                                var prefix = s.Substring(0, indexCopy);
+                                var upperLetter = s.Substring(indexCopy, 1).ToUpper();
+                                var suffix = s.Length > indexCopy + 1
+                                    ? s.Substring(indexCopy + 1, s.Length - (indexCopy + 1))
+                                    : null;
+
+                                return string.Concat(prefix, upperLetter, suffix);
+                            })
+                            .ToList();
                         }
                     }
+
+                    //Finally case the rest of each suggestion based on whether the shift key is down, or locked down
+                    suggestions = suggestions.Select(s =>
+                    {
+                        var prefix = s.Substring(0, inProgressWord.Length);
+                        string suffix = null;
+
+                        if (s.Length > inProgressWord.Length)
+                        {
+                            suffix = s.Substring(inProgressWord.Length, s.Length - inProgressWord.Length);
+                                suffix = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
+                                ? suffix.FirstCharToUpper()
+                                : keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
+                                    ? suffix.ToUpper()
+                                    : suffix;
+                        }
+
+                        return string.Concat(prefix, suffix);
+                    }).ToList();
+                    
 
                     suggestionService.Suggestions = suggestions;
                     return;
                 }
+
+                ClearSuggestions();
             }
-            
-            ClearSuggestions();
         }
 
         private void ClearSuggestions()

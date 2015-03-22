@@ -340,7 +340,7 @@ namespace JuliusSweetland.OptiKey.Services
                 var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
 
                 var enumerator = entriesForAutoComplete
-                    .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
+                    .Where(kvp => kvp.Key.StartsWith(simplifiedRoot) && kvp.Key.Length > simplifiedRoot.Length)
                     .SelectMany(kvp => kvp.Value)
                     .OrderByDescending(de => de.UsageCount)
                     .ThenBy(de => de.Entry.Length)
