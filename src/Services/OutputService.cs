@@ -24,7 +24,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private string text;
         private string lastTextChange;
-        private string currentWord;
         private bool suppressNextAutoSpace = true;
         
         #endregion
@@ -83,14 +82,13 @@ namespace JuliusSweetland.OptiKey.Services
                         ReleaseUnlockedKeys();
                     }
 
-                    UpdateLastTextChangeAndCurrentWord(null);
-
-                    ClearSuggestions();
-
                     if (textChangedByBackMany)
                     {
                         AutoPressShiftIfAppropriate();
                     }
+
+                    StoreLastTextChange(null);
+                    GenerateAutoCompleteSuggestions();
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
@@ -123,13 +121,13 @@ namespace JuliusSweetland.OptiKey.Services
                         ReleaseUnlockedKeys();
                     }
 
-                    UpdateLastTextChangeAndCurrentWord(null);
-                    GenerateAutoCompleteSuggestions(true);
-
                     if (textChangedByBackOne)
                     {
                         AutoPressShiftIfAppropriate();
                     }
+
+                    StoreLastTextChange(null);
+                    GenerateAutoCompleteSuggestions();
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
@@ -137,7 +135,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
-                    UpdateLastTextChangeAndCurrentWord(null);
+                    StoreLastTextChange(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
 
@@ -173,7 +171,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (functionKey.ToVirtualKeyCode() != null)
                     {
                         //Key corresponds to physical keyboard key
-                        ClearSuggestions();
+                        GenerateAutoCompleteSuggestions();
 
                         //If the key cannot be pressed or locked down (these are handled elsewhere) then publish it and release unlocked keys.
                         var keyValue = new KeyValue { FunctionKey = functionKey };
@@ -191,8 +189,6 @@ namespace JuliusSweetland.OptiKey.Services
         public void ProcessSingleKeyText(string capturedText)
         {
             Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
-
-            ClearSuggestions();
             ProcessText(capturedText);
         }
 
@@ -329,7 +325,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //Modify the capture and apply to Text
-            var modifiedCaptureText = ModifyCapturedText(capturedText);
+            var modifiedCaptureText = ModifyText(capturedText);
             if (!string.IsNullOrEmpty(modifiedCaptureText))
             {
                 var spaceAdded = AutoAddSpace();
@@ -341,7 +337,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (shiftPressed)
                     {
                         //LeftShift has been auto-pressed - re-apply modifiers to captured text and suggestions
-                        modifiedCaptureText = ModifyCapturedText(capturedText);
+                        modifiedCaptureText = ModifyText(capturedText);
                         StoreSuggestions(ModifySuggestions(suggestionService.Suggestions));
 
                         //Ensure suggestions do not contain the modifiedText
@@ -376,8 +372,8 @@ namespace JuliusSweetland.OptiKey.Services
                 suppressNextAutoSpace = false;
             }
 
-            UpdateLastTextChangeAndCurrentWord(modifiedCaptureText);
-            GenerateAutoCompleteSuggestions(true);
+            StoreLastTextChange(modifiedCaptureText);
+            GenerateAutoCompleteSuggestions();
         }
 
         private void ReactToPublishingStateChanges()
@@ -439,41 +435,57 @@ namespace JuliusSweetland.OptiKey.Services
                     });
             }
         }
-        
-        private void UpdateLastTextChangeAndCurrentWord(string textChange)
+
+        private void StoreLastTextChange(string textChange)
         {
             Log.Debug(string.Format("Storing last text change '{0}'", textChange));
             lastTextChange = textChange;
-
-            if (textChange != null
-                && textChange.Length == 1
-                && lastTextChange != null
-                && lastTextChange.Length == 1)
-            {
-                var newCurrentWord = string.Format("{0}{1}", currentWord, textChange);
-                Log.Debug(string.Format("Updating current word to '{0}'", newCurrentWord));
-                currentWord = newCurrentWord;
-            }
-            else
-            {
-                Log.Debug("Clearing current word");
-                currentWord = null;
-            }
         }
 
-        private void GenerateAutoCompleteSuggestions(bool clearSuggestionsIfNoCurrentWord)
+        private void GenerateAutoCompleteSuggestions()
         {
-            if (currentWord != null)
+            if (lastTextChange == null || lastTextChange.Length == 1) //Don't generate auto complete words if the last input was a multi key capture
             {
-                suggestionService.Suggestions = dictionaryService.GetAutoCompleteSuggestions(currentWord)
-                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                    .Select(de => de.Entry)
-                    .ToList();
+                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+
+                if (!string.IsNullOrEmpty(inProgressWord))
+                {
+                    Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
+
+                    var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
+                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                        .Select(de => de.Entry)
+                        .ToList();
+
+                    //Correctly case auto complete suggestions
+                    suggestions = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown 
+                        ? suggestions.Select(s => s.ToUpper()).ToList() 
+                        : suggestions.Select(s => s.ToLower()).ToList();
+
+                    for (var index = 0; index < inProgressWord.Length; index++)
+                    {
+                        if (Char.IsUpper(inProgressWord[index]))
+                        {
+                            suggestions = suggestions.Select(s => string.Concat(
+                                s.Substring(0, index), 
+                                s.Substring(index, 1).ToUpper(), 
+                                s.Length > index + 1 ? 
+                                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
+                                    ? s.Substring(index + 1, s.Length - (index + 1)).FirstCharToUpper()
+                                    : keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
+                                        ? s.Substring(index + 1, s.Length - (index + 1)).ToUpper()
+                                        : s.Substring(index + 1, s.Length - (index + 1))
+                                    : null))
+                                .ToList();
+                        }
+                    }
+
+                    suggestionService.Suggestions = suggestions;
+                    return;
+                }
             }
-            else if(clearSuggestionsIfNoCurrentWord)
-            {
-                ClearSuggestions();
-            }
+            
+            ClearSuggestions();
         }
 
         private void ClearSuggestions()
@@ -489,7 +501,7 @@ namespace JuliusSweetland.OptiKey.Services
             if(suggestions == null || !suggestions.Any()) return null;
 
             var modifiedSuggestions = suggestions
-                .Select(ModifyCapturedText)
+                .Select(ModifyText)
                 .Where(s => !string.IsNullOrEmpty(s))
                 .Distinct()
                 .ToList();
@@ -561,34 +573,51 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with index {0}", index));
 
-            if (!string.IsNullOrEmpty(lastTextChange))
+            var suggestionIndex = (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + index;
+            if (suggestionService.Suggestions.Count > suggestionIndex)
             {
-                var suggestionIndex = (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + index;
-                if (suggestionService.Suggestions.Count > suggestionIndex)
+                if (!string.IsNullOrEmpty(lastTextChange)
+                    && lastTextChange.Length > 1)
                 {
                     var replacedText = lastTextChange;
-                    SwapLastTextChangeForSuggestion(suggestionService.Suggestions[suggestionIndex]);
+                    SwapTextForSuggestion(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
                     var newSuggestions = suggestionService.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
                     StoreSuggestions(newSuggestions);
                 }
+                else
+                {
+                    if (!string.IsNullOrEmpty(Text))
+                    {
+                        var inProgressWord = Text.InProgressWord(Text.Length);
+                        if (!string.IsNullOrEmpty(inProgressWord))
+                        {
+                            SwapTextForSuggestion(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
+                            var newSuggestions = suggestionService.Suggestions.ToList();
+                            newSuggestions.RemoveAt(suggestionIndex);
+                            StoreSuggestions(newSuggestions);
+                        }
+                    }
+                }
             }
         }
 
-        private void SwapLastTextChangeForSuggestion(string suggestion)
+        private void SwapTextForSuggestion(string textToSwapOut, string suggestion)
         {
-            Log.Debug(string.Format("SwapLastTextChangeForSuggestion called with suggestion '{0}'", suggestion));
+            Log.Debug(string.Format("SwapTextForSuggestion called to swap '{0}' for '{1}'.", textToSwapOut, suggestion));
 
-            if (!string.IsNullOrEmpty(lastTextChange)
-                && !string.IsNullOrEmpty(suggestion))
+            if (!string.IsNullOrEmpty(textToSwapOut)
+                && !string.IsNullOrEmpty(suggestion)
+                && Text != null
+                && Text.Length >= textToSwapOut.Length)
             {
-                dictionaryService.DecrementEntryUsageCount(lastTextChange);
-                Text = Text.Substring(0, Text.Length - lastTextChange.Length);
+                dictionaryService.DecrementEntryUsageCount(textToSwapOut);
+                Text = Text.Substring(0, Text.Length - textToSwapOut.Length);
 
                 dictionaryService.IncrementEntryUsageCount(suggestion);
                 Text = string.Concat(Text, suggestion);
 
-                for (int i = 0; i < lastTextChange.Length; i++)
+                for (int i = 0; i < textToSwapOut.Length; i++)
                 {
                     PublishKeyPress(FunctionKeys.BackOne);
                 }
@@ -598,7 +627,7 @@ namespace JuliusSweetland.OptiKey.Services
                     PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
                 }
 
-                UpdateLastTextChangeAndCurrentWord(suggestion);
+                StoreLastTextChange(suggestion);
             }
         }
 
@@ -632,7 +661,7 @@ namespace JuliusSweetland.OptiKey.Services
             return false;
         }
 
-        private string ModifyCapturedText(string capturedText)
+        private string ModifyText(string textToModify)
         {
             //TODO Handle LeftAlt modified captures - LeftAlt+Code = unicode characters
 
@@ -640,28 +669,28 @@ namespace JuliusSweetland.OptiKey.Services
                 keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
                 Log.Debug(string.Format("A key which prevents text capture is down - modifying '{0}' to null.", 
-                    capturedText.ConvertEscapedCharsToLiterals()));
+                    textToModify.ConvertEscapedCharsToLiterals()));
                 return null;
             }
 
-            if (!string.IsNullOrEmpty(capturedText))
+            if (!string.IsNullOrEmpty(textToModify))
             {
                 if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
-                    var modifiedText = capturedText.FirstCharToUpper();
-                    Log.Debug(string.Format("LeftShift is on so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    var modifiedText = textToModify.FirstCharToUpper();
+                    Log.Debug(string.Format("LeftShift is on so modifying '{0}' to '{1}.", textToModify, modifiedText));
                     return modifiedText;
                 }
 
                 if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
                 {
-                    var modifiedText = capturedText.ToUpper();
-                    Log.Debug(string.Format("LeftShift is locked so modifying '{0}' to '{1}.", capturedText, modifiedText));
+                    var modifiedText = textToModify.ToUpper();
+                    Log.Debug(string.Format("LeftShift is locked so modifying '{0}' to '{1}.", textToModify, modifiedText));
                     return modifiedText;
                 }
             }
 
-            return capturedText;
+            return textToModify;
         }
 
         #endregion

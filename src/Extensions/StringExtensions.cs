@@ -279,5 +279,20 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return charsToRemove;
         }
+
+        public static string InProgressWord(this string input, int cursorIndex)
+        {
+            if (input != null
+                && cursorIndex <= input.Length)
+            {
+                var startIndex = input.LastIndexOfAny(new[] { ' ', '\n' });
+
+                if (startIndex == -1) startIndex = 0; //No word boundary found - start at the beginning of the string
+                else startIndex++;
+                return input.Substring(startIndex, cursorIndex - startIndex);
+            }
+
+            return null;
+        }
     }
 }
