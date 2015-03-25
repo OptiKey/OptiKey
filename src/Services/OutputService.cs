@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -116,9 +117,9 @@ namespace JuliusSweetland.OptiKey.Services
                             //Removing more than one character - only decrement removed string
                             dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
                         }
-                        else if(backOneCount == 1
-                            && !string.IsNullOrEmpty(lastTextChange)
-                            && !Char.IsWhiteSpace(lastTextChange.Last()))
+                        else if(!string.IsNullOrEmpty(lastTextChange)
+                            && lastTextChange.Length == 1
+                            && !Char.IsWhiteSpace(lastTextChange[0]))
                         {
                             dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
                             dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
@@ -320,24 +321,26 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods - private
 
-        private void ProcessText(string capturedText)
+        private void ProcessText(string captureText)
         {
-            Log.Debug(string.Format("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals()));
+            Log.Debug(string.Format("Processing captured text '{0}'", captureText.ConvertEscapedCharsToLiterals()));
 
-            if (string.IsNullOrEmpty(capturedText)) return;
+            if (string.IsNullOrEmpty(captureText)) return;
 
             //Suppress auto space if... 
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                || (lastTextChange.Length == 1 && capturedText.Length == 1) //we are capturing char by char (after 1st char)
-                || (capturedText.Length == 1 && !char.IsLetter(capturedText.First())) //we have captured a single char which is not a letter
+                || (lastTextChange.Length == 1 && captureText.Length == 1) //we are capturing char by char (after 1st char)
+                || (captureText.Length == 1 && !char.IsLetter(captureText.First())) //we have captured a single char which is not a letter
                 || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {
                 Log.Debug("Suppressing next auto space.");
                 suppressNextAutoSpace = true;
             }
 
+            var textBeforeCaptureText = Text;
+
             //Modify the capture and apply to Text
-            var modifiedCaptureText = ModifyText(capturedText);
+            var modifiedCaptureText = ModifyText(captureText);
             if (!string.IsNullOrEmpty(modifiedCaptureText))
             {
                 var spaceAdded = AutoAddSpace();
@@ -349,7 +352,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (shiftPressed)
                     {
                         //LeftShift has been auto-pressed - re-apply modifiers to captured text and suggestions
-                        modifiedCaptureText = ModifyText(capturedText);
+                        modifiedCaptureText = ModifyText(captureText);
                         StoreSuggestions(ModifySuggestions(suggestionService.Suggestions));
 
                         //Ensure suggestions do not contain the modifiedText
@@ -362,18 +365,38 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
 
-                dictionaryService.IncrementEntryUsageCount(modifiedCaptureText);
                 Text = string.Concat(Text, modifiedCaptureText);
             }
 
-            //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
-            for (int index = 0; index < capturedText.Length; index++)
+            //Increment/decrement usage counts
+            if (captureText.Length > 1)
             {
-                PublishKeyPress(capturedText[index],
-                    modifiedCaptureText != null && modifiedCaptureText.Length == capturedText.Length
+                dictionaryService.IncrementEntryUsageCount(captureText);
+            }
+            else if (captureText.Length == 1
+                && !Char.IsWhiteSpace(captureText[0]))
+            {
+                if (!string.IsNullOrEmpty(textBeforeCaptureText))
+                {
+                    var previousInProgressWord = textBeforeCaptureText.InProgressWord(textBeforeCaptureText.Length);
+                    dictionaryService.DecrementEntryUsageCount(previousInProgressWord);    
+                }
+
+                if (!string.IsNullOrEmpty(Text))
+                {
+                    var currentInProgressWord = Text.InProgressWord(Text.Length);
+                    dictionaryService.IncrementEntryUsageCount(currentInProgressWord);    
+                }
+            }
+
+            //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
+            for (int index = 0; index < captureText.Length; index++)
+            {
+                PublishKeyPress(captureText[index],
+                    modifiedCaptureText != null && modifiedCaptureText.Length == captureText.Length
                         ? modifiedCaptureText[index]
                         : (char?)null,
-                        capturedText.Length > 1); //Publish each character as TEXT (not key presses) if the capture is a multi-key capture. This preserves casing from the dictionary entry.
+                        captureText.Length > 1); //Publish each character as TEXT (not key presses) if the capture is a multi-key capture. This preserves casing from the dictionary entry.
 
                 ReleaseUnlockedKeys();
             }

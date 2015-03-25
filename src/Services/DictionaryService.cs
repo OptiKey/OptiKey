@@ -367,22 +367,22 @@ namespace JuliusSweetland.OptiKey.Services
             PerformIncrementOrDecrementOfEntryUsageCount(entry, isIncrement: false);
         }
 
-        private void PerformIncrementOrDecrementOfEntryUsageCount(string entry, bool isIncrement)
+        private void PerformIncrementOrDecrementOfEntryUsageCount(string text, bool isIncrement)
         {
-            Log.Debug(string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", entry, isIncrement));
+            Log.Debug(string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", text, isIncrement));
 
-            if (!string.IsNullOrWhiteSpace(entry)
+            if (!string.IsNullOrWhiteSpace(text)
                 && entries != null)
             {
-                var hash = entry.CreateDictionaryEntryHash(log: false);
+                var hash = text.CreateDictionaryEntryHash(log: false);
 
                 if (hash != null
                     && entries.ContainsKey(hash))
                 {
                     bool saveDictionary = false;
 
-                    foreach (var match in entries[hash].Where(entryWithUsageCount =>
-                                string.Equals(entryWithUsageCount.Entry, entry, StringComparison.InvariantCultureIgnoreCase)))
+                    foreach (var match in entries[hash].Where(dictionaryEntry =>
+                                string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         if (isIncrement)
                         {
