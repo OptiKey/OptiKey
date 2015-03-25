@@ -223,12 +223,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("40")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int MultiKeySelectionMaxDictionaryMatches {
+        public int MaxDictionaryMatchesOrSuggestions {
             get {
-                return ((int)(this["MultiKeySelectionMaxDictionaryMatches"]));
+                return ((int)(this["MaxDictionaryMatchesOrSuggestions"]));
             }
             set {
-                this["MultiKeySelectionMaxDictionaryMatches"] = value;
+                this["MaxDictionaryMatchesOrSuggestions"] = value;
             }
         }
         

@@ -68,6 +68,33 @@ namespace JuliusSweetland.OptiKey.Extensions
             return null;
         }
 
+        public static string CreateAutoCompleteDictionaryEntryHash(this string entry, bool log = true)
+        {
+            if (!string.IsNullOrWhiteSpace(entry))
+            {
+                //Trim white space
+                string hash = entry.Trim();
+                
+                //Hashes are stored without diacritics (accents etc)
+                hash = hash.RemoveDiacritics();
+
+                //Hashes are stored as uppercase
+                hash = hash.ToUpper();
+                
+                if (!string.IsNullOrWhiteSpace(hash))
+                {
+                    if (log)
+                    {
+                        Log.DebugFormat("Entry of '{0}' hashed to '{1}'", entry, hash);
+                    }
+
+                    return hash;
+                }
+            }
+
+            return null;
+        }
+
         public static List<string> ExtractWordsAndLines(this string text)
         {
             if (string.IsNullOrWhiteSpace(text)) return null;
@@ -251,6 +278,21 @@ namespace JuliusSweetland.OptiKey.Extensions
                 "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove);
 
             return charsToRemove;
+        }
+
+        public static string InProgressWord(this string input, int cursorIndex)
+        {
+            if (input != null
+                && cursorIndex <= input.Length)
+            {
+                var startIndex = input.LastIndexOfAny(new[] { ' ', '\n' });
+
+                if (startIndex == -1) startIndex = 0; //No word boundary found - start at the beginning of the string
+                else startIndex++;
+                return input.Substring(startIndex, cursorIndex - startIndex);
+            }
+
+            return null;
         }
     }
 }

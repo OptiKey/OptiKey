@@ -225,7 +225,7 @@
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
-    <Compile Include="Models\DictionaryEntryWithUsageCount.cs" />
+    <Compile Include="Models\DictionaryEntry.cs" />
     <Compile Include="Models\KeyValue.cs" />
     <Compile Include="Models\NotifyingProxy.cs" />
     <Compile Include="Models\PointAndKeyValue.cs" />

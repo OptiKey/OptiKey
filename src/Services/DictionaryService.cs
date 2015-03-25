@@ -26,7 +26,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        private Dictionary<string, List<DictionaryEntryWithUsageCount>> dictionary;
+        private Dictionary<string, List<DictionaryEntry>> entries;
+        private Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete;
 
         #endregion
 
@@ -53,7 +54,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                dictionary = new Dictionary<string, List<DictionaryEntryWithUsageCount>>();
+                entries = new Dictionary<string, List<DictionaryEntry>>();
+                entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
@@ -146,7 +148,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     writer = new StreamWriter(userDictionaryPath);
 
-                    foreach (var entryWithUsageCount in dictionary.SelectMany(pair => pair.Value))
+                    foreach (var entryWithUsageCount in entries.SelectMany(pair => pair.Value))
                     {
                         writer.WriteLine("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount);
                     }
@@ -173,10 +175,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("ExistsInDictionary called with '{0}'.", entryToFind);
 
-            if (dictionary != null
+            if (entries != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
-                var exists = dictionary
+                var exists = entries
                     .SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
                     .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
@@ -202,29 +204,45 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void AddEntryToDictionary(string entry, bool loadedFromDictionaryFile, int usageCount = 0)
         {
-            if (dictionary != null
+            if (entries != null
                 && !string.IsNullOrWhiteSpace(entry)
                 && (loadedFromDictionaryFile || !ExistsInDictionary(entry)))
             {
                 //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
                 var hash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
-
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
-                    var newEntryWithUsageCount = new DictionaryEntryWithUsageCount { UsageCount = usageCount, Entry = entry };
+                    var newEntryWithUsageCount = new DictionaryEntry { UsageCount = usageCount, Entry = entry };
 
-                    if (dictionary.ContainsKey(hash))
+                    if (entries.ContainsKey(hash))
                     {
-                        if (dictionary[hash].All(nwwuc => nwwuc.Entry != entry))
+                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
                         {
-                            dictionary[hash].Add(newEntryWithUsageCount);
+                            entries[hash].Add(newEntryWithUsageCount);
                         }
                     }
                     else
                     {
-                        dictionary.Add(hash, new List<DictionaryEntryWithUsageCount> { newEntryWithUsageCount });
+                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
                     }
 
+                    //Also add to entries for auto complete
+                    var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
+                    if (!string.IsNullOrWhiteSpace(autoCompleteHash))
+                    {
+                        if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
+                        {
+                            if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
+                            {
+                                entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
+                            }
+                        }
+                        else
+                        {
+                            entriesForAutoComplete.Add(autoCompleteHash, new List<DictionaryEntry> { newEntryWithUsageCount });
+                        }
+                    }
+                    
                     if (!loadedFromDictionaryFile)
                     {
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
@@ -242,28 +260,45 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("RemoveEntryFromDictionary called with entry '{0}'", entry);
 
-            if (dictionary != null
+            if (entries != null
                 && !string.IsNullOrWhiteSpace(entry)
                 && ExistsInDictionary(entry))
             {
                 var hash = entry.CreateDictionaryEntryHash(log: false);
-
                 if (!string.IsNullOrWhiteSpace(hash)
-                    && dictionary.ContainsKey(hash))
+                    && entries.ContainsKey(hash))
                 {
-                    var entryWithUsageCount = dictionary[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+                    var foundEntry = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
 
-                    if (entryWithUsageCount != null)
+                    if (foundEntry != null)
                     {
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
-                        dictionary[hash].Remove(entryWithUsageCount);
+                        entries[hash].Remove(foundEntry);
 
-                        if (!dictionary[hash].Any())
+                        if (!entries[hash].Any())
                         {
-                            dictionary.Remove(hash);
+                            entries.Remove(hash);
                         }
-                        
+
+                        //Also remove from entries for auto complete
+                        var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
+                        if (!string.IsNullOrWhiteSpace(autoCompleteHash)
+                            && entriesForAutoComplete.ContainsKey(autoCompleteHash))
+                        {
+                            var foundEntryForAutoComplete = entriesForAutoComplete[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+
+                            if (foundEntryForAutoComplete != null)
+                            {
+                                entriesForAutoComplete[autoCompleteHash].Remove(foundEntryForAutoComplete);
+
+                                if (!entriesForAutoComplete[autoCompleteHash].Any())
+                                {
+                                    entriesForAutoComplete.Remove(autoCompleteHash);
+                                }
+                            }
+                        }
+
                         SaveUserDictionaryToFile();
                     }
                 }
@@ -272,36 +307,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Get Hashes
-
-        public IEnumerable<string> GetHashes()
-        {
-            Log.Debug("GetHashes called.");
-
-            if (dictionary != null)
-            {
-                var enumerator = dictionary.GetEnumerator();
-
-                while (enumerator.MoveNext())
-                {
-                    var pair = enumerator.Current;
-                    yield return pair.Key;
-                }
-            }
-        }
-
-        #endregion
-
         #region Get All Entries With Usage Counts
 
-        public IEnumerable<DictionaryEntryWithUsageCount> GetAllEntriesWithUsageCounts()
+        public IEnumerable<DictionaryEntry> GetAllEntries()
         {
-            Log.Debug("GetAllEntriesWithUsageCounts called.");
+            Log.Debug("GetAllEntries called.");
 
-            if (dictionary != null)
+            if (entries != null)
             {
-                var enumerator = dictionary
-                    .SelectMany(pair => pair.Value)
+                var enumerator = entries
+                    .SelectMany(entry => entry.Value)
                     .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();
 
@@ -314,22 +329,24 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Get Entries By Hash
+        #region Get Auto Complete Suggestions
 
-        public IEnumerable<string> GetEntries(string hash)
+        public IEnumerable<DictionaryEntry> GetAutoCompleteSuggestions(string root)
         {
-            Log.DebugFormat("GetEntries called with hash '{0}'", hash);
+            Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
 
-            if (dictionary != null
-                && dictionary.ContainsKey(hash))
+            if (entries != null)
             {
-                var enumerator = dictionary[hash]
-                    .OrderByDescending(entryWithUsageCount => entryWithUsageCount.UsageCount)
-                    .Select(entryWithUsageCount => entryWithUsageCount.Entry)
+                var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
+
+                var enumerator = entriesForAutoComplete
+                    .Where(kvp => kvp.Key.StartsWith(simplifiedRoot) && kvp.Key.Length > simplifiedRoot.Length)
+                    .SelectMany(kvp => kvp.Value)
+                    .OrderByDescending(de => de.UsageCount)
+                    .ThenBy(de => de.Entry.Length)
                     .GetEnumerator();
 
-                while (enumerator.MoveNext()
-                    && !string.IsNullOrWhiteSpace(enumerator.Current))
+                while (enumerator.MoveNext())
                 {
                     yield return enumerator.Current;
                 }
@@ -342,30 +359,30 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void IncrementEntryUsageCount(string entry)
         {
-            PerformIncrementOrDecrementOfEntryUsageCount(entry, isIncrement: true);
+            IncrementOrDecrementOfEntryUsageCount(entry, isIncrement: true);
         }
 
         public void DecrementEntryUsageCount(string entry)
         {
-            PerformIncrementOrDecrementOfEntryUsageCount(entry, isIncrement: false);
+            IncrementOrDecrementOfEntryUsageCount(entry, isIncrement: false);
         }
 
-        private void PerformIncrementOrDecrementOfEntryUsageCount(string entry, bool isIncrement)
+        private void IncrementOrDecrementOfEntryUsageCount(string text, bool isIncrement)
         {
-            Log.DebugFormat("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", entry, isIncrement);
+            Log.DebugFormat("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", text, isIncrement);
 
-            if (!string.IsNullOrWhiteSpace(entry)
-                && dictionary != null)
+            if (!string.IsNullOrWhiteSpace(text)
+                && entries != null)
             {
-                var hash = entry.CreateDictionaryEntryHash(log: false);
+                var hash = text.CreateDictionaryEntryHash(log: false);
 
                 if (hash != null
-                    && dictionary.ContainsKey(hash))
+                    && entries.ContainsKey(hash))
                 {
                     bool saveDictionary = false;
 
-                    foreach (var match in dictionary[hash].Where(entryWithUsageCount =>
-                                string.Equals(entryWithUsageCount.Entry, entry, StringComparison.InvariantCultureIgnoreCase)))
+                    foreach (var match in entries[hash].Where(dictionaryEntry =>
+                                string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         if (isIncrement)
                         {
@@ -458,7 +475,7 @@ namespace JuliusSweetland.OptiKey.Services
                         .OrderByDescending(x => x.Similarity)
                         .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
                         .SelectMany(x => GetEntries(x.Hash))
-                        .Take(Settings.Default.MultiKeySelectionMaxDictionaryMatches)
+                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                         .ToList()
                         .ForEach(matches.Add);
                 }
@@ -491,6 +508,52 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
+        #region Private Methods
+
+        #region Get Hashes
+
+        private IEnumerable<string> GetHashes()
+        {
+            Log.Debug("GetHashes called.");
+
+            if (entries != null)
+            {
+                var enumerator = entries.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                {
+                    var pair = enumerator.Current;
+                    yield return pair.Key;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Get Entries
+
+        private IEnumerable<string> GetEntries(string hash)
+        {
+            Log.DebugFormat("GetEntries called with hash '{0}'", hash);
+
+            if (entries != null
+                && entries.ContainsKey(hash))
+            {
+                var enumerator = entries[hash]
+                    .OrderByDescending(entryWithUsageCount => entryWithUsageCount.UsageCount)
+                    .Select(entryWithUsageCount => entryWithUsageCount.Entry)
+                    .GetEnumerator();
+
+                while (enumerator.MoveNext()
+                    && !string.IsNullOrWhiteSpace(enumerator.Current))
+                {
+                    yield return enumerator.Current;
+                }
+            }
+        }
+
+        #endregion
+
         #region Publish Error
 
         private void PublishError(object sender, Exception ex)
@@ -501,6 +564,8 @@ namespace JuliusSweetland.OptiKey.Services
                 Error(sender, ex);
             }
         }
+
+        #endregion
 
         #endregion
     }
