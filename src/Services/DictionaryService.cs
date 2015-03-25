@@ -359,17 +359,17 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void IncrementEntryUsageCount(string entry)
         {
-            PerformIncrementOrDecrementOfEntryUsageCount(entry, isIncrement: true);
+            IncrementOrDecrementOfEntryUsageCount(entry, isIncrement: true);
         }
 
         public void DecrementEntryUsageCount(string entry)
         {
-            PerformIncrementOrDecrementOfEntryUsageCount(entry, isIncrement: false);
+            IncrementOrDecrementOfEntryUsageCount(entry, isIncrement: false);
         }
 
-        private void PerformIncrementOrDecrementOfEntryUsageCount(string text, bool isIncrement)
+        private void IncrementOrDecrementOfEntryUsageCount(string text, bool isIncrement)
         {
-            Log.Debug(string.Format("PerformIncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", text, isIncrement));
+            Log.Debug(string.Format("IncrementOrDecrementOfEntryUsageCount called with entry '{0}' and isIncrement={1}", text, isIncrement));
 
             if (!string.IsNullOrWhiteSpace(text)
                 && entries != null)
