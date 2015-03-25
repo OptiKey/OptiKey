@@ -29,8 +29,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                Log.Debug(string.Format("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", 
-                    textToSpeak, volume, rate, voice));
+                Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", 
+                    textToSpeak, volume, rate, voice);
 
                 var speechSynthesiser = new SpeechSynthesizer
                 {
@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.Services
                 .Select(v => v.VoiceInfo.Name)
                 .ToList();
 
-            Log.Debug(string.Format("GetAvailableVoices returing {0} voices", availableVoices.Count));
+            Log.DebugFormat("GetAvailableVoices returing {0} voices", availableVoices.Count);
 
             return availableVoices;
         }
@@ -82,7 +82,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                Log.Debug(string.Format("Playing sound '{0}'", soundLocation));
+                Log.DebugFormat("Playing sound '{0}'", soundLocation);
 
                 var player = new System.Media.SoundPlayer(soundLocation);
                 player.Play();

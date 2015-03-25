@@ -58,7 +58,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 {
                     if (log)
                     {
-                        Log.Debug(string.Format("Entry of '{0}' hashed to '{1}'", entry, hash));
+                        Log.DebugFormat("User entered entry of '{0}' hashed to '{1}'", entry, hash);
                     }
 
                     return hash;
@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 {
                     if (log)
                     {
-                        Log.Debug(string.Format("Entry of '{0}' hashed to '{1}'", entry, hash));
+                        Log.DebugFormat("Entry of '{0}' hashed to '{1}'", entry, hash);
                     }
 
                     return hash;
@@ -274,8 +274,8 @@ namespace JuliusSweetland.OptiKey.Extensions
                 charsToRemove++;
             }
 
-            Log.Debug(string.Format(
-                "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove));
+            Log.DebugFormat(
+                "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove);
 
             return charsToRemove;
         }

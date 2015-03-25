@@ -3,7 +3,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class SuggestionService : BindableBase, ISuggestionService
+    public class SuggestionStateService : BindableBase, ISuggestionStateService
     {
         private List<string> suggestions;
         public List<string> Suggestions

@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 if (SetProperty(ref capturingMultiKeySelection, value))
                 {
-                    Log.Debug(string.Format("CapturingMultiKeySelection changed to {0}", value));
+                    Log.DebugFormat("CapturingMultiKeySelection changed to {0}", value);
 
                     audioService.PlaySound(value
                         ? Settings.Default.MultiKeySelectionCaptureStartSoundFile

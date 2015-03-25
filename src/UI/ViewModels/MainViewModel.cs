@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ICalibrationService calibrationService;
         private readonly IDictionaryService dictionaryService;
         private readonly IKeyboardService keyboardService;
-        private readonly ISuggestionService suggestionService;
+        private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
@@ -54,7 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ICalibrationService calibrationService,
             IDictionaryService dictionaryService,
             IKeyboardService keyboardService,
-            ISuggestionService suggestionService,
+            ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             IInputService inputService,
@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
         public IOutputService OutputService { get { return outputService; } }
         public IKeyboardService KeyboardService { get { return keyboardService; } }
-        public ISuggestionService SuggestionService { get { return suggestionService; } }
+        public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
 
         private IKeyboard keyboard;
@@ -134,7 +134,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (SetProperty(ref selectionMode, value))
                 {
-                    Log.Debug(string.Format("SelectionMode changed to {0}", value));
+                    Log.DebugFormat("SelectionMode changed to {0}", value);
 
                     ResetSelectionProgress();
 
@@ -239,7 +239,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    Log.Debug(string.Format("No new words or phrases found in output service's Text: '{0}'.", outputService.Text));
+                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
                     inputService.State = RunningStates.Paused;
                     audioService.PlaySound(Settings.Default.InfoSoundFile);
@@ -249,7 +249,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                Log.Debug(string.Format("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text));
+                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
@@ -308,7 +308,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void HandleYesNoQuestionResult(bool yesResult)
         {
-            Log.Debug(string.Format("YesNoQuestion result of '{0}' received.", yesResult ? "YES" : "NO"));
+            Log.DebugFormat("YesNoQuestion result of '{0}' received.", yesResult ? "YES" : "NO");
 
             var yesNoQuestion = Keyboard as YesNoQuestion;
             if (yesNoQuestion != null)

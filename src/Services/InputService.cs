@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             set
             {
-                Log.Debug(string.Format("PointToKeyValueMap property changed (setter called with {0} map).", value != null ? "non-null" : "null"));
+                Log.DebugFormat("PointToKeyValueMap property changed (setter called with {0} map).", value != null ? "non-null" : "null");
 
                 if (pointSource != null)
                 {
@@ -104,7 +104,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (SetProperty(ref selectionMode, value))
                 {
-                    Log.Debug(string.Format("SelectionMode changed to {0}", value));
+                    Log.DebugFormat("SelectionMode changed to {0}", value);
 
                     if (selectionProgressSubscription != null)
                     {
@@ -347,7 +347,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (pointsPerSecondEvent != null)
             {
-                Log.Debug(string.Format("Publishing PointsPerSecond event: {0}", pointsPerSecond));
+                Log.DebugFormat("Publishing PointsPerSecond event: {0}", pointsPerSecond);
 
                 pointsPerSecondEvent(this, pointsPerSecond);
             }
@@ -361,7 +361,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (currentPositionEvent != null)
             {
-                Log.Debug(string.Format("Publishing CurrentPosition event with Point:{0} KeyValue:{1}", currentPosition.Item1, currentPosition.Item2));
+                Log.DebugFormat("Publishing CurrentPosition event with Point:{0} KeyValue:{1}", currentPosition.Item1, currentPosition.Item2);
 
                 currentPositionEvent(this, currentPosition);
             }
@@ -375,7 +375,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (selectionProgressEvent != null)
             {
-                Log.Debug(string.Format("Publishing SelectionProgress event: {0}=>{1}", selectionProgress.Item1, selectionProgress.Item2));
+                Log.DebugFormat("Publishing SelectionProgress event: {0}=>{1}", selectionProgress.Item1, selectionProgress.Item2);
 
                 selectionProgressEvent(this, selectionProgress);
             }
@@ -389,7 +389,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (selectionEvent != null)
             {
-                Log.Debug(string.Format("Publishing Selection event with PointAndKeyValue:{0}", selection));
+                Log.DebugFormat("Publishing Selection event with PointAndKeyValue:{0}", selection);
 
                 selectionEvent(this, selection);
             }
@@ -403,12 +403,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (selectionResultEvent != null)
             {
-                Log.Debug(string.Format("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
+                Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
                         selectionResult.Item2, 
                         selectionResult.Item3.ConvertEscapedCharsToLiterals(),
                         selectionResult.Item4 != null ? selectionResult.Item4.First() : null,
-                        selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null));
+                        selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null);
 
                 selectionResultEvent(this, selectionResult);
             }

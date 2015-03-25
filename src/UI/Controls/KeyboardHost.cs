@@ -121,8 +121,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void GenerateContent()
         {
-            Log.Debug(string.Format("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
-                Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null));
+            Log.DebugFormat("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
+                Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null);
             
             //Clear out point to key map and pause input service
             PointToKeyValueMap = null;

@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.Services
                         var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
                         if (success)
                         {
-                            Log.Info(string.Format("...activation {0}", success ? "was successful." : "failed!"));
+                            Log.InfoFormat("...activation {0}", success ? "was successful." : "failed!");
                         }
                         else
                         {
@@ -76,8 +76,8 @@ namespace JuliusSweetland.OptiKey.Services
                     if (GazeManager.Instance.IsActivated
                         && !GazeManager.Instance.IsCalibrated)
                     {
-                        Log.Debug(string.Format("TheEyeTribe server is reporting that it is not calibrated - retrying for up to {0}ms", 
-                            Settings.Default.TETCalibrationCheckTimeSpan.TotalMilliseconds));
+                        Log.DebugFormat("TheEyeTribe server is reporting that it is not calibrated - retrying for up to {0}ms", 
+                            Settings.Default.TETCalibrationCheckTimeSpan.TotalMilliseconds);
 
                         var calibrated = false;
                         var retryStart = DateTimeOffset.Now.ToUniversalTime();
@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Last listener of Point event has unsubscribed. Disconnecting from server...");
                     var success = GazeManager.Instance.RemoveGazeListener(this);
-                    Log.Info(string.Format("...disconnect {0}", success ? "was successful." : "failed!"));
+                    Log.InfoFormat("...disconnect {0}", success ? "was successful." : "failed!");
                 }
             }
         }
