@@ -96,7 +96,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.BackOne:
                     var backOneCount = string.IsNullOrEmpty(lastTextChange)
-                        ? 1
+                        ? 1 //Default to removing one character if no lastTextChange
                         : lastTextChange.Length;
 
                     var textChangedByBackOne = false;
@@ -108,10 +108,22 @@ namespace JuliusSweetland.OptiKey.Services
                             backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
 
-                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
-
                         var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
                         textChangedByBackOne = Text != textAfterBackOne;
+
+                        if (backOneCount > 1)
+                        {
+                            //Removing more than one character - only decrement removed string
+                            dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
+                        }
+                        else if(backOneCount == 1
+                            && !string.IsNullOrEmpty(lastTextChange)
+                            && !Char.IsWhiteSpace(lastTextChange.Last()))
+                        {
+                            dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
+                            dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
+                        }
+
                         Text = textAfterBackOne;
                     }
 
@@ -600,7 +612,7 @@ namespace JuliusSweetland.OptiKey.Services
                     && lastTextChange.Length > 1)
                 {
                     var replacedText = lastTextChange;
-                    SwapTextForSuggestion(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
+                    SwapText(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
                     var newSuggestions = suggestionService.Suggestions.ToList();
                     newSuggestions[suggestionIndex] = replacedText;
                     StoreSuggestions(newSuggestions);
@@ -612,7 +624,7 @@ namespace JuliusSweetland.OptiKey.Services
                         var inProgressWord = Text.InProgressWord(Text.Length);
                         if (!string.IsNullOrEmpty(inProgressWord))
                         {
-                            SwapTextForSuggestion(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
+                            SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
                             var newSuggestions = suggestionService.Suggestions.ToList();
                             newSuggestions.RemoveAt(suggestionIndex);
                             StoreSuggestions(newSuggestions);
@@ -622,32 +634,31 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void SwapTextForSuggestion(string textToSwapOut, string suggestion)
+        private void SwapText(string textToSwapOut, string textToSwapIn)
         {
-            Log.Debug(string.Format("SwapTextForSuggestion called to swap '{0}' for '{1}'.", textToSwapOut, suggestion));
+            Log.Debug(string.Format("SwapText called to swap '{0}' for '{1}'.", textToSwapOut, textToSwapIn));
 
             if (!string.IsNullOrEmpty(textToSwapOut)
-                && !string.IsNullOrEmpty(suggestion)
+                && !string.IsNullOrEmpty(textToSwapIn)
                 && Text != null
                 && Text.Length >= textToSwapOut.Length)
             {
                 dictionaryService.DecrementEntryUsageCount(textToSwapOut);
-                Text = Text.Substring(0, Text.Length - textToSwapOut.Length);
+                dictionaryService.IncrementEntryUsageCount(textToSwapIn);
 
-                dictionaryService.IncrementEntryUsageCount(suggestion);
-                Text = string.Concat(Text, suggestion);
+                Text = string.Concat(Text.Substring(0, Text.Length - textToSwapOut.Length), textToSwapIn);
 
                 for (int i = 0; i < textToSwapOut.Length; i++)
                 {
                     PublishKeyPress(FunctionKeys.BackOne);
                 }
 
-                foreach (char c in suggestion)
+                foreach (char c in textToSwapIn)
                 {
                     PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
                 }
 
-                StoreLastTextChange(suggestion);
+                StoreLastTextChange(textToSwapIn);
             }
         }
 
