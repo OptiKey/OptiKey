@@ -56,7 +56,7 @@
                           VerticalAlignment="Center"
                           IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Auto complete word suggestions:" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Auto complete words:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
