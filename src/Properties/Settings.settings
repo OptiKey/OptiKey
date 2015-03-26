@@ -45,7 +45,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MultiKeySelectionFixationMinDwellTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.0500000</Value>
+      <Value Profile="(Default)">00:00:00.1000000</Value>
     </Setting>
     <Setting Name="MaxDictionaryMatchesOrSuggestions" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">40</Value>
@@ -221,7 +221,7 @@
     <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.String" Scope="User">
+    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

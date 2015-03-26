@@ -7,7 +7,6 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -331,45 +330,58 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 //The workaround is to set the nextPointSelectionAction to a lambda which sets the NEXT
                                 //nextPointSelectionAction. This means the immediate call to the lambda just sets up the
                                 //delegate for the subsequent call.
-                                nextPointSelectionAction = (_) => nextPointSelectionAction = nextPoint2 =>
+                                nextPointSelectionAction = finalPoint2 =>
                                 {
-                                    Action<Point?> finalClickAction2 = finalPoint2 =>
+                                    Action<Point> secondClickAction = nextPoint2 =>
                                     {
-                                        if (finalPoint2 != null)
+                                        Action<Point?> finalClickAction2 = finalPoint3 =>
                                         {
-                                            Action<Point, Point> simulateDrag = (fp1, fp2) =>
+                                            if (finalPoint3 != null)
                                             {
-                                                audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                                outputService.LeftMouseButtonDown(fp1);
-                                                audioService.PlaySound(Settings.Default.MouseClickSoundFile);
-                                                outputService.LeftMouseButtonUp(fp2);
-                                            };
+                                                Action<Point, Point> simulateDrag = (fp1, fp2) =>
+                                                {
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    outputService.LeftMouseButtonDown(fp1);
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    outputService.LeftMouseButtonUp(fp2);
+                                                };
 
-                                            lastMouseActionStateManager.LastMouseAction = () => simulateDrag(finalPoint1.Value, finalPoint2.Value);
-                                            simulateDrag(finalPoint1.Value, finalPoint2.Value);
+                                                lastMouseActionStateManager.LastMouseAction =
+                                                    () => simulateDrag(finalPoint1.Value, finalPoint3.Value);
+                                                simulateDrag(finalPoint1.Value, finalPoint3.Value);
+                                            }
+
+                                            //Reset and clean up
+                                            SelectionMode = SelectionModes.Key;
+                                            nextPointSelectionAction = null;
+                                            ShowCursor = false;
+                                            MagnifyAtPoint = null;
+                                            MagnifiedPointSelectionAction = null;
+                                        };
+
+                                        if (Settings.Default.MouseMagnifier)
+                                        {
+                                            ShowCursor = false; //See MouseLeftClick case for explanation of this
+                                            MagnifiedPointSelectionAction = finalClickAction2;
+                                            MagnifyAtPoint = nextPoint2;
+                                            ShowCursor = true;
+                                        }
+                                        else
+                                        {
+                                            finalClickAction2(nextPoint2);
                                         }
 
-                                        //Reset and clean up
-                                        SelectionMode = SelectionModes.Key;
                                         nextPointSelectionAction = null;
-                                        ShowCursor = false;
-                                        MagnifyAtPoint = null;
-                                        MagnifiedPointSelectionAction = null;
                                     };
 
                                     if (Settings.Default.MouseMagnifier)
                                     {
-                                        ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                        MagnifiedPointSelectionAction = finalClickAction2;
-                                        MagnifyAtPoint = nextPoint2;
-                                        ShowCursor = true;
+                                        nextPointSelectionAction = secondClickAction;
                                     }
                                     else
                                     {
-                                        finalClickAction2(nextPoint2);
+                                        secondClickAction(finalPoint2);
                                     }
-
-                                    nextPointSelectionAction = null;
                                 };
                             }
                             else
