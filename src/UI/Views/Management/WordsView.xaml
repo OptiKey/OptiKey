@@ -44,19 +44,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Add spaces between words:" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Auto space between words:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
             
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Capitalise start of sentences:" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Auto capitalise words:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Suggest word completions:" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Auto complete word suggestions:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
