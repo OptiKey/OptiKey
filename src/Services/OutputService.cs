@@ -674,12 +674,17 @@ namespace JuliusSweetland.OptiKey.Services
 
                 Text = string.Concat(Text.Substring(0, Text.Length - textToSwapOut.Length), textToSwapIn);
 
-                for (int i = 0; i < textToSwapOut.Length; i++)
+                var textHasSameRoot = textToSwapIn.StartsWith(textToSwapOut);
+                if (!textHasSameRoot) //Only backspace the old word if it doesn't share the same root as the new word 
                 {
-                    PublishKeyPress(FunctionKeys.BackOne);
+                    for (int i = 0; i < textToSwapOut.Length; i++)
+                    {
+                        PublishKeyPress(FunctionKeys.BackOne);
+                    }
                 }
 
-                foreach (char c in textToSwapIn)
+                var publishText = textHasSameRoot ? textToSwapIn.Substring(textToSwapOut.Length) : textToSwapIn;
+                foreach (char c in publishText)
                 {
                     PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
                 }
