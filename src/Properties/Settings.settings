@@ -221,5 +221,8 @@
     <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
+    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

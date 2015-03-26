@@ -964,6 +964,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:10")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::System.TimeSpan CrashMessageDisplayTimeSpan {
             get {
                 return ((global::System.TimeSpan)(this["CrashMessageDisplayTimeSpan"]));
@@ -976,12 +977,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutomaticallyRestartAfterCrash {
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool AutoCompleteWords
+        {
             get {
-                return ((bool)(this["AutomaticallyRestartAfterCrash"]));
+                return ((bool)(this["AutoCompleteWords"]));
             }
             set {
-                this["AutomaticallyRestartAfterCrash"] = value;
+                this["AutoCompleteWords"] = value;
             }
         }
         

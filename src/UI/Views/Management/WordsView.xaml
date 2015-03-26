@@ -41,6 +41,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Add spaces between words:" 
@@ -54,6 +55,12 @@
                     <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Suggest word completions:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="2" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding AutoCompleteWords, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
     

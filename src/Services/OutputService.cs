@@ -481,64 +481,67 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (lastTextChange == null || lastTextChange.Length == 1) //Don't generate auto complete words if the last input was a multi key capture
             {
-                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
-
-                if (!string.IsNullOrEmpty(inProgressWord))
+                if (Settings.Default.AutoCompleteWords)
                 {
-                    Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
+                    var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 
-                    var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                        .Select(de => de.Entry)
-                        .ToList();
-
-                    //Correctly case auto complete suggestions
-                    suggestions = suggestions.Select(s => s.ToLower()).ToList(); //Start lower
-
-                    //Then case each suggestion letter to match what has already been typed
-                    for (var index = 0; index < inProgressWord.Length; index++)
+                    if (!string.IsNullOrEmpty(inProgressWord))
                     {
-                        if (Char.IsUpper(inProgressWord[index]))
-                        {
-                            int indexCopy = index;
-                            suggestions = suggestions.Select(s =>
-                            {
-                                var prefix = s.Substring(0, indexCopy);
-                                var upperLetter = s.Substring(indexCopy, 1).ToUpper();
-                                var suffix = s.Length > indexCopy + 1
-                                    ? s.Substring(indexCopy + 1, s.Length - (indexCopy + 1))
-                                    : null;
+                        Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
-                                return string.Concat(prefix, upperLetter, suffix);
-                            })
+                        var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
+                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                            .Select(de => de.Entry)
                             .ToList();
-                        }
-                    }
 
-                    //Finally case the rest of each suggestion based on whether the shift key is down, or locked down
-                    suggestions = suggestions.Select(s =>
-                    {
-                        var prefix = s.Substring(0, inProgressWord.Length);
-                        string suffix = null;
+                        //Correctly case auto complete suggestions
+                        suggestions = suggestions.Select(s => s.ToLower()).ToList(); //Start lower
 
-                        if (s.Length > inProgressWord.Length)
+                        //Then case each suggestion letter to match what has already been typed
+                        for (var index = 0; index < inProgressWord.Length; index++)
                         {
-                            suffix = s.Substring(inProgressWord.Length, s.Length - inProgressWord.Length);
+                            if (Char.IsUpper(inProgressWord[index]))
+                            {
+                                int indexCopy = index;
+                                suggestions = suggestions.Select(s =>
+                                {
+                                    var prefix = s.Substring(0, indexCopy);
+                                    var upperLetter = s.Substring(indexCopy, 1).ToUpper();
+                                    var suffix = s.Length > indexCopy + 1
+                                        ? s.Substring(indexCopy + 1, s.Length - (indexCopy + 1))
+                                        : null;
+
+                                    return string.Concat(prefix, upperLetter, suffix);
+                                })
+                                .ToList();
+                            }
+                        }
+
+                        //Finally case the rest of each suggestion based on whether the shift key is down, or locked down
+                        suggestions = suggestions.Select(s =>
+                        {
+                            var prefix = s.Substring(0, inProgressWord.Length);
+                            string suffix = null;
+
+                            if (s.Length > inProgressWord.Length)
+                            {
+                                suffix = s.Substring(inProgressWord.Length, s.Length - inProgressWord.Length);
                                 suffix = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
                                 ? suffix.FirstCharToUpper()
                                 : keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
                                     ? suffix.ToUpper()
                                     : suffix;
-                        }
+                            }
 
-                        return string.Concat(prefix, suffix);
-                    }).ToList();
-                    
+                            return string.Concat(prefix, suffix);
+                        }).ToList();
 
-                    suggestionService.Suggestions = suggestions;
-                    return;
+
+                        suggestionService.Suggestions = suggestions;
+                        return;
+                    }
                 }
-
+                
                 ClearSuggestions();
             }
         }
