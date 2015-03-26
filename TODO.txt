@@ -6,7 +6,7 @@ ICON LINKS:
   Free
   Open source & easy to extend - want to modify how something works or looks, or need something extra? You can change it. (input sources, keyboard sets, behaviour, look and feel, etc)
   Keyboard control - simulate key strokes into any other application (e.g. write an email)
-  Mouse control (coming soon)
+  Mouse control - click, scroll and drag anywhere on the screen, with automatic magnification if you want it.
   Speaks  
   Whole word/phrase matches + auto space / auto capitalisation
   Supports multiple input sources (pointing and selection - eye trackers, etc)
