@@ -9,7 +9,8 @@
 7.Test locally
 8.If good then...
   i)Revert app.manifest uiAccess flag back to "false"
-  ii)Commit source to GitHub (Debug mode)
+  ii)Revert build from Release to Debug
+  iii)Commit source to GitHub (Debug mode)
 9.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer
