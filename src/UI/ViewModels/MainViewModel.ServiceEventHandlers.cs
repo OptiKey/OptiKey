@@ -320,9 +320,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseDrag:
                         Log.Debug("Mouse drag selected.");
-                        SetupFinalClickAction(finalPoint1 =>
+                        SetupFinalClickAction(firstFinalPoint =>
                         {
-                            if (finalPoint1 != null)
+                            if (firstFinalPoint != null)
                             {
                                 //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                                 //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
@@ -330,13 +330,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 //The workaround is to set the nextPointSelectionAction to a lambda which sets the NEXT
                                 //nextPointSelectionAction. This means the immediate call to the lambda just sets up the
                                 //delegate for the subsequent call.
-                                nextPointSelectionAction = finalPoint2 =>
+                                nextPointSelectionAction = repeatFirstClickOrSecondClickAction =>
                                 {
-                                    Action<Point> secondClickAction = nextPoint2 =>
+                                    Action<Point> deferIfMagnifyingElseDoNow = repeatFirstClickOrSecondClickPoint =>
                                     {
-                                        Action<Point?> finalClickAction2 = finalPoint3 =>
+                                        Action<Point?> secondFinalClickAction = secondFinalPoint =>
                                         {
-                                            if (finalPoint3 != null)
+                                            if (secondFinalPoint != null)
                                             {
                                                 Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                                 {
@@ -347,8 +347,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 };
 
                                                 lastMouseActionStateManager.LastMouseAction =
-                                                    () => simulateDrag(finalPoint1.Value, finalPoint3.Value);
-                                                simulateDrag(finalPoint1.Value, finalPoint3.Value);
+                                                    () => simulateDrag(firstFinalPoint.Value, secondFinalPoint.Value);
+                                                simulateDrag(firstFinalPoint.Value, secondFinalPoint.Value);
                                             }
 
                                             //Reset and clean up
@@ -362,13 +362,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         if (Settings.Default.MouseMagnifier)
                                         {
                                             ShowCursor = false; //See MouseLeftClick case for explanation of this
-                                            MagnifiedPointSelectionAction = finalClickAction2;
-                                            MagnifyAtPoint = nextPoint2;
+                                            MagnifiedPointSelectionAction = secondFinalClickAction;
+                                            MagnifyAtPoint = repeatFirstClickOrSecondClickPoint;
                                             ShowCursor = true;
                                         }
                                         else
                                         {
-                                            finalClickAction2(nextPoint2);
+                                            secondFinalClickAction(repeatFirstClickOrSecondClickPoint);
                                         }
 
                                         nextPointSelectionAction = null;
@@ -376,11 +376,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                                     if (Settings.Default.MouseMagnifier)
                                     {
-                                        nextPointSelectionAction = secondClickAction;
+                                        nextPointSelectionAction = deferIfMagnifyingElseDoNow;
                                     }
                                     else
                                     {
-                                        secondClickAction(finalPoint2);
+                                        deferIfMagnifyingElseDoNow(repeatFirstClickOrSecondClickAction);
                                     }
                                 };
                             }
@@ -395,7 +395,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             //Reset and clean up
                             MagnifyAtPoint = null;
                             MagnifiedPointSelectionAction = null;
-                        });
+                        }, finalClickInSeries: false);
                         break;
 
                     case FunctionKeys.MouseLeftClick:
@@ -908,7 +908,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void SetupFinalClickAction(Action<Point?> finalClickAction)
+        private void SetupFinalClickAction(Action<Point?> finalClickAction, bool finalClickInSeries = true)
         {
             nextPointSelectionAction = nextPoint =>
             {
@@ -926,7 +926,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     finalClickAction(nextPoint);
                 }
 
-                nextPointSelectionAction = null;
+                if (finalClickInSeries)
+                {
+                    nextPointSelectionAction = null;
+                }
             };
 
             SelectionMode = SelectionModes.Point;
