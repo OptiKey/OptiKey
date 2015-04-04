@@ -164,7 +164,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Calculate Position
 
-        //N.B. Despite the MSDN documentation popup with Placement=AbsolutePosition aligns to the BOTTOM LEFT of the point, i.e. the offset point is at the TOP RIGHT
         private void CalculatePosition()
         {
             //Copy point locally as point is not threadsafe
@@ -182,30 +181,30 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 bool cursorPointsToLeft;
                 bool cursorPointsToTop;
 
-                //Coerce horizontal offset
+                //Calculate horizontal offset
                 if(dpiPoint.X + Width > screenBottomRightInWpfCoords.X) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
-                    //Do not adjust horizontal offset - default position of popup is to the left of the point
-                    HorizontalOffset = dpiPoint.X;
+                    //Move popup to the point, but manually adjust popup to the left of the point
+                    HorizontalOffset = dpiPoint.X - Width;
                     cursorPointsToLeft = false;
                 }
                 else
                 {
-                    //Manually adjust popup to the right of the point (default position of popup is to the left of the point)
-                    HorizontalOffset = dpiPoint.X + Width;
+                    //Move popup to the point - it will align to the right of the point
+                    HorizontalOffset = dpiPoint.X;
                     cursorPointsToLeft = true;
                 }
                 
-                //Coerce vertical offset
+                //Calculate vertical offset
                 if (dpiPoint.Y + Height > screenBottomRightInWpfCoords.Y) //Width is set explicitly on the Popup from the Setting value. Cannot use ActualWidth as it will be 0 (Popup itself is not part of the visual tree)
                 {
-                    //Manually adjust popup to be above the point (default position of popup is below the point)
+                    //Move popup to the point, but manually adjust popup to be above the point
                     VerticalOffset = dpiPoint.Y - Height;
                     cursorPointsToTop = false;
                 }
                 else
                 {
-                    //Do not adjust vertical offset - default position of popup is below the point
+                    //Move popup to the point - it will align to be below the point
                     VerticalOffset = dpiPoint.Y;
                     cursorPointsToTop = true;
                 }

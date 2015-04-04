@@ -54,7 +54,7 @@
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
                    HorizontalAlignment="Right" VerticalAlignment="Bottom" />
 
-        <controls:CursorPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True">
+        <controls:CursorPopup IsHitTestVisible="False" Placement="Absolute" AllowsTransparency="True">
             <controls:Cursor IsHitTestVisible="False" />
         </controls:CursorPopup>
 
