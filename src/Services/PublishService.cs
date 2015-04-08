@@ -173,7 +173,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 Log.Debug("Simulating clicking the middle mouse button click");
-                inputSimulator.Mouse.XButtonClick((int)MouseButton.MiddleButton);
+                inputSimulator.Mouse.MiddleButtonClick();
             }
             catch (Exception exception)
             {
