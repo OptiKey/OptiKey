@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using WindowsInput;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
@@ -11,8 +12,8 @@ namespace JuliusSweetland.OptiKey.Services
     {
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        private readonly WindowsInput.InputSimulator inputSimulator;
-        private readonly WindowsInput.WindowsInputDeviceStateAdaptor inputDeviceStateAdaptor;
+        private readonly InputSimulator inputSimulator;
+        private readonly WindowsInputDeviceStateAdaptor inputDeviceStateAdaptor;
 
         public event EventHandler<Exception> Error;
         
@@ -160,6 +161,19 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Log.Debug("Simulating pressing the left mouse button down twice");
                 inputSimulator.Mouse.LeftButtonDoubleClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void MiddleMouseButtonClick()
+        {
+            try
+            {
+                Log.Debug("Simulating clicking the middle mouse button click");
+                inputSimulator.Mouse.XButtonClick((int)MouseButton.MiddleButton);
             }
             catch (Exception exception)
             {

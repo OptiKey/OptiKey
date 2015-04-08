@@ -422,6 +422,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             MagnifiedPointSelectionAction = null;
                         });
                         break;
+
+                    case FunctionKeys.MouseMiddleClick:
+                        Log.Debug("Mouse middle click selected.");
+                        SetupFinalClickAction(finalPoint =>
+                        {
+                            if (finalPoint != null)
+                            {
+                                Action<Point> simulateClick = fp =>
+                                {
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    outputService.MiddleMouseButtonClick(fp);
+                                };
+
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
+                            }
+
+                            //Reset and clean up
+                            SelectionMode = SelectionModes.Key;
+                            nextPointSelectionAction = null;
+                            ShowCursor = false;
+                            MagnifyAtPoint = null;
+                            MagnifiedPointSelectionAction = null;
+                        });
+                        break;
                         
                     case FunctionKeys.MouseRightClick:
                         Log.Debug("Mouse right click selected.");

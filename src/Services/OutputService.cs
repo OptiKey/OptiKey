@@ -248,6 +248,13 @@ namespace JuliusSweetland.OptiKey.Services
             publishService.LeftMouseButtonDoubleClick();
         }
 
+        public void MiddleMouseButtonClick(Point point)
+        {
+            Log.DebugFormat("Generating a middle mouse click at point '{0}'", point);
+            publishService.MouseMouseToPoint(point);
+            publishService.MiddleMouseButtonClick();
+        }
+
         public void MoveMouseTo(Point point)
         {
             Log.DebugFormat("Moving mouse to point '{0}'", point);

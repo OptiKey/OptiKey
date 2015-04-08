@@ -495,6 +495,7 @@
     <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
     <None Include="Resources\Icons\SVG Source Files\PositionAndOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

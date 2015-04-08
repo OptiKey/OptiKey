@@ -16,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
         void LeftMouseButtonUp(Point point);
         void LeftMouseButtonClick(Point point);
         void LeftMouseButtonDoubleClick(Point point);
+        void MiddleMouseButtonClick(Point point);
         void MoveMouseTo(Point point);
         void RightMouseButtonClick(Point point);
         void ScrollMouseWheelUp(int clicks, Point point);

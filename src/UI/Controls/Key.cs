@@ -15,6 +15,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class Key : UserControl, INotifyPropertyChanged
     {
+        #region Private Member Vars
+
+        private Action calculateIsEnabled = null;
+
+        #endregion
+
         #region Ctor
 
         public Key()
@@ -46,10 +52,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
 
             //Calculate IsEnabled
-            keyboardService.KeyEnabledStates.OnAnyPropertyChanges()
-                .Subscribe(value => IsEnabled = keyboardService.KeyEnabledStates[Value]);
+            calculateIsEnabled = () => IsEnabled = 
+                (DisabledIfKeyUp == null || keyboardService.KeyDownStates[DisabledIfKeyUp.Value].Value != KeyDownStates.Up)
+                    && keyboardService.KeyEnabledStates[Value];
 
-            IsEnabled = keyboardService.KeyEnabledStates[Value];
+            keyboardService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
+            
+            calculateIsEnabled();
             
             //Calculate IsCurrent
             Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
@@ -106,7 +115,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty DisplayShiftDownTextProperty =
-            DependencyProperty.Register("DisplayShiftDownText", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+            DependencyProperty.Register("DisplayShiftDownText", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
         public bool DisplayShiftDownText
         {
@@ -115,16 +124,34 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty IsCurrentProperty =
-            DependencyProperty.Register("IsCurrent", typeof (bool), typeof (Key), new PropertyMetadata(default(bool)));
+            DependencyProperty.Register("IsCurrent", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
         public bool IsCurrent
         {
             get { return (bool) GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
         }
-        
+
+        public static readonly DependencyProperty DisabledIfKeyUpProperty =
+            DependencyProperty.Register("DisabledIfKeyUp", typeof(KeyValue?), typeof(Key), new PropertyMetadata(default(KeyValue?), DisabledIfKeyUpPropertyChangedCallback));
+
+        private static void DisabledIfKeyUpPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var key = dependencyObject as Key;
+            if (key != null && key.calculateIsEnabled != null)
+            {
+                key.calculateIsEnabled();
+            }
+        }
+
+        public KeyValue? DisabledIfKeyUp
+        {
+            get { return (KeyValue?)GetValue(DisabledIfKeyUpProperty); }
+            set { SetValue(DisabledIfKeyUpProperty, value); }
+        }
+
         public static readonly DependencyProperty SelectionProgressProperty =
-            DependencyProperty.Register("SelectionProgress", typeof (double), typeof (Key), new PropertyMetadata(default(double)));
+            DependencyProperty.Register("SelectionProgress", typeof(double), typeof(Key), new PropertyMetadata(default(double)));
 
         public double SelectionProgress
         {
@@ -134,7 +161,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
         public static readonly DependencyProperty WidthSpanProperty =
-            DependencyProperty.Register("WidthSpan", typeof (int), typeof (Key), new PropertyMetadata(1));
+            DependencyProperty.Register("WidthSpan", typeof(int), typeof(Key), new PropertyMetadata(1));
 
         public int WidthSpan
         {
@@ -144,7 +171,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         //Specify if this key spans multiple keys vertically - used to keep the contents proportional to other keys
         public static readonly DependencyProperty HeightSpanProperty =
-            DependencyProperty.Register("HeightSpan", typeof (int), typeof (Key), new PropertyMetadata(1));
+            DependencyProperty.Register("HeightSpan", typeof(int), typeof(Key), new PropertyMetadata(1));
 
         public int HeightSpan
         {
@@ -153,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty SharedSizeGroupProperty =
-            DependencyProperty.Register("SharedSizeGroup", typeof (string), typeof (Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("SharedSizeGroup", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string SharedSizeGroup
         {
@@ -172,7 +199,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof (string), typeof (Key), new PropertyMetadata(default(string), TextChanged));
+            DependencyProperty.Register("Text", typeof(string), typeof(Key), new PropertyMetadata(default(string), TextChanged));
 
         private static void TextChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {

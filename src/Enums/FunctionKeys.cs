@@ -59,6 +59,7 @@
         MouseDoubleLeftClick,
         MouseDrag,
         MouseLeftClick,
+        MouseMiddleClick,
         MouseRightClick,
         MouseScrollAmountInClicks,
         MouseScrollToBottom,
