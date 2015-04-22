@@ -100,17 +100,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
             var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
 
-            var horizontalFillPercentage = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen;
-            var verticalFillPercentage = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen;
+            var destinationPercentage = Settings.Default.MagnifyDestinationPercentageOfScreen / 100d;
 
-            var distanceFromLeftBoundary = ((1d - (horizontalFillPercentage / 100)) / 2d) * screenWidth;
-            var distanceFromTopBoundary = ((1d - (verticalFillPercentage / 100)) / 2d) * screenHeight;
+            var distanceFromLeftBoundary = ((1d - destinationPercentage) / 2d) * screenWidth;
+            var distanceFromTopBoundary = ((1d - destinationPercentage) / 2d) * screenHeight;
 
             HorizontalOffset = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
             VerticalOffset = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
 
-            var width = (horizontalFillPercentage / 100) * screenWidth;
-            var height = (verticalFillPercentage / 100) * screenHeight;
+            var width = destinationPercentage * screenWidth;
+            var height = destinationPercentage * screenHeight;
 
             MaxWidth = MinWidth = Width = width;
             MaxHeight = MinHeight = Height = height;
@@ -128,10 +127,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private Bitmap CaptureScreenshot(Point point)
         {
-            var captureWidth = (Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen / 100d) * screen.Bounds.Width;
+            var magnifySourcePercentage = Settings.Default.MagnifySourcePercentageOfScreen / 100d;
+            
+            var captureWidth = magnifySourcePercentage * screen.Bounds.Width;
             captureWidth.CoerceToUpperLimit(screen.Bounds.Width);
 
-            var captureHeight = (Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen / 100d) * screen.Bounds.Height;
+            var captureHeight = magnifySourcePercentage * screen.Bounds.Height;
             captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
 
             var captureX = point.X - (captureWidth / 2d);

@@ -188,32 +188,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeight, value); }
         }
 
-        private double magnifySourceAreaHorizontalPercentageOfScreen;
-        public double MagnifySourceAreaHorizontalPercentageOfScreen
+        private double magnifySourcePercentageOfScreen;
+        public double MagnifySourcePercentageOfScreen
         {
-            get { return magnifySourceAreaHorizontalPercentageOfScreen; }
-            set { SetProperty(ref magnifySourceAreaHorizontalPercentageOfScreen, value); }
+            get { return magnifySourcePercentageOfScreen; }
+            set { SetProperty(ref magnifySourcePercentageOfScreen, value); }
         }
 
-        private double magnifySourceAreaVerticalPercentageOfScreen;
-        public double MagnifySourceAreaVerticalPercentageOfScreen
+        private double magnifyDestinationPercentageOfScreen;
+        public double MagnifyDestinationPercentageOfScreen
         {
-            get { return magnifySourceAreaVerticalPercentageOfScreen; }
-            set { SetProperty(ref magnifySourceAreaVerticalPercentageOfScreen, value); }
-        }
-
-        private double magnifyWindowFillHorizontalPercentageOfScreen;
-        public double MagnifyWindowFillHorizontalPercentageOfScreen
-        {
-            get { return magnifyWindowFillHorizontalPercentageOfScreen; }
-            set { SetProperty(ref magnifyWindowFillHorizontalPercentageOfScreen, value); }
-        }
-
-        private double magnifyWindowFillVerticalPercentageOfScreen;
-        public double MagnifyWindowFillVerticalPercentageOfScreen
-        {
-            get { return magnifyWindowFillVerticalPercentageOfScreen; }
-            set { SetProperty(ref magnifyWindowFillVerticalPercentageOfScreen, value); }
+            get { return magnifyDestinationPercentageOfScreen; }
+            set { SetProperty(ref magnifyDestinationPercentageOfScreen, value); }
         }
 
         private KeyboardsSets keyboardSet;
@@ -243,10 +229,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationHorizontalFillPercentage = Settings.Default.ToastNotificationHorizontalFillPercentage;
             CursorWidth = Settings.Default.CursorWidth;
             CursorHeight = Settings.Default.CursorHeight;
-            MagnifySourceAreaHorizontalPercentageOfScreen = Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen;
-            MagnifySourceAreaVerticalPercentageOfScreen = Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen;
-            MagnifyWindowFillHorizontalPercentageOfScreen = Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen;
-            MagnifyWindowFillVerticalPercentageOfScreen = Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen;
+            MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
+            MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             KeyboardSet = Settings.Default.KeyboardSet;
         }
 
@@ -261,10 +245,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationHorizontalFillPercentage = ToastNotificationHorizontalFillPercentage;
             Settings.Default.CursorWidth = CursorWidth;
             Settings.Default.CursorHeight = CursorHeight;
-            Settings.Default.MagnifySourceAreaHorizontalPercentageOfScreen = MagnifySourceAreaHorizontalPercentageOfScreen;
-            Settings.Default.MagnifySourceAreaVerticalPercentageOfScreen = MagnifySourceAreaVerticalPercentageOfScreen;
-            Settings.Default.MagnifyWindowFillHorizontalPercentageOfScreen = MagnifyWindowFillHorizontalPercentageOfScreen;
-            Settings.Default.MagnifyWindowFillVerticalPercentageOfScreen = MagnifyWindowFillVerticalPercentageOfScreen;
+            Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
+            Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.KeyboardSet = KeyboardSet;
             Settings.Default.Save();
         }

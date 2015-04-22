@@ -67,32 +67,35 @@ namespace JuliusSweetland.OptiKey.Services
             switch (functionKey)
             {
                 case FunctionKeys.BackMany:
-                    var backManyCount = Text.CountBackToLastCharCategoryBoundary();
-
-                    dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
-                    
-                    var textAfterBackMany = Text.Substring(0, Text.Length - backManyCount);
-                    var textChangedByBackMany = Text != textAfterBackMany;
-                    Text = textAfterBackMany;
-
-                    if (backManyCount == 0) backManyCount = 1; //Always publish at least one backspace
-
-                    for (int i = 0; i < backManyCount; i++)
+                    if (!string.IsNullOrEmpty(Text))
                     {
-                        PublishKeyPress(FunctionKeys.BackOne);
-                        ReleaseUnlockedKeys();
+                        var backManyCount = Text.CountBackToLastCharCategoryBoundary();
+
+                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
+
+                        var textAfterBackMany = Text.Substring(0, Text.Length - backManyCount);
+                        var textChangedByBackMany = Text != textAfterBackMany;
+                        Text = textAfterBackMany;
+
+                        if (backManyCount == 0) backManyCount = 1; //Always publish at least one backspace
+
+                        for (int i = 0; i < backManyCount; i++)
+                        {
+                            PublishKeyPress(FunctionKeys.BackOne);
+                            ReleaseUnlockedKeys();
+                        }
+
+                        if (textChangedByBackMany)
+                        {
+                            AutoPressShiftIfAppropriate();
+                        }
+
+                        StoreLastTextChange(null);
+                        GenerateAutoCompleteSuggestions();
+
+                        Log.Debug("Suppressing next auto space.");
+                        suppressNextAutoSpace = true;
                     }
-
-                    if (textChangedByBackMany)
-                    {
-                        AutoPressShiftIfAppropriate();
-                    }
-
-                    StoreLastTextChange(null);
-                    GenerateAutoCompleteSuggestions();
-
-                    Log.Debug("Suppressing next auto space.");
-                    suppressNextAutoSpace = true;
                     break;
 
                 case FunctionKeys.BackOne:

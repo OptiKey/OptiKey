@@ -203,16 +203,10 @@
     <Setting Name="Setting" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="MagnifySourceAreaHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="MagnifySourcePercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="MagnifySourceAreaVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
-    <Setting Name="MagnifyWindowFillHorizontalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">60</Value>
-    </Setting>
-    <Setting Name="MagnifyWindowFillVerticalPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="MagnifyDestinationPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="ToastNotificationHorizontalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">

@@ -29,8 +29,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
@@ -59,33 +57,21 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeight, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source area - horizontal percentage of screen:" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source - percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MagnifySourceAreaHorizontalPercentageOfScreen, Mode=TwoWay}" />
+                                            Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnify source area - vertical percentage of screen:" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnifier destination - percentage of screen:" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MagnifySourceAreaVerticalPercentageOfScreen, Mode=TwoWay}" />
+                                            Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Magnifier fills horizontal percentage of screen:" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Keyboard set:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
-                                            Value="{Binding MagnifyWindowFillHorizontalPercentageOfScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Magnifier fills vertical percentage of screen:" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
-                                            Value="{Binding MagnifyWindowFillVerticalPercentageOfScreen, Mode=TwoWay}" />
-                    
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Keyboard set:" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="8" Grid.Column="1" 
+                    <ComboBox Grid.Row="6" Grid.Column="1" 
                               ItemsSource="{Binding KeyboardSets}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
