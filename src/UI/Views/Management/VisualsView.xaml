@@ -57,13 +57,13 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeight, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source - percentage of screen:" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source (percentage of screen):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnifier destination - percentage of screen:" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnify destination (percentage of screen):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"

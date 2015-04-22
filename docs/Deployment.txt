@@ -1,4 +1,4 @@
-1.Set the AssemblyVersion in AssemblyInfo
+1.Check that the AssemblyVersion in AssemblyInfo has already been incremented to the next release version number
 2.Change app.manifest to include uiAccess="true" flag
 3.Build in Release config
 4.Run script 1 to clean the src directory, bin directory, copy files to src folder and sign the exe
