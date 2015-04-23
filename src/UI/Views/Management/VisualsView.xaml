@@ -45,13 +45,13 @@
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Cursor width:" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Cursor width (px):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorWidth, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Cursor height:" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Cursor height (px):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
