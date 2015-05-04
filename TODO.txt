@@ -13,69 +13,13 @@ ICON LINKS:
   Themeable
   Customisable - many settings to change how you interact with OptiKey (e.g. changing dwell start, complete, decay timings)
   Support - just me for the moment
-  
-+ USAGE GUIDE page
-+ TROUBLESHOOTING page
 
+Usage guide - link to page
 
-USAGE GUIDE:
+Troubleshooting - link to page
 
-GET STARTED
-
-How to use OptiKey with an eye tracker:
-Connect your tracker and start the corresponding program/programs (e.g. for the eye tracker you would start the server and then the client programs). Complete the initial procedure to get the tracker up and running; usually this involves getting yourself/your tracker/your screen in the correct position and competing a calibration. Once it's tracking your eyes reliably it's time to start OptiKey...
-Once OptiKey has started, open the Management Console (ALT + M)  and change the "point source" to your tracking device, and the "trigger source" to suit you (e.g. to select keys based on a prolonged look, or "dwell"). Optionally tweak the other settings and then click "OK" to save your changes. OptiKey may need to restart. Don't worry, all changes to the settings are saved and personal to you, as are any new words or phrases that you add or remove to/from the dictionary.
-You should be good to go. Any problems should be displayed automatically to you. If you're not sure what to do check out the problems section below.
-
-How do I make OptiKey speak? 
-
-HOW TO STIMULATE PHYSICAL KEYBOARD STROKES
-
-How do I stimulate physical keyboard presses? I want to type into another application...
-
-Do I have to type each letter in a word individually (word/phrase matching)? 
-
-Auto space & Auto capitalisation
-
-Can I customise the dictionary? 
-
-How do I move and resize OptiKey, or change it's transparency? 
-OptiKey can be customised (resized, moved, or made more/less transparent) without having to switch back to conventional input devices. The layout, look & feel, and behavior of the keyboard can also be changed from the Management Console. 
-If you're using an eye tracker you can recalibrate from within OptiKey, as well as tell it to go to sleep so it doeACsn't distract you when you're doing something else.
-
-How do I change the theme? 
-
-Is there a stripped down/simpler keyboard? I only want to make OptiKey speak? 
-
-Where is the rest of this guide?
-
-This is a new project, so I'm going to enrich this website organically. If you want to know something that isn't covered here email me at optikeyfeedback@gmail.com and I'll help you. I'll then add the information here if I think other people might find it useful.
-Problem? 
-
-See the troubleshooting page.
-
-
-
-TROUBLESHOOTING:
-
-If you are installing on Windows 8 you may see a Windows SmartScreen warning saying that OptiKey is an unrecognised app - click "MORE INFO" and then "RUN ANYWAY"
-
-I can't open the Management Console.
-
-Eye tracker not working or stops working.
-
-Poor eye tracking performance/accuracy.
-
-Crash? Unexpected behaviour? Something else wrong?  
-If something isn't working as you'd expect, you encounter a crash, a freeze, or something else horrible then let me know and I'll get it fixed for you. I need something from you though; as much information about the problem as you can muster. Here's the ideal list of things your email will contain;
-1. Logs. Developers love logs. You'll need to turn on 'Debugging mode' first (in the Management Console which is accessed by pressing ALT+M, in the 'Other' section). Turn that on then do whatever you did before to cause the unexpected problem, crash, or whatever it was, then close OptiKey. The logs are stored in a special directory which is personal to you. On Windows this will be (open File Explorer and find this directory);
-C:\Users\YOUR_USER_NAME\AppData\Roaming\JuliusSweetland\Logs
-Grab the latest log file (the modified date on the file will be the most recent) and attach it to an email to optikeyfeedback@gmail.com, but don't send it just yet! I also need...
-2. A short description of what you were doing when the problem occurred.
-3. What is the problem? A crash? OptiKey did one thing and you were expecting something else? 
-4. Anything else that you think is useful. Screenshots are amazing.
-I know it's demanding, but if you give me great info then I'll fix it and no-one else will have to send be that lot again.
-
-My problem isn't answered here!
-OptiKey didn't meet my needs! 
-I'm sorry to hear that. Please email me at optikeyfeedback@gmail.com.
+Sort out icons at the top:
+  View on Github - at the top
+  Download installer, zip, tarball
+  Usage guide
+  Troubleshooting 
