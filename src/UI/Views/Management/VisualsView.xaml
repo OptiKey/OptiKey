@@ -125,13 +125,13 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Horizontal fill percentage:" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Horizontal fill (percentage of OptiKey):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="5"
                                             Value="{Binding ToastNotificationHorizontalFillPercentage, Mode=TwoWay}" />
-                                    
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vertical fill percentage:" 
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vertical fill (percentage of OptiKey):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="5"
