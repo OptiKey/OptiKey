@@ -1,6 +1,8 @@
 ICON LINKS:
-  View on GitHub
-  Downloads - http://www.softicons.com/system-icons/windows-8-metro-invert-icons-by-dakirby309/folder-downloads-folder-icon
+  View on Github
+  Download installer (http://www.softicons.com/system-icons/windows-8-metro-invert-icons-by-dakirby309/folder-downloads-folder-icon), zip (?), tarball (?)
+  Usage guide
+  Troubleshooting 
 
 + Features summary on home page:
   Free
@@ -17,9 +19,3 @@ ICON LINKS:
 Usage guide - link to page
 
 Troubleshooting - link to page
-
-Sort out icons at the top:
-  View on Github - at the top
-  Download installer, zip, tarball
-  Usage guide
-  Troubleshooting 
