@@ -10,7 +10,7 @@ OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlle
 * If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip).
 * If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork the repo](https://github.com/JuliusSweetland/OptiKey/fork) and start enhancing the code.
 
-Please check out the [OptiKey website](http://www.optikey.org) for more information on how to get it, how to use it, how to contact me, and how to get involved.
+Please check out the [WIKI](https://github.com/JuliusSweetland/OptiKey/wiki/) for more information on how to get it, how to use it, how to contact me, and how to get involved.
 
 # Supported Platforms
 
