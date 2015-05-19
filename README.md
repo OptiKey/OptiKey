@@ -6,7 +6,7 @@ OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlle
 
 # Getting Started
 
-*[The WIKI]*(https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more.
+[**The WIKI***(https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more.
 
 * If you want to install and use OptiKey on Windows then download the [OptiKey latest installer](https://github.com/JuliusSweetland/OptiKey/releases/latest).
 * If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip).
