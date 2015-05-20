@@ -48,7 +48,7 @@ Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
 # Contact
 
-Want to get in touch, ask a question, or talk to me about anything else which isn't on the [OptiKey website](http://www.optikey.org) then my email address is <optikeyfeedback@gmail.com>.
+Want to get in touch, ask a question, or talk to me about anything else which isn't on the [**OptiKey WIKI**](https://github.com/JuliusSweetland/OptiKey/wiki/) then my email address is <optikeyfeedback@gmail.com>.
 
 Thanks for your interest,
 Julius
