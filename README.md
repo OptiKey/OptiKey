@@ -34,7 +34,7 @@ If you find a problem (a crash, an unexpected behaviour, or something similar) p
 
 Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyways.
 
-When creating an issue, please clearly explain
+When creating an issue, please clearly explain:
 
 * What you were trying to do.
 * What you expected to happen.
