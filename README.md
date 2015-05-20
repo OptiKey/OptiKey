@@ -2,13 +2,13 @@
 
 Free, Open Source, Assistive On-Screen Keyboard
 
-OptiKey is a free, assistive on-screen keyboard for Windows. It can be controlled by any number of input devices, including eye-tracking devices and assistive buttons, as well as more conventional devices like the mouse and keyboard. OptiKey can simulate a physical keyboard and mouse, as well as generate speech, giving everyone the ability to fully interact with a computer and communicate freely.
+OptiKey is a free, open source, assistive on-screen keyboard which runs on Windows. It was designed to be used with an eye-tracking device to bring keyboard control, mouse control and speech to people with Amyotrophic Lateral Sclerosis (ALS) / Motor Neuron Disease (MND). OptiKey also supports assistive buttons, as well as more conventional devices like the mouse and keyboard, opening up to everyone the ability to fully interact with a computer and communicate freely.
 
 # Getting Started
 
 [**The OptiKey WIKI**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
 
-* If you want to install and use OptiKey on Windows then download the [OptiKey latest installer](https://github.com/JuliusSweetland/OptiKey/releases/latest).
+* If you want to install and use OptiKey on Windows then download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
 * If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip).
 * If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork the repo](https://github.com/JuliusSweetland/OptiKey/fork) and start enhancing the code.
 
