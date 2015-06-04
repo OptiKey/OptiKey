@@ -53,7 +53,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.Debug("Attempting to activate TheEyeTribe's GazeManager...");
 
-                        var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push);
+                        var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push); //Connect client
                         if (success)
                         {
                             Log.InfoFormat("...activation {0}", success ? "was successful." : "failed!");
@@ -69,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Services
                         && !GazeManager.Instance.HasGazeListener(this))
                     {
                         Log.Info("Attempting to add myself as a gaze listener to TheEyeTribe server.");
-                        GazeManager.Instance.AddGazeListener(this);
+                        GazeManager.Instance.AddGazeListener(this); //Register this class for updates
                     }
 
                     //Publish error if TET not calibrated
@@ -108,7 +108,8 @@ namespace JuliusSweetland.OptiKey.Services
                 if (pointEvent == null)
                 {
                     Log.Info("Last listener of Point event has unsubscribed. Disconnecting from server...");
-                    var success = GazeManager.Instance.RemoveGazeListener(this);
+                    var success = GazeManager.Instance.RemoveGazeListener(this); //Unregister this class for updates
+                    GazeManager.Instance.Deactivate(); //Disconnect client
                     Log.InfoFormat("...disconnect {0}", success ? "was successful." : "failed!");
                 }
             }
