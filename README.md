@@ -2,7 +2,7 @@
 
 OptiKey is an assistive on-screen keyboard which runs on Windows and can be controlled using eye-tracking devices like TheEyeTribe and ITU GazeTracker. It can be used to replace a physical keyboard, control the mouse, and generate speech. The software includes a huge set of characters and symbols, support for word prediction and “swiping”, and a lot of customisable features such as visual themes, keyboard size, position, etc. It works out of the box once you have your eye-tracking device installed and allows selections to be made using physical buttons, dwell selection, etc. If you do not have an eye tracking device you can use OptiKey with a mouse.
 
-OptiKey can be downloaded for free and is fully open-source if you would like to change or improve anything.
+OptiKey can be downloaded for free and is fully open-source.
 
 
 # Getting Started
