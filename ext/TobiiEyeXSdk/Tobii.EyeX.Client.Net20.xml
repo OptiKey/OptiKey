@@ -1,0 +1,1251 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tobii.EyeX.Client.Net20</name>
+    </assembly>
+    <members>
+        <member name="T:Tobii.EyeX.Client.ConnectionStateChangedEventArgs">
+            <summary>
+            Event args used by the connection state changed event.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.ConnectionStateChangedEventArgs.#ctor(Tobii.EyeX.Client.ConnectionState)">
+            <summary>
+            Creates the event args with the new <see cref="T:Tobii.EyeX.Client.ConnectionState"/>.
+            </summary>
+            <param name="state">The new <see cref="T:Tobii.EyeX.Client.ConnectionState"/>.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.ConnectionStateChangedEventArgs.State">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Client.ConnectionState"/>.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.ILoggingModel">
+            <summary>
+            Interface for custom logging models.
+            A client may implement this interface and pass it to the intiialization of the system to override the default logging behavior.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.ILoggingModel.Write(Tobii.EyeX.Client.LogLevel,System.String,System.String)">
+            <summary>
+            Basic log writer method which should be implemented for custom logging.
+            </summary>
+            <param name="level">The <see cref="T:Tobii.EyeX.Client.LogLevel"/> specifying the severity of the log message.</param>
+            <param name="scope">The scope for the log message. Typically which part of the system that is writing the mssage.</param>
+            <param name="message">The actual message.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.ILoggingModel.Targets">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Client.LogTarget"/>s.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.LogWriterHandler">
+            <summary>
+            Helper log writer delegate used for easy custom logging.
+            </summary>
+            <param name="level">The <see cref="T:Tobii.EyeX.Client.LogLevel"/> specifying the severity of the log message.</param>
+            <param name="scope">The scope for the log message. Typically which part of the system that is writing the mssage.</param>
+            <param name="message">The actual message.</param>
+        </member>
+        <member name="T:Tobii.EyeX.Client.InteractionApiException">
+            <summary>
+            Exception used to forward non ok <see cref="T:Tobii.EyeX.Framework.ResultCode"/>s from the native API to the client.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionApiException.#ctor(Tobii.EyeX.Framework.ResultCode)">
+            <summary>
+            Creates the exception with the specified <see cref="T:Tobii.EyeX.Framework.ResultCode"/>.
+            </summary>
+            <param name="result">The <see cref="T:Tobii.EyeX.Framework.ResultCode"/>.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionApiException.Result">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Framework.ResultCode"/>.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.ThreadWorker">
+            <summary>
+            Delegate used to contain a call to code that should be executed on a new thread.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.IThreadingModel">
+            <summary>
+            Interface for custom logging models.
+            A client may implement this interface and pass it to the intiialization of the system to override the default logging behavior.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.IThreadingModel.CreateThread(Tobii.EyeX.Client.ThreadWorker)">
+            <summary>
+            Creates a thread and invokes the specified worker delegate.
+            </summary>
+            <param name="worker">The worker delegate.</param>
+            <returns>The id of the new thread.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.IThreadingModel.GetCurrentThreadId">
+            <summary>
+            Gets the id of the calling thread.
+            </summary>
+            <returns>The id of the calling thread.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.IThreadingModel.JoinThread(System.Int32)">
+            <summary>
+            Joins the specified thread. 
+            This call will block until the specified thread has exited.
+            </summary>
+            <param name="threadId">The id of the thread to join.</param>
+            <returns>True if the thread was successfully joined, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.IThreadingModel.DeleteThread(System.Int32)">
+            <summary>
+            Deletes the specified thread.
+            </summary>
+            <param name="threadId">The id of the thread to delete.</param>
+            <returns>True if the thread was successfully deleted, otherwise false.</returns>
+        </member>
+        <member name="T:Tobii.EyeX.Client.AsyncData">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.AsyncData"/>.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.InteractionObject">
+            <summary>
+            Common base class for interaction object wrappers.
+            The default behavior of interaction object wrapper is to get an unmanaged handle during construction and to release it during finalization.
+            Interaction object wrappers are completely stateless. All states are kept by the underlying native interaction object to which a wrapper only has a handle.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.HandleWrapper">
+            <summary>
+            Abstract base class for wrappers of native handles.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.HandleWrapper.Handle">
+            <summary>
+            Gets the native handle.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.CreateProperty(System.String)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Property"/> with the specified name.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Property"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidPropertyName"/> if the specified name is not a valid property name.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateProperty"/> if an <see cref="T:Tobii.EyeX.Client.Property"/> with the specified name already exists.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the name is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.TryGetProperty(System.String,Tobii.EyeX.Client.Property@)">
+            <summary>
+            Tries to get an <see cref="T:Tobii.EyeX.Client.InteractionObject"/>.
+            </summary>
+            <param name="name">The name of the <see cref="T:Tobii.EyeX.Client.InteractionObject"/> to get.</param>
+            <param name="property">Out parameter for the <see cref="T:Tobii.EyeX.Client.InteractionObject"/>.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.InteractionObject"/> was successfully retrieved, otherwise false.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidPropertyName"/> if the specified name is not a valid property name.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the name is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.GetOrCreateProperty(System.String)">
+            <summary>
+            Gets or creates an <see cref="T:Tobii.EyeX.Client.Property"/> with a specified name.
+            </summary>
+            <param name="name">The name of the <see cref="T:Tobii.EyeX.Client.Property"/>.</param>
+            <returns>The existing <see cref="T:Tobii.EyeX.Client.Property"/> or a new one.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidPropertyName"/> if the specified name is not a valid property name.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the name is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.TryGetPropertyValue``1(System.String,``0@)">
+            <summary>
+            Tries to get the value of an <see cref="T:Tobii.EyeX.Client.Property"/>.
+            The value will be converted to the specified type if applicable.
+            </summary>
+            <typeparam name="TValue">The desired type of the value.</typeparam>
+            <param name="name">The name of the <see cref="T:Tobii.EyeX.Client.Property"/> from which to get the value.</param>
+            <param name="value">Out parameter for the value.</param>
+            <returns>True if the value was successfully retrieved, otherwise false.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidPropertyName"/> if the specified name is not a valid property name.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the name is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.GetPropertyValue``1(System.String)">
+            <summary>
+            Gets the value of an <see cref="T:Tobii.EyeX.Client.Property"/>.
+            The value will be converted to the specified type if applicable.
+            </summary>
+            <typeparam name="TValue">The desired type of the value.</typeparam>
+            <param name="name">The name of the <see cref="T:Tobii.EyeX.Client.Property"/> from which to get the value.</param>
+            <returns>The value of the <see cref="T:Tobii.EyeX.Client.Property"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidPropertyName"/> if the specified name is not a valid property name.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if an <see cref="T:Tobii.EyeX.Client.Property"/> with the specified name does not exist.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the name is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.SetPropertyValue``1(System.String,``0)">
+            <summary>
+            Sets the value of an <see cref="T:Tobii.EyeX.Client.Property"/>.
+            The <see cref="T:Tobii.EyeX.Client.Property"/> will be created if a <see cref="T:Tobii.EyeX.Client.Property"/> with the specified name does not exists.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <param name="name">The name of the <see cref="T:Tobii.EyeX.Client.Property"/>.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.InteractionObject.ToString">
+            <summary>
+            Provided the interaction object formatted as text.
+            </summary>
+            <returns>A string which is the textual representation of the object.</returns>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionObject.Context">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.InteractionObject.Context"/> to which this interaction object belongs.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionObject.ObjectType">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Framework.InteractionObjectType"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionObject.ObjectTypeName">
+            <summary>
+            Gets the type name.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionObject.PropertyNames">
+            <summary>
+            Gets the name of all the <see cref="T:Tobii.EyeX.Client.Property"/> objects owned by this interaction object.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionObject.Properties">
+            <summary>
+            Gets all <see cref="T:Tobii.EyeX.Client.Property"/> objects owned by this interaction object.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.AsyncData.TryGetResultCode(Tobii.EyeX.Framework.ResultCode@)">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Framework.ResultCode"/> describing the result of an asynchronous operation.
+            A result code is not always present. It depends on the type of operation that was performed.
+            </summary>
+            <param name="resultCode"></param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Framework.ResultCode"/> was successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.AsyncData.GetDataAs``1">
+            <summary>
+            Gets the content data as a specified type.
+            Will be null if the specified type does not match the actual.
+            </summary>
+            <typeparam name="TInteractionObject">The desired type.</typeparam>
+            <returns>The content data as the specified type or null.</returns>
+        </member>
+        <member name="P:Tobii.EyeX.Client.AsyncData.Data">
+            <summary>
+            Gets the content data as <see cref="T:Tobii.EyeX.Client.InteractionObject"/> .
+            May be null depending on the asynchronous operation.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Behavior">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Behavior"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.SetActivatableParams(Tobii.EyeX.Client.ActivatableParams@)">
+            <summary>
+            Sets the data using parameters for behavior type <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/>.
+            </summary>
+            <param name="parameters">A <see cref="T:Tobii.EyeX.Client.ActivatableParams"/> struct containing data describing the behavior.</param> 
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBehaviorType"/> if <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is not <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/> </exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetActivatableParams(Tobii.EyeX.Client.ActivatableParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.ActivatableParams"/>.
+            Requires the data to have been previously assigned and that the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is set to <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.ActivatableParams"/> were successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetActivatableEventType(Tobii.EyeX.Framework.ActivatableEventType@)">
+            <summary>
+            Tries to get the <see cref="T:Tobii.EyeX.Framework.ActivatableEventType"/> that this behavior represents.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="eventType">Out parameter which will be set the <see cref="T:Tobii.EyeX.Framework.ActivatableEventType"/> if successful.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Framework.ActivatableEventType"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetActivationFocusChangedEventParams(Tobii.EyeX.Client.ActivationFocusChangedEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.ActivationFocusChangedEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/>, that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/> and 
+            that the <see cref="T:Tobii.EyeX.Framework.ActivatableEventType"/>, which can be retrieved using <see cref="M:Tobii.EyeX.Client.Behavior.TryGetActivatableEventType(Tobii.EyeX.Framework.ActivatableEventType@)"/> is set to <see cref="F:Tobii.EyeX.Framework.ActivatableEventType.ActivationFocusChanged"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.ActivationFocusChangedEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.SetGazeAwareParams(Tobii.EyeX.Client.GazeAwareParams@)">
+            <summary>
+            Sets the data using parameters for behavior type <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/>.
+            </summary>
+            <param name="parameters">A <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/> struct containing data describing the behavior.</param> 
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">
+            Thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBehaviorType"/> if <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is not <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/>
+            </exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetGazeAwareParams(Tobii.EyeX.Client.GazeAwareParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/>.
+            Requires the data to have been previously assigned and that the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is set to <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/> were successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetGazeAwareEventParams(Tobii.EyeX.Client.GazeAwareEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.GazeAwareEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.GazeAwareEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.SetFixationDataParams(Tobii.EyeX.Client.FixationDataParams@)">
+            <summary>
+            Sets the data using parameters for behavior type <see cref="F:Tobii.EyeX.Framework.BehaviorType.FixationData"/>.
+            </summary>
+            <param name="parameters">A <see cref="T:Tobii.EyeX.Client.FixationDataParams"/> struct containing data describing the behavior.</param> 
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">
+            Thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBehaviorType"/> if <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is not <see cref="F:Tobii.EyeX.Framework.BehaviorType.FixationData"/>
+            </exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetFixationParams(Tobii.EyeX.Client.FixationDataParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.FixationDataParams"/>.
+            Requires the data to have been previously assigned and that the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is set to <see cref="F:Tobii.EyeX.Framework.BehaviorType.FixationData"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.FixationDataParams"/> were successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetFixationDataEventParams(Tobii.EyeX.Client.FixationDataEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.FixationDataEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.FixationData"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.FixationDataEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.SetGazePointDataParams(Tobii.EyeX.Client.GazePointDataParams@)">
+            <summary>
+            Sets the data using parameters for behavior type <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazePointData"/>.
+            </summary>
+            <param name="parameters">A <see cref="T:Tobii.EyeX.Client.GazePointDataParams"/> struct containing data describing the behavior.</param> 
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">
+            Thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBehaviorType"/> if <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is not <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazePointData"/>
+            </exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetGazePointParams(Tobii.EyeX.Client.GazePointDataParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.GazePointDataParams"/>.
+            Requires the data to have been previously assigned and that the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is set to <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazePointData"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.GazePointDataParams"/> were successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetGazePointDataEventParams(Tobii.EyeX.Client.GazePointDataEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.GazePointDataEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazePointData"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.GazePointDataEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetEyePositionDataEventParams(Tobii.EyeX.Client.EyePositionDataEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.EyePositionDataEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.EyePositionData"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.EyePositionDataEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.SetPannableParams(Tobii.EyeX.Client.PannableParams@)">
+            <summary>
+            Sets the data using parameters for behavior type <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>.
+            </summary>
+            <param name="parameters">A <see cref="T:Tobii.EyeX.Client.PannableParams"/> struct containing data describing the behavior.</param> 
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">
+            Thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBehaviorType"/> if <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is not <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>
+            </exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetPannableParams(Tobii.EyeX.Client.PannableParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.PannableParams"/>.
+            Requires the data to have been previously assigned and that the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> is set to <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/> were successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetPannableEventType(Tobii.EyeX.Framework.PannableEventType@)">
+            <summary>
+            Tries to get the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/> that this behavior represents.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/> and that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="eventType">Out parameter which will be set the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/> if successful.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetPannablePanEventParams(Tobii.EyeX.Client.PannablePanEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.PannablePanEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>, that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/> and 
+            that the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/>, which can be retrieved using <see cref="M:Tobii.EyeX.Client.Behavior.TryGetPannableEventType(Tobii.EyeX.Framework.PannableEventType@)"/> is set to <see cref="F:Tobii.EyeX.Framework.PannableEventType.Pan"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.PannablePanEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetPannableStepEventParams(Tobii.EyeX.Client.PannableStepEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.PannableStepEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>, that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/> and 
+            that the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/>, which can be retrieved using <see cref="M:Tobii.EyeX.Client.Behavior.TryGetPannableEventType(Tobii.EyeX.Framework.PannableEventType@)"/> is set to <see cref="F:Tobii.EyeX.Framework.PannableEventType.Step"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.PannableStepEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetPannableHandsFreeEventParams(Tobii.EyeX.Client.PannableHandsFreeEventParams@)">
+            <summary>
+            Tries to get the data of the behavior as <see cref="T:Tobii.EyeX.Client.PannableHandsFreeEventParams"/>.
+            Requires <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/> to be <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/>, that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/> and 
+            that the <see cref="T:Tobii.EyeX.Framework.PannableEventType"/>, which can be retrieved using <see cref="M:Tobii.EyeX.Client.Behavior.TryGetPannableEventType(Tobii.EyeX.Framework.PannableEventType@)"/> is set to <see cref="F:Tobii.EyeX.Framework.PannableEventType.HandsFree"/>.
+            </summary>
+            <param name="parameters">Out parameter which will contain the data for the event.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.PannableHandsFreeEventParams"/> was retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Behavior.TryGetBehaviorEventTimestamp(System.Double@)">
+            <summary>
+            Tries to get the timestamp of when the behavior was created, in milliseconds. 
+            Not to be confused with data timestamp, which deals with when the data was captured by the tracker.
+            Requires that the behavior is attached to an <see cref="T:Tobii.EyeX.Client.InteractionEvent"/>.
+            </summary>
+            <param name="timestamp">Out parameter which will contain the timestamp</param>
+            <returns>True if the timestamp was retrieved, otherwise false.</returns>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Behavior.BehaviorType">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Behavior.BehaviorType"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Behavior.Data">
+            <summary>
+            Gets the actual data containing the description of the behavior.
+            If data is available an <see cref="T:Tobii.EyeX.Client.InteractionObject"/> containing the values will be retrieved, otherwise null.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Bounds">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Bounds"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Bounds.TryGetRectangularData(System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Tries to get the data of the bounds as a rectangle.
+            Requires the <see cref="P:Tobii.EyeX.Client.Bounds.BoundsType"/> to be set to <see cref="F:Tobii.EyeX.Framework.BoundsType.Rectangular"/>
+            </summary>
+            <param name="x">Out parameter for the X component of the rectangle.</param>
+            <param name="y">Out parameter for the Y component of the rectangle.</param>
+            <param name="width">Out parameter for the width of the rectangle.</param>
+            <param name="height">Out parameter for the height of the rectangle.</param>
+            <returns>True if the rectangular data was successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Bounds.SetRectangularData(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the data of the bounds a rectangle.
+            </summary>
+            <param name="x">Specifies the X component of the rectangle.</param>
+            <param name="y">Specifies the Y component of the rectangle.</param>
+            <param name="width">Specifies the width of the rectangle.</param>
+            <param name="height">Specifies the height of the rectangle.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">With result code set to <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBoundsType"/> if the bounds type is not <see cref="F:Tobii.EyeX.Framework.BoundsType.Rectangular"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Bounds.TryGetRectangularData(Tobii.EyeX.Client.Rect@)">
+            <summary>
+            Tries to get the data of the bounds as a rectangle.
+            Requires the <see cref="P:Tobii.EyeX.Client.Bounds.BoundsType"/> to be set to <see cref="F:Tobii.EyeX.Framework.BoundsType.Rectangular"/>
+            </summary>
+            <param name="rect">Out parameter for a <see cref="T:Tobii.EyeX.Client.Rect"/> which defines the entire geometry of the bounds.</param>
+            <returns>True if the rectangular data was successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Bounds.SetRectangularData(Tobii.EyeX.Client.Rect)">
+            <summary>
+            Sets the data of the bounds a rectangle.
+            </summary>
+            <param name="rect">Specifies a <see cref="T:Tobii.EyeX.Client.Rect"/> which defines the entire geometry of the bounds.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">With result code set to <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidBoundsType"/> if the bounds type is not <see cref="F:Tobii.EyeX.Framework.BoundsType.Rectangular"/>.</exception>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Bounds.BoundsType">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Bounds.BoundsType"/>
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Bounds.Data">
+            <summary>
+            Gets or sets the actual data of the bounds.
+            This is typically a <see cref="T:Tobii.EyeX.Client.PropertyBag"/> containing the components of the bounds geometry.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Command">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Command"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Command.ExecuteAsync(Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Executes a command asynchronously.
+            The result of the command will be provided by the <see cref="T:Tobii.EyeX.Client.AsyncData"/> object in the completion handler.
+            </summary>
+            <param name="completionHandler">The completion handler which will be invoked after the command has been executed on the server.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Command.CommandType">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Command.CommandType"/>
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Command.Data">
+            <summary>
+            Gets or sets the data of the command.
+            The data can be an arbitrary <see cref="T:Tobii.EyeX.Client.InteractionObject"/> or null.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Context">
+            <summary>
+            A wrapper around an interaction context.
+            </summary>>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.#ctor(System.Boolean)">
+            <summary>
+            Creates a new interaction context.
+            </summary>
+            <param name="trackObjects">Specifies if objects for owned by this context should be tracked. 
+            Specifying true will give more information on leaking objects when shutting down but comes with
+            a performance hit and is not recommended for production builds.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.GetTrackedObjects">
+            <summary>
+            Gets all the tracked <see cref="T:Tobii.EyeX.Client.InteractionObject"/>s.
+            Requires the context to be set up to track objects.
+            This method is mainly for debugging purposes in case an application has issues with leaking <see cref="T:Tobii.EyeX.Client.InteractionObject"/>s.
+            </summary>
+            <returns>A collection of tracked <see cref="T:Tobii.EyeX.Client.InteractionObject"/>s or an empty collection if object tracking is not enabled.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.EnableConnection">
+            <summary>
+            Enables the connection to the server.
+            This method must be called to start the communication between the client and server.
+            Once the connection has been enabled the client will attempt to always keep it alive. If the connection to the server for some reason goes down,
+            the client will immediately attemt to reconnect.
+            No communication can be performed before the connection has been enabled.
+            The state of the connection can be retrieved using <see cref="P:Tobii.EyeX.Client.Context.ConnectionState"/>.
+            The event <see cref="E:Tobii.EyeX.Client.Context.ConnectionStateChanged"/>will be raised when the connection state changes.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.DisableConnection">
+            <summary>
+            Disables the connection to the server.
+            The connection may be re-enabled using <see cref="M:Tobii.EyeX.Client.Context.EnableConnection"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterMessageHandler(Tobii.EyeX.Framework.MessageType,Tobii.EyeX.Client.MessageHandler)">
+            <summary>
+            Registers a message handler to be invoked when a message of a specific type arrives.
+            </summary>
+            <param name="messageType">The <see cref="T:Tobii.EyeX.Framework.MessageType"/>for which to invoke the specified message handler.</param>
+            <param name="messageHandler">The message handler to be invoked when a message of the specified <see cref="T:Tobii.EyeX.Framework.MessageType"/> arrives.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the message handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if messageHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterMessageHandler(Tobii.EyeX.Framework.MessageType,Tobii.EyeX.Client.MessageHandler,Tobii.EyeX.Client.PropertyBag)">
+            <summary>
+            Registers a message handler to be invoked when a message of a specific type arrives.
+            </summary>
+            <param name="messageType">The <see cref="T:Tobii.EyeX.Framework.MessageType"/>for which to invoke the specified message handler.</param>
+            <param name="messageHandler">The message handler to be invoked when a message of the specified <see cref="T:Tobii.EyeX.Framework.MessageType"/> arrives.</param>
+            <param name="options">Options for the registration.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the message handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if messageHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.UnregisterMessageHandler(System.Int32)">
+            <summary>
+            Unregisters a message handler.
+            </summary>
+            <param name="ticket">The ticket that was retrieved upon subscription.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> the ticket does not represent a subscription.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterQueryHandler(System.String,Tobii.EyeX.Client.QueryHandler)">
+            <summary>
+            Registers a query handler for a specific process.
+            </summary>
+            <param name="processId">The id of the process for which to receive queries.</param>
+            <param name="queryHandler">The query handler to be invoked when a query arrives.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the query handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if queryHandler is null or processId is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterQueryHandlerForCurrentProcess(Tobii.EyeX.Client.QueryHandler)">
+            <summary>
+            Registers a query handler for the current process.
+            </summary>
+            <param name="queryHandler">The query handler to be invoked when a query arrives.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the query handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> queryHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterEventHandler(Tobii.EyeX.Client.InteractionEventHandler)">
+            <summary>
+            Registers an event handler.
+            </summary>
+            <param name="eventHandler">The event handler to be invoked when an event arrives.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the event handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if eventHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterNotificationHandler(Tobii.EyeX.Client.NotificationHandler)">
+            <summary>
+            Registers a notification handler.
+            </summary>
+            <param name="notificationHandler">The notification handler to be invoked when a notification arrives.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the notification handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if notificationHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateSnapshot">
+            <summary>
+            Creates an empty <see cref="T:Tobii.EyeX.Client.Snapshot"/>.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Snapshot"/></returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateSnapshotWithQueryBounds(Tobii.EyeX.Client.Query)">
+            <summary>
+            Creates a <see cref="T:Tobii.EyeX.Client.Snapshot"/> with the same <see cref="T:Tobii.EyeX.Client.Bounds"/> as those given by the specified <see cref="T:Tobii.EyeX.Client.Query"/>.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Snapshot"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if query is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateSnapshotForQuery(Tobii.EyeX.Client.Query)">
+            <summary>
+            Creates a <see cref="T:Tobii.EyeX.Client.Snapshot"/> with the same <see cref="T:Tobii.EyeX.Client.Bounds"/> and window ids as those given by the specified <see cref="T:Tobii.EyeX.Client.Query"/>.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Snapshot"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if query is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateCommand(Tobii.EyeX.Framework.CommandType)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Command"/> of the specified <see cref="T:Tobii.EyeX.Framework.CommandType"/>.
+            </summary>
+            <param name="commandType">The <see cref="T:Tobii.EyeX.Framework.CommandType"/>.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Command"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateActionCommand(Tobii.EyeX.Framework.ActionType)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Command"/> used to perform an action on the server.
+            </summary>
+            <param name="actionType">The <see cref="T:Tobii.EyeX.Framework.ActionType"/> to perform.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Command"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreatePropertyBag(Tobii.EyeX.Client.PropertyBagType)">
+            <summary>
+            Creates an empty <see cref="T:Tobii.EyeX.Client.PropertyBag"/>.
+            </summary>
+            <param name="type">The type of property bag to create.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.PropertyBag"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreatePropertyBagFromObject(System.Object)">
+            <summary>
+            Creates a <see cref="T:Tobii.EyeX.Client.PropertyBag"/> and populates it with the name and values of the CLR fields and CLR properties of the source object.
+            </summary>
+            <param name="source">The source object.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.PropertyBag"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.CreateStateBag(System.String)">
+            <summary>
+            Creates a <see cref="T:Tobii.EyeX.Client.StateBag"/>
+            </summary>
+            <param name="statePath">The path that the <see cref="T:Tobii.EyeX.Client.StateBag"/> should represent.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.StateBag"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.EnableBuiltinKeys(System.IntPtr,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Enables EyeX builtin keys for a top-level window where the keys was previously disabled.   
+            </summary>
+            <param name="windowId">The window id for which to re-enable keys (window id corresponds to the windows handle on Windows).</param>
+            <param name="completionHandler">The completion handler invoked when the response from the server arrives. Can be null.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.DisableBuiltinKeys(System.IntPtr,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Disables EyeX builtin keys for a top-level window. When the gaze is over the specified window, all interaction must be done through action commands.
+            </summary>
+            <param name="windowId">The window id for which to disable keys (window id corresponds to the windows handle on Windows).</param>
+            <param name="completionHandler">The completion handler invoked when the response from the server arrives. Can be null.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown on errors.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.LaunchConfigurationTool(Tobii.EyeX.Framework.ConfigurationTool,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Launch a configuration tool. 
+            </summary>
+            <param name="configurationTool">The configuartion tool to launch.</param>
+            <param name="completionHandler">The completion handler invoked when the response from the server arrives. Can be null.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown on errors.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.SetStateAsync(System.String,System.Object,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Sets a state asynchronously.
+            </summary>
+            <param name="statePath">The path that the state should represent.</param>
+            <param name="stateData">The data for the state.</param>
+            <param name="completionHandler">The completion handler invoked when the response from the server arrives.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if completionHandler is null or statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterStateChangedHandler(System.String,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Registers a state changed handler for state changes.
+            </summary>
+            <param name="statePath">The path to observe.</param>
+            <param name="stateChangedHandler">The handler which will be invoked when a state changes.</param>
+            <returns>A ticket used to track this particular subscription. Should be used when unregistering the state changed handler.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if stateChangedHandler is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.UnregisterStateChangedHandler(System.Int32)">
+            <summary>
+            Unregisters a state changed handler.
+            </summary>
+            <param name="ticket">The ticket that was retrieved upon subscription.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the ticket does not represent a subscription.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if ticket is not valid.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.RegisterStateObserver(System.String)">
+            <summary>
+            Registers a state path for observation.
+            When a state that matches the specified path is changed a <see cref="T:Tobii.EyeX.Client.Notification"/> will be sent from the server.
+            </summary>
+            <param name="statePath">The path to observe.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.UnregisterStateObserver(System.String)">
+            <summary>
+            Unregisters a state path from observation.
+            </summary>
+            <param name="statePath">The path that should not be observed any more.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.GetStateAsync(System.String,Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Gets a state asynchronously.
+            </summary>
+            <param name="statePath">The path of the state to get.</param>
+            <param name="completionHandler">A completion handler which will be invoked when the result arrives from the server.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if completionHandler is null or statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.GetState(System.String)">
+            <summary>
+            Gets a state.
+            This method will block until the result has arrived from the server.
+            </summary>
+            <param name="statePath">The path of the state to get.</param>
+            <returns>A <see cref="T:Tobii.EyeX.Client.StateBag"/> containing the requested state or null of not found.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with result <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if statePath is null or empty.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.Shutdown(System.Int32,System.Boolean)">
+            <summary>
+            Shuts down the context.
+            Closes the connection and blocks until all internal operations has finished. 
+            If any <see cref="T:Tobii.EyeX.Client.InteractionObject"/> is still alive when the internal threads has been joined the shutdown process will wait for the specified cleanupTimeout time.
+            </summary>
+            <param name="cleanupTimeout">The amount of time to wait for all <see cref="T:Tobii.EyeX.Client.InteractionObject"/>s to be released.</param>
+            <param name="logLeakingObjectsInfo">Specifies if detailed information should be logged for non released <see cref="T:Tobii.EyeX.Client.InteractionObject"/>s.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Context.PerformScheduledJobs">
+            <summary>
+            Performs all jobs scheduled by the API on the thread that calls this function. 
+            This call will block until all jobs have been performed.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Context.Name">
+            <summary>
+            Gets or sets the name of the context.
+            Typically used for debugging purposes when having multiple contexts (this name will be used in logging messages).
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Context.ConnectionState">
+            <summary>
+            Gets the current <see cref="P:Tobii.EyeX.Client.Context.ConnectionState"/>.
+            </summary>
+        </member>
+        <member name="E:Tobii.EyeX.Client.Context.ConnectionStateChanged">
+            <summary>
+            Raised when the connection state changes.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Environment">
+            <summary>
+            Wrapper used to initialize and uninitialize an interaction system.
+            The wrapper overrides Dispose() to perform uninitialization.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.DisposableBase">
+            <summary>
+            Abstract base class which provides a correct disposable pattern.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.DisposableBase.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.DisposableBase.IsDisposed">
+            <summary>
+            Determines if the object is disposed or not.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize">
+            <summary>
+            Default initialization of an interaction system.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.LogWriterHandler)">
+            <summary>
+            Initializes an interaction system with a custom log writer.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.LogTarget)">
+            <summary>
+            Initializes an interaction system with selected log targets.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.LogTarget,Tobii.EyeX.Client.SchedulingMode)">
+            <summary>
+            Initializes an interaction system with selected log targets.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.SchedulingMode)">
+            <summary>
+            Default initialization of an interaction system.
+            </summary>
+            <param name="schedulingMode">Specifies the <see cref="T:Tobii.EyeX.Client.SchedulingMode"/>.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.LogTarget,Tobii.EyeX.Client.IThreadingModel)">
+            <summary>
+            Initializes an interaction system with selected log targets and a custom <see cref="T:Tobii.EyeX.Client.IThreadingModel"/>.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.Initialize(Tobii.EyeX.Client.ILoggingModel,Tobii.EyeX.Client.IThreadingModel,Tobii.EyeX.Client.ISchedulingModel)">
+            <summary>
+            Initializes an interaction system with selected log targets and a custom <see cref="T:Tobii.EyeX.Client.IThreadingModel"/>.
+            </summary>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Environment"/>.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Environment.GetEyeXAvailability">
+            <summary>
+            Gets the availability of the EyeX Engine.
+            </summary>
+            <returns>The </returns>
+        </member>
+        <member name="T:Tobii.EyeX.Client.InteractionEvent">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Event"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionEvent.InteractorId">
+            <summary>
+            Gets the id of the interactor for which the event should apply.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.InteractionEvent.Behaviors">
+            <summary>
+            Gets all the <see cref="T:Tobii.EyeX.Client.Behavior"/>s.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Interactor">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Interactor"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateBounds(Tobii.EyeX.Framework.BoundsType)">
+            <summary>
+            Creates bounds of a specified <see cref="T:Tobii.EyeX.Framework.BoundsType"/> on the interactor.
+            </summary>
+            <param name="boundsType">The desired <see cref="T:Tobii.EyeX.Framework.BoundsType"/>.</param>
+            <returns>The <see cref="P:Tobii.EyeX.Client.Interactor.Bounds"/> if successfully created.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateBounds"/> if the interactor already has bounds.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.DeleteBounds">
+            <summary>
+            Removes the <see cref="P:Tobii.EyeX.Client.Interactor.Bounds"/> from the interactor.
+            </summary>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the interactor does not have any <see cref="P:Tobii.EyeX.Client.Interactor.Bounds"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateBehavior(Tobii.EyeX.Framework.BehaviorType)">
+            <summary>
+            Creates a <see cref="T:Tobii.EyeX.Client.Behavior"/> of a specified  <see cref="T:Tobii.EyeX.Framework.BehaviorType"/> on the interactor.
+            </summary>
+            <param name="behaviorType">The desired <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Behavior"/> if successfully created.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateInteractor"/> if the interactor already has a <see cref="T:Tobii.EyeX.Client.Behavior"/> of the specified <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.RemoveBehavior(Tobii.EyeX.Framework.BehaviorType)">
+            <summary>
+            Removes an <see cref="T:Tobii.EyeX.Client.Behavior"/> of a specified <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.
+            </summary>
+            <param name="behaviorType">The <see cref="T:Tobii.EyeX.Framework.BehaviorType"/> of the <see cref="T:Tobii.EyeX.Client.Behavior"/> to remove.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the interactor does not have an <see cref="T:Tobii.EyeX.Client.Behavior"/> of the specified <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.TryGetBehavior(Tobii.EyeX.Framework.BehaviorType,Tobii.EyeX.Client.Behavior@)">
+            <summary>
+            Tries to get an <see cref="T:Tobii.EyeX.Client.Behavior"/> of a specified <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.
+            </summary>
+            <param name="behaviorType">The <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.</param>
+            <param name="behavior">Out parameter for the <see cref="T:Tobii.EyeX.Client.Behavior"/>.</param>
+            <returns>True if the <see cref="T:Tobii.EyeX.Client.Behavior"/> was successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateMask(Tobii.EyeX.Framework.MaskType,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            Creates an <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/> of a specified <see cref="T:Tobii.EyeX.Framework.MaskType"/>.
+            </summary>
+            <param name="maskType">The <see cref="T:Tobii.EyeX.Framework.MaskType"/></param>
+            <param name="columnCount">The number of columns.</param>
+            <param name="rowCount">The number of rows.</param>
+            <param name="maskData">The data for the mask.</param>
+            <returns>The <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateMask"/> if the interactor already has an <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.RemoveMask">
+            <summary>
+            Removes the <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/> from the interactor.
+            </summary>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the interactor does not have an <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateActivatableBehavior(Tobii.EyeX.Client.ActivatableParams@)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.Activatable"/> to the interactor using <see cref="T:Tobii.EyeX.Client.ActivatableParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.ActivatableParams"/>.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreatePannableBehavior(Tobii.EyeX.Client.PannableParams@)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.Pannable"/> to the interactor using <see cref="T:Tobii.EyeX.Client.PannableParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.PannableParams"/>.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateGazeAwareBehavior(Tobii.EyeX.Client.GazeAwareParams@)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/> to the interactor using <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/>.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.SetGazeAwareBehavior(Tobii.EyeX.Client.GazeAwareParams@)">
+            <summary>
+            Obsolete Will be removed in future releases. Use CreateGazeAwareBehavior(ref GazeAwareParams parameters) instead.
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazeAware"/> to the interactor using <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.GazeAwareParams"/>.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateGazePointDataBehavior(Tobii.EyeX.Client.GazePointDataParams@)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.GazePointData"/> to the interactor using <see cref="T:Tobii.EyeX.Client.GazePointDataParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.GazePointDataParams"/>.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Interactor.CreateFixationDataBehavior(Tobii.EyeX.Client.FixationDataParams@)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Behavior"/> of type <see cref="F:Tobii.EyeX.Framework.BehaviorType.FixationData"/> to the interactor using <see cref="T:Tobii.EyeX.Client.FixationDataParams"/>.
+            </summary>
+            <param name="parameters">The <see cref="T:Tobii.EyeX.Client.FixationDataParams"/>.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.Id">
+            <summary>
+            Gets the id of the interactor.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.ParentId">
+            <summary>
+            Gets the parent id of the interactor.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.WindowId">
+            <summary>
+            Gets the window id of the interactor.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.IsEnabled">
+            <summary>
+            Gets or sets whether the interactor should be enabled or not.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.IsDeleted">
+            <summary>
+            Gets or sets whether the interactor should be deleted or not.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.Z">
+            <summary>
+            Gets or sets the z value of the interactor.
+            Default value is 0.0.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.Bounds">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Interactor.Bounds"/> describing the geometry of the interactor on the screen. 
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.Behaviors">
+            <summary>
+            Gets all the <see cref="T:Tobii.EyeX.Client.Behavior"/>s.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.Mask">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Interactor.Mask"/> used to describe the geometry of the interactor in detail.
+            Will be null of the interactor has no mask.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Interactor.MaskBounds">
+            <summary>
+            Gets a rectangle describing the mask bounds. The mask bounds describes the geometry over which the mask applies.
+            The X and Y coordinates are relative the X and Y coordinates of the interactor bounds.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Notification">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Notification"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Notification.NotificationType">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Notification.NotificationType"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Notification.Data">
+            <summary>
+            Gets the data of the notification.
+            The data can be an arbitrary <see cref="T:Tobii.EyeX.Client.InteractionObject"/> or null.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Property">
+            <summary>
+            Wrapper for an interaction property.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Property.GetValueAs``1">
+            <summary>
+            Gets the value as a specified type.
+            The type must be compatible with at least one of the types specified by <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>.
+            In case the specified type is not compatible with any of the <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>s, but is a composite type, and the value is property bag,
+            then an instance of the composite type will be created and populated using reflection.
+            </summary>
+            <typeparam name="TValue">The desired type.</typeparam>
+            <returns>The value as the specified type.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Property.GetValueAs(System.Type)">
+            <summary>
+            Gets the value as a specified type.
+            The type must be compatible with at least one of the types specified by <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>.
+            In case the specified type is not compatible with any of the <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>s, but is a composite type, and the value is property bag,
+            then an instance of the composite type will be created and populated using reflection. 
+            </summary>
+            <param name="valueType">The desired type.</param>
+            <returns>The value as the specified type.</returns>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Property.Context">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Property.Context"/> to which this interaction property belongs.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Property.Name">
+            <summary>
+            Gets the name.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Property.Value">
+            <summary>
+            Gets or sets the value.
+            The value is stored in the native interaction property for which this is a wrapper.
+            The value must be compatible with one of the types specified by <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>.
+            In case the value to assign the interaction property to is not compatible with any of the <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>s, but is a composite type, 
+            then a <see cref="T:Tobii.EyeX.Client.PropertyBag"/> will automatically be created and populated with the values of the properties and fields of the composite type value.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Property.ValueType">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Client.PropertyValueType"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Property.Flags">
+            <summary>
+            Gets the <see cref="T:Tobii.EyeX.Client.PropertyFlags"/>.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.PropertyBag">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.PropertyBag"/>.
+            </summary>&gt;
+        </member>
+        <member name="M:Tobii.EyeX.Client.PropertyBag.Populate(System.Object)">
+            <summary>
+            Populates the property bag with properties using CLR fields and CLR properties of the specified source object.
+            The names and values of the source object are read using reflection.
+            </summary>
+            <param name="source">The source object.</param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.PropertyBag.PopulateObject(System.Object)">
+            <summary>
+            Populates the CLR fields and CLR properties of the specified target object with the values from the properties in this property bag.
+            The names and values of the target object are written using reflection.
+            </summary>
+            <param name="target">The target object.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.PropertyBag.PropertyBagType">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.PropertyBag.PropertyBagType"/>.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Query">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Query"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Query.Bounds">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Query.Bounds"/> describing the geometry of the screen part of interest.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Query.WindowIds">
+            <summary>
+            Gets all the ids of the windows from which to get interactors.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Snapshot">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Query"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.CreateBounds(Tobii.EyeX.Framework.BoundsType)">
+            <summary>
+            Creates <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/> for the snapshot.
+            </summary>
+            <param name="boundsType">Specifies the type of bounds to create.</param>
+            <returns></returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateBounds"/> if the snapshot already <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.DeleteBounds">
+            <summary>
+            Removes the <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/> from the snapshot.
+            </summary>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the snapshot does not have any <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/>.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.CreateInteractor(System.String,System.String,System.String)">
+            <summary>
+            Creates an <see cref="T:Tobii.EyeX.Client.Interactor"/> with the specified interactor, parent and window ids.
+            </summary>
+            <param name="interactorId">The id of the <see cref="T:Tobii.EyeX.Client.Interactor"/>.</param>
+            <param name="parentId">The id of the parent <see cref="T:Tobii.EyeX.Client.Interactor"/>.</param>
+            <param name="windowId">The id of the window in which the <see cref="T:Tobii.EyeX.Client.Interactor"/> was found.</param>
+            <returns>The <see cref="T:Tobii.EyeX.Client.Interactor"/>.</returns>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.DuplicateInteractor"/> if the snapshot already contains an <see cref="T:Tobii.EyeX.Client.Interactor"/> with the specified id.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if any of the arguments is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.RemoveInteractor(System.String)">
+            <summary>
+            Removes an <see cref="T:Tobii.EyeX.Client.Interactor"/> with the specified id.
+            </summary>
+            <param name="interactorId">The id of the <see cref="T:Tobii.EyeX.Client.Interactor"/> to remove.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.NotFound"/> if the snapshot does not contain an <see cref="T:Tobii.EyeX.Client.Interactor"/> with the specified id.</exception>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the interactor id is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.AddWindowId(System.String)">
+            <summary>
+            Adds a window id to the snapshot.
+            </summary>
+            <param name="windowId">The window id.</param>
+            <exception cref="T:Tobii.EyeX.Client.InteractionApiException">Will be thrown with <see cref="F:Tobii.EyeX.Framework.ResultCode.InvalidArgument"/> if the window id is null.</exception>
+        </member>
+        <member name="M:Tobii.EyeX.Client.Snapshot.CommitAsync(Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Commits a snapshot asynchronously.
+            The result of the snapshot will be provided by the <see cref="T:Tobii.EyeX.Client.AsyncData"/> object in the completion handler.
+            </summary>
+            <param name="completionHandler">The completion handler which will be invoked when the snapshot has been handled by the server.</param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Snapshot.Bounds">
+            <summary>
+            Gets the <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/> describing the geometry of the screen for which the snapshot contains <see cref="T:Tobii.EyeX.Client.Interactor"/>s or
+            null if the snapshot does not have any <see cref="P:Tobii.EyeX.Client.Snapshot.Bounds"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Snapshot.WindowIds">
+            <summary>
+            Gets all the ids of the windows from which the snapshot contains <see cref="T:Tobii.EyeX.Client.Interactor"/>s.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Snapshot.Interactors">
+            <summary>
+            Gets all the <see cref="T:Tobii.EyeX.Client.Interactor"/>s contained by this snapshot.
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.StateBag">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.StateBag"/>.
+            </summary>
+        </member>
+        <member name="M:Tobii.EyeX.Client.StateBag.TryGetStateValue``1(``0@,System.String[])">
+            <summary>
+            Tries to get a value from a state bag.
+            The value will be converted to the specified TValue if applicable.
+            </summary>
+            <typeparam name="TValue">The desired type.</typeparam>
+            <param name="value">Out parameter for the value.</param>
+            <param name="path">The path to the state.</param>
+            <returns>True if the state was successfully retrieved, otherwise false.</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.StateBag.GetStateValueOrDefault``1(System.String[])">
+            <summary>
+            Gets the value of a state if available, otherwise default(TValue).
+            The value will be converted to the specified TValue if applicable.
+            </summary>
+            <typeparam name="TValue">The desired type.</typeparam>
+            <param name="path">The path to the state.</param>
+            <returns>The value or default(TValue).</returns>
+        </member>
+        <member name="M:Tobii.EyeX.Client.StateBag.SetStateValue``1(``0,System.String[])">
+            <summary>
+            Sets a specific state to a given value.
+            This only modifies the state in the local state bag. 
+            To apply this to the server the state bag must be set using <see cref="M:Tobii.EyeX.Client.StateBag.SetAsync(Tobii.EyeX.Client.AsyncDataHandler)"/>.
+            </summary>
+            <typeparam name="TValue">The value.</typeparam>
+            <param name="value"></param>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tobii.EyeX.Client.StateBag.SetAsync(Tobii.EyeX.Client.AsyncDataHandler)">
+            <summary>
+            Sets the content of this state bag on the server asynchronously.
+            </summary>
+            <param name="completionHandler"></param>
+        </member>
+        <member name="P:Tobii.EyeX.Client.StateBag.StatePath">
+            <summary>
+            Gets the path that this state bag represents. 
+            </summary>
+        </member>
+        <member name="T:Tobii.EyeX.Client.Mask">
+            <summary>
+            A wrapper around an interaction object of type <see cref="F:Tobii.EyeX.Framework.InteractionObjectType.Event"/>.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Mask.ColumnCount">
+            <summary>
+            Gets the number of columns.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Mask.RowCount">
+            <summary>
+            Gets the number of rows.
+            </summary>
+        </member>
+        <member name="P:Tobii.EyeX.Client.Mask.Data">
+            <summary>
+            Gets the mask data as an array of bytes.
+            </summary>
+        </member>
+    </members>
+</doc>

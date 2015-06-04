@@ -1,0 +1,7 @@
+Tobii EyeX SDK for .NET - v1.4.451
+Compiled: http://developer.tobii.com/downloads/ or http://developer.tobii.com/?wpdmdl=122
+
+Currently using x86 assemblies
+
+Tobii REX and Tobii EyeX eye trackers both work with low-level Gaze SDK and the low+higher level EyeX SDK:
+http://developer.tobii.com/community/forums/topic/differences-between-tobii-rex-and-tobii-eyex-dev-kit/

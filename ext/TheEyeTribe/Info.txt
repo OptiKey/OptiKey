@@ -1,10 +1,12 @@
 ﻿TETControls - v.0.9.49 (released 16th December 2014)
-	Source downloaded from https://github.com/EyeTribe/tet-csharp-samples:
+	Source: https://github.com/EyeTribe/tet-csharp-samples:
+	Compiled: https://github.com/EyeTribe/tet-csharp-samples/releases
 	TETControls.dll
 	TETControls.pdb 
 
 TETCSharpClient - v.0.9.49 (released 9th December 2014)
-	Compiled files downloaded directly from https://github.com/EyeTribe/tet-csharp-client/releases:
+	Source: https://github.com/EyeTribe/tet-csharp-client
+	Compiled: https://github.com/EyeTribe/tet-csharp-client/releases
 	TETCSharpClient.dll
 	Newtonsoft.Json.dll
 	Newtonsoft.Json.xml

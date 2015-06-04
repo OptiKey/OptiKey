@@ -1,0 +1,2042 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EyeXFramework</name>
+    </assembly>
+    <members>
+        <member name="T:EyeXFramework.EngineStateAccessor`1">
+            <summary>
+            Accesses and monitors engine states.
+            Used by the EyeXHost.
+            </summary>
+            <typeparam name="T">Data type of the engine state.</typeparam>
+        </member>
+        <member name="M:EyeXFramework.EngineStateAccessor`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.EngineStateAccessor`1"/> class.
+            </summary>
+            <param name="statePath">The state path.</param>
+        </member>
+        <member name="M:EyeXFramework.EngineStateAccessor`1.GetCurrentValue">
+            <summary>
+            Gets the current value of the engine state.
+            </summary>
+            <returns>The state value.</returns>
+        </member>
+        <member name="M:EyeXFramework.EngineStateAccessor`1.OnContextCreated(Tobii.EyeX.Client.Context)">
+            <summary>
+            Method to be invoked when the interaction context has been created.
+            </summary>
+            <param name="context">The interaction context.</param>
+        </member>
+        <member name="M:EyeXFramework.EngineStateAccessor`1.OnConnected(Tobii.EyeX.Client.Context)">
+            <summary>
+            Method to be invoked when a connection to the EyeX Engine has been established.
+            </summary>
+            <param name="context">The interaction context.</param>
+        </member>
+        <member name="M:EyeXFramework.EngineStateAccessor`1.OnDisconnected">
+            <summary>
+            Method to be invoked when the connection to the EyeX Engine has been lost.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EngineStateAccessor`1.Changed">
+            <summary>
+            Event raised when the associated engine state value has changed.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.EngineStateValue`1">
+            <summary>
+            Holds an engine state value and a flag indicating the validity of the value.
+            </summary>
+            <typeparam name="T">Data type of the engine state.</typeparam>
+        </member>
+        <member name="M:EyeXFramework.EngineStateValue`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.EngineStateValue`1"/> class.
+            </summary>
+            <param name="value">The state handler.</param>
+        </member>
+        <member name="M:EyeXFramework.EngineStateValue`1.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:EyeXFramework.EngineStateValue`1.Invalid">
+            <summary>
+            Gets a value representing an invalid state value.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EngineStateValue`1.Value">
+            <summary>
+            Gets the state value.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EngineStateValue`1.IsValid">
+            <summary>
+            Gets a value indicating whether the state value is valid.
+            The state will always be unknown when disconnected from the EyeX Engine.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.EyePositionDataStream">
+            <summary>
+            Provides a stream of eye position data, that is, eye positions in 3D space.
+            See <see cref="T:EyeXFramework.EyePositionEventArgs"/>.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.DataStreamBase`1">
+            <summary>
+            Abstract base class for data stream observers.
+            Observes a data stream and raises events when new data points become available.
+            </summary>
+            <typeparam name="T">Data type of the events.</typeparam>
+        </member>
+        <member name="T:EyeXFramework.IDataStreamObserver">
+            <summary>
+            Interface for a data stream observer.
+            This is an internal interface used by the EyeXHost.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.IDataStreamObserver.CreateInteractor(Tobii.EyeX.Client.Snapshot)">
+            <summary>
+            Creates an interactor for the data stream.
+            </summary>
+            <param name="snapshot">Snapshot to add the interactor to.</param>
+        </member>
+        <member name="M:EyeXFramework.IDataStreamObserver.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine.
+            </summary>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="E:EyeXFramework.IDataStreamObserver.Disposed">
+            <summary>
+            Event raised when the observer is disposed.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.IDataStreamObserver.Id">
+            <summary>
+            Gets the unique ID of the observer.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.DataStreamBase`1"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.Dispose">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.Dispose(System.Boolean)">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+            <param name="disposing">Indicates whether managed resources should be disposed.</param>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the behavior corresponding to the data stream type to an interactor.
+            </summary>
+            <param name="interactor">The global interactor to add the data stream behavior to.</param>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.ExtractDataPoints(System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Extracts data points from an event from the EyeX Engine.
+            </summary>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+            <returns>The collection of data points.</returns>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.EyeXFramework#IDataStreamObserver#CreateInteractor(Tobii.EyeX.Client.Snapshot)">
+            <summary>
+            Explicit implementation of <see cref="M:EyeXFramework.IDataStreamObserver.CreateInteractor(Tobii.EyeX.Client.Snapshot)"/>.
+            </summary>
+            <param name="snapshot">Snapshot to add the interactor to.</param>
+        </member>
+        <member name="M:EyeXFramework.DataStreamBase`1.EyeXFramework#IDataStreamObserver#HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Explicit implementation of <see cref="M:EyeXFramework.IDataStreamObserver.HandleEvent(Tobii.EyeX.Client.InteractionEvent)"/>.
+            </summary>
+            <param name="sender">Object associated with the interactor.</param>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="E:EyeXFramework.DataStreamBase`1.Next">
+            <summary>
+            Event raised when a data point is available.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.DataStreamBase`1.EyeXFramework#IDataStreamObserver#Disposed">
+            <summary>
+            Explicit implementation of <see cref="E:EyeXFramework.IDataStreamObserver.Disposed"/>.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.DataStreamBase`1.EyeXFramework#IDataStreamObserver#Id">
+            <summary>
+            Gets the <see cref="P:EyeXFramework.IDataStreamObserver.Id"/>.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyePositionDataStream.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the behavior corresponding to the data stream type to an interactor.
+            </summary>
+            <param name="interactor">The global interactor to add the data stream behavior to.</param>
+        </member>
+        <member name="M:EyeXFramework.EyePositionDataStream.ExtractDataPoints(System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Extracts data points from an event from the EyeX Engine.
+            </summary>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+            <returns>The collection of data points.</returns>
+        </member>
+        <member name="T:EyeXFramework.EyePositionEventArgs">
+            <summary>
+            Provides event data for the eye position data stream.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyePositionEventArgs.#ctor(EyeXFramework.EyePosition,EyeXFramework.EyePosition,EyeXFramework.EyePosition,EyeXFramework.EyePosition,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.EyePositionEventArgs"/> class.
+            </summary>
+            <param name="leftEye">Position of the left eye.</param>
+            <param name="leftEyeNormalized">Normalized position of the left eye.</param>
+            <param name="rightEye">Position of the right eye.</param>
+            <param name="rightEyeNormalized">Normalized position of the right eye.</param>
+            <param name="timestamp">The point in time when the data point was captured. Milliseconds.</param>
+        </member>
+        <member name="P:EyeXFramework.EyePositionEventArgs.LeftEye">
+            <summary>
+            Gets the position of the left eye.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePositionEventArgs.LeftEyeNormalized">
+            <summary>
+            Gets the normalized position of the left eye.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePositionEventArgs.RightEye">
+            <summary>
+            Gets the position of the right eye.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePositionEventArgs.RightEyeNormalized">
+            <summary>
+            Gets the normalized position of the right eye.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePositionEventArgs.Timestamp">
+            <summary>
+            Gets the point in time when the data point was captured. Milliseconds.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.EyePosition">
+            <summary>
+            Position of an eye in 3D space.
+            The position is taken relative to the center of the screen where the eye tracker is mounted.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyePosition.#ctor(System.Boolean,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.EyePosition"/> class.
+            </summary>
+            <param name="isValid">Flag indicating if the eye position is valid. (Sometimes only a single eye is tracked.)</param>
+            <param name="x">X coordinate of the eye position, in millimeters.</param>
+            <param name="y">Y coordinate of the eye position, in millimeters.</param>
+            <param name="z">Z coordinate of the eye position, in millimeters.</param>
+        </member>
+        <member name="P:EyeXFramework.EyePosition.IsValid">
+            <summary>
+            Gets a value indicating whether the eye position is valid. (Sometimes only a single eye is tracked.)
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePosition.X">
+            <summary>
+            Gets the X coordinate of the eye position, in millimeters.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePosition.Y">
+            <summary>
+            Gets the Y coordinate of the eye position, in millimeters.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyePosition.Z">
+            <summary>
+            Gets the Z coordinate of the eye position, in millimeters.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.EyeXHost">
+            <summary>
+            Base class for EyeX Hosts, independent of GUI frameworks.
+            Provides the main point of contact with the EyeX Engine.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.LaunchRecalibration">
+            <summary>
+            Starts the recalibration tool.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.LaunchGuestCalibration">
+            <summary>
+            Starts the guest calibration tool.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.LaunchCalibrationTesting">
+            <summary>
+            Starts the calibration testing tool.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.LaunchDisplaySetup">
+            <summary>
+            Starts the display setup tool.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.LaunchProfileCreation">
+            <summary>
+            Starts the profile creation tool.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.EyeXHost"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.Dispose">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.Start">
+            <summary>
+            Initializes the EyeX host and enables the connection to the EyeX Engine.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CreateGazePointDataStream(Tobii.EyeX.Framework.GazePointDataMode)">
+            <summary>
+            Gets a gaze point data stream.
+            </summary>
+            <param name="mode">Specifies the kind of data processing to be applied by the EyeX Engine.</param>
+            <returns>The data stream.</returns>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CreateFixationDataStream(Tobii.EyeX.Framework.FixationDataMode)">
+            <summary>
+            Gets a fixation data stream.
+            </summary>
+            <param name="mode">Specifies the kind of data processing to be applied by the EyeX Engine.</param>
+            <returns>The data stream.</returns>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CreateEyePositionDataStream">
+            <summary>
+            Gets an eye position data stream.
+            </summary>
+            <returns>The data stream.</returns>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.TriggerActivation">
+            <summary>
+            Trigger an activation ("direct click").
+            Use this method if you want to bind the click command to a key other than the one used 
+            in the EyeX Interaction settings -- or to something other than a key press event.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.GetEngineVersion">
+            <summary>
+            Gets the EyeX Engine version.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that retrieves the EyeX Engine version.</returns>
+            <remarks>The task result will evaluate to <c>null</c> if the EyeX Engine version can't be retrieved.</remarks>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.Dispose(System.Boolean)">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+            <param name="isDisposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.HandleQuery(Tobii.EyeX.Client.Query)">
+            <summary>
+            Handles a query from the EyeX Engine.
+            </summary>
+            <param name="query">Query to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine.
+            </summary>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.OnConnectionStateChanged(System.Object,Tobii.EyeX.Client.ConnectionStateChangedEventArgs)">
+            <summary>
+            Handles a connection-state-changed notification from the EyeX Engine.
+            </summary>
+            <param name="sender">Source of the event.</param>
+            <param name="e">Event parameters.</param>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.HandleDataStreamEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Check if the event is for one of the data streams bound to this host. 
+            If it is, then let the data stream handle it.
+            </summary>
+            <param name="event_">Event to be handled.</param>
+            <returns>True if the event was handled.</returns>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CreateSnapshot">
+            <summary>
+            Creates a snapshot.
+            </summary>
+            <returns>A snapshot.</returns>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CreateSnapshot(Tobii.EyeX.Client.Query)">
+            <summary>
+            Creates a snapshot using the bounds and window id's from the given query.
+            </summary>
+            <returns>A snapshot.</returns>
+            <param name="query">The query that spawned the snapshot creation.</param>
+        </member>
+        <member name="M:EyeXFramework.EyeXHost.CommitSnapshot(Tobii.EyeX.Client.Snapshot)">
+            <summary>
+            Commits the snapshot asynchronously to the EyeX Engine.
+            </summary>
+            <param name="snapshot">The snapshot to be committed.</param>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.EyeXAvailability">
+            <summary>
+            Gets the availability of the EyeX Engine.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EyeXHost.ScreenBoundsChanged">
+            <summary>
+            Event raised when the screen bounds have changed.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EyeXHost.DisplaySizeChanged">
+            <summary>
+            Event raised when the display size has changed.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EyeXHost.EyeTrackingDeviceStatusChanged">
+            <summary>
+            Event raised when the eye tracking device status has changed.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EyeXHost.UserPresenceChanged">
+            <summary>
+            Event raised when the user presence status has changed.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.EyeXHost.UserProfileNameChanged">
+            <summary>
+            Event raised when the user profile name has changed.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.ScreenBounds">
+            <summary>
+            Gets the engine state: Screen bounds in pixels.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.DisplaySize">
+            <summary>
+            Gets the engine state: Display size, width and height, in millimeters.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.EyeTrackingDeviceStatus">
+            <summary>
+            Gets the engine state: Eye tracking status.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.UserPresence">
+            <summary>
+            Gets the engine state: User presence.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.UserProfileName">
+            <summary>
+            Gets the engine state: User profile name.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.EyeXHost.IsStarted">
+            <summary>
+            Gets whether or not the <see cref="T:EyeXFramework.EyeXHost"/> has been started.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.FixationDataStream">
+            <summary>
+            Provides a stream of fixation data.
+            See <see cref="T:EyeXFramework.FixationEventArgs"/>.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.FixationDataStream.#ctor(Tobii.EyeX.Framework.FixationDataMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.FixationDataStream"/> class.
+            </summary>
+            <param name="mode">Specifies the kind of fixation detection to be used.</param>
+        </member>
+        <member name="M:EyeXFramework.FixationDataStream.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the behavior corresponding to the data stream type to an interactor.
+            </summary>
+            <param name="interactor">The global interactor to add the data stream behavior to.</param>
+        </member>
+        <member name="M:EyeXFramework.FixationDataStream.ExtractDataPoints(System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Extracts data points from an event from the EyeX Engine.
+            </summary>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+            <returns>The collection of data points.</returns>
+        </member>
+        <member name="P:EyeXFramework.FixationDataStream.Mode">
+            <summary>
+            Gets the kind of fixation detection used.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.FixationEventArgs">
+            <summary>
+            Provides event data for the fixation data stream.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.FixationEventArgs.#ctor(Tobii.EyeX.Framework.FixationDataEventType,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.FixationEventArgs"/> class.
+            </summary>
+            <param name="eventType">Specifies the kind of fixation event that occurred.</param>
+            <param name="x">X coordinate of the gaze point in physical pixels.</param>
+            <param name="y">Y coordinate of the gaze point in physical pixels.</param>
+            <param name="timestamp">Timestamp in milliseconds.</param>
+        </member>
+        <member name="P:EyeXFramework.FixationEventArgs.EventType">
+            <summary>
+            Gets the kind of fixation event that occurred.
+            The sequence is: Begin, [Data, ...], End.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.FixationEventArgs.X">
+            <summary>
+            Gets the X coordinate of the gaze point in physical pixels.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.FixationEventArgs.Y">
+            <summary>
+            Gets the Y coordinate of the gaze point in physical pixels.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.FixationEventArgs.Timestamp">
+            <summary>
+            Gets the timestamp in milliseconds.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.ActivatableBehavior">
+            <summary>
+            Maps the Activatable behavior to an interactor.
+            Exposes EyeX behavior parameters and events as .NET properties and events.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.IEyeXBehavior">
+            <summary>
+            Interface of an EyeX behavior adapter, capable of assigning a certain type 
+            of behavior to an interactor, and of interpreting the corresponding events.
+            <para>
+            Note: this package includes adapters for the most common behaviors, so there is 
+            usually no need to write your own.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.IEyeXBehavior.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the behavior to an Interactor. 
+            This method is invoked when a snapshot is being prepared for the EyeX Engine.
+            </summary>
+            <param name="interactor">Interactor to be modified.</param>
+        </member>
+        <member name="M:EyeXFramework.IEyeXBehavior.HandleEvent(System.Object,System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Handles an event from the EyeX Engine and calls the registered event handlers/callbacks.
+            </summary>
+            <param name="sender">Object associated with the interactor.</param>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+        </member>
+        <member name="P:EyeXFramework.IEyeXBehavior.BehaviorType">
+            <summary>
+            Gets the type of EyeX behavior.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.ActivatableBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.ActivatableBehavior"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.ActivatableBehavior.#ctor(System.EventHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.ActivatableBehavior"/> class.
+            </summary>
+            <param name="activatedHandler">Event handler for the <see cref="E:EyeXFramework.ActivatableBehavior.Activated"/> event.</param>
+        </member>
+        <member name="M:EyeXFramework.ActivatableBehavior.#ctor(System.EventHandler,System.EventHandler{EyeXFramework.ActivationFocusChangedEventArgs})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.ActivatableBehavior"/> class.
+            </summary>
+            <param name="activatedHandler">Event handler for the <see cref="E:EyeXFramework.ActivatableBehavior.Activated"/> event.</param>
+            <param name="activationFocusChangedHandler">Event handler for the <see cref="E:EyeXFramework.ActivatableBehavior.ActivationFocusChanged"/> event.</param>
+        </member>
+        <member name="M:EyeXFramework.ActivatableBehavior.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the activatable behavior to an interactor.
+            </summary>
+            <param name="interactor">The interactor.</param>
+        </member>
+        <member name="M:EyeXFramework.ActivatableBehavior.HandleEvent(System.Object,System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Handles interaction events.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+        </member>
+        <member name="E:EyeXFramework.ActivatableBehavior.Activated">
+            <summary>
+            The activated event.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.ActivatableBehavior.ActivationFocusChanged">
+            <summary>
+            The activation focus event.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.ActivatableBehavior.BehaviorType">
+            <summary>
+            Gets the type of behavior provided by the adapter.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.ActivatableBehavior.IsTentativeFocusEnabled">
+            <summary>
+            Gets or sets a value indicating whether to enable tentative focus.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.ActivationFocusChangedEventArgs">
+            <summary>
+            Event arguments for the <see cref="E:EyeXFramework.ActivatableBehavior.ActivationFocusChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.ActivationFocusChangedEventArgs.#ctor(EyeXFramework.ActivationFocus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.ActivationFocusChangedEventArgs"/> class.
+            </summary>
+            <param name="focus">The focus type.</param>
+        </member>
+        <member name="P:EyeXFramework.ActivationFocusChangedEventArgs.Focus">
+            <summary>
+            Gets the activation focus type.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.ActivationFocus">
+            <summary>
+            Types of activation focus.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.ActivationFocus.None">
+            <summary>
+            Represents no activation focus.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.ActivationFocus.HasActivationFocus">
+            <summary>
+            Represents activation focus.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.ActivationFocus.HasTentativeActivationFocus">
+            <summary>
+            Represents tentative activation focus.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Forms.DpiAwarenessUtilities">
+            <summary>
+            Provides utility functions for DPI awareness.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.DpiAwarenessUtilities.SetProcessDpiAware">
+            <summary>
+            Marks the running process as being DPI aware.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Forms.BehaviorMap">
+            <summary>
+            Component holding the interactors and behaviors used by a Form or Control.
+            Must be connected to a <see cref="T:EyeXFramework.Forms.FormsEyeXHost"/> to receive queries and events.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Forms.BehaviorMap"/> class.
+            </summary>
+            <param name="container">An IContainer that represents the container for the behavior map component.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.Add(System.Windows.Forms.Control,EyeXFramework.IEyeXBehavior)">
+            <summary>
+            Makes the specified control eye-gaze interactive, by assigning an EyeX behavior 
+            to the interactor associated with the control.
+            Creates a new interactor for the control if necessary.
+            </summary>
+            <param name="control">Control to be made eye-gaze interactive.</param>
+            <param name="behavior">EyeX behavior to be assigned.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.AddOccluder(System.Windows.Forms.Control)">
+            <summary>
+            Makes the specified control eye-gaze interactive, but without any EyeX behaviors. 
+            Use this method to make the control block (occlude) eye-gaze interaction with other 
+            controls behind it.
+            </summary>
+            <param name="control">Control to be marked as an eye-gaze occluder.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.GetInteractor(System.Windows.Forms.Control)">
+            <summary>
+            Gets the interactor associated with a given control. Creates a new interactor if none was found.
+            </summary>
+            <param name="control">The control.</param>
+            <returns>The interactor.</returns>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.TryGetInteractor(System.Windows.Forms.Control,EyeXFramework.Forms.FormsInteractor@)">
+            <summary>
+            Gets the interactor associated with a given control, if there is one.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="interactor">The interactor.</param>
+            <returns>True if an interactor exists.</returns>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.GetIntersectingInteractors(System.Drawing.Rectangle)">
+            <summary>
+            Gets all interactors in the collection that intersect with a given rectangle.
+            </summary>
+            <param name="queryRect">The rectangle, in screen coordinates.</param>
+            <returns>Enumeration of interactors.</returns>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine.
+            </summary>
+            <param name="event_">Event to be handled.</param>
+            <returns>True if the event was handled, false otherwise.</returns>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.MarkAsUnmodified">
+            <summary>
+            Clears the IsModified flag.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.BehaviorMap.Dispose">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.BehaviorMap.IsModified">
+            <summary>
+            Gets a value indicating whether any interactors have been added or removed. Used for caching.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.BehaviorMap.Interactors">
+            <summary>
+            Gets all interactors in the collection.
+            </summary>
+            <returns>Enumeration of interactors.</returns>
+        </member>
+        <member name="T:EyeXFramework.Forms.FormsInteractor">
+            <summary>
+            Represents an EyeX interactor. 
+            Used by <see cref="T:EyeXFramework.Forms.BehaviorMap"/>.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Forms.FormsInteractor"/> class.
+            </summary>
+            <param name="control">The <see cref="P:EyeXFramework.Forms.FormsInteractor.Control"/> to represent.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.IntersectsWith(System.Drawing.Rectangle)">
+            <summary>
+            Returns true if the interactor intersects the given query rectangle.
+            </summary>
+            <param name="queryRect">The query rectangle.</param>
+            <returns>A value indicating whether the interactor intersects the given query rectangle.</returns>
+            <note>You need to call this method from the UI thread.</note>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.AddBehavior(EyeXFramework.IEyeXBehavior)">
+            <summary>
+            Adds a behavior to the interactor.
+            </summary>
+            <param name="behavior">The behavior to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine. 
+            </summary>
+            <param name="event_">The event.</param>
+            <returns>True if the event could be handled, false if incorrect interactor id.</returns>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.AddToSnapshot(Tobii.EyeX.Client.Snapshot)">
+            <summary>
+            Adds the interactor to a given snapshot.
+            </summary>
+            <param name="snapshot">The snapshot to add the interactor to.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsInteractor.ToString">
+            <summary>
+            Returns a string that represents the interactor.
+            </summary>
+            <returns>A string that represents the interactor.</returns>
+        </member>
+        <member name="P:EyeXFramework.Forms.FormsInteractor.Control">
+            <summary>
+            Gets the <see cref="P:EyeXFramework.Forms.FormsInteractor.Control"/> that the interactor represents.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.FormsInteractor.Id">
+            <summary>
+            Gets the unique id for the interactor.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.FormsInteractor.ParentId">
+            <summary>
+            Gets or sets the id of the parent interactor.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.FormsInteractor.Z">
+            <summary>
+            Gets or sets the Z value.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Forms.FormsInteractor.WindowId">
+            <summary>
+            Gets or sets the window id.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Forms.FormsCrawler">
+            <summary>
+            Helper class for traversing Windows Forms control trees.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsCrawler.UpdateInteractorProperties(System.Collections.Generic.IEnumerable{EyeXFramework.Forms.BehaviorMap})">
+            <summary>
+            Updates the ParentId, Z, and WindowId properties of all interactors.
+            </summary>
+            <param name="behaviorMaps">Behavior maps providing the interactors.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsCrawler.GetInteractors(System.Collections.Generic.IEnumerable{EyeXFramework.Forms.BehaviorMap},System.Drawing.Rectangle,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets the set of interactors within a given query rectangle.
+            </summary>
+            <param name="behaviorMaps">Behavior maps providing the interactors.</param>
+            <param name="queryRect">Query rectangle in screen coordinates.</param>
+            <param name="queryWindowIds">Window ID's from the query.</param>
+            <returns>The interactors.</returns>
+        </member>
+        <member name="T:EyeXFramework.Forms.FormsEyeXHost">
+            <summary>
+            Provides the main point of contact with the EyeX Engine. 
+            Hosts an EyeX context and responds to engine queries using a repository of BehaviorMaps.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Forms.IFormsEyeXHost">
+            <summary>
+            Interface used for mocking the EyeXHost.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.IFormsEyeXHost.Connect(EyeXFramework.Forms.BehaviorMap)">
+            <summary>
+            Connects a behavior map so that it may receive queries and events from the EyeX Engine.
+            </summary>
+            <param name="behaviorMap">Map to be connected.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.IFormsEyeXHost.TriggerActivation">
+            <summary>
+            Trigger an activation ("gaze click").
+            Use this method if you want to bind the click command to a key other than the one used 
+            by the EyeX Engine -- or to something other than a key press event.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsEyeXHost.Start">
+            <summary>
+            Initializes the EyeX host and enables the connection to the EyeX Engine.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsEyeXHost.Connect(EyeXFramework.Forms.BehaviorMap)">
+            <summary>
+            Connects a behavior map so that it may receive queries and events from the EyeX Engine.
+            </summary>
+            <param name="behaviorMap">Map to be connected.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsEyeXHost.HandleQuery(Tobii.EyeX.Client.Query)">
+            <summary>
+            Handles a query from the EyeX Engine.
+            </summary>
+            <param name="query">Query to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsEyeXHost.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine.
+            </summary>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.Forms.FormsEyeXHost.RunOnMainThread(System.Action)">
+            <summary>
+            Marshals the given operation to the main thread using the first open form that we can find.
+            </summary>
+            <param name="action">The operation to be performed.</param>
+            <returns>True if the marshaling operation was successful.</returns>
+        </member>
+        <member name="T:EyeXFramework.GazeAwareBehavior">
+            <summary>
+            Maps the Gaze-aware behavior to an interactor.
+            Exposes EyeX behavior parameters and events as .NET properties and events.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.GazeAwareBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.GazeAwareBehavior"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.GazeAwareBehavior.#ctor(System.EventHandler{EyeXFramework.GazeAwareEventArgs})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.GazeAwareBehavior"/> class.
+            </summary>
+            <param name="eventHandler">The event handler for the <see cref="E:EyeXFramework.GazeAwareBehavior.GazeAware"/> event.</param>
+        </member>
+        <member name="M:EyeXFramework.GazeAwareBehavior.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the gaze-aware behavior to an interactor. 
+            </summary>
+            <param name="interactor">Interactor to assign the gaze-aware interactor to.</param>
+        </member>
+        <member name="M:EyeXFramework.GazeAwareBehavior.HandleEvent(System.Object,System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Handles the gaze-aware event.
+            </summary>
+            <param name="sender">Object associated with the interactor.</param>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+        </member>
+        <member name="E:EyeXFramework.GazeAwareBehavior.GazeAware">
+            <summary>
+            The event raised when the gaze moves in or out if the interactor.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.GazeAwareBehavior.BehaviorType">
+            <summary>
+            Gets the gaze-aware behavior type.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.GazeAwareBehavior.DelayMilliseconds">
+            <summary>
+            Gets or sets the delay in milliseconds from when the user looks at the interactor to the event is raised.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.GazeAwareEventArgs">
+            <summary>
+            Event arguments for the gaze-aware behavior.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.GazeAwareEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.GazeAwareEventArgs"/> class.
+            </summary>
+            <param name="hasGaze">True if the gaze point falls within the bounds of the interactor.</param>
+        </member>
+        <member name="P:EyeXFramework.GazeAwareEventArgs.HasGaze">
+            <summary>
+            Gets a value indicating whether the gaze point falls within the bounds of the interactor.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.GazePointDataStream">
+            <summary>
+            Provides a stream of gaze point data.
+            See <see cref="T:EyeXFramework.GazePointEventArgs"/>.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.GazePointDataStream.#ctor(Tobii.EyeX.Framework.GazePointDataMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.GazePointDataStream"/> class.
+            </summary>
+            <param name="mode">Specifies the kind of processing applied to the eye-gaze data.</param>
+        </member>
+        <member name="M:EyeXFramework.GazePointDataStream.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the behavior corresponding to the data stream type to an interactor.
+            </summary>
+            <param name="interactor">The global interactor to add the data stream behavior to.</param>
+        </member>
+        <member name="M:EyeXFramework.GazePointDataStream.ExtractDataPoints(System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Extracts data points from an event from the EyeX Engine.
+            </summary>
+            <param name="behaviors">The <see cref="T:Tobii.EyeX.Client.Behavior"/> instances containing the event data.</param>
+            <returns>The collection of data points.</returns>
+        </member>
+        <member name="P:EyeXFramework.GazePointDataStream.Mode">
+            <summary>
+            Gets the kind of processing applied to the eye-gaze data.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.GazePointEventArgs">
+            <summary>
+            Provides event data for the gaze point data stream.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.GazePointEventArgs.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.GazePointEventArgs"/> class.
+            </summary>
+            <param name="x">X coordinate in physical pixels.</param>
+            <param name="y">Y coordinate in physical pixels.</param>
+            <param name="timestamp">The point in time when the data point was captured. Milliseconds.</param>
+        </member>
+        <member name="P:EyeXFramework.GazePointEventArgs.X">
+            <summary>
+            Gets the X coordinate in physical pixels.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.GazePointEventArgs.Y">
+            <summary>
+            Gets the Y coordinate in physical pixels.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.GazePointEventArgs.Timestamp">
+            <summary>
+            Gets the point in time when the data point was captured. Milliseconds.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.PannableBehavior">
+            <summary>
+            Maps the pannable behavior to an interactor.
+            Exposes EyeX behavior parameters and events as .NET properties and events.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.PannableBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.PannableBehavior"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.PannableBehavior.#ctor(System.EventHandler{EyeXFramework.PannablePanEventArgs})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.PannableBehavior"/> class.
+            </summary>
+            <param name="panningHandler">Event handler for the <see cref="E:EyeXFramework.PannableBehavior.Panning"/> event.</param>
+        </member>
+        <member name="M:EyeXFramework.PannableBehavior.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Assigns the panning behavior to an interactor.
+            </summary>
+            <param name="interactor">The interactor.</param>
+        </member>
+        <member name="E:EyeXFramework.PannableBehavior.Panning">
+            <summary>
+            The panning event.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.PannableBehavior.PanDirectionsAvailable">
+            <summary>
+            Gets or sets the available panning directions.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.PannableBehavior.Profile">
+            <summary>
+            Gets or sets the panning profile.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.PannableBehavior.BehaviorType">
+            <summary>
+            Gets the type of behavior provided by the adapter.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.PannablePanEventArgs">
+            <summary>
+            Event arguments for the <see cref="E:EyeXFramework.PannableBehavior.Panning"/> event.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.PannablePanEventArgs.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.PannablePanEventArgs"/> class.
+            </summary>
+            <param name="velocityX">Horizontal panning velocity</param>
+            <param name="velocityY">Vertical panning velocity</param>
+        </member>
+        <member name="P:EyeXFramework.PannablePanEventArgs.PanVelocityX">
+            <summary>
+            Gets the horizontal panning velocity (pixels/second).
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.PannablePanEventArgs.PanVelocityY">
+            <summary>
+            Gets the vertical panning velocity (pixels/second).
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.Behavior">
+            <summary>
+            Partial class with events and properties related to the Activatable behavior.
+            </summary>
+            <summary>
+            Partial class with events and properties related to the Gaze-aware behavior.
+            </summary>
+            <summary>
+            Partial class with events and properties related to the Pannable behavior.
+            </summary>
+            <summary>
+            Class that contains all the EyeX Behavior related attached
+            properties and events.
+            <para>
+            The class implementation is split into one file per EyeX 
+            Behavior, with the Behavior.cs file containing generic
+            implementation.
+            </para>
+            <para>
+            File naming convention: Behavior.Xyz.cs contains all
+            implementation related explicitly to the EyeX Xyz behavior.
+            </para>
+            </summary>
+            <summary>
+            Partial class with events and properties related to occluders (interactors without behavior).
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.ActivatableProperty">
+            <summary>
+            When set to a value other than None, the associated element becomes 
+            an EyeX interactor with the Activatable behavior. 
+            <para>
+            -The routed event Activate will be fired when the user interacts 
+            with the element by looking at it and pressing the EyeX Direct Click
+            key or EyeX Button (typically the Right Ctrl key, but this can be 
+            changed in the EyeX Interaction settings).
+            </para><para>
+            -The property ActivationFocus will be set to a value corresponding 
+            to the current activation focus state of the element, and the routed 
+            event ActivationFocusChanged will be fired whenever this value is 
+            changed.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetActivatable(System.Windows.FrameworkElement,EyeXFramework.Wpf.ActivatableType)">
+            <summary>
+            Sets the value of the Activatable property on a given FrameworkElement.
+            <para>
+            When set to a value other than ActivatableType.None, the associated 
+            element becomes an EyeX interactor with the Activatable behavior. 
+            </para><para>
+            -The routed event Activate will be fired when the user interacts 
+            with the element by looking at it and pressing the EyeX Direct Click
+            key (typically the Right Ctrl key, but this can be changed in the 
+            EyeX Interaction settings).
+            </para><para>
+            -The property ActivationFocus will be set to a value corresponding 
+            to the current activation focus state of the element, and the routed 
+            event ActivationFocusChanged will be fired whenever this value is 
+            changed.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="value">The <see cref="T:EyeXFramework.Wpf.ActivatableType"/> value of the property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetActivatable(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the value of the Activatable property on a given FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property value from.</param>
+            <returns>The value of the Activatable property.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.ActivationFocusProperty">
+            <summary>
+            The element can be in one of three activation focus states: 
+            <para>
+            -ActivationFocus.None - the element does not have any kind of 
+            activation focus. 
+            </para><para>
+            -ActivationFocus.HasActivationFocus - the user is pressing down 
+            the activation key, and this element would be activated if the 
+            user were to release the activation key at this instant. 
+            </para><para>
+            -ActivationFocus.HasTentativeActivationFocus - the user is just 
+            looking around, but this element would be activated if the user 
+            were to press and release the activation key at this instant.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetActivationFocus(System.Windows.FrameworkElement,EyeXFramework.ActivationFocus)">
+            <summary>
+            Sets the ActivationFocus property.
+            <para>
+            Should only be set as part of the event handling of activation
+            focus changed events from the EyeX Engine.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property value for.</param>
+            <param name="value">The <see cref="T:EyeXFramework.ActivationFocus"/> value of the property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetActivationFocus(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the value of the ActivationFocus property on a FrameworkElement.
+            <para>
+            The element can be in one of three activation focus states: 
+            </para><para>
+            -ActivationFocus.None - the element does not have any kind of 
+            activation focus. 
+            </para><para>
+            -ActivationFocus.HasActivationFocus - the user is pressing down 
+            the activation key, and this element would be activated if the 
+            user were to release the activation key at this instant. 
+            </para><para>
+            -ActivationFocus.HasTentativeActivationFocus - the user is just 
+            looking around, but this element would be activated if the user 
+            were to press and release the activation key at this instant.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/></param>
+            <returns>The the value of the ActivationFocus property.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.ActivateEvent">
+            <summary>
+            Event that notifies that the associated element has been activated 
+            by the user. That is, the user has looked at it while releasing the 
+            activation (or EyeX Direct Click) key.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.AddActivateHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Adds a handler for the Activate event to a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to add the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.RemoveActivateHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Removes a handler for the Activate event from a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to remove the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to remove.</param>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.ActivationFocusChangedEvent">
+            <summary>
+            Event that notifies that the ActivationFocus property has changed.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.AddActivationFocusChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Adds a handler for the ActivationFocusChanged event to a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to add the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.RemoveActivationFocusChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Removes a handler for the ActivationFocusChanged event from a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to remove the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to remove.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.OnActivated(System.Object,System.EventArgs)">
+            <summary>
+            Callback method called when an activation event has been received 
+            from the EyeX Engine for the interactor associated with this 
+            FrameworkElement.
+            </summary>
+            <param name="sender">The <see cref="T:System.Windows.FrameworkElement"/> that got the event.</param>
+            <param name="e">The event arguments (not used for this event)</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.OnActivationFocusChanged(System.Object,EyeXFramework.ActivationFocusChangedEventArgs)">
+            <summary>
+            Callback method called when an activation focus changed event has 
+            been received from the EyeX Engine for the interactor associated 
+            with this FrameworkElement.
+            </summary>
+            <param name="sender">The <see cref="T:System.Windows.FrameworkElement"/> that got the event.</param>
+            <param name="e">The <see cref="T:EyeXFramework.ActivationFocusChangedEventArgs"/> for the event.</param>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.GazeAwareProperty">
+            <summary>
+            When set to true, the associated element becomes an EyeX interactor 
+            with the Gaze-aware behavior: 
+            <para>
+            Its HasGaze property will be set to true or false depending on 
+            whether the user's eye-gaze is within or outside the element's 
+            bounds, and the routed event HasGazeChanged will be fired whenever 
+            the HasGaze value is changed.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetGazeAware(System.Windows.FrameworkElement,System.Boolean)">
+            <summary>
+            Sets the GazeAware behavior on a FrameworkElement. 
+            When set to true, the associated element becomes an EyeX interactor 
+            with the Gaze-aware behavior: 
+            <para>
+            Its HasGaze property will be set to true or false depending on 
+            whether the user's eye-gaze is within or outside the element's 
+            bounds, and the routed event HasGazeChanged will be fired whenever 
+            the HasGaze value is changed.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the behavior for.</param>
+            <param name="value">The value of the HasGaze property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetGazeAware(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the GazeAware property for a given FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property from.</param>
+            <returns>A value indicating whether the FrameworkElement is gaze-aware.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.GazeAwareDelayProperty">
+            <summary>
+            The number of milliseconds the eye-gaze of the user must have been
+            within the bounds of the element before the element is considered
+            to be gazed on.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetGazeAwareDelay(System.Windows.FrameworkElement,System.Int32)">
+            <summary>
+            Sets the value of the GazeAwareDelay property on the FrameworkElement.
+            The delay is number of milliseconds the eye-gaze of the user must have
+            been within the bounds of the element before the element is considered
+            to be gazed on.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="value">The delay value, in milliseconds.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetGazeAwareDelay(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the value of the GazeAwareDelay property on the FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property from.</param>
+            <returns>The delay in milliseconds.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.HasGazeProperty">
+            <summary>
+            Property that is set to true when the user's eye-gaze is within the
+            bounds of the associated element, and set to false when the eye-gaze
+            is outside the bounds of the element. It will not be set to true 
+            until the gaze aware delay number of milliseconds have passed.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetHasGaze(System.Windows.FrameworkElement,System.Boolean)">
+            <summary>
+            Sets the HasGaze property for a given FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="value">A value indicating whether the user's eye-gaze is within the bounds of the associated element.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetHasGaze(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the value of the HasGaze property on this FrameworkElement.
+            HasGaze is set to true when the user's eye-gaze is within the bounds
+            of the associated element, and set to false when the eye-gaze is
+            outside the bounds of the element. It will not be set to true until
+            the gaze aware delay number of milliseconds have passed.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property from.</param>
+            <returns>A value indicating whether the user's eye-gaze is within the bounds of the element.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.HasGazeChangedEvent">
+            <summary>
+            Event that notifies that the HasGaze property has changed.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.AddHasGazeChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Adds a handler for the HasGazeChanged event to a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to add the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.RemoveHasGazeChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)">
+            <summary>
+            Removes a handler for the HasGazeChanged event from a given DependencyObject.
+            </summary>
+            <param name="d">The <see cref="T:System.Windows.DependencyObject"/> where to remove the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to remove.</param>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PannableProperty">
+            <summary>
+            When set to a value other than None, the associated framework element becomes 
+            an EyeX interactor with the Pannable behavior. 
+            <para>
+            -The routed event Pannable will be fired when the user interacts 
+            with the scrollViewer by looking at it and pressing the EyeX button (typically 
+            the Right Control key, but this can be changed in the EyeX settings panel). The
+            event will contain information about the horizontal and vertical panning velocity
+            (in pixels/second).
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetPannable(System.Windows.FrameworkElement,EyeXFramework.Wpf.Behavior.PannableType)">
+            <summary>
+            Sets the <see cref="T:EyeXFramework.Wpf.Behavior.PannableType"/> for the given <see cref="T:System.Windows.FrameworkElement"/>.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="value">The <see cref="T:EyeXFramework.Wpf.Behavior.PannableType"/> value of the property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetPannable(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the <see cref="T:EyeXFramework.Wpf.Behavior.PannableType"/> for the given <see cref="T:System.Windows.FrameworkElement"/>.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property value from.</param>
+            <returns>The <see cref="T:EyeXFramework.Wpf.Behavior.PannableType"/> for the given <see cref="T:System.Windows.FrameworkElement"/>.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.AvailablePanDirectionsProperty">
+            <summary>
+            Indicates what directions that are currently pannable.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetAvailablePanDirections(System.Windows.FrameworkElement,EyeXFramework.Wpf.Behavior.PanDirectionType)">
+            <summary>
+            Sets the currently available directions.
+            <para>
+            - Should be used to dynamically update the available pan directions when panning is 
+            ongoing. 
+            </para><para>
+            - For example: if the contents of a vertically scrollable area has been scrolled to 
+            the bottom, the down direction should temporarily be removed from the available 
+            directions until the contents has been scrolled up again.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="direction">The <see cref="T:EyeXFramework.Wpf.Behavior.PanDirectionType"/> value of the property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetAvailablePanDirections(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the currently available directions.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property value from.</param>
+            <returns>The <see cref="T:EyeXFramework.Wpf.Behavior.PanDirectionType"/> for the given <see cref="T:System.Windows.FrameworkElement"/>.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileProperty">
+            <summary>
+            The panning profile indicates how panning behaves when activated.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetPanningProfile(System.Windows.FrameworkElement,EyeXFramework.Wpf.Behavior.PanningProfileType)">
+            <summary>
+            Sets the current panning profile.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="profile">The panning profile to set as the current one.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetPanningProfile(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the current panning profile.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property value from.</param>
+            <returns>The current panning profile.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.AutoPanProperty">
+            <summary>
+            When set to true, the associated framework element will auto pan.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetAutoPan(System.Windows.FrameworkElement,System.Boolean)">
+            <summary>
+            Sets whether or not the associated <see cref="T:System.Windows.FrameworkElement"/> is auto panning.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="enabled">Whether or not automatic panning is enabled.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetAutoPan(System.Windows.FrameworkElement)">
+            <summary>
+            Gets whether or not automatic panning is enabled..
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property from.</param>
+            <returns><c>true</c> it automatic panning is enabled; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningEvent">
+            <summary>
+            Event that notifies that the associated element is being panned by the user.
+            That is, the user has looked at it while pressing (and holding) the EyeXButton.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.AddPanningHandler(System.Windows.DependencyObject,System.EventHandler{EyeXFramework.Wpf.RoutedPanEventArgs})">
+            <summary>
+            Adds a handler for the <c>Panning</c> event to a given <see cref="T:System.Windows.DependencyObject"/>.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject"/> where to add the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.RemovePanningHandler(System.Windows.DependencyObject,System.EventHandler{EyeXFramework.Wpf.RoutedPanEventArgs})">
+            <summary>
+            Removes a handler for the panning event from a given <see cref="T:System.Windows.DependencyObject"/>.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject"/> from where to remove the event handler.</param>
+            <param name="handler">The <see cref="T:System.Windows.RoutedEventHandler"/> to remove.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.IsInteractor(System.Windows.FrameworkElement)">
+            <summary>
+            Indicates whether the FrameworkElement represents an EyeX 
+            interactor or not. That is, if it has any EyeX Behaviors
+            set on it. 
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/></param>
+            <returns>
+            A value indicating whether the FrameworkElement represents 
+            an EyeX interactor.
+            </returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.WpfInteractorProperty">
+            <summary>
+            Holds the WpfInteractor object associated with a FrameworkElement. 
+            <para>
+            The WpfInteractor class stores information about EyeX behaviors
+            set on the element, and other information needed to create an EyeX
+            interactor based on the element, and also delegates handling of
+            events from the EyeX Engine to the attached EyeX behaviors.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetWpfInteractor(System.Windows.FrameworkElement,EyeXFramework.Wpf.WpfInteractor)">
+            <summary>
+            Sets the WpfInteractor property for a given FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the property for.</param>
+            <param name="value">The <see cref="T:EyeXFramework.Wpf.WpfInteractor"/> value of the property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetWpfInteractor(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the WpfInteractor of the FrameworkElement. 
+            <para>
+            This method returns null for a FrameworkElement with no set EyeX 
+            Behaviors. Code that need a reference to the WpfInteractor, to be 
+            able to add an EyeX Behavior to it, should use the 
+            GetWpfInteractorOrDefault method instead.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the interactor from.</param>
+            <returns>The <see cref="T:EyeXFramework.Wpf.WpfInteractor"/> attached, or null.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetWpfInteractorOrDefault(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the WpfInteractor for the FrameworkElement, or if the
+            WpfInteractor is null, creates, sets and returns an empty
+            WpfInteractor. 
+            <para>
+            This method should be used for code that need a reference to the 
+            WpfInteractor to add an EyeX Behavior to it.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the object from.</param>
+            <returns>The WpfInteractor for the FrameworkElement, or a default instance.</returns>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.IsOccluderProperty">
+            <summary>
+            When set to true, the associated element becomes an EyeX interactor
+            with no behavior.
+            <para>
+            An EyeX interactor with no behavior is the definition of an occluder 
+            in the eyes of the EyeX Engine. An occluder will block eye-gaze
+            interaction from reaching parts of the screen that are behind it.
+            </para><para>
+            For the occluder to work correctly, its branch in the interactor tree
+            has to have a higher Z value than the branch of interactors it is
+            suppose to occlude.
+            </para><para>
+            If a visual element is drawn on top of another visual element, but
+            is not explicitly declared to be an occluder, it will be treated as
+            if it were transparent by the EyeX Engine.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.SetIsOccluder(System.Windows.FrameworkElement,System.Boolean)">
+            <summary>
+            Sets the IsOccluder property on a FrameworkElement.
+            <para>
+            When set to true, the associated element becomes an EyeX interactor
+            with no behavior.
+            </para><para>
+            An EyeX interactor with no behavior is the definition of an occluder 
+            in the eyes of the EyeX Engine. An occluder will block eye-gaze
+            interaction from reaching parts of the screen that are behind it.
+            </para><para>
+            For the occluder to work correctly, its branch in the interactor tree
+            has to have a higher Z value than the branch of interactors it is
+            suppose to occlude.
+            </para><para>
+            If a visual element is drawn on top of another visual element, but
+            is not explicitly declared to be an occluder, it will be treated as
+            if it were transparent by the EyeX Engine.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to set the IsOccluder property for.</param>
+            <param name="value">The value of the IsOccluder property.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.Behavior.GetIsOccluder(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the IsOccluder property of a FrameworkElement.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> to get the property from.</param>
+            <returns>A value indicating whether the FrameworkElement is an occluder or not.</returns>
+        </member>
+        <member name="T:EyeXFramework.Wpf.Behavior.PannableType">
+            <summary>
+            Represents the type of panning to use.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PannableType.None">
+            <summary>
+            No panning.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PannableType.Default">
+            <summary>
+            The user pans by looking at an scroll viewer 
+            and pressing the EyeXButton.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.Behavior.PanDirectionType">
+            <summary>
+            Represents the available panning directions.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.None">
+            <summary>
+            No available panning directions.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.Left">
+            <summary>
+            Only panning to the left is available.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.Right">
+            <summary>
+            Only panning to the right is available.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.Up">
+            <summary>
+            Only upwards panning is available.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.Down">
+            <summary>
+            Only downwards panning is available.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanDirectionType.All">
+            <summary>
+            All panning directions are available.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.Behavior.PanningProfileType">
+            <summary>
+            Represents a panning profile.
+            A panning profile dictates how panning will behave. 
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.None">
+            <summary>
+            No panning.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.Reading">
+            <summary>
+            Currently same as the vertical profile,
+            but will be properly implemented in a future release.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.Horizontal">
+            <summary>
+            Horizontal panning.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.Vertical">
+            <summary>
+            Vertical panning.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.VerticalFirstThenHorizontal">
+            <summary>
+            Vertical and horizontal panning where the 
+            vertical zone is bigger than the horizontal.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.Radial">
+            <summary>
+            Radial panning.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.Behavior.PanningProfileType.HorizontalFirstThenVertical">
+            <summary>
+            Vertical and horizontal panning where the 
+            horizontal zone is bigger than the vertical.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.ActivatableType">
+            <summary>
+            Used to specify the type of Activatable events that the EyeX Engine 
+            should send for the Activatable interactor. The element is only 
+            considered an interactor for a value other than None.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.ActivatableType.None">
+            <summary>
+            No interactor.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.ActivatableType.Default">
+            <summary>
+            Activatable interactor with tentative focus disabled.
+            </summary>
+        </member>
+        <member name="F:EyeXFramework.Wpf.ActivatableType.TentativeFocusEnabled">
+            <summary>
+            Activatable interactor with tentative focus enabled.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.InteractorIDGenerator">
+            <summary>
+            Generates unique IDs for interactors.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.InteractorIDGenerator.CreateUniqueID">
+            <summary>
+            Returns a unique ID.
+            </summary>
+            <returns>A unique ID.</returns>
+        </member>
+        <member name="T:EyeXFramework.Wpf.RoutedPanEventArgs">
+            <summary>
+            Contains state information and event data associated with a routed panning event.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.RoutedPanEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Wpf.RoutedPanEventArgs"/> class.
+            </summary>
+            <param name="routedEvent">The routed event identifier for this instance of the <see cref="T:EyeXFramework.Wpf.RoutedPanEventArgs"/> class.</param>
+            <param name="source">An alternate source that will be reported when the event is handled. This pre-populates the <see cref="P:System.Windows.RoutedEventArgs.Source"/> property.</param>
+            <param name="velocityX">The horizontal panning velocity.</param>
+            <param name="velocityY">The vertical panning velocity.</param>
+        </member>
+        <member name="P:EyeXFramework.Wpf.RoutedPanEventArgs.VelocityX">
+            <summary>
+            Gets the horizontal panning velocity.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.RoutedPanEventArgs.VelocityY">
+            <summary>
+            Gets the vertical panning velocity.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.WpfInteractor">
+            <summary>
+            A WpfInteractor is the WPF representation of an EyeX interactor, based
+            on a FrameworkElement. 
+            <para>
+            An EyeX interactor covers a certain region of the screen, and is part
+            of a logical tree of interactors, with z ordering between siblings, 
+            and a parent being either the window it belongs to (defined as the root) 
+            or another interactor.
+            </para><para>
+            In this sense, EyeX interactors corresponds very well to FrameworkElements
+            in the WPF framework. FrameworkElements have an actual width and actual
+            height and is related to other FrameworkElements by their placement in the
+            visual tree. The WpfInteractor tree is made up of the subset of elements
+            in the visual tree that have an WpfInteractor object with at least one
+            added EyeX Behavior.
+            </para>
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Wpf.WpfInteractor"/> class.
+            </summary>
+            <param name="id">An application-wide unique identifier for this WpfInteractor.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.CreateEmpty">
+            <summary>
+            Creates an empty WpfInteractor with no attached EyeX Behavior.
+            </summary>
+            <returns>An empty WpfInteractor.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.AddBehavior(System.Windows.FrameworkElement,EyeXFramework.IEyeXBehavior)">
+            <summary>
+            Adds the supplied IEyeXBehavior to this WpfInteractor and saves
+            a references to the associated FrameworkElement if this is the
+            first added behavior. Will replace any already added behavior
+            with the same BehaviorType.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> where to add the behavior.</param>
+            <param name="behavior">The <see cref="T:EyeXFramework.IEyeXBehavior"/> to add.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.GetBehavior(Tobii.EyeX.Framework.BehaviorType)">
+            <summary>
+            Gets the behavior matching the specified <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.
+            </summary>
+            <param name="behaviorType">The <see cref="T:Tobii.EyeX.Framework.BehaviorType"/> to query for.</param>
+            <returns>The <see cref="T:EyeXFramework.IEyeXBehavior"/> or <c>null</c> if not found.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.RemoveBehavior(Tobii.EyeX.Framework.BehaviorType)">
+            <summary>
+            Removes the behavior with the specified BehaviorType.
+            Void operation if there is no behavior of that type to remove.
+            </summary>
+            <param name="behaviorType">The <see cref="T:Tobii.EyeX.Framework.BehaviorType"/>.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.AddToSnapshot(Tobii.EyeX.Client.Snapshot)">
+            <summary>
+            Creates an EyeX interactor from the properties and behaviors in
+            this WpfInteractor, and adds it to the provided snapshot.
+            </summary>
+            <param name="snapshot">The <see cref="T:Tobii.EyeX.Client.Snapshot"/> to 
+            add the interactor to.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Delegates to each added behavior to handle events from the EyeX Engine.
+            </summary>
+            <remarks>
+            Must be called on a UI thread.
+            </remarks>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.Clear">
+            <summary>
+            The Clear method should be called when the WpfInteractor no longer
+            qualifies as an interactor because of missing data, references or
+            an empty list of behaviors.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfInteractor.NotifyIfInteractorStatusChanged(System.Boolean)">
+            <summary>
+            The WpfInteractor status as an interactor changes when
+            the first EyeX Behavior is added to it and when the last
+            EyeX Behavior is removed from it.
+            </summary>
+            <param name="wasInteractor">A value indicating whether there 
+            was at least one EyeX Behavior attached to this WpfInteractor.</param>
+        </member>
+        <member name="E:EyeXFramework.Wpf.WpfInteractor.InteractorAdded">
+            <summary>
+            Occurs when the first EyeX Behavior have been added to the WpfInteractor, 
+            so it should now be treated as an interactor in the eyes of the EyeX 
+            Engine.
+            </summary>
+        </member>
+        <member name="E:EyeXFramework.Wpf.WpfInteractor.InteractorRemoved">
+            <summary>
+            Occurs when the last EyeX Behavior is removed from this WpfInteractor, 
+            so it should no longer be treated as an interactor in the eyes of the 
+            EyeX Engine.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.IsInteractor">
+            <summary>
+            Gets a value indicating whether there is at least one EyeX Behavior attached 
+            to this WpfInteractor.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.IsQueryable">
+            <summary>
+            Gets a value indicating whether the WpfInteractor is in a state so that 
+            it can be used to create a valid EyeX interactor to be sent to the EyeX Engine.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.HasValidWindowId">
+            <summary>
+            Gets a value indicating whether the WindowId is set to a valid window 
+            handle. Typically does not become true until the associated 
+            FrameworkElement has been loaded.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.Id">
+            <summary>
+            Gets an application-wide unique identifier for this WpfInteractor. This
+            id is used by the EyeX Engine to identify interactors, and is the
+            id set on EyeX events to specify which interactor the event is
+            raised for.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.ParentId">
+            <summary>
+            Gets or sets the unique id of the parent WpfInteractor or the root id
+            (if the WpfInteractor node is logically attached directly to the window
+            root node).
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.Z">
+            <summary>
+            Gets or sets the Z ordering of this WpfInteractor compared to its sibling
+            interactors (sharing the same parent id). A WpfInteractor with
+            a higher Z value is considered to be on top of and to cover a
+            WpfInteractor with a lower Z value.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.WindowId">
+            <summary>
+            Gets the window handle of the top level window the associated
+            FrameworkElement belongs to.
+            </summary>
+        </member>
+        <member name="P:EyeXFramework.Wpf.WpfInteractor.Element">
+            <summary>
+            Gets the FrameworkElement associated with this WpfInteractor. It is on this
+            element the attached properties from the EyeXFramework.Wpf.Behavior 
+            class have been set, and it is on this element routed EyeX Behavior 
+            events will be raised. 
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.ElementEventArgs">
+            <summary>
+            Event arguments associated with the <see cref="E:EyeXFramework.Wpf.WpfInteractor.InteractorAdded"/> 
+            and <see cref="E:EyeXFramework.Wpf.WpfInteractor.InteractorRemoved"/> events.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.ElementEventArgs.#ctor(System.Windows.FrameworkElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Wpf.ElementEventArgs"/> class.
+            </summary>
+            <param name="element">The <see cref="T:System.Windows.FrameworkElement"/> related to the event.</param>
+        </member>
+        <member name="P:EyeXFramework.Wpf.ElementEventArgs.Element">
+            <summary>
+            Gets the <see cref="T:System.Windows.FrameworkElement"/> related to the event.
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.WpfEyeXHost">
+            <summary>
+            Provides the main point of contact with the EyeX Engine.
+            Hosts an EyeX context and responds to engine queries using a repository of WpfInteractors.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EyeXFramework.Wpf.WpfEyeXHost"/> class.
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.Dispose(System.Boolean)">
+            <summary>
+            Cleans up any resources being used.
+            </summary>
+            <param name="isDisposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.HandleQuery(Tobii.EyeX.Client.Query)">
+            <summary>
+            Handles a query from the EyeX Engine.
+            </summary>
+            <remarks>
+            Called from a worker thread. GUI object access has to be dispatched to UI thread.
+            </remarks>
+            <param name="query">Query to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.HandleEvent(Tobii.EyeX.Client.InteractionEvent)">
+            <summary>
+            Handles an event from the EyeX Engine.
+            </summary>
+            <remarks>
+            Called from a worker thread. GUI object access has to be dispatched to UI thread.
+            </remarks>
+            <param name="event_">Event to be handled.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.RunOnMainThread(System.Action)">
+            <summary>
+            Marshals the given operation to the UI thread.
+            </summary>
+            <param name="action">The operation to be performed.</param>
+            <returns>True if the marshaling operation was successful.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.OnInteractorAdded(System.Object,EyeXFramework.Wpf.ElementEventArgs)">
+            <summary>
+            Handles an InteractorAdded event, and adds the interactor to the WpfEyeXHost's
+            repository of interactors.
+            </summary>
+            <param name="sender">The sender of the OnInteractorAdded event.</param>
+            <param name="args">The <see cref="T:EyeXFramework.Wpf.ElementEventArgs"/>.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.OnInteractorRemoved(System.Object,EyeXFramework.Wpf.ElementEventArgs)">
+            <summary>
+            Handles an InteractorRemoved event, and removes the interactor from the WpfEyeXHost's
+            repository of interactors.
+            </summary>
+            <param name="sender">The sender of the OnInteractorRemoved event.</param>
+            <param name="args">The <see cref="T:EyeXFramework.Wpf.ElementEventArgs"/>.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.GetWindowsWithInteractors">
+            <summary>
+            Returns all windows for which there are child elements that are interactors.
+            </summary>
+            <returns>All windows with interactors, or an empty list if there are no interactors.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.GetInteractors">
+            <summary>
+            Gets all interactors.
+            </summary>
+            <returns>Collection of interactors.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.GetInteractor(System.String)">
+            <summary>
+            Gets the interactor with the specified interactor id.
+            </summary>
+            <param name="interactorId">The id of the interactor to be returned.</param>
+            <returns>The interactor with Id interactorId, or null if not found.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfEyeXHost.SendQueryReply(Tobii.EyeX.Client.Query,System.Collections.Generic.IEnumerable{EyeXFramework.Wpf.WpfInteractor})">
+            <summary>
+            Creates a commits a snapshot with the given interactors.
+            </summary>
+            <param name="query">The query the snapshot is a reply to.</param>
+            <param name="interactors">A list of interactors intersecting the given query's bounds.</param>
+        </member>
+        <member name="T:EyeXFramework.Wpf.OccluderBehavior">
+            <summary>
+            Maps a dummy behavior to an interactor.
+            </summary>
+            <remarks>
+            The OccluderBehavior class is only needed for the WPF framework and is
+            therefore implemented here.
+            </remarks>
+        </member>
+        <member name="M:EyeXFramework.Wpf.OccluderBehavior.AssignBehavior(Tobii.EyeX.Client.Interactor)">
+            <summary>
+            Does nothing.
+            </summary>
+            <param name="interactor">The interactor to do nothing with.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.OccluderBehavior.HandleEvent(System.Object,System.Collections.Generic.IEnumerable{Tobii.EyeX.Client.Behavior})">
+            <summary>
+            Does nothing.
+            </summary>
+            <param name="sender">The sender to do nothing with.</param>
+            <param name="behaviors">The <see cref="T:EyeXFramework.Wpf.Behavior"/> instances containing the event data.</param>
+        </member>
+        <member name="P:EyeXFramework.Wpf.OccluderBehavior.BehaviorType">
+            <summary>
+            Gets the behavior type, which in this case is "no behavior".
+            </summary>
+        </member>
+        <member name="T:EyeXFramework.Wpf.WpfCrawler">
+            <summary>
+            Helper class for traversing and hit testing visual trees in Windows 
+            Presentation Foundation (WPF).
+            </summary>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfCrawler.GetInteractors(System.Windows.Media.Visual,System.Windows.Rect)">
+            <summary>
+            Gets the set of interactors within a given query rectangle.
+            <para>
+            In interactor is defined as a FrameworkElement with an Behavior attached property set on it.
+            </para>
+            </summary>
+            <param name="window">A top level window</param>
+            <param name="queryRectangle">Query rectangle in screen coordinates</param>
+            <returns>The set of interactors.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfCrawler.UpdateInteractorProperties(System.Windows.FrameworkElement,System.String)">
+            <summary>
+            Updates the ParentId and Z properties of all interactors in the visual tree rooted
+            at the given topElement.
+            </summary>
+            <param name="topElement">The root element of the currently traversed visual tree.</param>
+            <param name="topId">Id of the interactor parent.</param>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfCrawler.GetChildInteractorElements(System.Windows.DependencyObject)">
+            <summary>
+            Returns all children of the given framework element that are also interactors.
+            </summary>
+            <param name="parent">The framework element to get children of.</param>
+            <returns>The child elements.</returns>
+        </member>
+        <member name="M:EyeXFramework.Wpf.WpfCrawler.GetFirstChildOfType``1(System.Windows.FrameworkElement)">
+            <summary>
+            Gets the first child of the specified type in the provided <see cref="T:System.Windows.DependencyObject"/>.
+            </summary>
+            <typeparam name="T">The type to look for.</typeparam>
+            <param name="dependencyObject">The parent dependency object.</param>
+            <returns>The child if found; otherwise <c>null</c>.</returns>
+        </member>
+    </members>
+</doc>
