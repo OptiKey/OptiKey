@@ -138,24 +138,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             storyboard.Children.Add(outroAnimation);
 
             storyboard.Begin(target);
-
-            
-
-            //outroAnimation.BeginTime = TimeSpan.FromSeconds(displayTimeInSeconds);
-
-            //EventHandler closeAnimationCompletedHander = null;
-            //closeAnimationCompletedHander = (sender2, e2) =>
-            //{
-            //    //outroAnimation.Completed -= closeAnimationCompletedHander;
-            //    IsOpen = false;
-            //    if (onPopupClose != null)
-            //    {
-            //        onPopupClose();
-            //    }
-            //};
-
-            //outroAnimation.Completed += closeAnimationCompletedHander;
-
         }
 
         #endregion
