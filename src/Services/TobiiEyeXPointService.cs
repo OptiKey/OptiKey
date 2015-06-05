@@ -8,7 +8,7 @@ using Tobii.EyeX.Framework;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class TobiiEyeXPointService : IPointGeneratingService
+    public class TobiiEyeXPointService : IPointService
     {
         #region Fields
 

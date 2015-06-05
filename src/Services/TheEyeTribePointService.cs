@@ -8,7 +8,7 @@ using TETCSharpClient.Data;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class TheEyeTribePointService : IPointGeneratingService, IGazeListener
+    public class TheEyeTribePointService : IPointService, IGazeListener
     {
         #region Fields
 

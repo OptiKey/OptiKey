@@ -272,7 +272,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
                     servicesNotifyingErrors.Add(theEyeTribePointService);
-                    pointSource = new PointGeneratingServiceWrapper(
+                    pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
                         theEyeTribePointService);
                     break;
@@ -281,7 +281,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                     var tobiiEyeXPointService = new TobiiEyeXPointService();
                     servicesNotifyingErrors.Add(tobiiEyeXPointService);
-                    pointSource = new PointGeneratingServiceWrapper(
+                    pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
                         tobiiEyeXPointService);
                     break;

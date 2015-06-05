@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public interface IPointGeneratingService : INotifyErrors
+    public interface IPointService : INotifyErrors
     {
         event EventHandler<Timestamped<Point>> Point;
     }

@@ -10,12 +10,12 @@ using JuliusSweetland.OptiKey.Services;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
-    public class PointGeneratingServiceWrapper : IPointSource
+    public class PointServiceSource : IPointSource
     {
         #region Fields
         
         private readonly TimeSpan pointTtl;
-        private readonly IPointGeneratingService pointGeneratingService;
+        private readonly IPointService pointGeneratingService;
 
         private IObservable<Timestamped<PointAndKeyValue?>> sequence;
 
@@ -23,9 +23,9 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
         #region Ctor
 
-        public PointGeneratingServiceWrapper(
+        public PointServiceSource(
             TimeSpan pointTtl,
-            IPointGeneratingService pointGeneratingService)
+            IPointService pointGeneratingService)
         {
             this.pointTtl = pointTtl;
             this.pointGeneratingService = pointGeneratingService;
