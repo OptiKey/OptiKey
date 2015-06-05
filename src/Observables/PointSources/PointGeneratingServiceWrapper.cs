@@ -10,12 +10,12 @@ using JuliusSweetland.OptiKey.Services;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
-    public class TheEyeTribeSource : IPointSource
+    public class PointGeneratingServiceWrapper : IPointSource
     {
         #region Fields
         
         private readonly TimeSpan pointTtl;
-        private readonly ITheEyeTribePointService theEyeTribePointService;
+        private readonly IPointGeneratingService pointGeneratingService;
 
         private IObservable<Timestamped<PointAndKeyValue?>> sequence;
 
@@ -23,12 +23,12 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
         #region Ctor
 
-        public TheEyeTribeSource(
+        public PointGeneratingServiceWrapper(
             TimeSpan pointTtl,
-            ITheEyeTribePointService theEyeTribePointService)
+            IPointGeneratingService pointGeneratingService)
         {
             this.pointTtl = pointTtl;
-            this.theEyeTribePointService = theEyeTribePointService;
+            this.pointGeneratingService = pointGeneratingService;
         }
 
         #endregion
@@ -46,8 +46,8 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                 if (sequence == null)
                 {
                     sequence = Observable.FromEventPattern<Timestamped<Point>>(
-                            eh => theEyeTribePointService.Point += eh,
-                            eh => theEyeTribePointService.Point -= eh)
+                            eh => pointGeneratingService.Point += eh,
+                            eh => pointGeneratingService.Point -= eh)
                         .Where(_ => State == RunningStates.Running)
                         .Select(ep => ep.EventArgs)
                         .PublishLivePointsOnly(pointTtl)

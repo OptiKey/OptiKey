@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reactive;
-using System.Reactive.Linq;
 using System.Windows;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -9,7 +8,7 @@ using TETCSharpClient.Data;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class TheEyeTribePointService : ITheEyeTribePointService
+    public class TheEyeTribePointService : IPointGeneratingService, IGazeListener
     {
         #region Fields
 

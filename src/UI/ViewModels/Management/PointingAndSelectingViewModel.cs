@@ -48,6 +48,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, PointsSources>("Gaze Tracker", Enums.PointsSources.GazeTracker),
                     new KeyValuePair<string, PointsSources>("The Eye Tribe", Enums.PointsSources.TheEyeTribe),
+                    new KeyValuePair<string, PointsSources>("Tobii EyeX", Enums.PointsSources.TobiiEyeX),
+                    new KeyValuePair<string, PointsSources>("Tobii Rex", Enums.PointsSources.TobiiRex),
                     new KeyValuePair<string, PointsSources>("Mouse Position", Enums.PointsSources.MousePosition)
                 };
             }

@@ -110,7 +110,7 @@ namespace JuliusSweetland.OptiKey
                 applyTheme();
                 
                 //Create services
-                var notifyErrorServices = new List<INotifyErrors>();
+                var servicesNotifyingErrors = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
                 IDictionaryService dictionaryService = new DictionaryService();
                 IPublishService publishService = new PublishService();
@@ -120,12 +120,12 @@ namespace JuliusSweetland.OptiKey
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IWindowStateService mainWindowStateService = new WindowStateService();
                 IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, notifyErrorServices);
+                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, servicesNotifyingErrors);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
-                notifyErrorServices.Add(audioService);
-                notifyErrorServices.Add(dictionaryService);
-                notifyErrorServices.Add(publishService);
-                notifyErrorServices.Add(inputService);
+                servicesNotifyingErrors.Add(audioService);
+                servicesNotifyingErrors.Add(dictionaryService);
+                servicesNotifyingErrors.Add(publishService);
+                servicesNotifyingErrors.Add(inputService);
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyboardService, publishService);
@@ -143,12 +143,12 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                     Settings.Default, true, true);
                 
-                notifyErrorServices.Add(mainWindowManipulationService);
+                servicesNotifyingErrors.Add(mainWindowManipulationService);
 
                 var mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyboardService, 
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, outputService, mainWindowManipulationService, notifyErrorServices);
+                    inputService, outputService, mainWindowManipulationService, servicesNotifyingErrors);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 
@@ -254,7 +254,7 @@ namespace JuliusSweetland.OptiKey
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> notifyErrorServices)
+            List<INotifyErrors> servicesNotifyingErrors)
         {
             Log.Debug("Creating InputService.");
 
@@ -271,10 +271,19 @@ namespace JuliusSweetland.OptiKey
 
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
-                    notifyErrorServices.Add(theEyeTribePointService);
-                    pointSource = new TheEyeTribeSource(
+                    servicesNotifyingErrors.Add(theEyeTribePointService);
+                    pointSource = new PointGeneratingServiceWrapper(
                         Settings.Default.PointTtl,
                         theEyeTribePointService);
+                    break;
+
+                case PointsSources.TobiiEyeX:
+                case PointsSources.TobiiRex:
+                    var tobiiEyeXPointService = new TobiiEyeXPointService();
+                    servicesNotifyingErrors.Add(tobiiEyeXPointService);
+                    pointSource = new PointGeneratingServiceWrapper(
+                        Settings.Default.PointTtl,
+                        tobiiEyeXPointService);
                     break;
 
                 case PointsSources.MousePosition:

@@ -4,6 +4,8 @@
     {
         GazeTracker,
         TheEyeTribe,
-        MousePosition
+        MousePosition,
+        TobiiEyeX,
+        TobiiRex
     }
 }

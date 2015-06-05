@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IInputService inputService;
         private readonly IOutputService outputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
-        private readonly List<INotifyErrors> notifyErrorServices; 
+        private readonly List<INotifyErrors> servicesNotifyingErrors; 
 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
@@ -60,7 +60,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IInputService inputService,
             IOutputService outputService,
             IWindowManipulationService mainWindowManipulationService,
-            List<INotifyErrors> notifyErrorServices)
+            List<INotifyErrors> servicesNotifyingErrors)
         {
             Log.Debug("Ctor called.");
 
@@ -74,7 +74,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.inputService = inputService;
             this.outputService = outputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
-            this.notifyErrorServices = notifyErrorServices;
+            this.servicesNotifyingErrors = servicesNotifyingErrors;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             

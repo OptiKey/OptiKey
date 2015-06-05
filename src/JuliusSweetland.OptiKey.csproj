@@ -70,6 +70,9 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EyeXFramework">
+      <HintPath>..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -161,6 +164,9 @@
     <Reference Include="TETCSharpClient">
       <HintPath>..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
     </Reference>
+    <Reference Include="Tobii.EyeX.Client.Net20">
+      <HintPath>..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -216,7 +222,7 @@
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
-    <Compile Include="Observables\PointSources\TheEyeTribeSource.cs" />
+    <Compile Include="Observables\PointSources\PointGeneratingServiceWrapper.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
@@ -252,7 +258,8 @@
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
-    <Compile Include="Services\ITheEyeTribePointService.cs" />
+    <Compile Include="Services\IPointGeneratingService.cs" />
+    <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
     <Compile Include="Services\OutputService.cs" />
@@ -497,6 +504,10 @@
     <None Include="Resources\Icons\SVG Source Files\PositionAndOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
+    <Content Include="..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
+      <Link>Tobii.EyeX.Client.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Sounds\Error1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
