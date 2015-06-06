@@ -16,9 +16,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Debug("AttachServiceEventHandlers called.");
 
-            if (servicesNotifyingErrors != null)
+            if (errorNotifyingServices != null)
             {
-                servicesNotifyingErrors.ForEach(s => s.Error += HandleServiceError);
+                errorNotifyingServices.ForEach(s => s.Error += HandleServiceError);
             }
 
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };

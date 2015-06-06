@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -111,7 +110,7 @@ namespace JuliusSweetland.OptiKey
                 applyTheme();
                 
                 //Create services
-                var servicesNotifyingErrors = new List<INotifyErrors>();
+                var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
                 IDictionaryService dictionaryService = new DictionaryService();
                 IPublishService publishService = new PublishService();
@@ -121,12 +120,12 @@ namespace JuliusSweetland.OptiKey
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IWindowStateService mainWindowStateService = new WindowStateService();
                 IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, servicesNotifyingErrors);
+                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, errorNotifyingServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
-                servicesNotifyingErrors.Add(audioService);
-                servicesNotifyingErrors.Add(dictionaryService);
-                servicesNotifyingErrors.Add(publishService);
-                servicesNotifyingErrors.Add(inputService);
+                errorNotifyingServices.Add(audioService);
+                errorNotifyingServices.Add(dictionaryService);
+                errorNotifyingServices.Add(publishService);
+                errorNotifyingServices.Add(inputService);
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyboardService, publishService);
@@ -144,19 +143,17 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
                     Settings.Default, true, true);
                 
-                servicesNotifyingErrors.Add(mainWindowManipulationService);
+                errorNotifyingServices.Add(mainWindowManipulationService);
 
                 var mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyboardService, 
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, outputService, mainWindowManipulationService, servicesNotifyingErrors);
+                    inputService, outputService, mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
-                //Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
-                Action postMainViewLoaded = () =>
-                                    Dispatcher.Invoke(DispatcherPriority.Loaded, new Action(mainViewModel.AttachServiceEventHandlers));
+                Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
 
                 if(mainWindow.MainView.IsLoaded)
                 {
@@ -257,7 +254,7 @@ namespace JuliusSweetland.OptiKey
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
-            List<INotifyErrors> servicesNotifyingErrors)
+            List<INotifyErrors> errorNotifyingServices)
         {
             Log.Debug("Creating InputService.");
 
@@ -273,20 +270,17 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 case PointsSources.TheEyeTribe:
-                    var theEyeTribePointSource = new TheEyeTribePointSource(Settings.Default.PointTtl);
-                    servicesNotifyingErrors.Add(theEyeTribePointSource);
-                    pointSource = theEyeTribePointSource;
-                    //var theEyeTribePointService = new TheEyeTribePointService();
-                    //servicesNotifyingErrors.Add(theEyeTribePointService);
-                    //pointSource = new PointServiceSource(
-                    //    Settings.Default.PointTtl,
-                    //    theEyeTribePointService);
+                    var theEyeTribePointService = new TheEyeTribePointService();
+                    errorNotifyingServices.Add(theEyeTribePointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        theEyeTribePointService);
                     break;
 
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiRex:
                     var tobiiEyeXPointService = new TobiiEyeXPointService();
-                    servicesNotifyingErrors.Add(tobiiEyeXPointService);
+                    errorNotifyingServices.Add(tobiiEyeXPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
                         tobiiEyeXPointService);
