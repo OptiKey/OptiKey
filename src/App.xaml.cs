@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -244,6 +243,10 @@ namespace JuliusSweetland.OptiKey
             {
                 case PointsSources.TheEyeTribe:
                     return new TheEyeTribeCalibrationService();
+
+                case PointsSources.TobiiEyeX:
+                case PointsSources.TobiiRex:
+                    return new TobiiEyeXCalibrationService();
             }
 
             return null;

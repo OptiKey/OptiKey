@@ -45,10 +45,11 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
 
             try
             {
-                await CalibrationService.Calibrate(parentWindow);
+                var message = await CalibrationService.Calibrate(parentWindow);
                 if (calibrationResult != null)
                 {
                     calibrationResult.Success = true;
+                    calibrationResult.Message = message;
                 }
             }
             catch (Exception exception)

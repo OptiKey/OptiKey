@@ -259,6 +259,7 @@
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
+    <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
