@@ -222,9 +222,11 @@
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
-    <Compile Include="Observables\PointSources\PointGeneratingServiceWrapper.cs" />
+    <Compile Include="Observables\PointSources\PointServiceSource.cs" />
+    <Compile Include="Observables\PointSources\TheEyeTribePointSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
+    <Compile Include="Services\IPointService.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
     <Compile Include="Services\IWindowStateService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
@@ -258,7 +260,6 @@
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
-    <Compile Include="Services\IPointGeneratingService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />

@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -153,7 +154,9 @@ namespace JuliusSweetland.OptiKey
                 mainWindow.MainView.DataContext = mainViewModel;
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
-                Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
+                //Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
+                Action postMainViewLoaded = () =>
+                                    Dispatcher.Invoke(DispatcherPriority.Loaded, new Action(mainViewModel.AttachServiceEventHandlers));
 
                 if(mainWindow.MainView.IsLoaded)
                 {
@@ -270,11 +273,14 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 case PointsSources.TheEyeTribe:
-                    var theEyeTribePointService = new TheEyeTribePointService();
-                    servicesNotifyingErrors.Add(theEyeTribePointService);
-                    pointSource = new PointServiceSource(
-                        Settings.Default.PointTtl,
-                        theEyeTribePointService);
+                    var theEyeTribePointSource = new TheEyeTribePointSource(Settings.Default.PointTtl);
+                    servicesNotifyingErrors.Add(theEyeTribePointSource);
+                    pointSource = theEyeTribePointSource;
+                    //var theEyeTribePointService = new TheEyeTribePointService();
+                    //servicesNotifyingErrors.Add(theEyeTribePointService);
+                    //pointSource = new PointServiceSource(
+                    //    Settings.Default.PointTtl,
+                    //    theEyeTribePointService);
                     break;
 
                 case PointsSources.TobiiEyeX:
