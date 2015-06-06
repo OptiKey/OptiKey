@@ -3,6 +3,7 @@ using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using TETControls.Calibration;
@@ -16,10 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
         public async Task<string> Calibrate(Window parentWindow)
         {
             Log.Debug("Attempting to calibrate using the TheEyeTribe calibration runner.");
-
-            var timeoutSubscription = Observable.Interval(Settings.Default.CalibrationMaxDuration)
-                    .Subscribe(_ => { throw new TimeoutException("Calibration attempt has exceeded the maximum duration"); });
-
+            
             var calRunner = new CalibrationRunner();
 
             if (parentWindow != null)
@@ -40,12 +38,14 @@ namespace JuliusSweetland.OptiKey.Services
 
             calRunner.Start();
 
-            var calibrateArgs = await resultTask.ConfigureAwait(false);
+            var calibrateArgs = await resultTask;
+
+            calRunner.Owner = null;
+            calRunner.Close();
 
             switch (calibrateArgs.Result)
             {
                 case CalibrationRunnerResult.Success:
-                    timeoutSubscription.Dispose();
                     var message = string.Format("Calibration success! Accuracy (Avg Error Degree = {0})",
                         calibrateArgs.CalibrationResult.AverageErrorDegree);
                     Log.Debug(message);

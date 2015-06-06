@@ -59,7 +59,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                         else
                         {
-                            PublishError(this, new ApplicationException("TheEyeTribe cannot be reached! Please check that the server is running."));
+                            PublishError(this, new ApplicationException("Unable to activate TheEyeTribe GazeManager! Please check that the server is running and the device is connected and try again."));
                         }
                     }
 

@@ -67,8 +67,14 @@ namespace JuliusSweetland.OptiKey.Services
                             PublishError(this, new ApplicationException("Tobii EyeX Engine is not running. Please start the EyeX Engine and try again."));
                             return;
                     }
+
+                    if (EyeXHost.EyeTrackingDeviceStatus.Value != EyeTrackingDeviceStatus.Tracking)
+                    {
+                        PublishError(this, new ApplicationException("Tobii EyeX Engine is not currently tracking. Please check that the device is connected and calibrated then try again."));
+                    }
                     
                     Log.Debug("Attaching eye tracking device status changed listener to the Tobii service.");
+
                     EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
 
                     gazeDataStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);

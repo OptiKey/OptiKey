@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     if (e.IsValid && e.Value == EyeTrackingDeviceStatus.Tracking)
                     {
-                        taskCompletionSource.SetResult("Calibration success!");
+                        taskCompletionSource.SetResult("Calibration completed, or possibly cancelled, but everything is working again!");
                     }
                 };
             }
