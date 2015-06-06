@@ -406,10 +406,55 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.Debug("Showing splash screen.");
 
+                var message = new StringBuilder();
+
+                message.AppendLine(string.Format("Pointing: {0}", Settings.Default.PointsSource.ToDescription()));
+
+                var keySelectionSb = new StringBuilder();
+                keySelectionSb.Append(Settings.Default.KeySelectionTriggerSource.ToDescription());
+                switch (Settings.Default.KeySelectionTriggerSource)
+                {
+                    case TriggerSources.Fixations:
+                        keySelectionSb.Append(string.Format(" ({0:#,###}ms)", Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        break;
+
+                    case TriggerSources.KeyboardKeyDownsUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerKeyboardKeyDownUpKey));
+                        break;
+
+                    case TriggerSources.MouseButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerMouseDownUpButton));
+                        break;
+                }
+                message.AppendLine(string.Format("Key selection: {0}", keySelectionSb));
+
+                var pointSelectionSb = new StringBuilder();
+                pointSelectionSb.Append(Settings.Default.PointSelectionTriggerSource.ToDescription());
+                switch (Settings.Default.PointSelectionTriggerSource)
+                {
+                    case TriggerSources.Fixations:
+                        pointSelectionSb.Append(string.Format(" ({0:#,###}ms)", Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        break;
+
+                    case TriggerSources.KeyboardKeyDownsUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerKeyboardKeyDownUpKey));
+                        break;
+
+                    case TriggerSources.MouseButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerMouseDownUpButton));
+                        break;
+                }
+                message.AppendLine(string.Format("Point selection: {0}", pointSelectionSb));
+
+                message.AppendLine("Management console: ALT + M");
+                message.AppendLine("Website: www.optikey.org");
+
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
-                mainViewModel.RaiseToastNotification("Welcome to Optikey!", 
-                    "Website: www.optikey.org\n" + "Settings: press ALT + M", NotificationTypes.Normal,
+                mainViewModel.RaiseToastNotification(
+                    "OptiKey\nType   Click   Speak", 
+                    message.ToString(), 
+                    NotificationTypes.Normal,
                     () =>
                         {
                             inputService.State = RunningStates.Running;
