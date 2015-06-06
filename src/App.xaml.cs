@@ -119,7 +119,7 @@ namespace JuliusSweetland.OptiKey
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
                 IWindowStateService mainWindowStateService = new WindowStateService();
                 IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, capturingStateManager, errorNotifyingServices);
+                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
@@ -256,6 +256,7 @@ namespace JuliusSweetland.OptiKey
             IKeyboardService keyboardService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
+            ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
             List<INotifyErrors> errorNotifyingServices)
         {
@@ -283,6 +284,11 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiRex:
                     var tobiiEyeXPointService = new TobiiEyeXPointService();
+                    var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
+                    if (tobiiEyeXCalibrationService != null)
+                    {
+                        tobiiEyeXCalibrationService.EyeXHost = tobiiEyeXPointService.EyeXHost;
+                    }
                     errorNotifyingServices.Add(tobiiEyeXPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,

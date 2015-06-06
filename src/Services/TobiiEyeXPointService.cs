@@ -13,9 +13,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private readonly EyeXHost eyeXHost;
-
+        
         private GazePointDataStream gazeDataStream;
 
         private event EventHandler<Timestamped<Point>> pointEvent;
@@ -26,18 +24,24 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TobiiEyeXPointService()
         {
-            eyeXHost = new EyeXHost();
+            EyeXHost = new EyeXHost();
 
             //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
             Application.Current.Exit += (sender, args) =>
             {
-                if (eyeXHost != null)
+                if (EyeXHost != null)
                 {
                     Log.Debug("Disposing of the EyeXHost.");
-                    eyeXHost.Dispose();
+                    EyeXHost.Dispose();
                 }
             };
         }
+
+        #endregion
+
+        #region Properties
+
+        public EyeXHost EyeXHost { get; private set; }
 
         #endregion
 
@@ -65,11 +69,11 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     
                     Log.Debug("Attaching eye tracking device status changed listener to the Tobii service.");
-                    eyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
+                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
 
-                    gazeDataStream = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+                    gazeDataStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
 
-                    eyeXHost.Start(); // Start the EyeX host
+                    EyeXHost.Start(); // Start the EyeX host
 
                     gazeDataStream.Next += (s, data) =>
                     {
