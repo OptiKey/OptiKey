@@ -8,12 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
 	ProjectSection(SolutionItems) = preProject
 		docs\Certificates and signing notes.txt = docs\Certificates and signing notes.txt
+		docs\Contacts and ideas for progressing and publicising.txt = docs\Contacts and ideas for progressing and publicising.txt
 		docs\Deployment.txt = docs\Deployment.txt
 		docs\Design decision notes.txt = docs\Design decision notes.txt
 		docs\Icon design notes.txt = docs\Icon design notes.txt
 		docs\Keyboard Designs.xlsx = docs\Keyboard Designs.xlsx
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt
-		docs\Publicising.txt = docs\Publicising.txt
 		docs\UiAccess.txt = docs\UiAccess.txt
 	EndProjectSection
 EndProject
