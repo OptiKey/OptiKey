@@ -5,4 +5,4 @@ fact that horizontal/vertical arrows do not fill a square shape, i.e. they are l
 Modifying the icon paths to correctly fill a square boundary fixes these sort of problems.
 
 Check the CREDITS.txt file for information on where I found the original svn icons and also for which tools I used to edit 
-them (it's Inkscape!).
+them (Inkscape).
