@@ -186,9 +186,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Debug("Calibrate requested.");
 
                             var previousKeyboard = Keyboard;
-
+                            
+                            var question = CalibrationService.CanBeCompletedWithoutManualIntervention
+                            ? "Are you sure you would like to re-calibrate?"
+                            : "Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.\nAre you sure you would like to re-calibrate?";
+                            
                             Keyboard = new YesNoQuestion(
-                                "Are you sure you would like to re-calibrate?",
+                                question,
                                 () =>
                                 {
                                     inputService.State = RunningStates.Paused;

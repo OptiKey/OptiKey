@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using EyeXFramework;
-using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Tobii.EyeX.Framework;
 
@@ -23,15 +21,11 @@ namespace JuliusSweetland.OptiKey.Services
 
             if(EyeXHost != null)
             {
-                var timeoutSubscription = Observable.Interval(Settings.Default.CalibrationMaxDuration)
-                    .Subscribe(_ => { throw new TimeoutException("Calibration attempt has exceeded the maximum duration"); });
-
                 EyeXHost.LaunchRecalibration();
                 EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) =>
                 {
                     if (e.IsValid && e.Value == EyeTrackingDeviceStatus.Tracking)
                     {
-                        timeoutSubscription.Dispose();
                         taskCompletionSource.SetResult("Calibration success!");
                     }
                 };
@@ -43,5 +37,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             return await taskCompletionSource.Task;
         }
+
+        public bool CanBeCompletedWithoutManualIntervention { get { return false; } }
     }
 }

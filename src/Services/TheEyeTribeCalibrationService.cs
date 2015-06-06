@@ -66,5 +66,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             return null;
         }
+
+        public bool CanBeCompletedWithoutManualIntervention { get { return true; } }
     }
 }
