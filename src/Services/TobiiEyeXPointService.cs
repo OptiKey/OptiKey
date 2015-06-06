@@ -68,11 +68,6 @@ namespace JuliusSweetland.OptiKey.Services
                             return;
                     }
 
-                    if (EyeXHost.EyeTrackingDeviceStatus.Value != EyeTrackingDeviceStatus.Tracking)
-                    {
-                        PublishError(this, new ApplicationException("Tobii EyeX Engine is not currently tracking. Please check that the device is connected and calibrated then try again."));
-                    }
-                    
                     Log.Debug("Attaching eye tracking device status changed listener to the Tobii service.");
 
                     EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
