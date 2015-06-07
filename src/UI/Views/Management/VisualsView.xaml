@@ -45,17 +45,17 @@
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Cursor width (px):" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Cursor width (pixels):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding CursorWidth, Mode=TwoWay}" />
+                                            Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Cursor height (px):" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Cursor height (pixels):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding CursorHeight, Mode=TwoWay}" />
+                                            Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source (percentage of screen):" 
                                VerticalAlignment="Center" Margin="5" />

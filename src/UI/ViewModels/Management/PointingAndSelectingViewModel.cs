@@ -50,7 +50,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>("The Eye Tribe", Enums.PointsSources.TheEyeTribe),
                     new KeyValuePair<string, PointsSources>("Tobii EyeX", Enums.PointsSources.TobiiEyeX),
                     new KeyValuePair<string, PointsSources>("Tobii Rex", Enums.PointsSources.TobiiRex),
-                    new KeyValuePair<string, PointsSources>("Mouse Position", Enums.PointsSources.MousePosition)
+                    new KeyValuePair<string, PointsSources>("Mouse position", Enums.PointsSources.MousePosition)
                 };
             }
         }
@@ -62,20 +62,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, TriggerSources>>
                 {
                     new KeyValuePair<string, TriggerSources>("Fixations", Enums.TriggerSources.Fixations),
-                    new KeyValuePair<string, TriggerSources>("Keyboard Key", Enums.TriggerSources.KeyboardKeyDownsUps),
-                    new KeyValuePair<string, TriggerSources>("Mouse Button", Enums.TriggerSources.MouseButtonDownUps)
+                    new KeyValuePair<string, TriggerSources>("Keyboard key", Enums.TriggerSources.KeyboardKeyDownsUps),
+                    new KeyValuePair<string, TriggerSources>("Mouse button", Enums.TriggerSources.MouseButtonDownUps)
                 };
             }
         }
         
         public List<Keys> Keys
         {
-            get { return Enum.GetValues(typeof(Keys)).Cast<Keys>().ToList(); }
+            get { return Enum.GetValues(typeof(Keys)).Cast<Keys>().OrderBy(k => k.ToString()).ToList(); }
         }
         
         public List<MouseButtons> MouseButtons
         {
-            get { return Enum.GetValues(typeof(MouseButtons)).Cast<MouseButtons>().ToList(); }
+            get { return Enum.GetValues(typeof(MouseButtons)).Cast<MouseButtons>().OrderBy(mb => mb.ToString()).ToList(); }
         }
         
         public List<KeyValuePair<string, TriggerStopSignals>> TriggerStopSignals
@@ -117,56 +117,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return keySelectionTriggerSource; }
             set { SetProperty(ref keySelectionTriggerSource, value); }
         }
-        
-        private TriggerSources pointSelectionTriggerSource;
-        public TriggerSources PointSelectionTriggerSource
+
+        private Keys keySelectionTriggerKeyboardKeyDownUpKey;
+        public Keys KeySelectionTriggerKeyboardKeyDownUpKey
         {
-            get { return pointSelectionTriggerSource; }
-            set { SetProperty(ref pointSelectionTriggerSource, value); }
-        }
-        
-        private Keys selectionTriggerKeyboardKeyDownUpKey;
-        public Keys SelectionTriggerKeyboardKeyDownUpKey
-        {
-            get { return selectionTriggerKeyboardKeyDownUpKey; }
-            set { SetProperty(ref selectionTriggerKeyboardKeyDownUpKey, value); }
-        }
-        
-        private MouseButtons selectionTriggerMouseDownUpButton;
-        public MouseButtons SelectionTriggerMouseDownUpButton
-        {
-            get { return selectionTriggerMouseDownUpButton; }
-            set { SetProperty(ref selectionTriggerMouseDownUpButton, value); }
+            get { return keySelectionTriggerKeyboardKeyDownUpKey; }
+            set { SetProperty(ref keySelectionTriggerKeyboardKeyDownUpKey, value); }
         }
 
-        private double pointSelectionTriggerFixationLockOnTimeInMs;
-        public double PointSelectionTriggerFixationLockOnTimeInMs
+        private MouseButtons keySelectionTriggerMouseDownUpButton;
+        public MouseButtons KeySelectionTriggerMouseDownUpButton
         {
-            get { return pointSelectionTriggerFixationLockOnTimeInMs; }
-            set { SetProperty(ref pointSelectionTriggerFixationLockOnTimeInMs, value); }
-        }
-
-        private double pointSelectionTriggerFixationCompleteTimeInMs;
-        public double PointSelectionTriggerFixationCompleteTimeInMs
-        {
-            get { return pointSelectionTriggerFixationCompleteTimeInMs; }
-            set { SetProperty(ref pointSelectionTriggerFixationCompleteTimeInMs, value); }
+            get { return keySelectionTriggerMouseDownUpButton; }
+            set { SetProperty(ref keySelectionTriggerMouseDownUpButton, value); }
         }
         
-        private double pointSelectionTriggerLockOnRadius;
-        public double PointSelectionTriggerLockOnRadius
-        {
-            get { return pointSelectionTriggerLockOnRadius; }
-            set { SetProperty(ref pointSelectionTriggerLockOnRadius, value); }
-        }
-        
-        private double pointSelectionTriggerFixationRadius;
-        public double PointSelectionTriggerFixationRadius
-        {
-            get { return pointSelectionTriggerFixationRadius; }
-            set { SetProperty(ref pointSelectionTriggerFixationRadius, value); }
-        }
-
         private double keySelectionTriggerFixationLockOnTimeInMs;
         public double KeySelectionTriggerFixationLockOnTimeInMs
         {
@@ -186,6 +151,55 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return keySelectionTriggerIncompleteFixationTtlInMs; }
             set { SetProperty(ref keySelectionTriggerIncompleteFixationTtlInMs, value); }
+        }
+
+        private TriggerSources pointSelectionTriggerSource;
+        public TriggerSources PointSelectionTriggerSource
+        {
+            get { return pointSelectionTriggerSource; }
+            set { SetProperty(ref pointSelectionTriggerSource, value); }
+        }
+
+        private Keys pointSelectionTriggerKeyboardKeyDownUpKey;
+        public Keys PointSelectionTriggerKeyboardKeyDownUpKey
+        {
+            get { return pointSelectionTriggerKeyboardKeyDownUpKey; }
+            set { SetProperty(ref pointSelectionTriggerKeyboardKeyDownUpKey, value); }
+        }
+
+        private MouseButtons pointSelectionTriggerMouseDownUpButton;
+        public MouseButtons PointSelectionTriggerMouseDownUpButton
+        {
+            get { return pointSelectionTriggerMouseDownUpButton; }
+            set { SetProperty(ref pointSelectionTriggerMouseDownUpButton, value); }
+        }
+
+        private double pointSelectionTriggerFixationLockOnTimeInMs;
+        public double PointSelectionTriggerFixationLockOnTimeInMs
+        {
+            get { return pointSelectionTriggerFixationLockOnTimeInMs; }
+            set { SetProperty(ref pointSelectionTriggerFixationLockOnTimeInMs, value); }
+        }
+
+        private double pointSelectionTriggerFixationCompleteTimeInMs;
+        public double PointSelectionTriggerFixationCompleteTimeInMs
+        {
+            get { return pointSelectionTriggerFixationCompleteTimeInMs; }
+            set { SetProperty(ref pointSelectionTriggerFixationCompleteTimeInMs, value); }
+        }
+
+        private double pointSelectionTriggerLockOnRadius;
+        public double PointSelectionTriggerLockOnRadiusInPixels
+        {
+            get { return pointSelectionTriggerLockOnRadius; }
+            set { SetProperty(ref pointSelectionTriggerLockOnRadius, value); }
+        }
+
+        private double pointSelectionTriggerFixationRadius;
+        public double PointSelectionTriggerFixationRadiusInPixels
+        {
+            get { return pointSelectionTriggerFixationRadius; }
+            set { SetProperty(ref pointSelectionTriggerFixationRadius, value); }
         }
         
         private TriggerStopSignals multiKeySelectionTriggerStopSignal;
@@ -217,16 +231,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
                     || Settings.Default.KeySelectionTriggerSource != KeySelectionTriggerSource
-                    || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
-                    || (Settings.Default.SelectionTriggerKeyboardKeyDownUpKey != SelectionTriggerKeyboardKeyDownUpKey && (KeySelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps || PointSelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps))
-                    || (Settings.Default.SelectionTriggerMouseDownUpButton != SelectionTriggerMouseDownUpButton && (KeySelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps || PointSelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps))
-                    || (Settings.Default.PointSelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
-                    || (Settings.Default.PointSelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
-                    || (Settings.Default.PointSelectionTriggerLockOnRadius != PointSelectionTriggerLockOnRadius && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
-                    || (Settings.Default.PointSelectionTriggerFixationRadius != PointSelectionTriggerFixationRadius && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey != KeySelectionTriggerKeyboardKeyDownUpKey && KeySelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps)
+                    || (Settings.Default.KeySelectionTriggerMouseDownUpButton != KeySelectionTriggerMouseDownUpButton && KeySelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps)
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
+                    || (Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey != PointSelectionTriggerKeyboardKeyDownUpKey && PointSelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps)
+                    || (Settings.Default.PointSelectionTriggerMouseDownUpButton != PointSelectionTriggerMouseDownUpButton && PointSelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps)
+                    || (Settings.Default.PointSelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.PointSelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs) && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.PointSelectionTriggerLockOnRadiusInPixels != PointSelectionTriggerLockOnRadiusInPixels && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.PointSelectionTriggerFixationRadiusInPixels != PointSelectionTriggerFixationRadiusInPixels && PointSelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || Settings.Default.MultiKeySelectionTriggerStopSignal != MultiKeySelectionTriggerStopSignal
                     || Settings.Default.MultiKeySelectionFixationMinDwellTime != TimeSpan.FromMilliseconds(MultiKeySelectionFixationMinDwellTimeInMs)
                     || Settings.Default.MultiKeySelectionMaxDuration != TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
@@ -243,16 +259,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
             KeySelectionTriggerSource = Settings.Default.KeySelectionTriggerSource;
-            PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
-            SelectionTriggerKeyboardKeyDownUpKey = Settings.Default.SelectionTriggerKeyboardKeyDownUpKey;
-            SelectionTriggerMouseDownUpButton = Settings.Default.SelectionTriggerMouseDownUpButton;
-            PointSelectionTriggerFixationLockOnTimeInMs = Settings.Default.PointSelectionTriggerFixationLockOnTime.TotalMilliseconds;
-            PointSelectionTriggerFixationCompleteTimeInMs = Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds;
-            PointSelectionTriggerLockOnRadius = Settings.Default.PointSelectionTriggerLockOnRadius;
-            PointSelectionTriggerFixationRadius = Settings.Default.PointSelectionTriggerFixationRadius;
+            KeySelectionTriggerKeyboardKeyDownUpKey = Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey;
+            KeySelectionTriggerMouseDownUpButton = Settings.Default.KeySelectionTriggerMouseDownUpButton;
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds;
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
+            PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
+            PointSelectionTriggerKeyboardKeyDownUpKey = Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey;
+            PointSelectionTriggerMouseDownUpButton = Settings.Default.PointSelectionTriggerMouseDownUpButton;
+            PointSelectionTriggerFixationLockOnTimeInMs = Settings.Default.PointSelectionTriggerFixationLockOnTime.TotalMilliseconds;
+            PointSelectionTriggerFixationCompleteTimeInMs = Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds;
+            PointSelectionTriggerLockOnRadiusInPixels = Settings.Default.PointSelectionTriggerLockOnRadiusInPixels;
+            PointSelectionTriggerFixationRadiusInPixels = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;
             MultiKeySelectionTriggerStopSignal = Settings.Default.MultiKeySelectionTriggerStopSignal;
             MultiKeySelectionFixationMinDwellTimeInMs = Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds;
             MultiKeySelectionMaxDurationInMs = Settings.Default.MultiKeySelectionMaxDuration.TotalMilliseconds;
@@ -264,16 +282,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;
-            Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
-            Settings.Default.SelectionTriggerKeyboardKeyDownUpKey = SelectionTriggerKeyboardKeyDownUpKey;
-            Settings.Default.SelectionTriggerMouseDownUpButton = SelectionTriggerMouseDownUpButton;
-            Settings.Default.PointSelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs);
-            Settings.Default.PointSelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs);
-            Settings.Default.PointSelectionTriggerLockOnRadius = PointSelectionTriggerLockOnRadius;
-            Settings.Default.PointSelectionTriggerFixationRadius = PointSelectionTriggerFixationRadius;
+            Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey = KeySelectionTriggerKeyboardKeyDownUpKey;
+            Settings.Default.KeySelectionTriggerMouseDownUpButton = KeySelectionTriggerMouseDownUpButton;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
+            Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
+            Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey = PointSelectionTriggerKeyboardKeyDownUpKey;
+            Settings.Default.PointSelectionTriggerMouseDownUpButton = PointSelectionTriggerMouseDownUpButton;
+            Settings.Default.PointSelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationLockOnTimeInMs);
+            Settings.Default.PointSelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs);
+            Settings.Default.PointSelectionTriggerLockOnRadiusInPixels = PointSelectionTriggerLockOnRadiusInPixels;
+            Settings.Default.PointSelectionTriggerFixationRadiusInPixels = PointSelectionTriggerFixationRadiusInPixels;
             Settings.Default.MultiKeySelectionTriggerStopSignal = MultiKeySelectionTriggerStopSignal;
             Settings.Default.MultiKeySelectionFixationMinDwellTime = TimeSpan.FromMilliseconds(MultiKeySelectionFixationMinDwellTimeInMs);
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);

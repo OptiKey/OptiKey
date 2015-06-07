@@ -5,6 +5,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using log4net;
 using JuliusSweetland.OptiKey.Properties;
@@ -42,19 +43,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //Apply and subscribe to cursor height setting changes
             Action applyCursorHeight = () =>
             {
-                MaxHeight = MinHeight = Height = Settings.Default.CursorHeight;
+                var cursorHeightInPx = Settings.Default.CursorHeightInPixels / Graphics.DipScalingFactorY;
+                MaxHeight = MinHeight = Height = cursorHeightInPx;
                 CalculatePosition();
             };
-            Settings.Default.OnPropertyChanges(s => s.CursorHeight).Subscribe(_ => applyCursorHeight());
+            Settings.Default.OnPropertyChanges(s => s.CursorHeightInPixels).Subscribe(_ => applyCursorHeight());
             applyCursorHeight();
 
             //Apply and subscribe to cursor width setting changes
             Action applyCursorWidth = () =>
             {
-                MaxWidth = MinWidth = Width = Settings.Default.CursorWidth;
+                var cursorWidthInPx = Settings.Default.CursorWidthInPixels / Graphics.DipScalingFactorX;
+                MaxWidth = MinWidth = Width = cursorWidthInPx;
                 CalculatePosition();
             };
-            Settings.Default.OnPropertyChanges(s => s.CursorWidth).Subscribe(_ => applyCursorWidth());
+            Settings.Default.OnPropertyChanges(s => s.CursorWidthInPixels).Subscribe(_ => applyCursorWidth());
             applyCursorWidth();
 
             //Get references to window, screen and mainViewModel

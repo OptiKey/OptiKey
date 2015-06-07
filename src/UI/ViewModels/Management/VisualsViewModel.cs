@@ -175,14 +175,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         private int cursorWidth;
-        public int CursorWidth
+        public int CursorWidthInPixels
         {
             get { return cursorWidth; }
             set { SetProperty(ref cursorWidth, value); }
         }
 
         private int cursorHeight;
-        public int CursorHeight
+        public int CursorHeightInPixels
         {
             get { return cursorHeight; }
             set { SetProperty(ref cursorHeight, value); }
@@ -227,8 +227,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationVerticalFillPercentage = Settings.Default.ToastNotificationVerticalFillPercentage;
             ToastNotificationHorizontalFillPercentage = Settings.Default.ToastNotificationHorizontalFillPercentage;
-            CursorWidth = Settings.Default.CursorWidth;
-            CursorHeight = Settings.Default.CursorHeight;
+            CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
+            CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             KeyboardSet = Settings.Default.KeyboardSet;
@@ -243,8 +243,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationVerticalFillPercentage = ToastNotificationVerticalFillPercentage;
             Settings.Default.ToastNotificationHorizontalFillPercentage = ToastNotificationHorizontalFillPercentage;
-            Settings.Default.CursorWidth = CursorWidth;
-            Settings.Default.CursorHeight = CursorHeight;
+            Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
+            Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.KeyboardSet = KeyboardSet;

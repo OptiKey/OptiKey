@@ -318,13 +318,13 @@ namespace JuliusSweetland.OptiKey
 
                 case TriggerSources.KeyboardKeyDownsUps:
                     keySelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey,
                         pointSource.Sequence);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
                     keySelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        Settings.Default.KeySelectionTriggerMouseDownUpButton,
                         pointSource.Sequence);
                     break;
 
@@ -341,20 +341,20 @@ namespace JuliusSweetland.OptiKey
                     pointSelectionTriggerSource = new PointFixationSource(
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
-                        Settings.Default.PointSelectionTriggerLockOnRadius,
-                        Settings.Default.PointSelectionTriggerFixationRadius,
+                        Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
+                        Settings.Default.PointSelectionTriggerFixationRadiusInPixels,
                         pointSource.Sequence);
                     break;
 
                 case TriggerSources.KeyboardKeyDownsUps:
                     pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
-                        Settings.Default.SelectionTriggerKeyboardKeyDownUpKey,
+                        Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey,
                         pointSource.Sequence);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
                     pointSelectionTriggerSource = new MouseButtonDownUpSource(
-                        Settings.Default.SelectionTriggerMouseDownUpButton,
+                        Settings.Default.PointSelectionTriggerMouseDownUpButton,
                         pointSource.Sequence);
                     break;
 
@@ -419,11 +419,11 @@ namespace JuliusSweetland.OptiKey
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
-                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerKeyboardKeyDownUpKey));
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey));
                         break;
 
                     case TriggerSources.MouseButtonDownUps:
-                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerMouseDownUpButton));
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
                 }
                 message.AppendLine(string.Format("Key selection: {0}", keySelectionSb));
@@ -437,11 +437,11 @@ namespace JuliusSweetland.OptiKey
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
-                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerKeyboardKeyDownUpKey));
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey));
                         break;
 
                     case TriggerSources.MouseButtonDownUps:
-                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.SelectionTriggerMouseDownUpButton));
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
                 message.AppendLine(string.Format("Point selection: {0}", pointSelectionSb));

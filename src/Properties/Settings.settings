@@ -2,13 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.OptiKey.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
+    <Setting Name="KeySelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
       <Value Profile="(Default)">Ins</Value>
     </Setting>
     <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
     </Setting>
-    <Setting Name="SelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
+    <Setting Name="KeySelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
@@ -26,10 +26,10 @@
     <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.1500000</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerLockOnRadius" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="PointSelectionTriggerLockOnRadiusInPixels" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">40</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerFixationRadius" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="PointSelectionTriggerFixationRadiusInPixels" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -191,10 +191,10 @@
     <Setting Name="MouseScrollSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
     </Setting>
-    <Setting Name="CursorWidth" Roaming="true" Type="System.Int32" Scope="User">
+    <Setting Name="CursorWidthInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">60</Value>
     </Setting>
-    <Setting Name="CursorHeight" Roaming="true" Type="System.Int32" Scope="User">
+    <Setting Name="CursorHeightInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="MouseMagnifier" Roaming="true" Type="System.Boolean" Scope="User">
@@ -220,6 +220,12 @@
     </Setting>
     <Setting Name="CalibrationMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ins</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
+      <Value Profile="(Default)">Left</Value>
     </Setting>
   </Settings>
 </SettingsFile>
