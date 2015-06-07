@@ -186,7 +186,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Selection keyboard key:" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Key selection keyboard key:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -214,7 +214,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Selection mouse button:" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Key selection mouse button:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -390,7 +390,7 @@
                         </ComboBox.Style>
                     </ComboBox>
             
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Selection mouse button:" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Point selection mouse button:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
