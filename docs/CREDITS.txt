@@ -18,7 +18,7 @@ Icons
   Left, Right, Up, Down arrow key icons modified from: Arrow by Milo Miloezger from the Noun Project (thenounproject.com)
   Lock icon: Lock by Ugur Akdemir from the Noun Project (thenounproject.com)
   Lock Bar icon modified from: Minus by Icomatic from the Noun Project (thenounproject.com)
-  Main application icon: Keyboard by useiconic.com from the Noun Project (thenounproject.com)
+  Main application icon: Eye by Adame Dahmani from the Noun Project (thenounproject.com)
   Management Console icon: Settings by Mundo from the Noun Project (thenounproject.com)
   Maximise Size icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Menu icon: Menu by Jamison Wieser from the Noun Project (thenounproject.com)

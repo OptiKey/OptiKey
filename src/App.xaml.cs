@@ -452,7 +452,7 @@ namespace JuliusSweetland.OptiKey
                 inputService.State = RunningStates.Paused;
                 audioService.PlaySound(Settings.Default.InfoSoundFile);
                 mainViewModel.RaiseToastNotification(
-                    "OptiKey\nType   Click   Speak", 
+                    "OptiKey : Type · Click · Speak", 
                     message.ToString(), 
                     NotificationTypes.Normal,
                     () =>
