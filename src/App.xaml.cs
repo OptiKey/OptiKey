@@ -408,6 +408,7 @@ namespace JuliusSweetland.OptiKey
 
                 var message = new StringBuilder();
 
+                message.AppendLine(string.Format("Language: {0}", Settings.Default.Language.ToDescription()));
                 message.AppendLine(string.Format("Pointing: {0}", Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();

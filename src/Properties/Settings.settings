@@ -84,7 +84,7 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ToastNotificationAdditionalSeconds" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="SimulateKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
