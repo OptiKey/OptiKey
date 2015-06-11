@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Margin="10" TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=CrashMessageFontSize}"
-                   Text="Uh-oh. OptiKey has tripped over its own feet and crashed!&#x0a;&#x0a;Details of what went wrong will be automatically sent to the developer when you restart OptiKey so that we can fix the problem.&#x0a;&#x0a;OptiKey will close when you click OK."/>
+                   Text="Uh-oh! OptiKey has tripped over its own feet and crashed!&#x0a;&#x0a;An email with details of this problem will be automatically sent when you restart OptiKey so that the problem can be fixed.&#x0a;&#x0a;If you would like to submit additional info about what you were doing when the crash occurred please email optikeyfeedback@gmail.com&#x0a;&#x0a;OptiKey will close when you click OK."/>
             <Button Grid.Row="1" Content="OK" Width="75" Height="23" HorizontalAlignment="Right" Margin="5" Click="OkButton_OnClick" />    
         </Grid>
     </Border>
