@@ -37,7 +37,8 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftAltKey,
                     LeftCtrlKey,
                     LeftShiftKey,
-                    LeftWinKey
+                    LeftWinKey,
+                    MouseMagnifierKey
                 };
             }
         }

@@ -312,13 +312,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
-
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -355,15 +350,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 simulateDrag(firstFinalPoint.Value, secondFinalPoint.Value);
                                             }
 
-                                            //Reset and clean up
-                                            SelectionMode = SelectionModes.Key;
-                                            nextPointSelectionAction = null;
-                                            ShowCursor = false;
-                                            MagnifyAtPoint = null;
-                                            MagnifiedPointSelectionAction = null;
+                                            ResetAndCleanupAfterMouseAction();
                                         };
 
-                                        if (Settings.Default.MouseMagnifier)
+                                        if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                                         {
                                             ShowCursor = false; //See MouseLeftClick case for explanation of this
                                             MagnifiedPointSelectionAction = secondFinalClickAction;
@@ -378,7 +368,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         nextPointSelectionAction = null;
                                     };
 
-                                    if (Settings.Default.MouseMagnifier)
+                                    if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                                     {
                                         nextPointSelectionAction = deferIfMagnifyingElseDoNow;
                                     }
@@ -394,6 +384,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 SelectionMode = SelectionModes.Key;
                                 nextPointSelectionAction = null;
                                 ShowCursor = false;
+                                if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
+                                {
+                                    keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
+                                }
                             }
 
                             //Reset and clean up
@@ -418,12 +412,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -443,12 +432,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
                         
@@ -468,12 +452,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -519,12 +498,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -545,12 +519,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -571,12 +540,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -596,12 +560,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;                                
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -621,12 +580,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;                                
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -646,12 +600,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;                                
+                            ResetAndCleanupAfterMouseAction();  
                         });
                         break;
 
@@ -671,12 +620,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
-                            //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;                                
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -697,11 +641,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             //Reset and clean up
-                            SelectionMode = SelectionModes.Key;
-                            nextPointSelectionAction = null;
-                            ShowCursor = false;
-                            MagnifyAtPoint = null;
-                            MagnifiedPointSelectionAction = null;                                
+                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -941,7 +881,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (Settings.Default.MouseMagnifier)
+                if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
                     //1.This triggers a screen capture, which shouldn't have the cursor in it.
@@ -963,6 +903,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             SelectionMode = SelectionModes.Point;
             ShowCursor = true;
+        }
+
+        private void ResetAndCleanupAfterMouseAction()
+        {
+            SelectionMode = SelectionModes.Key;
+            nextPointSelectionAction = null;
+            ShowCursor = false;
+            MagnifyAtPoint = null;
+            MagnifiedPointSelectionAction = null;
+            if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
+            {
+                keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
+            }
         }
 
         public void HandleServiceError(object sender, Exception exception)

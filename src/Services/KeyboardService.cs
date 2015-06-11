@@ -89,10 +89,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void InitialiseKeyDownStates()
         {
             Log.Debug("Initialising KeyDownStates.");
-
-            KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
-                Settings.Default.SimulateKeyStrokes ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
-
+            
             KeyDownStates[KeyValues.MouseMagnifierKey].Value =
                 Settings.Default.MouseMagnifier ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
@@ -109,7 +106,6 @@ namespace JuliusSweetland.OptiKey.Services
                 if (visualMode == KeyboardsSets.SpeechOnly)
                 {
                     KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = Enums.KeyDownStates.Up;
-                    KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
                 }
             });
         }
@@ -119,13 +115,10 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Debug("Adding KeyDownStates change handlers.");
 
             KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-            {
-                Settings.Default.SimulateKeyStrokes = KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown();
-                ReleasePublishOnlyKeysIfNotPublishing();
-            });
+                ReleasePublishOnlyKeysIfNotPublishing());
 
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                Settings.Default.MouseMagnifier = KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown());
+                Settings.Default.MouseMagnifier = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown);
 
             KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown());

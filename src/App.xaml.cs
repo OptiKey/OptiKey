@@ -86,13 +86,6 @@ namespace JuliusSweetland.OptiKey
             };
             
             Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());
-
-            //Correct incorrect settings (e.g. unexpected combinations)
-            if (Settings.Default.KeyboardSet == KeyboardsSets.SpeechOnly)
-            {
-                if (Settings.Default.SimulateKeyStrokes) Settings.Default.SimulateKeyStrokes = false;
-                if (Settings.Default.MultiKeySelectionEnabled) Settings.Default.MultiKeySelectionEnabled = false;
-            }
         }
 
         #endregion
