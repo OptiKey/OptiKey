@@ -85,7 +85,8 @@ namespace JuliusSweetland.OptiKey.Services
                             ReleaseUnlockedKeys();
                         }
 
-                        if (textChangedByBackMany)
+                        if (textChangedByBackMany
+                            || string.IsNullOrEmpty(Text))
                         {
                             AutoPressShiftIfAppropriate();
                         }
@@ -137,7 +138,8 @@ namespace JuliusSweetland.OptiKey.Services
                         ReleaseUnlockedKeys();
                     }
 
-                    if (textChangedByBackOne)
+                    if (textChangedByBackOne
+                        || string.IsNullOrEmpty(Text))
                     {
                         AutoPressShiftIfAppropriate();
                     }
