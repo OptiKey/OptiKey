@@ -495,7 +495,8 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 
-                    if (!string.IsNullOrEmpty(inProgressWord))
+                    if (!string.IsNullOrEmpty(inProgressWord)
+                        && Char.IsLetter(inProgressWord.First()))
                     {
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 

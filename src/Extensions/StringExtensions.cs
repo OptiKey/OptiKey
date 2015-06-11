@@ -200,14 +200,14 @@ namespace JuliusSweetland.OptiKey.Extensions
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
         {
             var sb = new StringBuilder();
-            foreach (char c in RemoveDiacriticsEnum(src, compatibilityDecomposition, customFolding))
+            foreach (char c in Normalise(src, compatibilityDecomposition, customFolding))
             {
                 sb.Append(c);
             }
             return sb.ToString();
         }
 
-        private static IEnumerable<char> RemoveDiacriticsEnum(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
+        private static IEnumerable<char> Normalise(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
         {
             foreach (char c in src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD))
             {

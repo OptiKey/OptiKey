@@ -335,21 +335,26 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
 
-            if (entries != null)
+            if (entriesForAutoComplete != null)
             {
                 var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
 
-                var enumerator = entriesForAutoComplete
-                    .Where(kvp => kvp.Key.StartsWith(simplifiedRoot) && kvp.Key.Length > simplifiedRoot.Length)
-                    .SelectMany(kvp => kvp.Value)
-                    .OrderByDescending(de => de.UsageCount)
-                    .ThenBy(de => de.Entry.Length)
-                    .GetEnumerator();
-
-                while (enumerator.MoveNext())
+                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
-                    yield return enumerator.Current;
+                    var enumerator = entriesForAutoComplete
+                        .Where(kvp => kvp.Key.StartsWith(simplifiedRoot) && kvp.Key.Length > simplifiedRoot.Length)
+                        .SelectMany(kvp => kvp.Value)
+                        .OrderByDescending(de => de.UsageCount)
+                        .ThenBy(de => de.Entry.Length)
+                        .GetEnumerator();
+
+                    while (enumerator.MoveNext())
+                    {
+                        yield return enumerator.Current;
+                    }
                 }
+
+                yield break; //Not strictly necessary
             }
         }
 
