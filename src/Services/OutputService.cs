@@ -548,8 +548,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                             return string.Concat(prefix, suffix);
                         }).ToList();
-
-
+                        
                         suggestionService.Suggestions = suggestions;
                         return;
                     }

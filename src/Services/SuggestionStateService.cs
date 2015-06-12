@@ -9,7 +9,11 @@ namespace JuliusSweetland.OptiKey.Services
         public List<string> Suggestions
         {
             get { return suggestions; }
-            set { SetProperty(ref suggestions, value); }
+            set
+            {
+                SetProperty(ref suggestions, value);
+                SuggestionsPage = 0; //Reset page
+            }
         }
 
         private int suggestionsPage;

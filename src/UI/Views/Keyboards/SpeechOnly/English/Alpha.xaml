@@ -261,17 +261,17 @@
         <controls:Key Grid.Row="5" Grid.Column="0"
                       IsEnabled="False" />
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource CalibrateIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2"
@@ -297,10 +297,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
+                      SymbolGeometry="{StaticResource SleepIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionEnabled}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="4"

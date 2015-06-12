@@ -215,6 +215,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new SpeechOnlyViews.English.Alpha { DataContext = Keyboard };
                             }
+                            else if (Keyboard is ViewModelKeyboards.SizeAndOpacity)
+                            {
+                                newContent = new StandardViews.English.SizeAndOpacity { DataContext = Keyboard };
+                            }
+                            else if (Keyboard is ViewModelKeyboards.PositionAndOpacity)
+                            {
+                                newContent = new StandardViews.English.PositionAndOpacity { DataContext = Keyboard };
+                            }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
                                 newContent = new SpeechOnlyViews.English.YesNoQuestion { DataContext = Keyboard };

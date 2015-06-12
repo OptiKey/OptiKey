@@ -40,172 +40,141 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="0" Grid.Column="0"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource SuggestionLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>0</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion1" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>1</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion2" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>2</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion3" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="11" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>3</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion4" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>4</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion5" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="17" Grid.ColumnSpan="3"
-                      SharedSizeGroup="KeyWithSuggestion">
-            <controls:Key.Text>
-                <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
-                    <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
-                    <Binding>
-                        <Binding.Source>
-                            <system:Int32>5</system:Int32>
-                        </Binding.Source>
-                    </Binding>
-                </MultiBinding>
-            </controls:Key.Text>
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="Suggestion6" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="20" Grid.ColumnSpan="2"
+        <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>0</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+                <controls:Key.Value>
+                    <models:KeyValue FunctionKey="Suggestion1" />
+                </controls:Key.Value>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="1" SharedSizeGroup="KeyWithSuggestion">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>1</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+                <controls:Key.Value>
+                    <models:KeyValue FunctionKey="Suggestion2" />
+                </controls:Key.Value>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="2" SharedSizeGroup="KeyWithSuggestion">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>2</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+                <controls:Key.Value>
+                    <models:KeyValue FunctionKey="Suggestion3" />
+                </controls:Key.Value>
+            </controls:Key>
+            <controls:Key Grid.Row="0" Grid.Column="3" SharedSizeGroup="KeyWithSuggestion">
+                <controls:Key.Text>
+                    <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
+                        <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding Path="DataContext.SuggestionService.SuggestionsPerPage" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
+                        <Binding>
+                            <Binding.Source>
+                                <system:Int32>3</system:Int32>
+                            </Binding.Source>
+                        </Binding>
+                    </MultiBinding>
+                </controls:Key.Text>
+                <controls:Key.Value>
+                    <models:KeyValue FunctionKey="Suggestion4" />
+                </controls:Key.Value>
+            </controls:Key>
+        </Grid>
+        <controls:Key Grid.Row="0" Grid.Column="9"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
             </controls:Key.Value>
         </controls:Key>
+        <controls:Key Grid.Row="0" Grid.Column="10"
+                      SymbolGeometry="{StaticResource SimulateKeyStrokes}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
+            </controls:Key.Value>
+        </controls:Key>
 
-        <controls:Key Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
             </controls:Key.Value>
         </controls:Key>
-        
-        <controls:Scratchpad Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="14"
+        <controls:Scratchpad Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
                              Text="{Binding DataContext.OutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-
-        <controls:Key Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource SimulateKeyStrokes}" 
+        <controls:Key Grid.Row="1" Grid.Column="10"
+                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionEnabled}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

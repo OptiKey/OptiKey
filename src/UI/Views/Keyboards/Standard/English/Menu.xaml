@@ -70,8 +70,7 @@
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource SizeAndOpacity}"
                       Text="SIZE &amp; OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndOpacityKeyboard}" />
             </controls:Key.Value>
@@ -79,8 +78,7 @@
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource PositionAndOpacityIcon}"
                       Text="POSITION &amp; OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText"
-                      IsEnabled="False">
+                      SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PositionAndOpacityKeyboard}" />
             </controls:Key.Value>

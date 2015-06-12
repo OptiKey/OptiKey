@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English
         {
             InitializeComponent();
 
-            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 6;
+            Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
         }
 
         public static readonly DependencyProperty NumberOfSuggestionsDisplayedProperty =
