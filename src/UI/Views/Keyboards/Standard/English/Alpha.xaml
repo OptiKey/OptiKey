@@ -329,10 +329,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="@"
-                      SharedSizeGroup="KeyWithSingleLetter">
+                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue String="@" />
+                <models:KeyValue FunctionKey="MultiKeySelectionEnabled" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
@@ -344,10 +344,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SymbolGeometry="{StaticResource MouseIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

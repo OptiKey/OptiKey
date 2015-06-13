@@ -297,10 +297,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionEnabled}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="4"

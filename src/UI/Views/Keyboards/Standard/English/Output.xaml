@@ -147,34 +147,20 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2"
+        <controls:Scratchpad Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
+                             Text="{Binding DataContext.OutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
+        <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Scratchpad Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6"
-                             Text="{Binding DataContext.OutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        <controls:Key Grid.Row="1" Grid.Column="8"
-                      SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionEnabled}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="9"
+        <controls:Key Grid.Row="1" Grid.Column="10"
                       SymbolGeometry="{StaticResource SimulateKeyStrokes}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

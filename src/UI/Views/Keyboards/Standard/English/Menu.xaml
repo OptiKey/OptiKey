@@ -24,6 +24,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0"
@@ -84,6 +85,14 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="3"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="SLEEP"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="4"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       SharedSizeGroup="KeyWithSymbolAndText">
