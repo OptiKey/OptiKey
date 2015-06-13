@@ -124,8 +124,8 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="1of2"
-                      SharedSizeGroup="KeyWithDescription">
+                      SymbolGeometry="{StaticResource 1of2Icon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="Currencies2Keyboard" />
             </controls:Key.Value>
@@ -280,8 +280,8 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="ABC"
-                      SharedSizeGroup="KeyWithDescription">
+                      SymbolGeometry="{StaticResource AlphaIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
             </controls:Key.Value>

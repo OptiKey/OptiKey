@@ -7,6 +7,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using Size = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Size;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -789,9 +790,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new PhysicalKeys();
                         break;
 
-                    case FunctionKeys.PositionAndOpacityKeyboard:
-                        Log.Debug("Changing keyboard to PositionAndOpacity.");
-                        Keyboard = new PositionAndOpacity(Keyboard);
+                    case FunctionKeys.PositionKeyboard:
+                        Log.Debug("Changing keyboard to Position.");
+                        Keyboard = new Position(Keyboard);
                         break;
 
                     case FunctionKeys.PreviousSuggestions:
@@ -855,9 +856,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
-                    case FunctionKeys.SizeAndOpacityKeyboard:
-                        Log.Debug("Changing keyboard to SizeAndOpacity.");
-                        Keyboard = new SizeAndOpacity(Keyboard);
+                    case FunctionKeys.SizeKeyboard:
+                        Log.Debug("Changing keyboard to Size.");
+                        Keyboard = new Size(Keyboard);
                         break;
 
                     case FunctionKeys.Speak:

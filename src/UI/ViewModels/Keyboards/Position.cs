@@ -2,11 +2,11 @@
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class SizeAndOpacity : BindableBase, IKeyboard, INavigableKeyboard
+    public class Position : BindableBase, IKeyboard, INavigableKeyboard
     {
         private readonly IKeyboard back;
 
-        public SizeAndOpacity(IKeyboard back)
+        public Position(IKeyboard back)
         {
             this.back = back;
         }

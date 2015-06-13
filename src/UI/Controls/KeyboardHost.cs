@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
+using Size = System.Windows.Size;
 using StandardViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard;
 using SpeechOnlyViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.SpeechOnly;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
@@ -189,13 +190,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new StandardViews.English.PhysicalKeys { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.PositionAndOpacity)
+                            else if (Keyboard is ViewModelKeyboards.Position)
                             {
-                                newContent = new StandardViews.English.PositionAndOpacity { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Position { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.SizeAndOpacity)
+                            else if (Keyboard is ViewModelKeyboards.Size)
                             {
-                                newContent = new StandardViews.English.SizeAndOpacity { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Size { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
@@ -215,13 +216,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new SpeechOnlyViews.English.Alpha { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.SizeAndOpacity)
+                            else if (Keyboard is ViewModelKeyboards.Size)
                             {
-                                newContent = new StandardViews.English.SizeAndOpacity { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Size { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.PositionAndOpacity)
+                            else if (Keyboard is ViewModelKeyboards.Position)
                             {
-                                newContent = new StandardViews.English.PositionAndOpacity { DataContext = Keyboard };
+                                newContent = new StandardViews.English.Position { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
