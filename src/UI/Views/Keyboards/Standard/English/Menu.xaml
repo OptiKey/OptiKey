@@ -101,13 +101,12 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
-        
-        <controls:Key Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"
-                      SymbolGeometry="{StaticResource BackIcon}"
-                      Text="BACK"
+        <controls:Key Grid.Row="1" Grid.Column="4"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="SLEEP"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
             </controls:Key.Value>
         </controls:Key>
 
@@ -129,18 +128,18 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="MOUSE"
+                      Text="SIMULATE MOUSE"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="3"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="SLEEP"
+        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" WidthSpan="2"
+                      SymbolGeometry="{StaticResource BackIcon}"
+                      Text="BACK"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
