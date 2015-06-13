@@ -1,17 +1,19 @@
-﻿namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
-{
-    public class Menu : IKeyboard, INavigableKeyboard
-    {
-        private readonly IKeyboard back;
+﻿using System;
 
-        public Menu(IKeyboard back)
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
+{
+    public class Menu : IKeyboard, IBackAction
+    {
+        private readonly Action backAction;
+
+        public Menu(Action backAction)
         {
-            this.back = back;
+            this.backAction = backAction;
         }
 
-        public IKeyboard Back
+        public Action BackAction
         {
-            get { return back; }
+            get { return backAction; }
         }
     }
 }

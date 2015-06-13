@@ -292,7 +292,7 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\INavigableKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />

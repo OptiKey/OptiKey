@@ -1,19 +1,20 @@
-﻿using Microsoft.Practices.Prism.Mvvm;
+﻿using System;
+using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class Position : BindableBase, IKeyboard, INavigableKeyboard
+    public class Position : BindableBase, IKeyboard, IBackAction
     {
-        private readonly IKeyboard back;
+        private readonly Action backAction;
 
-        public Position(IKeyboard back)
+        public Position(Action backAction)
         {
-            this.back = back;
+            this.backAction = backAction;
         }
-        
-        public IKeyboard Back
+
+        public Action BackAction
         {
-            get { return back; }
+            get { return backAction; }
         }
     }
 }

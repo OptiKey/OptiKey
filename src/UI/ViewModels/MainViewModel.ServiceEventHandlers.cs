@@ -147,6 +147,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 keyboardService.ProgressKeyDownState(singleKeyValue);
 
+                var currentKeyboard = Keyboard;
+
                 switch (singleKeyValue.FunctionKey.Value)
                 {
                     case FunctionKeys.AddToDictionary:
@@ -175,10 +177,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.BackFromKeyboard:
                         Log.Debug("Navigating back from keyboard.");
-                        var navigableKeyboard = Keyboard as INavigableKeyboard;
-                        Keyboard = navigableKeyboard != null && navigableKeyboard.Back != null
-                            ? navigableKeyboard.Back
-                            : new Alpha();
+                        var navigableKeyboard = Keyboard as IBackAction;
+                        if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
+                        {
+                            navigableKeyboard.BackAction();
+                        }
+                        else
+                        {
+                            Keyboard = new Alpha();
+                        }
                         break;
 
                     case FunctionKeys.Calibrate:
@@ -290,12 +297,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");
-                        Keyboard = new Menu(Keyboard);
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
-                        Keyboard = new Mouse(Keyboard);
+                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                            && Settings.Default.DisableKeyboardSimulationForMouseKeyboard)
+                        {
+                            var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
+                            var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
+                            var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
+                            var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
+                            var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
+                            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
+                            Keyboard = new Mouse(() =>
+                            {
+                                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
+                                Keyboard = currentKeyboard;
+                            });
+                        }
+                        else
+                        {
+                            Keyboard = new Mouse(() => Keyboard = currentKeyboard);
+                        }
                         break;
 
                     case FunctionKeys.MouseDoubleLeftClick:
@@ -792,7 +821,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.PositionKeyboard:
                         Log.Debug("Changing keyboard to Position.");
-                        Keyboard = new Position(Keyboard);
+                        Keyboard = new Position(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.PreviousSuggestions:
@@ -858,7 +887,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.SizeKeyboard:
                         Log.Debug("Changing keyboard to Size.");
-                        Keyboard = new Size(Keyboard);
+                        Keyboard = new Size(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.Speak:
