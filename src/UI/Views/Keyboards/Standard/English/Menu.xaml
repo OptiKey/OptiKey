@@ -30,7 +30,7 @@
 
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="ABC"
+                      Text="LETTERS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
@@ -38,7 +38,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="123"
+                      Text="NUMBERS &amp; SYMBOLS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
@@ -87,7 +87,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="+ OPACITY"
+                      Text="INCREASE OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
@@ -95,7 +95,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="- OPACITY"
+                      Text="DECREASE OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
