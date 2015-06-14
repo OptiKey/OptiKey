@@ -120,13 +120,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.RenderTransform).(ScaleTransform.ScaleY)"));
             storyboard.Children.Add(introAnimation);
 
-            var displayTimeInSeconds = text != null
-                    ? (Convert.ToInt32(Math.Ceiling((double)text.Length / (double)Settings.Default.ToastNotificationCharactersPerLine))
-                        * Settings.Default.ToastNotificationSecondsPerLine)
-                        + Settings.Default.ToastNotificationAdditionalSeconds
-                    : Settings.Default.ToastNotificationAdditionalSeconds;
-
-            displayTimeInSeconds += Settings.Default.ToastNotificationAdditionalSeconds;
+            var displayTimeInSeconds = Convert.ToInt32(Math.Ceiling((double)(text != null ? text.Length : 0) 
+                * (double)Settings.Default.ToastNotificationSecondsPerCharacter));
 
             var outroAnimation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop)
             {

@@ -351,40 +351,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.05")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationCharactersPerLine {
+        public decimal ToastNotificationSecondsPerCharacter {
             get {
-                return ((int)(this["ToastNotificationCharactersPerLine"]));
+                return ((decimal)(this["ToastNotificationSecondsPerCharacter"]));
             }
             set {
-                this["ToastNotificationCharactersPerLine"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationSecondsPerLine {
-            get {
-                return ((int)(this["ToastNotificationSecondsPerLine"]));
-            }
-            set {
-                this["ToastNotificationSecondsPerLine"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int ToastNotificationAdditionalSeconds {
-            get {
-                return ((int)(this["ToastNotificationAdditionalSeconds"]));
-            }
-            set {
-                this["ToastNotificationAdditionalSeconds"] = value;
+                this["ToastNotificationSecondsPerCharacter"] = value;
             }
         }
         
@@ -991,12 +965,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool DisableKeyboardSimulationForMouseKeyboard {
+        public bool DisableKeyboardSimulationWhileMouseKeyboardIsOpen {
             get {
-                return ((bool)(this["DisableKeyboardSimulationForMouseKeyboard"]));
+                return ((bool)(this["DisableKeyboardSimulationWhileMouseKeyboardIsOpen"]));
             }
             set {
-                this["DisableKeyboardSimulationForMouseKeyboard"] = value;
+                this["DisableKeyboardSimulationWhileMouseKeyboardIsOpen"] = value;
             }
         }
     }

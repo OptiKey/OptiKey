@@ -37,6 +37,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref checkForUpdates, value); }
         }
 
+        private bool disableKeyboardSimulationForMouseKeyboard;
+        public bool DisableKeyboardSimulationWhileMouseKeyboardIsOpen
+        {
+            get { return disableKeyboardSimulationForMouseKeyboard; }
+            set { SetProperty(ref disableKeyboardSimulationForMouseKeyboard, value); }
+        }
+
         private bool debug;
         public bool Debug
         {
@@ -60,6 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
+            DisableKeyboardSimulationWhileMouseKeyboardIsOpen = Settings.Default.DisableKeyboardSimulationWhileMouseKeyboardIsOpen;
             Debug = Settings.Default.Debug;
         }
 
@@ -67,6 +75,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
+            Settings.Default.DisableKeyboardSimulationWhileMouseKeyboardIsOpen = DisableKeyboardSimulationWhileMouseKeyboardIsOpen;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();
         }

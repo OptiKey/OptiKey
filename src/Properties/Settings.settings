@@ -77,14 +77,8 @@
     <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">75</Value>
     </Setting>
-    <Setting Name="ToastNotificationCharactersPerLine" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">50</Value>
-    </Setting>
-    <Setting Name="ToastNotificationSecondsPerLine" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
-    <Setting Name="ToastNotificationAdditionalSeconds" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
+    <Setting Name="ToastNotificationSecondsPerCharacter" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.05</Value>
     </Setting>
     <Setting Name="Theme" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
@@ -224,7 +218,7 @@
     <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
-    <Setting Name="DisableKeyboardSimulationForMouseKeyboard" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="DisableKeyboardSimulationWhileMouseKeyboardIsOpen" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

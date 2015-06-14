@@ -174,6 +174,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref toastNotificationVerticalFillPercentage, value); }
         }
 
+        private decimal toastNotificationSecondsPerCharacter;
+        public decimal ToastNotificationSecondsPerCharacter
+        {
+            get { return toastNotificationSecondsPerCharacter; }
+            set { SetProperty(ref toastNotificationSecondsPerCharacter, value); }
+        }
+
         private int cursorWidth;
         public int CursorWidthInPixels
         {
@@ -227,6 +234,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ScratchpadNumberOfLines = Settings.Default.ScratchpadNumberOfLines;
             ToastNotificationVerticalFillPercentage = Settings.Default.ToastNotificationVerticalFillPercentage;
             ToastNotificationHorizontalFillPercentage = Settings.Default.ToastNotificationHorizontalFillPercentage;
+            ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
@@ -243,6 +251,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ScratchpadNumberOfLines = ScratchpadNumberOfLines;
             Settings.Default.ToastNotificationVerticalFillPercentage = ToastNotificationVerticalFillPercentage;
             Settings.Default.ToastNotificationHorizontalFillPercentage = ToastNotificationHorizontalFillPercentage;
+            Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;

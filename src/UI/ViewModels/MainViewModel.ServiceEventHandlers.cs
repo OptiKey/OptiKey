@@ -303,7 +303,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
-                            && Settings.Default.DisableKeyboardSimulationForMouseKeyboard)
+                            && Settings.Default.DisableKeyboardSimulationWhileMouseKeyboardIsOpen)
                         {
                             var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
                             var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
