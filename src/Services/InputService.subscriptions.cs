@@ -365,13 +365,12 @@ namespace JuliusSweetland.OptiKey.Services
 
                         List<string> dictionaryMatches = null;
 
-                        //Why am I wrapping this call in a Task.Run?
-                        //Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
+                        //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
                         //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
+                        //The method cannot be made awaitable as async/await also does not support ref params.
                         await Task.Run(() =>
                         {
-                            dictionaryMatches =
-                                dictionaryService.MapCaptureToEntries(
+                            dictionaryMatches = dictionaryService.MapCaptureToEntries(
                                     pointsAndKeyValues.ToList(), reducedSequence,
                                     true, reliableLastLetter != null,
                                     ref mapToDictionaryMatchesCancellationTokenSource,
