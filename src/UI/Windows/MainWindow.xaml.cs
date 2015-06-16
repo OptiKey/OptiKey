@@ -2,8 +2,8 @@
 using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Static;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
@@ -40,6 +40,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.M
             };
             InputBindings.Add(openSettingsKeyBinding);
+
+            Title = string.Format("OptiKey v{0}", DiagnosticInfo.AssemblyVersion);
         }
 
         public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }
