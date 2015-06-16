@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Reactive;
 using System.Threading;
+using System.Windows;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -18,6 +20,10 @@ namespace JuliusSweetland.OptiKey.Services
         void DecrementEntryUsageCount(string entry);
         List<string> MapCaptureToEntries(List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
             string reducedCapture, bool firstSequenceLetterIsReliable, bool lastSequenceLetterIsReliable, 
+            ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
+        Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
+            List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues, 
+            int sequenceThreshold, string reliableFirstLetter, string reliableLastLetter,
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
     }
 }

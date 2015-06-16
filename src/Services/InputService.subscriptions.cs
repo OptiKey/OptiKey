@@ -299,6 +299,7 @@ namespace JuliusSweetland.OptiKey.Services
                         Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds,
                         sequenceThreshold);
 
+                    //Always assume the start trigger is reliable if it occurs on a letter
                     string reliableFirstLetter =
                         startMultiKeySelectionTriggerSignal != null
                         && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
@@ -311,8 +312,7 @@ namespace JuliusSweetland.OptiKey.Services
                         reliableFirstLetter,
                         reliableFirstLetter != null ? "IS" : "IS NOT");
 
-                    //If we are using a fixation trigger and the stop trigger has
-                    //occurred on a letter then it is reliable - use it
+                    //If we are using a fixation trigger and the stop trigger has occurred on a letter then it is reliable - use it
                     string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
                         && stopMultiKeySelectionTriggerSignal != null
                         && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
@@ -331,6 +331,25 @@ namespace JuliusSweetland.OptiKey.Services
 
                         PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value);
                     }
+
+
+
+                    //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
+                    //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
+                    //The method cannot be made awaitable as async/await also does not support ref params.
+                    Tuple<List<Point>, FunctionKeys?, string, List<string>> result = null;
+                    await Task.Run(() =>
+                    {
+                        result = dictionaryService.MapCaptureToEntries(
+                            pointsAndKeyValues.ToList(), sequenceThreshold,
+                            reliableFirstLetter, reliableLastLetter,
+                            ref mapToDictionaryMatchesCancellationTokenSource,
+                            exception => PublishError(this, exception));
+                    });
+                    PublishSelectionResult(result);
+
+
+
 
                     var reducedSequence = pointsAndKeyValues
                         .Where(tp => tp.Value.KeyValue != null)

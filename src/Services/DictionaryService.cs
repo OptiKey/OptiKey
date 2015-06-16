@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Threading;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -494,6 +495,146 @@ namespace JuliusSweetland.OptiKey.Services
             catch (OperationCanceledException)
             {
                 Log.Error("Map captured letters to dictionary matches cancelled - returning nothing");
+            }
+            catch (AggregateException ae)
+            {
+                if (ae.InnerExceptions != null
+                    && ae.InnerExceptions.Any())
+                {
+                    var flattenedExceptions = ae.Flatten();
+
+                    Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
+
+                    exceptionHandler(flattenedExceptions);
+                }
+            }
+
+            return null;
+        }
+
+        public Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
+            List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
+            int sequenceThreshold, string reliableFirstLetter, string reliableLastLetter,
+            ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler)
+        {
+            try
+            {
+                Log.DebugFormat("Mapping capture to dictionary entries with {0} timestamped points/key values",
+                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0);
+
+                /*
+                Raw capture
+                Remove diacritics
+                Extract reliable prefix and suffix into vars
+                Remove reliable prefix and suffix
+                Convert to set of chars+count in original order
+                Calculate mean
+                Threshold the count
+                Extract letters
+                Extract significantLetters where count above average
+                Compare significant Letters and letters. If same null significant set as obviously not significant
+                null empty significant Letters set.
+                Make sure calculating significance is a separate method and easily changed if I want to implement clustering for example.
+                 */
+
+                //var reducedSequence = pointsAndKeyValues
+                //        .Where(tp => tp.Value.KeyValue != null)
+                //        .Select(tp => tp.Value.KeyValue.Value)
+                //        .ToList()
+                //        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
+
+                //if (string.IsNullOrEmpty(reducedSequence))
+                //{
+                //    //No useful selection
+                //    Log.Debug("Multi-key selection capture reduces to nothing useful.");
+
+                //    PublishSelectionResult(
+                //            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                //                new List<Point> { startSelectionTriggerSignal.PointAndKeyValue.Value.Point },
+                //                null, null, null));
+
+                //}
+                //else if (reducedSequence.Length == 1)
+                //{
+                //    //The user fixated on one letter - output it
+                //    Log.Debug("Multi-key selection capture reduces to a single letter.");
+
+                //    PublishSelectionResult(
+                //        new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                //            pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                //            null, reducedSequence, null));
+                //}
+                //else
+                //{
+                //    //The user fixated on multiple letters - map to dictionary word
+                //    Log.DebugFormat("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence);
+
+                //    List<string> dictionaryMatches = null;
+                //    //DO MATCHING
+                //    PublishSelectionResult(
+                //            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                //                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
+                //                null, null, dictionaryMatches));
+                //}
+
+                
+
+                //COPIED FROM OTHER METHOD:
+                //if (reducedSequence != null && reducedSequence.Any())
+                //{
+                //    //Remove diacritics and make uppercase
+                //    reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
+
+                //    Log.DebugFormat("Removing diacritics leaves us with '{0}'", reducedSequence);
+
+                //    //Reduce again - by removing diacritics we might now have adjacent 
+                //    //letters which are the same (the dictionary hashes do not)
+                //    var reducedAgainCharSequence = new List<Char>();
+                //    foreach (char c in reducedSequence)
+                //    {
+                //        if (!reducedAgainCharSequence.Any() || !reducedAgainCharSequence[reducedAgainCharSequence.Count - 1].Equals(c))
+                //        {
+                //            reducedAgainCharSequence.Add(c);
+                //        }
+                //    }
+                //    reducedSequence = new string(reducedAgainCharSequence.ToArray());
+
+                //    Log.DebugFormat("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence);
+
+                //    cancellationTokenSource = new CancellationTokenSource();
+
+                //    GetHashes()
+                //        .AsParallel()
+                //        .WithCancellation(cancellationTokenSource.Token)
+                //        .Where(s => !firstSequenceLetterIsReliable || s.First() == reducedSequence.First())
+                //        .Where(s => !lastSequenceLetterIsReliable || s.Last() == reducedSequence.Last())
+                //        .Select(hash =>
+                //        {
+                //            var lcs = reducedSequence.LongestCommonSubsequence(hash);
+                //            return new
+                //            {
+                //                Hash = hash,
+                //                Similarity = ((double)lcs / (double)hash.Length) * lcs,
+                //                Lcs = lcs
+                //            };
+                //        })
+                //        .OrderByDescending(x => x.Similarity)
+                //        .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
+                //        .SelectMany(x => GetEntries(x.Hash))
+                //        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                //        .ToList()
+                //        .ForEach(matches.Add);
+                //}
+
+                //if (matches.Any())
+                //{
+                //    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
+                //    return matches;
+                //}
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Error("Map capture to dictionary matches cancelled - returning nothing");
             }
             catch (AggregateException ae)
             {
