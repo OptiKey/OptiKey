@@ -332,8 +332,6 @@ namespace JuliusSweetland.OptiKey.Services
                         PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value);
                     }
 
-
-
                     //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
                     //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
                     //The method cannot be made awaitable as async/await also does not support ref params.
@@ -347,60 +345,6 @@ namespace JuliusSweetland.OptiKey.Services
                             exception => PublishError(this, exception));
                     });
                     PublishSelectionResult(result);
-
-
-
-
-                    var reducedSequence = pointsAndKeyValues
-                        .Where(tp => tp.Value.KeyValue != null)
-                        .Select(tp => tp.Value.KeyValue.Value)
-                        .ToList()
-                        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
-
-                    if (string.IsNullOrEmpty(reducedSequence))
-                    {
-                        //No useful selection
-                        Log.Debug("Multi-key selection capture reduces to nothing useful.");
-
-                        PublishSelectionResult(
-                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                new List<Point> { startSelectionTriggerSignal.PointAndKeyValue.Value.Point },
-                                null, null, null));
-                    }
-                    else if (reducedSequence.Length == 1)
-                    {
-                        //The user fixated on one letter - output it
-                        Log.Debug("Multi-key selection capture reduces to a single letter.");
-
-                        PublishSelectionResult(
-                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                                null, reducedSequence, null));
-                    }
-                    else
-                    {
-                        //The user fixated on multiple letters - map to dictionary word
-                        Log.DebugFormat("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence);
-
-                        List<string> dictionaryMatches = null;
-
-                        //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
-                        //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
-                        //The method cannot be made awaitable as async/await also does not support ref params.
-                        await Task.Run(() =>
-                        {
-                            dictionaryMatches = dictionaryService.MapCaptureToEntries(
-                                    pointsAndKeyValues.ToList(), reducedSequence,
-                                    true, reliableLastLetter != null,
-                                    ref mapToDictionaryMatchesCancellationTokenSource,
-                                    exception => PublishError(this, exception));
-                        });
-                        
-                        PublishSelectionResult(
-                            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                                null, null, dictionaryMatches));
-                    }
                 }
             }
             finally

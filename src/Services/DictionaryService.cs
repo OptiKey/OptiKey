@@ -514,7 +514,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
-            int sequenceThreshold, string reliableFirstLetter, string reliableLastLetter,
+            int minCount, string reliableFirstLetter, string reliableLastLetter,
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler)
         {
             try
@@ -522,115 +522,115 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Mapping capture to dictionary entries with {0} timestamped points/key values",
                     timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0);
 
-                /*
-                Raw capture
-                Remove diacritics
-                Extract reliable prefix and suffix into vars
-                Remove reliable prefix and suffix
-                Convert to set of chars+count in original order
-                Calculate mean
-                Threshold the count
-                Extract letters
-                Extract significantLetters where count above average
-                Compare significant Letters and letters. If same null significant set as obviously not significant
-                null empty significant Letters set.
-                Make sure calculating significance is a separate method and easily changed if I want to implement clustering for example.
-                 */
+                var points = timestampedPointAndKeyValues == null
+                    ? new List<Point>()
+                    : timestampedPointAndKeyValues.Select(tp => tp.Value.Point).ToList();
 
-                //var reducedSequence = pointsAndKeyValues
-                //        .Where(tp => tp.Value.KeyValue != null)
-                //        .Select(tp => tp.Value.KeyValue.Value)
-                //        .ToList()
-                //        .ReduceToSequentiallyDistinctLetters(sequenceThreshold, reliableFirstLetter, reliableLastLetter);
+                var charsWithCount = timestampedPointAndKeyValues != null
+                    ? timestampedPointAndKeyValues
+                        .Where(tp => tp.Value.StringIsLetter)
+                        .Select(tp => tp.Value.String.RemoveDiacritics().ToUpper().First())
+                        .ToListWithCounts()
+                    : new List<Tuple<char, int>>();
 
-                //if (string.IsNullOrEmpty(reducedSequence))
-                //{
-                //    //No useful selection
-                //    Log.Debug("Multi-key selection capture reduces to nothing useful.");
+                //Calculate the average count before removing reliable characters & applying minimum threshold
+                double meanCount = charsWithCount.Average(cwc => cwc.Item2);
 
-                //    PublishSelectionResult(
-                //            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                //                new List<Point> { startSelectionTriggerSignal.PointAndKeyValue.Value.Point },
-                //                null, null, null));
+                char? reliableFirstChar = null;
+                if (reliableFirstLetter != null)
+                {
+                    //Clean 1st letter - no accents and ensure uppercase
+                    reliableFirstChar = reliableFirstLetter.RemoveDiacritics().ToUpper().First();
+                    
+                    //Remove 1st letter from remaining body as it is used separately in the matching process
+                    if (charsWithCount.Any() 
+                        && charsWithCount.First().Item1 == reliableFirstChar.Value)
+                    {
+                        charsWithCount.RemoveAt(0);
+                    }
+                }
 
-                //}
-                //else if (reducedSequence.Length == 1)
-                //{
-                //    //The user fixated on one letter - output it
-                //    Log.Debug("Multi-key selection capture reduces to a single letter.");
+                char? reliableLastChar = null;
+                if (reliableLastLetter != null)
+                {
+                    //Clean last letter - no accents and ensure uppercase
+                    reliableLastChar = reliableLastLetter.RemoveDiacritics().ToUpper().First();
 
-                //    PublishSelectionResult(
-                //        new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                //            pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                //            null, reducedSequence, null));
-                //}
-                //else
-                //{
-                //    //The user fixated on multiple letters - map to dictionary word
-                //    Log.DebugFormat("Multi-key selection capture reduces to multiple letters '{0}'", reducedSequence);
+                    //Remove last letter from remaining body as it is used separately in the matching process
+                    if (charsWithCount.Any()
+                        && charsWithCount.Last().Item1 == reliableLastChar.Value)
+                    {
+                        charsWithCount.RemoveAt(charsWithCount.Count - 1);
+                    }
+                }
 
-                //    List<string> dictionaryMatches = null;
-                //    //DO MATCHING
-                //    PublishSelectionResult(
-                //            new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                //                pointsAndKeyValues.Select(tp => tp.Value.Point).ToList(),
-                //                null, null, dictionaryMatches));
-                //}
+                //Filter out chars that don't meet the min count threshold
+                var charsWithCountAboveThreshold = charsWithCount.Where(cwc => cwc.Item2 >= minCount).ToList();
 
+                var remainingCharCount = 
+                    reliableFirstChar != null ? 1 : 0 +
+                    charsWithCountAboveThreshold.Count + 
+                    reliableLastChar != null ? 1 : 0;
+
+                if (remainingCharCount == 0)
+                {
+                    Log.Debug("Capture reduces to nothing useful.");
+                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, null);
+                }
+
+                if (remainingCharCount == 1)
+                {
+                    Log.Debug("Capture reduces to a single letter.");
+                    string singleLetter = 
+                        reliableFirstChar != null ? reliableFirstChar.Value.ToString()
+                        : charsWithCountAboveThreshold.Count == 1 ? charsWithCountAboveThreshold.First().Item1.ToString()
+                            : reliableLastChar != null ? reliableLastChar.Value.ToString() 
+                                : null;
+
+                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, singleLetter, null);
+                }
                 
+                var allLetters = charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToString();
+                var significantLetters = charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToString();
+                if (!significantLetters.Any() || significantLetters == allLetters)
+                {
+                    significantLetters = null;
+                }
 
-                //COPIED FROM OTHER METHOD:
-                //if (reducedSequence != null && reducedSequence.Any())
-                //{
-                //    //Remove diacritics and make uppercase
-                //    reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
+                Log.DebugFormat("Attempting to matching with significant letters: '{0}' and all letters: '{1}'", significantLetters, allLetters);
 
-                //    Log.DebugFormat("Removing diacritics leaves us with '{0}'", reducedSequence);
+                cancellationTokenSource = new CancellationTokenSource();
+                var matches = new List<string>();
 
-                //    //Reduce again - by removing diacritics we might now have adjacent 
-                //    //letters which are the same (the dictionary hashes do not)
-                //    var reducedAgainCharSequence = new List<Char>();
-                //    foreach (char c in reducedSequence)
-                //    {
-                //        if (!reducedAgainCharSequence.Any() || !reducedAgainCharSequence[reducedAgainCharSequence.Count - 1].Equals(c))
-                //        {
-                //            reducedAgainCharSequence.Add(c);
-                //        }
-                //    }
-                //    reducedSequence = new string(reducedAgainCharSequence.ToArray());
+                GetHashes()
+                    .AsParallel()
+                    .WithCancellation(cancellationTokenSource.Token)
+                    .Where(hash => reliableFirstChar == null || hash.First() == reliableFirstChar.Value)
+                    .Where(hash => reliableLastChar == null || hash.Last() == reliableLastChar.Value)
+                    .Select(hash =>
+                    {
+                        var lcsWithSignificantLetters = significantLetters == null ? 0 : significantLetters.LongestCommonSubsequence(hash);
+                        var lcsWithAllLetters = allLetters.LongestCommonSubsequence(hash);
+                        return new
+                        {
+                            Hash = hash,
+                            SimilarityWithSignificantLetters = lcsWithSignificantLetters, //((double)lcsWithSignificantLetters / (double)hash.Length) * lcsWithSignificantLetters,
+                            SimilarityWithAllLetters = ((double)lcsWithAllLetters / (double)hash.Length) * lcsWithAllLetters
+                        };
+                    })
+                    .OrderByDescending(x => x.SimilarityWithAllLetters)
+                    .ThenByDescending(x => x.SimilarityWithSignificantLetters)
+                    .ThenByDescending(x => x.Hash.Last() == allLetters.Last()) //Matching last letter
+                    .SelectMany(x => GetEntries(x.Hash))
+                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                    .ToList()
+                    .ForEach(matches.Add);
 
-                //    Log.DebugFormat("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence);
-
-                //    cancellationTokenSource = new CancellationTokenSource();
-
-                //    GetHashes()
-                //        .AsParallel()
-                //        .WithCancellation(cancellationTokenSource.Token)
-                //        .Where(s => !firstSequenceLetterIsReliable || s.First() == reducedSequence.First())
-                //        .Where(s => !lastSequenceLetterIsReliable || s.Last() == reducedSequence.Last())
-                //        .Select(hash =>
-                //        {
-                //            var lcs = reducedSequence.LongestCommonSubsequence(hash);
-                //            return new
-                //            {
-                //                Hash = hash,
-                //                Similarity = ((double)lcs / (double)hash.Length) * lcs,
-                //                Lcs = lcs
-                //            };
-                //        })
-                //        .OrderByDescending(x => x.Similarity)
-                //        .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
-                //        .SelectMany(x => GetEntries(x.Hash))
-                //        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                //        .ToList()
-                //        .ForEach(matches.Add);
-                //}
-
-                //if (matches.Any())
-                //{
-                //    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
-                //    return matches;
-                //}
+                if (matches.Any())
+                {
+                    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
+                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches);
+                }
             }
             catch (OperationCanceledException)
             {
@@ -642,9 +642,7 @@ namespace JuliusSweetland.OptiKey.Services
                     && ae.InnerExceptions.Any())
                 {
                     var flattenedExceptions = ae.Flatten();
-
                     Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
-
                     exceptionHandler(flattenedExceptions);
                 }
             }

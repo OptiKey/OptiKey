@@ -185,7 +185,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// <summary>
         /// Remove diacritics (accents etc) from source string and returns the base string
         /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
-        /// � symbols in your dictionary file? Resave it in UNICODE encoding 
+        /// � symbols in your dictionary file? Resave it in UTF-8 encoding (I use Notepad)
         /// </summary>
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition = true)
         {
@@ -195,7 +195,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// <summary>
         /// Remove diacritics (accents etc) from source string and returns the base string
         /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
-        /// � symbols in your dictionary file? Resave it in UNICODE encoding 
+        /// � symbols in your dictionary file? Resave it in UTF-8 encoding (I use Notepad) 
         /// </summary>
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
         {
@@ -223,6 +223,38 @@ namespace JuliusSweetland.OptiKey.Extensions
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns an ordered list of char/int tuples with the input characters in order and the count from each repeating group
+        /// e.g. AAABBC would convert to {[A,3],[B,2],[C,1]}.
+        /// Character comparisons use the default equality logic, so they are case sensitive.
+        /// </summary>
+        /// <param name="seq"></param>
+        /// <returns></returns>
+        public static List<Tuple<char, int>> ToListWithCounts(this IEnumerable<char> characters)
+        {
+            var result = new List<Tuple<char, int>>();
+
+            if (!string.IsNullOrWhiteSpace(seq))
+            {
+                for (int index = 0; index < seq.Length; index++)
+                {
+                    var character = seq[index];
+                    var count = 1;
+                    index++;
+                    while (index < seq.Length
+                        && seq[index] == character)
+                    {
+                        count++;
+                        index++;
+                    }
+                    result.Add(new Tuple<char, int>(character, count));
+                    index--;
+                }
+            }
+
+            return result;
         }
 
         public static string FirstCharToUpper(this string input)

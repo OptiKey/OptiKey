@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
         Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues, 
-            int sequenceThreshold, string reliableFirstLetter, string reliableLastLetter,
+            int minCount, string reliableFirstLetter, string reliableLastLetter,
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
     }
 }
