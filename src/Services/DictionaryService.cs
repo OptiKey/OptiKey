@@ -534,7 +534,13 @@ namespace JuliusSweetland.OptiKey.Services
                     : new List<Tuple<char, int>>();
 
                 //Calculate the average count before removing reliable characters & applying minimum threshold
-                double meanCount = charsWithCount.Average(cwc => cwc.Item2);
+                //double meanCount = charsWithCount.Average(cwc => cwc.Item2);
+
+                /*
+                 * Think about how the mean is calculated - 
+                 * exclude reliable characters as a fixation trigger
+                 * can skew the numbers
+                 */
 
                 char? reliableFirstChar = null;
                 if (reliableFirstLetter != null)
@@ -564,13 +570,16 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
 
+                //Calculate mean count of remaining letters 
+                double meanCount = charsWithCount.Average(cwc => cwc.Item2);
+
                 //Filter out chars that don't meet the min count threshold
                 var charsWithCountAboveThreshold = charsWithCount.Where(cwc => cwc.Item2 >= minCount).ToList();
 
                 var remainingCharCount = 
-                    reliableFirstChar != null ? 1 : 0 +
+                    (reliableFirstChar != null ? 1 : 0) +
                     charsWithCountAboveThreshold.Count + 
-                    reliableLastChar != null ? 1 : 0;
+                    (reliableLastChar != null ? 1 : 0);
 
                 if (remainingCharCount == 0)
                 {
@@ -589,9 +598,14 @@ namespace JuliusSweetland.OptiKey.Services
 
                     return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, singleLetter, null);
                 }
-                
-                var allLetters = charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToString();
-                var significantLetters = charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToString();
+
+                //var body = new string(charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToArray());
+                //var allLetters = string.Format("{0}{1}{2}", reliableFirstChar, body, reliableLastChar);
+                var allLetters = new string(charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToArray());
+
+                //var significantBody = new string(charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToArray());
+                //var significantLetters = string.Format("{0}{1}{2}", reliableFirstChar, significantBody, reliableLastChar);
+                var significantLetters = new string(charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToArray());
                 if (!significantLetters.Any() || significantLetters == allLetters)
                 {
                     significantLetters = null;
@@ -601,6 +615,8 @@ namespace JuliusSweetland.OptiKey.Services
 
                 cancellationTokenSource = new CancellationTokenSource();
                 var matches = new List<string>();
+
+                //const double significantLetterWeight = 1.5;
 
                 GetHashes()
                     .AsParallel()
@@ -614,12 +630,12 @@ namespace JuliusSweetland.OptiKey.Services
                         return new
                         {
                             Hash = hash,
-                            SimilarityWithSignificantLetters = lcsWithSignificantLetters, //((double)lcsWithSignificantLetters / (double)hash.Length) * lcsWithSignificantLetters,
-                            SimilarityWithAllLetters = ((double)lcsWithAllLetters / (double)hash.Length) * lcsWithAllLetters
+                            //Similarity = (((double)lcsWithAllLetters / (double)hash.Length) * lcsWithAllLetters) +
+                            //             ((((double)lcsWithSignificantLetters / (double)hash.Length) * lcsWithSignificantLetters) * significantLetterWeight),
+                            Similarity = (((double)lcsWithSignificantLetters / (double)hash.Length) * lcsWithSignificantLetters)
                         };
                     })
-                    .OrderByDescending(x => x.SimilarityWithAllLetters)
-                    .ThenByDescending(x => x.SimilarityWithSignificantLetters)
+                    .OrderByDescending(x => x.Similarity)
                     .ThenByDescending(x => x.Hash.Last() == allLetters.Last()) //Matching last letter
                     .SelectMany(x => GetEntries(x.Hash))
                     .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)

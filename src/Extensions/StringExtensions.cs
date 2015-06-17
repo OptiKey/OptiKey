@@ -230,28 +230,26 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// e.g. AAABBC would convert to {[A,3],[B,2],[C,1]}.
         /// Character comparisons use the default equality logic, so they are case sensitive.
         /// </summary>
-        /// <param name="seq"></param>
         /// <returns></returns>
-        public static List<Tuple<char, int>> ToListWithCounts(this IEnumerable<char> characters)
+        public static List<Tuple<char, int>> ToListWithCounts(this IEnumerable<char> chars)
         {
             var result = new List<Tuple<char, int>>();
 
-            if (!string.IsNullOrWhiteSpace(seq))
+            var charList = chars.ToList();
+
+            for (int index = 0; index < charList.Count; index++)
             {
-                for (int index = 0; index < seq.Length; index++)
+                var character = charList[index];
+                var count = 1;
+                index++;
+                while (index < charList.Count
+                    && charList[index] == character)
                 {
-                    var character = seq[index];
-                    var count = 1;
+                    count++;
                     index++;
-                    while (index < seq.Length
-                        && seq[index] == character)
-                    {
-                        count++;
-                        index++;
-                    }
-                    result.Add(new Tuple<char, int>(character, count));
-                    index--;
                 }
+                result.Add(new Tuple<char, int>(character, count));
+                index--;
             }
 
             return result;
