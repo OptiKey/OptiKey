@@ -564,10 +564,11 @@ namespace JuliusSweetland.OptiKey.Services
                 //Filter out chars that don't meet the min count threshold
                 var charsWithCountAboveThreshold = charsWithCount.Where(cwc => cwc.Item2 >= minCount).ToList();
 
-                var remainingCharCount = 
-                    (reliableFirstChar != null ? 1 : 0) +
-                    charsWithCountAboveThreshold.Count + 
-                    (reliableLastChar != null ? 1 : 0);
+                //Count characters left after thresholding, including reliable first/last characters
+                var reliableFirstAndLastAreTheSameChar = reliableFirstChar != null && reliableLastChar != null && reliableFirstChar.Value == reliableLastChar.Value;
+                var remainingCharCount = charsWithCountAboveThreshold.Any() 
+                    ? (reliableFirstChar != null ? 1 : 0) + charsWithCountAboveThreshold.Count + (reliableLastChar != null ? 1 : 0)
+                    : reliableFirstAndLastAreTheSameChar ? 1 : (reliableFirstChar != null ? 1 : 0) + (reliableLastChar != null ? 1 : 0);
 
                 if (remainingCharCount == 0)
                 {
@@ -589,7 +590,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var thresholdFilteredString = new string(charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToArray());
 
-                double meanCount = charsWithCount.Average(cwc => cwc.Item2);
+                double meanCount = charsWithCount.Any() ? charsWithCount.Average(cwc => cwc.Item2) : 0;
                 var thresholdAndMeanFilteredString = new string(charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToArray());
                 if (!thresholdAndMeanFilteredString.Any() || thresholdAndMeanFilteredString == thresholdFilteredString)
                 {
@@ -619,22 +620,19 @@ namespace JuliusSweetland.OptiKey.Services
                             HashLastLetter = hash.Last(),
                             CaptureLastLetter = reliableLastChar != null ? reliableLastChar.Value : thresholdFilteredString.Last(),
                             SimilarityToThresholdFiltered = ((double)lcsWithThresholdFilteredString / (double)hash.Length) * (double)lcsWithThresholdFilteredString,
-                            SimilarityToThresholdAndMeanFilteredString = ((double)lcsWithThresholdAndMeanFilteredString / (double)hash.Length) * (double)lcsWithThresholdAndMeanFilteredString
+                            SimilarityToThresholdAndMeanFilteredString = (double)lcsWithThresholdAndMeanFilteredString / (double)hash.Length
                         };
                     })
                     .OrderByDescending(x => x.SimilarityToThresholdAndMeanFilteredString)
                     .ThenByDescending(x => x.SimilarityToThresholdFiltered)
-                    .ThenByDescending(x => x.HashLastLetter == thresholdFilteredString.Last()) //Matching last letter
+                    .ThenByDescending(x => x.HashLastLetter == x.CaptureLastLetter) //Matching last letter
                     .SelectMany(x => GetEntries(x.Hash))
                     .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                     .ToList()
                     .ForEach(matches.Add);
 
-                if (matches.Any())
-                {
-                    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
-                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches);
-                }
+                matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
+                return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches);
             }
             catch (OperationCanceledException)
             {

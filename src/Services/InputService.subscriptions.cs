@@ -344,7 +344,11 @@ namespace JuliusSweetland.OptiKey.Services
                             ref mapToDictionaryMatchesCancellationTokenSource,
                             exception => PublishError(this, exception));
                     });
-                    PublishSelectionResult(result);
+
+                    if (result != null)
+                    {
+                        PublishSelectionResult(result);
+                    }
                 }
             }
             finally
