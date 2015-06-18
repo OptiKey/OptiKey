@@ -32,6 +32,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         case Enums.TriggerSources.Fixations:
                             MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextHigh;
                         break;
+
+                        case Enums.TriggerSources.KeyboardKeyDownsUps:
+                        case Enums.TriggerSources.MouseButtonDownUps:
+                            MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextLow;
+                        break;
                     }
                 });
         }
