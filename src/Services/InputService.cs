@@ -407,7 +407,7 @@ namespace JuliusSweetland.OptiKey.Services
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
                         selectionResult.Item2, 
                         selectionResult.Item3.ConvertEscapedCharsToLiterals(),
-                        selectionResult.Item4 != null ? selectionResult.Item4.First() : null,
+                        selectionResult.Item4 != null && selectionResult.Item4.Any() ? selectionResult.Item4.First() : null,
                         selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null);
 
                 selectionResultEvent(this, selectionResult);

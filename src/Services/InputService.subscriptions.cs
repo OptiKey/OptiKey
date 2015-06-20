@@ -347,6 +347,13 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (result != null)
                     {
+                        if (result.Item2 == null && result.Item3 == null &&
+                            (result.Item4 == null || !result.Item4.Any()))
+                        {
+                            //Nothing useful in the result - play error message. Publish anyway as the points can be rendered in debugging mode.
+                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                        }
+
                         PublishSelectionResult(result);
                     }
                 }

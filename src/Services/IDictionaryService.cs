@@ -18,9 +18,6 @@ namespace JuliusSweetland.OptiKey.Services
         void RemoveEntryFromDictionary(string entry);
         void IncrementEntryUsageCount(string entry);
         void DecrementEntryUsageCount(string entry);
-        List<string> MapCaptureToEntries(List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
-            string reducedCapture, bool firstSequenceLetterIsReliable, bool lastSequenceLetterIsReliable, 
-            ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);
         Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues, 
             int minCount, string reliableFirstLetter, string reliableLastLetter,

@@ -423,95 +423,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Map Capture To Entries
 
-        public List<string> MapCaptureToEntries(
-            List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
-            string reducedSequence,
-            bool firstSequenceLetterIsReliable,
-            bool lastSequenceLetterIsReliable,
-            ref CancellationTokenSource cancellationTokenSource,
-            Action<Exception> exceptionHandler)
-        {
-            var matches = new List<string>();
-
-            try
-            {
-                //N.B. The timestamped points (and key values) are not currently used, but could be useful to improve accuracy
-
-                Log.DebugFormat("Mapping capture to dictionary entries with {0} timestamped points/key values and the reduced sequence: {1}",
-                    timestampedPointAndKeyValues != null ? timestampedPointAndKeyValues.Count : 0, reducedSequence);
-
-                if (reducedSequence != null && reducedSequence.Any())
-                {
-                    //Remove diacritics and make uppercase
-                    reducedSequence = reducedSequence.RemoveDiacritics().ToUpper();
-
-                    Log.DebugFormat("Removing diacritics leaves us with '{0}'", reducedSequence);
-
-                    //Reduce again - by removing diacritics we might now have adjacent 
-                    //letters which are the same (the dictionary hashes do not)
-                    var reducedAgainCharSequence = new List<Char>();
-                    foreach (char c in reducedSequence)
-                    {
-                        if (!reducedAgainCharSequence.Any() || !reducedAgainCharSequence[reducedAgainCharSequence.Count - 1].Equals(c))
-                        {
-                            reducedAgainCharSequence.Add(c);
-                        }
-                    }
-                    reducedSequence = new string(reducedAgainCharSequence.ToArray());
-
-                    Log.DebugFormat("Reducing the sequence after removing diacritics leaves us with '{0}'", reducedSequence);
-
-                    cancellationTokenSource = new CancellationTokenSource();
-
-                    GetHashes()
-                        .AsParallel()
-                        .WithCancellation(cancellationTokenSource.Token)
-                        .Where(s => !firstSequenceLetterIsReliable || s.First() == reducedSequence.First())
-                        .Where(s => !lastSequenceLetterIsReliable || s.Last() == reducedSequence.Last())
-                        .Select(hash =>
-                        {
-                            var lcs = reducedSequence.LongestCommonSubsequence(hash);
-                            return new
-                            {
-                                Hash = hash,
-                                Similarity = ((double)lcs / (double)hash.Length) * lcs,
-                                Lcs = lcs
-                            };
-                        })
-                        .OrderByDescending(x => x.Similarity)
-                        .ThenByDescending(x => x.Hash.Last() == reducedSequence.Last()) //Matching last letter
-                        .SelectMany(x => GetEntries(x.Hash))
-                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                        .ToList()
-                        .ForEach(matches.Add);
-                }
-
-                if (matches.Any())
-                {
-                    matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
-                    return matches;
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                Log.Error("Map captured letters to dictionary matches cancelled - returning nothing");
-            }
-            catch (AggregateException ae)
-            {
-                if (ae.InnerExceptions != null
-                    && ae.InnerExceptions.Any())
-                {
-                    var flattenedExceptions = ae.Flatten();
-
-                    Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
-
-                    exceptionHandler(flattenedExceptions);
-                }
-            }
-
-            return null;
-        }
-
         public Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
             int minCount, string reliableFirstLetter, string reliableLastLetter,
@@ -632,7 +543,7 @@ namespace JuliusSweetland.OptiKey.Services
                     .ForEach(matches.Add);
 
                 matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
-                return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches);
+                return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches.Any() ? matches : null);
             }
             catch (OperationCanceledException)
             {
