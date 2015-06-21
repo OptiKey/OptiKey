@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Text;
 using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -449,13 +450,6 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     //Clean 1st letter - no accents and ensure uppercase
                     reliableFirstChar = reliableFirstLetter.RemoveDiacritics().ToUpper().First();
-                    
-                    //Remove 1st letter from remaining body as it is used separately in the matching process
-                    if (charsWithCount.Any() 
-                        && charsWithCount.First().Item1 == reliableFirstChar.Value)
-                    {
-                        charsWithCount.RemoveAt(0);
-                    }
                 }
 
                 char? reliableLastChar = null;
@@ -463,52 +457,32 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     //Clean last letter - no accents and ensure uppercase
                     reliableLastChar = reliableLastLetter.RemoveDiacritics().ToUpper().First();
-
-                    //Remove last letter from remaining body as it is used separately in the matching process
-                    if (charsWithCount.Any()
-                        && charsWithCount.Last().Item1 == reliableLastChar.Value)
-                    {
-                        charsWithCount.RemoveAt(charsWithCount.Count - 1);
-                    }
                 }
 
-                //Filter out chars that don't meet the min count threshold
-                var charsWithCountAboveThreshold = charsWithCount.Where(cwc => cwc.Item2 >= minCount).ToList();
+                //Create string of reliable first/last and chars above the min count threshold
+                var thresholdFilteredString = ConvertToString(charsWithCount, minCount, reliableFirstChar, reliableLastChar);
 
-                //Count characters left after thresholding, including reliable first/last characters
-                var reliableFirstAndLastAreTheSameChar = reliableFirstChar != null && reliableLastChar != null && reliableFirstChar.Value == reliableLastChar.Value;
-                var remainingCharCount = charsWithCountAboveThreshold.Any() 
-                    ? (reliableFirstChar != null ? 1 : 0) + charsWithCountAboveThreshold.Count + (reliableLastChar != null ? 1 : 0)
-                    : reliableFirstAndLastAreTheSameChar ? 1 : (reliableFirstChar != null ? 1 : 0) + (reliableLastChar != null ? 1 : 0);
-
-                if (remainingCharCount == 0)
+                if (thresholdFilteredString.Length == 0)
                 {
                     Log.Debug("Capture reduces to nothing useful.");
                     return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, null);
                 }
 
-                if (remainingCharCount == 1)
+                if (thresholdFilteredString.Length == 1)
                 {
                     Log.Debug("Capture reduces to a single letter.");
-                    string singleLetter = 
-                        reliableFirstChar != null ? reliableFirstChar.Value.ToString()
-                        : charsWithCountAboveThreshold.Count == 1 ? charsWithCountAboveThreshold.First().Item1.ToString()
-                            : reliableLastChar != null ? reliableLastChar.Value.ToString() 
-                                : null;
-
-                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, singleLetter, null);
+                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, thresholdFilteredString, null);
                 }
 
-                var thresholdFilteredString = new string(charsWithCountAboveThreshold.Select(cwc => cwc.Item1).ToArray());
-
-                double meanCount = charsWithCount.Any() ? charsWithCount.Average(cwc => cwc.Item2) : 0;
-                var thresholdAndMeanFilteredString = new string(charsWithCountAboveThreshold.Where(cwc => (double)cwc.Item2 > meanCount).Select(cwc => cwc.Item1).ToArray());
-                if (!thresholdAndMeanFilteredString.Any() || thresholdAndMeanFilteredString == thresholdFilteredString)
+                //Create string of reliable first/last and chars above the mean count
+                int meanCount = charsWithCount.Any() ? (int)Math.Floor(charsWithCount.Average(cwc => cwc.Item2)) : 0;
+                var meanFilteredString = ConvertToString(charsWithCount, meanCount, reliableFirstChar, reliableLastChar);
+                if (meanFilteredString.Length == 0 || meanFilteredString == thresholdFilteredString)
                 {
-                    thresholdAndMeanFilteredString = null;
+                    meanFilteredString = null;
                 }
 
-                Log.DebugFormat("Attempting to matching with significant letters: '{0}' and all letters: '{1}'", thresholdAndMeanFilteredString, thresholdFilteredString);
+                Log.DebugFormat("Attempting to match using meanFilteredString: '{0}' and thresholdFilteredString: '{1}'", meanFilteredString, thresholdFilteredString);
 
                 cancellationTokenSource = new CancellationTokenSource();
                 var matches = new List<string>();
@@ -521,9 +495,9 @@ namespace JuliusSweetland.OptiKey.Services
                     .Select(hash =>
                     {
                         var lcsWithThresholdFilteredString = thresholdFilteredString.LongestCommonSubsequence(hash);
-                        var lcsWithThresholdAndMeanFilteredString = thresholdAndMeanFilteredString == null 
-                            ? 0 
-                            : thresholdAndMeanFilteredString.LongestCommonSubsequence(hash);
+                        var lcsWithThresholdAndMeanFilteredString = meanFilteredString == null 
+                            ? 0
+                            : meanFilteredString.LongestCommonSubsequence(hash);
                         
                         return new
                         {
@@ -561,6 +535,30 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             return null;
+        }
+
+        private string ConvertToString(IEnumerable<Tuple<char, int>> charsWithCount, int threshold, char? firstChar, char? lastChar)
+        {
+            var sb = new StringBuilder();
+            var charsAboveThresold = new string(charsWithCount.Where(cwc => (double) cwc.Item2 >= threshold).Select(cwc => cwc.Item1).ToArray());
+            
+            //Ensure first character is the 'firstChar' if supplied
+            if (firstChar != null
+                && (charsAboveThresold.Length == 0 || charsAboveThresold.First() != firstChar.Value))
+            {
+                sb.Append(firstChar.Value);
+            }
+            
+            sb.Append(charsAboveThresold);
+
+            //Ensure last character is the 'lastChar' if supplied
+            if (lastChar != null
+                && (charsAboveThresold.Length == 0 || charsAboveThresold.Last() != lastChar.Value))
+            {
+                sb.Append(lastChar.Value);
+            }
+
+            return sb.ToString();
         }
 
         #endregion
