@@ -227,28 +227,32 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         /// <summary>
         /// Returns an ordered list of char/int tuples with the input characters in order and the count from each repeating group
-        /// e.g. AAABBC would convert to {[A,3],[B,2],[C,1]}.
+        /// e.g. ăăăBBc would convert to {[A,ă,3],[B,B,2],[C,c,1]}.
         /// Character comparisons use the default equality logic, so they are case sensitive.
         /// </summary>
         /// <returns></returns>
-        public static List<Tuple<char, int>> ToListWithCounts(this IEnumerable<char> chars)
+        public static List<Tuple<char, char, int>> ToCharListWithCounts(this IEnumerable<string> input)
         {
-            var result = new List<Tuple<char, int>>();
+            var result = new List<Tuple<char, char, int>>();
 
-            var charList = chars.ToList();
-
-            for (int index = 0; index < charList.Count; index++)
+            var cleansedChars = input.Select(s => s.RemoveDiacritics().ToUpper().First()).ToList();
+            var uncleansedChars = input.Select(s => s.First()).ToList();
+            
+            for (int index = 0; index < cleansedChars.Count; index++)
             {
-                var character = charList[index];
+                var cleansedCharacter = cleansedChars[index];
+                var uncleansedCharacter = uncleansedChars[index];
+
                 var count = 1;
                 index++;
-                while (index < charList.Count
-                    && charList[index] == character)
+                while (index < cleansedChars.Count
+                    && cleansedChars[index] == cleansedCharacter)
                 {
                     count++;
                     index++;
                 }
-                result.Add(new Tuple<char, int>(character, count));
+                
+                result.Add(new Tuple<char, char, int>(cleansedCharacter, uncleansedCharacter, count));
                 index--;
             }
 
