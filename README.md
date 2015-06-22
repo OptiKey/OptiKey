@@ -9,7 +9,7 @@ OptiKey can be downloaded for free and is fully open-source.
 
 # Getting Started
 
-[**The OptiKey WIKI**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
+[**The OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
 
 * If you want to install and use OptiKey on Windows then download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
 * If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip).
