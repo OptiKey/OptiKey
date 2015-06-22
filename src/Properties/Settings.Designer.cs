@@ -973,5 +973,21 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["DisableKeyboardSimulationWhileMouseKeyboardIsOpen"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int AutoCloseCrashMessageSeconds
+        {
+            get
+            {
+                return ((int)(this["AutoCloseCrashMessageSeconds"]));
+            }
+            set
+            {
+                this["AutoCloseCrashMessageSeconds"] = value;
+            }
+        }
     }
 }

@@ -442,7 +442,7 @@ namespace JuliusSweetland.OptiKey.Services
                     ? timestampedPointAndKeyValues
                         .Where(tp => tp.Value.StringIsLetter)
                         .Select(tp => tp.Value.String)
-                        .ToCharFrequencyList()
+                        .ToCharListWithCounts()
                     : new List<Tuple<char, char, int>>();
                 
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
