@@ -973,20 +973,30 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["DisableKeyboardSimulationWhileMouseKeyboardIsOpen"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int AutoCloseCrashMessageSeconds
-        {
-            get
-            {
+        public int AutoCloseCrashMessageSeconds {
+            get {
                 return ((int)(this["AutoCloseCrashMessageSeconds"]));
             }
-            set
-            {
+            set {
                 this["AutoCloseCrashMessageSeconds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool AutoRestartAfterCrash {
+            get {
+                return ((bool)(this["AutoRestartAfterCrash"]));
+            }
+            set {
+                this["AutoRestartAfterCrash"] = value;
             }
         }
     }

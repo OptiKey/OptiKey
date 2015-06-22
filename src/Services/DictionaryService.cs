@@ -505,6 +505,7 @@ namespace JuliusSweetland.OptiKey.Services
             catch (OperationCanceledException)
             {
                 Log.Error("Map capture to dictionary matches cancelled - returning nothing");
+                return null;
             }
             catch (AggregateException ae)
             {
@@ -515,9 +516,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Log.Error("Aggregate exception encountered. Flattened exceptions:", flattenedExceptions);
                     exceptionHandler(flattenedExceptions);
                 }
+                return null;
             }
-
-            return null;
         }
 
         /// <summary>

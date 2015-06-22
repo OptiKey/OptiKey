@@ -165,8 +165,6 @@ namespace JuliusSweetland.OptiKey
                 //Show the main window
                 mainWindow.Show();
 
-                throw new ApplicationException("THIS IS A TEST EXCEPTION - IGNORE THIS");
-
                 await ShowSplashScreen(inputService, audioService, mainViewModel);
                 inputService.State = RunningStates.Running; //Start the input service
                 await CheckForUpdates(inputService, audioService, mainViewModel);

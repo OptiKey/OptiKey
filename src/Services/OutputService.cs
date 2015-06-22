@@ -649,6 +649,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (!string.IsNullOrEmpty(lastTextChange)
                     && lastTextChange.Length > 1)
                 {
+                    //We are swapping out a multi-key capture, or a swapped in suggestion for another suggestion
                     var replacedText = lastTextChange;
                     SwapText(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
                     var newSuggestions = suggestionService.Suggestions.ToList();
@@ -657,6 +658,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
+                    //We are auto-completing a word with a suggestion
                     if (!string.IsNullOrEmpty(Text))
                     {
                         var inProgressWord = Text.InProgressWord(Text.Length);

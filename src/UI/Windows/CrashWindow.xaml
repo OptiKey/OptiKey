@@ -12,8 +12,8 @@
         WindowStartupLocation="CenterScreen">
 
     <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10" Margin="5">
-        <TextBlock Margin="10" TextWrapping="Wrap" TextAlignment="Center"
+        <TextBlock x:Name="TxtCrashMessage" Margin="10" TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=CrashMessageFontSize}"
-                   Text="Uh-oh! OptiKey has tripped over its feet and crashed!&#x0a;&#x0a;OptiKey will automatically restart shortly..."/>
+                   Text="Bad news - OptiKey has tripped over its feet and has to close down.&#x0a;&#x0a;Sorry for the inconvenience."/>
     </Border>
 </Window>
