@@ -17,19 +17,7 @@ OptiKey can be downloaded for free and is fully open-source.
 
 # Supported Platforms
 
-OptiKey target the .Net 4.5 Framework, which is available from Windows Vista SP2 onwards. I believe this is the current list, but it should run anywhere the .Net 4.5 Framework can be installed:
-
-* Windows Vista, Service Pack 2
-* Windows 7
-* Windows 8
-* Windows 8.1
-* Windows 8.1, Update 1
-* Windows Server 2008, Service Pack 2
-* Windows Server 2008 R2, Service Pack 1
-* Windows Home Server 2011
-* Windows Server 2012
-* Windows Server 2012 R2
-* and anything later, so Windows 10...
+OptiKey targets the .Net 4.5 Framework, which is available for  Windows Vista SP2 onwards. It was designed to run on Windows 8/8.1.
 
 # Problems?
 
