@@ -6,6 +6,7 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using EyeXFramework.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -388,8 +389,29 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     bool saveDictionary = false;
 
-                    foreach (var match in entries[hash].Where(dictionaryEntry =>
-                                string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)))
+                    var matches = new List<DictionaryEntry>();
+                    var exactMatch = entries[hash].FirstOrDefault(de => de.Entry == text);
+                    if (exactMatch != null)
+                    {
+                        matches.Add(exactMatch);
+                    }
+                    else if(!text.All(Char.IsUpper))
+                    {
+                        //Text which is not all in caps could not have come from an all caps dictionary entry
+                        var matchesWhichAreNotAllCaps = entries[hash].Where(dictionaryEntry =>
+                            string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)
+                            && !dictionaryEntry.Entry.All(Char.IsUpper));
+                        matches.AddRange(matchesWhichAreNotAllCaps);
+                    }
+                    else
+                    {
+                        //The text does not have an exact match and is not all caps, so match ignoring case
+                        var allInvariantMatches = entries[hash].Where(dictionaryEntry =>
+                            string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase));
+                        matches.AddRange(allInvariantMatches);
+                    }
+
+                    foreach (var match in matches)
                     {
                         if (isIncrement)
                         {
