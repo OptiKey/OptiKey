@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
+using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
@@ -13,11 +14,25 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private int? currentWaveOutVolume; //Volumes are scaled from 0 to 100
+
         #endregion
 
         #region Events
 
         public event EventHandler<Exception> Error;
+
+        #endregion
+
+        #region Ctor
+
+        public AudioService()
+        {
+            uint tempWavOutVol = 0;
+            PInvoke.waveOutGetVolume(IntPtr.Zero, out tempWavOutVol);
+            var vol = (ushort)(tempWavOutVol & 0x0000ffff);
+            currentWaveOutVolume = vol / (ushort.MaxValue / 100);
+        }
 
         #endregion
 
@@ -76,13 +91,31 @@ namespace JuliusSweetland.OptiKey.Services
             return availableVoices;
         }
 
-        public void PlaySound(string soundLocation)
+        public void PlaySound(string soundLocation, int volume)
         {
             if (string.IsNullOrEmpty(soundLocation)) return;
 
             try
             {
-                Log.DebugFormat("Playing sound '{0}'", soundLocation);
+                Log.DebugFormat("Playing sound '{0}' at volume", soundLocation, volume);
+
+                try
+                {
+                    if (currentWaveOutVolume == null || currentWaveOutVolume.Value != volume)
+                    {
+                        int newVolume = ((ushort.MaxValue / 100) * volume);
+                        uint newVolumeAllChannels = (((uint)newVolume & 0x0000ffff) | ((uint)newVolume << 16)); //Set the volume on left and right channels
+                        PInvoke.waveOutSetVolume(IntPtr.Zero, newVolumeAllChannels);
+                        currentWaveOutVolume = volume;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    var customException = new ApplicationException(
+                        string.Format("There was a problem setting the wave out volume to '{0}'", volume), exception);
+
+                    PublishError(this, customException);
+                }
 
                 var player = new System.Media.SoundPlayer(soundLocation);
                 player.Play();

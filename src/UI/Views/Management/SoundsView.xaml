@@ -34,13 +34,13 @@
                       
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Volume:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Right"
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding SpeechVolume, Mode=TwoWay}" />
             
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Rate:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Right"
                                             Minimum="-10" Maximum="10" Interval="1"
                                             Value="{Binding SpeechRate, Mode=TwoWay}" />
                 </Grid>
@@ -65,67 +65,187 @@
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Info:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="0" Grid.Column="1" 
-                              ItemsSource="{Binding InfoSoundFiles}"
+                    <Grid Grid.Row="0" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
-    
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding InfoSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding InfoSoundPlayCommand}"/>
+                    </Grid>
+                    
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Error:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="1" Grid.Column="1" 
-                              ItemsSource="{Binding ErrorSoundFiles}"
+                    <Grid Grid.Row="1" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
-
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding ErrorSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding ErrorSoundPlayCommand}"/>
+                    </Grid>
+                    
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Key Selection:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="2" Grid.Column="1" 
-                              ItemsSource="{Binding KeySelectionSoundFiles}"
+                    <Grid Grid.Row="2" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeySelectionSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding KeySelectionSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding KeySelectionSoundPlayCommand}"/>
+                    </Grid>
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Muli-key selection starting:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="3" Grid.Column="1" 
-                              ItemsSource="{Binding MultiKeySelectionCaptureStartSoundFiles}"
+                    <Grid Grid.Row="3" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MultiKeySelectionCaptureStartSoundFile, Mode=TwoWay}" />
-            
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MultiKeySelectionCaptureStartSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MultiKeySelectionCaptureStartSoundPlayCommand}"/>
+                    </Grid>
+
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="Muli-key selection ending:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="4" Grid.Column="1" 
-                              ItemsSource="{Binding MultiKeySelectionCaptureEndSoundFiles}"
+                    <Grid Grid.Row="4" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MultiKeySelectionCaptureEndSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MultiKeySelectionCaptureEndSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MultiKeySelectionCaptureEndSoundPlayCommand}"/>
+                    </Grid>
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="Mouse click:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="5" Grid.Column="1" 
+                    <Grid Grid.Row="5" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
                               ItemsSource="{Binding MouseClickSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MouseClickSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseClickSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MouseClickSoundPlayCommand}"/>
+                    </Grid>
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="Mouse double click:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="6" Grid.Column="1" 
+                    <Grid Grid.Row="6" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
                               ItemsSource="{Binding MouseDoubleClickSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MouseDoubleClickSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseDoubleClickSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MouseDoubleClickSoundPlayCommand}"/>
+                    </Grid>
 
                     <TextBlock Grid.Row="7" Grid.Column="0" Text="Mouse scroll:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="7" Grid.Column="1" 
+                    <Grid Grid.Row="7" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
                               ItemsSource="{Binding MouseScrollSoundFiles}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MouseScrollSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseScrollSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MouseScrollSoundPlayCommand}"/>
+                    </Grid>
                 </Grid>
             </GroupBox>
         </Grid>

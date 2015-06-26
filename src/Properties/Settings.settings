@@ -114,19 +114,19 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="ErrorSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Error1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Tone2.wav</Value>
     </Setting>
     <Setting Name="InfoSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Info1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Tone1.wav</Value>
     </Setting>
     <Setting Name="KeySelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\KeySelection1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Bubble1.wav</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureEnd1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Falling1.wav</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureStartSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\MultiKeyCaptureStart1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Rising1.wav</Value>
     </Setting>
     <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
@@ -226,6 +226,30 @@
     </Setting>
     <Setting Name="AutoRestartAfterCrash" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ErrorSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="InfoSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="KeySelectionSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseClickSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseDoubleClickSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseScrollSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureEndSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureStartSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
   </Settings>
 </SettingsFile>

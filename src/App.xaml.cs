@@ -445,7 +445,7 @@ namespace JuliusSweetland.OptiKey
                 message.AppendLine("Website: www.optikey.org");
 
                 inputService.State = RunningStates.Paused;
-                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
                     "OptiKey : Type · Click · Speak", 
                     message.ToString(), 
@@ -500,7 +500,7 @@ namespace JuliusSweetland.OptiKey
                                     currentVersion, latestAvailableVersion);
 
                                 inputService.State = RunningStates.Paused;
-                                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                 mainViewModel.RaiseToastNotification("UPDATE AVAILABLE!",
                                     string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
                                     NotificationTypes.Normal,

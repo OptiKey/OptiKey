@@ -432,9 +432,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <Content Include="Resources\Sounds\MultiKeyCaptureStart2.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -520,16 +517,46 @@
     <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\MainApplicationIcon.svg" />
-    <Content Include="Resources\Sounds\Error1.wav">
+    <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\Error2.wav">
+    <Content Include="Resources\Sounds\Click3.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\Info1.wav">
+    <Content Include="Resources\Sounds\Click4.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\Info2.wav">
+    <Content Include="Resources\Sounds\Falling1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Falling2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDoubleClick2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Other1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Rising1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Rising2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone3.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\MouseClick1.wav">
@@ -541,19 +568,10 @@
     <Content Include="Resources\Sounds\MouseScroll1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\MultiKeyCaptureEnd1.wav">
+    <Content Include="Resources\Sounds\Bubble1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Sounds\MultiKeyCaptureEnd2.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sounds\MultiKeyCaptureStart1.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sounds\KeySelection1.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Sounds\KeySelection2.wav">
+    <Content Include="Resources\Sounds\Click1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icons\SVG Source Files\DownArrow.svg" />

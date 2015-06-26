@@ -26,5 +26,11 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("gdi32.dll")]
         public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+
+        [DllImport("winmm.dll")]
+        public static extern int waveOutGetVolume(IntPtr hwo, out uint dwVolume);
+
+        [DllImport("winmm.dll")]
+        public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
     }
 } 

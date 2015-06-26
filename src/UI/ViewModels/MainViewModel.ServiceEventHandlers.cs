@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     if (!capturingStateManager.CapturingMultiKeySelection)
                     {
-                        audioService.PlaySound(Settings.Default.KeySelectionSoundFile);
+                        audioService.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume);
                     }
 
                     if (KeySelection != null)
@@ -209,12 +209,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     {
                                         if (calibrationResult.Success)
                                         {
-                                            audioService.PlaySound(Settings.Default.InfoSoundFile);
+                                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                             RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
                                         }
                                         else
                                         {
-                                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                                             RaiseToastNotification("Uh-oh!", calibrationResult.Exception != null
                                                     ? calibrationResult.Exception.Message
                                                     : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs", 
@@ -335,7 +335,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     outputService.LeftMouseButtonDoubleClick(fp);
                                 };
 
@@ -369,9 +369,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             {
                                                 Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                                 {
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                                     outputService.LeftMouseButtonDown(fp1);
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                                     outputService.LeftMouseButtonUp(fp2);
                                                 };
 
@@ -434,7 +434,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     outputService.LeftMouseButtonClick(fp);
                                 };
 
@@ -454,7 +454,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     outputService.MiddleMouseButtonClick(fp);
                                 };
 
@@ -474,7 +474,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     outputService.RightMouseButtonClick(fp);
                                 };
 
@@ -520,7 +520,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
 
@@ -540,7 +540,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelDownAndLeft(
                                         Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
@@ -561,7 +561,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelDownAndRight(
                                         Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
@@ -582,7 +582,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
@@ -602,7 +602,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
@@ -622,7 +622,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
@@ -642,7 +642,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
@@ -662,7 +662,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
                                 };
                                     
@@ -953,7 +953,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
             inputService.State = RunningStates.Paused;
-            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
             RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => { inputService.State = RunningStates.Running; });
         }
     }

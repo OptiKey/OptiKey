@@ -242,7 +242,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
                     inputService.State = RunningStates.Paused;
-                    audioService.PlaySound(Settings.Default.InfoSoundFile);
+                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                     RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
                         NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
                 }
@@ -252,7 +252,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
                 inputService.State = RunningStates.Paused;
-                audioService.PlaySound(Settings.Default.InfoSoundFile);
+                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary.", 
                     NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
             }

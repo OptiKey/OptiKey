@@ -192,7 +192,7 @@ namespace JuliusSweetland.OptiKey.Services
                         else
                         {
                             Log.Debug("Selection mode is KEY, but the trigger occurred off a key or over a disabled key.");
-                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                         }
                     }
                     else if (SelectionMode == SelectionModes.Point)
@@ -351,7 +351,7 @@ namespace JuliusSweetland.OptiKey.Services
                             (result.Item4 == null || !result.Item4.Any()))
                         {
                             //Nothing useful in the result - play error message. Publish anyway as the points can be rendered in debugging mode.
-                            audioService.PlaySound(Settings.Default.ErrorSoundFile);
+                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                         }
 
                         PublishSelectionResult(result);

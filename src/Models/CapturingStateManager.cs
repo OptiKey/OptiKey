@@ -26,9 +26,13 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     Log.DebugFormat("CapturingMultiKeySelection changed to {0}", value);
 
-                    audioService.PlaySound(value
-                        ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
-                        : Settings.Default.MultiKeySelectionCaptureEndSoundFile);
+                    audioService.PlaySound(
+                        value
+                            ? Settings.Default.MultiKeySelectionCaptureStartSoundFile
+                            : Settings.Default.MultiKeySelectionCaptureEndSoundFile,
+                        value
+                            ? Settings.Default.MultiKeySelectionCaptureStartSoundVolume
+                            : Settings.Default.MultiKeySelectionCaptureEndSoundVolume);
                 }
             }
         }

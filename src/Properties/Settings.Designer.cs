@@ -507,7 +507,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Error1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Tone2.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string ErrorSoundFile {
             get {
@@ -520,7 +520,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Info1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Tone1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string InfoSoundFile {
             get {
@@ -533,7 +533,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\KeySelection1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Bubble1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string KeySelectionSoundFile {
             get {
@@ -546,7 +546,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureEnd1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Falling1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MultiKeySelectionCaptureEndSoundFile {
             get {
@@ -559,7 +559,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\MultiKeyCaptureStart1.wav")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\Sounds\\Rising1.wav")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string MultiKeySelectionCaptureStartSoundFile {
             get {
@@ -997,6 +997,110 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["AutoRestartAfterCrash"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int ErrorSoundVolume {
+            get {
+                return ((int)(this["ErrorSoundVolume"]));
+            }
+            set {
+                this["ErrorSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int InfoSoundVolume {
+            get {
+                return ((int)(this["InfoSoundVolume"]));
+            }
+            set {
+                this["InfoSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int KeySelectionSoundVolume {
+            get {
+                return ((int)(this["KeySelectionSoundVolume"]));
+            }
+            set {
+                this["KeySelectionSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseClickSoundVolume {
+            get {
+                return ((int)(this["MouseClickSoundVolume"]));
+            }
+            set {
+                this["MouseClickSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseDoubleClickSoundVolume {
+            get {
+                return ((int)(this["MouseDoubleClickSoundVolume"]));
+            }
+            set {
+                this["MouseDoubleClickSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MouseScrollSoundVolume {
+            get {
+                return ((int)(this["MouseScrollSoundVolume"]));
+            }
+            set {
+                this["MouseScrollSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MultiKeySelectionCaptureEndSoundVolume {
+            get {
+                return ((int)(this["MultiKeySelectionCaptureEndSoundVolume"]));
+            }
+            set {
+                this["MultiKeySelectionCaptureEndSoundVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MultiKeySelectionCaptureStartSoundVolume {
+            get {
+                return ((int)(this["MultiKeySelectionCaptureStartSoundVolume"]));
+            }
+            set {
+                this["MultiKeySelectionCaptureStartSoundVolume"] = value;
             }
         }
     }

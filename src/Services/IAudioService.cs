@@ -6,6 +6,6 @@ namespace JuliusSweetland.OptiKey.Services
     {
         void Speak(string textToSpeak, int? volume, int? rate, string voice);
         List<string> GetAvailableVoices();
-        void PlaySound(string soundLocation);
+        void PlaySound(string soundLocation, int volume);
     }
 }
