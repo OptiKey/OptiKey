@@ -234,7 +234,7 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="KeySelectionSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="MouseClickSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -246,10 +246,10 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureStartSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
   </Settings>
 </SettingsFile>
