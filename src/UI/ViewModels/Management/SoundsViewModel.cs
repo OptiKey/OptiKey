@@ -77,7 +77,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Mouse Click 1", @"Resources\Sounds\MouseClick1.wav"),
-                    new KeyValuePair<string, string>("Mouse Click 2", @"Resources\Sounds\MouseClick2.wav")
+                    new KeyValuePair<string, string>("Mouse Click 2", @"Resources\Sounds\MouseClick2.wav"),
+                    new KeyValuePair<string, string>("Mouse Click 3", @"Resources\Sounds\MouseClick3.wav"),
+                    new KeyValuePair<string, string>("Mouse Click 4", @"Resources\Sounds\MouseClick4.wav")
                 };
             }
         }
@@ -90,7 +92,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, string>("None", null),
                     new KeyValuePair<string, string>("Mouse Double Click 1", @"Resources\Sounds\MouseDoubleClick1.wav"),
-                    new KeyValuePair<string, string>("Mouse Double Click 2", @"Resources\Sounds\MouseDoubleClick2.wav")
+                    new KeyValuePair<string, string>("Mouse Double Click 2", @"Resources\Sounds\MouseDoubleClick2.wav"),
+                    new KeyValuePair<string, string>("Mouse Double Click 3", @"Resources\Sounds\MouseDoubleClick3.wav")
                 };
             }
         }
@@ -102,7 +105,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("None", null),
-                    new KeyValuePair<string, string>("Mouse Scroll 1", @"Resources\Sounds\MouseScroll1.wav")
+                    new KeyValuePair<string, string>("Mouse Scroll 1", @"Resources\Sounds\MouseScroll1.wav"),
+                    new KeyValuePair<string, string>("Mouse Scroll 2", @"Resources\Sounds\MouseScroll2.wav"),
+                    new KeyValuePair<string, string>("Mouse Scroll 3", @"Resources\Sounds\MouseScroll3.wav"),
+                    new KeyValuePair<string, string>("Mouse Scroll 4", @"Resources\Sounds\MouseScroll4.wav"),
+                    new KeyValuePair<string, string>("Mouse Scroll 5", @"Resources\Sounds\MouseScroll5.wav"),
+                    new KeyValuePair<string, string>("Mouse Scroll 6", @"Resources\Sounds\MouseScroll6.wav")
                 };
             }
         }

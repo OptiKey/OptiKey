@@ -120,7 +120,7 @@
       <Value Profile="(Default)">Resources\Sounds\Tone1.wav</Value>
     </Setting>
     <Setting Name="KeySelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Resources\Sounds\Bubble1.wav</Value>
+      <Value Profile="(Default)">Resources\Sounds\Click1.wav</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Falling1.wav</Value>

@@ -34,13 +34,13 @@
                       
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Volume:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Right"
+                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding SpeechVolume, Mode=TwoWay}" />
             
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Rate:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Right"
+                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="-10" Maximum="10" Interval="1"
                                             Value="{Binding SpeechRate, Mode=TwoWay}" />
                 </Grid>
