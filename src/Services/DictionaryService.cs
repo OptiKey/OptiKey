@@ -483,12 +483,12 @@ namespace JuliusSweetland.OptiKey.Services
                         return false;
 
                     return true;
-                });
-                int thresholdCount = charsWithCount.Any() ? (int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)) : 0;
-                if (thresholdCount < minCount)
-                {
-                    thresholdCount = minCount; //Coerce threshold up to minimum count from settings
-                }
+                }).ToList();
+
+                int thresholdCount = charsWithCountWithoutReliableFirstOrLast.Any()
+                    ? Math.Max((int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)), minCount) //Coerce threshold up to minimum count from settings
+                    : minCount;
+
                 var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount, 
                     reliableFirstCharCleansed, reliableFirstCharUncleansed, reliableLastCharCleansed, reliableLastCharUncleansed);
 
