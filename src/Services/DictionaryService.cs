@@ -472,7 +472,19 @@ namespace JuliusSweetland.OptiKey.Services
                 var reliableFirstCharUncleansed = reliableFirstLetter != null ? reliableFirstLetter.First() : (char?)null;
                 var reliableLastCharCleansed = reliableLastLetter != null ? reliableLastLetter.RemoveDiacritics().ToUpper().First() : (char?)null;
                 var reliableLastCharUncleansed = reliableLastLetter != null ? reliableLastLetter.First() : (char?)null;
-                int thresholdCount = charsWithCount.Any() ? (int)Math.Floor(charsWithCount.Average(cwc => cwc.Item3)) : 0;
+
+                //Calculate threshold as mean of all letters without reliable first/last (as those selections can skew the average)
+                var charsWithCountWithoutReliableFirstOrLast = charsWithCount.Where((cwc, index) =>
+                {
+                    if (index == 0 && reliableFirstCharCleansed != null && cwc.Item1 == reliableFirstCharCleansed.Value)
+                        return false;
+
+                    if (index == charsWithCount.Count - 1 && reliableLastCharCleansed != null && cwc.Item1 == reliableLastCharCleansed.Value)
+                        return false;
+
+                    return true;
+                });
+                int thresholdCount = charsWithCount.Any() ? (int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)) : 0;
                 if (thresholdCount < minCount)
                 {
                     thresholdCount = minCount; //Coerce threshold up to minimum count from settings
