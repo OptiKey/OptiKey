@@ -128,14 +128,19 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
-        public static List<KeyValue> LetterKeys
+        private static List<KeyValue> multiKeySelectionKeys;
+        public static List<KeyValue> MultiKeySelectionKeys
         {
             get
             {
-                return "abcdefghijklmnopqrstuvwxyz"
-                    .ToCharArray()
-                    .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
-                    .ToList();
+                if (multiKeySelectionKeys == null)
+                {
+                    multiKeySelectionKeys = "abcdefghijklmnopqrstuvwxyz"
+                        .ToCharArray()
+                        .Select(c => new KeyValue {String = c.ToString(CultureInfo.InvariantCulture)})
+                        .ToList();
+                }
+                return multiKeySelectionKeys;
             }
         }
     }

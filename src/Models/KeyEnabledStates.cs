@@ -18,7 +18,6 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
         private readonly IWindowStateService mainWindowStateService;
-        private bool repeatLastMouseActionIsValid;
 
         #endregion
 
@@ -162,7 +161,7 @@ namespace JuliusSweetland.OptiKey.Models
                 
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (capturingStateManager.CapturingMultiKeySelection
-                    && !KeyValues.LetterKeys.Contains(keyValue))
+                    && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
                 {
                     return false;
                 }
