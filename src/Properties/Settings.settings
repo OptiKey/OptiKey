@@ -33,7 +33,7 @@
       <Value Profile="(Default)">60</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:01.5000000</Value>
+      <Value Profile="(Default)">00:00:01.2500000</Value>
     </Setting>
     <Setting Name="GazeTrackerUdpPort" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6666</Value>
@@ -57,7 +57,7 @@
       <Value Profile="(Default)">BritishEnglish</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:01.5000000</Value>
+      <Value Profile="(Default)">00:00:01.2500000</Value>
     </Setting>
     <Setting Name="MainWindowHeight" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
@@ -141,7 +141,7 @@
       <Value Profile="(Default)">00:00:00.7500000</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00.1000000</Value>
+      <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.2500000</Value>
@@ -250,6 +250,15 @@
     </Setting>
     <Setting Name="MultiKeySelectionCaptureStartSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="SelectionProgressIndicatorShrinksToPercentageOfInitialSize" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.2</Value>
+    </Setting>
+    <Setting Name="SelectionProgressIndicatorShrinks" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SelectionProgressIndicatorFillsPie" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

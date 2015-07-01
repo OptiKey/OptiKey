@@ -177,7 +177,7 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="KeySelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+            <Style x:Key="KeySelectionProgressStyle" TargetType="{x:Type controls:ProgressIndicator}">
                 <Setter Property="Fill" Value="{StaticResource KeySelectionProgressBrush}" />
                 <Setter Property="MaxValue" Value="1" />
                 <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
@@ -292,7 +292,7 @@
                                                     <ColumnDefinition Width="4*" />
                                                     <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
-                                                <controls:ProgressPie Grid.ColumnSpan="3" 
+                                                <controls:ProgressIndicator Grid.ColumnSpan="3" 
                                                                       Style="{StaticResource KeySelectionProgressStyle}" />
                                                 <Viewbox Grid.Column="1">
                                                     <Grid>
@@ -467,7 +467,7 @@
                 </Style.Triggers>
             </Style>
 
-            <Style x:Key="PointSelectionProgressStyle" TargetType="{x:Type controls:ProgressPie}">
+            <Style x:Key="PointSelectionProgressStyle" TargetType="{x:Type controls:ProgressIndicator}">
                 <Setter Property="Fill" Value="{StaticResource PointSelectionProgressBrush}" />
                 <Setter Property="MaxValue" Value="1" />
                 <Setter Property="Value" Value="{Binding Path=SelectionProgress, RelativeSource={RelativeSource AncestorType={x:Type controls:CursorPopup}}, Mode=OneWay}" />
@@ -485,7 +485,7 @@
                         <ControlTemplate TargetType="{x:Type controls:Cursor}">
                             <Grid>
                                 <Path Style="{StaticResource CursorIconStyle}" />
-                                <controls:ProgressPie Style="{StaticResource PointSelectionProgressStyle}" />
+                                <controls:ProgressIndicator Style="{StaticResource PointSelectionProgressStyle}" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>

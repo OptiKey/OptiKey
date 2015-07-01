@@ -3,18 +3,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
-    public class ProgressPie : Canvas
+    public class ProgressIndicator : Canvas
     {
-        public ProgressPie()
+        public ProgressIndicator()
         {
             SizeChanged += (sender, args) => Render();
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof (double), typeof (ProgressPie),
+            DependencyProperty.Register("Value", typeof (double), typeof (ProgressIndicator),
                 new PropertyMetadata(default(double), PropertyChangedCallback));
 
         public double Value
@@ -24,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(ProgressPie),
+            DependencyProperty.Register("MaxValue", typeof(double), typeof(ProgressIndicator),
                 new PropertyMetadata(100.0, PropertyChangedCallback));
 
         public double MaxValue
@@ -34,7 +35,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill", typeof (Brush), typeof (ProgressPie),
+            DependencyProperty.Register("Fill", typeof (Brush), typeof (ProgressIndicator),
                 new PropertyMetadata(default(Brush), PropertyChangedCallback));
 
         public Brush Fill
@@ -46,7 +47,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private static void PropertyChangedCallback(
             DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var progressPie = dependencyObject as ProgressPie;
+            var progressPie = dependencyObject as ProgressIndicator;
             if (progressPie != null)
             {
                 progressPie.Render();
@@ -55,10 +56,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void Render()
         {
-            var angle = Value * 360 / MaxValue;
+            var angle = Settings.Default.SelectionProgressIndicatorFillsPie
+                ? (Value/MaxValue) * 360
+                : 360;
+            var sizeFactor = Settings.Default.SelectionProgressIndicatorShrinks && Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize < 1
+                ? ((MaxValue - Value) * (1 - Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize)) + Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize
+                : 1;
             var centreX = ActualWidth / 2;
             var centreY = ActualHeight / 2;
-            var radius = Math.Min(centreX, centreY);
+            var radius = Math.Min(centreX, centreY) * sizeFactor;
 
             Children.Clear();
 

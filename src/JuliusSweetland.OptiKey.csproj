@@ -279,7 +279,7 @@
     <Compile Include="UI\Controls\MagnifyPopup.cs" />
     <Compile Include="UI\Controls\CursorPopup.cs" />
     <Compile Include="UI\Controls\PointVisualiser.cs" />
-    <Compile Include="UI\Controls\ProgressPie.cs" />
+    <Compile Include="UI\Controls\ProgressIndicator.cs" />
     <Compile Include="UI\Controls\QuestionText.cs" />
     <Compile Include="UI\Controls\Scratchpad.cs" />
     <Compile Include="UI\Controls\Key.cs" />
@@ -428,8 +428,8 @@
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <Resource Include="Resources\Icons\Management.ico" />
@@ -656,6 +656,7 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
