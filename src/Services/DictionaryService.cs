@@ -231,19 +231,12 @@ namespace JuliusSweetland.OptiKey.Services
 
                     //Also add to entries for auto complete
                     var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                    if (!string.IsNullOrWhiteSpace(autoCompleteHash))
+                    AddAutoCompleteEntry(entry, autoCompleteHash, newEntryWithUsageCount);
+                    if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
                     {
-                        if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
-                        {
-                            if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
-                            {
-                                entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
-                            }
-                        }
-                        else
-                        {
-                            entriesForAutoComplete.Add(autoCompleteHash, new List<DictionaryEntry> { newEntryWithUsageCount });
-                        }
+                        //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+                        var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
+                        AddAutoCompleteEntry(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
                     }
                     
                     if (!loadedFromDictionaryFile)
@@ -251,6 +244,24 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
                         SaveUserDictionaryToFile();
                     }
+                }
+            }
+        }
+
+        private void AddAutoCompleteEntry(string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
+        {
+            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
+            {
+                if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
+                {
+                    if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
+                    {
+                        entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
+                    }
+                }
+                else
+                {
+                    entriesForAutoComplete.Add(autoCompleteHash, new List<DictionaryEntry> {newEntryWithUsageCount});
                 }
             }
         }
@@ -345,8 +356,10 @@ namespace JuliusSweetland.OptiKey.Services
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
                     var enumerator = entriesForAutoComplete
-                        .Where(kvp => kvp.Key.StartsWith(simplifiedRoot) && kvp.Key.Length > simplifiedRoot.Length)
+                        .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
                         .SelectMany(kvp => kvp.Value)
+                        .Where(de => de.Entry.Length > simplifiedRoot.Length)
+                        .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
                         .OrderByDescending(de => de.UsageCount)
                         .ThenBy(de => de.Entry.Length)
                         .GetEnumerator();
