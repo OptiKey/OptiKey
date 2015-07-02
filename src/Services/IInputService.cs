@@ -15,8 +15,10 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler<PointAndKeyValue> Selection;
         event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult;
 
-        RunningStates State { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         SelectionModes SelectionMode { set; }
+
+        void RequestSuspend();
+        void RequestResume();
     }
 }

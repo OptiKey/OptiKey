@@ -241,20 +241,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
-                    inputService.State = RunningStates.Paused;
+                    inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                     RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
-                        NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
+                        NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
             else
             {
                 Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text);
 
-                inputService.State = RunningStates.Paused;
+                inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary.", 
-                    NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
+                    NotificationTypes.Normal, () => { inputService.RequestResume(); });
             }
         }
 
@@ -296,11 +296,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     () =>
                     {
                         dictionaryService.AddNewEntryToDictionary(candidate);
-                        inputService.State = RunningStates.Paused;
+                        inputService.RequestSuspend();
                         nextAction();
 
                         RaiseToastNotification("Added", string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate),
-                            NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
+                            NotificationTypes.Normal, () => { inputService.RequestResume(); });
                     },
                     () => nextAction());
             }

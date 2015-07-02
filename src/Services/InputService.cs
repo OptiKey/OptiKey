@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -25,8 +26,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IPointSource pointSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
-        
-        private RunningStates state;
+        private readonly object suspendRequestLock = new object();
+
+        private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
         private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
@@ -67,20 +69,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
         
-        public RunningStates State
-        {
-            get { return state; }
-            set 
-            { 
-                SetProperty(ref state, value); 
-                
-                if (pointSource != null)
-                {
-                    pointSource.State = state;
-                }
-            }
-        }
-
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
         {
             set
@@ -428,6 +416,42 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         #endregion
+
+        #endregion
+
+        #region Methods
+
+        public void RequestSuspend()
+        {
+            lock (suspendRequestLock)
+            {
+                suspendRequestCount++;
+                if (pointSource.State == RunningStates.Running)
+                {
+                    pointSource.State = RunningStates.Paused;
+                }
+            }
+        }
+
+        public void RequestResume()
+        {
+            lock (suspendRequestLock)
+            {
+                suspendRequestCount--;
+                if (suspendRequestCount == 0)
+                {
+                    if (pointSource != null)
+                    {
+                        pointSource.State = RunningStates.Running;
+                    }
+                }
+            }
+
+            if (suspendRequestCount < 0)
+            {
+                Log.WarnFormat("InputService suspend request counter is below zero. Current value:{0}", suspendRequestCount);
+            }
+        }
 
         #endregion
     }

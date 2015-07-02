@@ -48,10 +48,10 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void RequestManagementWindow()
         {
-            inputService.State = RunningStates.Paused;
+            inputService.RequestSuspend();
             ManagementWindowRequest.Raise(new NotificationWithServices 
                 { AudioService = audioService, DictionaryService = dictionaryService },
-                _ => { inputService.State = RunningStates.Running; });
+                _ => inputService.RequestResume());
         }
     }
 }

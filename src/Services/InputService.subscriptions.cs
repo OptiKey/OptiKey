@@ -282,7 +282,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count);
 
-            State = RunningStates.Paused; //Pause everything (i.e. processing new points) while we perform the (CPU bound) word matching
+            RequestSuspend(); //Pause everything (i.e. processing new points) while we perform the (CPU bound) word matching
 
             try
             {
@@ -361,7 +361,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             finally
             {
-                State = RunningStates.Running;
+                RequestResume();
             }
         }
 

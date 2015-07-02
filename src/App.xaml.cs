@@ -166,7 +166,7 @@ namespace JuliusSweetland.OptiKey
                 mainWindow.Show();
 
                 await ShowSplashScreen(inputService, audioService, mainViewModel);
-                inputService.State = RunningStates.Running; //Start the input service
+                inputService.RequestResume(); //Start the input service
                 await CheckForUpdates(inputService, audioService, mainViewModel);
             }
             catch (Exception ex)
@@ -357,11 +357,10 @@ namespace JuliusSweetland.OptiKey
                         + "Please correct and restart OptiKey.");
             }
 
-            return new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource)
-            {
-                State = RunningStates.Paused //Instantiate the InputService and immediately set to paused
-            };
+            var inputService = new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+            inputService.RequestSuspend(); //Pause it initially
+            return inputService;
         }
 
         #endregion
@@ -444,7 +443,7 @@ namespace JuliusSweetland.OptiKey
                 message.AppendLine("Management console: ALT + M");
                 message.AppendLine("Website: www.optikey.org");
 
-                inputService.State = RunningStates.Paused;
+                inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
                     "OptiKey : Type · Click · Speak", 
@@ -452,7 +451,7 @@ namespace JuliusSweetland.OptiKey
                     NotificationTypes.Normal,
                     () =>
                         {
-                            inputService.State = RunningStates.Running;
+                            inputService.RequestResume();
                             taskCompletionSource.SetResult(true);
                         });
             }
@@ -499,14 +498,14 @@ namespace JuliusSweetland.OptiKey
                                 Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
                                     currentVersion, latestAvailableVersion);
 
-                                inputService.State = RunningStates.Paused;
+                                inputService.RequestSuspend();
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                 mainViewModel.RaiseToastNotification("UPDATE AVAILABLE!",
                                     string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
                                     NotificationTypes.Normal,
                                     () => 
                                         {
-                                            inputService.State = RunningStates.Running;
+                                            inputService.RequestResume();
                                             taskCompletionSource.SetResult(true);
                                         });
 

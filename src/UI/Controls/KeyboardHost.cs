@@ -129,7 +129,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             PointToKeyValueMap = null;
             if(InputService != null)
             {
-                InputService.State = RunningStates.Paused;
+                InputService.RequestSuspend();
             }
             
             object newContent = ErrorContent;
@@ -265,7 +265,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             
             if(InputService != null)
             {
-                InputService.State = RunningStates.Running;
+                InputService.RequestResume();
             }
         }
         

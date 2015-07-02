@@ -203,14 +203,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 question,
                                 () =>
                                 {
-                                    inputService.State = RunningStates.Paused;
+                                    inputService.RequestSuspend();
                                     Keyboard = previousKeyboard;
                                     CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                     {
                                         if (calibrationResult.Success)
                                         {
                                             audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => { inputService.State = RunningStates.Running; });
+                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => { inputService.RequestResume(); });
                                         }
                                         else
                                         {
@@ -219,7 +219,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     ? calibrationResult.Exception.Message
                                                     : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs", 
                                                 NotificationTypes.Error, 
-                                                () => { inputService.State = RunningStates.Running; });
+                                                () => { inputService.RequestResume(); });
                                         }
                                     });
                                 },
@@ -952,9 +952,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 
-            inputService.State = RunningStates.Paused;
+            inputService.RequestSuspend();
             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => { inputService.State = RunningStates.Running; });
+            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => { inputService.RequestResume(); });
         }
     }
 }
