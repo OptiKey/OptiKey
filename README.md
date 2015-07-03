@@ -9,11 +9,11 @@ OptiKey was written to challenge the outrageously expensive, unreliable and diff
 
 # Getting Started
 
-[**The OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
+[**The OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, demo videos, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
 
 * If you want to install and use OptiKey on Windows then download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
-* If you want to build from source then download the [master ZIP file](https://github.com/JuliusSweetland/OptiKey/archive/master.zip).
-* If you wish to contribute then please email me at <optikeyfeedback@gmail.com>. Your next step will be to [fork the repo](https://github.com/JuliusSweetland/OptiKey/fork) and start enhancing the code.
+* Watch the [intro video](https://www.youtube.com/watch?v=Cgnamj5SA3Y).
+* If you wish to get in touch my email is <optikeyfeedback@gmail.com>.
 
 # Supported Platforms
 
