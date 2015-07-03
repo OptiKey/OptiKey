@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -54,6 +55,8 @@ namespace JuliusSweetland.OptiKey
 
             //Attach shutdown handler
             Application.Current.Exit += (o, args) => Log.Info("SHUTTING DOWN.");
+
+            HandleCorruptSettings();
 
             //Upgrade settings (if required) - this ensures that user settings migrate between version changes
             if (Settings.Default.SettingsUpgradeRequired)
@@ -224,6 +227,37 @@ namespace JuliusSweetland.OptiKey
             };
 
             NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
+        }
+
+        #endregion
+
+        #region Handle Corrupt Settings
+
+        private void HandleCorruptSettings()
+        {
+            try
+            {
+                //Attempting to read a setting from a corrupt user config file throws an exception
+                var upgradeRequired = Settings.Default.SettingsUpgradeRequired;
+            }
+            catch (ConfigurationErrorsException ex)
+            {
+                string filename = ((ConfigurationErrorsException)ex.InnerException).Filename;
+
+                if (MessageBox.Show(
+                        "OptiKey has detected that your user settings file has become corrupted and must be repaired. " +
+                        "This will be done by restoring an old version, or a default version if that isn't possible.\n\n" +
+                        "Click Yes to reset your user settings and restart.\n\n" +
+                        "Click No to close so that you can manually repair or copy your user settings file.",
+                        "Uh-oh! The user settings file looks to be corrupt.",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Error) == MessageBoxResult.Yes)
+                {
+                    File.Delete(filename);
+                    System.Windows.Forms.Application.Restart();
+                }
+                Application.Current.Shutdown(); //Avoid the inevitable crash by shutting down gracefully
+            }
         }
 
         #endregion
