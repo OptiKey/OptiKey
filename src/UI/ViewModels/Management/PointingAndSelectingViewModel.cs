@@ -27,28 +27,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             
             //Set up property defaulting logic
             this.OnPropertyChanges(vm => vm.KeySelectionTriggerSource).Subscribe(ts => 
+            {
+                switch(ts) 
                 {
-                    switch(ts) 
-                    {
-                        case Enums.TriggerSources.Fixations:
-                            MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextHigh;
-                        break;
+                    case Enums.TriggerSources.Fixations:
+                        MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextHigh;
+                    break;
 
-                        case Enums.TriggerSources.KeyboardKeyDownsUps:
-                        case Enums.TriggerSources.MouseButtonDownUps:
-                            MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextLow;
-                        break;
-                    }
-                });
+                    case Enums.TriggerSources.KeyboardKeyDownsUps:
+                    case Enums.TriggerSources.MouseButtonDownUps:
+                        MultiKeySelectionTriggerStopSignal = Enums.TriggerStopSignals.NextLow;
+                    break;
+                }
+            });
 
-            this.OnPropertyChanges(vm => vm.SelectionProgressIndicatorFillsPie)
-                .Where(fillsPie => fillsPie == false)
-                .Subscribe(_ => SelectionProgressIndicatorShrinks = true);
-
-            this.OnPropertyChanges(vm => vm.SelectionProgressIndicatorShrinks)
-                .Where(shrinks => shrinks == false)
-                .Subscribe(_ => SelectionProgressIndicatorFillsPie = true);
-            }
+            this.OnPropertyChanges(vm => vm.ProgressIndicatorBehaviour).Subscribe(pib =>
+            {
+                if (pib == Enums.ProgressIndicatorBehaviours.Grow &&
+                    ProgressIndicatorResizeStartProportion > ProgressIndicatorResizeEndProportion)
+                {
+                    var endProportion = ProgressIndicatorResizeEndProportion;
+                    ProgressIndicatorResizeEndProportion = ProgressIndicatorResizeStartProportion;
+                    ProgressIndicatorResizeStartProportion = endProportion;
+                }
+                else if (pib == Enums.ProgressIndicatorBehaviours.Shrink &&
+                    ProgressIndicatorResizeStartProportion < ProgressIndicatorResizeEndProportion)
+                {
+                    var endProportion = ProgressIndicatorResizeEndProportion;
+                    ProgressIndicatorResizeEndProportion = ProgressIndicatorResizeStartProportion;
+                    ProgressIndicatorResizeStartProportion = endProportion;
+                }
+            });
+        }
         
         #endregion
         
@@ -100,6 +110,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, TriggerStopSignals>("Trigger button/key pressed again", Enums.TriggerStopSignals.NextHigh),
                     new KeyValuePair<string, TriggerStopSignals>("Trigger button/key released", Enums.TriggerStopSignals.NextLow)
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, ProgressIndicatorBehaviours>> ProgressIndicatorBehaviours
+        {
+            get
+            {
+                return new List<KeyValuePair<string, ProgressIndicatorBehaviours>>
+                {
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Fill Pie", Enums.ProgressIndicatorBehaviours.FillPie),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Grow", Enums.ProgressIndicatorBehaviours.Grow),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Shrink", Enums.ProgressIndicatorBehaviours.Shrink)
                 };
             }
         }
@@ -216,25 +239,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref pointSelectionTriggerFixationRadius, value); }
         }
 
-        private bool selectionProgressIndicatorFillsPie;
-        public bool SelectionProgressIndicatorFillsPie
+        private ProgressIndicatorBehaviours progressIndicatorBehaviour;
+        public ProgressIndicatorBehaviours ProgressIndicatorBehaviour
         {
-            get { return selectionProgressIndicatorFillsPie; }
-            set { SetProperty(ref selectionProgressIndicatorFillsPie, value); }
+            get { return progressIndicatorBehaviour; }
+            set { SetProperty(ref progressIndicatorBehaviour, value); }
         }
 
-        private bool selectionProgressIndicatorShrinks;
-        public bool SelectionProgressIndicatorShrinks
+        private int progressIndicatorResizeStartProportion;
+        public int ProgressIndicatorResizeStartProportion
         {
-            get { return selectionProgressIndicatorShrinks; }
-            set { SetProperty(ref selectionProgressIndicatorShrinks, value); }
+            get { return progressIndicatorResizeStartProportion; }
+            set { SetProperty(ref progressIndicatorResizeStartProportion, value); }
         }
 
-        private double selectionProgressIndicatorShrinksToPercentageOfInitialSize;
-        public double SelectionProgressIndicatorShrinksToPercentageOfInitialSize
+        private int progressIndicatorResizeEndProportion;
+        public int ProgressIndicatorResizeEndProportion
         {
-            get { return selectionProgressIndicatorShrinksToPercentageOfInitialSize; }
-            set { SetProperty(ref selectionProgressIndicatorShrinksToPercentageOfInitialSize, value); }
+            get { return progressIndicatorResizeEndProportion; }
+            set { SetProperty(ref progressIndicatorResizeEndProportion, value); }
         }
 
         private TriggerStopSignals multiKeySelectionTriggerStopSignal;
@@ -306,9 +329,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointSelectionTriggerFixationCompleteTimeInMs = Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds;
             PointSelectionTriggerLockOnRadiusInPixels = Settings.Default.PointSelectionTriggerLockOnRadiusInPixels;
             PointSelectionTriggerFixationRadiusInPixels = Settings.Default.PointSelectionTriggerFixationRadiusInPixels;
-            SelectionProgressIndicatorFillsPie = Settings.Default.SelectionProgressIndicatorFillsPie;
-            SelectionProgressIndicatorShrinks = Settings.Default.SelectionProgressIndicatorShrinks;
-            SelectionProgressIndicatorShrinksToPercentageOfInitialSize = Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize;
+            ProgressIndicatorBehaviour = Settings.Default.ProgressIndicatorBehaviour;
+            ProgressIndicatorResizeStartProportion = Settings.Default.ProgressIndicatorResizeStartProportion;
+            ProgressIndicatorResizeEndProportion = Settings.Default.ProgressIndicatorResizeEndProportion;
             MultiKeySelectionTriggerStopSignal = Settings.Default.MultiKeySelectionTriggerStopSignal;
             MultiKeySelectionFixationMinDwellTimeInMs = Settings.Default.MultiKeySelectionFixationMinDwellTime.TotalMilliseconds;
             MultiKeySelectionMaxDurationInMs = Settings.Default.MultiKeySelectionMaxDuration.TotalMilliseconds;
@@ -332,9 +355,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointSelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(PointSelectionTriggerFixationCompleteTimeInMs);
             Settings.Default.PointSelectionTriggerLockOnRadiusInPixels = PointSelectionTriggerLockOnRadiusInPixels;
             Settings.Default.PointSelectionTriggerFixationRadiusInPixels = PointSelectionTriggerFixationRadiusInPixels;
-            Settings.Default.SelectionProgressIndicatorFillsPie = SelectionProgressIndicatorFillsPie;
-            Settings.Default.SelectionProgressIndicatorShrinks = SelectionProgressIndicatorShrinks;
-            Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize = SelectionProgressIndicatorShrinksToPercentageOfInitialSize;
+            Settings.Default.ProgressIndicatorBehaviour = ProgressIndicatorBehaviour;
+            Settings.Default.ProgressIndicatorResizeStartProportion = ProgressIndicatorResizeStartProportion;
+            Settings.Default.ProgressIndicatorResizeEndProportion = ProgressIndicatorResizeEndProportion;
             Settings.Default.MultiKeySelectionTriggerStopSignal = MultiKeySelectionTriggerStopSignal;
             Settings.Default.MultiKeySelectionFixationMinDwellTime = TimeSpan.FromMilliseconds(MultiKeySelectionFixationMinDwellTimeInMs);
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);

@@ -251,14 +251,14 @@
     <Setting Name="MultiKeySelectionCaptureStartSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="SelectionProgressIndicatorShrinksToPercentageOfInitialSize" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.2</Value>
+    <Setting Name="ProgressIndicatorBehaviour" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.ProgressIndicatorBehaviours" Scope="User">
+      <Value Profile="(Default)">FillPie</Value>
     </Setting>
-    <Setting Name="SelectionProgressIndicatorShrinks" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="ProgressIndicatorResizeStartProportion" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="SelectionProgressIndicatorFillsPie" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="ProgressIndicatorResizeEndProportion" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

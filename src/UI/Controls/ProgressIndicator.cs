@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -56,12 +57,23 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void Render()
         {
-            var angle = Settings.Default.SelectionProgressIndicatorFillsPie
-                ? (Value/MaxValue) * 360
-                : 360;
-            var sizeFactor = Settings.Default.SelectionProgressIndicatorShrinks && Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize < 1
-                ? ((MaxValue - Value) * (1 - Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize)) + Settings.Default.SelectionProgressIndicatorShrinksToPercentageOfInitialSize
-                : 1;
+            var angle = Settings.Default.ProgressIndicatorBehaviour == ProgressIndicatorBehaviours.FillPie ? (Value / MaxValue) * 360 : 360;
+
+            var sizeFactor = 1d;
+            if (Settings.Default.ProgressIndicatorBehaviour == ProgressIndicatorBehaviours.Shrink
+                && Settings.Default.ProgressIndicatorResizeStartProportion > Settings.Default.ProgressIndicatorResizeEndProportion)
+            {
+                var range = (Settings.Default.ProgressIndicatorResizeStartProportion - Settings.Default.ProgressIndicatorResizeEndProportion) / 100d;
+                var reducingValue = MaxValue - Value;
+                sizeFactor = (reducingValue * range) + (Settings.Default.ProgressIndicatorResizeEndProportion / 100d);
+            }
+            else if (Settings.Default.ProgressIndicatorBehaviour == ProgressIndicatorBehaviours.Grow
+                && Settings.Default.ProgressIndicatorResizeStartProportion < Settings.Default.ProgressIndicatorResizeEndProportion)
+            {
+                var range = (Settings.Default.ProgressIndicatorResizeEndProportion - Settings.Default.ProgressIndicatorResizeStartProportion) / 100d;
+                sizeFactor = (Value * range) + (Settings.Default.ProgressIndicatorResizeStartProportion / 100d);
+            }
+
             var centreX = ActualWidth / 2;
             var centreY = ActualHeight / 2;
             var radius = Math.Min(centreX, centreY) * sizeFactor;

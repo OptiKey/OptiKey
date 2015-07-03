@@ -189,6 +189,7 @@
     <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\KeyboardsSets.cs" />
     <Compile Include="Enums\CharCategories.cs" />
+    <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\UiComplexity.cs" />

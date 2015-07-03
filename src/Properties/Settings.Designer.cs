@@ -1106,40 +1106,40 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FillPie")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double SelectionProgressIndicatorShrinksToPercentageOfInitialSize {
+        public global::JuliusSweetland.OptiKey.Enums.ProgressIndicatorBehaviours ProgressIndicatorBehaviour {
             get {
-                return ((double)(this["SelectionProgressIndicatorShrinksToPercentageOfInitialSize"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.ProgressIndicatorBehaviours)(this["ProgressIndicatorBehaviour"]));
             }
             set {
-                this["SelectionProgressIndicatorShrinksToPercentageOfInitialSize"] = value;
+                this["ProgressIndicatorBehaviour"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool SelectionProgressIndicatorShrinks {
+        public int ProgressIndicatorResizeStartProportion {
             get {
-                return ((bool)(this["SelectionProgressIndicatorShrinks"]));
+                return ((int)(this["ProgressIndicatorResizeStartProportion"]));
             }
             set {
-                this["SelectionProgressIndicatorShrinks"] = value;
+                this["ProgressIndicatorResizeStartProportion"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool SelectionProgressIndicatorFillsPie {
+        public int ProgressIndicatorResizeEndProportion {
             get {
-                return ((bool)(this["SelectionProgressIndicatorFillsPie"]));
+                return ((int)(this["ProgressIndicatorResizeEndProportion"]));
             }
             set {
-                this["SelectionProgressIndicatorFillsPie"] = value;
+                this["ProgressIndicatorResizeEndProportion"] = value;
             }
         }
     }
