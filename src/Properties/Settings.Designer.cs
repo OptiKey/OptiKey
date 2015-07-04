@@ -1142,5 +1142,31 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["ProgressIndicatorResizeEndProportion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("56")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MinimisedHeightInPixels {
+            get {
+                return ((int)(this["MinimisedHeightInPixels"]));
+            }
+            set {
+                this["MinimisedHeightInPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int MinimisedWidthInPixels {
+            get {
+                return ((int)(this["MinimisedWidthInPixels"]));
+            }
+            set {
+                this["MinimisedWidthInPixels"] = value;
+            }
+        }
     }
 }

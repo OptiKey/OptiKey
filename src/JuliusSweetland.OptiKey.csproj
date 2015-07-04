@@ -294,6 +294,7 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
@@ -322,6 +323,9 @@
     <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Standard\English\Minimised.xaml.cs">
+      <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
@@ -517,7 +521,7 @@
     <None Include="Resources\Icons\SVG Source Files\2of2.svg" />
     <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MainApplicationIcon.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -686,6 +690,10 @@
     <Page Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Standard\English\Minimised.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Standard\English\Mouse.xaml">
       <Generator>MSBuild:Compile</Generator>

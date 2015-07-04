@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue { FunctionKey = FunctionKeys.RepeatLastMouseAction };
-        public static readonly KeyValue RestoreSizeKey = new KeyValue { FunctionKey = FunctionKeys.RestoreSize };
+        public static readonly KeyValue RestoreFromMaximisedKey = new KeyValue { FunctionKey = FunctionKeys.RestoreFromMaximised };
         public static readonly KeyValue SimulateKeyStrokesKey = new KeyValue { FunctionKey = FunctionKeys.SimulateKeyStrokes };
         public static readonly KeyValue Suggestion1Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion1 };
         public static readonly KeyValue Suggestion2Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion2 };

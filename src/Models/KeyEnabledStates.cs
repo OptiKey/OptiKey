@@ -173,9 +173,9 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Key is Restore, but the window is already normal
-                if (keyValue == KeyValues.RestoreSizeKey
-                    && mainWindowStateService.WindowState == WindowState.Normal)
+                //Key is RestoreFromMaximised, but the window is not maximised
+                if (keyValue == KeyValues.RestoreFromMaximisedKey
+                    && mainWindowStateService.WindowState != WindowState.Maximized)
                 {
                     return false;
                 }

@@ -11,6 +11,14 @@
         void ExpandToTopAndLeft(double pixels);
         void ExpandToTopAndRight(double pixels);
         void Maximise();
+        void MinimiseToBottomAndLeftBoundaries();
+        void MinimiseToBottomAndRightBoundaries();
+        void MinimiseToMiddleOfBottomBoundary();
+        void MinimiseToMiddleOfLeftBoundary();
+        void MinimiseToMiddleOfRightBoundary();
+        void MinimiseToMiddleOfTopBoundary();
+        void MinimiseToTopAndLeftBoundaries();
+        void MinimiseToTopAndRightBoundaries();
         void MoveToBottom(double pixels);
         void MoveToBottomAndLeft(double pixels);
         void MoveToBottomAndLeftBoundaries();
@@ -27,7 +35,8 @@
         void MoveToTopAndRight(double pixels);
         void MoveToTopAndRightBoundaries();
         void MoveToTopBoundary();
-        void Restore();
+        void RestoreFromMaximised();
+        void RestoreFromMinimised();
         void ShrinkFromBottom(double pixels);
         void ShrinkFromBottomAndLeft(double pixels);
         void ShrinkFromBottomAndRight(double pixels);

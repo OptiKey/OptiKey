@@ -69,7 +69,7 @@
             
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
-                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderThickness" Value="1" />
             </Style>
 
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">

@@ -181,18 +181,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref toastNotificationSecondsPerCharacter, value); }
         }
 
-        private int cursorWidth;
+        private int cursorWidthInPixels;
         public int CursorWidthInPixels
         {
-            get { return cursorWidth; }
-            set { SetProperty(ref cursorWidth, value); }
+            get { return cursorWidthInPixels; }
+            set { SetProperty(ref cursorWidthInPixels, value); }
         }
 
-        private int cursorHeight;
+        private int cursorHeightInPixels;
         public int CursorHeightInPixels
         {
-            get { return cursorHeight; }
-            set { SetProperty(ref cursorHeight, value); }
+            get { return cursorHeightInPixels; }
+            set { SetProperty(ref cursorHeightInPixels, value); }
+        }
+
+        private int minimisedWidthInPixels;
+        public int MinimisedWidthInPixels
+        {
+            get { return minimisedWidthInPixels; }
+            set { SetProperty(ref minimisedWidthInPixels, value); }
+        }
+
+        private int minimisedHeightInPixels;
+        public int MinimisedHeightInPixels
+        {
+            get { return minimisedHeightInPixels; }
+            set { SetProperty(ref minimisedHeightInPixels, value); }
         }
 
         private double magnifySourcePercentageOfScreen;
@@ -237,6 +251,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
+            MinimisedWidthInPixels = Settings.Default.MinimisedWidthInPixels;
+            MinimisedHeightInPixels = Settings.Default.MinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             KeyboardSet = Settings.Default.KeyboardSet;
@@ -254,6 +270,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
+            Settings.Default.MinimisedWidthInPixels = MinimisedWidthInPixels;
+            Settings.Default.MinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.KeyboardSet = KeyboardSet;

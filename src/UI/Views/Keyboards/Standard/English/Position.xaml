@@ -138,7 +138,7 @@
                       WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
                 <controls:Key.Value>
-                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreSize}" />
+                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreFromMaximised}" />
                 </controls:Key.Value>
             </controls:Key>
             <controls:Key Grid.Row="0" Grid.Column="1"

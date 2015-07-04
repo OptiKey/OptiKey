@@ -260,5 +260,11 @@
     <Setting Name="ProgressIndicatorResizeEndProportion" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
+    <Setting Name="MinimisedHeightInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">56</Value>
+    </Setting>
+    <Setting Name="MinimisedWidthInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

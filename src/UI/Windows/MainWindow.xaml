@@ -5,7 +5,6 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:triggerActions="clr-namespace:JuliusSweetland.OptiKey.UI.TriggerActions"
         xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
-        MinWidth="300" MinHeight="200"
         WindowStyle="None"
         Title="OptiKey"
         Topmost="True"

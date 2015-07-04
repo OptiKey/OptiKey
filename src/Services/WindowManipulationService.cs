@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Static;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -16,16 +17,14 @@ namespace JuliusSweetland.OptiKey.Services
         
         private readonly Window window;
         private readonly Func<double> getWindowTopSetting;
-        private readonly Action<double> setWindowTopSetting;
         private readonly Func<double> getWindowLeftSetting;
-        private readonly Action<double> setWindowLeftSetting;
         private readonly Func<double> getWindowHeightSetting;
-        private readonly Action<double> setWindowHeightSetting;
         private readonly Func<double> getWindowWidthSetting;
-        private readonly Action<double> setWindowWidthSetting;
         private readonly Func<WindowState> getWindowStateSetting;
-        private readonly Action<WindowState> setWindowStateSetting;
-        private readonly Settings settings;
+
+        private bool windowIsMinimised = false;
+        private Size? windowSizeBeforeMinimise = null;
+        private Point? windowPositionBeforeMinimise = null;
 
         #endregion
 
@@ -49,16 +48,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             this.window = window;
             this.getWindowTopSetting = getWindowTopSetting;
-            this.setWindowTopSetting = setWindowTopSetting;
             this.getWindowLeftSetting = getWindowLeftSetting;
-            this.setWindowLeftSetting = setWindowLeftSetting;
             this.getWindowHeightSetting = getWindowHeightSetting;
-            this.setWindowHeightSetting = setWindowHeightSetting;
             this.getWindowWidthSetting = getWindowWidthSetting;
-            this.setWindowWidthSetting = setWindowWidthSetting;
             this.getWindowStateSetting = getWindowStateSetting;
-            this.setWindowStateSetting = setWindowStateSetting;
-            this.settings = settings;
             
             if(loadSavedState)
             {
@@ -67,7 +60,20 @@ namespace JuliusSweetland.OptiKey.Services
             
             if(saveStateOnClose)
             {
-                window.Closing += (sender, args) => SaveState();
+                window.Closing += (sender, args) =>
+                {
+                    //Check window is not in minimised state (either as a ssmall icon on the screen, or the window is actually minimised)
+                    if (!windowIsMinimised && window.WindowState != WindowState.Minimized)
+                    {
+                        setWindowTopSetting(window.Top);
+                        setWindowLeftSetting(window.Left);
+                        setWindowHeightSetting(window.Height);
+                        setWindowWidthSetting(window.Width);
+                        setWindowStateSetting(window.WindowState);
+
+                        settings.Save();
+                    }
+                };
             }
         }
         
@@ -80,6 +86,21 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
         
         #region Public Methods
+
+        private void ClearStateBeforeMinimise()
+        {
+            windowPositionBeforeMinimise = null;
+            windowSizeBeforeMinimise = null;
+        }
+
+        public void DecreaseOpacity()
+        {
+            window.Opacity -= 0.1;
+            if (window.Opacity < 0.1)
+            {
+                window.Opacity = 0.1;
+            }
+        }
 
         public void ExpandToBottom(double pixels)
         {
@@ -232,7 +253,16 @@ namespace JuliusSweetland.OptiKey.Services
                 PublishError(this, ex);
             }
         }
-        
+
+        public void IncreaseOpacity()
+        {
+            window.Opacity += 0.1;
+            if (window.Opacity > 1)
+            {
+                window.Opacity = 1;
+            }
+        }
+
         public void LoadState()
         {
             var windowTop = getWindowTopSetting();
@@ -284,8 +314,110 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             window.WindowState = WindowState.Maximized;
-            OnPropertyChanged("CanRestore");
-            OnPropertyChanged("CanMaximise");
+        }
+
+        private void Minimise(bool invertDimensions = false)
+        {
+            StoreStateBeforeMinimise();
+            window.Width = invertDimensions
+                ? Settings.Default.MinimisedHeightInPixels/Graphics.DipScalingFactorY
+                : Settings.Default.MinimisedWidthInPixels/Graphics.DipScalingFactorX;
+            window.Height = invertDimensions
+                ? Settings.Default.MinimisedWidthInPixels / Graphics.DipScalingFactorX
+                : Settings.Default.MinimisedHeightInPixels / Graphics.DipScalingFactorY;
+            windowIsMinimised = true;
+        }
+
+        public void MinimiseToBottomAndLeftBoundaries()
+        {
+            Minimise();
+            MoveToBottomAndLeftBoundaries();
+        }
+
+        public void MinimiseToBottomAndRightBoundaries()
+        {
+            Minimise();
+            MoveToBottomAndRightBoundaries();
+        }
+
+        public void MinimiseToMiddleOfBottomBoundary()
+        {
+            Minimise();
+            MoveToBottomBoundary();
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
+                window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X/2) - (Settings.Default.MinimisedWidthInPixels / 2);
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
+
+        public void MinimiseToMiddleOfLeftBoundary()
+        {
+            Minimise(invertDimensions:true);
+            MoveToLeftBoundary();
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
+                window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (Settings.Default.MinimisedHeightInPixels / 2);
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
+
+        public void MinimiseToMiddleOfRightBoundary()
+        {
+            Minimise(invertDimensions: true);
+            MoveToRightBoundary();
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
+                window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (Settings.Default.MinimisedHeightInPixels / 2);
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
+
+        public void MinimiseToMiddleOfTopBoundary()
+        {
+            Minimise();
+            MoveToTopBoundary();
+            try
+            {
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
+                window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X / 2) - (Settings.Default.MinimisedWidthInPixels / 2);
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
+
+        public void MinimiseToTopAndLeftBoundaries()
+        {
+            Minimise();
+            MoveToTopAndLeftBoundaries();
+        }
+
+        public void MinimiseToTopAndRightBoundaries()
+        {
+            Minimise();
+            MoveToTopAndRightBoundaries();
         }
         
         public void MoveToBottom(double pixels)
@@ -482,25 +614,25 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void Restore()
+        public void RestoreFromMaximised()
         {
             window.WindowState = WindowState.Normal;
-            OnPropertyChanged("CanRestore");
-            OnPropertyChanged("CanMaximise");
         }
-        
-        public void SaveState()
-        {
-            if (window.WindowState != WindowState.Minimized)
-            {
-                setWindowTopSetting(window.Top);
-                setWindowLeftSetting(window.Left);
-                setWindowHeightSetting(window.Height);
-                setWindowWidthSetting(window.Width);
-                setWindowStateSetting(window.WindowState);
 
-                settings.Save();
+        public void RestoreFromMinimised()
+        {
+            if (windowPositionBeforeMinimise != null)
+            {
+                window.Top = windowPositionBeforeMinimise.Value.Y;
+                window.Left = windowPositionBeforeMinimise.Value.X;
             }
+            if (windowSizeBeforeMinimise != null)
+            {
+                window.Width = windowSizeBeforeMinimise.Value.Width;
+                window.Height = windowSizeBeforeMinimise.Value.Height;
+            }
+            ClearStateBeforeMinimise();
+            windowIsMinimised = false;
         }
 
         public void ShrinkFromBottom(double pixels)
@@ -617,22 +749,10 @@ namespace JuliusSweetland.OptiKey.Services
             ShrinkFromRight(pixels);
         }
 
-        public void IncreaseOpacity()
+        private void StoreStateBeforeMinimise()
         {
-            window.Opacity += 0.1;
-            if (window.Opacity > 1)
-            {
-                window.Opacity = 1;
-            }
-        }
-
-        public void DecreaseOpacity()
-        {
-            window.Opacity -= 0.1;
-            if (window.Opacity < 0.1)
-            {
-                window.Opacity = 0.1;
-            }
+            windowPositionBeforeMinimise = new Point(window.Left, window.Top);
+            windowSizeBeforeMinimise = new Size(window.ActualWidth, window.ActualHeight);
         }
         
         #endregion
