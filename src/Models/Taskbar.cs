@@ -38,45 +38,14 @@ namespace JuliusSweetland.OptiKey.Models
             this.AutoHide = (state & AppBarState.Autohide) == AppBarState.Autohide;
         }
 
-        public Rectangle Bounds
-        {
-            get;
-            private set;
-        }
-
-        public TaskbarPosition Position
-        {
-            get;
-            private set;
-        }
-
-        public Point Location
-        {
-            get
-            {
-                return this.Bounds.Location;
-            }
-        }
-
-        public Size Size
-        {
-            get
-            {
-                return this.Bounds.Size;
-            }
-        }
-
-        //Always returns false under Windows 7
-        public bool AlwaysOnTop
-        {
-            get;
-            private set;
-        }
-
-        public bool AutoHide
-        {
-            get;
-            private set;
-        }
+        public TaskbarPosition Position { get; private set; }
+        public Point Location { get { return this.Bounds.Location; } }
+        public Rectangle Bounds { get; private set; }
+        public Size Size { get { return this.Bounds.Size; } }
+        /// <summary>
+        /// Always returns false under Windows 7
+        /// </summary>
+        public bool AlwaysOnTop { get; private set; }
+        public bool AutoHide { get; private set; }
     }
 }

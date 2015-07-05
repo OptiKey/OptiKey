@@ -29,9 +29,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Func<double> getWindowWidthSetting;
         private readonly Func<WindowState> getWindowStateSetting;
 
-        private bool windowIsMinimised = false;
-        private Size? windowSizeBeforeMinimise = null;
-        private Point? windowPositionBeforeMinimise = null;
+        private bool windowIsMinimised;
+        private Size? windowSizeBeforeMinimise;
+        private Point? windowPositionBeforeMinimise;
 
         #endregion
 
@@ -96,7 +96,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ArrangeWindowsHorizontally()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -113,12 +113,16 @@ namespace JuliusSweetland.OptiKey.Services
                 int width = screen.Bounds.Width;
 
                 //Compensate for left/right aligned taskbar
-                if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Left)
+                if (taskBarOnCurrentScreen
+                    && !taskBar.AutoHide
+                    && taskBar.Position == TaskbarPosition.Left)
                 {
                     x += taskBar.Size.Width;
                     width -= taskBar.Size.Width;
                 }
-                else if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Right)
+                else if (taskBarOnCurrentScreen
+                    && !taskBar.AutoHide 
+                    && taskBar.Position == TaskbarPosition.Right)
                 {
                     width -= taskBar.Size.Width;
                 }
@@ -130,7 +134,9 @@ namespace JuliusSweetland.OptiKey.Services
                     int height = distanceToTopBoundaryInPixels;
 
                     //Compensate for top aligned taskbar
-                    if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Top)
+                    if (taskBarOnCurrentScreen
+                        && !taskBar.AutoHide 
+                        && taskBar.Position == TaskbarPosition.Top)
                     {
                         y += taskBar.Size.Height;
                         height -= taskBar.Size.Height;
@@ -145,7 +151,9 @@ namespace JuliusSweetland.OptiKey.Services
                     int height = distanceToBottomBoundaryInPixels;
                     
                     //Compensate for bottom aligned taskbar
-                    if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Bottom)
+                    if (taskBarOnCurrentScreen
+                        && !taskBar.AutoHide 
+                        && taskBar.Position == TaskbarPosition.Bottom)
                     {
                         height -= taskBar.Size.Height;
                     }
@@ -161,7 +169,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ArrangeWindowsVertically()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -178,12 +186,16 @@ namespace JuliusSweetland.OptiKey.Services
                 int height = screen.Bounds.Height;
 
                 //Compensate for top/bottom aligned taskbar
-                if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Top)
+                if (taskBarOnCurrentScreen
+                    && !taskBar.AutoHide 
+                    && taskBar.Position == TaskbarPosition.Top)
                 {
                     y += taskBar.Size.Height;
                     height -= taskBar.Size.Height;
                 }
-                else if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Bottom)
+                else if (taskBarOnCurrentScreen
+                    && !taskBar.AutoHide 
+                    && taskBar.Position == TaskbarPosition.Bottom)
                 {
                     height -= taskBar.Size.Height;
                 }
@@ -195,7 +207,9 @@ namespace JuliusSweetland.OptiKey.Services
                     int width = distanceToLeftBoundaryInPixels;
 
                     //Compensate for left aligned taskbar
-                    if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Left)
+                    if (taskBarOnCurrentScreen
+                        && !taskBar.AutoHide 
+                        && taskBar.Position == TaskbarPosition.Left)
                     {
                         x += taskBar.Size.Width;
                         width -= taskBar.Size.Width;
@@ -210,7 +224,9 @@ namespace JuliusSweetland.OptiKey.Services
                     int width = distanceToRightBoundaryInPixels;
                     
                     //Compensate for right aligned taskbar
-                    if (taskBarOnCurrentScreen && taskBar.Position == TaskbarPosition.Right)
+                    if (taskBarOnCurrentScreen
+                        && !taskBar.AutoHide 
+                        && taskBar.Position == TaskbarPosition.Right)
                     {
                         width -= taskBar.Size.Width;
                     }
@@ -235,7 +251,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ExpandToBottom(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -268,7 +284,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void ExpandToLeft(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -293,7 +309,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ExpandToRight(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {   
@@ -314,7 +330,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ExpandToTop(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -350,7 +366,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void FillPercentageOfScreen(double horizontalPercentage, double verticalPercentage)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -541,7 +557,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void MoveToBottom(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -583,7 +599,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void MoveToBottomBoundary()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -601,7 +617,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToLeft(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -620,7 +636,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToLeftBoundary()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -639,7 +655,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToRight(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {   
@@ -657,7 +673,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToRightBoundary()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {   
@@ -675,7 +691,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToTop(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -717,7 +733,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MoveToTopBoundary()
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -756,7 +772,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ShrinkFromBottom(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -789,7 +805,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ShrinkFromLeft(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -813,7 +829,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ShrinkFromRight(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
@@ -834,7 +850,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ShrinkFromTop(double pixels)
         {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized || windowIsMinimised) return;
+            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
 
             try
             {
