@@ -190,7 +190,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="3"
-                      Text="ARRANGE WINDOWS"
+                      Text="ARRANGE WINDOWS&#x0a;AROUND OPTIKEY"
                       IsEnabled="False" />
         
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
