@@ -113,8 +113,9 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var customException = new ApplicationException(
                         string.Format("There was a problem setting the wave out volume to '{0}'", volume), exception);
-
-                    PublishError(this, customException);
+                    
+                    //Don't publish error - the error handler tries to play a sound file which could loop us right back here
+                    Log.Error("Exception encountered within the AudioService", customException);
                 }
 
                 var player = new System.Media.SoundPlayer(soundLocation);
@@ -122,7 +123,8 @@ namespace JuliusSweetland.OptiKey.Services
             }
             catch (Exception exception)
             {
-                PublishError(this, exception);
+                //Don't publish error - the error handler tries to play a sound file which could loop us right back here
+                Log.Error("Exception encountered within the AudioService", exception);
             }
         }
 
