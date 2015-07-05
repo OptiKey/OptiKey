@@ -338,6 +338,7 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.Fixations:
                     keySelectionTriggerSource = new KeyFixationSource(
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
+                       Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
                        Settings.Default.KeySelectionTriggerFixationCompleteTime,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);

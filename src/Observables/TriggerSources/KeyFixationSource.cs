@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -17,6 +18,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Fields
 
         private readonly TimeSpan lockOnTime;
+        private readonly bool resumeRequiresLockOn;
         private readonly TimeSpan timeToCompleteTrigger;
         private readonly TimeSpan incompleteFixationTtl;
         private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
@@ -31,11 +33,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         public KeyFixationSource(
             TimeSpan lockOnTime,
+            bool resumeRequiresLockOn,
             TimeSpan timeToCompleteTrigger,
             TimeSpan incompleteFixationTtl,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
             this.lockOnTime = lockOnTime;
+            this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.timeToCompleteTrigger = timeToCompleteTrigger;
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
@@ -74,7 +78,21 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             .Subscribe(tps =>
                             {
                                 Timestamped<PointAndKeyValue> latestPointAndKeyValue = tps.Last(); //Store latest timeStampedPointAndKeyValue
-                                    
+
+                                if (fixationCentrePointAndKeyValue == null
+                                    && !resumeRequiresLockOn)
+                                {
+                                    //Does the latest point continue an incomplete fixation? Continue it immediately, i.e. don't require a lock on again
+                                    long storedProgress;
+                                    if (latestPointAndKeyValue.Value.KeyValue != null
+                                        && incompleteFixationProgress.TryGetValue(latestPointAndKeyValue.Value.KeyValue.Value, out storedProgress))
+                                    {
+                                        fixationStart = latestPointAndKeyValue.Timestamp;
+                                        fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
+                                        lockOnStart = null;
+                                    }
+                                }
+
                                 if (fixationCentrePointAndKeyValue == null)
                                 {
                                     //No fixation in progress - we are in the "lock on" phase

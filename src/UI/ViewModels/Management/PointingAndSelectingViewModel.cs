@@ -176,6 +176,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationLockOnTimeInMs, value); }
         }
 
+        private bool keySelectionTriggerFixationResumeRequiresLockOn;
+        public bool KeySelectionTriggerFixationResumeRequiresLockOn
+        {
+            get { return keySelectionTriggerFixationResumeRequiresLockOn; }
+            set { SetProperty(ref keySelectionTriggerFixationResumeRequiresLockOn, value); }
+        }
+
         private double keySelectionTriggerFixationCompleteTimeInMs;
         public double KeySelectionTriggerFixationCompleteTimeInMs
         {
@@ -292,6 +299,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey != KeySelectionTriggerKeyboardKeyDownUpKey && KeySelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps)
                     || (Settings.Default.KeySelectionTriggerMouseDownUpButton != KeySelectionTriggerMouseDownUpButton && KeySelectionTriggerSource == Enums.TriggerSources.MouseButtonDownUps)
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || (Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn != KeySelectionTriggerFixationResumeRequiresLockOn && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
@@ -320,6 +328,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerKeyboardKeyDownUpKey = Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey;
             KeySelectionTriggerMouseDownUpButton = Settings.Default.KeySelectionTriggerMouseDownUpButton;
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
+            KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
             KeySelectionTriggerFixationCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds;
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
             PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
@@ -346,6 +355,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey = KeySelectionTriggerKeyboardKeyDownUpKey;
             Settings.Default.KeySelectionTriggerMouseDownUpButton = KeySelectionTriggerMouseDownUpButton;
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
+            Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
             Settings.Default.KeySelectionTriggerFixationCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationCompleteTimeInMs);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
             Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
