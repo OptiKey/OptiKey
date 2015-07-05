@@ -86,19 +86,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="INCREASE OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
                       Text="DECREASE OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="3"
+                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                      Text="INCREASE OPACITY"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="4"
