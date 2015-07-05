@@ -240,17 +240,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource RestoreSizeIcon}"
-                      WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                          SymbolGeometry="{StaticResource RestoreSizeIcon}"
+                          Text="RESTORE"
+                          SharedSizeGroup="KeyWithSymbolAndText">
                 <controls:Key.Value>
                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreFromMaximised}" />
                 </controls:Key.Value>
             </controls:Key>
             <controls:Key Grid.Row="0" Grid.Column="1"
-                      SymbolGeometry="{StaticResource MaximiseSizeIcon}"
-                      WidthSpan="2"
-                      SharedSizeGroup="KeyWithSymbolAndText">
+                          SymbolGeometry="{StaticResource MaximiseSizeIcon}"
+                          Text="MAXIMISE"
+                          SharedSizeGroup="KeyWithSymbolAndText">
                 <controls:Key.Value>
                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MaximiseSize}" />
                 </controls:Key.Value>

@@ -160,6 +160,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
+                    case FunctionKeys.ArrangeWindowsHorizontally:
+                        Log.Debug("Arranging windows horizontally.");
+                        mainWindowManipulationService.ArrangeWindowsHorizontally();
+                        break;
+
+                    case FunctionKeys.ArrangeWindowsVertically:
+                        Log.Debug("Arranging windows vertically.");
+                        mainWindowManipulationService.ArrangeWindowsVertically();
+                        break;
+
                     case FunctionKeys.Diacritic1Keyboard:
                         Log.Debug("Changing keyboard to Diacritic1.");
                         Keyboard = new Diacritic1();

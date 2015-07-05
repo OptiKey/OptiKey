@@ -192,6 +192,7 @@
     <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
+    <Compile Include="Enums\TaskbarPosition.cs" />
     <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
@@ -219,7 +220,15 @@
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Native\Enums\AppBarEdge.cs" />
+    <Compile Include="Native\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Enums\SetWindowPosFlags.cs" />
+    <Compile Include="Native\Enums\SpecialWindowHandles.cs" />
+    <Compile Include="Native\Static\AppBarState.cs" />
+    <Compile Include="Native\Structs\APPBARDATA.cs" />
+    <Compile Include="Native\Structs\RECT.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
@@ -270,6 +279,8 @@
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
+    <Compile Include="Models\Taskbar.cs" />
+    <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
@@ -522,6 +533,8 @@
     <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsHorizontally.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsVertical.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

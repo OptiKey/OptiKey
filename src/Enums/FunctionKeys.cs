@@ -4,6 +4,8 @@
     {
         AddToDictionary,
         AlphaKeyboard,
+        ArrangeWindowsHorizontally,
+        ArrangeWindowsVertically,
         Diacritic1Keyboard,
         Diacritic2Keyboard,
         Diacritic3Keyboard,

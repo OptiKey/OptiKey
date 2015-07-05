@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg4427"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="ArrangeWindowsVertical.svg">
+  <defs
+     id="defs4429" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11"
+     inkscape:cx="25.838674"
+     inkscape:cy="31.152154"
+     inkscape:current-layer="svg4427"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata4432">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="matrix(0.50907359,0,0,0.50907359,7.9099759,5.0928745)"
+     id="g3" />
+  <path
+     id="path4"
+     d="m 34.3125,52.65625 c 6.39e-4,2.66185 -0.005,2.65625 2.65625,2.65625 l 15.96875,0 c 2.661849,0 2.65625,0.0056 2.65625,-2.65625 l 0,-42.59375 c 0,-2.661849 0.0056,-2.65625 -2.65625,-2.65625 l -15.96875,0 c -2.661849,0 -2.65625,-0.0056 -2.65625,2.65625 l 0,42.59375 z m 2,-1.625 0,-39.34375 c 0,-2.459816 0.01969,-2.46875 2.15625,-2.46875 l 12.8125,0 c 2.136561,0 2.125,0.0089 2.125,2.46875 l 0,39.34375 c 0,2.459815 0.01156,2.46875 -2.125,2.46875 l -12.8125,0 c -2.136048,0 -2.155737,-0.0089 -2.15625,-2.46875 z M 7.6875,44.6875 c 0,2.661849 -0.0056,2.65625 2.65625,2.65625 l 15.96875,0 c 2.66185,0 2.65625,0.0056 2.65625,-2.65625 l 0,-26.625 c 0,-2.661849 0.0056,-2.65625 -2.65625,-2.65625 l -15.96875,0 c -2.66185,0 -2.65625,-0.0056 -2.65625,2.65625 l 0,26.625 z m 2,-1.71875 0,-23.1875 c 0,-2.31839 -0.01156,-2.3125 2.125,-2.3125 l 12.84375,0 c 2.136562,0 2.125,-0.0059 2.125,2.3125 l 0,23.1875 c 0,2.318392 0.01156,2.3125 -2.125,2.3125 l -12.84375,0 c -2.136563,0 -2.125,0.0059 -2.125,-2.3125 z"
+     inkscape:connector-curvature="0" />
+</svg>

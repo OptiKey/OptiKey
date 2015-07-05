@@ -2,6 +2,8 @@
 {
     public interface IWindowManipulationService : INotifyErrors
     {
+        void ArrangeWindowsHorizontally();
+        void ArrangeWindowsVertically();
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);
         void ExpandToBottomAndRight(double pixels);
