@@ -87,29 +87,15 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRightBoundaries}" />
             </controls:Key.Value>
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="8" Grid.RowSpan="2" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <controls:Key Grid.Row="0" Grid.Column="0"
-                          SymbolGeometry="{StaticResource ArrangeWindowsHorizontallyIcon}"
-                          HeightSpan="2"
-                          SharedSizeGroup="KeyWithSymbolAndText">
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeWindowsHorizontally}" />
-                </controls:Key.Value>
-            </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="1"
-                          SymbolGeometry="{StaticResource ArrangeWindowsVerticallyIcon}"
-                          HeightSpan="2"
-                          SharedSizeGroup="KeyWithSymbolAndText">
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeWindowsVertically}" />
-                </controls:Key.Value>
-            </controls:Key>
-        </Grid>
-
+        <controls:Key Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="3"
+                      SymbolGeometry="{StaticResource ArrangeWindowsHorizontallyIcon}"
+                      Text="ARRANGE HORIZONTALLY"
+                      SharedSizeGroup="ArrangeKeys">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeWindowsHorizontally}" />
+            </controls:Key.Value>
+        </controls:Key>
+        
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -144,6 +130,14 @@
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="3"
+                      SymbolGeometry="{StaticResource ArrangeWindowsVerticallyIcon}"
+                      Text="ARRANGE VERICALLY"
+                      SharedSizeGroup="ArrangeKeys">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeWindowsVertically}" />
             </controls:Key.Value>
         </controls:Key>
         
@@ -190,8 +184,13 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="3"
-                      Text="ARRANGE WINDOWS&#x0a;AROUND OPTIKEY"
-                      IsEnabled="False" />
+                      SymbolGeometry="{StaticResource ArrangeWindowsMaximisedIcon}"
+                      Text="ARRANGE MAXIMISED"
+                      SharedSizeGroup="ArrangeKeys">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeWindowsMaximised}" />
+            </controls:Key.Value>
+        </controls:Key>
         
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                       Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Adjust by&#x0a;{0} pixel|Adjust by&#x0a;{0} pixels'}">
@@ -207,7 +206,7 @@
             <controls:Key Grid.Row="0" Grid.Column="0"
                           SymbolGeometry="{StaticResource RestoreSizeIcon}"
                           Text="RESTORE"
-                          SharedSizeGroup="KeyWithSymbol">
+                          SharedSizeGroup="KeyWithSymbolAndText">
                 <controls:Key.Value>
                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreFromMaximised}" />
                 </controls:Key.Value>
@@ -215,7 +214,7 @@
             <controls:Key Grid.Row="0" Grid.Column="1"
                           SymbolGeometry="{StaticResource MaximiseSizeIcon}"
                           Text="MAXIMISE"
-                          SharedSizeGroup="KeyWithSymbol">
+                          SharedSizeGroup="KeyWithSymbolAndText">
                 <controls:Key.Value>
                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MaximiseSize}" />
                 </controls:Key.Value>
@@ -224,7 +223,6 @@
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
-                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />

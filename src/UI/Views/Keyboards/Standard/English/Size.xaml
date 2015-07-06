@@ -259,7 +259,6 @@
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
-                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />

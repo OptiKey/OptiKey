@@ -165,6 +165,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ArrangeWindowsHorizontally();
                         break;
 
+                    case FunctionKeys.ArrangeWindowsMaximised:
+                        Log.Debug("Arranging windows maximised.");
+                        mainWindowManipulationService.ArrangeWindowsMaximised();
+                        break;
+
                     case FunctionKeys.ArrangeWindowsVertically:
                         Log.Debug("Arranging windows vertically.");
                         mainWindowManipulationService.ArrangeWindowsVertically();

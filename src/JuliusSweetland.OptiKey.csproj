@@ -535,6 +535,7 @@
     <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsHorizontally.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsVertical.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsMaximised.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

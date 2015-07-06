@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using JuliusSweetland.OptiKey.Enums;
@@ -21,7 +20,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private readonly Window window;
         private readonly Func<double> getWindowTopSetting;
         private readonly Func<double> getWindowLeftSetting;
@@ -29,6 +28,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Func<double> getWindowWidthSetting;
         private readonly Func<WindowState> getWindowStateSetting;
 
+        private bool otherWindowsShouldBeMaximisedOnExit;
         private bool windowIsMinimised;
         private Size? windowSizeBeforeMinimise;
         private Point? windowPositionBeforeMinimise;
@@ -64,10 +64,10 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 LoadState();
             }
-            
-            if(saveStateOnClose)
+
+            window.Closing += (sender, args) =>
             {
-                window.Closing += (sender, args) =>
+                if (saveStateOnClose)
                 {
                     //Check window is not in minimised state (either as a ssmall icon on the screen, or the window is actually minimised)
                     if (!windowIsMinimised && window.WindowState != WindowState.Minimized)
@@ -80,8 +80,19 @@ namespace JuliusSweetland.OptiKey.Services
 
                         settings.Save();
                     }
-                };
-            }
+                }
+
+                if (otherWindowsShouldBeMaximisedOnExit)
+                {
+                    //Maximise all windows if they were arranged at some point
+                    var windowHwnd = new WindowInteropHelper(window).Handle;
+                    var otherWindows = Windows.GetOpenWindows(windowHwnd);
+                    foreach (var otherWindow in otherWindows)
+                    {
+                        PInvoke.ShowWindow(otherWindow.Key, (int)WindowShowStyle.Maximize);
+                    }
+                }
+            };
         }
         
         #endregion
@@ -160,6 +171,24 @@ namespace JuliusSweetland.OptiKey.Services
                     
                     ArrangeOtherWindows(x, y, width, height);
                 }
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
+        }
+
+        public void ArrangeWindowsMaximised()
+        {
+            try
+            {
+                var windowHwnd = new WindowInteropHelper(window).Handle;
+                var otherWindows = Windows.GetOpenWindows(windowHwnd);
+                foreach (var otherWindow in otherWindows)
+                {
+                    PInvoke.ShowWindow(otherWindow.Key, (int) WindowShowStyle.Maximize);
+                }
+                otherWindowsShouldBeMaximisedOnExit = false;
             }
             catch (Exception ex)
             {
@@ -890,14 +919,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ArrangeOtherWindows(int? x, int? y, int? width, int? height)
         {
+            otherWindowsShouldBeMaximisedOnExit = true;
             var windowHwnd = new WindowInteropHelper(window).Handle;
             var otherWindows = Windows.GetOpenWindows(windowHwnd);
             foreach (var otherWindow in otherWindows)
             {
+                Log.DebugFormat("Attempting to arrange window '{0}' to position ({1},{2}) and size ({3},{4})", otherWindow.Value, x, y, width, height);
                 var otherWindowHandle = otherWindow.Key;
                 RECT otherWindowRect;
                 PInvoke.GetWindowRect(otherWindowHandle, out otherWindowRect);
-                PInvoke.ShowWindow(otherWindowHandle, (int)WindowShowStyle.ShowNormal); //Restore windows as resizing windows in a maximised/minimised state can break those functions
+                PInvoke.ShowWindow(otherWindowHandle, (int)WindowShowStyle.ShowNormal); //Restore windows as resizing windows that are in a minimised/maximised state can break the minimise/maximise button
                 PInvoke.SetWindowPos(otherWindowHandle, IntPtr.Zero,
                     x == null ? otherWindowRect.Left : x.Value,
                     y == null ? otherWindowRect.Top : y.Value,

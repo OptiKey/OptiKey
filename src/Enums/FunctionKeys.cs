@@ -5,6 +5,7 @@
         AddToDictionary,
         AlphaKeyboard,
         ArrangeWindowsHorizontally,
+        ArrangeWindowsMaximised,
         ArrangeWindowsVertically,
         Diacritic1Keyboard,
         Diacritic2Keyboard,
