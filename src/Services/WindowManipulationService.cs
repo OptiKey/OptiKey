@@ -8,7 +8,6 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Enums;
-using JuliusSweetland.OptiKey.Native.Structs;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
@@ -85,11 +84,12 @@ namespace JuliusSweetland.OptiKey.Services
                 if (otherWindowsShouldBeMaximisedOnExit)
                 {
                     //Maximise all windows if they were arranged at some point
-                    var windowHwnd = new WindowInteropHelper(window).Handle;
-                    var otherWindows = Windows.GetOpenWindows(windowHwnd);
+                    var thisHwnd = new WindowInteropHelper(window).Handle;
+                    var otherWindows = Windows.GetVisibleOverlappedWindows(thisHwnd);
                     foreach (var otherWindow in otherWindows)
                     {
-                        PInvoke.ShowWindow(otherWindow.Key, (int)WindowShowStyle.Maximize);
+                        Log.DebugFormat("Maximising window '{0}' before we exit", otherWindow.Item1);
+                        PInvoke.ShowWindow(otherWindow.Item2, (int)WindowShowStyle.Maximize);
                     }
                 }
             };
@@ -182,11 +182,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                var windowHwnd = new WindowInteropHelper(window).Handle;
-                var otherWindows = Windows.GetOpenWindows(windowHwnd);
+                var thisHwnd = new WindowInteropHelper(window).Handle;
+                var otherWindows = Windows.GetVisibleOverlappedWindows(thisHwnd);
                 foreach (var otherWindow in otherWindows)
                 {
-                    PInvoke.ShowWindow(otherWindow.Key, (int) WindowShowStyle.Maximize);
+                    Log.DebugFormat("Maximising window '{0}'", otherWindow.Item1);
+                    PInvoke.ShowWindow(otherWindow.Item2, (int) WindowShowStyle.ShowMaximized);
                 }
                 otherWindowsShouldBeMaximisedOnExit = false;
             }
@@ -917,23 +918,17 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Private Methods
 
-        private void ArrangeOtherWindows(int? x, int? y, int? width, int? height)
+        private void ArrangeOtherWindows(int x, int y, int width, int height)
         {
             otherWindowsShouldBeMaximisedOnExit = true;
-            var windowHwnd = new WindowInteropHelper(window).Handle;
-            var otherWindows = Windows.GetOpenWindows(windowHwnd);
+            var thisHwnd = new WindowInteropHelper(window).Handle;
+            var otherWindows = Windows.GetVisibleOverlappedWindows(thisHwnd);
             foreach (var otherWindow in otherWindows)
             {
-                Log.DebugFormat("Attempting to arrange window '{0}' to position ({1},{2}) and size ({3},{4})", otherWindow.Value, x, y, width, height);
-                var otherWindowHandle = otherWindow.Key;
-                RECT otherWindowRect;
-                PInvoke.GetWindowRect(otherWindowHandle, out otherWindowRect);
+                Log.DebugFormat("Restoring and arranging window '{0}' to position ({1},{2}) and size ({3},{4})", otherWindow.Item1, x, y, width, height);
+                var otherWindowHandle = otherWindow.Item2;
                 PInvoke.ShowWindow(otherWindowHandle, (int)WindowShowStyle.ShowNormal); //Restore windows as resizing windows that are in a minimised/maximised state can break the minimise/maximise button
-                PInvoke.SetWindowPos(otherWindowHandle, IntPtr.Zero,
-                    x == null ? otherWindowRect.Left : x.Value,
-                    y == null ? otherWindowRect.Top : y.Value,
-                    width == null ? otherWindowRect.Right - otherWindowRect.Left : width.Value,
-                    height == null ? otherWindowRect.Bottom - otherWindowRect.Top : height.Value,
+                PInvoke.SetWindowPos(otherWindowHandle, IntPtr.Zero, x, y, width, height,
                     SetWindowPosFlags.SWP_NOACTIVATE | SetWindowPosFlags.SWP_NOOWNERZORDER | SetWindowPosFlags.SWP_NOZORDER);
             }
         }

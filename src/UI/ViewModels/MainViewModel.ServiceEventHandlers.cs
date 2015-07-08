@@ -406,7 +406,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                                    audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                                     outputService.LeftMouseButtonDoubleClick(fp);
                                 };
 

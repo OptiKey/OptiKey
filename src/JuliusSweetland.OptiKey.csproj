@@ -223,10 +223,13 @@
     <Compile Include="Native\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Enums\GWL.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />
     <Compile Include="Native\Enums\SetWindowPosFlags.cs" />
     <Compile Include="Native\Enums\SpecialWindowHandles.cs" />
     <Compile Include="Native\Static\AppBarState.cs" />
+    <Compile Include="Native\Static\ExtendedWindowStyles.cs" />
+    <Compile Include="Native\Static\WindowStyles.cs" />
     <Compile Include="Native\Structs\APPBARDATA.cs" />
     <Compile Include="Native\Structs\RECT.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
