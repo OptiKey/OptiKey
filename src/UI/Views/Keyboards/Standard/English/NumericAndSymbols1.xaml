@@ -342,19 +342,25 @@
                 <models:KeyValue String="?" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
-                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
