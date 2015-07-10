@@ -69,7 +69,9 @@ namespace JuliusSweetland.OptiKey.Services
                 if (saveStateOnClose)
                 {
                     //Check window is not in minimised state (either as a ssmall icon on the screen, or the window is actually minimised)
-                    if (!windowIsMinimised && window.WindowState != WindowState.Minimized)
+                    if (!windowIsMinimised 
+                        && window.WindowState != WindowState.Minimized
+                        && window.WindowState != WindowState.Maximized)
                     {
                         setWindowTopSetting(window.Top);
                         setWindowLeftSetting(window.Left);
