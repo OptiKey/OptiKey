@@ -218,7 +218,7 @@
     <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
-    <Setting Name="DisableKeyboardSimulationWhileMouseKeyboardIsOpen" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoCloseCrashMessageSeconds" Roaming="true" Type="System.Int32" Scope="User">
@@ -267,6 +267,9 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DisableScratchpadWhileSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

@@ -330,13 +330,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
                     .Subscribe(value => CalculateScratchpadIsDisabled()));
 
+            Settings.Default.OnPropertyChanges(s => s.DisableScratchpadWhileSimulatingKeyStrokes)
+                .Subscribe(value => CalculateScratchpadIsDisabled());
+
             CalculateScratchpadIsDisabled();
         }
 
         private void CalculateScratchpadIsDisabled()
         {
-            ScratchpadIsDisabled = KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => 
-                keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
+            ScratchpadIsDisabled = 
+                (Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes
+                 && keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                ||
+                (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => 
+                    keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()));
         }
 
         private void SelectKeyboardOnKeyboardSetChanges()
