@@ -18,6 +18,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Show splash screen on startup:" 
@@ -34,10 +35,15 @@
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding DisableKeyboardSimulationWhileMouseKeyboardIsOpen, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Debugging mode:" 
+                          IsChecked="{Binding DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen, Mode=TwoWay}" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Disable scratchpad while simulating keyboard:" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding DisableScratchpadWhileSimulatingKeyStrokes, Mode=TwoWay}" />
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Debugging mode:" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="4" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
             </Grid>

@@ -7,6 +7,7 @@ namespace JuliusSweetland.OptiKey.Services
     public interface IOutputService
     {
         string Text { get; }
+        bool ScratchpadIsEnabled { get; set; }
         
         void ProcessFunctionKey(FunctionKeys functionKey);
         void ProcessSingleKeyText(string capturedText);
