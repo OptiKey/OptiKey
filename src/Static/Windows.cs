@@ -28,6 +28,7 @@ namespace JuliusSweetland.OptiKey.Static
                 if ((gwlStyle & WindowStyles.WS_CHILD) != 0) return true; //Skip child windows
                 if ((gwlStyle & WindowStyles.WS_VISIBLE) == 0) return true; //Skip invisible windows
                 if ((gwlStyle & WindowStyles.WS_MAXIMIZEBOX) == 0) return true; //Skip windows without Maximise button
+                if ((gwlStyle & WindowStyles.WS_MINIMIZE) != 0) return true; //Skip windows which are minimised
 
                 int length = PInvoke.GetWindowTextLength(hWnd);
                 if (length == 0) return true;
