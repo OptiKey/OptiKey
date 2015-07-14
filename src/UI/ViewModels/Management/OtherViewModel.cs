@@ -68,7 +68,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
             DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-            DisableScratchpadWhileSimulatingKeyStrokes = Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes;
             Debug = Settings.Default.Debug;
         }
 
@@ -77,7 +76,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
             Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-            Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes = DisableScratchpadWhileSimulatingKeyStrokes;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();
         }
