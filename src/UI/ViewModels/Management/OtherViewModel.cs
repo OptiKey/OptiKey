@@ -37,18 +37,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref checkForUpdates, value); }
         }
 
-        private bool disableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-        public bool DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen
+        private bool disableKeyboardSimulationForMouseKeyboard;
+        public bool DisableKeyboardSimulationWhileMouseKeyboardIsOpen
         {
-            get { return disableKeyStrokeSimulationWhileMouseKeyboardIsOpen; }
-            set { SetProperty(ref disableKeyStrokeSimulationWhileMouseKeyboardIsOpen, value); }
-        }
-
-        private bool disableScratchpadWhileSimulatingKeyStrokes;
-        public bool DisableScratchpadWhileSimulatingKeyStrokes
-        {
-            get { return disableScratchpadWhileSimulatingKeyStrokes; }
-            set { SetProperty(ref disableScratchpadWhileSimulatingKeyStrokes, value); }
+            get { return disableKeyboardSimulationForMouseKeyboard; }
+            set { SetProperty(ref disableKeyboardSimulationForMouseKeyboard, value); }
         }
 
         private bool debug;
@@ -74,8 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
-            DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-            DisableScratchpadWhileSimulatingKeyStrokes = Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes;
+            DisableKeyboardSimulationWhileMouseKeyboardIsOpen = Settings.Default.DisableKeyboardSimulationWhileMouseKeyboardIsOpen;
             Debug = Settings.Default.Debug;
         }
 
@@ -83,8 +75,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
-            Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-            Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes = DisableScratchpadWhileSimulatingKeyStrokes;
+            Settings.Default.DisableKeyboardSimulationWhileMouseKeyboardIsOpen = DisableKeyboardSimulationWhileMouseKeyboardIsOpen;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();
         }

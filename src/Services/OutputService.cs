@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -25,8 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
         private string text;
         private string lastTextChange;
         private bool suppressNextAutoSpace = true;
-        private bool scratchpadIsEnabled;
-
+        
         #endregion
 
         #region Ctor
@@ -44,7 +44,6 @@ namespace JuliusSweetland.OptiKey.Services
 
             ReactToPublishingStateChanges();
             ReactToPublishableKeyDownStateChanges();
-            MonitorScratchpadState();
         }
 
         #endregion
@@ -55,12 +54,6 @@ namespace JuliusSweetland.OptiKey.Services
         {
             get { return text; }
             private set { SetProperty(ref text, value); }
-        }
-
-        public bool ScratchpadIsEnabled
-        {
-            get { return scratchpadIsEnabled; }
-            set { SetProperty(ref scratchpadIsEnabled, value); }
         }
 
         #endregion
@@ -74,12 +67,11 @@ namespace JuliusSweetland.OptiKey.Services
             switch (functionKey)
             {
                 case FunctionKeys.BackMany:
-                    if (ScratchpadIsEnabled && !string.IsNullOrEmpty(Text))
+                    if (!string.IsNullOrEmpty(Text))
                     {
                         var backManyCount = Text.CountBackToLastCharCategoryBoundary();
 
-                        dictionaryService.DecrementEntryUsageCount(
-                            Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
+                        dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backManyCount, backManyCount).Trim());
 
                         var textAfterBackMany = Text.Substring(0, Text.Length - backManyCount);
                         var textChangedByBackMany = Text != textAfterBackMany;
@@ -90,10 +82,7 @@ namespace JuliusSweetland.OptiKey.Services
                         for (int i = 0; i < backManyCount; i++)
                         {
                             PublishKeyPress(FunctionKeys.BackOne);
-                            if (i == 0)
-                            {
-                                ReleaseUnlockedKeys();
-                            }
+                            ReleaseUnlockedKeys();
                         }
 
                         if (textChangedByBackMany
@@ -108,77 +97,58 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.Debug("Suppressing next auto space.");
                         suppressNextAutoSpace = true;
                     }
-                    else
-                    {
-                        PublishKeyPress(FunctionKeys.BackOne);
-                        ReleaseUnlockedKeys();
-                    }
                     break;
 
                 case FunctionKeys.BackOne:
-                    if (ScratchpadIsEnabled)
+                    var backOneCount = string.IsNullOrEmpty(lastTextChange)
+                        ? 1 //Default to removing one character if no lastTextChange
+                        : lastTextChange.Length;
+
+                    var textChangedByBackOne = false;
+
+                    if (!string.IsNullOrEmpty(Text))
                     {
-                        var backOneCount = string.IsNullOrEmpty(lastTextChange)
-                            ? 1 //Default to removing one character if no lastTextChange
-                            : lastTextChange.Length;
-
-                        var textChangedByBackOne = false;
-
-                        if (!string.IsNullOrEmpty(Text))
+                        if (Text.Length < backOneCount)
                         {
-                            if (Text.Length < backOneCount)
-                            {
-                                backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
-                            }
-
-                            var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
-                            textChangedByBackOne = Text != textAfterBackOne;
-
-                            if (backOneCount > 1)
-                            {
-                                //Removing more than one character - only decrement removed string
-                                dictionaryService.DecrementEntryUsageCount(
-                                    Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
-                            }
-                            else if (!string.IsNullOrEmpty(lastTextChange)
-                                     && lastTextChange.Length == 1
-                                     && !Char.IsWhiteSpace(lastTextChange[0]))
-                            {
-                                dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length));
-                                    //We are removing a non-whitespace character - decrement the in progress word
-                                dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length));
-                                    //And increment the in progress word that is left after the removal
-                            }
-
-                            Text = textAfterBackOne;
+                            backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
                         }
 
-                        for (int i = 0; i < backOneCount; i++)
+                        var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
+                        textChangedByBackOne = Text != textAfterBackOne;
+
+                        if (backOneCount > 1)
                         {
-                            PublishKeyPress(FunctionKeys.BackOne);
-                            if (i == 0)
-                            {
-                                ReleaseUnlockedKeys();
-                            }
+                            //Removing more than one character - only decrement removed string
+                            dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
+                        }
+                        else if(!string.IsNullOrEmpty(lastTextChange)
+                            && lastTextChange.Length == 1
+                            && !Char.IsWhiteSpace(lastTextChange[0]))
+                        {
+                            dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
+                            dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
                         }
 
-                        if (textChangedByBackOne
-                            || string.IsNullOrEmpty(Text))
-                        {
-                            AutoPressShiftIfAppropriate();
-                        }
-
-                        StoreLastTextChange(null);
-                        GenerateAutoCompleteSuggestions();
-
-                        Log.Debug("Suppressing next auto space.");
-                        suppressNextAutoSpace = true;
+                        Text = textAfterBackOne;
                     }
-                    else
+
+                    for (int i = 0; i < backOneCount; i++)
                     {
                         PublishKeyPress(FunctionKeys.BackOne);
                         ReleaseUnlockedKeys();
                     }
+
+                    if (textChangedByBackOne
+                        || string.IsNullOrEmpty(Text))
+                    {
+                        AutoPressShiftIfAppropriate();
+                    }
+
+                    StoreLastTextChange(null);
+                    GenerateAutoCompleteSuggestions();
+
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
                     break;
 
                 case FunctionKeys.ClearScratchpad:
@@ -218,11 +188,8 @@ namespace JuliusSweetland.OptiKey.Services
                 default:
                     if (functionKey.ToVirtualKeyCode() != null)
                     {
-                        if (ScratchpadIsEnabled)
-                        {
-                            //Key corresponds to physical keyboard key
-                            GenerateAutoCompleteSuggestions();
-                        }
+                        //Key corresponds to physical keyboard key
+                        GenerateAutoCompleteSuggestions();
 
                         //If the key cannot be pressed or locked down (these are handled elsewhere) then publish it and release unlocked keys.
                         var keyValue = new KeyValue { FunctionKey = functionKey };
@@ -250,13 +217,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
 
-            if (ScratchpadIsEnabled)
-            {
-                StoreSuggestions(
-                    ModifySuggestions(captureAndSuggestions.Count > 1
-                        ? captureAndSuggestions.Skip(1).ToList()
-                        : null));    
-            }
+            StoreSuggestions(
+                ModifySuggestions(captureAndSuggestions.Count > 1
+                    ? captureAndSuggestions.Skip(1).ToList()
+                    : null));
 
             ProcessText(captureAndSuggestions.First());
         }
@@ -517,38 +481,6 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                     });
             }
-        }
-
-        private void MonitorScratchpadState()
-        {
-            Action calculateScratchpadState = () =>
-            {
-                if (Settings.Default.DisableScratchpadWhileSimulatingKeyStrokes
-                    && keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
-                {
-                    ScratchpadIsEnabled = false;
-                    StoreLastTextChange(null);
-                    ClearSuggestions();
-                }
-                else if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                    keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
-                {
-                    ScratchpadIsEnabled = false;
-                }
-                else
-                {
-                    ScratchpadIsEnabled = true;
-                }
-            };
-
-            KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
-                    .Subscribe(value => calculateScratchpadState()));
-
-            Settings.Default.OnPropertyChanges(s => s.DisableScratchpadWhileSimulatingKeyStrokes)
-                .Subscribe(value => calculateScratchpadState());
-
-            calculateScratchpadState();
         }
 
         private void StoreLastTextChange(string textChange)
