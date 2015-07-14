@@ -44,13 +44,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref disableKeyStrokeSimulationWhileMouseKeyboardIsOpen, value); }
         }
 
-        private bool disableScratchpadWhileSimulatingKeyStrokes;
-        public bool DisableScratchpadWhileSimulatingKeyStrokes
-        {
-            get { return disableScratchpadWhileSimulatingKeyStrokes; }
-            set { SetProperty(ref disableScratchpadWhileSimulatingKeyStrokes, value); }
-        }
-
         private bool debug;
         public bool Debug
         {
