@@ -6,7 +6,8 @@
         TheEyeTribe,
         MousePosition,
         TobiiEyeX,
-        TobiiRex
+        TobiiRex,
+        TobiiPcEyeGo
     }
 
     public static partial class EnumExtensions
@@ -20,6 +21,7 @@
                 case PointsSources.MousePosition: return "Mouse position";
                 case PointsSources.TobiiEyeX: return "Tobii EyeX";
                 case PointsSources.TobiiRex: return "Tobii REX";
+                case PointsSources.TobiiPcEyeGo: return "Tobii PCEye Go";
             }
 
             return pointSources.ToString();

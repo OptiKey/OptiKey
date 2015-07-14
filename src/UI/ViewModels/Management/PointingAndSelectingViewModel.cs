@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -74,6 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>("The Eye Tribe", Enums.PointsSources.TheEyeTribe),
                     new KeyValuePair<string, PointsSources>("Tobii EyeX", Enums.PointsSources.TobiiEyeX),
                     new KeyValuePair<string, PointsSources>("Tobii Rex", Enums.PointsSources.TobiiRex),
+                    new KeyValuePair<string, PointsSources>("Tobii PCEye Go", Enums.PointsSources.TobiiPcEyeGo),
                     new KeyValuePair<string, PointsSources>("Mouse position", Enums.PointsSources.MousePosition)
                 };
             }

@@ -273,6 +273,7 @@ namespace JuliusSweetland.OptiKey
 
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiRex:
+                case PointsSources.TobiiPcEyeGo:
                     return new TobiiEyeXCalibrationService();
             }
 
@@ -310,6 +311,7 @@ namespace JuliusSweetland.OptiKey
 
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiRex:
+                case PointsSources.TobiiPcEyeGo:
                     var tobiiEyeXPointService = new TobiiEyeXPointService();
                     var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
                     if (tobiiEyeXCalibrationService != null)
