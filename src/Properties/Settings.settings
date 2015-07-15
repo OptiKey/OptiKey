@@ -2,13 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.OptiKey.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="KeySelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Ins</Value>
+    <Setting Name="KeySelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keys" Scope="User">
+      <Value Profile="(Default)">Insert</Value>
     </Setting>
     <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerStopSignals" Scope="User">
       <Value Profile="(Default)">NextHigh</Value>
     </Setting>
-    <Setting Name="KeySelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
+    <Setting Name="KeySelectionTriggerMouseDownUpButton" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
@@ -212,10 +212,10 @@
     <Setting Name="CalibrationMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="System.Windows.Forms.Keys" Scope="User">
-      <Value Profile="(Default)">Ins</Value>
+    <Setting Name="PointSelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keys" Scope="User">
+      <Value Profile="(Default)">Insert</Value>
     </Setting>
-    <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="System.Windows.Forms.MouseButtons" Scope="User">
+    <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
     <Setting Name="DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen" Roaming="true" Type="System.Boolean" Scope="User">

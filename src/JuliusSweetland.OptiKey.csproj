@@ -189,6 +189,8 @@
     <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\KeyboardsSets.cs" />
     <Compile Include="Enums\CharCategories.cs" />
+    <Compile Include="Enums\Keys.cs" />
+    <Compile Include="Enums\MouseButtons.cs" />
     <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
@@ -664,6 +666,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Dictionaries\AmericanEnglish.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -25,11 +25,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ins")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Insert")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.Forms.Keys KeySelectionTriggerKeyboardKeyDownUpKey {
+        public global::JuliusSweetland.OptiKey.Enums.Keys KeySelectionTriggerKeyboardKeyDownUpKey {
             get {
-                return ((global::System.Windows.Forms.Keys)(this["KeySelectionTriggerKeyboardKeyDownUpKey"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Keys)(this["KeySelectionTriggerKeyboardKeyDownUpKey"]));
             }
             set {
                 this["KeySelectionTriggerKeyboardKeyDownUpKey"] = value;
@@ -53,9 +53,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Left")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.Forms.MouseButtons KeySelectionTriggerMouseDownUpButton {
+        public global::JuliusSweetland.OptiKey.Enums.MouseButtons KeySelectionTriggerMouseDownUpButton {
             get {
-                return ((global::System.Windows.Forms.MouseButtons)(this["KeySelectionTriggerMouseDownUpButton"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.MouseButtons)(this["KeySelectionTriggerMouseDownUpButton"]));
             }
             set {
                 this["KeySelectionTriggerMouseDownUpButton"] = value;
@@ -937,11 +937,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Ins")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Insert")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.Forms.Keys PointSelectionTriggerKeyboardKeyDownUpKey {
+        public global::JuliusSweetland.OptiKey.Enums.Keys PointSelectionTriggerKeyboardKeyDownUpKey {
             get {
-                return ((global::System.Windows.Forms.Keys)(this["PointSelectionTriggerKeyboardKeyDownUpKey"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Keys)(this["PointSelectionTriggerKeyboardKeyDownUpKey"]));
             }
             set {
                 this["PointSelectionTriggerKeyboardKeyDownUpKey"] = value;
@@ -952,9 +952,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Left")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Windows.Forms.MouseButtons PointSelectionTriggerMouseDownUpButton {
+        public global::JuliusSweetland.OptiKey.Enums.MouseButtons PointSelectionTriggerMouseDownUpButton {
             get {
-                return ((global::System.Windows.Forms.MouseButtons)(this["PointSelectionTriggerMouseDownUpButton"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.MouseButtons)(this["PointSelectionTriggerMouseDownUpButton"]));
             }
             set {
                 this["PointSelectionTriggerMouseDownUpButton"] = value;

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Forms;
 using WindowsInput.Native;
 
 namespace JuliusSweetland.OptiKey.Services

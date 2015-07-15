@@ -23,10 +23,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Ctor
 
         public MouseButtonDownUpSource(
-            MouseButtons triggerButton,
+            Enums.MouseButtons triggerButton,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.triggerButton = triggerButton;
+            this.triggerButton = (System.Windows.Forms.MouseButtons)triggerButton; //Cast to the Windows.Forms.MouseButtons enum
             this.pointAndKeyValueSource = pointAndKeyValueSource;
 
             mouseHookListener = new MouseHookListener(new GlobalHooker())

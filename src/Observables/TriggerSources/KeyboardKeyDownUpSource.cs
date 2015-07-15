@@ -23,10 +23,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Ctor
 
         public KeyboardKeyDownUpSource(
-            Keys triggerKey,
+            Enums.Keys triggerKey,
             IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
         {
-            this.triggerKey = triggerKey;
+            this.triggerKey = (System.Windows.Forms.Keys)triggerKey; //Cast to the Windows.Forms.Keys enum
             this.pointAndKeyValueSource = pointAndKeyValueSource;
 
             keyboardHookListener = new KeyboardHookListener(new GlobalHooker())
