@@ -134,9 +134,6 @@
     <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
-    <Setting Name="UiComplexity" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.UiComplexity" Scope="User">
-      <Value Profile="(Default)">Basic</Value>
-    </Setting>
     <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.7500000</Value>
     </Setting>

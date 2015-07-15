@@ -195,7 +195,6 @@
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\TaskbarPosition.cs" />
-    <Compile Include="Enums\UiComplexity.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
     <Compile Include="Enums\FunctionKeys.cs" />
