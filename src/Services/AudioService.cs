@@ -13,9 +13,12 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        
+        private readonly SpeechSynthesizer speechSynthesiser;
+        
+        private EventHandler<SpeakCompletedEventArgs> speakCompleted;
         private int? currentWaveOutVolume; //Volumes are scaled from 0 to 100
-
+        
         #endregion
 
         #region Events
@@ -28,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public AudioService()
         {
+            speechSynthesiser = new SpeechSynthesizer();
             uint tempWavOutVol = 0;
             PInvoke.waveOutGetVolume(IntPtr.Zero, out tempWavOutVol);
             var vol = (ushort)(tempWavOutVol & 0x0000ffff);
@@ -38,7 +42,25 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods
 
-        public void Speak(string textToSpeak, int? volume = null, int? rate = null, string voice = null)
+        public void CancelSpeech()
+        {
+            try
+            {
+                Log.Debug("Cancelling all speech");
+                if (speakCompleted != null)
+                {
+                    speechSynthesiser.SpeakCompleted -= speakCompleted;
+                    speakCompleted = null;
+                }
+                speechSynthesiser.SpeakAsyncCancelAll();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void Speak(string textToSpeak, Action callBack, int? volume = null, int? rate = null, string voice = null)
         {
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
@@ -47,11 +69,8 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", 
                     textToSpeak, volume, rate, voice);
 
-                var speechSynthesiser = new SpeechSynthesizer
-                {
-                    Rate = rate ?? Settings.Default.SpeechRate,
-                    Volume = volume ?? Settings.Default.SpeechVolume
-                };
+                speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
+                speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
 
                 var voiceToUse = voice ?? Settings.Default.SpeechVoice;
 
@@ -70,7 +89,14 @@ namespace JuliusSweetland.OptiKey.Services
                         PublishError(this, customException);
                     }
                 }
-
+                
+                speakCompleted = (sender, args) =>
+                {
+                    speechSynthesiser.SpeakCompleted -= speakCompleted;
+                    speakCompleted = null;
+                    callBack();
+                };
+                speechSynthesiser.SpeakCompleted += speakCompleted;
                 speechSynthesiser.SpeakAsync(textToSpeak);
             }
             catch (Exception exception)

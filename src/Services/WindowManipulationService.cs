@@ -451,7 +451,6 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowStateSetting();
 
             //Coerce window height - cannot be taller than virtual screen height
-
             if (windowHeight > SystemParameters.VirtualScreenHeight) //N.B. Virtual screen height/width are already is DIP
             {
                 windowHeight = SystemParameters.VirtualScreenHeight;
