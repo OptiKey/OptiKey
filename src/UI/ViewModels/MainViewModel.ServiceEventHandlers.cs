@@ -978,6 +978,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Speak:
                         audioService.Speak(
                             outputService.Text,
+                            () => { },
                             Settings.Default.SpeechVolume,
                             Settings.Default.SpeechRate,
                             Settings.Default.SpeechVoice);

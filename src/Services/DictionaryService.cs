@@ -358,7 +358,7 @@ namespace JuliusSweetland.OptiKey.Services
                     var enumerator = entriesForAutoComplete
                         .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
                         .SelectMany(kvp => kvp.Value)
-                        .Where(de => de.Entry.Length > simplifiedRoot.Length)
+                        .Where(de => de.Entry.Length >= root.Length)
                         .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
                         .OrderByDescending(de => de.UsageCount)
                         .ThenBy(de => de.Entry.Length)

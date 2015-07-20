@@ -66,14 +66,12 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", 
-                    textToSpeak, volume, rate, voice);
+                Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'",  textToSpeak, volume, rate, voice);
 
                 speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
                 speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
 
                 var voiceToUse = voice ?? Settings.Default.SpeechVoice;
-
                 if (!string.IsNullOrWhiteSpace(voiceToUse))
                 {
                     try
@@ -85,7 +83,6 @@ namespace JuliusSweetland.OptiKey.Services
                         var customException = new ApplicationException(
                             string.Format("There was a problem setting the voice to '{0}'{1}", 
                             voiceToUse, voice == null ? " (from settings)" : null), exception);
-
                         PublishError(this, customException);
                     }
                 }
@@ -97,7 +94,6 @@ namespace JuliusSweetland.OptiKey.Services
                     callBack();
                 };
                 speechSynthesiser.SpeakCompleted += speakCompleted;
-                speechSynthesiser.SpeakAsync(textToSpeak);
             }
             catch (Exception exception)
             {
