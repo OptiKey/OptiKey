@@ -60,6 +60,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             InitialiseWindowSizeAndPosition(window, getWindowSizeAndPositionSetting);
 
+            window.Loaded += (sender, args) => PersistWindowSizeAndPosition(); //Persist state after size & position is initialised and applied
+
             Action attachDetachArrangeOtherWindowListeners = () =>
             {
                 if (getArrangeOtherWindowsSetting())
@@ -312,10 +314,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-
                 window.Height += yAdjustment;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight - not doing this leaves the Width property out of sync with the ActualWidth
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -348,11 +349,10 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var widthBeforeAdjustment = window.ActualWidth;
                 window.Width += xAdjustment;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
                 var actualXAdjustment = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Left -= actualXAdjustment;
-                
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -370,10 +370,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
-                
                 window.Width += xAdjustment;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -394,10 +393,10 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var heightBeforeAdjustment = window.ActualHeight;
                 window.Height += yAdjustment;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight - not doing this leaves the Width property out of sync with the ActualWidth
                 var actualYAdjustment = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Top -= actualYAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -981,10 +980,8 @@ namespace JuliusSweetland.OptiKey.Services
                     win.Left = screenTopLeftInWpfCoords.X;
                     win.Top = screenTopLeftInWpfCoords.Y;
                     win.Width = screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X;
-                    win.Height = screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y;
+                    win.Height = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y) / 2;
                 }
-
-                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {

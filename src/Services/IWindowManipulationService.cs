@@ -2,6 +2,7 @@
 {
     public interface IWindowManipulationService : INotifyErrors
     {
+        void DecreaseOpacity();
         void Dock();
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);
@@ -11,6 +12,7 @@
         void ExpandToTop(double pixels);
         void ExpandToTopAndLeft(double pixels);
         void ExpandToTopAndRight(double pixels);
+        void IncreaseOpacity();
         void Maximise();
         void Minimise();
         void MoveToBottom(double pixels);
@@ -38,7 +40,5 @@
         void ShrinkFromTop(double pixels);
         void ShrinkFromTopAndLeft(double pixels);
         void ShrinkFromTopAndRight(double pixels);
-        void IncreaseOpacity();
-        void DecreaseOpacity();
     }
 }

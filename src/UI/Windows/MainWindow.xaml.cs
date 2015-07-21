@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
