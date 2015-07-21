@@ -129,7 +129,9 @@ namespace JuliusSweetland.OptiKey
 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
                     () => Settings.Default.MainWindowSizeAndPosition,
-                    d => Settings.Default.MainWindowSizeAndPosition = d,
+                    rect => Settings.Default.MainWindowSizeAndPosition = rect,
+                    () => Settings.Default.MainWindowOpacity,
+                    opacity => Settings.Default.MainWindowOpacity = opacity,
                     () => Settings.Default.MainWindowMinimisedWidthInPixels,
                     () => Settings.Default.MainWindowMinimisedHeightInPixels,
                     () => Settings.Default.MainWindowDockPosition,

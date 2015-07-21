@@ -20,6 +20,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Window window;
         private readonly Func<Rect?> getWindowSizeAndPositionSetting;
         private readonly Action<Rect?> setWindowSizeAndPositionSetting;
+        private readonly Func<double> getOpacitySetting;
+        private readonly Action<double> setOpacitySetting;
         private readonly Func<int?> getMinimisedWidthSetting;
         private readonly Func<int?> getMinimisedHeightSetting;
         private readonly Func<DockPositions> getDockPositionSetting;
@@ -38,6 +40,8 @@ namespace JuliusSweetland.OptiKey.Services
             Window window,
             Func<Rect?> getWindowSizeAndPositionSetting,
             Action<Rect?> setWindowSizeAndPositionSetting,
+            Func<double> getOpacitySetting,
+            Action<double> setOpacitySetting,
             Func<int?> getMinimisedWidthSetting,
             Func<int?> getMinimisedHeightSetting,
             Func<DockPositions> getDockPositionSetting,
@@ -50,6 +54,8 @@ namespace JuliusSweetland.OptiKey.Services
             this.window = window;
             this.getWindowSizeAndPositionSetting = getWindowSizeAndPositionSetting;
             this.setWindowSizeAndPositionSetting = setWindowSizeAndPositionSetting;
+            this.getOpacitySetting = getOpacitySetting;
+            this.setOpacitySetting = setOpacitySetting;
             this.getMinimisedWidthSetting = getMinimisedWidthSetting;
             this.getMinimisedHeightSetting = getMinimisedHeightSetting;
             this.getDockPositionSetting = getDockPositionSetting;
@@ -58,9 +64,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getArrangeOtherWindowsSetting = getArrangeOtherWindowsSetting;
             this.settings = settings;
 
-            InitialiseWindowSizeAndPosition(window, getWindowSizeAndPositionSetting);
-
-            window.Loaded += (sender, args) => PersistWindowSizeAndPosition(); //Persist state after size & position is initialised and applied
+            Initialise();
 
             Action attachDetachArrangeOtherWindowListeners = () =>
             {
@@ -74,6 +78,12 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             };
             arrangeOtherWindowsObservable.Subscribe(_ => attachDetachArrangeOtherWindowListeners());
+            if (getArrangeOtherWindowsSetting())
+            {
+                AttachArrangeOtherWindowsListeners();
+            }
+
+            window.Loaded += (sender, args) => PersistWindowSizeAndPosition(); //Persist state after size & position is initialised and applied
         }
 
         #endregion
@@ -239,6 +249,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 window.Opacity = 0.1;
             }
+            PersistWindowOpacity();
         }
 
         public void Dock()
@@ -423,6 +434,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 window.Opacity = 1;
             }
+            PersistWindowOpacity();
         }
         
         public void Maximise()
@@ -942,17 +954,17 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void InitialiseWindowSizeAndPosition(Window win, Func<Rect?> getSizeAndPositionFromSetting)
+        private void Initialise()
         {
             try
             {
-                var windowSizeAndPosition = getSizeAndPositionFromSetting();
+                var windowSizeAndPosition = getWindowSizeAndPositionSetting();
                 if (windowSizeAndPosition != null)
                 {
                     //Coerce size and position to screen
-                    var screen = win.GetScreen();
-                    var screenTopLeftInWpfCoords = win.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
-                    var screenBottomRightInWpfCoords = win.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
+                    var screen = window.GetScreen();
+                    var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                    var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
                     var screenHeight = screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y;
                     var screenWidth = screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X;
 
@@ -974,21 +986,29 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     //Calculate initial size and position
-                    var screen = win.GetScreen();
-                    var screenTopLeftInWpfCoords = win.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
-                    var screenBottomRightInWpfCoords = win.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
-                    win.Left = screenTopLeftInWpfCoords.X;
-                    win.Top = screenTopLeftInWpfCoords.Y;
-                    win.Width = screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X;
-                    win.Height = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y) / 2;
+                    var screen = window.GetScreen();
+                    var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                    var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
+                    window.Left = screenTopLeftInWpfCoords.X;
+                    window.Top = screenTopLeftInWpfCoords.Y;
+                    window.Width = screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X;
+                    window.Height = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y) / 2;
                 }
+
+                window.Opacity = getOpacitySetting();
             }
             catch (Exception ex)
             {
                 PublishError(this, ex);
             }
         }
-        
+
+        private void PersistWindowOpacity()
+        {
+            setOpacitySetting(window.Opacity);
+            settings.Save();
+        }
+
         private void PersistWindowSizeAndPosition()
         {
             if (window.WindowState == WindowState.Normal)

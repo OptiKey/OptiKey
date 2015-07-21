@@ -1164,5 +1164,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["MainWindowMinimisePosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MainWindowOpacity {
+            get {
+                return ((double)(this["MainWindowOpacity"]));
+            }
+            set {
+                this["MainWindowOpacity"] = value;
+            }
+        }
     }
 }

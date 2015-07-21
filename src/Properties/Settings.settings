@@ -266,5 +266,8 @@
     <Setting Name="MainWindowMinimisePosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisePositions" Scope="User">
       <Value Profile="(Default)">TopEdge</Value>
     </Setting>
+    <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

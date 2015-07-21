@@ -5,15 +5,17 @@ Fonts
 
 Icons
   Add Phrase icon modified from: Book by Danilo Gusmão Silveira from the Noun Project (thenounproject.com)
-  Arrange Windows Horizontally and Vertically icons: Align Center Horizontal by Thomas Helbig from the Noun Project (thenounproject.com)
-  Arrange Windows Maximised icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
+  Arrange Other Windows icons modified from: Align Center Horizontal by Thomas Helbig from the Noun Project (thenounproject.com)
   Back icon: Arrow by Jamison Wieser from the Noun Project (thenounproject.com)
   Backspace (Single) icon: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Backspace (Multiple) icon modified from: appbar.clear.reflect.horizontal from Modern UI Icons - modernuiicons.com
   Calibrate icon: Location by Klara Zalokar from the Noun Project (thenounproject.com)
   Clear icon: Trash by Garrett Knoll from the Noun Project (thenounproject.com)
+  Conversation icon: Chat by Jaclyne Ooi from the Noun Project (thenounproject.com)
   Cursor icon: Cursor by Arthur Shlain from the Noun Project (thenounproject.com)
   Decrease Opacity icon modified from: Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
+  Dock icon modified from: Collapse Up by useiconic.com and Play by Mateo Zlatar from the Noun Project (thenounproject.com)
+  Enter icon: Arrow by Sam Vermette from the Noun Project (thenounproject.com)
   Increase Opacity icon modified from: Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
   Jump icons modified from Move by TukTuk Design from the Noun Project (thenounproject.com)
   Left & Right arrow icons: Arrow by Stefan Parnarov from the Noun Project (thenounproject.com)
@@ -22,11 +24,11 @@ Icons
   Lock Bar icon modified from: Minus by Icomatic from the Noun Project (thenounproject.com)
   Main application icon: Eye by Adame Dahmani from the Noun Project (thenounproject.com)
   Management Console icon: Settings by Mundo from the Noun Project (thenounproject.com)
-  Maximise Size icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Menu icon: Menu by Jamison Wieser from the Noun Project (thenounproject.com)
+  Minimise icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   More icon: Dots by Alex S. Lakas from the Noun Project (thenounproject.com)
   Mouse, mouse left click, mouse left double click, mouse right click icons modified from: Mouse by Rediffusion from the Noun Project (thenounproject.com)
-  Mouse drag icon from Move by TukTuk Design from the Noun Project (thenounproject.com) 
+  Mouse drag icon: Move by TukTuk Design from the Noun Project (thenounproject.com) 
   Mouse magnifier icon modified from: Zoom by José Campos
   Mouse zoom in icon: Zoom by José Campos
   Mouse zoom out icon: Zoom-out by José Campos
@@ -35,9 +37,9 @@ Icons
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
   Physical Keys icon: Keybord by Paul te Kortschot from the Noun Project (thenounproject.com)
   Position and Opacity icon modified from Move by TukTuk Design and Transparency by Eva Verbeek from the Noun Project from the Noun Project (thenounproject.com) 
+  Quit icon: Power by riyazali from the Noun Project (thenounproject.com)
   Repeat Last Mouse Action icon: Replay by Arthur Shlain from the Noun Project (thenounproject.com)
-  Restore Size icon modified from: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
-  Return/Enter icon: Arrow by Sam Vermette from the Noun Project (thenounproject.com)
+  Restore From Docked icon: Expand by Garrett Knoll from the Noun Project (thenounproject.com)
   Shift icon: Arrow by Mateo Zlatar from the Noun Project (thenounproject.com)
   Simulate Key Strokes icon: Keypad by Arthur Shlain from the Noun Project (thenounproject.com)
   Size and Opacity icon modified from Move by TukTuk Design and Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
