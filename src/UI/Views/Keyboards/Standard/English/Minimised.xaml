@@ -16,9 +16,10 @@
     
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
-        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}">
+        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}"
+                      Text="OptiKey">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreFromMinimised}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Restore}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

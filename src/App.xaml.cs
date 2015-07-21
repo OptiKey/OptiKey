@@ -113,8 +113,7 @@ namespace JuliusSweetland.OptiKey
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IWindowStateService mainWindowStateService = new WindowStateService();
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
+                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
                 IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
                 IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
                 errorNotifyingServices.Add(audioService);
@@ -127,16 +126,13 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
-
-                mainWindowStateService.Window = mainWindow;
-
+                
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
-                    () => Settings.Default.MainWindowTop, d => Settings.Default.MainWindowTop = d,
-                    () => Settings.Default.MainWindowLeft, d => Settings.Default.MainWindowLeft = d,
-                    () => Settings.Default.MainWindowHeight, d => Settings.Default.MainWindowHeight = d,
-                    () => Settings.Default.MainWindowWidth, d => Settings.Default.MainWindowWidth = d,
-                    () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
-                    Settings.Default, true, true);
+                    () => Settings.Default.MainWindowSizeAndPosition, 
+                    d => Settings.Default.MainWindowSizeAndPosition = d,
+                    () => Settings.Default.ArrangeOtherWindows, 
+                    Settings.Default.OnPropertyChanges(s => s.ArrangeOtherWindows),
+                    Settings.Default);
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 

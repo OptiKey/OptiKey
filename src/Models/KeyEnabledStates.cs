@@ -17,7 +17,6 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
-        private readonly IWindowStateService mainWindowStateService;
 
         #endregion
 
@@ -28,15 +27,13 @@ namespace JuliusSweetland.OptiKey.Models
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
-            ICalibrationService calibrationService,
-            IWindowStateService mainWindowStateService)
+            ICalibrationService calibrationService)
         {
             this.keyboardService = keyboardService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.calibrationService = calibrationService;
-            this.mainWindowStateService = mainWindowStateService;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
@@ -51,8 +48,6 @@ namespace JuliusSweetland.OptiKey.Models
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
 
             lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
-
-            mainWindowStateService.OnPropertyChanges(mwss => mwss.WindowState).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -162,20 +157,6 @@ namespace JuliusSweetland.OptiKey.Models
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (capturingStateManager.CapturingMultiKeySelection
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
-                {
-                    return false;
-                }
-
-                //Key is Maximise, but the window is already maximised
-                if (keyValue == KeyValues.MaximiseSizeKey
-                    && mainWindowStateService.WindowState == WindowState.Maximized)
-                {
-                    return false;
-                }
-
-                //Key is RestoreFromMaximised, but the window is not maximised
-                if (keyValue == KeyValues.RestoreFromMaximisedKey
-                    && mainWindowStateService.WindowState != WindowState.Maximized)
                 {
                     return false;
                 }

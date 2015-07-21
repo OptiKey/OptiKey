@@ -160,21 +160,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
-                    case FunctionKeys.ArrangeWindowsHorizontally:
-                        Log.Debug("Arranging windows horizontally.");
-                        mainWindowManipulationService.ArrangeWindowsHorizontally();
-                        break;
-
-                    case FunctionKeys.ArrangeWindowsMaximised:
-                        Log.Debug("Arranging windows maximised.");
-                        mainWindowManipulationService.ArrangeWindowsMaximised();
-                        break;
-
-                    case FunctionKeys.ArrangeWindowsVertically:
-                        Log.Debug("Arranging windows vertically.");
-                        mainWindowManipulationService.ArrangeWindowsVertically();
-                        break;
-
                     case FunctionKeys.Diacritic1Keyboard:
                         Log.Debug("Changing keyboard to Diacritic1.");
                         Keyboard = new Diacritic1();
@@ -304,73 +289,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Increasing opacity.");
                         mainWindowManipulationService.IncreaseOpacity();
                         break;
-
-                    case FunctionKeys.MaximiseSize:
-                        Log.Debug("Maximising size.");
-                        mainWindowManipulationService.Maximise();
-                        break;
                         
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
-                    case FunctionKeys.MinimiseToBottomAndLeftBoundaries:
-                        Log.Debug("Minimising to bottom and left boundaries.");
-                        mainWindowManipulationService.MinimiseToBottomAndLeftBoundaries();
+                    case FunctionKeys.Minimise:
+                        Log.Debug("Minimising.");
+                        mainWindowManipulationService.Minimise();
                         Log.Debug("Changing keyboard to Minimised.");
                         Keyboard = new Minimised(() => Keyboard = currentKeyboard);
                         break;
 
-                    case FunctionKeys.MinimiseToBottomAndRightBoundaries:
-                        Log.Debug("Minimising to bottom and right boundaries.");
-                        mainWindowManipulationService.MinimiseToBottomAndRightBoundaries();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToMiddleOfBottomBoundary:
-                        Log.Debug("Minimising to bottom boundary.");
-                        mainWindowManipulationService.MinimiseToMiddleOfBottomBoundary();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToMiddleOfLeftBoundary:
-                        Log.Debug("Minimising to left boundary.");
-                        mainWindowManipulationService.MinimiseToMiddleOfLeftBoundary();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToMiddleOfRightBoundary:
-                        Log.Debug("Minimising to right boundary.");
-                        mainWindowManipulationService.MinimiseToMiddleOfRightBoundary();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToTopAndLeftBoundaries:
-                        Log.Debug("Minimising to top and left boundaries.");
-                        mainWindowManipulationService.MinimiseToTopAndLeftBoundaries();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToTopAndRightBoundaries:
-                        Log.Debug("Minimising to top and right boundaries.");
-                        mainWindowManipulationService.MinimiseToTopAndRightBoundaries();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-
-                    case FunctionKeys.MinimiseToMiddleOfTopBoundary:
-                        Log.Debug("Minimising to top boundary.");
-                        mainWindowManipulationService.MinimiseToMiddleOfTopBoundary();
-                        Log.Debug("Changing keyboard to Minimised.");
-                        Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                        break;
-                    
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
@@ -909,25 +840,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             lastMouseActionStateManager.LastMouseAction();
                         }
-                        break;
-
-                    case FunctionKeys.RestoreFromMaximised:
-                        Log.Debug("Restoring from maximised.");
-                        mainWindowManipulationService.RestoreFromMaximised();
-                        break;
-
-                    case FunctionKeys.RestoreFromMinimised:
-                        Log.Debug("Restoring from minimised.");
-                        var minimisedAsNavigableKeyboard = Keyboard as IBackAction;
-                        if (minimisedAsNavigableKeyboard != null && minimisedAsNavigableKeyboard.BackAction != null)
-                        {
-                            minimisedAsNavigableKeyboard.BackAction();
-                        }
-                        else
-                        {
-                            Keyboard = new Alpha();
-                        }
-                        mainWindowManipulationService.RestoreFromMinimised();
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:

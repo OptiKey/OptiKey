@@ -87,27 +87,6 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndRight}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToTopAndLeftBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="9"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToMiddleOfTopBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopRightBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToTopAndRightBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
         
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
@@ -143,24 +122,6 @@
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToMiddleOfLeftBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="9"
-                      Text="MINIMISE"
-                      SharedSizeGroup="KeyWithText"
-                      IsEnabled="False" />
-        <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToMiddleOfRightBoundary}" />
             </controls:Key.Value>
         </controls:Key>
         
@@ -206,56 +167,13 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndRight}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToBottomAndLeftBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="9"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToMiddleOfBottomBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightBoundaryIcon}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MinimiseToBottomAndRightBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-
+        
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                       Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Adjust by&#x0a;{0} pixel|Adjust by&#x0a;{0} pixels'}">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
             </controls:Key.Value>
         </controls:Key>
-        <Grid Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <controls:Key Grid.Row="0" Grid.Column="0"
-                          SymbolGeometry="{StaticResource RestoreSizeIcon}"
-                          Text="RESTORE"
-                          SharedSizeGroup="KeyWithSymbolAndText">
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RestoreFromMaximised}" />
-                </controls:Key.Value>
-            </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="1"
-                          SymbolGeometry="{StaticResource MaximiseSizeIcon}"
-                          Text="MAXIMISE"
-                          SharedSizeGroup="KeyWithSymbolAndText">
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MaximiseSize}" />
-                </controls:Key.Value>
-            </controls:Key>
-        </Grid>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"

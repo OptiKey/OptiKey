@@ -29,12 +29,11 @@ namespace JuliusSweetland.OptiKey.Services
             ISuggestionStateService suggestionService, 
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
-            ICalibrationService calibrationService,
-            IWindowStateService mainWindowStateService)
+            ICalibrationService calibrationService)
         {
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
-            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
+            keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
             AddKeyboardSetChangeHandlers();

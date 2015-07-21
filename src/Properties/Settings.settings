@@ -59,20 +59,8 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.2500000</Value>
     </Setting>
-    <Setting Name="MainWindowHeight" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">400</Value>
-    </Setting>
-    <Setting Name="MainWindowLeft" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="MainWindowState" Roaming="true" Type="System.Windows.WindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
-    </Setting>
-    <Setting Name="MainWindowTop" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="MainWindowWidth" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">800</Value>
+    <Setting Name="MainWindowSizeAndPosition" Roaming="true" Type="System.Nullable&lt;System.Windows.Rect&gt;" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">75</Value>
@@ -265,6 +253,9 @@
     </Setting>
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ArrangeOtherWindows" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
