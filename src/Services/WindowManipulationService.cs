@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Interop;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Enums;
@@ -19,6 +20,11 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Window window;
         private readonly Func<Rect?> getWindowSizeAndPositionSetting;
         private readonly Action<Rect?> setWindowSizeAndPositionSetting;
+        private readonly Func<int?> getMinimisedWidthSetting;
+        private readonly Func<int?> getMinimisedHeightSetting;
+        private readonly Func<DockPositions> getDockPositionSetting;
+        private readonly Func<int?> getDockedThicknessSetting;
+        private readonly Func<MinimisePositions> getMinimisePosition;
         private readonly Func<bool> getArrangeOtherWindowsSetting;
         private readonly Settings settings;
 
@@ -32,6 +38,11 @@ namespace JuliusSweetland.OptiKey.Services
             Window window,
             Func<Rect?> getWindowSizeAndPositionSetting,
             Action<Rect?> setWindowSizeAndPositionSetting,
+            Func<int?> getMinimisedWidthSetting,
+            Func<int?> getMinimisedHeightSetting,
+            Func<DockPositions> getDockPositionSetting,
+            Func<int?> getDockedThicknessSetting,
+            Func<MinimisePositions> getMinimisePosition,
             Func<bool> getArrangeOtherWindowsSetting,
             IObservable<bool> arrangeOtherWindowsObservable,
             Settings settings)
@@ -39,6 +50,11 @@ namespace JuliusSweetland.OptiKey.Services
             this.window = window;
             this.getWindowSizeAndPositionSetting = getWindowSizeAndPositionSetting;
             this.setWindowSizeAndPositionSetting = setWindowSizeAndPositionSetting;
+            this.getMinimisedWidthSetting = getMinimisedWidthSetting;
+            this.getMinimisedHeightSetting = getMinimisedHeightSetting;
+            this.getDockPositionSetting = getDockPositionSetting;
+            this.getDockedThicknessSetting = getDockedThicknessSetting;
+            this.getMinimisePosition = getMinimisePosition;
             this.getArrangeOtherWindowsSetting = getArrangeOtherWindowsSetting;
             this.settings = settings;
 
@@ -223,6 +239,69 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void Dock()
+        {
+            var dockPosition = getDockPositionSetting();
+            double dockedThickness;
+            if (getDockedThicknessSetting() == null)
+            {
+                var sizeAndPosition = getWindowSizeAndPositionSetting().Value; //This should never be null as it is initialised in the ctor
+                switch (dockPosition)
+                {
+                    case DockPositions.Top:
+                    case DockPositions.Bottom:
+                        dockedThickness = sizeAndPosition.Width / 11; //The alpha keyboard is 11 keys wide
+                        break;
+
+                    case DockPositions.Left:
+                    case DockPositions.Right:
+                        dockedThickness = sizeAndPosition.Height / 6; //The alpha keyboard is 6 keys tall
+                        break;
+
+                    default:
+                        dockedThickness = getDockedThicknessSetting().Value;
+                        break;
+                }
+            }
+            else
+            {
+                dockedThickness = getDockedThicknessSetting().Value;
+            }
+
+            var screen = window.GetScreen();
+            var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+            var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
+            var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
+            var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
+
+            switch (dockPosition)
+            {
+                case DockPositions.Top:
+                    window.Height = dockedThickness;
+                    window.Width = screenWidth;
+                    MoveToTopAndLeftBoundaries();
+                    break;
+
+                case DockPositions.Bottom:
+                    window.Height = dockedThickness;
+                    window.Width = screenWidth;
+                    MoveToBottomAndLeftBoundaries();
+                    break;
+
+                case DockPositions.Left:
+                    window.Height = screenHeight;
+                    window.Width = dockedThickness;
+                    MoveToTopAndLeftBoundaries();
+                    break;
+
+                case DockPositions.Right:
+                    window.Height = screenHeight;
+                    window.Width = dockedThickness;
+                    MoveToTopAndRightBoundaries();
+                    break;
+            }
+        }
+
         public void ExpandToBottom(double pixels)
         {
             if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
@@ -338,43 +417,6 @@ namespace JuliusSweetland.OptiKey.Services
             ExpandToRight(pixels);
         }
 
-        public void FillPercentageOfScreen(double horizontalPercentage, double verticalPercentage)
-        {
-            if (window.WindowState == WindowState.Maximized || window.WindowState == WindowState.Minimized) return;
-
-            try
-            {
-                var screen = window.GetScreen();
-                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
-                var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
-
-                var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
-                var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
-
-                var distanceFromLeftBoundary = ((1d - (horizontalPercentage / 100)) / 2d) * screenWidth;
-                var distanceFromTopBoundary = ((1d - (verticalPercentage / 100)) / 2d) * screenHeight;
-
-                window.Left = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
-                window.Top = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
-
-                var width = (horizontalPercentage / 100) * screenWidth;
-                var height = (verticalPercentage / 100) * screenHeight;
-
-                window.Width = width;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
-
-                window.Height = height;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Height property out of sync with the ActualHeight
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinWHeight - not doing this leaves the Height property out of sync with the ActualHeight
-
-            }
-            catch (Exception ex)
-            {
-                PublishError(this, ex);
-            }
-        }
-
         public void IncreaseOpacity()
         {
             window.Opacity += 0.1;
@@ -392,11 +434,87 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Minimise()
         {
-            minimised = true;
-            window.Width = Settings.Default.MinimisedWidthInPixels / Graphics.DipScalingFactorX;
-            window.Height = Settings.Default.MinimisedHeightInPixels / Graphics.DipScalingFactorY;
-            //TODO:Switch on minimise location
-            MoveToBottomAndLeftBoundaries();
+            try
+            {
+                window.WindowState = WindowState.Normal;
+                
+                //Set width
+                double minimisedWidth;
+                var minimisedWidthSetting = getMinimisedWidthSetting();
+                if (minimisedWidthSetting == null)
+                {
+                    var sizeAndPosition = getWindowSizeAndPositionSetting().Value; //This should never be null as it is initialised in the ctor
+                    minimisedWidth = sizeAndPosition.Width / 11; //The alpha keyboard is 11 keys wide
+                }
+                else
+                {
+                    minimisedWidth = minimisedWidthSetting.Value / Graphics.DipScalingFactorX;
+                }
+                window.Width = minimisedWidth;
+
+                //Set height
+                double minimisedHeight;
+                var minimisedHeightSetting = getMinimisedHeightSetting();
+                if (minimisedHeightSetting == null)
+                {
+                    var sizeAndPosition = getWindowSizeAndPositionSetting().Value; //This should never be null as it is initialised in the ctor
+                    minimisedHeight = sizeAndPosition.Height / 6; //The alpha keyboard is 6 keys tall
+                }
+                else
+                {
+                    minimisedHeight = getMinimisedHeightSetting().Value / Graphics.DipScalingFactorY;
+                }
+                window.Height = minimisedHeight;
+
+                //Set position
+                var screen = window.GetScreen();
+                var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+                var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
+                switch (getMinimisePosition())
+                {
+                    case MinimisePositions.BottomEdge:
+                        MoveToBottomBoundary();
+                        window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X/2) - (minimisedWidth / 2);
+                        break;
+
+                    case MinimisePositions.BottomLeftCorner:
+                        MoveToBottomAndLeftBoundaries();
+                        break;
+
+                    case MinimisePositions.BottomRightCorner:
+                        MoveToBottomAndRightBoundaries();
+                        break;
+
+                    case MinimisePositions.LeftEdge:
+                        MoveToLeftBoundary();
+                        window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (minimisedHeight / 2);
+                        break;
+
+                    case MinimisePositions.RightEdge:
+                        MoveToRightBoundary();
+                        window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (minimisedHeight / 2);
+                        break;
+
+                    case MinimisePositions.TopEdge:
+                        MoveToTopBoundary();
+                        window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X / 2) - (minimisedWidth / 2);
+                        break;
+
+                    case MinimisePositions.TopLeftCorner:
+                        MoveToTopAndLeftBoundaries();
+                        break;
+
+                    case MinimisePositions.TopRightCorner:
+                        MoveToTopAndRightBoundaries();
+                        break;
+                }
+
+                minimised = true;
+            }
+            catch (Exception ex)
+            {
+                PublishError(this, ex);
+            }
         }
         
         public void MoveToBottom(double pixels)
@@ -410,6 +528,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
                 window.Top += yAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -452,6 +572,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary;
                 window.Top += yAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -470,7 +592,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
                 window.Left -= xAdjustment;
-                
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -489,7 +612,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = window.Left - screenTopLeftInWpfCoords.X;
                 var xAdjustment = distanceToBoundary;
                 window.Left -= xAdjustment;
-                
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -508,6 +632,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
                 window.Left += xAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -526,6 +652,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary;
                 window.Left += xAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -544,6 +672,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : pixels.CoerceToUpperLimit(distanceToBoundary);
                 window.Top -= yAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -586,6 +716,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var distanceToBoundary = window.Top - screenTopLeftInWpfCoords.Y;
                 var yAdjustment = distanceToBoundary;
                 window.Top -= yAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -617,10 +749,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var screenBottomLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Bottom));
                 var distanceToBoundary = screenBottomLeftInWpfCoords.Y - (window.Top + window.ActualHeight);
                 var yAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
-
                 window.Height += yAdjustment;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight - not doing this leaves the Width property out of sync with the ActualWidth
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -653,10 +784,10 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var widthBeforeAdjustment = window.ActualWidth;
                 window.Width += xAdjustment;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
                 var actualXAdjustment = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Left -= actualXAdjustment;
+                
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -674,10 +805,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var screenTopRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Top));
                 var distanceToBoundary = screenTopRightInWpfCoords.X - (window.Left + window.ActualWidth);
                 var xAdjustment = distanceToBoundary < 0 ? distanceToBoundary : 0 - pixels;
-
                 window.Width += xAdjustment;
-                window.Width = window.Width.CoerceToUpperLimit(window.MaxWidth); //Manually coerce the value to respect the MaxWidth - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Width = window.Width.CoerceToLowerLimit(window.MinWidth); //Manually coerce the value to respect the MinWidth - not doing this leaves the Width property out of sync with the ActualWidth
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {
@@ -698,10 +828,10 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var heightBeforeAdjustment = window.ActualHeight;
                 window.Height += yAdjustment;
-                window.Height = window.Height.CoerceToUpperLimit(window.MaxHeight); //Manually coerce the value to respect the MaxHeight - not doing this leaves the Width property out of sync with the ActualWidth
-                window.Height = window.Height.CoerceToLowerLimit(window.MinHeight); //Manually coerce the value to respect the MinHeight - not doing this leaves the Width property out of sync with the ActualWidth
                 var actualYAdjustment = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
                 window.Top -= actualYAdjustment;
+
+                PersistWindowSizeAndPosition();
             }
             catch (Exception ex)
             {

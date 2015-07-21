@@ -185,6 +185,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\MinimisePositions.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
     <Compile Include="Enums\KeyboardsSets.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Enums\Keys.cs" />
     <Compile Include="Enums\MouseButtons.cs" />
     <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
+    <Compile Include="Enums\DockPositions.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\TaskbarPosition.cs" />

@@ -1079,27 +1079,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("56")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int MinimisedHeightInPixels {
+        public global::System.Nullable<System.Int32> MainWindowMinimisedHeightInPixels {
             get {
-                return ((int)(this["MinimisedHeightInPixels"]));
+                return ((global::System.Nullable<System.Int32>)(this["MainWindowMinimisedHeightInPixels"]));
             }
             set {
-                this["MinimisedHeightInPixels"] = value;
+                this["MainWindowMinimisedHeightInPixels"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int MinimisedWidthInPixels {
+        public global::System.Nullable<System.Int32> MainWindowMinimisedWidthInPixels {
             get {
-                return ((int)(this["MinimisedWidthInPixels"]));
+                return ((global::System.Nullable<System.Int32>)(this["MainWindowMinimisedWidthInPixels"]));
             }
             set {
-                this["MinimisedWidthInPixels"] = value;
+                this["MainWindowMinimisedWidthInPixels"] = value;
             }
         }
         
@@ -1126,6 +1124,44 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["ArrangeOtherWindows"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.Nullable<System.Int32> MainWindowDockedThicknessInPixels {
+            get {
+                return ((global::System.Nullable<System.Int32>)(this["MainWindowDockedThicknessInPixels"]));
+            }
+            set {
+                this["MainWindowDockedThicknessInPixels"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Top")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.DockPositions MainWindowDockPosition {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.DockPositions)(this["MainWindowDockPosition"]));
+            }
+            set {
+                this["MainWindowDockPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TopEdge")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.MinimisePositions MainWindowMinimisePosition {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.MinimisePositions)(this["MainWindowMinimisePosition"]));
+            }
+            set {
+                this["MainWindowMinimisePosition"] = value;
             }
         }
     }

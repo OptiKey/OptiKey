@@ -195,15 +195,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeightInPixels, value); }
         }
 
-        private int minimisedWidthInPixels;
-        public int MinimisedWidthInPixels
+        private int? minimisedWidthInPixels;
+        public int? MinimisedWidthInPixels
         {
             get { return minimisedWidthInPixels; }
             set { SetProperty(ref minimisedWidthInPixels, value); }
         }
 
-        private int minimisedHeightInPixels;
-        public int MinimisedHeightInPixels
+        private int? minimisedHeightInPixels;
+        public int? MinimisedHeightInPixels
         {
             get { return minimisedHeightInPixels; }
             set { SetProperty(ref minimisedHeightInPixels, value); }
@@ -251,8 +251,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
-            MinimisedWidthInPixels = Settings.Default.MinimisedWidthInPixels;
-            MinimisedHeightInPixels = Settings.Default.MinimisedHeightInPixels;
+            MinimisedWidthInPixels = Settings.Default.MainWindowMinimisedWidthInPixels;
+            MinimisedHeightInPixels = Settings.Default.MainWindowMinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             KeyboardSet = Settings.Default.KeyboardSet;
@@ -270,8 +270,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
-            Settings.Default.MinimisedWidthInPixels = MinimisedWidthInPixels;
-            Settings.Default.MinimisedHeightInPixels = MinimisedHeightInPixels;
+            Settings.Default.MainWindowMinimisedWidthInPixels = MinimisedWidthInPixels;
+            Settings.Default.MainWindowMinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.KeyboardSet = KeyboardSet;

@@ -245,17 +245,26 @@
     <Setting Name="ProgressIndicatorResizeEndProportion" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="MinimisedHeightInPixels" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">56</Value>
+    <Setting Name="MainWindowMinimisedHeightInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="MinimisedWidthInPixels" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="MainWindowMinimisedWidthInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ArrangeOtherWindows" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MainWindowDockedThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockPositions" Scope="User">
+      <Value Profile="(Default)">Top</Value>
+    </Setting>
+    <Setting Name="MainWindowMinimisePosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisePositions" Scope="User">
+      <Value Profile="(Default)">TopEdge</Value>
     </Setting>
   </Settings>
 </SettingsFile>

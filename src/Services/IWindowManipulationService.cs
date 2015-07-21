@@ -2,6 +2,7 @@
 {
     public interface IWindowManipulationService : INotifyErrors
     {
+        void Dock();
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);
         void ExpandToBottomAndRight(double pixels);
