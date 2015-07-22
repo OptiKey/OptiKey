@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:english="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard.English"
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
@@ -16,8 +15,7 @@
     
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
-        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}"
-                      Text="OptiKey">
+        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Restore}" />
             </controls:Key.Value>
