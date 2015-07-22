@@ -131,7 +131,7 @@
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
-    <Setting Name="KeyboardSet" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.KeyboardsSets" Scope="User">
+    <Setting Name="UxMode" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.UxModes" Scope="User">
       <Value Profile="(Default)">Standard</Value>
     </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">

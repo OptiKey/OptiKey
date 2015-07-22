@@ -104,14 +104,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        public List<KeyValuePair<string, KeyboardsSets>> KeyboardSets
+        public List<KeyValuePair<string, UxModes>> KeyboardSets
         {
             get
             {
-                return new List<KeyValuePair<string, KeyboardsSets>>
+                return new List<KeyValuePair<string, UxModes>>
                 {
-                    new KeyValuePair<string, KeyboardsSets>("Standard", Enums.KeyboardsSets.Standard),
-                    new KeyValuePair<string, KeyboardsSets>("Speech Only", Enums.KeyboardsSets.SpeechOnly)
+                    new KeyValuePair<string, UxModes>(Enums.UxModes.Standard.ToDescription(), Enums.UxModes.Standard),
+                    new KeyValuePair<string, UxModes>(Enums.UxModes.ConversationOnly.ToDescription(), Enums.UxModes.ConversationOnly)
                 };
             }
         }
@@ -223,11 +223,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref magnifyDestinationPercentageOfScreen, value); }
         }
 
-        private KeyboardsSets keyboardSet;
-        public KeyboardsSets KeyboardSet
+        private UxModes uxMode;
+        public UxModes UxMode
         {
-            get { return keyboardSet; }
-            set { SetProperty(ref keyboardSet, value); }
+            get { return uxMode; }
+            set { SetProperty(ref uxMode, value); }
         }
 
         public bool ChangesRequireRestart
@@ -255,7 +255,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MinimisedHeightInPixels = Settings.Default.MainWindowMinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
-            KeyboardSet = Settings.Default.KeyboardSet;
+            UxMode = Settings.Default.UxMode;
         }
 
         public void ApplyChanges()
@@ -274,7 +274,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowMinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
-            Settings.Default.KeyboardSet = KeyboardSet;
+            Settings.Default.UxMode = UxMode;
             Settings.Default.Save();
         }
 

@@ -188,7 +188,7 @@
     <Compile Include="Enums\MinimisePositions.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
-    <Compile Include="Enums\KeyboardsSets.cs" />
+    <Compile Include="Enums\UxModes.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\Keys.cs" />
     <Compile Include="Enums\MouseButtons.cs" />
@@ -335,7 +335,7 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -392,10 +392,10 @@
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\Alpha.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\Output.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
@@ -706,7 +706,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml">
+    <Page Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -778,11 +778,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\ConversationOnly\English\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\Output.xaml">
+    <Page Include="UI\Views\Keyboards\ConversationOnly\English\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

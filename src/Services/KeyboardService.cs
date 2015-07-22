@@ -98,11 +98,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void AddKeyboardSetChangeHandlers()
         {
-            Log.Debug("Adding KeyboardSet setting change handlers.");
+            Log.Debug("Adding UxMode setting change handlers.");
 
-            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
+            Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(visualMode =>
             {
-                if (visualMode == KeyboardsSets.SpeechOnly)
+                if (visualMode == UxModes.ConversationOnly)
                 {
                     KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = Enums.KeyDownStates.Up;
                 }

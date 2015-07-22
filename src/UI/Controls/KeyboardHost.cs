@@ -14,8 +14,9 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
 using Size = System.Windows.Size;
 using StandardViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Standard;
-using SpeechOnlyViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.SpeechOnly;
+using ConversationOnlyViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.ConversationOnly;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using YesNoQuestion = JuliusSweetland.OptiKey.UI.Views.Keyboards.ConversationOnly.English.YesNoQuestion;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -32,7 +33,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyboardHost()
         {
             Settings.Default.OnPropertyChanges(s => s.Language).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
         }
@@ -134,9 +135,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             
             object newContent = ErrorContent;
 
-            switch (Settings.Default.KeyboardSet)
+            switch (Settings.Default.UxMode)
             {
-                case KeyboardsSets.Standard:
+                case UxModes.Standard:
                     switch (Settings.Default.Language)
                     {
                         case Languages.AmericanEnglish:
@@ -210,7 +211,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     break;
 
-                case KeyboardsSets.SpeechOnly:
+                case UxModes.ConversationOnly:
                     switch (Settings.Default.Language)
                     {
                         case Languages.AmericanEnglish:
@@ -218,7 +219,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         case Languages.CanadianEnglish:
                             if (Keyboard is ViewModelKeyboards.Alpha)
                             {
-                                newContent = new SpeechOnlyViews.English.Alpha { DataContext = Keyboard };
+                                newContent = new ConversationOnlyViews.English.Alpha { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.Size)
                             {
@@ -230,7 +231,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
-                                newContent = new SpeechOnlyViews.English.YesNoQuestion { DataContext = Keyboard };
+                                newContent = new YesNoQuestion { DataContext = Keyboard };
                             }
                             break;
                     }

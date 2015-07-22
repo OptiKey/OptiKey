@@ -83,13 +83,13 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Keyboard set:" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="UX mode:" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="8" Grid.Column="1" 
-                              ItemsSource="{Binding KeyboardSets}"
+                              ItemsSource="{Binding UxModes}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding KeyboardSet, Mode=TwoWay}" />
+                              SelectedValue="{Binding UxMode, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         

@@ -68,12 +68,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, PointsSources>>
                 {
-                    new KeyValuePair<string, PointsSources>("Gaze Tracker", Enums.PointsSources.GazeTracker),
-                    new KeyValuePair<string, PointsSources>("The Eye Tribe", Enums.PointsSources.TheEyeTribe),
-                    new KeyValuePair<string, PointsSources>("Tobii EyeX", Enums.PointsSources.TobiiEyeX),
-                    new KeyValuePair<string, PointsSources>("Tobii Rex", Enums.PointsSources.TobiiRex),
-                    new KeyValuePair<string, PointsSources>("Tobii PCEye Go", Enums.PointsSources.TobiiPcEyeGo),
-                    new KeyValuePair<string, PointsSources>("Mouse position", Enums.PointsSources.MousePosition)
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.GazeTracker.ToDescription(), Enums.PointsSources.GazeTracker),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeX.ToDescription(), Enums.PointsSources.TobiiEyeX),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiRex.ToDescription(), Enums.PointsSources.TobiiRex),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGo.ToDescription(), Enums.PointsSources.TobiiPcEyeGo),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.MousePosition.ToDescription(), Enums.PointsSources.MousePosition)
                 };
             }
         }
@@ -84,21 +84,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, TriggerSources>>
                 {
-                    new KeyValuePair<string, TriggerSources>("Fixations", Enums.TriggerSources.Fixations),
-                    new KeyValuePair<string, TriggerSources>("Keyboard key", Enums.TriggerSources.KeyboardKeyDownsUps),
-                    new KeyValuePair<string, TriggerSources>("Mouse button", Enums.TriggerSources.MouseButtonDownUps)
+                    new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.Fixations.ToDescription(), Enums.TriggerSources.Fixations),
+                    new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.KeyboardKeyDownsUps.ToDescription(), Enums.TriggerSources.KeyboardKeyDownsUps),
+                    new KeyValuePair<string, TriggerSources>(Enums.TriggerSources.MouseButtonDownUps.ToDescription(), Enums.TriggerSources.MouseButtonDownUps)
                 };
             }
         }
         
         public List<Keys> Keys
         {
-            get { return Enum.GetValues(typeof(Keys)).Cast<Keys>().OrderBy(k => k.ToString()).ToList(); }
+            get { return Enum.GetValues(typeof(Enums.Keys)).Cast<Enums.Keys>().OrderBy(k => k.ToString()).ToList(); }
         }
         
         public List<MouseButtons> MouseButtons
         {
-            get { return Enum.GetValues(typeof(MouseButtons)).Cast<MouseButtons>().OrderBy(mb => mb.ToString()).ToList(); }
+            get { return Enum.GetValues(typeof(Enums.MouseButtons)).Cast<Enums.MouseButtons>().OrderBy(mb => mb.ToString()).ToList(); }
         }
         
         public List<KeyValuePair<string, TriggerStopSignals>> TriggerStopSignals

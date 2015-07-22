@@ -339,10 +339,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void SelectKeyboardOnKeyboardSetChanges()
         {
-            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
+            Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(visualMode =>
             {
-                //Listen to KeyboardSet changes and reset keyboard to Alpha if mode changed to SpeechOnly
-                if (visualMode == KeyboardsSets.SpeechOnly)
+                //Listen to UxMode changes and reset keyboard to Alpha if mode changed to ConversationOnly
+                if (visualMode == UxModes.ConversationOnly)
                 {
                     Keyboard = new Alpha();
                 }
