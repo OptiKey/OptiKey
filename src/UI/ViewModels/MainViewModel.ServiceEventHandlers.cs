@@ -842,6 +842,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         break;
 
+                    case FunctionKeys.Restore:
+                        Log.Debug("Restoring.");
+                        var backActionKeyboard = Keyboard as IBackAction;
+                        if (backActionKeyboard != null && backActionKeyboard.BackAction != null)
+                        {
+                            backActionKeyboard.BackAction();
+                        }
+                        else
+                        {
+                            Keyboard = new Alpha();
+                        }
+                        mainWindowManipulationService.Restore();
+                        break;
+
                     case FunctionKeys.ShrinkFromBottom:
                         Log.DebugFormat("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);

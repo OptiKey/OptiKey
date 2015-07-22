@@ -439,14 +439,16 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void Maximise()
         {
-            window.WindowState = WindowState.Maximized;
             minimised = false;
+            window.WindowState = WindowState.Maximized;
         }
 
         public void Minimise()
         {
             try
             {
+                minimised = true; //Do this first to prevent the calls to move methods from persisting the current size/position
+
                 window.WindowState = WindowState.Normal;
                 
                 //Set width
@@ -519,8 +521,6 @@ namespace JuliusSweetland.OptiKey.Services
                         MoveToTopAndRightBoundaries();
                         break;
                 }
-
-                minimised = true;
             }
             catch (Exception ex)
             {
@@ -738,6 +738,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Restore()
         {
+            minimised = false;
             window.WindowState = WindowState.Normal;
             var rect = getWindowSizeAndPositionSetting();
             if (rect.HasValue)
@@ -747,7 +748,6 @@ namespace JuliusSweetland.OptiKey.Services
                 window.Width = rect.Value.Width;
                 window.Height = rect.Value.Height;
             }
-            minimised = false;
         }
 
         public void ShrinkFromBottom(double pixels)
@@ -1011,7 +1011,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PersistWindowSizeAndPosition()
         {
-            if (window.WindowState == WindowState.Normal)
+            if (window.WindowState == WindowState.Normal && !minimised)
             {
                 setWindowSizeAndPositionSetting(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
                 settings.Save();
