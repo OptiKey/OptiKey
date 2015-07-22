@@ -914,21 +914,21 @@ namespace JuliusSweetland.OptiKey.Services
                 //if window.WindowState == Minimised OR our version of minimised then maximise other windows
                 //else calculate biggest free space and fill it (considering taskbar)
                 
-                int x = 0, y = 0, width = 0, height = 0; //TODO: Calculate
+                //int x = 0, y = 0, width = 0, height = 0; //TODO: Calculate
 
-                var thisHwnd = new WindowInteropHelper(window).Handle;
-                var otherWindows = Windows.GetVisibleOverlappedWindows(thisHwnd);
-                foreach (var otherWindow in otherWindows)
-                {
-                    Log.DebugFormat("Restoring and arranging window '{0}' to position ({1},{2}) and size ({3},{4})",
-                        otherWindow.Item1, x, y, width, height);
-                    var otherWindowHandle = otherWindow.Item2;
-                    PInvoke.ShowWindow(otherWindowHandle, (int) WindowShowStyle.ShowNormal);
-                        //Restore windows as resizing windows that are in a minimised/maximised state can break the minimise/maximise button
-                    PInvoke.SetWindowPos(otherWindowHandle, IntPtr.Zero, x, y, width, height,
-                        SetWindowPosFlags.SWP_NOACTIVATE | SetWindowPosFlags.SWP_NOOWNERZORDER |
-                        SetWindowPosFlags.SWP_NOZORDER);
-                }
+                //var thisHwnd = new WindowInteropHelper(window).Handle;
+                //var otherWindows = Windows.GetVisibleOverlappedWindows(thisHwnd);
+                //foreach (var otherWindow in otherWindows)
+                //{
+                //    Log.DebugFormat("Restoring and arranging window '{0}' to position ({1},{2}) and size ({3},{4})",
+                //        otherWindow.Item1, x, y, width, height);
+                //    var otherWindowHandle = otherWindow.Item2;
+                //    PInvoke.ShowWindow(otherWindowHandle, (int) WindowShowStyle.ShowNormal);
+                //        //Restore windows as resizing windows that are in a minimised/maximised state can break the minimise/maximise button
+                //    PInvoke.SetWindowPos(otherWindowHandle, IntPtr.Zero, x, y, width, height,
+                //        SetWindowPosFlags.SWP_NOACTIVATE | SetWindowPosFlags.SWP_NOOWNERZORDER |
+                //        SetWindowPosFlags.SWP_NOZORDER);
+                //}
             }
             catch (Exception ex)
             {

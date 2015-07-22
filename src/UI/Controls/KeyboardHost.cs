@@ -195,13 +195,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new StandardViews.English.PhysicalKeys { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.Position)
+                            else if (Keyboard is ViewModelKeyboards.SizeAndPosition)
                             {
-                                newContent = new StandardViews.English.Position { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModelKeyboards.Size)
-                            {
-                                newContent = new StandardViews.English.Size { DataContext = Keyboard };
+                                newContent = new StandardViews.English.SizeAndPosition { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {
@@ -220,14 +216,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             if (Keyboard is ViewModelKeyboards.Alpha)
                             {
                                 newContent = new ConversationOnlyViews.English.Alpha { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModelKeyboards.Size)
-                            {
-                                newContent = new StandardViews.English.Size { DataContext = Keyboard };
-                            }
-                            else if (Keyboard is ViewModelKeyboards.Position)
-                            {
-                                newContent = new StandardViews.English.Position { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
                             {

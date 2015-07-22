@@ -68,32 +68,24 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        
+
         <controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource SizeIcon}"
-                      Text="SIZE"
+                      SymbolGeometry="{StaticResource ConversationIcon}"
+                      Text="CONVERSATION MODE"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationMode}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource PositionIcon}"
-                      Text="POSITION"
+                      SymbolGeometry="{StaticResource SizeAndPositionIcon}"
+                      Text="SIZE &amp; POSITION"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PositionKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <!--<controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="DECREASE OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
-            </controls:Key.Value>
-        </controls:Key>-->
-        <controls:Key Grid.Row="1" Grid.Column="3"
+        <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource MinimiseIcon}"
                       Text="MINIMISE"
                       SharedSizeGroup="KeyWithSymbolAndText">
@@ -101,14 +93,14 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
             </controls:Key.Value>
         </controls:Key>
-        <!--<controls:Key Grid.Row="1" Grid.Column="3"
-                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="INCREASE OPACITY"
+        <controls:Key Grid.Row="1" Grid.Column="3"
+                      SymbolGeometry="{StaticResource ArrangeOtherWindowsIcon}"
+                      Text="ARRANGE WINDOWS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrangeOtherWindows}" />
             </controls:Key.Value>
-        </controls:Key>-->
+        </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="4"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="SLEEP"
@@ -119,30 +111,38 @@
         </controls:Key>
 
         <controls:Key Grid.Row="2" Grid.Column="0"
+                      SymbolGeometry="{StaticResource QuitIcon}"
+                      Text="QUIT"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="1"
+                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                      Text="DECREASE OPACITY"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="2"
+                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                      Text="INCREASE OPACITY"
+                      SharedSizeGroup="KeyWithSymbolAndText">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="3"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="CALIBRATE"
+                      Text="RE-CALIBRATE"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="1"
-                      SymbolGeometry="{StaticResource SimulateKeyStrokes}"
-                      Text="SIMULATE KEYBOARD"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="2"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="SIMULATE MOUSE"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" WidthSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="4"
                       SymbolGeometry="{StaticResource BackIcon}"
                       Text="BACK"
                       SharedSizeGroup="KeyWithSymbolAndText">

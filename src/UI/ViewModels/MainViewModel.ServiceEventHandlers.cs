@@ -7,7 +7,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
-using Size = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Size;
+using Size = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SizeAndPosition;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -820,12 +820,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Changing keyboard to PhysicalKeys.");
                         Keyboard = new PhysicalKeys();
                         break;
-
-                    case FunctionKeys.PositionKeyboard:
-                        Log.Debug("Changing keyboard to Position.");
-                        Keyboard = new Position(() => Keyboard = currentKeyboard);
-                        break;
-
+                        
                     case FunctionKeys.PreviousSuggestions:
                         Log.Debug("Decrementing suggestions page.");
 
@@ -896,9 +891,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
-                    case FunctionKeys.SizeKeyboard:
-                        Log.Debug("Changing keyboard to Size.");
-                        Keyboard = new Size(() => Keyboard = currentKeyboard);
+                    case FunctionKeys.SizeAndPositionKeyboard:
+                        Log.Debug("Changing keyboard to Size & Position.");
+                        Keyboard = new SizeAndPosition(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.Speak:
