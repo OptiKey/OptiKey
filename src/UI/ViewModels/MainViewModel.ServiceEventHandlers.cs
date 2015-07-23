@@ -304,6 +304,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
+                        Action backAction = null;
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
                             && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
                         {
@@ -313,7 +314,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
                             var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
                             keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
-                            Keyboard = new Mouse(() =>
+                            backAction = () =>
                             {
                                 keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
                                 keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
@@ -321,11 +322,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
                                 keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
                                 Keyboard = currentKeyboard;
-                            });
+                            };
                         }
                         else
                         {
-                            Keyboard = new Mouse(() => Keyboard = currentKeyboard);
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        if (Settings.Default.MouseKeyboardIsDocked)
+                        {
+                            mainWindowManipulationService.Dock();
                         }
                         break;
 
@@ -839,14 +845,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.Restore:
                         Log.Debug("Restoring.");
-                        var backActionKeyboard = Keyboard as IBackAction;
-                        if (backActionKeyboard != null && backActionKeyboard.BackAction != null)
+                        if (Keyboard is Mouse && Settings.Default.MouseKeyboardIsDocked)
                         {
-                            backActionKeyboard.BackAction();
+                            //Restoring docked mouse keyboard
+                            Settings.Default.MouseKeyboardIsDocked = false;
                         }
                         else
                         {
-                            Keyboard = new Alpha();
+                            //Restoring minimised window
+                            var backActionKeyboard = Keyboard as IBackAction;
+                            if (backActionKeyboard != null && backActionKeyboard.BackAction != null)
+                            {
+                                backActionKeyboard.BackAction();
+                            }
+                            else
+                            {
+                                Keyboard = new Alpha();
+                            }
                         }
                         mainWindowManipulationService.Restore();
                         break;

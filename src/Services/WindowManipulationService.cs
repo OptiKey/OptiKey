@@ -30,6 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Func<bool> getArrangeOtherWindowsSetting;
         private readonly Settings settings;
 
+        private bool docked;
         private bool minimised;
 
         #endregion
@@ -254,6 +255,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Dock()
         {
+            docked = true;
             var dockPosition = getDockPositionSetting();
             double dockedThickness;
             if (getDockedThicknessSetting() == null)
@@ -439,6 +441,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         public void Maximise()
         {
+            docked = false;
             minimised = false;
             window.WindowState = WindowState.Maximized;
         }
@@ -738,6 +741,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Restore()
         {
+            docked = false;
             minimised = false;
             window.WindowState = WindowState.Normal;
             var rect = getWindowSizeAndPositionSetting();
@@ -869,7 +873,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void AttachArrangeOtherWindowsListeners()
         {
             //THROTTLE LISTENERS as they reacts to size/position changes and we change width/height/top/left one at a time
-            //TODO: Ensure size/position listeners are fired on state changes (maximise/minimised/our minimised)
+            //TODO: Ensure size/position listeners are fired on state changes (maximise/minimised/our minimised/docked) - just listen to size and position?
             //Window size & position
             //Minimised - our version = maximise other windows
             //Window state
@@ -1011,7 +1015,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PersistWindowSizeAndPosition()
         {
-            if (window.WindowState == WindowState.Normal && !minimised)
+            if (window.WindowState == WindowState.Normal && !minimised && !docked)
             {
                 setWindowSizeAndPositionSetting(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
                 settings.Save();

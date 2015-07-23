@@ -341,6 +341,9 @@
     <Compile Include="UI\Views\Keyboards\Standard\English\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml.cs">
+      <DependentUpon>MouseDocked.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
@@ -707,6 +710,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Standard\English\Minimised.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
