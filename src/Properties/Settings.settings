@@ -59,7 +59,7 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.2500000</Value>
     </Setting>
-    <Setting Name="MainWindowSizeAndPosition" Roaming="true" Type="System.Nullable&lt;System.Windows.Rect&gt;" Scope="User">
+    <Setting Name="MainWindowFloatingSizeAndPosition" Roaming="true" Type="System.Nullable&lt;System.Windows.Rect&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
@@ -254,23 +254,23 @@
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ArrangeOtherWindows" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="MainWindowDockedThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+    <Setting Name="MainWindowFullDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockPositions" Scope="User">
-      <Value Profile="(Default)">Top</Value>
+    <Setting Name="MainWindowCollapsedDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="MainWindowMinimisePosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisePositions" Scope="User">
-      <Value Profile="(Default)">TopEdge</Value>
+    <Setting Name="MainWindowDockPosition" Roaming="true" Type="System.Nullable&lt;JuliusSweetland.OptiKey.Enums.DockPositions&gt;" Scope="User">
+      <Value Profile="(Default)">Top</Value>
     </Setting>
     <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="MouseKeyboardIsDocked" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="MouseKeyboardDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
+      <Value Profile="(Default)">Collapsed</Value>
+    </Setting>
+    <Setting Name="MainWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
+      <Value Profile="(Default)">Docked</Value>
     </Setting>
   </Settings>
 </SettingsFile>

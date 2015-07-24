@@ -329,9 +329,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             backAction = () => Keyboard = currentKeyboard;
                         }
                         Keyboard = new Mouse(backAction);
-                        if (Settings.Default.MouseKeyboardIsDocked)
+                        if (Settings.Default.MainWindowState == WindowStates.Docked)
                         {
-                            mainWindowManipulationService.Dock();
+                            mainWindowManipulationService.Dock(Settings.Default.MouseKeyboardDockSize);
                         }
                         break;
 
@@ -841,29 +841,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             lastMouseActionStateManager.LastMouseAction();
                         }
-                        break;
-
-                    case FunctionKeys.Restore:
-                        Log.Debug("Restoring.");
-                        if (Keyboard is Mouse && Settings.Default.MouseKeyboardIsDocked)
-                        {
-                            //Restoring docked mouse keyboard
-                            Settings.Default.MouseKeyboardIsDocked = false;
-                        }
-                        else
-                        {
-                            //Restoring minimised window
-                            var backActionKeyboard = Keyboard as IBackAction;
-                            if (backActionKeyboard != null && backActionKeyboard.BackAction != null)
-                            {
-                                backActionKeyboard.BackAction();
-                            }
-                            else
-                            {
-                                Keyboard = new Alpha();
-                            }
-                        }
-                        mainWindowManipulationService.Restore();
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:

@@ -274,12 +274,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Nullable<System.Windows.Rect> MainWindowSizeAndPosition {
+        public global::System.Nullable<System.Windows.Rect> MainWindowFloatingSizeAndPosition {
             get {
-                return ((global::System.Nullable<System.Windows.Rect>)(this["MainWindowSizeAndPosition"]));
+                return ((global::System.Nullable<System.Windows.Rect>)(this["MainWindowFloatingSizeAndPosition"]));
             }
             set {
-                this["MainWindowSizeAndPosition"] = value;
+                this["MainWindowFloatingSizeAndPosition"] = value;
             }
         }
         
@@ -1116,26 +1116,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool ArrangeOtherWindows {
+        public global::System.Nullable<System.Int32> MainWindowFullDockThicknessInPixels {
             get {
-                return ((bool)(this["ArrangeOtherWindows"]));
+                return ((global::System.Nullable<System.Int32>)(this["MainWindowFullDockThicknessInPixels"]));
             }
             set {
-                this["ArrangeOtherWindows"] = value;
+                this["MainWindowFullDockThicknessInPixels"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Nullable<System.Int32> MainWindowDockedThicknessInPixels {
+        public global::System.Nullable<System.Int32> MainWindowCollapsedDockThicknessInPixels {
             get {
-                return ((global::System.Nullable<System.Int32>)(this["MainWindowDockedThicknessInPixels"]));
+                return ((global::System.Nullable<System.Int32>)(this["MainWindowCollapsedDockThicknessInPixels"]));
             }
             set {
-                this["MainWindowDockedThicknessInPixels"] = value;
+                this["MainWindowCollapsedDockThicknessInPixels"] = value;
             }
         }
         
@@ -1143,25 +1142,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Top")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.DockPositions MainWindowDockPosition {
+        public global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockPositions> MainWindowDockPosition {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.DockPositions)(this["MainWindowDockPosition"]));
+                return ((global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockPositions>)(this["MainWindowDockPosition"]));
             }
             set {
                 this["MainWindowDockPosition"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TopEdge")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.MinimisePositions MainWindowMinimisePosition {
-            get {
-                return ((global::JuliusSweetland.OptiKey.Enums.MinimisePositions)(this["MainWindowMinimisePosition"]));
-            }
-            set {
-                this["MainWindowMinimisePosition"] = value;
             }
         }
         
@@ -1180,14 +1166,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Collapsed")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool MouseKeyboardIsDocked {
+        public global::JuliusSweetland.OptiKey.Enums.DockSizes MouseKeyboardDockSize {
             get {
-                return ((bool)(this["MouseKeyboardIsDocked"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.DockSizes)(this["MouseKeyboardDockSize"]));
             }
             set {
-                this["MouseKeyboardIsDocked"] = value;
+                this["MouseKeyboardDockSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Docked")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MainWindowState"]));
+            }
+            set {
+                this["MainWindowState"] = value;
             }
         }
     }

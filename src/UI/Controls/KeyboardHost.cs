@@ -33,7 +33,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyboardHost()
         {
             Settings.Default.OnPropertyChanges(s => s.Language).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.MouseKeyboardIsDocked).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
@@ -178,14 +178,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
                             else if (Keyboard is ViewModelKeyboards.Mouse)
                             {
-                                if (Settings.Default.MouseKeyboardIsDocked)
-                                {
-                                    newContent = new StandardViews.English.MouseDocked {DataContext = Keyboard};
-                                }
-                                else
-                                {
-                                    newContent = new StandardViews.English.Mouse { DataContext = Keyboard };
-                                }
+                                newContent = new StandardViews.English.Mouse { DataContext = Keyboard };
                             }
                             else if (Keyboard is ViewModelKeyboards.NumericAndSymbols2)
                             {

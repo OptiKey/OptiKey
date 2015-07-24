@@ -1,9 +1,11 @@
-﻿namespace JuliusSweetland.OptiKey.Services
+﻿using JuliusSweetland.OptiKey.Enums;
+
+namespace JuliusSweetland.OptiKey.Services
 {
     public interface IWindowManipulationService : INotifyErrors
     {
         void DecreaseOpacity();
-        void Dock();
+        void Dock(DockSizes dockSize);
         void ExpandToBottom(double pixels);
         void ExpandToBottomAndLeft(double pixels);
         void ExpandToBottomAndRight(double pixels);
@@ -12,6 +14,7 @@
         void ExpandToTop(double pixels);
         void ExpandToTopAndLeft(double pixels);
         void ExpandToTopAndRight(double pixels);
+        void Float();
         void IncreaseOpacity();
         void Maximise();
         void Minimise();

@@ -127,19 +127,20 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
-                    () => Settings.Default.MainWindowSizeAndPosition,
-                    rect => Settings.Default.MainWindowSizeAndPosition = rect,
-                    () => Settings.Default.MainWindowOpacity,
-                    opacity => Settings.Default.MainWindowOpacity = opacity,
-                    () => Settings.Default.MainWindowMinimisedWidthInPixels,
-                    () => Settings.Default.MainWindowMinimisedHeightInPixels,
-                    () => Settings.Default.MainWindowDockPosition,
-                    () => Settings.Default.MainWindowDockedThicknessInPixels,
-                    () => Settings.Default.MainWindowMinimisePosition,
-                    () => Settings.Default.ArrangeOtherWindows,
-                    Settings.Default.OnPropertyChanges(s => s.ArrangeOtherWindows),
-                    Settings.Default);
+                IWindowManipulationService mainWindowManipulationService = null;
+                //IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
+                //    () => Settings.Default.MainWindowFloatingSizeAndPosition,
+                //    rect => Settings.Default.MainWindowFloatingSizeAndPosition = rect,
+                //    () => Settings.Default.MainWindowOpacity,
+                //    opacity => Settings.Default.MainWindowOpacity = opacity,
+                //    () => Settings.Default.MainWindowMinimisedWidthInPixels,
+                //    () => Settings.Default.MainWindowMinimisedHeightInPixels,
+                //    () => Settings.Default.MainWindowDockPosition,
+                //    () => Settings.Default.MainWindowDockedThicknessInPixels,
+                //    () => Settings.Default.MainWindowMinimisePosition,
+                //    () => Settings.Default.ArrangeOtherWindows,
+                //    Settings.Default.OnPropertyChanges(s => s.ArrangeOtherWindows),
+                //    Settings.Default);
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 
