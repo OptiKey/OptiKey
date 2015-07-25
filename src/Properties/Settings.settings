@@ -248,11 +248,8 @@
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="MainWindowFullHorizontalDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="MainWindowFullVerticalDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MainWindowDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="MainWindowDockPosition" Roaming="true" Type="System.Nullable&lt;JuliusSweetland.OptiKey.Enums.DockPositions&gt;" Scope="User">
       <Value Profile="(Default)">Top</Value>
@@ -266,10 +263,7 @@
     <Setting Name="MainWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
       <Value Profile="(Default)">Docked</Value>
     </Setting>
-    <Setting Name="MainWindowCanDock" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Int32" Scope="User">
+    <Setting Name="MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>

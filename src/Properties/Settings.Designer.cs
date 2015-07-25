@@ -1092,25 +1092,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Nullable<System.Int32> MainWindowFullHorizontalDockThicknessInPixels {
+        public double MainWindowDockThicknessAsPercentageOfScreen {
             get {
-                return ((global::System.Nullable<System.Int32>)(this["MainWindowFullHorizontalDockThicknessInPixels"]));
+                return ((double)(this["MainWindowDockThicknessAsPercentageOfScreen"]));
             }
             set {
-                this["MainWindowFullHorizontalDockThicknessInPixels"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Nullable<System.Int32> MainWindowFullVerticalDockThicknessInPixels {
-            get {
-                return ((global::System.Nullable<System.Int32>)(this["MainWindowFullVerticalDockThicknessInPixels"]));
-            }
-            set {
-                this["MainWindowFullVerticalDockThicknessInPixels"] = value;
+                this["MainWindowDockThicknessAsPercentageOfScreen"] = value;
             }
         }
         
@@ -1168,24 +1157,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool MainWindowCanDock {
-            get {
-                return ((bool)(this["MainWindowCanDock"]));
-            }
-            set {
-                this["MainWindowCanDock"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness {
+        public double MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness {
             get {
-                return ((int)(this["MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness"]));
+                return ((double)(this["MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness"]));
             }
             set {
                 this["MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness"] = value;

@@ -135,10 +135,10 @@ namespace JuliusSweetland.OptiKey
                     rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
                     () => Settings.Default.MainWindowDockPosition,
                     pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowFullHorizontalDockThicknessInPixels,
-                    t => { Settings.Default.MainWindowFullHorizontalDockThicknessInPixels = t; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowFullVerticalDockThicknessInPixels,
-                    v => { Settings.Default.MainWindowFullVerticalDockThicknessInPixels = v; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowDockThicknessAsPercentageOfScreen,
+                    t => { Settings.Default.MainWindowDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowVerticalDockThicknessInPixels,
+                    v => { Settings.Default.MainWindowVerticalDockThicknessInPixels = v; Settings.Default.Save(); },
                     () => Settings.Default.MainWindowOpacity,
                     o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); });
                 

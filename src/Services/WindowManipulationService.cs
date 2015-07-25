@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
@@ -13,18 +15,19 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly Window window;
+        private readonly IntPtr windowHandle;
+        private readonly Screen screen;
+        private readonly Rect screenBoundsInPx;
+        private readonly Rect screenBoundsInDp;
         private readonly Func<double> getOpacity;
-        private readonly Func<bool> getCanDock;
-        private readonly Func<int> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Func<DockPositions?> getDockPosition;
-        private readonly Func<int?> getFullHorizontalDockedThickness;
-        private readonly Func<int?> getFullVerticalDockedThickness;
+        private readonly Func<double> getDockThicknessAsPercentageOfScreen;
+        private readonly Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Func<Rect?> getFloatingSizeAndPosition;
         private readonly Action<WindowStates> saveWindowState;
         private readonly Action<Rect?> saveFloatingSizeAndPosition;
         private readonly Action<DockPositions?> saveDockPosition;
-        private readonly Action<int?> saveFullHorizontalDockedThickness;
-        private readonly Action<int?> saveFullVerticalDockedThickness;
+        private readonly Action<double> saveDockThicknessAsPercentageOfScreen;
         private readonly Action<double> saveOpacity;
 
         #endregion
@@ -33,39 +36,40 @@ namespace JuliusSweetland.OptiKey.Services
         
         internal WindowManipulationService(
             Window window,
-            Func<WindowStates> getWindowState,
             Func<double> getOpacity,
-            Func<bool> getCanDock,
-            Func<int> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
-            Func<DockPositions?> getDockPosition,
-            Func<int?> getFullHorizontalDockedThickness,
-            Func<int?> getFullVerticalDockedThickness,
+            Func<WindowStates> getWindowState,
             Func<Rect?> getFloatingSizeAndPosition,
-            Action<WindowStates> saveWindowState,
+            Func<DockPositions?> getDockPosition,
+            Func<double> getDockThicknessAsPercentageOfScreen,
+            Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
             Action<double> saveOpacity,
+            Action<WindowStates> saveWindowState,
+            Action<Rect?> saveFloatingSizeAndPosition,
             Action<DockPositions?> saveDockPosition,
-            Action<int?> saveFullHorizontalDockedThickness,
-            Action<int?> saveFullVerticalDockedThickness,
-            Action<Rect?> saveFloatingSizeAndPosition)
+            Action<double> saveDockThicknessAsPercentageOfScreen)
         {
             this.window = window;
             this.getOpacity = getOpacity;
-            this.getCanDock = getCanDock;
-            this.getCollapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness;
             this.getDockPosition = getDockPosition;
-            this.getFullHorizontalDockedThickness = getFullHorizontalDockedThickness;
-            this.getFullVerticalDockedThickness = getFullVerticalDockedThickness;
+            this.getDockThicknessAsPercentageOfScreen = getDockThicknessAsPercentageOfScreen;
+            this.getCollapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness;
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
+            this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
             this.saveFloatingSizeAndPosition = saveFloatingSizeAndPosition;
             this.saveDockPosition = saveDockPosition;
-            this.saveFullHorizontalDockedThickness = saveFullHorizontalDockedThickness;
-            this.saveFullVerticalDockedThickness = saveFullVerticalDockedThickness;
-            this.saveOpacity = saveOpacity;
+            this.saveDockThicknessAsPercentageOfScreen = saveDockThicknessAsPercentageOfScreen;
 
-            ApplyState(getWindowState(), getOpacity(), getCanDock(), getDockPosition(), 
-                getFullHorizontalDockedThickness(), getFullVerticalDockedThickness(), getCollapsedDockThicknessAsPercentageOfFullDockThickness(),
-                getFloatingSizeAndPosition());
+            windowHandle = new WindowInteropHelper(window).Handle;
+            screen = window.GetScreen();
+            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+            var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
+            var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
+            screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y, 
+                screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
+                screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
+
+            ApplyState(getOpacity(), getWindowState(), getDockPosition(), getDockThicknessAsPercentageOfScreen(), getFloatingSizeAndPosition());
         }
 
         #endregion
@@ -86,10 +90,30 @@ namespace JuliusSweetland.OptiKey.Services
             PersistState();
         }
 
+        public void CollapseDock()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Expand(ExpandToDirections direction, int? amountInDp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExpandDock()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Maximise()
         {
             window.WindowState = WindowState.Maximized;
             PersistState();
+        }
+
+        public void Move(MoveToDirections direction, int? amountInDp)
+        {
+            throw new NotImplementedException();
         }
 
         public void Restore()
@@ -98,13 +122,17 @@ namespace JuliusSweetland.OptiKey.Services
             PersistState();
         }
 
+        public void Shrink(ShrinkFromDirections direction, int? amountInDp)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Private Methods
         
-        private void ApplyState(WindowStates windowState, double opacity, bool canDock, DockPositions? dockPosition,
-            int? fullHorizontalDockedThickness, int? fullVerticalDockedThickness, int collapsedDockThicknessAsPercentageOfFullDockThickness, 
-            Rect? floatingSizeAndPosition)
+        private void ApplyState(double opacity, WindowStates windowState, DockPositions? dockPosition,
+            double dockThicknessAsPercentageOfScreen, Rect? floatingSizeAndPosition)
         {
             //CREATE OR COERCE STORED VALUES
             //try
