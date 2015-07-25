@@ -245,19 +245,13 @@
     <Setting Name="ProgressIndicatorResizeEndProportion" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="MainWindowMinimisedHeightInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="MainWindowMinimisedWidthInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="MainWindowFullDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+    <Setting Name="MainWindowFullHorizontalDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="MainWindowCollapsedDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
+    <Setting Name="MainWindowFullVerticalDockThicknessInPixels" Roaming="true" Type="System.Nullable&lt;System.Int32&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MainWindowDockPosition" Roaming="true" Type="System.Nullable&lt;JuliusSweetland.OptiKey.Enums.DockPositions&gt;" Scope="User">
@@ -271,6 +265,12 @@
     </Setting>
     <Setting Name="MainWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
       <Value Profile="(Default)">Docked</Value>
+    </Setting>
+    <Setting Name="MainWindowCanDock" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

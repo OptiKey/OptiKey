@@ -4,44 +4,13 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IWindowManipulationService : INotifyErrors
     {
-        void DecreaseOpacity();
-        void Dock(DockSizes dockSize);
-        void ExpandToBottom(double pixels);
-        void ExpandToBottomAndLeft(double pixels);
-        void ExpandToBottomAndRight(double pixels);
-        void ExpandToLeft(double pixels);
-        void ExpandToRight(double pixels);
-        void ExpandToTop(double pixels);
-        void ExpandToTopAndLeft(double pixels);
-        void ExpandToTopAndRight(double pixels);
-        void Float();
-        void IncreaseOpacity();
+        void ChangeOpacity(bool increase);
+        void CollapseDock();
+        void Expand(ExpandToDirections direction, int? amountInDp);
+        void ExpandDock();
         void Maximise();
-        void Minimise();
-        void MoveToBottom(double pixels);
-        void MoveToBottomAndLeft(double pixels);
-        void MoveToBottomAndLeftBoundaries();
-        void MoveToBottomAndRight(double pixels);
-        void MoveToBottomAndRightBoundaries();
-        void MoveToBottomBoundary();
-        void MoveToLeft(double pixels);
-        void MoveToLeftBoundary();
-        void MoveToRight(double pixels);
-        void MoveToRightBoundary();
-        void MoveToTop(double pixels);
-        void MoveToTopAndLeft(double pixels);
-        void MoveToTopAndLeftBoundaries();
-        void MoveToTopAndRight(double pixels);
-        void MoveToTopAndRightBoundaries();
-        void MoveToTopBoundary();
+        void Move(MoveToDirections direction, int? amountInDp);
         void Restore();
-        void ShrinkFromBottom(double pixels);
-        void ShrinkFromBottomAndLeft(double pixels);
-        void ShrinkFromBottomAndRight(double pixels);
-        void ShrinkFromLeft(double pixels);
-        void ShrinkFromRight(double pixels);
-        void ShrinkFromTop(double pixels);
-        void ShrinkFromTopAndLeft(double pixels);
-        void ShrinkFromTopAndRight(double pixels);
+        void Shrink(ShrinkFromDirections direction, int? amountInDp);
     }
 }

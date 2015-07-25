@@ -127,20 +127,20 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowManipulationService mainWindowManipulationService = null;
-                //IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
-                //    () => Settings.Default.MainWindowFloatingSizeAndPosition,
-                //    rect => Settings.Default.MainWindowFloatingSizeAndPosition = rect,
-                //    () => Settings.Default.MainWindowOpacity,
-                //    opacity => Settings.Default.MainWindowOpacity = opacity,
-                //    () => Settings.Default.MainWindowMinimisedWidthInPixels,
-                //    () => Settings.Default.MainWindowMinimisedHeightInPixels,
-                //    () => Settings.Default.MainWindowDockPosition,
-                //    () => Settings.Default.MainWindowDockedThicknessInPixels,
-                //    () => Settings.Default.MainWindowMinimisePosition,
-                //    () => Settings.Default.ArrangeOtherWindows,
-                //    Settings.Default.OnPropertyChanges(s => s.ArrangeOtherWindows),
-                //    Settings.Default);
+                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
+                    mainWindow,
+                    () => Settings.Default.MainWindowState,
+                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
+                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowDockPosition,
+                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowFullHorizontalDockThicknessInPixels,
+                    t => { Settings.Default.MainWindowFullHorizontalDockThicknessInPixels = t; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowFullVerticalDockThicknessInPixels,
+                    v => { Settings.Default.MainWindowFullVerticalDockThicknessInPixels = v; Settings.Default.Save(); },
+                    () => Settings.Default.MainWindowOpacity,
+                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); });
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 
