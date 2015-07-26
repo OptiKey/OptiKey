@@ -1094,12 +1094,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double MainWindowDockThicknessAsPercentageOfScreen {
+        public double MainWindowFullDockThicknessAsPercentageOfScreen {
             get {
-                return ((double)(this["MainWindowDockThicknessAsPercentageOfScreen"]));
+                return ((double)(this["MainWindowFullDockThicknessAsPercentageOfScreen"]));
             }
             set {
-                this["MainWindowDockThicknessAsPercentageOfScreen"] = value;
+                this["MainWindowFullDockThicknessAsPercentageOfScreen"] = value;
             }
         }
         
@@ -1107,12 +1107,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Top")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockPositions> MainWindowDockPosition {
+        public global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockEdges> MainWindowDockPosition {
             get {
-                return ((global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockPositions>)(this["MainWindowDockPosition"]));
+                return ((global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockEdges>)(this["MainWindowDockPosition"]));
             }
             set {
                 this["MainWindowDockPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Full")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockSizes> MainWindowDockSize {
+            get {
+                return ((global::System.Nullable<JuliusSweetland.OptiKey.Enums.DockSizes>)(this["MainWindowDockSize"]));
+            }
+            set {
+                this["MainWindowDockSize"] = value;
             }
         }
         

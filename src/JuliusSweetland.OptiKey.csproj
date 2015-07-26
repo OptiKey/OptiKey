@@ -197,7 +197,7 @@
     <Compile Include="Enums\Keys.cs" />
     <Compile Include="Enums\MouseButtons.cs" />
     <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
-    <Compile Include="Enums\DockPositions.cs" />
+    <Compile Include="Enums\DockEdges.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\TaskbarPosition.cs" />
@@ -227,6 +227,7 @@
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Native\Enums\AppBarNotify.cs" />
     <Compile Include="Native\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
@@ -287,7 +288,6 @@
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
-    <Compile Include="Models\Taskbar.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />

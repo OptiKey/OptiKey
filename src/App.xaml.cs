@@ -133,13 +133,15 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowState,
                     () => Settings.Default.MainWindowFloatingSizeAndPosition,
                     () => Settings.Default.MainWindowDockPosition,
-                    () => Settings.Default.MainWindowDockThicknessAsPercentageOfScreen,
+                    () => Settings.Default.MainWindowDockSize,
+                    () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
                     () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
                     o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
                     state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
                     rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
                     pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); });
+                    size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
+                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); });
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 

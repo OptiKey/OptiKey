@@ -248,12 +248,15 @@
     <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="MainWindowDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+    <Setting Name="MainWindowFullDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="MainWindowDockPosition" Roaming="true" Type="System.Nullable&lt;JuliusSweetland.OptiKey.Enums.DockPositions&gt;" Scope="User">
+    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockEdge" Scope="User">
       <Value Profile="(Default)">Top</Value>
     </Setting>
+    <Setting Name="MainWindowDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
+      <Value Profile="(Default)">Full</Value>
+    </Setting>    
     <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>

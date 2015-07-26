@@ -65,7 +65,10 @@ namespace JuliusSweetland.OptiKey.Native
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("shell32.dll", SetLastError = true)]
-        public static extern IntPtr SHAppBarMessage(AppBarMessages dwMessage, [In] ref APPBARDATA pData);
+        public static extern IntPtr SHAppBarMessage(AppBarMessages dwMessage, ref APPBARDATA pData);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int RegisterWindowMessage(string msg);
 
         //Wrapper around GetWindowLong32 and GetWindowLong64 based on the current bitness
         public static long GetWindowLong(IntPtr hWnd, int nIndex)
