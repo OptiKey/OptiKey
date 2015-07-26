@@ -185,6 +185,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\ShrinkFromDirections.cs" />
+    <Compile Include="Enums\ExpandToDirections.cs" />
+    <Compile Include="Enums\MoveToDirections.cs" />
     <Compile Include="Enums\DockSizes.cs" />
     <Compile Include="Enums\WindowStates.cs" />
     <Compile Include="Enums\FontStretches.cs" />

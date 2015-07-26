@@ -129,18 +129,17 @@ namespace JuliusSweetland.OptiKey
 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
-                    () => Settings.Default.MainWindowState,
-                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
-                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowDockPosition,
-                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowDockThicknessAsPercentageOfScreen,
-                    t => { Settings.Default.MainWindowDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
-                    () => Settings.Default.MainWindowVerticalDockThicknessInPixels,
-                    v => { Settings.Default.MainWindowVerticalDockThicknessInPixels = v; Settings.Default.Save(); },
                     () => Settings.Default.MainWindowOpacity,
-                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); });
+                    () => Settings.Default.MainWindowState,
+                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
+                    () => Settings.Default.MainWindowDockPosition,
+                    () => Settings.Default.MainWindowDockThicknessAsPercentageOfScreen,
+                    () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
+                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
+                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
+                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
+                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
+                    t => { Settings.Default.MainWindowDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); });
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 

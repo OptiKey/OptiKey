@@ -30,6 +30,10 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Action<double> saveDockThicknessAsPercentageOfScreen;
         private readonly Action<double> saveOpacity;
 
+        private int appBarCallBackId;
+
+        private delegate void ApplySizeAndPositionDelegate(Rect rect);
+
         #endregion
 
         #region Ctor
@@ -69,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
                 screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
 
-            ApplyState(getOpacity(), getWindowState(), getDockPosition(), getDockThicknessAsPercentageOfScreen(), getFloatingSizeAndPosition());
+            RestoreState(getOpacity(), getWindowState(), getDockPosition(), getDockThicknessAsPercentageOfScreen(), getFloatingSizeAndPosition());
         }
 
         #endregion
@@ -130,11 +134,32 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Private Methods
-        
-        private void ApplyState(double opacity, WindowStates windowState, DockPositions? dockPosition,
+
+        public IntPtr AppBarPositionChangeCallback(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            //if (msg == appBarCallBackId)
+            //{
+            //    if (wParam.ToInt32() == (int)ABNotify.ABN_POSCHANGED)
+            //    {
+            //        ABSetPos(Edge, window);
+            //        handled = true;
+            //    }
+            //}
+            return IntPtr.Zero;
+        }
+
+        private void ApplySizeAndPosition(Rect rect)
+        {
+            window.Top = rect.Top;
+            window.Left = rect.Left;
+            window.Width = rect.Width;
+            window.Height = rect.Height;
+        }
+
+        private void RestoreState(double opacity, WindowStates windowState, DockPositions? dockPosition,
             double dockThicknessAsPercentageOfScreen, Rect? floatingSizeAndPosition)
         {
-            //CREATE OR COERCE STORED VALUES
+            //CREATE OR COERCE STORED VALUES, THEN APPLY THEM (including ApplySizeAndPosition())
             //try
             //{
             //    var windowSizeAndPosition = getWindowSizeAndPositionSetting();
@@ -181,7 +206,7 @@ namespace JuliusSweetland.OptiKey.Services
             //    PublishError(this, ex);
             //}
         }
-        
+
         private void PersistState()
         {
             //    setWindowSizeAndPositionSetting(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
