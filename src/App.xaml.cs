@@ -141,7 +141,8 @@ namespace JuliusSweetland.OptiKey
                     rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
                     pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
                     size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); });
+                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
+                    t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
                 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 

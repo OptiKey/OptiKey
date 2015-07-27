@@ -59,8 +59,8 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.2500000</Value>
     </Setting>
-    <Setting Name="MainWindowFloatingSizeAndPosition" Roaming="true" Type="System.Nullable&lt;System.Windows.Rect&gt;" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MainWindowFloatingSizeAndPosition" Roaming="true" Type="System.Windows.Rect" Scope="User">
+      <Value Profile="(Default)">0,0,0,0</Value>
     </Setting>
     <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">75</Value>
@@ -251,12 +251,12 @@
     <Setting Name="MainWindowFullDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockEdge" Scope="User">
+    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockEdges" Scope="User">
       <Value Profile="(Default)">Top</Value>
     </Setting>
     <Setting Name="MainWindowDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
       <Value Profile="(Default)">Full</Value>
-    </Setting>    
+    </Setting>
     <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
