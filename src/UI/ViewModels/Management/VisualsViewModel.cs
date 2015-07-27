@@ -251,8 +251,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
-            MinimisedWidthInPixels = Settings.Default.MainWindowMinimisedWidthInPixels;
-            MinimisedHeightInPixels = Settings.Default.MainWindowMinimisedHeightInPixels;
+            //TODO: Sort out these settings
+            //MinimisedWidthInPixels = Settings.Default.MainWindowMinimisedWidthInPixels;
+            //MinimisedHeightInPixels = Settings.Default.MainWindowMinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             UxMode = Settings.Default.UxMode;
@@ -270,8 +271,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
-            Settings.Default.MainWindowMinimisedWidthInPixels = MinimisedWidthInPixels;
-            Settings.Default.MainWindowMinimisedHeightInPixels = MinimisedHeightInPixels;
+            //TODO: Sort out these settings
+            //Settings.Default.MainWindowMinimisedWidthInPixels = MinimisedWidthInPixels;
+            //Settings.Default.MainWindowMinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.UxMode = UxMode;

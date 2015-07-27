@@ -176,9 +176,6 @@
     <Setting Name="MouseMagnifier" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Setting" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="MagnifySourcePercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>

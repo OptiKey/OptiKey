@@ -172,10 +172,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 newContent = new StandardViews.English.Menu { DataContext = Keyboard };
                             }
-                            else if (Keyboard is ViewModelKeyboards.Minimised)
-                            {
-                                newContent = new StandardViews.English.Minimised { DataContext = Keyboard };
-                            }
                             else if (Keyboard is ViewModelKeyboards.Mouse)
                             {
                                 newContent = new StandardViews.English.Mouse { DataContext = Keyboard };

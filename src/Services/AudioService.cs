@@ -94,6 +94,7 @@ namespace JuliusSweetland.OptiKey.Services
                     callBack();
                 };
                 speechSynthesiser.SpeakCompleted += speakCompleted;
+                speechSynthesiser.SpeakAsync(textToSpeak);
             }
             catch (Exception exception)
             {

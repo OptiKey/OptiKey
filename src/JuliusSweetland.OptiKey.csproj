@@ -313,7 +313,6 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
@@ -341,9 +340,6 @@
     <Compile Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Minimised.xaml.cs">
-      <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml.cs">
       <DependentUpon>MouseDocked.xaml</DependentUpon>
@@ -712,10 +708,6 @@
     <Page Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Minimised.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml">
       <Generator>MSBuild:Compile</Generator>

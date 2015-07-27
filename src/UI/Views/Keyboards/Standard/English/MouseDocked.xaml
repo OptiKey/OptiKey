@@ -29,10 +29,10 @@
             <Style TargetType="{x:Type StackPanel}">
                 <Setter Property="Orientation" Value="Horizontal" />
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition}" Value="{x:Static enums:DockPositions.Left}">
+                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition}" Value="{x:Static enums:DockEdges.Left}">
                         <Setter Property="Orientation" Value="Vertical" />
                     </DataTrigger>
-                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition}" Value="{x:Static enums:DockPositions.Right}">
+                    <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=MainWindowDockPosition}" Value="{x:Static enums:DockEdges.Right}">
                         <Setter Property="Orientation" Value="Vertical" />
                     </DataTrigger>
                 </Style.Triggers>
@@ -80,12 +80,12 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key SymbolGeometry="{StaticResource RestoreFromDockedIcon}"
+        <!--<controls:Key SymbolGeometry="{StaticResource RestoreFromDockedIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Restore}" />
             </controls:Key.Value>
-        </controls:Key>
+        </controls:Key>-->
         <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
