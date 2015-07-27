@@ -304,6 +304,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void RegisterAppBar()
         {
+            if (getWindowState() != WindowStates.Docked) return;
+
             //Register a new app bar with Windows - this adds it to a list of app bars
             var abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);
@@ -319,6 +321,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition)
         {
+            if (getWindowState() != WindowStates.Docked) return;
+
             var barData = new APPBARDATA();
             barData.cbSize = Marshal.SizeOf(barData);
             barData.hWnd = windowHandle;
