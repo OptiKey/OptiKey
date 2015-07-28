@@ -103,8 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void SetPosition(FrameworkElement parent)
         {
-            VerticalOffset = 
-                parent.ActualHeight / 2 * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+            VerticalOffset = (parent.ActualHeight / 2) * (Settings.Default.ToastNotificationVerticalFillPercentage / 100);
         }
 
         #endregion
