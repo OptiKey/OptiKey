@@ -88,31 +88,18 @@ namespace JuliusSweetland.OptiKey.Services
             this.saveFullDockThicknessAsPercentageOfScreen = saveFullDockThicknessAsPercentageOfScreen;
             this.saveCollapsedDockThicknessAsPercentageOfFullDockThickness = saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
 
-            RoutedEventHandler loaded = (_, __) =>
-            {
-                windowHandle = new WindowInteropHelper(window).Handle;
-                screen = window.GetScreen();
-                screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
-                var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
-                var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
-                screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y, 
-                    screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
-                    screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
+            windowHandle = new WindowInteropHelper(window).Handle;
+            screen = window.GetScreen();
+            screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+            var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
+            var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
+            screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y, 
+                screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
+                screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
 
-                RestoreState();
-            };
-
-            if (window.IsLoaded)
-            {
-                loaded(null, null);
-            }
-            else
-            {
-                window.Loaded += loaded;
-            }
-
+            RestoreState();
+        
             window.Closed += (_, __) => UnRegisterAppBar();
-
         }
 
         #endregion

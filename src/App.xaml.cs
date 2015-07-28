@@ -127,34 +127,46 @@ namespace JuliusSweetland.OptiKey
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
-                    mainWindow,
-                    () => Settings.Default.MainWindowOpacity,
-                    () => Settings.Default.MainWindowState,
-                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
-                    () => Settings.Default.MainWindowDockPosition,
-                    () => Settings.Default.MainWindowDockSize,
-                    () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
-                    () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
-                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
-                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
-                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
-                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
-                    size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
-                
-                errorNotifyingServices.Add(mainWindowManipulationService);
-
-                var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, keyboardService, 
-                    suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, outputService, mainWindowManipulationService, errorNotifyingServices);
-
-                mainWindow.MainView.DataContext = mainViewModel;
-
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
-                Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
+                Action postMainViewLoaded = async () =>
+                {
+                    IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
+                        mainWindow,
+                        () => Settings.Default.MainWindowOpacity,
+                        () => Settings.Default.MainWindowState,
+                        () => Settings.Default.MainWindowPreviousState,
+                        () => Settings.Default.MainWindowFloatingSizeAndPosition,
+                        () => Settings.Default.MainWindowDockPosition,
+                        () => Settings.Default.MainWindowDockSize,
+                        () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
+                        () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
+                        o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
+                        state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
+                        state => { Settings.Default.MainWindowPreviousState = state; Settings.Default.Save(); },
+                        rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
+                        pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
+                        size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
+                        t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
+                        t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
+
+                    errorNotifyingServices.Add(mainWindowManipulationService);
+
+                    var mainViewModel = new MainViewModel(
+                        audioService, calibrationService, dictionaryService, keyboardService,
+                        suggestionService, capturingStateManager, lastMouseActionStateManager,
+                        inputService, outputService, mainWindowManipulationService, errorNotifyingServices);
+
+                    mainWindow.MainView.DataContext = mainViewModel;
+
+                    //Show the main window
+                    mainWindow.Show();
+
+                    await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    inputService.RequestResume(); //Start the input service
+                    await CheckForUpdates(inputService, audioService, mainViewModel);
+
+                    mainViewModel.AttachServiceEventHandlers();
+                };
 
                 if(mainWindow.MainView.IsLoaded)
                 {
@@ -170,13 +182,6 @@ namespace JuliusSweetland.OptiKey
                     };
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
-                
-                //Show the main window
-                mainWindow.Show();
-
-                await ShowSplashScreen(inputService, audioService, mainViewModel);
-                inputService.RequestResume(); //Start the input service
-                await CheckForUpdates(inputService, audioService, mainViewModel);
             }
             catch (Exception ex)
             {
