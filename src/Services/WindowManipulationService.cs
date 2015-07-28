@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
@@ -27,12 +28,14 @@ namespace JuliusSweetland.OptiKey.Services
         private  Rect screenBoundsInDp;
         private  Func<double> getOpacity;
         private  Func<WindowStates> getWindowState;
+        private readonly Func<WindowStates> getPreviousWindowState;
         private  Func<Rect> getFloatingSizeAndPosition;
         private  Func<DockEdges> getDockPosition;
         private  Func<DockSizes> getDockSize;
         private  Func<double> getFullDockThicknessAsPercentageOfScreen;
         private  Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private  Action<WindowStates> saveWindowState;
+        private readonly Action<WindowStates> savePreviousWindowState;
         private  Action<Rect> saveFloatingSizeAndPosition;
         private  Action<DockEdges> saveDockPosition;
         private  Action<DockSizes> saveDockSize;
@@ -52,6 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
             Window window,
             Func<double> getOpacity,
             Func<WindowStates> getWindowState,
+            Func<WindowStates> getPreviousWindowState,
             Func<Rect> getFloatingSizeAndPosition,
             Func<DockEdges> getDockPosition,
             Func<DockSizes> getDockSize,
@@ -59,6 +63,7 @@ namespace JuliusSweetland.OptiKey.Services
             Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
             Action<double> saveOpacity,
             Action<WindowStates> saveWindowState,
+            Action<WindowStates> savePreviousWindowState,
             Action<Rect> saveFloatingSizeAndPosition,
             Action<DockEdges> saveDockPosition,
             Action<DockSizes> saveDockSize,
@@ -68,6 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.window = window;
             this.getOpacity = getOpacity;
             this.getWindowState = getWindowState;
+            this.getPreviousWindowState = getPreviousWindowState;
             this.getDockPosition = getDockPosition;
             this.getDockSize = getDockSize;
             this.getFullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen;
@@ -75,6 +81,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
             this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
+            this.savePreviousWindowState = savePreviousWindowState;
             this.saveFloatingSizeAndPosition = saveFloatingSizeAndPosition;
             this.saveDockPosition = saveDockPosition;
             this.saveDockSize = saveDockSize;
@@ -123,21 +130,26 @@ namespace JuliusSweetland.OptiKey.Services
             window.Opacity += increase ? 0.1 : -0.1;
             window.Opacity.CoerceToLowerLimit(0.1);
             window.Opacity.CoerceToUpperLimit(1);
-            PersistState();
+            saveOpacity(window.Opacity);
         }
 
         public void CollapseDock()
         {
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Collapsed) return;
+            
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
-            //PersistState() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+            //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
         public void Expand(ExpandToDirections direction, int? amountInDp)
         {
+            if (getWindowState() == WindowStates.Maximised) return;
+
             throw new NotImplementedException();
+
+            PersistSizeAndPosition();
         }
 
         public void ExpandDock()
@@ -146,29 +158,44 @@ namespace JuliusSweetland.OptiKey.Services
             var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
             saveDockSize(DockSizes.Full);
-            //PersistState() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+            //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
         public void Maximise()
         {
+            savePreviousWindowState(getWindowState());
             window.WindowState = WindowState.Maximized;
-            PersistState();
+            saveWindowState(WindowStates.Maximised);
         }
 
         public void Move(MoveToDirections direction, int? amountInDp)
         {
+            if (getWindowState() == WindowStates.Maximised) return;
+
             throw new NotImplementedException();
+            
+            //TODO: If transitioning from floating <-> docked call savePreviousWindowState(getWindowState());
+            PersistSizeAndPosition();
         }
 
         public void Restore()
         {
+            if (getWindowState() != WindowStates.Maximised) return;
+
+            var previousWindowState = getPreviousWindowState();
             window.WindowState = WindowState.Normal;
-            PersistState();
+            RestoreSizeAndPosition(previousWindowState, getFloatingSizeAndPosition());
+            savePreviousWindowState(WindowStates.Maximised);
+            saveWindowState(previousWindowState);
         }
 
         public void Shrink(ShrinkFromDirections direction, int? amountInDp)
         {
+            if (getWindowState() == WindowStates.Maximised) return;
+
             throw new NotImplementedException();
+
+            PersistSizeAndPosition();
         }
 
         #endregion
@@ -197,7 +224,7 @@ namespace JuliusSweetland.OptiKey.Services
             window.Width = rect.Width;
             window.Height = rect.Height;
 
-            PersistState();
+            PersistSizeAndPosition();
         }
 
         private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size)
@@ -277,18 +304,7 @@ namespace JuliusSweetland.OptiKey.Services
                 var windowState = getWindowState();
                 window.Opacity = getOpacity();
                 window.WindowState = windowState.ToWindowState();
-                if (windowState == WindowStates.Docked)
-                {
-                    var dockPosition = getDockPosition();
-                    var dockSize = getDockSize();
-                    var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(dockPosition, dockSize);
-                    RegisterAppBar();
-                    SetAppBarSizeAndPosition(dockPosition, dockSizeAndPosition);
-                }
-                else if (windowState == WindowStates.Floating)
-                {
-                    ApplySizeAndPosition(floatingSizeAndPosition);
-                }
+                RestoreSizeAndPosition(windowState, floatingSizeAndPosition);
             }
             catch (Exception ex)
             {
@@ -296,10 +312,53 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PersistState()
+        private void PersistSizeAndPosition()
         {
-            //    setWindowSizeAndPositionSetting(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
-            //Map window.WindowState to my version of WindowStates
+            var windowState = getWindowState();
+            switch (windowState)
+            {
+                case WindowStates.Floating:
+                    saveFloatingSizeAndPosition(new Rect(window.Left, window.Top, window.ActualWidth, window.ActualHeight));
+                    break;
+
+                case WindowStates.Docked:
+                    var dockPosition = getDockPosition();
+                    switch (getDockSize())
+                    {
+                        case DockSizes.Full:
+                            var fullDockThicknessAsPercentageOfScreen =
+                                dockPosition == DockEdges.Top || dockPosition == DockEdges.Bottom
+                                    ? (window.ActualWidth / screenBoundsInDp.Width) * 100
+                                    : (window.ActualHeight / screenBoundsInDp.Height) * 100;
+                            saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
+                            break;
+
+                        case DockSizes.Collapsed:
+                            var collapsedDockThicknessAsPercentageOfFullDockThickness =
+                                dockPosition == DockEdges.Top || dockPosition == DockEdges.Bottom
+                                    ? (window.ActualWidth / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen()
+                                    : (window.ActualHeight / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen();
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void RestoreSizeAndPosition(WindowStates windowState, Rect floatingSizeAndPosition)
+        {
+            if (windowState == WindowStates.Docked)
+            {
+                var dockPosition = getDockPosition();
+                var dockSize = getDockSize();
+                var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(dockPosition, dockSize);
+                RegisterAppBar();
+                SetAppBarSizeAndPosition(dockPosition, dockSizeAndPosition);
+            }
+            else if (windowState == WindowStates.Floating)
+            {
+                ApplySizeAndPosition(floatingSizeAndPosition);
+            }
         }
 
         private void RegisterAppBar()
