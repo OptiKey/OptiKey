@@ -11,12 +11,12 @@ namespace JuliusSweetland.OptiKey.Services
         bool SizeAndPositionIsInitialised { get; }
 
         void ChangeOpacity(bool increase);
-        void CollapseDock();
-        void Expand(ExpandToDirections direction, int? amountInDp);
-        void ExpandDock();
+        void Expand(ExpandToDirections direction, double amountInDp);
         void Maximise();
-        void Move(MoveToDirections direction, int? amountInDp);
+        void Move(MoveToDirections direction, double? amountInDp);
+        void ResizeDockToCollapsed();
+        void ResizeDockToFull();
         void Restore();
-        void Shrink(ShrinkFromDirections direction, int? amountInDp);
+        void Shrink(ShrinkFromDirections direction, double amountInDp);
     }
 }
