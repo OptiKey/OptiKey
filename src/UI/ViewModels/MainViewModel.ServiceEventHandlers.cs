@@ -240,55 +240,55 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Currencies2();
                         break;
 
-                    //case FunctionKeys.DecreaseOpacity:
-                    //    Log.Debug("Decreasing opacity.");
-                    //    mainWindowManipulationService.DecreaseOpacity();
-                    //    break;
+                    case FunctionKeys.DecreaseOpacity:
+                        Log.Debug("Decreasing opacity.");
+                        mainWindowManipulationService.ChangeOpacity(false);
+                        break;
 
-                    //case FunctionKeys.ExpandToBottom:
-                    //    Log.DebugFormat("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToBottom:
+                        Log.DebugFormat("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.Bottom, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToBottomAndLeft:
-                    //    Log.DebugFormat("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToBottomAndLeft:
+                        Log.DebugFormat("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.BottomLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToBottomAndRight:
-                    //    Log.DebugFormat("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToBottomAndRight:
+                        Log.DebugFormat("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.BottomRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToLeft:
-                    //    Log.DebugFormat("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToLeft:
+                        Log.DebugFormat("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.Left, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToRight:
-                    //    Log.DebugFormat("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToRight:
+                        Log.DebugFormat("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.Right, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToTop:
-                    //    Log.DebugFormat("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToTop:
+                        Log.DebugFormat("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.Top, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToTopAndLeft:
-                    //    Log.DebugFormat("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToTopAndLeft:
+                        Log.DebugFormat("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.TopLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ExpandToTopAndRight:
-                    //    Log.DebugFormat("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ExpandToTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ExpandToTopAndRight:
+                        Log.DebugFormat("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Expand(ExpandToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.IncreaseOpacity:
-                    //    Log.Debug("Increasing opacity.");
-                    //    mainWindowManipulationService.IncreaseOpacity();
-                    //    break;
+                    case FunctionKeys.IncreaseOpacity:
+                        Log.Debug("Increasing opacity.");
+                        mainWindowManipulationService.ChangeOpacity(true);
+                        break;
                         
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");

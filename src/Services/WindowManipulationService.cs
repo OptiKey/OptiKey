@@ -126,19 +126,19 @@ namespace JuliusSweetland.OptiKey.Services
             saveOpacity(window.Opacity);
         }
 
-        public void Expand(ExpandToDirections direction, double amountInDp)
+        public void Expand(ExpandToDirections direction, double amountInPx)
         {
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
             var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
-            var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : amountInDp.CoerceToUpperLimit(distanceToBottomBoundary);
+            var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : (amountInPx / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToBottomBoundary);
             var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
-            var yAdjustmentToTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : amountInDp.CoerceToUpperLimit(distanceToTopBoundary);
+            var yAdjustmentToTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : (amountInPx / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToTopBoundary);
             var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
-            var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : amountInDp.CoerceToUpperLimit(distanceToLeftBoundary);
+            var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : (amountInPx / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToLeftBoundary);
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
-            var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : amountInDp.CoerceToUpperLimit(distanceToRightBoundary);
+            var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : (amountInPx / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToRightBoundary);
 
             switch (direction) //Handle vertical adjustment
             {
@@ -192,7 +192,7 @@ namespace JuliusSweetland.OptiKey.Services
             saveWindowState(WindowStates.Maximised);
         }
 
-        public void Move(MoveToDirections direction, double? amountInDp)
+        public void Move(MoveToDirections direction, double? amountInPx)
         {
             if (getWindowState() == WindowStates.Maximised) return;
 
@@ -230,7 +230,7 @@ namespace JuliusSweetland.OptiKey.Services
             saveWindowState(previousWindowState);
         }
 
-        public void Shrink(ShrinkFromDirections direction, double amountInDp)
+        public void Shrink(ShrinkFromDirections direction, double amountInPx)
         {
             if (getWindowState() == WindowStates.Maximised) return;
 
