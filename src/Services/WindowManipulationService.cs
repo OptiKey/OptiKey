@@ -140,79 +140,48 @@ namespace JuliusSweetland.OptiKey.Services
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
             var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : amountInDp.CoerceToUpperLimit(distanceToRightBoundary);
 
-            switch (windowState)
+            switch (direction) //Handle vertical adjustment
             {
-                case WindowStates.Docked:
-                    var dockPosition = getDockPosition();
-                    var updateAppBarSizeAndPosition = false;
-
-                    if (direction == ExpandToDirections.Bottom && dockPosition == DockEdges.Top)
-                    {
-                        //yAdjustmentToBottom
-                        updateAppBarSizeAndPosition = true;
-                    }
-
-                    if (direction == ExpandToDirections.Top && dockPosition == DockEdges.Bottom)
-                    {
-                        updateAppBarSizeAndPosition = true;
-                    }
-
-                    if (direction == ExpandToDirections.Left && dockPosition == DockEdges.Right)
-                    {
-                        updateAppBarSizeAndPosition = true;
-                    }
-
-                    if (direction == ExpandToDirections.Right && dockPosition == DockEdges.Left)
-                    {
-                        updateAppBarSizeAndPosition = true;
-                    }
-
-                    if (updateAppBarSizeAndPosition)
-                    {
-                        var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
-                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
-                    }
+                case ExpandToDirections.Bottom:
+                case ExpandToDirections.BottomLeft:
+                case ExpandToDirections.BottomRight:
+                    window.Height += yAdjustmentToBottom;
                     break;
 
-                case WindowStates.Floating:
-                    switch (direction) //Handle vertical adjustment
-                    {
-                        case ExpandToDirections.Bottom:
-                        case ExpandToDirections.BottomLeft:
-                        case ExpandToDirections.BottomRight:
-                            window.Height += yAdjustmentToBottom;
-                            break;
-
-                        case ExpandToDirections.Top:
-                        case ExpandToDirections.TopLeft:
-                        case ExpandToDirections.TopRight:
-                            var heightBeforeAdjustment = window.ActualHeight;
-                            window.Height += yAdjustmentToTop;
-                            var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
-                            window.Top -= actualYAdjustmentToTop;
-                            break;
-                    }
-
-                    switch (direction) //Handle horizontal adjustment
-                    {
-                        case ExpandToDirections.Left:
-                        case ExpandToDirections.BottomLeft:
-                        case ExpandToDirections.TopLeft:
-                            var widthBeforeAdjustment = window.ActualWidth;
-                            window.Width += xAdjustmentToLeft;
-                            var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
-                            window.Left -= actualXAdjustmentToLeft;
-                            break;
-
-                        case ExpandToDirections.Right:
-                        case ExpandToDirections.BottomRight:
-                        case ExpandToDirections.TopRight:
-                            window.Width += xAdjustmentToRight;
-                            break;
-                    }
+                case ExpandToDirections.Top:
+                case ExpandToDirections.TopLeft:
+                case ExpandToDirections.TopRight:
+                    var heightBeforeAdjustment = window.ActualHeight;
+                    window.Height += yAdjustmentToTop;
+                    var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
+                    window.Top -= actualYAdjustmentToTop;
                     break;
             }
 
+            switch (direction) //Handle horizontal adjustment
+            {
+                case ExpandToDirections.Left:
+                case ExpandToDirections.BottomLeft:
+                case ExpandToDirections.TopLeft:
+                    var widthBeforeAdjustment = window.ActualWidth;
+                    window.Width += xAdjustmentToLeft;
+                    var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
+                    window.Left -= actualXAdjustmentToLeft;
+                    break;
+
+                case ExpandToDirections.Right:
+                case ExpandToDirections.BottomRight:
+                case ExpandToDirections.TopRight:
+                    window.Width += xAdjustmentToRight;
+                    break;
+            }
+
+            if (windowState == WindowStates.Docked)
+            {
+                var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+            }
+            
             PersistSizeAndPosition();
         }
 
