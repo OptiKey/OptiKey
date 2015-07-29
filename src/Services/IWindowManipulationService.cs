@@ -6,7 +6,9 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IWindowManipulationService : INotifyErrors
     {
-        event EventHandler<Rect> SizePositionChanged;
+        event EventHandler<Rect> SizeAndPositionInitialised;
+
+        bool SizeAndPositionIsInitialised { get; }
 
         void ChangeOpacity(bool increase);
         void CollapseDock();

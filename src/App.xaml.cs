@@ -155,17 +155,6 @@ namespace JuliusSweetland.OptiKey
 
                 mainWindow.MainView.DataContext = mainViewModel;
 
-                //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
-                EventHandler<Rect> sizePositionSet = null;
-                sizePositionSet  = async (_, __) =>
-                {
-                    mainWindowManipulationService.SizePositionChanged -= sizePositionSet; //Ensure this handler only triggers once
-                    await ShowSplashScreen(inputService, audioService, mainViewModel);
-                    inputService.RequestResume(); //Start the input service
-                    await CheckForUpdates(inputService, audioService, mainViewModel);
-                };
-                mainWindowManipulationService.SizePositionChanged += sizePositionSet;
-
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
                 Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
                 if(mainWindow.MainView.IsLoaded)
@@ -185,6 +174,24 @@ namespace JuliusSweetland.OptiKey
 
                 //Show the main window
                 mainWindow.Show();
+
+                //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
+                EventHandler<Rect> sizeAndPositionInitialised = null;
+                sizeAndPositionInitialised = async (_, __) =>
+                {
+                    mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
+                    await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    inputService.RequestResume(); //Start the input service
+                    await CheckForUpdates(inputService, audioService, mainViewModel);
+                };
+                if (mainWindowManipulationService.SizeAndPositionIsInitialised)
+                {
+                    sizeAndPositionInitialised(null, new Rect());
+                }
+                else
+                {
+                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;    
+                }
             }
             catch (Exception ex)
             {

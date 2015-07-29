@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
@@ -106,8 +105,14 @@ namespace JuliusSweetland.OptiKey.Services
         
         #region Events
 
-        public event EventHandler<Rect> SizePositionChanged;
+        public event EventHandler<Rect> SizeAndPositionInitialised;
         public event EventHandler<Exception> Error;
+
+        #endregion
+
+        #region Properties
+
+        public bool SizeAndPositionIsInitialised { get; private set; }
 
         #endregion
 
@@ -212,12 +217,25 @@ namespace JuliusSweetland.OptiKey.Services
             window.Width = rect.Width;
             window.Height = rect.Height;
 
-            if (SizePositionChanged != null)
-            {
-                SizePositionChanged(this, rect);
-            }
-
             PersistSizeAndPosition();
+
+            if (!SizeAndPositionIsInitialised)
+            {
+                SizeAndPositionIsInitialised = true;
+                if (SizeAndPositionInitialised != null)
+                {
+                    SizeAndPositionInitialised(this, rect);
+                }
+                //Action notifySizeAndPositionIsInitialised = () =>
+                //{
+                //    SizeAndPositionIsInitialised = true;
+                //    if (SizeAndPositionInitialised != null)
+                //    {
+                //        SizeAndPositionInitialised(this, rect);
+                //    }
+                //}; 
+                //window.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, notifySizeAndPositionIsInitialised);
+            }
         }
 
         private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size)
@@ -350,7 +368,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else if (windowState == WindowStates.Floating)
             {
-                window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplySizeAndPosition), floatingSizeAndPosition);
+                ApplySizeAndPosition(floatingSizeAndPosition);
             }
         }
 
