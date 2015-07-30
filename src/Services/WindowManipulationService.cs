@@ -301,7 +301,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     else
                     {
-                        //Move away from docked side by an amount = to floating at that edge
+                        //Move away from docked side = float touching previous dock edge
                         //PersistSizeAndPosition();
                     }
                     break;
