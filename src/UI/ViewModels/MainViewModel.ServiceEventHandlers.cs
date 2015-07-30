@@ -843,45 +843,45 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         break;
 
-                    //case FunctionKeys.ShrinkFromBottom:
-                    //    Log.DebugFormat("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromBottom(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromBottom:
+                        Log.DebugFormat("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.Bottom, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromBottomAndLeft:
-                    //    Log.DebugFormat("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromBottomAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromBottomAndLeft:
+                        Log.DebugFormat("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.BottomLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromBottomAndRight:
-                    //    Log.DebugFormat("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromBottomAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromBottomAndRight:
+                        Log.DebugFormat("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.BottomRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromLeft:
-                    //    Log.DebugFormat("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromLeft:
+                        Log.DebugFormat("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.Left, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromRight:
-                    //    Log.DebugFormat("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromRight:
+                        Log.DebugFormat("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.Right, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromTop:
-                    //    Log.DebugFormat("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromTop(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromTop:
+                        Log.DebugFormat("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.Top, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromTopAndLeft:
-                    //    Log.DebugFormat("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromTopAndLeft(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromTopAndLeft:
+                        Log.DebugFormat("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.TopLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
-                    //case FunctionKeys.ShrinkFromTopAndRight:
-                    //    Log.DebugFormat("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    mainWindowManipulationService.ShrinkFromTopAndRight(Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
-                    //    break;
+                    case FunctionKeys.ShrinkFromTopAndRight:
+                        Log.DebugFormat("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        mainWindowManipulationService.Shrink(ShrinkFromDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        break;
 
                     case FunctionKeys.SizeAndPositionKeyboard:
                         Log.Debug("Changing keyboard to Size & Position.");
