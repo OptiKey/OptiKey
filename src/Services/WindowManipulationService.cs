@@ -28,16 +28,16 @@ namespace JuliusSweetland.OptiKey.Services
         private Rect screenBoundsInDp;
         private readonly Func<double> getOpacity;
         private readonly Func<WindowStates> getWindowState;
-        private readonly Func<WindowStates> getPreviousWindowState;
+        private readonly Func<WindowStates> getLastNonMaximisedState;
         private readonly Func<Rect> getFloatingSizeAndPosition;
         private readonly Func<DockEdges> getDockPosition;
         private readonly Func<DockSizes> getDockSize;
         private readonly Func<double> getFullDockThicknessAsPercentageOfScreen;
         private readonly Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Action<WindowStates> saveWindowState;
-        private readonly Action<WindowStates> savePreviousWindowState;
+        private readonly Action<WindowStates> saveLastNonMaximisedState;
         private readonly Action<Rect> saveFloatingSizeAndPosition;
-        private Action<DockEdges> saveDockPosition;
+        private readonly Action<DockEdges> saveDockPosition;
         private readonly Action<DockSizes> saveDockSize;
         private readonly Action<double> saveFullDockThicknessAsPercentageOfScreen;
         private readonly Action<double> saveCollapsedDockThicknessAsPercentageOfFullDockThickness;
@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
             Window window,
             Func<double> getOpacity,
             Func<WindowStates> getWindowState,
-            Func<WindowStates> getPreviousWindowState,
+            Func<WindowStates> getLastNonMaximisedState,
             Func<Rect> getFloatingSizeAndPosition,
             Func<DockEdges> getDockPosition,
             Func<DockSizes> getDockSize,
@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.Services
             Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
             Action<double> saveOpacity,
             Action<WindowStates> saveWindowState,
-            Action<WindowStates> savePreviousWindowState,
+            Action<WindowStates> saveLastNonMaximisedState,
             Action<Rect> saveFloatingSizeAndPosition,
             Action<DockEdges> saveDockPosition,
             Action<DockSizes> saveDockSize,
@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.window = window;
             this.getOpacity = getOpacity;
             this.getWindowState = getWindowState;
-            this.getPreviousWindowState = getPreviousWindowState;
+            this.getLastNonMaximisedState = getLastNonMaximisedState;
             this.getDockPosition = getDockPosition;
             this.getDockSize = getDockSize;
             this.getFullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen;
@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
             this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
-            this.savePreviousWindowState = savePreviousWindowState;
+            this.saveLastNonMaximisedState = saveLastNonMaximisedState;
             this.saveFloatingSizeAndPosition = saveFloatingSizeAndPosition;
             this.saveDockPosition = saveDockPosition;
             this.saveDockSize = saveDockSize;
@@ -141,71 +141,205 @@ namespace JuliusSweetland.OptiKey.Services
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
             var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : (amountInPx / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToRightBoundary);
 
-            switch (direction) //Handle vertical adjustment
-            {
-                case ExpandToDirections.Bottom:
-                case ExpandToDirections.BottomLeft:
-                case ExpandToDirections.BottomRight:
-                    window.Height += yAdjustmentToBottom;
-                    break;
-
-                case ExpandToDirections.Top:
-                case ExpandToDirections.TopLeft:
-                case ExpandToDirections.TopRight:
-                    var heightBeforeAdjustment = window.ActualHeight;
-                    window.Height += yAdjustmentToTop;
-                    var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
-                    window.Top -= actualYAdjustmentToTop;
-                    break;
-            }
-
-            switch (direction) //Handle horizontal adjustment
-            {
-                case ExpandToDirections.Left:
-                case ExpandToDirections.BottomLeft:
-                case ExpandToDirections.TopLeft:
-                    var widthBeforeAdjustment = window.ActualWidth;
-                    window.Width += xAdjustmentToLeft;
-                    var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
-                    window.Left -= actualXAdjustmentToLeft;
-                    break;
-
-                case ExpandToDirections.Right:
-                case ExpandToDirections.BottomRight:
-                case ExpandToDirections.TopRight:
-                    window.Width += xAdjustmentToRight;
-                    break;
-            }
-
             switch (windowState)
             {
                 case WindowStates.Floating:
+                    switch (direction) //Handle vertical adjustment
+                    {
+                        case ExpandToDirections.Bottom:
+                        case ExpandToDirections.BottomLeft:
+                        case ExpandToDirections.BottomRight:
+                            window.Height += yAdjustmentToBottom;
+                            break;
+
+                        case ExpandToDirections.Top:
+                        case ExpandToDirections.TopLeft:
+                        case ExpandToDirections.TopRight:
+                            var heightBeforeAdjustment = window.ActualHeight;
+                            window.Height += yAdjustmentToTop;
+                            var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
+                            window.Top -= actualYAdjustmentToTop;
+                            break;
+                    }
+                    switch (direction) //Handle horizontal adjustment
+                    {
+                        case ExpandToDirections.Left:
+                        case ExpandToDirections.BottomLeft:
+                        case ExpandToDirections.TopLeft:
+                            var widthBeforeAdjustment = window.ActualWidth;
+                            window.Width += xAdjustmentToLeft;
+                            var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
+                            window.Left -= actualXAdjustmentToLeft;
+                            break;
+
+                        case ExpandToDirections.Right:
+                        case ExpandToDirections.BottomRight:
+                        case ExpandToDirections.TopRight:
+                            window.Width += xAdjustmentToRight;
+                            break;
+                    }
                     PersistSizeAndPosition();
                     break;
 
                 case WindowStates.Docked:
-                    PersistDockThickness(); //Window size has been adjusted so persist back to thickness setting, which is used in CalculateDockSizeAndPositionInPx()
-                    var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
-                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+                    var dockPosition = getDockPosition();
+                    var dockSize = getDockSize();
+                    var adjustment = false;
+                    if (dockPosition == DockEdges.Top &&
+                        (direction == ExpandToDirections.Bottom ||
+                         direction == ExpandToDirections.BottomLeft ||
+                         direction == ExpandToDirections.BottomRight))
+                    {
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentToBottom) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
+                        }
+                        adjustment = true;
+                    }
+                    else if (dockPosition == DockEdges.Bottom &&
+                        (direction == ExpandToDirections.Top ||
+                         direction == ExpandToDirections.TopLeft ||
+                         direction == ExpandToDirections.TopRight))
+                    {
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentToTop) / screenBoundsInDp.Height) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentToTop) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
+                        }
+                        adjustment = true;
+                    }
+                    else if (dockPosition == DockEdges.Left &&
+                        (direction == ExpandToDirections.Right ||
+                         direction == ExpandToDirections.TopRight ||
+                         direction == ExpandToDirections.BottomRight))
+                    {
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentToRight) / screenBoundsInDp.Width) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentToRight) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
+                        }
+                        adjustment = true;
+                    }
+                    else if (dockPosition == DockEdges.Right &&
+                        (direction == ExpandToDirections.Left ||
+                         direction == ExpandToDirections.TopLeft ||
+                         direction == ExpandToDirections.BottomLeft))
+                    {
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentToLeft) / screenBoundsInDp.Width) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentToLeft) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
+                        }
+                        adjustment = true;
+                    }
+                    if (adjustment)
+                    {
+                        var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                    }
                     break;
             }
         }
 
         public void Maximise()
         {
-            savePreviousWindowState(getWindowState());
+            saveLastNonMaximisedState(getWindowState());
             window.WindowState = WindowState.Maximized;
             saveWindowState(WindowStates.Maximised);
         }
 
         public void Move(MoveToDirections direction, double? amountInPx)
         {
-            if (getWindowState() == WindowStates.Maximised) return;
+            var windowState = getWindowState();
+            if (windowState == WindowStates.Maximised) return;
 
-            throw new NotImplementedException();
-            
-            //TODO: If transitioning from floating <-> docked call savePreviousWindowState(getWindowState());
-            PersistSizeAndPosition();
+            var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
+            var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
+            var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
+            var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
+
+            bool adjustment = false;
+            switch (windowState)
+            {
+                case WindowStates.Docked:
+                    var dockPosition = getDockPosition();
+                    if (amountInPx == null) //Jump to (and dock on) opposite edge
+                    {
+                        if (dockPosition == DockEdges.Top && direction == MoveToDirections.Bottom)
+                        {
+                            saveDockPosition(DockEdges.Bottom);
+                            adjustment = true;
+                        }
+                        else if (dockPosition == DockEdges.Bottom && direction == MoveToDirections.Top)
+                        {
+                            saveDockPosition(DockEdges.Top);
+                            adjustment = true;
+                        }
+                        else if (dockPosition == DockEdges.Left && direction == MoveToDirections.Right)
+                        {
+                            saveDockPosition(DockEdges.Right);
+                            adjustment = true;
+                        }
+                        else if (dockPosition == DockEdges.Right && direction == MoveToDirections.Left)
+                        {
+                            saveDockPosition(DockEdges.Left);
+                            adjustment = true;
+                        }
+                    }
+                    else
+                    {
+                        //Move away from docked side by an amount = to floating at that edge
+                        //PersistSizeAndPosition();
+                    }
+                    break;
+
+                case WindowStates.Floating:
+                    if (amountInPx == null)
+                    {
+                        //Jump to edge(s)
+                    }
+                    else
+                    {
+                        //Move over edge of screen = dock
+
+                        //Else move window & PersistSizeAndPosition();
+                        var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToBottomBoundary);
+                        var yAdjustmentToTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToTopBoundary);
+                        var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToLeftBoundary);
+                        var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToRightBoundary);
+                    }
+                    break;
+            }
+
+            //TODO: If transitioning from floating <-> docked call saveLastNonMaximisedState(getWindowState()); and saveWindowState(newWindowState);
+
+            if (adjustment)
+            {
+                switch (getWindowState())
+                {
+                    case WindowStates.Floating:
+                        PersistSizeAndPosition();
+                        break;
+
+                    case WindowStates.Docked:
+                        var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                        break;
+                }
+            }
         }
 
         public void ResizeDockToCollapsed()
@@ -213,15 +347,15 @@ namespace JuliusSweetland.OptiKey.Services
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Collapsed) return;
 
             saveDockSize(DockSizes.Collapsed);
-            var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
         public void ResizeDockToFull()
         {
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Full) return;
-            var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
             saveDockSize(DockSizes.Full); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
@@ -229,10 +363,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (getWindowState() != WindowStates.Maximised) return;
 
-            var previousWindowState = getPreviousWindowState();
             window.WindowState = WindowState.Normal;
+            var previousWindowState = getLastNonMaximisedState();
             RestoreSizeAndPosition(previousWindowState, getFloatingSizeAndPosition());
-            savePreviousWindowState(WindowStates.Maximised);
             saveWindowState(previousWindowState);
         }
 
@@ -241,7 +374,6 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
-            var dockPosition = getDockPosition();
             var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
             var yAdjustmentFromBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0 - (amountInPx / Graphics.DipScalingFactorY);
             var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
@@ -251,73 +383,108 @@ namespace JuliusSweetland.OptiKey.Services
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
             var xAdjustmentFromRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : 0 - (amountInPx / Graphics.DipScalingFactorX);
 
-            bool adjustment = false;
-            switch (direction) //Handle vertical adjustment
+            switch (windowState)
             {
-                case ShrinkFromDirections.Bottom:
-                case ShrinkFromDirections.BottomLeft:
-                case ShrinkFromDirections.BottomRight:
-                    if (windowState == WindowStates.Floating || dockPosition == DockEdges.Top)
+                case WindowStates.Floating:
+                    switch (direction) //Handle vertical adjustment
                     {
-                        window.Height += yAdjustmentFromBottom;
-                        adjustment = true;
+                        case ShrinkFromDirections.Bottom:
+                        case ShrinkFromDirections.BottomLeft:
+                        case ShrinkFromDirections.BottomRight:
+                            window.Height += yAdjustmentFromBottom;
+                            break;
+
+                        case ShrinkFromDirections.Top:
+                        case ShrinkFromDirections.TopLeft:
+                        case ShrinkFromDirections.TopRight:
+                            var heightBeforeAdjustment = window.ActualHeight;
+                            window.Height += yAdjustmentFromTop;
+                            var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
+                            window.Top -= actualYAdjustmentToTop;
+                            break;
                     }
+                    switch (direction) //Handle horizontal adjustment
+                    {
+                        case ShrinkFromDirections.Left:
+                        case ShrinkFromDirections.BottomLeft:
+                        case ShrinkFromDirections.TopLeft:
+                            var widthBeforeAdjustment = window.ActualWidth;
+                            window.Width += xAdjustmentFromLeft;
+                            var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
+                            window.Left -= actualXAdjustmentToLeft;
+                            break;
+
+                        case ShrinkFromDirections.Right:
+                        case ShrinkFromDirections.BottomRight:
+                        case ShrinkFromDirections.TopRight:
+                            window.Width += xAdjustmentFromRight;
+                            break;
+                    }
+                    PersistSizeAndPosition();
                     break;
 
-                case ShrinkFromDirections.Top:
-                case ShrinkFromDirections.TopLeft:
-                case ShrinkFromDirections.TopRight:
-                    if (windowState == WindowStates.Floating || dockPosition == DockEdges.Bottom)
+                case WindowStates.Docked:
+                    var dockPosition = getDockPosition();
+                    var dockSize = getDockSize();
+                    var adjustment = false;
+                    if (dockPosition == DockEdges.Top &&
+                        (direction == ShrinkFromDirections.Bottom || direction == ShrinkFromDirections.BottomLeft || direction == ShrinkFromDirections.BottomRight))
                     {
-                        var heightBeforeAdjustment = window.ActualHeight;
-                        window.Height += yAdjustmentFromTop;
-                        var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
-                        window.Top -= actualYAdjustmentToTop;
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentFromBottom) / screenBoundsInDp.Height) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentFromBottom) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
+                        }
                         adjustment = true;
                     }
-                    break;
-            }
-
-            switch (direction) //Handle horizontal adjustment
-            {
-                case ShrinkFromDirections.Left:
-                case ShrinkFromDirections.BottomLeft:
-                case ShrinkFromDirections.TopLeft:
-                    if (windowState == WindowStates.Floating || dockPosition == DockEdges.Right)
+                    else if (dockPosition == DockEdges.Bottom &&
+                        (direction == ShrinkFromDirections.Top || direction == ShrinkFromDirections.TopLeft || direction == ShrinkFromDirections.TopRight))
                     {
-                        var widthBeforeAdjustment = window.ActualWidth;
-                        window.Width += xAdjustmentFromLeft;
-                        var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
-                        window.Left -= actualXAdjustmentToLeft;
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentFromTop) / screenBoundsInDp.Height) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentFromTop) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
+                        }
                         adjustment = true;
                     }
-                    break;
-
-                case ShrinkFromDirections.Right:
-                case ShrinkFromDirections.BottomRight:
-                case ShrinkFromDirections.TopRight:
-                    if (windowState == WindowStates.Floating || dockPosition == DockEdges.Left)
+                    else if (dockPosition == DockEdges.Left &&
+                        (direction == ShrinkFromDirections.Right || direction == ShrinkFromDirections.TopRight || direction == ShrinkFromDirections.BottomRight))
                     {
-                        window.Width += xAdjustmentFromRight;
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentFromRight) / screenBoundsInDp.Width) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentFromRight) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
+                        }
                         adjustment = true;
                     }
+                    else if (dockPosition == DockEdges.Right &&
+                        (direction == ShrinkFromDirections.Left || direction == ShrinkFromDirections.TopLeft || direction == ShrinkFromDirections.BottomLeft))
+                    {
+                        if (dockSize == DockSizes.Full)
+                        {
+                            saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentFromLeft) / screenBoundsInDp.Width) * 100);
+                        }
+                        else
+                        {
+                            saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentFromLeft) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
+                        }
+                        adjustment = true;
+                    }
+                    if (adjustment)
+                    {
+                        var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                    }
                     break;
-            }
-
-            if (adjustment)
-            {
-                switch (windowState)
-                {
-                    case WindowStates.Floating:
-                        PersistSizeAndPosition();
-                        break;
-
-                    case WindowStates.Docked:
-                        PersistDockThickness(); //Window size has been adjusted so persist back to thickness setting, which is used in CalculateDockSizeAndPositionInPx()
-                        var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
-                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
-                        break;
-                }   
             }
         }
 
@@ -332,8 +499,8 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (wParam.ToInt32() == (int)AppBarNotify.PositionChanged)
                 {
-                    var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
-                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+                    var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
                     handled = true;
                 }
             }
@@ -482,9 +649,9 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 var dockPosition = getDockPosition();
                 var dockSize = getDockSize();
-                var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(dockPosition, dockSize);
+                var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, dockSize);
                 RegisterAppBar();
-                SetAppBarSizeAndPosition(dockPosition, dockSizeAndPosition);
+                SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx);
             }
             else if (windowState == WindowStates.Floating)
             {
@@ -525,6 +692,23 @@ namespace JuliusSweetland.OptiKey.Services
             //Submit a query for the proposed dock size and position, which might be updated
             PInvoke.SHAppBarMessage(AppBarMessages.QueryPos, ref barData);
 
+            //Compensate for lost thickness due to other app bars
+            switch (dockPosition)
+            {
+                case DockEdges.Top:
+                    barData.rc.Bottom += barData.rc.Top - (int) Math.Round(sizeAndPosition.Top);
+                    break;
+                case DockEdges.Bottom:
+                    barData.rc.Top -= (int)Math.Round(sizeAndPosition.Bottom) - barData.rc.Bottom;
+                    break;
+                case DockEdges.Left:
+                    barData.rc.Right += barData.rc.Left - (int)Math.Round(sizeAndPosition.Left);
+                    break;
+                case DockEdges.Right:
+                    barData.rc.Left -= (int)Math.Round(sizeAndPosition.Right) - barData.rc.Right;
+                    break;
+            }
+            
             //Then set the dock size and position, using the potentially updated barData
             PInvoke.SHAppBarMessage(AppBarMessages.SetPos, ref barData);
 
