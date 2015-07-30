@@ -176,13 +176,18 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
             }
 
-            if (windowState == WindowStates.Docked)
+            switch (windowState)
             {
-                var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
-                SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+                case WindowStates.Floating:
+                    PersistSizeAndPosition();
+                    break;
+
+                case WindowStates.Docked:
+                    PersistDockThickness(); //Window size has been adjusted so persist back to thickness setting, which is used in CalculateDockSizeAndPositionInPx()
+                    var dockSizeAndPosition = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                    SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPosition);
+                    break;
             }
-            
-            PersistSizeAndPosition();
         }
 
         public void Maximise()
