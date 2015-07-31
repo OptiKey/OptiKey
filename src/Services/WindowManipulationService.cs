@@ -266,62 +266,135 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
-            var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
-            var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
-            var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
-            var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
+            var floatingSizeAndPosition = getFloatingSizeAndPosition();
+            var distanceToBottomBoundaryIfFloating = screenBoundsInDp.Bottom - (floatingSizeAndPosition.Top + floatingSizeAndPosition.Height);
+            var distanceToTopBoundaryIfFloating = floatingSizeAndPosition.Top - screenBoundsInDp.Top;
+            var distanceToLeftBoundaryIfFloating = floatingSizeAndPosition.Left - screenBoundsInDp.Left;
+            var distanceToRightBoundaryIfFloating = screenBoundsInDp.Right - (floatingSizeAndPosition.Left + floatingSizeAndPosition.Width);
 
             bool adjustment = false;
-            switch (windowState)
+            if (amountInPx == null)
             {
-                case WindowStates.Docked:
-                    var dockPosition = getDockPosition();
-                    if (amountInPx == null) //Jump to (and dock on) opposite edge
-                    {
-                        if (dockPosition == DockEdges.Top && direction == MoveToDirections.Bottom)
-                        {
-                            saveDockPosition(DockEdges.Bottom);
-                            adjustment = true;
-                        }
-                        else if (dockPosition == DockEdges.Bottom && direction == MoveToDirections.Top)
+                switch (windowState)
+                {
+                    case WindowStates.Docked:
+                        //Jump to (and dock on) a different edge
+                        var dockPosition = getDockPosition();
+                        if (direction == MoveToDirections.Top && dockPosition != DockEdges.Top)
                         {
                             saveDockPosition(DockEdges.Top);
                             adjustment = true;
                         }
-                        else if (dockPosition == DockEdges.Left && direction == MoveToDirections.Right)
+                        else if (direction == MoveToDirections.Bottom && dockPosition != DockEdges.Bottom)
                         {
-                            saveDockPosition(DockEdges.Right);
+                            saveDockPosition(DockEdges.Bottom);
                             adjustment = true;
                         }
-                        else if (dockPosition == DockEdges.Right && direction == MoveToDirections.Left)
+                        else if (direction == MoveToDirections.Left && dockPosition != DockEdges.Left)
                         {
                             saveDockPosition(DockEdges.Left);
                             adjustment = true;
                         }
-                    }
-                    else
-                    {
-                        //Move away from docked side = float touching previous dock edge
-                        //PersistSizeAndPosition();
-                    }
-                    break;
+                        else if (direction == MoveToDirections.Right && dockPosition != DockEdges.Right)
+                        {
+                            saveDockPosition(DockEdges.Right);
+                            adjustment = true;
+                        }
+                        break;
 
-                case WindowStates.Floating:
-                    if (amountInPx == null)
-                    {
+                    case WindowStates.Floating:
                         //Jump to edge(s)
-                    }
-                    else
-                    {
-                        //Move over edge of screen = dock
+                        switch (direction) //Handle vertical adjustment
+                        {
+                            case MoveToDirections.Bottom:
+                            case MoveToDirections.BottomLeft:
+                            case MoveToDirections.BottomRight:
+                                window.Top += distanceToBottomBoundaryIfFloating;
+                                adjustment = true;
+                                break;
 
-                        //Else move window & PersistSizeAndPosition();
-                        var yAdjustmentToBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToBottomBoundary);
-                        var yAdjustmentToTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToTopBoundary);
-                        var xAdjustmentToLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToLeftBoundary);
-                        var xAdjustmentToRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToRightBoundary);
-                    }
-                    break;
+                            case MoveToDirections.Top:
+                            case MoveToDirections.TopLeft:
+                            case MoveToDirections.TopRight:
+                                window.Top -= distanceToTopBoundaryIfFloating;
+                                adjustment = true;
+                                break;
+                        }
+                        switch (direction) //Handle horizontal adjustment
+                        {
+                            case MoveToDirections.Left:
+                            case MoveToDirections.BottomLeft:
+                            case MoveToDirections.TopLeft:
+                                window.Left -= distanceToLeftBoundaryIfFloating;
+                                adjustment = true;
+                                break;
+
+                            case MoveToDirections.Right:
+                            case MoveToDirections.BottomRight:
+                            case MoveToDirections.TopRight:
+                                window.Left += distanceToRightBoundaryIfFloating;
+                                adjustment = true;
+                                break;
+                        }
+                        break;
+                }    
+            }
+            else
+            {
+                var yAdjustmentToBottom = distanceToBottomBoundaryIfFloating < 0 ? distanceToBottomBoundaryIfFloating : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToBottomBoundaryIfFloating);
+                var yAdjustmentToTop = distanceToTopBoundaryIfFloating < 0 ? distanceToTopBoundaryIfFloating : (amountInPx.Value / Graphics.DipScalingFactorY).CoerceToUpperLimit(distanceToTopBoundaryIfFloating);
+                var xAdjustmentToLeft = distanceToLeftBoundaryIfFloating < 0 ? distanceToLeftBoundaryIfFloating : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToLeftBoundaryIfFloating);
+                var xAdjustmentToRight = distanceToRightBoundaryIfFloating < 0 ? distanceToRightBoundaryIfFloating : (amountInPx.Value / Graphics.DipScalingFactorX).CoerceToUpperLimit(distanceToRightBoundaryIfFloating);
+
+                switch (windowState)
+                {
+                    case WindowStates.Docked:
+                        switch (getDockPosition())
+                        {
+                            case DockEdges.Top:
+                                switch (direction)
+                                {
+                                    case MoveToDirections.Bottom:
+                                    case MoveToDirections.BottomLeft:
+                                    case MoveToDirections.BottomRight:
+                                        saveWindowState(WindowStates.Floating);
+                                        saveLastNonMaximisedState(WindowStates.Floating);
+                                        UnRegisterAppBar();
+                                        window.Top = screenBoundsInDp.Top;
+                                        switch (direction)
+                                        {
+                                            case MoveToDirections.Bottom:
+                                                window.Left = floatingSizeAndPosition.Left;
+                                                break;
+
+                                            case MoveToDirections.BottomLeft:
+                                                window.Left = floatingSizeAndPosition.Left - xAdjustmentToLeft;
+                                                break;
+
+                                            case MoveToDirections.BottomRight:
+                                                window.Left = floatingSizeAndPosition.Right + xAdjustmentToRight;
+                                                break;
+                                        }
+                                        window.Height = floatingSizeAndPosition.Height;
+                                        window.Width = floatingSizeAndPosition.Width;
+                                        adjustment = true;
+                                        break;
+
+                                        //TODD: Finish this
+                                    
+                                }
+                                break;
+                        }
+                        //If moving away from docked side change state to floating aligned with previous dock edge
+                        //if (dire)
+                         //PersistSizeAndPosition();
+                        break;
+
+                    case WindowStates.Floating:
+                        //Move over edge of screen = dock & adjustment = true;
+                        //Else move window & adjustment = true;
+                        break;
+                }
             }
 
             //TODO: If transitioning from floating <-> docked call saveLastNonMaximisedState(getWindowState()); and saveWindowState(newWindowState);
