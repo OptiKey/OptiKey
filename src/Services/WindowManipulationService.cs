@@ -678,10 +678,10 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopLeft:
                             if (xAdjustmentAmount > xAdjustmentToLeft)
                             {
-                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Left);
+                                RegisterAppBar();
                             }
                             else
                             {
@@ -694,10 +694,10 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopRight:
                             if (xAdjustmentAmount > xAdjustmentToRight)
                             {
-                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Right);
+                                RegisterAppBar();
                             }
                             else
                             {
@@ -712,10 +712,10 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.BottomRight:
                             if (yAdjustmentAmount > yAdjustmentToBottom)
                             {
-                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Bottom);
+                                RegisterAppBar();
                             }
                             else
                             {
@@ -728,10 +728,10 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopRight:
                             if (yAdjustmentAmount > yAdjustmentToTop)
                             {
-                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Top);
+                                RegisterAppBar();
                             }
                             else
                             {
@@ -915,7 +915,7 @@ namespace JuliusSweetland.OptiKey.Services
             abd.hWnd = windowHandle;
             appBarCallBackId = PInvoke.RegisterWindowMessage("AppBarMessage"); //Get a system wide unique window message (id)
             abd.uCallbackMessage = appBarCallBackId;
-            PInvoke.SHAppBarMessage((int)AppBarMessages.New, ref abd);
+            var result = PInvoke.SHAppBarMessage((int)AppBarMessages.New, ref abd);
 
             //Add hook to receive position change messages from Windows
             HwndSource source = HwndSource.FromHwnd(abd.hWnd);
