@@ -678,6 +678,7 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopLeft:
                             if (xAdjustmentAmount > xAdjustmentToLeft)
                             {
+                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Left);
@@ -693,6 +694,7 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopRight:
                             if (xAdjustmentAmount > xAdjustmentToRight)
                             {
+                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Right);
@@ -710,6 +712,7 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.BottomRight:
                             if (yAdjustmentAmount > yAdjustmentToBottom)
                             {
+                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Bottom);
@@ -725,6 +728,7 @@ namespace JuliusSweetland.OptiKey.Services
                         case MoveToDirections.TopRight:
                             if (yAdjustmentAmount > yAdjustmentToTop)
                             {
+                                RegisterAppBar();
                                 saveWindowState(WindowStates.Docked);
                                 saveLastNonMaximisedState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Top);
@@ -897,7 +901,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else if (windowState == WindowStates.Floating)
             {
-                ApplySizeAndPosition(floatingSizeAndPosition);
+                window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplySizeAndPosition), floatingSizeAndPosition);
             }
         }
 
