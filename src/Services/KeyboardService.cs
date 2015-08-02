@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.Services
             keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
 
             InitialiseKeyDownStates();
-            AddKeyboardSetChangeHandlers();
+            AddSettingChangeHandlers();
             AddKeyDownStatesChangeHandlers();
         }
 
@@ -92,13 +92,15 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.MouseMagnifierKey].Value =
                 Settings.Default.MouseMagnifier ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
-            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value =
-                Settings.Default.MultiKeySelectionEnabled ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+            KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value =
+                Settings.Default.MultiKeySelectionEnabled && Settings.Default.MultiKeySelectionIsOn
+                    ? Enums.KeyDownStates.LockedDown
+                    : Enums.KeyDownStates.Up;
         }
 
-        private void AddKeyboardSetChangeHandlers()
+        private void AddSettingChangeHandlers()
         {
-            Log.Debug("Adding UxMode setting change handlers.");
+            Log.Debug("Adding setting change handlers.");
 
             Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(visualMode =>
             {
@@ -106,6 +108,14 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = Enums.KeyDownStates.Up;
                 }
+            });
+
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Subscribe(multiKeySelectionEnabled =>
+            {
+                KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value =
+                    multiKeySelectionEnabled && Settings.Default.MultiKeySelectionIsOn
+                        ? Enums.KeyDownStates.LockedDown
+                        : Enums.KeyDownStates.Up;
             });
         }
 
@@ -119,8 +129,10 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
                 Settings.Default.MouseMagnifier = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown);
 
-            KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                Settings.Default.MultiKeySelectionEnabled = KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value == Enums.KeyDownStates.LockedDown);
+            //Saving the MultiKeySelectionIsOn setting value is done in the MainViewModel as it should only occur when the key is pressed.
+            //Why? Because the key doesn state is changed elsewhere and that change should not be persisted.
+            //KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
+            //    Settings.Default.MultiKeySelectionIsOn = KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value == Enums.KeyDownStates.LockedDown);
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value => CalculateMultiKeySelectionSupported()));
@@ -151,23 +163,23 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("CalculateMultiKeySelectionSupported called.");
 
-            if (KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown()
+            if (KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
                 && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug("A key which prevents text capture is down - toggling MultiKeySelectionEnabled to false.");
+                Log.Debug("A key which prevents text capture is down - toggling MultiKeySelectionIsOn to false.");
 
                 //Automatically turn multi-key capture back on again when appropriate if it is currently locked down (if it is just down then let it go)
                 turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased =
-                    KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value == Enums.KeyDownStates.LockedDown;
+                    KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value == Enums.KeyDownStates.LockedDown;
 
-                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.Up;
+                KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.Up;
             }
             else if (turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased
                 && !KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.Debug("No keys which prevents text capture is down - returing setting MultiKeySelectionEnabled to true.");
+                Log.Debug("No keys which prevents text capture is down - returing setting MultiKeySelectionIsOn to true.");
 
-                KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value = Enums.KeyDownStates.LockedDown;
+                KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value = Enums.KeyDownStates.LockedDown;
                 turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = false;
             }
         }

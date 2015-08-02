@@ -300,7 +300,7 @@
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionEnabled}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="4"

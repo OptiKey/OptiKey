@@ -789,6 +789,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.Move(MoveToDirections.Top, null);
                         break;
 
+                    case FunctionKeys.MultiKeySelectionIsOn:
+                        Log.Debug("Saving MultiKeySelectionIsOn after progressing its key down state.");
+                        Settings.Default.MultiKeySelectionIsOn =
+                            KeyboardService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value == KeyDownStates.Down 
+                            || KeyboardService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value == KeyDownStates.LockedDown;
+                        Settings.Default.Save();
+                        break;
+
                     case FunctionKeys.NextSuggestions:
                         Log.Debug("Incrementing suggestions page.");
 

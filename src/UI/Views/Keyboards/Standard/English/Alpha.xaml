@@ -332,7 +332,7 @@
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="MultiKeySelectionEnabled" />
+                <models:KeyValue FunctionKey="MultiKeySelectionIsOn" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"

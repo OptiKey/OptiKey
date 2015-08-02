@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
-                if (keyValue == KeyValues.MultiKeySelectionEnabledKey
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                         keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
