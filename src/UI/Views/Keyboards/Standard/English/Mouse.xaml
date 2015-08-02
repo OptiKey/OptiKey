@@ -66,32 +66,31 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToTopAndRight}" />
             </controls:Key.Value>
         </controls:Key>
-        
         <controls:Key Grid.Row="0" Grid.Column="4" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseLeftClickIcon}"
-                      Text="LEFT CLICK"
+                      SymbolGeometry="{StaticResource MouseDoubleLeftClickIcon}"
+                      Text="LEFT CLICK X2"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDoubleLeftClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="6" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
-                      Text="MIDDLE CLICK"
+                      SymbolGeometry="{StaticResource MouseDragIcon}"
+                      Text="CLICK &amp; DRAG"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDrag}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="8" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseRightClickIcon}"
-                      Text="RIGHT CLICK"
+                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                      Text="MAGNIFIER"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="10" 
@@ -146,29 +145,29 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="4" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseDoubleLeftClickIcon}"
-                      Text="LEFT CLICK X2"
+                      SymbolGeometry="{StaticResource MouseLeftClickIcon}"
+                      Text="LEFT CLICK"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDoubleLeftClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="6" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseDragIcon}"
-                      Text="CLICK &amp; DRAG"
+                      SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
+                      Text="MIDDLE CLICK"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDrag}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" 
                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
-                      Text="MAGNIFIER"
+                      SymbolGeometry="{StaticResource MouseRightClickIcon}"
+                      Text="RIGHT CLICK"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="10" 

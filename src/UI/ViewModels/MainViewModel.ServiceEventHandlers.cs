@@ -302,38 +302,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     //    Keyboard = new Minimised(() => Keyboard = currentKeyboard);
                     //    break;
 
-                    //case FunctionKeys.MouseKeyboard:
-                    //    Log.Debug("Changing keyboard to Mouse.");
-                    //    Action backAction = null;
-                    //    if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
-                    //        && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
-                    //    {
-                    //        var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
-                    //        var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
-                    //        var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
-                    //        var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
-                    //        var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
-                    //        keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
-                    //        backAction = () =>
-                    //        {
-                    //            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
-                    //            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
-                    //            keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
-                    //            keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
-                    //            keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
-                    //            Keyboard = currentKeyboard;
-                    //        };
-                    //    }
-                    //    else
-                    //    {
-                    //        backAction = () => Keyboard = currentKeyboard;
-                    //    }
-                    //    Keyboard = new Mouse(backAction);
-                    //    if (Settings.Default.MainWindowState == WindowStates.Docked)
-                    //    {
-                    //        mainWindowManipulationService.Dock(Settings.Default.MouseKeyboardDockSize);
-                    //    }
-                    //    break;
+                    case FunctionKeys.MouseKeyboard:
+                        Log.Debug("Changing keyboard to Mouse.");
+                        Action backAction = null;
+                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                            && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
+                        {
+                            var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
+                            var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
+                            var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
+                            var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
+                            var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
+                            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
+                            backAction = () =>
+                            {
+                                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
+                                Keyboard = currentKeyboard;
+                            };
+                        }
+                        else
+                        {
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        break;
 
                     case FunctionKeys.MouseDoubleLeftClick:
                         Log.Debug("Mouse double left click selected.");
