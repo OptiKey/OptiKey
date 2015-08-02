@@ -889,12 +889,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.Speak:
-                        audioService.Speak(
+                        var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
                             outputService.Text,
-                            () => { },
+                            () => { KeyboardService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                             Settings.Default.SpeechVolume,
                             Settings.Default.SpeechRate,
                             Settings.Default.SpeechVoice);
+                        KeyboardService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                         break;
 
                     case FunctionKeys.YesQuestionResult:

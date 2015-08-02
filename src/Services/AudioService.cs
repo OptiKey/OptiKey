@@ -15,7 +15,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private readonly SpeechSynthesizer speechSynthesiser;
-        
+
+        private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> speakCompleted;
         private int? currentWaveOutVolume; //Volumes are scaled from 0 to 100
         
@@ -40,66 +41,34 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Methods
-
-        public void CancelSpeech()
+        #region Public methods
+        
+        /// <summary>
+        /// Start speaking the supplied text, or cancel the in-progress speech
+        /// </summary>
+        /// <returns>Indication of whether speech is now in progress</returns>
+        public bool SpeakNewOrInterruptCurrentSpeech(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
+            if (string.IsNullOrEmpty(textToSpeak)) return false;
+
             try
             {
-                Log.Debug("Cancelling all speech");
-                if (speakCompleted != null)
+                lock (speakCompletedLock)
                 {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
+                    if (speakCompleted == null)
+                    {
+                        Speak(textToSpeak, onComplete, volume, rate, voice);
+                        return true;
+                    }
+                    
+                    CancelSpeech();
                 }
-                speechSynthesiser.SpeakAsyncCancelAll();
             }
             catch (Exception exception)
             {
                 PublishError(this, exception);
             }
-        }
-
-        public void Speak(string textToSpeak, Action callBack, int? volume = null, int? rate = null, string voice = null)
-        {
-            if (string.IsNullOrEmpty(textToSpeak)) return;
-
-            try
-            {
-                Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'",  textToSpeak, volume, rate, voice);
-
-                speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
-                speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
-
-                var voiceToUse = voice ?? Settings.Default.SpeechVoice;
-                if (!string.IsNullOrWhiteSpace(voiceToUse))
-                {
-                    try
-                    {
-                        speechSynthesiser.SelectVoice(voiceToUse);
-                    }
-                    catch (Exception exception)
-                    {
-                        var customException = new ApplicationException(
-                            string.Format("There was a problem setting the voice to '{0}'{1}", 
-                            voiceToUse, voice == null ? " (from settings)" : null), exception);
-                        PublishError(this, customException);
-                    }
-                }
-                
-                speakCompleted = (sender, args) =>
-                {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
-                    callBack();
-                };
-                speechSynthesiser.SpeakCompleted += speakCompleted;
-                speechSynthesiser.SpeakAsync(textToSpeak);
-            }
-            catch (Exception exception)
-            {
-                PublishError(this, exception);
-            }
+            return false;
         }
 
         public List<string> GetAvailableVoices()
@@ -158,6 +127,64 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Error(sender, ex);
             }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void CancelSpeech()
+        {
+            Log.Debug("Cancelling all speech");
+            lock (speakCompletedLock)
+            {
+                if (speakCompleted != null)
+                {
+                    speechSynthesiser.SpeakCompleted -= speakCompleted;
+                    speakCompleted = null;
+                }
+                speechSynthesiser.SpeakAsyncCancelAll();
+            }
+        }
+
+        private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
+        {
+            if (string.IsNullOrEmpty(textToSpeak)) return;
+
+            Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
+
+            speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
+            speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
+
+            var voiceToUse = voice ?? Settings.Default.SpeechVoice;
+            if (!string.IsNullOrWhiteSpace(voiceToUse))
+            {
+                try
+                {
+                    speechSynthesiser.SelectVoice(voiceToUse);
+                }
+                catch (Exception exception)
+                {
+                    var customException = new ApplicationException(string.Format("There was a problem setting the voice to '{0}'{1}",
+                        voiceToUse, voice == null ? " (from settings)" : null), exception);
+                    PublishError(this, customException);
+                }
+            }
+
+            speakCompleted = (sender, args) =>
+            {
+                lock (speakCompletedLock)
+                {
+                    speechSynthesiser.SpeakCompleted -= speakCompleted;
+                    speakCompleted = null;
+                    if (onComplete != null)
+                    {
+                        onComplete();
+                    }
+                }
+            };
+            speechSynthesiser.SpeakCompleted += speakCompleted;
+            speechSynthesiser.SpeakAsync(textToSpeak);
         }
 
         #endregion
