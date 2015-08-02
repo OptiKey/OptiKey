@@ -684,6 +684,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                     }
                 }
+                suppressNextAutoSpace = false;
             }
         }
 
