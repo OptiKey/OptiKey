@@ -52,21 +52,21 @@
         <controls:QuestionText Grid.Row="0" Grid.Column="0" 
                            Grid.RowSpan="3" Grid.ColumnSpan="22"
                            Text="{Binding Text, Mode=OneWay}" />
-        
-        <controls:Key Grid.Row="4" Grid.Column="2" 
-                      Grid.RowSpan="3" Grid.ColumnSpan="8"
+
+        <controls:Key Grid.Row="4" Grid.Column="4" 
+                      Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
-                      HeightSpan="3" WidthSpan="4" 
+                      HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="YesQuestionResult" />
             </controls:Key.Value>
         </controls:Key>
 
-        <controls:Key Grid.Row="4" Grid.Column="12" 
-                      Grid.RowSpan="3" Grid.ColumnSpan="8"
+        <controls:Key Grid.Row="4" Grid.Column="14" 
+                      Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
-                      HeightSpan="3" WidthSpan="4" 
+                      HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="NoQuestionResult" />
