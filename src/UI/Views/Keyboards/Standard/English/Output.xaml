@@ -134,17 +134,17 @@
         </controls:Key>
 
         <controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ClearIcon}" 
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="1" Grid.Column="1"
+                      SymbolGeometry="{StaticResource ClearIcon}" 
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Scratchpad Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
