@@ -25,6 +25,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private string text;
         private string lastTextChange;
+        private bool lastTextChangeWasSuggestion;
         private bool suppressNextAutoSpace = true;
         
         #endregion
@@ -63,6 +64,8 @@ namespace JuliusSweetland.OptiKey.Services
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
             Log.DebugFormat("Processing captured function key '{0}'", functionKey);
+
+            lastTextChangeWasSuggestion = false;
 
             switch (functionKey)
             {
@@ -163,26 +166,32 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.Suggestion1:
                     SwapLastTextChangeForSuggestion(0);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
                     SwapLastTextChangeForSuggestion(1);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
                     SwapLastTextChangeForSuggestion(2);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
                     SwapLastTextChangeForSuggestion(3);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
                     SwapLastTextChangeForSuggestion(4);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
                     SwapLastTextChangeForSuggestion(5);
+                    lastTextChangeWasSuggestion = true;
                     break;
 
                 default:
@@ -208,6 +217,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
             ProcessText(capturedText);
+            lastTextChangeWasSuggestion = false;
         }
 
         public void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions)
@@ -223,6 +233,8 @@ namespace JuliusSweetland.OptiKey.Services
                     : null));
 
             ProcessText(captureAndSuggestions.First());
+
+            lastTextChangeWasSuggestion = false;
         }
 
         public void LeftMouseButtonDown(Point point)
@@ -341,7 +353,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             //Suppress auto space if... 
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                || (lastTextChange.Length == 1 && captureText.Length == 1) //we are capturing char by char (after 1st char)
+                || (lastTextChange.Length == 1 && captureText.Length == 1 && !lastTextChangeWasSuggestion) //we are capturing single chars and are on the 2nd or later key (and the last capture wasn't a suggestion, which can be 1 character)
                 || (captureText.Length == 1 && !char.IsLetter(captureText.First())) //we have captured a single char which is not a letter
                 || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
             {

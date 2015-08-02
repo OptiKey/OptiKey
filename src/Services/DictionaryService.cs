@@ -355,13 +355,15 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
-                    var enumerator = entriesForAutoComplete
-                        .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
-                        .SelectMany(kvp => kvp.Value)
-                        .Where(de => de.Entry.Length >= root.Length)
-                        .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
-                        .OrderByDescending(de => de.UsageCount)
-                        .ThenBy(de => de.Entry.Length)
+                    var enumerator = 
+                        new List<DictionaryEntry> { new DictionaryEntry { Entry = root } } //Include the typed root as first result
+                        .Union(entriesForAutoComplete
+                                .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
+                                .SelectMany(kvp => kvp.Value)
+                                .Where(de => de.Entry.Length > root.Length)
+                                .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
+                                .OrderByDescending(de => de.UsageCount)
+                                .ThenBy(de => de.Entry.Length))
                         .GetEnumerator();
 
                     while (enumerator.MoveNext())
