@@ -48,7 +48,7 @@
       <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
     <Setting Name="MaxDictionaryMatchesOrSuggestions" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">21</Value>
+      <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="MultiKeySelectionMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>

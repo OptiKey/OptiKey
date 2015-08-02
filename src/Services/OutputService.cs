@@ -515,12 +515,10 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
                         var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                            .Select(de => de.Entry)
-                            .ToList();
+                            .Select(de => de.Entry);
 
                         //Correctly case auto complete suggestions
-                        suggestions = suggestions.Select(s => s.ToLower()).ToList(); //Start lower
+                        suggestions = suggestions.Select(s => s.ToLower()); //Start lower
 
                         //Then case each suggestion letter to match what has already been typed
                         for (var index = 0; index < inProgressWord.Length; index++)
@@ -537,8 +535,7 @@ namespace JuliusSweetland.OptiKey.Services
                                         : null;
 
                                     return string.Concat(prefix, upperLetter, suffix);
-                                })
-                                .ToList();
+                                });
                             }
                         }
 
@@ -559,9 +556,13 @@ namespace JuliusSweetland.OptiKey.Services
                             }
 
                             return string.Concat(prefix, suffix);
-                        }).ToList();
-                        
-                        suggestionService.Suggestions = suggestions;
+                        });
+
+                        suggestions = suggestions.Distinct(); //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
+
+                        suggestionService.Suggestions = suggestions
+                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                            .ToList();
                         return;
                     }
                 }
