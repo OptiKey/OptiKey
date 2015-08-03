@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Data;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
@@ -50,6 +51,8 @@ namespace JuliusSweetland.OptiKey.Models
             lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
 
             Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.MainWindowState).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.MainWindowDockPosition).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -155,7 +158,101 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     return false;
                 }
-                
+
+                //Move & Resize keys when docked
+                if(Settings.Default.MainWindowState == WindowStates.Docked
+                    && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&
+                            (keyValue == KeyValues.MoveToTopBoundaryKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToTopAndLeftKey
+                            || keyValue == KeyValues.MoveToTopAndRightKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Bottom &&
+                            (keyValue == KeyValues.MoveToBottomBoundaryKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.MoveToBottomAndLeftKey
+                            || keyValue == KeyValues.MoveToBottomAndRightKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Left &&
+                            (keyValue == KeyValues.MoveToLeftBoundaryKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToBottomAndLeftKey
+                            || keyValue == KeyValues.MoveToTopAndLeftKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Right &&
+                            (keyValue == KeyValues.MoveToRightBoundaryKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.MoveToBottomAndRightKey
+                            || keyValue == KeyValues.MoveToTopAndRightKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey))
+                        || keyValue == KeyValues.MoveToBottomAndLeftBoundariesKey
+                        || keyValue == KeyValues.MoveToBottomAndRightBoundariesKey
+                        || keyValue == KeyValues.MoveToTopAndLeftBoundariesKey
+                        || keyValue == KeyValues.MoveToTopAndRightBoundariesKey))
+                {
+                    return false;
+                }
+
                 //Multi-key capture is disabled
                 if (keyValue == KeyValues.MultiKeySelectionKey
                     && !Settings.Default.MultiKeySelectionEnabled)
