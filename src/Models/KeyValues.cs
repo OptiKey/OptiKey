@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftShiftKey = new KeyValue { FunctionKey = FunctionKeys.LeftShift };
         public static readonly KeyValue LeftWinKey = new KeyValue { FunctionKey = FunctionKeys.LeftWin };
         public static readonly KeyValue MouseMagnifierKey = new KeyValue { FunctionKey = FunctionKeys.MouseMagnifier };
-        public static readonly KeyValue MultiKeySelectionIsOnKey = new KeyValue { FunctionKey = FunctionKeys.MultiKeySelectionIsOn };
+        public static readonly KeyValue MultiKeySelectionKey = new KeyValue { FunctionKey = FunctionKeys.MultiKeySelectionIsOn };
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue { FunctionKey = FunctionKeys.RepeatLastMouseAction };
@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftShiftKey,
                     LeftWinKey,
                     MouseMagnifierKey,
-                    MultiKeySelectionIsOnKey
+                    MultiKeySelectionKey
                 };
             }
         }
@@ -54,7 +54,7 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftShiftKey,
                     LeftWinKey,
                     MouseMagnifierKey,
-                    MultiKeySelectionIsOnKey,
+                    MultiKeySelectionKey,
                     SimulateKeyStrokesKey,
                     SleepKey
                 };

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -48,6 +48,8 @@ namespace JuliusSweetland.OptiKey.Models
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
 
             lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
+
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -73,7 +75,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
-                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
+                if (keyValue == KeyValues.MultiKeySelectionKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                         keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
@@ -154,6 +156,13 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
                 
+                //Multi-key capture is disabled
+                if (keyValue == KeyValues.MultiKeySelectionKey
+                    && !Settings.Default.MultiKeySelectionEnabled)
+                {
+                    return false;
+                }
+
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (capturingStateManager.CapturingMultiKeySelection
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))

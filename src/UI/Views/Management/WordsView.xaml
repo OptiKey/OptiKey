@@ -77,9 +77,9 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Multi-key captures enabled:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="1"
-                                            Value="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" />
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Maximum number of dictionary matches:" 
                                VerticalAlignment="Center" Margin="5" />
