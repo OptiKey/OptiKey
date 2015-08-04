@@ -479,17 +479,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
-    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\SVG Source Files\Back.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 1.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 2.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 3.svg" />
     <None Include="Resources\Icons\SVG Source Files\No.svg" />
     <None Include="Resources\Icons\SVG Source Files\Sleep.svg" />
     <None Include="Resources\Icons\SVG Source Files\Win.svg" />
     <None Include="Resources\Icons\SVG Source Files\Yes.svg" />
     <None Include="Resources\Icons\SVG Source Files\Padlock.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Dot.svg" />
     <None Include="Resources\Icons\SVG Source Files\Calibrate.svg" />
     <None Include="Resources\Icons\SVG Source Files\AccentedLetters.svg" />
     <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
@@ -530,12 +525,9 @@
     <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ArrangeOtherWindows.svg" />
     <None Include="Resources\Icons\SVG Source Files\Conversation.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Dock.svg" />
     <None Include="Resources\Icons\SVG Source Files\Minimise.svg" />
     <None Include="Resources\Icons\SVG Source Files\Quit.svg" />
-    <None Include="Resources\Icons\SVG Source Files\RestoreFromDocked.svg" />
     <None Include="Resources\Icons\SVG Source Files\SizeAndPosition.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -623,7 +615,6 @@
     <None Include="Resources\Icons\SVG Source Files\RightArrow.svg" />
     <None Include="Resources\Icons\SVG Source Files\Speak.svg" />
     <None Include="Resources\Icons\SVG Source Files\UpArrow.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Win - Alt 1.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -641,7 +632,6 @@
     <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="Resources\Icons\SVG Source Files\Space.svg" />
-    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 1.svg" />
     <None Include="Resources\Icons\SVG Source Files\BackMany.svg" />
     <None Include="Resources\Icons\SVG Source Files\BackOne.svg" />
     <None Include="Resources\Icons\SVG Source Files\Clear.svg" />
