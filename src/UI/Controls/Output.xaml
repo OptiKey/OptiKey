@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.ConversationOutput"
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Controls.Output"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -157,10 +157,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource SleepIcon}"
+                      SymbolGeometry="{StaticResource SimulateKeyStrokes}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

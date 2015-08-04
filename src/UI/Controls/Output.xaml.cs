@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
+namespace JuliusSweetland.OptiKey.UI.Controls
 {
     /// <summary>
     /// Interaction logic for Output.xaml

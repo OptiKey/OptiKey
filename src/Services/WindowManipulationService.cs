@@ -28,14 +28,14 @@ namespace JuliusSweetland.OptiKey.Services
         private Rect screenBoundsInDp;
         private readonly Func<double> getOpacity;
         private readonly Func<WindowStates> getWindowState;
-        private readonly Func<WindowStates> getLastNonMaximisedState;
+        private readonly Func<WindowStates> getPreviousWindowState;
         private readonly Func<Rect> getFloatingSizeAndPosition;
         private readonly Func<DockEdges> getDockPosition;
         private readonly Func<DockSizes> getDockSize;
         private readonly Func<double> getFullDockThicknessAsPercentageOfScreen;
         private readonly Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
         private readonly Action<WindowStates> saveWindowState;
-        private readonly Action<WindowStates> saveLastNonMaximisedState;
+        private readonly Action<WindowStates> savePreviousWindowState;
         private readonly Action<Rect> saveFloatingSizeAndPosition;
         private readonly Action<DockEdges> saveDockPosition;
         private readonly Action<DockSizes> saveDockSize;
@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
             Window window,
             Func<double> getOpacity,
             Func<WindowStates> getWindowState,
-            Func<WindowStates> getLastNonMaximisedState,
+            Func<WindowStates> getPreviousWindowState,
             Func<Rect> getFloatingSizeAndPosition,
             Func<DockEdges> getDockPosition,
             Func<DockSizes> getDockSize,
@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.Services
             Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
             Action<double> saveOpacity,
             Action<WindowStates> saveWindowState,
-            Action<WindowStates> saveLastNonMaximisedState,
+            Action<WindowStates> savePreviousWindowState,
             Action<Rect> saveFloatingSizeAndPosition,
             Action<DockEdges> saveDockPosition,
             Action<DockSizes> saveDockSize,
@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.window = window;
             this.getOpacity = getOpacity;
             this.getWindowState = getWindowState;
-            this.getLastNonMaximisedState = getLastNonMaximisedState;
+            this.getPreviousWindowState = getPreviousWindowState;
             this.getDockPosition = getDockPosition;
             this.getDockSize = getDockSize;
             this.getFullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen;
@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
             this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
-            this.saveLastNonMaximisedState = saveLastNonMaximisedState;
+            this.savePreviousWindowState = savePreviousWindowState;
             this.saveFloatingSizeAndPosition = saveFloatingSizeAndPosition;
             this.saveDockPosition = saveDockPosition;
             this.saveDockSize = saveDockSize;
@@ -256,7 +256,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Maximise()
         {
-            saveLastNonMaximisedState(getWindowState());
+            savePreviousWindowState(getWindowState());
             if (getWindowState() == WindowStates.Docked)
             {
                 UnRegisterAppBar();
@@ -329,9 +329,10 @@ namespace JuliusSweetland.OptiKey.Services
             if (windowState != WindowStates.Maximised) return;
 
             window.WindowState = WindowState.Normal;
-            var previousWindowState = getLastNonMaximisedState();
+            var previousWindowState = getPreviousWindowState();
             RestoreSizeAndPosition(previousWindowState, getFloatingSizeAndPosition());
             saveWindowState(previousWindowState);
+            savePreviousWindowState(windowState);
         }
 
         public void Shrink(ShrinkFromDirections direction, double amountInPx)
@@ -557,7 +558,7 @@ namespace JuliusSweetland.OptiKey.Services
                                 case MoveToDirections.BottomRight:
                                     UnRegisterAppBar();
                                     saveWindowState(WindowStates.Floating);
-                                    saveLastNonMaximisedState(WindowStates.Floating);
+                                    savePreviousWindowState(WindowStates.Floating);
                                     window.Top = screenBoundsInDp.Top;
                                     switch (direction)
                                     {
@@ -588,7 +589,7 @@ namespace JuliusSweetland.OptiKey.Services
                                 case MoveToDirections.TopRight:
                                     UnRegisterAppBar();
                                     saveWindowState(WindowStates.Floating);
-                                    saveLastNonMaximisedState(WindowStates.Floating);
+                                    savePreviousWindowState(WindowStates.Floating);
                                     window.Top = screenBoundsInDp.Bottom - floatingSizeAndPosition.Height;
                                     switch (direction)
                                     {
@@ -619,7 +620,7 @@ namespace JuliusSweetland.OptiKey.Services
                                 case MoveToDirections.BottomRight:
                                     UnRegisterAppBar();
                                     saveWindowState(WindowStates.Floating);
-                                    saveLastNonMaximisedState(WindowStates.Floating);
+                                    savePreviousWindowState(WindowStates.Floating);
                                     window.Left = screenBoundsInDp.Left;
                                     switch (direction)
                                     {
@@ -650,7 +651,7 @@ namespace JuliusSweetland.OptiKey.Services
                                 case MoveToDirections.BottomLeft:
                                     UnRegisterAppBar();
                                     saveWindowState(WindowStates.Floating);
-                                    saveLastNonMaximisedState(WindowStates.Floating);
+                                    savePreviousWindowState(WindowStates.Floating);
                                     window.Left = screenBoundsInDp.Right - floatingSizeAndPosition.Width;
                                     switch (direction)
                                     {
@@ -684,7 +685,7 @@ namespace JuliusSweetland.OptiKey.Services
                             if (xAdjustmentAmount > xAdjustmentToLeft)
                             {
                                 saveWindowState(WindowStates.Docked);
-                                saveLastNonMaximisedState(WindowStates.Docked);
+                                savePreviousWindowState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Left);
                                 RegisterAppBar();
                             }
@@ -700,7 +701,7 @@ namespace JuliusSweetland.OptiKey.Services
                             if (xAdjustmentAmount > xAdjustmentToRight)
                             {
                                 saveWindowState(WindowStates.Docked);
-                                saveLastNonMaximisedState(WindowStates.Docked);
+                                savePreviousWindowState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Right);
                                 RegisterAppBar();
                             }
@@ -718,7 +719,7 @@ namespace JuliusSweetland.OptiKey.Services
                             if (yAdjustmentAmount > yAdjustmentToBottom)
                             {
                                 saveWindowState(WindowStates.Docked);
-                                saveLastNonMaximisedState(WindowStates.Docked);
+                                savePreviousWindowState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Bottom);
                                 RegisterAppBar();
                             }
@@ -734,7 +735,7 @@ namespace JuliusSweetland.OptiKey.Services
                             if (yAdjustmentAmount > yAdjustmentToTop)
                             {
                                 saveWindowState(WindowStates.Docked);
-                                saveLastNonMaximisedState(WindowStates.Docked);
+                                savePreviousWindowState(WindowStates.Docked);
                                 saveDockPosition(DockEdges.Top);
                                 RegisterAppBar();
                             }

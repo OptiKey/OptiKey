@@ -363,7 +363,7 @@
     <Compile Include="UI\Views\Keyboards\Common\Currencies2.xaml.cs">
       <DependentUpon>Currencies2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\Output.xaml.cs">
+    <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
@@ -392,7 +392,7 @@
     <Compile Include="UI\Views\Keyboards\English\Conversation.xaml.cs">
       <DependentUpon>Conversation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\ConversationOutput.xaml.cs">
+    <Compile Include="UI\Controls\ConversationOutput.xaml.cs">
       <DependentUpon>ConversationOutput.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
@@ -735,7 +735,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Common\Output.xaml">
+    <Page Include="UI\Controls\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -771,7 +771,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Common\ConversationOutput.xaml">
+    <Page Include="UI\Controls\ConversationOutput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
