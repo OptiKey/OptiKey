@@ -1,20 +1,11 @@
 ﻿using System;
-using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class SizeAndPosition : BindableBase, IKeyboard, IBackAction
+    public class SizeAndPosition : BackActionKeyboard
     {
-        private readonly Action backAction;
-
-        public SizeAndPosition(Action backAction)
+        public SizeAndPosition(Action backAction) : base(backAction)
         {
-            this.backAction = backAction;
-        }
-        
-        public Action BackAction
-        {
-            get { return backAction; }
         }
     }
 }

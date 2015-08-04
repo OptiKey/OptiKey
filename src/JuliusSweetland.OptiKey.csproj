@@ -312,6 +312,8 @@
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\BackActionKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Conversation.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
@@ -337,65 +339,61 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml.cs">
-      <DependentUpon>YesNoQuestion.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\MouseDocked.xaml.cs">
       <DependentUpon>MouseDocked.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\SizeAndPosition.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml.cs">
       <DependentUpon>SizeAndPosition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Menu.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Diacritic3.xaml.cs">
       <DependentUpon>Diacritic3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Diacritic2.xaml.cs">
       <DependentUpon>Diacritic2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Diacritic1.xaml.cs">
       <DependentUpon>Diacritic1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Currencies2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Currencies2.xaml.cs">
       <DependentUpon>Currencies2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Output.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Alpha.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Currencies1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Currencies1.xaml.cs">
       <DependentUpon>Currencies1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\PhysicalKeys.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml.cs">
       <DependentUpon>PhysicalKeys.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols3.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml.cs">
       <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\YesNoQuestion.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml.cs">
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\Conversation.xaml.cs">
+      <DependentUpon>Conversation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\ConversationOnly\English\Output.xaml.cs">
-      <DependentUpon>Output.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\ConversationOutput.xaml.cs">
+      <DependentUpon>ConversationOutput.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -705,79 +703,75 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\ConversationOnly\English\YesNoQuestion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\MouseDocked.xaml">
+    <Page Include="UI\Views\Keyboards\Common\MouseDocked.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Mouse.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Mouse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\SizeAndPosition.xaml">
+    <Page Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Menu.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritic3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritic2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritic1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Currencies2.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Currencies2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Output.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols1.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Currencies1.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Currencies1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\PhysicalKeys.xaml">
+    <Page Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols3.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\YesNoQuestion.xaml">
+    <Page Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols2.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\ConversationOnly\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\Conversation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\ConversationOnly\English\Output.xaml">
+    <Page Include="UI\Views\Keyboards\Common\ConversationOutput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

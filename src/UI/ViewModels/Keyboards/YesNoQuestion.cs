@@ -1,10 +1,9 @@
 ﻿using System;
 using log4net;
-using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class YesNoQuestion : BindableBase, IKeyboard
+    public class YesNoQuestion :  IKeyboard
     {
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 

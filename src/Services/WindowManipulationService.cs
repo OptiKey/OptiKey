@@ -257,6 +257,10 @@ namespace JuliusSweetland.OptiKey.Services
         public void Maximise()
         {
             saveLastNonMaximisedState(getWindowState());
+            if (getWindowState() == WindowStates.Docked)
+            {
+                UnRegisterAppBar();
+            }
             window.WindowState = WindowState.Maximized;
             saveWindowState(WindowStates.Maximised);
         }
@@ -321,7 +325,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Restore()
         {
-            if (getWindowState() != WindowStates.Maximised) return;
+            var windowState = getWindowState();
+            if (windowState != WindowStates.Maximised) return;
 
             window.WindowState = WindowState.Normal;
             var previousWindowState = getLastNonMaximisedState();
