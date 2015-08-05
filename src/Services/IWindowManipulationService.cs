@@ -13,6 +13,7 @@ namespace JuliusSweetland.OptiKey.Services
         void ChangeOpacity(bool increase);
         void Expand(ExpandToDirections direction, double amountInPx);
         void Maximise();
+        void Minimise();
         void Move(MoveToDirections direction, double? amountInPx);
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
