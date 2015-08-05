@@ -545,6 +545,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             //TODO: Flesh out CalculateMinimisedSizeAndPosition
             //TODO: Position minimised window outside taskbar - manual positioning
+            return new Rect();
             //If a keyboard is docked and supports a collapsed dock layout then the key will be a collapse key, otherwise minimise, which is the manual floating version, available on all floating keyboards and where a dock doesn't know how to collapse its docked state
             //OLD METHOD:
             //    //Set width
