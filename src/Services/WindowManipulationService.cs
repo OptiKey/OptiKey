@@ -503,8 +503,8 @@ namespace JuliusSweetland.OptiKey.Services
         private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size)
         {
             double x, y, width, height;
-            var thickness = size == DockSizes.Full
-                ? getFullDockThicknessAsPercentageOfScreen()
+            var thicknessAsPercentage = size == DockSizes.Full
+                ? getFullDockThicknessAsPercentageOfScreen() / 100
                 : (getFullDockThicknessAsPercentageOfScreen() * getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage
 
             switch (position)
@@ -513,27 +513,27 @@ namespace JuliusSweetland.OptiKey.Services
                     x = screenBoundsInPx.X;
                     y = screenBoundsInPx.Y;
                     width = screenBoundsInPx.Width;
-                    height = screenBoundsInPx.Height * (thickness / 100);
+                    height = screenBoundsInPx.Height * thicknessAsPercentage;
                     break;
 
                 case DockEdges.Bottom:
                     x = screenBoundsInPx.X;
-                    y = screenBoundsInPx.Y + screenBoundsInPx.Height - (screenBoundsInPx.Height * (thickness / 100));
+                    y = screenBoundsInPx.Y + screenBoundsInPx.Height - (screenBoundsInPx.Height * thicknessAsPercentage);
                     width = screenBoundsInPx.Width;
-                    height = screenBoundsInPx.Height * (thickness / 100);
+                    height = screenBoundsInPx.Height * thicknessAsPercentage;
                     break;
 
                 case DockEdges.Left:
                     x = screenBoundsInPx.X;
                     y = screenBoundsInPx.Y;
-                    width = screenBoundsInPx.Width * (thickness / 100);
+                    width = screenBoundsInPx.Width * thicknessAsPercentage;
                     height = screenBoundsInPx.Height;
                     break;
 
                 default: //case DockEdges.Right:
-                    x = screenBoundsInPx.X + screenBoundsInPx.Width - (screenBoundsInPx.Width * (thickness / 100));
+                    x = screenBoundsInPx.X + screenBoundsInPx.Width - (screenBoundsInPx.Width * thicknessAsPercentage);
                     y = screenBoundsInPx.Y;
-                    width = screenBoundsInPx.Width * (thickness / 100);
+                    width = screenBoundsInPx.Width * thicknessAsPercentage;
                     height = screenBoundsInPx.Height;
                     break;
             }
@@ -543,65 +543,35 @@ namespace JuliusSweetland.OptiKey.Services
 
         private Rect CalculateMinimisedSizeAndPosition(DockEdges position)
         {
-            //TODO: Flesh out CalculateMinimisedSizeAndPosition
-            //TODO: Position minimised window outside taskbar - manual positioning
-            return new Rect();
-            //If a keyboard is docked and supports a collapsed dock layout then the key will be a collapse key, otherwise minimise, which is the manual floating version, available on all floating keyboards and where a dock doesn't know how to collapse its docked state
-            //OLD METHOD:
-            //    //Set width
-            //    double minimisedWidth;
-            //    var minimisedWidthSetting = getMinimisedWidthSetting();
-            //    if (minimisedWidthSetting == null)
-            //    {
-            //        var sizeAndPosition = getWindowSizeAndPositionSetting().Value; //This should never be null as it is initialised in the ctor
-            //        minimisedWidth = sizeAndPosition.Width / 11; //The alpha keyboard is 11 keys wide
-            //    }
-            //    else
-            //    {
-            //        minimisedWidth = minimisedWidthSetting.Value / Graphics.DipScalingFactorX;
-            //    }
-            //    window.Width = minimisedWidth;
+            double x, y;
+            var thicknessAsPercentage = (getFullDockThicknessAsPercentageOfScreen() * getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage
+            var height = screenBoundsInPx.Height * thicknessAsPercentage;
+            var width = screenBoundsInPx.Width * thicknessAsPercentage;
 
-            //    //Set height
-            //    double minimisedHeight;
-            //    var minimisedHeightSetting = getMinimisedHeightSetting();
-            //    if (minimisedHeightSetting == null)
-            //    {
-            //        var sizeAndPosition = getWindowSizeAndPositionSetting().Value; //This should never be null as it is initialised in the ctor
-            //        minimisedHeight = sizeAndPosition.Height / 6; //The alpha keyboard is 6 keys tall
-            //    }
-            //    else
-            //    {
-            //        minimisedHeight = getMinimisedHeightSetting().Value / Graphics.DipScalingFactorY;
-            //    }
-            //    window.Height = minimisedHeight;
+            switch (getDockPosition())
+            {
+                case DockEdges.Top:
+                    x = screenBoundsInDp.Left + (screenBoundsInDp.Width / 2) - (width / 2);
+                    y = screenBoundsInDp.Top;
+                    break;
 
-            //    //Set position
-            //    var screen = window.GetScreen();
-            //    var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
-            //    var screenDimensionsInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Width, screen.Bounds.Height));
-            //    switch (getMinimisePosition())
-            //    {
-            //        case MinimisePositions.BottomEdge:
-            //            MoveToBottomBoundary();
-            //            window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X/2) - (minimisedWidth / 2);
-            //            break;
+                case DockEdges.Bottom:
+                    x = screenBoundsInDp.Left + (screenBoundsInDp.Width / 2) - (width / 2);
+                    y = screenBoundsInDp.Bottom - height;
+                    break;
 
-            //        case MinimisePositions.LeftEdge:
-            //            MoveToLeftBoundary();
-            //            window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (minimisedHeight / 2);
-            //            break;
+                case DockEdges.Left:
+                    x = screenBoundsInDp.Left;
+                    y = screenBoundsInDp.Top + (screenBoundsInDp.Height / 2) - (height / 2);
+                    break;
 
-            //        case MinimisePositions.RightEdge:
-            //            MoveToRightBoundary();
-            //            window.Top = screenTopLeftInWpfCoords.Y + (screenDimensionsInWpfCoords.Y / 2) - (minimisedHeight / 2);
-            //            break;
+                default: //case DockEdges.Right:
+                    x = screenBoundsInDp.Right - width;
+                    y = screenBoundsInDp.Top + (screenBoundsInDp.Height / 2) - (height / 2);
+                    break;
+            }
 
-            //        case MinimisePositions.TopEdge:
-            //            MoveToTopBoundary();
-            //            window.Left = screenTopLeftInWpfCoords.X + (screenDimensionsInWpfCoords.X / 2) - (minimisedWidth / 2);
-            //            break;
-            //    }
+            return new Rect(x, y, width, height);
         }
 
         private bool Move(MoveToDirections direction, double amountInPx, double distanceToBottomBoundaryIfFloating,
@@ -993,7 +963,9 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case WindowStates.Minimised:
                     window.WindowState = WindowState.Normal;
-                    CalculateMinimisedSizeAndPosition(dockPosition);
+                    var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition(dockPosition);
+                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
+                        new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
                     break;
             }
         }

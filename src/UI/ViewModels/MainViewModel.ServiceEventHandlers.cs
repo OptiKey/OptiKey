@@ -196,8 +196,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             var previousKeyboard = Keyboard;
                             
                             var question = CalibrationService.CanBeCompletedWithoutManualIntervention
-                            ? "Are you sure you would like to re-calibrate?"
-                            : "Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.\nAre you sure you would like to re-calibrate?";
+                                ? "Are you sure you would like to re-calibrate?"
+                                : "Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.\nAre you sure you would like to re-calibrate?";
                             
                             Keyboard = new YesNoQuestion(
                                 question,
@@ -289,18 +289,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Increasing opacity.");
                         mainWindowManipulationService.ChangeOpacity(true);
                         break;
-                        
+
                     case FunctionKeys.MenuKeyboard:
                         Log.Debug("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
-                    //case FunctionKeys.Minimise:
-                    //    Log.Debug("Minimising.");
-                    //    mainWindowManipulationService.Minimise();
-                    //    Log.Debug("Changing keyboard to Minimised.");
-                    //    Keyboard = new Minimised(() => Keyboard = currentKeyboard);
-                    //    break;
+                    case FunctionKeys.Minimise:
+                        Log.Debug("Minimising window.");
+                        mainWindowManipulationService.Minimise();
+                        Log.Debug("Changing keyboard to Minimised.");
+                        Keyboard = new Minimised(() =>
+                        {
+                            Log.Debug("Restoring windows.");
+                            mainWindowManipulationService.Restore();
+                            Keyboard = currentKeyboard;
+                        });
+                        break;
 
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
@@ -830,6 +835,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             suggestionService.SuggestionsPage--;
                         }
+                        break;
+
+                    case FunctionKeys.Quit:
+                        Log.Debug("Quit key selected.");
+                        var keyboardBeforeQuit = Keyboard;
+                        Keyboard = new YesNoQuestion("Are you sure you would like to quit?",
+                            () =>
+                            {
+                                Keyboard = new YesNoQuestion("Sorry to ask again, but are you absolutely sure that you'd like to quit?",
+                                    () => { Application.Current.Shutdown(); },
+                                    () => { Keyboard = keyboardBeforeQuit; });
+                            },
+                            () => { Keyboard = keyboardBeforeQuit; });
                         break;
 
                     case FunctionKeys.RepeatLastMouseAction:

@@ -315,6 +315,7 @@
     <Compile Include="UI\ViewModels\Keyboards\BackActionKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Conversation.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
     <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
@@ -339,6 +340,9 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
+      <DependentUpon>Minimised.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Common\MouseDocked.xaml.cs">
       <DependentUpon>MouseDocked.xaml</DependentUpon>
     </Compile>
@@ -690,6 +694,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Themes\Colours\Android.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Minimised.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

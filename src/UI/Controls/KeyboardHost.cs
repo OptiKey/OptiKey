@@ -180,6 +180,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.Menu { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.Minimised)
+            {
+                newContent = new CommonViews.Minimised { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.Mouse)
             {
                 newContent = new CommonViews.Mouse { DataContext = Keyboard };
