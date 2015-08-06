@@ -551,21 +551,53 @@ namespace JuliusSweetland.OptiKey.Services
             switch (getDockPosition())
             {
                 case DockEdges.Top:
+                    if (screenBoundsInDp.Height > screenBoundsInDp.Width)
+                    {
+                        //Ensure the minimise button's long edge is against the docked edge,
+                        //so swap width and height if aspect ratio is taller than it is wide
+                        var temp = width;
+                        width = height;
+                        height = temp;
+                    }
                     x = screenBoundsInDp.Left + (screenBoundsInDp.Width / 2) - (width / 2);
                     y = screenBoundsInDp.Top;
                     break;
 
                 case DockEdges.Bottom:
+                    if (screenBoundsInDp.Height > screenBoundsInDp.Width)
+                    {
+                        //Ensure the minimise button's long edge is against the docked edge,
+                        //so swap width and height if aspect ratio is taller than it is wide
+                        var temp = width;
+                        width = height;
+                        height = temp;
+                    }
                     x = screenBoundsInDp.Left + (screenBoundsInDp.Width / 2) - (width / 2);
                     y = screenBoundsInDp.Bottom - height;
                     break;
 
                 case DockEdges.Left:
+                    if (screenBoundsInDp.Width > screenBoundsInDp.Height)
+                    {
+                        //Ensure the minimise button's long edge is against the docked edge,
+                        //so swap width and height if aspect ratio is wider than it is high
+                        var temp = width;
+                        width = height;
+                        height = temp;
+                    }
                     x = screenBoundsInDp.Left;
                     y = screenBoundsInDp.Top + (screenBoundsInDp.Height / 2) - (height / 2);
                     break;
 
                 default: //case DockEdges.Right:
+                    if (screenBoundsInDp.Width > screenBoundsInDp.Height)
+                    {
+                        //Ensure the minimise button's long edge is against the docked edge,
+                        //so swap width and height if aspect ratio is wider than it is high
+                        var temp = width;
+                        width = height;
+                        height = temp;
+                    }
                     x = screenBoundsInDp.Right - width;
                     y = screenBoundsInDp.Top + (screenBoundsInDp.Height / 2) - (height / 2);
                     break;
