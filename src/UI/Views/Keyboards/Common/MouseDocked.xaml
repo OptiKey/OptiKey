@@ -80,12 +80,12 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
             </controls:Key.Value>
         </controls:Key>
-        <!--<controls:Key SymbolGeometry="{StaticResource RestoreFromDockedIcon}"
+        <controls:Key SymbolGeometry="{StaticResource ExpandDockIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Restore}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandDock}" />
             </controls:Key.Value>
-        </controls:Key>-->
+        </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
