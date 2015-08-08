@@ -83,13 +83,11 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="UX mode:" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Conversation only mode:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="8" Grid.Column="1" 
-                              ItemsSource="{Binding UxModes}"
-                              DisplayMemberPath="Key"
-                              SelectedValuePath="Value"
-                              SelectedValue="{Binding UxMode, Mode=TwoWay}" />
+                    <CheckBox Grid.Row="8" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         

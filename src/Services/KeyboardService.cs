@@ -102,15 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void AddSettingChangeHandlers()
         {
             Log.Debug("Adding setting change handlers.");
-
-            Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(visualMode =>
-            {
-                if (visualMode == UxModes.ConversationOnly)
-                {
-                    KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = Enums.KeyDownStates.Up;
-                }
-            });
-
+            
             Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Where(mkse => !mkse).Subscribe(_ =>
             {
                 //Release multi-key selection key if multi-key selection is disabled from the settings

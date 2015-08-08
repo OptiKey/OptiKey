@@ -19,7 +19,7 @@
         Calibrate,
         ClearScratchpad,
         CollapseDock,
-        ConversationMode,
+        ConversationKeyboard,
         Copy,
         Currencies1Keyboard,
         Currencies2Keyboard,

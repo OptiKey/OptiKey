@@ -131,8 +131,8 @@
     <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00.2500000</Value>
     </Setting>
-    <Setting Name="UxMode" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.UxModes" Scope="User">
-      <Value Profile="(Default)">Standard</Value>
+    <Setting Name="ConversationOnlyMode" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
