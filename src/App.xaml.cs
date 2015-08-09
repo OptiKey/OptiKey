@@ -176,7 +176,7 @@ namespace JuliusSweetland.OptiKey
                 mainWindow.Show();
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
-                EventHandler<Rect> sizeAndPositionInitialised = null;
+                EventHandler sizeAndPositionInitialised = null;
                 sizeAndPositionInitialised = async (_, __) =>
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
@@ -186,7 +186,7 @@ namespace JuliusSweetland.OptiKey
                 };
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
-                    sizeAndPositionInitialised(null, new Rect());
+                    sizeAndPositionInitialised(null, null);
                 }
                 else
                 {

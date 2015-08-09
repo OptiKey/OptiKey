@@ -6,7 +6,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IWindowManipulationService : INotifyErrors
     {
-        event EventHandler<Rect> SizeAndPositionInitialised;
+        event EventHandler SizeAndPositionInitialised;
 
         bool SizeAndPositionIsInitialised { get; }
 

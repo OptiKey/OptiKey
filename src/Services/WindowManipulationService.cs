@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         #region Events
 
-        public event EventHandler<Rect> SizeAndPositionInitialised;
+        public event EventHandler SizeAndPositionInitialised;
         public event EventHandler<Exception> Error;
 
         #endregion
@@ -487,16 +487,42 @@ namespace JuliusSweetland.OptiKey.Services
             window.Left = rect.Left;
             window.Width = rect.Width;
             window.Height = rect.Height;
-
+            
             PersistSizeAndPosition();
+            PublishSizeAndPositionInitialised();
+        }
 
-            if (!SizeAndPositionIsInitialised)
+        private void ApplySavedState()
+        {
+            var windowState = getWindowState();
+            window.Opacity = getOpacity();
+            var dockPosition = getDockPosition();
+            switch (windowState)
             {
-                SizeAndPositionIsInitialised = true;
-                if (SizeAndPositionInitialised != null)
-                {
-                    SizeAndPositionInitialised(this, rect);
-                }
+                case WindowStates.Docked:
+                    window.WindowState = WindowState.Normal;
+                    var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
+                    RegisterAppBar();
+                    SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx);
+                    break;
+
+                case WindowStates.Floating:
+                    window.WindowState = WindowState.Normal;
+                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
+                        new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
+                    break;
+
+                case WindowStates.Maximised:
+                    window.WindowState = WindowState.Maximized;
+                    PublishSizeAndPositionInitialised();
+                    break;
+
+                case WindowStates.Minimised:
+                    window.WindowState = WindowState.Normal;
+                    var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition(dockPosition);
+                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
+                        new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
+                    break;
             }
         }
 
@@ -604,6 +630,39 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             return new Rect(x, y, width, height);
+        }
+
+        private void CoerceAndApplySavedState()
+        {
+            //Coerce state
+            var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
+            if (fullDockThicknessAsPercentageOfScreen <= 0 || fullDockThicknessAsPercentageOfScreen >= 100)
+            {
+                fullDockThicknessAsPercentageOfScreen = 50;
+                saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
+            }
+            double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
+            if (collapsedDockThicknessAsPercentageOfFullDockThickness <= 0 || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
+            {
+                collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
+                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
+            }
+            Rect floatingSizeAndPosition = getFloatingSizeAndPosition();
+            if (floatingSizeAndPosition == default(Rect) ||
+                floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
+                floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
+                floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
+                floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
+            {
+                //Default to two-thirds of the screen's width and height, positioned centrally
+                floatingSizeAndPosition = new Rect(
+                    screenBoundsInDp.Left + screenBoundsInDp.Width / 6,
+                    screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
+                    2 * (screenBoundsInDp.Width / 3), 2 * (screenBoundsInDp.Height / 3));
+                saveFloatingSizeAndPosition(floatingSizeAndPosition);
+            }
+
+            ApplySavedState();
         }
 
         private bool Move(MoveToDirections direction, double amountInPx, double distanceToBottomBoundaryIfFloating,
@@ -892,39 +951,6 @@ namespace JuliusSweetland.OptiKey.Services
             return adjustment;
         }
 
-        private void CoerceAndApplySavedState()
-        {
-            //Coerce state
-            var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
-            if(fullDockThicknessAsPercentageOfScreen <= 0 || fullDockThicknessAsPercentageOfScreen >= 100)
-            {
-                fullDockThicknessAsPercentageOfScreen = 50;
-                saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
-            }
-            double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-            if (collapsedDockThicknessAsPercentageOfFullDockThickness <= 0 || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
-            {
-                collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
-                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
-            }
-            Rect floatingSizeAndPosition = getFloatingSizeAndPosition();
-            if (floatingSizeAndPosition == default(Rect) ||
-                floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
-                floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
-                floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
-                floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
-            {
-                //Default to two-thirds of the screen's width and height, positioned centrally
-                floatingSizeAndPosition = new Rect(
-                    screenBoundsInDp.Left + screenBoundsInDp.Width / 6, 
-                    screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
-                    2 * (screenBoundsInDp.Width / 3), 2 * (screenBoundsInDp.Height / 3));
-                saveFloatingSizeAndPosition(floatingSizeAndPosition);
-            }
-
-            ApplySavedState();
-        }
-
         private void PersistDockThickness()
         {
             var dockPosition = getDockPosition();
@@ -969,36 +995,15 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void ApplySavedState()
+        private void PublishSizeAndPositionInitialised()
         {
-            var windowState = getWindowState();
-            window.Opacity = getOpacity();
-            var dockPosition = getDockPosition();
-            switch (windowState)
+            if (!SizeAndPositionIsInitialised)
             {
-                case WindowStates.Docked:
-                    window.WindowState = WindowState.Normal;
-                    var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
-                    RegisterAppBar();
-                    SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx);
-                    break;
-
-                case WindowStates.Floating:
-                    window.WindowState = WindowState.Normal;
-                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, 
-                        new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
-                    break;
-
-                case WindowStates.Maximised:
-                    window.WindowState = WindowState.Maximized;
-                    break;
-
-                case WindowStates.Minimised:
-                    window.WindowState = WindowState.Normal;
-                    var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition(dockPosition);
-                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
-                        new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
-                    break;
+                SizeAndPositionIsInitialised = true;
+                if (SizeAndPositionInitialised != null)
+                {
+                    SizeAndPositionInitialised(this, new EventArgs());
+                }
             }
         }
 

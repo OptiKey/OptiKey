@@ -161,8 +161,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.ConversationKeyboard:
-                        Log.Debug("Maximising window.");
-                        mainWindowManipulationService.Maximise();
                         Log.Debug("Changing keyboard to Conversation.");
                         Keyboard = new Conversation(() =>
                         {
@@ -170,6 +168,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             mainWindowManipulationService.Restore();
                             Keyboard = currentKeyboard;
                         });
+                        Log.Debug("Maximising window.");
+                        mainWindowManipulationService.Maximise();
                         break;
 
                     case FunctionKeys.Diacritic1Keyboard:
