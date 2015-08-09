@@ -586,14 +586,14 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Standard")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.UxModes UxMode {
+        public bool ConversationOnlyMode {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.UxModes)(this["UxMode"]));
+                return ((bool)(this["ConversationOnlyMode"]));
             }
             set {
-                this["UxMode"] = value;
+                this["ConversationOnlyMode"] = value;
             }
         }
         

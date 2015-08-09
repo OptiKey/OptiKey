@@ -160,6 +160,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
+                    case FunctionKeys.ConversationKeyboard:
+                        Log.Debug("Maximising window.");
+                        mainWindowManipulationService.Maximise();
+                        Log.Debug("Changing keyboard to Conversation.");
+                        Keyboard = new Conversation(() =>
+                        {
+                            Log.Debug("Restoring window.");
+                            mainWindowManipulationService.Restore();
+                            Keyboard = currentKeyboard;
+                        });
+                        break;
+
                     case FunctionKeys.Diacritic1Keyboard:
                         Log.Debug("Changing keyboard to Diacritic1.");
                         Keyboard = new Diacritic1();
@@ -192,8 +204,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (CalibrationService != null)
                         {
                             Log.Debug("Calibrate requested.");
-
-                            var previousKeyboard = Keyboard;
                             
                             var question = CalibrationService.CanBeCompletedWithoutManualIntervention
                                 ? "Are you sure you would like to re-calibrate?"
@@ -204,7 +214,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 () =>
                                 {
                                     inputService.RequestSuspend();
-                                    Keyboard = previousKeyboard;
+                                    Keyboard = currentKeyboard;
                                     CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                     {
                                         if (calibrationResult.Success)
@@ -225,7 +235,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 },
                                 () =>
                                 {
-                                    Keyboard = previousKeyboard;
+                                    Keyboard = currentKeyboard;
                                 });
                         }
                         break;
@@ -301,7 +311,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Changing keyboard to Minimised.");
                         Keyboard = new Minimised(() =>
                         {
-                            Log.Debug("Restoring windows.");
+                            Log.Debug("Restoring window.");
                             mainWindowManipulationService.Restore();
                             Keyboard = currentKeyboard;
                         });

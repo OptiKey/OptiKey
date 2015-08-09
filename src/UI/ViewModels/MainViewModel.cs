@@ -79,9 +79,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
+            Keyboard = Settings.Default.MainWindowState == WindowStates.Maximised
+                ? (IKeyboard)new Conversation(() => Keyboard = new Menu(() => Keyboard = new Alpha()))
+                : (IKeyboard)new Alpha();
 
-            SelectKeyboardOnKeyboardSetChanges();
             AttachScratchpadEnabledListener();
 
             HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
@@ -331,18 +332,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     .Subscribe(value => calculateScratchpadIsDisabled()));
 
             calculateScratchpadIsDisabled();
-        }
-
-        private void SelectKeyboardOnKeyboardSetChanges()
-        {
-            Settings.Default.OnPropertyChanges(s => s.UxMode).Subscribe(visualMode =>
-            {
-                //Listen to UxMode changes and reset keyboard to Alpha if mode changed to ConversationOnly
-                if (visualMode == UxModes.ConversationOnly)
-                {
-                    Keyboard = new Alpha();
-                }
-            });
         }
 
         private void ResetSelectionProgress()

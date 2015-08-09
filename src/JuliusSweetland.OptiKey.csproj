@@ -192,7 +192,6 @@
     <Compile Include="Enums\WindowStates.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
-    <Compile Include="Enums\UxModes.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\Keys.cs" />
     <Compile Include="Enums\MouseButtons.cs" />

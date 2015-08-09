@@ -74,7 +74,7 @@
                       Text="CONVERSATION MODE"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationMode}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"

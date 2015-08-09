@@ -103,19 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return null;
             }
         }
-
-        public List<KeyValuePair<string, UxModes>> KeyboardSets
-        {
-            get
-            {
-                return new List<KeyValuePair<string, UxModes>>
-                {
-                    new KeyValuePair<string, UxModes>(Enums.UxModes.Standard.ToDescription(), Enums.UxModes.Standard),
-                    new KeyValuePair<string, UxModes>(Enums.UxModes.ConversationOnly.ToDescription(), Enums.UxModes.ConversationOnly)
-                };
-            }
-        }
-
+        
         private string theme;
         public string Theme
         {
@@ -223,16 +211,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref magnifyDestinationPercentageOfScreen, value); }
         }
 
-        private UxModes uxMode;
-        public UxModes UxMode
+        private bool conversationOnlyMode;
+        public bool ConversationOnlyMode
         {
-            get { return uxMode; }
-            set { SetProperty(ref uxMode, value); }
+            get { return conversationOnlyMode; }
+            set { SetProperty(ref conversationOnlyMode, value); }
         }
 
         public bool ChangesRequireRestart
         {
-            get { return false; }
+            get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
         }
         
         #endregion
@@ -251,12 +239,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
-            //TODO: Sort out these settings
-            //MinimisedWidthInPixels = Settings.Default.MainWindowMinimisedWidthInPixels;
-            //MinimisedHeightInPixels = Settings.Default.MainWindowMinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
-            UxMode = Settings.Default.UxMode;
+            ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
         }
 
         public void ApplyChanges()
@@ -271,12 +256,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
-            //TODO: Sort out these settings
-            //Settings.Default.MainWindowMinimisedWidthInPixels = MinimisedWidthInPixels;
-            //Settings.Default.MainWindowMinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
-            Settings.Default.UxMode = UxMode;
+            Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
             Settings.Default.Save();
         }
 
