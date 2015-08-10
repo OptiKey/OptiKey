@@ -256,7 +256,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Maximise()
         {
-            savePreviousWindowState(getWindowState());
+            var windowState = getWindowState();
+            if (windowState != WindowStates.Maximised)
+            {
+                savePreviousWindowState(windowState);
+            }
             if (getWindowState() == WindowStates.Docked)
             {
                 UnRegisterAppBar();
@@ -267,7 +271,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Minimise()
         {
-            savePreviousWindowState(getWindowState());
+            var windowState = getWindowState();
+            if (windowState != WindowStates.Minimised)
+            {
+                savePreviousWindowState(windowState);
+            }
             if (getWindowState() == WindowStates.Docked)
             {
                 UnRegisterAppBar();
@@ -634,32 +642,36 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CoerceAndApplySavedState()
         {
-            //Coerce state
-            var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
-            if (fullDockThicknessAsPercentageOfScreen <= 0 || fullDockThicknessAsPercentageOfScreen >= 100)
+            var windowState = getWindowState();
+            if (windowState != WindowStates.Minimised && windowState != WindowStates.Maximised)
             {
-                fullDockThicknessAsPercentageOfScreen = 50;
-                saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
-            }
-            double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-            if (collapsedDockThicknessAsPercentageOfFullDockThickness <= 0 || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
-            {
-                collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
-                saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
-            }
-            Rect floatingSizeAndPosition = getFloatingSizeAndPosition();
-            if (floatingSizeAndPosition == default(Rect) ||
-                floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
-                floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
-                floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
-                floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
-            {
-                //Default to two-thirds of the screen's width and height, positioned centrally
-                floatingSizeAndPosition = new Rect(
-                    screenBoundsInDp.Left + screenBoundsInDp.Width / 6,
-                    screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
-                    2 * (screenBoundsInDp.Width / 3), 2 * (screenBoundsInDp.Height / 3));
-                saveFloatingSizeAndPosition(floatingSizeAndPosition);
+                //Coerce state
+                var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
+                if (fullDockThicknessAsPercentageOfScreen <= 0 || fullDockThicknessAsPercentageOfScreen >= 100)
+                {
+                    fullDockThicknessAsPercentageOfScreen = 50;
+                    saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
+                }
+                double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
+                if (collapsedDockThicknessAsPercentageOfFullDockThickness <= 0 || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
+                {
+                    collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
+                    saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
+                }
+                Rect floatingSizeAndPosition = getFloatingSizeAndPosition();
+                if (floatingSizeAndPosition == default(Rect) ||
+                    floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
+                    floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
+                    floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
+                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
+                {
+                    //Default to two-thirds of the screen's width and height, positioned centrally
+                    floatingSizeAndPosition = new Rect(
+                        screenBoundsInDp.Left + screenBoundsInDp.Width / 6,
+                        screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
+                        2 * (screenBoundsInDp.Width / 3), 2 * (screenBoundsInDp.Height / 3));
+                    saveFloatingSizeAndPosition(floatingSizeAndPosition);
+                }    
             }
 
             ApplySavedState();

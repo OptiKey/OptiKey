@@ -79,9 +79,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             
             SelectionMode = SelectionModes.Key;
-            Keyboard = Settings.Default.MainWindowState == WindowStates.Maximised
-                ? (IKeyboard)new Conversation(() => Keyboard = new Menu(() => Keyboard = new Alpha()))
-                : (IKeyboard)new Alpha();
+            
+            if (Settings.Default.ConversationOnlyMode)
+            {
+                Keyboard = new Conversation(null);
+                mainWindowManipulationService.Maximise();
+            }
+            else
+            {
+                Keyboard = new Alpha();
+                if (Settings.Default.MainWindowState == WindowStates.Minimised
+                    || Settings.Default.MainWindowState == WindowStates.Maximised)
+                {
+                    mainWindowManipulationService.Restore();
+                }
+            }
 
             AttachScratchpadEnabledListener();
 

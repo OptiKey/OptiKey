@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
-             xmlns:common="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Keyboards.Common"
+             xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -303,14 +303,43 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="4"
+        <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
-                      WidthSpan="2"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
             </controls:Key.Value>
         </controls:Key>
+        <ContentControl Grid.Row="5" Grid.Column="17" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          SharedSizeGroup="KeyWithSymbol">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  SharedSizeGroup="KeyWithSymbol">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
         <controls:Key Grid.Row="5" Grid.Column="19"
                       IsEnabled="False" />
     </Grid>
