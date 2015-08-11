@@ -86,19 +86,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource SizeAndPositionIcon}"
-                      Text="SIZE &amp; POSITION"
+                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                      Text="DECREASE OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="3"
-                      SymbolGeometry="{StaticResource MinimiseIcon}"
-                      Text="MINIMISE"
+                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                      Text="INCREASE OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="4"
@@ -127,19 +127,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2"
-                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="DECREASE OPACITY"
+                      SymbolGeometry="{StaticResource SizeAndPositionIcon}"
+                      Text="SIZE &amp; POSITION"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="3"
-                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="INCREASE OPACITY"
+                      SymbolGeometry="{StaticResource MinimiseIcon}"
+                      Text="MINIMISE"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="4"

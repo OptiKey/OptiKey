@@ -853,7 +853,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new YesNoQuestion("Are you sure you would like to quit?",
                             () =>
                             {
-                                Keyboard = new YesNoQuestion("Sorry to ask again, but are you absolutely sure that you'd like to quit?",
+                                Keyboard = new YesNoQuestion("Are you absolutely sure that you'd like to quit?",
                                     () => { Application.Current.Shutdown(); },
                                     () => { Keyboard = keyboardBeforeQuit; });
                             },
