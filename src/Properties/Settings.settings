@@ -272,5 +272,8 @@
     <Setting Name="MultiKeySelectionEnabled" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MouseMoveAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
