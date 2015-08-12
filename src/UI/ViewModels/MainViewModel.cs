@@ -29,7 +29,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
-        private readonly IOutputService outputService;
+        private readonly ITextOutputService textOutputService;
+        private readonly IMouseService mouseService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
 
@@ -58,7 +59,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             IInputService inputService,
-            IOutputService outputService,
+            ITextOutputService textOutputService,
+            IMouseService mouseService,
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices)
         {
@@ -72,7 +74,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
-            this.outputService = outputService;
+            this.textOutputService = textOutputService;
+            this.mouseService = mouseService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
 
@@ -114,7 +117,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
-        public IOutputService OutputService { get { return outputService; } }
+        public ITextOutputService TextOutputService { get { return textOutputService; } }
         public IKeyboardService KeyboardService { get { return keyboardService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
@@ -240,7 +243,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Debug("AddTextToDictionary called.");
 
-            var possibleEntries = outputService.Text.ExtractWordsAndLines();
+            var possibleEntries = textOutputService.Text.ExtractWordsAndLines();
 
             if (possibleEntries != null)
             {
@@ -252,7 +255,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", outputService.Text);
+                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", textOutputService.Text);
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
@@ -262,7 +265,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text);
+                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", textOutputService.Text);
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
             }
         }

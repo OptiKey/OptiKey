@@ -148,7 +148,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Scratchpad Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
-                             Text="{Binding DataContext.OutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
+                             Text="{Binding DataContext.TextOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
         <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       SharedSizeGroup="KeyWithSymbol">

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -12,7 +10,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class OutputService : BindableBase, IOutputService
+    public class TextOutputService : BindableBase, ITextOutputService
     {
         #region Private Member Vars
 
@@ -32,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public OutputService(
+        public TextOutputService(
             IKeyboardService keyboardService,
             ISuggestionStateService suggestionService,
             IPublishService publishService,
@@ -59,7 +57,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Methods - IOutputService
+        #region Methods - ITextOutputService
 
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
@@ -235,110 +233,6 @@ namespace JuliusSweetland.OptiKey.Services
             ProcessText(captureAndSuggestions.First());
 
             lastTextChangeWasSuggestion = false;
-        }
-
-        public void LeftMouseButtonDown(Point point)
-        {
-            Log.DebugFormat("Pressing down left mouse at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.LeftMouseButtonDown();
-        }
-
-        public void LeftMouseButtonUp(Point point)
-        {
-            Log.DebugFormat("Releasing left mouse at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.LeftMouseButtonUp();
-        }
-
-        public void LeftMouseButtonClick(Point point)
-        {
-            Log.DebugFormat("Generating a left mouse click at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.LeftMouseButtonClick();
-        }
-
-        public void LeftMouseButtonDoubleClick(Point point)
-        {
-            Log.DebugFormat("Generating a left mouse double click at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.LeftMouseButtonDoubleClick();
-        }
-
-        public void MiddleMouseButtonClick(Point point)
-        {
-            Log.DebugFormat("Generating a middle mouse click at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.MiddleMouseButtonClick();
-        }
-
-        public void MoveMouseTo(Point point)
-        {
-            Log.DebugFormat("Moving mouse to point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-        }
-
-        public void RightMouseButtonClick(Point point)
-        {
-            Log.DebugFormat("Generating a right mouse click at point '{0}'", point);
-            publishService.MouseMouseToPoint(point);
-            publishService.RightMouseButtonClick();
-        }
-
-        public void ScrollMouseWheelUp(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks up at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelUp(clicks);
-        }
-
-        public void ScrollMouseWheelUpAndLeft(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks up and left at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelUpAndLeft(clicks);
-        }
-
-        public void ScrollMouseWheelUpAndRight(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks up and right at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelUpAndRight(clicks);
-        }
-
-        public void ScrollMouseWheelDown(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks down at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelDown(clicks);
-        }
-
-        public void ScrollMouseWheelDownAndLeft(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks down and left at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelDownAndLeft(clicks);
-        }
-
-        public void ScrollMouseWheelDownAndRight(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating vertical and horizontal mouse scrolls of {0} clicks down and right at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelDownAndRight(clicks);
-        }
-
-        public void ScrollMouseWheelLeft(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks left at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollMouseWheelRight(int clicks, Point point)
-        {
-            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks right at point '{1}'", clicks, point);
-            publishService.MouseMouseToPoint(point);
-            publishService.ScrollMouseWheelRight(clicks);
         }
 
         #endregion

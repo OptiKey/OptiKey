@@ -41,31 +41,31 @@
         <controls:Key SymbolGeometry="{StaticResource MouseLeftClickIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource MouseDoubleLeftClickIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDoubleLeftClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndDoubleLeftClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource MouseRightClickIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndRightClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToTop}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollToBottom}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource MouseMagnifierIcon}"

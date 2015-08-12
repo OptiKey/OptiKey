@@ -121,7 +121,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
                 Log.DebugFormat("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String.ConvertEscapedCharsToLiterals());
-                outputService.ProcessSingleKeyText(singleKeyValue.Value.String);
+                textOutputService.ProcessSingleKeyText(singleKeyValue.Value.String);
             }
 
             //Single key function key
@@ -137,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 && multiKeySelection.Any())
             {
                 Log.DebugFormat("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count);
-                outputService.ProcessMultiKeyTextAndSuggestions(multiKeySelection);
+                textOutputService.ProcessMultiKeyTextAndSuggestions(multiKeySelection);
             }
         }
 
@@ -220,7 +220,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         if (calibrationResult.Success)
                                         {
                                             audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => { inputService.RequestResume(); });
+                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
                                         }
                                         else
                                         {
@@ -229,7 +229,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     ? calibrationResult.Exception.Message
                                                     : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs", 
                                                 NotificationTypes.Error, 
-                                                () => { inputService.RequestResume(); });
+                                                () => inputService.RequestResume());
                                         }
                                     });
                                 },
@@ -317,55 +317,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseKeyboard:
-                        Log.Debug("Changing keyboard to Mouse.");
-                        Action backAction = null;
-                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
-                            && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
-                        {
-                            var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
-                            var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
-                            var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
-                            var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
-                            var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
-                            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
-                            backAction = () =>
-                            {
-                                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
-                                Keyboard = currentKeyboard;
-                            };
-                        }
-                        else
-                        {
-                            backAction = () => Keyboard = currentKeyboard;
-                        }
-                        Keyboard = new Mouse(backAction);
-                        break;
-
-                    case FunctionKeys.MouseDoubleLeftClick:
-                        Log.Debug("Mouse double left click selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
-                                    outputService.LeftMouseButtonDoubleClick(fp);
-                                };
-
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-                            
-                            ResetAndCleanupAfterMouseAction();
-                        });
-                        break;
-
                     case FunctionKeys.MouseDrag:
                         Log.Debug("Mouse drag selected.");
                         SetupFinalClickAction(firstFinalPoint =>
@@ -389,9 +340,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                                 {
                                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                                    outputService.LeftMouseButtonDown(fp1);
+                                                    mouseService.MoveTo(fp1);
+                                                    mouseService.LeftButtonDown();
                                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                                    outputService.LeftMouseButtonUp(fp2);
+                                                    mouseService.MoveTo(fp2);
+                                                    mouseService.LeftButtonUp();
                                                 };
 
                                                 lastMouseActionStateManager.LastMouseAction =
@@ -404,7 +357,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                                         if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                                         {
-                                            ShowCursor = false; //See MouseLeftClick case for explanation of this
+                                            ShowCursor = false; //See MouseMoveAndLeftClick case for explanation of this
                                             MagnifiedPointSelectionAction = secondFinalClickAction;
                                             MagnifyAtPoint = repeatFirstClickOrSecondClickPoint;
                                             ShowCursor = true;
@@ -445,7 +398,57 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }, finalClickInSeries: false);
                         break;
 
-                    case FunctionKeys.MouseLeftClick:
+                    case FunctionKeys.MouseKeyboard:
+                        Log.Debug("Changing keyboard to Mouse.");
+                        Action backAction;
+                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                            && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
+                        {
+                            var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
+                            var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
+                            var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
+                            var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
+                            var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
+                            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
+                            backAction = () =>
+                            {
+                                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
+                                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
+                                Keyboard = currentKeyboard;
+                            };
+                        }
+                        else
+                        {
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        break;
+
+                    case FunctionKeys.MouseMoveAndDoubleLeftClick:
+                        Log.Debug("Mouse double left click selected.");
+                        SetupFinalClickAction(finalPoint =>
+                        {
+                            if (finalPoint != null)
+                            {
+                                Action<Point> simulateClick = fp =>
+                                {
+                                    audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.LeftButtonDoubleClick();
+                                };
+
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
+                            }
+                            
+                            ResetAndCleanupAfterMouseAction();
+                        });
+                        break;
+
+                    case FunctionKeys.MouseMoveAndLeftClick:
                         Log.Debug("Mouse left click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -454,7 +457,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    outputService.LeftMouseButtonClick(fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.LeftButtonClick();
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -465,7 +469,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseMiddleClick:
+                    case FunctionKeys.MouseMoveAndMiddleClick:
                         Log.Debug("Mouse middle click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -474,7 +478,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    outputService.MiddleMouseButtonClick(fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.MiddleButtonClick();
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -485,7 +490,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
                         
-                    case FunctionKeys.MouseRightClick:
+                    case FunctionKeys.MouseMoveAndRightClick:
                         Log.Debug("Mouse right click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -494,7 +499,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    outputService.RightMouseButtonClick(fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.RightButtonClick();
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -505,33 +511,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseScrollAmountInClicks:
-                        Log.Debug("Progressing MouseScrollAmountInClicks.");
-                        switch (Settings.Default.MouseScrollAmountInClicks)
+                    case FunctionKeys.MouseMoveAmountInPixels:
+                        Log.Debug("Progressing MouseMoveAmountInPixels.");
+                        switch (Settings.Default.MouseMoveAmountInPixels)
                         {
                             case 1:
-                                Settings.Default.MouseScrollAmountInClicks = 3;
-                                break;
-
-                            case 3:
-                                Settings.Default.MouseScrollAmountInClicks = 5;
+                                Settings.Default.MouseMoveAmountInPixels = 5;
                                 break;
 
                             case 5:
-                                Settings.Default.MouseScrollAmountInClicks = 10;
+                                Settings.Default.MouseMoveAmountInPixels = 10;
                                 break;
 
                             case 10:
-                                Settings.Default.MouseScrollAmountInClicks = 25;
+                                Settings.Default.MouseMoveAmountInPixels = 25;
+                                break;
+
+                            case 25:
+                                Settings.Default.MouseMoveAmountInPixels = 50;
+                                break;
+
+                            case 50:
+                                Settings.Default.MouseMoveAmountInPixels = 100;
                                 break;
 
                             default:
-                                Settings.Default.MouseScrollAmountInClicks = 1;
+                                Settings.Default.MouseMoveAmountInPixels = 1;
                                 break;
                         }
                         break;
 
-                    case FunctionKeys.MouseScrollToBottom:
+                    case FunctionKeys.MouseMoveAndScrollToBottom:
                         Log.Debug("Mouse scroll to bottom selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -540,7 +550,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelDown(Settings.Default.MouseScrollAmountInClicks, fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.ScrollWheelDown(Settings.Default.MouseScrollAmountInClicks);
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -551,49 +562,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseScrollToBottomAndLeft:
-                        Log.Debug("Mouse scroll to bottom and left selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelDownAndLeft(
-                                        Settings.Default.MouseScrollAmountInClicks, fp);
-                                };
-
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-
-                            ResetAndCleanupAfterMouseAction();
-                        });
-                        break;
-
-                    case FunctionKeys.MouseScrollToBottomAndRight:
-                        Log.Debug("Mouse scroll to bottom and right selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelDownAndRight(
-                                        Settings.Default.MouseScrollAmountInClicks, fp);
-                                };
-
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-
-                            ResetAndCleanupAfterMouseAction();
-                        });
-                        break;
-
-                    case FunctionKeys.MouseScrollToLeft:
+                    case FunctionKeys.MouseMoveAndScrollToLeft:
                         Log.Debug("Mouse scroll to left selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -602,7 +571,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelLeft(Settings.Default.MouseScrollAmountInClicks, fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.ScrollWheelLeft(Settings.Default.MouseScrollAmountInClicks);
                                 };
                                     
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -613,7 +583,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseScrollToRight:
+                    case FunctionKeys.MouseMoveAndScrollToRight:
                         Log.Debug("Mouse scroll to right selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -622,7 +592,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelRight(Settings.Default.MouseScrollAmountInClicks, fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.ScrollWheelRight(Settings.Default.MouseScrollAmountInClicks);
                                 };
                                     
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -633,7 +604,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         });
                         break;
 
-                    case FunctionKeys.MouseScrollToTop:
+                    case FunctionKeys.MouseMoveAndScrollToTop:
                         Log.Debug("Mouse scroll to top selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
@@ -642,7 +613,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Action<Point> simulateClick = fp =>
                                 {
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelUp(Settings.Default.MouseScrollAmountInClicks, fp);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.ScrollWheelUp(Settings.Default.MouseScrollAmountInClicks);
                                 };
                                     
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -650,47 +622,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             ResetAndCleanupAfterMouseAction();  
-                        });
-                        break;
-
-                    case FunctionKeys.MouseScrollToTopAndLeft:
-                        Log.Debug("Mouse scroll to top and left selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelUpAndLeft(Settings.Default.MouseScrollAmountInClicks, fp);
-                                };
-                                    
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-
-                            ResetAndCleanupAfterMouseAction();
-                        });
-                        break;
-
-                    case FunctionKeys.MouseScrollToTopAndRight:
-                        Log.Debug("Mouse scroll to top and right selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    outputService.ScrollMouseWheelUpAndRight(Settings.Default.MouseScrollAmountInClicks, fp);
-                                };
-                                    
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-
-                            //Reset and clean up
-                            ResetAndCleanupAfterMouseAction();
                         });
                         break;
 
@@ -720,6 +651,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                             default:
                                 Settings.Default.MoveAndResizeAdjustmentAmountInPixels = 1;
+                                break;
+                        }
+                        break;
+
+                    case FunctionKeys.MouseScrollAmountInClicks:
+                        Log.Debug("Progressing MouseScrollAmountInClicks.");
+                        switch (Settings.Default.MouseScrollAmountInClicks)
+                        {
+                            case 1:
+                                Settings.Default.MouseScrollAmountInClicks = 3;
+                                break;
+
+                            case 3:
+                                Settings.Default.MouseScrollAmountInClicks = 5;
+                                break;
+
+                            case 5:
+                                Settings.Default.MouseScrollAmountInClicks = 10;
+                                break;
+
+                            case 10:
+                                Settings.Default.MouseScrollAmountInClicks = 25;
+                                break;
+
+                            default:
+                                Settings.Default.MouseScrollAmountInClicks = 1;
                                 break;
                         }
                         break;
@@ -854,7 +811,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             () =>
                             {
                                 Keyboard = new YesNoQuestion("Are you absolutely sure that you'd like to quit?",
-                                    () => { Application.Current.Shutdown(); },
+                                    () => Application.Current.Shutdown(),
                                     () => { Keyboard = keyboardBeforeQuit; });
                             },
                             () => { Keyboard = keyboardBeforeQuit; });
@@ -914,7 +871,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.Speak:
                         var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
-                            outputService.Text,
+                            textOutputService.Text,
                             () => { KeyboardService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                             Settings.Default.SpeechVolume,
                             Settings.Default.SpeechRate,
@@ -927,7 +884,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
                 }
 
-                outputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
+                textOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
             }
         }
 
@@ -978,7 +935,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.RequestSuspend();
             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => { inputService.RequestResume(); });
+            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => iBnputService.RequestResume());
         }
     }
 }

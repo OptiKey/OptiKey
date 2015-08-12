@@ -244,6 +244,7 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
+    <Compile Include="Services\IMouseService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\IPointService.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
@@ -273,15 +274,16 @@
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="Services\IDictionaryService.cs" />
     <Compile Include="Services\InputService.subscriptions.cs" />
-    <Compile Include="Services\IOutputService.cs" />
+    <Compile Include="Services\ITextOutputService.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
+    <Compile Include="Services\MouseService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
-    <Compile Include="Services\OutputService.cs" />
+    <Compile Include="Services\TextOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
