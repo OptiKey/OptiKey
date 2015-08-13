@@ -72,8 +72,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
-                .Where(cpp => cpp != null && SelectionProgress == 0) //Only set current Point if we are not within a selection/fixation
-                .Subscribe(cpp => Point = cpp.Value);
+                .Where(cpp => SelectionProgress == 0) //Only set current Point if we are not within a selection/fixation
+                .Subscribe(cpp => Point = cpp);
             
             //Calculate selection progress and position based on PointSelectionProgress
             mainViewModel.OnPropertyChanges(vm => vm.PointSelectionProgress)

@@ -37,7 +37,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
         private SelectionModes selectionMode;
-        private Point? currentPositionPoint;
+        private Point currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref magnifiedPointSelectionAction, value); }
         }
 
-        public Point? CurrentPositionPoint
+        public Point CurrentPositionPoint
         {
             get { return currentPositionPoint; }
             set { SetProperty(ref currentPositionPoint, value); }

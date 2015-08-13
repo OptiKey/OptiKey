@@ -55,11 +55,10 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("Creating subscription to PointAndKeyValueSource for current position.");
 
             currentPositionSubscription = pointSource.Sequence
-                .Select(tp => new Tuple<Point?, KeyValue?>(
-                    tp.Value != null && SelectionMode == SelectionModes.Point 
-                        ? tp.Value.Value.Point 
-                        : (Point?)null,
-                    tp.Value != null && SelectionMode == SelectionModes.Key 
+                .Where(tp => tp.Value != null)
+                .Select(tp => new Tuple<Point, KeyValue?>(
+                    tp.Value.Value.Point,
+                    SelectionMode == SelectionModes.Key 
                         ? tp.Value.Value.KeyValue 
                         : null))
                 .DistinctUntilChanged()

@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
         private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
-        private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
+        private event EventHandler<Tuple<Point, KeyValue?>> currentPositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
         private event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> selectionResultEvent;
@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Current Position
 
-        public event EventHandler<Tuple<Point?, KeyValue?>> CurrentPosition
+        public event EventHandler<Tuple<Point, KeyValue?>> CurrentPosition
         {
             add
             {
@@ -345,7 +345,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Current Position
 
-        private void PublishCurrentPosition(Tuple<Point?, KeyValue?> currentPosition)
+        private void PublishCurrentPosition(Tuple<Point, KeyValue?> currentPosition)
         {
             if (currentPositionEvent != null)
             {

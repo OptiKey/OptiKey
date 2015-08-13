@@ -28,6 +28,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
+
+                if (keyboardService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown())
+                {
+                    mouseService.MoveTo(CurrentPositionPoint);
+                }
             };
 
             inputService.SelectionProgress += (o, progress) =>
@@ -427,8 +432,70 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Mouse(backAction);
                         break;
 
-                    case FunctionKeys.MouseMoveAndLeftClick:
+                    case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseService.LeftButtonClick();
+                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
+                        }
+                        break;
+
+                    case FunctionKeys.MouseLeftDoubleClick:
+                        Log.Debug("Mouse left double click selected.");
+                        audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
+                        mouseService.LeftButtonDoubleClick();
+                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
+                        }
+                        break;
+
+                    case FunctionKeys.MouseLeftDownUp:
+                        Log.Debug("Mouse left down/up selected.");
+                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            Log.Debug("Pressing mouse left button down.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.LeftButtonDown();
+                        }
+                        else
+                        {
+                            Log.Debug("Releasing mouse left button.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.LeftButtonUp();
+                        }
+                        break;
+
+                    case FunctionKeys.MouseMiddleClick:
+                        Log.Debug("Mouse middle click selected.");
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseService.MiddleButtonClick();
+                        if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value = KeyDownStates.Up;
+                        }
+                        break;
+
+                    case FunctionKeys.MouseMiddleDownUp:
+                        Log.Debug("Mouse middle down/up selected.");
+                        if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            Log.Debug("Pressing mouse middle button down.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.MiddleButtonDown();
+                        }
+                        else
+                        {
+                            Log.Debug("Releasing mouse middle button.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.MiddleButtonUp();
+                        }
+                        break;
+
+                    case FunctionKeys.MouseMoveAndLeftClick:
+                        Log.Debug("Mouse move and left click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -438,6 +505,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.LeftButtonClick();
+                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                                    {
+                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
+                                    }
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -449,7 +520,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndLeftDoubleClick:
-                        Log.Debug("Mouse double left click selected.");
+                        Log.Debug("Mouse move and left double click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -459,6 +530,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.LeftButtonDoubleClick();
+                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                                    {
+                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
+                                    }
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -470,7 +545,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndMiddleClick:
-                        Log.Debug("Mouse middle click selected.");
+                        Log.Debug("Mouse move and middle click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -480,6 +555,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.MiddleButtonClick();
+                                    if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                                    {
+                                        keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value = KeyDownStates.Up;
+                                    }
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -491,7 +570,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
                         
                     case FunctionKeys.MouseMoveAndRightClick:
-                        Log.Debug("Mouse right click selected.");
+                        Log.Debug("Mouse move and right click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -501,6 +580,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.RightButtonClick();
+                                    if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                                    {
+                                        keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value = KeyDownStates.Up;
+                                    }
                                 };
 
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
@@ -542,7 +625,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToBottom:
-                        Log.Debug("Mouse scroll to bottom selected.");
+                        Log.Debug("Mouse move and scroll to bottom selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -563,7 +646,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToLeft:
-                        Log.Debug("Mouse scroll to left selected.");
+                        Log.Debug("Mouse move and scroll to left selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -584,7 +667,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToRight:
-                        Log.Debug("Mouse scroll to right selected.");
+                        Log.Debug("Mouse move and scroll to right selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -605,7 +688,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToTop:
-                        Log.Debug("Mouse scroll to top selected.");
+                        Log.Debug("Mouse move and scroll to top selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
@@ -623,6 +706,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                             ResetAndCleanupAfterMouseAction();  
                         });
+                        break;
+
+                    case FunctionKeys.MouseRightClick:
+                        Log.Debug("Mouse right click selected.");
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseService.RightButtonClick();
+                        if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value = KeyDownStates.Up;
+                        }
+                        break;
+
+                    case FunctionKeys.MouseRightDownUp:
+                        Log.Debug("Mouse right down/up selected.");
+                        if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                        {
+                            Log.Debug("Pressing mouse right button down.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.RightButtonDown();
+                        }
+                        else
+                        {
+                            Log.Debug("Releasing mouse right button.");
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.RightButtonUp();
+                        }
                         break;
 
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:
