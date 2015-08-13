@@ -427,27 +427,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Mouse(backAction);
                         break;
 
-                    case FunctionKeys.MouseMoveAndDoubleLeftClick:
-                        Log.Debug("Mouse double left click selected.");
-                        SetupFinalClickAction(finalPoint =>
-                        {
-                            if (finalPoint != null)
-                            {
-                                Action<Point> simulateClick = fp =>
-                                {
-                                    audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.LeftButtonDoubleClick();
-                                };
-
-                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
-                                simulateClick(finalPoint.Value);
-                            }
-                            
-                            ResetAndCleanupAfterMouseAction();
-                        });
-                        break;
-
                     case FunctionKeys.MouseMoveAndLeftClick:
                         Log.Debug("Mouse left click selected.");
                         SetupFinalClickAction(finalPoint =>
@@ -465,6 +444,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateClick(finalPoint.Value);
                             }
 
+                            ResetAndCleanupAfterMouseAction();
+                        });
+                        break;
+
+                    case FunctionKeys.MouseMoveAndLeftDoubleClick:
+                        Log.Debug("Mouse double left click selected.");
+                        SetupFinalClickAction(finalPoint =>
+                        {
+                            if (finalPoint != null)
+                            {
+                                Action<Point> simulateClick = fp =>
+                                {
+                                    audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
+                                    mouseService.MoveTo(fp);
+                                    mouseService.LeftButtonDoubleClick();
+                                };
+
+                                lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
+                                simulateClick(finalPoint.Value);
+                            }
+                            
                             ResetAndCleanupAfterMouseAction();
                         });
                         break;
@@ -935,7 +935,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.RequestSuspend();
             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => iBnputService.RequestResume());
+            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
         }
     }
 }

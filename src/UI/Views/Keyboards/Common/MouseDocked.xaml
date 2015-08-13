@@ -44,10 +44,10 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftClick}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key SymbolGeometry="{StaticResource MouseDoubleLeftClickIcon}"
+        <controls:Key SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndDoubleLeftClick}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftDoubleClick}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key SymbolGeometry="{StaticResource MouseRightClickIcon}"

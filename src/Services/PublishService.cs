@@ -116,32 +116,6 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void LeftMouseButtonDown()
-        {
-            try
-            {
-                Log.Debug("Simulating pressing the left mouse button down");
-                inputSimulator.Mouse.LeftButtonDown();
-            }
-            catch (Exception exception)
-            {
-                PublishError(this, exception);
-            }
-        }
-
-        public void LeftMouseButtonUp()
-        {
-            try
-            {
-                Log.Debug("Simulating releasing the left mouse button down");
-                inputSimulator.Mouse.LeftButtonUp();
-            }
-            catch (Exception exception)
-            {
-                PublishError(this, exception);
-            }
-        }
-
         public void LeftMouseButtonClick()
         {
             try
@@ -168,6 +142,32 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void LeftMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void MiddleMouseButtonClick()
         {
             try
@@ -181,12 +181,64 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void MiddleMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the middle mouse button down");
+                inputSimulator.Mouse.MiddleButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void MiddleMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the middle mouse button down");
+                inputSimulator.Mouse.MiddleButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void RightMouseButtonClick()
         {
             try
             {
                 Log.Debug("Simulating pressing the right mouse button down");
                 inputSimulator.Mouse.RightButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void RightMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the right mouse button down");
+                inputSimulator.Mouse.RightButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void RightMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the right mouse button down");
+                inputSimulator.Mouse.RightButtonUp();
             }
             catch (Exception exception)
             {

@@ -8,22 +8,22 @@ namespace JuliusSweetland.OptiKey.Services
         void KeyDown(VirtualKeyCode virtualKeyCode);
         void KeyUp(VirtualKeyCode virtualKeyCode);
         void KeyDownUp(VirtualKeyCode virtualKeyCode);
-        void ReleaseAllDownKeys();
-        void TypeText(string text);
-        void MouseMouseToPoint(Point point);
-        void LeftMouseButtonDown();
-        void LeftMouseButtonUp();
         void LeftMouseButtonClick();
         void LeftMouseButtonDoubleClick();
+        void LeftMouseButtonDown();
+        void LeftMouseButtonUp();
         void MiddleMouseButtonClick();
+        void MiddleMouseButtonDown();
+        void MiddleMouseButtonUp();
+        void MouseMouseToPoint(Point point);
+        void ReleaseAllDownKeys();
         void RightMouseButtonClick();
+        void RightMouseButtonDown();
+        void RightMouseButtonUp();
         void ScrollMouseWheelUp(int clicks);
-        void ScrollMouseWheelUpAndLeft(int clicks);
-        void ScrollMouseWheelUpAndRight(int clicks);
         void ScrollMouseWheelDown(int clicks);
-        void ScrollMouseWheelDownAndLeft(int clicks);
-        void ScrollMouseWheelDownAndRight(int clicks);
         void ScrollMouseWheelLeft(int clicks);
         void ScrollMouseWheelRight(int clicks);
+        void TypeText(string text);
     }
 }

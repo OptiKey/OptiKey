@@ -4,11 +4,13 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IMouseService
     {
-        void LeftButtonDown();
-        void LeftButtonUp();
         void LeftButtonClick();
         void LeftButtonDoubleClick();
+        void LeftButtonDown();
+        void LeftButtonUp();
         void MiddleButtonClick();
+        void MiddleButtonDown();
+        void MiddleButtonUp();
         void MoveTo(Point point);
         void RightButtonClick();
         void ScrollWheelUp(int clicks);

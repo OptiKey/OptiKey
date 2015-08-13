@@ -24,18 +24,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods - IMouseService
 
-        public void LeftButtonDown()
-        {
-            Log.Debug("Pressing down left button.");
-            publishService.LeftMouseButtonDown();
-        }
-
-        public void LeftButtonUp()
-        {
-            Log.Debug("Releasing left button.");
-            publishService.LeftMouseButtonUp();
-        }
-
         public void LeftButtonClick()
         {
             Log.Debug("Generating a left click.");
@@ -48,10 +36,34 @@ namespace JuliusSweetland.OptiKey.Services
             publishService.LeftMouseButtonDoubleClick();
         }
 
+        public void LeftButtonDown()
+        {
+            Log.Debug("Pressing down left button.");
+            publishService.LeftMouseButtonDown();
+        }
+
+        public void LeftButtonUp()
+        {
+            Log.Debug("Releasing left button.");
+            publishService.LeftMouseButtonUp();
+        }
+
         public void MiddleButtonClick()
         {
             Log.DebugFormat("Generating a middle click.");
             publishService.MiddleMouseButtonClick();
+        }
+
+        public void MiddleButtonDown()
+        {
+            Log.Debug("Pressing down middle button.");
+            publishService.MiddleMouseButtonDown();
+        }
+
+        public void MiddleButtonUp()
+        {
+            Log.Debug("Releasing middle button.");
+            publishService.MiddleMouseButtonUp();
         }
 
         public void MoveTo(Point point)
@@ -64,6 +76,18 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Generating a right click.");
             publishService.RightMouseButtonClick();
+        }
+
+        public void RightButtonDown()
+        {
+            Log.Debug("Pressing down right button.");
+            publishService.RightMouseButtonDown();
+        }
+
+        public void RightButtonUp()
+        {
+            Log.Debug("Releasing right button.");
+            publishService.RightMouseButtonUp();
         }
 
         public void ScrollWheelUp(int clicks)
