@@ -251,10 +251,8 @@
                 <models:KeyValue String="ž" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -298,8 +296,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       WidthSpan="2" 
@@ -308,10 +305,8 @@
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       SharedSizeGroup="KeyWithSymbol">

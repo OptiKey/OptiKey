@@ -62,8 +62,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9"
                                                               Text="Action occurs at current location:"
-                                                              SharedSizeGroup="KeyWithText"
-                                                              IsEnabled="False" />
+                                                              SharedSizeGroup="KeyWithText" />
                                                 <controls:Key Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
                                                               Text="MIDDLE CLICK"
@@ -192,8 +191,7 @@
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="9"
                                                               Text="Move cursor and perform action:"
-                                                              SharedSizeGroup="KeyWithText"
-                                                              IsEnabled="False" />
+                                                              SharedSizeGroup="KeyWithText" />
                                                 <controls:Key Grid.Row="6" Grid.Column="0" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
                                                               Text="MIDDLE CLICK"
@@ -308,8 +306,6 @@
                                                               SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                               Text="COLLAPSE DOCK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
-                                                              <!--IsEnabled="{Binding }">
-                                                    {Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Move by&#x0a;{0} pixel|Move by&#x0a;{0} pixels'}-->
                                                     <controls:Key.Value>
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
                                                     </controls:Key.Value>

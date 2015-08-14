@@ -264,7 +264,7 @@
       <Value Profile="(Default)">Docked</Value>
     </Setting>
     <Setting Name="MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="MainWindowPreviousState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
       <Value Profile="(Default)">Docked</Value>

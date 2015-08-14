@@ -52,12 +52,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
 
             //Calculate IsEnabled
-            calculateIsEnabled = () => IsEnabled = 
-                (DisabledIfKeyUp == null || keyboardService.KeyDownStates[DisabledIfKeyUp.Value].Value != KeyDownStates.Up)
-                    && keyboardService.KeyEnabledStates[Value];
-
+            calculateIsEnabled = () => IsEnabled = keyboardService.KeyEnabledStates[Value];
             keyboardService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
-            
             calculateIsEnabled();
             
             //Calculate IsCurrent
@@ -130,24 +126,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (bool) GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
-        }
-
-        public static readonly DependencyProperty DisabledIfKeyUpProperty =
-            DependencyProperty.Register("DisabledIfKeyUp", typeof(KeyValue?), typeof(Key), new PropertyMetadata(default(KeyValue?), DisabledIfKeyUpPropertyChangedCallback));
-
-        private static void DisabledIfKeyUpPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as Key;
-            if (key != null && key.calculateIsEnabled != null)
-            {
-                key.calculateIsEnabled();
-            }
-        }
-
-        public KeyValue? DisabledIfKeyUp
-        {
-            get { return (KeyValue?)GetValue(DisabledIfKeyUpProperty); }
-            set { SetValue(DisabledIfKeyUpProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionProgressProperty =

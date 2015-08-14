@@ -122,8 +122,7 @@
             </controls:Key.Value>
         </controls:Key>
 
-        <controls:Key Grid.Row="3" Grid.Column="0"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="3" Grid.Column="0" />
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter">
@@ -187,11 +186,9 @@
                 <models:KeyValue String="l" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="19"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="3" Grid.Column="19" />
 
-        <controls:Key Grid.Row="4" Grid.Column="0"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="4" Grid.Column="0" />
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter">
@@ -255,11 +252,9 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="19"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="4" Grid.Column="19" />
 
-        <controls:Key Grid.Row="5" Grid.Column="0"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="0" />
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -340,7 +335,6 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="5" Grid.Column="19"
-                      IsEnabled="False" />
+        <controls:Key Grid.Row="5" Grid.Column="19" />
     </Grid>
 </UserControl>

@@ -143,8 +143,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       Text="EXPAND"
-                      SharedSizeGroup="KeyWithText"
-                      IsEnabled="False" />
+                      SharedSizeGroup="KeyWithText" />
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -161,8 +160,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="5"
                       Text="SHRINK"
-                      SharedSizeGroup="KeyWithText"
-                      IsEnabled="False" />
+                      SharedSizeGroup="KeyWithText" />
         <controls:Key Grid.Row="1" Grid.Column="6"
                       SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -179,8 +177,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="9"
                       Text="MOVE"
-                      SharedSizeGroup="KeyWithText"
-                      IsEnabled="False" />
+                      SharedSizeGroup="KeyWithText" />
         <controls:Key Grid.Row="1" Grid.Column="10"
                       SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -197,8 +194,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="13"
                       Text="JUMP"
-                      SharedSizeGroup="KeyWithText"
-                      IsEnabled="False" />
+                      SharedSizeGroup="KeyWithText" />
         <controls:Key Grid.Row="1" Grid.Column="14"
                       SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
                       SharedSizeGroup="KeyWithSymbol">

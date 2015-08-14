@@ -159,6 +159,13 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                //Expand/Collapse dock when not docked
+                if ((keyValue == KeyValues.ExpandDockKey || keyValue == KeyValues.CollapseDockKey)
+                    && Settings.Default.MainWindowState != WindowStates.Docked)
+                {
+                    return false;
+                }
+
                 //Move & Resize keys when docked
                 if(Settings.Default.MainWindowState == WindowStates.Docked
                     && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&
