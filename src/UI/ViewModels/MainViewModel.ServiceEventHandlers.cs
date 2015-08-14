@@ -245,6 +245,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         break;
 
+                    case FunctionKeys.CollapseDock:
+                        Log.Debug("Collapsing dock.");
+                        mainWindowManipulationService.ResizeDockToCollapsed();
+                        break;
+
                     case FunctionKeys.Currencies1Keyboard:
                         Log.Debug("Changing keyboard to Currencies1.");
                         Keyboard = new Currencies1();
@@ -258,6 +263,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.DecreaseOpacity:
                         Log.Debug("Decreasing opacity.");
                         mainWindowManipulationService.ChangeOpacity(false);
+                        break;
+
+                    case FunctionKeys.ExpandDock:
+                        Log.Debug("Expanding dock.");
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case FunctionKeys.ExpandToBottom:
@@ -706,6 +716,113 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                             ResetAndCleanupAfterMouseAction();  
                         });
+                        break;
+
+                    case FunctionKeys.MouseMoveTo:
+                        Log.Debug("Mouse move to selected.");
+                        SetupFinalClickAction(finalPoint =>
+                        {
+                            if (finalPoint != null)
+                            {
+                                Action<Point> simulateMoveTo = fp => mouseService.MoveTo(fp);
+                                lastMouseActionStateManager.LastMouseAction = () => simulateMoveTo(finalPoint.Value);
+                                simulateMoveTo(finalPoint.Value);
+                            }
+
+                            ResetAndCleanupAfterMouseAction();
+                        });
+                        break;
+
+                    case FunctionKeys.MouseMoveToBottom:
+                        Log.Debug("Mouse move to bottom selected.");
+                        Action simulateMoveToBottom = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X, CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToBottom;
+                        simulateMoveToBottom();
+                        break;
+
+                    case FunctionKeys.MouseMoveToBottomAndLeft:
+                        Log.Debug("Mouse move to bottom and left selected.");
+                        Action simulateMoveToBottomAndLeft = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, 
+                                CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToBottomAndLeft;
+                        simulateMoveToBottomAndLeft();
+                        break;
+
+                    case FunctionKeys.MouseMoveToBottomAndRight:
+                        Log.Debug("Mouse move to bottom and right selected.");
+                        Action simulateMoveToBottomAndRight = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels, 
+                                CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToBottomAndRight;
+                        simulateMoveToBottomAndRight();
+                        break;
+
+                    case FunctionKeys.MouseMoveToLeft:
+                        Log.Debug("Mouse move to left selected.");
+                        Action simulateMoveToLeft = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, CurrentPositionPoint.Y);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToLeft;
+                        simulateMoveToLeft();
+                        break;
+
+                    case FunctionKeys.MouseMoveToRight:
+                        Log.Debug("Mouse move to right selected.");
+                        Action simulateMoveToRight = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels, CurrentPositionPoint.Y);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToRight;
+                        simulateMoveToRight();
+                        break;
+
+                    case FunctionKeys.MouseMoveToTop:
+                        Log.Debug("Mouse move to top selected.");
+                        Action simulateMoveToTop = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X, CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToTop;
+                        simulateMoveToTop();
+                        break;
+
+                    case FunctionKeys.MouseMoveToTopAndLeft:
+                        Log.Debug("Mouse move to top and left selected.");
+                        Action simulateMoveToTopAndLeft = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, 
+                                CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToTopAndLeft;
+                        simulateMoveToTopAndLeft();
+                        break;
+
+                    case FunctionKeys.MouseMoveToTopAndRight:
+                        Log.Debug("Mouse move to top and right selected.");
+                        Action simulateMoveToTopAndRight = () =>
+                        {
+                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels,
+                                CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
+                            mouseService.MoveTo(moveToPoint);
+                        };
+                        lastMouseActionStateManager.LastMouseAction = simulateMoveToTopAndRight;
+                        simulateMoveToTopAndRight();
                         break;
 
                     case FunctionKeys.MouseRightClick:

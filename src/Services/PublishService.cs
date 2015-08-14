@@ -104,11 +104,11 @@ namespace JuliusSweetland.OptiKey.Services
                 var virtualScreenWidthInPixels = SystemParameters.VirtualScreenWidth * Graphics.DipScalingFactorX;
                 var virtualScreenHeightInPixels = SystemParameters.VirtualScreenHeight * Graphics.DipScalingFactorY;
 
-                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535.
+                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535. 
                 //https://inputsimulator.codeplex.com/discussions/86530
                 inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
-                    ((double)65535 * point.X) / (double)virtualScreenWidthInPixels,
-                    ((double)65535 * point.Y) / (double)virtualScreenHeightInPixels);
+                    Math.Ceiling(65535 * (point.X / virtualScreenWidthInPixels)),
+                    Math.Ceiling(65535 * (point.Y / virtualScreenHeightInPixels)));
             }
             catch (Exception exception)
             {

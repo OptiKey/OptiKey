@@ -308,6 +308,8 @@
                                                               SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                               Text="COLLAPSE DOCK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
+                                                              <!--IsEnabled="{Binding }">
+                                                    {Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Move by&#x0a;{0} pixel|Move by&#x0a;{0} pixels'}-->
                                                     <controls:Key.Value>
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
                                                     </controls:Key.Value>
