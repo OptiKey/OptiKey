@@ -248,6 +248,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.CollapseDock:
                         Log.Debug("Collapsing dock.");
                         mainWindowManipulationService.ResizeDockToCollapsed();
+                        if (Keyboard is ViewModels.Keyboards.Mouse)
+                        {
+                            Settings.Default.MouseKeyboardDockSize = DockSizes.Collapsed;
+                        }
                         break;
 
                     case FunctionKeys.Currencies1Keyboard:
@@ -268,6 +272,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.ExpandDock:
                         Log.Debug("Expanding dock.");
                         mainWindowManipulationService.ResizeDockToFull();
+                        if (Keyboard is ViewModels.Keyboards.Mouse)
+                        {
+                            Settings.Default.MouseKeyboardDockSize = DockSizes.Full;
+                        }
                         break;
 
                     case FunctionKeys.ExpandToBottom:

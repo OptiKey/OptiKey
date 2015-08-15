@@ -328,7 +328,6 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToCollapsed()
         {
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Collapsed) return;
-
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
@@ -337,9 +336,9 @@ namespace JuliusSweetland.OptiKey.Services
         public void ResizeDockToFull()
         {
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Full) return;
+            saveDockSize(DockSizes.Full); 
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
-            saveDockSize(DockSizes.Full); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
         }
 
         public void Restore()
@@ -979,8 +978,8 @@ namespace JuliusSweetland.OptiKey.Services
                 case DockSizes.Collapsed:
                     var collapsedDockThicknessAsPercentageOfFullDockThickness =
                         dockPosition == DockEdges.Top || dockPosition == DockEdges.Bottom
-                            ? (window.ActualHeight / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen()
-                            : (window.ActualWidth / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen();
+                            ? ((window.ActualHeight / screenBoundsInDp.Height) / getFullDockThicknessAsPercentageOfScreen()) * 10000
+                            : ((window.ActualWidth / screenBoundsInDp.Width) / getFullDockThicknessAsPercentageOfScreen()) * 10000;
                     saveCollapsedDockThicknessAsPercentageOfFullDockThickness(
                         collapsedDockThicknessAsPercentageOfFullDockThickness);
                     break;
