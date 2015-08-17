@@ -30,8 +30,6 @@ Icons
   Mouse, Mouse Left Click, Mouse Left Double Click, Mouse Right Click icons modified from: Mouse by Rediffusion from the Noun Project (thenounproject.com)
   Mouse Drag icon: Move by TukTuk Design from the Noun Project (thenounproject.com) 
   Mouse Magnifier icon modified from: Zoom by José Campos
-  Mouse Zoom In icon: Zoom by José Campos
-  Mouse Zoom Out icon: Zoom-out by José Campos
   Move, Expand and Resize icons modified from: Play by Mateo Zlatar from the Noun Project (thenounproject.com)
   MultiKeySelection icon modified from: Line-Graph by Jason D. Rowley from the Noun Project (thenounproject.com)
   No icon from: Wrong by Raúl Santos from the Noun Project (thenounproject.com)
