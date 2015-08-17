@@ -11,7 +11,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Output()
         {
             InitializeComponent();
-
             Loaded += (sender, args) => NumberOfSuggestionsDisplayed = 4;
         }
 

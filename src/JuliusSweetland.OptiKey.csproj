@@ -294,6 +294,7 @@
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -344,9 +345,6 @@
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Common\MouseDocked.xaml.cs">
-      <DependentUpon>MouseDocked.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
@@ -702,10 +700,6 @@
     <Page Include="UI\Views\Keyboards\Common\Minimised.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Common\MouseDocked.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\Mouse.xaml">
       <Generator>MSBuild:Compile</Generator>

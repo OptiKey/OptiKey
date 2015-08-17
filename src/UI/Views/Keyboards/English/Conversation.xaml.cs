@@ -1,15 +1,16 @@
-﻿using System.Windows.Controls;
+﻿using JuliusSweetland.OptiKey.UI.Controls;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
 {
     /// <summary>
     /// Interaction logic for Conversation.xaml
     /// </summary>
-    public partial class Conversation : UserControl
+    public partial class Conversation : KeyboardView
     {
         public Conversation()
         {
             InitializeComponent();
+            Loaded += (sender, args) => KeyboardSupportsCollapsedDock = false;
         }
     }
 }

@@ -100,6 +100,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             AttachScratchpadEnabledListener();
 
+            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(supportsCollapsedDock =>
+            {
+                if (!supportsCollapsedDock
+                    && Settings.Default.MainWindowState == WindowStates.Docked
+                    && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
+                {
+                    mainWindowManipulationService.ResizeDockToFull();
+                }
+            });
+
             HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
         }
 
@@ -127,6 +137,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             get { return keyboard; }
             set { SetProperty(ref keyboard, value); }
+        }
+
+        private bool keyboardSupportsCollapsedDock = true;
+        public bool KeyboardSupportsCollapsedDock
+        {
+            get { return keyboardSupportsCollapsedDock; }
+            set { SetProperty(ref keyboardSupportsCollapsedDock, value); }
         }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap

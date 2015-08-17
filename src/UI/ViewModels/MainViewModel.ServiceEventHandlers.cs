@@ -448,6 +448,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             backAction = () => Keyboard = currentKeyboard;
                         }
                         Keyboard = new Mouse(backAction);
+                        //Reinstate mouse keyboard docked state (if docked)
+                        if (Settings.Default.MainWindowState == WindowStates.Docked)
+                        {
+                            if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
+                                && Settings.Default.MainWindowDockSize != DockSizes.Full)
+                            {
+                                mainWindowManipulationService.ResizeDockToFull();
+                            }
+                            else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
+                                && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                            {
+                                mainWindowManipulationService.ResizeDockToCollapsed();
+                            }
+                        }
                         break;
 
                     case FunctionKeys.MouseLeftClick:
