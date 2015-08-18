@@ -223,7 +223,7 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                              SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                                                               Text="SCROLL UP"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
@@ -231,7 +231,7 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                              SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                                                               Text="SCROLL DOWN"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
@@ -239,7 +239,7 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                              SymbolGeometry="{StaticResource MouseScrollToLeftIcon}"
                                                               Text="SCROLL LEFT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
@@ -247,7 +247,7 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="3" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                              SymbolGeometry="{StaticResource MouseScrollToRightIcon}"
                                                               Text="SCROLL RIGHT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
@@ -335,14 +335,14 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="0" Grid.Column="3"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
                                                                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="0" Grid.Column="4"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
                                                                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
@@ -555,7 +555,7 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="12" Grid.Column="0" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                                                                       Text="SCROLL UP"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
@@ -563,7 +563,7 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="12" Grid.Column="1" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                                                                       Text="SCROLL DOWN"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
@@ -571,7 +571,7 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="12" Grid.Column="2" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToLeftIcon}"
                                                                       Text="SCROLL LEFT"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
@@ -579,7 +579,7 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="12" Grid.Column="3" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                                      SymbolGeometry="{StaticResource MouseScrollToRightIcon}"
                                                                       Text="SCROLL RIGHT"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
@@ -699,14 +699,14 @@
                                                                     </controls:Key.Value>
                                                                 </controls:Key>
                                                                 <controls:Key Grid.Row="3" Grid.Column="0"
-                                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                                              SymbolGeometry="{StaticResource MouseScrollToTopIcon}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                                     <controls:Key.Value>
                                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
                                                                     </controls:Key.Value>
                                                                 </controls:Key>
                                                                 <controls:Key Grid.Row="4" Grid.Column="0"
-                                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                                              SymbolGeometry="{StaticResource MouseScrollToBottomIcon}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                                     <controls:Key.Value>
                                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
