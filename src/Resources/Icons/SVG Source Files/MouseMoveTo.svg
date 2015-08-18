@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg6906"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="MouseDrag.svg">
+  <defs
+     id="defs6908">
+    <clipPath
+       id="SVGID_2_">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_1_"
+         overflow="visible"
+         id="use3343" />
+    </clipPath>
+    <defs
+       id="defs3339">
+      <rect
+         height="88.038002"
+         width="90"
+         y="6.4619999"
+         x="4.5"
+         id="SVGID_1_" />
+    </defs>
+    <clipPath
+       id="clipPath3392">
+      <use
+         id="use3394"
+         overflow="visible"
+         xlink:href="#SVGID_1_"
+         style="overflow:visible"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </clipPath>
+    <clipPath
+       id="SVGID_2_-6">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_1_-4"
+         overflow="visible"
+         id="use3343-0" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568545"
+     inkscape:cx="37.336902"
+     inkscape:cy="25.320136"
+     inkscape:current-layer="svg6906"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="942"
+     inkscape:window-height="985"
+     inkscape:window-x="960"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata6911">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <dc:format>image/svg+xml</dc:format>
+      </cc:Work>
+      <dc:format>image/svg+xml</dc:format>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="matrix(0.47811328,0,0,0.47811328,7.58318,8.738563)"
+     id="g3337">
+    <defs
+       id="defs3339-2">
+      <rect
+         id="SVGID_1_-4"
+         x="4.5"
+         y="6.4619999"
+         width="90"
+         height="88.038002" />
+    </defs>
+    <clipPath
+       id="clipPath3392-9">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_1_-4"
+         overflow="visible"
+         id="use3394-0" />
+    </clipPath>
+  </g>
+  <path
+     inkscape:connector-curvature="0"
+     id="polygon24"
+     d="m 51.969649,32.513959 0,-1.074572 -0.06181,0 0,-0.01605 -6.234658,0 0,1.075167 0.06241,0 0,0.01545 z m -18.90427,-13.494558 0.0024,0 0,-6.404047 -1.075166,0 0,0.01486 -0.0018,0 0,6.40583 1.074572,0 z m -19.920002,-1.107856 0.0036,0 0,-5.281332 5.210011,0 0,-0.01486 0.0024,0 0,-1.076355 -6.289338,0 0,0.01605 -0.0024,0 0,6.371952 1.075761,0 z m 0.0036,28.268144 -1.07695,0 0,0.01486 -0.0024,0 0,6.273291 6.290527,0 0,-0.01545 0.0024,0 0,-1.07576 -5.213577,0 z m -0.0024,-14.740302 -0.0018,0 0,1.074572 6.404046,0 0,-0.01545 0.0024,0 0,-1.075166 -6.404641,0 z m 18.846024,13.718032 -0.0018,0 0,6.234065 1.074573,0 0,-0.01486 0.0024,0 0,-6.235253 -1.075166,0 z m 19.916435,1.038318 -0.0024,0 0,5.180888 -5.275983,0 0,0.01486 -0.0012,0 0,1.076355 6.352339,0 0,-0.01545 0.0024,0 0,-6.271507 -1.075167,0 z m -5.27836,-34.656738 0,0.01605 -0.0012,0 0,1.075166 5.277172,0 0,5.295597 1.075167,0 0,-0.01486 0.0024,0 0,-6.371951 z m -13.562909,19.320904 -1.075166,0 0,0.01545 -0.0018,0 0,0.668041 -0.685277,0 0,0.01545 -0.0024,0 0,1.07576 0.687654,0 0,0.683495 1.074573,0 0,-0.01605 0.0024,0 0,-0.667447 0.678146,0 0,-0.01545 0.0024,0 0,-1.075762 -0.680523,0 z" />
+</svg>
