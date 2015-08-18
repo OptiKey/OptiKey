@@ -530,6 +530,18 @@
     <None Include="Resources\Icons\SVG Source Files\Minimise.svg" />
     <None Include="Resources\Icons\SVG Source Files\Quit.svg" />
     <None Include="Resources\Icons\SVG Source Files\SizeAndPosition.svg" />
+    <None Include="Resources\Icons\SVG Source Files\CollapseDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ExpandDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Keyboard.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMoveTo.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToBottom.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -566,6 +578,18 @@
     <Content Include="Resources\Sounds\MouseDoubleClick3.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Sounds\MouseDown1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Sounds\MouseScroll2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -579,6 +603,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\MouseScroll6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp4.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\Rising1.wav">

@@ -10,8 +10,8 @@
                        xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300"
+                       KeyboardSupportsCollapsedDock="{Binding Path=DataContext.KeyboardSupportsCollapsedDock, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}"> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-    
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
