@@ -59,17 +59,16 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9"
-                                                              Text="Action occurs at current location:"
+                                                <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"
+                                                              Text="Do at current location..."
                                                               SharedSizeGroup="KeyWithText" />
                                                 <controls:Key Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
-                                                              Text="MIDDLE CLICK"
+                                                              SymbolGeometry="{StaticResource MouseLeftDownUpIcon}"
+                                                              Text="LEFT DOWN / UP"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleClick}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDownUp}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"
@@ -80,13 +79,21 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleDownUp}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Move by&#x0a;{0} pixel|Move by&#x0a;{0} pixels'}">
+                                                <controls:Key Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseRightDownUpIcon}"
+                                                              Text="RIGHT DOWN / UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                    <controls:Key.Value>
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightDownUp}" />
+                                                    </controls:Key.Value>
+                                                </controls:Key>
+                                                <controls:Key Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Move by&#x0a;{0} pixel:|Move by&#x0a;{0} pixels:'}">
                                                     <controls:Key.Value>
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAmountInPixels}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="1" Grid.Column="5" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                                                               Text="MOVE LEFT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -94,7 +101,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToLeft}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="1" Grid.Column="6" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="1" Grid.Column="5" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                                                               Text="MOVE RIGHT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -102,7 +109,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToRight}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="1" Grid.Column="7" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="1" Grid.Column="6" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
                                                               Text="MOVE UP &amp; LEFT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -110,7 +117,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToTopAndLeft}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="1" Grid.Column="8" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="1" Grid.Column="7" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
                                                               Text="MOVE UP &amp; RIGHT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -127,22 +134,14 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseLeftDownUpIcon}"
-                                                              Text="LEFT DOWN / UP"
+                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
+                                                              Text="MIDDLE CLICK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDownUp}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleClick}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="3" Grid.Column="2" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
-                                                              Text="LEFT DOUBLE CLICK"
-                                                              SharedSizeGroup="KeyWithSymbolAndText">
-                                                    <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDoubleClick}" />
-                                                    </controls:Key.Value>
-                                                </controls:Key>
-                                                <controls:Key Grid.Row="3" Grid.Column="3" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseRightClickIcon}"
                                                               Text="RIGHT CLICK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -151,14 +150,14 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseRightDownUpIcon}"
-                                                              Text="RIGHT DOWN / UP"
+                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                                                              Text="LEFT DOUBLE CLICK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightDownUp}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDoubleClick}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="3" Grid.Column="5" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="3" Grid.Column="4" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
                                                               Text="MOVE UP"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -166,7 +165,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToTop}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="3" Grid.Column="5" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
                                                               Text="MOVE DOWN"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -174,7 +173,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottom}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="3" Grid.Column="7" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="3" Grid.Column="6" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
                                                               Text="MOVE DOWN &amp; LEFT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -182,7 +181,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottomAndLeft}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="3" Grid.Column="8" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="3" Grid.Column="7" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
                                                               Text="MOVE DOWN &amp; RIGHT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -190,15 +189,15 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottomAndRight}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="9"
-                                                              Text="Move cursor and perform action:"
+                                                <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8"
+                                                              Text="Do at selection point..."
                                                               SharedSizeGroup="KeyWithText" />
                                                 <controls:Key Grid.Row="6" Grid.Column="0" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
-                                                              Text="MIDDLE CLICK"
+                                                              SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                                                              Text="MAGNIFIER"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndMiddleClick}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="6" Grid.Column="1" Grid.RowSpan="2"
@@ -209,13 +208,21 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDrag}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="6" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3"
-                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Scroll by&#x0a;{0} click|Scroll by&#x0a;{0} clicks'}">
+                                                <controls:Key Grid.Row="6" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
+                                                              Text="REPEAT LAST"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                    <controls:Key.Value>
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
+                                                    </controls:Key.Value>
+                                                </controls:Key>
+                                                <controls:Key Grid.Row="6" Grid.Column="3" Grid.RowSpan="2"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Scroll by&#x0a;{0} click:|Scroll by&#x0a;{0} clicks:'}">
                                                     <controls:Key.Value>
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollAmountInClicks}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="6" Grid.Column="5" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="6" Grid.Column="4" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
                                                               Text="SCROLL LEFT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -223,7 +230,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToLeft}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="6" Grid.Column="6" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="6" Grid.Column="5" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
                                                               Text="SCROLL RIGHT"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -231,7 +238,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToRight}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="6" Grid.Column="7" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="6" Grid.Column="6" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource MouseMoveToIcon}"
                                                               Text="MOVE TO"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -239,7 +246,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="6" Grid.Column="8" Grid.RowSpan="2"                                                            
+                                                <controls:Key Grid.Row="6" Grid.Column="7" Grid.RowSpan="2"                                                            
                                                               SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
                                                               Text="MAGNETIC CURSOR"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -256,11 +263,11 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="1" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
-                                                              Text="LEFT DOUBLE CLICK"
+                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
+                                                              Text="MIDDLE CLICK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftDoubleClick}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndMiddleClick}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="2" Grid.RowSpan="2"
@@ -272,22 +279,14 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="3" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseMagnifierIcon}"
-                                                              Text="MAGNIFIER"
+                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                                                              Text="LEFT DOUBLE CLICK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftDoubleClick}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="8" Grid.Column="4" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
-                                                              Text="REPEAT LAST"
-                                                              SharedSizeGroup="KeyWithSymbolAndText">
-                                                    <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
-                                                    </controls:Key.Value>
-                                                </controls:Key>
-                                                <controls:Key Grid.Row="8" Grid.Column="5" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
                                                               Text="SCROLL UP"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -295,7 +294,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="8" Grid.Column="6" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="8" Grid.Column="5" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
                                                               Text="SCROLL DOWN"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -303,7 +302,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="8" Grid.Column="7" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="8" Grid.Column="6" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                               Text="COLLAPSE DOCK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -311,7 +310,7 @@
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
-                                                <controls:Key Grid.Row="8" Grid.Column="8" Grid.RowSpan="2"
+                                                <controls:Key Grid.Row="8" Grid.Column="7" Grid.RowSpan="2"
                                                               SymbolGeometry="{StaticResource BackIcon}"
                                                               Text="BACK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
@@ -430,7 +429,292 @@
                                             <Setter Property="Content">
                                                 <Setter.Value>
                                                     <!--Normal portrait view-->
-                                                    <Grid></Grid>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <controls:Key Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+                                                              Text="Do at current location..."
+                                                              SharedSizeGroup="KeyWithText" />
+                                                        <controls:Key Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseLeftClickIcon}"
+                                                              Text="LEFT CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                                                              Text="LEFT DOUBLE CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDoubleClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
+                                                              Text="MIDDLE CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseRightClickIcon}"
+                                                              Text="RIGHT CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseLeftDownUpIcon}"
+                                                              Text="LEFT DOWN / UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseLeftDownUp}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseMiddleDownUpIcon}"
+                                                              Text="MIDDLE DOWN / UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMiddleDownUp}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseRightDownUpIcon}"
+                                                              Text="RIGHT DOWN / UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseRightDownUp}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="3" Grid.Column="3" Grid.RowSpan="2"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseMoveAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Move by&#x0a;{0} pixel:|Move by&#x0a;{0} pixels:'}">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAmountInPixels}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                              Text="MOVE LEFT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToLeft}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="5" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                              Text="MOVE RIGHT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToRight}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="5" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                                              Text="MOVE UP &amp; LEFT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToTopAndLeft}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="5" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                                              Text="MOVE UP &amp; RIGHT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToTopAndRight}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="7" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                              Text="MOVE UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToTop}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="7" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                              Text="MOVE DOWN"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottom}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="7" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                                              Text="MOVE DOWN &amp; LEFT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottomAndLeft}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="7" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                                              Text="MOVE DOWN &amp; RIGHT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveToBottomAndRight}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4"
+                                                              Text="Do at selection point..."
+                                                              SharedSizeGroup="KeyWithText" />
+                                                        <controls:Key Grid.Row="9" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseLeftClickIcon}"
+                                                              Text="LEFT CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="9" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseMiddleClickIcon}"
+                                                              Text="MIDDLE CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndMiddleClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="9" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseRightClickIcon}"
+                                                              Text="RIGHT CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndRightClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="9" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                                                              Text="LEFT DOUBLE CLICK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftDoubleClick}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseDragIcon}"
+                                                              Text="CLICK &amp; DRAG"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseDrag}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                                                              Text="MAGNIFIER"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
+                                                              Text="REPEAT LAST"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="3" Grid.RowSpan="2"
+                                                              Text="{Binding Source={x:Static properties:Settings.Default}, Path=MouseScrollAmountInClicks, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Scroll by&#x0a;{0} click:|Scroll by&#x0a;{0} clicks:'}">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseScrollAmountInClicks}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="13" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                              Text="SCROLL LEFT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToLeft}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="1" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                              Text="SCROLL RIGHT"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToRight}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                              Text="SCROLL UP"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="11" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                              Text="SCROLL DOWN"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="13" Grid.Column="0" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource MouseMoveToIcon}"
+                                                              Text="MOVE TO"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="13" Grid.Column="1" Grid.RowSpan="2"                                                            
+                                                              SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
+                                                              Text="MAGNETIC CURSOR"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagneticCursor}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="13" Grid.Column="2" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource CollapseDockIcon}"
+                                                              Text="COLLAPSE DOCK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                        <controls:Key Grid.Row="13" Grid.Column="3" Grid.RowSpan="2"
+                                                              SymbolGeometry="{StaticResource BackIcon}"
+                                                              Text="BACK"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.Value>
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                                            </controls:Key.Value>
+                                                        </controls:Key>
+                                                    </Grid>
                                                 </Setter.Value>
                                             </Setter>
                                             <Style.Triggers>
@@ -442,7 +726,85 @@
                                                     <Setter Property="Content">
                                                         <Setter.Value>
                                                             <!--Collapsed portrait dock view-->
-                                                            <Grid></Grid>
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                    <RowDefinition Height="*" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <controls:Key Grid.Row="0" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource MouseLeftClickIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftClick}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="1" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndLeftDoubleClick}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="2" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource MouseRightClickIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndRightClick}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="3" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagnifier}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="4" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RepeatLastMouseAction}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="5" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToTop}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="6" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveAndScrollToBottom}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="7" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource ExpandDockIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandDock}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                                <controls:Key Grid.Row="8" Grid.Column="0"
+                                                                              SymbolGeometry="{StaticResource BackIcon}"
+                                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.Value>
+                                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                                                    </controls:Key.Value>
+                                                                </controls:Key>
+                                                            </Grid>
                                                         </Setter.Value>
                                                     </Setter>
                                                 </MultiDataTrigger>
