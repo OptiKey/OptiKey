@@ -766,30 +766,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         simulateMoveToBottom();
                         break;
 
-                    case FunctionKeys.MouseMoveToBottomAndLeft:
-                        Log.Debug("Mouse move to bottom and left selected.");
-                        Action simulateMoveToBottomAndLeft = () =>
-                        {
-                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, 
-                                CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
-                            mouseService.MoveTo(moveToPoint);
-                        };
-                        lastMouseActionStateManager.LastMouseAction = simulateMoveToBottomAndLeft;
-                        simulateMoveToBottomAndLeft();
-                        break;
-
-                    case FunctionKeys.MouseMoveToBottomAndRight:
-                        Log.Debug("Mouse move to bottom and right selected.");
-                        Action simulateMoveToBottomAndRight = () =>
-                        {
-                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels, 
-                                CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
-                            mouseService.MoveTo(moveToPoint);
-                        };
-                        lastMouseActionStateManager.LastMouseAction = simulateMoveToBottomAndRight;
-                        simulateMoveToBottomAndRight();
-                        break;
-
                     case FunctionKeys.MouseMoveToLeft:
                         Log.Debug("Mouse move to left selected.");
                         Action simulateMoveToLeft = () =>
@@ -821,30 +797,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         };
                         lastMouseActionStateManager.LastMouseAction = simulateMoveToTop;
                         simulateMoveToTop();
-                        break;
-
-                    case FunctionKeys.MouseMoveToTopAndLeft:
-                        Log.Debug("Mouse move to top and left selected.");
-                        Action simulateMoveToTopAndLeft = () =>
-                        {
-                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, 
-                                CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
-                            mouseService.MoveTo(moveToPoint);
-                        };
-                        lastMouseActionStateManager.LastMouseAction = simulateMoveToTopAndLeft;
-                        simulateMoveToTopAndLeft();
-                        break;
-
-                    case FunctionKeys.MouseMoveToTopAndRight:
-                        Log.Debug("Mouse move to top and right selected.");
-                        Action simulateMoveToTopAndRight = () =>
-                        {
-                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels,
-                                CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
-                            mouseService.MoveTo(moveToPoint);
-                        };
-                        lastMouseActionStateManager.LastMouseAction = simulateMoveToTopAndRight;
-                        simulateMoveToTopAndRight();
                         break;
 
                     case FunctionKeys.MouseRightClick:
