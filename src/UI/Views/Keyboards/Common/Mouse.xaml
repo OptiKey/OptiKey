@@ -70,11 +70,11 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
-                                                              Text="MAGNETIC CURSOR"
+                                                              SymbolGeometry="{StaticResource MouseMoveToIcon}"
+                                                              Text="MOVE TO"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagneticCursor}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"
@@ -166,11 +166,11 @@
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="3" Grid.Column="7" Grid.RowSpan="2"
-                                                              SymbolGeometry="{StaticResource MouseMoveToIcon}"
-                                                              Text="MOVE TO"
+                                                              SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
+                                                              Text="MAGNETIC CURSOR"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                     <controls:Key.Value>
-                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
+                                                        <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagneticCursor}" />
                                                     </controls:Key.Value>
                                                 </controls:Key>
                                                 <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8"
@@ -434,11 +434,11 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
-                                                                      Text="MAGNETIC CURSOR"
-                                                                      SharedSizeGroup="KeyWithSymbolAndText">
+                                                                      SymbolGeometry="{StaticResource MouseMoveToIcon}"
+                                                                      Text="MOVE TO"
+                                                              SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
-                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagneticCursor}" />
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="3" Grid.Column="0" Grid.RowSpan="2"
@@ -530,11 +530,11 @@
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="7" Grid.Column="3" Grid.RowSpan="2"
-                                                                      SymbolGeometry="{StaticResource MouseMoveToIcon}"
-                                                                      Text="MOVE TO"
-                                                              SharedSizeGroup="KeyWithSymbolAndText">
+                                                                      SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
+                                                                      Text="MAGNETIC CURSOR"
+                                                                      SharedSizeGroup="KeyWithSymbolAndText">
                                                             <controls:Key.Value>
-                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMoveTo}" />
+                                                                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseMagneticCursor}" />
                                                             </controls:Key.Value>
                                                         </controls:Key>
                                                         <controls:Key Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="4"
