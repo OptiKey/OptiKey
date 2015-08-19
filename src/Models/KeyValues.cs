@@ -23,10 +23,18 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftShiftKey = new KeyValue { FunctionKey = FunctionKeys.LeftShift };
         public static readonly KeyValue LeftWinKey = new KeyValue { FunctionKey = FunctionKeys.LeftWin };
         public static readonly KeyValue MouseDragKey = new KeyValue { FunctionKey = FunctionKeys.MouseDrag };
+        public static readonly KeyValue MouseLeftClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseLeftClick };
+        public static readonly KeyValue MouseLeftDoubleClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseLeftDoubleClick };
         public static readonly KeyValue MouseLeftDownUpKey = new KeyValue { FunctionKey = FunctionKeys.MouseLeftDownUp };
         public static readonly KeyValue MouseMagneticCursorKey = new KeyValue { FunctionKey = FunctionKeys.MouseMagneticCursor };
         public static readonly KeyValue MouseMagnifierKey = new KeyValue { FunctionKey = FunctionKeys.MouseMagnifier };
+        public static readonly KeyValue MouseMiddleClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseMiddleClick };
         public static readonly KeyValue MouseMiddleDownUpKey = new KeyValue { FunctionKey = FunctionKeys.MouseMiddleDownUp };
+        public static readonly KeyValue MouseMoveAndLeftClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseMoveAndLeftClick };
+        public static readonly KeyValue MouseMoveAndLeftDoubleClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseMoveAndLeftDoubleClick };
+        public static readonly KeyValue MouseMoveAndMiddleClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseMoveAndMiddleClick };
+        public static readonly KeyValue MouseMoveAndRightClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseMoveAndRightClick };
+        public static readonly KeyValue MouseRightClickKey = new KeyValue { FunctionKey = FunctionKeys.MouseRightClick };
         public static readonly KeyValue MouseRightDownUpKey = new KeyValue { FunctionKey = FunctionKeys.MouseRightDownUp };
         public static readonly KeyValue MoveToBottomKey = new KeyValue { FunctionKey = FunctionKeys.MoveToBottom };
         public static readonly KeyValue MoveToBottomAndLeftKey = new KeyValue { FunctionKey = FunctionKeys.MoveToBottomAndLeft };

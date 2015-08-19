@@ -41,6 +41,8 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
             keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyboardService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
@@ -261,9 +263,29 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Mouse drag if mouse left is down
-                if (keyValue == KeyValues.MouseDragKey
-                    && keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                //Mouse actions involving left button if it is already down
+                if ((keyValue == KeyValues.MouseDragKey 
+                    || keyValue == KeyValues.MouseLeftClickKey 
+                    || keyValue == KeyValues.MouseLeftDoubleClickKey
+                    || keyValue == KeyValues.MouseMoveAndLeftClickKey 
+                    || keyValue == KeyValues.MouseMoveAndLeftDoubleClickKey)
+                        && keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                {
+                    return false;
+                }
+
+                //Mouse actions involving middle button if it is already down
+                if ((keyValue == KeyValues.MouseMiddleClickKey
+                    || keyValue == KeyValues.MouseMoveAndMiddleClickKey)
+                        && keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                {
+                    return false;
+                }
+
+                //Mouse actions involving right button if it is already down
+                if ((keyValue == KeyValues.MouseRightClickKey
+                    || keyValue == KeyValues.MouseMoveAndRightClickKey)
+                        && keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                 {
                     return false;
                 }

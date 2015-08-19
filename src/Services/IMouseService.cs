@@ -4,6 +4,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public interface IMouseService
     {
+        Point GetCursorPosition();
         void LeftButtonClick();
         void LeftButtonDoubleClick();
         void LeftButtonDown();

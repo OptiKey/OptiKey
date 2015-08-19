@@ -369,11 +369,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                     mouseService.MoveTo(fp2);
                                                     mouseService.LeftButtonUp();
-
-                                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
-                                                    {
-                                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
-                                                    }
                                                 };
 
                                                 lastMouseActionStateManager.LastMouseAction =
@@ -472,22 +467,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         Log.Debug("Mouse left click selected.");
-                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                        mouseService.LeftButtonClick();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        var leftClickPoint = mouseService.GetCursorPosition();
+                        Action<Point?> performLeftClick = point =>
                         {
-                            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
-                        }
+                            if (point != null)
+                            {
+                                mouseService.MoveTo(point.Value);
+                            }
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.LeftButtonClick();
+                        };
+                        lastMouseActionStateManager.LastMouseAction = () => performLeftClick(leftClickPoint);
+                        performLeftClick(null);
                         break;
 
                     case FunctionKeys.MouseLeftDoubleClick:
                         Log.Debug("Mouse left double click selected.");
-                        audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
-                        mouseService.LeftButtonDoubleClick();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        var leftDoubleClickPoint = mouseService.GetCursorPosition();
+                        Action<Point?> performLeftDoubleClick = point =>
                         {
-                            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
-                        }
+                            if (point != null)
+                            {
+                                mouseService.MoveTo(point.Value);
+                            }
+                            audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
+                            mouseService.LeftButtonDoubleClick();
+                        };
+                        lastMouseActionStateManager.LastMouseAction = () => performLeftDoubleClick(leftDoubleClickPoint);
+                        performLeftDoubleClick(null);
                         break;
 
                     case FunctionKeys.MouseLeftDownUp:
@@ -497,23 +504,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Debug("Pressing mouse left button down.");
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.LeftButtonDown();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
                             Log.Debug("Releasing mouse left button.");
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.LeftButtonUp();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         break;
 
                     case FunctionKeys.MouseMiddleClick:
                         Log.Debug("Mouse middle click selected.");
-                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                        mouseService.MiddleButtonClick();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                        var middleClickPoint = mouseService.GetCursorPosition();
+                        Action<Point?> performMiddleClick = point =>
                         {
-                            keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value = KeyDownStates.Up;
-                        }
+                            if (point != null)
+                            {
+                                mouseService.MoveTo(point.Value);
+                            }
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.MiddleButtonClick();
+                        };
+                        lastMouseActionStateManager.LastMouseAction = () => performMiddleClick(middleClickPoint);
+                        performMiddleClick(null);
                         break;
 
                     case FunctionKeys.MouseMiddleDownUp:
@@ -523,12 +538,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Debug("Pressing mouse middle button down.");
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.MiddleButtonDown();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
                             Log.Debug("Releasing mouse middle button.");
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.MiddleButtonUp();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         break;
 
@@ -543,12 +560,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.LeftButtonClick();
-                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
-                                    {
-                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
-                                    }
                                 };
-
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -568,12 +580,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.LeftButtonDoubleClick();
-                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
-                                    {
-                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
-                                    }
                                 };
-
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -593,12 +600,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.MiddleButtonClick();
-                                    if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
-                                    {
-                                        keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value = KeyDownStates.Up;
-                                    }
                                 };
-
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -618,12 +620,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseService.MoveTo(fp);
                                     mouseService.RightButtonClick();
-                                    if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
-                                    {
-                                        keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value = KeyDownStates.Up;
-                                    }
                                 };
-
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -674,7 +671,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     mouseService.MoveTo(fp);
                                     mouseService.ScrollWheelDown(Settings.Default.MouseScrollAmountInClicks);
                                 };
-
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -695,7 +691,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     mouseService.MoveTo(fp);
                                     mouseService.ScrollWheelLeft(Settings.Default.MouseScrollAmountInClicks);
                                 };
-                                    
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -716,7 +711,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     mouseService.MoveTo(fp);
                                     mouseService.ScrollWheelRight(Settings.Default.MouseScrollAmountInClicks);
                                 };
-                                    
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -737,7 +731,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     mouseService.MoveTo(fp);
                                     mouseService.ScrollWheelUp(Settings.Default.MouseScrollAmountInClicks);
                                 };
-                                    
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 simulateClick(finalPoint.Value);
                             }
@@ -756,7 +749,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 lastMouseActionStateManager.LastMouseAction = () => simulateMoveTo(finalPoint.Value);
                                 simulateMoveTo(finalPoint.Value);
                             }
-
                             ResetAndCleanupAfterMouseAction();
                         });
                         break;
@@ -807,12 +799,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseRightClick:
                         Log.Debug("Mouse right click selected.");
-                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                        mouseService.RightButtonClick();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                        var rightClickPoint = mouseService.GetCursorPosition();
+                        Action<Point?> performRightClick = point =>
                         {
-                            keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value = KeyDownStates.Up;
-                        }
+                            if (point != null)
+                            {
+                                mouseService.MoveTo(point.Value);
+                            }
+                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            mouseService.RightButtonClick();
+                        };
+                        lastMouseActionStateManager.LastMouseAction = () => performRightClick(rightClickPoint);
+                        performRightClick(null);
                         break;
 
                     case FunctionKeys.MouseRightDownUp:
@@ -822,12 +820,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Debug("Pressing mouse right button down.");
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.RightButtonDown();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
                             Log.Debug("Releasing mouse right button.");
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.RightButtonUp();
+                            lastMouseActionStateManager.LastMouseAction = null;
                         }
                         break;
 

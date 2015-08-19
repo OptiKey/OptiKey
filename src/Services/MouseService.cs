@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Forms;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -23,6 +24,13 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - IMouseService
+
+        public Point GetCursorPosition()
+        {
+            var point = new Point(Cursor.Position.X, Cursor.Position.Y);
+            Log.DebugFormat("Getting current cursor point ({0},{1}).", point.X, point.Y);
+            return point;
+        }
 
         public void LeftButtonClick()
         {
