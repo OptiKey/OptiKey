@@ -225,7 +225,7 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="MouseScrollSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="MultiKeySelectionCaptureEndSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
@@ -270,7 +270,7 @@
       <Value Profile="(Default)">Docked</Value>
     </Setting>
     <Setting Name="MultiKeySelectionEnabled" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MouseMoveAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>

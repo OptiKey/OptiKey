@@ -989,7 +989,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int MouseScrollSoundVolume {
             get {
@@ -1184,7 +1184,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool MultiKeySelectionEnabled {
             get {

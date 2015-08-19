@@ -347,7 +347,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             if (firstFinalPoint != null)
                             {
                                 audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
-
+                                
                                 //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                                 //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
                                 //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
@@ -369,6 +369,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                     audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                     mouseService.MoveTo(fp2);
                                                     mouseService.LeftButtonUp();
+
+                                                    if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                                                    {
+                                                        keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value = KeyDownStates.Up;
+                                                    }
                                                 };
 
                                                 lastMouseActionStateManager.LastMouseAction =

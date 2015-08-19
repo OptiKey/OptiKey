@@ -40,6 +40,7 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
+            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyboardService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
@@ -256,6 +257,13 @@ namespace JuliusSweetland.OptiKey.Models
                         || keyValue == KeyValues.MoveToBottomAndRightBoundariesKey
                         || keyValue == KeyValues.MoveToTopAndLeftBoundariesKey
                         || keyValue == KeyValues.MoveToTopAndRightBoundariesKey))
+                {
+                    return false;
+                }
+
+                //Mouse drag if mouse left is down
+                if (keyValue == KeyValues.MouseDragKey
+                    && keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                 {
                     return false;
                 }

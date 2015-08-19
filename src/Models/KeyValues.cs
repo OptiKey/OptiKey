@@ -22,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftCtrlKey = new KeyValue { FunctionKey = FunctionKeys.LeftCtrl };
         public static readonly KeyValue LeftShiftKey = new KeyValue { FunctionKey = FunctionKeys.LeftShift };
         public static readonly KeyValue LeftWinKey = new KeyValue { FunctionKey = FunctionKeys.LeftWin };
+        public static readonly KeyValue MouseDragKey = new KeyValue { FunctionKey = FunctionKeys.MouseDrag };
         public static readonly KeyValue MouseLeftDownUpKey = new KeyValue { FunctionKey = FunctionKeys.MouseLeftDownUp };
         public static readonly KeyValue MouseMagneticCursorKey = new KeyValue { FunctionKey = FunctionKeys.MouseMagneticCursor };
         public static readonly KeyValue MouseMagnifierKey = new KeyValue { FunctionKey = FunctionKeys.MouseMagnifier };
