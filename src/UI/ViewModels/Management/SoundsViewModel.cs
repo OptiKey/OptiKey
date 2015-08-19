@@ -29,6 +29,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MultiKeySelectionCaptureStartSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MultiKeySelectionCaptureStartSoundFile, MultiKeySelectionCaptureStartSoundVolume));
             MultiKeySelectionCaptureEndSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MultiKeySelectionCaptureEndSoundFile, MultiKeySelectionCaptureEndSoundVolume));
             MouseClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseClickSoundFile, MouseClickSoundVolume));
+            MouseDownSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseDownSoundFile, MouseDownSoundVolume));
+            MouseUpSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseUpSoundFile, MouseUpSoundVolume));
             MouseDoubleClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseDoubleClickSoundFile, MouseDoubleClickSoundVolume));
             MouseScrollSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseScrollSoundFile, MouseScrollSoundVolume));
 
@@ -80,6 +82,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, string>("Mouse Click 2", @"Resources\Sounds\MouseClick2.wav"),
                     new KeyValuePair<string, string>("Mouse Click 3", @"Resources\Sounds\MouseClick3.wav"),
                     new KeyValuePair<string, string>("Mouse Click 4", @"Resources\Sounds\MouseClick4.wav")
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> MouseDownSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("None", null),
+                    new KeyValuePair<string, string>("Mouse Down 1", @"Resources\Sounds\MouseDown1.wav"),
+                    new KeyValuePair<string, string>("Mouse Down 2", @"Resources\Sounds\MouseDown2.wav"),
+                    new KeyValuePair<string, string>("Mouse Down 3", @"Resources\Sounds\MouseDown3.wav"),
+                    new KeyValuePair<string, string>("Mouse Down 4", @"Resources\Sounds\MouseDown4.wav")
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, string>> MouseUpSoundFiles
+        {
+            get
+            {
+                return new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("None", null),
+                    new KeyValuePair<string, string>("Mouse Up 1", @"Resources\Sounds\MouseUp1.wav"),
+                    new KeyValuePair<string, string>("Mouse Up 2", @"Resources\Sounds\MouseUp2.wav"),
+                    new KeyValuePair<string, string>("Mouse Up 3", @"Resources\Sounds\MouseUp3.wav"),
+                    new KeyValuePair<string, string>("Mouse Up 4", @"Resources\Sounds\MouseUp4.wav")
                 };
             }
         }
@@ -220,6 +252,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref mouseClickSoundVolume, value); }
         }
 
+        private string mouseDownSoundFile;
+        public string MouseDownSoundFile
+        {
+            get { return mouseDownSoundFile; }
+            set { SetProperty(ref mouseDownSoundFile, value); }
+        }
+
+        private int mouseDownSoundVolume;
+        public int MouseDownSoundVolume
+        {
+            get { return mouseDownSoundVolume; }
+            set { SetProperty(ref mouseDownSoundVolume, value); }
+        }
+
+        private string mouseUpSoundFile;
+        public string MouseUpSoundFile
+        {
+            get { return mouseUpSoundFile; }
+            set { SetProperty(ref mouseUpSoundFile, value); }
+        }
+
+        private int mouseUpSoundVolume;
+        public int MouseUpSoundVolume
+        {
+            get { return mouseUpSoundVolume; }
+            set { SetProperty(ref mouseUpSoundVolume, value); }
+        }
+
         private string mouseDoubleClickSoundFile;
         public string MouseDoubleClickSoundFile
         {
@@ -259,6 +319,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public DelegateCommand MultiKeySelectionCaptureStartSoundPlayCommand { get; private set; }
         public DelegateCommand MultiKeySelectionCaptureEndSoundPlayCommand { get; private set; }
         public DelegateCommand MouseClickSoundPlayCommand { get; private set; }
+        public DelegateCommand MouseDownSoundPlayCommand { get; private set; }
+        public DelegateCommand MouseUpSoundPlayCommand { get; private set; }
         public DelegateCommand MouseDoubleClickSoundPlayCommand { get; private set; }
         public DelegateCommand MouseScrollSoundPlayCommand { get; private set; }
         
@@ -283,6 +345,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MultiKeySelectionCaptureEndSoundVolume = Settings.Default.MultiKeySelectionCaptureEndSoundVolume;
             MouseClickSoundFile = Settings.Default.MouseClickSoundFile;
             MouseClickSoundVolume = Settings.Default.MouseClickSoundVolume;
+            MouseDownSoundFile = Settings.Default.MouseDownSoundFile;
+            MouseDownSoundVolume = Settings.Default.MouseDownSoundVolume;
+            MouseUpSoundFile = Settings.Default.MouseUpSoundFile;
+            MouseUpSoundVolume = Settings.Default.MouseUpSoundVolume;
             MouseDoubleClickSoundFile = Settings.Default.MouseDoubleClickSoundFile;
             MouseDoubleClickSoundVolume = Settings.Default.MouseDoubleClickSoundVolume;
             MouseScrollSoundFile = Settings.Default.MouseScrollSoundFile;
@@ -306,6 +372,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MultiKeySelectionCaptureEndSoundVolume = MultiKeySelectionCaptureEndSoundVolume;
             Settings.Default.MouseClickSoundFile = MouseClickSoundFile;
             Settings.Default.MouseClickSoundVolume = MouseClickSoundVolume;
+            Settings.Default.MouseDownSoundFile = MouseDownSoundFile;
+            Settings.Default.MouseDownSoundVolume = MouseDownSoundVolume;
+            Settings.Default.MouseUpSoundFile = MouseUpSoundFile;
+            Settings.Default.MouseUpSoundVolume = MouseUpSoundVolume;
             Settings.Default.MouseDoubleClickSoundFile = MouseDoubleClickSoundFile;
             Settings.Default.MouseDoubleClickSoundVolume = MouseDoubleClickSoundVolume;
             Settings.Default.MouseScrollSoundFile = MouseScrollSoundFile;

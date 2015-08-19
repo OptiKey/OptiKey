@@ -275,5 +275,17 @@
     <Setting Name="MouseMoveAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
+    <Setting Name="MouseDownSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDown1.wav</Value>
+    </Setting>
+    <Setting Name="MouseUpSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseUp1.wav</Value>
+    </Setting>
+    <Setting Name="MouseDownSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseUpSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -346,6 +346,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             if (firstFinalPoint != null)
                             {
+                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+
                                 //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                                 //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
                                 //MagnifiedPointSelectionAction then it will be called immediately i.e. for the same point.
@@ -362,10 +364,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             {
                                                 Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                                 {
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                                     mouseService.MoveTo(fp1);
                                                     mouseService.LeftButtonDown();
-                                                    audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                                                    audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                     mouseService.MoveTo(fp2);
                                                     mouseService.LeftButtonUp();
                                                 };
@@ -489,13 +490,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.Debug("Pressing mouse left button down.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.LeftButtonDown();
                         }
                         else
                         {
                             Log.Debug("Releasing mouse left button.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.LeftButtonUp();
                         }
                         break;
@@ -515,13 +516,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.Debug("Pressing mouse middle button down.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.MiddleButtonDown();
                         }
                         else
                         {
                             Log.Debug("Releasing mouse middle button.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.MiddleButtonUp();
                         }
                         break;
@@ -814,13 +815,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.Debug("Pressing mouse right button down.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseService.RightButtonDown();
                         }
                         else
                         {
                             Log.Debug("Releasing mouse right button.");
-                            audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                            audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseService.RightButtonUp();
                         }
                         break;
