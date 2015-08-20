@@ -32,18 +32,18 @@
             <SolidColorBrush x:Key="KeyDownStateIsLockedDownBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDownStateIsLockedDownBackgroundBrush" Color="{StaticResource White}" />
 
-            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="KeyDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource LightGrey}" />
+            <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource White}" />
 
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="ScratchpadBackgroundBrush" Color="{StaticResource White}" />
             
-            <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource Grey}" />
+            <SolidColorBrush x:Key="ScratchpadDisabledForegroundBrush" Color="{StaticResource LightGrey}" />
             <SolidColorBrush x:Key="ScratchpadDisabledBorderBrush" Color="{StaticResource Grey}" />
-            <SolidColorBrush x:Key="ScratchpadDisabledBackgroundBrush" Color="{StaticResource LightGrey}" />
+            <SolidColorBrush x:Key="ScratchpadDisabledBackgroundBrush" Color="{StaticResource White}" />
 
             <SolidColorBrush x:Key="QuestionForegroundBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
