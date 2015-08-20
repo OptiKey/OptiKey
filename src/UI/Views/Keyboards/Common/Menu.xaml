@@ -39,7 +39,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="NUMBERS &amp; SYMBOLS"
+                      Text="NUMBERS&#x0a;&amp; SYMBOLS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
@@ -63,7 +63,7 @@
         </controls:Key>
         <controls:Key Grid.Row="0" Grid.Column="4"
                       SymbolGeometry="{StaticResource PhysicalKeysIcon}"
-                      Text="PHYSICAL KEYS"
+                      Text="PHYSICAL&#x0a;KEYS"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
@@ -88,7 +88,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="2"
                       SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="DECREASE OPACITY"
+                      Text="DECREASE&#x0a;OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
@@ -96,7 +96,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="INCREASE OPACITY"
+                      Text="INCREASE&#x0a;OPACITY"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
@@ -129,7 +129,7 @@
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2"
                       SymbolGeometry="{StaticResource SizeAndPositionIcon}"
-                      Text="SIZE &amp; POSITION"
+                      Text="SIZE &amp;&#x0a;POSITION"
                       SharedSizeGroup="KeyWithSymbolAndText">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
