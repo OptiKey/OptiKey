@@ -10,7 +10,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         public Menu()
         {
             InitializeComponent();
-            Loaded += (sender, args) => KeyboardSupportsCollapsedDock = false;
         }
     }
 }

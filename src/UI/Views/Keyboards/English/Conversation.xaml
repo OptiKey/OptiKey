@@ -8,8 +8,7 @@
                        xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        mc:Ignorable="d" 
-                       d:DesignHeight="300" d:DesignWidth="300"
-                       KeyboardSupportsCollapsedDock="{Binding Path=DataContext.KeyboardSupportsCollapsedDock, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}"> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+                       d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />

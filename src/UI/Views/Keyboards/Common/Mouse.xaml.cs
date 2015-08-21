@@ -7,10 +7,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
     /// </summary>
     public partial class Mouse : KeyboardView
     {
-        public Mouse()
+        public Mouse() : base(supportsCollapsedDock:true)
         {
             InitializeComponent();
-            Loaded += (sender, args) => KeyboardSupportsCollapsedDock = true;
         }
     }
 }

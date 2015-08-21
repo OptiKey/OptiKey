@@ -10,7 +10,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
         public Alpha()
         {
             InitializeComponent();
-            Loaded += (sender, args) => KeyboardSupportsCollapsedDock = false;
         }
     }
 }

@@ -100,9 +100,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             AttachScratchpadEnabledListener();
 
-            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(supportsCollapsedDock =>
+            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(keyboardSupportsCollapsedDock =>
             {
-                if (!supportsCollapsedDock
+                if (!keyboardSupportsCollapsedDock
                     && Settings.Default.MainWindowState == WindowStates.Docked
                     && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
                 {

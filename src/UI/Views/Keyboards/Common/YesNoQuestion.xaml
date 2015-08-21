@@ -6,8 +6,7 @@
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        mc:Ignorable="d" 
-                       d:DesignHeight="300" d:DesignWidth="300"
-                       KeyboardSupportsCollapsedDock="{Binding Path=DataContext.KeyboardSupportsCollapsedDock, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}"> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+                       d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
@@ -57,6 +56,7 @@
         <controls:Key Grid.Row="4" Grid.Column="4" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
+                      Text="YES"
                       HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
@@ -67,6 +67,7 @@
         <controls:Key Grid.Row="4" Grid.Column="14" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
+                      Text="NO"
                       HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
