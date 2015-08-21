@@ -44,6 +44,7 @@
 
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource SuggestionLeftIcon}"
+                      Text="PREVIOUS"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
@@ -127,6 +128,7 @@
         </Grid>
         <controls:Key Grid.Row="0" Grid.Column="10"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
+                      Text="NEXT"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
@@ -135,6 +137,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
+                      Text="SAVE&#x0a;WORD OR&#x0a;PHRASE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
@@ -142,6 +145,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
+                      Text="CLEAR"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
@@ -151,6 +155,7 @@
                              Text="{Binding DataContext.TextOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
         <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
+                      Text="SPEAK"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
@@ -158,6 +163,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
                       SymbolGeometry="{StaticResource SimulateKeyStrokes}"
+                      Text="SIMULATE&#x0a;KEYBOARD"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />

@@ -241,6 +241,7 @@
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
+                      Text="BACK&#x0a;ONE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
@@ -248,6 +249,7 @@
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
+                      Text="BACK&#x0a;WORD"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
@@ -258,6 +260,7 @@
         <controls:Key Grid.Row="5" Grid.Column="0" />
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
+                      Text="SHIFT"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
@@ -265,6 +268,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
+                      Text="RE-CALIBRATE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
@@ -279,6 +283,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
+                      Text="SPACE"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
@@ -294,6 +299,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
+                      Text="MULTI-KEY&#x0a;SELECT"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
@@ -301,6 +307,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
+                      Text="ENTER"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
@@ -312,6 +319,7 @@
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="BACK"
                                           SharedSizeGroup="KeyWithSymbol">
                                 <controls:Key.Value>
                                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
@@ -324,6 +332,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="QUIT"
                                                   SharedSizeGroup="KeyWithSymbol">
                                         <controls:Key.Value>
                                             <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />

@@ -55,71 +55,71 @@
 
         <controls:Key Grid.Row="2" Grid.Column="0" />
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                          Text="F1"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F1"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F1}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                          Text="F2"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F2"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F2}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
-                          Text="F3"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F3"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F3}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
-                          Text="F4"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F4"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F4}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
-                          Text="F5"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F5"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F5}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
-                          Text="F6"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F6"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F6}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
-                          Text="F7"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F7"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F7}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2"
-                          Text="F8"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F8"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F8}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2"
-                          Text="F9"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F9"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F9}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
-                          Text="F10"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F10"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F10}" />
             </controls:Key.Value>
@@ -127,78 +127,80 @@
         <controls:Key Grid.Row="2" Grid.Column="21" />
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                          Text="ESC"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="ESC"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Escape}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                          Text="BREAK"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="BREAK"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Break}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                          Text="DEL"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="DEL"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Delete}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                          Text="INS"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="INS"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Insert}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
-                          Text="PG&#x0a;UP"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="PG&#x0a;UP"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgUp}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource UpArrowKeyIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource UpArrowKeyIcon}"
+                      Text="UP&#x0a;ARROW"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowUp}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
-                          Text="PG&#x0a;DN"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="PG&#x0a;DN"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PgDn}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                          Text="HOME"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="HOME"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Home}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                          Text="F11"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F11"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F11}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                          Text="F12"
-                          SharedSizeGroup="FunctionKey">
+                      Text="F12"
+                      SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F12}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource MenuIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource MenuIcon}"
+                      Text="MENU"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
             </controls:Key.Value>
@@ -206,76 +208,83 @@
 
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
+                      Text="SHIFT"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                          Text="PRNT&#x0a;SCR"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="PRNT&#x0a;SCR"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PrintScreen}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                          Text="NUM&#x0a;LK"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="NUM&#x0a;LK"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumberLock}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                          Text="SCR&#x0a;LK"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="SCR&#x0a;LK"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ScrollLock}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource LeftArrowKeyIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource LeftArrowKeyIcon}"
+                      Text="LEFT&#x0a;ARROW"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowLeft}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource DownArrowKeyIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource DownArrowKeyIcon}"
+                      Text="DOWN&#x0a;ARROW"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowDown}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource RightArrowKeyIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource RightArrowKeyIcon}"
+                      Text="RIGHT&#x0a;ARROW"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ArrowRight}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                          Text="END"
-                          SharedSizeGroup="KeyWithDescription">
+                      Text="END"
+                      SharedSizeGroup="KeyWithDescription">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.End}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource BackOneIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource BackOneIcon}"
+                      Text="BACK&#x0a;ONE"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
-                          SymbolGeometry="{StaticResource BackManyIcon}"
-                          SharedSizeGroup="KeyWithSymbol">
+                      SymbolGeometry="{StaticResource BackManyIcon}"
+                      Text="BACK&#x0a;WORD"
+                      SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AlphaIcon}"
+                      Text="LETTERS"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
@@ -291,6 +300,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource WinIcon}"
+                      Text="WIN"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftWin}" />
@@ -306,6 +316,7 @@
         <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
+                      Text="SPACE"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
@@ -322,6 +333,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource EnterIcon}"
+                      Text="ENTER"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
@@ -329,6 +341,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="MOUSE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
@@ -336,6 +349,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="SLEEP"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
