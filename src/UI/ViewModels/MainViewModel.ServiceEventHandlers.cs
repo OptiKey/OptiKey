@@ -770,7 +770,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse move to bottom selected.");
                         Action simulateMoveToBottom = () =>
                         {
-                            var moveToPoint = new Point(CurrentPositionPoint.X, CurrentPositionPoint.Y + Settings.Default.MouseMoveAmountInPixels);
+                            var cursorPosition = mouseService.GetCursorPosition();
+                            var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y + Settings.Default.MouseMoveAmountInPixels);
                             Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseService.MoveTo(moveToPoint);
                         };
@@ -782,7 +783,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse move to left selected.");
                         Action simulateMoveToLeft = () =>
                         {
-                            var moveToPoint = new Point(CurrentPositionPoint.X - Settings.Default.MouseMoveAmountInPixels, CurrentPositionPoint.Y);
+                            var cursorPosition = mouseService.GetCursorPosition();
+                            var moveToPoint = new Point(cursorPosition.X - Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
                             Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseService.MoveTo(moveToPoint);
                         };
@@ -794,7 +796,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse move to right selected.");
                         Action simulateMoveToRight = () =>
                         {
-                            var moveToPoint = new Point(CurrentPositionPoint.X + Settings.Default.MouseMoveAmountInPixels, CurrentPositionPoint.Y);
+                            var cursorPosition = mouseService.GetCursorPosition();
+                            var moveToPoint = new Point(cursorPosition.X + Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
                             Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseService.MoveTo(moveToPoint);
                         };
@@ -806,7 +809,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Mouse move to top selected.");
                         Action simulateMoveToTop = () =>
                         {
-                            var moveToPoint = new Point(CurrentPositionPoint.X, CurrentPositionPoint.Y - Settings.Default.MouseMoveAmountInPixels);
+                            var cursorPosition = mouseService.GetCursorPosition();
+                            var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y - Settings.Default.MouseMoveAmountInPixels);
                             Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseService.MoveTo(moveToPoint);
                         };
