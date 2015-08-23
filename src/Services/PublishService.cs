@@ -259,18 +259,6 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ScrollMouseWheelUpAndLeft(int clicks)
-        {
-            ScrollMouseWheelUp(clicks);
-            ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollMouseWheelUpAndRight(int clicks)
-        {
-            ScrollMouseWheelUp(clicks);
-            ScrollMouseWheelRight(clicks);
-        }
-
         public void ScrollMouseWheelDown(int clicks)
         {
             try
@@ -282,18 +270,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 PublishError(this, exception);
             }
-        }
-
-        public void ScrollMouseWheelDownAndLeft(int clicks)
-        {
-            ScrollMouseWheelDown(clicks);
-            ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollMouseWheelDownAndRight(int clicks)
-        {
-            ScrollMouseWheelDown(clicks);
-            ScrollMouseWheelRight(clicks);
         }
 
         public void ScrollMouseWheelLeft(int clicks)

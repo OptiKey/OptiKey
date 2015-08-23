@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -560,8 +561,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.LeftButtonClick();
+                                    mouseService.MoveAndLeftClick(fp, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -582,8 +582,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse left double click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.LeftButtonDoubleClick();
+                                    mouseService.MoveAndLeftDoubleClick(fp, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -604,8 +603,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse middle click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.MiddleButtonClick();
+                                    mouseService.MoveAndMiddleClick(fp, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -626,8 +624,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse right click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.RightButtonClick();
+                                    mouseService.MoveAndRightClick(fp, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -678,8 +675,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse scroll to bottom at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.ScrollWheelDown(Settings.Default.MouseScrollAmountInClicks);
+                                    mouseService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -700,8 +696,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse scroll to left at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.ScrollWheelLeft(Settings.Default.MouseScrollAmountInClicks);
+                                    mouseService.MoveAndScrollWheelLeft(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateScrollToLeft(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -722,8 +717,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse scroll to right at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.ScrollWheelRight(Settings.Default.MouseScrollAmountInClicks);
+                                    mouseService.MoveAndScrollWheelRight(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateScrollToRight(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -744,8 +738,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     Log.DebugFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
-                                    mouseService.MoveTo(fp);
-                                    mouseService.ScrollWheelUp(Settings.Default.MouseScrollAmountInClicks);
+                                    mouseService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(finalPoint.Value);
                                 ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup

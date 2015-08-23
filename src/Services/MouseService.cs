@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Forms;
 using log4net;
 
@@ -11,6 +12,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IPublishService publishService;
+
+        private const int DEFAULT_SLEEP_MS = 10;
 
         #endregion
 
@@ -72,6 +75,70 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Releasing middle button.");
             publishService.MiddleMouseButtonUp();
+        }
+
+        public void MoveAndLeftClick(Point point, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and left clicking{1}", point, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.LeftMouseButtonClick();
+        }
+
+        public void MoveAndLeftDoubleClick(Point point, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and double left clicking{1}", point, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.LeftMouseButtonDoubleClick();
+        }
+
+        public void MoveAndMiddleClick(Point point, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and middle clicking{1}", point, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.MiddleMouseButtonClick();
+        }
+
+        public void MoveAndRightClick(Point point, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and right clicking{1}", point, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.RightMouseButtonClick();
+        }
+
+        public void MoveAndScrollWheelUp(Point point, int clicks, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and scrolling up by {1} clicks{2}", point, clicks, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.ScrollMouseWheelUp(clicks);
+        }
+
+        public void MoveAndScrollWheelDown(Point point, int clicks, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and scrolling down by {1} clicks{2}", point, clicks, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.ScrollMouseWheelDown(clicks);
+        }
+
+        public void MoveAndScrollWheelLeft(Point point, int clicks, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and scrolling left by {1} clicks{2}", point, clicks, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.ScrollMouseWheelLeft(clicks);
+        }
+
+        public void MoveAndScrollWheelRight(Point point, int clicks, bool sleep = false)
+        {
+            Log.DebugFormat("Moving cursor to point '{0}' and scrolling right by {1} clicks{2}", point, clicks, sleep ? " (with pauses between actions)" : null);
+            publishService.MouseMouseToPoint(point);
+            Thread.Sleep(DEFAULT_SLEEP_MS);
+            publishService.ScrollMouseWheelRight(clicks);
         }
 
         public void MoveTo(Point point)
