@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
+using System.Windows;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
+using Un4seen.Bass;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -18,7 +20,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> speakCompleted;
-        private int? currentWaveOutVolume; //Volumes are scaled from 0 to 100
         
         #endregion
 
@@ -33,10 +34,9 @@ namespace JuliusSweetland.OptiKey.Services
         public AudioService()
         {
             speechSynthesiser = new SpeechSynthesizer();
-            uint tempWavOutVol = 0;
-            PInvoke.waveOutGetVolume(IntPtr.Zero, out tempWavOutVol);
-            var vol = (ushort)(tempWavOutVol & 0x0000ffff);
-            currentWaveOutVolume = vol / (ushort.MaxValue / 100);
+            BassNet.Registration(Settings.Default.BassRegistrationEmail, Settings.Default.BassRegistrationKey);
+            Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
+            Application.Current.Exit += (sender, args) => Bass.BASS_Free();
         }
 
         #endregion
@@ -83,35 +83,25 @@ namespace JuliusSweetland.OptiKey.Services
             return availableVoices;
         }
 
-        public void PlaySound(string soundLocation, int volume)
+        public void PlaySound(string file, int volume)
         {
-            if (string.IsNullOrEmpty(soundLocation)) return;
+            if (string.IsNullOrEmpty(file)) return;
 
             try
             {
-                Log.DebugFormat("Playing sound '{0}' at volume", soundLocation, volume);
+                Log.DebugFormat("Playing sound '{0}' at volume", file, volume);
 
-                try
+                // create a stream channel from a file 
+                int stream = Bass.BASS_StreamCreateFile(file, 0L, 0L, BASSFlag.BASS_DEFAULT | BASSFlag.BASS_STREAM_AUTOFREE);
+                if (stream != 0)
                 {
-                    if (currentWaveOutVolume == null || currentWaveOutVolume.Value != volume)
-                    {
-                        int newVolume = ((ushort.MaxValue / 100) * volume);
-                        uint newVolumeAllChannels = (((uint)newVolume & 0x0000ffff) | ((uint)newVolume << 16)); //Set the volume on left and right channels
-                        PInvoke.waveOutSetVolume(IntPtr.Zero, newVolumeAllChannels);
-                        currentWaveOutVolume = volume;
-                    }
+                    Bass.BASS_ChannelSetAttribute(stream, BASSAttribute.BASS_ATTRIB_VOL, (volume/100f));
+                    Bass.BASS_ChannelPlay(stream, false);
                 }
-                catch (Exception exception)
+                else
                 {
-                    var customException = new ApplicationException(
-                        string.Format("There was a problem setting the wave out volume to '{0}'", volume), exception);
-                    
-                    //Don't publish error - the error handler tries to play a sound file which could loop us right back here
-                    Log.Error("Exception encountered within the AudioService", customException);
+                    throw new ApplicationException(string.Format("Bass was unable to create a stream from file '{0}'", file));
                 }
-
-                var player = new System.Media.SoundPlayer(soundLocation);
-                player.Play();
             }
             catch (Exception exception)
             {
@@ -145,6 +135,15 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 speechSynthesiser.SpeakAsyncCancelAll();
             }
+        }
+
+        /// <summary>
+        /// Set volume for OptiKey (not system wide device volumes) on a scale of 0-100 (where 100 is the current output device volume)
+        /// </summary>
+        private void SetVolume(int volume)
+        {
+            uint volumeAllChannels = (((uint)volume & 0x0000ffff) | ((uint)volume << 16)); //Set the volume on left and right channels
+            PInvoke.waveOutSetVolume(IntPtr.Zero, volumeAllChannels);
         }
 
         private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)

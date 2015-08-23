@@ -287,5 +287,11 @@
     <Setting Name="MouseUpSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="BassRegistrationEmail" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">optikeyfeedback@gmail.com</Value>
+    </Setting>
+    <Setting Name="BassRegistrationKey" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2X24252025152222</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

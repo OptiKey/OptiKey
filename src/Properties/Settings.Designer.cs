@@ -1259,5 +1259,31 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["MouseUpSoundVolume"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("optikeyfeedback@gmail.com")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string BassRegistrationEmail {
+            get {
+                return ((string)(this["BassRegistrationEmail"]));
+            }
+            set {
+                this["BassRegistrationEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2X24252025152222")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string BassRegistrationKey {
+            get {
+                return ((string)(this["BassRegistrationKey"]));
+            }
+            set {
+                this["BassRegistrationKey"] = value;
+            }
+        }
     }
 }

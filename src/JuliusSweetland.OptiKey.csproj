@@ -70,6 +70,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ext\Bass\Bass.Net.dll</HintPath>
+    </Reference>
     <Reference Include="EyeXFramework">
       <HintPath>..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
@@ -514,6 +518,10 @@
     <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
     <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
+    <Content Include="..\ext\Bass\bass.dll">
+      <Link>bass.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
       <Link>Tobii.EyeX.Client.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
