@@ -386,7 +386,15 @@
                     </Setter.Value>    
                 </Setter>
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding ., RelativeSource={RelativeSource AncestorType={x:Type controls:KeyboardHost}}, Converter={StaticResource WidthGreaterThanHeight}}" Value="False">
+                    <DataTrigger Value="False">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource WidthGreaterThanHeight}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </DataTrigger.Binding>
                         <Setter Property="Content">
                             <Setter.Value>
                                 <!--Keyboard is portrait-->

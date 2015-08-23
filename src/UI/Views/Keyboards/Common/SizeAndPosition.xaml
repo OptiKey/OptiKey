@@ -17,322 +17,652 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:IntToSingularPluralStringFormatter x:Key="IntToSingularPluralStringFormatter" />
+                    <valueConverters:WidthGreaterThanHeight x:Key="WidthGreaterThanHeight" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    
-    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
-          Grid.IsSharedSizeScope="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
-                      Text="EXPAND&#x0a;UP &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="1"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                      Text="EXPAND&#x0a;UP"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTop}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="2"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
-                      Text="EXPAND&#x0a;UP &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="4"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
-                      Text="SHRINK&#x0a;DOWN &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="5"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                      Text="SHRINK&#x0a;DOWN"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTop}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="6"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
-                      Text="SHRINK&#x0a;DOWN &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
-                      Text="MOVE&#x0a;UP &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="9" 
-                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                      Text="MOVE&#x0a;UP"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTop}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
-                      Text="MOVE&#x0a;UP &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="12"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftBoundaryIcon}"
-                      Text="JUMP&#x0a;UP &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeftBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="13"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
-                      Text="JUMP&#x0a;UP"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="14"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopRightBoundaryIcon}"
-                      Text="JUMP&#x0a;UP &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRightBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        
-        <controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
-                      Text="EXPAND&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="1"
-                      Text="EXPAND"
-                      SharedSizeGroup="KeyWithText" />
-        <controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
-                      Text="EXPAND&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="4"
-                      SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
-                      Text="SHRINK&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="5"
-                      Text="SHRINK"
-                      SharedSizeGroup="KeyWithText" />
-        <controls:Key Grid.Row="1" Grid.Column="6"
-                      SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
-                      Text="SHRINK&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
-                      Text="MOVE&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="9"
-                      Text="MOVE"
-                      SharedSizeGroup="KeyWithText" />
-        <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
-                      Text="MOVE&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="12"
-                      SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
-                      Text="JUMP&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeftBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="13"
-                      Text="JUMP"
-                      SharedSizeGroup="KeyWithText" />
-        <controls:Key Grid.Row="1" Grid.Column="14"
-                      SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
-                      Text="JUMP&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        
-        <controls:Key Grid.Row="2" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
-                      Text="EXPAND&#x0a;DOWN &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="1"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                      Text="EXPAND&#x0a;DOWN"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottom}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="2"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
-                      Text="EXPAND&#x0a;DOWN &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="4"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
-                      Text="SHRINK&#x0a;UP &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="5"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
-                      Text="SHRINK&#x0a;UP"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottom}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="6"
-                      SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
-                      Text="SHRINK&#x0a;UP &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="8"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
-                      Text="MOVE&#x0a;DOWN &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeft}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="9"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
-                      Text="MOVE&#x0a;DOWN"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottom}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="10"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
-                      Text="MOVE&#x0a;DOWN &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRight}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="12"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomLeftBoundaryIcon}"
-                      Text="JUMP&#x0a;DOWN &amp;&#x0a;LEFT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeftBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="13"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
-                      Text="JUMP&#x0a;DOWN"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomBoundary}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="14"
-                      SymbolGeometry="{StaticResource ArrowPointingToBottomRightBoundaryIcon}"
-                      Text="JUMP&#x0a;DOWN &amp;&#x0a;RIGHT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRightBoundaries}" />
-            </controls:Key.Value>
-        </controls:Key>
-        
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="11"
-                      Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Adjust by {0} pixel|Adjust by {0} pixels'}"><!--New line in XML is &#x0a;-->
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="3"
-                      SymbolGeometry="{StaticResource BackIcon}"
-                      Text="BACK"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-    </Grid>
+    <ContentControl Background="{DynamicResource KeyDefaultBackgroundBrush}"
+                    Grid.IsSharedSizeScope="True">
+        <ContentControl.Style>
+            <Style TargetType ="{x:Type ContentControl}">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <!--Keyboard is landscape-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <controls:Key Grid.Row="0" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                          Text="EXPAND&#x0a;UP &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="1"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                          Text="EXPAND&#x0a;UP"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTop}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                          Text="EXPAND&#x0a;UP &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                          Text="SHRINK&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="5"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                          Text="SHRINK&#x0a;DOWN"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTop}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="6"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                          Text="SHRINK&#x0a;DOWN &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="8"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                          Text="MOVE&#x0a;UP &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="9" 
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                          Text="MOVE&#x0a;UP"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTop}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="10"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                          Text="MOVE&#x0a;UP &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="12"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopLeftBoundaryIcon}"
+                                          Text="JUMP&#x0a;UP &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeftBoundaries}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="13"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
+                                          Text="JUMP&#x0a;UP"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopBoundary}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="14"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopRightBoundaryIcon}"
+                                          Text="JUMP&#x0a;UP &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRightBoundaries}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                          Text="EXPAND&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="1"
+                                          Text="EXPAND"
+                                          SharedSizeGroup="KeyWithText" />
+                            <controls:Key Grid.Row="1" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                          Text="EXPAND&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                          Text="SHRINK&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="5"
+                                          Text="SHRINK"
+                                          SharedSizeGroup="KeyWithText" />
+                            <controls:Key Grid.Row="1" Grid.Column="6"
+                                          SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                          Text="SHRINK&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="8"
+                                          SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                          Text="MOVE&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="9"
+                                          Text="MOVE"
+                                          SharedSizeGroup="KeyWithText" />
+                            <controls:Key Grid.Row="1" Grid.Column="10"
+                                          SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                          Text="MOVE&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="12"
+                                          SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
+                                          Text="JUMP&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeftBoundary}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="13"
+                                          Text="JUMP"
+                                          SharedSizeGroup="KeyWithText" />
+                            <controls:Key Grid.Row="1" Grid.Column="14"
+                                          SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
+                                          Text="JUMP&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+
+                            <controls:Key Grid.Row="2" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                          Text="EXPAND&#x0a;DOWN &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="1"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                          Text="EXPAND&#x0a;DOWN"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottom}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                          Text="EXPAND&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                          Text="SHRINK&#x0a;UP &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="5"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                          Text="SHRINK&#x0a;UP"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottom}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="6"
+                                          SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                          Text="SHRINK&#x0a;UP &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="8"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                          Text="MOVE&#x0a;DOWN &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeft}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="9"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                          Text="MOVE&#x0a;DOWN"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottom}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="10"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                          Text="MOVE&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRight}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="12"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomLeftBoundaryIcon}"
+                                          Text="JUMP&#x0a;DOWN &amp;&#x0a;LEFT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeftBoundaries}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="13"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
+                                          Text="JUMP&#x0a;DOWN"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomBoundary}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="14"
+                                          SymbolGeometry="{StaticResource ArrowPointingToBottomRightBoundaryIcon}"
+                                          Text="JUMP&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRightBoundaries}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="11"
+                                          Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Adjust by {0} pixel|Adjust by {0} pixels'}"> <!--New line in XML is &#x0a;-->
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="3"
+                                          SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="BACK"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger Value="False">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource WidthGreaterThanHeight}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <!--Keyboard is portrait-->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="5" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="5" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <controls:Key Grid.Row="0" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                                  Text="EXPAND&#x0a;UP &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                  Text="EXPAND&#x0a;UP"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTop}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                                  Text="EXPAND&#x0a;UP &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToTopAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                                  Text="SHRINK&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="5"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                  Text="SHRINK&#x0a;DOWN"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTop}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                                  Text="SHRINK&#x0a;DOWN &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromTopAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                  Text="EXPAND&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="1"
+                                                  Text="EXPAND"
+                                                  SharedSizeGroup="KeyWithText" />
+                                    <controls:Key Grid.Row="1" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                  Text="EXPAND&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                  Text="SHRINK&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="5"
+                                                  Text="SHRINK"
+                                                  SharedSizeGroup="KeyWithText" />
+                                    <controls:Key Grid.Row="1" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                  Text="SHRINK&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                                  Text="EXPAND&#x0a;DOWN &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                  Text="EXPAND&#x0a;DOWN"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottom}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                                  Text="EXPAND&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandToBottomAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                                  Text="SHRINK&#x0a;UP &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="5"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                  Text="SHRINK&#x0a;UP"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottom}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                                  Text="SHRINK&#x0a;UP &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ShrinkFromBottomAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopLeftIcon}"
+                                                  Text="MOVE&#x0a;UP &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="1" 
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopIcon}"
+                                                  Text="MOVE&#x0a;UP"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTop}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopRightIcon}"
+                                                  Text="MOVE&#x0a;UP &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopLeftBoundaryIcon}"
+                                                  Text="JUMP&#x0a;UP &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndLeftBoundaries}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="5"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopBoundaryIcon}"
+                                                  Text="JUMP&#x0a;UP"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopBoundary}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToTopRightBoundaryIcon}"
+                                                  Text="JUMP&#x0a;UP &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToTopAndRightBoundaries}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="5" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToLeftIcon}"
+                                                  Text="MOVE&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="5" Grid.Column="1"
+                                                  Text="MOVE"
+                                                  SharedSizeGroup="KeyWithText" />
+                                    <controls:Key Grid.Row="5" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"
+                                                  Text="MOVE&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="5" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToLeftBoundaryIcon}"
+                                                  Text="JUMP&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToLeftBoundary}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="5" Grid.Column="5"
+                                                  Text="JUMP"
+                                                  SharedSizeGroup="KeyWithText" />
+                                    <controls:Key Grid.Row="5" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToRightBoundaryIcon}"
+                                                  Text="JUMP&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToRightBoundary}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomLeftIcon}"
+                                                  Text="MOVE&#x0a;DOWN &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeft}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomIcon}"
+                                                  Text="MOVE&#x0a;DOWN"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottom}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomRightIcon}"
+                                                  Text="MOVE&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRight}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="4"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomLeftBoundaryIcon}"
+                                                  Text="JUMP&#x0a;DOWN &amp;&#x0a;LEFT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndLeftBoundaries}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="5"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomBoundaryIcon}"
+                                                  Text="JUMP&#x0a;DOWN"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomBoundary}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="6" Grid.Column="6"
+                                                  SymbolGeometry="{StaticResource ArrowPointingToBottomRightBoundaryIcon}"
+                                                  Text="JUMP&#x0a;DOWN &amp;&#x0a;RIGHT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveToBottomAndRightBoundaries}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                   <controls:Key Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"
+                                                  Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter='{}Adjust by {0} pixel|Adjust by {0} pixels'}"> <!--New line in XML is &#x0a;-->
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MoveAndResizeAdjustmentAmount}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="3"
+                                                  SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="BACK"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                </Grid>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
 </controls:KeyboardView>

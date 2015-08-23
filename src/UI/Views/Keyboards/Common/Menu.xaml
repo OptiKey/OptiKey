@@ -6,149 +6,316 @@
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+                       xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:WidthGreaterThanHeight x:Key="WidthGreaterThanHeight" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
-    
-    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
-          Grid.IsSharedSizeScope="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="LETTERS"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="1"
-                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="NUMBERS&#x0a;&amp; SYMBOLS"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="2"
-                      SymbolGeometry="{StaticResource AccentedLettersIcon}"
-                      Text="DIACRITICS"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Diacritic1Keyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="3"
-                      SymbolGeometry="{StaticResource CurrenciesIcon}"
-                      Text="CURRENCIES"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="0" Grid.Column="4"
-                      SymbolGeometry="{StaticResource PhysicalKeysIcon}"
-                      Text="PHYSICAL&#x0a;KEYS"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-
-        <controls:Key Grid.Row="1" Grid.Column="0"
-                      SymbolGeometry="{StaticResource ConversationIcon}"
-                      Text="CONVERSATION"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="1"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="MOUSE"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="2"
-                      SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
-                      Text="DECREASE&#x0a;OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="3"
-                      SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
-                      Text="INCREASE&#x0a;OPACITY"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="4"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="SLEEP"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
-            </controls:Key.Value>
-        </controls:Key>
-
-        <controls:Key Grid.Row="2" Grid.Column="0"
-                      SymbolGeometry="{StaticResource QuitIcon}"
-                      Text="QUIT"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="1"
-                      SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="RE-CALIBRATE"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="2"
-                      SymbolGeometry="{StaticResource SizeAndPositionIcon}"
-                      Text="SIZE &amp;&#x0a;POSITION"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="3"
-                      SymbolGeometry="{StaticResource MinimiseIcon}"
-                      Text="MINIMISE"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="4"
-                      SymbolGeometry="{StaticResource BackIcon}"
-                      Text="BACK"
-                      SharedSizeGroup="KeyWithSymbolAndText">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
-    </Grid>
+    <ContentControl Background="{DynamicResource KeyDefaultBackgroundBrush}"
+                    Grid.IsSharedSizeScope="True">
+        <ContentControl.Style>
+            <Style TargetType ="{x:Type ContentControl}">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <!--Keyboard is landscape-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <controls:Key Grid.Row="0" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource AlphaIcon}"
+                                          Text="LETTERS"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="1"
+                                          SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                                          Text="NUMBERS&#x0a;&amp; SYMBOLS"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource AccentedLettersIcon}"
+                                          Text="DIACRITICS"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Diacritic1Keyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="3"
+                                          SymbolGeometry="{StaticResource CurrenciesIcon}"
+                                          Text="CURRENCIES"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="0" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource PhysicalKeysIcon}"
+                                          Text="PHYSICAL&#x0a;KEYS"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource ConversationIcon}"
+                                          Text="CONVERSATION"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="1"
+                                          SymbolGeometry="{StaticResource MouseIcon}"
+                                          Text="MOUSE"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                                          Text="DECREASE&#x0a;OPACITY"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="3"
+                                          SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                                          Text="INCREASE&#x0a;OPACITY"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="1" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource SleepIcon}"
+                                          Text="SLEEP"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="0"
+                                          SymbolGeometry="{StaticResource QuitIcon}"
+                                          Text="QUIT"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="1"
+                                          SymbolGeometry="{StaticResource CalibrateIcon}"
+                                          Text="RE-CALIBRATE"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="2"
+                                          SymbolGeometry="{StaticResource SizeAndPositionIcon}"
+                                          Text="SIZE &amp;&#x0a;POSITION"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="3"
+                                          SymbolGeometry="{StaticResource MinimiseIcon}"
+                                          Text="MINIMISE"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                            <controls:Key Grid.Row="2" Grid.Column="4"
+                                          SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="BACK"
+                                          SharedSizeGroup="KeyWithSymbolAndText">
+                                <controls:Key.Value>
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                </controls:Key.Value>
+                            </controls:Key>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <DataTrigger Value="False">
+                        <DataTrigger.Binding>
+                            <MultiBinding Converter="{StaticResource WidthGreaterThanHeight}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType={x:Type controls:KeyboardHost}}" />
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </DataTrigger.Binding>
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <!--Keyboard is portrait-->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <controls:Key Grid.Row="0" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="LETTERS"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                                                  Text="NUMBERS&#x0a;&amp; SYMBOLS"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="0" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource AccentedLettersIcon}"
+                                                  Text="DIACRITICS"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Diacritic1Keyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource CurrenciesIcon}"
+                                                  Text="CURRENCIES"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource PhysicalKeysIcon}"
+                                                  Text="PHYSICAL&#x0a;KEYS"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="1" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource ConversationIcon}"
+                                                  Text="CONVERSATION"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource MouseIcon}"
+                                                  Text="MOUSE"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource DecreaseOpacityIcon}"
+                                                  Text="DECREASE&#x0a;OPACITY"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.DecreaseOpacity}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="2" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource IncreaseOpacityIcon}"
+                                                  Text="INCREASE&#x0a;OPACITY"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.IncreaseOpacity}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="3" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource SizeAndPositionIcon}"
+                                                  Text="SIZE &amp;&#x0a;POSITION"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SizeAndPositionKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="3" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource CalibrateIcon}"
+                                                  Text="RE-CALIBRATE"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="3" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource SleepIcon}"
+                                                  Text="SLEEP"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="0"
+                                                  SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="QUIT"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="1"
+                                                  SymbolGeometry="{StaticResource MinimiseIcon}"
+                                                  Text="MINIMISE"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Minimise}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                    <controls:Key Grid.Row="4" Grid.Column="2"
+                                                  SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="BACK"
+                                                  SharedSizeGroup="KeyWithSymbolAndText">
+                                        <controls:Key.Value>
+                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
+                                        </controls:Key.Value>
+                                    </controls:Key>
+                                </Grid>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
 </controls:KeyboardView>
