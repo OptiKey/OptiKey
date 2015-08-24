@@ -183,6 +183,39 @@
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="False">
                         <Setter Property="Fill" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
+
+                    <!--Symbol Orientation to right-->
+                    <DataTrigger Binding="{Binding Path=SymbolOrientation, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:SymbolOrientations.Right}">
+                        <Setter Property="LayoutTransform">
+                            <Setter.Value>
+                                <TransformGroup>
+                                    <RotateTransform Angle="90"/>
+                                </TransformGroup>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <!--Symbol Orientation to bottom-->
+                    <DataTrigger Binding="{Binding Path=SymbolOrientation, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:SymbolOrientations.Bottom}">
+                        <Setter Property="LayoutTransform">
+                            <Setter.Value>
+                                <TransformGroup>
+                                    <RotateTransform Angle="180"/>
+                                </TransformGroup>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <!--Symbol Orientation to left-->
+                    <DataTrigger Binding="{Binding Path=SymbolOrientation, RelativeSource={RelativeSource AncestorType=controls:Key}}" Value="{x:Static enums:SymbolOrientations.Left}">
+                        <Setter Property="LayoutTransform">
+                            <Setter.Value>
+                                <TransformGroup>
+                                    <RotateTransform Angle="270"/>
+                                </TransformGroup>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
 

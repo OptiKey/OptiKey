@@ -176,6 +176,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(SymbolGeometryProperty, value); }
         }
 
+        public static readonly DependencyProperty SymbolOrientationProperty =
+            DependencyProperty.Register("SymbolOrientation", typeof(SymbolOrientations), typeof(Key), new PropertyMetadata(SymbolOrientations.Top));
+
+        public SymbolOrientations SymbolOrientation
+        {
+            get { return (SymbolOrientations)GetValue(SymbolOrientationProperty); }
+            set { SetValue(SymbolOrientationProperty, value); }
+        }
+
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(Key), new PropertyMetadata(default(string), TextChanged));
 

@@ -18,6 +18,7 @@
                 <ResourceDictionary>
                     <valueConverters:IntToSingularPluralStringFormatter x:Key="IntToSingularPluralStringFormatter" />
                     <valueConverters:WidthGreaterThanHeight x:Key="WidthGreaterThanHeight" />
+                    <valueConverters:DockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -273,6 +274,14 @@
                                                               SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                               Text="COLLAPSE&#x0a;DOCK"
                                                               SharedSizeGroup="KeyWithSymbolAndText">
+                                                    <controls:Key.SymbolOrientation>
+                                                        <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                                            <MultiBinding.Bindings>
+                                                                <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
+                                                                <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
+                                                            </MultiBinding.Bindings>
+                                                        </MultiBinding>
+                                                    </controls:Key.SymbolOrientation>
                                                     <controls:Key.Value>
                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
                                                     </controls:Key.Value>
@@ -364,6 +373,14 @@
                                                         <controls:Key Grid.Row="0" Grid.Column="7"
                                                                       SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.SymbolOrientation>
+                                                                <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                                                    <MultiBinding.Bindings>
+                                                                        <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
+                                                                        <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
+                                                                    </MultiBinding.Bindings>
+                                                                </MultiBinding>
+                                                            </controls:Key.SymbolOrientation>
                                                             <controls:Key.Value>
                                                                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandDock}" />
                                                             </controls:Key.Value>
@@ -645,6 +662,14 @@
                                                                       SymbolGeometry="{StaticResource CollapseDockIcon}"
                                                                       Text="COLLAPSE DOCK"
                                                                       SharedSizeGroup="KeyWithSymbolAndText">
+                                                            <controls:Key.SymbolOrientation>
+                                                                <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                                                    <MultiBinding.Bindings>
+                                                                        <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
+                                                                        <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
+                                                                    </MultiBinding.Bindings>
+                                                                </MultiBinding>
+                                                            </controls:Key.SymbolOrientation>
                                                             <controls:Key.Value>
                                                                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.CollapseDock}" />
                                                             </controls:Key.Value>
@@ -736,6 +761,14 @@
                                                                 <controls:Key Grid.Row="7" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText">
+                                                                    <controls:Key.SymbolOrientation>
+                                                                        <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                                                            <MultiBinding.Bindings>
+                                                                                <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
+                                                                                <Binding Path="MainWindowState" Source="{x:Static properties:Settings.Default}" />
+                                                                            </MultiBinding.Bindings>
+                                                                        </MultiBinding>
+                                                                    </controls:Key.SymbolOrientation>
                                                                     <controls:Key.Value>
                                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ExpandDock}" />
                                                                     </controls:Key.Value>
