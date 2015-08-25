@@ -11,6 +11,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
@@ -145,14 +146,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
-            else if (Keyboard is ViewModelKeyboards.Conversation)
+            else if (Keyboard is ViewModelKeyboards.ConversationAlpha)
             {
                 switch (Settings.Default.Language)
                 {
                     case Languages.AmericanEnglish:
                     case Languages.BritishEnglish:
                     case Languages.CanadianEnglish:
-                        newContent = new EnglishViews.Conversation { DataContext = Keyboard };
+                        newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }

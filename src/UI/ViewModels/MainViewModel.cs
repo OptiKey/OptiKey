@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
@@ -85,7 +86,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new Conversation(null);
+                Keyboard = new ConversationAlpha(null);
                 mainWindowManipulationService.Maximise();
             }
             else

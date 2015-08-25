@@ -322,8 +322,9 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\BackActionKeyboard.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Conversation.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\Keyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
@@ -339,7 +340,7 @@
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
@@ -399,8 +400,8 @@
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Conversation.xaml.cs">
-      <DependentUpon>Conversation.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\ConversationOutput.xaml.cs">
       <DependentUpon>ConversationOutput.xaml</DependentUpon>
@@ -804,7 +805,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Conversation.xaml">
+    <Page Include="UI\Views\Keyboards\English\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

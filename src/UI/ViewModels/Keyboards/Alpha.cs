@@ -1,6 +1,8 @@
-﻿namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
+﻿using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
+
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class Alpha : IKeyboard
+    public class Alpha : Keyboard
     {
     }
 }

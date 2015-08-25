@@ -168,7 +168,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.ConversationKeyboard:
                         Log.Debug("Changing keyboard to Conversation.");
-                        Keyboard = new Conversation(() =>
+                        Keyboard = new ConversationAlpha(() =>
                         {
                             Log.Debug("Restoring window.");
                             mainWindowManipulationService.Restore();

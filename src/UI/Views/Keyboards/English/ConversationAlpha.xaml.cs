@@ -3,11 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for Conversation.xaml
+    /// Interaction logic for ConversationAlpha.xaml
     /// </summary>
-    public partial class Conversation : KeyboardView
+    public partial class ConversationAlpha : KeyboardView
     {
-        public Conversation()
+        public ConversationAlpha()
         {
             InitializeComponent();
         }
