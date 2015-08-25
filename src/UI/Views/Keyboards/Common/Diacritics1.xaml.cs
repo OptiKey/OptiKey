@@ -3,11 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
     /// <summary>
-    /// Interaction logic for Diacritic2.xaml
+    /// Interaction logic for Diacritics1.xaml
     /// </summary>
-    public partial class Diacritic2 : KeyboardView
+    public partial class Diacritics1 : KeyboardView
     {
-        public Diacritic2()
+        public Diacritics1()
         {
             InitializeComponent();
         }

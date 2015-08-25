@@ -1,7 +1,6 @@
 ﻿using System;
-using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
-namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
+namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base
 {
     public abstract class BackActionKeyboard : Keyboard, IBackAction
     {

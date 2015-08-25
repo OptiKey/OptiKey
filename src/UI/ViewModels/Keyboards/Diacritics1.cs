@@ -2,7 +2,7 @@
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class Diacritic2 : Keyboard
+    public class Diacritics1 : Keyboard
     {
     }
 }

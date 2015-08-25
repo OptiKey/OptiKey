@@ -293,5 +293,8 @@
     <Setting Name="BassRegistrationKey" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">2X24252025152222</Value>
     </Setting>
+    <Setting Name="StartupKeyboard" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keyboards" Scope="User">
+      <Value Profile="(Default)">Alpha</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

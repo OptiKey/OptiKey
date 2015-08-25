@@ -980,8 +980,7 @@ namespace JuliusSweetland.OptiKey.Services
                         dockPosition == DockEdges.Top || dockPosition == DockEdges.Bottom
                             ? ((window.ActualHeight / screenBoundsInDp.Height) / getFullDockThicknessAsPercentageOfScreen()) * 10000
                             : ((window.ActualWidth / screenBoundsInDp.Width) / getFullDockThicknessAsPercentageOfScreen()) * 10000;
-                    saveCollapsedDockThicknessAsPercentageOfFullDockThickness(
-                        collapsedDockThicknessAsPercentageOfFullDockThickness);
+                    saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
                     break;
             }
         }

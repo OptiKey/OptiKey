@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using Size = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SizeAndPosition;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
@@ -180,17 +181,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.Diacritic1Keyboard:
                         Log.Debug("Changing keyboard to Diacritic1.");
-                        Keyboard = new Diacritic1();
+                        Keyboard = new Diacritics1();
                         break;
 
                     case FunctionKeys.Diacritic2Keyboard:
                         Log.Debug("Changing keyboard to Diacritic2.");
-                        Keyboard = new Diacritic2();
+                        Keyboard = new Diacritics2();
                         break;
 
                     case FunctionKeys.Diacritic3Keyboard:
                         Log.Debug("Changing keyboard to Diacritic3.");
-                        Keyboard = new Diacritic3();
+                        Keyboard = new Diacritics3();
                         break;
 
                     case FunctionKeys.BackFromKeyboard:

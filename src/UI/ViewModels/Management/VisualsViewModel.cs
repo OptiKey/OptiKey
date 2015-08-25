@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -101,6 +102,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 }
 
                 return null;
+            }
+        }
+        
+        public List<KeyValuePair<string, Enums.Keyboards>> StartupKeyboards
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.Keyboards>>
+                {
+                    new KeyValuePair<string, Enums.Keyboards>("Alpha", Enums.Keyboards.Alpha),
+                    new KeyValuePair<string, Enums.Keyboards>("Conversation Alpha", Enums.Keyboards.ConversationAlpha),
+                    new KeyValuePair<string, Enums.Keyboards>("Currencies 1", Enums.Keyboards.Currencies1),
+                    new KeyValuePair<string, Enums.Keyboards>("Currencies 2", Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 1", Enums.Keyboards.Diacritics1),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 2", Enums.Keyboards.Diacritics2),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 3", Enums.Keyboards.Diacritics3),
+                    new KeyValuePair<string, Enums.Keyboards>("Menu", Enums.Keyboards.Menu),
+                    new KeyValuePair<string, Enums.Keyboards>("Minimised", Enums.Keyboards.Minimised),
+                    new KeyValuePair<string, Enums.Keyboards>("Mouse", Enums.Keyboards.Mouse),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 1", Enums.Keyboards.NumericAndSymbols1),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 2", Enums.Keyboards.NumericAndSymbols2),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 3", Enums.Keyboards.NumericAndSymbols3),
+                    new KeyValuePair<string, Enums.Keyboards>("Physical Keys", Enums.Keyboards.PhysicalKeys),
+                    new KeyValuePair<string, Enums.Keyboards>("Size & Position", Enums.Keyboards.SizeAndPosition)
+                };
             }
         }
         
@@ -218,6 +244,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref conversationOnlyMode, value); }
         }
 
+        private Enums.Keyboards startupKeyboard;
+        public Enums.Keyboards StartupKeyboard
+        {
+            get { return startupKeyboard; }
+            set { SetProperty(ref startupKeyboard, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
@@ -242,6 +275,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
+            StartupKeyboard = Settings.Default.StartupKeyboard;
         }
 
         public void ApplyChanges()
@@ -259,6 +293,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
+            Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.Save();
         }
 

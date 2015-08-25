@@ -165,17 +165,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.Currencies2 { DataContext = Keyboard };
             }
-            else if (Keyboard is ViewModelKeyboards.Diacritic1)
+            else if (Keyboard is ViewModelKeyboards.Diacritics1)
             {
-                newContent = new CommonViews.Diacritic1 { DataContext = Keyboard };
+                newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
             }
-            else if (Keyboard is ViewModelKeyboards.Diacritic2)
+            else if (Keyboard is ViewModelKeyboards.Diacritics2)
             {
-                newContent = new CommonViews.Diacritic2 { DataContext = Keyboard };
+                newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
             }
-            else if (Keyboard is ViewModelKeyboards.Diacritic3)
+            else if (Keyboard is ViewModelKeyboards.Diacritics3)
             {
-                newContent = new CommonViews.Diacritic3 { DataContext = Keyboard };
+                newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {
