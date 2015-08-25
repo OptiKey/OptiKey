@@ -41,7 +41,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.publishService = publishService;
             this.dictionaryService = dictionaryService;
 
-            ReactToPublishingStateChanges();
+            ReactToSimulateKeyStrokesChanges();
             ReactToPublishableKeyDownStateChanges();
         }
 
@@ -329,7 +329,7 @@ namespace JuliusSweetland.OptiKey.Services
             GenerateAutoCompleteSuggestions();
         }
 
-        private void ReactToPublishingStateChanges()
+        private void ReactToSimulateKeyStrokesChanges()
         {
             keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
                 .Subscribe(value =>

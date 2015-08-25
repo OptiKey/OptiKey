@@ -428,17 +428,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Changing keyboard to Mouse.");
                         Action backAction;
                         if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
-                            && Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen)
+                            && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            var lastSimulateKeyStrokesValue = keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value;
                             var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
                             var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
                             var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
                             var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
-                            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = KeyDownStates.Up;
+                            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                            keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
+                            keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = KeyDownStates.Up;
+                            keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
                             backAction = () =>
                             {
-                                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value = lastSimulateKeyStrokesValue;
                                 keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
                                 keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
                                 keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;

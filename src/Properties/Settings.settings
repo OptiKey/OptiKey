@@ -200,7 +200,7 @@
     <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MouseButtons" Scope="User">
       <Value Profile="(Default)">Left</Value>
     </Setting>
-    <Setting Name="DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="SuppressModifierKeysWhenInMouseKeyboard" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoCloseCrashMessageSeconds" Roaming="true" Type="System.Int32" Scope="User">
