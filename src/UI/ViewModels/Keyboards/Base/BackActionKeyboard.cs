@@ -6,8 +6,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base
     {
         private readonly Action backAction;
 
-        protected BackActionKeyboard(Action backAction, bool simulateKeystrokesSupported = true)
-            : base(simulateKeystrokesSupported)
+        protected BackActionKeyboard(Action backAction, bool simulateKeyStrokes = true)
+            : base(simulateKeyStrokes)
         {
             this.backAction = backAction;
         }

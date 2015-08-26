@@ -162,11 +162,11 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource SimulateKeyStrokes}"
-                      Text="SIMULATE&#x0a;KEYBOARD"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="MOUSE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.SimulateKeyStrokes}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

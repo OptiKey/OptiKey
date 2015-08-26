@@ -2,11 +2,11 @@
 {
     public abstract class Keyboard : IKeyboard
     {
-        protected Keyboard(bool simulateKeystrokesSupported = true)
+        protected Keyboard(bool simulateKeyStrokes = true)
         {
-            SimulateKeystrokesSupported = simulateKeystrokesSupported;
+            SimulateKeyStrokes = simulateKeyStrokes;
         }
 
-        public bool SimulateKeystrokesSupported { get; private set; }
+        public bool SimulateKeyStrokes { get; private set; }
     }
 }

@@ -344,20 +344,13 @@
                 <models:KeyValue String="¿" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       Text="ENTER"
-                      SharedSizeGroup="KeyWithSymbol">
+                      SharedSizeGroup="KeyWithSymbol"
+                      WidthSpan="2">
             <controls:Key.Value>
                 <models:KeyValue String="&#x0a;" /> <!--Hex for "\n"-->
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="MOUSE"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"

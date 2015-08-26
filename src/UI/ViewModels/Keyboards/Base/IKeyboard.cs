@@ -2,6 +2,6 @@
 {
     public interface IKeyboard
     {
-        bool SimulateKeystrokesSupported { get; }
+        bool SimulateKeyStrokes { get; }
     }
 }

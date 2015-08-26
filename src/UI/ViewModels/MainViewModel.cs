@@ -82,17 +82,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
+            
             InitialiseKeyboard(mainWindowManipulationService);
             AttachScratchpadEnabledListener();
-            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(keyboardSupportsCollapsedDock =>
-            {
-                if (!keyboardSupportsCollapsedDock
-                    && Settings.Default.MainWindowState == WindowStates.Docked
-                    && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
-                {
-                    mainWindowManipulationService.ResizeDockToFull();
-                }
-            });
+            AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
+            AttachKeyboardSupportsSimulateKeyStrokesListener();
+
             HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
         }
 
@@ -444,6 +439,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     .Subscribe(value => calculateScratchpadIsDisabled()));
 
             calculateScratchpadIsDisabled();
+        }
+
+        private void AttachKeyboardSupportsSimulateKeyStrokesListener()
+        {
+            Action<IKeyboard> setSimulateKeyStrokes = kb =>
+            {
+                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
+                    kb.SimulateKeyStrokes ? KeyDownStates.LockedDown : KeyDownStates.Up;
+            };
+            this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setSimulateKeyStrokes);
+            setSimulateKeyStrokes(Keyboard);
+        }
+
+        private void AttachKeyboardSupportsCollapsedDockListener(IWindowManipulationService mainWindowManipulationService)
+        {
+            Action<bool> resizeDockIfCollapsedDockingNotSupported = collapsedDockingSupported =>
+            {
+                if (!collapsedDockingSupported
+                    && Settings.Default.MainWindowState == WindowStates.Docked
+                    && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
+                {
+                    mainWindowManipulationService.ResizeDockToFull();
+                }
+            };
+            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
+            resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
 
         private void ResetSelectionProgress()
