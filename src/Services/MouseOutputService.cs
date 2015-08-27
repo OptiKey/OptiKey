@@ -5,7 +5,7 @@ using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class MouseService : IMouseService
+    public class MouseOutputService : IMouseOutputService
     {
         #region Private Member Vars
 
@@ -19,14 +19,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public MouseService(IPublishService publishService)
+        public MouseOutputService(IPublishService publishService)
         {
             this.publishService = publishService;
         }
 
         #endregion
 
-        #region Methods - IMouseService
+        #region Methods - IMouseOutputService
 
         public Point GetCursorPosition()
         {
@@ -163,30 +163,6 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Releasing right button.");
             publishService.RightMouseButtonUp();
-        }
-
-        public void ScrollWheelUp(int clicks)
-        {
-            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks up.", clicks);
-            publishService.ScrollMouseWheelUp(clicks);
-        }
-
-        public void ScrollWheelDown(int clicks)
-        {
-            Log.DebugFormat("Generating a vertical mouse scroll of {0} clicks down.", clicks);
-            publishService.ScrollMouseWheelDown(clicks);
-        }
-
-        public void ScrollWheelLeft(int clicks)
-        {
-            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks left.", clicks);
-            publishService.ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollWheelRight(int clicks)
-        {
-            Log.DebugFormat("Generating a horizontal mouse scroll of {0} clicks right.", clicks);
-            publishService.ScrollMouseWheelRight(clicks);
         }
 
         #endregion

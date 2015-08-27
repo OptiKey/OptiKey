@@ -3,7 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public interface ITextOutputService
+    public interface IKeyboardOutputService
     {
         string Text { get; }
 

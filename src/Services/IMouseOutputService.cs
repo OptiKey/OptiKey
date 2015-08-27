@@ -2,7 +2,7 @@
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public interface IMouseService
+    public interface IMouseOutputService
     {
         Point GetCursorPosition();
         void LeftButtonClick();
@@ -24,9 +24,5 @@ namespace JuliusSweetland.OptiKey.Services
         void RightButtonClick();
         void RightButtonDown();
         void RightButtonUp();
-        void ScrollWheelUp(int clicks);
-        void ScrollWheelDown(int clicks);
-        void ScrollWheelLeft(int clicks);
-        void ScrollWheelRight(int clicks);
     }
 }

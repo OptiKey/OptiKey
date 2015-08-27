@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             //TODO: Add binding for ShiftAware
             SetBinding(ShiftAwareProperty, new Binding
             {
-                Path = new PropertyPath("DataContext.TextOutputService.KeyboardIsShiftAware"),
+                Path = new PropertyPath("DataContext.KeyboardOutputService.KeyboardIsShiftAware"),
                 RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(KeyboardHost), 1),
                 Mode = BindingMode.TwoWay //This MUST be TwoWay to detect changes to the DataContext used in the binding path
             });

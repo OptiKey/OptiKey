@@ -11,7 +11,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class TextOutputService : BindableBase, ITextOutputService
+    public class KeyboardOutputService : BindableBase, IKeyboardOutputService
     {
         #region Private Member Vars
 
@@ -33,7 +33,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public TextOutputService(
+        public KeyboardOutputService(
             IKeyboardService keyboardService,
             ISuggestionStateService suggestionService,
             IPublishService publishService,
@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Methods - ITextOutputService
+        #region Methods - IKeyboardOutputService
 
         public bool AutoPressShiftIfAppropriate()
         {

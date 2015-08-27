@@ -30,8 +30,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
-        private readonly ITextOutputService textOutputService;
-        private readonly IMouseService mouseService;
+        private readonly IKeyboardOutputService keyboardOutputService;
+        private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
 
@@ -60,8 +60,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             IInputService inputService,
-            ITextOutputService textOutputService,
-            IMouseService mouseService,
+            IKeyboardOutputService keyboardOutputService,
+            IMouseOutputService mouseOutputService,
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices)
         {
@@ -75,8 +75,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
-            this.textOutputService = textOutputService;
-            this.mouseService = mouseService;
+            this.keyboardOutputService = keyboardOutputService;
+            this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
 
@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
 
-            TextOutputService.AutoPressShiftIfAppropriate();
+            KeyboardOutputService.AutoPressShiftIfAppropriate();
         }
 
         #endregion
@@ -105,7 +105,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
-        public ITextOutputService TextOutputService { get { return textOutputService; } }
+        public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
         public IKeyboardService KeyboardService { get { return keyboardService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
@@ -335,7 +335,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Debug("AddTextToDictionary called.");
 
-            var possibleEntries = textOutputService.Text.ExtractWordsAndLines();
+            var possibleEntries = keyboardOutputService.Text.ExtractWordsAndLines();
 
             if (possibleEntries != null)
             {
@@ -347,7 +347,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", textOutputService.Text);
+                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
@@ -357,7 +357,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", textOutputService.Text);
+                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
             }
         }
