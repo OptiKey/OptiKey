@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
     /// </summary>
     public partial class Diacritics3 : KeyboardView
     {
-        public Diacritics3()
+        public Diacritics3() : base(shiftAware: true)
         {
             InitializeComponent();
         }

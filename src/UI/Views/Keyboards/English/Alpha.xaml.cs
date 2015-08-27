@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
     /// </summary>
     public partial class Alpha : KeyboardView
     {
-        public Alpha()
+        public Alpha() : base(shiftAware: true)
         {
             InitializeComponent();
         }

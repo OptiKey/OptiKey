@@ -25,6 +25,7 @@ namespace JuliusSweetland.OptiKey.Services
         private string lastTextChange;
         private bool lastTextChangeWasSuggestion;
         private bool suppressNextAutoSpace = true;
+        private bool keyboardIsShiftAware = false;
         
         #endregion
 
@@ -43,6 +44,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             ReactToSimulateKeyStrokesChanges();
             ReactToPublishableKeyDownStateChanges();
+            ReactToKeyboardIsShiftAwareChanges();
         }
 
         #endregion
@@ -53,6 +55,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             get { return text; }
             private set { SetProperty(ref text, value); }
+        }
+
+        public bool KeyboardIsShiftAware //Not on interface as only accessed via databinding
+        {
+            get { return keyboardIsShiftAware; }
+            set { SetProperty(ref keyboardIsShiftAware, value); }
         }
 
         #endregion
@@ -198,7 +206,8 @@ namespace JuliusSweetland.OptiKey.Services
                         //Key corresponds to physical keyboard key
                         GenerateAutoCompleteSuggestions();
 
-                        //If the key cannot be pressed or locked down (these are handled elsewhere) then publish it and release unlocked keys.
+                        //If the key cannot be pressed or locked down (these are handled in 
+                        //ReactToPublishableKeyDownStateChanges) then publish it and release unlocked keys
                         var keyValue = new KeyValue { FunctionKey = functionKey };
                         if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
                             && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
@@ -327,6 +336,15 @@ namespace JuliusSweetland.OptiKey.Services
 
             StoreLastTextChange(modifiedCaptureText);
             GenerateAutoCompleteSuggestions();
+        }
+
+        private void ReactToKeyboardIsShiftAwareChanges()
+        {
+            this.OnPropertyChanges(tos => tos.KeyboardIsShiftAware)
+                .Subscribe(value =>
+                {
+                    //TODO:Flesh out what happens when keyboard is shift aware changes
+                });
         }
 
         private void ReactToSimulateKeyStrokesChanges()
