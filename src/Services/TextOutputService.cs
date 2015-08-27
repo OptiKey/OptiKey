@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -25,7 +26,8 @@ namespace JuliusSweetland.OptiKey.Services
         private string lastTextChange;
         private bool lastTextChangeWasSuggestion;
         private bool suppressNextAutoSpace = true;
-        private bool keyboardIsShiftAware = false;
+        private bool keyboardIsShiftAware;
+        private bool shiftStateSetAutomatically;
         
         #endregion
 
@@ -66,6 +68,21 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - ITextOutputService
+
+        public bool AutoPressShiftIfAppropriate()
+        {
+            if (Settings.Default.AutoCapitalise
+                && Text.NextCharacterWouldBeStartOfNewSentence()
+                && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+            {
+                Log.Debug("Auto-pressing shift.");
+                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                shiftStateSetAutomatically = true;
+                SuppressOrReinstateAutoCapitalisation();
+                return true;
+            }
+            return false;
+        }
 
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
@@ -216,6 +233,11 @@ namespace JuliusSweetland.OptiKey.Services
                             ReleaseUnlockedKeys();
                         }
                     }
+
+                    if (functionKey == FunctionKeys.LeftShift)
+                    {
+                        shiftStateSetAutomatically = false;
+                    }
                     break;
             }
         }
@@ -341,10 +363,29 @@ namespace JuliusSweetland.OptiKey.Services
         private void ReactToKeyboardIsShiftAwareChanges()
         {
             this.OnPropertyChanges(tos => tos.KeyboardIsShiftAware)
-                .Subscribe(value =>
+                .Subscribe(_ => SuppressOrReinstateAutoCapitalisation());
+        }
+
+        private void SuppressOrReinstateAutoCapitalisation()
+        {
+            if (Settings.Default.AutoCapitalise
+                && Settings.Default.SuppressAutoCapitaliseIntelligently
+                && shiftStateSetAutomatically)
+            {
+                if (KeyboardIsShiftAware
+                    && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
                 {
-                    //TODO:Flesh out what happens when keyboard is shift aware changes
-                });
+                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                    return;
+                }
+
+                if (!KeyboardIsShiftAware
+                    && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
+                {
+                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    return;
+                }
+            }
         }
 
         private void ReactToSimulateKeyStrokesChanges()
@@ -380,8 +421,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void ReactToPublishableKeyDownStateChanges()
         {
             foreach (var key in KeyValues.KeysWhichCanBePressedOrLockedDown
-                                    .Where(k => k.FunctionKey != null 
-                                        && k.FunctionKey.Value.ToVirtualKeyCode() != null))
+                .Where(k => k.FunctionKey != null && k.FunctionKey.Value.ToVirtualKeyCode() != null))
             {
                 var keyCopy = key; //Access to foreach variable in modified
 
@@ -562,6 +602,9 @@ namespace JuliusSweetland.OptiKey.Services
                     keyboardService.KeyDownStates[key].Value = KeyDownStates.Up;
                 }
             }
+
+            //This method is called by manual user actions so the shift key would be released if it was automatically set
+            shiftStateSetAutomatically = false;
         }
 
         private void SwapLastTextChangeForSuggestion(int index)
@@ -643,20 +686,6 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("Publishing auto space and adding auto space to Text.");
                 PublishKeyPress(' ', ' ', true); //It's a space
                 Text = string.Concat(Text, " ");
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool AutoPressShiftIfAppropriate()
-        {
-            if (Settings.Default.AutoCapitalise
-                && Text.NextCharacterWouldBeStartOfNewSentence()
-                && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
-            {
-                Log.Debug("Auto-pressing shift.");
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
                 return true;
             }
 

@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
 
-            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
+            TextOutputService.AutoPressShiftIfAppropriate();
         }
 
         #endregion
