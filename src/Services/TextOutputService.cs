@@ -47,6 +47,7 @@ namespace JuliusSweetland.OptiKey.Services
             ReactToSimulateKeyStrokesChanges();
             ReactToPublishableKeyDownStateChanges();
             ReactToKeyboardIsShiftAwareChanges();
+            ReactToSuppressAutoCapitaliseIntelligentlyChanges();
         }
 
         #endregion
@@ -364,6 +365,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             this.OnPropertyChanges(tos => tos.KeyboardIsShiftAware)
                 .Subscribe(_ => SuppressOrReinstateAutoCapitalisation());
+        }
+
+        private void ReactToSuppressAutoCapitaliseIntelligentlyChanges()
+        {
+            Settings.Default.OnPropertyChanges(s => s.SuppressAutoCapitaliseIntelligently)
+                .Subscribe(_ => ReactToSuppressAutoCapitaliseIntelligentlyChanges());
         }
 
         private void SuppressOrReinstateAutoCapitalisation()

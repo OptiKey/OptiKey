@@ -1298,5 +1298,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["StartupKeyboard"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool SuppressAutoCapitaliseIntelligently {
+            get {
+                return ((bool)(this["SuppressAutoCapitaliseIntelligently"]));
+            }
+            set {
+                this["SuppressAutoCapitaliseIntelligently"] = value;
+            }
+        }
     }
 }

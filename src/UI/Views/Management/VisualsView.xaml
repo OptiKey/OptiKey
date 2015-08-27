@@ -93,7 +93,7 @@
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="Startup keyboard:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
@@ -109,7 +109,7 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}">
                         <ComboBox.Style>
-                            <Style TargetType="{x:Type ComboBox}">
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
