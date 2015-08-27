@@ -124,6 +124,11 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.Debug("Suppressing next auto space.");
                         suppressNextAutoSpace = true;
                     }
+                    else
+                    {
+                        //Scratchpad is empty, but publish 1 backspace anyway, as per the behaviour for 'BackOne'
+                        PublishKeyPress(FunctionKeys.BackOne);
+                    }
                     break;
 
                 case FunctionKeys.BackOne:
