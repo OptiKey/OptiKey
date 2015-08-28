@@ -113,9 +113,9 @@ namespace JuliusSweetland.OptiKey
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
-                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyboardService, suggestionService, publishService, dictionaryService);
+                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
+                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
+                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
@@ -123,7 +123,7 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(inputService);
 
                 //Release keys on application exit
-                ReleaseKeysOnApplicationExit(keyboardService, publishService);
+                ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
@@ -150,7 +150,7 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 
                 var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, keyboardService,
+                    audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
 
@@ -303,7 +303,7 @@ namespace JuliusSweetland.OptiKey
         }
 
         private IInputService CreateInputService(
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICalibrationService calibrationService,
@@ -416,7 +416,7 @@ namespace JuliusSweetland.OptiKey
                         + "Please correct and restart OptiKey.");
             }
 
-            var inputService = new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
+            var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
@@ -587,11 +587,11 @@ namespace JuliusSweetland.OptiKey
 
         #region Release Keys On App Exit
 
-        private void ReleaseKeysOnApplicationExit(IKeyboardService keyboardService, IPublishService publishService)
+        private void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
         {
             Application.Current.Exit += (o, args) =>
             {
-                if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                 {
                     publishService.ReleaseAllDownKeys();
                 }

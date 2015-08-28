@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.Models
     {
         #region Fields
 
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
@@ -24,13 +24,13 @@ namespace JuliusSweetland.OptiKey.Models
         #region Ctor
 
         public KeyEnabledStates(
-            IKeyboardService keyboardService, 
+            IKeyStateService keyStateService, 
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             ICalibrationService calibrationService)
         {
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
@@ -40,14 +40,14 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
-            keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyboardService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
+                keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
 
@@ -67,14 +67,14 @@ namespace JuliusSweetland.OptiKey.Models
             get
             {
                 //Key is not Sleep, but we are sleeping
-                if (keyboardService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
+                if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey)
                 {
                     return false;
                 }
 
                 //Key is publish only, but we are not publishing
-                if (!keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                if (!keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
                     && KeyValues.PublishOnlyKeys.Contains(keyValue))
                 {
                     return false;
@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.Models
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
                 if (keyValue == KeyValues.MultiKeySelectionKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                        keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
+                        keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
                     return false;
                 }
@@ -269,7 +269,7 @@ namespace JuliusSweetland.OptiKey.Models
                     || keyValue == KeyValues.MouseLeftDoubleClickKey
                     || keyValue == KeyValues.MouseMoveAndLeftClickKey 
                     || keyValue == KeyValues.MouseMoveAndLeftDoubleClickKey)
-                        && keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        && keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                 {
                     return false;
                 }
@@ -277,7 +277,7 @@ namespace JuliusSweetland.OptiKey.Models
                 //Mouse actions involving middle button if it is already down
                 if ((keyValue == KeyValues.MouseMiddleClickKey
                     || keyValue == KeyValues.MouseMoveAndMiddleClickKey)
-                        && keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                        && keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
                 {
                     return false;
                 }
@@ -285,7 +285,7 @@ namespace JuliusSweetland.OptiKey.Models
                 //Mouse actions involving right button if it is already down
                 if ((keyValue == KeyValues.MouseRightClickKey
                     || keyValue == KeyValues.MouseMoveAndRightClickKey)
-                        && keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                        && keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                 {
                     return false;
                 }

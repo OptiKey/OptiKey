@@ -10,7 +10,7 @@ using Microsoft.Practices.Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class KeyboardService : BindableBase, IKeyboardService
+    public class KeyStateService : BindableBase, IKeyStateService
     {
         #region Fields
 
@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public KeyboardService(
+        public KeyStateService(
             ISuggestionStateService suggestionService, 
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Debug("Adding KeyDownStates change handlers.");
 
             KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                ReleasePublishOnlyKeysIfNotPublishing());
+                ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes());
 
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
@@ -132,13 +132,13 @@ namespace JuliusSweetland.OptiKey.Services
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value => CalculateMultiKeySelectionSupported()));
 
-            ReleasePublishOnlyKeysIfNotPublishing();
+            ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes();
             CalculateMultiKeySelectionSupported();
         }
 
-        private void ReleasePublishOnlyKeysIfNotPublishing()
+        private void ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes()
         {
-            Log.Debug("ReleasePublishOnlyKeysIfNotPublishing called.");
+            Log.Debug("ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes called.");
 
             if (!KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {

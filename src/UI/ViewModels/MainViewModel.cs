@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IAudioService audioService;
         private readonly ICalibrationService calibrationService;
         private readonly IDictionaryService dictionaryService;
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IAudioService audioService,
             ICalibrationService calibrationService,
             IDictionaryService dictionaryService,
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.audioService = audioService;
             this.calibrationService = calibrationService;
             this.dictionaryService = dictionaryService;
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
         public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
-        public IKeyboardService KeyboardService { get { return keyboardService; } }
+        public IKeyStateService KeyStateService { get { return keyStateService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
 
@@ -432,10 +432,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Action calculateScratchpadIsDisabled = () =>
                 ScratchpadIsDisabled = KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                        keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
+                        keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
+                keyStateService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
                     .Subscribe(value => calculateScratchpadIsDisabled()));
 
             calculateScratchpadIsDisabled();
@@ -445,7 +445,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Action<IKeyboard> setSimulateKeyStrokes = kb =>
             {
-                keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
+                keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
                     kb.SimulateKeyStrokes ? KeyDownStates.LockedDown : KeyDownStates.Up;
             };
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setSimulateKeyStrokes);
@@ -471,9 +471,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             PointSelectionProgress = null;
 
-            if (keyboardService != null)
+            if (keyStateService != null)
             {
-                keyboardService.KeySelectionProgress.Clear();
+                keyStateService.KeySelectionProgress.Clear();
             }
         }
 

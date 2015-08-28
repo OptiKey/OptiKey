@@ -254,8 +254,8 @@
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\IPointService.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
-    <Compile Include="Services\KeyboardService.cs" />
-    <Compile Include="Services\IKeyboardService.cs" />
+    <Compile Include="Services\KeyStateService.cs" />
+    <Compile Include="Services\IKeyStateService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />

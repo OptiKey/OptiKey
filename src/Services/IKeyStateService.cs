@@ -4,7 +4,7 @@ using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public interface IKeyboardService : INotifyPropertyChanged
+    public interface IKeyStateService : INotifyPropertyChanged
     {
         NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; }
         NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get; }

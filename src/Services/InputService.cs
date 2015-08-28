@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
         private readonly ICapturingStateManager capturingStateManager;
@@ -41,7 +41,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public InputService(
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.Services
             ITriggerSource keySelectionTriggerSource,
             ITriggerSource pointSelectionTriggerSource)
         {
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.dictionaryService = dictionaryService;
             this.audioService = audioService;
             this.capturingStateManager = capturingStateManager;
@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.Services
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
             if (fixationTrigger != null)
             {
-                fixationTrigger.KeyEnabledStates = keyboardService.KeyEnabledStates;
+                fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
             }
         }
 

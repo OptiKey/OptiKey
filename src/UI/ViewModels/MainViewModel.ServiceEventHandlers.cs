@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
 
-                if (keyboardService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown())
+                if (keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown())
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (SelectionMode == SelectionModes.Key
                         && progress.Item1.Value.KeyValue != null)
                     {
-                        keyboardService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                        keyStateService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
                             new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
@@ -152,7 +152,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (singleKeyValue.FunctionKey != null)
             {
-                keyboardService.ProgressKeyDownState(singleKeyValue);
+                keyStateService.ProgressKeyDownState(singleKeyValue);
 
                 var currentKeyboard = Keyboard;
 
@@ -382,7 +382,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             ResetAndCleanupAfterMouseAction();
                                         };
 
-                                        if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
+                                        if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                                         {
                                             ShowCursor = false; //See MouseMoveAndLeftClick case for explanation of this
                                             MagnifiedPointSelectionAction = secondFinalClickAction;
@@ -397,7 +397,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         nextPointSelectionAction = null;
                                     };
 
-                                    if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
+                                    if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                                     {
                                         nextPointSelectionAction = deferIfMagnifyingElseDoNow;
                                     }
@@ -413,9 +413,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 SelectionMode = SelectionModes.Key;
                                 nextPointSelectionAction = null;
                                 ShowCursor = false;
-                                if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
+                                if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
                                 {
-                                    keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
+                                    keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
                                 }
                             }
 
@@ -428,23 +428,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.MouseKeyboard:
                         Log.Debug("Changing keyboard to Mouse.");
                         Action backAction;
-                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                        if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
                             && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            var lastLeftShiftValue = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value;
-                            var lastLeftCtrlValue = keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
-                            var lastLeftWinValue = keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value;
-                            var lastLeftAltValue = keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value;
-                            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                            keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
-                            keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = KeyDownStates.Up;
-                            keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
+                            var lastLeftShiftValue = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value;
+                            var lastLeftCtrlValue = keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
+                            var lastLeftWinValue = keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value;
+                            var lastLeftAltValue = keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value;
+                            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                            keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
+                            keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value = KeyDownStates.Up;
+                            keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
                             backAction = () =>
                             {
-                                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
-                                keyboardService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
+                                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
+                                keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
+                                keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
+                                keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
                                 Keyboard = currentKeyboard;
                             };
                         }
@@ -503,7 +503,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftDownUp:
                         var leftDownUpPoint = mouseOutputService.GetCursorPosition();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                        if (keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.DebugFormat("Pressing mouse left button down at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
@@ -537,7 +537,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseMiddleDownUp:
                         var middleDownUpPoint = mouseOutputService.GetCursorPosition();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                        if (keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.DebugFormat("Pressing mouse middle button down at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
@@ -839,7 +839,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseRightDownUp:
                         var rightDownUpPoint = mouseOutputService.GetCursorPosition();
-                        if (keyboardService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                        if (keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                         {
                             Log.DebugFormat("Pressing mouse right button down at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
@@ -1102,11 +1102,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Speak:
                         var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
                             keyboardOutputService.Text,
-                            () => { KeyboardService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                            () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                             Settings.Default.SpeechVolume,
                             Settings.Default.SpeechRate,
                             Settings.Default.SpeechVoice);
-                        KeyboardService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                        KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                         break;
 
                     case FunctionKeys.YesQuestionResult:
@@ -1122,7 +1122,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
+                if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
                     //1.This triggers a screen capture, which shouldn't have the cursor in it.
@@ -1153,9 +1153,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = false;
             MagnifyAtPoint = null;
             MagnifiedPointSelectionAction = null;
-            if (keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
+            if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value == KeyDownStates.Down)
             {
-                keyboardService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
+                keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
             }
         }
 

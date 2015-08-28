@@ -17,7 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
         private readonly IPublishService publishService;
         private readonly IDictionaryService dictionaryService;
@@ -34,12 +34,12 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public KeyboardOutputService(
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             ISuggestionStateService suggestionService,
             IPublishService publishService,
             IDictionaryService dictionaryService)
         {
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.publishService = publishService;
             this.dictionaryService = dictionaryService;
@@ -74,10 +74,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (Settings.Default.AutoCapitalise
                 && Text.NextCharacterWouldBeStartOfNewSentence()
-                && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+                && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
             {
                 Log.Debug("Auto-pressing shift.");
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
                 shiftStateSetAutomatically = true;
                 SuppressOrReinstateAutoCapitalisation();
                 return true;
@@ -385,16 +385,16 @@ namespace JuliusSweetland.OptiKey.Services
                 && shiftStateSetAutomatically)
             {
                 if (KeyboardIsShiftAware
-                    && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+                    && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
                 {
-                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
                     return;
                 }
 
                 if (!KeyboardIsShiftAware
-                    && keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
+                    && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
-                    keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
                     return;
                 }
             }
@@ -402,7 +402,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToSimulateKeyStrokesChanges()
         {
-            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
+            keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
                 .Subscribe(value =>
                 {
                     if (value.IsDownOrLockedDown()) //Publishing has been turned on
@@ -411,7 +411,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                         foreach (var key in KeyValues.KeysWhichCanBePressedOrLockedDown)
                         {
-                            if (keyboardService.KeyDownStates[key].Value.IsDownOrLockedDown()
+                            if (keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown()
                                 && key.FunctionKey != null)
                             {
                                 var virtualKeyCode = key.FunctionKey.Value.ToVirtualKeyCode();
@@ -437,10 +437,10 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 var keyCopy = key; //Access to foreach variable in modified
 
-                keyboardService.KeyDownStates[key].OnPropertyChanges(s => s.Value)
+                keyStateService.KeyDownStates[key].OnPropertyChanges(s => s.Value)
                     .Subscribe(value =>
                     {
-                        if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                        if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
                         {
                             // ReSharper disable PossibleInvalidOperationException
                             var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
@@ -512,9 +512,9 @@ namespace JuliusSweetland.OptiKey.Services
                             if (s.Length > inProgressWord.Length)
                             {
                                 suffix = s.Substring(inProgressWord.Length, s.Length - inProgressWord.Length);
-                                suffix = keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
+                                suffix = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
                                 ? suffix.FirstCharToUpper()
-                                : keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
+                                : keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
                                     ? suffix.ToUpper()
                                     : suffix;
                             }
@@ -569,7 +569,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         private void PublishKeyPress(FunctionKeys functionKey)
         {
-            if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+            if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
                 Log.DebugFormat("KeyDownUp called with functionKey '{0}'.",  functionKey);
 
@@ -583,7 +583,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PublishKeyPress(char character, char? modifiedCharacter, bool publishModifiedCharacterAsText)
         {
-            if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+            if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
             {
                 Log.DebugFormat("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
@@ -606,12 +606,12 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("ReleaseUnlockedKeys called.");
 
-            foreach (var key in keyboardService.KeyDownStates.Keys)
+            foreach (var key in keyStateService.KeyDownStates.Keys)
             {
-                if (keyboardService.KeyDownStates[key].Value == KeyDownStates.Down)
+                if (keyStateService.KeyDownStates[key].Value == KeyDownStates.Down)
                 {
                     Log.DebugFormat("Releasing {0} key.", key);
-                    keyboardService.KeyDownStates[key].Value = KeyDownStates.Up;
+                    keyStateService.KeyDownStates[key].Value = KeyDownStates.Up;
                 }
             }
 
@@ -709,7 +709,7 @@ namespace JuliusSweetland.OptiKey.Services
             //TODO Handle LeftAlt modified captures - LeftAlt+Code = unicode characters
 
             if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
+                keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
                 Log.DebugFormat("A key which prevents text capture is down - modifying '{0}' to null.", textToModify.ConvertEscapedCharsToLiterals());
                 return null;
@@ -717,14 +717,14 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (!string.IsNullOrEmpty(textToModify))
             {
-                if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
+                if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
                     var modifiedText = textToModify.FirstCharToUpper();
                     Log.DebugFormat("LeftShift is on so modifying '{0}' to '{1}.", textToModify, modifiedText);
                     return modifiedText;
                 }
 
-                if (keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
+                if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
                 {
                     var modifiedText = textToModify.ToUpper();
                     Log.DebugFormat("LeftShift is locked so modifying '{0}' to '{1}.", textToModify, modifiedText);

@@ -36,24 +36,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
-            var keyboardService = mainViewModel.KeyboardService;
+            var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            keyboardService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+            keyStateService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
                 .Subscribe(value => KeyDownState = value);
 
-            KeyDownState = keyboardService.KeyDownStates[Value].Value;
+            KeyDownState = keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress
-            keyboardService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+            keyStateService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
                 .Subscribe(value => SelectionProgress = value);
 
-            SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
+            SelectionProgress = keyStateService.KeySelectionProgress[Value].Value;
 
             //Calculate IsEnabled
-            calculateIsEnabled = () => IsEnabled = keyboardService.KeyEnabledStates[Value];
-            keyboardService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
+            calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
+            keyStateService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
             calculateIsEnabled();
             
             //Calculate IsCurrent
@@ -71,13 +71,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
 
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
-                .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
+                .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
 
-            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
+            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
 
             calculateDisplayShiftDownText(
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,
+                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value,
                 capturingStateManager.CapturingMultiKeySelection);
 
             //Publish own version of KeySelection event
