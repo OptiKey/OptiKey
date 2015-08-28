@@ -79,7 +79,7 @@
                 <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
-                <Setter Property="Visibility" Value="Hidden" />
+                <Setter Property="Visibility" Value="Visible" />
                 <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
                     <Setter.Value>
                         <Storyboard>
@@ -356,13 +356,20 @@
                                                 </Grid.ColumnDefinitions>
                                                 <controls:ProgressIndicator Grid.ColumnSpan="3" 
                                                                             Style="{StaticResource KeySelectionProgressStyle}" />
+                                                <Viewbox Grid.Column="0" Grid.ColumnSpan="3">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Style="{StaticResource KeyTextStyle}" VerticalAlignment="Center" />
+                                                    </Grid>
+                                                </Viewbox>
                                                 <Viewbox Grid.Column="1">
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
                                                         </Grid.ColumnDefinitions>
                                                         <Path Style="{StaticResource KeySymbolStyle}" Width="64" Height="64" VerticalAlignment="Center" />
-                                                        <TextBlock Style="{StaticResource KeyTextStyle}" VerticalAlignment="Center" />
                                                     </Grid>
                                                 </Viewbox>
                                             </Grid>

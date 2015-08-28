@@ -334,7 +334,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      Text="MULTI-KEY&#x0a;SELECT"
+                      Text="MULTI&#x0a;KEY&#x0a;SELECT"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="MultiKeySelectionIsOn" />
