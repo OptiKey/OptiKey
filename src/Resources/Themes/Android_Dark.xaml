@@ -79,7 +79,7 @@
                 <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontFamily}" />
                 <Setter Property="FontWeight" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontWeight}" />
                 <Setter Property="FontStretch" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStretch}" />
-                <Setter Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Hidden" />
                 <Setter Property="behaviours:KeyBehaviours.BeginAnimationOnKeySelectionEvent">
                     <Setter.Value>
                         <Storyboard>
@@ -357,6 +357,16 @@
                                                 <controls:ProgressIndicator Grid.ColumnSpan="3" 
                                                                             Style="{StaticResource KeySelectionProgressStyle}" />
                                                 <Viewbox Grid.Column="0" Grid.ColumnSpan="3">
+                                                    <Viewbox.Style>
+                                                        <Style TargetType="{x:Type Viewbox}">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Viewbox.Style>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
@@ -369,6 +379,18 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition SharedSizeGroup="{Binding Path=SharedSizeGroup, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" />
                                                         </Grid.ColumnDefinitions>
+                                                        <TextBlock VerticalAlignment="Center">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource KeyTextStyle}">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
                                                         <Path Style="{StaticResource KeySymbolStyle}" Width="64" Height="64" VerticalAlignment="Center" />
                                                     </Grid>
                                                 </Viewbox>

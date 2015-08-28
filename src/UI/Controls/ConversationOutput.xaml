@@ -137,7 +137,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
-                      Text="SAVE&#x0a;WORD OR&#x0a;PHRASE"
+                      Text="ADD TO&#x0a;DICTIONARY"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />

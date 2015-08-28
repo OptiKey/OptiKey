@@ -298,7 +298,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      Text="MULTI-KEY&#x0a;SELECT"
+                      Text="MULTI-KEY&#x0a;SELECTION"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
