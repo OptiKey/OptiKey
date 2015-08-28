@@ -12,6 +12,8 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class KeyStateService : BindableBase, IKeyStateService
     {
+        private readonly Action<KeyValue> fireKeySelectionEvent;
+
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -30,8 +32,10 @@ namespace JuliusSweetland.OptiKey.Services
             ISuggestionStateService suggestionService, 
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
-            ICalibrationService calibrationService)
+            ICalibrationService calibrationService,
+            Action<KeyValue> fireKeySelectionEvent)
         {
+            this.fireKeySelectionEvent = fireKeySelectionEvent;
             keySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
             keyDownStates = new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>();
             keyEnabledStates = new KeyEnabledStates(this, suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
@@ -107,6 +111,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 //Release multi-key selection key if multi-key selection is disabled from the settings
                 KeyDownStates[KeyValues.MultiKeySelectionKey].Value = Enums.KeyDownStates.Up;
+                if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.MultiKeySelectionKey);
             });
         }
 
@@ -149,6 +154,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.DebugFormat("Releasing '{0}' as we are not publishing.", keyValue);
                         KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                        if (fireKeySelectionEvent != null) fireKeySelectionEvent(keyValue);
                     }
                 }
             }
@@ -168,6 +174,7 @@ namespace JuliusSweetland.OptiKey.Services
                     KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
 
                 KeyDownStates[KeyValues.MultiKeySelectionKey].Value = Enums.KeyDownStates.Up;
+                if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.MultiKeySelectionKey);
             }
             else if (turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased
                 && !KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv => KeyDownStates[kv].Value.IsDownOrLockedDown())
@@ -176,6 +183,7 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.Debug("No keys which prevents text capture is down - returing setting MultiKeySelectionIsOn to true.");
 
                 KeyDownStates[KeyValues.MultiKeySelectionKey].Value = Enums.KeyDownStates.LockedDown;
+                if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.MultiKeySelectionKey);
                 turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased = false;
             }
         }

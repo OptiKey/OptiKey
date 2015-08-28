@@ -7,7 +7,6 @@ namespace JuliusSweetland.OptiKey.Services
     {
         string Text { get; }
 
-        bool AutoPressShiftIfAppropriate();
         void ProcessFunctionKey(FunctionKeys functionKey);
         void ProcessSingleKeyText(string capturedText);
         void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions);

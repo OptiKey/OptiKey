@@ -104,6 +104,17 @@ namespace JuliusSweetland.OptiKey
                 //Apply theme
                 applyTheme();
                 
+                //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
+                //This is to work around the fact that the MainViewModel is created after the services.
+                MainViewModel mainViewModel = null;
+                Action<KeyValue> fireKeySelectionEvent = kv =>
+                {
+                    if (mainViewModel != null) //Access to modified closure is a good thing here, for once!
+                    {
+                        mainViewModel.FireKeySelectionEvent(kv);
+                    }
+                };
+
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
@@ -113,9 +124,9 @@ namespace JuliusSweetland.OptiKey
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService);
+                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
-                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService);
+                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
@@ -148,8 +159,8 @@ namespace JuliusSweetland.OptiKey
                     t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
 
                 errorNotifyingServices.Add(mainWindowManipulationService);
-                
-                var mainViewModel = new MainViewModel(
+
+                mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);

@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly ISuggestionStateService suggestionService;
         private readonly IPublishService publishService;
         private readonly IDictionaryService dictionaryService;
+        private readonly Action<KeyValue> fireKeySelectionEvent;
 
         private string text;
         private string lastTextChange;
@@ -37,17 +38,20 @@ namespace JuliusSweetland.OptiKey.Services
             IKeyStateService keyStateService,
             ISuggestionStateService suggestionService,
             IPublishService publishService,
-            IDictionaryService dictionaryService)
+            IDictionaryService dictionaryService,
+            Action<KeyValue> fireKeySelectionEvent)
         {
             this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.publishService = publishService;
             this.dictionaryService = dictionaryService;
+            this.fireKeySelectionEvent = fireKeySelectionEvent;
 
             ReactToSimulateKeyStrokesChanges();
             ReactToPublishableKeyDownStateChanges();
             ReactToKeyboardIsShiftAwareChanges();
             ReactToSuppressAutoCapitaliseIntelligentlyChanges();
+            AutoPressShiftIfAppropriate();
         }
 
         #endregion
@@ -69,21 +73,6 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - IKeyboardOutputService
-
-        public bool AutoPressShiftIfAppropriate()
-        {
-            if (Settings.Default.AutoCapitalise
-                && Text.NextCharacterWouldBeStartOfNewSentence()
-                && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
-            {
-                Log.Debug("Auto-pressing shift.");
-                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
-                shiftStateSetAutomatically = true;
-                SuppressOrReinstateAutoCapitalisation();
-                return true;
-            }
-            return false;
-        }
 
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
@@ -366,6 +355,22 @@ namespace JuliusSweetland.OptiKey.Services
             GenerateAutoCompleteSuggestions();
         }
 
+        private bool AutoPressShiftIfAppropriate()
+        {
+            if (Settings.Default.AutoCapitalise
+                && Text.NextCharacterWouldBeStartOfNewSentence()
+                && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+            {
+                Log.Debug("Auto-pressing shift.");
+                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.LeftShiftKey);
+                shiftStateSetAutomatically = true;
+                SuppressOrReinstateAutoCapitalisation();
+                return true;
+            }
+            return false;
+        }
+
         private void ReactToKeyboardIsShiftAwareChanges()
         {
             this.OnPropertyChanges(tos => tos.KeyboardIsShiftAware)
@@ -388,6 +393,7 @@ namespace JuliusSweetland.OptiKey.Services
                     && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
                 {
                     keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Down;
+                    if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.LeftShiftKey);
                     return;
                 }
 
@@ -395,6 +401,7 @@ namespace JuliusSweetland.OptiKey.Services
                     && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down)
                 {
                     keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.LeftShiftKey);
                     return;
                 }
             }
@@ -612,6 +619,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.DebugFormat("Releasing {0} key.", key);
                     keyStateService.KeyDownStates[key].Value = KeyDownStates.Up;
+                    if (fireKeySelectionEvent != null) fireKeySelectionEvent(key);
                 }
             }
 

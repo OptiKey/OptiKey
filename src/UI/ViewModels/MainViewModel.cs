@@ -87,8 +87,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachScratchpadEnabledListener();
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
-
-            KeyboardOutputService.AutoPressShiftIfAppropriate();
         }
 
         #endregion
@@ -233,6 +231,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         #endregion
 
         #region Methods
+
+        public void FireKeySelectionEvent(KeyValue kv)
+        {
+            if (KeySelection != null)
+            {
+                KeySelection(this, kv);
+            }
+        }
 
         private void InitialiseKeyboard(IWindowManipulationService mainWindowManipulationService)
         {
