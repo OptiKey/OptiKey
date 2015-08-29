@@ -239,7 +239,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessSingleKeyText(string capturedText)
         {
-            Log.DebugFormat("Processing captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
+            Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
             ProcessText(capturedText);
             lastTextChangeWasSuggestion = false;
         }
