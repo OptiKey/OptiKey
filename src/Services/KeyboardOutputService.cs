@@ -48,6 +48,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.fireKeySelectionEvent = fireKeySelectionEvent;
 
             ReactToSimulateKeyStrokesChanges();
+            ReactToShiftStateChanges();
             ReactToPublishableKeyDownStateChanges();
             ReactToKeyboardIsShiftAwareChanges();
             ReactToSuppressAutoCapitaliseIntelligentlyChanges();
@@ -407,6 +408,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        private void ReactToShiftStateChanges()
+        {
+            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(np => np.Value)
+                .Subscribe(_ => GenerateAutoCompleteSuggestions());
+        }
+
         private void ReactToSimulateKeyStrokesChanges()
         {
             keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
@@ -489,44 +496,37 @@ namespace JuliusSweetland.OptiKey.Services
                             .Select(de => de.Entry);
 
                         //Correctly case auto complete suggestions
-                        suggestions = suggestions.Select(s => s.ToLower()); //Start lower
-
-                        //Then case each suggestion letter to match what has already been typed
-                        for (var index = 0; index < inProgressWord.Length; index++)
+                        var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
+                        var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
+                        suggestions = suggestions.Select(suggestion =>
                         {
-                            if (Char.IsUpper(inProgressWord[index]))
+                            var suggestionChars = suggestion.ToCharArray();
+                            for (var index = 0; index < suggestionChars.Length; index++)
                             {
-                                int indexCopy = index;
-                                suggestions = suggestions.Select(s =>
+                                bool makeUppercase = false;
+                                if (index < inProgressWord.Length
+                                    && Char.IsUpper(inProgressWord[index]))
                                 {
-                                    var prefix = s.Substring(0, indexCopy);
-                                    var upperLetter = s.Substring(indexCopy, 1).ToUpper();
-                                    var suffix = s.Length > indexCopy + 1
-                                        ? s.Substring(indexCopy + 1, s.Length - (indexCopy + 1))
-                                        : null;
+                                    makeUppercase = true; //In progress word is uppercase as this index
+                                }
+                                else if (index == inProgressWord.Length
+                                    && (leftShiftIsDown || leftShiftIsLockedDown))
+                                {
+                                    makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
+                                }
+                                else if (index > inProgressWord.Length
+                                         && leftShiftIsLockedDown)
+                                {
+                                    makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                                }
 
-                                    return string.Concat(prefix, upperLetter, suffix);
-                                });
-                            }
-                        }
-
-                        //Finally case the rest of each suggestion based on whether the shift key is down, or locked down
-                        suggestions = suggestions.Select(s =>
-                        {
-                            var prefix = s.Substring(0, inProgressWord.Length);
-                            string suffix = null;
-
-                            if (s.Length > inProgressWord.Length)
-                            {
-                                suffix = s.Substring(inProgressWord.Length, s.Length - inProgressWord.Length);
-                                suffix = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down
-                                ? suffix.FirstCharToUpper()
-                                : keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown
-                                    ? suffix.ToUpper()
-                                    : suffix;
+                                if (makeUppercase)
+                                {
+                                    suggestionChars[index] = Char.ToUpper(suggestion[index]);
+                                }
                             }
 
-                            return string.Concat(prefix, suffix);
+                            return new string(suggestionChars);
                         });
 
                         suggestions = suggestions.Distinct(); //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")

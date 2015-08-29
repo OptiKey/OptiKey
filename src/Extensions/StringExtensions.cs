@@ -340,7 +340,6 @@ namespace JuliusSweetland.OptiKey.Extensions
                     endIndex++;
                 }
 
-                Debug.Print(input.Substring(startIndex, endIndex - startIndex));
                 return input.Substring(startIndex, endIndex - startIndex);
             }
 
