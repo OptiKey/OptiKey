@@ -481,7 +481,7 @@ namespace JuliusSweetland.OptiKey.Services
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 
                     if (!string.IsNullOrEmpty(inProgressWord)
-                        && Char.IsLetter(inProgressWord.First()))
+                        && Char.IsLetter(inProgressWord.First())) //A word must start with a letter
                     {
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 

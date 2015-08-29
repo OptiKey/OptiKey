@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -286,44 +287,61 @@ namespace JuliusSweetland.OptiKey.Extensions
                 .Replace("\r", @"\r");
         }
 
-        public static int CountBackToLastCharCategoryBoundary(this string input)
+        public static int CountBackToLastCharCategoryBoundary(this string input, bool ignoreSingleTrailingSpace = true)
         {
-            int charsToRemove = 0;
+            int count = 0;
 
-            if (string.IsNullOrEmpty(input)) return charsToRemove;
+            if (string.IsNullOrEmpty(input)) return count;
 
             //Special case - LetterOrDigitOrSymbolOrPunctuation followed by single space - remove the final space before we start
-            if (input.Length >= 2
+            if (ignoreSingleTrailingSpace
+                && input.Length >= 2
                 && input[input.Length - 1].ToCharCategory() == CharCategories.Space
                 && input[input.Length - 2].ToCharCategory() == CharCategories.LetterOrDigitOrSymbolOrPunctuation)
             {
-                charsToRemove = 1;
+                count = 1;
             }
 
-            var charCategoryToRemove = input[input.Length - charsToRemove - 1].ToCharCategory();
+            var currentCategory = input[input.Length - count - 1].ToCharCategory();
 
-            while (input.Length > charsToRemove
-                    && input[input.Length - charsToRemove - 1].ToCharCategory() == charCategoryToRemove)
+            while (input.Length > count
+                    && input[input.Length - count - 1].ToCharCategory() == currentCategory)
             {
-                charsToRemove++;
+                count++;
             }
 
             Log.DebugFormat(
-                "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, charsToRemove);
+                "CountBackToLastCharCategoryBoundary called with '{0}' - boundary calculated as {1} characters from end.", input, count);
 
-            return charsToRemove;
+            return count;
         }
 
         public static string InProgressWord(this string input, int cursorIndex)
         {
-            if (input != null
-                && cursorIndex <= input.Length)
+            //There are no assumptions about what a "word" is in this method, it just isn't whitespace
+            if (!string.IsNullOrWhiteSpace(input)
+                && cursorIndex > 0
+                && cursorIndex <= input.Length
+                && !Char.IsWhiteSpace(input[cursorIndex-1])) //Character before cursor position is not whitespace, i.e. at least 1 letter of the word is before the cursor position
             {
-                var startIndex = input.LastIndexOfAny(new[] { ' ', '\n' });
+                //Count back
+                int startIndex = cursorIndex;
+                while (startIndex > 0
+                    && !Char.IsWhiteSpace(input[startIndex - 1]))
+                {
+                    startIndex--;
+                }
 
-                if (startIndex == -1) startIndex = 0; //No word boundary found - start at the beginning of the string
-                else startIndex++;
-                return input.Substring(startIndex, cursorIndex - startIndex);
+                //Count forward
+                int endIndex = startIndex;
+                while (endIndex < input.Length
+                    && !Char.IsWhiteSpace(input[endIndex]))
+                {
+                    endIndex++;
+                }
+
+                Debug.Print(input.Substring(startIndex, endIndex - startIndex));
+                return input.Substring(startIndex, endIndex - startIndex);
             }
 
             return null;
