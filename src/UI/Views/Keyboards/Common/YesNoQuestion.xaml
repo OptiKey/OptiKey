@@ -57,7 +57,6 @@
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
                       Text="YES"
-                      HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="YesQuestionResult" />
@@ -68,7 +67,6 @@
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
                       Text="NO"
-                      HeightSpan="3" WidthSpan="3" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="NoQuestionResult" />

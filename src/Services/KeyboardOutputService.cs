@@ -494,7 +494,8 @@ namespace JuliusSweetland.OptiKey.Services
 
                         var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
                             .Select(de => de.Entry)
-                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions);
+                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                            .ToList();
 
                         Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)", 
                             suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
@@ -502,7 +503,7 @@ namespace JuliusSweetland.OptiKey.Services
                         //Correctly case auto complete suggestions
                         var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
                         var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
-                        suggestions = suggestions.Select(suggestion =>
+                        suggestionService.Suggestions = suggestions.Select(suggestion =>
                         {
                             var suggestionChars = suggestion.ToCharArray();
                             for (var index = 0; index < suggestionChars.Length; index++)
@@ -531,11 +532,10 @@ namespace JuliusSweetland.OptiKey.Services
                             }
 
                             return new string(suggestionChars);
-                        });
+                        })
+                        .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
+                        .ToList();
 
-                        suggestions = suggestions.Distinct(); //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
-
-                        suggestionService.Suggestions = suggestions.ToList();
                         return;
                     }
                 }
