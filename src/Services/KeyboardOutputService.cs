@@ -493,7 +493,11 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
                         var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Select(de => de.Entry);
+                            .Select(de => de.Entry)
+                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions);
+
+                        Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)", 
+                            suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
 
                         //Correctly case auto complete suggestions
                         var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
@@ -531,9 +535,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                         suggestions = suggestions.Distinct(); //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
 
-                        suggestionService.Suggestions = suggestions
-                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                            .ToList();
+                        suggestionService.Suggestions = suggestions.ToList();
                         return;
                     }
                 }
