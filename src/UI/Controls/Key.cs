@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +19,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     {
         #region Private Member Vars
 
-        private Action calculateIsEnabled = null;
+        private CompositeDisposable onUnloaded = null;
 
         #endregion
 
@@ -26,6 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Key()
         {
             Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
         }
 
         #endregion
@@ -34,61 +37,79 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
+            onUnloaded = new CompositeDisposable();
+
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
             var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            keyStateService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+            var keyStateSubscription = keyStateService.KeyDownStates[Value]
+                .OnPropertyChanges(kds => kds.Value)
                 .Subscribe(value => KeyDownState = value);
-
+            onUnloaded.Add(keyStateSubscription);
             KeyDownState = keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress
-            keyStateService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+            var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                .OnPropertyChanges(ksp => ksp.Value)
                 .Subscribe(value => SelectionProgress = value);
-
+            onUnloaded.Add(keySelectionProgressSubscription);
             SelectionProgress = keyStateService.KeySelectionProgress[Value].Value;
 
             //Calculate IsEnabled
-            calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
-            keyStateService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
+            Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
+            var keyEnabledSubscription = keyStateService.KeyEnabledStates
+                .OnAnyPropertyChanges()
+                .Subscribe(_ => calculateIsEnabled());
+            onUnloaded.Add(keyEnabledSubscription);
             calculateIsEnabled();
             
             //Calculate IsCurrent
             Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
-
-            mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
+            var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                 .Subscribe(calculateIsCurrent);
-
+            onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
             
             //Calculate DisplayShiftDownText
-            Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
-                (shiftDownState, capturingMultiKeySelection) => 
-                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
+            Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
+                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
-
-            capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
+            var capturingMultiKeySelectionSubscription = capturingStateManager
+                .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
                 .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
-
-            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
+            onUnloaded.Add(capturingMultiKeySelectionSubscription);
+            var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
+                .OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
-
-            calculateDisplayShiftDownText(
-                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value,
-                capturingStateManager.CapturingMultiKeySelection);
+            onUnloaded.Add(leftShiftKeyStateSubscription);
+            calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
 
             //Publish own version of KeySelection event
-            mainViewModel.KeySelection += (o, value) =>
-            {
-                if (value.Equals(Value)
-                    && Selection != null)
+            var keySelectionSubscription = Observable.FromEventPattern<KeyValue>(
+                handler => mainViewModel.KeySelection += handler,
+                handler => mainViewModel.KeySelection -= handler)
+                .Subscribe(pattern =>
                 {
-                    Selection(this, null);
-                }
-            };
+                    if (pattern.EventArgs.Equals(Value)
+                        && Selection != null)
+                    {
+                        Selection(this, null);
+                    }
+                });
+            onUnloaded.Add(keySelectionSubscription);
+        }
+        
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            if (onUnloaded != null
+                && !onUnloaded.IsDisposed)
+            {
+                onUnloaded.Dispose();
+                onUnloaded = null;
+            }
         }
 
         #endregion
