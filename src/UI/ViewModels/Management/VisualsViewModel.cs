@@ -113,6 +113,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, Enums.Keyboards>("Alpha", Enums.Keyboards.Alpha),
                     new KeyValuePair<string, Enums.Keyboards>("Conversation Alpha", Enums.Keyboards.ConversationAlpha),
+                    new KeyValuePair<string, Enums.Keyboards>("Conversation Numeric & Symbols", Enums.Keyboards.ConversationNumericAndSymbols),
                     new KeyValuePair<string, Enums.Keyboards>("Currencies 1", Enums.Keyboards.Currencies1),
                     new KeyValuePair<string, Enums.Keyboards>("Currencies 2", Enums.Keyboards.Currencies2),
                     new KeyValuePair<string, Enums.Keyboards>("Diacritics 1", Enums.Keyboards.Diacritics1),

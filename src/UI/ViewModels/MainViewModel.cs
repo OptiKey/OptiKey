@@ -240,12 +240,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void InitialiseKeyboard(IWindowManipulationService mainWindowManipulationService)
+        private void InitialiseKeyboard(IWindowManipulationService windowManipulationService)
         {
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha(null);
-                mainWindowManipulationService.Maximise();
+                Keyboard = new ConversationAlpha();
+                windowManipulationService.Maximise();
             }
             else
             {
@@ -253,85 +253,86 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     case Enums.Keyboards.Alpha:
                         Keyboard = new Alpha();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.ConversationAlpha:
-                        Keyboard = new ConversationAlpha(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                        });
-                        mainWindowManipulationService.Maximise();
+                        Keyboard = new ConversationAlpha();
+                        windowManipulationService.Maximise();
+                        break;
+
+                    case Enums.Keyboards.ConversationNumericAndSymbols:
+                        Keyboard = new ConversationNumericAndSymbols();
+                        windowManipulationService.Maximise();
                         break;
 
                     case Enums.Keyboards.Currencies1:
                         Keyboard = new Currencies1();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Currencies2:
                         Keyboard = new Currencies2();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Diacritics1:
                         Keyboard = new Diacritics1();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Diacritics2:
                         Keyboard = new Diacritics2();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Diacritics3:
                         Keyboard = new Diacritics3();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Menu:
                         Keyboard = new Menu(() => Keyboard = new Alpha());
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.Minimised:
                         Keyboard = new Minimised(() =>
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
+                            windowManipulationService.Restore();
                         });
-                        mainWindowManipulationService.Minimise();
+                        windowManipulationService.Minimise();
                         break;
 
                     case Enums.Keyboards.Mouse:
                         Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols1:
                         Keyboard = new NumericAndSymbols1();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols2:
                         Keyboard = new NumericAndSymbols2();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols3:
                         Keyboard = new NumericAndSymbols3();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.PhysicalKeys:
                         Keyboard = new PhysicalKeys();
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
 
                     case Enums.Keyboards.SizeAndPosition:
                         Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        mainWindowManipulationService.Restore();
+                        windowManipulationService.Restore();
                         break;
                 }
             }

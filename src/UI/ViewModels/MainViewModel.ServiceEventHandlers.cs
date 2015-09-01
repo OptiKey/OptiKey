@@ -167,33 +167,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Alpha();
                         break;
 
-                    case FunctionKeys.ConversationKeyboard:
-                        Log.Debug("Changing keyboard to Conversation.");
-                        Keyboard = new ConversationAlpha(() =>
-                        {
-                            Log.Debug("Restoring window.");
-                            mainWindowManipulationService.Restore();
-                            Keyboard = currentKeyboard;
-                        });
-                        Log.Debug("Maximising window.");
-                        mainWindowManipulationService.Maximise();
-                        break;
-
-                    case FunctionKeys.Diacritic1Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic1.");
-                        Keyboard = new Diacritics1();
-                        break;
-
-                    case FunctionKeys.Diacritic2Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic2.");
-                        Keyboard = new Diacritics2();
-                        break;
-
-                    case FunctionKeys.Diacritic3Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic3.");
-                        Keyboard = new Diacritics3();
-                        break;
-
                     case FunctionKeys.BackFromKeyboard:
                         Log.Debug("Navigating back from keyboard.");
                         var navigableKeyboard = Keyboard as IBackAction;
@@ -256,6 +229,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         break;
 
+                    case FunctionKeys.ConversationAlphaKeyboard:
+                        Log.Debug("Changing keyboard to ConversationAlpha.");
+                        Keyboard = new ConversationAlpha();
+                        Log.Debug("Maximising window.");
+                        mainWindowManipulationService.Maximise();
+                        break;
+
+                    case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
+                        Log.Debug("Changing keyboard to ConversationNumericAndSymbols.");
+                        Keyboard = new ConversationNumericAndSymbols();
+                        Log.Debug("Maximising window.");
+                        mainWindowManipulationService.Maximise();
+                        break;
+
                     case FunctionKeys.Currencies1Keyboard:
                         Log.Debug("Changing keyboard to Currencies1.");
                         Keyboard = new Currencies1();
@@ -269,6 +256,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.DecreaseOpacity:
                         Log.Debug("Decreasing opacity.");
                         mainWindowManipulationService.ChangeOpacity(false);
+                        break;
+
+                    case FunctionKeys.Diacritic1Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic1.");
+                        Keyboard = new Diacritics1();
+                        break;
+
+                    case FunctionKeys.Diacritic2Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic2.");
+                        Keyboard = new Diacritics2();
+                        break;
+
+                    case FunctionKeys.Diacritic3Keyboard:
+                        Log.Debug("Changing keyboard to Diacritic3.");
+                        Keyboard = new Diacritics3();
                         break;
 
                     case FunctionKeys.ExpandDock:
@@ -326,8 +328,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MenuKeyboard:
+                        var windowState = mainWindowManipulationService.WindowState;
+                        Log.Debug("Restoring window.");
+                        mainWindowManipulationService.Restore();
                         Log.Debug("Changing keyboard to Menu.");
-                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        Keyboard = new Menu(() =>
+                        {
+                            switch (windowState)
+                            {
+                                case WindowStates.Docked:
+                                case WindowStates.Floating:
+                                    mainWindowManipulationService.Restore();
+                                    break;
+
+                                case WindowStates.Maximised:
+                                    mainWindowManipulationService.Maximise();
+                                    break;
+                            }
+                            Keyboard = currentKeyboard;
+                        });
                         break;
 
                     case FunctionKeys.Minimise:

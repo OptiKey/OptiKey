@@ -114,6 +114,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Properties
 
         public bool SizeAndPositionIsInitialised { get; private set; }
+        public WindowStates WindowState { get { return getWindowState(); } }
 
         #endregion
 
@@ -253,7 +254,7 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
             }
         }
-
+        
         public void Maximise()
         {
             var windowState = getWindowState();
@@ -265,7 +266,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 UnRegisterAppBar();
             }
-            window.WindowState = WindowState.Maximized;
+            window.WindowState = System.Windows.WindowState.Maximized;
             saveWindowState(WindowStates.Maximised);
         }
 
@@ -507,25 +508,25 @@ namespace JuliusSweetland.OptiKey.Services
             switch (windowState)
             {
                 case WindowStates.Docked:
-                    window.WindowState = WindowState.Normal;
+                    window.WindowState = System.Windows.WindowState.Normal;
                     var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
                     RegisterAppBar();
                     SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx);
                     break;
 
                 case WindowStates.Floating:
-                    window.WindowState = WindowState.Normal;
+                    window.WindowState = System.Windows.WindowState.Normal;
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), getFloatingSizeAndPosition());
                     break;
 
                 case WindowStates.Maximised:
-                    window.WindowState = WindowState.Maximized;
+                    window.WindowState = System.Windows.WindowState.Maximized;
                     PublishSizeAndPositionInitialised();
                     break;
 
                 case WindowStates.Minimised:
-                    window.WindowState = WindowState.Normal;
+                    window.WindowState = System.Windows.WindowState.Normal;
                     var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition(dockPosition);
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);

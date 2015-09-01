@@ -162,11 +162,11 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="SLEEP"
+                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                      Text="RE-CALIBRATE"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>

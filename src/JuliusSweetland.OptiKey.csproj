@@ -323,6 +323,7 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\Keyboard.cs" />
@@ -400,6 +401,9 @@
     <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml.cs">
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
@@ -805,6 +809,10 @@
     <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>

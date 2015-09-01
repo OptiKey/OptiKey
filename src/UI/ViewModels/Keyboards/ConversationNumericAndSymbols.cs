@@ -3,9 +3,9 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class ConversationAlpha : Keyboard
+    public class ConversationNumericAndSymbols : Keyboard
     {
-        public ConversationAlpha() : base(simulateKeyStrokes:false)
+        public ConversationNumericAndSymbols() : base(simulateKeyStrokes: false)
         {
         }
     }

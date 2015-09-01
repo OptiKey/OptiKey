@@ -9,6 +9,7 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler SizeAndPositionInitialised;
 
         bool SizeAndPositionIsInitialised { get; }
+        WindowStates WindowState { get; }
 
         void ChangeOpacity(bool increase);
         void Expand(ExpandToDirections direction, double amountInPx);

@@ -157,6 +157,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
+            else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
+            {
+                newContent = new CommonViews.ConversationNumericAndSymbols { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.Currencies1)
             {
                 newContent = new CommonViews.Currencies1 { DataContext = Keyboard };
