@@ -159,31 +159,31 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
-                      Text="!"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="!" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
                       Text="¡"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="¡" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
-                      Text="?"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="?" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
                       Text="¿"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="¿" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
+                      Text="!"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="!" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
+                      Text="?"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="?" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="19" />
@@ -296,7 +296,13 @@
                 <models:KeyValue String="." />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
+                      Text="+"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="+" />
+            </controls:Key.Value>
+        </controls:Key>
         <ContentControl Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
