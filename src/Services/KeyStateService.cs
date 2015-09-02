@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
@@ -19,13 +20,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private bool simulateKeyStrokes;
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
+        private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
 
+        private bool simulateKeyStrokes;
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
-
+        
         #endregion
 
         #region Ctor
@@ -127,25 +129,42 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Adding KeyDownStates change handlers.");
 
-            Action reactToSimulateKeyStrokesChanges = () =>
+            this.OnPropertyChanges(t => t.SimulateKeyStrokes).Subscribe(_ => ReactToSimulateKeyStrokesChanges());
+            ReactToSimulateKeyStrokesChanges();
+        }
+
+        //N.B. This method will be called before any other classes can react to the SimulateKeyStrokes change
+        private void ReactToSimulateKeyStrokesChanges()
+        {
+            //Save old state values
+            var oldSimulateKeyStrokesValue = !SimulateKeyStrokes;
+            Log.DebugFormat("Saving state for SimulateKeyStrokes value of {0}.", oldSimulateKeyStrokesValue);
+            state.Add(oldSimulateKeyStrokesValue, new KeyStateServiceState(this));
+
+            if (state.ContainsKey(SimulateKeyStrokes))
             {
+                Log.DebugFormat("Restoring state for SimulateKeyStrokes value of {0}.", SimulateKeyStrokes);
+                state[SimulateKeyStrokes].RestoreState(); //Restore state
+            }
+            else
+            {
+                //New state - default 
                 if (!SimulateKeyStrokes)
                 {
-                    Log.Debug("SimulateKeyStrokes is false - releasing all publish only keys.");
+                    Log.Debug("SimulateKeyStrokes is false and no stored state to restore - releasing all publish only keys.");
                     foreach (var keyValue in KeyDownStates.Keys)
                     {
                         if (KeyValues.PublishOnlyKeys.Contains(keyValue)
                             && KeyDownStates[keyValue].Value.IsDownOrLockedDown())
                         {
-                            Log.DebugFormat("Releasing '{0}' as we are not publishing.", keyValue);
+                            Log.DebugFormat("Releasing '{0}' as we are not simulating key strokes (key is a 'publish only' key).", keyValue);
                             KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
                             if (fireKeySelectionEvent != null) fireKeySelectionEvent(keyValue);
                         }
                     }
                 }
-            };
-            this.OnPropertyChanges(t => t.SimulateKeyStrokes).Subscribe(_ => reactToSimulateKeyStrokesChanges());
-            reactToSimulateKeyStrokesChanges();
+            }
+            
         }
 
         private void AddKeyDownStatesChangeHandlers()
