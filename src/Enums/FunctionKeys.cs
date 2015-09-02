@@ -127,7 +127,6 @@
         ShrinkFromTop,
         ShrinkFromTopAndLeft,
         ShrinkFromTopAndRight,
-        SimulateKeyStrokes,
         SizeAndPositionKeyboard,
         Sleep,
         Speak,

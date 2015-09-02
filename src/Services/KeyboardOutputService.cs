@@ -416,10 +416,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToSimulateKeyStrokesChanges()
         {
-            keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value)
+            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes)
                 .Subscribe(value =>
                 {
-                    if (value.IsDownOrLockedDown()) //Publishing has been turned on
+                    if (value) //Simulating key strokes has been turned on
                     {
                         publishService.ReleaseAllDownKeys();
 
@@ -437,7 +437,7 @@ namespace JuliusSweetland.OptiKey.Services
                             }
                         }
                     }
-                    else //Publishing has been turned off
+                    else //Simulating key strokes has been turned off
                     {
                         publishService.ReleaseAllDownKeys();
                     }
@@ -454,7 +454,7 @@ namespace JuliusSweetland.OptiKey.Services
                 keyStateService.KeyDownStates[key].OnPropertyChanges(s => s.Value)
                     .Subscribe(value =>
                     {
-                        if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                        if (keyStateService.SimulateKeyStrokes)
                         {
                             // ReSharper disable PossibleInvalidOperationException
                             var virtualKeyCode = keyCopy.FunctionKey.Value.ToVirtualKeyCode().Value;
@@ -578,7 +578,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         private void PublishKeyPress(FunctionKeys functionKey)
         {
-            if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+            if (keyStateService.SimulateKeyStrokes)
             {
                 Log.DebugFormat("KeyDownUp called with functionKey '{0}'.",  functionKey);
 
@@ -592,7 +592,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PublishKeyPress(char character, char? modifiedCharacter, bool publishModifiedCharacterAsText)
         {
-            if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+            if (keyStateService.SimulateKeyStrokes)
             {
                 Log.DebugFormat("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 

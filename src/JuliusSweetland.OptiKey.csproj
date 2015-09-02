@@ -519,7 +519,6 @@
     <None Include="Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseLeftClick.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseRightClick.svg" />
-    <None Include="Resources\Icons\SVG Source Files\SimulateKeyStrokes.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMagneticCursor.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMagnifier.svg" />
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />

@@ -40,10 +40,10 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
+            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
@@ -74,7 +74,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Key is publish only, but we are not publishing
-                if (!keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                if (!keyStateService.SimulateKeyStrokes
                     && KeyValues.PublishOnlyKeys.Contains(keyValue))
                 {
                     return false;

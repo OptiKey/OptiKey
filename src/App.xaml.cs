@@ -602,7 +602,7 @@ namespace JuliusSweetland.OptiKey
         {
             Application.Current.Exit += (o, args) =>
             {
-                if (keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                if (keyStateService.SimulateKeyStrokes)
                 {
                     publishService.ReleaseAllDownKeys();
                 }

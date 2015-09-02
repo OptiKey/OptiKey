@@ -452,8 +452,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Action<IKeyboard> setSimulateKeyStrokes = kb =>
             {
-                keyStateService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value =
-                    kb.SimulateKeyStrokes ? KeyDownStates.LockedDown : KeyDownStates.Up;
+                keyStateService.SimulateKeyStrokes = kb.SimulateKeyStrokes;
             };
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setSimulateKeyStrokes);
             setSimulateKeyStrokes(Keyboard);

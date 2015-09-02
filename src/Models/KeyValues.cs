@@ -56,7 +56,6 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue NextSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.NextSuggestions };
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue { FunctionKey = FunctionKeys.PreviousSuggestions };
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue { FunctionKey = FunctionKeys.RepeatLastMouseAction };
-        public static readonly KeyValue SimulateKeyStrokesKey = new KeyValue { FunctionKey = FunctionKeys.SimulateKeyStrokes };
         public static readonly KeyValue ShrinkFromBottomKey = new KeyValue { FunctionKey = FunctionKeys.ShrinkFromBottom };
         public static readonly KeyValue ShrinkFromBottomAndLeftKey = new KeyValue { FunctionKey = FunctionKeys.ShrinkFromBottomAndLeft };
         public static readonly KeyValue ShrinkFromBottomAndRightKey = new KeyValue { FunctionKey = FunctionKeys.ShrinkFromBottomAndRight };
@@ -106,7 +105,6 @@ namespace JuliusSweetland.OptiKey.Models
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,
                     MultiKeySelectionKey,
-                    SimulateKeyStrokesKey,
                     SleepKey
                 };
             }

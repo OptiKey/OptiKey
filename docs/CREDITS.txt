@@ -41,7 +41,6 @@ Icons
   Quit icon: Power by Creative Stall from the Noun Project (thenounproject.com)
   Repeat Last Mouse Action icon: Replay by Arthur Shlain from the Noun Project (thenounproject.com)
   Shift icon: Arrow by Mateo Zlatar from the Noun Project (thenounproject.com)
-  Simulate Key Strokes icon: Keypad by Arthur Shlain from the Noun Project (thenounproject.com)
   Size and Opacity icon modified from Move by TukTuk Design and Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
   Sleep icon: Sleep by Rémy Médard from the Noun Project (thenounproject.com)
   Speak icon: appbar.speakerphone from Modern UI Icons - modernuiicons.com

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -16,8 +17,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        private bool simulateKeyStrokes;
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
@@ -42,6 +44,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             InitialiseKeyDownStates();
             AddSettingChangeHandlers();
+            AddSimulateKeyStrokesChangeHandler();
             AddKeyDownStatesChangeHandlers();
         }
 
@@ -49,6 +52,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
+        public bool SimulateKeyStrokes
+        {
+            get { return simulateKeyStrokes; }
+            set { SetProperty(ref simulateKeyStrokes, value); }
+        }
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
         public KeyEnabledStates KeyEnabledStates { get { return keyEnabledStates; } }
@@ -115,12 +123,34 @@ namespace JuliusSweetland.OptiKey.Services
             });
         }
 
-        private void AddKeyDownStatesChangeHandlers()
+        private void AddSimulateKeyStrokesChangeHandler()
         {
             Log.Debug("Adding KeyDownStates change handlers.");
 
-            KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-                ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes());
+            Action reactToSimulateKeyStrokesChanges = () =>
+            {
+                if (!SimulateKeyStrokes)
+                {
+                    Log.Debug("SimulateKeyStrokes is false - releasing all publish only keys.");
+                    foreach (var keyValue in KeyDownStates.Keys)
+                    {
+                        if (KeyValues.PublishOnlyKeys.Contains(keyValue)
+                            && KeyDownStates[keyValue].Value.IsDownOrLockedDown())
+                        {
+                            Log.DebugFormat("Releasing '{0}' as we are not publishing.", keyValue);
+                            KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
+                            if (fireKeySelectionEvent != null) fireKeySelectionEvent(keyValue);
+                        }
+                    }
+                }
+            };
+            this.OnPropertyChanges(t => t.SimulateKeyStrokes).Subscribe(_ => reactToSimulateKeyStrokesChanges());
+            reactToSimulateKeyStrokesChanges();
+        }
+
+        private void AddKeyDownStatesChangeHandlers()
+        {
+            Log.Debug("Adding KeyDownStates change handlers.");
 
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
@@ -136,28 +166,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
                 KeyDownStates[kv].OnPropertyChanges(s => s.Value).Subscribe(value => CalculateMultiKeySelectionSupported()));
-
-            ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes();
             CalculateMultiKeySelectionSupported();
-        }
-
-        private void ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes()
-        {
-            Log.Debug("ReleasePublishOnlyKeysIfNotSimulatingKeyStrokes called.");
-
-            if (!KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
-            {
-                foreach (var keyValue in KeyDownStates.Keys)
-                {
-                    if (KeyValues.PublishOnlyKeys.Contains(keyValue)
-                        && KeyDownStates[keyValue].Value.IsDownOrLockedDown())
-                    {
-                        Log.DebugFormat("Releasing '{0}' as we are not publishing.", keyValue);
-                        KeyDownStates[keyValue].Value = Enums.KeyDownStates.Up;
-                        if (fireKeySelectionEvent != null) fireKeySelectionEvent(keyValue);
-                    }
-                }
-            }
         }
 
         private void CalculateMultiKeySelectionSupported()
