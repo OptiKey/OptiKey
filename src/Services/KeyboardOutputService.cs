@@ -416,30 +416,18 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToSimulateKeyStrokesChanges()
         {
-            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes)
-                .Subscribe(value =>
+            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(value =>
                 {
+                    publishService.ReleaseAllDownKeys();
+
                     if (value) //Simulating key strokes has been turned on
                     {
-                        publishService.ReleaseAllDownKeys();
-
-                        foreach (var key in KeyValues.KeysWhichCanBePressedOrLockedDown)
-                        {
-                            if (keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown()
-                                && key.FunctionKey != null)
-                            {
-                                var virtualKeyCode = key.FunctionKey.Value.ToVirtualKeyCode();
-
-                                if (virtualKeyCode != null)
-                                {
-                                    publishService.KeyDown(virtualKeyCode.Value);
-                                }
-                            }
-                        }
-                    }
-                    else //Simulating key strokes has been turned off
-                    {
-                        publishService.ReleaseAllDownKeys();
+                        KeyValues.KeysWhichCanBePressedOrLockedDown
+                            .Where(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown() && key.FunctionKey != null)
+                            .Select(key => key.FunctionKey.Value.ToVirtualKeyCode())
+                            .Where(virtualKeyCode => virtualKeyCode != null)
+                            .ToList()
+                            .ForEach(virtualKeyCode => publishService.KeyDown(virtualKeyCode.Value));
                     }
                 });
         }
