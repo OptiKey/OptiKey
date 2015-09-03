@@ -18,8 +18,10 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly Action<bool> setLastTextChangeWasSuggestion;
         private readonly Action<bool> setSuppressNextAutoSpace;
         private readonly Action<bool> setShiftStateSetAutomatically;
+        private readonly bool simulateKeyStrokes;
 
         public KeyboardOutputServiceState(
+            bool simulateKeyStrokes,
             Func<string> getText, Action<string> setText,
             Func<string> getLastTextChange, Action<string> setLastTextChange,
             Func<bool> getLastTextChangeWasSuggestion, Action<bool> setLastTextChangeWasSuggestion,
@@ -32,20 +34,21 @@ namespace JuliusSweetland.OptiKey.Models
             suppressNextAutoSpace = getSuppressNextAutoSpace();
             shiftStateSetAutomatically = getShiftStateSetAutomatically();
 
-            Log.DebugFormat("Saving state. Text:'{0}', LastTextChange:'{1}', LastTextChangeWasSuggestion:'{2}', SuppressNextAutoSpace:'{3}', ShiftStateSetAutomatically:'{4}'",
-                text, lastTextChange, lastTextChangeWasSuggestion, suppressNextAutoSpace, shiftStateSetAutomatically);
+            Log.DebugFormat("Saving KeyboardOutputService state for SimulateKeyStrokes={0}. Text:'{1}', LastTextChange:'{2}', LastTextChangeWasSuggestion:'{3}', SuppressNextAutoSpace:'{4}', ShiftStateSetAutomatically:'{5}'",
+                simulateKeyStrokes, text, lastTextChange, lastTextChangeWasSuggestion, suppressNextAutoSpace, shiftStateSetAutomatically);
 
             this.setText = setText;
             this.setLastTextChange = setLastTextChange;
             this.setLastTextChangeWasSuggestion = setLastTextChangeWasSuggestion;
             this.setSuppressNextAutoSpace = setSuppressNextAutoSpace;
             this.setShiftStateSetAutomatically = setShiftStateSetAutomatically;
+            this.simulateKeyStrokes = simulateKeyStrokes;
         }
 
         public void RestoreState()
         {
-            Log.DebugFormat("Restoring state. Text:'{0}', LastTextChange:'{1}', LastTextChangeWasSuggestion:'{2}', SuppressNextAutoSpace:'{3}', ShiftStateSetAutomatically:'{4}'",
-                text, lastTextChange, lastTextChangeWasSuggestion, suppressNextAutoSpace, shiftStateSetAutomatically);
+            Log.DebugFormat("Restoring KeyboardOutputService state for SimulateKeyStrokes={0}. Text:'{1}', LastTextChange:'{2}', LastTextChangeWasSuggestion:'{3}', SuppressNextAutoSpace:'{4}', ShiftStateSetAutomatically:'{5}'",
+                simulateKeyStrokes, text, lastTextChange, lastTextChangeWasSuggestion, suppressNextAutoSpace, shiftStateSetAutomatically);
 
             setText(text);
             setLastTextChange(lastTextChange);

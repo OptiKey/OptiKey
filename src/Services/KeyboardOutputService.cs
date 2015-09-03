@@ -416,58 +416,66 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToSimulateKeyStrokesChanges()
         {
-            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(value =>
+            Log.Debug("Adding SimulateKeyStrokes change handlers.");
+            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => SimulateKeyStrokesHasChanged(true));
+            SimulateKeyStrokesHasChanged(false);
+        }
+
+        private void SimulateKeyStrokesHasChanged(bool oldStateIsValid)
+        {
+            var newKey = keyStateService.SimulateKeyStrokes;
+            var lastKey = !newKey;
+
+            if (oldStateIsValid)
             {
                 //Save old state values
-                var oldSimulateKeyStrokesValue = !value;
-                Log.DebugFormat("Saving state for SimulateKeyStrokes value of {0}.", oldSimulateKeyStrokesValue);
-                var newState = new KeyboardOutputServiceState(
+                var lastState = new KeyboardOutputServiceState(
+                    lastKey,
                     () => text, s => Text = s, //Set property (not field) to trigger bindings
                     () => lastTextChange, s => lastTextChange = s,
                     () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
                     () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
                     () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b);
-                if (state.ContainsKey(oldSimulateKeyStrokesValue))
+                if (state.ContainsKey(lastKey))
                 {
-                    state[oldSimulateKeyStrokesValue] = newState;
+                    state[lastKey] = lastState;
                 }
                 else
                 {
-                    state.Add(oldSimulateKeyStrokesValue, newState);
+                    state.Add(lastKey, lastState);
                 }
+            }
 
-                //Restore state or default state
-                if (state.ContainsKey(value))
-                {
-                    Log.DebugFormat("Restoring state for SimulateKeyStrokes value of {0}.", value);
-                    state[value].RestoreState();
-                }
-                else
-                {
-                    Log.Debug("No stored state to restore - defaulting state.");
-                    Text = null;
-                    StoreLastTextChange(null);
-                    ClearSuggestions();
-                    ReleaseUnlockedKeys();
-                    AutoPressShiftIfAppropriate();
-                    Log.Debug("Suppressing next auto space.");
-                    suppressNextAutoSpace = true;
-                }
+            //Restore state or default state
+            if (state.ContainsKey(newKey))
+            {
+                state[newKey].RestoreState();
+            }
+            else
+            {
+                Log.DebugFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newKey);
+                Text = null;
+                StoreLastTextChange(null);
+                ClearSuggestions();
+                ReleaseUnlockedKeys();
+                AutoPressShiftIfAppropriate();
+                Log.Debug("Suppressing next auto space.");
+                suppressNextAutoSpace = true;
+            }
 
-                //Release all down keys
-                publishService.ReleaseAllDownKeys();
+            //Release all down keys
+            publishService.ReleaseAllDownKeys();
 
-                if (value)
-                {
-                    //SimulatingKeyStrokes is on so publish key down events for all down/locked down keys
-                    KeyValues.KeysWhichCanBePressedOrLockedDown
-                        .Where(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown() && key.FunctionKey != null)
-                        .Select(key => key.FunctionKey.Value.ToVirtualKeyCode())
-                        .Where(virtualKeyCode => virtualKeyCode != null)
-                        .ToList()
-                        .ForEach(virtualKeyCode => publishService.KeyDown(virtualKeyCode.Value));
-                }
-            });
+            if (keyStateService.SimulateKeyStrokes)
+            {
+                //SimulatingKeyStrokes is on so publish key down events for all down/locked down keys
+                KeyValues.KeysWhichCanBePressedOrLockedDown
+                    .Where(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown() && key.FunctionKey != null)
+                    .Select(key => key.FunctionKey.Value.ToVirtualKeyCode())
+                    .Where(virtualKeyCode => virtualKeyCode != null)
+                    .ToList()
+                    .ForEach(virtualKeyCode => publishService.KeyDown(virtualKeyCode.Value));
+            }
         }
 
         private void ReactToPublishableKeyDownStateChanges()

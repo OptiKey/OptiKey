@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.DebugFormat("Checking all virtual key codes and simulating release of any which are down.");
+                Log.InfoFormat("Releasing all keys (with virtual key codes) which are down.");
                 foreach (var virtualKeyCode in Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>())
                 {
                     if (inputDeviceStateAdaptor.IsHardwareKeyDown(virtualKeyCode))

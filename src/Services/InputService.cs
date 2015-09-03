@@ -363,7 +363,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (selectionProgressEvent != null)
             {
-                Log.DebugFormat("Publishing SelectionProgress event: {0} : {1}", selectionProgress.Item1, selectionProgress.Item2);
+                if ((selectionProgress.Item2 < 0.1) || (selectionProgress.Item2 - 0.5) < 0.1 || (selectionProgress.Item2 - 1) < 0.1)
+                {
+                    Log.DebugFormat("Publishing SelectionProgress event: {0} : {1}", selectionProgress.Item1, selectionProgress.Item2);
+                }
 
                 selectionProgressEvent(this, selectionProgress);
             }
