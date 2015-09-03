@@ -22,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IPublishService publishService;
         private readonly IDictionaryService dictionaryService;
         private readonly Action<KeyValue> fireKeySelectionEvent;
+        private readonly Dictionary<bool, KeyboardOutputServiceState> state = new Dictionary<bool, KeyboardOutputServiceState>();
 
         private string text;
         private string lastTextChange;
@@ -178,7 +179,6 @@ namespace JuliusSweetland.OptiKey.Services
                     StoreLastTextChange(null);
                     ClearSuggestions();
                     AutoPressShiftIfAppropriate();
-
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     break;
@@ -418,6 +418,42 @@ namespace JuliusSweetland.OptiKey.Services
         {
             keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(value =>
             {
+                //Save old state values
+                var oldSimulateKeyStrokesValue = !value;
+                Log.DebugFormat("Saving state for SimulateKeyStrokes value of {0}.", oldSimulateKeyStrokesValue);
+                var newState = new KeyboardOutputServiceState(
+                    () => text, s => Text = s, //Set property (not field) to trigger bindings
+                    () => lastTextChange, s => lastTextChange = s,
+                    () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
+                    () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
+                    () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b);
+                if (state.ContainsKey(oldSimulateKeyStrokesValue))
+                {
+                    state[oldSimulateKeyStrokesValue] = newState;
+                }
+                else
+                {
+                    state.Add(oldSimulateKeyStrokesValue, newState);
+                }
+
+                //Restore state or default state
+                if (state.ContainsKey(value))
+                {
+                    Log.DebugFormat("Restoring state for SimulateKeyStrokes value of {0}.", value);
+                    state[value].RestoreState();
+                }
+                else
+                {
+                    Log.Debug("No stored state to restore - defaulting state.");
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    ReleaseUnlockedKeys();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                }
+
                 //Release all down keys
                 publishService.ReleaseAllDownKeys();
 

@@ -225,6 +225,8 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
+    <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyStateServiceState.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\DictionaryEntryAndState.cs" />

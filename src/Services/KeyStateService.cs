@@ -14,8 +14,6 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class KeyStateService : BindableBase, IKeyStateService
     {
-        private readonly Action<KeyValue> fireKeySelectionEvent;
-
         #region Fields
 
         private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -23,8 +21,9 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;
         private readonly KeyEnabledStates keyEnabledStates;
+        private readonly Action<KeyValue> fireKeySelectionEvent;
         private readonly Dictionary<bool, KeyStateServiceState> state = new Dictionary<bool, KeyStateServiceState>();
-
+        
         private bool simulateKeyStrokes;
         private bool turnOnMultiKeySelectionWhenKeysWhichPreventTextCaptureAreReleased;
         
@@ -139,16 +138,24 @@ namespace JuliusSweetland.OptiKey.Services
             //Save old state values
             var oldSimulateKeyStrokesValue = !SimulateKeyStrokes;
             Log.DebugFormat("Saving state for SimulateKeyStrokes value of {0}.", oldSimulateKeyStrokesValue);
-            state.Add(oldSimulateKeyStrokesValue, new KeyStateServiceState(this));
-
-            if (state.ContainsKey(SimulateKeyStrokes))
+            var newState = new KeyStateServiceState(this);
+            if (state.ContainsKey(oldSimulateKeyStrokesValue))
             {
-                Log.DebugFormat("Restoring state for SimulateKeyStrokes value of {0}.", SimulateKeyStrokes);
-                state[SimulateKeyStrokes].RestoreState(); //Restore state
+                state[oldSimulateKeyStrokesValue] = newState;
             }
             else
             {
-                //New state - default 
+                state.Add(oldSimulateKeyStrokesValue, newState);
+            }
+
+            //Restore state or default state
+            if (state.ContainsKey(SimulateKeyStrokes))
+            {
+                Log.DebugFormat("Restoring state for SimulateKeyStrokes value of {0}.", SimulateKeyStrokes);
+                state[SimulateKeyStrokes].RestoreState();
+            }
+            else
+            {
                 if (!SimulateKeyStrokes)
                 {
                     Log.Debug("SimulateKeyStrokes is false and no stored state to restore - releasing all publish only keys.");
@@ -164,7 +171,6 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
             }
-            
         }
 
         private void AddKeyDownStatesChangeHandlers()
