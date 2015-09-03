@@ -231,34 +231,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.ConversationAlphaKeyboard:
                         Log.Debug("Changing keyboard to ConversationAlpha.");
+                        var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                         Action conversationAlphaBackAction =
                             currentKeyboard is ConversationNumericAndSymbols
                                 ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
                                 : () => 
                                     {
-                                        Log.Debug("Restoring window.");
+                                        Log.Debug("Restoring window size.");
                                         mainWindowManipulationService.Restore();
+                                        Log.DebugFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
                                         Keyboard = currentKeyboard;
                                     };
                         Keyboard = new ConversationAlpha(conversationAlphaBackAction);
                         Log.Debug("Maximising window.");
                         mainWindowManipulationService.Maximise();
+                        Log.DebugFormat("Setting opacity to 1 (fully opaque)");
+                        mainWindowManipulationService.SetOpacity(1);
                         break;
 
                     case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                         Log.Debug("Changing keyboard to ConversationNumericAndSymbols.");
+                        var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
                         Action conversationNumericAndSymbolsBackAction =
                             currentKeyboard is ConversationAlpha
                                 ? ((ConversationAlpha)currentKeyboard).BackAction
                                 : () => 
                                     {
-                                        Log.Debug("Restoring window.");
+                                        Log.Debug("Restoring window size.");
                                         mainWindowManipulationService.Restore();
+                                        Log.DebugFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
                                         Keyboard = currentKeyboard;
                                     };
                         Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
                         Log.Debug("Maximising window.");
                         mainWindowManipulationService.Maximise();
+                        Log.DebugFormat("Setting opacity to 1 (fully opaque)");
+                        mainWindowManipulationService.SetOpacity(1);
                         break;
 
                     case FunctionKeys.Currencies1Keyboard:
@@ -273,7 +283,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.DecreaseOpacity:
                         Log.Debug("Decreasing opacity.");
-                        mainWindowManipulationService.ChangeOpacity(false);
+                        mainWindowManipulationService.IncrementOrDecrementOpacity(false);
                         break;
 
                     case FunctionKeys.Diacritic1Keyboard:
@@ -342,11 +352,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.IncreaseOpacity:
                         Log.Debug("Increasing opacity.");
-                        mainWindowManipulationService.ChangeOpacity(true);
+                        mainWindowManipulationService.IncrementOrDecrementOpacity(true);
                         break;
 
                     case FunctionKeys.MenuKeyboard:
-                        Log.Debug("Restoring window.");
+                        Log.Debug("Restoring window size.");
                         mainWindowManipulationService.Restore();
                         Log.Debug("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
@@ -358,7 +368,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Log.Debug("Changing keyboard to Minimised.");
                         Keyboard = new Minimised(() =>
                         {
-                            Log.Debug("Restoring window.");
+                            Log.Debug("Restoring window size.");
                             mainWindowManipulationService.Restore();
                             Keyboard = currentKeyboard;
                         });

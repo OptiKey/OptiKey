@@ -120,14 +120,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Public Methods
 
-        public void ChangeOpacity(bool increase)
-        {
-            window.Opacity += increase ? 0.1 : -0.1;
-            window.Opacity.CoerceToLowerLimit(0.1);
-            window.Opacity.CoerceToUpperLimit(1);
-            saveOpacity(window.Opacity);
-        }
-
         public void Expand(ExpandToDirections direction, double amountInPx)
         {
             var windowState = getWindowState();
@@ -254,7 +246,20 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
             }
         }
-        
+
+        public double GetOpacity()
+        {
+            return window.Opacity;
+        }
+
+        public void IncrementOrDecrementOpacity(bool increment)
+        {
+            window.Opacity += increment ? 0.1 : -0.1;
+            window.Opacity.CoerceToLowerLimit(0.1);
+            window.Opacity.CoerceToUpperLimit(1);
+            saveOpacity(window.Opacity);
+        }
+
         public void Maximise()
         {
             var windowState = getWindowState();
@@ -349,6 +354,14 @@ namespace JuliusSweetland.OptiKey.Services
             saveWindowState(getPreviousWindowState()); 
             ApplySavedState();
             savePreviousWindowState(windowState);
+        }
+
+        public void SetOpacity(double opacity)
+        {
+            opacity.CoerceToLowerLimit(0.1);
+            opacity.CoerceToUpperLimit(1);
+            window.Opacity = opacity;
+            saveOpacity(window.Opacity);
         }
 
         public void Shrink(ShrinkFromDirections direction, double amountInPx)
