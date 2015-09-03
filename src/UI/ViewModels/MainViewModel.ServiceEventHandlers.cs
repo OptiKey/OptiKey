@@ -231,14 +231,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.ConversationAlphaKeyboard:
                         Log.Debug("Changing keyboard to ConversationAlpha.");
-                        Keyboard = new ConversationAlpha();
+                        Action conversationAlphaBackAction =
+                            currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : () => 
+                                    {
+                                        Log.Debug("Restoring window.");
+                                        mainWindowManipulationService.Restore();
+                                        Keyboard = currentKeyboard;
+                                    };
+                        Keyboard = new ConversationAlpha(conversationAlphaBackAction);
                         Log.Debug("Maximising window.");
                         mainWindowManipulationService.Maximise();
                         break;
 
                     case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                         Log.Debug("Changing keyboard to ConversationNumericAndSymbols.");
-                        Keyboard = new ConversationNumericAndSymbols();
+                        Action conversationNumericAndSymbolsBackAction =
+                            currentKeyboard is ConversationAlpha
+                                ? ((ConversationAlpha)currentKeyboard).BackAction
+                                : () => 
+                                    {
+                                        Log.Debug("Restoring window.");
+                                        mainWindowManipulationService.Restore();
+                                        Keyboard = currentKeyboard;
+                                    };
+                        Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
                         Log.Debug("Maximising window.");
                         mainWindowManipulationService.Maximise();
                         break;
@@ -328,25 +346,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MenuKeyboard:
-                        var windowState = mainWindowManipulationService.WindowState;
                         Log.Debug("Restoring window.");
                         mainWindowManipulationService.Restore();
                         Log.Debug("Changing keyboard to Menu.");
-                        Keyboard = new Menu(() =>
-                        {
-                            switch (windowState)
-                            {
-                                case WindowStates.Docked:
-                                case WindowStates.Floating:
-                                    mainWindowManipulationService.Restore();
-                                    break;
-
-                                case WindowStates.Maximised:
-                                    mainWindowManipulationService.Maximise();
-                                    break;
-                            }
-                            Keyboard = currentKeyboard;
-                        });
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.Minimise:

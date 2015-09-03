@@ -244,7 +244,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha();
+                Keyboard = new ConversationAlpha(null);
                 windowManipulationService.Maximise();
             }
             else
@@ -257,12 +257,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.ConversationAlpha:
-                        Keyboard = new ConversationAlpha();
+                        Keyboard = new ConversationAlpha(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                        });
                         windowManipulationService.Maximise();
                         break;
 
                     case Enums.Keyboards.ConversationNumericAndSymbols:
-                        Keyboard = new ConversationNumericAndSymbols();
+                        Keyboard = new ConversationNumericAndSymbols(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                        });
                         windowManipulationService.Maximise();
                         break;
 

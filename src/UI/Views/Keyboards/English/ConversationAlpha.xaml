@@ -309,11 +309,11 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource MenuIcon}"
-                                          Text="MENU"
+                            <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                          Text="BACK"
                                           SharedSizeGroup="KeyWithSymbol">
                                 <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
+                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
                                 </controls:Key.Value>
                             </controls:Key>
                         </Setter.Value>
