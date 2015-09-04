@@ -41,7 +41,7 @@
     <Setting Name="GazeTrackerUdpRegex" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
     </Setting>
-    <Setting Name="MultiKeySelectionLockedDown" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="MultiKeySelectionLockedDownWhenSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MultiKeySelectionFixationMinDwellTime" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -298,6 +298,9 @@
     </Setting>
     <Setting Name="SuppressAutoCapitaliseIntelligently" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

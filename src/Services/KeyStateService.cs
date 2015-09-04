@@ -106,8 +106,15 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.MouseMagnifierKey].Value =
                 Settings.Default.MouseMagnifierLockedDown ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
+            SetMultiKeySelectionKeyStateFromSetting();
+        }
+
+        private void SetMultiKeySelectionKeyStateFromSetting()
+        {
             KeyDownStates[KeyValues.MultiKeySelectionKey].Value =
-                Settings.Default.MultiKeySelectionEnabled && Settings.Default.MultiKeySelectionLockedDown
+                Settings.Default.MultiKeySelectionEnabled &&
+                ((SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes)
+                || (!SimulateKeyStrokes && Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes))
                     ? Enums.KeyDownStates.LockedDown
                     : Enums.KeyDownStates.Up;
         }
@@ -160,11 +167,13 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (SimulateKeyStrokes)
                 {
-                    Log.Debug("No stored KeyStateService state to restore for SimulateKeyStrokes=true.");
+                    Log.Debug("No stored KeyStateService state to restore for SimulateKeyStrokes=true. Defaulting Multi-Key Selection key state.");
+                    SetMultiKeySelectionKeyStateFromSetting();
                 }
                 else
                 {
-                    Log.Debug("No stored KeyStateService state to restore for SimulateKeyStrokes=false - releasing all publish only keys.");
+                    Log.Debug("No stored KeyStateService state to restore for SimulateKeyStrokes=false.  Defaulting Multi-Key Selection key state & releasing all publish only keys.");
+                    SetMultiKeySelectionKeyStateFromSetting();
                     foreach (var keyValue in KeyDownStates.Keys)
                     {
                         if (KeyValues.PublishOnlyKeys.Contains(keyValue)
@@ -191,7 +200,16 @@ namespace JuliusSweetland.OptiKey.Services
 
             KeyDownStates[KeyValues.MultiKeySelectionKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
-                Settings.Default.MultiKeySelectionLockedDown = KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                if (SimulateKeyStrokes)
+                {
+                    Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes = 
+                        KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                }
+                else
+                {
+                    Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes = 
+                        KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                }
                 Settings.Default.Save();
             });
 
