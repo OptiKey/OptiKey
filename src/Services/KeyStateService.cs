@@ -132,29 +132,29 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         //N.B. This method will be called before any other classes can react to the SimulateKeyStrokes change
-        private void ReactToSimulateKeyStrokesChanges(bool oldStateIsValid)
+        private void ReactToSimulateKeyStrokesChanges(bool saveCurrentState)
         {
-            var newKey = SimulateKeyStrokes;
-            var lastKey = !newKey;
+            var newStateKey = SimulateKeyStrokes;
+            var currentStateKey = !newStateKey;
 
             //Save old state values
-            if (oldStateIsValid)
+            if (saveCurrentState)
             {
-                var lastState = new KeyStateServiceState(lastKey, this);
-                if (state.ContainsKey(lastKey))
+                var currentState = new KeyStateServiceState(currentStateKey, this);
+                if (state.ContainsKey(currentStateKey))
                 {
-                    state[lastKey] = lastState;
+                    state[currentStateKey] = currentState;
                 }
                 else
                 {
-                    state.Add(lastKey, lastState);
+                    state.Add(currentStateKey, currentState);
                 }
             }
 
             //Restore state or default state
-            if (state.ContainsKey(newKey))
+            if (state.ContainsKey(newStateKey))
             {
-                state[newKey].RestoreState();
+                state[newStateKey].RestoreState();
             }
             else
             {

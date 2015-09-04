@@ -421,39 +421,39 @@ namespace JuliusSweetland.OptiKey.Services
             SimulateKeyStrokesHasChanged(false);
         }
 
-        private void SimulateKeyStrokesHasChanged(bool oldStateIsValid)
+        private void SimulateKeyStrokesHasChanged(bool saveCurrentState)
         {
-            var newKey = keyStateService.SimulateKeyStrokes;
-            var lastKey = !newKey;
+            var newStateKey = keyStateService.SimulateKeyStrokes;
+            var currentStateKey = !newStateKey;
 
-            if (oldStateIsValid)
+            if (saveCurrentState)
             {
                 //Save old state values
                 var lastState = new KeyboardOutputServiceState(
-                    lastKey,
+                    currentStateKey,
                     () => text, s => Text = s, //Set property (not field) to trigger bindings
                     () => lastTextChange, s => lastTextChange = s,
                     () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
                     () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
                     () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b);
-                if (state.ContainsKey(lastKey))
+                if (state.ContainsKey(currentStateKey))
                 {
-                    state[lastKey] = lastState;
+                    state[currentStateKey] = lastState;
                 }
                 else
                 {
-                    state.Add(lastKey, lastState);
+                    state.Add(currentStateKey, lastState);
                 }
             }
 
             //Restore state or default state
-            if (state.ContainsKey(newKey))
+            if (state.ContainsKey(newStateKey))
             {
-                state[newKey].RestoreState();
+                state[newStateKey].RestoreState();
             }
             else
             {
-                Log.DebugFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newKey);
+                Log.DebugFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newStateKey);
                 Text = null;
                 StoreLastTextChange(null);
                 ClearSuggestions();
