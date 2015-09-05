@@ -138,7 +138,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
-
+                
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
                     () => Settings.Default.MainWindowOpacity,
@@ -149,14 +149,14 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowDockSize,
                     () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
                     () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
-                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
-                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
-                    state => { Settings.Default.MainWindowPreviousState = state; Settings.Default.Save(); },
-                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
-                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
-                    size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
-                    t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
+                    o => { var settings = Settings.Default; settings.MainWindowOpacity = o; settings.Save(); },
+                    state => { var settings = Settings.Default; settings.MainWindowState = state; settings.Save(); },
+                    state => { var settings = Settings.Default; settings.MainWindowPreviousState = state; settings.Save(); },
+                    rect => { var settings = Settings.Default; settings.MainWindowFloatingSizeAndPosition = rect; settings.Save(); },
+                    pos => { var settings = Settings.Default; settings.MainWindowDockPosition = pos; settings.Save(); },
+                    size => { var settings = Settings.Default; settings.MainWindowDockSize = size; settings.Save(); },
+                    t => { var settings = Settings.Default; settings.MainWindowFullDockThicknessAsPercentageOfScreen = t; settings.Save(); },
+                    t => { var settings = Settings.Default; settings.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; settings.Save(); });
 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 

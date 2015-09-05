@@ -127,7 +127,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 //Release multi-key selection key if multi-key selection is disabled from the settings
                 KeyDownStates[KeyValues.MultiKeySelectionKey].Value = Enums.KeyDownStates.Up;
-                if (fireKeySelectionEvent != null) fireKeySelectionEvent(KeyValues.MultiKeySelectionKey);
             });
         }
 

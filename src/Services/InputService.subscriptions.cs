@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreatePointsPerSecondSubscription()
         {
-            Log.Info("Creating subscription to PointAndKeyValueSource for points per second.");
+            Log.Debug("Creating subscription to PointAndKeyValueSource for points per second.");
 
             pointsPerSecondSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null) //Filter out stale indicators - we only want 'live'/useful points in our count
@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateCurrentPositionSubscription()
         {
-            Log.Info("Creating subscription to PointAndKeyValueSource for current position.");
+            Log.Debug("Creating subscription to PointAndKeyValueSource for current position.");
 
             currentPositionSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null)
@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateSelectionProgressSubscription(SelectionModes mode)
         {
-            Log.InfoFormat("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode);
+            Log.DebugFormat("Creating subscription to {0} SelectionTriggerSource for progress info.", SelectionMode);
 
             ITriggerSource selectionTriggerSource = null;
 
@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateSelectionSubscriptions(SelectionModes mode)
         {
-            Log.InfoFormat("Creating subscription to {0} SelectionTriggerSource for selections & results.", SelectionMode);
+            Log.DebugFormat("Creating subscription to {0} SelectionTriggerSource for selections & results.", SelectionMode);
 
             switch (mode)
             {
@@ -370,7 +370,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void DisposeSelectionSubscriptions()
         {
-            Log.Info("Disposing of subscriptions to SelectionTriggerSource for selections & results.");
+            Log.Debug("Disposing of subscriptions to SelectionTriggerSource for selections & results.");
 
             if (selectionTriggerSubscription != null)
             {
