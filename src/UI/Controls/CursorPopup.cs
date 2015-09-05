@@ -66,14 +66,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var mainViewModel = DataContext as MainViewModel;
 
             //IsOpen
-            Action<bool> calculateIsOpen = showCursor => IsOpen = showCursor;
+            Action<bool> calculateIsOpen = showCursor =>
+            {
+                IsOpen = showCursor;
+                if (IsOpen)
+                {
+                    Point = mainViewModel.CurrentPositionPoint;
+                }
+            };
             mainViewModel.OnPropertyChanges(vm => vm.ShowCursor).Subscribe(calculateIsOpen);
             calculateIsOpen(mainViewModel.ShowCursor);
             
             //Calculate position based on CurrentPositionPoint
             mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionPoint)
-                .Where(cpp => cpp != null && SelectionProgress == 0) //Only set current Point if we are not within a selection/fixation
-                .Subscribe(cpp => Point = cpp.Value);
+                .Where(cpp => IsOpen && SelectionProgress == 0) //Only set Point if popup is open and there isn't a current fixation in progress
+                .Subscribe(cpp => Point = cpp);
             
             //Calculate selection progress and position based on PointSelectionProgress
             mainViewModel.OnPropertyChanges(vm => vm.PointSelectionProgress)
@@ -91,7 +98,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         SelectionProgress = psp.Item2;
                     }
                 });
-
             SelectionProgress = mainViewModel.PointSelectionProgress != null
                 ? mainViewModel.PointSelectionProgress.Item2
                 : 0;

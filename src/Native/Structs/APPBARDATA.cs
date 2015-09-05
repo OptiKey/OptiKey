@@ -7,9 +7,9 @@ namespace JuliusSweetland.OptiKey.Native.Structs
     [StructLayout(LayoutKind.Sequential)]
     public struct APPBARDATA
     {
-        public uint cbSize;
+        public int cbSize;
         public IntPtr hWnd;
-        public uint uCallbackMessage;
+        public int uCallbackMessage;
         public AppBarEdge uEdge;
         public RECT rc;
         public int lParam;

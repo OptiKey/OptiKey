@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +19,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     {
         #region Private Member Vars
 
-        private Action calculateIsEnabled = null;
+        private CompositeDisposable onUnloaded = null;
 
         #endregion
 
@@ -26,6 +28,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public Key()
         {
             Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
         }
 
         #endregion
@@ -34,65 +37,79 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
+            onUnloaded = new CompositeDisposable();
+
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
-            var keyboardService = mainViewModel.KeyboardService;
+            var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            keyboardService.KeyDownStates[Value].OnPropertyChanges(kds => kds.Value)
+            var keyStateSubscription = keyStateService.KeyDownStates[Value]
+                .OnPropertyChanges(kds => kds.Value)
                 .Subscribe(value => KeyDownState = value);
-
-            KeyDownState = keyboardService.KeyDownStates[Value].Value;
+            onUnloaded.Add(keyStateSubscription);
+            KeyDownState = keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress
-            keyboardService.KeySelectionProgress[Value].OnPropertyChanges(ksp => ksp.Value)
+            var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                .OnPropertyChanges(ksp => ksp.Value)
                 .Subscribe(value => SelectionProgress = value);
-
-            SelectionProgress = keyboardService.KeySelectionProgress[Value].Value;
+            onUnloaded.Add(keySelectionProgressSubscription);
+            SelectionProgress = keyStateService.KeySelectionProgress[Value].Value;
 
             //Calculate IsEnabled
-            calculateIsEnabled = () => IsEnabled = 
-                (DisabledIfKeyUp == null || keyboardService.KeyDownStates[DisabledIfKeyUp.Value].Value != KeyDownStates.Up)
-                    && keyboardService.KeyEnabledStates[Value];
-
-            keyboardService.KeyEnabledStates.OnAnyPropertyChanges().Subscribe(_ => calculateIsEnabled());
-            
+            Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
+            var keyEnabledSubscription = keyStateService.KeyEnabledStates
+                .OnAnyPropertyChanges()
+                .Subscribe(_ => calculateIsEnabled());
+            onUnloaded.Add(keyEnabledSubscription);
             calculateIsEnabled();
             
             //Calculate IsCurrent
             Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
-
-            mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
+            var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                 .Subscribe(calculateIsCurrent);
-
+            onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
             
             //Calculate DisplayShiftDownText
-            Action<KeyDownStates, bool> calculateDisplayShiftDownText = 
-                (shiftDownState, capturingMultiKeySelection) => 
-                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown
+            Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
+                    DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
-
-            capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
-                .Subscribe(value => calculateDisplayShiftDownText(keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
-
-            keyboardService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(sds => sds.Value)
+            var capturingMultiKeySelectionSubscription = capturingStateManager
+                .OnPropertyChanges(csm => csm.CapturingMultiKeySelection)
+                .Subscribe(value => calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, value));
+            onUnloaded.Add(capturingMultiKeySelectionSubscription);
+            var leftShiftKeyStateSubscription = keyStateService.KeyDownStates[KeyValues.LeftShiftKey]
+                .OnPropertyChanges(sds => sds.Value)
                 .Subscribe(value => calculateDisplayShiftDownText(value, capturingStateManager.CapturingMultiKeySelection));
-
-            calculateDisplayShiftDownText(
-                keyboardService.KeyDownStates[KeyValues.LeftShiftKey].Value,
-                capturingStateManager.CapturingMultiKeySelection);
+            onUnloaded.Add(leftShiftKeyStateSubscription);
+            calculateDisplayShiftDownText(keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value, capturingStateManager.CapturingMultiKeySelection);
 
             //Publish own version of KeySelection event
-            mainViewModel.KeySelection += (o, value) =>
-            {
-                if (value.Equals(Value)
-                    && Selection != null)
+            var keySelectionSubscription = Observable.FromEventPattern<KeyValue>(
+                handler => mainViewModel.KeySelection += handler,
+                handler => mainViewModel.KeySelection -= handler)
+                .Subscribe(pattern =>
                 {
-                    Selection(this, null);
-                }
-            };
+                    if (pattern.EventArgs.Equals(Value)
+                        && Selection != null)
+                    {
+                        Selection(this, null);
+                    }
+                });
+            onUnloaded.Add(keySelectionSubscription);
+        }
+        
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            if (onUnloaded != null
+                && !onUnloaded.IsDisposed)
+            {
+                onUnloaded.Dispose();
+                onUnloaded = null;
+            }
         }
 
         #endregion
@@ -130,24 +147,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (bool) GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
-        }
-
-        public static readonly DependencyProperty DisabledIfKeyUpProperty =
-            DependencyProperty.Register("DisabledIfKeyUp", typeof(KeyValue?), typeof(Key), new PropertyMetadata(default(KeyValue?), DisabledIfKeyUpPropertyChangedCallback));
-
-        private static void DisabledIfKeyUpPropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as Key;
-            if (key != null && key.calculateIsEnabled != null)
-            {
-                key.calculateIsEnabled();
-            }
-        }
-
-        public KeyValue? DisabledIfKeyUp
-        {
-            get { return (KeyValue?)GetValue(DisabledIfKeyUpProperty); }
-            set { SetValue(DisabledIfKeyUpProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionProgressProperty =
@@ -196,6 +195,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (Geometry) GetValue(SymbolGeometryProperty); }
             set { SetValue(SymbolGeometryProperty, value); }
+        }
+
+        public static readonly DependencyProperty SymbolOrientationProperty =
+            DependencyProperty.Register("SymbolOrientation", typeof(SymbolOrientations), typeof(Key), new PropertyMetadata(SymbolOrientations.Top));
+
+        public SymbolOrientations SymbolOrientation
+        {
+            get { return (SymbolOrientations)GetValue(SymbolOrientationProperty); }
+            set { SetValue(SymbolOrientationProperty, value); }
         }
 
         public static readonly DependencyProperty TextProperty =

@@ -25,13 +25,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
             var mainViewModel = DataContext as MainViewModel;
 
-            //Set size and position
-            SetSize(toastNotification, window);
-            SetPosition(window);
-
             //Handle ToastNotification event
             mainViewModel.ToastNotification += (o, args) =>
             {
+                //Set size and position
+                SetSize(toastNotification, window);
+                SetPosition(window);
+
                 Title = args.Title;
                 Content = args.Content;
                 NotificationType = args.NotificationType;
@@ -103,8 +103,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void SetPosition(FrameworkElement parent)
         {
-            VerticalOffset = 
-                parent.ActualHeight / 2 * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+            //VerticalOffset is used to align the center of this popup with a point on the parent window so calculate the window's center line
+            VerticalOffset = (parent.ActualHeight / 2d) * ((double)Settings.Default.ToastNotificationVerticalFillPercentage / 100d);
         }
 
         #endregion

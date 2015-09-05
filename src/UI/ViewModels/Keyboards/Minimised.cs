@@ -1,19 +1,12 @@
 ﻿using System;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class Minimised : IKeyboard, IBackAction
+    public class Minimised : BackActionKeyboard
     {
-        private readonly Action backAction;
-
-        public Minimised(Action backAction)
+        public Minimised(Action backAction) : base(backAction)
         {
-            this.backAction = backAction;
-        }
-
-        public Action BackAction
-        {
-            get { return backAction; }
         }
     }
 }

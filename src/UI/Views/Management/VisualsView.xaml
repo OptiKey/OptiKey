@@ -31,6 +31,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
@@ -83,13 +84,41 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Keyboard set:" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Conversation only mode:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="8" Grid.Column="1" 
-                              ItemsSource="{Binding KeyboardSets}"
+                    <CheckBox Grid.Row="8" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Startup keyboard:" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>    
+                    </TextBlock>
+                    <ComboBox Grid.Row="9" Grid.Column="1" 
+                              ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding KeyboardSet, Mode=TwoWay}" />
+                              SelectedValue="{Binding StartupKeyboard, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ConversationOnlyMode}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
                 </Grid>
             </GroupBox>
         

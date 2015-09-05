@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.DebugFormat("Checking all virtual key codes and simulating release of any which are down.");
+                Log.InfoFormat("Releasing all keys (with virtual key codes) which are down.");
                 foreach (var virtualKeyCode in Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>())
                 {
                     if (inputDeviceStateAdaptor.IsHardwareKeyDown(virtualKeyCode))
@@ -104,37 +104,11 @@ namespace JuliusSweetland.OptiKey.Services
                 var virtualScreenWidthInPixels = SystemParameters.VirtualScreenWidth * Graphics.DipScalingFactorX;
                 var virtualScreenHeightInPixels = SystemParameters.VirtualScreenHeight * Graphics.DipScalingFactorY;
 
-                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535.
+                //N.B. InputSimulator does not deal in pixels. The position should be a scaled point between 0 and 65535. 
                 //https://inputsimulator.codeplex.com/discussions/86530
                 inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(
-                    ((double)65535 * point.X) / (double)virtualScreenWidthInPixels,
-                    ((double)65535 * point.Y) / (double)virtualScreenHeightInPixels);
-            }
-            catch (Exception exception)
-            {
-                PublishError(this, exception);
-            }
-        }
-
-        public void LeftMouseButtonDown()
-        {
-            try
-            {
-                Log.Debug("Simulating pressing the left mouse button down");
-                inputSimulator.Mouse.LeftButtonDown();
-            }
-            catch (Exception exception)
-            {
-                PublishError(this, exception);
-            }
-        }
-
-        public void LeftMouseButtonUp()
-        {
-            try
-            {
-                Log.Debug("Simulating releasing the left mouse button down");
-                inputSimulator.Mouse.LeftButtonUp();
+                    Math.Ceiling(65535 * (point.X / virtualScreenWidthInPixels)),
+                    Math.Ceiling(65535 * (point.Y / virtualScreenHeightInPixels)));
             }
             catch (Exception exception)
             {
@@ -168,12 +142,64 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void LeftMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void LeftMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the left mouse button down");
+                inputSimulator.Mouse.LeftButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void MiddleMouseButtonClick()
         {
             try
             {
                 Log.Debug("Simulating clicking the middle mouse button click");
                 inputSimulator.Mouse.MiddleButtonClick();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void MiddleMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the middle mouse button down");
+                inputSimulator.Mouse.MiddleButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void MiddleMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the middle mouse button down");
+                inputSimulator.Mouse.MiddleButtonUp();
             }
             catch (Exception exception)
             {
@@ -194,6 +220,32 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void RightMouseButtonDown()
+        {
+            try
+            {
+                Log.Debug("Simulating pressing the right mouse button down");
+                inputSimulator.Mouse.RightButtonDown();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void RightMouseButtonUp()
+        {
+            try
+            {
+                Log.Debug("Simulating releasing the right mouse button down");
+                inputSimulator.Mouse.RightButtonUp();
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void ScrollMouseWheelUp(int clicks)
         {
             try
@@ -207,18 +259,6 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ScrollMouseWheelUpAndLeft(int clicks)
-        {
-            ScrollMouseWheelUp(clicks);
-            ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollMouseWheelUpAndRight(int clicks)
-        {
-            ScrollMouseWheelUp(clicks);
-            ScrollMouseWheelRight(clicks);
-        }
-
         public void ScrollMouseWheelDown(int clicks)
         {
             try
@@ -230,18 +270,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 PublishError(this, exception);
             }
-        }
-
-        public void ScrollMouseWheelDownAndLeft(int clicks)
-        {
-            ScrollMouseWheelDown(clicks);
-            ScrollMouseWheelLeft(clicks);
-        }
-
-        public void ScrollMouseWheelDownAndRight(int clicks)
-        {
-            ScrollMouseWheelDown(clicks);
-            ScrollMouseWheelRight(clicks);
         }
 
         public void ScrollMouseWheelLeft(int clicks)

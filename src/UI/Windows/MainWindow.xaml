@@ -6,6 +6,7 @@
         xmlns:triggerActions="clr-namespace:JuliusSweetland.OptiKey.UI.TriggerActions"
         xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="OptiKey"
         Topmost="True"
         Icon="..\..\Resources\Icons\Main.ico"

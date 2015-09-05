@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Microsoft.Practices.Prism.Mvvm;
 
@@ -12,47 +13,49 @@ namespace JuliusSweetland.OptiKey.Models
     {
         #region Fields
 
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly ICalibrationService calibrationService;
-        private readonly IWindowStateService mainWindowStateService;
 
         #endregion
 
         #region Ctor
 
         public KeyEnabledStates(
-            IKeyboardService keyboardService, 
+            IKeyStateService keyStateService, 
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
-            ICalibrationService calibrationService,
-            IWindowStateService mainWindowStateService)
+            ICalibrationService calibrationService)
         {
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.calibrationService = calibrationService;
-            this.mainWindowStateService = mainWindowStateService;
 
             suggestionService.OnPropertyChanges(ss => ss.Suggestions).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPage).Subscribe(_ => NotifyStateChanged());
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
-            keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
-            keyboardService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
+                keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
 
             lastMouseActionStateManager.OnPropertyChanges(lmasm => lmasm.LastMouseActionExists).Subscribe(_ => NotifyStateChanged());
 
-            mainWindowStateService.OnPropertyChanges(mwss => mwss.WindowState).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.MultiKeySelectionEnabled).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.MainWindowState).Subscribe(_ => NotifyStateChanged());
+            Settings.Default.OnPropertyChanges(s => s.MainWindowDockPosition).Subscribe(_ => NotifyStateChanged());
         }
 
         #endregion
@@ -64,23 +67,23 @@ namespace JuliusSweetland.OptiKey.Models
             get
             {
                 //Key is not Sleep, but we are sleeping
-                if (keyboardService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
+                if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey)
                 {
                     return false;
                 }
 
                 //Key is publish only, but we are not publishing
-                if (!keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown()
+                if (!keyStateService.SimulateKeyStrokes
                     && KeyValues.PublishOnlyKeys.Contains(keyValue))
                 {
                     return false;
                 }
                 
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
-                if (keyValue == KeyValues.MultiKeySelectionEnabledKey
+                if (keyValue == KeyValues.MultiKeySelectionKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                        keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
+                        keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
                     return false;
                 }
@@ -158,24 +161,145 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     return false;
                 }
-                
+
+                //Expand/Collapse dock when not docked
+                if ((keyValue == KeyValues.ExpandDockKey || keyValue == KeyValues.CollapseDockKey)
+                    && Settings.Default.MainWindowState != WindowStates.Docked)
+                {
+                    return false;
+                }
+
+                //Move & Resize keys when docked
+                if(Settings.Default.MainWindowState == WindowStates.Docked
+                    && ((Settings.Default.MainWindowDockPosition == DockEdges.Top &&
+                            (keyValue == KeyValues.MoveToTopBoundaryKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToTopAndLeftKey
+                            || keyValue == KeyValues.MoveToTopAndRightKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Bottom &&
+                            (keyValue == KeyValues.MoveToBottomBoundaryKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.MoveToBottomAndLeftKey
+                            || keyValue == KeyValues.MoveToBottomAndRightKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Left &&
+                            (keyValue == KeyValues.MoveToLeftBoundaryKey
+                            || keyValue == KeyValues.MoveToLeftKey
+                            || keyValue == KeyValues.MoveToBottomAndLeftKey
+                            || keyValue == KeyValues.MoveToTopAndLeftKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.ExpandToLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey))
+                        || (Settings.Default.MainWindowDockPosition == DockEdges.Right &&
+                            (keyValue == KeyValues.MoveToRightBoundaryKey
+                            || keyValue == KeyValues.MoveToRightKey
+                            || keyValue == KeyValues.MoveToBottomAndRightKey
+                            || keyValue == KeyValues.MoveToTopAndRightKey
+                            || keyValue == KeyValues.MoveToTopKey
+                            || keyValue == KeyValues.MoveToBottomKey
+                            || keyValue == KeyValues.ExpandToRightKey
+                            || keyValue == KeyValues.ExpandToBottomAndRightKey
+                            || keyValue == KeyValues.ExpandToTopAndRightKey
+                            || keyValue == KeyValues.ExpandToTopKey
+                            || keyValue == KeyValues.ExpandToBottomKey
+                            || keyValue == KeyValues.ExpandToTopAndLeftKey
+                            || keyValue == KeyValues.ExpandToBottomAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromRightKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopAndRightKey
+                            || keyValue == KeyValues.ShrinkFromTopKey
+                            || keyValue == KeyValues.ShrinkFromBottomKey
+                            || keyValue == KeyValues.ShrinkFromTopAndLeftKey
+                            || keyValue == KeyValues.ShrinkFromBottomAndLeftKey))
+                        || keyValue == KeyValues.MoveToBottomAndLeftBoundariesKey
+                        || keyValue == KeyValues.MoveToBottomAndRightBoundariesKey
+                        || keyValue == KeyValues.MoveToTopAndLeftBoundariesKey
+                        || keyValue == KeyValues.MoveToTopAndRightBoundariesKey))
+                {
+                    return false;
+                }
+
+                //Mouse actions involving left button if it is already down
+                if ((keyValue == KeyValues.MouseDragKey 
+                    || keyValue == KeyValues.MouseLeftClickKey 
+                    || keyValue == KeyValues.MouseLeftDoubleClickKey
+                    || keyValue == KeyValues.MouseMoveAndLeftClickKey 
+                    || keyValue == KeyValues.MouseMoveAndLeftDoubleClickKey)
+                        && keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
+                {
+                    return false;
+                }
+
+                //Mouse actions involving middle button if it is already down
+                if ((keyValue == KeyValues.MouseMiddleClickKey
+                    || keyValue == KeyValues.MouseMoveAndMiddleClickKey)
+                        && keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
+                {
+                    return false;
+                }
+
+                //Mouse actions involving right button if it is already down
+                if ((keyValue == KeyValues.MouseRightClickKey
+                    || keyValue == KeyValues.MouseMoveAndRightClickKey)
+                        && keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
+                {
+                    return false;
+                }
+
+                //Multi-key capture is disabled
+                if (keyValue == KeyValues.MultiKeySelectionKey
+                    && !Settings.Default.MultiKeySelectionEnabled)
+                {
+                    return false;
+                }
+
                 //Key is not a letter, but we're capturing a multi-keyValue selection (which must be ended by selecting a letter)
                 if (capturingStateManager.CapturingMultiKeySelection
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
-                {
-                    return false;
-                }
-
-                //Key is Maximise, but the window is already maximised
-                if (keyValue == KeyValues.MaximiseSizeKey
-                    && mainWindowStateService.WindowState == WindowState.Maximized)
-                {
-                    return false;
-                }
-
-                //Key is RestoreFromMaximised, but the window is not maximised
-                if (keyValue == KeyValues.RestoreFromMaximisedKey
-                    && mainWindowStateService.WindowState != WindowState.Maximized)
                 {
                     return false;
                 }

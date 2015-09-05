@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public override string ToString()
         {
-            return string.Format("({0},{1})=>'{2}'", Point.X, Point.Y, KeyValue);
+            return string.Format("({0},{1})='{2}'", Point.X, Point.Y, KeyValue);
         }
     }
 }

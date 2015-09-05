@@ -129,10 +129,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var magnifySourcePercentage = Settings.Default.MagnifySourcePercentageOfScreen / 100d;
             
             var captureWidth = magnifySourcePercentage * screen.Bounds.Width;
-            captureWidth.CoerceToUpperLimit(screen.Bounds.Width);
+            captureWidth = captureWidth.CoerceToUpperLimit(screen.Bounds.Width);
 
             var captureHeight = magnifySourcePercentage * screen.Bounds.Height;
-            captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
+            captureHeight = captureHeight.CoerceToUpperLimit(screen.Bounds.Height);
 
             var captureX = point.X - (captureWidth / 2d);
             captureX = captureX.CoerceToLowerLimit(screen.Bounds.Left);

@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
         private readonly ICapturingStateManager capturingStateManager;
@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
         private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
-        private event EventHandler<Tuple<Point?, KeyValue?>> currentPositionEvent;
+        private event EventHandler<Tuple<Point, KeyValue?>> currentPositionEvent;
         private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
         private event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> selectionResultEvent;
@@ -41,7 +41,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public InputService(
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICapturingStateManager capturingStateManager,
@@ -49,7 +49,7 @@ namespace JuliusSweetland.OptiKey.Services
             ITriggerSource keySelectionTriggerSource,
             ITriggerSource pointSelectionTriggerSource)
         {
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.dictionaryService = dictionaryService;
             this.audioService = audioService;
             this.capturingStateManager = capturingStateManager;
@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.Services
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
             if (fixationTrigger != null)
             {
-                fixationTrigger.KeyEnabledStates = keyboardService.KeyEnabledStates;
+                fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
             }
         }
 
@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Current Position
 
-        public event EventHandler<Tuple<Point?, KeyValue?>> CurrentPosition
+        public event EventHandler<Tuple<Point, KeyValue?>> CurrentPosition
         {
             add
             {
@@ -345,7 +345,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Current Position
 
-        private void PublishCurrentPosition(Tuple<Point?, KeyValue?> currentPosition)
+        private void PublishCurrentPosition(Tuple<Point, KeyValue?> currentPosition)
         {
             if (currentPositionEvent != null)
             {
@@ -363,7 +363,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (selectionProgressEvent != null)
             {
-                Log.DebugFormat("Publishing SelectionProgress event: {0}=>{1}", selectionProgress.Item1, selectionProgress.Item2);
+                if ((selectionProgress.Item2 < 0.1) || (selectionProgress.Item2 - 0.5) < 0.1 || (selectionProgress.Item2 - 1) < 0.1)
+                {
+                    Log.DebugFormat("Publishing SelectionProgress event: {0} : {1}", selectionProgress.Item1, selectionProgress.Item2);
+                }
 
                 selectionProgressEvent(this, selectionProgress);
             }

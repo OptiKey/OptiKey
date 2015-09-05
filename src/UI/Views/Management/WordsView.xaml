@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
@@ -42,25 +46,54 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Auto space between words:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
             
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Auto capitalise words:" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Auto complete words:" 
-                               VerticalAlignment="Center" Margin="5" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="...but intelligently suppress auto-caps where it is probably unhelpful:" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AutoCapitalise}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <CheckBox Grid.Row="2" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding AutoCompleteWords, Mode=TwoWay}" />
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding SuppressAutoCapitaliseIntelligently, Mode=TwoWay}">
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AutoCapitalise}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>    
+                    </CheckBox>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Auto complete words:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="3" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding AutoCompleteWords, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
     
@@ -70,10 +103,20 @@
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-            
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Maximum number of dictionary matches:" 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Multi-key captures enabled:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
+                    <CheckBox Grid.Row="0" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Maximum number of dictionary matches:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"
                                             Value="{Binding MultiKeySelectionMaxDictionaryMatches, Mode=TwoWay}" />
                 </Grid>

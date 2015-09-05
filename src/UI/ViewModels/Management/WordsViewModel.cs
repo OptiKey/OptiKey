@@ -64,13 +64,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref autoCapitalise, value); }
         }
 
+        private bool suppressAutoCapitaliseIntelligently;
+        public bool SuppressAutoCapitaliseIntelligently
+        {
+            get { return suppressAutoCapitaliseIntelligently; }
+            set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
+        }
+
         private bool autoCompleteWords;
         public bool AutoCompleteWords
         {
             get {  return autoCompleteWords; }
             set { SetProperty(ref autoCompleteWords, value); }
         }
-        
+
+        private bool multiKeySelectionEnabled;
+        public bool MultiKeySelectionEnabled
+        {
+            get { return multiKeySelectionEnabled; }
+            set { SetProperty(ref multiKeySelectionEnabled, value); }
+        }
+
         private int multiKeySelectionMaxDictionaryMatches;
         public int MultiKeySelectionMaxDictionaryMatches
         {
@@ -92,7 +106,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Language = Settings.Default.Language;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
+            SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
             AutoCompleteWords = Settings.Default.AutoCompleteWords;
+            MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
         }
 
@@ -103,7 +119,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.Language = Language;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
+            Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
             Settings.Default.AutoCompleteWords = AutoCompleteWords;
+            Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
             Settings.Default.Save();
 

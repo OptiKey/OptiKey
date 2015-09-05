@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
@@ -32,14 +31,19 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             
             managementWindowRequest = new InteractionRequest<NotificationWithServices>();
 
-            //Setup key binding (Alt-C) to open settings
-            var openSettingsKeyBinding = new KeyBinding
+            //Setup key binding (Alt-C and Shift-Alt-C) to open settings
+            InputBindings.Add(new KeyBinding
             {
                 Command = new DelegateCommand(RequestManagementWindow),
                 Modifiers = ModifierKeys.Alt,
                 Key = Key.M
-            };
-            InputBindings.Add(openSettingsKeyBinding);
+            });
+            InputBindings.Add(new KeyBinding
+            {
+                Command = new DelegateCommand(RequestManagementWindow),
+                Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
+                Key = Key.M
+            });
 
             Title = string.Format("OptiKey v{0}", DiagnosticInfo.AssemblyVersion);
         }

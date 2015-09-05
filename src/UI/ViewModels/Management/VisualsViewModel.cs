@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -103,19 +104,33 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return null;
             }
         }
-
-        public List<KeyValuePair<string, KeyboardsSets>> KeyboardSets
+        
+        public List<KeyValuePair<string, Enums.Keyboards>> StartupKeyboards
         {
             get
             {
-                return new List<KeyValuePair<string, KeyboardsSets>>
+                return new List<KeyValuePair<string, Enums.Keyboards>>
                 {
-                    new KeyValuePair<string, KeyboardsSets>("Standard", Enums.KeyboardsSets.Standard),
-                    new KeyValuePair<string, KeyboardsSets>("Speech Only", Enums.KeyboardsSets.SpeechOnly)
+                    new KeyValuePair<string, Enums.Keyboards>("Alpha", Enums.Keyboards.Alpha),
+                    new KeyValuePair<string, Enums.Keyboards>("Conversation Alpha", Enums.Keyboards.ConversationAlpha),
+                    new KeyValuePair<string, Enums.Keyboards>("Conversation Numeric & Symbols", Enums.Keyboards.ConversationNumericAndSymbols),
+                    new KeyValuePair<string, Enums.Keyboards>("Currencies 1", Enums.Keyboards.Currencies1),
+                    new KeyValuePair<string, Enums.Keyboards>("Currencies 2", Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 1", Enums.Keyboards.Diacritics1),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 2", Enums.Keyboards.Diacritics2),
+                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 3", Enums.Keyboards.Diacritics3),
+                    new KeyValuePair<string, Enums.Keyboards>("Menu", Enums.Keyboards.Menu),
+                    new KeyValuePair<string, Enums.Keyboards>("Minimised", Enums.Keyboards.Minimised),
+                    new KeyValuePair<string, Enums.Keyboards>("Mouse", Enums.Keyboards.Mouse),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 1", Enums.Keyboards.NumericAndSymbols1),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 2", Enums.Keyboards.NumericAndSymbols2),
+                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 3", Enums.Keyboards.NumericAndSymbols3),
+                    new KeyValuePair<string, Enums.Keyboards>("Physical Keys", Enums.Keyboards.PhysicalKeys),
+                    new KeyValuePair<string, Enums.Keyboards>("Size & Position", Enums.Keyboards.SizeAndPosition)
                 };
             }
         }
-
+        
         private string theme;
         public string Theme
         {
@@ -195,15 +210,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeightInPixels, value); }
         }
 
-        private int minimisedWidthInPixels;
-        public int MinimisedWidthInPixels
+        private int? minimisedWidthInPixels;
+        public int? MinimisedWidthInPixels
         {
             get { return minimisedWidthInPixels; }
             set { SetProperty(ref minimisedWidthInPixels, value); }
         }
 
-        private int minimisedHeightInPixels;
-        public int MinimisedHeightInPixels
+        private int? minimisedHeightInPixels;
+        public int? MinimisedHeightInPixels
         {
             get { return minimisedHeightInPixels; }
             set { SetProperty(ref minimisedHeightInPixels, value); }
@@ -223,16 +238,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref magnifyDestinationPercentageOfScreen, value); }
         }
 
-        private KeyboardsSets keyboardSet;
-        public KeyboardsSets KeyboardSet
+        private bool conversationOnlyMode;
+        public bool ConversationOnlyMode
         {
-            get { return keyboardSet; }
-            set { SetProperty(ref keyboardSet, value); }
+            get { return conversationOnlyMode; }
+            set { SetProperty(ref conversationOnlyMode, value); }
+        }
+
+        private Enums.Keyboards startupKeyboard;
+        public Enums.Keyboards StartupKeyboard
+        {
+            get { return startupKeyboard; }
+            set { SetProperty(ref startupKeyboard, value); }
         }
 
         public bool ChangesRequireRestart
         {
-            get { return false; }
+            get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
         }
         
         #endregion
@@ -251,11 +273,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
-            MinimisedWidthInPixels = Settings.Default.MinimisedWidthInPixels;
-            MinimisedHeightInPixels = Settings.Default.MinimisedHeightInPixels;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
-            KeyboardSet = Settings.Default.KeyboardSet;
+            ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
+            StartupKeyboard = Settings.Default.StartupKeyboard;
         }
 
         public void ApplyChanges()
@@ -270,11 +291,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
-            Settings.Default.MinimisedWidthInPixels = MinimisedWidthInPixels;
-            Settings.Default.MinimisedHeightInPixels = MinimisedHeightInPixels;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
-            Settings.Default.KeyboardSet = KeyboardSet;
+            Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
+            Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.Save();
         }
 

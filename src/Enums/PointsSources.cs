@@ -12,9 +12,9 @@
 
     public static partial class EnumExtensions
     {
-        public static string ToDescription(this PointsSources pointSources)
+        public static string ToDescription(this PointsSources pointSource)
         {
-            switch (pointSources)
+            switch (pointSource)
             {
                 case PointsSources.GazeTracker: return "Gaze Tracker";
                 case PointsSources.TheEyeTribe: return "The Eye Tribe";
@@ -24,7 +24,7 @@
                 case PointsSources.TobiiPcEyeGo: return "Tobii PCEye Go";
             }
 
-            return pointSources.ToString();
+            return pointSource.ToString();
         }
     }
 }

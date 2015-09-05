@@ -55,11 +55,10 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("Creating subscription to PointAndKeyValueSource for current position.");
 
             currentPositionSubscription = pointSource.Sequence
-                .Select(tp => new Tuple<Point?, KeyValue?>(
-                    tp.Value != null && SelectionMode == SelectionModes.Point 
-                        ? tp.Value.Value.Point 
-                        : (Point?)null,
-                    tp.Value != null && SelectionMode == SelectionModes.Key 
+                .Where(tp => tp.Value != null)
+                .Select(tp => new Tuple<Point, KeyValue?>(
+                    tp.Value.Value.Point,
+                    SelectionMode == SelectionModes.Key 
                         ? tp.Value.Value.KeyValue 
                         : null))
                 .DistinctUntilChanged()
@@ -141,11 +140,11 @@ namespace JuliusSweetland.OptiKey.Services
                     if (SelectionMode == SelectionModes.Key)
                     {
                         if (triggerSignal.PointAndKeyValue.Value.KeyValue != null
-                            && (keyboardService.KeyEnabledStates == null || keyboardService.KeyEnabledStates[triggerSignal.PointAndKeyValue.Value.KeyValue.Value]))
+                            && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.Value.KeyValue.Value]))
                         {
                             Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
-                            if (keyboardService.KeyDownStates[KeyValues.MultiKeySelectionEnabledKey].Value.IsDownOrLockedDown()
+                            if (keyStateService.KeyDownStates[KeyValues.MultiKeySelectionKey].Value.IsDownOrLockedDown()
                                 && triggerSignal.PointAndKeyValue.Value.KeyValue != null
                                 && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.Value.KeyValue.Value))
                             {

@@ -30,11 +30,11 @@
                 <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Disable keyboard simulation while mouse keyboard is open:" 
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Suppress modifier keys when in mouse keyboard:" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen, Mode=TwoWay}" />
+                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
                 <TextBlock Grid.Row="3" Grid.Column="0" Text="Debugging mode:" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 

@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using Microsoft.Practices.Prism.Mvvm;
@@ -24,19 +25,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IAudioService audioService;
         private readonly ICalibrationService calibrationService;
         private readonly IDictionaryService dictionaryService;
-        private readonly IKeyboardService keyboardService;
+        private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
         private readonly ICapturingStateManager capturingStateManager;
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
-        private readonly IOutputService outputService;
+        private readonly IKeyboardOutputService keyboardOutputService;
+        private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
         private SelectionModes selectionMode;
-        private Point? currentPositionPoint;
+        private Point currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
@@ -53,12 +55,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IAudioService audioService,
             ICalibrationService calibrationService,
             IDictionaryService dictionaryService,
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             ISuggestionStateService suggestionService,
             ICapturingStateManager capturingStateManager,
             ILastMouseActionStateManager lastMouseActionStateManager,
             IInputService inputService,
-            IOutputService outputService,
+            IKeyboardOutputService keyboardOutputService,
+            IMouseOutputService mouseOutputService,
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices)
         {
@@ -67,24 +70,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.audioService = audioService;
             this.calibrationService = calibrationService;
             this.dictionaryService = dictionaryService;
-            this.keyboardService = keyboardService;
+            this.keyStateService = keyStateService;
             this.suggestionService = suggestionService;
             this.capturingStateManager = capturingStateManager;
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
-            this.outputService = outputService;
+            this.keyboardOutputService = keyboardOutputService;
+            this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
-            
             SelectionMode = SelectionModes.Key;
-            Keyboard = new Alpha();
-
-            SelectKeyboardOnKeyboardSetChanges();
+            
+            InitialiseKeyboard(mainWindowManipulationService);
             AttachScratchpadEnabledListener();
-
-            HandleFunctionKeySelectionResult(KeyValues.LeftShiftKey); //Set initial shift state to on
+            AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
+            AttachKeyboardSupportsSimulateKeyStrokesListener();
         }
 
         #endregion
@@ -101,8 +103,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
-        public IOutputService OutputService { get { return outputService; } }
-        public IKeyboardService KeyboardService { get { return keyboardService; } }
+        public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
+        public IKeyStateService KeyStateService { get { return keyStateService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
 
@@ -111,6 +113,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             get { return keyboard; }
             set { SetProperty(ref keyboard, value); }
+        }
+
+        private bool keyboardSupportsCollapsedDock = true;
+        public bool KeyboardSupportsCollapsedDock
+        {
+            get { return keyboardSupportsCollapsedDock; }
+            set { SetProperty(ref keyboardSupportsCollapsedDock, value); }
         }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
@@ -164,7 +173,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref magnifiedPointSelectionAction, value); }
         }
 
-        public Point? CurrentPositionPoint
+        public Point CurrentPositionPoint
         {
             get { return currentPositionPoint; }
             set { SetProperty(ref currentPositionPoint, value); }
@@ -223,11 +232,125 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Methods
 
+        public void FireKeySelectionEvent(KeyValue kv)
+        {
+            if (KeySelection != null)
+            {
+                KeySelection(this, kv);
+            }
+        }
+
+        private void InitialiseKeyboard(IWindowManipulationService windowManipulationService)
+        {
+            if (Settings.Default.ConversationOnlyMode)
+            {
+                Keyboard = new ConversationAlpha(null);
+                windowManipulationService.Maximise();
+            }
+            else
+            {
+                switch (Settings.Default.StartupKeyboard)
+                {
+                    case Enums.Keyboards.Alpha:
+                        Keyboard = new Alpha();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.ConversationAlpha:
+                        Keyboard = new ConversationAlpha(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                        });
+                        windowManipulationService.Maximise();
+                        break;
+
+                    case Enums.Keyboards.ConversationNumericAndSymbols:
+                        Keyboard = new ConversationNumericAndSymbols(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                        });
+                        windowManipulationService.Maximise();
+                        break;
+
+                    case Enums.Keyboards.Currencies1:
+                        Keyboard = new Currencies1();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Currencies2:
+                        Keyboard = new Currencies2();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Diacritics1:
+                        Keyboard = new Diacritics1();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Diacritics2:
+                        Keyboard = new Diacritics2();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Diacritics3:
+                        Keyboard = new Diacritics3();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Menu:
+                        Keyboard = new Menu(() => Keyboard = new Alpha());
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.Minimised:
+                        Keyboard = new Minimised(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            windowManipulationService.Restore();
+                        });
+                        windowManipulationService.Minimise();
+                        break;
+
+                    case Enums.Keyboards.Mouse:
+                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.NumericAndSymbols1:
+                        Keyboard = new NumericAndSymbols1();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.NumericAndSymbols2:
+                        Keyboard = new NumericAndSymbols2();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.NumericAndSymbols3:
+                        Keyboard = new NumericAndSymbols3();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.PhysicalKeys:
+                        Keyboard = new PhysicalKeys();
+                        windowManipulationService.Restore();
+                        break;
+
+                    case Enums.Keyboards.SizeAndPosition:
+                        Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
+                        windowManipulationService.Restore();
+                        break;
+                }
+            }
+        }
+
         private void AddTextToDictionary()
         {
             Log.Debug("AddTextToDictionary called.");
 
-            var possibleEntries = outputService.Text.ExtractWordsAndLines();
+            var possibleEntries = keyboardOutputService.Text.ExtractWordsAndLines();
 
             if (possibleEntries != null)
             {
@@ -239,22 +362,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", outputService.Text);
+                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
+                    RaiseToastNotification("Hmm, nothing new here!", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
                         NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
             else
             {
-                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", outputService.Text);
-
-                inputService.RequestSuspend();
+                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                RaiseToastNotification("Hmm", "It doesn't look like the scratchpad contains any words or phrases that could be added to the dictionary.", 
-                    NotificationTypes.Normal, () => { inputService.RequestResume(); });
             }
         }
 
@@ -328,34 +447,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Action calculateScratchpadIsDisabled = () =>
                 ScratchpadIsDisabled = KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
-                        keyboardService.KeyDownStates[kv].Value.IsDownOrLockedDown());
+                        keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
-                keyboardService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
+                keyStateService.KeyDownStates[kv].OnPropertyChanges(s => s.Value)
                     .Subscribe(value => calculateScratchpadIsDisabled()));
 
             calculateScratchpadIsDisabled();
         }
 
-        private void SelectKeyboardOnKeyboardSetChanges()
+        private void AttachKeyboardSupportsSimulateKeyStrokesListener()
         {
-            Settings.Default.OnPropertyChanges(s => s.KeyboardSet).Subscribe(visualMode =>
+            Action<IKeyboard> setSimulateKeyStrokes = kb =>
             {
-                //Listen to KeyboardSet changes and reset keyboard to Alpha if mode changed to SpeechOnly
-                if (visualMode == KeyboardsSets.SpeechOnly)
+                keyStateService.SimulateKeyStrokes = kb.SimulateKeyStrokes;
+            };
+            this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setSimulateKeyStrokes);
+            setSimulateKeyStrokes(Keyboard);
+        }
+
+        private void AttachKeyboardSupportsCollapsedDockListener(IWindowManipulationService mainWindowManipulationService)
+        {
+            Action<bool> resizeDockIfCollapsedDockingNotSupported = collapsedDockingSupported =>
+            {
+                if (!collapsedDockingSupported
+                    && Settings.Default.MainWindowState == WindowStates.Docked
+                    && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
                 {
-                    Keyboard = new Alpha();
+                    mainWindowManipulationService.ResizeDockToFull();
                 }
-            });
+            };
+            this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
+            resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
         }
 
         private void ResetSelectionProgress()
         {
             PointSelectionProgress = null;
 
-            if (keyboardService != null)
+            if (keyStateService != null)
             {
-                keyboardService.KeySelectionProgress.Clear();
+                keyStateService.KeySelectionProgress.Clear();
             }
         }
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg6906"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="Quit.svg">
+  <defs
+     id="defs6908">
+    <clipPath
+       id="SVGID_2_">
+      <rect
+         height="88.038002"
+         width="90"
+         y="6.4619999"
+         x="4.5"
+         id="use3343" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="28.142121"
+     inkscape:cy="38.694068"
+     inkscape:current-layer="svg6906"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="942"
+     inkscape:window-height="985"
+     inkscape:window-x="960"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata6911">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+        <dc:format>image/svg+xml</dc:format>
+      </cc:Work>
+      <dc:format>image/svg+xml</dc:format>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="matrix(0.58171149,0,0,0.58171149,11.231745,10.885029)"
+     id="g4-1">
+    <g
+       id="g6" />
+    <g
+       id="g10">
+      <path
+         id="path12"
+         style="fill:#000000"
+         d="m 36,40.8 c -1.6,0 -2.9,-1.3 -2.9,-2.9 V 3.4 c 0,-1.6 1.3,-2.9 2.9,-2.9 1.6,0 2.9,1.3 2.9,2.9 V 38 c 0,1.6 -1.3,2.8 -2.9,2.8 z m 0,30.7 C 18.4,71.5 4,57.1 4,39.5 4,26.3 12.3,14.3 24.7,9.6 26.2,9 27.8,9.8 28.4,11.3 29,12.8 28.2,14.4 26.7,15 16.5,18.9 9.7,28.7 9.7,39.6 9.7,54 21.5,65.8 36,65.8 50.5,65.8 62.3,54 62.3,39.5 62.3,28.6 55.5,18.8 45.3,14.9 43.8,14.3 43.1,12.7 43.6,11.2 44.2,9.7 45.8,9 47.3,9.5 59.7,14.3 68,26.3 68,39.5 c 0,17.6 -14.4,32 -32,32 z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg6950"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="MouseDrag.svg">
+  <defs
+     id="defs6952" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.5"
+     inkscape:cx="0.090909091"
+     inkscape:cy="32"
+     inkscape:current-layer="svg6950"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="737"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata6955">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     inkscape:connector-curvature="0"
+     id="path3"
+     d="m 31.463658,21.368608 -0.409774,-4.00312 20.938096,16.756645 -3.12384,1.177053 -17.404482,-13.930578 0,0 z m 2.768413,15.60857 5.105314,8.843479 -3.123839,1.177492 -5.105316,-8.844359 3.123841,-1.176612 0,0 z m 8.355238,0 5.105315,8.843479 -3.123839,1.177492 -5.105315,-8.844359 3.123839,-1.176612 0,0 z m -16.665913,0.07727 5.060751,8.76621 -3.124383,1.177492 -5.060207,-8.767087 -0.275538,0.103612 -7.355805,2.771188 -2.430921,-23.728959 20.938095,16.756645 -7.355263,2.771189 -0.396729,0.14971 0,0 z m -3.643392,-15.685839 -0.410317,-4.00312 20.939182,16.756645 -3.123839,1.177053 -17.405026,-13.930578 0,0 z" />
+</svg>

@@ -97,48 +97,39 @@ namespace JuliusSweetland.OptiKey.Static
 
                     case 5:
                         if (vs.Minor == 0) return "Windows 2000";
-
                         if (vs.Minor == 1) return "Windows XP";
-
                         if (IsServerVersion())
                         {
                             if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
-
                             return "Windows Server 2003 R2";
                         }
-
                         return "Windows XP";
 
                     case 6:
                         if (vs.Minor == 0)
                         {
                             if (IsServerVersion()) return "Windows Server 2008";
-
                             return "Windows Vista";
                         }
-
                         if (vs.Minor == 1)
                         {
                             if (IsServerVersion()) return "Windows Server 2008 R2";
-
                             return "Windows 7";
                         }
-
                         if (vs.Minor == 2)
                         {
                             if (IsServerVersion()) return "Windows Server 2012";
-                            
                             return "Windows 8";
                         }
-
                         if (vs.Minor == 3)
                         {
                             if (IsServerVersion()) return "Windows Server 2012 R2";
-                            
                             return "Windows 8.1";
                         }
-
                         break;
+
+                    case 10:
+                        return "Windows 10";
                 }
 
                 return string.Format("OS v{0}.{1}", vs.Major, vs.Minor);

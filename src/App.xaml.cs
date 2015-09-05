@@ -104,6 +104,17 @@ namespace JuliusSweetland.OptiKey
                 //Apply theme
                 applyTheme();
                 
+                //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
+                //This is to work around the fact that the MainViewModel is created after the services.
+                MainViewModel mainViewModel = null;
+                Action<KeyValue> fireKeySelectionEvent = kv =>
+                {
+                    if (mainViewModel != null) //Access to modified closure is a good thing here, for once!
+                    {
+                        mainViewModel.FireKeySelectionEvent(kv);
+                    }
+                };
+
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
@@ -113,43 +124,51 @@ namespace JuliusSweetland.OptiKey
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IWindowStateService mainWindowStateService = new WindowStateService();
-                IKeyboardService keyboardService = new KeyboardService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, mainWindowStateService);
-                IInputService inputService = CreateInputService(keyboardService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
-                IOutputService outputService = new OutputService(keyboardService, suggestionService, publishService, dictionaryService);
+                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
+                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
+                IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
+                IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
 
                 //Release keys on application exit
-                ReleaseKeysOnApplicationExit(keyboardService, publishService);
+                ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
 
-                mainWindowStateService.Window = mainWindow;
+                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
+                    mainWindow,
+                    () => Settings.Default.MainWindowOpacity,
+                    () => Settings.Default.MainWindowState,
+                    () => Settings.Default.MainWindowPreviousState,
+                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
+                    () => Settings.Default.MainWindowDockPosition,
+                    () => Settings.Default.MainWindowDockSize,
+                    () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
+                    () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
+                    o => { Settings.Default.MainWindowOpacity = o; Settings.Default.Save(); },
+                    state => { Settings.Default.MainWindowState = state; Settings.Default.Save(); },
+                    state => { Settings.Default.MainWindowPreviousState = state; Settings.Default.Save(); },
+                    rect => { Settings.Default.MainWindowFloatingSizeAndPosition = rect; Settings.Default.Save(); },
+                    pos => { Settings.Default.MainWindowDockPosition = pos; Settings.Default.Save(); },
+                    size => { Settings.Default.MainWindowDockSize = size; Settings.Default.Save(); },
+                    t => { Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t; Settings.Default.Save(); },
+                    t => { Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; Settings.Default.Save(); });
 
-                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(mainWindow,
-                    () => Settings.Default.MainWindowTop, d => Settings.Default.MainWindowTop = d,
-                    () => Settings.Default.MainWindowLeft, d => Settings.Default.MainWindowLeft = d,
-                    () => Settings.Default.MainWindowHeight, d => Settings.Default.MainWindowHeight = d,
-                    () => Settings.Default.MainWindowWidth, d => Settings.Default.MainWindowWidth = d,
-                    () => Settings.Default.MainWindowState, s => Settings.Default.MainWindowState = s,
-                    Settings.Default, true, true);
-                
                 errorNotifyingServices.Add(mainWindowManipulationService);
 
-                var mainViewModel = new MainViewModel(
-                    audioService, calibrationService, dictionaryService, keyboardService, 
+                mainViewModel = new MainViewModel(
+                    audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, outputService, mainWindowManipulationService, errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
                 Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
-
                 if(mainWindow.MainView.IsLoaded)
                 {
                     postMainViewLoaded();
@@ -164,13 +183,27 @@ namespace JuliusSweetland.OptiKey
                     };
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
-                
+
                 //Show the main window
                 mainWindow.Show();
 
-                await ShowSplashScreen(inputService, audioService, mainViewModel);
-                inputService.RequestResume(); //Start the input service
-                await CheckForUpdates(inputService, audioService, mainViewModel);
+                //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
+                EventHandler sizeAndPositionInitialised = null;
+                sizeAndPositionInitialised = async (_, __) =>
+                {
+                    mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
+                    await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    inputService.RequestResume(); //Start the input service
+                    await CheckForUpdates(inputService, audioService, mainViewModel);
+                };
+                if (mainWindowManipulationService.SizeAndPositionIsInitialised)
+                {
+                    sizeAndPositionInitialised(null, null);
+                }
+                else
+                {
+                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;    
+                }
             }
             catch (Exception ex)
             {
@@ -281,7 +314,7 @@ namespace JuliusSweetland.OptiKey
         }
 
         private IInputService CreateInputService(
-            IKeyboardService keyboardService,
+            IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
             ICalibrationService calibrationService,
@@ -394,7 +427,7 @@ namespace JuliusSweetland.OptiKey
                         + "Please correct and restart OptiKey.");
             }
 
-            var inputService = new InputService(keyboardService, dictionaryService, audioService, capturingStateManager,
+            var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
                 pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
@@ -565,11 +598,11 @@ namespace JuliusSweetland.OptiKey
 
         #region Release Keys On App Exit
 
-        private void ReleaseKeysOnApplicationExit(IKeyboardService keyboardService, IPublishService publishService)
+        private void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
         {
             Application.Current.Exit += (o, args) =>
             {
-                if (keyboardService.KeyDownStates[KeyValues.SimulateKeyStrokesKey].Value.IsDownOrLockedDown())
+                if (keyStateService.SimulateKeyStrokes)
                 {
                     publishService.ReleaseAllDownKeys();
                 }

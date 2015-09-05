@@ -70,6 +70,10 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ext\Bass\Bass.Net.dll</HintPath>
+    </Reference>
     <Reference Include="EyeXFramework">
       <HintPath>..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
@@ -185,13 +189,20 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\Keyboards.cs" />
+    <Compile Include="Enums\SymbolOrientations.cs" />
+    <Compile Include="Enums\ShrinkFromDirections.cs" />
+    <Compile Include="Enums\ExpandToDirections.cs" />
+    <Compile Include="Enums\MoveToDirections.cs" />
+    <Compile Include="Enums\DockSizes.cs" />
+    <Compile Include="Enums\WindowStates.cs" />
     <Compile Include="Enums\FontStretches.cs" />
     <Compile Include="Enums\FontWeights.cs" />
-    <Compile Include="Enums\KeyboardsSets.cs" />
     <Compile Include="Enums\CharCategories.cs" />
     <Compile Include="Enums\Keys.cs" />
     <Compile Include="Enums\MouseButtons.cs" />
     <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
+    <Compile Include="Enums\DockEdges.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
     <Compile Include="Enums\TaskbarPosition.cs" />
@@ -214,6 +225,8 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
+    <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyStateServiceState.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\DictionaryEntryAndState.cs" />
@@ -221,6 +234,7 @@
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Native\Enums\AppBarNotify.cs" />
     <Compile Include="Native\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Enums\DeviceCaps.cs" />
@@ -238,12 +252,12 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
+    <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\IPointService.cs" />
     <Compile Include="Services\IWindowManipulationService.cs" />
-    <Compile Include="Services\IWindowStateService.cs" />
-    <Compile Include="Services\KeyboardService.cs" />
-    <Compile Include="Services\IKeyboardService.cs" />
+    <Compile Include="Services\KeyStateService.cs" />
+    <Compile Include="Services\IKeyStateService.cs" />
     <Compile Include="Models\KeyEnabledStates.cs" />
     <Compile Include="Models\KeyValues.cs" />
     <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
@@ -268,27 +282,27 @@
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="Services\IDictionaryService.cs" />
     <Compile Include="Services\InputService.subscriptions.cs" />
-    <Compile Include="Services\IOutputService.cs" />
+    <Compile Include="Services\IKeyboardOutputService.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
+    <Compile Include="Services\MouseOutputService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
-    <Compile Include="Services\WindowStateService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
-    <Compile Include="Services\OutputService.cs" />
+    <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
-    <Compile Include="Models\Taskbar.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -306,26 +320,31 @@
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
+    <Compile Include="UI\ValueConverters\DockPositionToSymbolOrientation.cs" />
+    <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\Keyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha3.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha2.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\AlternativeAlpha1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Position.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Size.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\SizeAndPosition.cs" />
     <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
@@ -335,68 +354,64 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml.cs">
-      <DependentUpon>YesNoQuestion.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Minimised.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Mouse.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Position.xaml.cs">
-      <DependentUpon>Position.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml.cs">
+      <DependentUpon>SizeAndPosition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Size.xaml.cs">
-      <DependentUpon>Size.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Menu.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml.cs">
-      <DependentUpon>Diacritic3.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics3.xaml.cs">
+      <DependentUpon>Diacritics3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml.cs">
-      <DependentUpon>Diacritic2.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics2.xaml.cs">
+      <DependentUpon>Diacritics2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml.cs">
-      <DependentUpon>Diacritic1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics1.xaml.cs">
+      <DependentUpon>Diacritics1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Currencies2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Currencies2.xaml.cs">
       <DependentUpon>Currencies2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Output.xaml.cs">
+    <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Alpha.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\Currencies1.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\Currencies1.xaml.cs">
       <DependentUpon>Currencies1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\PhysicalKeys.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml.cs">
       <DependentUpon>PhysicalKeys.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols3.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml.cs">
       <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\YesNoQuestion.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml.cs">
       <DependentUpon>YesNoQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols2.xaml.cs">
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml.cs">
       <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\SpeechOnly\English\Output.xaml.cs">
-      <DependentUpon>Output.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ConversationOutput.xaml.cs">
+      <DependentUpon>ConversationOutput.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -462,8 +477,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\Icons\SVG Source Files\MaximiseSize.svg" />
-    <None Include="Resources\Icons\SVG Source Files\RestoreSize.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
@@ -484,17 +497,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
-    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 2.svg" />
     <None Include="Resources\Icons\SVG Source Files\Back.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 1.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 2.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Clear - Alt 3.svg" />
     <None Include="Resources\Icons\SVG Source Files\No.svg" />
     <None Include="Resources\Icons\SVG Source Files\Sleep.svg" />
     <None Include="Resources\Icons\SVG Source Files\Win.svg" />
     <None Include="Resources\Icons\SVG Source Files\Yes.svg" />
     <None Include="Resources\Icons\SVG Source Files\Padlock.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Dot.svg" />
     <None Include="Resources\Icons\SVG Source Files\Calibrate.svg" />
     <None Include="Resources\Icons\SVG Source Files\AccentedLetters.svg" />
     <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
@@ -502,7 +510,6 @@
     <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
     <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
     <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Size.svg" />
     <None Include="..\docs\CREDITS.txt">
       <Link>CREDITS.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -511,20 +518,19 @@
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Icons\SVG Source Files\MouseDoubleLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseLeftClick.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseRightClick.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MouseScroll.svg" />
-    <None Include="Resources\Icons\SVG Source Files\SimulateKeyStrokes.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMagneticCursor.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMagnifier.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MouseZoomIn.svg" />
-    <None Include="Resources\Icons\SVG Source Files\MouseZoomOut.svg" />
     <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
     <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Position.svg" />
     <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
+    <Content Include="..\ext\Bass\bass.dll">
+      <Link>bass.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
       <Link>Tobii.EyeX.Client.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -537,9 +543,22 @@
     <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
     <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsHorizontally.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsVertical.svg" />
-    <None Include="Resources\Icons\SVG Source Files\ArrangeWindowsMaximised.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Conversation.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Minimise.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Quit.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SizeAndPosition.svg" />
+    <None Include="Resources\Icons\SVG Source Files\CollapseDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ExpandDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Keyboard.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMoveTo.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToBottom.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -576,6 +595,18 @@
     <Content Include="Resources\Sounds\MouseDoubleClick3.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Sounds\MouseDown1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Sounds\MouseScroll2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -589,6 +620,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\MouseScroll6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp4.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Sounds\Rising1.wav">
@@ -626,7 +669,6 @@
     <None Include="Resources\Icons\SVG Source Files\RightArrow.svg" />
     <None Include="Resources\Icons\SVG Source Files\Speak.svg" />
     <None Include="Resources\Icons\SVG Source Files\UpArrow.svg" />
-    <None Include="Resources\Icons\SVG Source Files\Win - Alt 1.svg" />
     <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
     <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
@@ -644,7 +686,6 @@
     <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="Resources\Icons\SVG Source Files\Space.svg" />
-    <None Include="Resources\Icons\SVG Source Files\AddToDictionary - Alt 1.svg" />
     <None Include="Resources\Icons\SVG Source Files\BackMany.svg" />
     <None Include="Resources\Icons\SVG Source Files\BackOne.svg" />
     <None Include="Resources\Icons\SVG Source Files\Clear.svg" />
@@ -706,83 +747,79 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\YesNoQuestion.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Minimised.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Minimised.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Mouse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Mouse.xaml">
+    <Page Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Position.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Size.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritics3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Menu.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritics2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic3.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Diacritics1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic2.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Currencies2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Diacritic1.xaml">
+    <Page Include="UI\Controls\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Currencies2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Output.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols1.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\Currencies1.xaml">
+    <Page Include="UI\Views\Keyboards\Common\Currencies1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\PhysicalKeys.xaml">
+    <Page Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols3.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\YesNoQuestion.xaml">
+    <Page Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Standard\English\NumericAndSymbols2.xaml">
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\SpeechOnly\English\Output.xaml">
+    <Page Include="UI\Views\Keyboards\English\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Controls\ConversationOutput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

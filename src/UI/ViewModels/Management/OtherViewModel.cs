@@ -37,11 +37,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref checkForUpdates, value); }
         }
 
-        private bool disableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
-        public bool DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen
+        private bool suppressModifierKeysWhenInMouseKeyboard;
+        public bool SuppressModifierKeysWhenInMouseKeyboard
         {
-            get { return disableKeyStrokeSimulationWhileMouseKeyboardIsOpen; }
-            set { SetProperty(ref disableKeyStrokeSimulationWhileMouseKeyboardIsOpen, value); }
+            get { return suppressModifierKeysWhenInMouseKeyboard; }
+            set { SetProperty(ref suppressModifierKeysWhenInMouseKeyboard, value); }
         }
 
         private bool debug;
@@ -67,7 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
-            DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
+            SuppressModifierKeysWhenInMouseKeyboard = Settings.Default.SuppressModifierKeysWhenInMouseKeyboard;
             Debug = Settings.Default.Debug;
         }
 
@@ -75,7 +75,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
-            Settings.Default.DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen = DisableKeyStrokeSimulationWhileMouseKeyboardIsOpen;
+            Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
             Settings.Default.Debug = Debug;
             Settings.Default.Save();
         }

@@ -61,6 +61,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Info:" 
@@ -201,9 +203,55 @@
                                 Command="{Binding MouseClickSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Mouse double click:" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Mouse down:" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="6" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseDownSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseDownSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseDownSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MouseDownSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Mouse up:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="7" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseUpSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseUpSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="75"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseUpSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="Play"
+                                Command="{Binding MouseUpSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Mouse double click:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="8" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -224,9 +272,9 @@
                                 Command="{Binding MouseDoubleClickSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Mouse scroll:" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Mouse scroll:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <Grid Grid.Row="7" Grid.Column="1" >
+                    <Grid Grid.Row="9" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
