@@ -14,6 +14,6 @@
     <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10" Margin="5">
         <TextBlock x:Name="TxtCrashMessage" Margin="10" TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=CrashMessageFontSize}"
-                   Text="Bad news - OptiKey has tripped over its feet and has to close down.&#x0a;&#x0a;Sorry for the inconvenience."/>
+                   Text="Bad news - OptiKey has tripped over its feet and has to close down.&#x0a;&#x0a;Are you running anti-virus software (e.g. McAfee)? Try disabling it and run OptiKey again.&#x0a;&#x0a;Still no joy? Email me: optikeyfeedback@gmail.com"/>
     </Border>
 </Window>
