@@ -17,6 +17,13 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class WindowManipulationService : IWindowManipulationService
     {
+        #region Constants
+
+        private const double MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN = 10;
+        private const double MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS = 10;
+
+        #endregion
+
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -660,13 +667,15 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 //Coerce state
                 var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
-                if (fullDockThicknessAsPercentageOfScreen <= 0 || fullDockThicknessAsPercentageOfScreen >= 100)
+                if (fullDockThicknessAsPercentageOfScreen <= MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN 
+                    || fullDockThicknessAsPercentageOfScreen >= 100)
                 {
                     fullDockThicknessAsPercentageOfScreen = 50;
                     saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
                 }
                 double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-                if (collapsedDockThicknessAsPercentageOfFullDockThickness <= 0 || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
+                if (collapsedDockThicknessAsPercentageOfFullDockThickness <= MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS 
+                    || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
                 {
                     collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
                     saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);

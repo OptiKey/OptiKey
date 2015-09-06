@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Reactive.Linq;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
@@ -194,7 +195,16 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
                 Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown;
-                Settings.Default.Save();
+                try
+                {
+                    Settings.Default.Save();
+                }
+                catch (ConfigurationErrorsException)
+                {
+                    Settings.Default.Reload();
+                    Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown;
+                    Settings.Default.Save();
+                }
             });
 
             KeyDownStates[KeyValues.MultiKeySelectionKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
@@ -203,13 +213,34 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes = 
                         KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                    try
+                    {
+                        Settings.Default.Save();
+                    }
+                    catch (ConfigurationErrorsException)
+                    {
+                        Settings.Default.Reload();
+                        Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes =
+                            KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                        Settings.Default.Save();
+                    }
                 }
                 else
                 {
                     Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes = 
                         KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                    try
+                    {
+                        Settings.Default.Save();
+                    }
+                    catch (ConfigurationErrorsException)
+                    {
+                        Settings.Default.Reload();
+                        Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes =
+                            KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
+                        Settings.Default.Save();
+                    }
                 }
-                Settings.Default.Save();
             });
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>

@@ -64,6 +64,7 @@ namespace JuliusSweetland.OptiKey
                 Settings.Default.Upgrade();
                 Settings.Default.SettingsUpgradeRequired = false;
                 Settings.Default.Save();
+                Settings.Default.Reload();
             }
 
             //Adjust log4net logging level if in debug mode
@@ -149,14 +150,118 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowDockSize,
                     () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
                     () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
-                    o => { var settings = Settings.Default; settings.MainWindowOpacity = o; settings.Save(); },
-                    state => { var settings = Settings.Default; settings.MainWindowState = state; settings.Save(); },
-                    state => { var settings = Settings.Default; settings.MainWindowPreviousState = state; settings.Save(); },
-                    rect => { var settings = Settings.Default; settings.MainWindowFloatingSizeAndPosition = rect; settings.Save(); },
-                    pos => { var settings = Settings.Default; settings.MainWindowDockPosition = pos; settings.Save(); },
-                    size => { var settings = Settings.Default; settings.MainWindowDockSize = size; settings.Save(); },
-                    t => { var settings = Settings.Default; settings.MainWindowFullDockThicknessAsPercentageOfScreen = t; settings.Save(); },
-                    t => { var settings = Settings.Default; settings.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t; settings.Save(); });
+                    o =>
+                    {
+                        Settings.Default.MainWindowOpacity = o;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowOpacity = o;
+                            Settings.Default.Save();
+                        }
+                    },
+                    state =>
+                    {
+                        Settings.Default.MainWindowState = state;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowState = state;
+                            Settings.Default.Save();
+                        }
+                    },
+                    state =>
+                    {
+                        Settings.Default.MainWindowPreviousState = state;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowPreviousState = state;
+                            Settings.Default.Save();
+                        }
+                    },
+                    rect =>
+                    {
+                        Settings.Default.MainWindowFloatingSizeAndPosition = rect;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowFloatingSizeAndPosition = rect;
+                            Settings.Default.Save();
+                        }
+                    },
+                    pos =>
+                    {
+                        Settings.Default.MainWindowDockPosition = pos;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowDockPosition = pos;
+                            Settings.Default.Save();
+                        }
+                    },
+                    size =>
+                    {
+                        Settings.Default.MainWindowDockSize = size;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowDockSize = size;
+                            Settings.Default.Save();
+                        }
+                    },
+                    t =>
+                    {
+                        Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
+                            Settings.Default.Save();
+                        }
+                    },
+                    t =>
+                    {
+                        Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
+                        try
+                        {
+                            Settings.Default.Save();
+                        }
+                        catch (ConfigurationErrorsException)
+                        {
+                            Settings.Default.Reload();
+                            Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
+                            Settings.Default.Save();
+                        }
+                    });
 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 
