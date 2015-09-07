@@ -17,7 +17,7 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:IntToSingularPluralStringFormatter x:Key="IntToSingularPluralStringFormatter" />
-                    <valueConverters:WidthGreaterThanHeight x:Key="WidthGreaterThanHeight" />
+                    <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
                     <valueConverters:DockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

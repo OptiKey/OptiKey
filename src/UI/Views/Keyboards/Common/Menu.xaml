@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
-                    <valueConverters:WidthGreaterThanHeight x:Key="WidthGreaterThanHeight" />
+                    <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
                     <valueConverters:DockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
