@@ -32,6 +32,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Theme:" 
@@ -60,37 +61,25 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Minimised width (pixels):" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Magnify source (percentage of screen):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MinimisedWidthInPixels, Mode=TwoWay}" />
+                                            Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Minimised height (pixels):" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Magnify destination (percentage of screen):" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
-                                            Value="{Binding MinimisedHeightInPixels, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Magnify source (percentage of screen):" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
-                                            Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
-
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Magnify destination (percentage of screen):" 
-                               VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="7" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Conversation only mode:" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Conversation only mode:" 
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="8" Grid.Column="1" 
+                    <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Startup keyboard:" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Startup keyboard:" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -103,7 +92,7 @@
                             </Style>
                         </TextBlock.Style>    
                     </TextBlock>
-                    <ComboBox Grid.Row="9" Grid.Column="1" 
+                    <ComboBox Grid.Row="7" Grid.Column="1" 
                               ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -119,6 +108,26 @@
                             </Style>
                         </ComboBox.Style>
                     </ComboBox>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Minimised position:" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <ComboBox Grid.Row="8" Grid.Column="1" 
+                              ItemsSource="{Binding MinimisedPositions}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Full dock thickness (as % of screen):" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="90" Interval="10"
+                                            Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" />
+                    
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Collapsed dock thickness (as % of full dock thickness):" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="10" Maximum="100" Interval="10"
+                                            Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         

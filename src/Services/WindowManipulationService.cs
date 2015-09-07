@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -41,6 +40,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Func<DockSizes> getDockSize;
         private readonly Func<double> getFullDockThicknessAsPercentageOfScreen;
         private readonly Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness;
+        private readonly Func<MinimisedEdges> getMinimisedPosition;
         private readonly Action<WindowStates> saveWindowState;
         private readonly Action<WindowStates> savePreviousWindowState;
         private readonly Action<Rect> saveFloatingSizeAndPosition;
@@ -68,6 +68,7 @@ namespace JuliusSweetland.OptiKey.Services
             Func<DockSizes> getDockSize,
             Func<double> getFullDockThicknessAsPercentageOfScreen,
             Func<double> getCollapsedDockThicknessAsPercentageOfFullDockThickness,
+            Func<MinimisedEdges> getMinimisedPosition,
             Action<double> saveOpacity,
             Action<WindowStates> saveWindowState,
             Action<WindowStates> savePreviousWindowState,
@@ -85,6 +86,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.getDockSize = getDockSize;
             this.getFullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen;
             this.getCollapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness;
+            this.getMinimisedPosition = getMinimisedPosition;
             this.getFloatingSizeAndPosition = getFloatingSizeAndPosition;
             this.saveOpacity = saveOpacity;
             this.saveWindowState = saveWindowState;
@@ -602,9 +604,10 @@ namespace JuliusSweetland.OptiKey.Services
             var height = screenBoundsInPx.Height * thicknessAsPercentage;
             var width = screenBoundsInPx.Width * thicknessAsPercentage;
 
-            switch (getDockPosition())
+            var minimisedEdge = getMinimisedPosition();
+            switch (minimisedEdge == MinimisedEdges.SameAsDockedPosition ? getDockPosition().ToMinimisedEdge() : minimisedEdge)
             {
-                case DockEdges.Top:
+                case MinimisedEdges.Top:
                     if (screenBoundsInDp.Height > screenBoundsInDp.Width)
                     {
                         //Ensure the minimise button's long edge is against the docked edge,
@@ -617,7 +620,7 @@ namespace JuliusSweetland.OptiKey.Services
                     y = screenBoundsInDp.Top;
                     break;
 
-                case DockEdges.Bottom:
+                case MinimisedEdges.Bottom:
                     if (screenBoundsInDp.Height > screenBoundsInDp.Width)
                     {
                         //Ensure the minimise button's long edge is against the docked edge,
@@ -630,7 +633,7 @@ namespace JuliusSweetland.OptiKey.Services
                     y = screenBoundsInDp.Bottom - height;
                     break;
 
-                case DockEdges.Left:
+                case MinimisedEdges.Left:
                     if (screenBoundsInDp.Width > screenBoundsInDp.Height)
                     {
                         //Ensure the minimise button's long edge is against the docked edge,

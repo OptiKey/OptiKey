@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows.Controls;
+using System.Windows;
 using System.Windows.Data;
 using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class DockPositionToSymbolOrientation : IMultiValueConverter
+    public class MinimiseAndDockPositionToSymbolOrientation : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var dockPosition = (DockEdges)values[0];;
-
-            if (values.Length == 1 || (WindowStates)values[1] == WindowStates.Docked)
+            if (values.Length == 2
+                && values[0] != DependencyProperty.UnsetValue
+                && values[1] != DependencyProperty.UnsetValue)
             {
-                switch (dockPosition)
+                var minimisedPosition = (MinimisedEdges)values[0];
+                var dockPosition = (DockEdges)values[1];
+
+                switch (minimisedPosition == MinimisedEdges.SameAsDockedPosition ? dockPosition.ToMinimisedEdge() : minimisedPosition)
                 {
-                    case DockEdges.Right:
+                    case MinimisedEdges.Right:
                         return SymbolOrientations.Right;
 
-                    case DockEdges.Bottom:
+                    case MinimisedEdges.Bottom:
                         return SymbolOrientations.Bottom;
 
-                    case DockEdges.Left:
+                    case MinimisedEdges.Left:
                         return SymbolOrientations.Left;
 
-                    default: //case DockEdges.Top:
+                    default: //case MinimisedEdges.Top:
                         return SymbolOrientations.Top;
                 }
             }
             
-            return SymbolOrientations.Top;
+            return SymbolOrientations.Top; //Default
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

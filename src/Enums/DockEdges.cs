@@ -22,5 +22,16 @@ namespace JuliusSweetland.OptiKey.Enums
                 default: return AppBarEdge.Top;
             }
         }
+
+        public static MinimisedEdges ToMinimisedEdge(this DockEdges dockPosition)
+        {
+            switch (dockPosition)
+            {
+                case DockEdges.Left: return MinimisedEdges.Left;
+                case DockEdges.Bottom: return MinimisedEdges.Bottom;
+                case DockEdges.Right: return MinimisedEdges.Right;
+                default: return MinimisedEdges.Top;
+            }
+        }
     }
 }

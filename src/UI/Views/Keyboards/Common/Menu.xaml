@@ -17,7 +17,7 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:WidthGreaterThanHeight DefaultValue="True" x:Key="WidthGreaterThanHeight" />
-                    <valueConverters:DockPositionToSymbolOrientation x:Key="DockPositionToSymbolOrientation" />
+                    <valueConverters:MinimiseAndDockPositionToSymbolOrientation x:Key="MinimiseAndDockPositionToSymbolOrientation" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -152,8 +152,9 @@
                                           Text="MINIMISE"
                                           SharedSizeGroup="KeyWithSymbolAndText">
                                 <controls:Key.SymbolOrientation>
-                                    <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                    <MultiBinding Converter="{StaticResource MinimiseAndDockPositionToSymbolOrientation}">
                                         <MultiBinding.Bindings>
+                                            <Binding Path="MainWindowMinimisedPosition" Source="{x:Static properties:Settings.Default}" />
                                             <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
                                         </MultiBinding.Bindings>
                                     </MultiBinding>
@@ -308,8 +309,9 @@
                                                   Text="MINIMISE"
                                                   SharedSizeGroup="KeyWithSymbolAndText">
                                         <controls:Key.SymbolOrientation>
-                                            <MultiBinding Converter="{StaticResource DockPositionToSymbolOrientation}">
+                                            <MultiBinding Converter="{StaticResource MinimiseAndDockPositionToSymbolOrientation}">
                                                 <MultiBinding.Bindings>
+                                                    <Binding Path="MainWindowMinimisedPosition" Source="{x:Static properties:Settings.Default}" />
                                                     <Binding Path="MainWindowDockPosition" Source="{x:Static properties:Settings.Default}" />
                                                 </MultiBinding.Bindings>
                                             </MultiBinding>

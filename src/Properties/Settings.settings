@@ -299,5 +299,8 @@
     <Setting Name="MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MainWindowMinimisedPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisedEdges" Scope="User">
+      <Value Profile="(Default)">SameAsDockedPosition</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

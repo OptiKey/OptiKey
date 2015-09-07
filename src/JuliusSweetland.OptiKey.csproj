@@ -189,6 +189,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
     <Compile Include="Enums\ShrinkFromDirections.cs" />
@@ -320,7 +321,7 @@
     <Compile Include="UI\Controls\KeyboardHost.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
-    <Compile Include="UI\ValueConverters\DockPositionToSymbolOrientation.cs" />
+    <Compile Include="UI\ValueConverters\MinimiseAndDockPositionToSymbolOrientation.cs" />
     <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />

@@ -130,6 +130,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
+
+        public List<KeyValuePair<string, Enums.MinimisedEdges>> MinimisedPositions
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.MinimisedEdges>>
+                {
+                    new KeyValuePair<string, Enums.MinimisedEdges>("Same as dock position", Enums.MinimisedEdges.SameAsDockedPosition),
+                    new KeyValuePair<string, Enums.MinimisedEdges>("Top", Enums.MinimisedEdges.Top),
+                    new KeyValuePair<string, Enums.MinimisedEdges>("Right", Enums.MinimisedEdges.Right),
+                    new KeyValuePair<string, Enums.MinimisedEdges>("Bottom", Enums.MinimisedEdges.Bottom),
+                    new KeyValuePair<string, Enums.MinimisedEdges>("Left", Enums.MinimisedEdges.Left),
+                };
+            }
+        }
         
         private string theme;
         public string Theme
@@ -210,20 +225,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref cursorHeightInPixels, value); }
         }
 
-        private int? minimisedWidthInPixels;
-        public int? MinimisedWidthInPixels
-        {
-            get { return minimisedWidthInPixels; }
-            set { SetProperty(ref minimisedWidthInPixels, value); }
-        }
-
-        private int? minimisedHeightInPixels;
-        public int? MinimisedHeightInPixels
-        {
-            get { return minimisedHeightInPixels; }
-            set { SetProperty(ref minimisedHeightInPixels, value); }
-        }
-
         private double magnifySourcePercentageOfScreen;
         public double MagnifySourcePercentageOfScreen
         {
@@ -252,6 +253,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref startupKeyboard, value); }
         }
 
+        private Enums.MinimisedEdges minimsedPosition;
+        public Enums.MinimisedEdges MinimisedPosition
+        {
+            get { return minimsedPosition; }
+            set { SetProperty(ref minimsedPosition, value); }
+        }
+
+        private double mainWindowFullDockThicknessAsPercentageOfScreen;
+        public double MainWindowFullDockThicknessAsPercentageOfScreen
+        {
+            get { return mainWindowFullDockThicknessAsPercentageOfScreen; }
+            set { SetProperty(ref mainWindowFullDockThicknessAsPercentageOfScreen, value); }
+        }
+
+        private double mainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+        public double MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness
+        {
+            get { return mainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness; }
+            set { SetProperty(ref mainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
@@ -277,6 +299,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
             StartupKeyboard = Settings.Default.StartupKeyboard;
+            MinimisedPosition = Settings.Default.MainWindowMinimisedPosition;
+            MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+            MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
         }
 
         public void ApplyChanges()
@@ -295,6 +320,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
             Settings.Default.StartupKeyboard = StartupKeyboard;
+            Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
+            Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
+            Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.Save();
         }
 

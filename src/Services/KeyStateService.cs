@@ -218,7 +218,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Settings.Default.Save();
                     }
-                    catch (ConfigurationErrorsException ceeException)
+                    catch (ConfigurationErrorsException cee)
                     {
                         Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                         Settings.Default.Reload();

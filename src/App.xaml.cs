@@ -150,6 +150,7 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowDockSize,
                     () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
                     () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
+                    () => Settings.Default.MainWindowMinimisedPosition,
                     o =>
                     {
                         Settings.Default.MainWindowOpacity = o;
