@@ -157,8 +157,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowOpacity = o;
                             Settings.Default.Save();
@@ -171,8 +172,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowState = state;
                             Settings.Default.Save();
@@ -185,8 +187,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowPreviousState = state;
                             Settings.Default.Save();
@@ -199,8 +202,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowFloatingSizeAndPosition = rect;
                             Settings.Default.Save();
@@ -213,8 +217,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowDockPosition = pos;
                             Settings.Default.Save();
@@ -227,8 +232,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowDockSize = size;
                             Settings.Default.Save();
@@ -241,8 +247,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
                             Settings.Default.Save();
@@ -255,8 +262,9 @@ namespace JuliusSweetland.OptiKey
                         {
                             Settings.Default.Save();
                         }
-                        catch (ConfigurationErrorsException)
+                        catch (ConfigurationErrorsException cee)
                         {
+                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                             Settings.Default.Reload();
                             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
                             Settings.Default.Save();
@@ -378,9 +386,9 @@ namespace JuliusSweetland.OptiKey
                 //Attempting to read a setting from a corrupt user config file throws an exception
                 var upgradeRequired = Settings.Default.SettingsUpgradeRequired;
             }
-            catch (ConfigurationErrorsException ex)
+            catch (ConfigurationErrorsException cee)
             {
-                string filename = ((ConfigurationErrorsException)ex.InnerException).Filename;
+                string filename = ((ConfigurationErrorsException)cee.InnerException).Filename;
 
                 if (MessageBox.Show(
                         "OptiKey has detected that your user settings file has become corrupted and must be repaired. " +

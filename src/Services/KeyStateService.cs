@@ -199,8 +199,9 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Settings.Default.Save();
                 }
-                catch (ConfigurationErrorsException)
+                catch (ConfigurationErrorsException cee)
                 {
+                    Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                     Settings.Default.Reload();
                     Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown;
                     Settings.Default.Save();
@@ -217,8 +218,9 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Settings.Default.Save();
                     }
-                    catch (ConfigurationErrorsException)
+                    catch (ConfigurationErrorsException ceeException)
                     {
+                        Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                         Settings.Default.Reload();
                         Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes =
                             KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
@@ -233,8 +235,9 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Settings.Default.Save();
                     }
-                    catch (ConfigurationErrorsException)
+                    catch (ConfigurationErrorsException cee)
                     {
+                        Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
                         Settings.Default.Reload();
                         Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes =
                             KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
