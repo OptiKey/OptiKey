@@ -263,9 +263,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void IncrementOrDecrementOpacity(bool increment)
         {
-            window.Opacity += increment ? 0.1 : -0.1;
-            window.Opacity.CoerceToLowerLimit(0.1);
-            window.Opacity.CoerceToUpperLimit(1);
+            var opacity = window.Opacity;
+            opacity += increment ? 0.1 : -0.1;
+            opacity = opacity.CoerceToLowerLimit(0.1);
+            opacity = opacity.CoerceToUpperLimit(1);
+            window.Opacity = opacity;
             saveOpacity(window.Opacity);
         }
 
@@ -367,8 +369,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void SetOpacity(double opacity)
         {
-            opacity.CoerceToLowerLimit(0.1);
-            opacity.CoerceToUpperLimit(1);
+            opacity = opacity.CoerceToLowerLimit(0.1);
+            opacity = opacity.CoerceToUpperLimit(1);
             window.Opacity = opacity;
             saveOpacity(window.Opacity);
         }
