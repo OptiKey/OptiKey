@@ -45,6 +45,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
 
             try
             {
+                Log.Info("Starting a calibration");
                 var message = await CalibrationService.Calibrate(parentWindow);
                 if (calibrationResult != null)
                 {

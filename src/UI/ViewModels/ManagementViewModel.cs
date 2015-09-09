@@ -92,6 +92,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         if (confirmation.Confirmed)
                         {
+                            Log.Info("Applying management changes and restarting OptiKey");
                             ApplyChanges();
                             System.Windows.Forms.Application.Restart();
                             Application.Current.Shutdown();
@@ -100,6 +101,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
+                Log.Info("Applying management changes");
                 ApplyChanges();
                 window.Close();
             }

@@ -17,7 +17,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     {
         public void AttachServiceEventHandlers()
         {
-            Log.Debug("AttachServiceEventHandlers called.");
+            Log.Info("AttachServiceEventHandlers called.");
 
             if (errorNotifyingServices != null)
             {
@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.Selection += (o, value) =>
             {
-                Log.Debug("Selection event received from InputService.");
+                Log.Info("Selection event received from InputService.");
 
                 SelectionResultPoints = null; //Clear captured points from previous SelectionResult event
 
@@ -75,7 +75,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (KeySelection != null)
                     {
-                        Log.DebugFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value);
+                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value);
                         KeySelection(this, value.KeyValue.Value);
                     }
                 }
@@ -87,7 +87,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         if (nextPointSelectionAction != null)
                         {
-                            Log.DebugFormat("Executing nextPointSelectionAction delegate with point '{0}'", value.Point);
+                            Log.InfoFormat("Executing nextPointSelectionAction delegate with point '{0}'", value.Point);
                             nextPointSelectionAction(value.Point);
                         }
                     }
@@ -96,7 +96,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.SelectionResult += (o, tuple) =>
             {
-                Log.Debug("SelectionResult event received from InputService.");
+                Log.Info("SelectionResult event received from InputService.");
 
                 var points = tuple.Item1;
                 var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
@@ -127,7 +127,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (singleKeyValue != null
                 && !string.IsNullOrEmpty(singleKeyValue.Value.String))
             {
-                Log.DebugFormat("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String.ConvertEscapedCharsToLiterals());
+                Log.InfoFormat("KeySelectionResult received with string value '{0}'", singleKeyValue.Value.String.ConvertEscapedCharsToLiterals());
                 keyboardOutputService.ProcessSingleKeyText(singleKeyValue.Value.String);
             }
 
@@ -135,7 +135,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (singleKeyValue != null
                 && singleKeyValue.Value.FunctionKey != null)
             {
-                Log.DebugFormat("KeySelectionResult received with function key value '{0}'", singleKeyValue.Value.FunctionKey);
+                Log.InfoFormat("KeySelectionResult received with function key value '{0}'", singleKeyValue.Value.FunctionKey);
                 HandleFunctionKeySelectionResult(singleKeyValue.Value);
             }
 
@@ -143,7 +143,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (multiKeySelection != null
                 && multiKeySelection.Any())
             {
-                Log.DebugFormat("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count);
+                Log.InfoFormat("KeySelectionResult received with '{0}' multiKeySelection results", multiKeySelection.Count);
                 keyboardOutputService.ProcessMultiKeyTextAndSuggestions(multiKeySelection);
             }
         }
@@ -163,12 +163,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.AlphaKeyboard:
-                        Log.Debug("Changing keyboard to Alpha.");
+                        Log.Info("Changing keyboard to Alpha.");
                         Keyboard = new Alpha();
                         break;
 
                     case FunctionKeys.BackFromKeyboard:
-                        Log.Debug("Navigating back from keyboard.");
+                        Log.Info("Navigating back from keyboard.");
                         var navigableKeyboard = Keyboard as IBackAction;
                         if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
                         {
@@ -183,7 +183,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Calibrate:
                         if (CalibrationService != null)
                         {
-                            Log.Debug("Calibrate requested.");
+                            Log.Info("Calibrate requested.");
                             
                             var question = CalibrationService.CanBeCompletedWithoutManualIntervention
                                 ? "Are you sure you would like to re-calibrate?"
@@ -221,7 +221,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.CollapseDock:
-                        Log.Debug("Collapsing dock.");
+                        Log.Info("Collapsing dock.");
                         mainWindowManipulationService.ResizeDockToCollapsed();
                         if (Keyboard is ViewModels.Keyboards.Mouse)
                         {
@@ -230,79 +230,79 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.ConversationAlphaKeyboard:
-                        Log.Debug("Changing keyboard to ConversationAlpha.");
+                        Log.Info("Changing keyboard to ConversationAlpha.");
                         var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                         Action conversationAlphaBackAction =
                             currentKeyboard is ConversationNumericAndSymbols
                                 ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
                                 : () => 
                                     {
-                                        Log.Debug("Restoring window size.");
+                                        Log.Info("Restoring window size.");
                                         mainWindowManipulationService.Restore();
-                                        Log.DebugFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
                                         mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
                                         Keyboard = currentKeyboard;
                                     };
                         Keyboard = new ConversationAlpha(conversationAlphaBackAction);
-                        Log.Debug("Maximising window.");
+                        Log.Info("Maximising window.");
                         mainWindowManipulationService.Maximise();
-                        Log.DebugFormat("Setting opacity to 1 (fully opaque)");
+                        Log.InfoFormat("Setting opacity to 1 (fully opaque)");
                         mainWindowManipulationService.SetOpacity(1);
                         break;
 
                     case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
-                        Log.Debug("Changing keyboard to ConversationNumericAndSymbols.");
+                        Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                         var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
                         Action conversationNumericAndSymbolsBackAction =
                             currentKeyboard is ConversationAlpha
                                 ? ((ConversationAlpha)currentKeyboard).BackAction
                                 : () => 
                                     {
-                                        Log.Debug("Restoring window size.");
+                                        Log.Info("Restoring window size.");
                                         mainWindowManipulationService.Restore();
-                                        Log.DebugFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
                                         mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
                                         Keyboard = currentKeyboard;
                                     };
                         Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
-                        Log.Debug("Maximising window.");
+                        Log.Info("Maximising window.");
                         mainWindowManipulationService.Maximise();
-                        Log.DebugFormat("Setting opacity to 1 (fully opaque)");
+                        Log.InfoFormat("Setting opacity to 1 (fully opaque)");
                         mainWindowManipulationService.SetOpacity(1);
                         break;
 
                     case FunctionKeys.Currencies1Keyboard:
-                        Log.Debug("Changing keyboard to Currencies1.");
+                        Log.Info("Changing keyboard to Currencies1.");
                         Keyboard = new Currencies1();
                         break;
 
                     case FunctionKeys.Currencies2Keyboard:
-                        Log.Debug("Changing keyboard to Currencies2.");
+                        Log.Info("Changing keyboard to Currencies2.");
                         Keyboard = new Currencies2();
                         break;
 
                     case FunctionKeys.DecreaseOpacity:
-                        Log.Debug("Decreasing opacity.");
+                        Log.Info("Decreasing opacity.");
                         mainWindowManipulationService.IncrementOrDecrementOpacity(false);
                         break;
 
                     case FunctionKeys.Diacritic1Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic1.");
+                        Log.Info("Changing keyboard to Diacritic1.");
                         Keyboard = new Diacritics1();
                         break;
 
                     case FunctionKeys.Diacritic2Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic2.");
+                        Log.Info("Changing keyboard to Diacritic2.");
                         Keyboard = new Diacritics2();
                         break;
 
                     case FunctionKeys.Diacritic3Keyboard:
-                        Log.Debug("Changing keyboard to Diacritic3.");
+                        Log.Info("Changing keyboard to Diacritic3.");
                         Keyboard = new Diacritics3();
                         break;
 
                     case FunctionKeys.ExpandDock:
-                        Log.Debug("Expanding dock.");
+                        Log.Info("Expanding dock.");
                         mainWindowManipulationService.ResizeDockToFull();
                         if (Keyboard is ViewModels.Keyboards.Mouse)
                         {
@@ -311,71 +311,71 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.ExpandToBottom:
-                        Log.DebugFormat("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.Bottom, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndLeft:
-                        Log.DebugFormat("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.BottomLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToBottomAndRight:
-                        Log.DebugFormat("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.BottomRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToLeft:
-                        Log.DebugFormat("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.Left, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToRight:
-                        Log.DebugFormat("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.Right, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTop:
-                        Log.DebugFormat("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.Top, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndLeft:
-                        Log.DebugFormat("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.TopLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ExpandToTopAndRight:
-                        Log.DebugFormat("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Expanding to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Expand(ExpandToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.IncreaseOpacity:
-                        Log.Debug("Increasing opacity.");
+                        Log.Info("Increasing opacity.");
                         mainWindowManipulationService.IncrementOrDecrementOpacity(true);
                         break;
 
                     case FunctionKeys.MenuKeyboard:
-                        Log.Debug("Restoring window size.");
+                        Log.Info("Restoring window size.");
                         mainWindowManipulationService.Restore();
-                        Log.Debug("Changing keyboard to Menu.");
+                        Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.Minimise:
-                        Log.Debug("Minimising window.");
+                        Log.Info("Minimising window.");
                         mainWindowManipulationService.Minimise();
-                        Log.Debug("Changing keyboard to Minimised.");
+                        Log.Info("Changing keyboard to Minimised.");
                         Keyboard = new Minimised(() =>
                         {
-                            Log.Debug("Restoring window size.");
+                            Log.Info("Restoring window size.");
                             mainWindowManipulationService.Restore();
                             Keyboard = currentKeyboard;
                         });
                         break;
 
                     case FunctionKeys.MouseDrag:
-                        Log.Debug("Mouse drag selected.");
+                        Log.Info("Mouse drag selected.");
                         SetupFinalClickAction(firstFinalPoint =>
                         {
                             if (firstFinalPoint != null)
@@ -398,7 +398,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             {
                                                 Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                                 {
-                                                    Log.DebugFormat("Performing mouse drag between points ({0},{1}) and {2},{3}).", fp1.X, fp1.Y, fp2.X, fp2.Y);
+                                                    Log.InfoFormat("Performing mouse drag between points ({0},{1}) and {2},{3}).", fp1.X, fp1.Y, fp2.X, fp2.Y);
                                                     mouseOutputService.MoveTo(fp1);
                                                     mouseOutputService.LeftButtonDown();
                                                     audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
@@ -458,7 +458,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseKeyboard:
-                        Log.Debug("Changing keyboard to Mouse.");
+                        Log.Info("Changing keyboard to Mouse.");
                         Action backAction;
                         if (keyStateService.SimulateKeyStrokes
                             && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
@@ -503,7 +503,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftClick:
                         var leftClickPoint = mouseOutputService.GetCursorPosition();
-                        Log.DebugFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint.X, leftClickPoint.Y);
+                        Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint.X, leftClickPoint.Y);
                         Action<Point?> performLeftClick = point =>
                         {
                             if (point != null)
@@ -519,7 +519,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseLeftDoubleClick:
                         var leftDoubleClickPoint = mouseOutputService.GetCursorPosition();
-                        Log.DebugFormat("Mouse left double click selected at point ({0},{1}).", leftDoubleClickPoint.X, leftDoubleClickPoint.Y);
+                        Log.InfoFormat("Mouse left double click selected at point ({0},{1}).", leftDoubleClickPoint.X, leftDoubleClickPoint.Y);
                         Action<Point?> performLeftDoubleClick = point =>
                         {
                             if (point != null)
@@ -537,14 +537,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var leftDownUpPoint = mouseOutputService.GetCursorPosition();
                         if (keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                         {
-                            Log.DebugFormat("Pressing mouse left button down at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
+                            Log.InfoFormat("Pressing mouse left button down at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseOutputService.LeftButtonDown();
                             lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
-                            Log.DebugFormat("Releasing mouse left button at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
+                            Log.InfoFormat("Releasing mouse left button at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseOutputService.LeftButtonUp();
                             lastMouseActionStateManager.LastMouseAction = null;
@@ -553,7 +553,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseMiddleClick:
                         var middleClickPoint = mouseOutputService.GetCursorPosition();
-                        Log.DebugFormat("Mouse middle click selected at point ({0},{1}).", middleClickPoint.X, middleClickPoint.Y);
+                        Log.InfoFormat("Mouse middle click selected at point ({0},{1}).", middleClickPoint.X, middleClickPoint.Y);
                         Action<Point?> performMiddleClick = point =>
                         {
                             if (point != null)
@@ -571,14 +571,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var middleDownUpPoint = mouseOutputService.GetCursorPosition();
                         if (keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
                         {
-                            Log.DebugFormat("Pressing mouse middle button down at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
+                            Log.InfoFormat("Pressing mouse middle button down at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseOutputService.MiddleButtonDown();
                             lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
-                            Log.DebugFormat("Releasing mouse middle button at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
+                            Log.InfoFormat("Releasing mouse middle button at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseOutputService.MiddleButtonUp();
                             lastMouseActionStateManager.LastMouseAction = null;
@@ -586,14 +586,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndLeftClick:
-                        Log.Debug("Mouse move and left click selected.");
+                        Log.Info("Mouse move and left click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseOutputService.MoveAndLeftClick(fp, true);
                                 };
@@ -607,14 +607,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndLeftDoubleClick:
-                        Log.Debug("Mouse move and left double click selected.");
+                        Log.Info("Mouse move and left double click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse left double click at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse left double click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                                     mouseOutputService.MoveAndLeftDoubleClick(fp, true);
                                 };
@@ -628,14 +628,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndMiddleClick:
-                        Log.Debug("Mouse move and middle click selected.");
+                        Log.Info("Mouse move and middle click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse middle click at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse middle click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseOutputService.MoveAndMiddleClick(fp, true);
                                 };
@@ -649,14 +649,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
                         
                     case FunctionKeys.MouseMoveAndRightClick:
-                        Log.Debug("Mouse move and right click selected.");
+                        Log.Info("Mouse move and right click selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateClick = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse right click at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse right click at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                     mouseOutputService.MoveAndRightClick(fp, true);
                                 };
@@ -670,7 +670,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAmountInPixels:
-                        Log.Debug("Progressing MouseMoveAmountInPixels.");
+                        Log.Info("Progressing MouseMoveAmountInPixels.");
                         switch (Settings.Default.MouseMoveAmountInPixels)
                         {
                             case 1:
@@ -700,14 +700,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToBottom:
-                        Log.Debug("Mouse move and scroll to bottom selected.");
+                        Log.Info("Mouse move and scroll to bottom selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateScrollToBottom = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse scroll to bottom at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse scroll to bottom at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
@@ -721,14 +721,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToLeft:
-                        Log.Debug("Mouse move and scroll to left selected.");
+                        Log.Info("Mouse move and scroll to left selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateScrollToLeft = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse scroll to left at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse scroll to left at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     mouseOutputService.MoveAndScrollWheelLeft(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
@@ -742,14 +742,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToRight:
-                        Log.Debug("Mouse move and scroll to right selected.");
+                        Log.Info("Mouse move and scroll to right selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateScrollToRight = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse scroll to right at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse scroll to right at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     mouseOutputService.MoveAndScrollWheelRight(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
@@ -763,14 +763,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToTop:
-                        Log.Debug("Mouse move and scroll to top selected.");
+                        Log.Info("Mouse move and scroll to top selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateScrollToTop = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
                                     audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                     mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
                                 };
@@ -784,14 +784,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveTo:
-                        Log.Debug("Mouse move to selected.");
+                        Log.Info("Mouse move to selected.");
                         SetupFinalClickAction(finalPoint =>
                         {
                             if (finalPoint != null)
                             {
                                 Action<Point> simulateMoveTo = fp =>
                                 {
-                                    Log.DebugFormat("Performing mouse move to point ({0},{1}).", fp.X, fp.Y);
+                                    Log.InfoFormat("Performing mouse move to point ({0},{1}).", fp.X, fp.Y);
                                     mouseOutputService.MoveTo(fp);
                                 };
                                 lastMouseActionStateManager.LastMouseAction = () => simulateMoveTo(finalPoint.Value);
@@ -802,12 +802,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveToBottom:
-                        Log.Debug("Mouse move to bottom selected.");
+                        Log.Info("Mouse move to bottom selected.");
                         Action simulateMoveToBottom = () =>
                         {
                             var cursorPosition = mouseOutputService.GetCursorPosition();
                             var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y + Settings.Default.MouseMoveAmountInPixels);
-                            Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                            Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseOutputService.MoveTo(moveToPoint);
                         };
                         lastMouseActionStateManager.LastMouseAction = simulateMoveToBottom;
@@ -815,12 +815,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveToLeft:
-                        Log.Debug("Mouse move to left selected.");
+                        Log.Info("Mouse move to left selected.");
                         Action simulateMoveToLeft = () =>
                         {
                             var cursorPosition = mouseOutputService.GetCursorPosition();
                             var moveToPoint = new Point(cursorPosition.X - Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
-                            Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                            Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseOutputService.MoveTo(moveToPoint);
                         };
                         lastMouseActionStateManager.LastMouseAction = simulateMoveToLeft;
@@ -828,12 +828,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveToRight:
-                        Log.Debug("Mouse move to right selected.");
+                        Log.Info("Mouse move to right selected.");
                         Action simulateMoveToRight = () =>
                         {
                             var cursorPosition = mouseOutputService.GetCursorPosition();
                             var moveToPoint = new Point(cursorPosition.X + Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
-                            Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                            Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseOutputService.MoveTo(moveToPoint);
                         };
                         lastMouseActionStateManager.LastMouseAction = simulateMoveToRight;
@@ -841,12 +841,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseMoveToTop:
-                        Log.Debug("Mouse move to top selected.");
+                        Log.Info("Mouse move to top selected.");
                         Action simulateMoveToTop = () =>
                         {
                             var cursorPosition = mouseOutputService.GetCursorPosition();
                             var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y - Settings.Default.MouseMoveAmountInPixels);
-                            Log.DebugFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                            Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
                             mouseOutputService.MoveTo(moveToPoint);
                         };
                         lastMouseActionStateManager.LastMouseAction = simulateMoveToTop;
@@ -855,7 +855,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.MouseRightClick:
                         var rightClickPoint = mouseOutputService.GetCursorPosition();
-                        Log.DebugFormat("Mouse right click selected at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
+                        Log.InfoFormat("Mouse right click selected at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
                         Action<Point?> performRightClick = point =>
                         {
                             if (point != null)
@@ -873,14 +873,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var rightDownUpPoint = mouseOutputService.GetCursorPosition();
                         if (keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                         {
-                            Log.DebugFormat("Pressing mouse right button down at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
+                            Log.InfoFormat("Pressing mouse right button down at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                             mouseOutputService.RightButtonDown();
                             lastMouseActionStateManager.LastMouseAction = null;
                         }
                         else
                         {
-                            Log.DebugFormat("Releasing mouse right button at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
+                            Log.InfoFormat("Releasing mouse right button at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
                             audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                             mouseOutputService.RightButtonUp();
                             lastMouseActionStateManager.LastMouseAction = null;
@@ -888,7 +888,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MoveAndResizeAdjustmentAmount:
-                        Log.Debug("Progressing MoveAndResizeAdjustmentAmount.");
+                        Log.Info("Progressing MoveAndResizeAdjustmentAmount.");
                         switch (Settings.Default.MoveAndResizeAdjustmentAmountInPixels)
                         {
                             case 1:
@@ -918,7 +918,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MouseScrollAmountInClicks:
-                        Log.Debug("Progressing MouseScrollAmountInClicks.");
+                        Log.Info("Progressing MouseScrollAmountInClicks.");
                         switch (Settings.Default.MouseScrollAmountInClicks)
                         {
                             case 1:
@@ -944,87 +944,87 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.MoveToBottom:
-                        Log.DebugFormat("Moving to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.Bottom, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToBottomAndLeft:
-                        Log.DebugFormat("Moving to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.BottomLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToBottomAndLeftBoundaries:
-                        Log.Debug("Moving to bottom and left boundaries.");
+                        Log.Info("Moving to bottom and left boundaries.");
                         mainWindowManipulationService.Move(MoveToDirections.BottomLeft, null);
                         break;
 
                     case FunctionKeys.MoveToBottomAndRight:
-                        Log.DebugFormat("Moving to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.BottomRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToBottomAndRightBoundaries:
-                        Log.Debug("Moving to bottom and right boundaries.");
+                        Log.Info("Moving to bottom and right boundaries.");
                         mainWindowManipulationService.Move(MoveToDirections.BottomRight, null);
                         break;
 
                     case FunctionKeys.MoveToBottomBoundary:
-                        Log.Debug("Moving to bottom boundary.");
+                        Log.Info("Moving to bottom boundary.");
                         mainWindowManipulationService.Move(MoveToDirections.Bottom, null);
                         break;
 
                     case FunctionKeys.MoveToLeft:
-                        Log.DebugFormat("Moving to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.Left, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToLeftBoundary:
-                        Log.Debug("Moving to left boundary.");
+                        Log.Info("Moving to left boundary.");
                         mainWindowManipulationService.Move(MoveToDirections.Left, null);
                         break;
 
                     case FunctionKeys.MoveToRight:
-                        Log.DebugFormat("Moving to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.Right, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToRightBoundary:
-                        Log.Debug("Moving to right boundary.");
+                        Log.Info("Moving to right boundary.");
                         mainWindowManipulationService.Move(MoveToDirections.Right, null);
                         break;
 
                     case FunctionKeys.MoveToTop:
-                        Log.DebugFormat("Moving to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.Top, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToTopAndLeft:
-                        Log.DebugFormat("Moving to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.TopLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToTopAndLeftBoundaries:
-                        Log.Debug("Moving to top and left boundaries.");
+                        Log.Info("Moving to top and left boundaries.");
                         mainWindowManipulationService.Move(MoveToDirections.TopLeft, null);
                         break;
 
                     case FunctionKeys.MoveToTopAndRight:
-                        Log.DebugFormat("Moving to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Moving to top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Move(MoveToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.MoveToTopAndRightBoundaries:
-                        Log.Debug("Moving to top and right boundaries.");
+                        Log.Info("Moving to top and right boundaries.");
                         mainWindowManipulationService.Move(MoveToDirections.TopRight, null);
                         break;
 
                     case FunctionKeys.MoveToTopBoundary:
-                        Log.Debug("Moving to top boundary.");
+                        Log.Info("Moving to top boundary.");
                         mainWindowManipulationService.Move(MoveToDirections.Top, null);
                         break;
                         
                     case FunctionKeys.NextSuggestions:
-                        Log.Debug("Incrementing suggestions page.");
+                        Log.Info("Incrementing suggestions page.");
 
                         if (suggestionService.Suggestions != null
                             && (suggestionService.Suggestions.Count > (suggestionService.SuggestionsPage + 1) * SuggestionService.SuggestionsPerPage))
@@ -1038,27 +1038,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.NumericAndSymbols1Keyboard:
-                        Log.Debug("Changing keyboard to NumericAndSymbols1.");
+                        Log.Info("Changing keyboard to NumericAndSymbols1.");
                         Keyboard = new NumericAndSymbols1();
                         break;
 
                     case FunctionKeys.NumericAndSymbols2Keyboard:
-                        Log.Debug("Changing keyboard to NumericAndSymbols2.");
+                        Log.Info("Changing keyboard to NumericAndSymbols2.");
                         Keyboard = new NumericAndSymbols2();
                         break;
 
                     case FunctionKeys.NumericAndSymbols3Keyboard:
-                        Log.Debug("Changing keyboard to Symbols3.");
+                        Log.Info("Changing keyboard to Symbols3.");
                         Keyboard = new NumericAndSymbols3();
                         break;
 
                     case FunctionKeys.PhysicalKeysKeyboard:
-                        Log.Debug("Changing keyboard to PhysicalKeys.");
+                        Log.Info("Changing keyboard to PhysicalKeys.");
                         Keyboard = new PhysicalKeys();
                         break;
                         
                     case FunctionKeys.PreviousSuggestions:
-                        Log.Debug("Decrementing suggestions page.");
+                        Log.Info("Decrementing suggestions page.");
 
                         if (suggestionService.SuggestionsPage > 0)
                         {
@@ -1067,7 +1067,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.Quit:
-                        Log.Debug("Quit key selected.");
+                        Log.Info("Quit key selected.");
                         var keyboardBeforeQuit = Keyboard;
                         Keyboard = new YesNoQuestion("Are you sure you would like to quit?",
                             () =>
@@ -1087,47 +1087,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:
-                        Log.DebugFormat("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from bottom by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.Bottom, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndLeft:
-                        Log.DebugFormat("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from bottom and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.BottomLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromBottomAndRight:
-                        Log.DebugFormat("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from bottom and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.BottomRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromLeft:
-                        Log.DebugFormat("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.Left, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromRight:
-                        Log.DebugFormat("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.Right, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTop:
-                        Log.DebugFormat("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from top by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.Top, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndLeft:
-                        Log.DebugFormat("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from top and left by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.TopLeft, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.ShrinkFromTopAndRight:
-                        Log.DebugFormat("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
+                        Log.InfoFormat("Shrinking from top and right by {0}px.", Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         mainWindowManipulationService.Shrink(ShrinkFromDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
                     case FunctionKeys.SizeAndPositionKeyboard:
-                        Log.Debug("Changing keyboard to Size & Position.");
+                        Log.Info("Changing keyboard to Size & Position.");
                         Keyboard = new SizeAndPosition(() => Keyboard = currentKeyboard);
                         break;
 

@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                     parentWindow.Topmost = false; //Topmost must be revoked otherwise it cannot be reinstated correctly once the child window is closed
                 }
 
-                Log.Debug("Showing Management window");
+                Log.Info("Showing Management window");
                 childWindow.ShowDialog();
     
                 if (parentWindow != null)

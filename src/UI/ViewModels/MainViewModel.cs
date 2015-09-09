@@ -65,8 +65,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices)
         {
-            Log.Debug("Ctor called.");
-
             this.audioService = audioService;
             this.calibrationService = calibrationService;
             this.dictionaryService = dictionaryService;
@@ -143,7 +141,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (SetProperty(ref selectionMode, value))
                 {
-                    Log.DebugFormat("SelectionMode changed to {0}", value);
+                    Log.InfoFormat("SelectionMode changed to {0}", value);
 
                     ResetSelectionProgress();
 
@@ -348,7 +346,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void AddTextToDictionary()
         {
-            Log.Debug("AddTextToDictionary called.");
+            Log.Info("AddTextToDictionary called.");
 
             var possibleEntries = keyboardOutputService.Text.ExtractWordsAndLines();
 
@@ -362,7 +360,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    Log.DebugFormat("No new words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
+                    Log.InfoFormat("No new words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
@@ -372,7 +370,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                Log.DebugFormat("No possible words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
+                Log.InfoFormat("No possible words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
             }
         }
@@ -427,7 +425,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void HandleYesNoQuestionResult(bool yesResult)
         {
-            Log.DebugFormat("YesNoQuestion result of '{0}' received.", yesResult ? "YES" : "NO");
+            Log.InfoFormat("YesNoQuestion result of '{0}' received.", yesResult ? "YES" : "NO");
 
             var yesNoQuestion = Keyboard as YesNoQuestion;
             if (yesNoQuestion != null)
