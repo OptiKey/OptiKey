@@ -228,8 +228,16 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                var uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
-                return uacKey.GetValue(uacRegistryValue).Equals(1);
+                try
+                {
+                    var uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
+                    return uacKey.GetValue(uacRegistryValue).Equals(1);
+                }
+                catch(NullReferenceException)
+                {
+                    // if there is no key, then it must not be enabled
+                    return false;
+                }
             }
         }
     }
