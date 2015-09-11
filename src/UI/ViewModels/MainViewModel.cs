@@ -11,8 +11,8 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Interactivity.InteractionRequest;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {

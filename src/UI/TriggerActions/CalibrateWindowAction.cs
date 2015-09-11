@@ -5,7 +5,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using log4net;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {

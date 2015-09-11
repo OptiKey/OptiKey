@@ -5,7 +5,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Models
 {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Models
 {
