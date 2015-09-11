@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Interactivity;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.Windows;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {

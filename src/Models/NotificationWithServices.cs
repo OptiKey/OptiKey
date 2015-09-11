@@ -1,5 +1,5 @@
 ﻿using JuliusSweetland.OptiKey.Services;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.Models
 {

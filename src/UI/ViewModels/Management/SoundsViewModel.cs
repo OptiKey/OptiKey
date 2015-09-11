@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Commands;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
