@@ -742,7 +742,7 @@ namespace JuliusSweetland.OptiKey.Services
                                             break;
 
                                         case MoveToDirections.BottomRight:
-                                            window.Left = floatingSizeAndPosition.Right + xAdjustmentToRight;
+                                            window.Left = floatingSizeAndPosition.Left + xAdjustmentToRight;
                                             break;
                                     }
                                     window.Height = floatingSizeAndPosition.Height;
@@ -773,7 +773,7 @@ namespace JuliusSweetland.OptiKey.Services
                                             break;
 
                                         case MoveToDirections.TopRight:
-                                            window.Left = floatingSizeAndPosition.Right + xAdjustmentToRight;
+                                            window.Left = floatingSizeAndPosition.Left + xAdjustmentToRight;
                                             break;
                                     }
                                     window.Height = floatingSizeAndPosition.Height;
