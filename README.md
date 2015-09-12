@@ -21,7 +21,7 @@ OptiKey targets the .Net 4.5 Framework, which is available for  Windows Vista SP
 
 # Problems?
 
-If you find a problem (a crash, an unexpected behaviour, or something similar) please visit the [issue tracker](https://github.com/JuliusSweetland/OptiKey/issues) and report the issue.
+If you find a problem (a crash, an unexpected behavior, or something similar) please visit the [issue tracker](https://github.com/JuliusSweetland/OptiKey/issues) and report the issue.
 
 Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyways.
 
