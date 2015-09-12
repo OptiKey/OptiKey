@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Models
 {

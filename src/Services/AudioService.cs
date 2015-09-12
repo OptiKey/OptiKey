@@ -49,6 +49,7 @@ namespace JuliusSweetland.OptiKey.Services
         /// <returns>Indication of whether speech is now in progress</returns>
         public bool SpeakNewOrInterruptCurrentSpeech(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
+            Log.Info("SpeakNewOrInterruptCurrentSpeech called");
             if (string.IsNullOrEmpty(textToSpeak)) return false;
 
             try
@@ -60,7 +61,6 @@ namespace JuliusSweetland.OptiKey.Services
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
                     }
-                    
                     CancelSpeech();
                 }
             }
@@ -73,24 +73,24 @@ namespace JuliusSweetland.OptiKey.Services
 
         public List<string> GetAvailableVoices()
         {
+            Log.Info("GetAvailableVoices called");
             var availableVoices = new SpeechSynthesizer().GetInstalledVoices()
                 .Where(v => v.Enabled)
                 .Select(v => v.VoiceInfo.Name)
                 .ToList();
 
-            Log.DebugFormat("GetAvailableVoices returing {0} voices", availableVoices.Count);
+            Log.InfoFormat("GetAvailableVoices returing {0} voices", availableVoices.Count);
 
             return availableVoices;
         }
 
         public void PlaySound(string file, int volume)
         {
+            Log.InfoFormat("Playing sound '{0}' at volume '{1}'", file, volume);
             if (string.IsNullOrEmpty(file)) return;
 
             try
             {
-                Log.DebugFormat("Playing sound '{0}' at volume", file, volume);
-
                 // create a stream channel from a file 
                 int stream = Bass.BASS_StreamCreateFile(file, 0L, 0L, BASSFlag.BASS_DEFAULT | BASSFlag.BASS_STREAM_AUTOFREE);
                 if (stream != 0)
@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CancelSpeech()
         {
-            Log.Debug("Cancelling all speech");
+            Log.Info("Cancelling all speech");
             lock (speakCompletedLock)
             {
                 if (speakCompleted != null)
@@ -136,21 +136,11 @@ namespace JuliusSweetland.OptiKey.Services
                 speechSynthesiser.SpeakAsyncCancelAll();
             }
         }
-
-        /// <summary>
-        /// Set volume for OptiKey (not system wide device volumes) on a scale of 0-100 (where 100 is the current output device volume)
-        /// </summary>
-        private void SetVolume(int volume)
-        {
-            uint volumeAllChannels = (((uint)volume & 0x0000ffff) | ((uint)volume << 16)); //Set the volume on left and right channels
-            PInvoke.waveOutSetVolume(IntPtr.Zero, volumeAllChannels);
-        }
-
+        
         private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
+            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
-
-            Log.DebugFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
 
             speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
             speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;

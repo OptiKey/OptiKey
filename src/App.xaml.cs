@@ -435,7 +435,7 @@ namespace JuliusSweetland.OptiKey
             ICapturingStateManager capturingStateManager,
             List<INotifyErrors> errorNotifyingServices)
         {
-            Log.Debug("Creating InputService.");
+            Log.Info("Creating InputService.");
 
             //Instantiate point source
             IPointSource pointSource;
@@ -580,7 +580,7 @@ namespace JuliusSweetland.OptiKey
 
             if (Settings.Default.ShowSplashScreen)
             {
-                Log.Debug("Showing splash screen.");
+                Log.Info("Showing splash screen.");
 
                 var message = new StringBuilder();
 
@@ -698,7 +698,7 @@ namespace JuliusSweetland.OptiKey
                         }
 
                         Log.Info("No update found.");
-                    }, exception => Log.InfoFormat("Error when checking for updates. Exception message:{0}", exception.Message));
+                    }, exception => Log.WarnFormat("Error when checking for updates. Exception message:{0}", exception.Message));
             }
             else
             {

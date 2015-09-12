@@ -5,7 +5,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {
@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                     parentWindow.Topmost = false; //Topmost must be revoked otherwise it cannot be reinstated correctly once the child window is closed
                 }
 
-                Log.Debug("Showing Management window");
+                Log.Info("Showing Management window");
                 childWindow.ShowDialog();
     
                 if (parentWindow != null)

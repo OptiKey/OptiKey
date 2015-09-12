@@ -3,7 +3,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {

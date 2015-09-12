@@ -3,8 +3,8 @@ using System.Windows.Input;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
+using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.UI.Windows
 {

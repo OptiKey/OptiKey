@@ -10,9 +10,11 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero);
-                var desktop = g.GetHdc();
-                return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSX);
+                using(var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    var desktop = g.GetHdc();
+                    return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSX);
+                }
             }
         }
         
@@ -25,9 +27,11 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero);
-                var desktop = g.GetHdc();
-                return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
+                using(var g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    var desktop = g.GetHdc();
+                    return PInvoke.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
+                }
             }
         }
         

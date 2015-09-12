@@ -5,7 +5,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {

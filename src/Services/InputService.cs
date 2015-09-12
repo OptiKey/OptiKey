@@ -9,7 +9,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using log4net;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
 {
