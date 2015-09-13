@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (EyeXHost != null)
                 {
-                    Log.Debug("Disposing of the EyeXHost.");
+                    Log.Info("Disposing of the EyeXHost.");
                     EyeXHost.Dispose();
                 }
             };
@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (pointEvent == null)
                 {
-                    Log.Debug("Checking the state of the Tobii service...");
+                    Log.Info("Checking the state of the Tobii service...");
 
                     switch (EyeXHost.EyeXAvailability)
                     {
@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Services
                             return;
                     }
 
-                    Log.Debug("Attaching eye tracking device status changed listener to the Tobii service.");
+                    Log.Info("Attaching eye tracking device status changed listener to the Tobii service.");
 
                     EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
 

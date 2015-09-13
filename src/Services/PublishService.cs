@@ -120,7 +120,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating clicking the left mouse button click");
+                Log.Info("Simulating clicking the left mouse button click");
                 inputSimulator.Mouse.LeftButtonClick();
             }
             catch (Exception exception)
@@ -133,7 +133,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating pressing the left mouse button down twice");
+                Log.Info("Simulating pressing the left mouse button down twice");
                 inputSimulator.Mouse.LeftButtonDoubleClick();
             }
             catch (Exception exception)
@@ -146,7 +146,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating pressing the left mouse button down");
+                Log.Info("Simulating pressing the left mouse button down");
                 inputSimulator.Mouse.LeftButtonDown();
             }
             catch (Exception exception)
@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating releasing the left mouse button down");
+                Log.Info("Simulating releasing the left mouse button down");
                 inputSimulator.Mouse.LeftButtonUp();
             }
             catch (Exception exception)
@@ -172,7 +172,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating clicking the middle mouse button click");
+                Log.Info("Simulating clicking the middle mouse button click");
                 inputSimulator.Mouse.MiddleButtonClick();
             }
             catch (Exception exception)
@@ -185,7 +185,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating pressing the middle mouse button down");
+                Log.Info("Simulating pressing the middle mouse button down");
                 inputSimulator.Mouse.MiddleButtonDown();
             }
             catch (Exception exception)
@@ -198,7 +198,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating releasing the middle mouse button down");
+                Log.Info("Simulating releasing the middle mouse button down");
                 inputSimulator.Mouse.MiddleButtonUp();
             }
             catch (Exception exception)
@@ -211,7 +211,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating pressing the right mouse button down");
+                Log.Info("Simulating pressing the right mouse button down");
                 inputSimulator.Mouse.RightButtonClick();
             }
             catch (Exception exception)
@@ -224,7 +224,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating pressing the right mouse button down");
+                Log.Info("Simulating pressing the right mouse button down");
                 inputSimulator.Mouse.RightButtonDown();
             }
             catch (Exception exception)
@@ -237,7 +237,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                Log.Debug("Simulating releasing the right mouse button down");
+                Log.Info("Simulating releasing the right mouse button down");
                 inputSimulator.Mouse.RightButtonUp();
             }
             catch (Exception exception)

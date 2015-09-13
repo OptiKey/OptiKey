@@ -416,7 +416,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReactToSimulateKeyStrokesChanges()
         {
-            Log.Debug("Adding SimulateKeyStrokes change handlers.");
+            Log.Info("Adding SimulateKeyStrokes change handlers.");
             keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => SimulateKeyStrokesHasChanged(true));
             SimulateKeyStrokesHasChanged(false);
         }
@@ -580,7 +580,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ClearSuggestions()
         {
-            Log.Debug("Clearing suggestions.");
+            Log.Info("Clearing suggestions.");
             suggestionService.Suggestions = null;
         }
 
@@ -647,7 +647,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ReleaseUnlockedKeys()
         {
-            Log.Debug("ReleaseUnlockedKeys called.");
+            Log.Info("ReleaseUnlockedKeys called.");
 
             foreach (var key in keyStateService.KeyDownStates.Keys)
             {
@@ -739,7 +739,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && Text.Any()
                 && !suppressNextAutoSpace)
             {
-                Log.Debug("Publishing auto space and adding auto space to Text.");
+                Log.Info("Publishing auto space and adding auto space to Text.");
                 PublishKeyPress(' ', ' ', true); //It's a space
                 Text = string.Concat(Text, " ");
                 return true;

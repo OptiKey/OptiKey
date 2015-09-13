@@ -6,7 +6,6 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using EyeXFramework.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -53,7 +52,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LoadDictionary()
         {
-            Log.DebugFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language);
+            Log.InfoFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language);
 
             try
             {
@@ -509,13 +508,13 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (filteredStrings.Item1.Length == 0)
                 {
-                    Log.Debug("Capture reduces to nothing useful.");
+                    Log.Info("Capture reduces to nothing useful.");
                     return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, null);
                 }
 
                 if (filteredStrings.Item1.Length == 1)
                 {
-                    Log.Debug("Capture reduces to a single letter.");
+                    Log.Info("Capture reduces to a single letter.");
                     return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, filteredStrings.Item2, null);
                 }
 

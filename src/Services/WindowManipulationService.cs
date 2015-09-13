@@ -131,6 +131,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Expand(ExpandToDirections direction, double amountInPx)
         {
+            Log.InfoFormat("Expand called with direction {0} and amount (px) {1}", direction, amountInPx);
+
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
@@ -263,6 +265,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void IncrementOrDecrementOpacity(bool increment)
         {
+            Log.InfoFormat("IncrementOrDecrementOpacity called with increment {0}", increment);
+
             var opacity = window.Opacity;
             opacity += increment ? 0.1 : -0.1;
             opacity = opacity.CoerceToLowerLimit(0.1);
@@ -273,6 +277,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Maximise()
         {
+            Log.Info("Maximise called");
+
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised)
             {
@@ -288,6 +294,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Minimise()
         {
+            Log.Info("Minimise called");
+
             var windowState = getWindowState();
             if (windowState != WindowStates.Minimised)
             {
@@ -303,6 +311,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Move(MoveToDirections direction, double? amountInPx)
         {
+            Log.InfoFormat("Move called with direction {0} and amount (px) {1}", direction, amountInPx);
+
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
@@ -344,6 +354,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ResizeDockToCollapsed()
         {
+            Log.Info("ResizeDockToCollapsed called");
+
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Collapsed) return;
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
@@ -352,6 +364,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ResizeDockToFull()
         {
+            Log.Info("ResizeDockToFull called");
+
             if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Full) return;
             saveDockSize(DockSizes.Full); 
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
@@ -360,6 +374,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Restore()
         {
+            Log.Info("Restore called");
+
             var windowState = getWindowState();
             if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised) return;
             saveWindowState(getPreviousWindowState()); 
@@ -369,6 +385,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void SetOpacity(double opacity)
         {
+            Log.InfoFormat("SetOpacity called with opacity {0}", opacity);
+
             opacity = opacity.CoerceToLowerLimit(0.1);
             opacity = opacity.CoerceToUpperLimit(1);
             window.Opacity = opacity;
@@ -377,6 +395,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void Shrink(ShrinkFromDirections direction, double amountInPx)
         {
+            Log.InfoFormat("Shrink called with direction {0} and amount (px) {1}", direction, amountInPx);
+
             var windowState = getWindowState();
             if (windowState == WindowStates.Maximised) return;
 
@@ -551,7 +571,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case WindowStates.Minimised:
                     window.WindowState = System.Windows.WindowState.Normal;
-                    var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition(dockPosition);
+                    var minimisedSizeAndPosition = CalculateMinimisedSizeAndPosition();
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
                     break;
@@ -599,7 +619,7 @@ namespace JuliusSweetland.OptiKey.Services
             return new Rect(x, y, width, height);
         }
 
-        private Rect CalculateMinimisedSizeAndPosition(DockEdges position)
+        private Rect CalculateMinimisedSizeAndPosition()
         {
             double x, y;
             var thicknessAsPercentage = (getFullDockThicknessAsPercentageOfScreen() * getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage

@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (GazeManager.Instance.IsActivated)
                 {
-                    Log.Debug("Deactivating TheEyeTribe's GazeManager.");
+                    Log.Info("Deactivating TheEyeTribe's GazeManager.");
                     GazeManager.Instance.Deactivate();
                 }
             };
@@ -45,12 +45,12 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 if (pointEvent == null)
                 {
-                    Log.Debug("Point event has first subscriber.");
+                    Log.Info("Point event has first subscriber.");
 
                     //Activate TET if required
                     if (!GazeManager.Instance.IsActivated)
                     {
-                        Log.Debug("Attempting to activate TheEyeTribe's GazeManager...");
+                        Log.Info("Attempting to activate TheEyeTribe's GazeManager...");
 
                         var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push); //Connect client
                         if (success)
@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.Services
                         {
                             if (GazeManager.Instance.IsCalibrated)
                             {
-                                Log.Debug("TheEyeTribe server is now reporting that it is calibrated - moving on");
+                                Log.Info("TheEyeTribe server is now reporting that it is calibrated - moving on");
                                 calibrated = true;
                                 break;
                             }

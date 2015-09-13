@@ -3,8 +3,6 @@ using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
-using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using TETControls.Calibration;
 
@@ -16,7 +14,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         public async Task<string> Calibrate(Window parentWindow)
         {
-            Log.Debug("Attempting to calibrate using the TheEyeTribe calibration runner.");
+            Log.Info("Attempting to calibrate using the TheEyeTribe calibration runner.");
             
             var calRunner = new CalibrationRunner();
 
@@ -48,7 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
                 case CalibrationRunnerResult.Success:
                     var message = string.Format("Calibration success! Accuracy (Avg Error Degree = {0})",
                         calibrateArgs.CalibrationResult.AverageErrorDegree);
-                    Log.Debug(message);
+                    Log.Info(message);
                     return message;
 
                 case CalibrationRunnerResult.Abort:

@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public async Task<string> Calibrate(Window parentWindow)
         {
-            Log.Debug("Attempting to calibrate using the Tobii EyeX engine.");
+            Log.Info("Attempting to calibrate using the Tobii EyeX engine.");
 
             var taskCompletionSource = new TaskCompletionSource<string>(); //Used to make this method awaitable on the InteractionRequest callback
 

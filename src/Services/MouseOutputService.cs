@@ -37,25 +37,25 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LeftButtonClick()
         {
-            Log.Debug("Generating a left click.");
+            Log.Info("Generating a left click.");
             publishService.LeftMouseButtonClick();
         }
 
         public void LeftButtonDoubleClick()
         {
-            Log.Debug("Generating a left double click.");
+            Log.Info("Generating a left double click.");
             publishService.LeftMouseButtonDoubleClick();
         }
 
         public void LeftButtonDown()
         {
-            Log.Debug("Pressing down left button.");
+            Log.Info("Pressing down left button.");
             publishService.LeftMouseButtonDown();
         }
 
         public void LeftButtonUp()
         {
-            Log.Debug("Releasing left button.");
+            Log.Info("Releasing left button.");
             publishService.LeftMouseButtonUp();
         }
 
@@ -67,13 +67,13 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void MiddleButtonDown()
         {
-            Log.Debug("Pressing down middle button.");
+            Log.Info("Pressing down middle button.");
             publishService.MiddleMouseButtonDown();
         }
 
         public void MiddleButtonUp()
         {
-            Log.Debug("Releasing middle button.");
+            Log.Info("Releasing middle button.");
             publishService.MiddleMouseButtonUp();
         }
 
@@ -155,13 +155,13 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void RightButtonDown()
         {
-            Log.Debug("Pressing down right button.");
+            Log.Info("Pressing down right button.");
             publishService.RightMouseButtonDown();
         }
 
         public void RightButtonUp()
         {
-            Log.Debug("Releasing right button.");
+            Log.Info("Releasing right button.");
             publishService.RightMouseButtonUp();
         }
 
