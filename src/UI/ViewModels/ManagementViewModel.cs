@@ -92,9 +92,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         if (confirmation.Confirmed)
                         {
-                            Log.Info("Applying management changes and restarting OptiKey");
+                            Log.Info("Applying management changes and attempting to restart OptiKey");
                             ApplyChanges();
-                            System.Windows.Forms.Application.Restart();
+                            try
+                            {
+                                System.Windows.Forms.Application.Restart();
+                            }
+                            catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
                             Application.Current.Shutdown();
                         }
                     });

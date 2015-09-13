@@ -123,8 +123,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.AutoCompleteWords = AutoCompleteWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
-            Settings.Default.Save();
-
+            
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();

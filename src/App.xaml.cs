@@ -54,7 +54,11 @@ namespace JuliusSweetland.OptiKey
             LogDiagnosticInfo();
 
             //Attach shutdown handler
-            Application.Current.Exit += (o, args) => Log.Info("SHUTTING DOWN.");
+            Application.Current.Exit += (o, args) =>
+            {
+                Log.Info("PERSISTING USER SETTINGS AND SHUTTING DOWN.");
+                Settings.Default.Save();
+            };
 
             HandleCorruptSettings();
 
@@ -151,126 +155,14 @@ namespace JuliusSweetland.OptiKey
                     () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
                     () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
                     () => Settings.Default.MainWindowMinimisedPosition,
-                    o =>
-                    {
-                        Settings.Default.MainWindowOpacity = o;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowOpacity = o;
-                            Settings.Default.Save();
-                        }
-                    },
-                    state =>
-                    {
-                        Settings.Default.MainWindowState = state;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowState = state;
-                            Settings.Default.Save();
-                        }
-                    },
-                    state =>
-                    {
-                        Settings.Default.MainWindowPreviousState = state;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowPreviousState = state;
-                            Settings.Default.Save();
-                        }
-                    },
-                    rect =>
-                    {
-                        Settings.Default.MainWindowFloatingSizeAndPosition = rect;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowFloatingSizeAndPosition = rect;
-                            Settings.Default.Save();
-                        }
-                    },
-                    pos =>
-                    {
-                        Settings.Default.MainWindowDockPosition = pos;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowDockPosition = pos;
-                            Settings.Default.Save();
-                        }
-                    },
-                    size =>
-                    {
-                        Settings.Default.MainWindowDockSize = size;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowDockSize = size;
-                            Settings.Default.Save();
-                        }
-                    },
-                    t =>
-                    {
-                        Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
-                            Settings.Default.Save();
-                        }
-                    },
-                    t =>
-                    {
-                        Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
-                        try
-                        {
-                            Settings.Default.Save();
-                        }
-                        catch (ConfigurationErrorsException cee)
-                        {
-                            Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                            Settings.Default.Reload();
-                            Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
-                            Settings.Default.Save();
-                        }
-                    });
+                    o => Settings.Default.MainWindowOpacity = o,
+                    state => Settings.Default.MainWindowState = state,
+                    state => Settings.Default.MainWindowPreviousState = state,
+                    rect => Settings.Default.MainWindowFloatingSizeAndPosition = rect,
+                    pos => Settings.Default.MainWindowDockPosition = pos,
+                    size => Settings.Default.MainWindowDockSize = size,
+                    t => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t,
+                    t => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t);
 
                 errorNotifyingServices.Add(mainWindowManipulationService);
 
@@ -389,6 +281,7 @@ namespace JuliusSweetland.OptiKey
             }
             catch (ConfigurationErrorsException cee)
             {
+                Log.Warn("User settings file is corrupt and needs to be corrected. Alerting user and shutting down.");
                 string filename = ((ConfigurationErrorsException)cee.InnerException).Filename;
 
                 if (MessageBox.Show(
@@ -401,7 +294,11 @@ namespace JuliusSweetland.OptiKey
                         MessageBoxImage.Error) == MessageBoxResult.Yes)
                 {
                     File.Delete(filename);
-                    System.Windows.Forms.Application.Restart();
+                    try
+                    {
+                        System.Windows.Forms.Application.Restart();
+                    }
+                    catch {} //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
                 }
                 Application.Current.Shutdown(); //Avoid the inevitable crash by shutting down gracefully
             }

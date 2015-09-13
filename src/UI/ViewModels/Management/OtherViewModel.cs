@@ -77,7 +77,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.CheckForUpdates = CheckForUpdates;
             Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
             Settings.Default.Debug = Debug;
-            Settings.Default.Save();
         }
 
         #endregion

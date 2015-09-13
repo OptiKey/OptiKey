@@ -380,7 +380,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MouseDoubleClickSoundVolume = MouseDoubleClickSoundVolume;
             Settings.Default.MouseScrollSoundFile = MouseScrollSoundFile;
             Settings.Default.MouseScrollSoundVolume = MouseScrollSoundVolume;
-            Settings.Default.Save();
         }
 
         #endregion

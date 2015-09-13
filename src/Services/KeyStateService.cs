@@ -192,21 +192,8 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Debug("Adding KeyDownStates change handlers.");
 
-            KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
-            {
-                Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown;
-                try
-                {
-                    Settings.Default.Save();
-                }
-                catch (ConfigurationErrorsException cee)
-                {
-                    Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                    Settings.Default.Reload();
-                    Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown;
-                    Settings.Default.Save();
-                }
-            });
+            KeyDownStates[KeyValues.MouseMagnifierKey].OnPropertyChanges(s => s.Value).Subscribe(value => 
+                Settings.Default.MouseMagnifierLockedDown = KeyDownStates[KeyValues.MouseMagnifierKey].Value == Enums.KeyDownStates.LockedDown);
 
             KeyDownStates[KeyValues.MultiKeySelectionKey].OnPropertyChanges(s => s.Value).Subscribe(value =>
             {
@@ -214,35 +201,11 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes = 
                         KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
-                    try
-                    {
-                        Settings.Default.Save();
-                    }
-                    catch (ConfigurationErrorsException cee)
-                    {
-                        Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                        Settings.Default.Reload();
-                        Settings.Default.MultiKeySelectionLockedDownWhenSimulatingKeyStrokes =
-                            KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
-                        Settings.Default.Save();
-                    }
                 }
                 else
                 {
                     Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes = 
                         KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
-                    try
-                    {
-                        Settings.Default.Save();
-                    }
-                    catch (ConfigurationErrorsException cee)
-                    {
-                        Log.Warn("Exception encountered (and handled) when attempting to update and save the user settings", cee);
-                        Settings.Default.Reload();
-                        Settings.Default.MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes =
-                            KeyDownStates[KeyValues.MultiKeySelectionKey].Value == Enums.KeyDownStates.LockedDown;
-                        Settings.Default.Save();
-                    }
                 }
             });
 
