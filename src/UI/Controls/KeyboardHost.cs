@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows;
@@ -36,6 +37,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
+
+            var contentDp = DependencyPropertyDescriptor.FromProperty(ContentControl.ContentProperty, typeof(object));
+            if (contentDp != null)
+            {
+                contentDp.AddValueChanged(this, ContentChangedHandler);
+            }
         }
 
         #endregion
@@ -217,40 +224,25 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-            
-            var contentAsFrameworkElement = newContent as FrameworkElement;
-            if (contentAsFrameworkElement != null)
-            {
-                if (contentAsFrameworkElement.IsLoaded)
-                {
-                    ReactToNewContentLoaded();
-                }
-                else
-                {
-                    RoutedEventHandler loaded = null;
-                    loaded = (sender, args) =>
-                    {
-                        ReactToNewContentLoaded();
-                        contentAsFrameworkElement.Loaded -= loaded;
-                    };
-                    contentAsFrameworkElement.Loaded += loaded;
-                }
-            }
 
             Content = newContent;
         }
 
         #endregion
         
-        #region React To New Content Loaded
-        
-        private void ReactToNewContentLoaded()
+        #region Content Change Handler
+
+        static private void ContentChangedHandler(object sender, EventArgs e)
         {
-            BuildPointToKeyMap();
-            
-            if(InputService != null)
+            var keyboardHost = sender as KeyboardHost;
+            if (keyboardHost != null)
             {
-                InputService.RequestResume();
+                keyboardHost.BuildPointToKeyMap();
+
+                if (keyboardHost.InputService != null)
+                {
+                    keyboardHost.InputService.RequestResume();
+                }
             }
         }
         
@@ -262,6 +254,28 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             Log.Debug("Building PointToKeyMap.");
 
+            var contentAsFrameworkElement = Content as FrameworkElement;
+            if (contentAsFrameworkElement != null)
+            {
+                if (contentAsFrameworkElement.IsLoaded)
+                {
+                    TraverseAllKeysAndBuildPointToKeyValueMap();
+                }
+                else
+                {
+                    RoutedEventHandler loaded = null;
+                    loaded = (sender, args) =>
+                    {
+                        TraverseAllKeysAndBuildPointToKeyValueMap();
+                        contentAsFrameworkElement.Loaded -= loaded;
+                    };
+                    contentAsFrameworkElement.Loaded += loaded;
+                }
+            }
+        }
+
+        private void TraverseAllKeysAndBuildPointToKeyValueMap()
+        {
             var allKeys = VisualAndLogicalTreeHelper.FindVisualChildren<Key>(this).ToList();
 
             var pointToKeyValueMap = new Dictionary<Rect, KeyValue>();
@@ -276,7 +290,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     var rect = new Rect
                     {
                         Location = key.PointToScreen(topLeftPoint),
-                        Size = (Size)key.GetTransformToDevice().Transform((Vector)key.RenderSize)
+                        Size = (Size) key.GetTransformToDevice().Transform((Vector) key.RenderSize)
                     };
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
