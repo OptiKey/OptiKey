@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             Loaded += OnLoaded;
 
-            var contentDp = DependencyPropertyDescriptor.FromProperty(ContentControl.ContentProperty, typeof(object));
+            var contentDp = DependencyPropertyDescriptor.FromProperty(ContentControl.ContentProperty, typeof(KeyboardHost));
             if (contentDp != null)
             {
                 contentDp.AddValueChanged(this, ContentChangedHandler);
