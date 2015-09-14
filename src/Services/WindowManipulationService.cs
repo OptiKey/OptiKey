@@ -108,7 +108,7 @@ namespace JuliusSweetland.OptiKey.Services
                 screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
 
-            CoerceAndApplySavedState();
+            CoerceSavedStateAndApply();
         
             window.Closed += (_, __) => UnRegisterAppBar();
         }
@@ -712,7 +712,7 @@ namespace JuliusSweetland.OptiKey.Services
             return new Rect(x, y, width, height);
         }
 
-        private void CoerceAndApplySavedState()
+        private void CoerceSavedStateAndApply()
         {
             var windowState = getWindowState();
             if (windowState != WindowStates.Minimised && windowState != WindowStates.Maximised)
@@ -1117,6 +1117,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (getWindowState() != WindowStates.Docked) return;
 
+            Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
+                    dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
+
             var barData = new APPBARDATA();
             barData.cbSize = Marshal.SizeOf(barData);
             barData.hWnd = windowHandle;
@@ -1128,6 +1131,9 @@ namespace JuliusSweetland.OptiKey.Services
             
             //Submit a query for the proposed dock size and position, which might be updated
             PInvoke.SHAppBarMessage(AppBarMessages.QueryPos, ref barData);
+
+            Log.InfoFormat("QueryPos returned barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}",
+                    barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right);
 
             //Compensate for lost thickness due to other app bars
             switch (dockPosition)
@@ -1145,7 +1151,19 @@ namespace JuliusSweetland.OptiKey.Services
                     barData.rc.Left -= (int)Math.Round(sizeAndPosition.Right) - barData.rc.Right;
                     break;
             }
-            
+
+            //Check for unuseable dimensions before we use them
+            if (barData.rc.Bottom < 0 ||
+                barData.rc.Bottom < barData.rc.Top ||
+                barData.rc.Top < 0 ||
+                barData.rc.Left < 0 ||
+                barData.rc.Right < 0 ||
+                barData.rc.Right < barData.rc.Left)
+            {
+                Log.ErrorFormat("App bar data is unuseable! barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}. Originally requested sizeAndPosition.Top:{4}, sizeAndPosition.Bottom:{5}, sizeAndPosition.Left:{6}, sizeAndPosition.Right:{7}",
+                    barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
+            }
+
             //Then set the dock size and position, using the potentially updated barData
             PInvoke.SHAppBarMessage(AppBarMessages.SetPos, ref barData);
 
