@@ -20,6 +20,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private const double MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN = 10;
         private const double MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS = 10;
+        private const double MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN = 10;
+        private const double MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN = 10;
 
         #endregion
 
@@ -702,6 +704,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (collapsedDockThicknessAsPercentageOfFullDockThickness <= MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS 
                     || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
                 {
+                    Log.Warn("Saved docked thickness invalid. Restoring to default.");
                     collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
                     saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
                 }
@@ -710,9 +713,12 @@ namespace JuliusSweetland.OptiKey.Services
                     floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
                     floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
                     floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
-                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
+                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom ||
+                    floatingSizeAndPosition.Width < (screenBoundsInDp.Width * (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100)) ||
+                    floatingSizeAndPosition.Height < (screenBoundsInDp.Height * (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100)))
                 {
                     //Default to two-thirds of the screen's width and height, positioned centrally
+                    Log.Warn("Saved floating position or size was invalid. Restoring to default.");
                     floatingSizeAndPosition = new Rect(
                         screenBoundsInDp.Left + screenBoundsInDp.Width / 6,
                         screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
