@@ -16,6 +16,7 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
+using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -150,6 +151,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.BritishEnglish:
                     case Languages.CanadianEnglish:
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
+                        break;
+                    case Languages.Russian:
+                        newContent = new RussianViews.Alpha { DataContext = Keyboard };
                         break;
                 }
             }

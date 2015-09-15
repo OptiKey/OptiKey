@@ -39,6 +39,8 @@ namespace JuliusSweetland.OptiKey
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Action applyTheme;
+        public static LocalisationService LService = null;
+        private string translationPath;
 
         #endregion
 
@@ -61,6 +63,15 @@ namespace JuliusSweetland.OptiKey
             };
 
             HandleCorruptSettings();
+
+            ///////////////////////////////////////////////////////////////////////////////
+            //Current language initialisation
+            string languageExtention = "";
+
+            languageExtention = Settings.Default.Language.ToDescription() ;
+            LService = new LocalisationService(App.Current.Resources, languageExtention, null, "Resources\\Localisation\\", "Strings");
+            translationPath = LService.getURIFileBaseNames(LService.CurrentLggPath, languageExtention);
+            ////////////////////////////////////////////////////////////////////////////////////
 
             //Upgrade settings (if required) - this ensures that user settings migrate between version changes
             if (Settings.Default.SettingsUpgradeRequired)
@@ -105,6 +116,13 @@ namespace JuliusSweetland.OptiKey
             try
             {
                 Log.Info("Boot strapping the services and UI.");
+
+                ///////////////////////////////////////////////////////
+                ///////aply translation
+                ResourceDictionary dict = new ResourceDictionary();
+                dict.Source = new Uri(translationPath, UriKind.Relative);
+                Application.Current.Resources.MergedDictionaries.Add(dict);
+                ///////////////////////////////////////////////////
 
                 //Apply theme
                 applyTheme();
@@ -482,7 +500,7 @@ namespace JuliusSweetland.OptiKey
                 var message = new StringBuilder();
 
                 message.AppendLine(string.Format("Version: {0}", DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format("Language: {0}", Settings.Default.Language.ToDescription()));
+                message.AppendLine(string.Format("Language: {0}", Settings.Default.Language.ToFullDescription()));
                 message.AppendLine(string.Format("Pointing: {0}", Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
