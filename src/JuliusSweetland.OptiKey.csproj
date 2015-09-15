@@ -246,7 +246,6 @@
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
     <Compile Include="Resources\Localisation\Class1.cs" />
-    <Compile Include="Resources\Localisation\Class2.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
