@@ -792,7 +792,7 @@
                                                                 </controls:Key>
                                                                 <controls:Key Grid.Row="8" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource BackIcon}"
-                                                                              Text="{DynamicResource BackStr}"
+                                                                              Text="BACK"
                                                                               SharedSizeGroup="KeyWithSymbolAndText">
                                                                     <controls:Key.Value>
                                                                         <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />

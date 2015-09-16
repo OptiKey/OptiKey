@@ -281,7 +281,6 @@
     <Compile Include="Services\InputService.cs" />
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
-    <Compile Include="Services\LocalisationService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
@@ -375,12 +374,6 @@
     </Compile>
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -736,21 +729,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Content Include="Resources\Localisation\Strings_en.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Localisation\Strings_en-GB.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Page Include="Resources\Localisation\Strings_ru.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
     <Page Include="Resources\Themes\Android_Light.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -796,14 +774,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Controls\Output.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Russian\Alpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

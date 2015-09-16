@@ -45,7 +45,7 @@
                             </Grid.ColumnDefinitions>
                             <controls:Key Grid.Row="0" Grid.Column="0"
                                           SymbolGeometry="{StaticResource AlphaIcon}"
-                                          Text="{DynamicResource LettersStr}"
+                                          Text="LETTERS"
                                           SharedSizeGroup="KeyWithSymbolAndText">
                                 <controls:Key.Value>
                                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
@@ -117,7 +117,7 @@
                             </controls:Key>
                             <controls:Key Grid.Row="1" Grid.Column="4"
                                           SymbolGeometry="{StaticResource SleepIcon}"
-                                          Text="{DynamicResource SLEEP_GNR}"
+                                          Text="SLEEP"
                                           SharedSizeGroup="KeyWithSymbolAndText">
                                 <controls:Key.Value>
                                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />

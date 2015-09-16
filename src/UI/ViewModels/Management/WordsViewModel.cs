@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Windows;
-using System;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
@@ -16,7 +14,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private LocalisationService LService = App.LService;
+
         #endregion
         
         #region Ctor
@@ -36,13 +34,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
-                List<KeyValuePair<string, Languages>> LanguagesList = new List<KeyValuePair<string, Languages>>();
-                // getting all languages from enums
-                 foreach (Languages lgg in System.Enum.GetValues(typeof(Languages)))
-                 {
-                     LanguagesList.Add(new KeyValuePair<string, Languages>(lgg.ToFullDescription(), lgg));
-                 }
-                return LanguagesList;
+                return new List<KeyValuePair<string, Languages>>
+                {
+                    new KeyValuePair<string, Languages>("American English", Enums.Languages.AmericanEnglish),
+                    new KeyValuePair<string, Languages>("British English", Enums.Languages.BritishEnglish),
+                    new KeyValuePair<string, Languages>("Canadian English", Enums.Languages.CanadianEnglish)
+                };
             }
         }
         
@@ -130,15 +127,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
-                //apply translations
-                ResourceDictionary dict = new ResourceDictionary();
-                if (LService == null)
-                {
-                    LService = new LocalisationService(App.Current.Resources, Settings.Default.Language.ToDescription(), null, "Resources\\Localisation\\", "Strings");
-                }
-                string lgg = Settings.Default.Language.ToDescription();
-                dict.Source = new Uri(LService.getURIFileBaseNames(LService.CurrentLggPath, lgg), UriKind.Relative);
-                Application.Current.Resources.MergedDictionaries.Add(dict);          
             }
         }
 
