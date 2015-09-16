@@ -228,6 +228,7 @@ namespace JuliusSweetland.OptiKey
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
 
+#if !DEBUG
             Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
             TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
@@ -266,6 +267,7 @@ namespace JuliusSweetland.OptiKey
             };
 
             NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
+#endif
         }
 
         #endregion

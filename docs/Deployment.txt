@@ -14,9 +14,7 @@
 9.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer
-10.Update wiki links to latest installer:
-  i)https://github.com/JuliusSweetland/OptiKey/wiki/_Sidebar/_edit
-  ii)https://github.com/JuliusSweetland/OptiKey/wiki/Get-started/_edit
+10.Update download link on wiki: https://github.com/JuliusSweetland/OptiKey/wiki/_Sidebar/_edit
 
 ---------------------------------------------------------------------------------------------------  
 
