@@ -241,7 +241,7 @@ namespace JuliusSweetland.OptiKey.Services
         public void ProcessSingleKeyText(string capturedText)
         {
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
-            ProcessText(capturedText);
+            ProcessText(capturedText, true);
             lastTextChangeWasSuggestion = false;
         }
 
@@ -257,7 +257,7 @@ namespace JuliusSweetland.OptiKey.Services
                     ? captureAndSuggestions.Skip(1).ToList()
                     : null));
 
-            ProcessText(captureAndSuggestions.First());
+            ProcessText(captureAndSuggestions.First(), false);
 
             lastTextChangeWasSuggestion = false;
         }
@@ -266,7 +266,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods - private
 
-        private void ProcessText(string captureText)
+        private void ProcessText(string captureText, bool generateAutoCompleteSuggestions)
         {
             Log.DebugFormat("Processing captured text '{0}'", captureText.ConvertEscapedCharsToLiterals());
 
@@ -353,7 +353,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             StoreLastTextChange(modifiedCaptureText);
-            GenerateAutoCompleteSuggestions();
+
+            if (generateAutoCompleteSuggestions)
+            {
+                GenerateAutoCompleteSuggestions();
+            }
         }
 
         private bool AutoPressShiftIfAppropriate()
@@ -411,7 +415,13 @@ namespace JuliusSweetland.OptiKey.Services
         private void ReactToShiftStateChanges()
         {
             keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(np => np.Value)
-                .Subscribe(_ => GenerateAutoCompleteSuggestions());
+                .Subscribe(_ =>
+                {
+                    if (!shiftStateSetAutomatically)
+                    {
+                        GenerateAutoCompleteSuggestions();
+                    }
+                });
         }
 
         private void ReactToSimulateKeyStrokesChanges()

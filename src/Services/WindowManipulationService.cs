@@ -20,6 +20,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         private const double MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN = 10;
         private const double MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS = 10;
+        private const double MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN = 10;
+        private const double MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN = 10;
 
         #endregion
 
@@ -106,7 +108,7 @@ namespace JuliusSweetland.OptiKey.Services
                 screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
 
-            CoerceAndApplySavedState();
+            CoerceSavedStateAndApply();
         
             window.Closed += (_, __) => UnRegisterAppBar();
         }
@@ -401,22 +403,31 @@ namespace JuliusSweetland.OptiKey.Services
             if (windowState == WindowStates.Maximised) return;
 
             var distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
-            var yAdjustmentFromBottom = distanceToBottomBoundary < 0 ? distanceToBottomBoundary : 0 - (amountInPx / Graphics.DipScalingFactorY);
+            var yAdjustment = amountInPx / Graphics.DipScalingFactorY;
+            var yAdjustmentFromBottom = distanceToBottomBoundary < 0 
+                ? distanceToBottomBoundary
+                : 0 - yAdjustment;
             var distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
-            var yAdjustmentFromTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : 0 - (amountInPx / Graphics.DipScalingFactorY);
+            var yAdjustmentFromTop = distanceToTopBoundary < 0 ? distanceToTopBoundary : 0 - yAdjustment;
+            
             var distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
-            var xAdjustmentFromLeft = distanceToLeftBoundary < 0 ? distanceToLeftBoundary : 0 - (amountInPx / Graphics.DipScalingFactorX);
+            var xAdjustment = amountInPx / Graphics.DipScalingFactorX;
+            var xAdjustmentFromLeft = distanceToLeftBoundary < 0 
+                ? distanceToLeftBoundary
+                : 0 - xAdjustment;
             var distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
-            var xAdjustmentFromRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : 0 - (amountInPx / Graphics.DipScalingFactorX);
+            var xAdjustmentFromRight = distanceToRightBoundary < 0 ? distanceToRightBoundary : 0 - xAdjustment;
 
             switch (windowState)
             {
                 case WindowStates.Floating:
+                    var maxFloatingHeightAdjustment = window.Height - ((MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100) * screenBoundsInDp.Height);
                     switch (direction) //Handle vertical adjustment
                     {
                         case ShrinkFromDirections.Bottom:
                         case ShrinkFromDirections.BottomLeft:
                         case ShrinkFromDirections.BottomRight:
+                            yAdjustmentFromBottom = yAdjustmentFromBottom.CoerceToLowerLimit(0 - maxFloatingHeightAdjustment);
                             window.Height += yAdjustmentFromBottom;
                             break;
 
@@ -424,17 +435,20 @@ namespace JuliusSweetland.OptiKey.Services
                         case ShrinkFromDirections.TopLeft:
                         case ShrinkFromDirections.TopRight:
                             var heightBeforeAdjustment = window.ActualHeight;
+                            yAdjustmentFromTop = yAdjustmentFromTop.CoerceToLowerLimit(0 - maxFloatingHeightAdjustment);
                             window.Height += yAdjustmentFromTop;
                             var actualYAdjustmentToTop = window.ActualHeight - heightBeforeAdjustment; //WPF may have coerced the adjustment
                             window.Top -= actualYAdjustmentToTop;
                             break;
                     }
+                    var maxFloatingWidthAdjustment = window.Width - ((MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100) * screenBoundsInDp.Width);
                     switch (direction) //Handle horizontal adjustment
                     {
                         case ShrinkFromDirections.Left:
                         case ShrinkFromDirections.BottomLeft:
                         case ShrinkFromDirections.TopLeft:
                             var widthBeforeAdjustment = window.ActualWidth;
+                            xAdjustmentFromLeft = xAdjustmentFromLeft.CoerceToLowerLimit(0 - maxFloatingWidthAdjustment);
                             window.Width += xAdjustmentFromLeft;
                             var actualXAdjustmentToLeft = window.ActualWidth - widthBeforeAdjustment; //WPF may have coerced the adjustment
                             window.Left -= actualXAdjustmentToLeft;
@@ -443,6 +457,7 @@ namespace JuliusSweetland.OptiKey.Services
                         case ShrinkFromDirections.Right:
                         case ShrinkFromDirections.BottomRight:
                         case ShrinkFromDirections.TopRight:
+                            xAdjustmentFromRight = xAdjustmentFromRight.CoerceToLowerLimit(0 - maxFloatingWidthAdjustment);
                             window.Width += xAdjustmentFromRight;
                             break;
                     }
@@ -453,15 +468,21 @@ namespace JuliusSweetland.OptiKey.Services
                     var dockPosition = getDockPosition();
                     var dockSize = getDockSize();
                     var adjustment = false;
+                    var maxFullDockHeightAdjustment = window.Height - ((MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN / 100) * screenBoundsInDp.Height);
+                    var maxFullDockWidthAdjustment = window.Width - ((MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN / 100) * screenBoundsInDp.Width);
+                    var maxCollapsedDockHeightAdjustment = window.Height - ((MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS / 100) * ((getCollapsedDockThicknessAsPercentageOfFullDockThickness() / 100) * screenBoundsInDp.Height));
+                    var maxCollapsedDockWidthAdjustment = window.Width - ((MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS / 100) * ((getCollapsedDockThicknessAsPercentageOfFullDockThickness() / 100) * screenBoundsInDp.Width));
                     if (dockPosition == DockEdges.Top &&
                         (direction == ShrinkFromDirections.Bottom || direction == ShrinkFromDirections.BottomLeft || direction == ShrinkFromDirections.BottomRight))
                     {
                         if (dockSize == DockSizes.Full)
                         {
+                            yAdjustmentFromBottom = yAdjustmentFromBottom.CoerceToLowerLimit(0 - maxFullDockHeightAdjustment);
                             saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentFromBottom) / screenBoundsInDp.Height) * 100);
                         }
                         else
                         {
+                            yAdjustmentFromBottom = yAdjustmentFromBottom.CoerceToLowerLimit(0 - maxCollapsedDockHeightAdjustment);
                             saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentFromBottom) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
                         }
                         adjustment = true;
@@ -471,10 +492,12 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (dockSize == DockSizes.Full)
                         {
+                            yAdjustmentFromTop = yAdjustmentFromTop.CoerceToLowerLimit(0 - maxFullDockHeightAdjustment);
                             saveFullDockThicknessAsPercentageOfScreen(((window.ActualHeight + yAdjustmentFromTop) / screenBoundsInDp.Height) * 100);
                         }
                         else
                         {
+                            yAdjustmentFromTop = yAdjustmentFromTop.CoerceToLowerLimit(0 - maxCollapsedDockHeightAdjustment);
                             saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualHeight + yAdjustmentFromTop) / screenBoundsInDp.Height) * getFullDockThicknessAsPercentageOfScreen());
                         }
                         adjustment = true;
@@ -484,10 +507,12 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (dockSize == DockSizes.Full)
                         {
+                            xAdjustmentFromRight = xAdjustmentFromRight.CoerceToLowerLimit(0 - maxFullDockWidthAdjustment);
                             saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentFromRight) / screenBoundsInDp.Width) * 100);
                         }
                         else
                         {
+                            xAdjustmentFromRight = xAdjustmentFromRight.CoerceToLowerLimit(0 - maxCollapsedDockWidthAdjustment);
                             saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentFromRight) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
                         }
                         adjustment = true;
@@ -497,10 +522,12 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         if (dockSize == DockSizes.Full)
                         {
+                            xAdjustmentFromLeft = xAdjustmentFromLeft.CoerceToLowerLimit(0 - maxFullDockWidthAdjustment);
                             saveFullDockThicknessAsPercentageOfScreen(((window.ActualWidth + xAdjustmentFromLeft) / screenBoundsInDp.Width) * 100);
                         }
                         else
                         {
+                            xAdjustmentFromLeft = xAdjustmentFromLeft.CoerceToLowerLimit(0 - maxCollapsedDockWidthAdjustment);
                             saveCollapsedDockThicknessAsPercentageOfFullDockThickness(((window.ActualWidth + xAdjustmentFromLeft) / screenBoundsInDp.Width) * getFullDockThicknessAsPercentageOfScreen());
                         }
                         adjustment = true;
@@ -685,23 +712,24 @@ namespace JuliusSweetland.OptiKey.Services
             return new Rect(x, y, width, height);
         }
 
-        private void CoerceAndApplySavedState()
+        private void CoerceSavedStateAndApply()
         {
             var windowState = getWindowState();
             if (windowState != WindowStates.Minimised && windowState != WindowStates.Maximised)
             {
                 //Coerce state
                 var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
-                if (fullDockThicknessAsPercentageOfScreen <= MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN 
+                if (fullDockThicknessAsPercentageOfScreen < MIN_FULL_DOCK_THICKNESS_AS_PERCENTAGE_OF_SCREEN 
                     || fullDockThicknessAsPercentageOfScreen >= 100)
                 {
                     fullDockThicknessAsPercentageOfScreen = 50;
                     saveFullDockThicknessAsPercentageOfScreen(fullDockThicknessAsPercentageOfScreen);
                 }
                 double collapsedDockThicknessAsPercentageOfFullDockThickness = getCollapsedDockThicknessAsPercentageOfFullDockThickness();
-                if (collapsedDockThicknessAsPercentageOfFullDockThickness <= MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS 
+                if (collapsedDockThicknessAsPercentageOfFullDockThickness < MIN_COLLAPSED_DOCK_THICKNESS_AS_PERCENTAGE_OF_FULL_DOCK_THICKNESS 
                     || collapsedDockThicknessAsPercentageOfFullDockThickness >= 100)
                 {
+                    Log.Warn("Saved docked thickness invalid. Restoring to default.");
                     collapsedDockThicknessAsPercentageOfFullDockThickness = 20;
                     saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
                 }
@@ -710,9 +738,12 @@ namespace JuliusSweetland.OptiKey.Services
                     floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
                     floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
                     floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
-                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom)
+                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom ||
+                    floatingSizeAndPosition.Width < (screenBoundsInDp.Width * (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100)) ||
+                    floatingSizeAndPosition.Height < (screenBoundsInDp.Height * (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100)))
                 {
                     //Default to two-thirds of the screen's width and height, positioned centrally
+                    Log.Warn("Saved floating position or size was invalid. Restoring to default.");
                     floatingSizeAndPosition = new Rect(
                         screenBoundsInDp.Left + screenBoundsInDp.Width / 6,
                         screenBoundsInDp.Top + screenBoundsInDp.Height / 6,
@@ -1086,6 +1117,9 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (getWindowState() != WindowStates.Docked) return;
 
+            Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
+                    dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
+
             var barData = new APPBARDATA();
             barData.cbSize = Marshal.SizeOf(barData);
             barData.hWnd = windowHandle;
@@ -1097,6 +1131,9 @@ namespace JuliusSweetland.OptiKey.Services
             
             //Submit a query for the proposed dock size and position, which might be updated
             PInvoke.SHAppBarMessage(AppBarMessages.QueryPos, ref barData);
+
+            Log.InfoFormat("QueryPos returned barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}",
+                    barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right);
 
             //Compensate for lost thickness due to other app bars
             switch (dockPosition)
@@ -1114,7 +1151,19 @@ namespace JuliusSweetland.OptiKey.Services
                     barData.rc.Left -= (int)Math.Round(sizeAndPosition.Right) - barData.rc.Right;
                     break;
             }
-            
+
+            //Check for unuseable dimensions before we use them
+            if (barData.rc.Bottom < 0 ||
+                barData.rc.Bottom < barData.rc.Top ||
+                barData.rc.Top < 0 ||
+                barData.rc.Left < 0 ||
+                barData.rc.Right < 0 ||
+                barData.rc.Right < barData.rc.Left)
+            {
+                Log.ErrorFormat("App bar data is unuseable! barData.rc.Top:{0}, barData.rc.Bottom:{1}, barData.rc.Left:{2}, barData.rc.Right:{3}. Originally requested sizeAndPosition.Top:{4}, sizeAndPosition.Bottom:{5}, sizeAndPosition.Left:{6}, sizeAndPosition.Right:{7}",
+                    barData.rc.Top, barData.rc.Bottom, barData.rc.Left, barData.rc.Right, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
+            }
+
             //Then set the dock size and position, using the potentially updated barData
             PInvoke.SHAppBarMessage(AppBarMessages.SetPos, ref barData);
 
