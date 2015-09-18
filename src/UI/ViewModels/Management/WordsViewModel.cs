@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
@@ -36,9 +38,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Languages>>
                 {
-                    new KeyValuePair<string, Languages>("American English", Enums.Languages.AmericanEnglish),
-                    new KeyValuePair<string, Languages>("British English", Enums.Languages.BritishEnglish),
-                    new KeyValuePair<string, Languages>("Canadian English", Enums.Languages.CanadianEnglish)
+                    new KeyValuePair<string, Languages>(Resources.AmericanEnglish, Enums.Languages.AmericanEnglish),
+                    new KeyValuePair<string, Languages>(Resources.BritishEnglish, Enums.Languages.BritishEnglish),
+                    new KeyValuePair<string, Languages>(Resources.CanadianEnglish, Enums.Languages.CanadianEnglish),
+                    new KeyValuePair<string, Languages>(Resources.FranceFrench, Enums.Languages.FranceFrench)
                 };
             }
         }
@@ -127,6 +130,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
+                CultureInfo Culture = Settings.Default.Language.ToCultureInfo();
+                Thread.CurrentThread.CurrentCulture = Culture;
+                Thread.CurrentThread.CurrentUICulture = Culture;
+                Resources.Culture = Culture;
             }
         }
 

@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         Width="800"
         MinHeight="150"
         WindowStyle="None"
@@ -14,6 +15,6 @@
     <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10" Margin="5">
         <TextBlock Margin="10" TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=CrashMessageFontSize}"
-                   Text="Bad news - OptiKey has tripped over its feet and has to close down.&#x0a;&#x0a;An email with details of what happened would be very helpful: optikeyfeedback@gmail.com&#x0a;&#x0a;Sorry for the inconvenience."/>
+                   Text="{x:Static resx:Resources.CrashMessage}"/>
     </Border>
 </Window>

@@ -35,8 +35,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Android Dark", "/Resources/Themes/Android_Dark.xaml"),
-                    new KeyValuePair<string, string>("Android Light", "/Resources/Themes/Android_Light.xaml")
+                    new KeyValuePair<string, string>(Resources.AndroidDark, "/Resources/Themes/Android_Dark.xaml"),
+                    new KeyValuePair<string, string>(Resources.AndroidLightTheme, "/Resources/Themes/Android_Light.xaml")
                 };
             }
         }
@@ -111,22 +111,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Enums.Keyboards>>
                 {
-                    new KeyValuePair<string, Enums.Keyboards>("Alpha", Enums.Keyboards.Alpha),
-                    new KeyValuePair<string, Enums.Keyboards>("Conversation Alpha", Enums.Keyboards.ConversationAlpha),
-                    new KeyValuePair<string, Enums.Keyboards>("Conversation Numeric & Symbols", Enums.Keyboards.ConversationNumericAndSymbols),
-                    new KeyValuePair<string, Enums.Keyboards>("Currencies 1", Enums.Keyboards.Currencies1),
-                    new KeyValuePair<string, Enums.Keyboards>("Currencies 2", Enums.Keyboards.Currencies2),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 1", Enums.Keyboards.Diacritics1),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 2", Enums.Keyboards.Diacritics2),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 3", Enums.Keyboards.Diacritics3),
-                    new KeyValuePair<string, Enums.Keyboards>("Menu", Enums.Keyboards.Menu),
-                    new KeyValuePair<string, Enums.Keyboards>("Minimised", Enums.Keyboards.Minimised),
-                    new KeyValuePair<string, Enums.Keyboards>("Mouse", Enums.Keyboards.Mouse),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 1", Enums.Keyboards.NumericAndSymbols1),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 2", Enums.Keyboards.NumericAndSymbols2),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 3", Enums.Keyboards.NumericAndSymbols3),
-                    new KeyValuePair<string, Enums.Keyboards>("Physical Keys", Enums.Keyboards.PhysicalKeys),
-                    new KeyValuePair<string, Enums.Keyboards>("Size & Position", Enums.Keyboards.SizeAndPosition)
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.KeyboardLayout, Enums.Keyboards.Alpha),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.ConversationLayout, Enums.Keyboards.ConversationAlpha),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.ConversationNumericSymbolsLayout, Enums.Keyboards.ConversationNumericAndSymbols),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.Currencies1Layout, Enums.Keyboards.Currencies1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.Currencies2Layout, Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.Diacritics1Layout, Enums.Keyboards.Diacritics1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.Diacritics2Layout, Enums.Keyboards.Diacritics2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.Diacritics3Layout, Enums.Keyboards.Diacritics3),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MenuLayout, Enums.Keyboards.Menu),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MinimisedLayout, Enums.Keyboards.Minimised),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MouseLayout, Enums.Keyboards.Mouse),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NumericSymbols1Layout, Enums.Keyboards.NumericAndSymbols1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NumericSymbols2Layout, Enums.Keyboards.NumericAndSymbols2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NumericSymbols3Layout, Enums.Keyboards.NumericAndSymbols3),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.PhysicalKeysLayout, Enums.Keyboards.PhysicalKeys),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.SizePositionLayout, Enums.Keyboards.SizeAndPosition)
                 };
             }
         }
@@ -137,11 +137,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Enums.MinimisedEdges>>
                 {
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Same as dock position", Enums.MinimisedEdges.SameAsDockedPosition),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Top", Enums.MinimisedEdges.Top),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Right", Enums.MinimisedEdges.Right),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Bottom", Enums.MinimisedEdges.Bottom),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Left", Enums.MinimisedEdges.Left),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.SameAsDockPosition, Enums.MinimisedEdges.SameAsDockedPosition),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.TopPosition, Enums.MinimisedEdges.Top),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.Right, Enums.MinimisedEdges.Right),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.Bottom, Enums.MinimisedEdges.Bottom),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.Left, Enums.MinimisedEdges.Left),
                 };
             }
         }

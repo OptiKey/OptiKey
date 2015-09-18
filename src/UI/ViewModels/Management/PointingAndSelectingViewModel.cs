@@ -119,9 +119,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, ProgressIndicatorBehaviours>>
                 {
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Fill Pie", Enums.ProgressIndicatorBehaviours.FillPie),
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Grow", Enums.ProgressIndicatorBehaviours.Grow),
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>("Shrink", Enums.ProgressIndicatorBehaviours.Shrink)
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.FillPieIndicator, Enums.ProgressIndicatorBehaviours.FillPie),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.GrowIndicator, Enums.ProgressIndicatorBehaviours.Grow),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.ShrinkIndicator, Enums.ProgressIndicatorBehaviours.Shrink)
                 };
             }
         }

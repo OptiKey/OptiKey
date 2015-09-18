@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -143,6 +144,10 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
+
+                Thread.CurrentThread.CurrentCulture = Settings.Default.Language.ToCultureInfo();
+                Thread.CurrentThread.CurrentUICulture = Settings.Default.Language.ToCultureInfo();
+                OptiKey.Properties.Resources.Culture = Settings.Default.Language.ToCultureInfo();
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
@@ -287,11 +292,8 @@ namespace JuliusSweetland.OptiKey
                 string filename = ((ConfigurationErrorsException)cee.InnerException).Filename;
 
                 if (MessageBox.Show(
-                        "OptiKey has detected that your user settings file has become corrupted and must be repaired. " +
-                        "This will be done by restoring an old version, or a default version if that isn't possible.\n\n" +
-                        "Click Yes to reset your user settings and restart.\n\n" +
-                        "Click No to close so that you can manually repair or copy your user settings file.",
-                        "Uh-oh! The user settings file looks to be corrupt.",
+                        OptiKey.Properties.Resources.CorruptedSettingsMessage,
+                        OptiKey.Properties.Resources.CorruptedSettingsTitle,
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Error) == MessageBoxResult.Yes)
                 {
@@ -483,16 +485,16 @@ namespace JuliusSweetland.OptiKey
 
                 var message = new StringBuilder();
 
-                message.AppendLine(string.Format("Version: {0}", DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format("Language: {0}", Settings.Default.Language.ToDescription()));
-                message.AppendLine(string.Format("Pointing: {0}", Settings.Default.PointsSource.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashVersion, DiagnosticInfo.AssemblyVersion));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashLanguage, Settings.Default.Language.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashPointing, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
                 keySelectionSb.Append(Settings.Default.KeySelectionTriggerSource.ToDescription());
                 switch (Settings.Default.KeySelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        keySelectionSb.Append(string.Format(" ({0:#,###}ms)", Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.SplashDuration, Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
@@ -503,14 +505,14 @@ namespace JuliusSweetland.OptiKey
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format("Key selection: {0}", keySelectionSb));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashKeySelection, keySelectionSb));
 
                 var pointSelectionSb = new StringBuilder();
                 pointSelectionSb.Append(Settings.Default.PointSelectionTriggerSource.ToDescription());
                 switch (Settings.Default.PointSelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        pointSelectionSb.Append(string.Format(" ({0:#,###}ms)", Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        pointSelectionSb.Append(string.Format(OptiKey.Properties.Resources.SplashDuration, Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
@@ -521,15 +523,15 @@ namespace JuliusSweetland.OptiKey
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format("Point selection: {0}", pointSelectionSb));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashPointSelection, pointSelectionSb));
 
-                message.AppendLine("Management console: ALT + M");
-                message.AppendLine("Website: www.optikey.org");
+                message.AppendLine(OptiKey.Properties.Resources.SplashSettings);
+                message.AppendLine(OptiKey.Properties.Resources.SplashWebsite);
 
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
-                    "OptiKey : Type · Click · Speak", 
+                    OptiKey.Properties.Resources.SplashTitle, 
                     message.ToString(), 
                     NotificationTypes.Normal,
                     () =>
@@ -583,8 +585,8 @@ namespace JuliusSweetland.OptiKey
 
                                 inputService.RequestSuspend();
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                mainViewModel.RaiseToastNotification("UPDATE AVAILABLE!",
-                                    string.Format("Please visit www.optikey.org to download latest version ({0})\nYou can turn off update checks from the Management Console (ALT + M).", release.TagName),
+                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.NewVersionTitle,
+                                    string.Format(OptiKey.Properties.Resources.NewVersionMessage, release.TagName),
                                     NotificationTypes.Normal,
                                     () => 
                                         {

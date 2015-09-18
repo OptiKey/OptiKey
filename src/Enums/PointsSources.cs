@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Enums
+﻿using JuliusSweetland.OptiKey.Properties;
+namespace JuliusSweetland.OptiKey.Enums
 {
     public enum PointsSources
     {
@@ -16,12 +17,12 @@
         {
             switch (pointSource)
             {
-                case PointsSources.GazeTracker: return "Gaze Tracker";
-                case PointsSources.TheEyeTribe: return "The Eye Tribe";
-                case PointsSources.MousePosition: return "Mouse position";
-                case PointsSources.TobiiEyeX: return "Tobii EyeX";
-                case PointsSources.TobiiRex: return "Tobii REX";
-                case PointsSources.TobiiPcEyeGo: return "Tobii PCEye Go";
+                case PointsSources.GazeTracker: return Resources.GazeTracker;
+                case PointsSources.TheEyeTribe: return Resources.TheEyeTribe;
+                case PointsSources.MousePosition: return Resources.MousePosition;
+                case PointsSources.TobiiEyeX: return Resources.TobiiEyeX;
+                case PointsSources.TobiiRex: return Resources.TobiiREX;
+                case PointsSources.TobiiPcEyeGo: return Resources.TobiiPCEyeGo;
             }
 
             return pointSource.ToString();

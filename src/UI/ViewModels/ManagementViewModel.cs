@@ -5,6 +5,7 @@ using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -86,8 +87,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = "May I restart OptiKey?",
-                        Content = "OptiKey needs to restart to apply your changes.\nPlease click OK to continue with the restart, or CANCEL to discard your changes"
+                        Title = Resources.RestartTitle,
+                        Content = Resources.RestartMessage
                     }, confirmation =>
                     {
                         if (confirmation.Confirmed)

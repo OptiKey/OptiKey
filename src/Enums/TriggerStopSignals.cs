@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Enums
+using JuliusSweetland.OptiKey.Properties;
+namespace JuliusSweetland.OptiKey.Enums
 {
     public enum TriggerStopSignals
     {
@@ -12,8 +13,8 @@
         {
             switch (triggerStopSignal)
             {
-                case TriggerStopSignals.NextHigh: return "Next hight";
-                case TriggerStopSignals.NextLow: return "Next low";
+                case TriggerStopSignals.NextHigh: return Resources.NextHight;
+                case TriggerStopSignals.NextLow: return Resources.NextLow;
             }
 
             return triggerStopSignal.ToString();

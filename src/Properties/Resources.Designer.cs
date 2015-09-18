@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,1968 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Great stuff. &apos;{0}&apos; has been added to the dictionary..
+        /// </summary>
+        public static string AddedToDictionaryMessage {
+            get {
+                return ResourceManager.GetString("AddedToDictionaryMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added.
+        /// </summary>
+        public static string AddedToDictionaryTitle {
+            get {
+                return ResourceManager.GetString("AddedToDictionaryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to add the word &apos;{0}&apos; to the dictionary?.
+        /// </summary>
+        public static string AddToDictionaryPrompt {
+            get {
+                return ResourceManager.GetString("AddToDictionaryPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (FYI some similar entries are already in the dictionary: {0}).
+        /// </summary>
+        public static string AddToDictionarySimilarityFound {
+            get {
+                return ResourceManager.GetString("AddToDictionarySimilarityFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///(The new dictionary entry will contain capital letters).
+        /// </summary>
+        public static string AddToDictionnaryCapitalInfo {
+            get {
+                return ResourceManager.GetString("AddToDictionnaryCapitalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to add the phrase &apos;{0}&apos; to the dictionary with shortcut &apos;{1}&apos;?.
+        /// </summary>
+        public static string AddToDictionnaryWithShortcutPrompt {
+            get {
+                return ResourceManager.GetString("AddToDictionnaryWithShortcutPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to American English.
+        /// </summary>
+        public static string AmericanEnglish {
+            get {
+                return ResourceManager.GetString("AmericanEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Android Dark.
+        /// </summary>
+        public static string AndroidDark {
+            get {
+                return ResourceManager.GetString("AndroidDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Android Light.
+        /// </summary>
+        public static string AndroidLightTheme {
+            get {
+                return ResourceManager.GetString("AndroidLightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 32-Bit.
+        /// </summary>
+        public static string Arch32 {
+            get {
+                return ResourceManager.GetString("Arch32", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 64-Bit.
+        /// </summary>
+        public static string Arch64 {
+            get {
+                return ResourceManager.GetString("Arch64", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto capitalise words:.
+        /// </summary>
+        public static string AutoCaps {
+            get {
+                return ResourceManager.GetString("AutoCaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto complete words:.
+        /// </summary>
+        public static string AutoComplete {
+            get {
+                return ResourceManager.GetString("AutoComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto space between words:.
+        /// </summary>
+        public static string AutoSpacing {
+            get {
+                return ResourceManager.GetString("AutoSpacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom.
+        /// </summary>
+        public static string Bottom {
+            get {
+                return ResourceManager.GetString("Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to British English.
+        /// </summary>
+        public static string BritishEnglish {
+            get {
+                return ResourceManager.GetString("BritishEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong, but I don&apos;t know what - please check the logs.
+        /// </summary>
+        public static string CalibrationUnknownError {
+            get {
+                return ResourceManager.GetString("CalibrationUnknownError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.
+        ///Are you sure you would like to re-calibrate?.
+        /// </summary>
+        public static string CalibrationWarning {
+            get {
+                return ResourceManager.GetString("CalibrationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canadian English.
+        /// </summary>
+        public static string CanadianEnglish {
+            get {
+                return ResourceManager.GetString("CanadianEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates on startup:.
+        /// </summary>
+        public static string CheckForUpdates {
+            get {
+                return ResourceManager.GetString("CheckForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 1.
+        /// </summary>
+        public static string Click1Sound {
+            get {
+                return ResourceManager.GetString("Click1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 2.
+        /// </summary>
+        public static string Click2Sound {
+            get {
+                return ResourceManager.GetString("Click2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 3.
+        /// </summary>
+        public static string Click3Sound {
+            get {
+                return ResourceManager.GetString("Click3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 4.
+        /// </summary>
+        public static string Click4Sound {
+            get {
+                return ResourceManager.GetString("Click4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 5.
+        /// </summary>
+        public static string Click5Sound {
+            get {
+                return ResourceManager.GetString("Click5Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click 6.
+        /// </summary>
+        public static string Click6Sound {
+            get {
+                return ResourceManager.GetString("Click6Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collapsed dock thickness (as % of full dock thickness):.
+        /// </summary>
+        public static string CollapsedDockHeight {
+            get {
+                return ResourceManager.GetString("CollapsedDockHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversation Alpha.
+        /// </summary>
+        public static string ConversationLayout {
+            get {
+                return ResourceManager.GetString("ConversationLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversation Numeric &amp; Symbols.
+        /// </summary>
+        public static string ConversationNumericSymbolsLayout {
+            get {
+                return ResourceManager.GetString("ConversationNumericSymbolsLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversation only mode:.
+        /// </summary>
+        public static string ConversationOnlyMode {
+            get {
+                return ResourceManager.GetString("ConversationOnlyMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
+        ///
+        ///Click Yes to reset your user settings and restart.
+        ///
+        ///Click No to close so that you can manually repair or copy your user settings file..
+        /// </summary>
+        public static string CorruptedSettingsMessage {
+            get {
+                return ResourceManager.GetString("CorruptedSettingsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uh-oh! The user settings file looks to be corrupt..
+        /// </summary>
+        public static string CorruptedSettingsTitle {
+            get {
+                return ResourceManager.GetString("CorruptedSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad news - OptiKey has tripped over its feet and has to close down.
+        ///
+        ///An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
+        ///
+        ///Sorry for the inconvenience..
+        /// </summary>
+        public static string CrashMessage {
+            get {
+                return ResourceManager.GetString("CrashMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currencies 1.
+        /// </summary>
+        public static string Currencies1Layout {
+            get {
+                return ResourceManager.GetString("Currencies1Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currencies 2.
+        /// </summary>
+        public static string Currencies2Layout {
+            get {
+                return ResourceManager.GetString("Currencies2Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cursor height (pixels):.
+        /// </summary>
+        public static string CursorHeightInPixels {
+            get {
+                return ResourceManager.GetString("CursorHeightInPixels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cursor width (pixels):.
+        /// </summary>
+        public static string CursorWidthInPixels {
+            get {
+                return ResourceManager.GetString("CursorWidthInPixels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debugging mode:.
+        /// </summary>
+        public static string Debugging {
+            get {
+                return ResourceManager.GetString("Debugging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diacritics 1.
+        /// </summary>
+        public static string Diacritics1Layout {
+            get {
+                return ResourceManager.GetString("Diacritics1Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diacritics 2.
+        /// </summary>
+        public static string Diacritics2Layout {
+            get {
+                return ResourceManager.GetString("Diacritics2Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diacritics 3.
+        /// </summary>
+        public static string Diacritics3Layout {
+            get {
+                return ResourceManager.GetString("Diacritics3Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dictionary.
+        /// </summary>
+        public static string DictionarySection {
+            get {
+                return ResourceManager.GetString("DictionarySection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse double click:.
+        /// </summary>
+        public static string DoubleClickSoundSetting {
+            get {
+                return ResourceManager.GetString("DoubleClickSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multi-key captures enabled:.
+        /// </summary>
+        public static string EnableMultiKeys {
+            get {
+                return ResourceManager.GetString("EnableMultiKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error:.
+        /// </summary>
+        public static string ErrorSoundSetting {
+            get {
+                return ResourceManager.GetString("ErrorSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uh-oh!.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Falling 1.
+        /// </summary>
+        public static string Falling1Sound {
+            get {
+                return ResourceManager.GetString("Falling1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Falling 2.
+        /// </summary>
+        public static string Falling2Sound {
+            get {
+                return ResourceManager.GetString("Falling2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill Pie.
+        /// </summary>
+        public static string FillPieIndicator {
+            get {
+                return ResourceManager.GetString("FillPieIndicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixations (dwell).
+        /// </summary>
+        public static string FixationsDwell {
+            get {
+                return ResourceManager.GetString("FixationsDwell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font family:.
+        /// </summary>
+        public static string FontFamily {
+            get {
+                return ResourceManager.GetString("FontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font.
+        /// </summary>
+        public static string FontSettings {
+            get {
+                return ResourceManager.GetString("FontSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font stretch:.
+        /// </summary>
+        public static string FontStrech {
+            get {
+                return ResourceManager.GetString("FontStrech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font weight:.
+        /// </summary>
+        public static string FontWeight {
+            get {
+                return ResourceManager.GetString("FontWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Français (France).
+        /// </summary>
+        public static string FranceFrench {
+            get {
+                return ResourceManager.GetString("FranceFrench", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full dock thickness (as % of screen):.
+        /// </summary>
+        public static string FullDockHeight {
+            get {
+                return ResourceManager.GetString("FullDockHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Tracker.
+        /// </summary>
+        public static string GazeTracker {
+            get {
+                return ResourceManager.GetString("GazeTracker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grow.
+        /// </summary>
+        public static string GrowIndicator {
+            get {
+                return ResourceManager.GetString("GrowIndicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture timeout (ms):.
+        /// </summary>
+        public static string IncludeMaxTime {
+            get {
+                return ResourceManager.GetString("IncludeMaxTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum dwell time on a key to include in capture (ms):.
+        /// </summary>
+        public static string IncludeMinTime {
+            get {
+                return ResourceManager.GetString("IncludeMinTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incomplete key fixation time to live (ms):.
+        /// </summary>
+        public static string IncompleteFixationTime {
+            get {
+                return ResourceManager.GetString("IncompleteFixationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info:.
+        /// </summary>
+        public static string InfoSoundSetting {
+            get {
+                return ResourceManager.GetString("InfoSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard key.
+        /// </summary>
+        public static string KeyboardKey {
+            get {
+                return ResourceManager.GetString("KeyboardKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alpha.
+        /// </summary>
+        public static string KeyboardLayout {
+            get {
+                return ResourceManager.GetString("KeyboardLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key fixation time to complete (ms):.
+        /// </summary>
+        public static string KeyCompleteTime {
+            get {
+                return ResourceManager.GetString("KeyCompleteTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key fixation time to lock-on (ms):.
+        /// </summary>
+        public static string KeyFixationTime {
+            get {
+                return ResourceManager.GetString("KeyFixationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key Selection:.
+        /// </summary>
+        public static string KeySelectionSoundSetting {
+            get {
+                return ResourceManager.GetString("KeySelectionSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection source:.
+        /// </summary>
+        public static string KeyTrigger {
+            get {
+                return ResourceManager.GetString("KeyTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language:.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string LanguageSettings {
+            get {
+                return ResourceManager.GetString("LanguageSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left.
+        /// </summary>
+        public static string Left {
+            get {
+                return ResourceManager.GetString("Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Look.
+        /// </summary>
+        public static string LookSettings {
+            get {
+                return ResourceManager.GetString("LookSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnify destination (percentage of screen):.
+        /// </summary>
+        public static string MagnifierDestination {
+            get {
+                return ResourceManager.GetString("MagnifierDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Magnify source (percentage of screen):.
+        /// </summary>
+        public static string MagnifierSource {
+            get {
+                return ResourceManager.GetString("MagnifierSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey Management Console.
+        /// </summary>
+        public static string ManagementConsoleTitle {
+            get {
+                return ResourceManager.GetString("ManagementConsoleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum number of dictionary matches:.
+        /// </summary>
+        public static string MaxMatches {
+            get {
+                return ResourceManager.GetString("MaxMatches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string MenuLayout {
+            get {
+                return ResourceManager.GetString("MenuLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimised.
+        /// </summary>
+        public static string MinimisedLayout {
+            get {
+                return ResourceManager.GetString("MinimisedLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimised position:.
+        /// </summary>
+        public static string MinimisedPosition {
+            get {
+                return ResourceManager.GetString("MinimisedPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misc.
+        /// </summary>
+        public static string MiscSettings {
+            get {
+                return ResourceManager.GetString("MiscSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse button.
+        /// </summary>
+        public static string MouseButton {
+            get {
+                return ResourceManager.GetString("MouseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Click 1.
+        /// </summary>
+        public static string MouseClick1Sound {
+            get {
+                return ResourceManager.GetString("MouseClick1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Click 2.
+        /// </summary>
+        public static string MouseClick2Sound {
+            get {
+                return ResourceManager.GetString("MouseClick2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Click 3.
+        /// </summary>
+        public static string MouseClick3Sound {
+            get {
+                return ResourceManager.GetString("MouseClick3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Click 4.
+        /// </summary>
+        public static string MouseClick4Sound {
+            get {
+                return ResourceManager.GetString("MouseClick4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse click:.
+        /// </summary>
+        public static string MouseClickSoundSetting {
+            get {
+                return ResourceManager.GetString("MouseClickSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Double Click 1.
+        /// </summary>
+        public static string MouseDoubleClick1Sound {
+            get {
+                return ResourceManager.GetString("MouseDoubleClick1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Double Click 2.
+        /// </summary>
+        public static string MouseDoubleClick2Sound {
+            get {
+                return ResourceManager.GetString("MouseDoubleClick2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Double Click 3.
+        /// </summary>
+        public static string MouseDoubleClick3Sound {
+            get {
+                return ResourceManager.GetString("MouseDoubleClick3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Down 1.
+        /// </summary>
+        public static string MouseDown1Sound {
+            get {
+                return ResourceManager.GetString("MouseDown1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Down 2.
+        /// </summary>
+        public static string MouseDown2Sound {
+            get {
+                return ResourceManager.GetString("MouseDown2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Down 3.
+        /// </summary>
+        public static string MouseDown3Sound {
+            get {
+                return ResourceManager.GetString("MouseDown3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Down 4.
+        /// </summary>
+        public static string MouseDown4Sound {
+            get {
+                return ResourceManager.GetString("MouseDown4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse down:.
+        /// </summary>
+        public static string MouseDownSoundSetting {
+            get {
+                return ResourceManager.GetString("MouseDownSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse.
+        /// </summary>
+        public static string MouseLayout {
+            get {
+                return ResourceManager.GetString("MouseLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse position.
+        /// </summary>
+        public static string MousePosition {
+            get {
+                return ResourceManager.GetString("MousePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse position sample interval (ms):.
+        /// </summary>
+        public static string MousePositionInterval {
+            get {
+                return ResourceManager.GetString("MousePositionInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 1.
+        /// </summary>
+        public static string MouseScroll1Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 2.
+        /// </summary>
+        public static string MouseScroll2Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 3.
+        /// </summary>
+        public static string MouseScroll3Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 4.
+        /// </summary>
+        public static string MouseScroll4Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 5.
+        /// </summary>
+        public static string MouseScroll5Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll5Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Scroll 6.
+        /// </summary>
+        public static string MouseScroll6Sound {
+            get {
+                return ResourceManager.GetString("MouseScroll6Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Up 1.
+        /// </summary>
+        public static string MouseUp1Sound {
+            get {
+                return ResourceManager.GetString("MouseUp1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Up 2.
+        /// </summary>
+        public static string MouseUp2Sound {
+            get {
+                return ResourceManager.GetString("MouseUp2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Up 3.
+        /// </summary>
+        public static string MouseUp3Sound {
+            get {
+                return ResourceManager.GetString("MouseUp3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse Up 4.
+        /// </summary>
+        public static string MouseUp4Sound {
+            get {
+                return ResourceManager.GetString("MouseUp4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse up:.
+        /// </summary>
+        public static string MouseUpSoundSetting {
+            get {
+                return ResourceManager.GetString("MouseUpSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muli-key selection ending:.
+        /// </summary>
+        public static string MultiKeyEndSoundSetting {
+            get {
+                return ResourceManager.GetString("MultiKeyEndSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multi-key Selection.
+        /// </summary>
+        public static string MultiKeySettings {
+            get {
+                return ResourceManager.GetString("MultiKeySettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multi-key captures.
+        /// </summary>
+        public static string MultiKeysSettings {
+            get {
+                return ResourceManager.GetString("MultiKeysSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Muli-key selection starting:.
+        /// </summary>
+        public static string MultiKeyStartSoundSetting {
+            get {
+                return ResourceManager.GetString("MultiKeyStartSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop signal:.
+        /// </summary>
+        public static string MultiKeyStop {
+            get {
+                return ResourceManager.GetString("MultiKeyStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new entry:.
+        /// </summary>
+        public static string NewEntry {
+            get {
+                return ResourceManager.GetString("NewEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please visit www.optikey.org to download latest version ({0})
+        ///You can turn off update checks from the Management Console (ALT + M)..
+        /// </summary>
+        public static string NewVersionMessage {
+            get {
+                return ResourceManager.GetString("NewVersionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE AVAILABLE!.
+        /// </summary>
+        public static string NewVersionTitle {
+            get {
+                return ResourceManager.GetString("NewVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next hight.
+        /// </summary>
+        public static string NextHight {
+            get {
+                return ResourceManager.GetString("NextHight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next low.
+        /// </summary>
+        public static string NextLow {
+            get {
+                return ResourceManager.GetString("NextLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suppress modifier keys when in mouse keyboard:.
+        /// </summary>
+        public static string NoModifiers {
+            get {
+                return ResourceManager.GetString("NoModifiers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Service Pack.
+        /// </summary>
+        public static string NoServicePack {
+            get {
+                return ResourceManager.GetString("NoServicePack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string NoSound {
+            get {
+                return ResourceManager.GetString("NoSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It doesn&apos;t look like the scratchpad contains any words or phrases that don&apos;t already exist in the dictionary..
+        /// </summary>
+        public static string NoTextFoundMessage {
+            get {
+                return ResourceManager.GetString("NoTextFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hmm, nothing new here!.
+        /// </summary>
+        public static string NoTextFoundTitle {
+            get {
+                return ResourceManager.GetString("NoTextFoundTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display for X seconds per message character:.
+        /// </summary>
+        public static string NotifDuration {
+            get {
+                return ResourceManager.GetString("NotifDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical fill (percentage of OptiKey):.
+        /// </summary>
+        public static string NotifHeight {
+            get {
+                return ResourceManager.GetString("NotifHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string NotifSettings {
+            get {
+                return ResourceManager.GetString("NotifSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal fill (percentage of OptiKey):.
+        /// </summary>
+        public static string NotifWidth {
+            get {
+                return ResourceManager.GetString("NotifWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numeric &amp; Symbols 1.
+        /// </summary>
+        public static string NumericSymbols1Layout {
+            get {
+                return ResourceManager.GetString("NumericSymbols1Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numeric &amp; Symbols 2.
+        /// </summary>
+        public static string NumericSymbols2Layout {
+            get {
+                return ResourceManager.GetString("NumericSymbols2Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numeric &amp; Symbols 3.
+        /// </summary>
+        public static string NumericSymbols3Layout {
+            get {
+                return ResourceManager.GetString("NumericSymbols3Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey v{0}.
+        /// </summary>
+        public static string OptiKeyVersion {
+            get {
+                return ResourceManager.GetString("OptiKeyVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OS v{0}.{1}.
+        /// </summary>
+        public static string OS {
+            get {
+                return ResourceManager.GetString("OS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string OtherSection {
+            get {
+                return ResourceManager.GetString("OtherSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical Keys.
+        /// </summary>
+        public static string PhysicalKeysLayout {
+            get {
+                return ResourceManager.GetString("PhysicalKeysLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play.
+        /// </summary>
+        public static string Play {
+            get {
+                return ResourceManager.GetString("Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection mouse button:.
+        /// </summary>
+        public static string PointButton {
+            get {
+                return ResourceManager.GetString("PointButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point fixation time to complete (ms):.
+        /// </summary>
+        public static string PointCompleteTime {
+            get {
+                return ResourceManager.GetString("PointCompleteTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time until point becomes irrelevent (ms):.
+        /// </summary>
+        public static string PointDiscardInterval {
+            get {
+                return ResourceManager.GetString("PointDiscardInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point fixation radius (pixels):.
+        /// </summary>
+        public static string PointFixationRadius {
+            get {
+                return ResourceManager.GetString("PointFixationRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point fixation time to lock-on (ms):.
+        /// </summary>
+        public static string PointFixationTime {
+            get {
+                return ResourceManager.GetString("PointFixationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pointing &amp; Selecting.
+        /// </summary>
+        public static string PointingSection {
+            get {
+                return ResourceManager.GetString("PointingSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pointing.
+        /// </summary>
+        public static string PointingSettings {
+            get {
+                return ResourceManager.GetString("PointingSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source:.
+        /// </summary>
+        public static string PointingSource {
+            get {
+                return ResourceManager.GetString("PointingSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection keyboard key:.
+        /// </summary>
+        public static string PointKey {
+            get {
+                return ResourceManager.GetString("PointKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point lock-on radius (pixels):.
+        /// </summary>
+        public static string PointRadius {
+            get {
+                return ResourceManager.GetString("PointRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection source:.
+        /// </summary>
+        public static string PointTrigger {
+            get {
+                return ResourceManager.GetString("PointTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection progress indicator behaviour:.
+        /// </summary>
+        public static string ProgressBehaviour {
+            get {
+                return ResourceManager.GetString("ProgressBehaviour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection progress indicator end size (%):.
+        /// </summary>
+        public static string ProgressEndSize {
+            get {
+                return ResourceManager.GetString("ProgressEndSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection progress indicator start size (%):.
+        /// </summary>
+        public static string ProgressStartSize {
+            get {
+                return ResourceManager.GetString("ProgressStartSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you would like to re-calibrate?.
+        /// </summary>
+        public static string RecalibrateConfirmation {
+            get {
+                return ResourceManager.GetString("RecalibrateConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey needs to restart to apply your changes.
+        ///Please click OK to continue with the restart, or CANCEL to discard your changes.
+        /// </summary>
+        public static string RestartMessage {
+            get {
+                return ResourceManager.GetString("RestartMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to May I restart OptiKey?.
+        /// </summary>
+        public static string RestartTitle {
+            get {
+                return ResourceManager.GetString("RestartTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore.
+        /// </summary>
+        public static string Restore {
+            get {
+                return ResourceManager.GetString("Restore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resuming an incomplete key fixation requires a new lock on:.
+        /// </summary>
+        public static string ResumeKey {
+            get {
+                return ResourceManager.GetString("ResumeKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right.
+        /// </summary>
+        public static string Right {
+            get {
+                return ResourceManager.GetString("Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rising 1.
+        /// </summary>
+        public static string Rising1Sound {
+            get {
+                return ResourceManager.GetString("Rising1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rising 2.
+        /// </summary>
+        public static string Rising2Sound {
+            get {
+                return ResourceManager.GetString("Rising2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Same as dock position.
+        /// </summary>
+        public static string SameAsDockPosition {
+            get {
+                return ResourceManager.GetString("SameAsDockPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scratchpad # of lines:.
+        /// </summary>
+        public static string ScratchpadHeight {
+            get {
+                return ResourceManager.GetString("ScratchpadHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse scroll:.
+        /// </summary>
+        public static string ScrollSoundSetting {
+            get {
+                return ResourceManager.GetString("ScrollSoundSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection mouse button:.
+        /// </summary>
+        public static string SelectionButton {
+            get {
+                return ResourceManager.GetString("SelectionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection keyboard key:.
+        /// </summary>
+        public static string SelectionKey {
+            get {
+                return ResourceManager.GetString("SelectionKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection.
+        /// </summary>
+        public static string SelectionSettings {
+            get {
+                return ResourceManager.GetString("SelectionSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic sentence adjustments.
+        /// </summary>
+        public static string SentenceAdjust {
+            get {
+                return ResourceManager.GetString("SentenceAdjust", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show splash screen on startup:.
+        /// </summary>
+        public static string ShowSplash {
+            get {
+                return ResourceManager.GetString("ShowSplash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shrink.
+        /// </summary>
+        public static string ShrinkIndicator {
+            get {
+                return ResourceManager.GetString("ShrinkIndicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size &amp; Position.
+        /// </summary>
+        public static string SizePositionLayout {
+            get {
+                return ResourceManager.GetString("SizePositionLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sound effects.
+        /// </summary>
+        public static string SoundEffectsSettings {
+            get {
+                return ResourceManager.GetString("SoundEffectsSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sounds.
+        /// </summary>
+        public static string SoundsSection {
+            get {
+                return ResourceManager.GetString("SoundsSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate:.
+        /// </summary>
+        public static string SpeechRate {
+            get {
+                return ResourceManager.GetString("SpeechRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speech.
+        /// </summary>
+        public static string SpeechSettings {
+            get {
+                return ResourceManager.GetString("SpeechSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voice:.
+        /// </summary>
+        public static string SpeechVoice {
+            get {
+                return ResourceManager.GetString("SpeechVoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume:.
+        /// </summary>
+        public static string SpeechVolume {
+            get {
+                return ResourceManager.GetString("SpeechVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  ({0:#,###}ms).
+        /// </summary>
+        public static string SplashDuration {
+            get {
+                return ResourceManager.GetString("SplashDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection: {0}.
+        /// </summary>
+        public static string SplashKeySelection {
+            get {
+                return ResourceManager.GetString("SplashKeySelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language: {0}.
+        /// </summary>
+        public static string SplashLanguage {
+            get {
+                return ResourceManager.GetString("SplashLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pointing: {0}.
+        /// </summary>
+        public static string SplashPointing {
+            get {
+                return ResourceManager.GetString("SplashPointing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection: {0}.
+        /// </summary>
+        public static string SplashPointSelection {
+            get {
+                return ResourceManager.GetString("SplashPointSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Management console: ALT + M.
+        /// </summary>
+        public static string SplashSettings {
+            get {
+                return ResourceManager.GetString("SplashSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OptiKey : Type · Click · Speak.
+        /// </summary>
+        public static string SplashTitle {
+            get {
+                return ResourceManager.GetString("SplashTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version: {0}.
+        /// </summary>
+        public static string SplashVersion {
+            get {
+                return ResourceManager.GetString("SplashVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website: www.optikey.org.
+        /// </summary>
+        public static string SplashWebsite {
+            get {
+                return ResourceManager.GetString("SplashWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Startup keyboard:.
+        /// </summary>
+        public static string StartupKeyboard {
+            get {
+                return ResourceManager.GetString("StartupKeyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string SuccessTitle {
+            get {
+                return ResourceManager.GetString("SuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Eye Tribe.
+        /// </summary>
+        public static string TheEyeTribe {
+            get {
+                return ResourceManager.GetString("TheEyeTribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme:.
+        /// </summary>
+        public static string Theme {
+            get {
+                return ResourceManager.GetString("Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii EyeX.
+        /// </summary>
+        public static string TobiiEyeX {
+            get {
+                return ResourceManager.GetString("TobiiEyeX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii PCEye Go.
+        /// </summary>
+        public static string TobiiPCEyeGo {
+            get {
+                return ResourceManager.GetString("TobiiPCEyeGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii REX.
+        /// </summary>
+        public static string TobiiREX {
+            get {
+                return ResourceManager.GetString("TobiiREX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone 1.
+        /// </summary>
+        public static string Tone1Sound {
+            get {
+                return ResourceManager.GetString("Tone1Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone 2.
+        /// </summary>
+        public static string Tone2Sound {
+            get {
+                return ResourceManager.GetString("Tone2Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone 3.
+        /// </summary>
+        public static string Tone3Sound {
+            get {
+                return ResourceManager.GetString("Tone3Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone 4.
+        /// </summary>
+        public static string Tone4Sound {
+            get {
+                return ResourceManager.GetString("Tone4Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        public static string TopPosition {
+            get {
+                return ResourceManager.GetString("TopPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ...but intelligently suppress auto-caps where it is probably unhelpful:.
+        /// </summary>
+        public static string UselessCapsRemoval {
+            get {
+                return ResourceManager.GetString("UselessCapsRemoval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visuals.
+        /// </summary>
+        public static string VisualsSection {
+            get {
+                return ResourceManager.GetString("VisualsSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 10.
+        /// </summary>
+        public static string Win10 {
+            get {
+                return ResourceManager.GetString("Win10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 2000.
+        /// </summary>
+        public static string Win2000 {
+            get {
+                return ResourceManager.GetString("Win2000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 7.
+        /// </summary>
+        public static string Win7 {
+            get {
+                return ResourceManager.GetString("Win7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 8.
+        /// </summary>
+        public static string Win8 {
+            get {
+                return ResourceManager.GetString("Win8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows 8.1.
+        /// </summary>
+        public static string Win81 {
+            get {
+                return ResourceManager.GetString("Win81", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows NT 3.51.
+        /// </summary>
+        public static string WinNT351 {
+            get {
+                return ResourceManager.GetString("WinNT351", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows NT 4.0.
+        /// </summary>
+        public static string WinNT40 {
+            get {
+                return ResourceManager.GetString("WinNT40", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2003.
+        /// </summary>
+        public static string WinSrv2003 {
+            get {
+                return ResourceManager.GetString("WinSrv2003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2003 R2.
+        /// </summary>
+        public static string WinSrv2003R2 {
+            get {
+                return ResourceManager.GetString("WinSrv2003R2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2008.
+        /// </summary>
+        public static string WinSrv2008 {
+            get {
+                return ResourceManager.GetString("WinSrv2008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2008 R2.
+        /// </summary>
+        public static string WinSrv2008R2 {
+            get {
+                return ResourceManager.GetString("WinSrv2008R2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2012.
+        /// </summary>
+        public static string WinSrv2012 {
+            get {
+                return ResourceManager.GetString("WinSrv2012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Server 2012 R2.
+        /// </summary>
+        public static string WinSrv2012R2 {
+            get {
+                return ResourceManager.GetString("WinSrv2012R2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Vista.
+        /// </summary>
+        public static string WinVista {
+            get {
+                return ResourceManager.GetString("WinVista", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows XP.
+        /// </summary>
+        public static string WinXP {
+            get {
+                return ResourceManager.GetString("WinXP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Words.
+        /// </summary>
+        public static string WordsSection {
+            get {
+                return ResourceManager.GetString("WordsSection", resourceCulture);
             }
         }
     }
