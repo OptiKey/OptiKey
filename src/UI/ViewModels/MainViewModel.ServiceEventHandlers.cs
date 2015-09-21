@@ -1069,10 +1069,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Quit:
                         Log.Info("Quit key selected.");
                         var keyboardBeforeQuit = Keyboard;
-                        Keyboard = new YesNoQuestion("Are you sure you would like to quit?",
+                        Keyboard = new YesNoQuestion(Resources.QuitMessage,
                             () =>
                             {
-                                Keyboard = new YesNoQuestion("Are you absolutely sure that you'd like to quit?",
+                                Keyboard = new YesNoQuestion(Resources.QuitConfirmationMessage,
                                     () => Application.Current.Shutdown(),
                                     () => { Keyboard = keyboardBeforeQuit; });
                             },

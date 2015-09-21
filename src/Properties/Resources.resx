@@ -129,14 +129,14 @@
   <data name="AddToDictionarySimilarityFound" xml:space="preserve">
     <value>(FYI some similar entries are already in the dictionary: {0})</value>
   </data>
-  <data name="AddToDictionnaryCapitalInfo" xml:space="preserve">
+  <data name="AddToDictionaryCapitalInfo" xml:space="preserve">
     <value>
 (The new dictionary entry will contain capital letters)</value>
   </data>
   <data name="AddToDictionaryPrompt" xml:space="preserve">
     <value>Would you like to add the word '{0}' to the dictionary?</value>
   </data>
-  <data name="AddToDictionnaryWithShortcutPrompt" xml:space="preserve">
+  <data name="AddToDictionaryWithShortcutPrompt" xml:space="preserve">
     <value>Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?</value>
   </data>
   <data name="NoTextFoundMessage" xml:space="preserve">
@@ -413,14 +413,8 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="NumericSymbols1Layout" xml:space="preserve">
     <value>Numeric &amp; Symbols 1</value>
   </data>
-  <data name="MouseLayout" xml:space="preserve">
-    <value>Mouse</value>
-  </data>
   <data name="MinimisedLayout" xml:space="preserve">
     <value>Minimised</value>
-  </data>
-  <data name="MenuLayout" xml:space="preserve">
-    <value>Menu</value>
   </data>
   <data name="Diacritics3Layout" xml:space="preserve">
     <value>Diacritics 3</value>
@@ -441,10 +435,10 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>Conversation Numeric &amp; Symbols</value>
   </data>
   <data name="ConversationLayout" xml:space="preserve">
-    <value>Conversation Alpha</value>
+    <value>Conversation Letters</value>
   </data>
   <data name="KeyboardLayout" xml:space="preserve">
-    <value>Alpha</value>
+    <value>Letters</value>
   </data>
   <data name="AndroidLightTheme" xml:space="preserve">
     <value>Android Light</value>
@@ -776,5 +770,359 @@ Sorry for the inconvenience.</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="ShiftKey" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="BackKey" xml:space="preserve">
+    <value>BACK
+ONE</value>
+  </data>
+  <data name="BackWord" xml:space="preserve">
+    <value>BACK
+WORD</value>
+  </data>
+  <data name="NumSym" xml:space="preserve">
+    <value>NUM
+SYM</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="CtrlKey" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="WinKey" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="AltKey" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="SpaceKey" xml:space="preserve">
+    <value>SPACE</value>
+  </data>
+  <data name="MultiSelection" xml:space="preserve">
+    <value>MULTI-KEY
+SELECTION</value>
+  </data>
+  <data name="EnterKey" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="Sleep" xml:space="preserve">
+    <value>SLEEP</value>
+  </data>
+  <data name="TabKey" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>BACK</value>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>QUIT</value>
+  </data>
+  <data name="Alpha" xml:space="preserve">
+    <value>LETTERS</value>
+  </data>
+  <data name="Prev" xml:space="preserve">
+    <value>PREV</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>CLEAR</value>
+  </data>
+  <data name="Mouse" xml:space="preserve">
+    <value>MOUSE</value>
+  </data>
+  <data name="AddToDictionary" xml:space="preserve">
+    <value>ADD TO
+DICTIONARY</value>
+  </data>
+  <data name="Speak" xml:space="preserve">
+    <value>SPEAK</value>
+  </data>
+  <data name="Calibrate" xml:space="preserve">
+    <value>RE-CALIBRATE</value>
+  </data>
+  <data name="ExpandUpLeft" xml:space="preserve">
+    <value>EXPAND 
+UP &amp; LEFT</value>
+  </data>
+  <data name="ExpandUp" xml:space="preserve">
+    <value>EXPAND UP</value>
+  </data>
+  <data name="ExpandUpRight" xml:space="preserve">
+    <value>EXPAND 
+UP &amp; RIGHT</value>
+  </data>
+  <data name="ShrinkDownRight" xml:space="preserve">
+    <value>SHRINK
+DOWN &amp; RIGHT</value>
+  </data>
+  <data name="ShrinkDown" xml:space="preserve">
+    <value>SHRINK DOWN</value>
+  </data>
+  <data name="ShrinkDownLeft" xml:space="preserve">
+    <value>SHRINK 
+DOWN &amp; LEFT</value>
+  </data>
+  <data name="MoveUpRight" xml:space="preserve">
+    <value>MOVE
+UP &amp; RIGHT</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>MOVE UP</value>
+  </data>
+  <data name="MoveUpLeft" xml:space="preserve">
+    <value>MOVE
+UP &amp; LEFT</value>
+  </data>
+  <data name="JumpUpLeft" xml:space="preserve">
+    <value>JUMP
+UP &amp; LEFT</value>
+  </data>
+  <data name="JumpUp" xml:space="preserve">
+    <value>JUMP UP</value>
+  </data>
+  <data name="JumpUpRight" xml:space="preserve">
+    <value>JUMP
+UP &amp; RIGHT</value>
+  </data>
+  <data name="MoveRight" xml:space="preserve">
+    <value>MOVE RIGHT</value>
+  </data>
+  <data name="Move" xml:space="preserve">
+    <value>MOVE</value>
+  </data>
+  <data name="MoveLeft" xml:space="preserve">
+    <value>MOVE LEFT</value>
+  </data>
+  <data name="ShrinkLeft" xml:space="preserve">
+    <value>SHRINK LEFT</value>
+  </data>
+  <data name="Shrink" xml:space="preserve">
+    <value>SHRINK</value>
+  </data>
+  <data name="ShrinkRight" xml:space="preserve">
+    <value>SHRINK RIGHT</value>
+  </data>
+  <data name="JumpLeft" xml:space="preserve">
+    <value>JUMP LEFT</value>
+  </data>
+  <data name="Jump" xml:space="preserve">
+    <value>JUMP</value>
+  </data>
+  <data name="JumpRight" xml:space="preserve">
+    <value>JUMP RIGHT</value>
+  </data>
+  <data name="ExpandRight" xml:space="preserve">
+    <value>EXPAND RIGHT</value>
+  </data>
+  <data name="Expand" xml:space="preserve">
+    <value>EXPAND</value>
+  </data>
+  <data name="ExpandLeft" xml:space="preserve">
+    <value>EXPAND LEFT</value>
+  </data>
+  <data name="ExpandDownLeft" xml:space="preserve">
+    <value>EXPAND
+DOWN &amp; LEFT</value>
+  </data>
+  <data name="ExpandDown" xml:space="preserve">
+    <value>EXPAND DOWN</value>
+  </data>
+  <data name="ExpandDownRight" xml:space="preserve">
+    <value>EXPAND
+DOWN &amp; RIGHT</value>
+  </data>
+  <data name="JumpDownRight" xml:space="preserve">
+    <value>JUMP
+DOWN &amp; RIGHT</value>
+  </data>
+  <data name="JumpDown" xml:space="preserve">
+    <value>JUMP DOWN</value>
+  </data>
+  <data name="JumpDownLeft" xml:space="preserve">
+    <value>JUMP
+DOWN &amp; LEFT</value>
+  </data>
+  <data name="MoveDownRight" xml:space="preserve">
+    <value>MOVE
+DOWN &amp; RIGHT</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>MOVE DOWN</value>
+  </data>
+  <data name="MoveDownLeft" xml:space="preserve">
+    <value>MOVE
+DOWN &amp; LEFT</value>
+  </data>
+  <data name="ShrinkUpRight" xml:space="preserve">
+    <value>SHRINK
+UP &amp; RIGHT</value>
+  </data>
+  <data name="ShrinkUp" xml:space="preserve">
+    <value>SHRINK UP</value>
+  </data>
+  <data name="ShrinkUpLeft" xml:space="preserve">
+    <value>SHRINK
+UP &amp; LEFT</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="AdjustBy" xml:space="preserve">
+    <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
+  </data>
+  <data name="DecreaseOpacity" xml:space="preserve">
+    <value>DECREASE OPACITY</value>
+  </data>
+  <data name="IncreaseOpacity" xml:space="preserve">
+    <value>INCREASE OPACITY</value>
+  </data>
+  <data name="Minimise" xml:space="preserve">
+    <value>MINIMISE</value>
+  </data>
+  <data name="Currencies" xml:space="preserve">
+    <value>CURRENCIES</value>
+  </data>
+  <data name="Diacritics" xml:space="preserve">
+    <value>DIACRITICS</value>
+  </data>
+  <data name="NumericSymbols" xml:space="preserve">
+    <value>NUMERICS &amp; SYMBOLS</value>
+  </data>
+  <data name="Conversation" xml:space="preserve">
+    <value>CONVERSATION</value>
+  </data>
+  <data name="SizePosition" xml:space="preserve">
+    <value>SIZE &amp; POSITION</value>
+  </data>
+  <data name="PhysicalKeys" xml:space="preserve">
+    <value>PHYSICAL KEYS</value>
+  </data>
+  <data name="EscapeKey" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="BreakKey" xml:space="preserve">
+    <value>BREAK</value>
+  </data>
+  <data name="DeleteKey" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="InsertKey" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="PageUpKey" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PageDownKey" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="UpKey" xml:space="preserve">
+    <value>UP ARROW</value>
+  </data>
+  <data name="DownKey" xml:space="preserve">
+    <value>DOWN ARROW</value>
+  </data>
+  <data name="LeftKey" xml:space="preserve">
+    <value>LEFT ARROW</value>
+  </data>
+  <data name="RightKey" xml:space="preserve">
+    <value>RIGHT ARROW</value>
+  </data>
+  <data name="MenuKey" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="HomeKey" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="PrintScreenKey" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="NumLock" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="ScrollLock" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="EndKey" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="AtLocation" xml:space="preserve">
+    <value>Do at current location...</value>
+  </data>
+  <data name="AtPoint" xml:space="preserve">
+    <value>Do at point...</value>
+  </data>
+  <data name="MoveTo" xml:space="preserve">
+    <value>MOVE TO</value>
+  </data>
+  <data name="LeftClick" xml:space="preserve">
+    <value>LEFT CLICK</value>
+  </data>
+  <data name="MiddleClick" xml:space="preserve">
+    <value>MIDDLE CLICK</value>
+  </data>
+  <data name="RightClick" xml:space="preserve">
+    <value>RIGHT CLICK</value>
+  </data>
+  <data name="LeftDownUp" xml:space="preserve">
+    <value>LEFT DOWN/UP</value>
+  </data>
+  <data name="MiddleDownUp" xml:space="preserve">
+    <value>MIDDLE DOWN/UP</value>
+  </data>
+  <data name="RightDownUp" xml:space="preserve">
+    <value>RIGHT DOWN/UP</value>
+  </data>
+  <data name="LeftDoubleClick" xml:space="preserve">
+    <value>LEFT DOUBLE CLICK</value>
+  </data>
+  <data name="Magnifier" xml:space="preserve">
+    <value>MAGNIFIER</value>
+  </data>
+  <data name="Magnetic" xml:space="preserve">
+    <value>MAGNETIC CURSOR</value>
+  </data>
+  <data name="MoveBy" xml:space="preserve">
+    <value>Move by {0} pixel:|Move by {0} pixels:</value>
+  </data>
+  <data name="ScrollBy" xml:space="preserve">
+    <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
+  </data>
+  <data name="Drag" xml:space="preserve">
+    <value>CLICK &amp; DRAG</value>
+  </data>
+  <data name="ScrollUp" xml:space="preserve">
+    <value>SCROLL UP</value>
+  </data>
+  <data name="ScrollDown" xml:space="preserve">
+    <value>SCROLL DOWN</value>
+  </data>
+  <data name="ScrollRight" xml:space="preserve">
+    <value>SCROLL RIGHT</value>
+  </data>
+  <data name="ScrollLeft" xml:space="preserve">
+    <value>SCROLL LEFT</value>
+  </data>
+  <data name="CollapseDock" xml:space="preserve">
+    <value>COLLAPSE DOCK</value>
+  </data>
+  <data name="RepeatLast" xml:space="preserve">
+    <value>REPEAT LAST</value>
+  </data>
+  <data name="ExpandDock" xml:space="preserve">
+    <value />
+  </data>
+  <data name="QuitMessage" xml:space="preserve">
+    <value>Are you sure you would like to quit?</value>
+  </data>
+  <data name="QuitConfirmationMessage" xml:space="preserve">
+    <value>Are you absolutely sure that you'd like to quit?</value>
   </data>
 </root>

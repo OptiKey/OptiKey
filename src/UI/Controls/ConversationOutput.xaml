@@ -8,6 +8,7 @@
              xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
              xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -44,7 +45,7 @@
 
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource SuggestionLeftIcon}"
-                      Text="PREVIOUS"
+                      Text="{x:Static resx:Resources.Prev}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
@@ -128,7 +129,7 @@
         </Grid>
         <controls:Key Grid.Row="0" Grid.Column="10"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
-                      Text="NEXT"
+                      Text="{x:Static resx:Resources.Next}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
@@ -137,7 +138,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
-                      Text="ADD TO&#x0a;DICTIONARY"
+                      Text="{x:Static resx:Resources.AddToDictionary}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
@@ -145,7 +146,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
-                      Text="CLEAR"
+                      Text="{x:Static resx:Resources.Clear}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
@@ -155,7 +156,7 @@
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
         <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
-                      Text="SPEAK"
+                      Text="{x:Static resx:Resources.Speak}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
@@ -163,7 +164,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="RE-CALIBRATE"
+                      Text="{x:Static resx:Resources.Calibrate}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />

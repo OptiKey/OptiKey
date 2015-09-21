@@ -382,13 +382,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var candidate = candidates.First();
 
                 var prompt = candidate.Contains(' ')
-                    ? string.Format(Resources.AddToDictionnaryWithShortcutPrompt, 
+                    ? string.Format(Resources.AddToDictionaryWithShortcutPrompt, 
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
                     : string.Format(Resources.AddToDictionaryPrompt, candidate);
 
                 if (candidate.Any(Char.IsUpper))
                 {
-                    prompt = string.Concat(prompt, Resources.AddToDictionnaryCapitalInfo);
+                    prompt = string.Concat(prompt, Resources.AddToDictionaryCapitalInfo);
                 }
 
                 var similarEntries = dictionaryService.GetAllEntries()
