@@ -345,5 +345,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return null;
         }
+
+        public static string ToString(this List<string> strings, string nullValue)
+        {
+            string output = nullValue;
+
+            if (strings != null)
+            {
+                output = string.Join(",", strings);
+            }
+
+            return output;
+        }
     }
 }
