@@ -395,7 +395,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification("Hmm, nothing new here!", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
+                    RaiseToastNotification(Resources.NoTextFoundTitle, Resources.NoTextFoundMessage, 
                         NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
@@ -413,13 +413,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var candidate = candidates.First();
 
                 var prompt = candidate.Contains(' ')
-                    ? string.Format("Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?", 
+                    ? string.Format(Resources.AddToDictionaryWithShortcutPrompt, 
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
-                    : string.Format("Would you like to add the word '{0}' to the dictionary?", candidate);
+                    : string.Format(Resources.AddToDictionaryPrompt, candidate);
 
                 if (candidate.Any(Char.IsUpper))
                 {
-                    prompt = string.Concat(prompt, "\n(The new dictionary entry will contain capital letters)");
+                    prompt = string.Concat(prompt, Resources.AddToDictionaryCapitalInfo);
                 }
 
                 var similarEntries = dictionaryService.GetAllEntries()
@@ -429,7 +429,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (similarEntries.Any())
                 {
-                    string similarEntriesPrompt = string.Format("(FYI some similar entries are already in the dictionary: {0})", 
+                    string similarEntriesPrompt = string.Format(Resources.AddToDictionarySimilarityFound, 
                         string.Join(", ", similarEntries.Select(se => string.Format("'{0}'", se))));
 
                     prompt = string.Concat(prompt, "\n\n", similarEntriesPrompt);
@@ -447,7 +447,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         inputService.RequestSuspend();
                         nextAction();
 
-                        RaiseToastNotification("Added", string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate),
+                        RaiseToastNotification(Resources.AddedToDictionaryTitle, string.Format(Resources.AddedToDictionaryMessage, candidate),
                             NotificationTypes.Normal, () => { inputService.RequestResume(); });
                     },
                     () => nextAction());

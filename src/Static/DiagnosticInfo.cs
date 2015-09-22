@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Enums;
 using JuliusSweetland.OptiKey.Native.Structs;
 using Microsoft.Win32;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Static
 {
@@ -69,12 +70,12 @@ namespace JuliusSweetland.OptiKey.Static
 
         public static string ProcessBitness
         {
-            get { return Environment.Is64BitProcess ? "64-Bit" : "32-Bit"; }
+            get { return Environment.Is64BitProcess ? Resources.Arch64 : Resources.Arch32; }
         }
 
         public static string OperatingSystemBitness
         {
-            get { return Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit"; }
+            get { return Environment.Is64BitOperatingSystem ? Resources.Arch64 : Resources.Arch32; }
         }
 
         public static string OperatingSystemVersion
@@ -90,49 +91,49 @@ namespace JuliusSweetland.OptiKey.Static
                 switch (vs.Major)
                 {
                     case 3:
-                        return "Windows NT 3.51";
+                        return Resources.WinNT351;
 
                     case 4:
-                        return "Windows NT 4.0";
+                        return Resources.WinNT40;
 
                     case 5:
-                        if (vs.Minor == 0) return "Windows 2000";
-                        if (vs.Minor == 1) return "Windows XP";
+                        if (vs.Minor == 0) return Resources.Win2000;
+                        if (vs.Minor == 1) return Resources.WinXP;
                         if (IsServerVersion())
                         {
-                            if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
-                            return "Windows Server 2003 R2";
+                            if (PInvoke.GetSystemMetrics(89) == 0) return Resources.WinSrv2003;
+                            return Resources.WinSrv2003R2;
                         }
-                        return "Windows XP";
+                        return Resources.WinXP;
 
                     case 6:
                         if (vs.Minor == 0)
                         {
-                            if (IsServerVersion()) return "Windows Server 2008";
-                            return "Windows Vista";
+                            if (IsServerVersion()) return Resources.WinSrv2008;
+                            return Resources.WinVista;
                         }
                         if (vs.Minor == 1)
                         {
-                            if (IsServerVersion()) return "Windows Server 2008 R2";
-                            return "Windows 7";
+                            if (IsServerVersion()) return Resources.WinSrv2008R2;
+                            return Resources.Win7;
                         }
                         if (vs.Minor == 2)
                         {
-                            if (IsServerVersion()) return "Windows Server 2012";
-                            return "Windows 8";
+                            if (IsServerVersion()) return Resources.WinSrv2012;
+                            return Resources.Win8;
                         }
                         if (vs.Minor == 3)
                         {
-                            if (IsServerVersion()) return "Windows Server 2012 R2";
-                            return "Windows 8.1";
+                            if (IsServerVersion()) return Resources.WinSrv2012R2;
+                            return Resources.Win81;
                         }
                         break;
 
                     case 10:
-                        return "Windows 10";
+                        return Resources.Win10;
                 }
 
-                return string.Format("OS v{0}.{1}", vs.Major, vs.Minor);
+                return string.Format(Resources.OS, vs.Major, vs.Minor);
             }
         }
 
@@ -142,7 +143,7 @@ namespace JuliusSweetland.OptiKey.Static
             {
                 var os = new OSVERSIONINFO { dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFO)) };
                 PInvoke.GetVersionEx(ref os); 
-                return string.IsNullOrEmpty(os.szCSDVersion) ? "No Service Pack" : os.szCSDVersion; 
+                return string.IsNullOrEmpty(os.szCSDVersion) ? Resources.NoServicePack : os.szCSDVersion; 
             }
         }
 

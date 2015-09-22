@@ -7,6 +7,7 @@
              xmlns:interactionRequest="http://www.codeplex.com/prism"
              xmlns:triggerActions="clr-namespace:JuliusSweetland.OptiKey.UI.TriggerActions"
              xmlns:management="clr-namespace:JuliusSweetland.OptiKey.UI.Views.Management"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -22,32 +23,35 @@
              <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TabControl Grid.IsSharedSizeScope="True">
-            <TabItem Header="Visuals">
+            <TabItem Header="{x:Static resx:Resources.VisualsSection}">
                 <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="Sounds">
+            <TabItem Header="{x:Static resx:Resources.SoundsSection}">
                 <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="Words">
+            <TabItem Header="{x:Static resx:Resources.WordsSection}">
                 <management:WordsView DataContext="{Binding WordsViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="Pointing &amp; Selecting">
+            <TabItem Header="{x:Static resx:Resources.PointingSection}">
                 <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="Dictionary">
+            <TabItem Header="{x:Static resx:Resources.DictionarySection}">
                 <management:DictionaryView DataContext="{Binding DictionaryViewModel, Mode=OneWay}" />
             </TabItem>
-            <TabItem Header="Other">
+            <TabItem Header="{x:Static resx:Resources.OtherSection}">
                 <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Command="{Binding OkCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">OK</Button>
+                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                <x:Static Member="resx:Resources.Ok"/></Button>
             <Button Command="{Binding CancelCommand}" 
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">Cancel</Button>
+                    MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                <x:Static Member="resx:Resources.Cancel"/>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
