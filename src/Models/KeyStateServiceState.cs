@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 
@@ -21,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Models
             this.keyStateService = keyStateService;
             foreach (var key in keyStateService.KeyDownStates.Keys)
             {
-                Log.InfoFormat("Storing key down state of '{0}' as '{1}'.", key, keyStateService.KeyDownStates[key]);
+                Log.InfoFormat("Storing key down state of '{0}' as '{1}'.", key.ToString().ConvertEscapedCharsToLiterals(), keyStateService.KeyDownStates[key].Value);
                 keyDownStates[key] = keyStateService.KeyDownStates[key].Value;
             }
         }
@@ -31,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Models
             Log.InfoFormat("Restoring KeyStateService state for SimulateKeyStrokes={0}.", simulateKeyStrokes);
             foreach (var key in keyDownStates.Keys)
             {
-                Log.InfoFormat("Restoring key down state on '{0}' to '{1}'.", key, keyDownStates[key]);
+                Log.InfoFormat("Restoring key down state on '{0}' to '{1}'.", key.ToString().ConvertEscapedCharsToLiterals(), keyDownStates[key]);
                 keyStateService.KeyDownStates[key].Value = keyDownStates[key];
             }
         }
