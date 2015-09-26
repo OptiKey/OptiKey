@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docs\Design decision notes.txt = docs\Design decision notes.txt
 		docs\Icon design notes.txt = docs\Icon design notes.txt
 		docs\Localize.md = docs\Localize.md
+		docs\Localisation.xls = docs\Localisation.xls
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt
 		docs\UiAccess.txt = docs\UiAccess.txt
 	EndProjectSection
