@@ -1,10 +1,14 @@
-﻿namespace JuliusSweetland.OptiKey.Enums
+using System.Globalization;
+using JuliusSweetland.OptiKey.Properties;
+
+namespace JuliusSweetland.OptiKey.Enums
 {
     public enum Languages
     {
         AmericanEnglish,
         BritishEnglish,
-        CanadianEnglish
+        CanadianEnglish, 
+        FranceFrench
     }
 
     public static partial class EnumExtensions
@@ -13,12 +17,26 @@
         {
             switch (languages)
             {
-                case Languages.AmericanEnglish: return "American English";
-                case Languages.BritishEnglish: return "British English";
-                case Languages.CanadianEnglish: return "Canadian English";
+                case Languages.AmericanEnglish: return Resources.AMERICAN_ENGLISH;
+                case Languages.BritishEnglish: return Resources.BRITISH_ENGLISH;
+                case Languages.CanadianEnglish: return Resources.CANADIAN_ENGLISH;
+                case Languages.FranceFrench: return Resources.FRANCE_FRENCH;
             }
 
             return languages.ToString();
+        }
+
+        public static CultureInfo ToCultureInfo(this Languages languages)
+        {
+            switch (languages)
+            {
+                case Languages.AmericanEnglish: return CultureInfo.GetCultureInfo("en-US");
+                case Languages.BritishEnglish: return CultureInfo.GetCultureInfo("en-GB");
+                case Languages.CanadianEnglish: return CultureInfo.GetCultureInfo("en-CA");
+                case Languages.FranceFrench: return CultureInfo.GetCultureInfo("fr-FR");
+            }
+
+            return CultureInfo.GetCultureInfo("en-GB");
         }
     }
 }

@@ -9,6 +9,7 @@ using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Enums;
 using JuliusSweetland.OptiKey.Native.Structs;
 using Microsoft.Win32;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Static
 {
@@ -179,7 +180,7 @@ namespace JuliusSweetland.OptiKey.Static
                             }
                             else
                             {
-                                throw new ApplicationException("Unable to determine the current elevation.");
+                                throw new ApplicationException(Resources.UNABLE_TO_DETERMINE_CURRENT_ELEVATION);
                             }
                         }
                         finally
@@ -228,16 +229,8 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                try
-                {
-                    var uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
-                    return uacKey.GetValue(uacRegistryValue).Equals(1);
-                }
-                catch(NullReferenceException)
-                {
-                    // if there is no key, then it must not be enabled
-                    return false;
-                }
+                var uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
+                return uacKey != null && uacKey.GetValue(uacRegistryValue).Equals(1);
             }
         }
     }
