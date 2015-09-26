@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="0" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center">
-            <Label Content="{x:Static resx:Resources.NewEntry}" 
+            <Label Content="{x:Static resx:Resources.ADD_NEW_ENTRY_TO_DICTIONARY}" 
                    FontWeight="Bold"
                    Margin="2" 
                    VerticalAlignment="Center" />
@@ -28,7 +28,7 @@
                      Text="{Binding NewEntry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Margin="2" 
                      VerticalAlignment="Center" />
-            <Button Content="{x:Static resx:Resources.Add}" 
+            <Button Content="{x:Static resx:Resources.ADD_DICTIONARY_ENTRY}" 
                     Command="{Binding AddCommand}" 
                     Margin="2" 
                     VerticalAlignment="Center" />
@@ -74,10 +74,10 @@
                                 CommandParameter="{Binding Entry}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                                    <Setter Property="Content" Value="{x:Static resx:Resources.Delete}" />
+                                    <Setter Property="Content" Value="{x:Static resx:Resources.DELETE_DICTIONARY_ENTRY}" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Deleted}" Value="True">
-                                            <Setter Property="Content" Value="{x:Static resx:Resources.Restore}" />
+                                            <Setter Property="Content" Value="{x:Static resx:Resources.RESTORE_DICTIONARY_ENTRY}" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

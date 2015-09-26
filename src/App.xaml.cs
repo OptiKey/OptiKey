@@ -292,8 +292,8 @@ namespace JuliusSweetland.OptiKey
                 string filename = ((ConfigurationErrorsException)cee.InnerException).Filename;
 
                 if (MessageBox.Show(
-                        OptiKey.Properties.Resources.CorruptedSettingsMessage,
-                        OptiKey.Properties.Resources.CorruptedSettingsTitle,
+                        OptiKey.Properties.Resources.CORRUPTED_SETTINGS_MESSAGE,
+                        OptiKey.Properties.Resources.CORRUPTED_SETTINGS_TITLE,
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Error) == MessageBoxResult.Yes)
                 {
@@ -485,16 +485,16 @@ namespace JuliusSweetland.OptiKey
 
                 var message = new StringBuilder();
 
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashVersion, DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashLanguage, Settings.Default.Language.ToDescription()));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashPointing, Settings.Default.PointsSource.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.LANGUAGE_DESCRIPTION, Settings.Default.Language.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
                 keySelectionSb.Append(Settings.Default.KeySelectionTriggerSource.ToDescription());
                 switch (Settings.Default.KeySelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.SplashDuration, Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
@@ -505,14 +505,14 @@ namespace JuliusSweetland.OptiKey
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashKeySelection, keySelectionSb));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
 
                 var pointSelectionSb = new StringBuilder();
                 pointSelectionSb.Append(Settings.Default.PointSelectionTriggerSource.ToDescription());
                 switch (Settings.Default.PointSelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        pointSelectionSb.Append(string.Format(OptiKey.Properties.Resources.SplashDuration, Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        pointSelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.PointSelectionTriggerFixationCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
@@ -523,15 +523,15 @@ namespace JuliusSweetland.OptiKey
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.SplashPointSelection, pointSelectionSb));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
 
-                message.AppendLine(OptiKey.Properties.Resources.SplashSettings);
-                message.AppendLine(OptiKey.Properties.Resources.SplashWebsite);
+                message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
+                message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);
 
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
-                    OptiKey.Properties.Resources.SplashTitle, 
+                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION, 
                     message.ToString(), 
                     NotificationTypes.Normal,
                     () =>
@@ -585,8 +585,8 @@ namespace JuliusSweetland.OptiKey
 
                                 inputService.RequestSuspend();
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.NewVersionTitle,
-                                    string.Format(OptiKey.Properties.Resources.NewVersionMessage, release.TagName),
+                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
+                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, release.TagName),
                                     NotificationTypes.Normal,
                                     () => 
                                         {

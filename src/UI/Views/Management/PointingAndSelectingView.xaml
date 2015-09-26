@@ -17,7 +17,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.PointingSettings}">
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.POINTING}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -29,7 +29,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.PointingSource}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SOURCE_LABEL}" 
                                 VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                                 ItemsSource="{Binding PointsSources}"
@@ -37,7 +37,7 @@
                                 SelectedValuePath="Value"
                                 SelectedValue="{Binding PointsSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MousePositionInterval}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_POSITION_SAMPLE_INTERVAL_LABEL}" 
                                 VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -65,7 +65,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.PointDiscardInterval}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
                                 VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
@@ -73,7 +73,7 @@
                 </Grid>
             </GroupBox>
         
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SelectionSettings}">
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SELECTION}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -98,8 +98,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-            
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KeyTrigger}" 
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding TriggerSources}"
@@ -107,7 +107,7 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding KeySelectionTriggerSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.KeyFixationTime}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -135,7 +135,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ResumeKey}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -163,7 +163,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KeyCompleteTime}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -191,7 +191,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.IncompleteFixationTime}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.INCOMPLETE_KEY_FIXATION_TTL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -219,7 +219,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.SelectionKey}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -247,7 +247,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.SelectionButton}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_MOUSE_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -275,7 +275,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.PointTrigger}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="7" Grid.Column="1" 
                               ItemsSource="{Binding TriggerSources}"
@@ -283,7 +283,7 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding PointSelectionTriggerSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.PointFixationTime}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -311,7 +311,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.PointCompleteTime}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_COMPLETE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -339,7 +339,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.PointRadius}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.POINT_LOCK_ON_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -367,7 +367,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
                     
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.PointFixationRadius}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -395,7 +395,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
             
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.PointKey}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -423,7 +423,7 @@
                         </ComboBox.Style>
                     </ComboBox>
             
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.PointButton}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_MOUSE_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -451,7 +451,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.ProgressBehaviour}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -487,7 +487,7 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.ProgressStartSize}" 
+                    <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -538,7 +538,7 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.ProgressEndSize}" 
+                    <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -590,8 +590,8 @@
                     </controls:NumericUpDown>
                 </Grid>
             </GroupBox>
-        
-            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.MultiKeySettings}">
+
+            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.MULTI_KEY_SELECTION}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -603,7 +603,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.MultiKeyStop}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.STOP_SIGNAL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
@@ -633,13 +633,13 @@
                         </ComboBox.Style>
                     </ComboBox>
                 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.IncludeMinTime}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE}" 
                                VerticalAlignment="Center" Margin="5"/>
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding MultiKeySelectionFixationMinDwellTimeInMs, Mode=TwoWay}"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.IncludeMaxTime}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.CAPTURE_TIMEOUT_LABEL}" 
                                VerticalAlignment="Center" Margin="5"/>
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"

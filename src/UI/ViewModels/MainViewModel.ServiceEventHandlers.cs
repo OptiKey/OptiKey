@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -186,8 +186,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Info("Calibrate requested.");
                             
                             var question = CalibrationService.CanBeCompletedWithoutManualIntervention
-                                ? Resources.RecalibrateConfirmation
-                                : Resources.CalibrationWarning;
+                                ? Resources.CALIBRATION_CONFIRMATION_MESSAGE
+                                : Resources.CALIBRATION_REQUIRES_MANUAL_INTERACTION;
                             
                             Keyboard = new YesNoQuestion(
                                 question,
@@ -200,14 +200,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         if (calibrationResult.Success)
                                         {
                                             audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                            RaiseToastNotification(Resources.SuccessTitle, calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
+                                            RaiseToastNotification(Resources.SUCCESS, calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
                                         }
                                         else
                                         {
                                             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                            RaiseToastNotification(Resources.ErrorTitle, calibrationResult.Exception != null
+                                            RaiseToastNotification(Resources.CRASH_TITLE, calibrationResult.Exception != null
                                                     ? calibrationResult.Exception.Message
-                                                    : calibrationResult.Message ?? Resources.CalibrationUnknownError, 
+                                                    : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR, 
                                                 NotificationTypes.Error, 
                                                 () => inputService.RequestResume());
                                         }
@@ -1069,10 +1069,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Quit:
                         Log.Info("Quit key selected.");
                         var keyboardBeforeQuit = Keyboard;
-                        Keyboard = new YesNoQuestion(Resources.QuitMessage,
+                        Keyboard = new YesNoQuestion(Resources.QUIT_MESSAGE,
                             () =>
                             {
-                                Keyboard = new YesNoQuestion(Resources.QuitConfirmationMessage,
+                                Keyboard = new YesNoQuestion(Resources.QUIT_CONFIRMATION_MESSAGE,
                                     () => Application.Current.Shutdown(),
                                     () => { Keyboard = keyboardBeforeQuit; });
                             },
@@ -1197,7 +1197,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.RequestSuspend();
             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification(Resources.ErrorTitle, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
+            RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
         }
     }
 }

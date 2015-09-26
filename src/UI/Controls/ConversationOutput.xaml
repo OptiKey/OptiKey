@@ -45,7 +45,7 @@
 
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource SuggestionLeftIcon}"
-                      Text="{x:Static resx:Resources.Prev}"
+                      Text="{x:Static resx:Resources.PREV}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
@@ -129,7 +129,7 @@
         </Grid>
         <controls:Key Grid.Row="0" Grid.Column="10"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
-                      Text="{x:Static resx:Resources.Next}"
+                      Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
@@ -138,7 +138,7 @@
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
-                      Text="{x:Static resx:Resources.AddToDictionary}"
+                      Text="{x:Static resx:Resources.ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
@@ -146,7 +146,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
-                      Text="{x:Static resx:Resources.Clear}"
+                      Text="{x:Static resx:Resources.CLEAR}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
@@ -156,7 +156,7 @@
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
         <controls:Key Grid.Row="1" Grid.Column="9"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
-                      Text="{x:Static resx:Resources.Speak}"
+                      Text="{x:Static resx:Resources.SPEAK}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
@@ -164,7 +164,7 @@
         </controls:Key>
         <controls:Key Grid.Row="1" Grid.Column="10"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="{x:Static resx:Resources.Calibrate}"
+                      Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />

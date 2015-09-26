@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -364,7 +364,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification(Resources.NoTextFoundTitle, Resources.NoTextFoundMessage, 
+                    RaiseToastNotification(Resources.NOTHING_NEW, Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD, 
                         NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
@@ -382,13 +382,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var candidate = candidates.First();
 
                 var prompt = candidate.Contains(' ')
-                    ? string.Format(Resources.AddToDictionaryWithShortcutPrompt, 
+                    ? string.Format(Resources.ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE, 
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
-                    : string.Format(Resources.AddToDictionaryPrompt, candidate);
+                    : string.Format(Resources.ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE, candidate);
 
                 if (candidate.Any(Char.IsUpper))
                 {
-                    prompt = string.Concat(prompt, Resources.AddToDictionaryCapitalInfo);
+                    prompt = string.Concat(prompt, Resources.NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS);
                 }
 
                 var similarEntries = dictionaryService.GetAllEntries()
@@ -398,7 +398,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (similarEntries.Any())
                 {
-                    string similarEntriesPrompt = string.Format(Resources.AddToDictionarySimilarityFound, 
+                    string similarEntriesPrompt = string.Format(Resources.SIMILAR_DICTIONARY_ENTRIES_EXIST, 
                         string.Join(", ", similarEntries.Select(se => string.Format("'{0}'", se))));
 
                     prompt = string.Concat(prompt, "\n\n", similarEntriesPrompt);
@@ -416,7 +416,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         inputService.RequestSuspend();
                         nextAction();
 
-                        RaiseToastNotification(Resources.AddedToDictionaryTitle, string.Format(Resources.AddedToDictionaryMessage, candidate),
+                        RaiseToastNotification(Resources.ADDED, string.Format(Resources.ENTRY_ADDED_TO_DICTIONARY, candidate),
                             NotificationTypes.Normal, () => { inputService.RequestResume(); });
                     },
                     () => nextAction());

@@ -107,8 +107,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, TriggerStopSignals>>
                 {
-                    new KeyValuePair<string, TriggerStopSignals>("Trigger button/key pressed again", Enums.TriggerStopSignals.NextHigh),
-                    new KeyValuePair<string, TriggerStopSignals>("Trigger button/key released", Enums.TriggerStopSignals.NextLow)
+                    new KeyValuePair<string, TriggerStopSignals>(Resources.TRIGGER_PRESSED_AGAIN, Enums.TriggerStopSignals.NextHigh),
+                    new KeyValuePair<string, TriggerStopSignals>(Resources.TRIGGER_RELEASED, Enums.TriggerStopSignals.NextLow)
                 };
             }
         }
@@ -119,9 +119,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, ProgressIndicatorBehaviours>>
                 {
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.FillPieIndicator, Enums.ProgressIndicatorBehaviours.FillPie),
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.GrowIndicator, Enums.ProgressIndicatorBehaviours.Grow),
-                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.ShrinkIndicator, Enums.ProgressIndicatorBehaviours.Shrink)
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.FILL_PIE, Enums.ProgressIndicatorBehaviours.FillPie),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.GROW, Enums.ProgressIndicatorBehaviours.Grow),
+                    new KeyValuePair<string, ProgressIndicatorBehaviours>(Resources.SHRINK_INDICATOR, Enums.ProgressIndicatorBehaviours.Shrink)
                 };
             }
         }

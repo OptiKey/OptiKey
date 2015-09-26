@@ -25,7 +25,7 @@
                    Margin="10,10,10,10" TextWrapping="Wrap" FontSize="12" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-            <Button Content="{x:Static resx:Resources.Ok}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
+            <Button Content="{x:Static resx:Resources.OK}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:ChangePropertyAction PropertyName="Confirmed" TargetObject="{Binding}" Value="True"/>
@@ -34,7 +34,7 @@
                 </i:Interaction.Triggers>
             </Button>
 
-            <Button Content="{x:Static resx:Resources.Cancel}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
+            <Button Content="{x:Static resx:Resources.CANCEL}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:CallMethodAction TargetObject="{Binding ElementName=confirmationWindow}" MethodName="Close"/>

@@ -241,7 +241,7 @@
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
-                      Text="{x:Static resx:Resources.BackKey}"
+                      Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
@@ -249,7 +249,7 @@
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
-                      Text="{x:Static resx:Resources.BackWord}"
+                      Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
@@ -260,7 +260,7 @@
         <controls:Key Grid.Row="5" Grid.Column="0" />
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
-                      Text="{x:Static resx:Resources.ShiftKey}"
+                      Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
@@ -268,7 +268,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="{x:Static resx:Resources.NumSym}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationNumericAndSymbolsKeyboard}" />
@@ -283,7 +283,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
-                      Text="{x:Static resx:Resources.SpaceKey}"
+                      Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
@@ -299,7 +299,7 @@
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
-                      Text="{x:Static resx:Resources.MultiSelection}"
+                      Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
@@ -311,7 +311,7 @@
                     <Setter Property="Content">
                         <Setter.Value>
                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                          Text="{x:Static resx:Resources.Back}"
+                                          Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithSymbol">
                                 <controls:Key.Value>
                                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
@@ -324,7 +324,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
-                                                  Text="{x:Static resx:Resources.Quit}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
                                                   SharedSizeGroup="KeyWithSymbol">
                                         <controls:Key.Value>
                                             <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
@@ -339,7 +339,7 @@
         </ContentControl>
         <controls:Key Grid.Row="5" Grid.Column="17" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.Sleep}"
+                      Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />

@@ -57,7 +57,7 @@
         <controls:Key Grid.Row="4" Grid.Column="4" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
-                      Text="{x:Static resx:Resources.Yes}"
+                      Text="{x:Static resx:Resources.YES}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="YesQuestionResult" />
@@ -67,7 +67,7 @@
         <controls:Key Grid.Row="4" Grid.Column="14" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
-                      Text="{x:Static resx:Resources.No}"
+                      Text="{x:Static resx:Resources.NO}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="NoQuestionResult" />

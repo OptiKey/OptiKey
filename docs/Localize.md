@@ -23,12 +23,18 @@ In `src\UI\ViewModels\Management\WordsViewModel.cs`:
 
 ## Provide new translation
 
-In the `src\Properties` folder, add a new .resx file.
+We're using [Transifex][3] collaboration website to find translators and review translations.
+
+Register on Transifex, and search for the [OptiKey orgnanization][4]. 
+Ask to become a member, and submit the language(s) you would like to work on.
+
+Julius will create if necessary the ResX file translation for your language, and once it will be reviewed, 
+you can download it for usage.
+
+In the `src\Properties` folder, copy your localized .resx file.
 
 Its name must start with `Resources.` then you'll put your locale code, and after the extension `.resx`
 Use .Net [supported locale codes][1], with optionnal regionnal code, like fr-CA for french spoken in Quebec.
-
-The you can copy in your locale file all keys that you'd like to translate from the default english resx file.
 
 You may use the [VisualLocalizer][2] add-on for a more comfortable resx edition.
 
@@ -70,3 +76,5 @@ In `\src\UI\Controls\KeyboardHost.cs`, associate your layout to the right locale
 
 [1]: https://msdn.microsoft.com/en-us/library/hh441729.aspx
 [2]: https://visuallocalizer.codeplex.com/
+[3]: https://www.transifex.com
+[4]: https://www.transifex.com/optikey/

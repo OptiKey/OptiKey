@@ -70,12 +70,12 @@ namespace JuliusSweetland.OptiKey.Static
 
         public static string ProcessBitness
         {
-            get { return Environment.Is64BitProcess ? Resources.Arch64 : Resources.Arch32; }
+            get { return Environment.Is64BitProcess ? "64-Bit" : "32-Bit"; }
         }
 
         public static string OperatingSystemBitness
         {
-            get { return Environment.Is64BitOperatingSystem ? Resources.Arch64 : Resources.Arch32; }
+            get { return Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit"; }
         }
 
         public static string OperatingSystemVersion
@@ -91,49 +91,49 @@ namespace JuliusSweetland.OptiKey.Static
                 switch (vs.Major)
                 {
                     case 3:
-                        return Resources.WinNT351;
+                        return "Windows NT 3.51";
 
                     case 4:
-                        return Resources.WinNT40;
+                        return "Windows NT 4.0";
 
                     case 5:
-                        if (vs.Minor == 0) return Resources.Win2000;
-                        if (vs.Minor == 1) return Resources.WinXP;
+                        if (vs.Minor == 0) return "Windows 2000";
+                        if (vs.Minor == 1) return "Windows XP";
                         if (IsServerVersion())
                         {
-                            if (PInvoke.GetSystemMetrics(89) == 0) return Resources.WinSrv2003;
-                            return Resources.WinSrv2003R2;
+                            if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
+                            return "Windows Server 2003 R2";
                         }
-                        return Resources.WinXP;
+                        return "Windows XP";
 
                     case 6:
                         if (vs.Minor == 0)
                         {
-                            if (IsServerVersion()) return Resources.WinSrv2008;
-                            return Resources.WinVista;
+                            if (IsServerVersion()) return "Windows Server 2008";
+                            return "Windows Vista";
                         }
                         if (vs.Minor == 1)
                         {
-                            if (IsServerVersion()) return Resources.WinSrv2008R2;
-                            return Resources.Win7;
+                            if (IsServerVersion()) return "Windows Server 2008 R2";
+                            return "Windows 7";
                         }
                         if (vs.Minor == 2)
                         {
-                            if (IsServerVersion()) return Resources.WinSrv2012;
-                            return Resources.Win8;
+                            if (IsServerVersion()) return "Windows Server 2012";
+                            return "Windows 8";
                         }
                         if (vs.Minor == 3)
                         {
-                            if (IsServerVersion()) return Resources.WinSrv2012R2;
-                            return Resources.Win81;
+                            if (IsServerVersion()) return "Windows Server 2012 R2";
+                            return "Windows 8.1";
                         }
                         break;
 
                     case 10:
-                        return Resources.Win10;
+                        return "Windows 10";
                 }
 
-                return string.Format(Resources.OS, vs.Major, vs.Minor);
+                return string.Format("OS v{0}.{1}", vs.Major, vs.Minor);
             }
         }
 
@@ -143,7 +143,7 @@ namespace JuliusSweetland.OptiKey.Static
             {
                 var os = new OSVERSIONINFO { dwOSVersionInfoSize = Marshal.SizeOf(typeof(OSVERSIONINFO)) };
                 PInvoke.GetVersionEx(ref os); 
-                return string.IsNullOrEmpty(os.szCSDVersion) ? Resources.NoServicePack : os.szCSDVersion; 
+                return string.IsNullOrEmpty(os.szCSDVersion) ? "No Service Pack" : os.szCSDVersion; 
             }
         }
 
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.Static
                             }
                             else
                             {
-                                throw new ApplicationException("Unable to determine the current elevation.");
+                                throw new ApplicationException(Resources.UNABLE_TO_DETERMINE_CURRENT_ELEVATION);
                             }
                         }
                         finally

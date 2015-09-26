@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
@@ -87,8 +87,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = Resources.RestartTitle,
-                        Content = Resources.RestartMessage
+                        Title = Resources.VERIFY_RESTART,
+                        Content = Resources.RESTART_MESSAGE
                     }, confirmation =>
                     {
                         if (confirmation.Confirmed)

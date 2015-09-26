@@ -15,7 +15,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
         
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.SpeechSettings}">
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.SPEECH}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -27,19 +27,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SpeechVoice}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding SpeechVoices}"
                               SelectedValue="{Binding SpeechVoice, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.SpeechVolume}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VOLUME_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding SpeechVolume, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SpeechRate}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.RATE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="-10" Maximum="10" Interval="1"
@@ -47,7 +47,7 @@
                 </Grid>
             </GroupBox>
         
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SoundEffectsSettings}">
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SOUND_EFFECTS}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -66,7 +66,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.InfoSoundSetting}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.INFO_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="0" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -85,11 +85,11 @@
                                                 Value="{Binding InfoSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding InfoSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ErrorSoundSetting}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ERROR_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="1" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -108,11 +108,11 @@
                                                 Value="{Binding ErrorSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding ErrorSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.KeySelectionSoundSetting}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="2" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -131,11 +131,11 @@
                                                 Value="{Binding KeySelectionSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding KeySelectionSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MultiKeyStartSoundSetting}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_STARTING_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="3" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -154,11 +154,11 @@
                                                 Value="{Binding MultiKeySelectionCaptureStartSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MultiKeySelectionCaptureStartSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MultiKeyEndSoundSetting}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_ENDING_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="4" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -177,11 +177,11 @@
                                                 Value="{Binding MultiKeySelectionCaptureEndSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MultiKeySelectionCaptureEndSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MouseClickSoundSetting}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_CLICK_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="5" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -200,11 +200,11 @@
                                                 Value="{Binding MouseClickSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MouseClickSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.MouseDownSoundSetting}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_DOWN_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="6" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -223,11 +223,11 @@
                                                 Value="{Binding MouseDownSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MouseDownSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MouseUpSoundSetting}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_UP_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="7" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -246,11 +246,11 @@
                                                 Value="{Binding MouseUpSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MouseUpSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.DoubleClickSoundSetting}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_DOUBLE_CLICK_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="8" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -269,11 +269,11 @@
                                                 Value="{Binding MouseDoubleClickSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MouseDoubleClickSoundPlayCommand}"/>
                     </Grid>
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.ScrollSoundSetting}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_SCROLL_SOUND_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <Grid Grid.Row="9" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
@@ -292,7 +292,7 @@
                                                 Value="{Binding MouseScrollSoundVolume, Mode=TwoWay}" />
                         <Button Grid.Column="2"
                                 HorizontalAlignment="Center"
-                                Content="{x:Static resx:Resources.Play}"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
                                 Command="{Binding MouseScrollSoundPlayCommand}"/>
                     </Grid>
                 </Grid>

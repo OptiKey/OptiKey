@@ -19,15 +19,15 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-        
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LanguageSettings}">
+
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LANGUAGE}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-            
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.Language}" 
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.LANGUAGE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding Languages}"
@@ -36,8 +36,8 @@
                               SelectedValue="{Binding Language, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
-        
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SentenceAdjust}">
+
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.AUTO_SENTENCE_ADJUSTMENTS}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -49,20 +49,20 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-            
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.AutoSpacing}" 
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_SPACE_BETWEEN_WORDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding AutoAddSpace, Mode=TwoWay}" />
-            
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.AutoCaps}" 
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_CAPITALISE_WORDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="1" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding AutoCapitalise, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.UselessCapsRemoval}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.INTELLIGENTLY_SUPPRESS_AUTO_CAPS}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -89,16 +89,16 @@
                             </Style>
                         </CheckBox.Style>    
                     </CheckBox>
-                    
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.AutoComplete}" 
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_COMPLETE_WORDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding AutoCompleteWords, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
-    
-            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.MultiKeysSettings}">
+
+            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.MULTI_KEY_CAPTURES}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -109,13 +109,13 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.EnableMultiKeys}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_CAPTURES_ENABLED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="0" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding MultiKeySelectionEnabled, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MaxMatches}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MAX_DICTIONARY_MATCHES_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"

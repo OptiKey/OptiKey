@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Enums
@@ -17,10 +17,10 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
-                case Languages.AmericanEnglish: return Resources.AmericanEnglish;
-                case Languages.BritishEnglish: return Resources.BritishEnglish;
-                case Languages.CanadianEnglish: return Resources.CanadianEnglish;
-                case Languages.FranceFrench: return Resources.FranceFrench;
+                case Languages.AmericanEnglish: return Resources.AMERICAN_ENGLISH;
+                case Languages.BritishEnglish: return Resources.BRITISH_ENGLISH;
+                case Languages.CanadianEnglish: return Resources.CANADIAN_ENGLISH;
+                case Languages.FranceFrench: return Resources.FRANCE_FRENCH;
             }
 
             return languages.ToString();

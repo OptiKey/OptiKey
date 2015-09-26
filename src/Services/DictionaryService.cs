@@ -78,7 +78,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     else
                     {
-                        throw new ApplicationException(string.Format("No user dictionary exists and original dictionary could not be found at path: '{0}'", originalDictionaryPath));
+                        throw new ApplicationException(string.Format(Resources.DICTIONARY_FILE_NOT_FOUND_ERROR, originalDictionaryPath));
                     }
                 }
             }

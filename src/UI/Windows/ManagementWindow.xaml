@@ -4,7 +4,7 @@
                      xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                      xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
                      xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
-                     Title="{x:Static resx:Resources.ManagementConsoleTitle}"
+                     Title="{x:Static resx:Resources.MANAGEMENT_CONSOLE_TITLE}"
                      Topmost="True"
                      WindowStartupLocation="CenterScreen"
                      MinWidth="300" MinHeight="200"

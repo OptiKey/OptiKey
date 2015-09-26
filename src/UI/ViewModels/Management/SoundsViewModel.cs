@@ -52,21 +52,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.Click1Sound, @"Resources\Sounds\Click1.wav"),
-                    new KeyValuePair<string, string>(Resources.Click2Sound, @"Resources\Sounds\Click2.wav"),
-                    new KeyValuePair<string, string>(Resources.Click3Sound, @"Resources\Sounds\Click3.wav"),
-                    new KeyValuePair<string, string>(Resources.Click4Sound, @"Resources\Sounds\Click4.wav"),
-                    new KeyValuePair<string, string>(Resources.Click5Sound, @"Resources\Sounds\Click5.wav"),
-                    new KeyValuePair<string, string>(Resources.Click6Sound, @"Resources\Sounds\Click6.wav"),
-                    new KeyValuePair<string, string>(Resources.Tone1Sound, @"Resources\Sounds\Tone1.wav"),
-                    new KeyValuePair<string, string>(Resources.Tone2Sound, @"Resources\Sounds\Tone2.wav"),
-                    new KeyValuePair<string, string>(Resources.Tone3Sound, @"Resources\Sounds\Tone3.wav"),
-                    new KeyValuePair<string, string>(Resources.Tone4Sound, @"Resources\Sounds\Tone4.wav"),
-                    new KeyValuePair<string, string>(Resources.Rising1Sound, @"Resources\Sounds\Rising1.wav"),
-                    new KeyValuePair<string, string>(Resources.Rising2Sound, @"Resources\Sounds\Rising2.wav"),
-                    new KeyValuePair<string, string>(Resources.Falling1Sound, @"Resources\Sounds\Falling1.wav"),
-                    new KeyValuePair<string, string>(Resources.Falling2Sound, @"Resources\Sounds\Falling2.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_1, @"Resources\Sounds\Click1.wav"),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_2, @"Resources\Sounds\Click2.wav"),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_3, @"Resources\Sounds\Click3.wav"),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_4, @"Resources\Sounds\Click4.wav"),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_5, @"Resources\Sounds\Click5.wav"),
+                    new KeyValuePair<string, string>(Resources.CLICK_SOUND_6, @"Resources\Sounds\Click6.wav"),
+                    new KeyValuePair<string, string>(Resources.TONE_SOUND_1, @"Resources\Sounds\Tone1.wav"),
+                    new KeyValuePair<string, string>(Resources.TONE_SOUND_2, @"Resources\Sounds\Tone2.wav"),
+                    new KeyValuePair<string, string>(Resources.TONE_SOUND_3, @"Resources\Sounds\Tone3.wav"),
+                    new KeyValuePair<string, string>(Resources.TONE_SOUND_4, @"Resources\Sounds\Tone4.wav"),
+                    new KeyValuePair<string, string>(Resources.RISING_SOUND_1, @"Resources\Sounds\Rising1.wav"),
+                    new KeyValuePair<string, string>(Resources.RISING_SOUND_2, @"Resources\Sounds\Rising2.wav"),
+                    new KeyValuePair<string, string>(Resources.FALLING_SOUND_1, @"Resources\Sounds\Falling1.wav"),
+                    new KeyValuePair<string, string>(Resources.FALLING_SOUND_2, @"Resources\Sounds\Falling2.wav")
                 };
             }
         }
@@ -77,11 +77,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.MouseClick1Sound, @"Resources\Sounds\MouseClick1.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseClick2Sound, @"Resources\Sounds\MouseClick2.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseClick3Sound, @"Resources\Sounds\MouseClick3.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseClick4Sound, @"Resources\Sounds\MouseClick4.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.MOUSE_CLICK_SOUND_1, @"Resources\Sounds\MouseClick1.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_CLICK_SOUND_2, @"Resources\Sounds\MouseClick2.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_CLICK_SOUND_3, @"Resources\Sounds\MouseClick3.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_CLICK_SOUND_4, @"Resources\Sounds\MouseClick4.wav")
                 };
             }
         }
@@ -92,11 +92,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.MouseDown1Sound, @"Resources\Sounds\MouseDown1.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseDown2Sound, @"Resources\Sounds\MouseDown2.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseDown3Sound, @"Resources\Sounds\MouseDown3.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseDown4Sound, @"Resources\Sounds\MouseDown4.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOWN_SOUND_1, @"Resources\Sounds\MouseDown1.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOWN_SOUND_2, @"Resources\Sounds\MouseDown2.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOWN_SOUND_3, @"Resources\Sounds\MouseDown3.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOWN_SOUND_4, @"Resources\Sounds\MouseDown4.wav")
                 };
             }
         }
@@ -107,11 +107,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.MouseUp1Sound, @"Resources\Sounds\MouseUp1.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseUp2Sound, @"Resources\Sounds\MouseUp2.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseUp3Sound, @"Resources\Sounds\MouseUp3.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseUp4Sound, @"Resources\Sounds\MouseUp4.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.MOUSE_UP_SOUND_1, @"Resources\Sounds\MouseUp1.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_UP_SOUND_2, @"Resources\Sounds\MouseUp2.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_UP_SOUND_3, @"Resources\Sounds\MouseUp3.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_UP_SOUND_4, @"Resources\Sounds\MouseUp4.wav")
                 };
             }
         }
@@ -122,10 +122,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.MouseDoubleClick1Sound, @"Resources\Sounds\MouseDoubleClick1.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseDoubleClick2Sound, @"Resources\Sounds\MouseDoubleClick2.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseDoubleClick3Sound, @"Resources\Sounds\MouseDoubleClick3.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOUBLE_CLICK_SOUND_1, @"Resources\Sounds\MouseDoubleClick1.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOUBLE_CLICK_SOUND_2, @"Resources\Sounds\MouseDoubleClick2.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_DOUBLE_CLICK_SOUND_3, @"Resources\Sounds\MouseDoubleClick3.wav")
                 };
             }
         }
@@ -136,13 +136,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>(Resources.NoSound, null),
-                    new KeyValuePair<string, string>(Resources.MouseScroll1Sound, @"Resources\Sounds\MouseScroll1.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseScroll2Sound, @"Resources\Sounds\MouseScroll2.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseScroll3Sound, @"Resources\Sounds\MouseScroll3.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseScroll4Sound, @"Resources\Sounds\MouseScroll4.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseScroll5Sound, @"Resources\Sounds\MouseScroll5.wav"),
-                    new KeyValuePair<string, string>(Resources.MouseScroll6Sound, @"Resources\Sounds\MouseScroll6.wav")
+                    new KeyValuePair<string, string>(Resources.NO_SOUND, null),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_1, @"Resources\Sounds\MouseScroll1.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_2, @"Resources\Sounds\MouseScroll2.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_3, @"Resources\Sounds\MouseScroll3.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_4, @"Resources\Sounds\MouseScroll4.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_5, @"Resources\Sounds\MouseScroll5.wav"),
+                    new KeyValuePair<string, string>(Resources.MOUSE_SCROLL_SOUND_6, @"Resources\Sounds\MouseScroll6.wav")
                 };
             }
         }

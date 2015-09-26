@@ -113,7 +113,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             if (parentWindow == null)
             {
-                var windowException = new ApplicationException("Parent Window could not be identified. Unable to continue");
+                var windowException = new ApplicationException(OptiKey.Properties.Resources.PARENT_WINDOW_COULD_NOT_BE_FOUND);
 
                 Log.Error(windowException);
 

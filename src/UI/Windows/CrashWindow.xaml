@@ -15,6 +15,6 @@
     <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10" Margin="5">
         <TextBlock Margin="10" TextWrapping="Wrap" TextAlignment="Center"
                    FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=CrashMessageFontSize}"
-                   Text="{x:Static resx:Resources.CrashMessage}"/>
+                   Text="{x:Static resx:Resources.CRASH_MESSAGE}"/>
     </Border>
 </Window>

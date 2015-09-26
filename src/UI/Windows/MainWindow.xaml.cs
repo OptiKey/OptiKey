@@ -46,7 +46,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.M
             });
 
-            Title = string.Format(Properties.Resources.OptiKeyVersion, DiagnosticInfo.AssemblyVersion);
+            Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
         }
 
         public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }

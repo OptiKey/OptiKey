@@ -209,7 +209,7 @@ namespace JuliusSweetland.OptiKey.Services
                             + "Discarding trigger as point source is down, or producing stale points. "
                             + "Publishing error instead.");
 
-                    PublishError(this, new ApplicationException("I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?"));
+                    PublishError(this, new ApplicationException(Resources.TRIGGER_WITHOUT_POSITION_ERROR));
                 }
             }
             else if (CapturingMultiKeySelection)

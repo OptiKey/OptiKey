@@ -16,7 +16,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LookSettings}">
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.LOOK}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -36,7 +36,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.Theme}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding Themes}"
@@ -44,43 +44,43 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding Theme, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ScratchpadHeight}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="1"
                                             Value="{Binding ScratchpadNumberOfLines, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.CursorWidthInPixels}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_WIDTH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorWidthInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CursorHeightInPixels}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.CURSOR_HEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding CursorHeightInPixels, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MagnifierSource}" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SOURCE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifySourcePercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MagnifierDestination}" 
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_DESTINATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.ConversationOnlyMode}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="6" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.StartupKeyboard}" 
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -110,21 +110,21 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.MinimisedPosition}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="8" Grid.Column="1" 
                               ItemsSource="{Binding MinimisedPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
+                              SelectedValue="{Binding MINIMISED_POSITION_LABEL, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.FullDockHeight}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="9" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.CollapsedDockHeight}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100" Interval="10"
@@ -132,7 +132,7 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FontSettings}">
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.FONT}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -144,7 +144,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.FontFamily}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.FONT_FAMILY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding FontFamilies}"
@@ -152,13 +152,13 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding FontFamily, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.FontStrech}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.FONT_STRETCH_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="1" Grid.Column="1" 
                               ItemsSource="{Binding FontStretches}"
                               SelectedValue="{Binding FontStretch, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.FontWeight}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.FONT_WEIGHT_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding FontWeights}"
@@ -166,7 +166,7 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.NotifSettings}">
+            <GroupBox Grid.Row="2" Header="{x:Static resx:Resources.NOTIFICATIONS}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -178,19 +178,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.NotifWidth}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.HORIZONTAL_FILL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="0" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="5"
                                             Value="{Binding ToastNotificationHorizontalFillPercentage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.NotifHeight}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VERTICAL_FILL_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="5"
                                             Value="{Binding ToastNotificationVerticalFillPercentage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.NotifDuration}" 
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="0.001" Interval="0.001"

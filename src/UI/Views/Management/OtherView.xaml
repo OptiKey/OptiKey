@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-        <GroupBox Header="{x:Static resx:Resources.MiscSettings}">
+        <GroupBox Header="{x:Static resx:Resources.MISC}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -21,22 +21,22 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.ShowSplash}" 
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="0" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding ShowSplashScreen, Mode=TwoWay}" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.CheckForUpdates}" 
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.CHECK_FOR_UPDATES_AT_STARTUP_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.NoModifiers}" 
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.Debugging}" 
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 
                           VerticalAlignment="Center"
