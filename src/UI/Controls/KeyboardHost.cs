@@ -137,7 +137,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null);
 
             var cultureInfo = Settings.Default.Language.ToCultureInfo();
-            if (!Equals(cultureInfo, Properties.Resources.Culture)) {
+            if (!Equals(cultureInfo, Properties.Resources.Culture)) 
+            {
                 //Updates UI and Resource Culture to reflect selected language
                 Thread.CurrentThread.CurrentCulture = cultureInfo;
                 Thread.CurrentThread.CurrentUICulture = cultureInfo;
