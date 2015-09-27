@@ -145,6 +145,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
+
+        public List<KeyValuePair<string, Enums.Case>> KeyCases
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.Case>>
+                {
+                    new KeyValuePair<string, Enums.Case>(Resources.UPPER_CASE, Enums.Case.Upper),
+                    new KeyValuePair<string, Enums.Case>(Resources.LOWER_CASE, Enums.Case.Lower),
+                    new KeyValuePair<string, Enums.Case>(Resources.TITLE_CASE, Enums.Case.Title)
+                };
+            }
+        }
         
         private string theme;
         public string Theme
@@ -181,6 +194,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return fontWeight; }
             set { SetProperty(ref fontWeight, value); }
+        }
+
+        private Case keyCase;
+        public Case KeyCase
+        {
+            get { return keyCase; }
+            set { SetProperty(ref keyCase, value); }
         }
 
         private int scratchpadNumberOfLines;
@@ -300,6 +320,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
             StartupKeyboard = Settings.Default.StartupKeyboard;
             MinimisedPosition = Settings.Default.MainWindowMinimisedPosition;
+            KeyCase = Settings.Default.KeyCase;
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
         }
@@ -321,6 +342,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
+            Settings.Default.KeyCase = KeyCase;
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
         }

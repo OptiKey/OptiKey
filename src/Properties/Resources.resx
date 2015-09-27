@@ -215,7 +215,7 @@ Are you sure you would like to re-calibrate?</value>
     <value>Canadian English</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>Cancel</value>
+    <value>CANCEL</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
     <value>Capture timeout (ms):</value>
@@ -1180,5 +1180,17 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>YES</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Key text transformation:</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Words are capitalized</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>All in lower case</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>All in upper case</value>
   </data>
 </root>
