@@ -136,12 +136,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Log.DebugFormat("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
                 Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null);
 
-            CultureInfo Culture = Settings.Default.Language.ToCultureInfo();
-            if (Culture != Properties.Resources.Culture) {
+            var cultureInfo = Settings.Default.Language.ToCultureInfo();
+            if (!Equals(cultureInfo, Properties.Resources.Culture)) {
                 //Updates UI and Resource Culture to reflect selected language
-                Thread.CurrentThread.CurrentCulture = Culture;
-                Thread.CurrentThread.CurrentUICulture = Culture;
-                OptiKey.Properties.Resources.Culture = Culture;
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+                Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                Properties.Resources.Culture = cultureInfo;
             }
             
             //Clear out point to key map and pause input service
