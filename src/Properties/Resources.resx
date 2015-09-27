@@ -227,7 +227,8 @@ Are you sure you would like to re-calibrate?</value>
     <value>CLEAR</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICK &amp; DRAG</value>
+    <value>CLICK 
+&amp; DRAG</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Click 1</value>
@@ -248,7 +249,8 @@ Are you sure you would like to re-calibrate?</value>
     <value>Click 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>COLLAPSE DOCK</value>
+    <value>COLLAPSE
+DOCK</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
     <value>Collapsed dock thickness (as % of full dock thickness):</value>
@@ -310,7 +312,8 @@ Sorry for the inconvenience.</value>
     <value>Debugging mode:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DECREASE OPACITY</value>
+    <value>DECREASE
+OPACITY</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
@@ -346,7 +349,8 @@ Sorry for the inconvenience.</value>
     <value>Do at point...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOWN ARROW</value>
+    <value>DOWN
+ARROW</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
     <value> ({0:#,###}ms)</value>
@@ -382,13 +386,16 @@ DOWN &amp; LEFT</value>
 DOWN &amp; RIGHT</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND DOWN</value>
+    <value>EXPAND
+DOWN</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND LEFT</value>
+    <value>EXPAND
+LEFT</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND RIGHT</value>
+    <value>EXPAND
+RIGHT</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPAND 
@@ -399,7 +406,8 @@ UP &amp; LEFT</value>
 UP &amp; RIGHT</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND UP</value>
+    <value>EXPAND
+UP</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
     <value>Falling 1</value>
@@ -447,7 +455,8 @@ UP &amp; RIGHT</value>
     <value>Incomplete key fixation time to live (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INCREASE OPACITY</value>
+    <value>INCREASE
+OPACITY</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
     <value>Info:</value>
@@ -473,13 +482,16 @@ DOWN &amp; LEFT</value>
 DOWN &amp; RIGHT</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP DOWN</value>
+    <value>JUMP
+DOWN</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP LEFT</value>
+    <value>JUMP
+LEFT</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP RIGHT</value>
+    <value>JUMP
+RIGHT</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>JUMP
@@ -490,7 +502,8 @@ UP &amp; LEFT</value>
 UP &amp; RIGHT</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP UP</value>
+    <value>JUMP
+UP</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Key fixation time to complete (ms):</value>
@@ -529,16 +542,20 @@ UP &amp; RIGHT</value>
     <value>Left</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT ARROW</value>
+    <value>LEFT
+ARROW</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT CLICK</value>
+    <value>LEFT
+CLICK</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT DOUBLE CLICK</value>
+    <value>LEFT
+DOUBLE CLICK</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT DOWN/UP</value>
+    <value>LEFT
+DOWN/UP</value>
   </data>
   <data name="LETTERS" xml:space="preserve">
     <value>LETTERS</value>
@@ -547,7 +564,8 @@ UP &amp; RIGHT</value>
     <value>Look</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MAGNETIC CURSOR</value>
+    <value>MAGNETIC
+CURSOR</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>MAGNIFIER</value>
@@ -574,10 +592,12 @@ UP &amp; RIGHT</value>
     <value>Menu</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MIDDLE CLICK</value>
+    <value>MIDDLE
+CLICK</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MIDDLE DOWN/UP</value>
+    <value>MIDDLE
+DOWN/UP</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
     <value>MINIMISE</value>
@@ -702,16 +722,20 @@ DOWN &amp; LEFT</value>
 DOWN &amp; RIGHT</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE DOWN</value>
+    <value>MOVE
+DOWN</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE LEFT</value>
+    <value>MOVE
+LEFT</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE RIGHT</value>
+    <value>MOVE
+RIGHT</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE TO</value>
+    <value>MOVE
+TO</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVE
@@ -722,7 +746,8 @@ UP &amp; LEFT</value>
 UP &amp; RIGHT</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE UP</value>
+    <value>MOVE
+UP</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
     <value>Multi-key captures</value>
@@ -766,14 +791,16 @@ SELECTION</value>
     <value>Notifications</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM LK</value>
+    <value>NUM
+LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
 SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMBERS &amp;amp; SYMBOLS</value>
+    <value>NUMBERS 
+&amp; SYMBOLS</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
     <value>Numeric &amp; Symbols 1</value>
@@ -797,16 +824,19 @@ SYM</value>
     <value>Parent Window could not be identified. Unable to continue</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG DN</value>
+    <value>PG
+DN</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG UP</value>
+    <value>PG
+UP</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
     <value>Physical Keys</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PHYSICAL KEYS</value>
+    <value>PHYSICAL
+KEYS</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
     <value>Play</value>
@@ -848,7 +878,8 @@ SYM</value>
     <value>PREVIOUS</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PRNT SCR</value>
+    <value>PRNT
+SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
     <value>PROBLEM LOADING KEYBOARD</value>
@@ -869,7 +900,8 @@ SYM</value>
     <value>RE-CALIBRATE</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>REPEAT LAST</value>
+    <value>REPEAT
+LAST</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
     <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
@@ -888,13 +920,16 @@ Please click OK to continue with the restart, or CANCEL to discard your changes<
     <value>Right</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT ARROW</value>
+    <value>RIGHT
+ARROW</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT CLICK</value>
+    <value>RIGHT
+CLICK</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT DOWN/UP</value>
+    <value>RIGHT
+DOWN/UP</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Rising 1</value>
@@ -909,22 +944,27 @@ Please click OK to continue with the restart, or CANCEL to discard your changes<
     <value>Scratchpad # of lines:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCR LK</value>
+    <value>SCR
+LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
     <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL DOWN</value>
+    <value>SCROLL
+DOWN</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL LEFT</value>
+    <value>SCROLL
+LEFT</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL RIGHT</value>
+    <value>SCROLL
+RIGHT</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL UP</value>
+    <value>SCROLL
+UP</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
     <value>Selection</value>
@@ -956,16 +996,19 @@ DOWN &amp; LEFT</value>
 DOWN &amp; RIGHT</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK DOWN</value>
+    <value>SHRINK
+DOWN</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
     <value>Shrink</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK LEFT</value>
+    <value>SHRINK
+LEFT</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK RIGHT</value>
+    <value>SHRINK
+RIGHT</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SHRINK
@@ -976,13 +1019,15 @@ UP &amp; LEFT</value>
 UP &amp; RIGHT</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK UP</value>
+    <value>SHRINK
+UP</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
     <value>(FYI some similar entries are already in the dictionary: {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SIZE &amp; POSITION</value>
+    <value>SIZE &amp;
+POSITION</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
     <value>Size &amp; Position</value>
@@ -1090,7 +1135,8 @@ UP &amp; RIGHT</value>
     <value>Top</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UP ARROW</value>
+    <value>UP
+ARROW</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>UPDATE AVAILABLE!</value>

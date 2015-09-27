@@ -170,7 +170,8 @@ dictionnaire</value>
     <value>Effacer</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Effacer Mot</value>
+    <value>Effacer
+Mot</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
     <value>Bass n'a pas pu créer un flux de fichier '{0}'</value>
@@ -217,7 +218,8 @@ Souhaitez vous tout de même lancer la calibration ?</value>
     <value>Vider</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Cliquer et déplacer</value>
+    <value>Cliquer et 
+déplacer</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Clic 1</value>
@@ -283,7 +285,8 @@ Avec toutes nos excuses.</value>
     <value>Ctrl</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>Symboles monétaires</value>
+    <value>Symboles
+monétaires</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
     <value>Symboles monétaires 1</value>
@@ -301,7 +304,8 @@ Avec toutes nos excuses.</value>
     <value>Mode de déboggage :</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Diminuer l'opacité</value>
+    <value>Diminuer
+l'opacité</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>Suppr.</value>
@@ -337,7 +341,8 @@ Avec toutes nos excuses.</value>
     <value>A l'emplacement actuel...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Flêche bas</value>
+    <value>Flêche
+bas</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
     <value> ({0:#,###} ms)</value>
@@ -373,13 +378,16 @@ en bas à gauche</value>
 en bas à droite</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Etirer en bas</value>
+    <value>Etirer
+en bas</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Etirer à gauche</value>
+    <value>Etirer
+à gauche</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Etirer à droite</value>
+    <value>Etirer
+à droite</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Etirer 
@@ -390,7 +398,8 @@ en haut à gauche</value>
 en haut à droite</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Etirer en haut</value>
+    <value>Etirer
+en haut</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
     <value>Son descendant 1</value>
@@ -439,7 +448,8 @@ en haut à droite</value>
     <value>Temps maximal de reprise d'une touche (ms) :</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Augmenter l'opacité</value>
+    <value>Augmenter
+l'opacité</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
     <value>Information :</value>
@@ -451,7 +461,7 @@ en haut à droite</value>
     <value>...sauf dans les cas où la majuscule est probablement inutile :</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
-    <value>La combinaison du clavier actuel &amp; et de de la langue n&apos;est pas valide</value>
+    <value>La combinaison du clavier actuel &amp; et de de la langue n'est pas valide</value>
   </data>
   <data name="JUMP" xml:space="preserve">
     <value>Attacher</value>
@@ -465,13 +475,16 @@ en bas à gauche</value>
 en bas à droite</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Attacher en bas</value>
+    <value>Attacher
+en bas</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Attacher à gauche</value>
+    <value>Attacher 
+à gauche</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Attacher à droite</value>
+    <value>Attacher
+à droite</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Attacher
@@ -482,7 +495,8 @@ en haut à gauche</value>
 en haut à droite</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Attacher en haut</value>
+    <value>Attacher
+en haut</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Temps de completion d'une touche (ms) :</value>
@@ -521,16 +535,20 @@ en haut à droite</value>
     <value>Gauche</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Flêche gauche</value>
+    <value>Flêche
+gauche</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Clic gauche</value>
+    <value>Clic
+gauche</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Double clic gauche</value>
+    <value>Double clic
+gauche</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Appui/relaxe gauche</value>
+    <value>Appui/relaxe
+gauche</value>
   </data>
   <data name="LETTERS" xml:space="preserve">
     <value>Lettres</value>
@@ -539,7 +557,8 @@ en haut à droite</value>
     <value>Apparence</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Curseur Magnétique</value>
+    <value>Curseur
+Magnétique</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>Loupe</value>
@@ -566,10 +585,12 @@ en haut à droite</value>
     <value>Menu</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Click molette</value>
+    <value>Click
+molette</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Appui/relaxe molette</value>
+    <value>Appui/relaxe
+molette</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
     <value>Réduire</value>
@@ -694,13 +715,16 @@ en bas à gauche</value>
 en bas à droite</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Déplacer en bas</value>
+    <value>Déplacer
+en bas</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Déplacer à gauche</value>
+    <value>Déplacer
+à gauche</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Déplacer à droite</value>
+    <value>Déplacer
+à droite</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Aller à</value>
@@ -714,7 +738,8 @@ en haut à gauche</value>
 en haut à droite</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Déplacer en haut</value>
+    <value>Déplacer
+en haut</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
     <value>Touches multiples</value>
@@ -758,13 +783,16 @@ multiples</value>
     <value>Notifications</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Verr. Num</value>
+    <value>Verr.
+Num</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Chiffres/Symboles</value>
+    <value>Chiffres
+Symboles</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>Chiffres &amp; Symboles</value>
+    <value>Chiffres &amp;
+Symboles</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
     <value>Chiffres &amp; symboles 1</value>
@@ -788,16 +816,19 @@ multiples</value>
     <value>La fenêtre mère n'a pas pu être identifiée. Il n'est pas possible de continuer</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Pg. Préc.</value>
+    <value>Page
+Préc.</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Pg. Suiv.</value>
+    <value>Page
+Suiv.</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
     <value>Touches physiques</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Touches physiques</value>
+    <value>Touches
+physiques</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
     <value>Lire</value>
@@ -839,7 +870,8 @@ multiples</value>
     <value>Précédent</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Imp. écran</value>
+    <value>Imp.
+écran</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
     <value>Problème de chargement du clavier</value>
@@ -881,13 +913,16 @@ Merci de cliquer sur Ok pour redémarrer ou Annuler pour revenir en arrière san
     <value>Droite</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Flêche droite</value>
+    <value>Flêche
+droite</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Clic droit</value>
+    <value>Clic
+droit</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Appui/relaxe droit</value>
+    <value>Appui/relaxe
+droit</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Son montant 1</value>
@@ -902,22 +937,27 @@ Merci de cliquer sur Ok pour redémarrer ou Annuler pour revenir en arrière san
     <value>Nombre de ligne du bloc-notes :</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Arrêt défil.</value>
+    <value>Arrêt
+défil.</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
     <value>Défiler de {0} cran :|Défiler de {0} crans :</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Défiler en bas</value>
+    <value>Défiler
+en bas</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Défiler à gauche</value>
+    <value>Défiler
+à gauche</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Défiler à droite</value>
+    <value>Défiler
+à droite</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Défiler en haut</value>
+    <value>Défiler
+en haut</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
     <value>Sélection</value>
@@ -949,16 +989,19 @@ en bas à gauche</value>
 en bas à droite</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Rétrecir en bas</value>
+    <value>Rétrecir
+en bas</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
     <value>Rétrécir</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Rétrecir à gauche</value>
+    <value>Rétrecir
+à gauche</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Rétrecir à droite</value>
+    <value>Rétrecir
+à droite</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Rétrecir
@@ -969,13 +1012,15 @@ en haut à gauche</value>
 en haut à droite</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Rétrecir en haut</value>
+    <value>Rétrecir
+en haut</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
     <value>(Pour information, des entrée similaire existent déjà dans le dictionnaire : {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Taille &amp; Position</value>
+    <value>Taille &amp;
+Position</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
     <value>Taille &amp; position</value>
@@ -1077,7 +1122,8 @@ Est il connecté, allumé, calibré, etc. ?</value>
     <value>Haut</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Flêche haut</value>
+    <value>Flêche
+haut</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>Nouvelle version disponible !</value>
