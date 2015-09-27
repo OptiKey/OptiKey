@@ -116,7 +116,7 @@
                               ItemsSource="{Binding MinimisedPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding MINIMISED_POSITION_LABEL, Mode=TwoWay}" />
+                              SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
@@ -142,6 +142,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.FONT_FAMILY_LABEL}" 
@@ -163,6 +164,14 @@
                     <ComboBox Grid.Row="2" Grid.Column="1" 
                               ItemsSource="{Binding FontWeights}"
                               SelectedValue="{Binding FontWeight, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_CASE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5"/>
+                    <ComboBox Grid.Row="3" Grid.Column="1" 
+                              ItemsSource="{Binding KeyCases}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeyCase, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 

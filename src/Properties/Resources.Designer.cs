@@ -344,7 +344,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Looks up a localized string similar to CANCEL.
         /// </summary>
         public static string CANCEL {
             get {
@@ -1157,6 +1157,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key text transformation:.
+        /// </summary>
+        public static string KEY_CASE_LABEL {
+            get {
+                return ResourceManager.GetString("KEY_CASE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key fixation time to complete (ms):.
         /// </summary>
         public static string KEY_FIXATION_TIME_TO_COMPLETE_LABEL {
@@ -1319,6 +1328,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string LOOK {
             get {
                 return ResourceManager.GetString("LOOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All in lower case.
+        /// </summary>
+        public static string LOWER_CASE {
+            get {
+                return ResourceManager.GetString("LOWER_CASE", resourceCulture);
             }
         }
         
@@ -2812,6 +2830,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Words are capitalized.
+        /// </summary>
+        public static string TITLE_CASE {
+            get {
+                return ResourceManager.GetString("TITLE_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX.
         /// </summary>
         public static string TOBII_EYEX {
@@ -2971,6 +2998,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string UPDATE_AVAILABLE {
             get {
                 return ResourceManager.GetString("UPDATE_AVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All in upper case.
+        /// </summary>
+        public static string UPPER_CASE {
+            get {
+                return ResourceManager.GetString("UPPER_CASE", resourceCulture);
             }
         }
         

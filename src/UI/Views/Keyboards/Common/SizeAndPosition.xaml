@@ -161,7 +161,7 @@
                                 </controls:Key.Value>
                             </controls:Key>
                             <controls:Key Grid.Row="1" Grid.Column="1"
-                                          Text="{x:Static resx:Resources.EXPAND_LEFT_SPLIT_WITH_NEWLINE}"
+                                          Text="{x:Static resx:Resources.EXPAND}"
                                           SharedSizeGroup="KeyWithText" />
                             <controls:Key Grid.Row="1" Grid.Column="2"
                                           SymbolGeometry="{StaticResource ArrowPointingToRightIcon}"

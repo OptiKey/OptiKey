@@ -302,5 +302,8 @@
     <Setting Name="MainWindowMinimisedPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisedEdges" Scope="User">
       <Value Profile="(Default)">SameAsDockedPosition</Value>
     </Setting>
+    <Setting Name="KeyCase" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Case" Scope="User">
+      <Value Profile="(Default)">Upper</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
