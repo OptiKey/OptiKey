@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
 
@@ -130,10 +128,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
-                CultureInfo Culture = Settings.Default.Language.ToCultureInfo();
-                Thread.CurrentThread.CurrentCulture = Culture;
-                Thread.CurrentThread.CurrentUICulture = Culture;
-                Resources.Culture = Culture;
             }
         }
 

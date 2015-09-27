@@ -380,7 +380,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CLICK &amp; DRAG.
+        ///   Looks up a localized string similar to CLICK 
+        ///&amp; DRAG.
         /// </summary>
         public static string CLICK_AND_DRAG_SPLIT_WITH_NEWLINE {
             get {
@@ -443,7 +444,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to COLLAPSE DOCK.
+        ///   Looks up a localized string similar to COLLAPSE
+        ///DOCK.
         /// </summary>
         public static string COLLAPSE_DOCK_SPLIT_WITH_NEWLINE {
             get {
@@ -613,7 +615,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DECREASE OPACITY.
+        ///   Looks up a localized string similar to DECREASE
+        ///OPACITY.
         /// </summary>
         public static string DECREASE_OPACITY_SPLIT_WITH_NEWLINE {
             get {
@@ -721,7 +724,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DOWN ARROW.
+        ///   Looks up a localized string similar to DOWN
+        ///ARROW.
         /// </summary>
         public static string DOWN_ARROW_SPLIT_WITH_NEWLINE {
             get {
@@ -823,7 +827,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND DOWN.
+        ///   Looks up a localized string similar to EXPAND
+        ///DOWN.
         /// </summary>
         public static string EXPAND_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -832,7 +837,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND LEFT.
+        ///   Looks up a localized string similar to EXPAND
+        ///LEFT.
         /// </summary>
         public static string EXPAND_LEFT_SPLIT_WITH_NEWLINE {
             get {
@@ -841,7 +847,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND RIGHT.
+        ///   Looks up a localized string similar to EXPAND
+        ///RIGHT.
         /// </summary>
         public static string EXPAND_RIGHT_SPLIT_WITH_NEWLINE {
             get {
@@ -870,7 +877,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND UP.
+        ///   Looks up a localized string similar to EXPAND
+        ///UP.
         /// </summary>
         public static string EXPAND_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -1014,7 +1022,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INCREASE OPACITY.
+        ///   Looks up a localized string similar to INCREASE
+        ///OPACITY.
         /// </summary>
         public static string INCREASE_OPACITY_SPLIT_WITH_NEWLINE {
             get {
@@ -1088,7 +1097,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JUMP DOWN.
+        ///   Looks up a localized string similar to JUMP
+        ///DOWN.
         /// </summary>
         public static string JUMP_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -1097,7 +1107,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JUMP LEFT.
+        ///   Looks up a localized string similar to JUMP
+        ///LEFT.
         /// </summary>
         public static string JUMP_LEFT_SPLIT_WITH_NEWLINE {
             get {
@@ -1106,7 +1117,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JUMP RIGHT.
+        ///   Looks up a localized string similar to JUMP
+        ///RIGHT.
         /// </summary>
         public static string JUMP_RIGHT_SPLIT_WITH_NEWLINE {
             get {
@@ -1135,7 +1147,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to JUMP UP.
+        ///   Looks up a localized string similar to JUMP
+        ///UP.
         /// </summary>
         public static string JUMP_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -1252,7 +1265,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LEFT ARROW.
+        ///   Looks up a localized string similar to LEFT
+        ///ARROW.
         /// </summary>
         public static string LEFT_ARROW_SPLIT_WITH_NEWLINE {
             get {
@@ -1261,7 +1275,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LEFT CLICK.
+        ///   Looks up a localized string similar to LEFT
+        ///CLICK.
         /// </summary>
         public static string LEFT_CLICK_SPLIT_WITH_NEWLINE {
             get {
@@ -1270,7 +1285,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LEFT DOUBLE CLICK.
+        ///   Looks up a localized string similar to LEFT
+        ///DOUBLE CLICK.
         /// </summary>
         public static string LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE {
             get {
@@ -1279,7 +1295,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LEFT DOWN/UP.
+        ///   Looks up a localized string similar to LEFT
+        ///DOWN/UP.
         /// </summary>
         public static string LEFT_DOWN_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -1306,7 +1323,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MAGNETIC CURSOR.
+        ///   Looks up a localized string similar to MAGNETIC
+        ///CURSOR.
         /// </summary>
         public static string MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE {
             get {
@@ -1387,7 +1405,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MIDDLE CLICK.
+        ///   Looks up a localized string similar to MIDDLE
+        ///CLICK.
         /// </summary>
         public static string MIDDLE_CLICK_SPLIT_WITH_NEWLINE {
             get {
@@ -1396,7 +1415,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MIDDLE DOWN/UP.
+        ///   Looks up a localized string similar to MIDDLE
+        ///DOWN/UP.
         /// </summary>
         public static string MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -1767,7 +1787,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVE DOWN.
+        ///   Looks up a localized string similar to MOVE
+        ///DOWN.
         /// </summary>
         public static string MOVE_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -1776,7 +1797,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVE LEFT.
+        ///   Looks up a localized string similar to MOVE
+        ///LEFT.
         /// </summary>
         public static string MOVE_LEFT_SPLIT_WITH_NEWLINE {
             get {
@@ -1785,7 +1807,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVE RIGHT.
+        ///   Looks up a localized string similar to MOVE
+        ///RIGHT.
         /// </summary>
         public static string MOVE_RIGHT_SPLIT_WITH_NEWLINE {
             get {
@@ -1794,7 +1817,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVE TO.
+        ///   Looks up a localized string similar to MOVE
+        ///TO.
         /// </summary>
         public static string MOVE_TO_SPLIT_WITH_NEWLINE {
             get {
@@ -1823,7 +1847,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MOVE UP.
+        ///   Looks up a localized string similar to MOVE
+        ///UP.
         /// </summary>
         public static string MOVE_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -1951,7 +1976,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NUM LK.
+        ///   Looks up a localized string similar to NUM
+        ///LK.
         /// </summary>
         public static string NUM_LK_SPLIT_WITH_NEWLINE {
             get {
@@ -1970,7 +1996,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NUMBERS &amp;amp; SYMBOLS.
+        ///   Looks up a localized string similar to NUMBERS 
+        ///&amp; SYMBOLS.
         /// </summary>
         public static string NUMBERS_AND_SYMBOLS {
             get {
@@ -2042,7 +2069,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PG DN.
+        ///   Looks up a localized string similar to PG
+        ///DN.
         /// </summary>
         public static string PG_DN_SPLIT_WITH_NEWLINE {
             get {
@@ -2051,7 +2079,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PG UP.
+        ///   Looks up a localized string similar to PG
+        ///UP.
         /// </summary>
         public static string PG_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -2069,7 +2098,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PHYSICAL KEYS.
+        ///   Looks up a localized string similar to PHYSICAL
+        ///KEYS.
         /// </summary>
         public static string PHYSICAL_KEYS_SPLIT_WITH_NEWLINE {
             get {
@@ -2195,7 +2225,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PRNT SCR.
+        ///   Looks up a localized string similar to PRNT
+        ///SCR.
         /// </summary>
         public static string PRNT_SCR_SPLIT_WITH_NEWLINE {
             get {
@@ -2258,7 +2289,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to REPEAT LAST.
+        ///   Looks up a localized string similar to REPEAT
+        ///LAST.
         /// </summary>
         public static string REPEAT_LAST_SPLIT_WITH_NEWLINE {
             get {
@@ -2313,7 +2345,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RIGHT ARROW.
+        ///   Looks up a localized string similar to RIGHT
+        ///ARROW.
         /// </summary>
         public static string RIGHT_ARROW_SPLIT_WITH_NEWLINE {
             get {
@@ -2322,7 +2355,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RIGHT CLICK.
+        ///   Looks up a localized string similar to RIGHT
+        ///CLICK.
         /// </summary>
         public static string RIGHT_CLICK_SPLIT_WITH_NEWLINE {
             get {
@@ -2331,7 +2365,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RIGHT DOWN/UP.
+        ///   Looks up a localized string similar to RIGHT
+        ///DOWN/UP.
         /// </summary>
         public static string RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -2376,7 +2411,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCR LK.
+        ///   Looks up a localized string similar to SCR
+        ///LK.
         /// </summary>
         public static string SCRN_LK_SPLIT_WITH_NEWLINE {
             get {
@@ -2394,7 +2430,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCROLL DOWN.
+        ///   Looks up a localized string similar to SCROLL
+        ///DOWN.
         /// </summary>
         public static string SCROLL_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -2403,7 +2440,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCROLL LEFT.
+        ///   Looks up a localized string similar to SCROLL
+        ///LEFT.
         /// </summary>
         public static string SCROLL_LEFT_SPLIT_WITH_NEWLINE {
             get {
@@ -2412,7 +2450,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCROLL RIGHT.
+        ///   Looks up a localized string similar to SCROLL
+        ///RIGHT.
         /// </summary>
         public static string SCROLL_RIGHT_SPLIT_WITH_NEWLINE {
             get {
@@ -2421,7 +2460,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SCROLL UP.
+        ///   Looks up a localized string similar to SCROLL
+        ///UP.
         /// </summary>
         public static string SCROLL_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -2513,7 +2553,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SHRINK DOWN.
+        ///   Looks up a localized string similar to SHRINK
+        ///DOWN.
         /// </summary>
         public static string SHRINK_DOWN_SPLIT_WITH_NEWLINE {
             get {
@@ -2531,7 +2572,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SHRINK LEFT.
+        ///   Looks up a localized string similar to SHRINK
+        ///LEFT.
         /// </summary>
         public static string SHRINK_LEFT_SPLIT_WITH_NEWLINE {
             get {
@@ -2540,7 +2582,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SHRINK RIGHT.
+        ///   Looks up a localized string similar to SHRINK
+        ///RIGHT.
         /// </summary>
         public static string SHRINK_RIGHT_SPLIT_WITH_NEWLINE {
             get {
@@ -2569,7 +2612,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SHRINK UP.
+        ///   Looks up a localized string similar to SHRINK
+        ///UP.
         /// </summary>
         public static string SHRINK_UP_SPLIT_WITH_NEWLINE {
             get {
@@ -2587,7 +2631,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SIZE &amp; POSITION.
+        ///   Looks up a localized string similar to SIZE &amp;
+        ///POSITION.
         /// </summary>
         public static string SIZE_AND_POSITION_SPLIT_WITH_NEWLINE {
             get {
@@ -2911,7 +2956,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UP ARROW.
+        ///   Looks up a localized string similar to UP
+        ///ARROW.
         /// </summary>
         public static string UP_ARROW_SPLIT_WITH_NEWLINE {
             get {

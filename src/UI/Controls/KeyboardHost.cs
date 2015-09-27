@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.Enums;
@@ -133,6 +135,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             Log.DebugFormat("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
                 Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null);
+
+            CultureInfo Culture = Settings.Default.Language.ToCultureInfo();
+            if (Culture != OptiKey.Properties.Resources.Culture) {
+                //Updates UI and Resource Culture to reflect selected language
+                Thread.CurrentThread.CurrentCulture = Culture;
+                Thread.CurrentThread.CurrentUICulture = Culture;
+                OptiKey.Properties.Resources.Culture = Culture;
+            }
             
             //Clear out point to key map and pause input service
             PointToKeyValueMap = null;
