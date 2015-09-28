@@ -1124,7 +1124,6 @@ HAUT</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Une version plus récente ({0}) est disponible en téléchargement sur le site www.optikey.org. 
-
 Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de paramètres (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
