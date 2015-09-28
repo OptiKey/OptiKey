@@ -425,15 +425,9 @@ EN HAUT</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Epaisseur :</value>
   </data>
-  <data name="FRANCE_FRENCH" xml:space="preserve">
-    <value>Français (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Hauteur de la barre d'outils complète :
 (pourcentage de l'écran)</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Agrandir</value>
@@ -1169,13 +1163,13 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="KEY_CASE_LABEL" xml:space="preserve">
     <value>Transformation du texte des touches :</value>
   </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>Tout en majuscule</value>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Seule la première lettre des mots en majuscule</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
     <value>Tout en minuscule</value>
   </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Seule la première lettre des mots en majuscule</value>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Tout en majuscule</value>
   </data>
 </root>

@@ -5,10 +5,10 @@ namespace JuliusSweetland.OptiKey.Enums
 {
     public enum Languages
     {
-        AmericanEnglish,
-        BritishEnglish,
-        CanadianEnglish, 
-        FranceFrench
+        EnglishCanada,
+        EnglishUK,
+        EnglishUS,
+        FrenchFrance
     }
 
     public static partial class EnumExtensions
@@ -17,10 +17,10 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
-                case Languages.AmericanEnglish: return Resources.AMERICAN_ENGLISH;
-                case Languages.BritishEnglish: return Resources.BRITISH_ENGLISH;
-                case Languages.CanadianEnglish: return Resources.CANADIAN_ENGLISH;
-                case Languages.FranceFrench: return Resources.FRANCE_FRENCH;
+                case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
+                case Languages.EnglishUK: return Resources.ENGLISH_UK;
+                case Languages.EnglishUS: return Resources.ENGLISH_US;
+                case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
             }
 
             return languages.ToString();
@@ -30,10 +30,10 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
-                case Languages.AmericanEnglish: return CultureInfo.GetCultureInfo("en-US");
-                case Languages.BritishEnglish: return CultureInfo.GetCultureInfo("en-GB");
-                case Languages.CanadianEnglish: return CultureInfo.GetCultureInfo("en-CA");
-                case Languages.FranceFrench: return CultureInfo.GetCultureInfo("fr-FR");
+                case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
+                case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
+                case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
+                case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
             }
 
             return CultureInfo.GetCultureInfo("en-GB");

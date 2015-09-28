@@ -145,8 +145,8 @@ DICTIONARY</value>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
-  <data name="AMERICAN_ENGLISH" xml:space="preserve">
-    <value>American English</value>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>English (US)</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
     <value>Android Dark</value>
@@ -186,8 +186,8 @@ WORD</value>
   <data name="BREAK" xml:space="preserve">
     <value>BREAK</value>
   </data>
-  <data name="BRITISH_ENGLISH" xml:space="preserve">
-    <value>British English</value>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>English (UK)</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
     <value>Calibration aborted with message: '{0}'</value>
@@ -211,8 +211,8 @@ Are you sure you would like to re-calibrate?</value>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
   </data>
-  <data name="CANADIAN_ENGLISH" xml:space="preserve">
-    <value>Canadian English</value>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>English (Canada)</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
     <value>CANCEL</value>
@@ -433,8 +433,8 @@ UP</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Font weight:</value>
   </data>
-  <data name="FRANCE_FRENCH" xml:space="preserve">
-    <value>Français (France)</value>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>French (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Full dock thickness (as % of screen):</value>

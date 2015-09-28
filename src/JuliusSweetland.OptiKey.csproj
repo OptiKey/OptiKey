@@ -476,6 +476,9 @@
     <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\PInvoke.cs" />
+    <Content Include="Dictionaries\FrenchFrance.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -701,7 +704,7 @@
     <None Include="Resources\Icons\SVG Source Files\Shift.svg" />
     <None Include="Resources\Icons\SVG Source Files\Tab.svg" />
     <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
-    <Content Include="Dictionaries\BritishEnglish.dic">
+    <Content Include="Dictionaries\EnglishUK.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
@@ -711,13 +714,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Dictionaries\AmericanEnglish.dic">
+    <Content Include="Dictionaries\EnglishUS.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\CanadianEnglish.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\FranceFrench.dic">
+    <Content Include="Dictionaries\EnglishCanada.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="log4net.config">
@@ -727,7 +727,6 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>

@@ -145,9 +145,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to American English.
         /// </summary>
-        public static string AMERICAN_ENGLISH {
+        public static string ENGLISH_US {
             get {
-                return ResourceManager.GetString("AMERICAN_ENGLISH", resourceCulture);
+                return ResourceManager.GetString("ENGLISH_US", resourceCulture);
             }
         }
         
@@ -264,9 +264,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to British English.
         /// </summary>
-        public static string BRITISH_ENGLISH {
+        public static string ENGLISH_UK {
             get {
-                return ResourceManager.GetString("BRITISH_ENGLISH", resourceCulture);
+                return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
             }
         }
         
@@ -337,9 +337,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Canadian English.
         /// </summary>
-        public static string CANADIAN_ENGLISH {
+        public static string ENGLISH_CANADA {
             get {
-                return ResourceManager.GetString("CANADIAN_ENGLISH", resourceCulture);
+                return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
             }
         }
         
@@ -959,11 +959,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Français (France).
+        ///   Looks up a localized string similar to French (France).
         /// </summary>
-        public static string FRANCE_FRENCH {
+        public static string FRENCH_FRANCE {
             get {
-                return ResourceManager.GetString("FRANCE_FRENCH", resourceCulture);
+                return ResourceManager.GetString("FRENCH_FRANCE", resourceCulture);
             }
         }
         

@@ -36,10 +36,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Languages>>
                 {
-                    new KeyValuePair<string, Languages>(Resources.AMERICAN_ENGLISH, Enums.Languages.AmericanEnglish),
-                    new KeyValuePair<string, Languages>(Resources.BRITISH_ENGLISH, Enums.Languages.BritishEnglish),
-                    new KeyValuePair<string, Languages>(Resources.CANADIAN_ENGLISH, Enums.Languages.CanadianEnglish),
-                    new KeyValuePair<string, Languages>(Resources.FRANCE_FRENCH, Enums.Languages.FranceFrench)
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
+                    new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance)
                 };
             }
         }

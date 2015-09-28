@@ -158,12 +158,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.Language)
                 {
-                    case Languages.AmericanEnglish:
-                    case Languages.BritishEnglish:
-                    case Languages.CanadianEnglish:
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
                         break;
-                    case Languages.FranceFrench:
+                    case Languages.FrenchFrance:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
                         break;
                 }
@@ -172,12 +172,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.Language)
                 {
-                    case Languages.AmericanEnglish:
-                    case Languages.BritishEnglish:
-                    case Languages.CanadianEnglish:
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
-                    case Languages.FranceFrench:
+                    case Languages.FrenchFrance:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
                         break;
                 }

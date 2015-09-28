@@ -54,7 +54,7 @@
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
     <Setting Name="Language" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
-      <Value Profile="(Default)">BritishEnglish</Value>
+      <Value Profile="(Default)">EnglishUK</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:01.2500000</Value>
