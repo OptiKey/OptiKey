@@ -58,7 +58,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -75,7 +75,7 @@
                     <models:KeyValue FunctionKey="Suggestion1" />
                 </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="1" SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key Grid.Row="0" Grid.Column="1" SharedSizeGroup="KeyWithSuggestion" Case="None">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -92,7 +92,7 @@
                     <models:KeyValue FunctionKey="Suggestion2" />
                 </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="2" SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key Grid.Row="0" Grid.Column="2" SharedSizeGroup="KeyWithSuggestion" Case="None">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -109,7 +109,7 @@
                     <models:KeyValue FunctionKey="Suggestion3" />
                 </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="3" SharedSizeGroup="KeyWithSuggestion">
+            <controls:Key Grid.Row="0" Grid.Column="3" SharedSizeGroup="KeyWithSuggestion" Case="None">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
