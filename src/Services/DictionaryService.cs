@@ -64,7 +64,33 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (File.Exists(userDictionaryPath))
                 {
-                    LoadUserDictionaryFromFile(userDictionaryPath);
+                    LoadUserDictionaryFromFile(userDictionaryPath);  
+                    
+                    //after load, check if old filename, if, update filename
+                    var oldUSDict = new StringBuilder("AmericanEnglish.dic");
+                    var oldUKDict = new StringBuilder("BritishEnglish.dic");
+                    var oldCANDict = new StringBuilder("CanadianEnglish.dic");
+                    var newUSDict = new StringBuilder("EnglishUS.dic");
+                    var newUKDict = new StringBuilder("EnglishUK.dic");
+                    var newCANDict = new StringBuilder("EnglishCanada.dic");
+                    
+                    fileName = Path.GetFileName(userDictionaryPath);
+                    
+                    if fileName.equals(oldUSDict)
+                    {
+                        System.IO.File.Move(fileName, newUSDict);
+                    }
+                    
+                     if fileName.equals(oldUKDict)
+                    {
+                	System.IO.File.Move(fileName, newUKDict);
+                    }
+                    
+                     if fileName.equals(oldCANDict)
+                    {
+                	System.IO.File.Move(fileName, newCANDict);
+                    }
+                    
                 }
                 else
                 {
