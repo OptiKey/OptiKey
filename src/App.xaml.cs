@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -16,6 +18,8 @@ using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.UI.Controls;
+using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
@@ -143,6 +147,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
+                BindPointToKeyValueMap(mainWindow, WindowZOrders.MainWindow);
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
@@ -447,9 +452,23 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
+
+        #region Bind PointToKeyValueMap
+
+        private void BindPointToKeyValueMap(Window window, WindowZOrders zOrder)
+        {
+            var keyboardHost = VisualAndLogicalTreeHelper.FindLogicalChildren<KeyboardHost>(window).FirstOrDefault();
+            keyboardHost.SetBinding(KeyboardHost.PointToKeyValueMapProperty, new Binding
+            {
+                Path = new PropertyPath(string.Format("CompositePointToKeyValueMap[{0}]", (int)zOrder)),
+                Mode = BindingMode.OneWayToSource
+            });
+        }
         
+        #endregion
+
         #region Log Diagnostic Info
-        
+
         private void LogDiagnosticInfo()
         {
             Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);

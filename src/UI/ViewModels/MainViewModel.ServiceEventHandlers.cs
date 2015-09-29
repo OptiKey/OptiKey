@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.PointToKeyValueMap = pointToKeyValueMap;
+            inputService.PointToKeyValueMap = CompositePointToKeyValueMap.PointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
         }
         

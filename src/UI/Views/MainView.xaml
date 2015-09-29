@@ -21,8 +21,9 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <controls:KeyboardHost Keyboard="{Binding Keyboard, Mode=OneWay}"
-                               PointToKeyValueMap="{Binding PointToKeyValueMap, Mode=OneWayToSource}">
+        <controls:KeyboardHost x:Name="KeyboadHost"
+                               Keyboard="{Binding Keyboard, Mode=OneWay}">
+            <!--KeyboardHost.PointToKeyValueMap binding is setup in App.xaml.cs as it needs to include the host window's z-order-->
             <controls:KeyboardHost.ErrorContent>
                 <Border Background="Black">
                     <Viewbox>

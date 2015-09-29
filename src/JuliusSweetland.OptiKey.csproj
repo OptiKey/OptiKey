@@ -183,6 +183,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\WindowZOrders.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />

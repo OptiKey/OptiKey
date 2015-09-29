@@ -33,15 +33,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly IKeyboardOutputService keyboardOutputService;
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
-        private readonly List<INotifyErrors> errorNotifyingServices; 
+        private readonly List<INotifyErrors> errorNotifyingServices;
 
+        private readonly CompositePointToKeyValueMap compositePointToKeyValueMap = new CompositePointToKeyValueMap();
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
         
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue? currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
-        private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
@@ -80,7 +80,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
-            
+
+            AttachCompositePointToKeyValueMapListener();
             InitialiseKeyboard(mainWindowManipulationService);
             AttachScratchpadEnabledListener();
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
@@ -128,18 +129,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        public Dictionary<Rect, KeyValue> PointToKeyValueMap
+        public CompositePointToKeyValueMap CompositePointToKeyValueMap
         {
-            set
-            {
-                if (pointToKeyValueMap != value)
-                {
-                    pointToKeyValueMap = value;
-
-                    inputService.PointToKeyValueMap = value;
-                    SelectionResultPoints = null; //The last selection result points cannot be valid if this has changed (window has moved or resized)
-                }
-            }
+            get { return compositePointToKeyValueMap; }
         }
 
         public SelectionModes SelectionMode
@@ -470,6 +462,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     yesNoQuestion.NoAction();
                 }
             }
+        }
+
+        private void AttachCompositePointToKeyValueMapListener()
+        {
+            CompositePointToKeyValueMap.OnPropertyChanges(c => c.PointToKeyValueMap).Subscribe(value =>
+            {
+                inputService.PointToKeyValueMap = value;
+                SelectionResultPoints = null; //The last selection result points cannot be valid if this has changed (window has moved or resized)
+            });
         }
 
         private void AttachScratchpadEnabledListener()
