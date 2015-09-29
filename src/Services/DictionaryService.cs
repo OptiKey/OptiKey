@@ -43,7 +43,42 @@ namespace JuliusSweetland.OptiKey.Services
 
         public DictionaryService()
         {
+            MigrateLegacyDictionaries();
             LoadDictionary();
+        }
+
+        #endregion
+
+        #region Migrate Legacy User Dictionaries
+
+        private void MigrateLegacyDictionaries()
+        {
+            var oldNewDictionaryFileNames = new List<Tuple<string, string>>
+            {
+                new Tuple<string, string>("AmericanEnglish.dic", "EnglishUS.dic"),
+                new Tuple<string, string>("BritishEnglish.dic", "EnglishUK.dic"),
+                new Tuple<string, string>("CanadianEnglish.dic", "EnglishCanada.dic"),
+            };
+
+            foreach (var oldNewFileName in oldNewDictionaryFileNames)
+            {
+                var oldDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item1);
+                var newDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item2);
+                if (File.Exists(oldDictionaryPath))
+                {
+                    Log.InfoFormat("Old user dictionary file found at '{0}'", oldDictionaryPath);
+                    //Delete new user dictionary
+                    if (File.Exists(newDictionaryPath))
+                    {
+                        Log.InfoFormat("New user dictionary file also found at '{0}' - deleting this file", newDictionaryPath);
+                        File.Delete(newDictionaryPath);
+                    }
+
+                    //Rename old user dictionary
+                    Log.InfoFormat("Renaming old user dictionary file '{0}' to '{1}'", oldDictionaryPath, newDictionaryPath);
+                    File.Move(oldDictionaryPath, newDictionaryPath);
+                }
+            }
         }
 
         #endregion
@@ -109,9 +144,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         private static string GetUserDictionaryPath(Languages? language)
         {
+            return GetUserDictionaryPath(string.Format("{0}{1}", language, DictionaryFileType));
+        }
+
+        private static string GetUserDictionaryPath(string fileName)
+        {
             var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
             Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists
-            return Path.Combine(applicationDataPath, string.Format("{0}{1}", language, DictionaryFileType));
+            return Path.Combine(applicationDataPath, fileName);
         }
 
         private void LoadUserDictionaryFromFile(string filePath)
