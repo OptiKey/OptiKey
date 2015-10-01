@@ -225,7 +225,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ResizeDockToCollapsed();
                         if (Keyboard is ViewModels.Keyboards.Mouse)
                         {
-                            Settings.Default.MouseKeyboardDockSize = DockSizes.Collapsed;
+                            Settings.Default.MouseWindowDockSize = DockSizes.Collapsed;
                         }
                         break;
 
@@ -306,7 +306,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ResizeDockToFull();
                         if (Keyboard is ViewModels.Keyboards.Mouse)
                         {
-                            Settings.Default.MouseKeyboardDockSize = DockSizes.Full;
+                            Settings.Default.MouseWindowDockSize = DockSizes.Full;
                         }
                         break;
 
@@ -488,12 +488,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         //Reinstate mouse keyboard docked state (if docked)
                         if (Settings.Default.MainWindowState == WindowStates.Docked)
                         {
-                            if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
+                            if (Settings.Default.MouseWindowDockSize == DockSizes.Full
                                 && Settings.Default.MainWindowDockSize != DockSizes.Full)
                             {
                                 mainWindowManipulationService.ResizeDockToFull();
                             }
-                            else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
+                            else if (Settings.Default.MouseWindowDockSize == DockSizes.Collapsed
                                 && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
                             {
                                 mainWindowManipulationService.ResizeDockToCollapsed();

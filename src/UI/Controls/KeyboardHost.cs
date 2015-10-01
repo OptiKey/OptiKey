@@ -33,7 +33,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyboardHost()
         {
             Settings.Default.OnPropertyChanges(s => s.Language).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;

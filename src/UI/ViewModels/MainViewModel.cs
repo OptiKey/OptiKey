@@ -324,7 +324,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.Mouse:
                         Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
                         windowManipulationService.Restore();
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                        if (Settings.Default.MouseWindowDockSize == DockSizes.Full)
                         {
                             mainWindowManipulationService.ResizeDockToFull();
                         }

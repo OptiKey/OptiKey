@@ -254,7 +254,7 @@
     <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="MouseKeyboardDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
+    <Setting Name="MouseWindowDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
       <Value Profile="(Default)">Collapsed</Value>
     </Setting>
     <Setting Name="MainWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
@@ -301,6 +301,12 @@
     </Setting>
     <Setting Name="MainWindowMinimisedPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisedEdges" Scope="User">
       <Value Profile="(Default)">SameAsDockedPosition</Value>
+    </Setting>
+    <Setting Name="MouseWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockEdges" Scope="User">
+      <Value Profile="(Default)">Right</Value>
+    </Setting>
+    <Setting Name="MouseKeyboardInSeperateWindow" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
