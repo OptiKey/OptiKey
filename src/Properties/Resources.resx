@@ -1193,4 +1193,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="UPPER_CASE" xml:space="preserve">
     <value>All in upper case</value>
   </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German(Germany)</value>
+  </data>
 </root>

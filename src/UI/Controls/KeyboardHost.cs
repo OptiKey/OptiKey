@@ -19,6 +19,7 @@ using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
+using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -166,6 +167,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
                         break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Alpha { DataContext = Keyboard };
+                        break;
                 }
             }
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha)
@@ -179,6 +183,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
+                        break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }
