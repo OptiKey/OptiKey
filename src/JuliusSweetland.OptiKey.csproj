@@ -420,6 +420,12 @@
     <Compile Include="UI\Views\Keyboards\French\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\German\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -469,6 +475,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
@@ -477,6 +484,9 @@
     <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
     <Compile Include="Native\PInvoke.cs" />
     <Content Include="Dictionaries\FrenchFrance.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\GermanGermany.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -835,6 +845,14 @@
     <Page Include="UI\Views\Keyboards\French\ConversationAlpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\MainView.xaml">
       <SubType>Designer</SubType>
