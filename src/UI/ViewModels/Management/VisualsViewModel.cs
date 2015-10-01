@@ -35,8 +35,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Android Dark", "/Resources/Themes/Android_Dark.xaml"),
-                    new KeyValuePair<string, string>("Android Light", "/Resources/Themes/Android_Light.xaml")
+                    new KeyValuePair<string, string>(Resources.ANDROID_DARK, "/Resources/Themes/Android_Dark.xaml"),
+                    new KeyValuePair<string, string>(Resources.ANDROID_LIGHT, "/Resources/Themes/Android_Light.xaml")
                 };
             }
         }
@@ -111,22 +111,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Enums.Keyboards>>
                 {
-                    new KeyValuePair<string, Enums.Keyboards>("Alpha", Enums.Keyboards.Alpha),
-                    new KeyValuePair<string, Enums.Keyboards>("Conversation Alpha", Enums.Keyboards.ConversationAlpha),
-                    new KeyValuePair<string, Enums.Keyboards>("Conversation Numeric & Symbols", Enums.Keyboards.ConversationNumericAndSymbols),
-                    new KeyValuePair<string, Enums.Keyboards>("Currencies 1", Enums.Keyboards.Currencies1),
-                    new KeyValuePair<string, Enums.Keyboards>("Currencies 2", Enums.Keyboards.Currencies2),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 1", Enums.Keyboards.Diacritics1),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 2", Enums.Keyboards.Diacritics2),
-                    new KeyValuePair<string, Enums.Keyboards>("Diacritics 3", Enums.Keyboards.Diacritics3),
-                    new KeyValuePair<string, Enums.Keyboards>("Menu", Enums.Keyboards.Menu),
-                    new KeyValuePair<string, Enums.Keyboards>("Minimised", Enums.Keyboards.Minimised),
-                    new KeyValuePair<string, Enums.Keyboards>("Mouse", Enums.Keyboards.Mouse),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 1", Enums.Keyboards.NumericAndSymbols1),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 2", Enums.Keyboards.NumericAndSymbols2),
-                    new KeyValuePair<string, Enums.Keyboards>("Numeric & Symbols 3", Enums.Keyboards.NumericAndSymbols3),
-                    new KeyValuePair<string, Enums.Keyboards>("Physical Keys", Enums.Keyboards.PhysicalKeys),
-                    new KeyValuePair<string, Enums.Keyboards>("Size & Position", Enums.Keyboards.SizeAndPosition)
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.LETTERS, Enums.Keyboards.Alpha),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_LAYOUT, Enums.Keyboards.ConversationAlpha),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_NUM_SYM_LAYOUT, Enums.Keyboards.ConversationNumericAndSymbols),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_2, Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_1, Enums.Keyboards.Diacritics1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_2, Enums.Keyboards.Diacritics2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_3, Enums.Keyboards.Diacritics3),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MENU_LAYOUT, Enums.Keyboards.Menu),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MINIMISED_LAYOUT, Enums.Keyboards.Minimised),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.MOUSE_LAYOUT, Enums.Keyboards.Mouse),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_1, Enums.Keyboards.NumericAndSymbols1),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_2, Enums.Keyboards.NumericAndSymbols2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_3, Enums.Keyboards.NumericAndSymbols3),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.PHYSICAL_KEYS_LAYOUT, Enums.Keyboards.PhysicalKeys),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition)
                 };
             }
         }
@@ -137,11 +137,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Enums.MinimisedEdges>>
                 {
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Same as dock position", Enums.MinimisedEdges.SameAsDockedPosition),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Top", Enums.MinimisedEdges.Top),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Right", Enums.MinimisedEdges.Right),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Bottom", Enums.MinimisedEdges.Bottom),
-                    new KeyValuePair<string, Enums.MinimisedEdges>("Left", Enums.MinimisedEdges.Left),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.SAME_AS_DOCK_POSITION, Enums.MinimisedEdges.SameAsDockedPosition),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.UP, Enums.MinimisedEdges.Top),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.RIGHT, Enums.MinimisedEdges.Right),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.BOTTOM, Enums.MinimisedEdges.Bottom),
+                    new KeyValuePair<string, Enums.MinimisedEdges>(Resources.LEFT, Enums.MinimisedEdges.Left),
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, Enums.Case>> KeyCases
+        {
+            get
+            {
+                return new List<KeyValuePair<string, Enums.Case>>
+                {
+                    new KeyValuePair<string, Enums.Case>(Resources.UPPER_CASE, Enums.Case.Upper),
+                    new KeyValuePair<string, Enums.Case>(Resources.LOWER_CASE, Enums.Case.Lower),
+                    new KeyValuePair<string, Enums.Case>(Resources.TITLE_CASE, Enums.Case.Title)
                 };
             }
         }
@@ -181,6 +194,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return fontWeight; }
             set { SetProperty(ref fontWeight, value); }
+        }
+
+        private Case keyCase;
+        public Case KeyCase
+        {
+            get { return keyCase; }
+            set { SetProperty(ref keyCase, value); }
         }
 
         private int scratchpadNumberOfLines;
@@ -300,6 +320,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
             StartupKeyboard = Settings.Default.StartupKeyboard;
             MinimisedPosition = Settings.Default.MainWindowMinimisedPosition;
+            KeyCase = Settings.Default.KeyCase;
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
         }
@@ -321,6 +342,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
+            Settings.Default.KeyCase = KeyCase;
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
         }

@@ -100,7 +100,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    throw new ApplicationException(string.Format("Bass was unable to create a stream from file '{0}'", file));
+                    throw new ApplicationException(string.Format(Resources.BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE, file));
                 }
             }
             catch (Exception exception)
@@ -154,8 +154,8 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 catch (Exception exception)
                 {
-                    var customException = new ApplicationException(string.Format("There was a problem setting the voice to '{0}'{1}",
-                        voiceToUse, voice == null ? " (from settings)" : null), exception);
+                    var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
+                        voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
                     PublishError(this, customException);
                 }
             }
