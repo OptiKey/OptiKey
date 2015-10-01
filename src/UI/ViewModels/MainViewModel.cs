@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -110,14 +110,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IKeyboard Keyboard
         {
             get { return keyboard; }
-            set { SetProperty(ref keyboard, value); }
+            set
+            {
+                Log.InfoFormat("Keyboard changed to {0}", value);
+                SetProperty(ref keyboard, value);
+            }
         }
 
         private bool keyboardSupportsCollapsedDock = true;
         public bool KeyboardSupportsCollapsedDock
         {
             get { return keyboardSupportsCollapsedDock; }
-            set { SetProperty(ref keyboardSupportsCollapsedDock, value); }
+            set
+            {
+                Log.InfoFormat("KeyboardSupportsCollapsedDock changed to {0}", value);
+                SetProperty(ref keyboardSupportsCollapsedDock, value);
+            }
         }
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
@@ -252,6 +260,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.Alpha:
                         Keyboard = new Alpha();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.ConversationAlpha:
@@ -259,6 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
                             mainWindowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
                         });
                         windowManipulationService.Maximise();
                         break;
@@ -268,6 +278,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
                             mainWindowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
                         });
                         windowManipulationService.Maximise();
                         break;
@@ -275,31 +286,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.Currencies1:
                         Keyboard = new Currencies1();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Currencies2:
                         Keyboard = new Currencies2();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Diacritics1:
                         Keyboard = new Diacritics1();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Diacritics2:
                         Keyboard = new Diacritics2();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Diacritics3:
                         Keyboard = new Diacritics3();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Menu:
                         Keyboard = new Menu(() => Keyboard = new Alpha());
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.Minimised:
@@ -307,6 +324,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
                             windowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
                         });
                         windowManipulationService.Minimise();
                         break;
@@ -314,31 +332,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.Mouse:
                         Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
                         windowManipulationService.Restore();
+                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                        {
+                            mainWindowManipulationService.ResizeDockToFull();
+                        }
+                        else
+                        {
+                            mainWindowManipulationService.ResizeDockToCollapsed();
+                        }
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols1:
                         Keyboard = new NumericAndSymbols1();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols2:
                         Keyboard = new NumericAndSymbols2();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.NumericAndSymbols3:
                         Keyboard = new NumericAndSymbols3();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.PhysicalKeys:
                         Keyboard = new PhysicalKeys();
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.SizeAndPosition:
                         Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
                         windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
                         break;
                 }
             }
@@ -364,7 +395,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     inputService.RequestSuspend();
                     audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification("Hmm, nothing new here!", "It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.", 
+                    RaiseToastNotification(Resources.NOTHING_NEW, Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD, 
                         NotificationTypes.Normal, () => { inputService.RequestResume(); });
                 }
             }
@@ -382,13 +413,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var candidate = candidates.First();
 
                 var prompt = candidate.Contains(' ')
-                    ? string.Format("Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?", 
+                    ? string.Format(Resources.ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE, 
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
-                    : string.Format("Would you like to add the word '{0}' to the dictionary?", candidate);
+                    : string.Format(Resources.ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE, candidate);
 
                 if (candidate.Any(Char.IsUpper))
                 {
-                    prompt = string.Concat(prompt, "\n(The new dictionary entry will contain capital letters)");
+                    prompt = string.Concat(prompt, Resources.NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS);
                 }
 
                 var similarEntries = dictionaryService.GetAllEntries()
@@ -398,7 +429,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (similarEntries.Any())
                 {
-                    string similarEntriesPrompt = string.Format("(FYI some similar entries are already in the dictionary: {0})", 
+                    string similarEntriesPrompt = string.Format(Resources.SIMILAR_DICTIONARY_ENTRIES_EXIST, 
                         string.Join(", ", similarEntries.Select(se => string.Format("'{0}'", se))));
 
                     prompt = string.Concat(prompt, "\n\n", similarEntriesPrompt);
@@ -416,7 +447,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         inputService.RequestSuspend();
                         nextAction();
 
-                        RaiseToastNotification("Added", string.Format("Great stuff. '{0}' has been added to the dictionary.", candidate),
+                        RaiseToastNotification(Resources.ADDED, string.Format(Resources.ENTRY_ADDED_TO_DICTIONARY, candidate),
                             NotificationTypes.Normal, () => { inputService.RequestResume(); });
                     },
                     () => nextAction());
@@ -472,6 +503,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     && Settings.Default.MainWindowState == WindowStates.Docked
                     && Settings.Default.MainWindowDockSize == DockSizes.Collapsed)
                 {
+                    Log.Info("Keyboard does not support collapsed dock and main window is docked and collapsed - resizing to full dock");
                     mainWindowManipulationService.ResizeDockToFull();
                 }
             };

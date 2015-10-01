@@ -5,6 +5,7 @@ using EyeXFramework;
 using log4net;
 using Tobii.EyeX.Client;
 using Tobii.EyeX.Framework;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -60,11 +61,11 @@ namespace JuliusSweetland.OptiKey.Services
                     switch (EyeXHost.EyeXAvailability)
                     {
                         case EyeXAvailability.NotAvailable:
-                            PublishError(this, new ApplicationException("Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again."));
+                            PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_FOUND));
                             return;
 
                         case EyeXAvailability.NotRunning:
-                            PublishError(this, new ApplicationException("Tobii EyeX Engine is not running. Please start the EyeX Engine and try again."));
+                            PublishError(this, new ApplicationException(Resources.TOBII_EYEX_ENGINE_NOT_RUNNING));
                             return;
                     }
 

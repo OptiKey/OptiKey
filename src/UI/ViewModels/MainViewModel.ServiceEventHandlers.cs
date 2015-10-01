@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -186,8 +186,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Info("Calibrate requested.");
                             
                             var question = CalibrationService.CanBeCompletedWithoutManualIntervention
-                                ? "Are you sure you would like to re-calibrate?"
-                                : "Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.\nAre you sure you would like to re-calibrate?";
+                                ? Resources.CALIBRATION_CONFIRMATION_MESSAGE
+                                : Resources.CALIBRATION_REQUIRES_MANUAL_INTERACTION;
                             
                             Keyboard = new YesNoQuestion(
                                 question,
@@ -200,14 +200,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         if (calibrationResult.Success)
                                         {
                                             audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                            RaiseToastNotification("Success", calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
+                                            RaiseToastNotification(Resources.SUCCESS, calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
                                         }
                                         else
                                         {
                                             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                            RaiseToastNotification("Uh-oh!", calibrationResult.Exception != null
+                                            RaiseToastNotification(Resources.CRASH_TITLE, calibrationResult.Exception != null
                                                     ? calibrationResult.Exception.Message
-                                                    : calibrationResult.Message ?? "Something went wrong, but I don't know what - please check the logs", 
+                                                    : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR, 
                                                 NotificationTypes.Error, 
                                                 () => inputService.RequestResume());
                                         }
@@ -1069,10 +1069,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case FunctionKeys.Quit:
                         Log.Info("Quit key selected.");
                         var keyboardBeforeQuit = Keyboard;
-                        Keyboard = new YesNoQuestion("Are you sure you would like to quit?",
+                        Keyboard = new YesNoQuestion(Resources.QUIT_MESSAGE,
                             () =>
                             {
-                                Keyboard = new YesNoQuestion("Are you absolutely sure that you'd like to quit?",
+                                Keyboard = new YesNoQuestion(Resources.QUIT_CONFIRMATION_MESSAGE,
                                     () => Application.Current.Shutdown(),
                                     () => { Keyboard = keyboardBeforeQuit; });
                             },
@@ -1197,7 +1197,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputService.RequestSuspend();
             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification("Uh-oh!", exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
+            RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
         }
     }
 }

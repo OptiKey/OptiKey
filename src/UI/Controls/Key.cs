@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -216,7 +218,25 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (key != null)
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
-
+                //Depending on parametrized case, change the value
+                if (value != null)
+                {
+                    TextInfo textInfo = Thread.CurrentThread.CurrentCulture.TextInfo;
+                    //If Case is specifically set, use it, otherwise, use setting value
+                    switch (key.Case == Case.Settings ? Settings.Default.KeyCase : key.Case)
+                    {
+                        case Case.Upper:
+                            value = textInfo.ToUpper(value);
+                            break;
+                        case Case.Lower:
+                            value = textInfo.ToLower(value);
+                            break;
+                        case Case.Title:
+                            //Must be lowercased first because ToTitleCase consider uppercased string as abreviations
+                            value = textInfo.ToTitleCase(textInfo.ToLower(value));
+                            break;
+                    }
+                }
                 key.ShiftDownText = value;
                 key.ShiftUpText = value;
             }
@@ -226,6 +246,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (string) GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly DependencyProperty CaseProperty =
+            DependencyProperty.Register("Case", typeof(Case), typeof(Key), new PropertyMetadata(Case.Settings));
+
+        public Case Case
+        {
+            get { return (Case)GetValue(CaseProperty); }
+            set { SetValue(CaseProperty, value); }
         }
 
         public static readonly DependencyProperty ShiftUpTextProperty =

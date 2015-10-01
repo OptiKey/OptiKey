@@ -445,7 +445,8 @@ namespace JuliusSweetland.OptiKey.Services
                     () => lastTextChange, s => lastTextChange = s,
                     () => lastTextChangeWasSuggestion, b => lastTextChangeWasSuggestion = b,
                     () => suppressNextAutoSpace, b => suppressNextAutoSpace = b,
-                    () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b);
+                    () => shiftStateSetAutomatically, b => shiftStateSetAutomatically = b,
+                    () => suggestionService.Suggestions, s => suggestionService.Suggestions = s);
                 if (state.ContainsKey(currentStateKey))
                 {
                     state[currentStateKey] = lastState;
@@ -463,7 +464,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                Log.DebugFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newStateKey);
+                Log.InfoFormat("No stored KeyboardOutputService state to restore for SimulateKeyStrokes={0} - defaulting state.", newStateKey);
                 Text = null;
                 StoreLastTextChange(null);
                 ClearSuggestions();
