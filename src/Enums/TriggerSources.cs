@@ -1,4 +1,5 @@
-﻿namespace JuliusSweetland.OptiKey.Enums
+using JuliusSweetland.OptiKey.Properties;
+namespace JuliusSweetland.OptiKey.Enums
 {
     public enum TriggerSources
     {
@@ -13,9 +14,9 @@
         {
             switch (triggerSources)
             {
-                case TriggerSources.Fixations: return "Fixations (dwell)";
-                case TriggerSources.KeyboardKeyDownsUps: return "Keyboard key";
-                case TriggerSources.MouseButtonDownUps: return "Mouse button";
+                case TriggerSources.Fixations: return Resources.FIXATIONS_DWELL;
+                case TriggerSources.KeyboardKeyDownsUps: return Resources.KEYBOARD_KEY;
+                case TriggerSources.MouseButtonDownUps: return Resources.MOUSE_BUTTON;
             }
 
             return triggerSources.ToString();

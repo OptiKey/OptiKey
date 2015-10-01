@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
 
@@ -36,9 +36,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Languages>>
                 {
-                    new KeyValuePair<string, Languages>("American English", Enums.Languages.AmericanEnglish),
-                    new KeyValuePair<string, Languages>("British English", Enums.Languages.BritishEnglish),
-                    new KeyValuePair<string, Languages>("Canadian English", Enums.Languages.CanadianEnglish)
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
+                    new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
+                    new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance)
                 };
             }
         }

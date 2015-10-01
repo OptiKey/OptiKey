@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-        <GroupBox Header="Misc">
+        <GroupBox Header="{x:Static resx:Resources.MISC}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
@@ -20,22 +21,22 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Show splash screen on startup:" 
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="0" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding ShowSplashScreen, Mode=TwoWay}" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Check for updates on startup:" 
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.CHECK_FOR_UPDATES_AT_STARTUP_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Suppress modifier keys when in mouse keyboard:" 
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Debugging mode:" 
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 
                           VerticalAlignment="Center"

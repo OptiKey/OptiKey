@@ -4,6 +4,7 @@ using System.Windows;
 using EyeXFramework;
 using log4net;
 using Tobii.EyeX.Framework;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -32,7 +33,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                throw new ApplicationException("Unable to attempt a calibration as no EyeX engine is available.");
+                throw new ApplicationException(Resources.THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE);
             }
 
             return await taskCompletionSource.Task;
