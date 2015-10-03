@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-    public interface IAutoComplete
+    public interface IManageAutoComplete<T> : IAutoComplete
     {
-        IEnumerable<string> GetSuggestions(string root);
+        void AddEntry(string entry, T metaData);
+
+        void RemoveEntry(string entry);
     }
 }
