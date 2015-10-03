@@ -10,6 +10,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.AutoComplete;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -29,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete;
+        private OriginalAutoComplete autoComplete;
 
         #endregion
 
@@ -92,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
+                autoComplete = new OriginalAutoComplete();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
@@ -270,12 +271,12 @@ namespace JuliusSweetland.OptiKey.Services
 
                     //Also add to entries for auto complete
                     var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                    AddAutoCompleteEntry(entry, autoCompleteHash, newEntryWithUsageCount);
+                    autoComplete.AddEntry(entry, autoCompleteHash, newEntryWithUsageCount);
                     if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
                     {
                         //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
                         var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
-                        AddAutoCompleteEntry(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
+                        autoComplete.AddEntry(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
                     }
                     
                     if (!loadedFromDictionaryFile)
@@ -283,24 +284,6 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
                         SaveUserDictionaryToFile();
                     }
-                }
-            }
-        }
-
-        private void AddAutoCompleteEntry(string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
-        {
-            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
-            {
-                if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
-                {
-                    if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
-                    {
-                        entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
-                    }
-                }
-                else
-                {
-                    entriesForAutoComplete.Add(autoCompleteHash, new List<DictionaryEntry> {newEntryWithUsageCount});
                 }
             }
         }
@@ -335,22 +318,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Also remove from entries for auto complete
-                        var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                        if (!string.IsNullOrWhiteSpace(autoCompleteHash)
-                            && entriesForAutoComplete.ContainsKey(autoCompleteHash))
-                        {
-                            var foundEntryForAutoComplete = entriesForAutoComplete[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
-
-                            if (foundEntryForAutoComplete != null)
-                            {
-                                entriesForAutoComplete[autoCompleteHash].Remove(foundEntryForAutoComplete);
-
-                                if (!entriesForAutoComplete[autoCompleteHash].Any())
-                                {
-                                    entriesForAutoComplete.Remove(autoCompleteHash);
-                                }
-                            }
-                        }
+                        autoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -384,35 +352,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Get Auto Complete Suggestions
 
-        public IEnumerable<DictionaryEntry> GetAutoCompleteSuggestions(string root)
+        public IEnumerable<string> GetAutoCompleteSuggestions(string root)
         {
-            Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
-
-            if (entriesForAutoComplete != null)
-            {
-                var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
-
-                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
-                {
-                    var enumerator = 
-                        new List<DictionaryEntry> { new DictionaryEntry { Entry = root } } //Include the typed root as first result
-                        .Union(entriesForAutoComplete
-                                .Where(kvp => kvp.Key.StartsWith(simplifiedRoot))
-                                .SelectMany(kvp => kvp.Value)
-                                .Where(de => de.Entry.Length > root.Length)
-                                .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
-                                .OrderByDescending(de => de.UsageCount)
-                                .ThenBy(de => de.Entry.Length))
-                        .GetEnumerator();
-
-                    while (enumerator.MoveNext())
-                    {
-                        yield return enumerator.Current;
-                    }
-                }
-
-                yield break; //Not strictly necessary
-            }
+            return autoComplete.GetSuggestions(root);
         }
 
         #endregion

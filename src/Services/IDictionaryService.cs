@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.Services
         void LoadDictionary();
         bool ExistsInDictionary(string entryToFind);
         IEnumerable<DictionaryEntry> GetAllEntries();
-        IEnumerable<DictionaryEntry> GetAutoCompleteSuggestions(string root);
+        IEnumerable<string> GetAutoCompleteSuggestions(string root);
         void AddNewEntryToDictionary(string entry);
         void RemoveEntryFromDictionary(string entry);
         void IncrementEntryUsageCount(string entry);
