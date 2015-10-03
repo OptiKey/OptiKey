@@ -3,18 +3,14 @@
     public class DictionaryEntry
     {
 
-        private readonly string entry;
-
         public DictionaryEntry(string entry) : this(entry, 0) { }
         public DictionaryEntry(string entry, int usageCount)
         {
-            this.entry = entry;
+            Entry = entry;
             UsageCount = usageCount;
         }
 
-        public string Entry {
-            get { return entry; }
-        }
+        public string Entry { get; }
         public int UsageCount { get; set; }
     }
 }

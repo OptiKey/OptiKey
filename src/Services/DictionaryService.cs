@@ -43,7 +43,8 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public DictionaryService()
-         : this(new OriginalAutoComplete()) { }
+         //: this(new OriginalAutoComplete()) { } 
+         : this(new NGramAutoComplete()) { }
 
         public DictionaryService(IManageAutoComplete<DictionaryEntry> autoComplete)
         {
@@ -97,7 +98,6 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                autoComplete = new OriginalAutoComplete();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
