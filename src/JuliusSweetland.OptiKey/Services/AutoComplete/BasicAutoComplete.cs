@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
                     var enumerator =
-                        new List<DictionaryEntry> { new DictionaryEntry { Entry = root } } //Include the typed root as first result
+                        new List<DictionaryEntry> { new DictionaryEntry(root) } //Include the typed root as first result
                         .Union(entriesForAutoComplete
                                 .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
                                 .SelectMany(kvp => kvp.Value)
