@@ -2420,6 +2420,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Русский.
+        /// </summary>
+        public static string RUSSIAN {
+            get {
+                return ResourceManager.GetString("RUSSIAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Same as dock position.
         /// </summary>
         public static string SAME_AS_DOCK_POSITION {
