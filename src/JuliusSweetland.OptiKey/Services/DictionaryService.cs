@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private BasicAutoComplete autoComplete;
+        private IManageAutoComplete autoComplete;
 
         #endregion
 
@@ -43,7 +43,11 @@ namespace JuliusSweetland.OptiKey.Services
         #region Ctor
 
         public DictionaryService()
+         : this(new BasicAutoComplete()) { }
+
+        private DictionaryService(IManageAutoComplete autoComplete)
         {
+            this.autoComplete = autoComplete;
             MigrateLegacyDictionaries();
             LoadDictionary();
 
@@ -276,14 +280,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                    autoComplete.AddEntry(entry, autoCompleteHash, newEntryWithUsageCount);
-                    if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-                    {
-                        //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                        var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
-                        autoComplete.AddEntry(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
-                    }
+                    autoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {

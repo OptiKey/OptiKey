@@ -255,6 +255,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
     <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
