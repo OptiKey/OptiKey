@@ -11,6 +11,8 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
     {
         void AddEntry(string entry, DictionaryEntry metaData);
 
+        void Clear();
+
         void RemoveEntry(string entry);
     }
 }

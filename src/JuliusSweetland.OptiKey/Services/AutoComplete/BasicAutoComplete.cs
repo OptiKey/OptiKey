@@ -13,6 +13,12 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public void Clear()
+        {
+            Log.Debug("Clear called.");
+            entriesForAutoComplete.Clear();
+        }
+
         public IEnumerable<string> GetSuggestions(string root)
         {
             Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
