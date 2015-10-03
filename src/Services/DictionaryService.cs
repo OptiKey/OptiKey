@@ -255,7 +255,7 @@ namespace JuliusSweetland.OptiKey.Services
                 var hash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
-                    var newEntryWithUsageCount = new DictionaryEntry { UsageCount = usageCount, Entry = entry };
+                    var newEntryWithUsageCount = new DictionaryEntry (entry, usageCount);
 
                     if (entries.ContainsKey(hash))
                     {
