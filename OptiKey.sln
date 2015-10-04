@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey", "src\JuliusSweetland.OptiKey.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 EndProject
@@ -11,8 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docs\Deployment.txt = docs\Deployment.txt
 		docs\Design decision notes.txt = docs\Design decision notes.txt
 		docs\Icon design notes.txt = docs\Icon design notes.txt
-		docs\Localize.md = docs\Localize.md
 		docs\Localisation.xls = docs\Localisation.xls
+		docs\Localize.md = docs\Localize.md
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt
 		docs\UiAccess.txt = docs\UiAccess.txt
 	EndProjectSection
@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AD7A9
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.UnitTests", "JuliusSweetland.OptiKey.UnitTests\JuliusSweetland.OptiKey.UnitTests.csproj", "{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
