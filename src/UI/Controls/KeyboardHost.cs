@@ -19,6 +19,7 @@ using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
+using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -158,27 +159,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.Language)
                 {
-                    case Languages.EnglishUS:
-                    case Languages.EnglishUK:
-                    case Languages.EnglishCanada:
-                        newContent = new EnglishViews.Alpha {DataContext = Keyboard};
-                        break;
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
+                        break;
+                    case Languages.Russian:
+                        newContent = new RussianViews.Alpha { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = new EnglishViews.Alpha {DataContext = Keyboard};
                         break;
                 }
             }
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha)
             {
                 switch (Settings.Default.Language)
-                {
-                    case Languages.EnglishUS:
-                    case Languages.EnglishUK:
-                    case Languages.EnglishCanada:
-                        newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
-                        break;
+                {                      
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
+                        break;
+                    case Languages.Russian:
+                        newContent = new RussianViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }
@@ -196,15 +199,30 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics1)
             {
-                newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    default:
+                        newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
+                        break;
+                }                
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics2)
             {
-                newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    default:
+                        newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
+                        break;
+                }   
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics3)
             {
-                newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    default:
+                        newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
+                        break;
+                }   
             }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {
