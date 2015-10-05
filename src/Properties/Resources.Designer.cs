@@ -752,33 +752,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English (Canada).
-        /// </summary>
-        public static string ENGLISH_CANADA {
-            get {
-                return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English (UK).
-        /// </summary>
-        public static string ENGLISH_UK {
-            get {
-                return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English (US).
-        /// </summary>
-        public static string ENGLISH_US {
-            get {
-                return ResourceManager.GetString("ENGLISH_US", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ENTER.
         /// </summary>
         public static string ENTER {
