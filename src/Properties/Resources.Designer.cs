@@ -959,7 +959,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to French (France).
+        ///   Looks up a localized string similar to French (France) / Française (France).
         /// </summary>
         public static string FRENCH_FRANCE {
             get {
