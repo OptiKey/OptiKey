@@ -986,7 +986,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to German (Germany).
+        ///   Looks up a localized string similar to German (Germany) / Deutsch (Deutschland).
         /// </summary>
         public static string GERMAN_GERMANY {
             get {
