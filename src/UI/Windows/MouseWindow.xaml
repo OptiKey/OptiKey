@@ -1,0 +1,43 @@
+﻿<Window x:Class="JuliusSweetland.OptiKey.UI.Windows.MouseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:keyboardViewsModels="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards"
+        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
+        WindowStyle="None"
+        Title="OptiKey - Mouse"
+        Topmost="True"
+        Icon="..\..\Resources\Icons\Main.ico"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        Style="{DynamicResource MouseWindowStyle}">
+    <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
+
+    <Window.Resources>
+        <keyboardViewsModels:Mouse x:Key="MouseKeyboardViewModel" /> 
+    </Window.Resources>
+    
+    <Grid>
+        <controls:KeyboardHost x:Name="KeyboadHost"
+                               Keyboard="{StaticResource MouseKeyboardViewModel}">
+            <!--KeyboardHost.PointToKeyValueMap binding is setup in App.xaml.cs as it needs to include the host window's z-order-->
+            <controls:KeyboardHost.ErrorContent>
+                <Border Background="Black">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                            <TextBlock Text="PROBLEM LOADING KEYBOARD" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" Foreground="DarkRed"  Margin="10" />
+                            <TextBlock Text="The mouse keyboard could not be loaded"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                            Foreground="DarkRed" Margin="10" />
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+            </controls:KeyboardHost.ErrorContent>
+        </controls:KeyboardHost>
+
+        <controls:PointVisualiser Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
+                                                       Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                                  PointsToDisplay="{Binding SelectionResultPoints, Mode=OneWay}" />
+    </Grid>
+</Window>

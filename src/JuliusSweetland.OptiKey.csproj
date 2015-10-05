@@ -440,6 +440,9 @@
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\MouseWindow.xaml.cs">
+      <DependentUpon>MouseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
       <DependentUpon>ManagementWindow.xaml</DependentUpon>
     </Compile>
@@ -859,6 +862,10 @@
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\MouseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\ManagementWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

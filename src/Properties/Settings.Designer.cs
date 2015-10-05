@@ -1350,5 +1350,96 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["MouseKeyboardInSeperateWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness {
+            get {
+                return ((double)(this["MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness"]));
+            }
+            set {
+                this["MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MouseWindowFullDockThicknessAsPercentageOfScreen {
+            get {
+                return ((double)(this["MouseWindowFullDockThicknessAsPercentageOfScreen"]));
+            }
+            set {
+                this["MouseWindowFullDockThicknessAsPercentageOfScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MouseWindowOpacity {
+            get {
+                return ((double)(this["MouseWindowOpacity"]));
+            }
+            set {
+                this["MouseWindowOpacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Docked")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.WindowStates MouseWindowState {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MouseWindowState"]));
+            }
+            set {
+                this["MouseWindowState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Docked")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.WindowStates MouseWindowPreviousState {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MouseWindowPreviousState"]));
+            }
+            set {
+                this["MouseWindowPreviousState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,0,0,0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.Windows.Rect MouseWindowFloatingSizeAndPosition {
+            get {
+                return ((global::System.Windows.Rect)(this["MouseWindowFloatingSizeAndPosition"]));
+            }
+            set {
+                this["MouseWindowFloatingSizeAndPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SameAsDockedPosition")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.MinimisedEdges MouseWindowMinimisedPosition {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.MinimisedEdges)(this["MouseWindowMinimisedPosition"]));
+            }
+            set {
+                this["MouseWindowMinimisedPosition"] = value;
+            }
+        }
     }
 }

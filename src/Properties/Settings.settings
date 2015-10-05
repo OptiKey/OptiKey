@@ -308,5 +308,26 @@
     <Setting Name="MouseKeyboardInSeperateWindow" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MouseWindowFullDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="MouseWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MouseWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
+      <Value Profile="(Default)">Docked</Value>
+    </Setting>
+    <Setting Name="MouseWindowPreviousState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
+      <Value Profile="(Default)">Docked</Value>
+    </Setting>
+    <Setting Name="MouseWindowFloatingSizeAndPosition" Roaming="true" Type="System.Windows.Rect" Scope="User">
+      <Value Profile="(Default)">0,0,0,0</Value>
+    </Setting>
+    <Setting Name="MouseWindowMinimisedPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisedEdges" Scope="User">
+      <Value Profile="(Default)">SameAsDockedPosition</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -23,14 +22,10 @@ using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
-using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
-using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -146,6 +141,35 @@ namespace JuliusSweetland.OptiKey
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
+                MouseWindow mouseWindow = null;
+                if (Settings.Default.MouseKeyboardInSeperateWindow)
+                {
+                    mouseWindow = new MouseWindow();
+                    BindPointToKeyValueMap(mouseWindow, WindowZOrders.MouseWindow);
+
+                    IWindowManipulationService mouseWindowManipulationService = new WindowManipulationService(
+                        mouseWindow,
+                        () => Settings.Default.MouseWindowOpacity,
+                        () => Settings.Default.MouseWindowState,
+                        () => Settings.Default.MouseWindowPreviousState,
+                        () => Settings.Default.MouseWindowFloatingSizeAndPosition,
+                        () => Settings.Default.MouseWindowDockPosition,
+                        () => Settings.Default.MouseWindowDockSize,
+                        () => Settings.Default.MouseWindowFullDockThicknessAsPercentageOfScreen,
+                        () => Settings.Default.MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
+                        () => Settings.Default.MouseWindowMinimisedPosition,
+                        o => Settings.Default.MouseWindowOpacity = o,
+                        state => Settings.Default.MouseWindowState = state,
+                        state => Settings.Default.MouseWindowPreviousState = state,
+                        rect => Settings.Default.MouseWindowFloatingSizeAndPosition = rect,
+                        pos => Settings.Default.MouseWindowDockPosition = pos,
+                        size => Settings.Default.MouseWindowDockSize = size,
+                        t => Settings.Default.MouseWindowFullDockThicknessAsPercentageOfScreen = t,
+                        t => Settings.Default.MouseWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t);
+
+                    errorNotifyingServices.Add(mouseWindowManipulationService);
+                }
+
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
                 BindPointToKeyValueMap(mainWindow, WindowZOrders.MainWindow);
                 
@@ -177,6 +201,10 @@ namespace JuliusSweetland.OptiKey
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.MainView.DataContext = mainViewModel;
+                if (mouseWindow != null)
+                {
+                    mouseWindow.DataContext = mainViewModel;
+                }
 
                 //Setup actions to take once main view is loaded (i.e. the view is ready, so hook up the services which kicks everything off)
                 Action postMainViewLoaded = mainViewModel.AttachServiceEventHandlers;
@@ -195,7 +223,7 @@ namespace JuliusSweetland.OptiKey
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
 
-                //Show the main window
+                //Show the window(s)
                 mainWindow.Show();
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
