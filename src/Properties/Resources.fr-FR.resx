@@ -1171,4 +1171,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="UPPER_CASE" xml:space="preserve">
     <value>Tout en majuscule</value>
   </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
+  </data>
 </root>

@@ -143,15 +143,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to American English.
-        /// </summary>
-        public static string ENGLISH_US {
-            get {
-                return ResourceManager.GetString("ENGLISH_US", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Android Dark.
         /// </summary>
         public static string ANDROID_DARK {
@@ -262,15 +253,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to British English.
-        /// </summary>
-        public static string ENGLISH_UK {
-            get {
-                return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Calibration aborted with message: &apos;{0}&apos;.
         /// </summary>
         public static string CALIBRATION_ABORT_MESSAGE {
@@ -331,15 +313,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string CALIBRATION_SUCCESS {
             get {
                 return ResourceManager.GetString("CALIBRATION_SUCCESS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Canadian English.
-        /// </summary>
-        public static string ENGLISH_CANADA {
-            get {
-                return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
             }
         }
         
@@ -752,6 +725,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English (Canada).
+        /// </summary>
+        public static string ENGLISH_CANADA {
+            get {
+                return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English (UK).
+        /// </summary>
+        public static string ENGLISH_UK {
+            get {
+                return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English (US).
+        /// </summary>
+        public static string ENGLISH_US {
+            get {
+                return ResourceManager.GetString("ENGLISH_US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ENTER.
         /// </summary>
         public static string ENTER {
@@ -959,7 +959,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to French (France).
+        ///   Looks up a localized string similar to French (France) / Française (France).
         /// </summary>
         public static string FRENCH_FRANCE {
             get {
@@ -2844,6 +2844,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX {
             get {
                 return ResourceManager.GetString("TOBII_EYEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calibration completed, or possibly cancelled, but everything is working again!.
+        /// </summary>
+        public static string TOBII_EYEX_CALIBRATION_SUCCESS {
+            get {
+                return ResourceManager.GetString("TOBII_EYEX_CALIBRATION_SUCCESS", resourceCulture);
             }
         }
         

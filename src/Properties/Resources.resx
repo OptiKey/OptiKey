@@ -145,9 +145,6 @@ DICTIONARY</value>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
-  </data>
   <data name="ANDROID_DARK" xml:space="preserve">
     <value>Android Dark</value>
   </data>
@@ -186,9 +183,6 @@ WORD</value>
   <data name="BREAK" xml:space="preserve">
     <value>BREAK</value>
   </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
-  </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
     <value>Calibration aborted with message: '{0}'</value>
   </data>
@@ -210,9 +204,6 @@ Are you sure you would like to re-calibrate?</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
-  </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
     <value>CANCEL</value>
@@ -358,6 +349,15 @@ ARROW</value>
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>English (US)</value>
+  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
@@ -434,7 +434,7 @@ UP</value>
     <value>Font weight:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France)</value>
+    <value>French (France) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Full dock thickness (as % of screen):</value>
@@ -505,6 +505,9 @@ UP &amp; RIGHT</value>
     <value>JUMP
 UP</value>
   </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Key text transformation:</value>
+  </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Key fixation time to complete (ms):</value>
   </data>
@@ -562,6 +565,9 @@ DOWN/UP</value>
   </data>
   <data name="LOOK" xml:space="preserve">
     <value>Look</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>All in lower case</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETIC
@@ -1086,8 +1092,14 @@ POSITION</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Time until point becomes irrelevent (ms):</value>
   </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Words are capitalized</value>
+  </data>
   <data name="TOBII_EYEX" xml:space="preserve">
     <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
@@ -1141,6 +1153,9 @@ ARROW</value>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>UPDATE AVAILABLE!</value>
   </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>All in upper case</value>
+  </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Please visit www.optikey.org to download latest version ({0})
 You can turn off update checks from the Management Console (ALT + M).</value>
@@ -1180,17 +1195,5 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>YES</value>
-  </data>
-  <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Key text transformation:</value>
-  </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Words are capitalized</value>
-  </data>
-  <data name="LOWER_CASE" xml:space="preserve">
-    <value>All in lower case</value>
-  </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>All in upper case</value>
   </data>
 </root>
