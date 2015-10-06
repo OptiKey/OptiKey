@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using log4net;
 using TETControls.Calibration;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -44,22 +45,22 @@ namespace JuliusSweetland.OptiKey.Services
             switch (calibrateArgs.Result)
             {
                 case CalibrationRunnerResult.Success:
-                    var message = string.Format("Calibration success! Accuracy (Avg Error Degree = {0})",
+                    var message = string.Format(Resources.CALIBRATION_SUCCESS,
                         calibrateArgs.CalibrationResult.AverageErrorDegree);
                     Log.Info(message);
                     return message;
 
                 case CalibrationRunnerResult.Abort:
-                    throw new ApplicationException(string.Format("Calibration aborted with message: '{0}'", calibrateArgs.Message));
+                    throw new ApplicationException(string.Format(Resources.CALIBRATION_ABORT_MESSAGE, calibrateArgs.Message));
 
                 case CalibrationRunnerResult.Error:
-                    throw new ApplicationException(string.Format("An error occurred during calibration. Message: '{0}'", calibrateArgs.Message));
+                    throw new ApplicationException(string.Format(Resources.CALIBRATION_ERROR_MESSAGE, calibrateArgs.Message));
 
                 case CalibrationRunnerResult.Failure:
-                    throw new ApplicationException(string.Format("Calibration failed with message: '{0}'", calibrateArgs.Message));
+                    throw new ApplicationException(string.Format(Resources.CALIBRATION_FAIL_MESSAGE, calibrateArgs.Message));
 
                 case CalibrationRunnerResult.Unknown:
-                    throw new ApplicationException(string.Format("Calibration stopped for an unknown reason. Message: '{0}'", calibrateArgs.Message));
+                    throw new ApplicationException(string.Format(Resources.CALIBRATION_STOPPED_MESSAGE, calibrateArgs.Message));
             }
 
             return null;

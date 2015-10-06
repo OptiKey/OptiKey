@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.Enums;
@@ -16,6 +18,8 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
+using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
+using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -112,7 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             if (parentWindow == null)
             {
-                var windowException = new ApplicationException("Parent Window could not be identified. Unable to continue");
+                var windowException = new ApplicationException(OptiKey.Properties.Resources.PARENT_WINDOW_COULD_NOT_BE_FOUND);
 
                 Log.Error(windowException);
 
@@ -132,6 +136,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             Log.DebugFormat("GenerateContent called. Language setting is '{0}' and Keyboard type is '{1}'", 
                 Settings.Default.Language, Keyboard != null ? Keyboard.GetType() : null);
+
+            var cultureInfo = Settings.Default.Language.ToCultureInfo();
+            if (!Equals(cultureInfo, Properties.Resources.Culture)) 
+            {
+                //Updates UI and Resource Culture to reflect selected language
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+                Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                Properties.Resources.Culture = cultureInfo;
+            }
             
             //Clear out point to key map and pause input service
             PointToKeyValueMap = null;
@@ -146,10 +159,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.Language)
                 {
-                    case Languages.AmericanEnglish:
-                    case Languages.BritishEnglish:
-                    case Languages.CanadianEnglish:
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.Alpha {DataContext = Keyboard};
+                        break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Alpha { DataContext = Keyboard };
                         break;
                 }
             }
@@ -157,10 +176,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.Language)
                 {
-                    case Languages.AmericanEnglish:
-                    case Languages.BritishEnglish:
-                    case Languages.CanadianEnglish:
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
+                        break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }

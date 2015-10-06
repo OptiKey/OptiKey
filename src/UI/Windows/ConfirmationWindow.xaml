@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         Title="{Binding Title}"
         Topmost="True"
         Width="400"
@@ -24,7 +25,7 @@
                    Margin="10,10,10,10" TextWrapping="Wrap" FontSize="12" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-            <Button Content="OK" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
+            <Button Content="{x:Static resx:Resources.OK}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:ChangePropertyAction PropertyName="Confirmed" TargetObject="{Binding}" Value="True"/>
@@ -33,7 +34,7 @@
                 </i:Interaction.Triggers>
             </Button>
 
-            <Button Content="Cancel" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
+            <Button Content="{x:Static resx:Resources.CANCEL}" Width="75" Height="23" HorizontalAlignment="Right" Margin="5">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:CallMethodAction TargetObject="{Binding ElementName=confirmationWindow}" MethodName="Close"/>

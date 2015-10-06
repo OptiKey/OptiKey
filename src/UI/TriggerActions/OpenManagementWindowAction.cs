@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using Prism.Interactivity.InteractionRequest;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {
@@ -24,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                     || notificationWithServices.AudioService == null
                     || notificationWithServices.DictionaryService == null)
                 {
-                    throw new ApplicationException("Audio and/or Dictionary service(s) were/was not supplied to the management window action.");
+                    throw new ApplicationException(Resources.REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW);
                 }
 
                 var childWindow = new ManagementWindow(notificationWithServices.AudioService, notificationWithServices.DictionaryService);

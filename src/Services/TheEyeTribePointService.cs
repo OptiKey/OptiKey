@@ -5,6 +5,7 @@ using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -59,7 +60,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                         else
                         {
-                            PublishError(this, new ApplicationException("Unable to activate TheEyeTribe GazeManager! Please check that the server is running and the device is connected and try again."));
+                            PublishError(this, new ApplicationException(Resources.THE_EYE_TRIBE_ACTIVATION_ERROR));
                         }
                     }
 
@@ -93,7 +94,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                         if (!calibrated)
                         {
-                            PublishError(this, new ApplicationException("TheEyeTribe has not been calibrated. No data will be received until calibration is completed."));
+                            PublishError(this, new ApplicationException(Resources.THE_EYE_TRIBE_NOT_CALIBRATED));
                         }
                     }
                 }

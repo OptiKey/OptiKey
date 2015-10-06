@@ -5,6 +5,7 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Windows
 {
@@ -45,7 +46,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.M
             });
 
-            Title = string.Format("OptiKey v{0}", DiagnosticInfo.AssemblyVersion);
+            Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
         }
 
         public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }
