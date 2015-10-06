@@ -31,7 +31,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
 
-                if (keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown())
+                if (keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown()
+                    && !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown())
                 {
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
