@@ -124,14 +124,14 @@
     <value>Neuen Eintrag:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Würden Sie gerne den Satz '{0}' zum Wörterbuch hinzufügen mit der Tastenabkürzung '{1}'?</value>
+    <value>Satz '{0}' zum Wörterbuch hinzufügen mit der Tastenabkürzung '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ZUM WÖRTERBUCH
 HINZUFÜGEN</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Würden Sie gerne das Wort '{0}' zum Wörterbuch hinzufügen?</value>
+    <value>Wort '{0}' zum Wörterbuch hinzufügen?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Hinzugefügt</value>
@@ -196,7 +196,7 @@ ZURÜCK</value>
     <value>Kalibrierung fehlgeschlagen mit der Nachricht: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Kalibrierung kann nicht vollendet werden ohne die Benutzung von Maus oder Keyboard. Es ist möglich, dass die Kalibrierung nicht weitergeführt werden kann bis Sie eine Maus oder Keyboard benutzen.
+    <value>Kalibrierung kann nicht ohne Maus oder Keyboard vollendet werden. Es ist möglich, dass die Kalibrierung nicht weitergeführt werden kann bis eine Maus oder Keyboard benutzt wird.
 Wollen Sie dennoch neu kalibrieren?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
@@ -218,8 +218,8 @@ Wollen Sie dennoch neu kalibrieren?</value>
     <value>LÖSCHEN</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLICK
-&amp; ZIEHEN</value>
+    <value>KLICK &amp;
+ZIEHEN</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Klick 1</value>
@@ -353,7 +353,7 @@ RUNTER</value>
     <value>EINGABGE</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Sehr gut. '{0}' wurde dem Wörterbuch hinzugefügt.</value>
+    <value>Gut. '{0}' wurde dem Wörterbuch hinzugefügt.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Fehler:</value>
@@ -976,7 +976,7 @@ SCROLLEN</value>
     <value>Auswahlsfortschrittsanzeige Startgrösse (%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
-    <value>HOCHSTELLTASTE</value>
+    <value>GROSS</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
     <value>Zeige Willkommensbild bei Start:</value>
@@ -1030,7 +1030,7 @@ POSITION</value>
     <value>Grösse &amp; Position</value>
   </data>
   <data name="SLEEP" xml:space="preserve">
-    <value>RUHEZUSTAND</value>
+    <value>STANDBY</value>
   </data>
   <data name="SOUND_EFFECTS" xml:space="preserve">
     <value>Soundeffekte</value>
