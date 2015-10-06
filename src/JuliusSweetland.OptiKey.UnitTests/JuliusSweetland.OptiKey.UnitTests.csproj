@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\KeyboardOutputServiceTests.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
