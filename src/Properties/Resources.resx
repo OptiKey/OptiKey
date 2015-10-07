@@ -560,9 +560,6 @@ DOUBLE CLICK</value>
     <value>LEFT
 DOWN/UP</value>
   </data>
-  <data name="LETTERS" xml:space="preserve">
-    <value>LETTERS</value>
-  </data>
   <data name="LOOK" xml:space="preserve">
     <value>Look</value>
   </data>
@@ -1195,5 +1192,8 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>YES</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Letters</value>
   </data>
 </root>
