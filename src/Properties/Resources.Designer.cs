@@ -134,6 +134,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Letters.
+        /// </summary>
+        public static string ALPHA_LAYOUT {
+            get {
+                return ResourceManager.GetString("ALPHA_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ALT.
         /// </summary>
         public static string ALT {
@@ -731,33 +740,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         {
             get
             {
-                return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
-            }
-        }
 
-        /// <summary>
-        ///   Looks up a localized string similar to English (UK).
-        /// </summary>
         public static string ENGLISH_UK
         {
             get
             {
-                return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
-            }
-        }
 
-        /// <summary>
-        ///   Looks up a localized string similar to English (US).
-        /// </summary>
         public static string ENGLISH_US
         {
             get
             {
-                return ResourceManager.GetString("ENGLISH_US", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ENTER.
         /// </summary>
         public static string ENTER {
@@ -1325,15 +1317,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string LEFT_DOWN_UP_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("LEFT_DOWN_UP_SPLIT_WITH_NEWLINE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LETTERS.
-        /// </summary>
-        public static string LETTERS {
-            get {
-                return ResourceManager.GetString("LETTERS", resourceCulture);
             }
         }
         

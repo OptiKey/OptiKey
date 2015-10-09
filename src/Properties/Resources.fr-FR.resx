@@ -1174,4 +1174,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
   </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Lettres</value>
+  </data>
 </root>
