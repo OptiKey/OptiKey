@@ -213,6 +213,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
                         break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Diacritics1 { DataContext = Keyboard };
+                        break;
                 }
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics2)
@@ -227,6 +230,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
                         break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Diacritics2 { DataContext = Keyboard };
+                        break;
                 }
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics3)
@@ -240,6 +246,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };
+                        break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Diacritics3 { DataContext = Keyboard };
                         break;
                 }
             }
