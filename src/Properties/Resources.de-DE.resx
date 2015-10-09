@@ -155,7 +155,7 @@ HINZUFÜGEN</value>
     <value>Automatische Grossschreibung:</value>
   </data>
   <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
-    <value>Automatische Worderkennung:</value>
+    <value>Automatische Worterkennung:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
     <value>Automatische Satzumstellung:</value>
@@ -167,11 +167,11 @@ HINZUFÜGEN</value>
     <value>ZURÜCK</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EINS
+    <value>ZEICHEN
 ZURÜCK</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>WORT
+    <value>ZEICHEN
 ZURÜCK</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
@@ -209,7 +209,7 @@ Wollen Sie dennoch neu kalibrieren?</value>
     <value>ABBRUCH</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Aufnahme Ausszeit (ms):</value>
+    <value>Aufnahme Timeout (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
     <value>Beim Start nach Updates prüfen:</value>
@@ -334,10 +334,10 @@ VERRINGERN</value>
     <value>Für X Sekunden pro Nachrichtbuchstaben zeigen:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Mache an der momentanen Position...</value>
+    <value>Mache an der momentanen Mauscursor Position...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Mache an Punkt...</value>
+    <value>Mache an neuem Punkt...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PFEIL
@@ -369,39 +369,43 @@ RUNTER</value>
 VERGRÖSSERN</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-LINKS
+    <value>NACH
+UNTEN LINKS
 VERGRÖSSERN</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-RECHTS
+    <value>NACH
+UNTEN RECHTS
 VERGRÖSSERN</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
+    <value>NACH
+UNTEN
 VERGRÖSSERN</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
-VERGRÖSSERN</value>
-  </data>
-  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-VERGRÖSSERN</value>
-  </data>
-  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
+    <value>NACH
 LINKS
 VERGRÖSSERN</value>
   </data>
-  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NACH
 RECHTS
 VERGRÖSSERN</value>
   </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NACH
+OBEN LINKS
+VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NACH
+OBEN RECHTS
+VERGRÖSSERN</value>
+  </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
+    <value>NACH
+OBEN
 VERGRÖSSERN</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
@@ -457,7 +461,7 @@ ERHÖHEN</value>
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...aber versucht auto-Grosschreibung zu vermeiden wenn es nicht hilfreicht ist:</value>
+    <value>...aber wenn es geht vermeiden, falls nicht hilfreich:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>Derzeitige Tastatur &amp; Sprachenkombination ist nicht gültig</value>
@@ -466,44 +470,50 @@ ERHÖHEN</value>
     <value>SPRINGEN</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-LINKS
+    <value>NACH
+UNTEN &amp; LINKS
 SPRINGEN</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-RECHTS
+    <value>NACH
+UNTEN &amp; RECHTS
 SPRINGEN</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
+    <value>NACH
+UNTEN
 SPRINGEN</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
+    <value>NACH
+LINKS
 SPRINGEN</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
+    <value>NACH
+RECHTS
 SPRINGEN</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN &amp; LINKS
+    <value>NACH
+OBEN &amp; LINKS
 SPRINGEN</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN &amp; RECHTS
+    <value>NACH
+OBEN &amp; RECHTS
 SPRINGEN</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
+    <value>NACH
+OBEN
 SPRINGEN</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Tasten Fixierungszeit um zu Vervollständigen (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Tasten Fixierungszeit um Aufzuschalten(ms):</value>
+    <value>Tasten Fixierungszeit um Auszuwählen(ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
     <value>Tastenauswahl Taste von Keyboard:</value>
@@ -515,7 +525,7 @@ SPRINGEN</value>
     <value>Tastenauswahl:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Tastenauswahl Ursprung:</value>
+    <value>Tastenauswahl durch:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
     <value>Tastenauswahl: {0}</value>
@@ -548,8 +558,8 @@ KLICK</value>
 LINKS</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RUNTER/HOCH
-LINKS</value>
+    <value>LINKS KLICK
+RUNTER/HOCH</value>
   </data>
   <data name="LETTERS" xml:space="preserve">
     <value>BUCHSTABEN</value>
@@ -562,13 +572,13 @@ LINKS</value>
 CURSOR</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
-    <value>VERGRÖSSERER</value>
+    <value>LUPE</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
     <value>Vergrösserungsziel (% des Bildschirms):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Vergrösserungsherkunft (% des Bildschirms):</value>
+    <value>Vergrösserungsausgang (% des Bildschirms):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Verwaltungskonsole: ALT + M</value>
@@ -590,7 +600,7 @@ CURSOR</value>
 MITTE</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MITTE
+    <value>MITTE KLICK
 RUNTER/HOCH</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
@@ -708,13 +718,13 @@ RUNTER/HOCH</value>
     <value>Um {0} pixel bewegen:|Um {0} pixel bewegen:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-LINKS
+    <value>RICHTUNG
+UNTEN LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
-RECHTS
+    <value>RICHTUNG
+UNTEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -734,13 +744,13 @@ BEWEGEN</value>
 NACH</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
-LINKS
+    <value>RICHTUNG
+OBEN LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
-RECHTS
+    <value>RICHTUNG
+OBEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -757,7 +767,7 @@ BEWEGEN</value>
     <value>Mehrtasten Auswahl</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Mehrtasten Auswahl Endung:</value>
+    <value>Mehrtasten Auswahl Ende:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MEHRTASTEN
@@ -777,7 +787,7 @@ AUSWAHL</value>
     <value>NEIN</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>Es sieht so aus als ob das scratchpad keine Wörter enthält, die noch nicht im Wörterbuch sind.</value>
+    <value>Es sieht so aus als ob das Textfeld keine Wörter enthält, die noch nicht im Wörterbuch sind.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
     <value>Kein</value>
@@ -793,8 +803,8 @@ AUSWAHL</value>
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUM
-SYM</value>
+    <value>NUMMERN
+SYMBOLE</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
     <value>NUMMERN
@@ -849,10 +859,10 @@ TASTEN</value>
     <value>Punkt Fixierungszeit um zu Vervollständigen (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Punkt Fixierungszeit um Aufzuschalten(ms):</value>
+    <value>Punkt Fixierungszeit um Auszuwählen(ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Punkt Aufschaltungsradius (pixels):</value>
+    <value>Punkt Auszuwählradius (pixels):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
     <value>Punktauswahl: {0}</value>
@@ -864,7 +874,7 @@ TASTEN</value>
     <value>Punktauswahl Maustaste:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Punktauswahl Ursprung:</value>
+    <value>Punktauswahl durch:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
     <value>Zeigen</value>
@@ -891,13 +901,13 @@ TASTEN</value>
     <value>Wollen Sie beenden?</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Rate:</value>
+    <value>Geschwindigkeit:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
     <value>NEU-KALIBRIERUNG</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LETZTE
+    <value>LETZTES
 WIEDERHOLEN</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
@@ -911,7 +921,7 @@ Bitte OK klicken um neuzustarten oder ABBRECHEN um die Änderungen zu verwerfen.
     <value>WIEDERHERSTELLEN</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Eine nicht voll ausgewählte Taste erfordert eine komplett neue FIxierung:</value>
+    <value>Eine nicht voll ausgewählte Taste erfordert eine komplett neue Fixierung:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
     <value>Rechts</value>
@@ -925,8 +935,8 @@ PFEIL</value>
 KLICK</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-HOCH/RUNTER</value>
+    <value>RECHTS KLICK
+RUNTER/HOCH</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Aufsteigend 1</value>
@@ -938,7 +948,7 @@ HOCH/RUNTER</value>
     <value>Das Gleiche wie Dockposition</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Scratchpad Zeilenanzahl:</value>
+    <value>Textfeld Zeilenanzahl:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SCR
@@ -985,7 +995,8 @@ SCROLLEN</value>
     <value>VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN &amp; LINKS
+    <value>NACH
+UNTEN &amp; LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -1155,7 +1166,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>Webseite: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
-    <value>WIN</value>
+    <value>WINDOWS</value>
   </data>
   <data name="WORDS" xml:space="preserve">
     <value>Wörter</value>
