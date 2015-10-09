@@ -1,6 +1,6 @@
 ﻿using JuliusSweetland.OptiKey.UI.Controls;
 
-namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
+namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.French
 {
     /// <summary>
     /// Interaction logic for Diacritics2.xaml

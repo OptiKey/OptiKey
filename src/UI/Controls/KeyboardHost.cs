@@ -196,15 +196,45 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics1)
             {
-                newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
+                        newContent = new EnglishViews.Diacritics1 { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics2)
             {
-                newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
+                        newContent = new EnglishViews.Diacritics2 { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics3)
             {
-                newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
+                switch (Settings.Default.Language)
+                {
+                    case Languages.EnglishUS:
+                    case Languages.EnglishUK:
+                    case Languages.EnglishCanada:
+                        newContent = new EnglishViews.Diacritics3 { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };
+                        break;
+                }
             }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {
