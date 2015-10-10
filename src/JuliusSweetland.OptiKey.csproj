@@ -16,6 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,7 +31,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -252,6 +252,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\OriginalAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
