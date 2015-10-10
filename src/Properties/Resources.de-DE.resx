@@ -171,7 +171,7 @@ HINZUFÜGEN</value>
 ZURÜCK</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ZEICHEN
+    <value>WORT
 ZURÜCK</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
@@ -728,15 +728,18 @@ UNTEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>HERUNTER
+    <value>RICHTUNG
+HERUNTER
 BEWEGEN</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
+    <value>RICHTUNG
+LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
+    <value>RICHTUNG
+RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -754,7 +757,8 @@ OBEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>HERAUF
+    <value>RICHTUNG
+HERAUF
 BEWEGEN</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
@@ -958,7 +962,7 @@ LK</value>
     <value>Um {0} klicks scrollen:|Um {0} klicks scrollen</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RUNTER
+    <value>HINUNTER
 SCROLLEN</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -995,8 +999,7 @@ SCROLLEN</value>
     <value>VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN &amp; LINKS
+    <value>UNTEN &amp; LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
