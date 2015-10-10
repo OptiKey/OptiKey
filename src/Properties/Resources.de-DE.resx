@@ -127,7 +127,8 @@
     <value>Satz '{0}' zum Wörterbuch hinzufügen mit der Tastenabkürzung '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ZUM WÖRTERBUCH
+    <value>ZUM
+WÖRTERBUCH
 HINZUFÜGEN</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
@@ -908,7 +909,8 @@ TASTEN</value>
     <value>Geschwindigkeit:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>NEU-KALIBRIERUNG</value>
+    <value>NEU-
+KALIBRIERUNG</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>LETZTES
