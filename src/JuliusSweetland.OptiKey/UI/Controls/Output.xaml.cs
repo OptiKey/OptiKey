@@ -22,5 +22,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (int) GetValue(NumberOfSuggestionsDisplayedProperty); }
             set { SetValue(NumberOfSuggestionsDisplayedProperty, value); }
         }
+
+        public static readonly DependencyProperty ScratchpadWidthInKeysProperty = DependencyProperty.Register(
+            "ScratchpadWidthInKeys", typeof (int), typeof (Output), new PropertyMetadata(default(int)));
+
+        public int ScratchpadWidthInKeys
+        {
+            get { return (int) GetValue(ScratchpadWidthInKeysProperty); }
+            set { SetValue(ScratchpadWidthInKeysProperty, value); }
+        }
     }
 }

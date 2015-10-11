@@ -10,7 +10,9 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values != null && values.Count() == 2)
+            if (values != null 
+                && values.Count() == 2
+                && values.All(v => v != DependencyProperty.UnsetValue))
             {
                 var length = (double)values[0];
                 var span = (int)values[1];

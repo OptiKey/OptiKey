@@ -11,7 +11,9 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values != null && values.Count() == 3)
+            if (values != null 
+                && values.Count() == 3
+                && values.All(v => v != DependencyProperty.UnsetValue))
             {
                 var noOfLines = (int)values[0];
                 var height = (double)values[1];

@@ -47,11 +47,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
-                        Grid.RowSpan="2" Grid.ColumnSpan="22" 
-                        NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+                         Grid.RowSpan="2" Grid.ColumnSpan="24" 
+                         ScratchpadWidthInKeys="8"
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="ò" ShiftDownText="Ò"
@@ -131,6 +134,14 @@
                 <models:KeyValue FunctionKey="Diacritic1Keyboard" />
             </controls:Key.Value>
         </controls:Key>
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource MenuIcon}"
+                      Text="{x:Static resx:Resources.MENU}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="ț" ShiftDownText="Ț"
@@ -203,11 +214,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MenuIcon}"
-                      Text="{x:Static resx:Resources.MENU}"
+                      SymbolGeometry="{StaticResource AlphaIcon}"
+                      Text="{x:Static resx:Resources.ALPHA}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource DiacriticsIcon}"
+                      Text="{x:Static resx:Resources.DIACRITICS}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Diacritic1Keyboard}" />
             </controls:Key.Value>
         </controls:Key>
 
@@ -279,11 +298,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA}"
+                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NumericAndSymbols1Keyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource CurrenciesIcon}"
+                      Text="{x:Static resx:Resources.CURRENCIES}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Currencies1Keyboard}" />
             </controls:Key.Value>
         </controls:Key>
 
@@ -331,11 +358,19 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.SLEEP}"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="{x:Static resx:Resources.MOUSE}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource PhysicalKeysIcon}"
+                      Text="{x:Static resx:Resources.PHYSICAL_KEYS_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol">
+            <controls:Key.Value>
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PhysicalKeysKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
