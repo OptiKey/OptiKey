@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -183,10 +184,25 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 if (multiKeySelectionKeys == null)
                 {
-                    multiKeySelectionKeys = "abcdefghijklmnopqrstuvwxyz"
-                        .ToCharArray()
-                        .Select(c => new KeyValue {String = c.ToString(CultureInfo.InvariantCulture)})
-                        .ToList();
+                    switch (Settings.Default.Language)
+                    {
+                        case Languages.Russian:
+                            {
+                              multiKeySelectionKeys = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+                                .ToCharArray()
+                                .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
+                                .ToList();
+                            }
+                            break;
+                        default:
+                            {
+                                multiKeySelectionKeys = "abcdefghijklmnopqrstuvwxyz"
+                                    .ToCharArray()
+                                    .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
+                                    .ToList();
+                            }
+                            break;
+                    }
                 }
                 return multiKeySelectionKeys;
             }
