@@ -1337,5 +1337,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeyCase"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.EyeXSensitivities EyeXSensitivity {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.EyeXSensitivities)(this["EyeXSensitivity"]));
+            }
+            set {
+                this["EyeXSensitivity"] = value;
+            }
+        }
     }
 }

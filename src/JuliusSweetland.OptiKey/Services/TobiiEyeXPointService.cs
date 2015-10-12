@@ -2,6 +2,7 @@
 using System.Reactive;
 using System.Windows;
 using EyeXFramework;
+using JuliusSweetland.OptiKey.Enums;
 using log4net;
 using Tobii.EyeX.Client;
 using Tobii.EyeX.Framework;
@@ -16,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private GazePointDataStream gazeDataStream;
+        private FixationDataStream fixationDataStream;
 
         private event EventHandler<Timestamped<Point>> pointEvent;
 
@@ -73,18 +75,43 @@ namespace JuliusSweetland.OptiKey.Services
 
                     EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
 
-                    gazeDataStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
-
-                    EyeXHost.Start(); // Start the EyeX host
-
-                    gazeDataStream.Next += (s, data) =>
+                    if(Settings.Default.EyeXSensitivity == EyeXSensitivities.VeryHigh ||
+                       Settings.Default.EyeXSensitivity == EyeXSensitivities.High)
                     {
-                        if (pointEvent != null)
+                        gazeDataStream = EyeXHost.CreateGazePointDataStream(
+                            Settings.Default.EyeXSensitivity == EyeXSensitivities.VeryHigh
+                                ? GazePointDataMode.Unfiltered //Very High
+                                : GazePointDataMode.LightlyFiltered); //High
+
+                        EyeXHost.Start(); // Start the EyeX host
+
+                        gazeDataStream.Next += (s, data) =>
                         {
-                            pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y), 
-                                new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
-                        }
-                    };
+                            if (pointEvent != null)
+                            {
+                                pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
+                                    new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
+                            }
+                        };
+                    }
+                    else
+                    {
+                        fixationDataStream = EyeXHost.CreateFixationDataStream(
+                            Settings.Default.EyeXSensitivity == EyeXSensitivities.Medium
+                                ? FixationDataMode.Sensitive //Medium
+                                : FixationDataMode.Slow); //Low
+
+                        EyeXHost.Start(); // Start the EyeX host
+
+                        fixationDataStream.Next += (s, data) =>
+                        {
+                            if (pointEvent != null)
+                            {
+                                pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
+                                    new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
+                            }
+                        };
+                    }
                 }
 
                 pointEvent += value;

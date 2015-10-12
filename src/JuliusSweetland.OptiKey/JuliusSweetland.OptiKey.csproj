@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\EyeXSensitivities.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
@@ -734,6 +735,7 @@
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
