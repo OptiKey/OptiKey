@@ -305,7 +305,7 @@ Entschuldigung für die Unannehmlichkeiten.</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>TRANSPARENZ
-VERRINGERN</value>
+ERHÖHEN</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
@@ -453,7 +453,7 @@ VERGRÖSSERN</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>TRANSPARENZ
-ERHÖHEN</value>
+VERRINGERN</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
     <value>Info:</value>
