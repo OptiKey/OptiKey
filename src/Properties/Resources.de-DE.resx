@@ -350,7 +350,7 @@ RUNTER</value>
     <value>ENDE</value>
   </data>
   <data name="ENTER" xml:space="preserve">
-    <value>EINGABGE</value>
+    <value>EINGABE</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
     <value>Gut. '{0}' wurde dem Wörterbuch hinzugefügt.</value>
