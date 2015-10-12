@@ -442,9 +442,6 @@ UP</value>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>Gaze Tracker</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>German (Germany) / Deutsch (Deutschland)</value>
-  </data>
   <data name="GROW" xml:space="preserve">
     <value>Grow</value>
   </data>
@@ -1198,5 +1195,8 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Letters</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German (Germany) / Deutsch (Deutschland)</value>
   </data>
 </root>

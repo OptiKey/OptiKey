@@ -305,5 +305,8 @@
     <Setting Name="KeyCase" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Case" Scope="User">
       <Value Profile="(Default)">Upper</Value>
     </Setting>
+    <Setting Name="EyeXSensitivity" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.EyeXSensitivities" Scope="User">
+      <Value Profile="(Default)">Medium</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -732,7 +732,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("END", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to English (Canada).
         /// </summary>
@@ -741,7 +741,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("ENGLISH_CANADA", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to English (UK).
         /// </summary>
@@ -750,18 +750,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("ENGLISH_UK", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to English (US).
         /// </summary>
-        public static string ENGLISH_US
-        {
-            get
-            {
+        public static string ENGLISH_US {
+            get {
                 return ResourceManager.GetString("ENGLISH_US", resourceCulture);
             }
         }
-
+        
+        /// <summary>
         ///   Looks up a localized string similar to ENTER.
         /// </summary>
         public static string ENTER {

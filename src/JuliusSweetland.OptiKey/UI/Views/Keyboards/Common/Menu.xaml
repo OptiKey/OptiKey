@@ -61,7 +61,7 @@
                                 </controls:Key.Value>
                             </controls:Key>
                             <controls:Key Grid.Row="0" Grid.Column="2"
-                                          SymbolGeometry="{StaticResource AccentedLettersIcon}"
+                                          SymbolGeometry="{StaticResource DiacriticsIcon}"
                                           Text="{x:Static resx:Resources.DIACRITICS}"
                                           SharedSizeGroup="KeyWithSymbolAndText">
                                 <controls:Key.Value>
@@ -218,7 +218,7 @@
                                         </controls:Key.Value>
                                     </controls:Key>
                                     <controls:Key Grid.Row="0" Grid.Column="2"
-                                                  SymbolGeometry="{StaticResource AccentedLettersIcon}"
+                                                  SymbolGeometry="{StaticResource DiacriticsIcon}"
                                                   Text="{x:Static resx:Resources.DIACRITICS}"
                                                   SharedSizeGroup="KeyWithSymbolAndText">
                                         <controls:Key.Value>
