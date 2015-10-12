@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
@@ -14,8 +15,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length == 2
-                && values[0] != DependencyProperty.UnsetValue
-                && values[1] != DependencyProperty.UnsetValue)
+                && values.All(v => v != DependencyProperty.UnsetValue))
             {
                 var width = (double)values[0];
                 var height = (double)values[1];

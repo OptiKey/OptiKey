@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
                 <ResourceDictionary>
                     <valueConverters:SuggestionsPaged x:Key="SuggestionsPaged" />
+                    <valueConverters:ConvertToStarGridLength DefaultGridLength="8" x:Key="ConvertToStarGridLength" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -32,13 +33,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="{Binding ScratchpadWidthInKeys, RelativeSource={RelativeSource AncestorType=controls:Output}, Converter={StaticResource ConvertToStarGridLength}}" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -51,7 +46,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
             </controls:Key.Value>
         </controls:Key>
-        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="9">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -127,7 +122,7 @@
                 </controls:Key.Value>
             </controls:Key>
         </Grid>
-        <controls:Key Grid.Row="0" Grid.Column="10"
+        <controls:Key Grid.Row="0" Grid.Column="4"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -152,9 +147,9 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Scratchpad Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="7"
+        <controls:Scratchpad Grid.Row="1" Grid.Column="2"
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
-        <controls:Key Grid.Row="1" Grid.Column="9"
+        <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       Text="{x:Static resx:Resources.SPEAK}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -162,12 +157,12 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="1" Grid.Column="10"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="{x:Static resx:Resources.MOUSE}"
+        <controls:Key Grid.Row="1" Grid.Column="4"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MouseKeyboard}" />
+                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
             </controls:Key.Value>
         </controls:Key>
     </Grid>
