@@ -1,0 +1,28 @@
+@import "colors";
+
+@import "type";
+@import "link";
+@import "navbar";
+
+main {
+	display: block;
+}
+
+.navbar {
+	background-color: $optikey-color-blue-dark;
+}
+
+footer {
+	background-color: $optikey-color-blue-dark;
+	padding-top: 2rem;
+
+	color: $optikey-color-white;
+
+	a, a:visited {
+		color: white
+	}
+
+	a:focus, a:hover, a:active {
+		color: white
+	}
+}
