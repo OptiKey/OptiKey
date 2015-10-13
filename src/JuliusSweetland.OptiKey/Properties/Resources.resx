@@ -1209,6 +1209,9 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>None</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing level:</value>
+    <value>Data stream processing amount:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German (Germany) / Deutsch (Deutschland)</value>
   </data>
 </root>

@@ -995,6 +995,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to German (Germany) / Deutsch (Deutschland).
+        /// </summary>
+        public static string GERMAN_GERMANY {
+            get {
+                return ResourceManager.GetString("GERMAN_GERMANY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grow.
         /// </summary>
         public static string GROW {
@@ -2893,7 +2902,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data stream processing level:.
+        ///   Looks up a localized string similar to Data stream processing amount:.
         /// </summary>
         public static string TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL {
             get {
