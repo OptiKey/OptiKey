@@ -57,71 +57,71 @@
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" />
-        <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                      Text="F1" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Case="None"
+                      Text="F1"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F1}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                      Text="F2" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Case="None"
+                      Text="F2"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F2}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
-                      Text="F3" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Case="None"
+                      Text="F3"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F3}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
-                      Text="F4" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Case="None"
+                      Text="F4"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F4}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
-                      Text="F5" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2" Case="None"
+                      Text="F5"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F5}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
-                      Text="F6" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2" Case="None"
+                      Text="F6"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F6}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2"
-                      Text="F7" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2" Case="None"
+                      Text="F7"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F7}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2"
-                      Text="F8" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2" Case="None"
+                      Text="F8"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F8}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2"
-                      Text="F9" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2" Case="None"
+                      Text="F9"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F9}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
-                      Text="F10" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2" Case="None"
+                      Text="F10"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F10}" />
@@ -194,15 +194,15 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Home}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="F11" Case="None"
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
+                      Text="F11"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F11}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="F12" Case="None"
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
+                      Text="F12"
                       SharedSizeGroup="FunctionKey">
             <controls:Key.Value>
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.F12}" />

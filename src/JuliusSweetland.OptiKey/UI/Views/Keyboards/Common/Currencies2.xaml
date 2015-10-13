@@ -55,72 +55,72 @@
                          Grid.RowSpan="2" Grid.ColumnSpan="24" 
                          ScratchpadWidthInKeys="8"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
-        
-        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="₸" Case="None"
+
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
+                      Text="₸"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="₸" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      Text="₮" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
+                      Text="₮"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="₮" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      Text="₩" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
+                      Text="₩"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="₩" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      Text="¥" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
+                      Text="¥"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="¥" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      Text="ман" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
+                      Text="ман"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="ман" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      Text="лв" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
+                      Text="лв"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="лв" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      Text="﷼" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+                      Text="﷼"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="﷼" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      Text="ден" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+                      Text="ден"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="ден" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      Text="zł" Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
+                      Text="zł"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="zł" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      Text="Дин." Case="None"
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
+                      Text="Дин."
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="Дин." />
