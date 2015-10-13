@@ -671,7 +671,7 @@ RUNTER/HOCH</value>
     <value>Maus</value>
   </data>
   <data name="MOUSE_POSITION" xml:space="preserve">
-    <value>Mausposition:</value>
+    <value>Mausposition</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
     <value>Mausposition Messinterval (ms):</value>
@@ -1190,5 +1190,20 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
     <value>Alles in Grossbuchstaben</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Hoch</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Tief</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Kein</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Datastream Verarbeitungsmenge:</value>
   </data>
 </root>

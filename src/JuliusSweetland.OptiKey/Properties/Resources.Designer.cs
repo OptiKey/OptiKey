@@ -2902,7 +2902,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data stream processing level:.
+        ///   Looks up a localized string similar to Data stream processing amount:.
         /// </summary>
         public static string TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL {
             get {

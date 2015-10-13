@@ -1177,4 +1177,19 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Lettres</value>
   </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Haute</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Basse</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Moyenne</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Aucune</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Quantité de données de traitement de flux:</value>
+  </data>
 </root>
