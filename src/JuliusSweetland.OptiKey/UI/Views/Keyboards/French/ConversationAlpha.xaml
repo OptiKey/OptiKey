@@ -274,7 +274,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationNumericAndSymbolsKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -290,7 +290,7 @@
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>

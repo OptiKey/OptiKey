@@ -341,7 +341,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -357,7 +357,7 @@
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>

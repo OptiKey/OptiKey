@@ -55,71 +55,71 @@
                          Grid.RowSpan="2" Grid.ColumnSpan="24" 
                          ScratchpadWidthInKeys="8"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
-        
-        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
                       Text="†"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="†" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
                       Text="‡"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="‡" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
                       Text="№"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="№" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text="÷"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="÷" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
                       Text="‰"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="‰" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
                       Text="‱"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="‱" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       Text="¶"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="¶" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="§"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="§" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="⇒"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⇒" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
                       Text="→"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -143,70 +143,70 @@
             </controls:Key.Value>
         </controls:Key>
 
-        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Case="None"
                       Text="⊃"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊃" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
                       Text="⇔"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⇔" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
                       Text="↔"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="↔" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text="¬"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="¬" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
                       Text="∧"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∧" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
                       Text="∨"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∨" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       Text="⊕"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊕" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="⊻"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊻" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="⊤"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊤" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
                       Text="⊥"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -238,49 +238,49 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
                       Text="∑"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∑" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
                       Text="∀"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∀" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text="∃"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∃" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2" Case="None"
                       Text="∄"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="∄" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Case="None"
                       Text="≡"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="≡" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       Text="⊢"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊢" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="⊨"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -342,7 +342,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text="⋆"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
@@ -358,14 +358,14 @@
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
                       Text="⊬"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="⊬" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="⊭"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>

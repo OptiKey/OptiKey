@@ -1013,6 +1013,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to High.
+        /// </summary>
+        public static string HIGH {
+            get {
+                return ResourceManager.GetString("HIGH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HOME.
         /// </summary>
         public static string HOME {
@@ -1341,6 +1350,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Low.
+        /// </summary>
+        public static string LOW {
+            get {
+                return ResourceManager.GetString("LOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All in lower case.
         /// </summary>
         public static string LOWER_CASE {
@@ -1410,6 +1428,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAX_DICTIONARY_MATCHES_LABEL {
             get {
                 return ResourceManager.GetString("MAX_DICTIONARY_MATCHES_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        public static string MEDIUM {
+            get {
+                return ResourceManager.GetString("MEDIUM", resourceCulture);
             }
         }
         
@@ -1981,6 +2008,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string NO_SOUND {
             get {
                 return ResourceManager.GetString("NO_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string NONE {
+            get {
+                return ResourceManager.GetString("NONE", resourceCulture);
             }
         }
         
@@ -2862,6 +2898,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX_CALIBRATION_SUCCESS {
             get {
                 return ResourceManager.GetString("TOBII_EYEX_CALIBRATION_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data stream processing level:.
+        /// </summary>
+        public static string TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL {
+            get {
+                return ResourceManager.GetString("TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL", resourceCulture);
             }
         }
         

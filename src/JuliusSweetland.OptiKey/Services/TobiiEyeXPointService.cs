@@ -75,13 +75,13 @@ namespace JuliusSweetland.OptiKey.Services
 
                     EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
 
-                    if(Settings.Default.EyeXSensitivity == EyeXSensitivities.VeryHigh ||
-                       Settings.Default.EyeXSensitivity == EyeXSensitivities.High)
+                    if (Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None ||
+                       Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Low)
                     {
                         gazeDataStream = EyeXHost.CreateGazePointDataStream(
-                            Settings.Default.EyeXSensitivity == EyeXSensitivities.VeryHigh
-                                ? GazePointDataMode.Unfiltered //Very High
-                                : GazePointDataMode.LightlyFiltered); //High
+                            Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None
+                                ? GazePointDataMode.Unfiltered //None
+                                : GazePointDataMode.LightlyFiltered); //Low
 
                         EyeXHost.Start(); // Start the EyeX host
 
@@ -97,9 +97,9 @@ namespace JuliusSweetland.OptiKey.Services
                     else
                     {
                         fixationDataStream = EyeXHost.CreateFixationDataStream(
-                            Settings.Default.EyeXSensitivity == EyeXSensitivities.Medium
+                            Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Medium
                                 ? FixationDataMode.Sensitive //Medium
-                                : FixationDataMode.Slow); //Low
+                                : FixationDataMode.Slow); //Hight
 
                         EyeXHost.Start(); // Start the EyeX host
 
