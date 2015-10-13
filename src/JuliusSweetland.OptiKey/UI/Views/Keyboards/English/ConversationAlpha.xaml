@@ -276,7 +276,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2"
-                      Text=","
+                      Text="," Case="None"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="," />
@@ -292,7 +292,7 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="5" Grid.Column="11" Grid.ColumnSpan="2"
-                      Text="."
+                      Text="." Case="None"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="." />

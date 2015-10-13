@@ -1,4 +1,4 @@
-﻿<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.Diacritics2"
+﻿<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.Diacritics3"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -57,81 +57,81 @@
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
         
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ị" ShiftDownText="Ị"
+                      ShiftUpText="ș" ShiftDownText="Ș"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ị" />
+                <models:KeyValue String="ș" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="į" ShiftDownText="Į"
+                      ShiftUpText="ß" ShiftDownText="ß"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="į" />
+                <models:KeyValue String="ß" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="ī" ShiftDownText="Ī"
+                      ShiftUpText="ś" ShiftDownText="Ś"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ī" />
+                <models:KeyValue String="ś" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ï" ShiftDownText="Ï"
+                      ShiftUpText="ŝ" ShiftDownText="Ŝ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ï" />
+                <models:KeyValue String="ŝ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="î" ShiftDownText="Î"
+                      ShiftUpText="ť" ShiftDownText="Ť"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="î" />
+                <models:KeyValue String="ť" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="í" ShiftDownText="Í"
+                      ShiftUpText="ț" ShiftDownText="Ț"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="í" />
+                <models:KeyValue String="ț" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ì" ShiftDownText="Ì"
+                      ShiftUpText="ţ" ShiftDownText="Ţ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ì" />
+                <models:KeyValue String="ţ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="ķ" ShiftDownText="Ķ"
+                      ShiftUpText="þ" ShiftDownText="Þ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ķ" />
+                <models:KeyValue String="þ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ł" ShiftDownText="Ł"
+                      ShiftUpText="ụ" ShiftDownText="Ụ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ł" />
+                <models:KeyValue String="ụ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ľ" ShiftDownText="Ľ"
+                      ShiftUpText="ư" ShiftDownText="Ư"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ľ" />
+                <models:KeyValue String="ư" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource 2of3Icon}"
+                      SymbolGeometry="{StaticResource 3of3Icon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
-                <models:KeyValue FunctionKey="Diacritic3Keyboard" />
+                <models:KeyValue FunctionKey="Diacritic1Keyboard" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
@@ -144,73 +144,73 @@
         </controls:Key>
 
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ļ" ShiftDownText="Ļ"
+                      ShiftUpText="ų" ShiftDownText="Ų"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ļ" />
+                <models:KeyValue String="ų" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ĺ" ShiftDownText="Ĺ"
+                      ShiftUpText="ű" ShiftDownText="Ű"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ĺ" />
+                <models:KeyValue String="ű" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="ň" ShiftDownText="Ň"
+                      ShiftUpText="ů" ShiftDownText="Ů"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ň" />
+                <models:KeyValue String="ů" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ņ" ShiftDownText="Ņ"
+                      ShiftUpText="ū" ShiftDownText="Ū"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ņ" />
+                <models:KeyValue String="ū" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="ń" ShiftDownText="Ń"
+                      ShiftUpText="ü" ShiftDownText="Ü"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ń" />
+                <models:KeyValue String="ü" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="ñ" ShiftDownText="Ñ"
+                      ShiftUpText="û" ShiftDownText="Û"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ñ" />
+                <models:KeyValue String="û" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ơ" ShiftDownText="Ơ"
+                      ShiftUpText="ú" ShiftDownText="Ú"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ơ" />
+                <models:KeyValue String="ú" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="œ" ShiftDownText="Œ"
+                      ShiftUpText="ù" ShiftDownText="Ù"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="œ" />
+                <models:KeyValue String="ù" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ő" ShiftDownText="Ő"
+                      ShiftUpText="ŵ" ShiftDownText="Ŵ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ő" />
+                <models:KeyValue String="ŵ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ō" ShiftDownText="Ō"
+                      ShiftUpText="ŷ" ShiftDownText="Ŷ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ō" />
+                <models:KeyValue String="ŷ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
@@ -239,54 +239,42 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ø" ShiftDownText="Ø"
+                      ShiftUpText="ÿ" ShiftDownText="Ÿ"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ø" />
+                <models:KeyValue String="ÿ" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="ö" ShiftDownText="Ö"
+                      ShiftUpText="ý" ShiftDownText="Ý"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ö" />
+                <models:KeyValue String="ý" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="õ" ShiftDownText="Õ"
+                      ShiftUpText="ź" ShiftDownText="Ź"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="õ" />
+                <models:KeyValue String="ź" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="ô" ShiftDownText="Ô"
+                      ShiftUpText="ż" ShiftDownText="Ż"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ô" />
+                <models:KeyValue String="ż" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="ó" ShiftDownText="Ó"
+                      ShiftUpText="ž" ShiftDownText="Ž"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="ó" />
+                <models:KeyValue String="ž" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ò" ShiftDownText="Ò"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="ò" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="ŕ" ShiftDownText="Ŕ"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="ŕ" />
-            </controls:Key.Value>
-        </controls:Key>
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -342,13 +330,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftAlt}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ř" ShiftDownText="Ř"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="ř" />
-            </controls:Key.Value>
-        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
@@ -358,20 +340,8 @@
                 <models:KeyValue String=" " />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ş" ShiftDownText="Ş"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="ş" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="š" ShiftDownText="Š"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="š" />
-            </controls:Key.Value>
-        </controls:Key>
+        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"
                       Text="{x:Static resx:Resources.ENTER}"
