@@ -90,6 +90,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
+
+        public List<KeyValuePair<string, DataStreamProcessingLevels>> DataStreamProcessingLevels
+        {
+            get
+            {
+                return new List<KeyValuePair<string, DataStreamProcessingLevels>>
+                {
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.None.ToDescription(), Enums.DataStreamProcessingLevels.None),
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Low.ToDescription(), Enums.DataStreamProcessingLevels.Low),
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Medium.ToDescription(), Enums.DataStreamProcessingLevels.Medium),
+                    new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.High.ToDescription(), Enums.DataStreamProcessingLevels.High)
+                };
+            }
+        }
         
         public List<Keys> Keys
         {
@@ -131,6 +145,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return pointSource; }
             set { SetProperty(ref pointSource, value); }
+        }
+
+        private DataStreamProcessingLevels tobiiEyeXProcessingLevel;
+        public DataStreamProcessingLevels TobiiEyeXProcessingLevel
+        {
+            get {  return tobiiEyeXProcessingLevel; }
+            set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
         }
 
         private double pointsMousePositionSampleIntervalInMs;
@@ -292,6 +313,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get
             {
                 return Settings.Default.PointsSource != PointsSource
+                    || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
                     || Settings.Default.PointTtl != TimeSpan.FromMilliseconds(PointTtlInMs)
                     || Settings.Default.KeySelectionTriggerSource != KeySelectionTriggerSource
@@ -321,6 +343,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private void Load()
         {
             PointsSource = Settings.Default.PointsSource;
+            TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
             KeySelectionTriggerSource = Settings.Default.KeySelectionTriggerSource;
@@ -348,6 +371,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public void ApplyChanges()
         {
             Settings.Default.PointsSource = PointsSource;
+            Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;

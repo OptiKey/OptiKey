@@ -27,20 +27,63 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
             
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SOURCE_LABEL}" 
-                                VerticalAlignment="Center" Margin="5" />
+                               VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
-                                ItemsSource="{Binding PointsSources}"
-                                DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-                                SelectedValue="{Binding PointsSource, Mode=TwoWay}" />
+                              ItemsSource="{Binding PointsSources}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding PointsSource, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_POSITION_SAMPLE_INTERVAL_LABEL}" 
-                                VerticalAlignment="Center" Margin="5">
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL}" 
+                               VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeX}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiRex}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <ComboBox Grid.Row="1" Grid.Column="1" 
+                              ItemsSource="{Binding DataStreamProcessingLevels}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding TobiiEyeXProcessingLevel, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiEyeX}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiRex}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_POSITION_SAMPLE_INTERVAL_LABEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
@@ -50,11 +93,11 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointsMousePositionSampleIntervalInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.MousePosition}">
@@ -65,9 +108,9 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL}" 
                                 VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointTtlInMs, Mode=TwoWay}" />
                 </Grid>
@@ -110,7 +153,7 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -124,7 +167,7 @@
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding KeySelectionTriggerFixationLockOnTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -138,7 +181,7 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -166,7 +209,7 @@
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -180,7 +223,7 @@
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding KeySelectionTriggerFixationCompleteTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -194,7 +237,7 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.INCOMPLETE_KEY_FIXATION_TTL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -208,7 +251,7 @@
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding KeySelectionTriggerIncompleteFixationTtlInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -222,7 +265,7 @@
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.KeyboardKeyDownsUps}">
@@ -250,7 +293,7 @@
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_MOUSE_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
@@ -286,7 +329,7 @@
                     <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_LOCK_ON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -300,7 +343,7 @@
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationLockOnTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -314,7 +357,7 @@
                     <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_TIME_TO_COMPLETE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -328,7 +371,7 @@
                                             Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationCompleteTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -342,7 +385,7 @@
                     <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.POINT_LOCK_ON_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -356,7 +399,7 @@
                                             Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerLockOnRadiusInPixels, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -370,7 +413,7 @@
                     <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.POINT_FIXATION_RADIUS_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -384,7 +427,7 @@
                                             Minimum="1" Interval="1" StringFormat="###,##0"
                                             Value="{Binding PointSelectionTriggerFixationRadiusInPixels, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -398,7 +441,7 @@
                     <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.KeyboardKeyDownsUps}">
@@ -426,7 +469,7 @@
                     <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.POINT_SELECTION_MOUSE_BUTTON_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding PointSelectionTriggerSource}" Value="{x:Static enums:TriggerSources.MouseButtonDownUps}">
@@ -454,7 +497,7 @@
                     <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
@@ -490,7 +533,7 @@
                     <TextBlock Grid.Row="15" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <MultiDataTrigger>
@@ -516,7 +559,7 @@
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding ProgressIndicatorResizeStartProportion, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <MultiDataTrigger>
@@ -541,7 +584,7 @@
                     <TextBlock Grid.Row="16" Grid.Column="0" Text="{x:Static resx:Resources.SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <MultiDataTrigger>
@@ -567,7 +610,7 @@
                                             Minimum="0" Maximum="100" Interval="1"
                                             Value="{Binding ProgressIndicatorResizeEndProportion, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}">
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
                                 <Style.Triggers>
                                     <MultiDataTrigger>
@@ -606,7 +649,7 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.STOP_SIGNAL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Visible" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">

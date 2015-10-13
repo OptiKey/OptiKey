@@ -1196,4 +1196,19 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Letters</value>
   </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Data stream processing level:</value>
+  </data>
 </root>

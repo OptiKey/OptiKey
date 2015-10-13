@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\DataStreamProcessingLevels.cs" />
     <Compile Include="Enums\EyeXSensitivities.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />

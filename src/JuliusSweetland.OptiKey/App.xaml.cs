@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -20,14 +21,11 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
-using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -38,7 +36,7 @@ namespace JuliusSweetland.OptiKey
     {
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Action applyTheme;
 
         #endregion
@@ -55,7 +53,7 @@ namespace JuliusSweetland.OptiKey
             LogDiagnosticInfo();
 
             //Attach shutdown handler
-            Application.Current.Exit += (o, args) =>
+            Current.Exit += (o, args) =>
             {
                 Log.Info("PERSISTING USER SETTINGS AND SHUTTING DOWN.");
                 Settings.Default.Save();
@@ -73,8 +71,8 @@ namespace JuliusSweetland.OptiKey
             }
 
             //Adjust log4net logging level if in debug mode
-            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
-            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
+            ((Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
 
             //Logic to initially apply the theme and change the theme on setting changes
             applyTheme = () =>
@@ -229,7 +227,7 @@ namespace JuliusSweetland.OptiKey
 
         private static void AttachUnhandledExceptionHandlers()
         {
-            Application.Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
 
@@ -304,7 +302,7 @@ namespace JuliusSweetland.OptiKey
                     }
                     catch {} //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.
                 }
-                Application.Current.Shutdown(); //Avoid the inevitable crash by shutting down gracefully
+                Current.Shutdown(); //Avoid the inevitable crash by shutting down gracefully
             }
         }
 
@@ -615,7 +613,7 @@ namespace JuliusSweetland.OptiKey
 
         private void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
         {
-            Application.Current.Exit += (o, args) =>
+            Current.Exit += (o, args) =>
             {
                 if (keyStateService.SimulateKeyStrokes)
                 {
