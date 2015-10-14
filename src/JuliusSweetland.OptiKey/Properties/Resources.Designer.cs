@@ -2458,9 +2458,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Russian (Russia) / Русский (Россия).
         /// </summary>
-        public static string RUSSIAN {
+        public static string RUSSIAN_RUSSIA {
             get {
-                return ResourceManager.GetString("RUSSIAN", resourceCulture);
+                return ResourceManager.GetString("RUSSIAN_RUSSIA", resourceCulture);
             }
         }
         

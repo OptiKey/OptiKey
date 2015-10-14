@@ -166,7 +166,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.GermanGermany:
                         newContent = new GermanViews.Alpha { DataContext = Keyboard };
                         break;
-                    case Languages.Russian:
+                    case Languages.RussianRussia:
                         newContent = new RussianViews.Alpha { DataContext = Keyboard };
                         break;
                     default:
@@ -184,7 +184,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.GermanGermany:
                         newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
                         break;
-                    case Languages.Russian:
+                    case Languages.RussianRussia:
                         newContent = new RussianViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     default:

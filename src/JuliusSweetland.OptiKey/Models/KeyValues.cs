@@ -186,7 +186,7 @@ namespace JuliusSweetland.OptiKey.Models
                 {
                     switch (Settings.Default.Language)
                     {
-                        case Languages.Russian:
+                        case Languages.RussianRussia:
                             {
                               multiKeySelectionKeys = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                 .ToCharArray()

@@ -940,7 +940,7 @@ DOWN/UP</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Rising 2</value>
   </data>
-  <data name="RUSSIAN" xml:space="preserve">
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
     <value>Russian (Russia) / Русский (Россия)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
