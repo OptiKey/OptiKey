@@ -17,7 +17,7 @@ OptiKey was written to challenge the outrageously expensive, unreliable and diff
 
 # Supported Platforms
 
-OptiKey targets the .Net 4.5 Framework, which is available for  Windows Vista SP2 onwards. It was designed to run on Windows 8/8.1.
+OptiKey targets the .Net 4.6 Framework, which is available for  Windows Vista SP2 onwards. It was designed to run on Windows 8/8.1/10.
 
 # Problems?
 

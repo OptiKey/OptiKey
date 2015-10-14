@@ -1,0 +1,312 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JuliusSweetland.OptiKey.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="KeySelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keys" Scope="User">
+      <Value Profile="(Default)">Insert</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionTriggerStopSignal" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerStopSignals" Scope="User">
+      <Value Profile="(Default)">NextHigh</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerMouseDownUpButton" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MouseButtons" Scope="User">
+      <Value Profile="(Default)">Left</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
+      <Value Profile="(Default)">Fixations</Value>
+    </Setting>
+    <Setting Name="SettingsUpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="PointsMousePositionSampleInterval" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.0130000</Value>
+    </Setting>
+    <Setting Name="PointsSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.PointsSources" Scope="User">
+      <Value Profile="(Default)">MousePosition</Value>
+    </Setting>
+    <Setting Name="PointTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.1500000</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerLockOnRadiusInPixels" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationRadiusInPixels" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01.2500000</Value>
+    </Setting>
+    <Setting Name="GazeTrackerUdpPort" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6666</Value>
+    </Setting>
+    <Setting Name="GazeTrackerUdpRegex" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionLockedDownWhenSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionFixationMinDwellTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.2500000</Value>
+    </Setting>
+    <Setting Name="MaxDictionaryMatchesOrSuggestions" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="Language" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
+      <Value Profile="(Default)">EnglishUK</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01.2500000</Value>
+    </Setting>
+    <Setting Name="MainWindowFloatingSizeAndPosition" Roaming="true" Type="System.Windows.Rect" Scope="User">
+      <Value Profile="(Default)">0,0,0,0</Value>
+    </Setting>
+    <Setting Name="ToastNotificationVerticalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
+    <Setting Name="ToastNotificationSecondsPerCharacter" Roaming="true" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.03</Value>
+    </Setting>
+    <Setting Name="Theme" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
+    </Setting>
+    <Setting Name="Debug" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FontFamily" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/Resources/Fonts/#Roboto</Value>
+    </Setting>
+    <Setting Name="FontStretch" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Condensed</Value>
+    </Setting>
+    <Setting Name="FontWeight" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Light</Value>
+    </Setting>
+    <Setting Name="ScratchpadNumberOfLines" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="AutoAddSpace" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoCapitalise" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SpeechRate" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SpeechVoice" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SpeechVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ErrorSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Tone2.wav</Value>
+    </Setting>
+    <Setting Name="InfoSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Tone1.wav</Value>
+    </Setting>
+    <Setting Name="KeySelectionSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Click1.wav</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureEndSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Falling1.wav</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureStartSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\Rising1.wav</Value>
+    </Setting>
+    <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
+      <Value Profile="(Default)">Fixations</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerIncompleteFixationTtl" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.7500000</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.2500000</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerFixationLockOnTime" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:00.2500000</Value>
+    </Setting>
+    <Setting Name="ConversationOnlyMode" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MoveAndResizeAdjustmentAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="SelectionTriggerStopSignal" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NextHigh</Value>
+    </Setting>
+    <Setting Name="CheckForUpdates" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ShowSplashScreen" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="GitHubRepoOwner" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">juliussweetland</Value>
+    </Setting>
+    <Setting Name="GitHubRepoName" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">optikey</Value>
+    </Setting>
+    <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:03</Value>
+    </Setting>
+    <Setting Name="MouseScrollAmountInClicks" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="MouseClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseClick1.wav</Value>
+    </Setting>
+    <Setting Name="MouseDoubleClickSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDoubleClick1.wav</Value>
+    </Setting>
+    <Setting Name="MouseScrollSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseScroll1.wav</Value>
+    </Setting>
+    <Setting Name="CursorWidthInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="CursorHeightInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="MouseMagnifierLockedDown" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MagnifySourcePercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="MagnifyDestinationPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="ToastNotificationHorizontalFillPercentage" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
+    <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CalibrationMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerKeyboardKeyDownUpKey" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keys" Scope="User">
+      <Value Profile="(Default)">Insert</Value>
+    </Setting>
+    <Setting Name="PointSelectionTriggerMouseDownUpButton" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MouseButtons" Scope="User">
+      <Value Profile="(Default)">Left</Value>
+    </Setting>
+    <Setting Name="SuppressModifierKeysWhenInMouseKeyboard" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoCloseCrashMessageSeconds" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="ErrorSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="InfoSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="KeySelectionSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="MouseClickSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseDoubleClickSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseScrollSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureEndSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionCaptureStartSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="ProgressIndicatorBehaviour" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.ProgressIndicatorBehaviours" Scope="User">
+      <Value Profile="(Default)">FillPie</Value>
+    </Setting>
+    <Setting Name="ProgressIndicatorResizeStartProportion" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ProgressIndicatorResizeEndProportion" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="KeySelectionTriggerFixationResumeRequiresLockOn" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MainWindowFullDockThicknessAsPercentageOfScreen" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="MainWindowDockPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockEdges" Scope="User">
+      <Value Profile="(Default)">Top</Value>
+    </Setting>
+    <Setting Name="MainWindowDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
+      <Value Profile="(Default)">Full</Value>
+    </Setting>
+    <Setting Name="MainWindowOpacity" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MouseKeyboardDockSize" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DockSizes" Scope="User">
+      <Value Profile="(Default)">Collapsed</Value>
+    </Setting>
+    <Setting Name="MainWindowState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
+      <Value Profile="(Default)">Docked</Value>
+    </Setting>
+    <Setting Name="MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness" Roaming="true" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MainWindowPreviousState" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.WindowStates" Scope="User">
+      <Value Profile="(Default)">Docked</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionEnabled" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MouseMoveAmountInPixels" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="MouseDownSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseDown1.wav</Value>
+    </Setting>
+    <Setting Name="MouseUpSoundFile" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources\Sounds\MouseUp1.wav</Value>
+    </Setting>
+    <Setting Name="MouseDownSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="MouseUpSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="BassRegistrationEmail" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">optikeyfeedback@gmail.com</Value>
+    </Setting>
+    <Setting Name="BassRegistrationKey" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2X24252025152222</Value>
+    </Setting>
+    <Setting Name="StartupKeyboard" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keyboards" Scope="User">
+      <Value Profile="(Default)">Alpha</Value>
+    </Setting>
+    <Setting Name="SuppressAutoCapitaliseIntelligently" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MultiKeySelectionLockedDownWhenNotSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MainWindowMinimisedPosition" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.MinimisedEdges" Scope="User">
+      <Value Profile="(Default)">SameAsDockedPosition</Value>
+    </Setting>
+    <Setting Name="KeyCase" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Case" Scope="User">
+      <Value Profile="(Default)">Upper</Value>
+    </Setting>
+    <Setting Name="TobiiEyeXProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
+      <Value Profile="(Default)">Medium</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

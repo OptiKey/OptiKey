@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JuliusSweetland.OptiKey</RootNamespace>
+    <AssemblyName>OptiKey</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>JuliusSweetland.OptiKey.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\Main.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.11.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\Bass\Bass.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EyeXFramework">
+      <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.1.2.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyboardActivityMonitor">
+      <HintPath>..\..\packages\MouseKeyboardActivityMonitor.4.0.5150.10665\lib\net20\MouseKeyboardActivityMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="NBug">
+      <HintPath>..\..\packages\NBug.1.2.2\lib\net40-client\NBug.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Octokit.0.16.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit.Reactive">
+      <HintPath>..\..\packages\Octokit.Reactive.0.16.0\lib\net45\Octokit.Reactive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism">
+      <HintPath>..\..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf">
+      <HintPath>..\..\packages\Prism.Wpf.6.0.1\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Rx-Xaml.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TETControls">
+      <HintPath>..\..\ext\TheEyeTribe\TETControls.dll</HintPath>
+    </Reference>
+    <Reference Include="TETCSharpClient">
+      <HintPath>..\..\ext\TheEyeTribe\TETCSharpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.EyeX.Client.Net20">
+      <HintPath>..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\InputSimulator\WindowsInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums\Case.cs" />
+    <Compile Include="Enums\CursorPointPositions.cs" />
+    <Compile Include="Enums\DataStreamProcessingLevels.cs" />
+    <Compile Include="Enums\EyeXSensitivities.cs" />
+    <Compile Include="Enums\MinimisedEdges.cs" />
+    <Compile Include="Enums\Keyboards.cs" />
+    <Compile Include="Enums\SymbolOrientations.cs" />
+    <Compile Include="Enums\ShrinkFromDirections.cs" />
+    <Compile Include="Enums\ExpandToDirections.cs" />
+    <Compile Include="Enums\MoveToDirections.cs" />
+    <Compile Include="Enums\DockSizes.cs" />
+    <Compile Include="Enums\WindowStates.cs" />
+    <Compile Include="Enums\FontStretches.cs" />
+    <Compile Include="Enums\FontWeights.cs" />
+    <Compile Include="Enums\CharCategories.cs" />
+    <Compile Include="Enums\Keys.cs" />
+    <Compile Include="Enums\MouseButtons.cs" />
+    <Compile Include="Enums\ProgressIndicatorBehaviours.cs" />
+    <Compile Include="Enums\DockEdges.cs" />
+    <Compile Include="Enums\RunningStates.cs" />
+    <Compile Include="Enums\NotificationTypes.cs" />
+    <Compile Include="Enums\TaskbarPosition.cs" />
+    <Compile Include="Enums\KeyDownStates.cs" />
+    <Compile Include="Enums\SelectionModes.cs" />
+    <Compile Include="Enums\FunctionKeys.cs" />
+    <Compile Include="Enums\Languages.cs" />
+    <Compile Include="Enums\PointsSources.cs" />
+    <Compile Include="Enums\TriggerSources.cs" />
+    <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
+    <Compile Include="Extensions\FunctionKeysExtensions.cs" />
+    <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\KeyValueExtensions.cs" />
+    <Compile Include="Extensions\PointExtensions.cs" />
+    <Compile Include="Extensions\PropertyExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UiElementExtensions.cs" />
+    <Compile Include="Extensions\WindowExtensions.cs" />
+    <Compile Include="Models\ILastMouseActionStateManager.cs" />
+    <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyStateServiceState.cs" />
+    <Compile Include="Models\LastMouseActionStateManager.cs" />
+    <Compile Include="Models\CapturingStateManager.cs" />
+    <Compile Include="Models\DictionaryEntryAndState.cs" />
+    <Compile Include="Models\NotificationWithCalibrationResult.cs" />
+    <Compile Include="Models\ICapturingStateManager.cs" />
+    <Compile Include="Models\NotificationWithServices.cs" />
+    <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Native\Enums\AppBarNotify.cs" />
+    <Compile Include="Native\Enums\AppBarEdge.cs" />
+    <Compile Include="Native\Enums\AppBarMessages.cs" />
+    <Compile Include="Native\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Enums\GWL.cs" />
+    <Compile Include="Native\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Enums\SetWindowPosFlags.cs" />
+    <Compile Include="Native\Enums\SpecialWindowHandles.cs" />
+    <Compile Include="Native\Static\AppBarState.cs" />
+    <Compile Include="Native\Static\ExtendedWindowStyles.cs" />
+    <Compile Include="Native\Static\WindowStyles.cs" />
+    <Compile Include="Native\Structs\APPBARDATA.cs" />
+    <Compile Include="Native\Structs\RECT.cs" />
+    <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
+    <Compile Include="Observables\PointSources\IPointSource.cs" />
+    <Compile Include="Observables\PointSources\MousePositionSource.cs" />
+    <Compile Include="Observables\PointSources\PointServiceSource.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ICalibrationService.cs" />
+    <Compile Include="Services\IMouseOutputService.cs" />
+    <Compile Include="Services\INotifyErrors.cs" />
+    <Compile Include="Services\IPointService.cs" />
+    <Compile Include="Services\IWindowManipulationService.cs" />
+    <Compile Include="Services\KeyStateService.cs" />
+    <Compile Include="Services\IKeyStateService.cs" />
+    <Compile Include="Models\KeyEnabledStates.cs" />
+    <Compile Include="Models\KeyValues.cs" />
+    <Compile Include="Models\NotifyingConcurrentDictionary.cs" />
+    <Compile Include="Models\DictionaryEntry.cs" />
+    <Compile Include="Models\KeyValue.cs" />
+    <Compile Include="Models\NotifyingProxy.cs" />
+    <Compile Include="Models\PointAndKeyValue.cs" />
+    <Compile Include="Models\ThemeResourceDictionary.cs" />
+    <Compile Include="Models\TriggerSignal.cs" />
+    <Compile Include="Extensions\ObservableExtensions.cs" />
+    <Compile Include="Observables\TriggerSources\KeyFixationSource.cs" />
+    <Compile Include="Observables\TriggerSources\PointFixationSource.cs" />
+    <Compile Include="Observables\TriggerSources\IFixationTriggerSource.cs" />
+    <Compile Include="Observables\TriggerSources\ITriggerSource.cs" />
+    <Compile Include="Observables\TriggerSources\MouseButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\KeyboardKeyDownUpSource.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\AudioService.cs" />
+    <Compile Include="Services\DictionaryService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\IAudioService.cs" />
+    <Compile Include="Services\IDictionaryService.cs" />
+    <Compile Include="Services\InputService.subscriptions.cs" />
+    <Compile Include="Services\IKeyboardOutputService.cs" />
+    <Compile Include="Services\IInputService.cs" />
+    <Compile Include="Services\InputService.cs" />
+    <Compile Include="Services\IPublishService.cs" />
+    <Compile Include="Services\ISuggestionStateService.cs" />
+    <Compile Include="Services\MouseOutputService.cs" />
+    <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
+    <Compile Include="Services\TobiiEyeXPointService.cs" />
+    <Compile Include="Services\WindowManipulationService.cs" />
+    <Compile Include="Services\KeyboardOutputService.cs" />
+    <Compile Include="Services\PublishService.cs" />
+    <Compile Include="Services\SuggestionStateService.cs" />
+    <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
+    <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Static\Graphics.cs" />
+    <Compile Include="Static\Windows.cs" />
+    <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
+    <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
+    <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
+    <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\Controls\ToastNotification.cs" />
+    <Compile Include="UI\Controls\Cursor.cs" />
+    <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
+    <Compile Include="UI\Controls\MagnifyPopup.cs" />
+    <Compile Include="UI\Controls\CursorPopup.cs" />
+    <Compile Include="UI\Controls\PointVisualiser.cs" />
+    <Compile Include="UI\Controls\ProgressIndicator.cs" />
+    <Compile Include="UI\Controls\QuestionText.cs" />
+    <Compile Include="UI\Controls\Scratchpad.cs" />
+    <Compile Include="UI\Controls\Key.cs" />
+    <Compile Include="UI\Controls\TextBlockScaler.cs" />
+    <Compile Include="UI\TriggerActions\CalibrateWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
+    <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
+    <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
+    <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
+    <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
+    <Compile Include="UI\ValueConverters\MinimiseAndDockPositionToSymbolOrientation.cs" />
+    <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
+    <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
+    <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\Keyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Minimised.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Mouse.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Menu.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Diacritics1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currencies2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Currencies1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\SizeAndPosition.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\PhysicalKeys.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols3.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.cs" />
+    <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
+    <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
+      <DependentUpon>Minimised.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Mouse.xaml.cs">
+      <DependentUpon>Mouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml.cs">
+      <DependentUpon>SizeAndPosition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics3.xaml.cs">
+      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics2.xaml.cs">
+      <DependentUpon>Diacritics2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Diacritics1.xaml.cs">
+      <DependentUpon>Diacritics1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Currencies2.xaml.cs">
+      <DependentUpon>Currencies2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Output.xaml.cs">
+      <DependentUpon>Output.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml.cs">
+      <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\Currencies1.xaml.cs">
+      <DependentUpon>Currencies1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml.cs">
+      <DependentUpon>PhysicalKeys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml.cs">
+      <DependentUpon>NumericAndSymbols3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml.cs">
+      <DependentUpon>YesNoQuestion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml.cs">
+      <DependentUpon>NumericAndSymbols2.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml.cs">
+      <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\Diacritics1.xaml.cs">
+      <DependentUpon>Diacritics1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\Diacritics2.xaml.cs">
+      <DependentUpon>Diacritics2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\Diacritics3.xaml.cs">
+      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\Diacritics1.xaml.cs">
+      <DependentUpon>Diacritics1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\Diacritics2.xaml.cs">
+      <DependentUpon>Diacritics2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\Diacritics3.xaml.cs">
+      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\ManagementView.xaml.cs">
+      <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\OtherView.xaml.cs">
+      <DependentUpon>OtherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
+      <DependentUpon>DictionaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
+      <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\SoundsView.xaml.cs">
+      <DependentUpon>SoundsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\VisualsView.xaml.cs">
+      <DependentUpon>VisualsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\WordsView.xaml.cs">
+      <DependentUpon>WordsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\CrashWindow.xaml.cs">
+      <DependentUpon>CrashWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
+      <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
+      <DependentUpon>ManagementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Utilities\DrawingUtils.cs" />
+    <Compile Include="UI\Utilities\VisualAndLogicalTreeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Static\DiagnosticInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
+    <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <Resource Include="Resources\Icons\Management.ico" />
+    <Resource Include="Resources\Icons\Main.ico" />
+    <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
+    <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
+    <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
+    <Compile Include="Native\PInvoke.cs" />
+    <Content Include="Dictionaries\FrenchFrance.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\GermanGermany.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\Russian.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="nbug.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeftBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomRightBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToLeftBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToRightBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTop.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopLeftBoundary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ArrowPointingToTopRightBoundary.svg" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Icons\SVG Source Files\AddToDictionary.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Back.svg" />
+    <None Include="Resources\Icons\SVG Source Files\No.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Sleep.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Win.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Yes.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Padlock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Calibrate.svg" />
+    <None Include="Resources\Icons\SVG Source Files\AccentedLetters.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Currencies.svg" />
+    <None Include="Resources\Icons\SVG Source Files\PhysicalKeys.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Menu.svg" />
+    <None Include="Resources\Icons\SVG Source Files\DecreaseOpacity.svg" />
+    <None Include="Resources\Icons\SVG Source Files\IncreaseOpacity.svg" />
+    <None Include="..\..\docs\CREDITS.txt">
+      <Link>CREDITS.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\docs\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftDoubleClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightClick.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMagneticCursor.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMagnifier.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Mouse.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ReplayLastMouseAction.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Cursor.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMiddleClick.svg" />
+    <Content Include="..\..\ext\Bass\bass.dll">
+      <Link>bass.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\TobiiEyeXSdk\Tobii.EyeX.Client.dll">
+      <Link>Tobii.EyeX.Client.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Icons\SVG Source Files\Alpha.svg" />
+    <None Include="Resources\Icons\SVG Source Files\NumericAndSymbols.svg" />
+    <None Include="Resources\Icons\SVG Source Files\1of2.svg" />
+    <None Include="Resources\Icons\SVG Source Files\1of3.svg" />
+    <None Include="Resources\Icons\SVG Source Files\2of2.svg" />
+    <None Include="Resources\Icons\SVG Source Files\2of3.svg" />
+    <None Include="Resources\Icons\SVG Source Files\3of3.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ApplicationIcon.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Conversation.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Minimise.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Quit.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SizeAndPosition.svg" />
+    <None Include="Resources\Icons\SVG Source Files\CollapseDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\ExpandDock.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Keyboard.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseDrag.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMoveTo.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseLeftDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseMiddleDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseRightDownUp.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToBottom.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
+    <Content Include="Resources\Sounds\Click2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Click3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Click4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Click5.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Click6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Falling1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Falling2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDoubleClick2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDoubleClick3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDown4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll5.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseUp4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Rising1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Rising2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tone3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseClick1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseDoubleClick1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MouseScroll1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Click1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Icons\SVG Source Files\DownArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\LeftArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\RightArrow.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Speak.svg" />
+    <None Include="Resources\Icons\SVG Source Files\UpArrow.svg" />
+    <Resource Include="Resources\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Resources\Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Light.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Resources\Fonts\RobotoCondensed-Regular.ttf" />
+    <None Include="Resources\Icons\SVG Source Files\Space.svg" />
+    <None Include="Resources\Icons\SVG Source Files\BackMany.svg" />
+    <None Include="Resources\Icons\SVG Source Files\BackOne.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Clear.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SuggestionsLeft.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Lock Bar.svg" />
+    <None Include="Resources\Icons\SVG Source Files\More.svg" />
+    <None Include="Resources\Icons\SVG Source Files\MultiKeySelection.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Enter.svg" />
+    <None Include="Resources\Icons\SVG Source Files\SuggestionsRight.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Shift.svg" />
+    <None Include="Resources\Icons\SVG Source Files\Tab.svg" />
+    <Resource Include="Resources\Fonts\Roboto-LightItalic.ttf" />
+    <Content Include="Dictionaries\EnglishUK.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
+    <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Dictionaries\EnglishUS.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\EnglishCanada.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Icons\KeySymbols.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Android_Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Android_Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\Colours\Android.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Minimised.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Mouse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\SizeAndPosition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Diacritics3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Diacritics2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Diacritics1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Currencies2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Controls\Output.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Russian\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\Currencies1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\PhysicalKeys.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\YesNoQuestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\NumericAndSymbols2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\ConversationAlpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\Diacritics1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\Diacritics2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\Diacritics3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\Diacritics1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\Diacritics2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\Diacritics3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\ManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Management\OtherView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\DictionaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\PointingAndSelectingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\SoundsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\VisualsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\WordsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\CrashWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\ConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\ManagementWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="External Libraries\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
