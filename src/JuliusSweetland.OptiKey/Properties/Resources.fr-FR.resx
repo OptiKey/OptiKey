@@ -1178,18 +1178,18 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Lettres</value>
   </data>
   <data name="HIGH" xml:space="preserve">
-    <value>Haute</value>
+    <value>Haut</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Basse</value>
+    <value>Bas</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
-    <value>Moyenne</value>
+    <value>Moyen</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>Aucune</value>
+    <value>Aucun</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Quantité de données de traitement de flux:</value>
+    <value>Niveau de traitement appliqué au flux de données:</value>
   </data>
 </root>
