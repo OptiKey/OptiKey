@@ -56,10 +56,17 @@ namespace JuliusSweetland.OptiKey
             LogDiagnosticInfo();
 
             //Attach shutdown handler
+            var originalCulture = Thread.CurrentThread.CurrentCulture;
+            var originalUiCulture = Thread.CurrentThread.CurrentUICulture;
             Current.Exit += (o, args) =>
             {
                 Log.Info("PERSISTING USER SETTINGS AND SHUTTING DOWN.");
                 Settings.Default.Save();
+
+                //Restoration of current culture is an attempt to prevent the OS language from being altered
+                Log.InfoFormat("Restoring original CurrentCulture ({0}) and CurrentUICulture ({1})", originalCulture, originalUiCulture);
+                Thread.CurrentThread.CurrentCulture = originalCulture;
+                Thread.CurrentThread.CurrentUICulture = originalUiCulture;
             };
 
             HandleCorruptSettings();
