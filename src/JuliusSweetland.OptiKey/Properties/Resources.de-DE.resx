@@ -933,8 +933,8 @@ Bitte OK klicken um neuzustarten oder ABBRECHEN um die Änderungen zu verwerfen.
     <value>Rechts</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-PFEIL</value>
+    <value>PFEIL
+RECHTS</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RECHTS
