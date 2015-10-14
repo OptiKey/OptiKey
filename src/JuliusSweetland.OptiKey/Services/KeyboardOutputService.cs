@@ -724,7 +724,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 Text = string.Concat(Text.Substring(0, Text.Length - textToSwapOut.Length), textToSwapIn);
 
-                var textHasSameRoot = textToSwapIn.StartsWith(textToSwapOut);
+                var textHasSameRoot = textToSwapIn.StartsWith(textToSwapOut, StringComparison.Ordinal);
                 if (!textHasSameRoot) //Only backspace the old word if it doesn't share the same root as the new word 
                 {
                     for (int i = 0; i < textToSwapOut.Length; i++)
