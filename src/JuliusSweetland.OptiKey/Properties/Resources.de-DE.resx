@@ -1195,15 +1195,15 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>Hoch</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Tief</value>
+    <value>Niedrig</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
     <value>Mittel</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>Kein</value>
+    <value>Keine</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Datastream Verarbeitungsmenge:</value>
+    <value>Datastream Verarbeitungsstärke:</value>
   </data>
 </root>
