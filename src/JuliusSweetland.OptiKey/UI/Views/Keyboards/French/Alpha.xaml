@@ -129,7 +129,8 @@
                 <models:KeyValue String="p" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -137,8 +138,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MenuKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="2" />
-
+        
         <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource TabIcon}" 
                       Text="{x:Static resx:Resources.TAB}"
