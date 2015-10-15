@@ -1002,17 +1002,17 @@ SCROLLEN</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    UNTEN LINKS
+UNTEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
        <value>NACH
-    UNTEN RECHTS
+UNTEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    UNTEN
+UNTEN
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
@@ -1020,27 +1020,27 @@ VERKLEINERN</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    LINKS
+LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    RECHTS
+RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
        <value>NACH
-    OBEN LINKS
+OBEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    OBEN RECHTS
+OBEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
       <value>NACH
-    OBEN
+OBEN
 VERKLEINERN</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
