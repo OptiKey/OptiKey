@@ -314,7 +314,7 @@ ERHÖHEN</value>
     <value>Löschen</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIAKRITISCH</value>
+    <value>UMLAUTE</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
     <value>Diakritisch 1</value>
@@ -1001,17 +1001,17 @@ SCROLLEN</value>
     <value>VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 UNTEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-       <value>NACH
+    <value>NACH
 UNTEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 UNTEN
 VERKLEINERN</value>
   </data>
@@ -1019,27 +1019,27 @@ VERKLEINERN</value>
     <value>Verkleinern</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-       <value>NACH
+    <value>NACH
 OBEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 OBEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-      <value>NACH
+    <value>NACH
 OBEN
 VERKLEINERN</value>
   </data>
