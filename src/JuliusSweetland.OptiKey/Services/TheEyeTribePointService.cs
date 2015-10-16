@@ -122,7 +122,9 @@ namespace JuliusSweetland.OptiKey.Services
         public void OnGazeUpdate(GazeData data)
         {
             if (GazeManager.Instance.IsCalibrated
-                && pointEvent != null)
+                && pointEvent != null
+                && !double.IsNaN(data.SmoothedCoordinates.X)
+                && !double.IsNaN(data.SmoothedCoordinates.Y))
             {
                 pointEvent(this, new Timestamped<Point>(
                     new Point(data.SmoothedCoordinates.X, data.SmoothedCoordinates.Y),

@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     if (e.IsValid && e.Value == EyeTrackingDeviceStatus.Tracking)
                     {
+                        Log.Info("Calibration ended.");
                         taskCompletionSource.SetResult(Resources.TOBII_EYEX_CALIBRATION_SUCCESS);
                     }
                 };
