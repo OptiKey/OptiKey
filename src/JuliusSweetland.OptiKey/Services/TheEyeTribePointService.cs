@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.Services
                         var success = GazeManager.Instance.Activate(GazeManager.ApiVersion.VERSION_1_0, GazeManager.ClientMode.Push); //Connect client
                         if (success)
                         {
-                            Log.InfoFormat("...activation {0}", success ? "was successful." : "failed!");
+                            Log.Info("...activation was successful.");
                         }
                         else
                         {

@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     Log.Info("Attaching eye tracking device status changed listener to the Tobii service.");
 
-                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
+                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.InfoFormat("Tobii EyeX tracking device status changed to {0} (IsValid={1})", e, e.IsValid);
 
                     if (Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None ||
                        Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Low)
