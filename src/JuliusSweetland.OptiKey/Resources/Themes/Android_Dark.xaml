@@ -352,18 +352,20 @@
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1*" />
-                                                    <ColumnDefinition Width="4*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                    <ColumnDefinition Width="8*" />
+                                                    <ColumnDefinition Width="2*" />
                                                     <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
                                                 <controls:ProgressIndicator Grid.ColumnSpan="3" Style="{StaticResource KeySelectionProgressStyle}" />
                                                 <Viewbox>
                                                     <Viewbox.Style>
                                                         <Style TargetType="{x:Type Viewbox}">
-                                                            <Setter Property="Grid.Column" Value="0" />
+                                                            <Setter Property="Grid.Column" Value="1" />
                                                             <Setter Property="Grid.ColumnSpan" Value="3" />
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="False">
-                                                                    <Setter Property="Grid.Column" Value="1" />
+                                                                    <Setter Property="Grid.Column" Value="2" />
                                                                     <Setter Property="Grid.ColumnSpan" Value="1" />
                                                                 </DataTrigger>
                                                             </Style.Triggers>
