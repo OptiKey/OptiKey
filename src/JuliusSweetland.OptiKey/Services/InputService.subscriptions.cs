@@ -23,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
         private IDisposable selectionProgressSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
+        private IDisposable voiceCommandSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
         private ITriggerSource selectionTriggerSource;
@@ -122,6 +123,12 @@ namespace JuliusSweetland.OptiKey.Services
             if (selectionTriggerSource != null)
             {
                 selectionTriggerSubscription = selectionTriggerSource.Sequence
+                    .ObserveOnDispatcher()
+                    .Subscribe(ProcessSelectionTrigger);
+            }
+            if (voiceCommandSource != null)
+            {
+                voiceCommandSubscription = voiceCommandSource.Sequence
                     .ObserveOnDispatcher()
                     .Subscribe(ProcessSelectionTrigger);
             }
@@ -381,6 +388,11 @@ namespace JuliusSweetland.OptiKey.Services
             if (multiKeySelectionSubscription != null)
             {
                 multiKeySelectionSubscription.Dispose();
+            }
+
+            if (voiceCommandSubscription != null)
+            {
+                voiceCommandSubscription.Dispose();
             }
         }
 

@@ -451,7 +451,7 @@ namespace JuliusSweetland.OptiKey
             }
 
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource, new VoiceCommandSource());
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
         }

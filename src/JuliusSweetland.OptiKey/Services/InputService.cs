@@ -26,6 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IPointSource pointSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
+        private readonly IVoiceCommandSource voiceCommandSource;
         private readonly object suspendRequestLock = new object();
 
         private int suspendRequestCount;
@@ -47,7 +48,8 @@ namespace JuliusSweetland.OptiKey.Services
             ICapturingStateManager capturingStateManager,
             IPointSource pointSource,
             ITriggerSource keySelectionTriggerSource,
-            ITriggerSource pointSelectionTriggerSource)
+            ITriggerSource pointSelectionTriggerSource,
+            IVoiceCommandSource voiceCommandSource)
         {
             this.keyStateService = keyStateService;
             this.dictionaryService = dictionaryService;
@@ -56,6 +58,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.pointSource = pointSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
+            this.voiceCommandSource = voiceCommandSource;
 
             //Fixation key triggers also need the enabled state info
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
@@ -435,6 +438,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     pointSource.State = RunningStates.Paused;
                 }
+                // TODO suspend voice recognition
             }
         }
 
@@ -450,6 +454,7 @@ namespace JuliusSweetland.OptiKey.Services
                         pointSource.State = RunningStates.Running;
                     }
                 }
+                // TODO resume voice recognition
             }
 
             if (suspendRequestCount < 0)

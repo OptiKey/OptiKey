@@ -249,6 +249,8 @@
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
+    <Compile Include="Observables\TriggerSources\IVoiceCommandSource.cs" />
+    <Compile Include="Observables\TriggerSources\VoiceCommandSource.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
