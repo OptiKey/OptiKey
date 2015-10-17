@@ -128,11 +128,13 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public bool MultiKeySelectionSupported { get; set; }
+
         private bool capturingMultiKeySelection;
         public bool CapturingMultiKeySelection
         {
             get { return capturingMultiKeySelection; }
-            set
+            private set
             {
                 SetProperty(ref capturingMultiKeySelection, value);
                 capturingStateManager.CapturingMultiKeySelection = value;

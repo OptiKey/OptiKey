@@ -85,6 +85,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachScratchpadEnabledListener();
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
+            AttachKeyboardSupportsMultiKeySelectionListener();
         }
 
         #endregion
@@ -493,6 +494,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
             this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setSimulateKeyStrokes);
             setSimulateKeyStrokes(Keyboard);
+        }
+
+        private void AttachKeyboardSupportsMultiKeySelectionListener()
+        {
+            Action<IKeyboard> setMultiKeySelectionSupported = kb =>
+            {
+                InputService.MultiKeySelectionSupported = kb.MultiKeySelectionSupported;
+            };
+            this.OnPropertyChanges(mvm => mvm.Keyboard).Subscribe(setMultiKeySelectionSupported);
+            setMultiKeySelectionSupported(Keyboard);
         }
 
         private void AttachKeyboardSupportsCollapsedDockListener(IWindowManipulationService mainWindowManipulationService)

@@ -4,5 +4,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
     public class Alpha : Keyboard
     {
+        public Alpha() : base(multiKeySelectionSupported:true)
+        {
+        }
     }
 }

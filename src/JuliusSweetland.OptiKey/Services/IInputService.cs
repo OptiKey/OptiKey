@@ -17,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         SelectionModes SelectionMode { set; }
+        bool MultiKeySelectionSupported { set; }
 
         void RequestSuspend();
         void RequestResume();

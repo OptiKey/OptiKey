@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -72,6 +73,25 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion5Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion5 };
         public static readonly KeyValue Suggestion6Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion6 };
         public static readonly KeyValue SleepKey = new KeyValue { FunctionKey = FunctionKeys.Sleep };
+
+        private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
+
+        static KeyValues()
+        {
+            var defaultList = "abcdefghijklmnopqrstuvwxyz"
+                .ToCharArray()
+                .Select(c => new KeyValue {String = c.ToString(CultureInfo.InvariantCulture)})
+                .ToList();
+
+            multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
+            {
+                { Languages.EnglishCanada, defaultList },
+                { Languages.EnglishUK, defaultList },
+                { Languages.EnglishUS, defaultList },
+                { Languages.FrenchFrance, defaultList }, //Could be customised to include àçéèù
+                { Languages.GermanGermany, defaultList } //Could be customised to include äöüß
+            };
+        }
 
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
@@ -176,20 +196,9 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
-        private static List<KeyValue> multiKeySelectionKeys;
         public static List<KeyValue> MultiKeySelectionKeys
         {
-            get
-            {
-                if (multiKeySelectionKeys == null)
-                {
-                    multiKeySelectionKeys = "abcdefghijklmnopqrstuvwxyz"
-                        .ToCharArray()
-                        .Select(c => new KeyValue {String = c.ToString(CultureInfo.InvariantCulture)})
-                        .ToList();
-                }
-                return multiKeySelectionKeys;
-            }
+            get { return multiKeySelectionKeys[Settings.Default.Language]; }
         }
     }
 }
