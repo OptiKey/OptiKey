@@ -256,7 +256,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ConfigurableCommandService.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
+    <Compile Include="Services\IConfigurableCommandService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
     <Compile Include="Services\IPointService.cs" />

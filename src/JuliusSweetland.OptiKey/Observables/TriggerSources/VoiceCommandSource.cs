@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Speech.Recognition;
 using System.Windows;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
@@ -20,8 +24,27 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private IConfigurableCommandService commandService;
         private SpeechRecognitionEngine speechEngine;
         private IObservable<TriggerSignal> sequence;
+
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// Builds the voice command source, delegating to ConfigurableCommandService the set of recognized commands
+        /// </summary>
+        /// <param name="configurableCommandService">Configurable command service instance</param>
+        public VoiceCommandSource(
+            IConfigurableCommandService configurableCommandService
+        )
+        {
+            commandService = configurableCommandService;
+            // On command or locale changes, reload grammar
+            commandService.OnPropertyChanges(service => service.Commands).Subscribe(_ => ReloadGrammar());
+            Settings.Default.OnPropertyChanges(settings => settings.Language).Subscribe(_ => ReloadGrammar());
+        }
 
         #endregion
 
@@ -51,11 +74,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             h => speechEngine.SpeechRecognized -= h)
                             .Repeat()
                             .Where(_ => State == RunningStates.Running)
-                            .Select(evt =>
-                            {
-                                Log.Debug(string.Format("Recognized speech pattern {0}.", evt.EventArgs.Result.Text));
-                                return new TriggerSignal(1, null, new PointAndKeyValue(new Point(Cursor.Position.X, Cursor.Position.Y), KeyValues.MouseMoveAndLeftClickKey));
-                            })
+                            .Select(MatchRecognized)
                         )
                         .Publish()
                         .RefCount();
@@ -70,6 +89,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Internals
 
         /// <summary>
+        /// Use ConfigurableCommandService instance to detect the command associated with the recognized input
+        /// </summary>
+        /// <param name="evt">Recognition event</param>
+        private TriggerSignal MatchRecognized(EventPattern<SpeechRecognizedEventArgs> evt)
+        {
+            //if (evt != null && evt.EventArgs != null && evt.EventArgs.Result != null)
+            //{
+            var key = (string) evt.EventArgs.Result.Semantics["command"].Value;
+            Console.WriteLine(string.Format("Recognized speech pattern {0} for command {1}.", evt.EventArgs.Result.Text, key));
+            return new TriggerSignal(1, null, new PointAndKeyValue(
+                new Point(Cursor.Position.X, Cursor.Position.Y), new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
+            ));
+            //}
+        }
+
+        /// <summary>
         /// Loads recognized grammar into the speech engine
         /// </summary>
         private void ReloadGrammar()
@@ -80,12 +115,30 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             } 
             else
             {
+                Log.Info("Reload speech recognition grammar.");
+                speechEngine.UnloadAllGrammars();
                 var commands = new Choices();
-                commands.Add("click");
+                foreach (var pair in commandService.Commands) 
+                {
+                    // Get user custom value, or current language, or english or nothing !
+                    string value = null;
+                    if (!pair.Value.TryGetValue(Languages.Custom, out value)) 
+                    {
+                        if (!pair.Value.TryGetValue(Settings.Default.Language, out value)) 
+                        {
+                            pair.Value.TryGetValue(Languages.EnglishUK, out value);
+                        }
+                    }
+                    if (value != null)
+                    {
+                        commands.Add(new SemanticResultValue(value, pair.Key.ToString()));
+                        Console.WriteLine(string.Format("Register pattern {0} for command {1}.", value, pair.Key.ToString()));
+                    }
+                }
+
                 var grammarBuilder = new GrammarBuilder();
                 grammarBuilder.Append(new SemanticResultKey("command", commands));
                 speechEngine.LoadGrammar(new Grammar(grammarBuilder));
-
             }
         }
 
