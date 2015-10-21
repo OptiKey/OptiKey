@@ -63,20 +63,23 @@ namespace JuliusSweetland.OptiKey.Services
             foreach (var oldNewFileName in oldNewDictionaryFileNames)
             {
                 var oldDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item1);
+                var oldFileInfo = new FileInfo(oldDictionaryPath);
                 var newDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item2);
-                if (File.Exists(oldDictionaryPath))
+                var newFileInfo = new FileInfo(newDictionaryPath);
+                if (oldFileInfo.Exists)
                 {
                     Log.InfoFormat("Old user dictionary file found at '{0}'", oldDictionaryPath);
+
                     //Delete new user dictionary
-                    if (File.Exists(newDictionaryPath))
+                    if (newFileInfo.Exists)
                     {
                         Log.InfoFormat("New user dictionary file also found at '{0}' - deleting this file", newDictionaryPath);
-                        File.Delete(newDictionaryPath);
+                        newFileInfo.Delete();
                     }
 
                     //Rename old user dictionary
                     Log.InfoFormat("Renaming old user dictionary file '{0}' to '{1}'", oldDictionaryPath, newDictionaryPath);
-                    File.Move(oldDictionaryPath, newDictionaryPath);
+                    oldFileInfo.MoveTo(newDictionaryPath);
                 }
             }
         }
