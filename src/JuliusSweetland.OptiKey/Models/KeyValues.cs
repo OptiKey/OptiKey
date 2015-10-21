@@ -74,6 +74,29 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion6Key = new KeyValue { FunctionKey = FunctionKeys.Suggestion6 };
         public static readonly KeyValue SleepKey = new KeyValue { FunctionKey = FunctionKeys.Sleep };
 
+        private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
+
+        static KeyValues()
+        {
+            var defaultList = "abcdefghijklmnopqrstuvwxyz"
+                .ToCharArray()
+                .Select(c => new KeyValue {String = c.ToString(CultureInfo.InvariantCulture)})
+                .ToList();
+
+            multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
+            {
+                { Languages.EnglishCanada, defaultList },
+                { Languages.EnglishUK, defaultList },
+                { Languages.EnglishUS, defaultList },
+                { Languages.FrenchFrance, defaultList }, //Could be customised to include àçéèù
+                { Languages.GermanGermany, defaultList }, //Could be customised to include äöüß
+				{ Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+				                                .ToCharArray()
+				                                .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
+				                                .ToList() }
+            };
+        }
+
         public static List<KeyValue> KeysWhichCanBePressedDown
         {
             get
@@ -177,35 +200,9 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
-        private static List<KeyValue> multiKeySelectionKeys;
         public static List<KeyValue> MultiKeySelectionKeys
         {
-            get
-            {
-                if (multiKeySelectionKeys == null)
-                {
-                    switch (Settings.Default.Language)
-                    {
-                        case Languages.RussianRussia:
-                            {
-                              multiKeySelectionKeys = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                                .ToCharArray()
-                                .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
-                                .ToList();
-                            }
-                            break;
-                        default:
-                            {
-                                multiKeySelectionKeys = "abcdefghijklmnopqrstuvwxyz"
-                                    .ToCharArray()
-                                    .Select(c => new KeyValue { String = c.ToString(CultureInfo.InvariantCulture) })
-                                    .ToList();
-                            }
-                            break;
-                    }
-                }
-                return multiKeySelectionKeys;
-            }
+			get { return multiKeySelectionKeys[Settings.Default.Language]; }
         }
     }
 }

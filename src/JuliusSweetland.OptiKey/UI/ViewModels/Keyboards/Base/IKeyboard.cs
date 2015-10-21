@@ -3,5 +3,6 @@
     public interface IKeyboard
     {
         bool SimulateKeyStrokes { get; }
+        bool MultiKeySelectionSupported { get; }
     }
 }

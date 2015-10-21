@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     Log.Info("Attaching eye tracking device status changed listener to the Tobii service.");
 
-                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.DebugFormat("Tobii EyeX tracking device status changed to {0}", e);
+                    EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) => Log.InfoFormat("Tobii EyeX tracking device status changed to {0} (IsValid={1})", e, e.IsValid);
 
                     if (Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.None ||
                        Settings.Default.TobiiEyeXProcessingLevel == DataStreamProcessingLevels.Low)
@@ -87,7 +87,9 @@ namespace JuliusSweetland.OptiKey.Services
 
                         gazeDataStream.Next += (s, data) =>
                         {
-                            if (pointEvent != null)
+                            if (pointEvent != null
+                                && !double.IsNaN(data.X)
+                                && !double.IsNaN(data.Y))
                             {
                                 pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
                                     new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp
@@ -105,7 +107,9 @@ namespace JuliusSweetland.OptiKey.Services
 
                         fixationDataStream.Next += (s, data) =>
                         {
-                            if (pointEvent != null)
+                            if (pointEvent != null
+                                && !double.IsNaN(data.X)
+                                && !double.IsNaN(data.Y))
                             {
                                 pointEvent(this, new Timestamped<Point>(new Point(data.X, data.Y),
                                     new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //EyeX does not publish a useable timestamp

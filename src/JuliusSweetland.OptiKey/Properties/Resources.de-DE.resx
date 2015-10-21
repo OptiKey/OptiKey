@@ -472,12 +472,12 @@ VERRINGERN</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NACH
-UNTEN &amp; LINKS
+UNTEN LINKS
 SPRINGEN</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NACH
-UNTEN &amp; RECHTS
+UNTEN RECHTS
 SPRINGEN</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -497,12 +497,12 @@ SPRINGEN</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NACH
-OBEN &amp; LINKS
+OBEN LINKS
 SPRINGEN</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NACH
-OBEN &amp; RECHTS
+OBEN RECHTS
 SPRINGEN</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -566,7 +566,7 @@ RUNTER/HOCH</value>
     <value>BUCHSTABEN</value>
   </data>
   <data name="LOOK" xml:space="preserve">
-    <value>Schauen</value>
+    <value>Thema</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETISCHER
@@ -576,10 +576,10 @@ CURSOR</value>
     <value>LUPE</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Vergrösserungsziel (% des Bildschirms):</value>
+    <value>Lupenzielvergrösserung (% des Bildschirms):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Vergrösserungsausgang (% des Bildschirms):</value>
+    <value>Lupenausgangsvergrösserung (% des Bildschirms):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Verwaltungskonsole: ALT + M</value>
@@ -719,27 +719,27 @@ RUNTER/HOCH</value>
     <value>Um {0} pixel bewegen:|Um {0} pixel bewegen:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 UNTEN LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 UNTEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
-HERUNTER
+    <value>NACH
+UNTEN
 BEWEGEN</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 RECHTS
 BEWEGEN</value>
   </data>
@@ -748,18 +748,18 @@ BEWEGEN</value>
 NACH</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 OBEN LINKS
 BEWEGEN</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
+    <value>NACH
 OBEN RECHTS
 BEWEGEN</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RICHTUNG
-HERAUF
+    <value>NACH
+OBEN
 BEWEGEN</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
@@ -855,7 +855,7 @@ TASTEN</value>
     <value>Abspielen</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Zeigen &amp; Auswählen</value>
+    <value>Eingabe &amp; Auswahl</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
     <value>Punkt Fixierungsradius (pixels):</value>
@@ -882,10 +882,10 @@ TASTEN</value>
     <value>Punktauswahl durch:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Zeigen</value>
+    <value>Eingabe</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Zeigen: {0}</value>
+    <value>Eingabe: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
     <value>VORHERIGES</value>
@@ -933,8 +933,8 @@ Bitte OK klicken um neuzustarten oder ABBRECHEN um die Änderungen zu verwerfen.
     <value>Rechts</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-PFEIL</value>
+    <value>PFEIL
+RECHTS</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>RECHTS
@@ -951,7 +951,7 @@ RUNTER/HOCH</value>
     <value>Aufsteigend 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Das Gleiche wie Dockposition</value>
+    <value>Die Gleiche wie Dockposition</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
     <value>Textfeld Zeilenanzahl:</value>
@@ -1001,38 +1001,46 @@ SCROLLEN</value>
     <value>VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN &amp; LINKS
+      <value>NACH
+UNTEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN &amp; RECHTS
+       <value>NACH
+UNTEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UNTEN
+      <value>NACH
+UNTEN
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
     <value>Verkleinern</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
+      <value>NACH
+LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
+      <value>NACH
+RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN &amp; LINKS
+       <value>NACH
+OBEN LINKS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN &amp; RECHTS
+      <value>NACH
+OBEN RECHTS
 VERKLEINERN</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>OBEN
+      <value>NACH
+OBEN
 VERKLEINERN</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
@@ -1052,7 +1060,7 @@ POSITION</value>
     <value>Soundeffekte</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>Sounds</value>
+    <value>Töne</value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
     <value>Herkunft:</value>
@@ -1204,6 +1212,6 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>Keine</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Datastream Verarbeitungsstärke:</value>
+    <value>Datastream Verarbeitungsrate:</value>
   </data>
 </root>
