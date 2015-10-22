@@ -11,18 +11,19 @@
 		<div class="collapse navbar-toggleable-xs" id="navbar">
 
 			<ul class="nav navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Get Started</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Download</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">About</a>
-				</li>
+				{% for link in site.navigation %}
+			        {% assign current = nil %}
+			        {% if page.url == link.url %}
+			            {% assign current = 'active' %}
+			        {% endif %}
+
+			        <li class="nav-item {{ current }}">
+			            <a class="nav-link" href="{{ link.url }}">
+			            	{{ link.text }}
+			            	{% if current == 'active' %}<span class="sr-only">(current)</span>{% endif %}
+			            </a>
+			        </li>
+			    {% endfor %}
 			</ul>
 		</div>
 	</div>

@@ -15,3 +15,16 @@ stylesheet: css/style.css
 scripts:
   - /assets/js/jquery-2.1.0.min.js
   - /assets/js/bootstrap.min.js
+
+
+navigation:
+- text: Home
+  url: /en/
+- text: Get Started
+  url: /en/get-started/
+- text: Guides
+  url: /en/guides/
+- text: Download
+  url: /en/download/
+- text: About
+  url: /en/about/

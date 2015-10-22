@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	{% include head.html %}
+
+	<body class="{{ page.body-class }}">
+		{% include header.html %}
+
+		<main>
+			<div class="content markdown">
+				<div class="container">
+					<div class="col-xs-8">
+						{{ content }}
+					</div>
+
+					<div class="col-xs-4">
+						<ul>
+							<li><a href="/guides/type.html">Type your first word</a></li>
+							<li>Numbers, symbols &amp; diacritics</li>
+							<li>Using eye trackers</li>
+							<li>Using webcams</li>
+							<li>Change selection method</li>
+							<li>Speech</li>
+							<li>Voice banking</li>
+							<li>Simulate a keyboard</li>
+							<li>Simulate a mouse</li>
+							<li>Multi-key selection</li>
+							<li>Suggestions</li>
+							<li>Auto-capitalisation &amp; auto-spacing</li>
+							<li>The dictionary</li>
+							<li>Size &amp; position</li>
+							<li>Transparency</li>
+							<li>Change the theme</li>
+							<li>Conversation only mode</li>
+							<li>Sleep</li>
+							<li>Speed up &amp; slow down</li>
+							<li>Shut down</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</main>
+
+		{% include footer.html %}
+	</body>
+</html>
