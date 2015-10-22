@@ -12,18 +12,19 @@
 
 			<ul class="nav navbar-nav">
 				{% for link in site.navigation %}
-			        {% assign current = nil %}
-			        {% if page.url == link.url %}
-			            {% assign current = 'active' %}
-			        {% endif %}
+					{% assign current = nil %}
+					{% capture url %}{{ link.url }}index.html{% endcapture %}
+					{% if page.url == url %}
+						{% assign current = 'active' %}
+					{% endif %}
 
-			        <li class="nav-item {{ current }}">
-			            <a class="nav-link" href="{{ link.url }}">
-			            	{{ link.text }}
-			            	{% if current == 'active' %}<span class="sr-only">(current)</span>{% endif %}
-			            </a>
-			        </li>
-			    {% endfor %}
+					<li class="nav-item {{ current }}">
+						<a class="nav-link" href="{{ link.url }}">
+							{{ link.text }}
+							{% if current == 'active' %}<span class="sr-only">(current)</span>{% endif %}
+						</a>
+					</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>
