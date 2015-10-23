@@ -260,18 +260,6 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case '\n':
                     return VirtualKeyCode.RETURN ;
 
-                case ',':
-                    return VirtualKeyCode.OEM_COMMA ;
-
-                case '.':
-                    return VirtualKeyCode.OEM_PERIOD ;
-
-                case '+':
-                    return VirtualKeyCode.OEM_PLUS ;
-
-                case '-':
-                    return VirtualKeyCode.OEM_MINUS ;
-
                 default:
                     return null;
             }
