@@ -5,6 +5,7 @@ Patrons (thank you very much for sponsoring this project)
   Udo Heintz
   Sean McLane
   Nikolas
+  Rachael Hanson
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
