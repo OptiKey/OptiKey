@@ -386,7 +386,7 @@
         <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
-                      WidthSpan="2" 
+                      WidthSpan="4" 
                       SharedSizeGroup="KeyWithSymbol">
             <controls:Key.Value>
                 <models:KeyValue String=" " />
