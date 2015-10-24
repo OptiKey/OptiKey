@@ -499,8 +499,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />

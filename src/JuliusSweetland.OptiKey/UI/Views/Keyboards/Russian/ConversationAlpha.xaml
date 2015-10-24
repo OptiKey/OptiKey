@@ -353,6 +353,7 @@
                         <Setter.Value>
                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                           Text="{x:Static resx:Resources.BACK}"
+                                           WidthSpan="2"
                                           SharedSizeGroup="KeyWithSymbol">
                                 <controls:Key.Value>
                                     <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
