@@ -124,7 +124,7 @@
     <value>Добавить новую запись:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Хотите добавить фразу &apos;{0}&apos; в словарь с абревиатурой &apos;{1}&apos;?</value>
+    <value>Хотите добавить фразу &apos;{0}&apos; в словарь под аббревиатурой &apos;{1}&apos;?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ДОБАВИТЬ
@@ -137,7 +137,7 @@
     <value>Добавлено</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Подвинуть на {0} пикселя|Подвинуть на {0} пикселeй:</value>
+    <value>Шаг: {0} пиксель|Шаг: {0} пикселeй</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
     <value>БУКВЫ</value>
@@ -145,80 +145,71 @@
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
-  </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android Dark</value>
+    <value>Темный Android</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android Light</value>
+    <value>Светлый Android</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Автокапитализация слов:</value>
   </data>
   <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
-    <value>Автозаполнение слов :</value>
+    <value>Автозавершение слов :</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
     <value>Автоматическая корректировка предложения</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
-    <value>Авто пробел между слов:</value>
+    <value>Автопробел между слов:</value>
   </data>
   <data name="BACK" xml:space="preserve">
     <value>НАЗАД</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>СТЕРЕТЬ
-БУКВУ</value>
+    <value>НАЗАД
+ОДНО</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>СТЕРЕТЬ
+    <value>НАЗАД
 СЛОВО</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Бас не удалось создать поток из файла &apos;{0}&apos;</value>
+    <value>&quot;Bass&quot; не удалось создать поток из файла &apos;{0}&apos;</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Верх</value>
+    <value>Внизу</value>
   </data>
   <data name="BREAK" xml:space="preserve">
     <value>BREAK</value>
   </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
-  </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Калибровка прервана с сообщением: &apos;{0}&apos;</value>
+    <value>Калибровка прервана. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Вы уверены, что вы хотели бы, чтобы заново откалибровать?</value>
+    <value>Вы уверены, что вы хотите откалибровать снова?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
     <value>Произошла ошибка во время калибровки. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Калибровка не удалась с сообщением: &apos;{0}&apos;</value>
+    <value>Калибровка не удалась. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Калибровка не может быть закончена без ручного вмешательства, например используя мышь. Вы можете застрять в процессе калибровки, если вы не будете взаимодействовать с компьютером вручуную.
-Вы уверены, что хотите перекалибровать?</value>
+    <value>Калибровка не может быть закончена без ручного вмешательства, например используя мышь. Вы можете застрять в процессе калибровки, если вы не будете взаимодействовать с компьютером вручную.
+Вы уверены, что хотите откалибровать снова?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Калибровка остановился по неизвестной причине. Сообщение: &apos;{0}&apos;</value>
+    <value>Калибровка остановилась по неизвестной причине. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Калибровка завершена успешно! Точность (Средняя степень ошибки = {0})</value>
-  </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
+    <value>Калибровка завершена успешно! Аккуратность (Средняя степень ошибки = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
     <value>ОТМЕНА</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Тайм-аут захват  (мс):</value>
+    <value>Тайм-аут захвата (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
     <value>Проверить наличие обновлений при запуске:</value>
@@ -227,7 +218,7 @@
     <value>ОЧИСТИТЬ</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>КЛИК И
+    <value>ВЗЯТЬ И
 ПЕРЕНЕСТИ</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
@@ -253,7 +244,7 @@
 ДОК</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Толщина свернутого дока(% от полной толщины дока):</value>
+    <value>Величина свернутого дока(% от полной величины дока):</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
     <value>МЕНЮ</value>
@@ -271,16 +262,16 @@
     <value>Режим речи:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey обнаружил что пользовтельские настройки повреждены и должны быть востановлены. Это может быть сделано посредством востановления старой версии или версии по умолчанию.
-Нажмите Да что бы сбросить пользовательские настройки и перезагрузить.
-Нажмите Нет что бы закрыть и вы смогли вручную исправить или скопировать пользовательские настройки.</value>
+    <value>OptiKey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернуть настройки по умолчанию.
+Нажмите &quot;Да&quot; чтобы сбросить пользовательские настройки и перезагрузить.
+Нажмите &quot;Нет&quot; чтобы закрыть и вручную исправить или скопировать пользовательские настройки.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Ого! Пользовательские настройки пвреждены.</value>
+    <value>Ого! Пользовательские настройки повреждены.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Плохие новости - OptiKey поломался и должен выключиться.
-Если бы вы выслали майл с описанием, что именно случилось, было бы очень полезно: optikeyfeedback@gmail.com
+Пожалуйсто, вышлите описание того, что именно случилось на этот майл: optikeyfeedback@gmail.com
 Извените за неудобства.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
@@ -305,7 +296,7 @@
     <value>Ширина курсора (пиксели):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Режим нахождения и устранения дефектов:</value>
+    <value>Режим &quot;Debugging &quot;:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УВЕЛИЧИТЬ
@@ -318,7 +309,8 @@
     <value>Удалить</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>ДИАКРИТИКИ</value>
+    <value>СПЕЦ.
+СИМВОЛЫ</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
     <value>Диакритики 1</value>
@@ -333,16 +325,16 @@
     <value>Словарь</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Пользовательский словарь не существует и  словарь по умолчанию не найден тут: &apos;{0}&apos;</value>
+    <value>Пользовательский словарь не существует, а словарь по умолчанию не найден: &apos;{0}&apos;</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Показать символ на Х секунд:</value>
+    <value>Показывать каждый символ уведомления на Х секунд:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Сделать в данном положении...</value>
+    <value>Действие в настоящем положении курсора...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Сделать на определенной точке..</value>
+    <value>Действие в определенной точке...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>СТРЕЛКА
@@ -353,6 +345,15 @@
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>English (US)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
@@ -370,7 +371,7 @@
     <value>УВЕЛИЧИТЬ</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>УВЕЛИЧИТЬ
+    <value>РАСШИРИТЬ
 ДОК</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
@@ -424,16 +425,16 @@
     <value>Тип шрифта:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Растянуть шрифт:</value>
+    <value>Вид шрифта:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Толщина шрифта:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France)</value>
+    <value>French (France) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Полная толщина дока(% от окна):</value>
+    <value>Полная величина дока(% от окна):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>Gaze Tracker</value>
@@ -445,10 +446,10 @@
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Горизонтальное заполнение (процент от OptiKey):</value>
+    <value>Горизонтальная величина (% от OptiKey):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Неполное время фиксации клавиши (мс):</value>
+    <value>Время неполной фиксации клавиши (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
@@ -461,51 +462,54 @@
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...но разумно выключить авто-капитализацию, там где это не нужно:</value>
+    <value>...но разумно выключить автокапитализацию, там где это не нужно:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>Текущее сочетание клавиатуры и языка недействительно</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>ПЕРЕХОД</value>
+    <value>ПЕРЕНЕСТИ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВНИЗ И ВЛЕВО</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВНИЗ И ВПРАВО</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВНИЗ</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВЛЕВО</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВПРАВО</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВВЕРХ И ВЛЕВО</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВВЕРХ И ВПРАВО</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПЕРЕХОД
+    <value>ПЕРЕНЕСТИ
 ВВЕРХ</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Информационный текст на клавиатуре:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Время полного захвата клавиши(ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Врема фиксации до захвата(lock-on) (ms):</value>
+    <value>Врема фиксации до начала захвата (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
     <value>Выбор клавиши(клавиша):</value>
@@ -517,7 +521,7 @@
     <value>Выбор клавиши:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Выбор источника клавиши:</value>
+    <value>Метод:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
     <value>Выбор клавиши: {0}</value>
@@ -535,7 +539,7 @@
     <value>Язык:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Лево</value>
+    <value>Слева</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>СТРЕЛКА
@@ -550,14 +554,14 @@
 ДВОЙНОЙ КЛИК</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ВЛЕВО
+    <value>ЛЕВЫЙ КЛИК
 ВНИЗ/ВВЕРХ</value>
-  </data>
-  <data name="LETTERS" xml:space="preserve">
-    <value>БУКВЫ</value>
   </data>
   <data name="LOOK" xml:space="preserve">
     <value>Вид</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Текст маленькими буквами</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ПРИТЯГИВАЮЩИЙ
@@ -567,10 +571,10 @@
     <value>УВЕЛИЧИТЬ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Увеличть цель(процент экрана):</value>
+    <value>Увеличение цели(процент от экрана):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Увеличить источник (процент экрана):</value>
+    <value>Увеличeние источника (процент от экрана):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Настройки: ALT + M</value>
@@ -592,14 +596,14 @@
 КЛИК</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>СРЕДНИЙ
+    <value>СРЕДНИЙ КЛИК
 ВВЕРХ/ВНИЗ</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
     <value>УМЕНЬШИТЬ</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Уменьшено</value>
+    <value>Свернуто</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
     <value>Позиция в свернутом состоянии:</value>
@@ -608,7 +612,7 @@
     <value>Минимальная задержка на клавише для захвата (ms):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Разное</value>
+    <value>Другое</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
     <value>МЫШЬ</value>
@@ -686,7 +690,7 @@
     <value>Скрол Мыши 6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Scroll мыши:</value>
+    <value>Прокручивать мышь:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
     <value>Мышь Вверх 1</value>
@@ -707,7 +711,7 @@
     <value>ДВИГАТЬ</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Подвинуть на {0} пикселя|Подвинуть на {0} пикселeй:</value>
+    <value>Подвинуть на {0} пиксель|Подвинуть на {0} пикселeй</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ДВИГАТЬ
@@ -758,17 +762,18 @@
     <value>Окончание выбора мульти-клавишей:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ВЫБОР
-МУЛЬТИ-КЛАВИШЕЙ</value>
+    <value>МУЛЬТИ
+КЛАВИШИ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
     <value>Начало выбора мульти-клавишей:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
-    <value>(Новая запись будет иметь заглавные буквы)</value>
+    <value>
+(Новая запись будет иметь заглавные буквы)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
-    <value>СЛЕДУЮЩИЙ</value>
+    <value>СЛЕ-ЩИЙ</value>
   </data>
   <data name="NO" xml:space="preserve">
     <value>НЕТ</value>
@@ -777,7 +782,7 @@
     <value>Похоже что слово или словосочетание уже есть в словаре.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>Нету</value>
+    <value>Без звука</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
     <value>Хмм, здесь ничего нового!</value>
@@ -790,11 +795,12 @@
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>НОМ
-СИМ</value>
+    <value>ЦИФРЫ И
+СИМВОЛЫ</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>ЦЫФРЫ И СИМВОЛЫ</value>
+    <value>ЦИФРЫ И
+СИМВОЛЫ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
     <value>Цифры и Символы 1</value>
@@ -829,26 +835,26 @@ UP</value>
     <value>Физические клавиши</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ФИЗИЧЕСКИЕ
+    <value>ФИЗ.
 КЛАВИШИ</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
     <value>Play</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Указывать &amp; Выбирать</value>
+    <value>Устройство</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Радиус фиксации указателя (pixels):</value>
+    <value>Радиус фиксации указателя (пиксели):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Время полного захвата указателя (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Время фиксации указателя до захвата(lock-on) (ms):</value>
+    <value>Время фиксации указателя до начала захвата (ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Радиус захвата(lock-on) указателя (pixels):</value>
+    <value>Радиус захвата указателя (пиксели):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
     <value>Выбор точки: {0}</value>
@@ -860,16 +866,16 @@ UP</value>
     <value>Выбор указателя(кнопка мыши):</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Иасточник выбора указателя:</value>
+    <value>Метод указателя(симуляция физической мыши):</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Указатель</value>
+    <value>Указывающее устройство</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Указатель: {0}</value>
+    <value>Указывающее устройство: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
-    <value>ПРЕДЫДУЩИЙ</value>
+    <value>ПРЕД-ЩИЙ</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PRNT
@@ -891,7 +897,8 @@ SCR</value>
     <value>Темп:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>ПЕРЕКАЛИБРОВАТЬ</value>
+    <value>ПЕРЕКА-
+ЛИБРОВКА</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ПОВТОРИТЬ
@@ -902,16 +909,16 @@ SCR</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>Перезагрузите OptiKey  что бы применить ваши иземенения.
-Пожалуйста нажмите ОК что бы перезагрузить или ОТМЕНА что бы отменить изменения</value>
+Пожалуйста нажмите &quot;ОК&quot; что бы перезагрузить или &quot;ОТМЕНА&quot; что бы отменить изменения</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Восстановить</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Продолжение незаконченного захвата клавиши нуждается в новом захвате(lock-on):</value>
+    <value>Начать незаконченный захват клавиши заново:</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Право</value>
+    <value>Справа</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>СТРЕЛКА
@@ -922,7 +929,7 @@ SCR</value>
 КЛИК</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ПРАВО
+    <value>ПРАВЫЙ КЛИК
 ВНИЗ/ВВЕРХ</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
@@ -932,7 +939,7 @@ SCR</value>
     <value>Увеличение 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Такой же как и позиция дока.</value>
+    <value>Такая же, как и позиция дока.</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
     <value>Количество строк в текстовом окне:</value>
@@ -942,7 +949,7 @@ SCR</value>
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Прокрутить на {0} клик|Прокрутить на {0} клика:</value>
+    <value>Прокрутить на {0} клик|Прокрутить на {0} клика(-ов)</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ПРОКРУТИТЬ
@@ -976,14 +983,14 @@ LK</value>
     <value>ШИФТ</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Показать заставку экрана при запуске:</value>
+    <value>Показывать заставку при запуске:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
     <value>УМЕНЬШИТЬ</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
-ВНИЗ И ВЛЕВО</value>
+ВНИЗУ И ВЛЕВО</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
@@ -1017,7 +1024,7 @@ LK</value>
 ВВЕРХ</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(К вашему сведению некоторые похожие записи уже есть в словаре: {0})</value>
+    <value>(К вашему сведению: похожие записи уже есть в словаре: {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>РАЗМЕР И
@@ -1048,7 +1055,7 @@ LK</value>
     <value>Речь</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Начальная клавиатура:</value>
+    <value>Клавиатура при запуске:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Сигнал Стоп:</value>
@@ -1057,16 +1064,16 @@ LK</value>
     <value>Успешно</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Скрыть клавиши модификаторов если клавиатура мыши активна:</value>
+    <value>Скрыть модификаторы клавиш если клавиатура мыши активна:</value>
   </data>
   <data name="TAB" xml:space="preserve">
-    <value>TAB</value>
+    <value>ТАБ</value>
   </data>
   <data name="THE_EYE_TRIBE" xml:space="preserve">
     <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Невозможно активировать heEyeTribe GazeManager! Пожалуйсто проверьте что сервер включен и устройство подключено к компьютеру и попробуйте снова.</value>
+    <value>Невозможно активировать heEyeTribe GazeManager! Пожалуйсто проверьте, что сервер включен и устройство подключено к компьютеру, и попробуйте снова.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
     <value>TheEyeTribe  не откалиброван. Данные не будут получены, пока калибровка незакончена.</value>
@@ -1080,11 +1087,17 @@ LK</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Время пока точка станет неуместной(ms):</value>
   </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Слова начинаются с заглавных букв</value>
+  </data>
   <data name="TOBII_EYEX" xml:space="preserve">
     <value>Tobii EyeX</value>
   </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
+  </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX  Движок ненайден. Пожалуйста заинсталируйте EyeX движок и попробуйте снова.</value>
+    <value>Tobii EyeX  Движок ненайден. Пожалуйста заинсталлируйте EyeX движок и попробуйте снова.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Движок Tobii EyeX не работает. Пожалуйста запустите EyeX движок и попробуйте снова.</value>
@@ -1108,25 +1121,25 @@ LK</value>
     <value>Тон 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Запустить нажатие кнопки/клавиши снова</value>
+    <value>Повторить нажатие кнопки/клавиши снова</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Запустить отжатие кнопки/клавиши</value>
+    <value>Повторить отжатие кнопки/клавиши</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>Я не могу определить - куда вы направляете свое внимание. У вас проблемы с входным устройством?  Оно подключено, включено, откалибровано и т.д.?</value>
+    <value>Я не могу определить - куда вы направляете свой взгляд. У вас проблемы с входным устройством?  Оно подключено, включено, откалибровано и т.д.?</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Невозможно определить текущую высоту.</value>
+    <value>Невозможно определить настоящую высоту.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
     <value>Проблема с настройкой голоса на &apos;{0}&apos;{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Что-то пошло не так, но я не знаю, что - пожалуйста, проверьте логи.</value>
+    <value>Что-то пошло не так, но я не знаю что - пожалуйста, проверьте логи.</value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Верх</value>
+    <value>Сверху</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>СТРЕЛКA
@@ -1134,6 +1147,9 @@ LK</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>ДОСТУПНО ОБНОВЛЕНИЕ!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Текст заглавными буквами</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Пожалуйста посетите www.optikey.org что бы скачать последнюю версию ({0})
@@ -1146,7 +1162,7 @@ LK</value>
     <value>Версия: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Вертиакльное заполнение(% от OptiKey)</value>
+    <value>Вертикальная величина(% от OptiKey)</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Вид</value>
@@ -1164,7 +1180,7 @@ LK</value>
     <value>Веб-сайт: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
-    <value>WIN</value>
+    <value>ВИН</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
     <value>OptiKey v{0}</value>
@@ -1175,16 +1191,25 @@ LK</value>
   <data name="YES" xml:space="preserve">
     <value>ДА</value>
   </data>
-  <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Преобразование текста на клавише:</value>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Буквы</value>
   </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Слова написаны заглавными буквами</value>
+  <data name="HIGH" xml:space="preserve">
+    <value>Большой</value>
   </data>
-  <data name="LOWER_CASE" xml:space="preserve">
-    <value>Все в маленьких буквах</value>
+  <data name="LOW" xml:space="preserve">
+    <value>Маленький</value>
   </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>Все в заглавных буквах</value>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Средний</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Без звука</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Объем потока обработки данных:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German (Germany) / Deutsch (Deutschland)</value>
   </data>
 </root>
