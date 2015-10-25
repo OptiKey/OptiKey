@@ -16,6 +16,18 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
                 InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object, 
                 ErrorNotifyingServices);
         }
+
+        [Test]
+        public void ThenSimulateKeyStrokesShouldBeSetToTheConfiguredKeyboard()
+        {
+            KeyStateService.VerifySet(s => s.SimulateKeyStrokes = MainViewModel.Keyboard.SimulateKeyStrokes, Times.Once());
+        }
+
+        [Test]
+        public void ThenMultiKeySelectionSupportedShouldBeSetToTheConfiguredKeyboard()
+        {
+            InputService.VerifySet(s => s.MultiKeySelectionSupported = MainViewModel.Keyboard.MultiKeySelectionSupported, Times.Once());
+        }
     }
 
     [TestFixture]
@@ -540,6 +552,17 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void ThenDockShouldBeResizedToFull()
         {
             MainWindowManipulationService.Verify(s => s.ResizeDockToFull(), Times.Once());
+        }
+    }
+
+    [TestFixture]
+    public class WhenConstructGivenKeyboardSupportsCollapsedDock : WhenConstruct
+    {
+        [Test]
+        public void ThenDockShouldNotBeResizedToFull()
+        {
+            MainWindowManipulationService.Verify(s => s.ResizeDockToFull(), Times.AtMostOnce(),
+                "Should have been called at most once by InitialiseKeyboard");
         }
     }
 }
