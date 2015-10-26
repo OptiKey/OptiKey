@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications
 {
-    public abstract class WhenPointToKeyValueMap : MainViewModelTestBase
+    public abstract class WhenSetPointToKeyValueMap : MainViewModelTestBase
     {
         protected Dictionary<Rect, KeyValue> OriginalValue { get; set; }
         protected Dictionary<Rect, KeyValue> NewValue { get; set; }
@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
     }
 
     [TestFixture]
-    public class WhenPointToKeyValueMapGivenValueHasNotChanged : WhenPointToKeyValueMap
+    public class WhenPointToKeyValueMapGivenValueHasNotChanged : WhenSetPointToKeyValueMap
     {
         protected override void Arrange()
         {
@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
     }
 
     [TestFixture]
-    public class WhenPointToKeyValueMapGivenValueHasChanged : WhenPointToKeyValueMap
+    public class WhenPointToKeyValueMapGivenValueHasChanged : WhenSetPointToKeyValueMap
     {
         protected override void Arrange()
         {

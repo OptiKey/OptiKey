@@ -71,6 +71,7 @@
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\MainViewModelTestBase.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenConstruct.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenPointToKeyValueMap.cs" />
+    <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenSelectionMode.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>

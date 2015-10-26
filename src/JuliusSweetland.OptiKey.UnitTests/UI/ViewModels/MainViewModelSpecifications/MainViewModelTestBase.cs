@@ -36,6 +36,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
             KeyStateService = new Mock<IKeyStateService>();
             KeyStateService.Setup(s => s.KeyDownStates).Returns(new NotifyingConcurrentDictionary<KeyValue, KeyDownStates>());
+            KeyStateService.Setup(s => s.KeySelectionProgress).Returns(new NotifyingConcurrentDictionary<KeyValue, double>());
 
             LastMouseActionStateManager = new Mock<ILastMouseActionStateManager>();
             MainWindowManipulationService = new Mock<IWindowManipulationService>();
