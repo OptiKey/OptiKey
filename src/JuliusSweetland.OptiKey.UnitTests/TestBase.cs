@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.UnitTests
             }
             catch (Exception ex)
             {
-                Assert.IsNotNull(ex, "Exception exepcted");
+                Assert.IsNotNull(ex, "Exception expected");
                 Exception = ex;
             }
         }
