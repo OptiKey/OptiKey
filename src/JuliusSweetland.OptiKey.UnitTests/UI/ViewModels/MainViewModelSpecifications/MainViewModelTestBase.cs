@@ -23,6 +23,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         protected Mock<ISuggestionStateService> SuggestionService { get; private set; }
         protected List<INotifyErrors> ErrorNotifyingServices { get; private set; }
 
+        protected virtual bool ShouldConstruct { get { return true; } }
+
         protected override void Arrange()
         {
             AudioService = new Mock<IAudioService>();
@@ -40,6 +42,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             MouseOutputService = new Mock<IMouseOutputService>();
             SuggestionService = new Mock<ISuggestionStateService>();
             ErrorNotifyingServices = new List<INotifyErrors>();
+
+            if(ShouldConstruct)
+                MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
+                   KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
+                   InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
+                   ErrorNotifyingServices);
         }
     }
 }

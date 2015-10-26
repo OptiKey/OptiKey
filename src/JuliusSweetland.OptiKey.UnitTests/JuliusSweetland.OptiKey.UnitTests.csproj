@@ -62,6 +62,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="TestBase.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\MainViewModelTestBase.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenConstruct.cs" />
+    <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenPointToKeyValueMap.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
