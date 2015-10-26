@@ -72,6 +72,7 @@
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenConstruct.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenFireKeySelectionEvent.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenPointToKeyValueMap.cs" />
+    <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenRaiseToastNotification.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenSelectionMode.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
   </ItemGroup>
