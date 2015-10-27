@@ -197,7 +197,7 @@
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>Калибровка не может быть закончена без ручного вмешательства, например используя мышь. Вы можете застрять в процессе калибровки, если вы не будете взаимодействовать с компьютером вручную.
-Вы уверены, что хотите откалибровать снова?</value>
+Вы уверены, что хотите откалибровать?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Калибровка остановилась по неизвестной причине. Сообщение: &apos;{0}&apos;</value>
@@ -262,8 +262,10 @@
     <value>Режим речи:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернуть настройки по умолчанию.
+    <value>OptiKey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернув настройки по умолчанию.
+
 Нажмите &quot;Да&quot; чтобы сбросить пользовательские настройки и перезагрузить.
+
 Нажмите &quot;Нет&quot; чтобы закрыть и вручную исправить или скопировать пользовательские настройки.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
@@ -271,7 +273,9 @@
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Плохие новости - OptiKey поломался и должен выключиться.
+
 Пожалуйсто, вышлите описание того, что именно случилось на этот майл: optikeyfeedback@gmail.com
+
 Извените за неудобства.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
@@ -571,10 +575,10 @@
     <value>УВЕЛИЧИТЬ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Увеличение цели(процент от экрана):</value>
+    <value>Площадь поверхности увеличения (% от экрана):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Увеличeние источника (процент от экрана):</value>
+    <value>Увеличение (% от экрана):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Настройки: ALT + M</value>
@@ -606,7 +610,7 @@
     <value>Свернуто</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Позиция в свернутом состоянии:</value>
+    <value>Место дока в свернутом состоянии:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
     <value>Минимальная задержка на клавише для захвата (ms):</value>
@@ -753,20 +757,20 @@
     <value>Захват мульти-клавишей</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Включить захват мульти-клавишей:</value>
+    <value>Включить функцию &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Выбор мульти-клавишей</value>
+    <value>Мульти-клавиши</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Окончание выбора мульти-клавишей:</value>
+    <value>Окончание функции &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>МУЛЬТИ
 КЛАВИШИ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Начало выбора мульти-клавишей:</value>
+    <value>Начало функции &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
@@ -933,10 +937,10 @@ SCR</value>
 ВНИЗ/ВВЕРХ</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Увеличение 1</value>
+    <value>Увеличивающийся 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Увеличение 2</value>
+    <value>Увеличивающийся 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Такая же, как и позиция дока.</value>
@@ -949,7 +953,7 @@ SCR</value>
 LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Прокрутить на {0} клик|Прокрутить на {0} клика(-ов)</value>
+    <value>Прокрутить на {0} клик|Прокрутить на {0} кликов(-a)</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ПРОКРУТИТЬ
@@ -971,7 +975,7 @@ LK</value>
     <value>Выбор</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Поведение индикатора прогресса выбора:</value>
+    <value>Индикатор прогресса выбора:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
     <value>Конец размера индикатора прогресса выбора(%): </value>
@@ -1073,13 +1077,13 @@ LK</value>
     <value>The Eye Tribe</value>
   </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Невозможно активировать heEyeTribe GazeManager! Пожалуйсто проверьте, что сервер включен и устройство подключено к компьютеру, и попробуйте снова.</value>
+    <value>Невозможно активировать TheEyeTribe GazeManager! Пожалуйсто проверьте, что сервер включен и устройство подключено к компьютеру, и попробуйте снова.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
     <value>TheEyeTribe  не откалиброван. Данные не будут получены, пока калибровка незакончена.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Невозможно калибровать, так как EyeX Движок не найден.</value>
+    <value>Невозможно откалибровать, так как &apos;EyeX engine&apos; не найден.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Тема:</value>
@@ -1097,10 +1101,10 @@ LK</value>
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX  Движок ненайден. Пожалуйста заинсталлируйте EyeX движок и попробуйте снова.</value>
+    <value>&apos;Tobii EyeX  Engine&apos; не найден. Пожалуйста заинсталлируйте  &apos;EyeX  Engine&apos; и попробуйте снова.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Движок Tobii EyeX не работает. Пожалуйста запустите EyeX движок и попробуйте снова.</value>
+    <value>&apos;Tobii EyeX Engine&apos; не работает. Пожалуйста запустите &apos;EyeX Engine&apos; и попробуйте снова.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1153,7 +1157,7 @@ LK</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Пожалуйста посетите www.optikey.org что бы скачать последнюю версию ({0})
-Вы можете выключить проверку обновелний в настройках (ALT + M).</value>
+Вы можете отключить проверку обновелний в настройках (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>Могу ли я перезагрузить OptiKey?</value>
