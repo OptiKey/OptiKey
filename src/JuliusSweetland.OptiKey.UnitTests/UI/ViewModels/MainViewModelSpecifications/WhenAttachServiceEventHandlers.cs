@@ -3,11 +3,11 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using Moq;
-using System.Linq;
 using NUnit.Framework;
 using System;
-using System.Windows;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications
 {
