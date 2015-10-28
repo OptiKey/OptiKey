@@ -22,6 +22,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         protected Mock<IMouseOutputService> MouseOutputService { get; private set; }
         protected Mock<ISuggestionStateService> SuggestionService { get; private set; }
         protected List<INotifyErrors> ErrorNotifyingServices { get; private set; }
+        protected bool IsKeySelectionEventHandlerCalled { get; private set; }
+        protected bool IsPointSelectionEventHandlerCalled { get; private set; }
 
         protected virtual bool ShouldConstruct { get { return true; } }
 
@@ -45,10 +47,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             ErrorNotifyingServices = new List<INotifyErrors>();
 
             if(ShouldConstruct)
+            {
                 MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
-                   KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
-                   InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
-                   ErrorNotifyingServices);
+                    KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
+                    InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
+                    ErrorNotifyingServices);
+
+                MainViewModel.KeySelection += (s, e) => IsKeySelectionEventHandlerCalled = true;
+                MainViewModel.PointSelection += (s, e) => IsPointSelectionEventHandlerCalled = true;
+            }
         }
     }
 }

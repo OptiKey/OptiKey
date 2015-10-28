@@ -7,6 +7,7 @@ using System.Linq;
 using NUnit.Framework;
 using System;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifications
 {
@@ -53,31 +54,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         }
 
         [Test]
-        public void ThenA_SelectionProgressEventHandlerShouldBeAttachedToInputService()
-        {
-
-        }
-
-        [Test]
-        public void ThenA_SelectionEventHandlerShouldBeAttachedToInputService()
-        {
-
-        }
-
-        [Test]
-        public void ThenA_SelectionResultEventHandlerShouldBeAttachedToInputService()
-        {
-
-        }
-
         public void ThenPointToKeyValueMapShouldBeSetOnInputService()
         {
-
+            InputService.VerifySet(s => s.PointToKeyValueMap = It.IsAny<Dictionary<Rect, KeyValue>>(), Times.Once());
         }
 
+        [Test]
         public void ThenSelectionModeShouldBeSetOnInputService()
         {
-
+            InputService.VerifySet(s => s.SelectionMode = MainViewModel.SelectionMode, Times.AtLeastOnce());
         }
     }
 
@@ -212,6 +197,108 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             Assert.IsNotNull(MainViewModel.PointSelectionProgress);
             Assert.AreEqual(pointAndKeyValue.Point, MainViewModel.PointSelectionProgress.Item1);
             Assert.AreEqual(83, MainViewModel.PointSelectionProgress.Item2);
+        }
+    }
+
+    [TestFixture]
+    public class WhenAttachServiceEventHandlersGivenSelectionModesKeyAndIsNotCapturingMultiKeySelection : WhenAttachServiceEventHandlers
+    {
+        protected override void Arrange()
+        {
+            base.Arrange();
+
+            MainViewModel.SelectionMode = SelectionModes.Key;
+
+            CapturingStateManager.Setup(s => s.CapturingMultiKeySelection)
+                .Returns(false);
+        }
+
+        [Test]
+        public void ThenSelectionProgressShouldBeProcessed()
+        {
+            var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
+
+            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+
+            Assert.IsNull(MainViewModel.SelectionResultPoints);
+
+            AudioService.Verify(s => s.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume));
+
+            Assert.IsTrue(IsKeySelectionEventHandlerCalled);
+        }
+    }
+
+    [TestFixture]
+    public class WhenAttachServiceEventHandlersGivenSelectionModesPoint : WhenAttachServiceEventHandlers
+    {
+        protected override void Arrange()
+        {
+            base.Arrange();
+
+            MainViewModel.SelectionMode = SelectionModes.Point;
+        }
+
+        [Test]
+        public void ThenSelectionProgressShouldBeProcessed()
+        {
+            var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
+
+            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+
+            Assert.IsNull(MainViewModel.SelectionResultPoints);
+
+            Assert.IsTrue(IsPointSelectionEventHandlerCalled);
+        }
+    }
+
+    [TestFixture]
+    public class WhenAttachServiceEventHandlersGivenSelectionModesKey : WhenAttachServiceEventHandlers
+    {
+        [Test]
+        public void GivenSingleKeyIsStringThenSelectionResultEventHandlerShouldBeAttachedToInputService()
+        {
+            var points = new List<Point>();
+            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                points, FunctionKeys.Paste, "SingleKeyValueIsString", new List<string>());
+
+            InputService.Raise(s => s.SelectionResult += null, this, selection);
+
+            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+
+            KeyboardOutputService.Verify(s => s.ProcessSingleKeyText("SingleKeyValueIsString"), Times.Once());
+        }
+
+        [Test]
+        public void GivenSingleKeyIsFunctionKeySelectionResultEventHandlerShouldBeAttachedToInputService()
+        {
+            var points = new List<Point>();
+            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                points, FunctionKeys.Paste, null, new List<string>());
+
+            InputService.Raise(s => s.SelectionResult += null, this, selection);
+
+            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+
+            KeyStateService.Verify(s => s.ProgressKeyDownState(It.IsAny<KeyValue>()), Times.Once());
+
+            //TODO: validate 101 function key cases of MainViewModel.HandleFunctionKeySelectionResult
+
+            KeyboardOutputService.Verify(s => s.ProcessFunctionKey(It.IsAny<FunctionKeys>()), Times.Once());
+        }
+
+        [Test]
+        public void GivenMultiKeySelectionThenSelectionResultEventHandlerShouldBeAttachedToInputService()
+        {
+            var points = new List<Point>();
+            var multiKeySelection = new List<string> { "test-multi" };
+            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
+                points, FunctionKeys.Paste, "SingleKeyValueIsString", multiKeySelection);
+
+            InputService.Raise(s => s.SelectionResult += null, this, selection);
+
+            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+
+            KeyboardOutputService.Verify(s => s.ProcessMultiKeyTextAndSuggestions(multiKeySelection), Times.Once());
         }
     }
 }
