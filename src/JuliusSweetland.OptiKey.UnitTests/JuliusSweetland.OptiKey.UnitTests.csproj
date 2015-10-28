@@ -45,6 +45,7 @@
       <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
@@ -77,6 +78,7 @@
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenRaiseToastNotification.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenSelectionMode.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\ManagementViewModelTestBase.cs" />
+    <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenCancelCommand.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenChangesRequireRestart.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenConstruct.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
