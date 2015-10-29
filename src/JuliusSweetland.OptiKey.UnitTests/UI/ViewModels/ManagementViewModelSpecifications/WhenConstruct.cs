@@ -30,6 +30,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
             Assert.IsNotNull(ManagementViewModel.WordsViewModel);
         }
 
+        [Test]
         public void ThenInteractionRequestsAndCommandsShouldBeConstructed()
         {
             Assert.IsNotNull(ManagementViewModel.ConfirmationRequest);

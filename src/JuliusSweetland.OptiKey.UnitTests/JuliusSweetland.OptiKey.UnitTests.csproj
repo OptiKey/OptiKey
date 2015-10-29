@@ -82,6 +82,8 @@
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenChangesRequireRestart.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenConstruct.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelSpecifications\WhenOkCommand.cs" />
+    <Compile Include="UI\ViewModels\Management\DictionaryViewModelSpecifications\DictionaryViewModelTestBase.cs" />
+    <Compile Include="UI\ViewModels\Management\DictionaryViewModelSpecifications\WhenConstruct.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
