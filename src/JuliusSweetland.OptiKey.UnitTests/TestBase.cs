@@ -3,7 +3,6 @@ using System;
 
 namespace JuliusSweetland.OptiKey.UnitTests
 {
-    [TestFixture]
     public class TestBase
     {
         protected Exception Exception { get; private set; }
