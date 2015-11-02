@@ -5,6 +5,7 @@ using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
@@ -639,6 +640,13 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
+                var vkey = PInvoke.VkKeyScan(character);
+                int modifiers = vkey >> 8;
+                var shift = (modifiers & 1) != 0;
+                var ctrl = (modifiers & 2) != 0;
+                var alt = (modifiers & 4) != 0;
+                Log.InfoFormat("Character '{0}' => virtual key code '{1}' (shift {2}, ctrl {3}, alt {4})", character, vkey, shift, ctrl, alt);
+
                 Log.DebugFormat("KeyDownUp called with character '{0}' and modified character '{1}'",
                     character.ConvertEscapedCharToLiteral(), 
                     modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral());
