@@ -249,12 +249,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishUK")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Languages Language {
+        public global::JuliusSweetland.OptiKey.Enums.Languages ResourceLanguage {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["Language"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["ResourceLanguage"]));
             }
             set {
-                this["Language"] = value;
+                this["ResourceLanguage"] = value;
             }
         }
         
@@ -1348,6 +1348,19 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["TobiiEyeXProcessingLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EnglishUK")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Enums.Languages KeyboardLanguage {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["KeyboardLanguage"]));
+            }
+            set {
+                this["KeyboardLanguage"] = value;
             }
         }
     }

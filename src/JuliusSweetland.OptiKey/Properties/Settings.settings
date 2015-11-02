@@ -53,7 +53,7 @@
     <Setting Name="MultiKeySelectionMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
-    <Setting Name="Language" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
+    <Setting Name="ResourceLanguage" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
       <Value Profile="(Default)">EnglishUK</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTime" Roaming="true" Type="System.TimeSpan" Scope="User">
@@ -307,6 +307,9 @@
     </Setting>
     <Setting Name="TobiiEyeXProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
       <Value Profile="(Default)">Medium</Value>
+    </Setting>
+    <Setting Name="KeyboardLanguage" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
+      <Value Profile="(Default)">EnglishUK</Value>
     </Setting>
   </Settings>
 </SettingsFile>
