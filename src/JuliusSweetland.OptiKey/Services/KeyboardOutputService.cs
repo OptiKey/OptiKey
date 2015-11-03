@@ -641,9 +641,10 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 var vkKeyScanResult = PInvoke.VkKeyScan(character);
                 var vk = vkKeyScanResult & 0xff;
-                var shift = (vkKeyScanResult >> 8 & 1) == 1;
-                var ctrl = (vkKeyScanResult >> 8 & 2) == 1;
-                var alt = (vkKeyScanResult >> 8 & 4) == 1;
+                var modifiers = vkKeyScanResult >> 8;
+                var shift = (modifiers & 1) == 1;
+                var ctrl = (modifiers & 2) == 1;
+                var alt = (modifiers & 4) == 1;
 
                 if (vk != -1)
                 {
