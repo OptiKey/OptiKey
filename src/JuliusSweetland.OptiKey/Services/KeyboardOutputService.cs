@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -338,11 +339,9 @@ namespace JuliusSweetland.OptiKey.Services
             //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
             for (int index = 0; index < captureText.Length; index++)
             {
-                PublishKeyPress(captureText[index],
-                    modifiedCaptureText != null && modifiedCaptureText.Length == captureText.Length
+                PublishKeyPress(modifiedCaptureText != null && modifiedCaptureText.Length == captureText.Length
                         ? modifiedCaptureText[index]
-                        : (char?)null,
-                        captureText.Length > 1); //Publish each character as TEXT (not key presses) if the capture is a multi-key capture. This preserves casing from the dictionary entry.
+                        : captureText[index]);
 
                 ReleaseUnlockedKeys();
             }
@@ -636,30 +635,63 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PublishKeyPress(char character, char? modifiedCharacter, bool publishModifiedCharacterAsText)
+        private void PublishKeyPress(char character)
         {
             if (keyStateService.SimulateKeyStrokes)
             {
-                var vkey = PInvoke.VkKeyScan(character);
-                int modifiers = vkey >> 8;
-                var shift = (modifiers & 1) != 0;
-                var ctrl = (modifiers & 2) != 0;
-                var alt = (modifiers & 4) != 0;
-                Log.InfoFormat("Character '{0}' => virtual key code '{1}' (shift {2}, ctrl {3}, alt {4})", character, vkey, shift, ctrl, alt);
+                var vkKeyScanResult = PInvoke.VkKeyScan(character);
+                var vk = vkKeyScanResult & 0xff;
+                var shift = (vkKeyScanResult >> 8 & 1) == 1;
+                var ctrl = (vkKeyScanResult >> 8 & 2) == 1;
+                var alt = (vkKeyScanResult >> 8 & 4) == 1;
 
-                Log.DebugFormat("KeyDownUp called with character '{0}' and modified character '{1}'",
-                    character.ConvertEscapedCharToLiteral(), 
-                    modifiedCharacter == null ? null : modifiedCharacter.Value.ConvertEscapedCharToLiteral());
-
-                var virtualKeyCode = character.ToVirtualKeyCode();
-                if (virtualKeyCode != null
-                    && !publishModifiedCharacterAsText)
+                if (vk != -1)
                 {
-                    publishService.KeyDownUp(virtualKeyCode.Value);
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}{2}{3}{4} (keyboard:{5})",
+                        character.ConvertEscapedCharToLiteral(), vk, shift ? "+shift" : null, ctrl ? "+ctrl" : null, alt ? "+alt" : null,
+                        InputLanguageManager.Current.CurrentInputLanguage.DisplayName);
+
+                    bool releaseShift = false;
+                    bool releaseCtrl = false;
+                    bool releaseAlt = false;
+
+                    if (shift && keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Up)
+                    {
+                        publishService.KeyDown(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+                        releaseShift = true;
+                    }
+
+                    if (ctrl && keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value == KeyDownStates.Up)
+                    {
+                        publishService.KeyDown(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+                        releaseCtrl = true;
+                    }
+
+                    if (alt && keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value == KeyDownStates.Up)
+                    {
+                        publishService.KeyDown(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                        releaseAlt = true;
+                    }
+
+                    publishService.KeyDownUp((VirtualKeyCode)vk);
+
+                    if (releaseShift)
+                    {
+                        publishService.KeyUp(FunctionKeys.LeftShift.ToVirtualKeyCode().Value);
+                    }
+                    if (releaseCtrl)
+                    {
+                        publishService.KeyUp(FunctionKeys.LeftCtrl.ToVirtualKeyCode().Value);
+                    }
+                    if (releaseAlt)
+                    {
+                        publishService.KeyUp(FunctionKeys.LeftAlt.ToVirtualKeyCode().Value);
+                    }
                 }
-                else if (modifiedCharacter != null)
+                else
                 {
-                    publishService.TypeText(modifiedCharacter.ToString());
+                    Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
+                    publishService.TypeText(character.ToString());
                 }
             }
         }
@@ -744,7 +776,7 @@ namespace JuliusSweetland.OptiKey.Services
                 var publishText = textHasSameRoot ? textToSwapIn.Substring(textToSwapOut.Length) : textToSwapIn;
                 foreach (char c in publishText)
                 {
-                    PublishKeyPress(c, c, true); //Character has already been modified, so pass 'c' for both args
+                    PublishKeyPress(c);
                 }
 
                 StoreLastTextChange(textToSwapIn);
@@ -759,7 +791,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && !suppressNextAutoSpace)
             {
                 Log.Info("Publishing auto space and adding auto space to Text.");
-                PublishKeyPress(' ', ' ', true); //It's a space
+                PublishKeyPress(' ');
                 Text = string.Concat(Text, " ");
                 return true;
             }

@@ -77,11 +77,6 @@ namespace JuliusSweetland.OptiKey
             ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
             ((Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
 
-            //Log keyboard language
-            Log.InfoFormat("Current input language is '{0}'", System.Windows.Input.InputLanguageManager.Current.CurrentInputLanguage.DisplayName);
-            System.Windows.Input.InputLanguageManager.Current.InputLanguageChanged += 
-                (sender, args) => Log.InfoFormat("Current input language has been changed to '{0}'", args.NewLanguage.DisplayName);
-
             //Apply resource language (and listen for changes)
             Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
             Settings.Default.OnPropertyChanges(s => s.ResourceLanguage).Subscribe(applyResourceLanguage);
