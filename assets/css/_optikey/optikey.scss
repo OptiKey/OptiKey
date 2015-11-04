@@ -42,10 +42,12 @@ footer {
 	color: $optikey-color-white;
 
 	a, a:visited {
-		color: white
+		color: white;
+		text-decoration: underline;
 	}
 
 	a:focus, a:hover, a:active {
-		color: white
+		color: white;
+		text-decoration: underline;
 	}
 }
