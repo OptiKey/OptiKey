@@ -21,8 +21,8 @@ Usage guide - link to page
 Troubleshooting - link to page
 
 - How to handle wiki sections like management and troubleshooting
-- what else needs to go on the homepage
 - what else needs to go in the footer
 - what to put on the about page
 - news/blog
 - change header / footer color to light blue
+- sidebar / mobile pages need to change layout
