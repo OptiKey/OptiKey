@@ -517,13 +517,7 @@ EN HAUT</value>
     <value>Touche du clavier</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Langue de l'interface</value>
-  </data>
-  <data name="LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Lange : {0}</value>
-  </data>
-  <data name="LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue:</value>
+    <value>Langue</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Gauche</value>
