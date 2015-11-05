@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
-            Language = Settings.Default.Language;
+            Language = Settings.Default.ResourceLanguage;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
@@ -117,9 +117,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            bool reloadDictionary = Settings.Default.Language != Language;
+            bool reloadDictionary = Settings.Default.ResourceLanguage != Language;
 
-            Settings.Default.Language = Language;
+            Settings.Default.ResourceLanguage = Language;
+            Settings.Default.KeyboardLanguage = Language;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;

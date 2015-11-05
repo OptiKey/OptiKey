@@ -9,6 +9,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 {
     public abstract class WhenConstruct : MainViewModelTestBase
     {
+        protected override bool ShouldConstruct
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         protected override void Act()
         {
             MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object, 
