@@ -45,11 +45,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
         
-        private Languages language;
-        public Languages Language
+        private Languages keyboardLanguage;
+        public Languages KeyboardLanguage
         {
-            get { return language; }
-            set { SetProperty(ref this.language, value); }
+            get { return keyboardLanguage; }
+            set { SetProperty(ref this.keyboardLanguage, value); }
+        }
+
+        private Languages resourceLanguage;
+        public Languages ResourceLanguage
+        {
+            get { return resourceLanguage; }
+            set { SetProperty(ref this.resourceLanguage, value); }
         }
         
         private bool autoAddSpace;
@@ -105,7 +112,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
-            Language = Settings.Default.ResourceLanguage;
+            KeyboardLanguage = Settings.Default.KeyboardLanguage;
+            ResourceLanguage = Settings.Default.ResourceLanguage;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
@@ -116,10 +124,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            bool reloadDictionary = Settings.Default.ResourceLanguage != Language;
+            bool reloadDictionary = Settings.Default.ResourceLanguage != ResourceLanguage;
 
-            Settings.Default.ResourceLanguage = Language;
-            Settings.Default.KeyboardLanguage = Language;
+            Settings.Default.KeyboardLanguage = KeyboardLanguage;
+            Settings.Default.ResourceLanguage = ResourceLanguage;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;

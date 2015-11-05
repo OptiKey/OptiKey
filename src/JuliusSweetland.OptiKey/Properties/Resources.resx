@@ -535,11 +535,11 @@ UP</value>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Language: {0}</value>
+  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Keyboard language: {0}</value>
   </data>
-  <data name="LANGUAGE_LABEL" xml:space="preserve">
-    <value>Language:</value>
+  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Keyboard language:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Left</value>
@@ -1213,5 +1213,11 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>German (Germany) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>User interface language: {0}</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+    <value>User interface language:</value>
   </data>
 </root>

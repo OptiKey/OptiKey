@@ -488,7 +488,8 @@ namespace JuliusSweetland.OptiKey
                 var message = new StringBuilder();
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.LANGUAGE_DESCRIPTION, Settings.Default.ResourceLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.RESOURCE_LANGUAGE_DESCRIPTION, Settings.Default.ResourceLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();
