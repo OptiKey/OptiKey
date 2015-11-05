@@ -63,8 +63,17 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr", CharSet = CharSet.Auto)]
         private static extern long GetWindowLongPtr64(IntPtr hWnd, int nIndex);
-
+        
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern short VkKeyScan(char ch);
+        public static extern short VkKeyScanEx(char ch, IntPtr dwhkl);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern int GetWindowThreadProcessId(IntPtr handleWindow, out int lpdwProcessID);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetKeyboardLayout(int WindowsThreadProcessID);
     }
 } 

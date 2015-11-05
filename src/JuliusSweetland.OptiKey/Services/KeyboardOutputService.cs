@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Input;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
@@ -625,11 +626,10 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
-                Log.DebugFormat("KeyDownUp called with functionKey '{0}'.",  functionKey);
-
                 var virtualKeyCode = functionKey.ToVirtualKeyCode();
                 if (virtualKeyCode != null)
                 {
+                    Log.InfoFormat("Publishing function key '{0}' => as virtual key code {1}", functionKey, virtualKeyCode);
                     publishService.KeyDownUp(virtualKeyCode.Value);
                 }
             }
@@ -639,18 +639,35 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
-                var vkKeyScanResult = PInvoke.VkKeyScan(character);
-                var vk = vkKeyScanResult & 0xff;
-                var modifiers = vkKeyScanResult >> 8;
-                var shift = (modifiers & 1) == 1;
-                var ctrl = (modifiers & 2) == 1;
-                var alt = (modifiers & 4) == 1;
+                //Get keyboard layout of currently focussed window
+                IntPtr hWnd = PInvoke.GetForegroundWindow();
+                int lpdwProcessId;
+                int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
+                IntPtr keyboardLayout = PInvoke.GetKeyboardLayout(winThreadProcId);
 
-                if (vk != -1)
+                //Convert this into a culture string for logging
+                string keyboardCulture = "Unknown";
+                var installedInputLanguages = InputLanguage.InstalledInputLanguages;
+                for (int i = 0; i < installedInputLanguages.Count; i++)
                 {
-                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}{2}{3}{4} (keyboard:{5})",
-                        character.ConvertEscapedCharToLiteral(), vk, shift ? "+shift" : null, ctrl ? "+ctrl" : null, alt ? "+alt" : null,
-                        InputLanguageManager.Current.CurrentInputLanguage.DisplayName);
+                    if (keyboardLayout == installedInputLanguages[i].Handle)
+                    {
+                        keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                    }
+                }
+
+                //Attempt to lookup virtual key code (and modifier states)
+                var vkKeyScan = PInvoke.VkKeyScanEx(character, keyboardLayout);
+                var vkCode = vkKeyScan & 0xff;
+                var shift = (vkKeyScan & 0x100) > 0;
+                var ctrl = (vkKeyScan & 0x200) > 0;
+                var alt = (vkKeyScan & 0x400) > 0;
+
+                if (vkKeyScan != -1)
+                {
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (keyboard:{5})",
+                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
+                        ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 
                     bool releaseShift = false;
                     bool releaseCtrl = false;
@@ -674,7 +691,7 @@ namespace JuliusSweetland.OptiKey.Services
                         releaseAlt = true;
                     }
 
-                    publishService.KeyDownUp((VirtualKeyCode)vk);
+                    publishService.KeyDownUp((VirtualKeyCode)vkCode);
 
                     if (releaseShift)
                     {
@@ -691,7 +708,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
+                    Log.InfoFormat("Publishing '{0}' as text (keyboard:{1})", character.ConvertEscapedCharToLiteral(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
             }
