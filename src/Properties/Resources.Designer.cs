@@ -2857,6 +2857,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calibration completed, or possibly cancelled, but everything is working again!.
+        /// </summary>
+        public static string TOBII_EYEX_CALIBRATION_SUCCESS {
+            get {
+                return ResourceManager.GetString("TOBII_EYEX_CALIBRATION_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again..
         /// </summary>
         public static string TOBII_EYEX_ENGINE_NOT_FOUND {
