@@ -21,5 +21,3 @@ Usage guide - link to page
 Troubleshooting - link to page
 
 - what to put on the about page
-- change header / footer color to light blue
-- sidebar / mobile pages need to change layout

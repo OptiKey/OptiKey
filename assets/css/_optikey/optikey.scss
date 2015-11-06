@@ -9,7 +9,7 @@ main {
 }
 
 .navbar {
-	background-color: $optikey-color-blue-dark;
+	background-color: $optikey-color-blue-light;
 }
 
 .video-wrapper {
@@ -36,18 +36,18 @@ img {
 }
 
 footer {
-	background-color: $optikey-color-blue-dark;
+	background-color: $optikey-color-blue-light;
 	padding-top: 2rem;
 
-	color: $optikey-color-white;
+	color: rgba(0,0,0,.8);
 
 	a, a:visited {
-		color: white;
+		color: rgba(0,0,0,.8);
 		text-decoration: underline;
 	}
 
 	a:focus, a:hover, a:active {
-		color: white;
+		color: rgba(0,0,0,.8);
 		text-decoration: underline;
 	}
 
