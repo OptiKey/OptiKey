@@ -37,6 +37,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref checkForUpdates, value); }
         }
 
+        private bool publishVirtualKeyCodesForCharacters;
+        public bool PublishVirtualKeyCodesForCharacters
+        {
+            get { return publishVirtualKeyCodesForCharacters; }
+            set { SetProperty(ref publishVirtualKeyCodesForCharacters, value); }
+        }
+
         private bool suppressModifierKeysWhenInMouseKeyboard;
         public bool SuppressModifierKeysWhenInMouseKeyboard
         {
@@ -67,6 +74,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
+            PublishVirtualKeyCodesForCharacters = Settings.Default.PublishVirtualKeyCodesForCharacters;
             SuppressModifierKeysWhenInMouseKeyboard = Settings.Default.SuppressModifierKeysWhenInMouseKeyboard;
             Debug = Settings.Default.Debug;
         }
@@ -75,6 +83,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
+            Settings.Default.PublishVirtualKeyCodesForCharacters = PublishVirtualKeyCodesForCharacters;
             Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
             Settings.Default.Debug = Debug;
         }

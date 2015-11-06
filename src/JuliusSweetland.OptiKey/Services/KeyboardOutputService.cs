@@ -639,6 +639,13 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
+                if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
+                {
+                    Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
+                    publishService.TypeText(character.ToString());
+                    return;
+                }
+
                 //Get keyboard layout of currently focussed window
                 IntPtr hWnd = PInvoke.GetForegroundWindow();
                 int lpdwProcessId;
@@ -663,7 +670,8 @@ namespace JuliusSweetland.OptiKey.Services
                 var ctrl = (vkKeyScan & 0x200) > 0;
                 var alt = (vkKeyScan & 0x400) > 0;
 
-                if (vkKeyScan != -1)
+                if (Settings.Default.PublishVirtualKeyCodesForCharacters
+                    && vkKeyScan != -1)
                 {
                     Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (keyboard:{5})",
                         character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
@@ -708,7 +716,8 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("Publishing '{0}' as text (keyboard:{1})", character.ConvertEscapedCharToLiteral(), keyboardCulture);
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})", 
+                        character.ConvertEscapedCharToLiteral(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
             }

@@ -19,6 +19,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
@@ -31,14 +32,19 @@
                 <CheckBox Grid.Row="1" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding CheckForUpdates, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                          IsChecked="{Binding PublishVirtualKeyCodesForCharacters, Mode=TwoWay}" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="4" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
             </Grid>
