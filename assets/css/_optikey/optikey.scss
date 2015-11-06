@@ -6,6 +6,10 @@
 
 main {
 	display: block;
+
+	.content:first-of-type {
+		padding: 2em 0;
+	}
 }
 
 .navbar {
@@ -33,6 +37,12 @@ main {
 
 img {
 	max-width: 100%;
+}
+
+.figure.quote {
+	font-style: italic;
+	border-left: 2px solid $optikey-color-blue-dark;
+	padding-left: 2em;
 }
 
 footer {
