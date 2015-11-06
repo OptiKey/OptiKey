@@ -12,6 +12,10 @@ main {
 	}
 }
 
+body.nopad main .content:first-of-type {
+	padding: 0;
+}
+
 .navbar {
 	background-color: $optikey-color-blue-light;
 }
