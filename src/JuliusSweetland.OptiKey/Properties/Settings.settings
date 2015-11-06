@@ -311,5 +311,8 @@
     <Setting Name="KeyboardLanguage" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
       <Value Profile="(Default)">EnglishUK</Value>
     </Setting>
+    <Setting Name="PublishVirtualKeyCodesForCharacters" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

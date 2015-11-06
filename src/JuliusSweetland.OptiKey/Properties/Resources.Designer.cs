@@ -2307,6 +2307,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simulate physical keystrokes when typing characters:.
+        /// </summary>
+        public static string PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL {
+            get {
+                return ResourceManager.GetString("PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QUIT.
         /// </summary>
         public static string QUIT {
