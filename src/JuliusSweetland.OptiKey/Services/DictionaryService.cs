@@ -63,20 +63,23 @@ namespace JuliusSweetland.OptiKey.Services
             foreach (var oldNewFileName in oldNewDictionaryFileNames)
             {
                 var oldDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item1);
+                var oldFileInfo = new FileInfo(oldDictionaryPath);
                 var newDictionaryPath = GetUserDictionaryPath(oldNewFileName.Item2);
-                if (File.Exists(oldDictionaryPath))
+                var newFileInfo = new FileInfo(newDictionaryPath);
+                if (oldFileInfo.Exists)
                 {
                     Log.InfoFormat("Old user dictionary file found at '{0}'", oldDictionaryPath);
+
                     //Delete new user dictionary
-                    if (File.Exists(newDictionaryPath))
+                    if (newFileInfo.Exists)
                     {
                         Log.InfoFormat("New user dictionary file also found at '{0}' - deleting this file", newDictionaryPath);
-                        File.Delete(newDictionaryPath);
+                        newFileInfo.Delete();
                     }
 
                     //Rename old user dictionary
                     Log.InfoFormat("Renaming old user dictionary file '{0}' to '{1}'", oldDictionaryPath, newDictionaryPath);
-                    File.Move(oldDictionaryPath, newDictionaryPath);
+                    oldFileInfo.MoveTo(newDictionaryPath);
                 }
             }
         }
@@ -87,7 +90,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LoadDictionary()
         {
-            Log.InfoFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.Language);
+            Log.InfoFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.ResourceLanguage);
 
             try
             {
@@ -95,7 +98,7 @@ namespace JuliusSweetland.OptiKey.Services
                 entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
 
                 //Load the user dictionary
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.ResourceLanguage);
 
                 if (File.Exists(userDictionaryPath))
                 {
@@ -104,7 +107,7 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     //Load the original dictionary
-                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.Language, DictionaryFileType));
+                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.ResourceLanguage, DictionaryFileType));
 
                     if (File.Exists(originalDictionaryPath))
                     {
@@ -181,7 +184,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.Language);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.ResourceLanguage);
 
                 Log.DebugFormat("Saving user dictionary to file '{0}'", userDictionaryPath);
 

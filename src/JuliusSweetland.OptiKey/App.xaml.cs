@@ -56,17 +56,10 @@ namespace JuliusSweetland.OptiKey
             LogDiagnosticInfo();
 
             //Attach shutdown handler
-            var originalCulture = Thread.CurrentThread.CurrentCulture;
-            var originalUiCulture = Thread.CurrentThread.CurrentUICulture;
             Current.Exit += (o, args) =>
             {
                 Log.Info("PERSISTING USER SETTINGS AND SHUTTING DOWN.");
                 Settings.Default.Save();
-
-                //Restoration of current culture is an attempt to prevent the OS language from being altered
-                Log.InfoFormat("Restoring original CurrentCulture ({0}) and CurrentUICulture ({1})", originalCulture, originalUiCulture);
-                Thread.CurrentThread.CurrentCulture = originalCulture;
-                Thread.CurrentThread.CurrentUICulture = originalUiCulture;
             };
 
             HandleCorruptSettings();
@@ -83,6 +76,11 @@ namespace JuliusSweetland.OptiKey
             //Adjust log4net logging level if in debug mode
             ((Hierarchy)LogManager.GetRepository()).Root.Level = Settings.Default.Debug ? Level.Debug : Level.Info;
             ((Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+
+            //Apply resource language (and listen for changes)
+            Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
+            Settings.Default.OnPropertyChanges(s => s.ResourceLanguage).Subscribe(applyResourceLanguage);
+            applyResourceLanguage(Settings.Default.ResourceLanguage);
 
             //Logic to initially apply the theme and change the theme on setting changes
             applyTheme = () =>
@@ -153,10 +151,6 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
-
-                Thread.CurrentThread.CurrentCulture = Settings.Default.Language.ToCultureInfo();
-                Thread.CurrentThread.CurrentUICulture = Settings.Default.Language.ToCultureInfo();
-                OptiKey.Properties.Resources.Culture = Settings.Default.Language.ToCultureInfo();
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
@@ -496,7 +490,8 @@ namespace JuliusSweetland.OptiKey
                 var message = new StringBuilder();
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.LANGUAGE_DESCRIPTION, Settings.Default.Language.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.RESOURCE_LANGUAGE_DESCRIPTION, Settings.Default.ResourceLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();

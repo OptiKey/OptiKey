@@ -1265,29 +1265,29 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keyboard language: {0}.
+        /// </summary>
+        public static string KEYBOARD_LANGUAGE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("KEYBOARD_LANGUAGE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard language:.
+        /// </summary>
+        public static string KEYBOARD_LANGUAGE_LABEL {
+            get {
+                return ResourceManager.GetString("KEYBOARD_LANGUAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LANGUAGE {
             get {
                 return ResourceManager.GetString("LANGUAGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language: {0}.
-        /// </summary>
-        public static string LANGUAGE_DESCRIPTION {
-            get {
-                return ResourceManager.GetString("LANGUAGE_DESCRIPTION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language:.
-        /// </summary>
-        public static string LANGUAGE_LABEL {
-            get {
-                return ResourceManager.GetString("LANGUAGE_LABEL", resourceCulture);
             }
         }
         
@@ -2307,6 +2307,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simulate physical keystrokes when typing characters:.
+        /// </summary>
+        public static string PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL {
+            get {
+                return ResourceManager.GetString("PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QUIT.
         /// </summary>
         public static string QUIT {
@@ -2367,6 +2376,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW {
             get {
                 return ResourceManager.GetString("REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface language: {0}.
+        /// </summary>
+        public static string RESOURCE_LANGUAGE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("RESOURCE_LANGUAGE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface language:.
+        /// </summary>
+        public static string RESOURCE_LANGUAGE_LABEL {
+            get {
+                return ResourceManager.GetString("RESOURCE_LANGUAGE_LABEL", resourceCulture);
             }
         }
         

@@ -1,8 +1,11 @@
 I would like to extend my thanks/credit to the following people, websites & organisations...
 
 Patrons (thank you very much for sponsoring this project)
-  Jerry
-  Udo
+  Gerald Walden
+  Udo Heintz
+  Sean McLane
+  Nikolas
+  Rachael Hanson
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
