@@ -434,7 +434,7 @@ UP</value>
     <value>Font weight:</value>
   </data>
   <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / Française (France)</value>
+    <value>French (France) / Français (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Full dock thickness (as % of screen):</value>
@@ -1222,5 +1222,32 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simulate physical keystrokes when typing characters:</value>
+  </data>
+  <data name="VOICE_COMMANDS" xml:space="preserve">
+    <value>Voice commands</value>
+  </data>
+  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
+    <value>Voice commands</value>
+  </data>
+  <data name="MOUSE_MOVE_AND_LEFT_CLICK_COMMAND" xml:space="preserve">
+    <value>Move mouse and left click</value>
+  </data>
+  <data name="CALIBRATE_COMMAND" xml:space="preserve">
+    <value>Run calibration</value>
+  </data>
+  <data name="MOUSE_MOVE_AND_SCROLL_TO_TOP_COMMAND" xml:space="preserve">
+    <value>Move mouse and scroll to top</value>
+  </data>
+  <data name="MOUSE_MOVE_AND_SCROLL_TO_BOTTOM_COMMAND" xml:space="preserve">
+    <value>Move mouse and scroll to bottom</value>
+  </data>
+  <data name="MOUSE_MOVE_TO_LEFT_COMMAND" xml:space="preserve">
+    <value>Move mouse to left</value>
+  </data>
+  <data name="MOUSE_MOVE_TO_RIGHT_COMMAND" xml:space="preserve">
+    <value>Move mouse to right</value>
   </data>
 </root>

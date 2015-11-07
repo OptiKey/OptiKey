@@ -361,6 +361,7 @@
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\VoiceCommandsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
@@ -469,6 +470,9 @@
     <Compile Include="UI\Views\Management\VisualsView.xaml.cs">
       <DependentUpon>VisualsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Management\VoiceCommandsView.xaml.cs">
+      <DependentUpon>VoiceCommandsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Management\WordsView.xaml.cs">
       <DependentUpon>WordsView.xaml</DependentUpon>
     </Compile>
@@ -498,7 +502,15 @@
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
-    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="VoiceCommands\FrenchFrance.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VoiceCommands\EnglishUK.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -922,6 +934,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\VisualsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\VoiceCommandsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

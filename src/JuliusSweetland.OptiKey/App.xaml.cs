@@ -145,12 +145,13 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(dictionaryService);
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
+                errorNotifyingServices.Add(configurableCommandService);
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
-                var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
+                var mainWindow = new MainWindow(audioService, dictionaryService, inputService, configurableCommandService);
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,

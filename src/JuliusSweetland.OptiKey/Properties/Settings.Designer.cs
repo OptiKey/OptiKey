@@ -1363,17 +1363,32 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeyboardLanguage"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool PublishVirtualKeyCodesForCharacters {
-            get {
+        public bool PublishVirtualKeyCodesForCharacters
+        {
+            get
+            {
                 return ((bool)(this["PublishVirtualKeyCodesForCharacters"]));
             }
-            set {
+            set
+            {
                 this["PublishVirtualKeyCodesForCharacters"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]   
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VoiceCommandsEnabled {
+            get {
+                return ((bool)(this["VoiceCommandsEnabled"]));
+            }
+            set {
+                this["VoiceCommandsEnabled"] = value;
             }
         }
     }

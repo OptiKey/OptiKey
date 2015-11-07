@@ -17,18 +17,21 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly IAudioService audioService;
         private readonly IDictionaryService dictionaryService;
         private readonly IInputService inputService;
+        private readonly IConfigurableCommandService configurableCommandService;
         private readonly InteractionRequest<NotificationWithServices> managementWindowRequest;
 
         public MainWindow(
             IAudioService audioService,
             IDictionaryService dictionaryService,
-            IInputService inputService)
+            IInputService inputService,
+            IConfigurableCommandService configurableCommandService)
         {
             InitializeComponent();
 
             this.audioService = audioService;
             this.dictionaryService = dictionaryService;
             this.inputService = inputService;
+            this.configurableCommandService = configurableCommandService;
             
             managementWindowRequest = new InteractionRequest<NotificationWithServices>();
 
@@ -47,6 +50,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             });
 
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
+
+            // TO REMOVE
+            ContentRendered += (_1, _2) => { RequestManagementWindow(); };
         }
 
         public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }
@@ -55,7 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         {
             inputService.RequestSuspend();
             ManagementWindowRequest.Raise(new NotificationWithServices 
-                { AudioService = audioService, DictionaryService = dictionaryService },
+                { AudioService = audioService, DictionaryService = dictionaryService, ConfigurableCommandService = configurableCommandService },
                 _ => inputService.RequestResume());
         }
     }

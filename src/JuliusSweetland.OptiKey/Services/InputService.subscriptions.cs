@@ -33,6 +33,28 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
+        #region Voice command Subscription
+
+        private void CreateVoiceCommandSubscription()
+        {
+            if (voiceCommandSource != null)
+            {
+                voiceCommandSubscription = voiceCommandSource.Sequence
+                    .ObserveOnDispatcher()
+                    .Subscribe(ProcessSelectionTrigger);
+            }
+        }
+
+        private void DisposeVoiceCommandSubscription()
+        {
+            if (voiceCommandSubscription != null)
+            {
+                voiceCommandSubscription.Dispose();
+            }
+        }
+
+        #endregion
+
         #region Create Points Per Second Subscription
 
         private void CreatePointsPerSecondSubscription()
@@ -123,12 +145,6 @@ namespace JuliusSweetland.OptiKey.Services
             if (selectionTriggerSource != null)
             {
                 selectionTriggerSubscription = selectionTriggerSource.Sequence
-                    .ObserveOnDispatcher()
-                    .Subscribe(ProcessSelectionTrigger);
-            }
-            if (voiceCommandSource != null)
-            {
-                voiceCommandSubscription = voiceCommandSource.Sequence
                     .ObserveOnDispatcher()
                     .Subscribe(ProcessSelectionTrigger);
             }
@@ -388,11 +404,6 @@ namespace JuliusSweetland.OptiKey.Services
             if (multiKeySelectionSubscription != null)
             {
                 multiKeySelectionSubscription.Dispose();
-            }
-
-            if (voiceCommandSubscription != null)
-            {
-                voiceCommandSubscription.Dispose();
             }
         }
 

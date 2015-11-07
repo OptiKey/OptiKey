@@ -9,9 +9,7 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishUK,
         EnglishUS,
         FrenchFrance,
-        GermanGermany,
-        // Specific value used for user custom values
-        Custom
+        GermanGermany
     }
 
     public static partial class EnumExtensions

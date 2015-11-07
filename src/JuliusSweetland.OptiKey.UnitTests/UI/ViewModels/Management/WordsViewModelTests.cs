@@ -17,8 +17,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management
         public void ReloadDictionaryWhenLanguageChanged(){
             //Arrange
             var mockDictionaryService = new Mock<IDictionaryService>();
+            var mockConfigurableCommandService = new Mock<IConfigurableCommandService>();
 
-            var wordsViewModel = new WordsViewModel(mockDictionaryService.Object);
+            var wordsViewModel = new WordsViewModel(mockDictionaryService.Object, mockConfigurableCommandService.Object);
 
             //Act
             if (wordsViewModel.KeyboardLanguage == Enums.Languages.FrenchFrance)
@@ -39,8 +40,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management
         public void DoNotReloadDictionaryWhenLanguageIsTheSame(){
             //Arrange
             var mockDictionaryService = new Mock<IDictionaryService>();
+            var mockConfigurableCommandService = new Mock<IConfigurableCommandService>();
 
-            var wordsViewModel = new WordsViewModel(mockDictionaryService.Object);
+            var wordsViewModel = new WordsViewModel(mockDictionaryService.Object, mockConfigurableCommandService.Object);
 
             //Act
             wordsViewModel.KeyboardLanguage = wordsViewModel.KeyboardLanguage;

@@ -350,6 +350,15 @@ BAS</value>
   <data name="END" xml:space="preserve">
     <value>FIN</value>
   </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Anglais (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Anglais (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Anglais (US)</value>
+  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTRÉE</value>
   </data>
@@ -425,9 +434,15 @@ EN HAUT</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Epaisseur :</value>
   </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Français (France)</value>
+  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Hauteur de la barre d'outils complète :
 (pourcentage de l'écran)</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Détecteur de regard</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Agrandir</value>
@@ -492,6 +507,9 @@ HAUT À DROITE</value>
     <value>ATTACHER
 EN HAUT</value>
   </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Transformation du texte des touches :</value>
+  </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Temps de completion d'une touche (ms) :</value>
   </data>
@@ -519,6 +537,12 @@ EN HAUT</value>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Langue</value>
   </data>
+  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Langue du clavier : {0}</value>
+  </data>
+  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Langue du clavier :</value>
+  </data>
   <data name="LEFT" xml:space="preserve">
     <value>Gauche</value>
   </data>
@@ -538,11 +562,11 @@ GAUCHE</value>
     <value>APPUI/RELAXE
 GAUCHE</value>
   </data>
-  <data name="LETTERS" xml:space="preserve">
-    <value>LETTRES</value>
-  </data>
   <data name="LOOK" xml:space="preserve">
     <value>Apparence</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Tout en minuscule</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>CURSEUR
@@ -918,6 +942,9 @@ DROIT</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Son montant 2</value>
   </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russe (Russie) / Русский (Россия)</value>
+  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Comme la barre d'outils</value>
   </data>
@@ -1049,6 +1076,9 @@ POSITION</value>
   <data name="TAB" xml:space="preserve">
     <value>TABULATION</value>
   </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Impossible d'activer le gestionnaire de regard The EyeTribe ! 
 Merci de vous assurer que le serveur fonctionne et que le périphérique est connecté avant de réessayez.</value>
@@ -1066,6 +1096,15 @@ Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</va
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Temps au delà duquel un point est ignoré (ms) :</value>
   </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Seule la première lettre des mots en majuscule</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
+  </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Aucun moteur Tobii EyeX trouvé. 
 Veuillez installer un moteur EyeX et essayez à nouveau.</value>
@@ -1073,6 +1112,12 @@ Veuillez installer un moteur EyeX et essayez à nouveau.</value>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Le moteur Tobii EyeX ne fonctionne pas. 
 Veuillez démarrer le moteur EyeX et essayez à nouveau.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Son 1</value>
@@ -1116,6 +1161,9 @@ HAUT</value>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>NOUVELLE VERSION DISPONIBLE !</value>
   </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Tout en majuscule</value>
+  </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Une version plus récente ({0}) est disponible en téléchargement sur le site www.optikey.org. 
 Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de paramètres (ALT + M).</value>
@@ -1147,26 +1195,14 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="WIN" xml:space="preserve">
     <value>WINDOWS</value>
   </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
   <data name="WORDS" xml:space="preserve">
     <value>Langue</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>OUI</value>
-  </data>
-  <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Transformation du texte des touches :</value>
-  </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Seule la première lettre des mots en majuscule</value>
-  </data>
-  <data name="LOWER_CASE" xml:space="preserve">
-    <value>Tout en minuscule</value>
-  </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>Tout en majuscule</value>
-  </data>
-  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Lettres</value>
@@ -1184,6 +1220,27 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Aucun</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Niveau de traitement appliqué au flux de données:</value>
+    <value>Niveau de traitement appliqué au flux de données :</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Allemand (Allemagne) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Langue de l'interface : {0}</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Langue de l'interface :</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simule les touches physiques lors de la saisie de caractères :</value>
+  </data>
+  <data name="VOICE_COMMANDS" xml:space="preserve">
+    <value>Cmd. vocales</value>
+  </data>
+  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
+    <value>Activées</value>
+  </data>
+  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
+    <value>Commandes vocales</value>
   </data>
 </root>

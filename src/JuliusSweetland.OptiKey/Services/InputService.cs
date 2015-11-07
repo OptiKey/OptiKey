@@ -66,6 +66,9 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
             }
+
+            CreateVoiceCommandSubscription();
+            // TODO when to dispose ?
         }
 
         #endregion

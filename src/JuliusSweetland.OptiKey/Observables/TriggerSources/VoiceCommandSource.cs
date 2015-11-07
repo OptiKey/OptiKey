@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             commandService = configurableCommandService;
             // On command or locale changes, reload grammar
             commandService.OnPropertyChanges(service => service.Commands).Subscribe(_ => ReloadGrammar());
-            Settings.Default.OnPropertyChanges(settings => settings.Language).Subscribe(_ => ReloadGrammar());
+            Settings.Default.OnPropertyChanges(settings => settings.ResourceLanguage).Subscribe(_ => ReloadGrammar());
         }
 
         #endregion
@@ -60,6 +60,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 {
                     sequence = Observable.Using(() =>
                         {
+                            Console.WriteLine("Init sequence");
                             Log.Debug("Initialize speech recognition engine.");
                             speechEngine = new SpeechRecognitionEngine();
                             ReloadGrammar();
@@ -72,7 +73,6 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         speechEngine => Observable.FromEventPattern<SpeechRecognizedEventArgs>(
                             h => speechEngine.SpeechRecognized += h,
                             h => speechEngine.SpeechRecognized -= h)
-                            .Repeat()
                             .Where(_ => State == RunningStates.Running)
                             .Select(MatchRecognized)
                         )
@@ -96,6 +96,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         {
             //if (evt != null && evt.EventArgs != null && evt.EventArgs.Result != null)
             //{
+            // TODO Manage unsupported or unknown command
             var key = (string) evt.EventArgs.Result.Semantics["command"].Value;
             Console.WriteLine(string.Format("Recognized speech pattern {0} for command {1}.", evt.EventArgs.Result.Text, key));
             return new TriggerSignal(1, null, new PointAndKeyValue(
@@ -112,28 +113,24 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             if (speechEngine == null)
             {
                 Log.Warn("Reload grammar invoked while speech engine hasn't been initialized.");
+                Console.WriteLine("speech not initialized");
             } 
             else
             {
+                Console.WriteLine("reload grammar");
                 Log.Info("Reload speech recognition grammar.");
                 speechEngine.UnloadAllGrammars();
                 var commands = new Choices();
                 foreach (var pair in commandService.Commands) 
                 {
-                    // Get user custom value, or current language, or english or nothing !
-                    string value = null;
-                    if (!pair.Value.TryGetValue(Languages.Custom, out value)) 
-                    {
-                        if (!pair.Value.TryGetValue(Settings.Default.Language, out value)) 
-                        {
-                            pair.Value.TryGetValue(Languages.EnglishUK, out value);
-                        }
-                    }
-                    if (value != null)
-                    {
-                        commands.Add(new SemanticResultValue(value, pair.Key.ToString()));
-                        Console.WriteLine(string.Format("Register pattern {0} for command {1}.", value, pair.Key.ToString()));
-                    }
+                    commands.Add(new SemanticResultValue(pair.Value, pair.Key.ToString()));
+                    Console.WriteLine(string.Format("Register pattern {0} for command {1}.", pair.Value, pair.Key.ToString()));
+                }
+
+                // Avoid empty commands (speech engine does not allow empty grammars)
+                if (commandService.Commands.Count == 0)
+                {
+                    commands.Add("Supercalifragilisticexpialidocious");
                 }
 
                 var grammarBuilder = new GrammarBuilder();

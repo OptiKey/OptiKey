@@ -262,6 +262,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run calibration.
+        /// </summary>
+        public static string CALIBRATE_COMMAND {
+            get {
+                return ResourceManager.GetString("CALIBRATE_COMMAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calibration aborted with message: &apos;{0}&apos;.
         /// </summary>
         public static string CALIBRATION_ABORT_MESSAGE {
@@ -968,7 +977,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to French (France) / Française (France).
+        ///   Looks up a localized string similar to French (France) / Français (France).
         /// </summary>
         public static string FRENCH_FRANCE {
             get {
@@ -1673,6 +1682,51 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MOUSE_LAYOUT {
             get {
                 return ResourceManager.GetString("MOUSE_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and left click.
+        /// </summary>
+        public static string MOUSE_MOVE_AND_LEFT_CLICK_COMMAND {
+            get {
+                return ResourceManager.GetString("MOUSE_MOVE_AND_LEFT_CLICK_COMMAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to bottom.
+        /// </summary>
+        public static string MOUSE_MOVE_AND_SCROLL_TO_BOTTOM_COMMAND {
+            get {
+                return ResourceManager.GetString("MOUSE_MOVE_AND_SCROLL_TO_BOTTOM_COMMAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to top.
+        /// </summary>
+        public static string MOUSE_MOVE_AND_SCROLL_TO_TOP_COMMAND {
+            get {
+                return ResourceManager.GetString("MOUSE_MOVE_AND_SCROLL_TO_TOP_COMMAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse to left.
+        /// </summary>
+        public static string MOUSE_MOVE_TO_LEFT_COMMAND {
+            get {
+                return ResourceManager.GetString("MOUSE_MOVE_TO_LEFT_COMMAND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse to right.
+        /// </summary>
+        public static string MOUSE_MOVE_TO_RIGHT_COMMAND {
+            get {
+                return ResourceManager.GetString("MOUSE_MOVE_TO_RIGHT_COMMAND", resourceCulture);
             }
         }
         
@@ -3152,6 +3206,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VOICE_COMES_FROM_SETTINGS {
             get {
                 return ResourceManager.GetString("VOICE_COMES_FROM_SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voice commands.
+        /// </summary>
+        public static string VOICE_COMMANDS {
+            get {
+                return ResourceManager.GetString("VOICE_COMMANDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string VOICE_COMMANDS_ENABLED {
+            get {
+                return ResourceManager.GetString("VOICE_COMMANDS_ENABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voice commands.
+        /// </summary>
+        public static string VOICE_COMMANDS_GROUP {
+            get {
+                return ResourceManager.GetString("VOICE_COMMANDS_GROUP", resourceCulture);
             }
         }
         
