@@ -1208,4 +1208,19 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Datastream Verarbeitungsrate:</value>
   </data>
+  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Tastatursprache: {0}</value>
+  </data>
+  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Tastatursprache:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simuliere Tastenkombinationen bei Buchstaben-Eingabe:</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Menüsprache: {0}</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Menüsprache:</value>
+  </data>
 </root>
