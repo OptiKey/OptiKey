@@ -1186,4 +1186,19 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Niveau de traitement appliqué au flux de données:</value>
   </data>
+  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Langue du clavier: {0}</value>
+  </data>
+  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Langue du clavier:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simule les touches physiques lors de la saisie de caractères:</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Langue de l'interface: {0}</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Langue de l'interface:</value>
+  </data>
 </root>
