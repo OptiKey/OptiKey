@@ -12,9 +12,9 @@
 	<title>{{ page.title | strip_html }}{% if page.title %} - {% endif %}{{ site.name }}</title>
 
 	{% if page.stylesheet %}
-	<link rel="stylesheet" href="/assets/{{ page.stylesheet }}">
+	<link rel="stylesheet" href="{{ page.stylesheet }}">
 	{% else %}
-	<link rel="stylesheet" href="/assets/{{ site.stylesheet }}">
+	<link rel="stylesheet" href="{{ site.stylesheet }}">
 	{% endif %}
 
 	{% for styles in page.stylesheets %}

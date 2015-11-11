@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 <script>
 var supported = ['en'],
     lang = window.navigator.userLanguage || window.navigator.language;
@@ -6,5 +10,5 @@ if(supported.indexOf(lang) == -1) {
   lang = 'en';
 }
 
-window.location = '/' + lang + '/';
+window.location = '{{site.baseurl}}/' + lang + '/';
 </script>

@@ -15,7 +15,7 @@ Here you can find more infomation about how to use Optikey.
 <div class="col-xs-12 col-sm-4">
 	<h3>How To</h3>
 	<ul>
-		<li><a href="/en/guides/type.html">Type your first word</a></li>
+		<li><a href="/optikey/en/guides/type.html">Type your first word</a></li>
 		<li>Numbers, symbols &amp; diacritics</li>
 		<li>Using eye trackers</li>
 		<li>Using webcams</li>
