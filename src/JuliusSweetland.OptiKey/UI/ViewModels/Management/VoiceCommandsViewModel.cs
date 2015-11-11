@@ -12,8 +12,12 @@ using Prism.Mvvm;
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
 
-    // TODO doc +
-    // TODO pattern can be null, meaning disabled
+    /// <summary>
+    /// Model class used by XAML file, including:
+    /// - Function: the FunctionKeys triggered
+    /// - Pattern: expected spocken pattern
+    /// - Label: localized label displayed into UI
+    /// </summary>
     public class ConfigurableCommand: BindableBase
     {
         private FunctionKeys function;
@@ -38,6 +42,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
     }
 
+    /// <summary>
+    /// ViewModel class used to configure OptiKey's voice commands
+    /// </summary>
     public class VoiceCommandsViewModel : BindableBase
     {
         private readonly IConfigurableCommandService configurableCommandService;

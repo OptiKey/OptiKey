@@ -548,10 +548,10 @@ EN HAUT</value>
     <value>Touche du clavier</value>
   </data>
   <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue du clavier : {0}</value>
+    <value>Langue du clavier: {0}</value>
   </data>
   <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue du clavier :</value>
+    <value>Langue du clavier:</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Langue</value>
@@ -807,9 +807,6 @@ MULTIPLES</value>
   <data name="NO_SOUND" xml:space="preserve">
     <value>Pas de son</value>
   </data>
-  <data name="NO_VOICE_COMMAND_FILE_ERROR" xml:space="preserve">
-    <value>Aucun fichier de commandes vocales trouvé à {0}</value>
-  </data>
   <data name="NONE" xml:space="preserve">
     <value>Aucun</value>
   </data>
@@ -914,7 +911,7 @@ PHYSIQUES</value>
     <value>PROBLÈME DE CHARGEMENT DE CLAVIER</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simule les touches physiques lors de la saisie de caractères :</value>
+    <value>Simule les touches physiques lors de la saisie de caractères:</value>
   </data>
   <data name="QUIT" xml:space="preserve">
     <value>QUITTER</value>
@@ -939,10 +936,10 @@ L'ACTION</value>
     <value>Le(s) service(s) audio et/ou de dictionnaire n'a/n'ont pas été fournis à la fenêtre mère</value>
   </data>
   <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue de l'interface : {0}</value>
+    <value>Langue de l'interface: {0}</value>
   </data>
   <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue de l'interface :</value>
+    <value>Langue de l'interface:</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>OptiKey doit redémarrer pour appliquer vos changement. 
@@ -1372,20 +1369,5 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   </data>
   <data name="VC_YES_QUESTION_RESULT" xml:space="preserve">
     <value>Sélectionne le bouton OUI</value>
-  </data>
-  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue du clavier: {0}</value>
-  </data>
-  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue du clavier:</value>
-  </data>
-  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simule les touches physiques lors de la saisie de caractères:</value>
-  </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue de l'interface: {0}</value>
-  </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue de l'interface:</value>
   </data>
 </root>

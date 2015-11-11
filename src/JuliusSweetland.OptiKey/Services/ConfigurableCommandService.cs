@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Reflection;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Enums;
@@ -19,8 +20,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Constants
 
-        internal const string ApplicationDataPath = @"JuliusSweetland\OptiKey\VoiceCommands\";
+        internal const string ApplicationDataPath = @"JuliusSweetland\OptiKey\Commands\";
+        internal const string CommandFileBase = "Voice";
         internal const string CommandFileType = ".csv";
+        internal const string DefaultPath = @"JuliusSweetland.OptiKey.Properties.";
 
         #endregion
         #region Private Member Vars
@@ -71,62 +74,48 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("LoadFromFile called. Language setting is '{0}'.", language);
 
+            var readCommands = new Dictionary<FunctionKeys, string>();
             try
             {
+                    
                 //Load user's commands
                 var filePath = GetCommandFilePath(language);
-                if (File.Exists(filePath))
+                var customExists = File.Exists(filePath);
+                if (customExists)
                 {
-                    ReadFromFile(filePath);
+                    using (var reader = new StreamReader(File.OpenRead(filePath)))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            var values = (from value in reader.ReadLine().Split(';') select value.Trim()).ToArray();
+                            readCommands.Add(StringExtensions.Parse<FunctionKeys>(values[0]), values[1]);
+                            Log.DebugFormat("read command from file {0} {1}", values[0], values[1]);
+                        }
+                    }
                 }
                 else
                 {
-                    //Copy default commands to create user's commands
-                    var assemblyURI = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-                    var defaultPath = Path.Combine(assemblyURI, "VoiceCommands", language + CommandFileType);
+                    //Read default commands stored within assembly
+                    var resourceManager = new ResourceManager(DefaultPath + CommandFileBase, this.GetType().Assembly);
+                    foreach(System.Collections.DictionaryEntry entry in resourceManager.GetResourceSet(language.ToCultureInfo(), true, true))
+                    {
+                        readCommands.Add(StringExtensions.Parse<FunctionKeys>((string) entry.Key), (string) entry.Value);
+                    }
+                }
 
-                    if (File.Exists(defaultPath))
-                    {
-                        //Read default values and create user file
-                        ReadFromFile(defaultPath);
-                        Save(language);
-                    }
-                    else
-                    {
-                        throw new ApplicationException(string.Format(Resources.NO_VOICE_COMMAND_FILE_ERROR, defaultPath));
-                    }
+
+                //Use property Commands instead of private attribute commands to trigger PropertyChanged notification
+                Commands = readCommands;   
+                if (!customExists)
+                {
+                    //Create user file
+                    Save(language);
                 }
             }
             catch (Exception exception)
             {
                 PublishError(new ApplicationException(string.Format(Resources.INVALID_VOICE_COMMAND_FILE_ERROR, exception.Message, language.ToDescription())));
-            }
-        }
-        
-        /// <summary>
-        /// Effectively read a headless (no header row) CSV file to extract commands.
-        /// Function key is at first column, string pattern at second
-        /// </summary>
-        /// <param name="filePath">Full path of CSV file</param>
-        /// <exception cref="OverflowException">Unexisting function key used</exception>
-        private void ReadFromFile(string filePath)
-        {
-            Log.InfoFormat("Loading voice commands from file '{0}'", filePath);
-
-            var content = File.ReadAllText(filePath);
-
-            var readCommands = new Dictionary<FunctionKeys, string>();
-            using (var reader = new StreamReader(File.OpenRead(filePath)))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var values = (from value in reader.ReadLine().Split(';') select value.Trim()).ToArray() ;
-                    readCommands.Add(StringExtensions.Parse<FunctionKeys>(values[0]), values[1]);
-                    Log.DebugFormat("read command from file {0} {1}", values[0], values[1]);
-                }
-            }
-            //Use property Commands instead of private attribute commands to trigger PropertyChanged notification
-            Commands = readCommands;
+            }      
         }
 
         /// <summary>
@@ -141,7 +130,7 @@ namespace JuliusSweetland.OptiKey.Services
             var root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataPath);
             //Creates folder it it does not exists yet
             Directory.CreateDirectory(root);
-            return Path.Combine(root, string.Format("{0}{1}", language, CommandFileType));
+            return Path.Combine(root, string.Format("{0}.{1}{2}", CommandFileBase, language.ToCultureInfo(), CommandFileType));
         }
 
         /// <summary>
@@ -160,6 +149,7 @@ namespace JuliusSweetland.OptiKey.Services
                     foreach (var command in commands)
                     {
                         writer.WriteLine("{0};{1}", command.Key.ToString(), command.Value);
+                        Log.DebugFormat("read command from file {0} {1}", command.Key, command.Value);
                     }
                 }
             }

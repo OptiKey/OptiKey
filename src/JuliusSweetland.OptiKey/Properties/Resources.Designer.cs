@@ -2022,15 +2022,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No voice command file found at {0}.
-        /// </summary>
-        public static string NO_VOICE_COMMAND_FILE_ERROR {
-            get {
-                return ResourceManager.GetString("NO_VOICE_COMMAND_FILE_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
         public static string NONE {

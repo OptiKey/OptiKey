@@ -806,9 +806,6 @@ SELECTION</value>
   <data name="NO_SOUND" xml:space="preserve">
     <value>None</value>
   </data>
-  <data name="NO_VOICE_COMMAND_FILE_ERROR" xml:space="preserve">
-    <value>No voice command file found at {0}</value>
-  </data>
   <data name="NONE" xml:space="preserve">
     <value>None</value>
   </data>
