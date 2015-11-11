@@ -517,7 +517,7 @@
     <Content Include="VoiceCommands\EnglishCanada.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="VoiceCommands\GermanDeutchland.csv">
+    <Content Include="VoiceCommands\GermanGermany.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Icons\Management.ico" />

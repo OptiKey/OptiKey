@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -18,9 +19,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Constants
 
-        private const string ApplicationDataPath = @"JuliusSweetland\OptiKey\VoiceCommands\";
-        private const string DefaultCommandPath = @"VoiceCommands\";
-        private const string CommandFileType = ".csv";
+        internal const string ApplicationDataPath = @"JuliusSweetland\OptiKey\VoiceCommands\";
+        internal const string CommandFileType = ".csv";
 
         #endregion
         #region Private Member Vars
@@ -82,7 +82,8 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     //Copy default commands to create user's commands
-                    var defaultPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", DefaultCommandPath, language, CommandFileType));
+                    var assemblyURI = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                    var defaultPath = Path.Combine(assemblyURI, "VoiceCommands", language + CommandFileType);
 
                     if (File.Exists(defaultPath))
                     {
@@ -112,13 +113,17 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("Loading voice commands from file '{0}'", filePath);
 
+            var content = File.ReadAllText(filePath);
+
             var readCommands = new Dictionary<FunctionKeys, string>();
-            var reader = new StreamReader(File.OpenRead(filePath));
-            while (!reader.EndOfStream)
+            using (var reader = new StreamReader(File.OpenRead(filePath)))
             {
-                var values = (from value in reader.ReadLine().Split(';') select value.Trim()).ToArray() ;
-                readCommands.Add(StringExtensions.Parse<FunctionKeys>(values[0]), values[1]);
-                Log.DebugFormat("read command from file {0} {1}", values[0], values[1]);
+                while (!reader.EndOfStream)
+                {
+                    var values = (from value in reader.ReadLine().Split(';') select value.Trim()).ToArray() ;
+                    readCommands.Add(StringExtensions.Parse<FunctionKeys>(values[0]), values[1]);
+                    Log.DebugFormat("read command from file {0} {1}", values[0], values[1]);
+                }
             }
             //Use property Commands instead of private attribute commands to trigger PropertyChanged notification
             Commands = readCommands;
@@ -148,24 +153,13 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 var filePath = GetCommandFilePath(language);
-
                 Log.DebugFormat("Saving user dictionary to file '{0}'", filePath);
 
-                StreamWriter writer = null;
-                try
+                using (var writer = new StreamWriter(filePath))
                 {
-                    writer = new StreamWriter(filePath);
-
                     foreach (var command in commands)
                     {
                         writer.WriteLine("{0};{1}", command.Key.ToString(), command.Value);
-                    }
-                }
-                finally
-                {
-                    if (writer != null)
-                    {
-                        writer.Dispose();
                     }
                 }
             }
