@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             CreateVoiceCommandSubscription();
-            // TODO when to dispose ?
+            //TODO when to dispose ?
         }
 
         #endregion
@@ -441,7 +441,10 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     pointSource.State = RunningStates.Paused;
                 }
-                // TODO suspend voice recognition
+                if (voiceCommandSource.State == RunningStates.Running)
+                {
+                    voiceCommandSource.State = RunningStates.Paused;
+                }
             }
         }
 
@@ -456,8 +459,11 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         pointSource.State = RunningStates.Running;
                     }
+                    if (voiceCommandSource != null)
+                    {
+                        voiceCommandSource.State = RunningStates.Running;
+                    }
                 }
-                // TODO resume voice recognition
             }
 
             if (suspendRequestCount < 0)

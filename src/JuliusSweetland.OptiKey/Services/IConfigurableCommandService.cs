@@ -24,7 +24,5 @@ namespace JuliusSweetland.OptiKey.Services
         /// </summary>
         /// <param name="language">Language for which current commands are saved</param>
         void Save(Languages language);
-
-        // TODO activation state
     }
 }

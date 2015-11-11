@@ -11,9 +11,9 @@
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="CommandsCollectionViewSource" Source="{Binding Commands}">
-            <CollectionViewSource.SortDescriptions>
+            <!--CollectionViewSource.SortDescriptions>
                 <scm:SortDescription PropertyName="Label" />
-            </CollectionViewSource.SortDescriptions>
+            </-->
         </CollectionViewSource>
     </UserControl.Resources>
     
@@ -29,12 +29,29 @@
                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_ENABLED}" 
                             VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="0" Grid.Column="1" 
                             VerticalAlignment="Center"
                             IsChecked="{Binding Enabled, Mode=TwoWay}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_FEEDBACK}" 
+                            VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="1" Grid.Column="1" 
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding Feedback, Mode=TwoWay}" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_PREFIX}" 
+                            VerticalAlignment="Center" Margin="5" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Prefix, Mode=TwoWay}" 
+                         Margin="2" VerticalAlignment="Center" />
             </Grid>
         </GroupBox>
 
@@ -53,7 +70,7 @@
                         <TextBlock Grid.Column="0" 
                             Text="{Binding Label}"
                             VerticalAlignment="Center" 
-                            Margin="2" />
+                            Margin="5" />
                         <TextBox Grid.Column="1"  
                               Text="{Binding Pattern, Mode=TwoWay}" 
                               Margin="2" 

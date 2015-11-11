@@ -1363,25 +1363,22 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeyboardLanguage"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool PublishVirtualKeyCodesForCharacters
-        {
-            get
-            {
+        public bool PublishVirtualKeyCodesForCharacters {
+            get {
                 return ((bool)(this["PublishVirtualKeyCodesForCharacters"]));
             }
-            set
-            {
+            set {
                 this["PublishVirtualKeyCodesForCharacters"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]   
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool VoiceCommandsEnabled {
             get {
@@ -1389,6 +1386,30 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["VoiceCommandsEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Opti")]
+        public string VoiceCommandsPrefix {
+            get {
+                return ((string)(this["VoiceCommandsPrefix"]));
+            }
+            set {
+                this["VoiceCommandsPrefix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VoiceCommandsFeedback {
+            get {
+                return ((bool)(this["VoiceCommandsFeedback"]));
+            }
+            set {
+                this["VoiceCommandsFeedback"] = value;
             }
         }
     }

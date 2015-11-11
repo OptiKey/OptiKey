@@ -308,16 +308,20 @@
     <Setting Name="TobiiEyeXProcessingLevel" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.DataStreamProcessingLevels" Scope="User">
       <Value Profile="(Default)">Medium</Value>
     </Setting>
-<<<<<<< Updated upstream
     <Setting Name="KeyboardLanguage" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Languages" Scope="User">
       <Value Profile="(Default)">EnglishUK</Value>
     </Setting>
     <Setting Name="PublishVirtualKeyCodesForCharacters" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-=======
+    </Setting>
     <Setting Name="VoiceCommandsEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
->>>>>>> Stashed changes
+    </Setting>
+    <Setting Name="VoiceCommandsPrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Opti</Value>
+    </Setting>
+    <Setting Name="VoiceCommandsFeedback" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

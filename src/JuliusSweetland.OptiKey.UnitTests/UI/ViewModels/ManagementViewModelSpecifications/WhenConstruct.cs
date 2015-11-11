@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
 
         protected override void Act()
         {
-            ManagementViewModel = new ManagementViewModel(AudioService.Object, DictionaryService.Object);
+            ManagementViewModel = new ManagementViewModel(AudioService.Object, DictionaryService.Object, ConfigurableCommandService.Object);
         }
 
         [Test]

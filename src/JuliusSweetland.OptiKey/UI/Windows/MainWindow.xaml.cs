@@ -50,9 +50,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             });
 
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
-
-            // TO REMOVE
-            ContentRendered += (_1, _2) => { RequestManagementWindow(); };
         }
 
         public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }

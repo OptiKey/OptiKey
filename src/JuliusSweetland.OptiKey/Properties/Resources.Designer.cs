@@ -262,15 +262,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run calibration.
-        /// </summary>
-        public static string CALIBRATE_COMMAND {
-            get {
-                return ResourceManager.GetString("CALIBRATE_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Calibration aborted with message: &apos;{0}&apos;.
         /// </summary>
         public static string CALIBRATION_ABORT_MESSAGE {
@@ -1104,6 +1095,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error while loading voice commands for language {1}:
+        ///{0}.
+        /// </summary>
+        public static string INVALID_VOICE_COMMAND_FILE_ERROR {
+            get {
+                return ResourceManager.GetString("INVALID_VOICE_COMMAND_FILE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JUMP.
         /// </summary>
         public static string JUMP {
@@ -1686,51 +1687,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move mouse and left click.
-        /// </summary>
-        public static string MOUSE_MOVE_AND_LEFT_CLICK_COMMAND {
-            get {
-                return ResourceManager.GetString("MOUSE_MOVE_AND_LEFT_CLICK_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Move mouse and scroll to bottom.
-        /// </summary>
-        public static string MOUSE_MOVE_AND_SCROLL_TO_BOTTOM_COMMAND {
-            get {
-                return ResourceManager.GetString("MOUSE_MOVE_AND_SCROLL_TO_BOTTOM_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Move mouse and scroll to top.
-        /// </summary>
-        public static string MOUSE_MOVE_AND_SCROLL_TO_TOP_COMMAND {
-            get {
-                return ResourceManager.GetString("MOUSE_MOVE_AND_SCROLL_TO_TOP_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Move mouse to left.
-        /// </summary>
-        public static string MOUSE_MOVE_TO_LEFT_COMMAND {
-            get {
-                return ResourceManager.GetString("MOUSE_MOVE_TO_LEFT_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Move mouse to right.
-        /// </summary>
-        public static string MOUSE_MOVE_TO_RIGHT_COMMAND {
-            get {
-                return ResourceManager.GetString("MOUSE_MOVE_TO_RIGHT_COMMAND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mouse position.
         /// </summary>
         public static string MOUSE_POSITION {
@@ -2062,6 +2018,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string NO_SOUND {
             get {
                 return ResourceManager.GetString("NO_SOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No voice command file found at {0}.
+        /// </summary>
+        public static string NO_VOICE_COMMAND_FILE_ERROR {
+            get {
+                return ResourceManager.GetString("NO_VOICE_COMMAND_FILE_ERROR", resourceCulture);
             }
         }
         
@@ -3165,6 +3130,357 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display letters keyboard.
+        /// </summary>
+        public static string VC_ALPHA_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_ALPHA_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erase word.
+        /// </summary>
+        public static string VC_BACK_MANY {
+            get {
+                return ResourceManager.GetString("VC_BACK_MANY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erase letter.
+        /// </summary>
+        public static string VC_BACK_ONE {
+            get {
+                return ResourceManager.GetString("VC_BACK_ONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run calibration.
+        /// </summary>
+        public static string VC_CALIBRATE {
+            get {
+                return ResourceManager.GetString("VC_CALIBRATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collapse dock.
+        /// </summary>
+        public static string VC_COLLAPSE_DOCK {
+            get {
+                return ResourceManager.GetString("VC_COLLAPSE_DOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display first currencies keyboard.
+        /// </summary>
+        public static string VC_CURRENCIES_1_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_CURRENCIES_1_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display second currencies keyboard.
+        /// </summary>
+        public static string VC_CURRENCIES_2_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_CURRENCIES_2_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display first diacritics keyboard.
+        /// </summary>
+        public static string VC_DIACRITICS_1_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_DIACRITICS_1_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display second diacritics keyboard.
+        /// </summary>
+        public static string VC_DIACRITICS_2_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_DIACRITICS_2_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display third diacritics keyboard.
+        /// </summary>
+        public static string VC_DIACRITICS_3_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_DIACRITICS_3_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expand dock.
+        /// </summary>
+        public static string VC_EXPAND_DOCK {
+            get {
+                return ResourceManager.GetString("VC_EXPAND_DOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display menu.
+        /// </summary>
+        public static string VC_MENU_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_MENU_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display mouse commands.
+        /// </summary>
+        public static string VC_MOUSE_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Magnifier.
+        /// </summary>
+        public static string VC_MOUSE_MAGNIFIER {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MAGNIFIER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and left click.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_LEFT_CLICK {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_LEFT_CLICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and left double click.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_LEFT_DOUBLE_CLICK {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_LEFT_DOUBLE_CLICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and middle click.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_MIDDLE_CLICK {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_MIDDLE_CLICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and right click.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_RIGHT_CLICK {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_RIGHT_CLICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to bottom.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_SCROLL_TO_BOTTOM {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_SCROLL_TO_BOTTOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to left.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_SCROLL_TO_LEFT {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_SCROLL_TO_LEFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to right.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_SCROLL_TO_RIGHT {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_SCROLL_TO_RIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move mouse and scroll to top.
+        /// </summary>
+        public static string VC_MOUSE_MOVE_AND_SCROLL_TO_TOP {
+            get {
+                return ResourceManager.GetString("VC_MOUSE_MOVE_AND_SCROLL_TO_TOP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display next suggestions.
+        /// </summary>
+        public static string VC_NEXT_SUGGESTIONS {
+            get {
+                return ResourceManager.GetString("VC_NEXT_SUGGESTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select NO button.
+        /// </summary>
+        public static string VC_NO_QUESTION_RESULT {
+            get {
+                return ResourceManager.GetString("VC_NO_QUESTION_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display first numerical keyboard.
+        /// </summary>
+        public static string VC_NUMERIC_AND_SYMBOLS_1_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_NUMERIC_AND_SYMBOLS_1_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display second numerical keyboard.
+        /// </summary>
+        public static string VC_NUMERIC_AND_SYMBOLS_2_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_NUMERIC_AND_SYMBOLS_2_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display third numerical keyboard.
+        /// </summary>
+        public static string VC_NUMERIC_AND_SYMBOLS_3_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_NUMERIC_AND_SYMBOLS_3_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display physical keys keyboard.
+        /// </summary>
+        public static string VC_PHYSICAL_KEYS_KEYBOARD {
+            get {
+                return ResourceManager.GetString("VC_PHYSICAL_KEYS_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display previous suggestions.
+        /// </summary>
+        public static string VC_PREVIOUS_SUGGESTIONS {
+            get {
+                return ResourceManager.GetString("VC_PREVIOUS_SUGGESTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quit Optikey.
+        /// </summary>
+        public static string VC_QUIT {
+            get {
+                return ResourceManager.GetString("VC_QUIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle sleep mode.
+        /// </summary>
+        public static string VC_SLEEP {
+            get {
+                return ResourceManager.GetString("VC_SLEEP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enonciate sentence.
+        /// </summary>
+        public static string VC_SPEAK {
+            get {
+                return ResourceManager.GetString("VC_SPEAK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select first suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_1 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select second suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_2 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select third suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_3 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select fourth suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_4 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select fifth suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_5 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select sixth suggestion.
+        /// </summary>
+        public static string VC_SUGGESTION_6 {
+            get {
+                return ResourceManager.GetString("VC_SUGGESTION_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select YES button.
+        /// </summary>
+        public static string VC_YES_QUESTION_RESULT {
+            get {
+                return ResourceManager.GetString("VC_YES_QUESTION_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to May I restart OptiKey?.
         /// </summary>
         public static string VERIFY_RESTART {
@@ -3219,11 +3535,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabled.
+        ///   Looks up a localized string similar to Voice commands enabled:.
         /// </summary>
         public static string VOICE_COMMANDS_ENABLED {
             get {
                 return ResourceManager.GetString("VOICE_COMMANDS_ENABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Audio feedback:.
+        /// </summary>
+        public static string VOICE_COMMANDS_FEEDBACK {
+            get {
+                return ResourceManager.GetString("VOICE_COMMANDS_FEEDBACK", resourceCulture);
             }
         }
         
@@ -3233,6 +3558,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VOICE_COMMANDS_GROUP {
             get {
                 return ResourceManager.GetString("VOICE_COMMANDS_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command prefix:.
+        /// </summary>
+        public static string VOICE_COMMANDS_PREFIX {
+            get {
+                return ResourceManager.GetString("VOICE_COMMANDS_PREFIX", resourceCulture);
             }
         }
         

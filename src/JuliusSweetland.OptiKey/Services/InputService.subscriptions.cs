@@ -37,7 +37,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateVoiceCommandSubscription()
         {
-            if (voiceCommandSource != null)
+            if (voiceCommandSource != null && Settings.Default.VoiceCommandsEnabled)
             {
                 voiceCommandSubscription = voiceCommandSource.Sequence
                     .ObserveOnDispatcher()
@@ -206,11 +206,25 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 PublishSelection(triggerSignal.PointAndKeyValue.Value);
 
+                                var keyValue = triggerSignal.PointAndKeyValue.Value.KeyValue.Value;
+
                                 PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                     new List<Point> { triggerSignal.PointAndKeyValue.Value.Point },
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.String,
+                                    keyValue.FunctionKey,
+                                    keyValue.String,
                                     null));
+
+                                //Audio feedback on signals that contains notification (like voice commands), 
+                                //unless for speak function keys that requires speech synthesis
+                                if (triggerSignal.Notification != null && keyValue.FunctionKey != FunctionKeys.Speak)
+                                {
+                                    var inProgress = audioService.SpeakNewOrInterruptCurrentSpeech(
+                                        triggerSignal.Notification,
+                                        () => {},
+                                        Settings.Default.SpeechVolume,
+                                        Settings.Default.SpeechRate,
+                                        Settings.Default.SpeechVoice);
+                                }
                             }
                         }
                         else

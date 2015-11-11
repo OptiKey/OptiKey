@@ -529,7 +529,13 @@ namespace JuliusSweetland.OptiKey
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
+
+                var voiceEnabled = Settings.Default.VoiceCommandsEnabled ? OptiKey.Properties.Resources.YES.ToLower() : OptiKey.Properties.Resources.NO.ToLower();
+                message.AppendLine(string.Format("{0} {1}", OptiKey.Properties.Resources.VOICE_COMMANDS_ENABLED, voiceEnabled));
+                if (Settings.Default.VoiceCommandsEnabled)
+                {
+                    message.AppendLine(string.Format("{0} {1}", OptiKey.Properties.Resources.VOICE_COMMANDS_PREFIX, Settings.Default.VoiceCommandsPrefix));
+                }
 
                 message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
                 message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);

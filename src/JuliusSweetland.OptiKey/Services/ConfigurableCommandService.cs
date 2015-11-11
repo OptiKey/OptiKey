@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -44,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Services
         public ConfigurableCommandService()
         {
             commands = new Dictionary<FunctionKeys, string>();
-            // read from somewhere, with default values
+            //Read from somewhere, with default values
             AsyncLoadFromFile();
         }
 
@@ -69,40 +70,35 @@ namespace JuliusSweetland.OptiKey.Services
         public void Load(Languages language)
         {
             Log.InfoFormat("LoadFromFile called. Language setting is '{0}'.", language);
-            Console.WriteLine("read commands " + language.ToCultureInfo()); // TODO
 
             try
             {
-                // Load user's commands
+                //Load user's commands
                 var filePath = GetCommandFilePath(language);
-
-                // TODO REMOVE FALSE
-                if (false && File.Exists(filePath))
+                if (File.Exists(filePath))
                 {
                     ReadFromFile(filePath);
                 }
                 else
                 {
-                    // Copy default commands to create user's commands
+                    //Copy default commands to create user's commands
                     var defaultPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", DefaultCommandPath, language, CommandFileType));
 
                     if (File.Exists(defaultPath))
                     {
-                        // Read default values and create user file
+                        //Read default values and create user file
                         ReadFromFile(defaultPath);
                         Save(language);
                     }
                     else
                     {
-                        // TODO Localization
-                        throw new ApplicationException(string.Format("No voice command file found at {0}", defaultPath));
+                        throw new ApplicationException(string.Format(Resources.NO_VOICE_COMMAND_FILE_ERROR, defaultPath));
                     }
                 }
             }
             catch (Exception exception)
             {
-                // TODO Localization
-                PublishError(new ApplicationException(string.Format("Error while loading voice commands for language {1}:\n{0}", exception.Message, language.ToDescription())));
+                PublishError(new ApplicationException(string.Format(Resources.INVALID_VOICE_COMMAND_FILE_ERROR, exception.Message, language.ToDescription())));
             }
         }
         
@@ -114,17 +110,17 @@ namespace JuliusSweetland.OptiKey.Services
         /// <exception cref="OverflowException">Unexisting function key used</exception>
         private void ReadFromFile(string filePath)
         {
-            Log.DebugFormat("Loading voice commands from file '{0}'", filePath);
+            Log.InfoFormat("Loading voice commands from file '{0}'", filePath);
 
             var readCommands = new Dictionary<FunctionKeys, string>();
             var reader = new StreamReader(File.OpenRead(filePath));
             while (!reader.EndOfStream)
             {
-                var values = reader.ReadLine().Split(';');
+                var values = (from value in reader.ReadLine().Split(';') select value.Trim()).ToArray() ;
                 readCommands.Add(StringExtensions.Parse<FunctionKeys>(values[0]), values[1]);
-                Console.WriteLine("read command from file " + values[0] + " " + values[1]);
+                Log.DebugFormat("read command from file {0} {1}", values[0], values[1]);
             }
-            // Use property Commands instead of private attribute commands to trigger PropertyChanged notification
+            //Use property Commands instead of private attribute commands to trigger PropertyChanged notification
             Commands = readCommands;
         }
 
@@ -138,7 +134,7 @@ namespace JuliusSweetland.OptiKey.Services
         private static string GetCommandFilePath(Languages language)
         {
             var root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataPath);
-            // Creates folder it it does not exists yet
+            //Creates folder it it does not exists yet
             Directory.CreateDirectory(root);
             return Path.Combine(root, string.Format("{0}{1}", language, CommandFileType));
         }
@@ -154,7 +150,6 @@ namespace JuliusSweetland.OptiKey.Services
                 var filePath = GetCommandFilePath(language);
 
                 Log.DebugFormat("Saving user dictionary to file '{0}'", filePath);
-                Console.WriteLine("save commands for " + language.ToCultureInfo()); // TODO
 
                 StreamWriter writer = null;
                 try

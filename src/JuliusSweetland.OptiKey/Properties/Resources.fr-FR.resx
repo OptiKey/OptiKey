@@ -142,6 +142,9 @@ DICTIONNAIRE</value>
   <data name="ALPHA" xml:space="preserve">
     <value>LETTRES</value>
   </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Lettres</value>
+  </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
@@ -444,8 +447,14 @@ EN HAUT</value>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>Détecteur de regard</value>
   </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Allemand (Allemagne) / Deutsch (Deutschland)</value>
+  </data>
   <data name="GROW" xml:space="preserve">
     <value>Agrandir</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Haut</value>
   </data>
   <data name="HOME" xml:space="preserve">
     <value>ORIG.</value>
@@ -471,6 +480,10 @@ L'OPACITÉ</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>La combinaison du clavier actuel &amp; et de de la langue n'est pas valide</value>
+  </data>
+  <data name="INVALID_VOICE_COMMAND_FILE_ERROR" xml:space="preserve">
+    <value>Une erreur est survenue pendant le chargement des commandes vocales en  {1}:
+{0}</value>
   </data>
   <data name="JUMP" xml:space="preserve">
     <value>ATTACHER</value>
@@ -534,14 +547,14 @@ EN HAUT</value>
   <data name="KEYBOARD_KEY" xml:space="preserve">
     <value>Touche du clavier</value>
   </data>
-  <data name="LANGUAGE" xml:space="preserve">
-    <value>Langue</value>
-  </data>
   <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Langue du clavier : {0}</value>
   </data>
   <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
     <value>Langue du clavier :</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Langue</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Gauche</value>
@@ -564,6 +577,9 @@ GAUCHE</value>
   </data>
   <data name="LOOK" xml:space="preserve">
     <value>Apparence</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Bas</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
     <value>Tout en minuscule</value>
@@ -589,6 +605,9 @@ MAGNÉTIQUE</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre maximal de suggestion du dictionnaire :</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Moyen</value>
   </data>
   <data name="MENU" xml:space="preserve">
     <value>MENU</value>
@@ -788,6 +807,12 @@ MULTIPLES</value>
   <data name="NO_SOUND" xml:space="preserve">
     <value>Pas de son</value>
   </data>
+  <data name="NO_VOICE_COMMAND_FILE_ERROR" xml:space="preserve">
+    <value>Aucun fichier de commandes vocales trouvé à {0}</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
   <data name="NOTHING_NEW" xml:space="preserve">
     <value>Hmm, rien de nouveau ici !</value>
   </data>
@@ -888,6 +913,9 @@ PHYSIQUES</value>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
     <value>PROBLÈME DE CHARGEMENT DE CLAVIER</value>
   </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simule les touches physiques lors de la saisie de caractères :</value>
+  </data>
   <data name="QUIT" xml:space="preserve">
     <value>QUITTER</value>
   </data>
@@ -909,6 +937,12 @@ L'ACTION</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
     <value>Le(s) service(s) audio et/ou de dictionnaire n'a/n'ont pas été fournis à la fenêtre mère</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Langue de l'interface : {0}</value>
+  </data>
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Langue de l'interface :</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>OptiKey doit redémarrer pour appliquer vos changement. 
@@ -1105,6 +1139,9 @@ Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</va
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
   </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Niveau de traitement appliqué au flux de données :</value>
+  </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Aucun moteur Tobii EyeX trouvé. 
 Veuillez installer un moteur EyeX et essayez à nouveau.</value>
@@ -1183,6 +1220,21 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
     <value> (à partir des paramètres)</value>
   </data>
+  <data name="VOICE_COMMANDS" xml:space="preserve">
+    <value>Cmd. vocales</value>
+  </data>
+  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
+    <value>Commandes vocales activées :</value>
+  </data>
+  <data name="VOICE_COMMANDS_FEEDBACK" xml:space="preserve">
+    <value>Retour audio :</value>
+  </data>
+  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
+    <value>Commandes vocales</value>
+  </data>
+  <data name="VOICE_COMMANDS_PREFIX" xml:space="preserve">
+    <value>Préfixe des commandes :</value>
+  </data>
   <data name="VOICE_LABEL" xml:space="preserve">
     <value>Voix :</value>
   </data>
@@ -1204,43 +1256,121 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="YES" xml:space="preserve">
     <value>OUI</value>
   </data>
-  <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Lettres</value>
+  <data name="VC_ALPHA_KEYBOARD" xml:space="preserve">
+    <value>Affiche le claver alphabétique</value>
   </data>
-  <data name="HIGH" xml:space="preserve">
-    <value>Haut</value>
+  <data name="VC_BACK_MANY" xml:space="preserve">
+    <value>Efface le mot</value>
   </data>
-  <data name="LOW" xml:space="preserve">
-    <value>Bas</value>
+  <data name="VC_BACK_ONE" xml:space="preserve">
+    <value>Efface la lettre</value>
   </data>
-  <data name="MEDIUM" xml:space="preserve">
-    <value>Moyen</value>
+  <data name="VC_CALIBRATE" xml:space="preserve">
+    <value>Déclenche la calibration</value>
   </data>
-  <data name="NONE" xml:space="preserve">
-    <value>Aucun</value>
+  <data name="VC_COLLAPSE_DOCK" xml:space="preserve">
+    <value>Minimise l'application</value>
   </data>
-  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Niveau de traitement appliqué au flux de données :</value>
+  <data name="VC_CURRENCIES_1_KEYBOARD" xml:space="preserve">
+    <value>Affiche le premier clavier de monnaies</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>Allemand (Allemagne) / Deutsch (Deutschland)</value>
+  <data name="VC_CURRENCIES_2_KEYBOARD" xml:space="preserve">
+    <value>Affiche le second clavier de monnaies</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue de l'interface : {0}</value>
+  <data name="VC_DIACRITICS_1_KEYBOARD" xml:space="preserve">
+    <value>Affiche le premier clavier de diacritiques</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue de l'interface :</value>
+  <data name="VC_DIACRITICS_2_KEYBOARD" xml:space="preserve">
+    <value>Affiche le second clavier de diacritiques</value>
   </data>
-  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simule les touches physiques lors de la saisie de caractères :</value>
+  <data name="VC_DIACRITICS_3_KEYBOARD" xml:space="preserve">
+    <value>Affiche le troisième clavier de diacritiques</value>
   </data>
-  <data name="VOICE_COMMANDS" xml:space="preserve">
-    <value>Cmd. vocales</value>
+  <data name="VC_EXPAND_DOCK" xml:space="preserve">
+    <value>Agrandi l'application</value>
   </data>
-  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
-    <value>Activées</value>
+  <data name="VC_MENU_KEYBOARD" xml:space="preserve">
+    <value>Affiche le menu</value>
   </data>
-  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
-    <value>Commandes vocales</value>
+  <data name="VC_MOUSE_KEYBOARD" xml:space="preserve">
+    <value>Affiche les commandes souris</value>
+  </data>
+  <data name="VC_MOUSE_MAGNIFIER" xml:space="preserve">
+    <value>(Dés)active la loupe</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_LEFT_CLICK" xml:space="preserve">
+    <value>Déplace la souris et clic gauche</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>Déplace la souris et double clic gauche</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_MIDDLE_CLICK" xml:space="preserve">
+    <value>Déplace la souris et clic du milieu</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_RIGHT_CLICK" xml:space="preserve">
+    <value>Déplace la souris et clic droit</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_BOTTOM" xml:space="preserve">
+    <value>Déplace la souris et défillement en bas</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_TOP" xml:space="preserve">
+    <value>Déplace la souris et défillement en haut</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_LEFT" xml:space="preserve">
+    <value>Déplace la souris et défillement à gauche</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_RIGHT" xml:space="preserve">
+    <value>Déplace la souris et défillement à droite</value>
+  </data>
+  <data name="VC_NEXT_SUGGESTIONS" xml:space="preserve">
+    <value>Affiche les prochaines suggestions</value>
+  </data>
+  <data name="VC_NO_QUESTION_RESULT" xml:space="preserve">
+    <value>Sélectionne le bouton NON</value>
+  </data>
+  <data name="VC_NUMERIC_AND_SYMBOLS_1_KEYBOARD" xml:space="preserve">
+    <value>Affiche le premier clavier numérique</value>
+  </data>
+  <data name="VC_NUMERIC_AND_SYMBOLS_2_KEYBOARD" xml:space="preserve">
+    <value>Affiche le second clavier numérique</value>
+  </data>
+  <data name="VC_NUMERIC_AND_SYMBOLS_3_KEYBOARD" xml:space="preserve">
+    <value>Affiche le troisième clavier numérique</value>
+  </data>
+  <data name="VC_PHYSICAL_KEYS_KEYBOARD" xml:space="preserve">
+    <value>Affiche le premier clavier des touches physiques</value>
+  </data>
+  <data name="VC_PREVIOUS_SUGGESTIONS" xml:space="preserve">
+    <value>Affiche les suggestions précédentes</value>
+  </data>
+  <data name="VC_QUIT" xml:space="preserve">
+    <value>Quitte Optikey</value>
+  </data>
+  <data name="VC_SLEEP" xml:space="preserve">
+    <value>(Dés)active le mode sommeil</value>
+  </data>
+  <data name="VC_SPEAK" xml:space="preserve">
+    <value>Ennonce la phrase</value>
+  </data>
+  <data name="VC_SUGGESTION_1" xml:space="preserve">
+    <value>Choisi la première suggestion</value>
+  </data>
+  <data name="VC_SUGGESTION_2" xml:space="preserve">
+    <value>Choisi la seconde suggestion</value>
+  </data>
+  <data name="VC_SUGGESTION_3" xml:space="preserve">
+    <value>Choisi la troisième suggestion</value>
+  </data>
+  <data name="VC_SUGGESTION_4" xml:space="preserve">
+    <value>Choisi la quatrième suggestion</value>
+  </data>
+  <data name="VC_SUGGESTION_5" xml:space="preserve">
+    <value>Choisi la cinquième suggestion</value>
+  </data>
+  <data name="VC_SUGGESTION_6" xml:space="preserve">
+    <value>Choisi la sixième suggestion</value>
+  </data>
+  <data name="VC_YES_QUESTION_RESULT" xml:space="preserve">
+    <value>Sélectionne le bouton OUI</value>
   </data>
 </root>
