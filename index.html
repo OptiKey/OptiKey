@@ -1,57 +1,10 @@
-<!DOCTYPE html>
-<html>
+<script>
+var supported = ['en'],
+    lang = window.navigator.userLanguage || window.navigator.language;
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="OptiKey : Free, Open Source, Assistive On-Screen Keyboard">
+if(supported.indexOf(lang) == -1) {
+  lang = 'en';
+}
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>OptiKey</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/JuliusSweetland/OptiKey">View on GitHub</a>
-
-          <h1 id="project_title">OptiKey</h1>
-          <h5 id="project_tagline">Free, open-source, assistive on-screen keyboard with speech capabilities</h5>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/JuliusSweetland/OptiKey/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/JuliusSweetland/OptiKey/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h2>The OptiKey website has moved. <a href="https://github.com/JuliusSweetland/OptiKey/wiki/">Click here</a> to be redirected.</h2>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">OptiKey maintained by <a href="https://github.com/JuliusSweetland">JuliusSweetland</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-58685742-1");
-      pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
-  </body>
-</html>
+window.location = '/' + lang + '/';
+</script>

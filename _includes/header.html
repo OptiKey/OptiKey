@@ -1,0 +1,31 @@
+<div class="navbar navbar-light">
+	<div class="container">
+		<button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#navbar">
+			Menu
+		</button>
+
+		<a href="/" class="navbar-brand">
+			<img src="/assets/img/logo/logo.svg" alt="{{ site.name }}" style="height: 2rem"/>
+		</a>
+
+		<div class="collapse navbar-toggleable-xs" id="navbar">
+
+			<ul class="nav navbar-nav">
+				{% for link in site.navigation %}
+					{% assign current = nil %}
+					{% capture url %}{{ link.url }}index.html{% endcapture %}
+					{% if page.url == url %}
+						{% assign current = 'active' %}
+					{% endif %}
+
+					<li class="nav-item {{ current }}">
+						<a class="nav-link" href="{{ link.url }}">
+							{{ link.text }}
+							{% if current == 'active' %}<span class="sr-only">(current)</span>{% endif %}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>

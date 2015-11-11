@@ -1,0 +1,99 @@
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<p><img src="/assets/img/logo/logo.svg" alt="{{ site.name }}" style="height: 3rem"/></p>
+			</div>
+
+			<div class="col-xs-12">
+				<p class="lead">{{ site.description }}</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<h3>Troubleshooting</h3>
+
+				<i>add popular links here</i>
+			</div>
+
+			<div id="news" class="col-xs-12 col-sm-6 col-md-4">
+				<h3>News</h3>
+
+				<ul>
+				  {% for post in site.posts %}
+				    <li>
+				      <a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: '%-d %B %Y' }}
+				    </li>
+				  {% endfor %}
+				</ul>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<h3>Contribute</h3>
+
+				<p>OptiKey is Free software. It is hard to balance my full time
+				job, family life, and ongoing work on OptiKey. If people are kind
+				enough to support this project through sponsorship I will be
+				able to dedicate more time to OptiKey.</p>
+
+				<p><a href="/en/patrons/">Donate to help make OptiKey possible</a></p>
+
+				<p>This is an open source project and I would love for there to
+				be a community of volunteers around OptiKey.</p>
+
+				<p><a href="/en/open-source/">Help with code, documentation, translations, or support</a></p>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h4>Supported Languages</h4>
+
+				<p>
+				OptiKey currently includes support for
+				<a href="/en/">English</a> (UK, US, and Canadian),
+				<a href="/fr/">Français</a> (French), and
+				<a href="/de/">Deutsch</a> (German)
+				</p>
+
+				<p>Work is ongoing to translate and localise OptiKey into as many languages as possible. If you would like to help, <a href="/en/contribute/">check out how to contribute</a>.</p>
+
+			</div>
+
+			<div class="col-xs-12 col-sm-6">
+				<h4>System Requirements</h4>
+
+				<p>Windows Vista SP2 to Windows 10</p>
+
+				<p>An eye tracking device such as <a href="http://www.tobii.com/en/eye-experience/buy/">Tobii EyeX</a> or <a href="https://theeyetribe.com/order/">TheEyeTribe</a>. See
+				the full list of <a href="/en/supported-eye-trackers">Supported Eye Trackers</a></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12"><p>Copyright &copy; {{ site.time | date: '%Y' }} OptiKey, All Rights Reserved</p></div>
+		</div>
+	</div>
+
+
+</footer>
+
+{% for script in site.scripts %}
+<script src="{{ script }}"></script>
+{% endfor %}
+{% for script in page.scripts %}
+<script src="{{ script }}"></script>
+{% endfor %}
+
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>

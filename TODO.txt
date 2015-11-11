@@ -2,14 +2,14 @@ ICON LINKS:
   View on Github
   Download installer (http://www.softicons.com/system-icons/windows-8-metro-invert-icons-by-dakirby309/folder-downloads-folder-icon), zip (?), tarball (?)
   Usage guide
-  Troubleshooting 
+  Troubleshooting
 
 + Features summary on home page:
   Free
   Open source & easy to extend - want to modify how something works or looks, or need something extra? You can change it. (input sources, keyboard sets, behaviour, look and feel, etc)
   Keyboard control - simulate key strokes into any other application (e.g. write an email)
   Mouse control - click, scroll and drag anywhere on the screen, with automatic magnification if you want it.
-  Speaks  
+  Speaks
   Whole word/phrase matches + auto space / auto capitalisation
   Supports multiple input sources (pointing and selection - eye trackers, etc)
   Themeable
@@ -19,3 +19,5 @@ ICON LINKS:
 Usage guide - link to page
 
 Troubleshooting - link to page
+
+- what to put on the about page
