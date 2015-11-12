@@ -6,25 +6,28 @@ description: "OptiKey is free and open source software, designed to be used with
 baseurl: ""
 url: ""
 
+baseurl: "/optikey"
+
 # Build settings
 markdown: kramdown
 permalink: /:year/:month/:day/:title
 
-stylesheet: css/style.css
+stylesheet: /optikey/assets/css/style.css
 
 scripts:
-  - /assets/js/jquery-2.1.0.min.js
-  - /assets/js/bootstrap.min.js
+  - /optikey/assets/js/jquery-2.1.0.min.js
+  - /optikey/assets/js/bootstrap.min.js
 
 
 navigation:
-- text: Home
-  url: /en/
-- text: Get Started
-  url: /en/get-started/
-- text: Guides
-  url: /en/guides/
-- text: Download
-  url: /en/download/
-- text: About
-  url: /en/about/
+  en:
+    - text: Home
+      url: /optikey/en/
+    - text: Get Started
+      url: /optikey/en/get-started/
+    - text: Guides
+      url: /optikey/en/guides/
+    - text: Download
+      url: /optikey/en/download/
+    - text: About
+      url: /optikey/en/about/

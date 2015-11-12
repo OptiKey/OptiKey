@@ -5,13 +5,13 @@
 		</button>
 
 		<a href="/" class="navbar-brand">
-			<img src="/assets/img/logo/logo.svg" alt="{{ site.name }}" style="height: 2rem"/>
+			<img src="/optikey/assets/img/logo/logo.svg" alt="{{ site.name }}" style="height: 2rem"/>
 		</a>
 
 		<div class="collapse navbar-toggleable-xs" id="navbar">
 
 			<ul class="nav navbar-nav">
-				{% for link in site.navigation %}
+				{% for link in site.navigation.en %}
 					{% assign current = nil %}
 					{% capture url %}{{ link.url }}index.html{% endcapture %}
 					{% if page.url == url %}
