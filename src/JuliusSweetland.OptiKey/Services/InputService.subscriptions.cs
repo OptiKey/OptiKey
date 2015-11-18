@@ -37,10 +37,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateVoiceCommandSubscription()
         {
-            if (voiceCommandSource != null && Settings.Default.VoiceCommandsEnabled)
+            if (voiceCommandSource != null)
             {
                 voiceCommandSubscription = voiceCommandSource.Sequence
                     .ObserveOnDispatcher()
+                    // Do not process if sleeping
+                    .Where(_ => !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown())
                     .Subscribe(ProcessSelectionTrigger);
             }
         }

@@ -3409,6 +3409,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resume listening.
+        /// </summary>
+        public static string VC_START_VOICE_RECOGNITION {
+            get {
+                return ResourceManager.GetString("VC_START_VOICE_RECOGNITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop listening.
+        /// </summary>
+        public static string VC_STOP_VOICE_RECOGNITION {
+            get {
+                return ResourceManager.GetString("VC_STOP_VOICE_RECOGNITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select first suggestion.
         /// </summary>
         public static string VC_SUGGESTION_1 {

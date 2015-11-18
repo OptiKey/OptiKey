@@ -1370,4 +1370,10 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="VC_YES_QUESTION_RESULT" xml:space="preserve">
     <value>Sélectionne le bouton OUI</value>
   </data>
+  <data name="VC_START_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Ecoute de nouveau</value>
+  </data>
+  <data name="VC_STOP_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Cesse d'écouter</value>
+  </data>
 </root>

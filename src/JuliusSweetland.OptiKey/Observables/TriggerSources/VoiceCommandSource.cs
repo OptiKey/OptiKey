@@ -44,11 +44,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             commandService = configurableCommandService;
             //On command, locale or prefix change, reloads grammar
             commandService.OnPropertyChanges(service => service.Commands).Subscribe(_ => ReloadGrammar());
-            Settings.Default.OnPropertyChanges(service => service.VoiceCommandsPrefix).Subscribe(_ => ReloadGrammar());
+            Settings.Default.OnPropertyChanges(settings => settings.VoiceCommandsPrefix).Subscribe(_ => ReloadGrammar());
             Settings.Default.OnPropertyChanges(settings => settings.ResourceLanguage).Subscribe(_ => ReloadGrammar());
-
-            //Toggle speech recognition if global property changes
-            Settings.Default.OnPropertyChanges(settings => settings.VoiceCommandsEnabled).Subscribe(ToggleRecognition);
         }
 
         #endregion
@@ -71,14 +68,20 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                             //Starts recognition
                             speechEngine.SetInputToDefaultAudioDevice();
-                            ToggleRecognition(Settings.Default.VoiceCommandsEnabled);
+                            Log.Debug("Start speech recognition.");
+                            speechEngine.RecognizeAsync(RecognizeMode.Multiple);
                             return speechEngine;
                         },
                         speechEngine => Observable.FromEventPattern<SpeechRecognizedEventArgs>(
                             h => speechEngine.SpeechRecognized += h,
                             h => speechEngine.SpeechRecognized -= h)
-                            .Where(_ => State == RunningStates.Running)
                             .Select(MatchRecognized)
+                            .Where(signal => 
+                            {
+                                //Filters empty signals, and in cas of paused state, all commands except restart.
+                                var keyValue = signal.PointAndKeyValue.Value.KeyValue;
+                                return keyValue.HasValue && keyValue.Value.FunctionKey == FunctionKeys.StartVoiceRecognition || Settings.Default.VoiceCommandsEnabled && State == RunningStates.Running;
+                            })
                         )
                         .Publish()
                         .RefCount();
@@ -93,55 +96,30 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Internals
 
         /// <summary>
-        /// Enable or disable speech recognition engine depending on the parameter.
-        /// Ineffective while speechEngine was not initialized.
-        /// </summary>
-        /// <param name="enabled">True to enable speech recognition, false otherwise.</param>
-        private void ToggleRecognition(bool enabled)
-        {
-            if (speechEngine != null)
-            {
-                if (enabled)
-                {
-                    if (!running)
-                    {
-                        //Can't call RecognizeAsync multiple times, and SpeechRecognitionEngine does not maintain a state.
-                        //So let's manage our own state.
-                        running = true;
-                        Log.Debug("Start speech recognition.");
-                        speechEngine.RecognizeAsync(RecognizeMode.Multiple);
-                    }
-                }
-                else
-                {
-                    running = false;
-                    Log.Debug("Stop speech recognition.");
-                    speechEngine.RecognizeAsyncStop();
-                }
-            }
-        }
-
-        /// <summary>
         /// Use ConfigurableCommandService instance to detect the command associated with the recognized input
         /// </summary>
         /// <param name="evt">Recognition event</param>
         private TriggerSignal MatchRecognized(EventPattern<SpeechRecognizedEventArgs> evt)
         {
-            //if (evt != null && evt.EventArgs != null && evt.EventArgs.Result != null)
-            //{
-            // TODO Manage unsupported or unknown command
-            var semanticResult = evt.EventArgs.Result.Semantics["command"];
-            var key = (string) semanticResult.Value;
-            Log.Debug(string.Format("Recognized speech pattern {0} for command {1}.", evt.EventArgs.Result.Text, key));
-            
-            //Use the recognized pattern has notification, unless audio feedback is disabled
-            var notification = Settings.Default.VoiceCommandsFeedback ? commandService.Commands[StringExtensions.Parse<FunctionKeys>(key)] : null;
+            if (evt != null && evt.EventArgs != null && evt.EventArgs.Result != null)
+            {
+                var semanticResult = evt.EventArgs.Result.Semantics["command"];
+                var key = (string)semanticResult.Value;
+                Log.Debug(string.Format("Recognized speech pattern {0} for command {1}.", evt.EventArgs.Result.Text, key));
 
-            //Trigger the function key
-            return new TriggerSignal(1, null, new PointAndKeyValue(
-                new Point(Cursor.Position.X, Cursor.Position.Y), new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
-            ), notification);
-            //}
+                //Use the recognized pattern has notification, unless audio feedback is disabled
+                var notification = Settings.Default.VoiceCommandsFeedback ? commandService.Commands[StringExtensions.Parse<FunctionKeys>(key)] : null;
+
+                //Trigger the function key
+                return new TriggerSignal(1, null, new PointAndKeyValue(
+                    new Point(Cursor.Position.X, Cursor.Position.Y), new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
+                ), notification);
+            } 
+            else
+            {
+                //Without recognized pattern, triggers an empty signal that will be discarded
+                return new TriggerSignal();
+            }
         }
 
         /// <summary>

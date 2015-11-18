@@ -81,6 +81,7 @@ namespace JuliusSweetland.OptiKey.Services
                 //Load user's commands
                 var filePath = GetCommandFilePath(language);
                 var customExists = File.Exists(filePath);
+                //TODO how can we apply new defaults if the custom files does not contains all commands ?
                 if (customExists)
                 {
                     using (var reader = new StreamReader(File.OpenRead(filePath)))

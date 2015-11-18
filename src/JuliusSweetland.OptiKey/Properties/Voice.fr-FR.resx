@@ -234,4 +234,10 @@
   <data name="YesQuestionResult" xml:space="preserve">
     <value>oui</value>
   </data>
+  <data name="StopVoiceRecognition" xml:space="preserve">
+    <value>n'écoute plus</value>
+  </data>
+  <data name="StartVoiceRecognition" xml:space="preserve">
+    <value>écoute</value>
+  </data>
 </root>

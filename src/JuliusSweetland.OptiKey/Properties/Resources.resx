@@ -1359,4 +1359,10 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="VC_YES_QUESTION_RESULT" xml:space="preserve">
     <value>Select YES button</value>
   </data>
+  <data name="VC_STOP_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Stop listening</value>
+  </data>
+  <data name="VC_START_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Resume listening</value>
+  </data>
 </root>
