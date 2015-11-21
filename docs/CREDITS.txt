@@ -6,7 +6,9 @@ Patrons (thank you very much for sponsoring this project)
   Sean McLane
   Nikolas
   Rachael Hanson
+  Neal Wiggermann
   Chris Brockett
+  Bryan Powell
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
