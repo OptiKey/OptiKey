@@ -58,17 +58,17 @@
         
         <controls:Key Grid.Row="2" Grid.Column="0" />
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="q" ShiftDownText="Q"
+                      ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="q" />
+                <models:KeyValue String="a" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="w" ShiftDownText="W"
+                      ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="w" />
+                <models:KeyValue String="z" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
@@ -146,10 +146,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="a" ShiftDownText="A"
+                      ShiftUpText="q" ShiftDownText="Q"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="a" />
+                <models:KeyValue String="q" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
@@ -234,10 +234,10 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="z" ShiftDownText="Z"
+                      ShiftUpText="w" ShiftDownText="W"
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
-                <models:KeyValue String="z" />
+                <models:KeyValue String="w" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
