@@ -9,7 +9,8 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishUK,
         EnglishUS,
         FrenchFrance,
-        GermanGermany
+        GermanGermany,
+        DutchBelgium
     }
 
     public static partial class EnumExtensions
@@ -23,6 +24,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishUS: return Resources.ENGLISH_US;
                 case Languages.FrenchFrance: return Resources.FRENCH_FRANCE;
                 case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
+                case Languages.DutchBelgium: return Resources.DUTCH_BELGIUM;
             }
 
             return languages.ToString();
