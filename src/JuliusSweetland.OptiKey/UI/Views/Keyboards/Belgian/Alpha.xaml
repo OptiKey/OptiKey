@@ -209,6 +209,13 @@
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+                      ShiftUpText="m" ShiftDownText="M"
+                      SharedSizeGroup="KeyWithSingleLetter">
+            <controls:Key.Value>
+                <models:KeyValue String="m" />
+            </controls:Key.Value>
+        </controls:Key>
+        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AlphaIcon}"
                       Text="{x:Static resx:Resources.ALPHA}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -216,7 +223,7 @@
                 <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AlphaKeyboard}" />
             </controls:Key.Value>
         </controls:Key>
-        <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="24" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource DiacriticsIcon}"
                       Text="{x:Static resx:Resources.DIACRITICS}"
                       SharedSizeGroup="KeyWithSymbol">
@@ -273,13 +280,6 @@
                       SharedSizeGroup="KeyWithSingleLetter">
             <controls:Key.Value>
                 <models:KeyValue String="n" />
-            </controls:Key.Value>
-        </controls:Key>
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="m" ShiftDownText="M"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="m" />
             </controls:Key.Value>
         </controls:Key>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
