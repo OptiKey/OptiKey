@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
@@ -88,13 +89,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Set Size
 
-        private void SetSize(FrameworkElement target, FrameworkElement parent)
+        private static void SetSize(FrameworkElement target, Window parent)
         {
-            target.MaxHeight = target.MinHeight = target.Height = 
-                parent.ActualHeight * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+            var screen = parent.GetScreen();
+
+            target.MaxHeight = target.MinHeight = target.Height =
+                screen.Bounds.Height * Settings.Default.ToastNotificationVerticalFillPercentage / 100.0;
 
             target.MaxWidth = target.MinWidth = target.Width =
-                parent.ActualWidth * Settings.Default.ToastNotificationHorizontalFillPercentage / 100;
+                screen.Bounds.Width * Settings.Default.ToastNotificationHorizontalFillPercentage / 100.0;
         }
 
         #endregion
