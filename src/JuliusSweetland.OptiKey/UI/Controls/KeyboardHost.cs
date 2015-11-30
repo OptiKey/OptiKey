@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Threading;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using JuliusSweetland.OptiKey.Enums;
@@ -13,7 +12,6 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
-using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
@@ -29,7 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     {
         #region Private member vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
 
@@ -44,7 +42,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             Loaded += OnLoaded;
 
-            var contentDp = DependencyPropertyDescriptor.FromProperty(ContentControl.ContentProperty, typeof(KeyboardHost));
+            var contentDp = DependencyPropertyDescriptor.FromProperty(ContentProperty, typeof(KeyboardHost));
             if (contentDp != null)
             {
                 contentDp.AddValueChanged(this, ContentChangedHandler);
@@ -118,7 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             if (parentWindow == null)
             {
-                var windowException = new ApplicationException(OptiKey.Properties.Resources.PARENT_WINDOW_COULD_NOT_BE_FOUND);
+                var windowException = new ApplicationException(Properties.Resources.PARENT_WINDOW_COULD_NOT_BE_FOUND);
 
                 Log.Error(windowException);
 
@@ -240,6 +238,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
                         break;
                 }
+            }
+            else if (Keyboard is ViewModelKeyboards.Language)
+            {
+                newContent = new CommonViews.Language { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Menu)
             {

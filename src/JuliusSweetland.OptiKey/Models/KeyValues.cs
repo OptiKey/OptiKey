@@ -202,7 +202,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public static List<KeyValue> MultiKeySelectionKeys
         {
-            get { return multiKeySelectionKeys[Settings.Default.ResourceLanguage]; }
+            get { return multiKeySelectionKeys[Settings.Default.KeyboardLanguage]; }
         }
     }
 }

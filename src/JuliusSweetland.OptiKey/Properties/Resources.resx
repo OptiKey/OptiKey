@@ -1226,4 +1226,16 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simulate physical keystrokes when typing characters:</value>
   </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French (France)
+Française (France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>German (Germany)
+Deutsch (Deutschland)</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russian (Russia)
+Русский (Россия)</value>
+  </data>
 </root>

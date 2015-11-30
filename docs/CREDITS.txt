@@ -28,6 +28,7 @@ Icons
   Increase Opacity icon modified from: Transparency by Eva Verbeek from the Noun Project (thenounproject.com)
   Jump icons modified from Move by TukTuk Design from the Noun Project (thenounproject.com)
   Keyboard icon: Keyboard by useiconic.com from the Noun Project (thenounproject.com)
+  Language icon: Translation by diavd from the Noun Project (thenounproject.com)
   Left & Right arrow icons: Arrow by Stefan Parnarov from the Noun Project (thenounproject.com)
   Left, Right, Up, Down arrow key icons modified from: Arrow by Milo Miloezger from the Noun Project (thenounproject.com)
   Lock icon: Lock by Ugur Akdemir from the Noun Project (thenounproject.com)
