@@ -39,6 +39,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
                 case Languages.FrenchFrance: return CultureInfo.GetCultureInfo("fr-FR");
                 case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
+                case Languages.DutchBelgium: return CultureInfo.GetCultureInfo("nl-BE");
             }
 
             return CultureInfo.GetCultureInfo("en-GB");
