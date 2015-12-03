@@ -20,7 +20,6 @@ using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
-using BelgianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Belgian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -158,13 +157,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
                         break;
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
                         break;
                     case Languages.GermanGermany:
                         newContent = new GermanViews.Alpha { DataContext = Keyboard };
-                        break;
-                    case Languages.DutchBelgium:
-                        newContent = new BelgianViews.Alpha { DataContext = Keyboard };
                         break;
                 }
             }
@@ -178,13 +175,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
                         break;
                     case Languages.GermanGermany:
                         newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
-                        break;
-                    case Languages.DutchBelgium:
-                        newContent = new BelgianViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }
