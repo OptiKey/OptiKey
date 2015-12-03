@@ -1226,4 +1226,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="DUTCH_BELGIUM" xml:space="preserve">
     <value>Dutch (Belgium) / Nederlands (België)</value>
   </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
+  </data>
 </root>

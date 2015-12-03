@@ -154,6 +154,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.EnglishUS:
                     case Languages.EnglishUK:
                     case Languages.EnglishCanada:
+                    case Languages.DutchNetherlands:
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
                         break;
                     case Languages.FrenchFrance:
@@ -172,6 +173,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.EnglishUS:
                     case Languages.EnglishUK:
                     case Languages.EnglishCanada:
+                    case Languages.DutchNetherlands:
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     case Languages.FrenchFrance:
