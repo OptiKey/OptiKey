@@ -9,7 +9,7 @@ OptiKey was written to challenge the outrageously expensive, unreliable and diff
 
 # Getting Started
 
-[**The OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/) contains full information on getting started, system requirements, a user guide, demo videos, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
+[**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains full information on getting started, system requirements, a user guide, demo videos, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
 
 * If you want to install and use OptiKey on Windows then download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
 * Watch the [intro video](https://www.youtube.com/watch?v=Cgnamj5SA3Y).
@@ -21,7 +21,7 @@ OptiKey targets the .Net 4.6 Framework, which is available for  Windows Vista SP
 
 # Problems?
 
-If you find a problem (a crash, an unexpected behaviour, or something similar) please visit the [issue tracker](https://github.com/JuliusSweetland/OptiKey/issues) and report the issue.
+If you find a problem (a crash, an unexpected behaviour, or something similar) please visit the [issue tracker](https://github.com/OptiKey/OptiKey/issues) and report the issue.
 
 Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyways.
 
