@@ -317,5 +317,8 @@
     <Setting Name="MagnifySuppressedForScrollingActions" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ConversationBorderThickness" Roaming="true" Type="System.Windows.Thickness" Scope="User">
+      <Value Profile="(Default)">1,1,1,1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

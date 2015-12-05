@@ -1226,4 +1226,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Suppress mouse magnification for scrolling actions</value>
   </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Conversation keyboard thickness (left,top,right,bottom in px):</value>
+  </data>
 </root>

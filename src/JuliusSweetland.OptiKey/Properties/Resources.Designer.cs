@@ -463,6 +463,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conversation keyboard thickness (left,top,right,bottom in px):.
+        /// </summary>
+        public static string CONVERSATION_BORDER_THICKNESS_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_BORDER_THICKNESS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conversation Letters.
         /// </summary>
         public static string CONVERSATION_LAYOUT {
