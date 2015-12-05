@@ -1223,4 +1223,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simulate physical keystrokes when typing characters:</value>
   </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Suppress mouse magnification for scrolling actions</value>
+  </data>
 </root>

@@ -1405,6 +1405,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suppress mouse magnification for scrolling actions.
+        /// </summary>
+        public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
+            get {
+                return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Management console: ALT + M.
         /// </summary>
         public static string MANAGEMENT_CONSOLE_DESCRIPTION {
