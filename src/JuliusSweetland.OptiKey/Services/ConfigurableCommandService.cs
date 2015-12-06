@@ -76,12 +76,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             var readCommands = new Dictionary<FunctionKeys, string>();
             try
-            {
-                    
+            {     
                 //Load user's commands
                 var filePath = GetCommandFilePath(language);
                 var customExists = File.Exists(filePath);
-                //TODO how can we apply new defaults if the custom files does not contains all commands ?
                 if (customExists)
                 {
                     using (var reader = new StreamReader(File.OpenRead(filePath)))
@@ -94,22 +92,22 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                     }
                 }
-                else
+                //Read default commands stored within assembly
+                var resourceManager = new ResourceManager(DefaultPath + CommandFileBase, this.GetType().Assembly);
+                var defaults = new Dictionary<FunctionKeys, string>();
+                foreach(System.Collections.DictionaryEntry entry in resourceManager.GetResourceSet(language.ToCultureInfo(), true, true))
                 {
-                    //Read default commands stored within assembly
-                    var resourceManager = new ResourceManager(DefaultPath + CommandFileBase, this.GetType().Assembly);
-                    foreach(System.Collections.DictionaryEntry entry in resourceManager.GetResourceSet(language.ToCultureInfo(), true, true))
-                    {
-                        readCommands.Add(StringExtensions.Parse<FunctionKeys>((string) entry.Key), (string) entry.Value);
-                    }
+                    defaults.Add(StringExtensions.Parse<FunctionKeys>((string)entry.Key), (string)entry.Value);
                 }
 
-
                 //Use property Commands instead of private attribute commands to trigger PropertyChanged notification
-                Commands = readCommands;   
-                if (!customExists)
+                //Merge all to ensure that added commands are taken into account
+                var previousCount = readCommands.Count;
+                Commands = readCommands.MergeLeft(defaults);
+                Console.WriteLine(">>> prev" + previousCount + " default " + defaults.Count + " merge " + Commands.Count);
+                if (Commands.Count > previousCount)
                 {
-                    //Create user file
+                    //Update user file if needed
                     Save(language);
                 }
             }

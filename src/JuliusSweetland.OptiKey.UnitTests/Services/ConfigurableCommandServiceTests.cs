@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Resources;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 
@@ -35,7 +37,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
     class ConfigurableCommandServiceTests
     {
         /// <summary>
-        /// Initialize internal properties with currant language.
+        /// Initialize internal properties with current language.
         /// </summary>
         [SetUp]
         public void GivenALanguage()
@@ -76,6 +78,45 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             Assert.That(content, Is.Not.Empty);
             Assert.That(content, Does.Contain(FunctionKeys.Calibrate.ToString()));
         }
+
+        [Test]
+        public async Task ShouldMergeDefaultCommandsIntoCustomOne([Random(1)] int rand)
+        {
+            //Arrange: custom voice commands but without the last default value
+            var resourceManager = new ResourceManager(ConfigurableCommandService.DefaultPath + ConfigurableCommandService.CommandFileBase, typeof(ConfigurableCommandService).Assembly);
+                
+            var language = Enums.Languages.FrenchFrance;
+            Settings.Default.ResourceLanguage = language;
+            var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + language.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
+            var content = "";
+            var removed = "";
+            foreach(System.Collections.DictionaryEntry entry in resourceManager.GetResourceSet(language.ToCultureInfo(), true, true))
+            {
+                var functionKey = StringExtensions.Parse<FunctionKeys>((string)entry.Key);
+                var value = entry.Value;
+                if (functionKey != FunctionKeys.YesQuestionResult) {
+                    content +=  functionKey + ";" + value + "\n";
+                } else {
+                    removed = functionKey + ";" + value;
+                }
+            }
+            
+            var arrowUpCommand = FunctionKeys.ArrowUp.ToString() + ";Up" + rand;
+            Assert.That(content, Does.Not.Contain(removed));
+            Directory.CreateDirectory(Common.CommandFileRoot);
+            File.WriteAllText(userFilePath, content + arrowUpCommand + "\n");
+
+            //Act
+            var configurableCommandService = new ConfigurableCommandService();
+
+            await Task.Delay(Common.InitDelay * 2);
+            Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
+            Assert.That(new FileInfo(userFilePath), Does.Exist);
+            content = File.ReadAllText(userFilePath);
+            Assert.That(content, Is.Not.Empty);
+            Assert.That(content, Does.Contain(arrowUpCommand));
+            Assert.That(content, Does.Contain(removed));
+        }
     }
 
     [TestFixture]
@@ -99,7 +140,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         }
 
         /// <summary>
-        /// Initialize internal properties with currant language.
+        /// Initialize internal properties with current language.
         /// </summary>
         [SetUp]
         public void GivenALanguage()
