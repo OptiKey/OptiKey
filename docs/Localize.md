@@ -15,6 +15,7 @@ Go into `src\Enums\Languages.cs` and:
 
 - add a new entry into the Language enumeration.
 - add a human-friendly name for this enty in the switch loop
+- add a return value for this entry in the ToCultureInfo function
 
 In `src\UI\ViewModels\Management\WordsViewModel.cs`:
 
