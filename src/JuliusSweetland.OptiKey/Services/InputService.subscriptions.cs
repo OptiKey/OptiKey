@@ -23,12 +23,37 @@ namespace JuliusSweetland.OptiKey.Services
         private IDisposable selectionProgressSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
+        private IDisposable voiceCommandSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
         private ITriggerSource selectionTriggerSource;
 
         private TriggerSignal? startMultiKeySelectionTriggerSignal;
         private TriggerSignal? stopMultiKeySelectionTriggerSignal;
+
+        #endregion
+
+        #region Voice command Subscription
+
+        private void CreateVoiceCommandSubscription()
+        {
+            if (voiceCommandSource != null)
+            {
+                voiceCommandSubscription = voiceCommandSource.Sequence
+                    .ObserveOnDispatcher()
+                    // Do not process if sleeping
+                    .Where(_ => !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown())
+                    .Subscribe(ProcessSelectionTrigger);
+            }
+        }
+
+        private void DisposeVoiceCommandSubscription()
+        {
+            if (voiceCommandSubscription != null)
+            {
+                voiceCommandSubscription.Dispose();
+            }
+        }
 
         #endregion
 
@@ -183,11 +208,25 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 PublishSelection(triggerSignal.PointAndKeyValue.Value);
 
+                                var keyValue = triggerSignal.PointAndKeyValue.Value.KeyValue.Value;
+
                                 PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                     new List<Point> { triggerSignal.PointAndKeyValue.Value.Point },
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.String,
+                                    keyValue.FunctionKey,
+                                    keyValue.String,
                                     null));
+
+                                //Audio feedback on signals that contains notification (like voice commands), 
+                                //unless for speak function keys that requires speech synthesis
+                                if (triggerSignal.Notification != null && keyValue.FunctionKey != FunctionKeys.Speak)
+                                {
+                                    var inProgress = audioService.SpeakNewOrInterruptCurrentSpeech(
+                                        triggerSignal.Notification,
+                                        () => {},
+                                        Settings.Default.SpeechVolume,
+                                        Settings.Default.SpeechRate,
+                                        Settings.Default.SpeechVoice);
+                                }
                             }
                         }
                         else

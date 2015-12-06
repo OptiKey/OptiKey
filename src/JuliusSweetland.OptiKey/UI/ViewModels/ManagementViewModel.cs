@@ -21,7 +21,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public ManagementViewModel(
             IAudioService audioService,
-            IDictionaryService dictionaryService)
+            IDictionaryService dictionaryService,
+            IConfigurableCommandService configurableCommandService)
         {
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
@@ -30,6 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
+            VoiceCommandsViewModel = new VoiceCommandsViewModel(configurableCommandService, WordsViewModel);
             
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
@@ -50,6 +52,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
+                    || VoiceCommandsViewModel.ChangesRequireRestart
                     || WordsViewModel.ChangesRequireRestart;
             }
         }
@@ -59,6 +62,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModel VisualsViewModel { get; private set; }
+        public VoiceCommandsViewModel VoiceCommandsViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
@@ -76,6 +80,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             PointingAndSelectingViewModel.ApplyChanges();
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();
+            VoiceCommandsViewModel.ApplyChanges();
             WordsViewModel.ApplyChanges();
         }
 

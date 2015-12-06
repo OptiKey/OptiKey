@@ -130,6 +130,8 @@
         SizeAndPositionKeyboard,
         Sleep,
         Speak,
+        StartVoiceRecognition,
+        StopVoiceRecognition,
         Suggestion1,
         Suggestion2,
         Suggestion3,

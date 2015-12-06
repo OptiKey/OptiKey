@@ -7,6 +7,7 @@ namespace JuliusSweetland.OptiKey.Models
     {
         public IAudioService AudioService { get; set; }
         public IDictionaryService DictionaryService { get; set; }
+        public IConfigurableCommandService ConfigurableCommandService { get; set; }
 
         #region INotification
 

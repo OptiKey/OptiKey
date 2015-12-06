@@ -1142,6 +1142,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
                         break;
 
+                    case FunctionKeys.StopVoiceRecognition:
+                        Log.Info("Stop voice recognition.");
+                        Settings.Default.VoiceCommandsEnabled = false;
+                        break;
+
+                    case FunctionKeys.StartVoiceRecognition:
+                        Log.Info("Restart voice recognition.");
+                        Settings.Default.VoiceCommandsEnabled = true;
+                        break;
+
                     case FunctionKeys.YesQuestionResult:
                         HandleYesNoQuestionResult(true);
                         break;
