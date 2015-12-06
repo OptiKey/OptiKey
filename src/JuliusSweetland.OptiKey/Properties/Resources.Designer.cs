@@ -1414,7 +1414,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suppress mouse magnification for scrolling actions.
+        ///   Looks up a localized string similar to Suppress mouse magnification for scrolling actions:.
         /// </summary>
         public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
             get {
