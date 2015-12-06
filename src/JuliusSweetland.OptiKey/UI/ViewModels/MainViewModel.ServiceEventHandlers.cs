@@ -760,7 +760,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             ResetAndCleanupAfterMouseAction();
-                        });
+                        }, suppressMagnification:true);
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToLeft:
@@ -781,7 +781,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             ResetAndCleanupAfterMouseAction();
-                        });
+                        }, suppressMagnification: true);
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToRight:
@@ -802,7 +802,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
 
                             ResetAndCleanupAfterMouseAction();
-                        });
+                        }, suppressMagnification: true);
                         break;
 
                     case FunctionKeys.MouseMoveAndScrollToTop:
@@ -822,8 +822,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 simulateScrollToTop(finalPoint.Value);
                             }
 
-                            ResetAndCleanupAfterMouseAction();  
-                        });
+                            ResetAndCleanupAfterMouseAction();
+                        }, suppressMagnification: true);
                         break;
 
                     case FunctionKeys.MouseMoveTo:
@@ -1200,11 +1200,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void SetupFinalClickAction(Action<Point?> finalClickAction, bool finalClickInSeries = true)
+        private void SetupFinalClickAction(Action<Point?> finalClickAction, bool finalClickInSeries = true, bool suppressMagnification = false)
         {
             nextPointSelectionAction = nextPoint =>
             {
-                if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
+                if (!suppressMagnification 
+                    && keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
                 {
                     ShowCursor = false; //Ensure cursor is not showing when MagnifyAtPoint is set because...
                     //1.This triggers a screen capture, which shouldn't have the cursor in it.

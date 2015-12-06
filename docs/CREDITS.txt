@@ -9,6 +9,7 @@ Patrons (thank you very much for sponsoring this project)
   Neal Wiggermann
   Chris Brockett
   Bryan Powell
+  Alexander Blech
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

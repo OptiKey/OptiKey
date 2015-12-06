@@ -20,6 +20,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
@@ -42,9 +43,14 @@
                 <CheckBox Grid.Row="3" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="4" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="5" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
             </Grid>
