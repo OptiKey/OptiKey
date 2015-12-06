@@ -326,6 +326,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
+    <Compile Include="UI\ValueConverters\ObjectToTypeName.cs" />
     <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
@@ -526,6 +527,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\GermanGermany.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\DanishDenmark.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">

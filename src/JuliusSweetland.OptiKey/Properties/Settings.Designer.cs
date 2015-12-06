@@ -1412,5 +1412,31 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["VoiceCommandsFeedback"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool MagnifySuppressedForScrollingActions {
+            get {
+                return ((bool)(this["MagnifySuppressedForScrollingActions"]));
+            }
+            set {
+                this["MagnifySuppressedForScrollingActions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1,1,1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.Windows.Thickness ConversationBorderThickness {
+            get {
+                return ((global::System.Windows.Thickness)(this["ConversationBorderThickness"]));
+            }
+            set {
+                this["ConversationBorderThickness"] = value;
+            }
+        }
     }
 }

@@ -65,10 +65,21 @@
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
+            <valueConverters:ObjectToTypeName x:Key="ObjectToTypeName" />
 
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
-                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Style.Triggers>
+                    <!--Is the keyboard ConversationAlpha-->
+                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationAlpha">
+                        <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
+                    </DataTrigger>
+                    <!--Is the keyboard ConversationNumericAndSymbols-->
+                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationNumericAndSymbols">
+                        <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
             
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">

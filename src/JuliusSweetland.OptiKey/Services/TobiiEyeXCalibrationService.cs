@@ -23,14 +23,18 @@ namespace JuliusSweetland.OptiKey.Services
             if(EyeXHost != null)
             {
                 EyeXHost.LaunchRecalibration();
-                EyeXHost.EyeTrackingDeviceStatusChanged += (s, e) =>
+
+                EventHandler<EngineStateValue<EyeTrackingDeviceStatus>> handler = null;
+                handler = (s, e) =>
                 {
                     if (e.Value == EyeTrackingDeviceStatus.Tracking)
                     {
                         Log.Info("Calibration ended.");
+                        EyeXHost.EyeTrackingDeviceStatusChanged -= handler;
                         taskCompletionSource.SetResult(Resources.TOBII_EYEX_CALIBRATION_SUCCESS);
                     }
                 };
+                EyeXHost.EyeTrackingDeviceStatusChanged += handler;
             }
             else
             {

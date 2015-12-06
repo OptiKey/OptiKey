@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
@@ -52,6 +53,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         #region Properties
 
+        public RunningStates State { get; set; }
+
         public KeyEnabledStates KeyEnabledStates { get; set; }
 
         public IObservable<TriggerSignal> Sequence
@@ -72,6 +75,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                         var pointAndKeyValueSubscription = pointAndKeyValueSource
                             .Where(_ => disposed == false)
+                            .Where(_ => State == RunningStates.Running)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
                             .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
                             .Buffer(2, 1) //Sliding buffer of 2 (last & current) that moves by 1 value at a time
