@@ -1235,7 +1235,7 @@ Française (France)</value>
 Deutsch (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppress mouse magnification for scrolling actions</value>
+    <value>Suppress mouse magnification for scrolling actions:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Russian (Russia)
