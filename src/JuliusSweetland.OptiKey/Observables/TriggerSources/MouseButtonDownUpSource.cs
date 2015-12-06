@@ -2,9 +2,11 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Forms;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
+using MouseButtons = System.Windows.Forms.MouseButtons;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -39,6 +41,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         #region Properties
 
+        public RunningStates State { get; set; }
+
         public IObservable<TriggerSignal> Sequence
         {
             get
@@ -64,6 +68,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .SkipWhile(b => b == false) //Ensure the first value we hit is a true, i.e. a mouse down
                         .CombineLatest(pointAndKeyValueSource, (b, point) => new TriggerSignal(b ? 1 : -1, null, point.Value))
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
+                        .Where(_ => State == RunningStates.Running)
                         .Publish()
                         .RefCount();
                 }

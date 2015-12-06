@@ -34,6 +34,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.THEME_LABEL}" 
@@ -129,6 +130,11 @@
                     <controls:NumericUpDown Grid.Row="10" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_BORDER_THICKNESS_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <TextBox Grid.Row="11" Grid.Column="1" TextAlignment="Left"
+                             Text="{Binding ConversationBorderThickness, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 

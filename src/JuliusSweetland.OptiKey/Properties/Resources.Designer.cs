@@ -463,6 +463,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conversation keyboard thickness (left,top,right,bottom in px):.
+        /// </summary>
+        public static string CONVERSATION_BORDER_THICKNESS_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_BORDER_THICKNESS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conversation Letters.
         /// </summary>
         public static string CONVERSATION_LAYOUT {
@@ -1419,6 +1428,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFY_SOURCE_LABEL {
             get {
                 return ResourceManager.GetString("MAGNIFY_SOURCE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suppress mouse magnification for scrolling actions:.
+        /// </summary>
+        public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
+            get {
+                return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
             }
         }
         
