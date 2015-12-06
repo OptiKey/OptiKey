@@ -37,22 +37,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateVoiceCommandSubscription()
         {
-            if (voiceCommandSource != null)
-            {
-                voiceCommandSubscription = voiceCommandSource.Sequence
-                    .ObserveOnDispatcher()
-                    // Do not process if sleeping
-                    .Where(_ => !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown())
-                    .Subscribe(ProcessSelectionTrigger);
-            }
-        }
-
-        private void DisposeVoiceCommandSubscription()
-        {
-            if (voiceCommandSubscription != null)
-            {
-                voiceCommandSubscription.Dispose();
-            }
+            voiceCommandSubscription = voiceCommandSource.Sequence
+                .ObserveOnDispatcher()
+                .Where(_ => !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()) // Do not process if sleeping
+                .Subscribe(ProcessSelectionTrigger);
         }
 
         #endregion
@@ -419,6 +407,11 @@ namespace JuliusSweetland.OptiKey.Services
             if (multiKeySelectionSubscription != null)
             {
                 multiKeySelectionSubscription.Dispose();
+            }
+
+            if (voiceCommandSubscription != null)
+            {
+                voiceCommandSubscription.Dispose();
             }
         }
 

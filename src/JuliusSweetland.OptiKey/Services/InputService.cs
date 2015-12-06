@@ -66,9 +66,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 fixationTrigger.KeyEnabledStates = keyStateService.KeyEnabledStates;
             }
-
-            CreateVoiceCommandSubscription();
-            //TODO when to dispose ?
         }
 
         #endregion
@@ -276,6 +273,11 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
+
+                if (voiceCommandSubscription == null)
+                {
+                    CreateVoiceCommandSubscription();
+                }
             }
             remove
             {
@@ -287,6 +289,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (selectionResultEvent == null)
                     {
+                        //There are also no more subscribers to the SelectionResult event so we don't need the selection subscriptions any more
                         DisposeSelectionSubscriptions();
                     }
                 }
@@ -312,6 +315,11 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
+
+                if (voiceCommandSubscription == null)
+                {
+                    CreateVoiceCommandSubscription();
+                }
             }
             remove
             {
@@ -323,6 +331,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (selectionEvent == null)
                     {
+                        //There are also no more subscribers to the Selection event so we don't need the selection subscriptions
                         DisposeSelectionSubscriptions();
                     }
                 }
