@@ -216,13 +216,13 @@ namespace JuliusSweetland.OptiKey.Services
                                     keyValue.String,
                                     null));
 
-                                //Audio feedback on signals that contains notification (like voice commands), 
-                                //unless for speak function keys that requires speech synthesis
+                                //Audio feedback on signals that contains notification (such as voice commands).
+                                //Do not trigger audio notification if function key is 'Speak' as this generates competing speech.
                                 if (triggerSignal.Notification != null && keyValue.FunctionKey != FunctionKeys.Speak)
                                 {
-                                    var inProgress = audioService.SpeakNewOrInterruptCurrentSpeech(
+                                    audioService.SpeakNewOrInterruptCurrentSpeech(
                                         triggerSignal.Notification,
-                                        () => {},
+                                        null,
                                         Settings.Default.SpeechVolume,
                                         Settings.Default.SpeechRate,
                                         Settings.Default.SpeechVoice);

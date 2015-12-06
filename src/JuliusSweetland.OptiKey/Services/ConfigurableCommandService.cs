@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Resources;
-using System.Reflection;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
@@ -17,7 +14,6 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class ConfigurableCommandService : BindableBase, IConfigurableCommandService
     {
-
         #region Constants
 
         internal const string ApplicationDataPath = @"JuliusSweetland\OptiKey\Commands\";
@@ -26,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         internal const string DefaultPath = @"JuliusSweetland.OptiKey.Properties.";
 
         #endregion
+
         #region Private Member Vars
 
         private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -33,7 +30,8 @@ namespace JuliusSweetland.OptiKey.Services
         private Dictionary<FunctionKeys, string> commands;
 
         #endregion
-        #region Fields and Events
+
+        #region Properties
 
         public Dictionary<FunctionKeys, string> Commands
         {
@@ -43,6 +41,7 @@ namespace JuliusSweetland.OptiKey.Services
         public event EventHandler<Exception> Error;
 
         #endregion
+
         #region Ctor
 
         public ConfigurableCommandService()
@@ -53,10 +52,11 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         #endregion
+
         #region Load / Save Commands
 
         /// <summary>
-        /// Avoid synchronous loading or user won't be notifiy of any loading problems
+        /// Avoid synchronous loading or user won't be notified of any loading problems
         /// </summary>
         private async void AsyncLoadFromFile()
         {
@@ -66,13 +66,13 @@ namespace JuliusSweetland.OptiKey.Services
 
         /// <summary>
         /// Populate voice commands by reading user custom command file for specified language.
-        /// If user file does not exists, read default commands for this language and save them as user commands
-        /// Various errors (file not exists, misformated or unknown command) will be reported
+        /// If user file does not exists, read default commands for this language and save them as user commands.
+        /// Various errors (file not exists, misformated or unknown command) will be reported.
         /// </summary>
         /// <param name="language">Language to loas commands for</param>
         public void Load(Languages language)
         {
-            Log.InfoFormat("LoadFromFile called. Language setting is '{0}'.", language);
+            Log.InfoFormat("Load called. Language setting is '{0}'.", language);
 
             var readCommands = new Dictionary<FunctionKeys, string>();
             try
@@ -93,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
                 //Read default commands stored within assembly
-                var resourceManager = new ResourceManager(DefaultPath + CommandFileBase, this.GetType().Assembly);
+                var resourceManager = new ResourceManager(string.Format("{0}{1}", DefaultPath, CommandFileBase), this.GetType().Assembly);
                 var defaults = new Dictionary<FunctionKeys, string>();
                 foreach(System.Collections.DictionaryEntry entry in resourceManager.GetResourceSet(language.ToCultureInfo(), true, true))
                 {
@@ -104,7 +104,7 @@ namespace JuliusSweetland.OptiKey.Services
                 //Merge all to ensure that added commands are taken into account
                 var previousCount = readCommands.Count;
                 Commands = readCommands.MergeLeft(defaults);
-                Console.WriteLine(">>> prev" + previousCount + " default " + defaults.Count + " merge " + Commands.Count);
+                //Console.WriteLine(">>> prev" + previousCount + " default " + defaults.Count + " merge " + Commands.Count);
                 if (Commands.Count > previousCount)
                 {
                     //Update user file if needed
@@ -159,6 +159,7 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         #endregion
+
         #region Publish Error
 
         /// <summary>
