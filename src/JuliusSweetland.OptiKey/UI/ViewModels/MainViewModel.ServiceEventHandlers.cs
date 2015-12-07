@@ -302,6 +302,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Diacritics3();
                         break;
 
+                    case FunctionKeys.EnglishCanada:
+                        Log.Info("Changing keyboard language to EnglishCanada.");
+                        Settings.Default.KeyboardLanguage = Languages.EnglishCanada;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
+                    case FunctionKeys.EnglishUK:
+                        Log.Info("Changing keyboard language to EnglishUK.");
+                        Settings.Default.KeyboardLanguage = Languages.EnglishUK;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
+                    case FunctionKeys.EnglishUS:
+                        Log.Info("Changing keyboard language to EnglishUS.");
+                        Settings.Default.KeyboardLanguage = Languages.EnglishUS;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
                     case FunctionKeys.ExpandDock:
                         Log.Info("Expanding dock.");
                         mainWindowManipulationService.ResizeDockToFull();
@@ -351,9 +372,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.Expand(ExpandToDirections.TopRight, Settings.Default.MoveAndResizeAdjustmentAmountInPixels);
                         break;
 
+                    case FunctionKeys.FrenchFrance:
+                        Log.Info("Changing keyboard language to FrenchFrance.");
+                        Settings.Default.KeyboardLanguage = Languages.FrenchFrance;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
+                    case FunctionKeys.GermanGermany:
+                        Log.Info("Changing keyboard language to GermanGermany.");
+                        Settings.Default.KeyboardLanguage = Languages.GermanGermany;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
                     case FunctionKeys.IncreaseOpacity:
                         Log.Info("Increasing opacity.");
                         mainWindowManipulationService.IncrementOrDecrementOpacity(true);
+                        break;
+
+                    case FunctionKeys.Language:
+                        Log.Info("Restoring window size.");
+                        mainWindowManipulationService.Restore();
+                        Log.Info("Changing keyboard to Language.");
+                        Keyboard = new Language(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.MenuKeyboard:
@@ -1085,6 +1127,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             lastMouseActionStateManager.LastMouseAction();
                         }
+                        break;
+
+                    case FunctionKeys.RussianRussia:
+                        Log.Info("Changing keyboard language to RussianRussia.");
+                        Settings.Default.KeyboardLanguage = Languages.RussianRussia;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.ShrinkFromBottom:

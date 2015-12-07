@@ -986,6 +986,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to French (France)
+        ///Française (France).
+        /// </summary>
+        public static string FRENCH_FRANCE_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("FRENCH_FRANCE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full dock thickness (as % of screen):.
         /// </summary>
         public static string FULL_DOCK_THICKNESS_LABEL {
@@ -1009,6 +1019,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GERMAN_GERMANY {
             get {
                 return ResourceManager.GetString("GERMAN_GERMANY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German (Germany)
+        ///Deutsch (Deutschland).
+        /// </summary>
+        public static string GERMAN_GERMANY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("GERMAN_GERMANY_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -2497,6 +2517,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string RISING_SOUND_2 {
             get {
                 return ResourceManager.GetString("RISING_SOUND_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian (Russia) / Русский (Россия).
+        /// </summary>
+        public static string RUSSIAN_RUSSIA {
+            get {
+                return ResourceManager.GetString("RUSSIAN_RUSSIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian (Russia)
+        ///Русский (Россия).
+        /// </summary>
+        public static string RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
