@@ -535,10 +535,10 @@ UP</value>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Keyboard language: {0}</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Keyboard language:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
@@ -1217,10 +1217,10 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>German (Germany) / Deutsch (Deutschland)</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>User interface language: {0}</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>User interface language:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">

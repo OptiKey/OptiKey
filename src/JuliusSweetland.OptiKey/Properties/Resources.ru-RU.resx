@@ -1210,19 +1210,19 @@ LK</value>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>German (Germany) / Deutsch (Deutschland)</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Язык клавиатуры: {0}</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Язык клавиатуры:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Имитировать физическую клавиатуру (для письма):</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Язык интерфейса: {0}</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Язык интерфейса:</value>
   </data>
 </root>

@@ -47,7 +47,7 @@ namespace JuliusSweetland.OptiKey.Services
             LoadDictionary();
 
             //Subscribe to changes in the keyboard language to reload the dictionary
-            Settings.Default.OnPropertyChanges(settings => settings.KeyboardLanguage).Subscribe(_ => LoadDictionary());
+            Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
         #endregion
@@ -93,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LoadDictionary()
         {
-            Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardLanguage);
+            Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
             try
             {
@@ -101,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Services
                 entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
 
                 //Load the user dictionary
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardLanguage);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 if (File.Exists(userDictionaryPath))
                 {
@@ -110,7 +110,7 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     //Load the original dictionary
-                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardLanguage, DictionaryFileType));
+                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
 
                     if (File.Exists(originalDictionaryPath))
                     {
@@ -187,7 +187,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardLanguage);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 Log.DebugFormat("Saving user dictionary to file '{0}'", userDictionaryPath);
 

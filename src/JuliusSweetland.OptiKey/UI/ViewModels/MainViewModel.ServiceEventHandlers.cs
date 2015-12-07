@@ -304,21 +304,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.EnglishCanada:
                         Log.Info("Changing keyboard language to EnglishCanada.");
-                        Settings.Default.KeyboardLanguage = Languages.EnglishCanada;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishCanada;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.EnglishUK:
                         Log.Info("Changing keyboard language to EnglishUK.");
-                        Settings.Default.KeyboardLanguage = Languages.EnglishUK;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishUK;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.EnglishUS:
                         Log.Info("Changing keyboard language to EnglishUS.");
-                        Settings.Default.KeyboardLanguage = Languages.EnglishUS;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishUS;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
@@ -374,14 +374,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.FrenchFrance:
                         Log.Info("Changing keyboard language to FrenchFrance.");
-                        Settings.Default.KeyboardLanguage = Languages.FrenchFrance;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.FrenchFrance;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
                     case FunctionKeys.GermanGermany:
                         Log.Info("Changing keyboard language to GermanGermany.");
-                        Settings.Default.KeyboardLanguage = Languages.GermanGermany;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.GermanGermany;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
@@ -1131,7 +1131,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case FunctionKeys.RussianRussia:
                         Log.Info("Changing keyboard language to RussianRussia.");
-                        Settings.Default.KeyboardLanguage = Languages.RussianRussia;
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.RussianRussia;
                         Log.Info("Changing keyboard to Menu.");
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
