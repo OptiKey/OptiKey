@@ -1201,4 +1201,10 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Langue de l'interface:</value>
   </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Épaisseur de la bordure du clavier (gauche, haut, droite, bas en pixels):</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Suppression de la loupe pendant l'utilisation de l'ascenseur:</value>
+  </data>
 </root>
