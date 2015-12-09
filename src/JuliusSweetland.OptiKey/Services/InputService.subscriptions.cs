@@ -192,8 +192,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                         else
                         {
-                            Log.Debug("Selection mode is KEY, but the trigger occurred off a key or over a disabled key.");
-                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                            Log.Debug("Selection mode is KEY, but the trigger occurred away from a key or over a disabled key.");
                         }
                     }
                     else if (SelectionMode == SelectionModes.Point)
