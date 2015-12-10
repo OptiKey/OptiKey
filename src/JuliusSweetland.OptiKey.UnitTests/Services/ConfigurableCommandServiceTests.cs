@@ -17,9 +17,6 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         //Path in which user defined commands file are stored
         public static string CommandFileRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ConfigurableCommandService.ApplicationDataPath);
 
-        //Maximum delay to wait for service initialization
-        public static int InitDelay = 300;
-
         /// <summary>
         /// Cleans folder containing user defined commands
         /// </summary>
@@ -46,15 +43,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         }
 
         [Test]
-        public async Task ShouldCopyDefaultCommandsToUserFile()
+        public void ShouldCopyDefaultCommandsToUserFile()
         {
             Settings.Default.ResourceLanguage = Enums.Languages.EnglishUK;
             var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + Enums.Languages.EnglishUK.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
             
             //Act
             var configurableCommandService = new ConfigurableCommandService();
-            
-            await Task.Delay(Common.InitDelay);
+            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
             var content = File.ReadAllText(userFilePath);
@@ -63,15 +60,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         }
 
         [Test]
-        public async Task ShouldFallbackToDefaultLocale()
+        public void ShouldFallbackToDefaultLocale()
         {
             Settings.Default.ResourceLanguage = Enums.Languages.GermanGermany;
             var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + Enums.Languages.GermanGermany.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
 
             //Act
             var configurableCommandService = new ConfigurableCommandService();
-
-            await Task.Delay(Common.InitDelay);
+            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+            
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
             var content = File.ReadAllText(userFilePath);
@@ -80,7 +77,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         }
 
         [Test]
-        public async Task ShouldMergeDefaultCommandsIntoCustomOne([Random(1)] int rand)
+        public void ShouldMergeDefaultCommandsIntoCustomOne([Random(1)] int rand)
         {
             //Arrange: custom voice commands but without the last default value
             var resourceManager = new ResourceManager(ConfigurableCommandService.DefaultPath + ConfigurableCommandService.CommandFileBase, typeof(ConfigurableCommandService).Assembly);
@@ -108,8 +105,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
 
             //Act
             var configurableCommandService = new ConfigurableCommandService();
+            configurableCommandService.Load(Settings.Default.ResourceLanguage);
 
-            await Task.Delay(Common.InitDelay * 2);
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
             content = File.ReadAllText(userFilePath);
@@ -131,12 +128,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         /// </summary>
         /// <returns></returns>
         [OneTimeSetUp]
-        public async Task GivenInitializedService()
+        public void GivenInitializedService()
         {
             GivenALanguage();
             Common.CleanUserCustomCommands();
             configurableCommandService = new ConfigurableCommandService();
-            await Task.Delay(Common.InitDelay);
+            configurableCommandService.Load(Settings.Default.ResourceLanguage);
         }
 
         /// <summary>

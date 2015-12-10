@@ -117,8 +117,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                 var notification = Settings.Default.VoiceCommandsFeedback ? commandService.Commands[StringExtensions.Parse<FunctionKeys>(key)] : null;
 
                 //Trigger the function key
-                return new TriggerSignal(1, null, new PointAndKeyValue(
-                    new Point(Cursor.Position.X, Cursor.Position.Y), new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
+                return new TriggerSignal(1, null, new PointAndKeyValue(new Point(0, 0), 
+                    new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
                 ), notification);
             } 
 

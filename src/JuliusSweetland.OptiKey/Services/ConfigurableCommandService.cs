@@ -47,22 +47,11 @@ namespace JuliusSweetland.OptiKey.Services
         public ConfigurableCommandService()
         {
             commands = new Dictionary<FunctionKeys, string>();
-            //Read from somewhere, with default values
-            AsyncLoadFromFile();
         }
 
         #endregion
 
         #region Load / Save Commands
-
-        /// <summary>
-        /// Avoid synchronous loading or user won't be notified of any loading problems
-        /// </summary>
-        private async void AsyncLoadFromFile()
-        {
-            await Task.Delay(100);
-            Load(Settings.Default.ResourceLanguage);
-        }
 
         /// <summary>
         /// Populate voice commands by reading user custom command file for specified language.
@@ -104,7 +93,6 @@ namespace JuliusSweetland.OptiKey.Services
                 //Merge all to ensure that added commands are taken into account
                 var previousCount = readCommands.Count;
                 Commands = readCommands.MergeLeft(defaults);
-                //Console.WriteLine(">>> prev" + previousCount + " default " + defaults.Count + " merge " + Commands.Count);
                 if (Commands.Count > previousCount)
                 {
                     //Update user file if needed

@@ -207,10 +207,15 @@ namespace JuliusSweetland.OptiKey
                 sizeAndPositionInitialised = async (_, __) =>
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
+                    
+                    //Load configurable commands after having subscribed to service events, because it may publish an error that must be displayed
+                    configurableCommandService.Load(Settings.Default.ResourceLanguage);
+
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
                     inputService.RequestResume(); //Start the input service
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);
