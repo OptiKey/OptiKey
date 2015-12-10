@@ -79,8 +79,8 @@ namespace JuliusSweetland.OptiKey
 
             //Apply resource language (and listen for changes)
             Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
-            Settings.Default.OnPropertyChanges(s => s.ResourceLanguage).Subscribe(applyResourceLanguage);
-            applyResourceLanguage(Settings.Default.ResourceLanguage);
+            Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
+            applyResourceLanguage(Settings.Default.UiLanguage);
 
             //Logic to initially apply the theme and change the theme on setting changes
             applyTheme = () =>
@@ -488,8 +488,8 @@ namespace JuliusSweetland.OptiKey
                 var message = new StringBuilder();
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardLanguage.ToDescription()));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.RESOURCE_LANGUAGE_DESCRIPTION, Settings.Default.ResourceLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardAndDictionaryLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.UI_LANGUAGE_DESCRIPTION, Settings.Default.UiLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();

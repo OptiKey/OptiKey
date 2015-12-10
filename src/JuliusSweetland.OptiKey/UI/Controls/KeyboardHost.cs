@@ -35,8 +35,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public KeyboardHost()
         {
-            Settings.Default.OnPropertyChanges(s => s.KeyboardLanguage).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.ResourceLanguage).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.KeyboardAndDictionaryLanguage).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
 
@@ -135,7 +135,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private void GenerateContent()
         {
             Log.DebugFormat("GenerateContent called. Keyboard language is '{0}' and Keyboard type is '{1}'", 
-                Settings.Default.KeyboardLanguage, Keyboard != null ? Keyboard.GetType() : null);
+                Settings.Default.KeyboardAndDictionaryLanguage, Keyboard != null ? Keyboard.GetType() : null);
 
             //Clear out point to key map and pause input service
             PointToKeyValueMap = null;
@@ -148,7 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             if (Keyboard is ViewModelKeyboards.Alpha)
             {
-                switch (Settings.Default.KeyboardLanguage)
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
@@ -166,7 +166,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.ConversationAlpha)
             {
-                switch (Settings.Default.KeyboardLanguage)
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {                      
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
@@ -196,7 +196,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics1)
             {
-                switch (Settings.Default.KeyboardLanguage)
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
@@ -211,7 +211,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics2)
             {
-                switch (Settings.Default.KeyboardLanguage)
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
@@ -226,7 +226,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics3)
             {
-                switch (Settings.Default.KeyboardLanguage)
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };

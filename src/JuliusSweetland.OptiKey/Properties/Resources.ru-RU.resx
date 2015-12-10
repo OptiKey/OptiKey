@@ -1225,6 +1225,12 @@ LK</value>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Язык интерфейса:</value>
   </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Язык клавиатуры: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Язык клавиатуры:</value>
+  </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Имитировать физическую клавиатуру (для письма): </value>
   </data>
@@ -1232,11 +1238,11 @@ LK</value>
     <value>French (France)
 Française (France)</value>
   </data>
-  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>German (Germany)
 Deutsch (Deutschland)</value>
   </data>
-  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
     <value>Выключить увеличение во время прокручивания мыши:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
