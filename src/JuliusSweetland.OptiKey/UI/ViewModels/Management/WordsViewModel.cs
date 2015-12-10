@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            bool reloadDictionary = Settings.Default.ResourceLanguage != ResourceLanguage;
+            bool reloadDictionary = Settings.Default.KeyboardLanguage != KeyboardLanguage;
 
             Settings.Default.KeyboardLanguage = KeyboardLanguage;
             Settings.Default.ResourceLanguage = ResourceLanguage;

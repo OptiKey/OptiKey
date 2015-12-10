@@ -1223,4 +1223,10 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
     <value>Menüsprache:</value>
   </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Dicke der Unterhaltungstastatur (links, oben, rechts, unten in px):</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Unterdrücke Mausvergrösserung für Scrollfunktionen:</value>
+  </data>
 </root>

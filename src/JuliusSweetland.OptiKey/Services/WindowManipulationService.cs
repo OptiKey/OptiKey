@@ -357,7 +357,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("ResizeDockToCollapsed called");
 
-            if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Collapsed) return;
+            if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Collapsed);
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Collapsed);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
@@ -367,7 +367,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.Info("ResizeDockToFull called");
 
-            if (getWindowState() != WindowStates.Docked || getDockSize() == DockSizes.Full) return;
+            if (getWindowState() != WindowStates.Docked) return;
             saveDockSize(DockSizes.Full); 
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), DockSizes.Full);
             SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx); //PersistSizeAndPosition() is called indirectly by SetAppBarSizeAndPosition - no need to call explicitly
@@ -574,7 +574,7 @@ namespace JuliusSweetland.OptiKey.Services
             PublishSizeAndPositionInitialised();
         }
 
-        private void ApplySavedState()
+        private void ApplySavedState(bool isInitialising = false)
         {
             Log.Info("ApplySavedState called");
 
@@ -587,7 +587,7 @@ namespace JuliusSweetland.OptiKey.Services
                     window.WindowState = System.Windows.WindowState.Normal;
                     var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(dockPosition, getDockSize());
                     RegisterAppBar();
-                    SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx);
+                    SetAppBarSizeAndPosition(dockPosition, dockSizeAndPositionInPx, isInitialising);
                     break;
 
                 case WindowStates.Floating:
@@ -765,7 +765,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }    
             }
 
-            ApplySavedState();
+            ApplySavedState(true);
         }
 
         private bool Move(MoveToDirections direction, double amountInPx, double distanceToTopBoundaryIfFloating,
@@ -1140,7 +1140,7 @@ namespace JuliusSweetland.OptiKey.Services
             source.AddHook(AppBarPositionChangeCallback);
         }
 
-        private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition)
+        private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false)
         {
             Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
                     dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
@@ -1210,7 +1210,7 @@ namespace JuliusSweetland.OptiKey.Services
                 savePreviousWindowState(WindowStates.Floating);
                 PublishError(this, new ApplicationException("There was a problem positioning OptiKey - reverting to floating position"));
             }
-            else
+            else if (!isInitialising)
             {
                 //Apply final size and position to the window. This is dispatched with ApplicationIdle priority 
                 //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
