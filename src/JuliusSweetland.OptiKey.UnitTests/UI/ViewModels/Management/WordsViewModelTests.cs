@@ -21,13 +21,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management
             var wordsViewModel = new WordsViewModel(mockDictionaryService.Object);
 
             //Act
-            if (wordsViewModel.KeyboardLanguage == Enums.Languages.FrenchFrance)
-            {
-                wordsViewModel.KeyboardLanguage = Enums.Languages.EnglishUK;
-            } else
-            {
-                wordsViewModel.KeyboardLanguage = Enums.Languages.FrenchFrance;
-            }
+            wordsViewModel.KeyboardAndDictionaryLanguage = wordsViewModel.KeyboardAndDictionaryLanguage == Enums.Languages.FrenchFrance 
+                ? Enums.Languages.EnglishUK 
+                : Enums.Languages.FrenchFrance;
 
             wordsViewModel.ApplyChanges();
 
@@ -43,7 +39,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management
             var wordsViewModel = new WordsViewModel(mockDictionaryService.Object);
 
             //Act
-            wordsViewModel.KeyboardLanguage = wordsViewModel.KeyboardLanguage;
+            wordsViewModel.KeyboardAndDictionaryLanguage = wordsViewModel.KeyboardAndDictionaryLanguage;
 
             wordsViewModel.ApplyChanges();
 

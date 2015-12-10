@@ -31,21 +31,21 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_LANGUAGE_LABEL}" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="0" Grid.Column="1" 
                               ItemsSource="{Binding Languages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding KeyboardLanguage, Mode=TwoWay}" />
+                              SelectedValue="{Binding KeyboardAndDictionaryLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.RESOURCE_LANGUAGE_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.UI_LANGUAGE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <ComboBox Grid.Row="1" Grid.Column="1" 
                               ItemsSource="{Binding Languages}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
-                              SelectedValue="{Binding ResourceLanguage, Mode=TwoWay}" />
+                              SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
