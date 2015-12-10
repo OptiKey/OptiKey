@@ -85,6 +85,8 @@ namespace JuliusSweetland.OptiKey.Models
 
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
+                { Languages.DutchBelgium, defaultList },
+                { Languages.DutchNetherlands, defaultList },
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
