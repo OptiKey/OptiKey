@@ -249,12 +249,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishUK")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Languages ResourceLanguage {
+        public global::JuliusSweetland.OptiKey.Enums.Languages UiLanguage {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["ResourceLanguage"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["UiLanguage"]));
             }
             set {
-                this["ResourceLanguage"] = value;
+                this["UiLanguage"] = value;
             }
         }
         
@@ -1355,12 +1355,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishUK")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Languages KeyboardLanguage {
+        public global::JuliusSweetland.OptiKey.Enums.Languages KeyboardAndDictionaryLanguage {
             get {
-                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["KeyboardLanguage"]));
+                return ((global::JuliusSweetland.OptiKey.Enums.Languages)(this["KeyboardAndDictionaryLanguage"]));
             }
             set {
-                this["KeyboardLanguage"] = value;
+                this["KeyboardAndDictionaryLanguage"] = value;
             }
         }
         

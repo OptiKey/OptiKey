@@ -43,7 +43,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             //Reload grammar when commands, voice command prefix, or language changes
             commandService.OnPropertyChanges(service => service.Commands).Subscribe(_ => ReloadGrammar());
             Settings.Default.OnPropertyChanges(settings => settings.VoiceCommandsPrefix).Subscribe(_ => ReloadGrammar());
-            Settings.Default.OnPropertyChanges(settings => settings.ResourceLanguage).Subscribe(_ => ReloadGrammar());
+            Settings.Default.OnPropertyChanges(settings => settings.UiLanguage).Subscribe(_ => ReloadGrammar());
         }
 
         #endregion
@@ -155,7 +155,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             //Use the predefined grammar prefix
             var grammarBuilder = new GrammarBuilder(Settings.Default.VoiceCommandsPrefix)
             {
-                Culture = Settings.Default.ResourceLanguage.ToCultureInfo()
+                Culture = Settings.Default.UiLanguage.ToCultureInfo()
             };
             grammarBuilder.Append(new SemanticResultKey(SemanticResultKey, commands));
             speechEngine.LoadGrammar(new Grammar(grammarBuilder));

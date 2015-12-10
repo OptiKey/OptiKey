@@ -45,12 +45,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         [Test]
         public void ShouldCopyDefaultCommandsToUserFile()
         {
-            Settings.Default.ResourceLanguage = Enums.Languages.EnglishUK;
+            Settings.Default.UiLanguage = Enums.Languages.EnglishUK;
             var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + Enums.Languages.EnglishUK.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
             
             //Act
             var configurableCommandService = new ConfigurableCommandService();
-            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+            configurableCommandService.Load(Settings.Default.UiLanguage);
 
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
@@ -62,12 +62,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         [Test]
         public void ShouldFallbackToDefaultLocale()
         {
-            Settings.Default.ResourceLanguage = Enums.Languages.GermanGermany;
+            Settings.Default.UiLanguage = Enums.Languages.GermanGermany;
             var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + Enums.Languages.GermanGermany.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
 
             //Act
             var configurableCommandService = new ConfigurableCommandService();
-            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+            configurableCommandService.Load(Settings.Default.UiLanguage);
             
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             var resourceManager = new ResourceManager(ConfigurableCommandService.DefaultPath + ConfigurableCommandService.CommandFileBase, typeof(ConfigurableCommandService).Assembly);
                 
             var language = Enums.Languages.FrenchFrance;
-            Settings.Default.ResourceLanguage = language;
+            Settings.Default.UiLanguage = language;
             var userFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + language.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
             var content = "";
             var removed = "";
@@ -105,7 +105,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
 
             //Act
             var configurableCommandService = new ConfigurableCommandService();
-            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+            configurableCommandService.Load(Settings.Default.UiLanguage);
 
             Assert.That(new DirectoryInfo(Common.CommandFileRoot), Does.Exist);
             Assert.That(new FileInfo(userFilePath), Does.Exist);
@@ -133,7 +133,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             GivenALanguage();
             Common.CleanUserCustomCommands();
             configurableCommandService = new ConfigurableCommandService();
-            configurableCommandService.Load(Settings.Default.ResourceLanguage);
+            configurableCommandService.Load(Settings.Default.UiLanguage);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         [SetUp]
         public void GivenALanguage()
         {
-            Settings.Default.ResourceLanguage = Language;
+            Settings.Default.UiLanguage = Language;
             UserFilePath = Path.Combine(Common.CommandFileRoot, ConfigurableCommandService.CommandFileBase + "." + Language.ToCultureInfo() + ConfigurableCommandService.CommandFileType);
         }
 

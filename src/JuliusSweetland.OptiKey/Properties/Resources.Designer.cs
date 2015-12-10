@@ -463,7 +463,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conversation keyboard thickness (left,top,right,bottom in px):.
+        ///   Looks up a localized string similar to Conversation keyboard border thickness (left,top,right,bottom in px):.
         /// </summary>
         public static string CONVERSATION_BORDER_THICKNESS_LABEL {
             get {
@@ -986,6 +986,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to French (France)
+        ///Française (France).
+        /// </summary>
+        public static string FRENCH_FRANCE_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("FRENCH_FRANCE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full dock thickness (as % of screen):.
         /// </summary>
         public static string FULL_DOCK_THICKNESS_LABEL {
@@ -1009,6 +1019,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string GERMAN_GERMANY {
             get {
                 return ResourceManager.GetString("GERMAN_GERMANY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German (Germany)
+        ///Deutsch (Deutschland).
+        /// </summary>
+        public static string GERMAN_GERMANY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("GERMAN_GERMANY_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -1275,29 +1295,29 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyboard key.
-        /// </summary>
-        public static string KEYBOARD_KEY {
-            get {
-                return ResourceManager.GetString("KEYBOARD_KEY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Keyboard language: {0}.
         /// </summary>
-        public static string KEYBOARD_LANGUAGE_DESCRIPTION {
+        public static string KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION {
             get {
-                return ResourceManager.GetString("KEYBOARD_LANGUAGE_DESCRIPTION", resourceCulture);
+                return ResourceManager.GetString("KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Keyboard language:.
         /// </summary>
-        public static string KEYBOARD_LANGUAGE_LABEL {
+        public static string KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL {
             get {
-                return ResourceManager.GetString("KEYBOARD_LANGUAGE_LABEL", resourceCulture);
+                return ResourceManager.GetString("KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard key.
+        /// </summary>
+        public static string KEYBOARD_KEY {
+            get {
+                return ResourceManager.GetString("KEYBOARD_KEY", resourceCulture);
             }
         }
         
@@ -2408,24 +2428,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User interface language: {0}.
-        /// </summary>
-        public static string RESOURCE_LANGUAGE_DESCRIPTION {
-            get {
-                return ResourceManager.GetString("RESOURCE_LANGUAGE_DESCRIPTION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User interface language:.
-        /// </summary>
-        public static string RESOURCE_LANGUAGE_LABEL {
-            get {
-                return ResourceManager.GetString("RESOURCE_LANGUAGE_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to OptiKey needs to restart to apply your changes.
         ///Please click OK to continue with the restart, or CANCEL to discard your changes.
         /// </summary>
@@ -2507,6 +2509,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string RISING_SOUND_2 {
             get {
                 return ResourceManager.GetString("RISING_SOUND_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian (Russia) / Русский (Россия).
+        /// </summary>
+        public static string RUSSIAN_RUSSIA {
+            get {
+                return ResourceManager.GetString("RUSSIAN_RUSSIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian (Russia)
+        ///Русский (Россия).
+        /// </summary>
+        public static string RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -3061,6 +3082,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TRIGGER_WITHOUT_POSITION_ERROR {
             get {
                 return ResourceManager.GetString("TRIGGER_WITHOUT_POSITION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface language: {0}.
+        /// </summary>
+        public static string UI_LANGUAGE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("UI_LANGUAGE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User interface language:.
+        /// </summary>
+        public static string UI_LANGUAGE_LABEL {
+            get {
+                return ResourceManager.GetString("UI_LANGUAGE_LABEL", resourceCulture);
             }
         }
         

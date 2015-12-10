@@ -66,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
             Load(); 
             //Reloads commands on language changes
-            wordsViewModel.OnPropertyChanges(view => view.ResourceLanguage).Subscribe(_ => Load());
+            wordsViewModel.OnPropertyChanges(view => view.UiLanguage).Subscribe(_ => Load());
         }
 
         #endregion
@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             commands.Clear();
             //Loads the currently edited language, even if it was not changed.
             //It avoids editing English commands while user has change language from English to German and not applied yet.
-            configurableCommandService.Load(wordsViewModel.ResourceLanguage);
+            configurableCommandService.Load(wordsViewModel.UiLanguage);
             
             if (configurableCommandService.Commands != null)
             {
@@ -169,7 +169,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 }
             }
             //Save everything, using the last selected to language because we don't know if Settings.Default has been updated yet
-            configurableCommandService.Save(wordsViewModel.ResourceLanguage);
+            configurableCommandService.Save(wordsViewModel.UiLanguage);
         }
 
         #endregion

@@ -79,8 +79,8 @@ namespace JuliusSweetland.OptiKey
 
             //Apply resource language (and listen for changes)
             Action<Languages> applyResourceLanguage = language => OptiKey.Properties.Resources.Culture = language.ToCultureInfo();
-            Settings.Default.OnPropertyChanges(s => s.ResourceLanguage).Subscribe(applyResourceLanguage);
-            applyResourceLanguage(Settings.Default.ResourceLanguage);
+            Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(applyResourceLanguage);
+            applyResourceLanguage(Settings.Default.UiLanguage);
 
             //Logic to initially apply the theme and change the theme on setting changes
             applyTheme = () =>
@@ -209,7 +209,7 @@ namespace JuliusSweetland.OptiKey
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     
                     //Load configurable commands after having subscribed to service events, because it may publish an error that must be displayed
-                    configurableCommandService.Load(Settings.Default.ResourceLanguage);
+                    configurableCommandService.Load(Settings.Default.UiLanguage);
 
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
                     inputService.RequestResume(); //Start the input service
@@ -496,8 +496,8 @@ namespace JuliusSweetland.OptiKey
                 var message = new StringBuilder();
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardLanguage.ToDescription()));
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.RESOURCE_LANGUAGE_DESCRIPTION, Settings.Default.ResourceLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardAndDictionaryLanguage.ToDescription()));
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.UI_LANGUAGE_DESCRIPTION, Settings.Default.UiLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
 
                 var keySelectionSb = new StringBuilder();

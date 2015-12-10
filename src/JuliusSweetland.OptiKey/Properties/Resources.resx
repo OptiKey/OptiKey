@@ -255,6 +255,9 @@ DOCK</value>
   <data name="CONVERSATION" xml:space="preserve">
     <value>CONVERSATION</value>
   </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
+  </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
     <value>Conversation Letters</value>
   </data>
@@ -439,6 +442,10 @@ UP</value>
   <data name="FRENCH_FRANCE" xml:space="preserve">
     <value>French (France) / Français (France)</value>
   </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French (France)
+Française (France)</value>
+  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Full dock thickness (as % of screen):</value>
   </data>
@@ -447,6 +454,10 @@ UP</value>
   </data>
   <data name="GERMAN_GERMANY" xml:space="preserve">
     <value>German (Germany) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>German (Germany)
+Deutsch (Deutschland)</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Grow</value>
@@ -542,14 +553,14 @@ UP</value>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
     <value>Key selection: {0}</value>
   </data>
-  <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Keyboard key</value>
-  </data>
-  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Keyboard language: {0}</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Keyboard language:</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Keyboard key</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Language</value>
@@ -594,6 +605,9 @@ CURSOR</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
     <value>Magnify source (percentage of screen):</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Suppress mouse magnification for scrolling actions:</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Management console: ALT + M</value>
@@ -934,12 +948,6 @@ LAST</value>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
     <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>User interface language: {0}</value>
-  </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
-    <value>User interface language:</value>
-  </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>OptiKey needs to restart to apply your changes.
 Please click OK to continue with the restart, or CANCEL to discard your changes</value>
@@ -970,6 +978,13 @@ DOWN/UP</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Rising 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russian (Russia) / Русский (Россия)</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russian (Russia)
+Русский (Россия)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Same as dock position</value>
@@ -1165,6 +1180,12 @@ POSITION</value>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
     <value>I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?</value>
   </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>User interface language: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>User interface language:</value>
+  </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
     <value>Unable to determine the current elevation.</value>
   </data>
@@ -1190,57 +1211,6 @@ ARROW</value>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Please visit www.optikey.org to download latest version ({0})
 You can turn off update checks from the Management Console (ALT + M).</value>
-  </data>
-  <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>May I restart OptiKey?</value>
-  </data>
-  <data name="VERSION_DESCRIPTION" xml:space="preserve">
-    <value>Version: {0}</value>
-  </data>
-  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertical fill (percentage of OptiKey):</value>
-  </data>
-  <data name="VISUALS" xml:space="preserve">
-    <value>Visuals</value>
-  </data>
-  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value> (from settings)</value>
-  </data>
-  <data name="VOICE_COMMANDS" xml:space="preserve">
-    <value>Voice commands</value>
-  </data>
-  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
-    <value>Voice commands enabled:</value>
-  </data>
-  <data name="VOICE_COMMANDS_FEEDBACK" xml:space="preserve">
-    <value>Audio feedback:</value>
-  </data>
-  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
-    <value>Voice commands</value>
-  </data>
-  <data name="VOICE_COMMANDS_PREFIX" xml:space="preserve">
-    <value>Command prefix:</value>
-  </data>
-  <data name="VOICE_LABEL" xml:space="preserve">
-    <value>Voice:</value>
-  </data>
-  <data name="VOLUME_LABEL" xml:space="preserve">
-    <value>Volume:</value>
-  </data>
-  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Website: www.optikey.org</value>
-  </data>
-  <data name="WIN" xml:space="preserve">
-    <value>WIN</value>
-  </data>
-  <data name="WINDOW_TITLE" xml:space="preserve">
-    <value>OptiKey v{0}</value>
-  </data>
-  <data name="WORDS" xml:space="preserve">
-    <value>Words</value>
-  </data>
-  <data name="YES" xml:space="preserve">
-    <value>YES</value>
   </data>
   <data name="VC_ALPHA_KEYBOARD" xml:space="preserve">
     <value>Display letters keyboard</value>
@@ -1299,14 +1269,14 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_BOTTOM" xml:space="preserve">
     <value>Move mouse and scroll to bottom</value>
   </data>
-  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_TOP" xml:space="preserve">
-    <value>Move mouse and scroll to top</value>
-  </data>
   <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_LEFT" xml:space="preserve">
     <value>Move mouse and scroll to left</value>
   </data>
   <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_RIGHT" xml:space="preserve">
     <value>Move mouse and scroll to right</value>
+  </data>
+  <data name="VC_MOUSE_MOVE_AND_SCROLL_TO_TOP" xml:space="preserve">
+    <value>Move mouse and scroll to top</value>
   </data>
   <data name="VC_NEXT_SUGGESTIONS" xml:space="preserve">
     <value>Display next suggestions</value>
@@ -1338,6 +1308,12 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="VC_SPEAK" xml:space="preserve">
     <value>Enonciate sentence</value>
   </data>
+  <data name="VC_START_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Resume listening</value>
+  </data>
+  <data name="VC_STOP_VOICE_RECOGNITION" xml:space="preserve">
+    <value>Stop listening</value>
+  </data>
   <data name="VC_SUGGESTION_1" xml:space="preserve">
     <value>Select first suggestion</value>
   </data>
@@ -1359,16 +1335,55 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="VC_YES_QUESTION_RESULT" xml:space="preserve">
     <value>Select YES button</value>
   </data>
-  <data name="VC_STOP_VOICE_RECOGNITION" xml:space="preserve">
-    <value>Stop listening</value>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>May I restart OptiKey?</value>
   </data>
-  <data name="VC_START_VOICE_RECOGNITION" xml:space="preserve">
-    <value>Resume listening</value>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Version: {0}</value>
   </data>
-  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppress mouse magnification for scrolling actions:</value>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Vertical fill (percentage of OptiKey):</value>
   </data>
-  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Conversation keyboard thickness (left,top,right,bottom in px):</value>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Visuals</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value> (from settings)</value>
+  </data>
+  <data name="VOICE_COMMANDS" xml:space="preserve">
+    <value>Voice commands</value>
+  </data>
+  <data name="VOICE_COMMANDS_ENABLED" xml:space="preserve">
+    <value>Voice commands enabled:</value>
+  </data>
+  <data name="VOICE_COMMANDS_FEEDBACK" xml:space="preserve">
+    <value>Audio feedback:</value>
+  </data>
+  <data name="VOICE_COMMANDS_GROUP" xml:space="preserve">
+    <value>Voice commands</value>
+  </data>
+  <data name="VOICE_COMMANDS_PREFIX" xml:space="preserve">
+    <value>Command prefix:</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Voice:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Volume:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Website: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Words</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>YES</value>
   </data>
 </root>
