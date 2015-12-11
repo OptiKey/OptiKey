@@ -154,9 +154,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.EnglishUS:
                     case Languages.EnglishUK:
                     case Languages.EnglishCanada:
+                    case Languages.DutchNetherlands:
                         newContent = new EnglishViews.Alpha {DataContext = Keyboard};
                         break;
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
                         break;
                     case Languages.GermanGermany:
@@ -171,9 +173,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.EnglishUS:
                     case Languages.EnglishUK:
                     case Languages.EnglishCanada:
+                    case Languages.DutchNetherlands:
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
                         break;
                     case Languages.GermanGermany:
@@ -198,6 +202,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardLanguage)
                 {
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
@@ -213,6 +218,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardLanguage)
                 {
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
@@ -228,6 +234,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardLanguage)
                 {
                     case Languages.FrenchFrance:
+                    case Languages.DutchBelgium:
                         newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:

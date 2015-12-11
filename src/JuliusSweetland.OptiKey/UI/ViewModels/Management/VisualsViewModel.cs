@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
+using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
+using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -294,6 +297,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref mainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, value); }
         }
 
+        private Thickness conversationBorderThickness;
+        public Thickness ConversationBorderThickness
+        {
+            get { return conversationBorderThickness; }
+            set { SetProperty(ref conversationBorderThickness, value); }
+        }
+
         public bool ChangesRequireRestart
         {
             get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
@@ -323,6 +333,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeyCase = Settings.Default.KeyCase;
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+            ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
         }
 
         public void ApplyChanges()
@@ -345,6 +356,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeyCase = KeyCase;
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+            Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
         }
 
         #endregion
