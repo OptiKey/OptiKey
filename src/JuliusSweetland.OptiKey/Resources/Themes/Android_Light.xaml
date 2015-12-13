@@ -65,18 +65,14 @@
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
-            <valueConverters:ObjectToTypeName x:Key="ObjectToTypeName" />
+            <valueConverters:ObjectIsType x:Key="ObjectIsType" />
 
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Style.Triggers>
-                    <!--Is the keyboard ConversationAlpha-->
-                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationAlpha">
-                        <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
-                    </DataTrigger>
-                    <!--Is the keyboard ConversationNumericAndSymbols-->
-                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationNumericAndSymbols">
+                    <!--Is the keyboard an IConversationKeyboard-->
+                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectIsType}, ConverterParameter={x:Type keyboardBase:IConversationKeyboard}, Mode=OneWay}" Value="True">
                         <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
                     </DataTrigger>
                 </Style.Triggers>

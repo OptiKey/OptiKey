@@ -5,13 +5,13 @@ using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
 {
-    public class ObjectToTypeName : IValueConverter
+    public class ObjectIsType : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value == DependencyProperty.UnsetValue || value == null
-                ? null
-                : value.GetType().Name;
+            var paramType = parameter as Type;
+            if(value == DependencyProperty.UnsetValue || value == null || paramType == null) return false;
+            return paramType.IsInstanceOfType(value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

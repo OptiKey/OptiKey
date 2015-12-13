@@ -5,7 +5,8 @@
                     xmlns:windows="clr-namespace:JuliusSweetland.OptiKey.UI.Windows"
                     xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                     xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
-                    xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums">
+                    xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+                    xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
@@ -66,18 +67,14 @@
 
             <valueConverters:LengthDividedBySpan x:Key="LengthDividedBySpan" />
             <valueConverters:FontSizeToFitLines x:Key="FontSizeToFitLines" />
-            <valueConverters:ObjectToTypeName x:Key="ObjectToTypeName" />
+            <valueConverters:ObjectIsType x:Key="ObjectIsType" />
             
             <Style x:Key="MainWindowStyle" TargetType="{x:Type windows:MainWindow}" BasedOn="{StaticResource {x:Type Window}}">
                 <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Style.Triggers>
-                    <!--Is the keyboard ConversationAlpha-->
-                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationAlpha">
-                        <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
-                    </DataTrigger>
-                    <!--Is the keyboard ConversationNumericAndSymbols-->
-                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectToTypeName}, Mode=OneWay}" Value="ConversationNumericAndSymbols">
+                    <!--Is the keyboard an IConversationKeyboard-->
+                    <DataTrigger Binding="{Binding DataContext.Keyboard, ElementName=MainView, Converter={StaticResource ObjectIsType}, ConverterParameter={x:Type keyboardBase:IConversationKeyboard}, Mode=OneWay}" Value="True">
                         <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
                     </DataTrigger>
                 </Style.Triggers>
