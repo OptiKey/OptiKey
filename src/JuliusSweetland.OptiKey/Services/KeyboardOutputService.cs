@@ -639,6 +639,15 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
+                var virtualKeyCode = character.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
+                {
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1} (using hard coded mapping)",
+                        character.ConvertEscapedCharToLiteral(), virtualKeyCode);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
+                    return;
+                }
+
                 if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
                 {
                     Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
@@ -646,7 +655,7 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
-                //Get keyboard layout of currently focussed window
+                //Get keyboard layout of currently focused window
                 IntPtr hWnd = PInvoke.GetForegroundWindow();
                 int lpdwProcessId;
                 int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
@@ -660,6 +669,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (keyboardLayout == installedInputLanguages[i].Handle)
                     {
                         keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                        break;
                     }
                 }
 
@@ -670,10 +680,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var ctrl = (vkKeyScan & 0x200) > 0;
                 var alt = (vkKeyScan & 0x400) > 0;
 
-                if (Settings.Default.PublishVirtualKeyCodesForCharacters
-                    && vkKeyScan != -1)
+                if (vkKeyScan != -1)
                 {
-                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (keyboard:{5})",
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
                         character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 
