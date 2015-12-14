@@ -149,7 +149,7 @@ namespace JuliusSweetland.OptiKey
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
-                var mainWindow = new MainWindow(audioService, dictionaryService, inputService);
+                var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,

@@ -213,6 +213,7 @@
     <Compile Include="Enums\TriggerStopSignals.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\IKeyStateServiceExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />

@@ -506,20 +506,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (keyStateService.SimulateKeyStrokes
                             && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            var lastLeftShiftValue = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value;
-                            var lastLeftCtrlValue = keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value;
-                            var lastLeftWinValue = keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value;
-                            var lastLeftAltValue = keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value;
-                            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                            keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = KeyDownStates.Up;
-                            keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value = KeyDownStates.Up;
-                            keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = KeyDownStates.Up;
+                            var restoreModifierStates = keyStateService.ReleaseModifiers();
                             backAction = () =>
                             {
-                                keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = lastLeftShiftValue;
-                                keyStateService.KeyDownStates[KeyValues.LeftCtrlKey].Value = lastLeftCtrlValue;
-                                keyStateService.KeyDownStates[KeyValues.LeftWinKey].Value = lastLeftWinValue;
-                                keyStateService.KeyDownStates[KeyValues.LeftAltKey].Value = lastLeftAltValue;
+                                restoreModifierStates();
                                 Keyboard = currentKeyboard;
                             };
                         }
