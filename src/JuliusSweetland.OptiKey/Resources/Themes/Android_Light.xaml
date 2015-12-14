@@ -5,7 +5,8 @@
                     xmlns:windows="clr-namespace:JuliusSweetland.OptiKey.UI.Windows"
                     xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                     xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
-                    xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums">
+                    xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+                    xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
