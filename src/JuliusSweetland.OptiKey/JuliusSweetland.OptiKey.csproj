@@ -762,7 +762,7 @@
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
     <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
-    <EmbeddedResource Include="Properties\Resources.nl-BE.resx" />
+    <EmbeddedResource Include="Properties\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
