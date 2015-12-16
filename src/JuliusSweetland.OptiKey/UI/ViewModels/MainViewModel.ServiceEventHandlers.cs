@@ -506,7 +506,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (keyStateService.SimulateKeyStrokes
                             && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            var restoreModifierStates = keyStateService.ReleaseModifiers();
+                            var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
                             backAction = () =>
                             {
                                 restoreModifierStates();
