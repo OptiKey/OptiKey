@@ -6,7 +6,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
     public class YesNoQuestion : Keyboard
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly string text;
         private readonly Action yesAction;

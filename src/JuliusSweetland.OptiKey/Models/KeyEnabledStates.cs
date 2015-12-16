@@ -323,7 +323,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         #region Notify State Changed
 
-        public void NotifyStateChanged()
+        private void NotifyStateChanged()
         {
             OnPropertyChanged(Binding.IndexerName);
         }
