@@ -53,19 +53,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             onUnloaded.Add(keyStateSubscription);
             KeyDownState = keyStateService.KeyDownStates[Value].Value;
 
-            //Calculate SelectionProgress
+            //Calculate SelectionProgress and SelectionInProgress
             var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
                 .OnPropertyChanges(ksp => ksp.Value)
-                .Subscribe(value => SelectionProgress = value);
+                .Subscribe(value =>
+                {
+                    SelectionProgress = value;
+                    SelectionInProgress = value > 0d;
+                });
             onUnloaded.Add(keySelectionProgressSubscription);
-            SelectionProgress = keyStateService.KeySelectionProgress[Value].Value;
-
-            //Calculate IsProgressing
-            var IsProgressingSubscription = keyStateService.KeySelectionProgress[Value]
-               .OnPropertyChanges(ksp => ksp.Value)
-               .Subscribe(value => IsProgressing = (value > 0.0));
-            onUnloaded.Add(IsProgressingSubscription);
-            IsProgressing = keyStateService.KeySelectionProgress[Value].Value > 0.0;
+            var progress = keyStateService.KeySelectionProgress[Value].Value;
+            SelectionProgress = progress;
+            SelectionInProgress = progress > 0d;
 
             //Calculate IsEnabled
             Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
@@ -158,15 +157,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(IsCurrentProperty, value); }
         }
 
-        public static readonly DependencyProperty IsProgressingProperty =
-            DependencyProperty.Register("IsProgressing", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
-
-        public bool IsProgressing
-        {
-            get { return ((double) GetValue(SelectionProgressProperty)) > 0; }
-            set { SetValue(IsProgressingProperty, value); }
-        }
-
         public static readonly DependencyProperty SelectionProgressProperty =
             DependencyProperty.Register("SelectionProgress", typeof(double), typeof(Key), new PropertyMetadata(default(double)));
 
@@ -174,6 +164,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (double) GetValue(SelectionProgressProperty); }
             set { SetValue(SelectionProgressProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionInProgressProperty =
+            DependencyProperty.Register("SelectionInProgress", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool SelectionInProgress
+        {
+            get { return (bool) GetValue(SelectionInProgressProperty); }
+            set { SetValue(SelectionInProgressProperty, value); }
         }
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
