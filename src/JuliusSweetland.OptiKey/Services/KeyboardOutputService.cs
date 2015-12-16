@@ -681,9 +681,8 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (vkKeyScan != -1)
                 {
-                    Log.InfoFormat(
-                        "Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
-                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null,
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
+                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 
                     bool releaseShift = false;
@@ -708,7 +707,7 @@ namespace JuliusSweetland.OptiKey.Services
                         releaseAlt = true;
                     }
 
-                    publishService.KeyDownUp((VirtualKeyCode) vkCode);
+                    publishService.KeyDownUp((VirtualKeyCode)vkCode);
 
                     if (releaseShift)
                     {
@@ -725,14 +724,10 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("No virtual key code found for '{0}' - publishing as text", character.ConvertEscapedCharToLiteral());
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})", 
+                        character.ConvertEscapedCharToLiteral(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
-            }
-            else
-            {
-                Log.InfoFormat("Current keyboard has SimulateKeyStrokes suppressed - publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
-                publishService.TypeText(character.ToString());
             }
         }
 
