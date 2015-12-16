@@ -57,7 +57,7 @@ namespace JuliusSweetland.OptiKey.Services
         public bool SimulateKeyStrokes
         {
             get { return simulateKeyStrokes; }
-            set {SetProperty(ref simulateKeyStrokes, value); }
+            set { SetProperty(ref simulateKeyStrokes, value); }
         }
         public NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get { return keySelectionProgress; } }
         public NotifyingConcurrentDictionary<KeyValue, KeyDownStates> KeyDownStates { get { return keyDownStates; } }
