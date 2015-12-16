@@ -7,7 +7,6 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -21,14 +20,11 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
-using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -39,7 +35,7 @@ namespace JuliusSweetland.OptiKey
     {
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Action applyTheme;
 
         #endregion
@@ -107,7 +103,7 @@ namespace JuliusSweetland.OptiKey
 
         #region On Startup
 
-        private async void App_OnStartup(object sender, StartupEventArgs e)
+        private void App_OnStartup(object sender, StartupEventArgs e)
         {
             try
             {
@@ -281,7 +277,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Handle Corrupt Settings
 
-        private void HandleCorruptSettings()
+        private static void HandleCorruptSettings()
         {
             try
             {
@@ -314,7 +310,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Create Service Methods
 
-        private ICalibrationService CreateCalibrationService()
+        private static ICalibrationService CreateCalibrationService()
         {
             switch (Settings.Default.PointsSource)
             {
@@ -330,7 +326,7 @@ namespace JuliusSweetland.OptiKey
             return null;
         }
 
-        private IInputService CreateInputService(
+        private static IInputService CreateInputService(
             IKeyStateService keyStateService,
             IDictionaryService dictionaryService,
             IAudioService audioService,
@@ -454,7 +450,7 @@ namespace JuliusSweetland.OptiKey
         
         #region Log Diagnostic Info
         
-        private void LogDiagnosticInfo()
+        private static void LogDiagnosticInfo()
         {
             Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);
             var assemblyFileVersion = DiagnosticInfo.AssemblyFileVersion;
@@ -477,7 +473,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Show Splash Screen
 
-        private async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        private static async Task<bool> ShowSplashScreen(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -555,7 +551,7 @@ namespace JuliusSweetland.OptiKey
 
         #region  Check For Updates
 
-        private async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        private static async Task<bool> CheckForUpdates(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -616,7 +612,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Release Keys On App Exit
 
-        private void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
+        private static void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
         {
             Current.Exit += (o, args) =>
             {

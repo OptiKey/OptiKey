@@ -9,7 +9,7 @@ namespace JuliusSweetland.OptiKey.Models
 {
     internal class KeyStateServiceState
     {
-        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly bool simulateKeyStrokes;
         private readonly KeyStateService keyStateService;

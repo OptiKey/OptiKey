@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -9,7 +8,6 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
-using Size = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.SizeAndPosition;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -1232,7 +1230,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        public void HandleServiceError(object sender, Exception exception)
+        private void HandleServiceError(object sender, Exception exception)
         {
             Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
 

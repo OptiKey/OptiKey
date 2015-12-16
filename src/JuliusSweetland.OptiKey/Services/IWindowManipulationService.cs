@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Services

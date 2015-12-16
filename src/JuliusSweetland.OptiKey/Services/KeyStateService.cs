@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Reactive.Linq;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
@@ -17,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly NotifyingConcurrentDictionary<KeyValue, double> keySelectionProgress;
         private readonly NotifyingConcurrentDictionary<KeyValue, KeyDownStates> keyDownStates;

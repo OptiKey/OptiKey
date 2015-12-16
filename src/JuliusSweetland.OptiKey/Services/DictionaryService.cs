@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private Dictionary<string, List<DictionaryEntry>> entries;
         private Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete;
@@ -54,7 +54,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Migrate Legacy User Dictionaries
 
-        private void MigrateLegacyDictionaries()
+        private static void MigrateLegacyDictionaries()
         {
             var oldNewDictionaryFileNames = new List<Tuple<string, string>>
             {
@@ -455,12 +455,12 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         matches.Add(exactMatch);
                     }
-                    else if(!text.All(Char.IsUpper))
+                    else if(!text.All(char.IsUpper))
                     {
                         //Text which is not all in caps could not have come from an all caps dictionary entry
                         var matchesWhichAreNotAllCaps = entries[hash].Where(dictionaryEntry =>
                             string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)
-                            && !dictionaryEntry.Entry.All(Char.IsUpper));
+                            && !dictionaryEntry.Entry.All(char.IsUpper));
                         matches.AddRange(matchesWhichAreNotAllCaps);
                     }
                     else
