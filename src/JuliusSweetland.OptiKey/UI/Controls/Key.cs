@@ -60,6 +60,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             onUnloaded.Add(keySelectionProgressSubscription);
             SelectionProgress = keyStateService.KeySelectionProgress[Value].Value;
 
+            //Calculate IsProgressing
+            var IsProgressingSubscription = keyStateService.KeySelectionProgress[Value]
+               .OnPropertyChanges(ksp => ksp.Value)
+               .Subscribe(value => IsProgressing = (value > 0.0));
+            onUnloaded.Add(IsProgressingSubscription);
+            IsProgressing = keyStateService.KeySelectionProgress[Value].Value > 0.0;
+
             //Calculate IsEnabled
             Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
             var keyEnabledSubscription = keyStateService.KeyEnabledStates
@@ -149,6 +156,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             get { return (bool) GetValue(IsCurrentProperty); }
             set { SetValue(IsCurrentProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsProgressingProperty =
+            DependencyProperty.Register("IsProgressing", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool IsProgressing
+        {
+            get { return ((double) GetValue(SelectionProgressProperty)) > 0; }
+            set { SetValue(IsProgressingProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionProgressProperty =
