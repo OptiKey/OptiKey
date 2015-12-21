@@ -22,6 +22,7 @@ using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
+using NBug.Core.Util.Serialization;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
@@ -387,7 +388,13 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new KeyFixationSource(
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTime,
+                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
+                       new Dictionary<KeyValue, TimeSpan>
+                       {
+                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion1}, TimeSpan.FromSeconds(2) },
+                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion2}, TimeSpan.FromSeconds(5) },
+                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion3}, TimeSpan.FromSeconds(10) }
+                       }, 
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
                     break;
@@ -493,7 +500,7 @@ namespace JuliusSweetland.OptiKey
                 switch (Settings.Default.KeySelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:

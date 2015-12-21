@@ -262,12 +262,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:01.2500000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::System.TimeSpan KeySelectionTriggerFixationCompleteTime {
+        public global::System.TimeSpan KeySelectionTriggerFixationDefaultCompleteTime {
             get {
-                return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationCompleteTime"]));
+                return ((global::System.TimeSpan)(this["KeySelectionTriggerFixationDefaultCompleteTime"]));
             }
             set {
-                this["KeySelectionTriggerFixationCompleteTime"] = value;
+                this["KeySelectionTriggerFixationDefaultCompleteTime"] = value;
             }
         }
         
