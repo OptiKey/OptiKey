@@ -1402,5 +1402,44 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["ConversationBorderThickness"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<dictionary>\r\n    <item>\r\n        <key>\r\n            <KeyValue xmlns:xsi=\"http://" +
+            "www.w3.org/2001/XMLSchema-instance\"\r\n                xmlns:xsd=\"http://www.w3.or" +
+            "g/2001/XMLSchema\">\r\n                <FunctionKey>Suggestion1</FunctionKey>\r\n    " +
+            "        </KeyValue>\r\n        </key>\r\n        <value>\r\n            <ticks>PT2S</t" +
+            "icks>\r\n        </value>\r\n    </item>\r\n    <item>\r\n        <key>\r\n            <Ke" +
+            "yValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n                xm" +
+            "lns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n                <FunctionKey>Sugges" +
+            "tion2</FunctionKey>\r\n            </KeyValue>\r\n        </key>\r\n        <value>\r\n " +
+            "           <ticks>PT2S</ticks>\r\n        </value>\r\n    </item>\r\n    <item>\r\n     " +
+            "   <key>\r\n            <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-inst" +
+            "ance\"\r\n                xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n          " +
+            "      <FunctionKey>Suggestion3</FunctionKey>\r\n            </KeyValue>\r\n        <" +
+            "/key>\r\n        <value>\r\n            <ticks>PT2S</ticks>\r\n        </value>\r\n    <" +
+            "/item>\r\n    <item>\r\n        <key>\r\n            <KeyValue xmlns:xsi=\"http://www.w" +
+            "3.org/2001/XMLSchema-instance\"\r\n                xmlns:xsd=\"http://www.w3.org/200" +
+            "1/XMLSchema\">\r\n                <FunctionKey>Suggestion4</FunctionKey>\r\n         " +
+            "   </KeyValue>\r\n        </key>\r\n        <value>\r\n            <ticks>PT2S</ticks>" +
+            "\r\n        </value>\r\n    </item>\r\n    <item>\r\n        <key>\r\n            <KeyValu" +
+            "e xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n                xmlns:x" +
+            "sd=\"http://www.w3.org/2001/XMLSchema\">\r\n                <FunctionKey>Suggestion5" +
+            "</FunctionKey>\r\n            </KeyValue>\r\n        </key>\r\n        <value>\r\n      " +
+            "      <ticks>PT2S</ticks>\r\n        </value>\r\n    </item>\r\n    <item>\r\n        <k" +
+            "ey>\r\n            <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "\r\n                xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n               " +
+            " <FunctionKey>Suggestion6</FunctionKey>\r\n            </KeyValue>\r\n        </key>" +
+            "\r\n        <value>\r\n            <ticks>PT2S</ticks>\r\n        </value>\r\n    </item" +
+            ">\r\n</dictionary>")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues)(this["KeySelectionTriggerFixationCompleteTimesByKeyValues"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
+            }
+        }
     }
 }

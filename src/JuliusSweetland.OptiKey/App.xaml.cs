@@ -389,12 +389,7 @@ namespace JuliusSweetland.OptiKey
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
-                       new Dictionary<KeyValue, TimeSpan>
-                       {
-                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion1}, TimeSpan.FromSeconds(2) },
-                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion2}, TimeSpan.FromSeconds(5) },
-                           { new KeyValue{FunctionKey = FunctionKeys.Suggestion3}, TimeSpan.FromSeconds(10) }
-                       }, 
+                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues, 
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
                     break;

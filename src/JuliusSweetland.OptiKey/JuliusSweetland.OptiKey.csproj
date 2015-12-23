@@ -234,6 +234,7 @@
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
     <Compile Include="Native\Enums\AppBarNotify.cs" />
     <Compile Include="Native\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Enums\AppBarMessages.cs" />

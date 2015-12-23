@@ -320,5 +320,75 @@
     <Setting Name="ConversationBorderThickness" Roaming="true" Type="System.Windows.Thickness" Scope="User">
       <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
+    <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
+      <Value Profile="(Default)">&lt;dictionary&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion1&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion2&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion3&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion4&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion5&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+        &lt;key&gt;
+            &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                &lt;FunctionKey&gt;Suggestion6&lt;/FunctionKey&gt;
+            &lt;/KeyValue&gt;
+        &lt;/key&gt;
+        &lt;value&gt;
+            &lt;ticks&gt;PT2S&lt;/ticks&gt;
+        &lt;/value&gt;
+    &lt;/item&gt;
+&lt;/dictionary&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
