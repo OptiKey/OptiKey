@@ -321,7 +321,8 @@
       <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
-      <Value Profile="(Default)">&lt;dictionary&gt;
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;dictionary&gt;
   &lt;item&gt;
     &lt;key&gt;
       &lt;KeyValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
