@@ -4,10 +4,8 @@
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
-                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                        xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
-                       xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
@@ -43,47 +41,29 @@
                             </Grid.ColumnDefinitions>
                             <controls:Key Grid.Row="0" Grid.Column="0"
                                           Text="{x:Static resx:Resources.ENGLISH_CANADA}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishCanada}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.EnglishCanada}"/>
                             <controls:Key Grid.Row="0" Grid.Column="1"
                                           Text="{x:Static resx:Resources.ENGLISH_UK}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishUK}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.EnglishUK}"/>
                             <controls:Key Grid.Row="0" Grid.Column="2"
                                           Text="{x:Static resx:Resources.ENGLISH_US}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishUS}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.EnglishUS}"/>
                             
                             <controls:Key Grid.Row="1" Grid.Column="0"
                                           Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.FrenchFrance}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.FrenchFrance}"/>
                             <controls:Key Grid.Row="1" Grid.Column="1"
                                           Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.GermanGermany}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.GermanGermany}"/>
                             <controls:Key Grid.Row="1" Grid.Column="2"
                                           Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithText">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RussianRussia}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static enums:FunctionKeys.RussianRussia}"/>
                         </Grid>
                     </Setter.Value>
                 </Setter>
@@ -112,47 +92,29 @@
                                     </Grid.ColumnDefinitions>
                                     <controls:Key Grid.Row="0" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.ENGLISH_CANADA}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishCanada}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.EnglishCanada}"/>
                                     <controls:Key Grid.Row="1" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.ENGLISH_UK}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishUK}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.EnglishUK}"/>
                                     <controls:Key Grid.Row="2" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.ENGLISH_US}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.EnglishUS}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.EnglishUS}"/>
 
                                     <controls:Key Grid.Row="0" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.FrenchFrance}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.FrenchFrance}"/>
                                     <controls:Key Grid.Row="1" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.GermanGermany}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.GermanGermany}"/>
                                     <controls:Key Grid.Row="2" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
-                                                  SharedSizeGroup="KeyWithText">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.RussianRussia}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static enums:FunctionKeys.RussianRussia}"/>
                                 </Grid>
                             </Setter.Value>
                         </Setter>

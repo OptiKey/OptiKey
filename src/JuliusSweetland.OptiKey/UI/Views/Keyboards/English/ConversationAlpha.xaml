@@ -55,257 +55,155 @@
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="q" ShiftDownText="Q"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="q" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="q"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="w" ShiftDownText="W"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="w" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="w"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="e" ShiftDownText="E" 
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="e" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="e"/>
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
                       ShiftUpText="r" ShiftDownText="R"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="r" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="r"/>
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
                       ShiftUpText="t" ShiftDownText="T"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="t" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="t"/>
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                       ShiftUpText="y" ShiftDownText="Y"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="y" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="y"/>
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
                       ShiftUpText="u" ShiftDownText="U"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="u" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="u"/>
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
                       ShiftUpText="i" ShiftDownText="I"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="i" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="i"/>
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
                       ShiftUpText="o" ShiftDownText="O"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="o" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="o"/>
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
                       ShiftUpText="p" ShiftDownText="P"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="p" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="p"/>
 
         <controls:Key Grid.Row="3" Grid.Column="0" />
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="a" ShiftDownText="A"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="a" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="a"/>
         <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
                       ShiftUpText="s" ShiftDownText="S"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="s" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="s"/>
         <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
                       ShiftUpText="d" ShiftDownText="D"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="d" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="d"/>
         <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
                       ShiftUpText="f" ShiftDownText="F"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="f" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="f"/>
         <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
                       ShiftUpText="g" ShiftDownText="G"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="g" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="g"/>
         <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
                       ShiftUpText="h" ShiftDownText="H"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="h" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="h"/>
         <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
                       ShiftUpText="j" ShiftDownText="J"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="j" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="j"/>
         <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
                       ShiftUpText="k" ShiftDownText="K"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="k" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="k"/>
         <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
                       ShiftUpText="l" ShiftDownText="L"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="l" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="19" />
 
         <controls:Key Grid.Row="4" Grid.Column="0" />
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="z" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="z"/>
         <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                       ShiftUpText="x" ShiftDownText="X"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="x" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="x"/>
         <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
                       ShiftUpText="c" ShiftDownText="C"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="c" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="c"/>
         <controls:Key Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2"
                       ShiftUpText="v" ShiftDownText="V"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="v" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="v"/>
         <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2"
                       ShiftUpText="b" ShiftDownText="B"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="b" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="b"/>
         <controls:Key Grid.Row="4" Grid.Column="11" Grid.ColumnSpan="2"
                       ShiftUpText="n" ShiftDownText="N"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="n" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="n"/>
         <controls:Key Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="2"
                       ShiftUpText="m" ShiftDownText="M"
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="m" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="m"/>
         <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackOne}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.BackOne}"/>
         <controls:Key Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackMany}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.BackMany}"/>
         <controls:Key Grid.Row="4" Grid.Column="19" />
         
         <controls:Key Grid.Row="5" Grid.Column="0" />
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.LeftShift}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.LeftShift}"/>
         <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ConversationNumericAndSymbolsKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.ConversationNumericAndSymbolsKeyboard}"/>
         <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Case="None"
                       Text=","
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="," />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value=","/>
         <controls:Key Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="2" 
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue String=" " />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="11" Grid.ColumnSpan="2" Case="None"
                       Text="."
-                      SharedSizeGroup="KeyWithSingleLetter">
-            <controls:Key.Value>
-                <models:KeyValue String="." />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="."/>
         <controls:Key Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}"/>
         <ContentControl Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
@@ -313,11 +211,8 @@
                         <Setter.Value>
                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                           Text="{x:Static resx:Resources.BACK}"
-                                          SharedSizeGroup="KeyWithSymbol">
-                                <controls:Key.Value>
-                                    <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
-                                </controls:Key.Value>
-                            </controls:Key>
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static enums:FunctionKeys.BackFromKeyboard}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -326,11 +221,8 @@
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
                                                   Text="{x:Static resx:Resources.QUIT}"
-                                                  SharedSizeGroup="KeyWithSymbol">
-                                        <controls:Key.Value>
-                                            <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Quit}" />
-                                        </controls:Key.Value>
-                                    </controls:Key>
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static enums:FunctionKeys.Quit}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -341,10 +233,7 @@
         <controls:Key Grid.Row="5" Grid.Column="17"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Calibrate}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.Calibrate}"/>
     </Grid>
 </controls:KeyboardView>

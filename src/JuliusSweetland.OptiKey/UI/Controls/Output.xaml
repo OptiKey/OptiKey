@@ -41,10 +41,8 @@
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource SuggestionLeftIcon}"
                       Text="{x:Static resx:Resources.PREV}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.PreviousSuggestions}" />
-            </controls:Key.Value>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.PreviousSuggestions}">
         </controls:Key>
         <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
@@ -53,7 +51,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None">
+            <controls:Key Grid.Row="0" Grid.Column="0" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static enums:FunctionKeys.Suggestion1}">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -66,11 +65,9 @@
                         </Binding>
                     </MultiBinding>
                 </controls:Key.Text>
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="Suggestion1" />
-                </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="1" SharedSizeGroup="KeyWithSuggestion" Case="None">
+            <controls:Key Grid.Row="0" Grid.Column="1" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static enums:FunctionKeys.Suggestion2}">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -83,11 +80,9 @@
                         </Binding>
                     </MultiBinding>
                 </controls:Key.Text>
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="Suggestion2" />
-                </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="2" SharedSizeGroup="KeyWithSuggestion" Case="None">
+            <controls:Key Grid.Row="0" Grid.Column="2" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static enums:FunctionKeys.Suggestion3}">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -100,11 +95,9 @@
                         </Binding>
                     </MultiBinding>
                 </controls:Key.Text>
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="Suggestion3" />
-                </controls:Key.Value>
             </controls:Key>
-            <controls:Key Grid.Row="0" Grid.Column="3" SharedSizeGroup="KeyWithSuggestion" Case="None">
+            <controls:Key Grid.Row="0" Grid.Column="3" SharedSizeGroup="KeyWithSuggestion" Case="None"
+                          Value="{x:Static enums:FunctionKeys.Suggestion4}">
                 <controls:Key.Text>
                     <MultiBinding Converter="{StaticResource SuggestionsPaged}" Mode="OneWay">
                         <Binding Path="DataContext.SuggestionService.Suggestions" RelativeSource="{RelativeSource AncestorType=controls:KeyboardHost}" />
@@ -117,53 +110,35 @@
                         </Binding>
                     </MultiBinding>
                 </controls:Key.Text>
-                <controls:Key.Value>
-                    <models:KeyValue FunctionKey="Suggestion4" />
-                </controls:Key.Value>
             </controls:Key>
         </Grid>
         <controls:Key Grid.Row="0" Grid.Column="4"
                       SymbolGeometry="{StaticResource SuggestionRightIcon}"
                       Text="{x:Static resx:Resources.NEXT}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.NextSuggestions}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                          Value="{x:Static enums:FunctionKeys.NextSuggestions}"/>
 
         <controls:Key Grid.Row="1" Grid.Column="0"
                       SymbolGeometry="{StaticResource AddToDictionaryIcon}" 
                       Text="{x:Static resx:Resources.ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.AddToDictionary}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.AddToDictionary}"/>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
                       Text="{x:Static resx:Resources.CLEAR}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.ClearScratchpad}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.ClearScratchpad}"/>
         <controls:Scratchpad Grid.Row="1" Grid.Column="2"
                              Text="{Binding DataContext.KeyboardOutputService.Text, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=OneWay}" />
         <controls:Key Grid.Row="1" Grid.Column="3"
                       SymbolGeometry="{StaticResource SpeakIcon}" 
                       Text="{x:Static resx:Resources.SPEAK}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Speak}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.Speak}"/>
         <controls:Key Grid.Row="1" Grid.Column="4"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.Sleep}" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static enums:FunctionKeys.Sleep}"/>
     </Grid>
 </UserControl>

@@ -5,7 +5,6 @@
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                        xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
-                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -15,10 +14,7 @@
 
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
-        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="{x:Static enums:FunctionKeys.BackFromKeyboard}" />
-            </controls:Key.Value>
-        </controls:Key>
+        <controls:Key SymbolGeometry="{StaticResource ApplicationIcon}"
+                      Value="{x:Static enums:FunctionKeys.BackFromKeyboard}"/>
     </Grid>
 </controls:KeyboardView>

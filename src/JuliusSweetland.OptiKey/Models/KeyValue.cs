@@ -6,8 +6,24 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public struct KeyValue
     {
-        public FunctionKeys? FunctionKey { get; set; }
-        public string String { get; set; }
+        public KeyValue(FunctionKeys functionKey)
+        {
+            FunctionKey = functionKey;
+            String = null;
+        }
+        public KeyValue(string text)
+        {
+            FunctionKey = null;
+            String = text;
+        }
+        public KeyValue(FunctionKeys? functionKey, string text)
+        {
+            FunctionKey = functionKey;
+            String = text;
+        }
+
+        public FunctionKeys? FunctionKey { get; private set; }
+        public string String { get; private set; }
         
         public bool StringIsLetter
         {
