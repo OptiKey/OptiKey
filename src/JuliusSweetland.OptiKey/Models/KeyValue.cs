@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public struct KeyValue
+    public struct KeyValue : IEquatable<KeyValue>
     {
         public KeyValue(FunctionKeys functionKey)
         {
@@ -22,14 +23,16 @@ namespace JuliusSweetland.OptiKey.Models
             String = text;
         }
 
-        public FunctionKeys? FunctionKey { get; private set; }
-        public string String { get; private set; }
+        public FunctionKeys? FunctionKey { get; }
+        public string String { get; }
         
         public bool StringIsLetter
         {
             get { return String != null && String.Length == 1 && char.IsLetter(String, 0); }
         }
         
+        #region Equality 
+
         public bool Equals(KeyValue kv)
         {
             // Return true if the fields match:
@@ -46,6 +49,22 @@ namespace JuliusSweetland.OptiKey.Models
         {
             return !(x == y);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is KeyValue && Equals((KeyValue) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (FunctionKey.GetHashCode()*397) ^ (String != null ? String.GetHashCode() : 0);
+            }
+        }
+
+        #endregion
 
         public override string ToString()
         {
