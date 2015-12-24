@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private GazePointDataStream gazeDataStream;
         private FixationDataStream fixationDataStream;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace JuliusSweetland.OptiKey.UI.ValueConverters
@@ -8,6 +9,8 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null || value == DependencyProperty.UnsetValue || parameter == null) return null;
+
             var valueAsInt = (int)value;
             var stringParam = parameter as string;
             var splitParams = stringParam.Split('|');

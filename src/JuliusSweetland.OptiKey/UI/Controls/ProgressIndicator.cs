@@ -169,7 +169,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         /// <param name="angle"></param>
         /// <param name="radius"></param>
         /// <returns></returns>
-        private Point ComputeCartesianCoordinate(double angle, double radius)
+        private static Point ComputeCartesianCoordinate(double angle, double radius)
         {
             // convert to radians
             double angleRad = (Math.PI / 180.0) * (angle - 90);
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             return new Point(x, y);
         }
 
-        private Point OffsetEx(Point point, double x, double y)
+        private static Point OffsetEx(Point point, double x, double y)
         {
             return new Point(point.X + x, point.Y + y);
         }

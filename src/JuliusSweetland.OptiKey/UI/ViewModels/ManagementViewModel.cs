@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     {
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
         
@@ -117,7 +117,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void Cancel(Window window)
+        private static void Cancel(Window window)
         {
             window.Close();
         }

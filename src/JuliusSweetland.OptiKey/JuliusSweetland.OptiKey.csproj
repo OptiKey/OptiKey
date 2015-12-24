@@ -214,6 +214,7 @@
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\IKeyStateServiceExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
     <Compile Include="Extensions\FunctionKeysExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
@@ -326,7 +327,7 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\ValueConverters\ObjectToTypeName.cs" />
+    <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
     <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
     <Compile Include="UI\ValueConverters\FontSizeToFitLines.cs" />
@@ -335,6 +336,7 @@
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Base\IConversationKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />

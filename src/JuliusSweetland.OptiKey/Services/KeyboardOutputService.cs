@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Input;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -18,7 +17,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IKeyStateService keyStateService;
         private readonly ISuggestionStateService suggestionService;
@@ -149,7 +148,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
                         else if(!string.IsNullOrEmpty(lastTextChange)
                             && lastTextChange.Length == 1
-                            && !Char.IsWhiteSpace(lastTextChange[0]))
+                            && !char.IsWhiteSpace(lastTextChange[0]))
                         {
                             dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
                             dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
@@ -322,7 +321,7 @@ namespace JuliusSweetland.OptiKey.Services
                 dictionaryService.IncrementEntryUsageCount(captureText);
             }
             else if (captureText.Length == 1
-                && !Char.IsWhiteSpace(captureText[0]))
+                && !char.IsWhiteSpace(captureText[0]))
             {
                 if (!string.IsNullOrEmpty(textBeforeCaptureText))
                 {
@@ -534,7 +533,7 @@ namespace JuliusSweetland.OptiKey.Services
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 
                     if (!string.IsNullOrEmpty(inProgressWord)
-                        && Char.IsLetter(inProgressWord.First())) //A word must start with a letter
+                        && char.IsLetter(inProgressWord.First())) //A word must start with a letter
                     {
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
@@ -556,7 +555,7 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 bool makeUppercase = false;
                                 if (index < inProgressWord.Length
-                                    && Char.IsUpper(inProgressWord[index]))
+                                    && char.IsUpper(inProgressWord[index]))
                                 {
                                     makeUppercase = true; //In progress word is uppercase as this index
                                 }
@@ -573,7 +572,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 if (makeUppercase)
                                 {
-                                    suggestionChars[index] = Char.ToUpper(suggestion[index]);
+                                    suggestionChars[index] = char.ToUpper(suggestion[index]);
                                 }
                             }
 
@@ -639,6 +638,15 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (keyStateService.SimulateKeyStrokes)
             {
+                var virtualKeyCode = character.ToVirtualKeyCode();
+                if (virtualKeyCode != null)
+                {
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1} (using hard coded mapping)",
+                        character.ConvertEscapedCharToLiteral(), virtualKeyCode);
+                    publishService.KeyDownUp(virtualKeyCode.Value);
+                    return;
+                }
+
                 if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
                 {
                     Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
@@ -646,7 +654,7 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
-                //Get keyboard layout of currently focussed window
+                //Get keyboard layout of currently focused window
                 IntPtr hWnd = PInvoke.GetForegroundWindow();
                 int lpdwProcessId;
                 int winThreadProcId = PInvoke.GetWindowThreadProcessId(hWnd, out lpdwProcessId);
@@ -660,6 +668,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (keyboardLayout == installedInputLanguages[i].Handle)
                     {
                         keyboardCulture = installedInputLanguages[i].Culture.DisplayName;
+                        break;
                     }
                 }
 
@@ -670,10 +679,9 @@ namespace JuliusSweetland.OptiKey.Services
                 var ctrl = (vkKeyScan & 0x200) > 0;
                 var alt = (vkKeyScan & 0x400) > 0;
 
-                if (Settings.Default.PublishVirtualKeyCodesForCharacters
-                    && vkKeyScan != -1)
+                if (vkKeyScan != -1)
                 {
-                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (keyboard:{5})",
+                    Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
                         character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 

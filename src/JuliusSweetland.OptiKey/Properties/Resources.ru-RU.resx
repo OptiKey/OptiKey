@@ -300,7 +300,7 @@
     <value>Ширина курсора (пиксели):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Режим "Debugging ":</value>
+    <value>Режим "Debugging":</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УВЕЛИЧИТЬ
@@ -349,15 +349,6 @@
   </data>
   <data name="END" xml:space="preserve">
     <value>END</value>
-  </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
@@ -434,9 +425,6 @@
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Толщина шрифта:</value>
   </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / Française (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Полная величина дока(% от окна):</value>
   </data>
@@ -444,7 +432,7 @@
     <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
-    <value>Рости</value>
+    <value>Увеличивающийся</value>
   </data>
   <data name="HOME" xml:space="preserve">
     <value>HOME</value>
@@ -535,6 +523,12 @@
   </data>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Язык</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Язык клавиатуры: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Язык клавиатуры:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Слева</value>
@@ -931,10 +925,10 @@ SCR</value>
 ВНИЗ/ВВЕРХ</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Увеличивающийся 1</value>
+    <value>Повышающийся 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Увеличивающийся 2</value>
+    <value>Повышающийся 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Такая же, как и позиция дока.</value>
@@ -999,7 +993,7 @@ LK</value>
 ВНИЗ</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
-    <value>Уменьшить</value>
+    <value>Уменьшающийся</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УМЕНЬШИТЬ
@@ -1207,22 +1201,19 @@ LK</value>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Объем потока обработки данных:</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>German (Germany) / Deutsch (Deutschland)</value>
-  </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Язык клавиатуры: {0}</value>
-  </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Язык клавиатуры:</value>
-  </data>
-  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Имитировать физическую клавиатуру (для письма):</value>
-  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Язык интерфейса: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Язык интерфейса:</value>
   </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Имитировать физическую клавиатуру (для письма): </value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Толщина разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Выключить увеличение во время прокручивания мыши:</value>
+  </data>  
 </root>

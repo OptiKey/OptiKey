@@ -1,20 +1,21 @@
-1.Check that the AssemblyVersion in AssemblyInfo has already been incremented to the next release version number
-2.Change app.manifest to include uiAccess="true" flag
-3.Build in Release config
-4.Run script 1 to clean the src directory, bin directory, copy files to src folder and sign the exe
-5.Create installer in INNO
+1.Run all unit tests
+2.Check that the AssemblyVersion in AssemblyInfo has already been incremented to the next release version number
+3.Change app.manifest to include uiAccess="true" flag
+4.Build in Release config
+5.Run script 1 to clean the src directory, bin directory, copy files to src folder and sign the exe
+6.Create installer in INNO
   i)Set version number
   ii)Compile Inno script
-6.Run script 3 to sign the installer
-7.Test locally
-8.If good then...
+7.Run script 3 to sign the installer
+8.Test locally
+9.If good then...
   i)Revert app.manifest uiAccess flag back to "false"
   ii)Revert build from Release to Debug
   iii)Commit source to GitHub (Debug mode)
-9.Create release (tag) on GitHub including;
+10.Create release (tag) on GitHub including;
   i)Release notes
   ii)Binary installer
-10.Update download link on wiki: https://github.com/JuliusSweetland/OptiKey/wiki/_Sidebar/_edit
+11.Update download link on wiki: https://github.com/JuliusSweetland/OptiKey/wiki/_Sidebar/_edit
 
 ---------------------------------------------------------------------------------------------------  
 

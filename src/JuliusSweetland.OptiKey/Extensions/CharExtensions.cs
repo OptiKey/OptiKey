@@ -58,5 +58,25 @@ namespace JuliusSweetland.OptiKey.Extensions
                 .Replace("\n", @"\n")
                 .Replace("\r", @"\r");
         }
+
+        //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
+        //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
+        public static VirtualKeyCode? ToVirtualKeyCode(this char character)
+        {
+            switch (character)
+            {
+                case ' ':
+                    return VirtualKeyCode.SPACE;
+
+                case '\t':
+                    return VirtualKeyCode.TAB;
+
+                case '\n':
+                    return VirtualKeyCode.RETURN;
+
+                default:
+                    return null;
+            }
+        }
     }
 }

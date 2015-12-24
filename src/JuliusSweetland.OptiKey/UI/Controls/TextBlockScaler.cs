@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class TextBlockScaler : ContentControl
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private TextBlock textBlock;
         

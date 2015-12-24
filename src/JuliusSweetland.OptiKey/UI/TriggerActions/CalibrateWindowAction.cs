@@ -11,11 +11,11 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {
     public class CalibrateWindowAction : TriggerAction<FrameworkElement>
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #region Invoke
 
-        protected async override void Invoke(object parameter)
+        protected override async void Invoke(object parameter)
         {
             var args = parameter as InteractionRequestedEventArgs;
 

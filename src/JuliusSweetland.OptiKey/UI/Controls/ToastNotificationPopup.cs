@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Set Size
 
-        private void SetSize(FrameworkElement target, FrameworkElement parent)
+        private static void SetSize(FrameworkElement target, FrameworkElement parent)
         {
             target.MaxHeight = target.MinHeight = target.Height = 
                 parent.ActualHeight * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
@@ -111,7 +111,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #region Animate Target
 
-        private void AnimateTarget(string text, FrameworkElement target, Action onPopupClose)
+        private static void AnimateTarget(string text, FrameworkElement target, Action onPopupClose)
         {
             var storyboard = new Storyboard();
 

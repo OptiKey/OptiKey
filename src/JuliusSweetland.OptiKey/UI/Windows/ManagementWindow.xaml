@@ -6,10 +6,9 @@
                      xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                      Title="{x:Static resx:Resources.MANAGEMENT_CONSOLE_TITLE}"
                      Topmost="True"
-                     WindowStartupLocation="CenterScreen"
+                     WindowStartupLocation="CenterOwner"
+                     WindowState="Maximized"
                      MinWidth="300" MinHeight="200"
                      Icon="..\..\Resources\Icons\Management.ico">
-    <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
-
     <views:ManagementView x:Name="ManagementView" />
 </mahapps:MetroWindow>

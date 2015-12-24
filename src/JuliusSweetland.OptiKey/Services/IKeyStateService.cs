@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 
