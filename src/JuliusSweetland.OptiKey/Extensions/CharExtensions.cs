@@ -13,10 +13,10 @@ namespace JuliusSweetland.OptiKey.Extensions
             var cAsString = c.ToString(CultureInfo.InvariantCulture);
 
             //Remove diacritics
-            cAsString.RemoveDiacritics();
+            var removedDiacriticStr = cAsString.RemoveDiacritics();
 
             //Make uppercase
-            cAsString = cAsString.ToUpper();
+            cAsString = removedDiacriticStr.ToUpper();
 
             //Convert back to char
             return cAsString.First();
@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         public static CharCategories ToCharCategory(this char c)
         {
-            if (new[] { '\n' }.Contains(c))
+            if (c == '\n')
             {
                 return CharCategories.NewLine;
             }
@@ -49,14 +49,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         public static string ConvertEscapedCharToLiteral(this char input)
         {
-            return input.ToString(CultureInfo.InvariantCulture)
-                .Replace("\0", @"\0")
-                .Replace("\a", @"\a")
-                .Replace("\b", @"\b")
-                .Replace("\t", @"\t")
-                .Replace("\f", @"\f")
-                .Replace("\n", @"\n")
-                .Replace("\r", @"\r");
+            return input.ToString(CultureInfo.InvariantCulture).ConvertEscapedCharsToLiterals();
         }
 
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
