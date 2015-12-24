@@ -1405,28 +1405,28 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<dictionary>\r\n  <item>\r\n    <key>\r\n     " +
-            " <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http" +
-            "://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion1</FunctionKey>\r\n" +
-            "      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </val" +
-            "ue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://www.w3.or" +
-            "g/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n      " +
-            "  <FunctionKey>Suggestion2</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r\n    <va" +
-            "lue>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n " +
-            "     <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"" +
-            "http://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion3</FunctionKe" +
-            "y>\r\n      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    <" +
-            "/value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://www.w" +
-            "3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  " +
-            "      <FunctionKey>Suggestion4</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r\n   " +
-            " <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key" +
-            ">\r\n      <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:x" +
-            "sd=\"http://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion5</Functi" +
-            "onKey>\r\n      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n " +
-            "   </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://w" +
-            "ww.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "\r\n        <FunctionKey>Suggestion6</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r" +
-            "\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n</dictionary>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<dictionary>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://www.w3.org/2" +
+            "001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n        <" +
+            "FunctionKey>Suggestion1</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r\n    <value" +
+            ">\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n    " +
+            "  <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"htt" +
+            "p://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion2</FunctionKey>\r" +
+            "\n      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    </va" +
+            "lue>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://www.w3.o" +
+            "rg/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n     " +
+            "   <FunctionKey>Suggestion3</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r\n    <v" +
+            "alue>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n" +
+            "      <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=" +
+            "\"http://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion4</FunctionK" +
+            "ey>\r\n      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n    " +
+            "</value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <KeyValue xmlns:xsi=\"http://www." +
+            "w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n " +
+            "       <FunctionKey>Suggestion5</FunctionKey>\r\n      </KeyValue>\r\n    </key>\r\n  " +
+            "  <value>\r\n      <ticks>PT2S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <ke" +
+            "y>\r\n      <KeyValue xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:" +
+            "xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n        <FunctionKey>Suggestion6</Funct" +
+            "ionKey>\r\n      </KeyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT2S</ticks>\r\n" +
+            "    </value>\r\n  </item>\r\n</dictionary>")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {

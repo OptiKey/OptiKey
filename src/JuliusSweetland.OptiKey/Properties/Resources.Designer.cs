@@ -215,12 +215,30 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BACK ONE.
+        /// </summary>
+        public static string BACK_ONE {
+            get {
+                return ResourceManager.GetString("BACK_ONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BACK
         ///ONE.
         /// </summary>
         public static string BACK_ONE_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("BACK_ONE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BACK WORD.
+        /// </summary>
+        public static string BACK_WORD {
+            get {
+                return ResourceManager.GetString("BACK_WORD", resourceCulture);
             }
         }
         
@@ -630,6 +648,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DELETE_DICTIONARY_ENTRY {
             get {
                 return ResourceManager.GetString("DELETE_DICTIONARY_ENTRY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destructive Keys.
+        /// </summary>
+        public static string DESTRUCTIVE_KEYS_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("DESTRUCTIVE_KEYS_GROUP_LABEL", resourceCulture);
             }
         }
         
@@ -2865,6 +2892,69 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SUCCESS {
             get {
                 return ResourceManager.GetString("SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 1.
+        /// </summary>
+        public static string SUGGESTION_1 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 2.
+        /// </summary>
+        public static string SUGGESTION_2 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 3.
+        /// </summary>
+        public static string SUGGESTION_3 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 4.
+        /// </summary>
+        public static string SUGGESTION_4 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 5.
+        /// </summary>
+        public static string SUGGESTION_5 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUGGESTION 6.
+        /// </summary>
+        public static string SUGGESTION_6 {
+            get {
+                return ResourceManager.GetString("SUGGESTION_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggestion Keys.
+        /// </summary>
+        public static string SUGGESTION_KEYS_GROUP_LABEL {
+            get {
+                return ResourceManager.GetString("SUGGESTION_KEYS_GROUP_LABEL", resourceCulture);
             }
         }
         

@@ -8,7 +8,10 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public static class KeyValues
     {
+        public static readonly KeyValue BackOneKey = new KeyValue { FunctionKey = FunctionKeys.BackOne };
+        public static readonly KeyValue BackManyKey = new KeyValue { FunctionKey = FunctionKeys.BackMany };
         public static readonly KeyValue CalibrateKey = new KeyValue { FunctionKey = FunctionKeys.Calibrate };
+        public static readonly KeyValue ClearScratchpadKey = new KeyValue { FunctionKey = FunctionKeys.ClearScratchpad };
         public static readonly KeyValue CollapseDockKey = new KeyValue { FunctionKey = FunctionKeys.CollapseDock };
         public static readonly KeyValue ExpandDockKey = new KeyValue { FunctionKey = FunctionKeys.ExpandDock };
         public static readonly KeyValue ExpandToBottomKey = new KeyValue { FunctionKey = FunctionKeys.ExpandToBottom };

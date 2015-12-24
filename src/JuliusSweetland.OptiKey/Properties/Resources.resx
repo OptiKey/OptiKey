@@ -1244,4 +1244,34 @@ Deutsch (Deutschland)</value>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
   </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>BACK ONE</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>BACK WORD</value>
+  </data>
+  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Destructive Keys</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>SUGGESTION 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>SUGGESTION 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>SUGGESTION 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>SUGGESTION 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>SUGGESTION 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>SUGGESTION 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Suggestion Keys</value>
+  </data>
 </root>
