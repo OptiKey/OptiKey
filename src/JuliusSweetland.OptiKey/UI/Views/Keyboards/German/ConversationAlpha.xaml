@@ -5,7 +5,6 @@
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
-                       xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        mc:Ignorable="d" 
@@ -180,12 +179,12 @@
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.BackOne}"/>
+                      Value="{x:Static models:KeyValues.BackOneKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="19" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.BackMany}"/>
+                      Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="21" />
         
         <controls:Key Grid.Row="5" Grid.Column="0" />
@@ -193,12 +192,12 @@
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.LeftShift}"/>
+                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.ConversationNumericAndSymbolsKeyboard}"/>
+                      Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2"
                       Text="," Case="None"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -217,7 +216,7 @@
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.MultiKeySelectionIsOn}"/>
+                      Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
         <ContentControl Grid.Row="5" Grid.Column="17" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
@@ -226,7 +225,7 @@
                             <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static enums:FunctionKeys.BackFromKeyboard}"/>
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -236,7 +235,7 @@
                                     <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
                                                   Text="{x:Static resx:Resources.QUIT}"
                                                   SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static enums:FunctionKeys.Quit}"/>
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -248,7 +247,7 @@
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static enums:FunctionKeys.Calibrate}"/>
+                      Value="{x:Static models:KeyValues.CalibrateKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="21" />
     </Grid>
 </controls:KeyboardView>

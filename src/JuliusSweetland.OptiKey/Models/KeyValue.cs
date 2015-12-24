@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 
 namespace JuliusSweetland.OptiKey.Models
 {
+    [TypeConverter(typeof(KeyValueConverter))]
     public struct KeyValue : IEquatable<KeyValue>
     {
         public KeyValue(FunctionKeys functionKey)
@@ -88,6 +91,45 @@ namespace JuliusSweetland.OptiKey.Models
             }
             
             return stringBuilder.ToString();
+        }
+    }
+
+    public sealed class KeyValueConverter : TypeConverter
+    {
+        // Overrides the CanConvertFrom method of TypeConverter.
+        // The ITypeDescriptorContext interface provides the context for the
+        // conversion. Typically, this interface is used at design time to 
+        // provide information about the design-time container.
+        public override bool CanConvertFrom(ITypeDescriptorContext context,
+           Type sourceType)
+        {
+
+            if (sourceType == typeof(string))
+            {
+                return true;
+            }
+            return base.CanConvertFrom(context, sourceType);
+        }
+        // Overrides the ConvertFrom method of TypeConverter.
+        public override object ConvertFrom(ITypeDescriptorContext context,
+           CultureInfo culture, object value)
+        {
+            var text = value as string;
+            if (text!=null)
+            {
+                return new KeyValue(text);
+            }
+            return base.ConvertFrom(context, culture, value);
+        }
+        // Overrides the ConvertTo method of TypeConverter.
+        public override object ConvertTo(ITypeDescriptorContext context,
+           CultureInfo culture, object value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                return ((KeyValue)value).String;
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
         }
     }
 }
