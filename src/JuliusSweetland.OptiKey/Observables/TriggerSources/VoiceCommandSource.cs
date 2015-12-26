@@ -15,11 +15,21 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
     /// <summary>
     /// Voice command source is using Window's speech recognition engine to detect spocken command, 
-    /// and consider them as triggers
+    /// and consider them as triggers.
+    /// 
+    /// A voice command is composed by a prefix (for example "Opti") and command (for example "yes")
+    /// Prefix recognition threshold is pretty high (85%), while command is lower (75%)
+    /// 
+    /// It avoids triggering commands while we are not 85% sure that user is effectively speaking to Optikey.
     /// </summary>
     public class VoiceCommandSource : IVoiceCommandSource
     {
-        private const string SemanticResultKey = "command";
+        //Command recognition is composed
+        private const string CommandResultKey = "command";
+        private const string PrefixResultKey = "prefix";
+        private const float commandConfidenceThreshold = 0.75F;
+        private const float prefixConfidenceThreshold = 0.85F;
+
         #region Fields
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -62,6 +72,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         {
                             Log.Info("Initialising speech recognition engine.");
                             speechEngine = new SpeechRecognitionEngine();
+                            speechEngine.MaxAlternates = 1;
                             ReloadGrammar();
 
                             //Starts recognition
@@ -108,10 +119,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         {
             if (args != null && args.EventArgs != null && args.EventArgs.Result != null)
             {
-                var semanticResult = args.EventArgs.Result.Semantics[SemanticResultKey];
-                var key = (string)semanticResult.Value;
+                var command = args.EventArgs.Result.Semantics[CommandResultKey];
+                var key = (string)command.Value;
 
-                Log.InfoFormat("Recognised speech pattern {0} for command {1}.", args.EventArgs.Result.Text, key);
+                var prefix = args.EventArgs.Result.Semantics[PrefixResultKey];
+
+                if (command.Confidence < commandConfidenceThreshold || 
+                        prefix.Confidence < prefixConfidenceThreshold) {
+                    Log.DebugFormat("Recognised speech pattern {0} but confidence is too low (prefix: {1:0.#}%, command! {2:0.#}%).", 
+                        args.EventArgs.Result.Text,
+                        prefix.Confidence * 100,
+                        command.Confidence * 100);
+                    //Recognition confidence is too low: triggers an empty signal that will be discarded
+                    return new TriggerSignal();
+                }
+
+                Log.DebugFormat("Recognised speech pattern {0} for command {1}.", args.EventArgs.Result.Text, key);
 
                 //Use the recognized pattern as notification, unless audio feedback is disabled
                 var notification = Settings.Default.VoiceCommandsFeedback ? commandService.Commands[StringExtensions.Parse<FunctionKeys>(key)] : null;
@@ -153,11 +176,12 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             }
 
             //Use the predefined grammar prefix
-            var grammarBuilder = new GrammarBuilder(Settings.Default.VoiceCommandsPrefix)
+            var grammarBuilder = new GrammarBuilder(new SemanticResultKey(PrefixResultKey, Settings.Default.VoiceCommandsPrefix))
             {
                 Culture = Settings.Default.UiLanguage.ToCultureInfo()
             };
-            grammarBuilder.Append(new SemanticResultKey(SemanticResultKey, commands));
+            grammarBuilder.Append(new SemanticResultKey(CommandResultKey, commands));
+
             speechEngine.LoadGrammar(new Grammar(grammarBuilder));
         }
 
