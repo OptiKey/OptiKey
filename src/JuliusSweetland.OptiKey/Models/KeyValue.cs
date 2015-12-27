@@ -4,10 +4,6 @@ using JuliusSweetland.OptiKey.Extensions;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    //TODO: Make KeyValue struct immutable
-    //http://stackoverflow.com/questions/3751911/why-are-c-sharp-structs-immutable
-    //https://msdn.microsoft.com/en-us/library/ms229031(v=vs.110).aspx
-    //TODO: Implement IEquatable<T>
     public struct KeyValue
     {
         public FunctionKeys? FunctionKey { get; set; }
