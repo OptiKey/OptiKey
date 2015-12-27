@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Speech.Recognition;
 using System.Windows;
 using System.Windows.Forms;
@@ -38,6 +39,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private SpeechRecognitionEngine speechEngine;
         private IObservable<TriggerSignal> sequence;
 
+        public event EventHandler<Exception> Error;
+
         #endregion
 
         #region Ctor
@@ -66,7 +69,11 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         {
             get
             {
-                if (sequence == null)
+                if (!Settings.Default.VoiceCommandsEnabled)
+                {
+                    sequence = new Subject<TriggerSignal>();
+                }
+                else if (sequence == null)
                 {
                     sequence = Observable.Using(() =>
                         {
@@ -74,31 +81,42 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             speechEngine = new SpeechRecognitionEngine();
                             speechEngine.MaxAlternates = 1;
                             ReloadGrammar();
-
-                            //Starts recognition
-                            speechEngine.SetInputToDefaultAudioDevice();
-                            Log.Info("Starting speech recognition.");
-                            speechEngine.RecognizeAsync(RecognizeMode.Multiple);
                             return speechEngine;
                         },
-                        se => Observable.FromEventPattern<SpeechRecognizedEventArgs>(
-                            h => se.SpeechRecognized += h,
-                            h => se.SpeechRecognized -= h)
-                            .Select(MatchRecognised)
-                            .Where(_ => State == RunningStates.Running)
-                            .Where(signal => 
+                        speechEngine => 
+                        {
+                            try
                             {
-                                //Filters empty signals, and in case of paused state, all commands except restart.
-                                var keyValue = signal.PointAndKeyValue != null
-                                    ? signal.PointAndKeyValue.Value.KeyValue
-                                    : null;
+                                //Starts recognition
+                                speechEngine.SetInputToDefaultAudioDevice();
+                                Log.Info("Starting speech recognition.");
+                                speechEngine.RecognizeAsync(RecognizeMode.Multiple);
+                                return Observable.FromEventPattern<SpeechRecognizedEventArgs>(
+                                    h => speechEngine.SpeechRecognized += h,
+                                    h => speechEngine.SpeechRecognized -= h)
+                                    .Select(MatchRecognised)
+                                    .Where(_ => State == RunningStates.Running)
+                                    .Where(signal =>
+                                    {
+                                        //Filters empty signals, and in case of paused state, all commands except restart.
+                                        var keyValue = signal.PointAndKeyValue != null
+                                            ? signal.PointAndKeyValue.Value.KeyValue
+                                            : null;
 
-                                if (keyValue == null) return false; //Key value is not useful
+                                        if (keyValue == null) return false; //Key value is not useful
 
-                                //Only publish the trigger signal if voice commands are currently enabled, or the signal is to (re-)start voice recognition
-                                return Settings.Default.VoiceCommandsEnabled || keyValue.Value.FunctionKey == FunctionKeys.StartVoiceRecognition;
-                            })
-                        )
+                                        //Only publish the trigger signal if voice commands are currently enabled, or the signal is to (re-)start voice recognition
+                                        return Settings.Default.VoiceCommandsEnabled || keyValue.Value.FunctionKey == FunctionKeys.StartVoiceRecognition;
+                                    });
+                            }
+                            catch (InvalidOperationException exception)
+                            {
+                                //Can't initialize Voice recognition: disable it
+                                Settings.Default.VoiceCommandsEnabled = false;
+                                PublishError(new ApplicationException(Resources.MIC_NOT_DETECTED_ERROR));
+                                return new Subject<TriggerSignal>();
+                            }
+                        })
                         .Publish()
                         .RefCount();
                 }
@@ -183,6 +201,22 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             grammarBuilder.Append(new SemanticResultKey(CommandResultKey, commands));
 
             speechEngine.LoadGrammar(new Grammar(grammarBuilder));
+        }
+        #endregion
+
+        #region Publish Error
+
+        /// <summary>
+        /// Reporte error, by logging it and by publishing it on the event stream
+        /// </summary>
+        /// <param name="ex">Reported error</param>
+        private void PublishError(Exception ex)
+        {
+            Log.Error("Publishing Error event (if there are any listeners) {0}", ex);
+            if (Error != null)
+            {
+                Error(this, ex);
+            }
         }
 
         #endregion

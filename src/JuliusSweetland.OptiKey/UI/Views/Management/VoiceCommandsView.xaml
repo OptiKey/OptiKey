@@ -50,7 +50,7 @@
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_PREFIX}" 
                             VerticalAlignment="Center" Margin="5" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Prefix, Mode=TwoWay}" 
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Prefix, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
                          Margin="2" VerticalAlignment="Center" />
             </Grid>
         </GroupBox>

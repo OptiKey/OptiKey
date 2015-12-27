@@ -1507,6 +1507,18 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Optikey has vocal commands, but did not found any usable microphone.
+        ///Vocal commands are now disabled.
+        ///
+        ///You can enable them when you&apos;ll have configured a microphone and from the management console..
+        /// </summary>
+        public static string MIC_NOT_DETECTED_ERROR {
+            get {
+                return ResourceManager.GetString("MIC_NOT_DETECTED_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MIDDLE
         ///CLICK.
         /// </summary>
@@ -1568,6 +1580,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MISC {
             get {
                 return ResourceManager.GetString("MISC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefix is required and can&apos;t be empty.
+        /// </summary>
+        public static string MISSING_VOICE_COMMAND_PREFIX_ERROR {
+            get {
+                return ResourceManager.GetString("MISSING_VOICE_COMMAND_PREFIX_ERROR", resourceCulture);
             }
         }
         

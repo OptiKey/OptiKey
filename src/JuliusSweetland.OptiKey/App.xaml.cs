@@ -452,8 +452,11 @@ namespace JuliusSweetland.OptiKey
                         + "Please correct and restart OptiKey.");
             }
 
+            var voiceCommandSource = new VoiceCommandSource(configurableCommandService);
+            errorNotifyingServices.Add(voiceCommandSource);
+
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource, new VoiceCommandSource(configurableCommandService));
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource, voiceCommandSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
         }
@@ -545,12 +548,16 @@ namespace JuliusSweetland.OptiKey
                 message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
                 message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);
 
-                inputService.RequestSuspend();
-                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                
                 mainViewModel.RaiseToastNotification(
                     OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION, 
                     message.ToString(), 
                     NotificationTypes.Normal,
+                    () =>
+                        {
+                            inputService.RequestSuspend();
+                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                        },
                     () =>
                         {
                             inputService.RequestResume();
@@ -600,11 +607,14 @@ namespace JuliusSweetland.OptiKey
                                 Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
                                     currentVersion, latestAvailableVersion);
 
-                                inputService.RequestSuspend();
-                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
                                     string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, release.TagName),
                                     NotificationTypes.Normal,
+                                    () =>
+                                        {
+                                            inputService.RequestSuspend();
+                                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                        },
                                     () => 
                                         {
                                             inputService.RequestResume();

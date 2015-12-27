@@ -35,7 +35,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
-            OkCommand = new DelegateCommand<Window>(Ok); //Can always click Ok
+            OkCommand = new DelegateCommand<Window>(Ok, CanApplyChanges);
             CancelCommand = new DelegateCommand<Window>(Cancel); //Can always click Cancel
         }
         
@@ -82,6 +82,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             VisualsViewModel.ApplyChanges();
             VoiceCommandsViewModel.ApplyChanges();
             WordsViewModel.ApplyChanges();
+        }
+
+        private bool CanApplyChanges(Window window)
+        {
+            return VoiceCommandsViewModel.CanApplyChanges();
         }
 
         private void Ok(Window window)

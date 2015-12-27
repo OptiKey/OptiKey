@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var mainViewModel = DataContext as MainViewModel;
 
             //Handle ToastNotification event
-            mainViewModel.ToastNotification += (o, args) =>
+            mainViewModel.SubscribeToToastNotification((o, args) =>
             {
                 //Set size and position
                 SetSize(toastNotification, window);
@@ -50,7 +50,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                 AnimateTarget(args.Content, toastNotification, closePopup);
                 IsOpen = true;
-            };
+            });
         }
 
         #endregion

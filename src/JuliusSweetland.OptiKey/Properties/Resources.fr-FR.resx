@@ -1137,7 +1137,7 @@ Aucune donnée ne sera reçue tant que la calibration ne sera pas terminée.</va
     <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Niveau de traitement appliqué au flux de données :</value>
+    <value>Niveau de traitement appliqué au flux de données:</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Aucun moteur Tobii EyeX trouvé. 
@@ -1382,58 +1382,13 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="YES" xml:space="preserve">
     <value>OUI</value>
   </data>
-  <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Transformation du texte des touches :</value>
+  <data name="MIC_NOT_DETECTED_ERROR" xml:space="preserve">
+    <value>Optikey propose des commandes vocales, mais n'a trouvé aucun micro actif.
+Les commandes vocales sont donc désactivées.
+
+Vous pourez les réactiver lorsque vous aurez configuré un micro depuis la fenêtre des paramètres.</value>
   </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Seule la première lettre des mots en majuscule</value>
-  </data>
-  <data name="LOWER_CASE" xml:space="preserve">
-    <value>Tout en minuscule</value>
-  </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>Tout en majuscule</value>
-  </data>
-  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Le calibrage est terminé, ou peut-être annulé, mais tout fonctionne normallement!</value>
-  </data>
-  <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Lettres</value>
-  </data>
-  <data name="HIGH" xml:space="preserve">
-    <value>Haut</value>
-  </data>
-  <data name="LOW" xml:space="preserve">
-    <value>Bas</value>
-  </data>
-  <data name="MEDIUM" xml:space="preserve">
-    <value>Moyen</value>
-  </data>
-  <data name="NONE" xml:space="preserve">
-    <value>Aucun</value>
-  </data>
-  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Niveau de traitement appliqué au flux de données:</value>
-  </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue du clavier: {0}</value>
-  </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue du clavier:</value>
-  </data>
-  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simule les touches physiques lors de la saisie de caractères:</value>
-  </data>
-  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue de l'interface: {0}</value>
-  </data>
-  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue de l'interface:</value>
-  </data>
-  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Épaisseur de la bordure du clavier (gauche, haut, droite, bas en pixels):</value>
-  </data>
-  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppression de la loupe pendant l'utilisation de l'ascenseur:</value>
+  <data name="MISSING_VOICE_COMMAND_PREFIX_ERROR" xml:space="preserve">
+    <value>Le préfixe est obligatoire et ne doit pas être vide</value>
   </data>
 </root>

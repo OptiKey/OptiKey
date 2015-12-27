@@ -19,8 +19,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (errorNotifyingServices != null)
             {
+                //When error is received, enqueue it and tries to display it immediately
                 errorNotifyingServices.ForEach(s => s.Error += HandleServiceError);
             }
+            //When main window is positioned, dequeue errors
+            EventHandler mainWindowPositioned = null;
+            mainWindowPositioned = (_, __) =>
+            {
+                mainWindowManipulationService.SizeAndPositionInitialised -= mainWindowPositioned;
+                DequeueNotifications();
+            };
+            mainWindowManipulationService.SizeAndPositionInitialised += mainWindowPositioned;
 
             inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
 
@@ -119,7 +128,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
         }
-        
+
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
             //Single key string
@@ -198,16 +207,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     {
                                         if (calibrationResult.Success)
                                         {
-                                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                            RaiseToastNotification(Resources.SUCCESS, calibrationResult.Message, NotificationTypes.Normal, () => inputService.RequestResume());
+                                            RaiseToastNotification(Resources.SUCCESS, calibrationResult.Message, NotificationTypes.Normal, 
+                                                () => audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume),
+                                                () => inputService.RequestResume());
                                         }
                                         else
                                         {
-                                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
                                             RaiseToastNotification(Resources.CRASH_TITLE, calibrationResult.Exception != null
                                                     ? calibrationResult.Exception.Message
                                                     : calibrationResult.Message ?? Resources.UNKNOWN_CALIBRATION_ERROR, 
                                                 NotificationTypes.Error, 
+                                                () => audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume),
                                                 () => inputService.RequestResume());
                                         }
                                     });
@@ -1238,15 +1248,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
             }
-        }
-
-        private void HandleServiceError(object sender, Exception exception)
-        {
-            Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
-
-            inputService.RequestSuspend();
-            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-            RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume());
         }
     }
 }

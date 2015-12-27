@@ -55,6 +55,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
                 MainViewModel.KeySelection += (s, e) => IsKeySelectionEventHandlerCalled = true;
                 MainViewModel.PointSelection += (s, e) => IsPointSelectionEventHandlerCalled = true;
+                MainWindowManipulationService.SetupGet(m => m.SizeAndPositionIsInitialised).Returns(true);
             }
         }
     }

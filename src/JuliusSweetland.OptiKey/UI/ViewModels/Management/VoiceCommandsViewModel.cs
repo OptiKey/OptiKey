@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
@@ -8,6 +8,8 @@ using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Prism.Mvvm;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
@@ -45,7 +47,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
     /// <summary>
     /// ViewModel class used to configure OptiKey's voice commands
     /// </summary>
-    public class VoiceCommandsViewModel : BindableBase
+    public class VoiceCommandsViewModel : BindableBase, IDataErrorInfo
     {
         private readonly IConfigurableCommandService configurableCommandService;
         private readonly WordsViewModel wordsViewModel;
@@ -67,12 +69,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Load(); 
             //Reloads commands on language changes
             wordsViewModel.OnPropertyChanges(view => view.UiLanguage).Subscribe(_ => Load());
+
+            // Validates prefix when change
+            this.OnPropertyChanges(view => view.Prefix).Subscribe(_ => OnValidate("Prefix"));
         }
 
         #endregion
-        
+
         #region Properties
-        
+
+        // IDataErrorInfo properties for validation
+        string IDataErrorInfo.Error
+        {
+            get { throw new NotSupportedException("IDataErrorInfo.Error is not supported, use IDataErrorInfo.this[propertyName] instead."); }
+        }
+        string IDataErrorInfo.this[string propertyName]
+        {
+            get { return OnValidate(propertyName); }
+        }
+
         private bool enabled;
         public bool Enabled
         {
@@ -88,6 +103,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         private string prefix;
+
+        [Required(
+            ErrorMessageResourceName = "MISSING_VOICE_COMMAND_PREFIX_ERROR", 
+            ErrorMessageResourceType = typeof(Resources))]
         public string Prefix
         {
             get { return prefix; }
@@ -103,11 +122,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return false; }
+            get { return Settings.Default.VoiceCommandsEnabled != enabled; }
         }
-        
+
         #endregion
-        
+
         #region Methods
 
         private string ComputeLabel(FunctionKeys function)
@@ -148,6 +167,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public bool CanApplyChanges()
+        {
+            return ((IDataErrorInfo)this)["Prefix"].Equals(String.Empty);
+        }
+
         public void ApplyChanges()
         {
             Settings.Default.VoiceCommandsEnabled = Enabled;
@@ -172,6 +196,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             configurableCommandService.Save(wordsViewModel.UiLanguage);
         }
 
+        /// <summary>
+        /// Validates current instance properties using Data Annotations.
+        /// </summary>
+        /// <param name="propertyName">This instance property to validate.</param>
+        /// <returns>Relevant error string on validation failure or <see cref="System.String.Empty"/> on validation success.</returns>
+        protected virtual string OnValidate(string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName))
+            {
+                throw new ArgumentException("Invalid property name", propertyName);
+            }
+
+            string error = string.Empty;
+            var value = GetType().GetProperty(propertyName).GetValue(this, null);
+            var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>(1);
+            var result = Validator.TryValidateProperty(
+                value,
+                new ValidationContext(this, null, null)
+                {
+                    MemberName = propertyName
+                },
+                results);
+
+            if (!result)
+            {
+                var validationResult = results.First();
+                error = validationResult.ErrorMessage;
+            }
+
+            return error;
+        }
         #endregion
     }
 }

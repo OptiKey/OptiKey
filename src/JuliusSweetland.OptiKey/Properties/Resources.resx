@@ -1386,4 +1386,13 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="YES" xml:space="preserve">
     <value>YES</value>
   </data>
+  <data name="MIC_NOT_DETECTED_ERROR" xml:space="preserve">
+    <value>Optikey has vocal commands, but did not found any usable microphone.
+Vocal commands are now disabled.
+
+You can enable them when you'll have configured a microphone and from the management console.</value>
+  </data>
+  <data name="MISSING_VOICE_COMMAND_PREFIX_ERROR" xml:space="preserve">
+    <value>Prefix is required and can't be empty</value>
+  </data>
 </root>
