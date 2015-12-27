@@ -10,7 +10,9 @@ namespace JuliusSweetland.OptiKey.Extensions
     {
         public static Point CalculateCentrePoint(this List<Point> points)
         {
-            return new Point(Convert.ToInt32(points.Average(p => p.X)), Convert.ToInt32(points.Average(p => p.Y)));
+            return new Point(
+                Math.Round(points.Average(p => p.X), MidpointRounding.AwayFromZero), 
+                Math.Round(points.Average(p => p.Y), MidpointRounding.AwayFromZero));
         }
 
         /// <summary>

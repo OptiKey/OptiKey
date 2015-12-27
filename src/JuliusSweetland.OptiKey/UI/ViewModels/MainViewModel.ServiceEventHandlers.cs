@@ -108,7 +108,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 var points = tuple.Item1;
                 var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue { FunctionKey = tuple.Item2, String = tuple.Item3 }
+                    ? new KeyValue (tuple.Item2, tuple.Item3 )
                     : (KeyValue?)null;
                 var multiKeySelection = tuple.Item4;
 

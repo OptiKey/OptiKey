@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                 //Trigger the function key
                 return new TriggerSignal(1, null, new PointAndKeyValue(new Point(0, 0), 
-                    new KeyValue { FunctionKey = StringExtensions.Parse<FunctionKeys>(key) }
+                    new KeyValue(StringExtensions.Parse<FunctionKeys>(key))
                 ), notification);
             } 
 

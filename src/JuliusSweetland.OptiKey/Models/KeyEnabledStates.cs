@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
                 
                 //Key is MultiKeySelection, but a key which prevents text capture is down or locked down
-                if (keyValue == KeyValues.MultiKeySelectionKey
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
                     && KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                         keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
                 {
@@ -291,7 +291,7 @@ namespace JuliusSweetland.OptiKey.Models
                 }
 
                 //Multi-key capture is disabled
-                if (keyValue == KeyValues.MultiKeySelectionKey
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
                     && !Settings.Default.MultiKeySelectionEnabled)
                 {
                     return false;
