@@ -250,9 +250,6 @@
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
-    <Compile Include="Observables\TriggerSources\IKeyboardHookListener.cs" />
-    <Compile Include="Observables\TriggerSources\KeyboardHookListenerWrapper.cs" />
-    <Compile Include="Observables\TriggerSources\KeyDirection.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
