@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Services
         private bool suppressNextAutoSpace = true;
         private bool keyboardIsShiftAware;
         private bool shiftStateSetAutomatically;
-        
+
         #endregion
 
         #region Ctor
@@ -146,7 +146,7 @@ namespace JuliusSweetland.OptiKey.Services
                             //Removing more than one character - only decrement removed string
                             dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
                         }
-                        else if(!string.IsNullOrEmpty(lastTextChange)
+                        else if (!string.IsNullOrEmpty(lastTextChange)
                             && lastTextChange.Length == 1
                             && !char.IsWhiteSpace(lastTextChange[0]))
                         {
@@ -223,7 +223,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                         //If the key cannot be pressed or locked down (these are handled in 
                         //ReactToPublishableKeyDownStateChanges) then publish it and release unlocked keys
-                        var keyValue = new KeyValue { FunctionKey = functionKey };
+                        var keyValue = new KeyValue(functionKey);
                         if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
                             && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
                         {
@@ -249,7 +249,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions)
         {
-            Log.DebugFormat("Processing {0} captured multi-key selection results", 
+            Log.DebugFormat("Processing {0} captured multi-key selection results",
                 captureAndSuggestions != null ? captureAndSuggestions.Count : 0);
 
             if (captureAndSuggestions == null || !captureAndSuggestions.Any()) return;
@@ -326,13 +326,13 @@ namespace JuliusSweetland.OptiKey.Services
                 if (!string.IsNullOrEmpty(textBeforeCaptureText))
                 {
                     var previousInProgressWord = textBeforeCaptureText.InProgressWord(textBeforeCaptureText.Length);
-                    dictionaryService.DecrementEntryUsageCount(previousInProgressWord);    
+                    dictionaryService.DecrementEntryUsageCount(previousInProgressWord);
                 }
 
                 if (!string.IsNullOrEmpty(Text))
                 {
                     var currentInProgressWord = Text.InProgressWord(Text.Length);
-                    dictionaryService.IncrementEntryUsageCount(currentInProgressWord);    
+                    dictionaryService.IncrementEntryUsageCount(currentInProgressWord);
                 }
             }
 
@@ -542,7 +542,7 @@ namespace JuliusSweetland.OptiKey.Services
                             .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                             .ToList();
 
-                        Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)", 
+                        Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
                             suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
 
                         //Correctly case auto complete suggestions
@@ -584,7 +584,7 @@ namespace JuliusSweetland.OptiKey.Services
                         return;
                     }
                 }
-                
+
                 ClearSuggestions();
             }
         }
@@ -599,7 +599,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Modifying {0} suggestions.", suggestions != null ? suggestions.Count : 0);
 
-            if(suggestions == null || !suggestions.Any()) return null;
+            if (suggestions == null || !suggestions.Any()) return null;
 
             var modifiedSuggestions = suggestions
                 .Select(ModifyText)
@@ -620,7 +620,7 @@ namespace JuliusSweetland.OptiKey.Services
                 ? suggestions
                 : null;
         }
-        
+
         private void PublishKeyPress(FunctionKeys functionKey)
         {
             if (keyStateService.SimulateKeyStrokes)
@@ -682,7 +682,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (vkKeyScan != -1)
                 {
                     Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
-                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null, 
+                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null,
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 
                     bool releaseShift = false;
@@ -724,7 +724,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})", 
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})",
                         character.ConvertEscapedCharToLiteral(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
