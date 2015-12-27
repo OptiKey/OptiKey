@@ -10,9 +10,6 @@ namespace JuliusSweetland.OptiKey.Models
     {
         public static readonly KeyValue AddToDictionaryKey = new KeyValue(FunctionKeys.AddToDictionary);
         public static readonly KeyValue AlphaKeyboardKey = new KeyValue(FunctionKeys.AlphaKeyboard);
-        public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
-        public static readonly KeyValue Diacritic2KeyboardKey = new KeyValue(FunctionKeys.Diacritic2Keyboard);
-        public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue ArrowDownKey = new KeyValue(FunctionKeys.ArrowDown);
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
@@ -32,6 +29,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CutKey = new KeyValue(FunctionKeys.Cut);
         public static readonly KeyValue DecreaseOpacityKey = new KeyValue(FunctionKeys.DecreaseOpacity);
         public static readonly KeyValue DeleteKey = new KeyValue(FunctionKeys.Delete);
+        public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
+        public static readonly KeyValue Diacritic2KeyboardKey = new KeyValue(FunctionKeys.Diacritic2Keyboard);
+        public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue EndKey = new KeyValue(FunctionKeys.End);
         public static readonly KeyValue EnglishCanadaKey = new KeyValue(FunctionKeys.EnglishCanada);
         public static readonly KeyValue EnglishUKKey = new KeyValue(FunctionKeys.EnglishUK);

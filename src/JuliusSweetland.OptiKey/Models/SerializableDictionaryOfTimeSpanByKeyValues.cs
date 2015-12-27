@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
+using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -10,15 +11,15 @@ namespace JuliusSweetland.OptiKey.Models
     [SettingsSerializeAs(SettingsSerializeAs.Xml)] //This is not really necessary as this class will be serialised into the settings as XML, but I've included it to be explicit
     public class SerializableDictionaryOfTimeSpanByKeyValues : Dictionary<KeyValue, TimeSpan>, IXmlSerializable
     {
-        #region IXmlSerializable Members
+        #region IXmlSerializable
+
         public System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;
         }
+
         public void ReadXml(XmlReader reader)
         {
-            var keySerializer = new XmlSerializer(typeof(KeyValue));
-            
             bool wasEmpty = reader.IsEmptyElement;
             reader.Read();
 
@@ -31,8 +32,27 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Read key
                 reader.ReadStartElement("key");
-                var key = (KeyValue)keySerializer.Deserialize(reader);
+                FunctionKeys? fk = null;
+                if (reader.IsStartElement("functionKey"))
+                {
+                    reader.ReadStartElement("functionKey");
+                    var functionKeyAsString = reader.ReadString();
+                    FunctionKeys localFk;
+                    if (Enum.TryParse(functionKeyAsString, out localFk))
+                    {
+                        fk = localFk;
+                    }
+                    reader.ReadEndElement();
+                }
+                string s = null;
+                if (reader.IsStartElement("str"))
+                {
+                    reader.ReadStartElement("str");
+                    s = reader.ReadString();
+                    reader.ReadEndElement();
+                }
                 reader.ReadEndElement();
+                var key = new KeyValue(fk, s);
 
                 //Read value
                 reader.ReadStartElement("value");
@@ -49,17 +69,27 @@ namespace JuliusSweetland.OptiKey.Models
 
             reader.ReadEndElement();
         }
+
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            var keySerializer = new XmlSerializer(typeof(KeyValue));
-            
             foreach (KeyValue key in this.Keys)
             {
                 writer.WriteStartElement("item");
                 
                 //Write key
                 writer.WriteStartElement("key");
-                keySerializer.Serialize(writer, key);
+                if (key.FunctionKey != null)
+                {
+                    writer.WriteStartElement("functionKey");
+                    writer.WriteString(key.FunctionKey.Value.ToString());
+                    writer.WriteEndElement();
+                }
+                if (key.String != null)
+                {
+                    writer.WriteStartElement("str");
+                    writer.WriteString(key.String);
+                    writer.WriteEndElement();
+                }
                 writer.WriteEndElement();
                 
                 //Write value (as ticks because TimeSpan is not XML serialisable)
@@ -73,6 +103,7 @@ namespace JuliusSweetland.OptiKey.Models
                 writer.WriteEndElement();
             }
         }
+
         #endregion
     }
 }
