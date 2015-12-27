@@ -9,19 +9,6 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
     public class CharExtensionsTests
     {
         [Test]
-        public void TestToUpperAndRemoveDiacritics()
-        {
-            Assert.AreEqual('A', 'a'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('A', 'À'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('A', 'å'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('C', 'Č'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('E', 'Ĕ'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('I', 'Ĩ'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('S', 'Ş'.ToUpperAndRemoveDiacritics());
-            Assert.AreEqual('E', 'ē'.ToUpperAndRemoveDiacritics());
-        }
-
-        [Test]
         public void TestToCharCategory()
         {
             Assert.AreEqual(CharCategories.NewLine, '\n'.ToCharCategory());

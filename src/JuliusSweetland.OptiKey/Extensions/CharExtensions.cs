@@ -7,21 +7,6 @@ namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class CharExtensions
     {
-        public static char ToUpperAndRemoveDiacritics(this char c)
-        {
-            //Convert char to string (for the next operations)
-            var cAsString = c.ToString(CultureInfo.InvariantCulture);
-
-            //Remove diacritics
-            var removedDiacriticStr = cAsString.RemoveDiacritics();
-
-            //Make uppercase
-            cAsString = removedDiacriticStr.ToUpper();
-
-            //Convert back to char
-            return cAsString.First();
-        }
-
         public static CharCategories ToCharCategory(this char c)
         {
             if (c == '\n')
