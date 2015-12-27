@@ -150,8 +150,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion5Key = new KeyValue(FunctionKeys.Suggestion5);
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
-
-
+        
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()

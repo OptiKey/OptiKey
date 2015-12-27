@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
     [TestFixture]
     public class WhenFireKeySelectionEventGivenKeySelectionEventHandler : MainViewModelTestBase
     {
-        protected KeyValue KeyValue { get { return new KeyValue(FunctionKeys.Break, "Coffee"); } }
+        protected KeyValue KeyValue { get { return new KeyValue(FunctionKeys.Break); } }
 
         protected override void Act()
         {

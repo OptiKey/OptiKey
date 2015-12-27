@@ -10,31 +10,36 @@ namespace JuliusSweetland.OptiKey.Models
     [TypeConverter(typeof(KeyValueConverter))]
     public struct KeyValue : IEquatable<KeyValue>
     {
+        private readonly FunctionKeys? functionKey;
+        private readonly string str;
+
         public KeyValue(FunctionKeys functionKey)
         {
-            FunctionKey = functionKey;
-            String = null;
-        }
-        public KeyValue(string text)
-        {
-            FunctionKey = null;
-            String = text;
-        }
-        public KeyValue(FunctionKeys? functionKey, string text)
-        {
-            FunctionKey = functionKey;
-            String = text;
+            this.functionKey = functionKey;
+            this.str = null;
         }
 
-        public FunctionKeys? FunctionKey { get; }
-        public string String { get; }
-        
+        public KeyValue(string str)
+        {
+            this.functionKey = null;
+            this.str = str;
+        }
+
+        public KeyValue(FunctionKeys? functionKey, string str)
+        {
+            this.functionKey = functionKey;
+            this.str = str;
+        }
+
+        public FunctionKeys? FunctionKey { get { return functionKey; } }
+        public string String { get { return str; } }
+
         public bool StringIsLetter
         {
             get { return String != null && String.Length == 1 && char.IsLetter(String, 0); }
         }
         
-        #region Equality 
+        #region Equality
 
         public bool Equals(KeyValue kv)
         {
@@ -63,7 +68,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             unchecked
             {
-                return (FunctionKey.GetHashCode()*397) ^ (String != null ? String.GetHashCode() : 0);
+                return (FunctionKey.GetHashCode() * 397) ^ (String != null ? String.GetHashCode() : 0);
             }
         }
 
