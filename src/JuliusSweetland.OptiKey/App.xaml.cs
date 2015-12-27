@@ -395,7 +395,8 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.KeyboardKeyDownsUps:
                     keySelectionTriggerSource = new KeyboardKeyDownUpSource(
                         Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
+                        new KeyboardHookListenerWrapper(), 
+                        pointSource);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
@@ -425,7 +426,8 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.KeyboardKeyDownsUps:
                     pointSelectionTriggerSource = new KeyboardKeyDownUpSource(
                         Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey,
-                        pointSource.Sequence);
+                        new KeyboardHookListenerWrapper(), 
+                        pointSource);
                     break;
 
                 case TriggerSources.MouseButtonDownUps:
