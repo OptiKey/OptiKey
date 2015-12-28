@@ -259,7 +259,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, FunctionKeys.Paste, "SingleKeyValueIsString", new List<string>());
+                points, null, "SingleKeyValueIsString", new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -273,7 +273,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, FunctionKeys.Paste, null, new List<string>());
+                points, FunctionKeys.Suggestion1, null, new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -292,7 +292,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             var points = new List<Point>();
             var multiKeySelection = new List<string> { "test-multi" };
             var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, FunctionKeys.Paste, "SingleKeyValueIsString", multiKeySelection);
+                points, null, null, multiKeySelection);
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 

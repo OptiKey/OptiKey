@@ -57,43 +57,43 @@
 
         <controls:Key Grid.Row="2" Grid.Column="0" />
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Case="None"
-                      Text="F1"
+                      Text="{x:Static resx:Resources.F1}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F1Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Case="None"
-                      Text="F2"
+                      Text="{x:Static resx:Resources.F2}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F2Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Case="None"
-                      Text="F3"
+                      Text="{x:Static resx:Resources.F3}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F3Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2" Case="None"
-                      Text="F4"
+                      Text="{x:Static resx:Resources.F4}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F4Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2" Case="None"
-                      Text="F5"
+                      Text="{x:Static resx:Resources.F5}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F5Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2" Case="None"
-                      Text="F6"
+                      Text="{x:Static resx:Resources.F6}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F6Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2" Case="None"
-                      Text="F7"
+                      Text="{x:Static resx:Resources.F7}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F7Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2" Case="None"
-                      Text="F8"
+                      Text="{x:Static resx:Resources.F8}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F8Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="2" Case="None"
-                      Text="F9"
+                      Text="{x:Static resx:Resources.F9}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F9Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2" Case="None"
-                      Text="F10"
+                      Text="{x:Static resx:Resources.F10}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F10Key}"/>
         <controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
@@ -137,11 +137,11 @@
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.HomeKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
-                      Text="F11"
+                      Text="{x:Static resx:Resources.F11}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F11Key}"/>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2" Case="None"
-                      Text="F12"
+                      Text="{x:Static resx:Resources.F12}"
                       SharedSizeGroup="FunctionKey"
                       Value="{x:Static models:KeyValues.F12Key}"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
@@ -232,8 +232,8 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
         <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                          Text="{x:Static resx:Resources.CONTEXTUAL_MENU_KEY}"
-                          SharedSizeGroup="KeyWithDescription"
+                      Text="{x:Static resx:Resources.CONTEXTUAL_MENU_KEY}"
+                      SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.MenuKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="4"
                       SymbolGeometry="{StaticResource EnterIcon}"

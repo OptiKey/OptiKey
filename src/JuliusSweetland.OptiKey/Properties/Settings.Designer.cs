@@ -1408,27 +1408,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute(@"                    <dictionary>
                         <item>
                             <key>
-                                <functionKey>Suggestion1</functionKey>
+                                <keyValue>
+                                    <functionKey>Suggestion1</functionKey>
+                                </keyValue>
                             </key>
                             <value>
-                                <ticks>PT2S</ticks>
+                                <ticks>PT5S</ticks>
                             </value>
                         </item>
                         <item>
                             <key>
-                                <str>test1</str>
+                                <keyValue>
+                                    <str>test1</str>
+                                </keyValue>
                             </key>
                             <value>
-                                <ticks>PT2S</ticks>
+                                <ticks>PT5S</ticks>
                             </value>
                         </item>
                         <item>
                             <key>
-                                <functionKey>Suggestion2</functionKey>
-                                <str>test2</str>
+                                <keyValue>
+                                    <functionKey>Suggestion2</functionKey>
+                                    <str>test2</str>
+                                </keyValue>
                             </key>
                             <value>
-                                <ticks>PT1.75S</ticks>
+                                <ticks>PT6.75S</ticks>
                             </value>
                         </item>
                     </dictionary>")]

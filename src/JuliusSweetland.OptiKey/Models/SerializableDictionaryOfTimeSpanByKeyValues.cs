@@ -32,6 +32,7 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Read key
                 reader.ReadStartElement("key");
+                reader.ReadStartElement("keyValue");
                 FunctionKeys? fk = null;
                 if (reader.IsStartElement("functionKey"))
                 {
@@ -51,6 +52,7 @@ namespace JuliusSweetland.OptiKey.Models
                     s = reader.ReadString();
                     reader.ReadEndElement();
                 }
+                reader.ReadEndElement();
                 reader.ReadEndElement();
                 var key = new KeyValue(fk, s);
 
@@ -78,6 +80,7 @@ namespace JuliusSweetland.OptiKey.Models
                 
                 //Write key
                 writer.WriteStartElement("key");
+                writer.WriteStartElement("keyValue");
                 if (key.FunctionKey != null)
                 {
                     writer.WriteStartElement("functionKey");
@@ -90,6 +93,7 @@ namespace JuliusSweetland.OptiKey.Models
                     writer.WriteString(key.String);
                     writer.WriteEndElement();
                 }
+                writer.WriteEndElement();
                 writer.WriteEndElement();
                 
                 //Write value (as ticks because TimeSpan is not XML serialisable)

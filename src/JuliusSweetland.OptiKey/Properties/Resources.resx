@@ -1274,4 +1274,61 @@ Deutsch (Deutschland)</value>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
     <value>Suggestion Keys</value>
   </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>ADD TO DICTIONARY</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>COLLAPSE DOCK</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>DOWN ARROW</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>LEFT ARROW</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>RIGHT ARROW</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>UP ARROW</value>
+  </data>
 </root>

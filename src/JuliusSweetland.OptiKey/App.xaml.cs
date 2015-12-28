@@ -22,7 +22,6 @@ using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.Util.Serialization;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -211,8 +212,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationDefaultCompleteTimeInMs, value); }
         }
 
-        private List<Tuple<string, List<Tuple<string, KeyValue, double>>>> keySelectionTriggerFixationCompleteTimeInMsByKeyValue;
-        public List<Tuple<string, List<Tuple<string, KeyValue, double>>>> KeySelectionTriggerFixationCompleteTimeInMsByKeyValue
+        private List<KeyValueAndTimeSpan> keySelectionTriggerFixationCompleteTimeInMsByKeyValue;
+        public List<KeyValueAndTimeSpan> KeySelectionTriggerFixationCompleteTimeInMsByKeyValue
         {
             get { return keySelectionTriggerFixationCompleteTimeInMsByKeyValue; }
             set { SetProperty(ref keySelectionTriggerFixationCompleteTimeInMsByKeyValue, value); }
@@ -320,8 +321,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
-                var defaultList = ConvertFixationCompletionDictionaryToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
-                var equal = defaultList.SequenceEqual(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue);
                 return Settings.Default.PointsSource != PointsSource
                     || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
@@ -332,7 +331,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn != KeySelectionTriggerFixationResumeRequiresLockOn && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
-                    //|| (ConvertFixationCompletionDictionaryToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues).SequenceEqual(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue) == false)
+                    || (ConvertToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues).SequenceEqual(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue) == false)
                     || (Settings.Default.KeySelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
                     || (Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey != PointSelectionTriggerKeyboardKeyDownUpKey && PointSelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps)
@@ -363,7 +362,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds;
-            KeySelectionTriggerFixationCompleteTimeInMsByKeyValue = ConvertFixationCompletionDictionaryToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
+            KeySelectionTriggerFixationCompleteTimeInMsByKeyValue = ConvertToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
             PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
             PointSelectionTriggerKeyboardKeyDownUpKey = Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey;
@@ -392,7 +391,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
             Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs);
-            Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ConvertFixationCompletionGroupsListToDictionary(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue);
+            Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ConvertToDictionary(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
             Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
             Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey = PointSelectionTriggerKeyboardKeyDownUpKey;
@@ -409,38 +408,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
         }
 
-        private List<Tuple<string, List<Tuple<string, KeyValue, double>>>> ConvertFixationCompletionDictionaryToList(
+        private List<KeyValueAndTimeSpan> ConvertToList(
             SerializableDictionaryOfTimeSpanByKeyValues dictionary)
         {
-            var groups = new List<Tuple<string, List<Tuple<string, KeyValue, double>>>>();
-            var destructiveList = new List<Tuple<string, KeyValue, double>>
+            return new List<KeyValueAndTimeSpan>
             {
-                new Tuple<string, KeyValue, double>(Resources.BACK_ONE, KeyValues.BackOneKey, dictionary.GetValueOrDefault(KeyValues.BackOneKey, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.BACK_WORD, KeyValues.BackManyKey, dictionary.GetValueOrDefault(KeyValues.BackManyKey, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.CLEAR, KeyValues.ClearScratchpadKey, dictionary.GetValueOrDefault(KeyValues.ClearScratchpadKey, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds)
+                new KeyValueAndTimeSpan(Resources.BACK_ONE, KeyValues.BackOneKey, dictionary.ContainsKey(KeyValues.BackOneKey) ? dictionary[KeyValues.BackOneKey] : (TimeSpan?)null),
+                new KeyValueAndTimeSpan(Resources.BACK_WORD, KeyValues.BackManyKey, dictionary.GetValueOrDefault(KeyValues.BackManyKey, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.CLEAR, KeyValues.ClearScratchpadKey, dictionary.GetValueOrDefault(KeyValues.ClearScratchpadKey, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_1, KeyValues.Suggestion1Key, dictionary.GetValueOrDefault(KeyValues.Suggestion1Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_2, KeyValues.Suggestion2Key, dictionary.GetValueOrDefault(KeyValues.Suggestion2Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_3, KeyValues.Suggestion3Key, dictionary.GetValueOrDefault(KeyValues.Suggestion3Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_4, KeyValues.Suggestion4Key, dictionary.GetValueOrDefault(KeyValues.Suggestion4Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_5, KeyValues.Suggestion5Key, dictionary.GetValueOrDefault(KeyValues.Suggestion5Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime)),
+                new KeyValueAndTimeSpan(Resources.SUGGESTION_6, KeyValues.Suggestion6Key, dictionary.GetValueOrDefault(KeyValues.Suggestion6Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime))
             };
-            groups.Add(new Tuple<string, List<Tuple<string, KeyValue, double>>>(Resources.DESTRUCTIVE_KEYS_GROUP_LABEL, destructiveList));
-            var suggestionsList = new List<Tuple<string, KeyValue, double>>
-            {
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_1, KeyValues.Suggestion1Key, dictionary.GetValueOrDefault(KeyValues.Suggestion1Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_2, KeyValues.Suggestion2Key, dictionary.GetValueOrDefault(KeyValues.Suggestion2Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_3, KeyValues.Suggestion3Key, dictionary.GetValueOrDefault(KeyValues.Suggestion3Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_4, KeyValues.Suggestion4Key, dictionary.GetValueOrDefault(KeyValues.Suggestion4Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_5, KeyValues.Suggestion5Key, dictionary.GetValueOrDefault(KeyValues.Suggestion5Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds),
-                new Tuple<string, KeyValue, double>(Resources.SUGGESTION_6, KeyValues.Suggestion6Key, dictionary.GetValueOrDefault(KeyValues.Suggestion6Key, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime).TotalMilliseconds)
-            };
-            groups.Add(new Tuple<string, List<Tuple<string, KeyValue, double>>>(Resources.SUGGESTION_KEYS_GROUP_LABEL, suggestionsList));
-            return groups;
         }
 
-        private SerializableDictionaryOfTimeSpanByKeyValues ConvertFixationCompletionGroupsListToDictionary(
-            IEnumerable<Tuple<string, List<Tuple<string, KeyValue, double>>>> list)
+        private SerializableDictionaryOfTimeSpanByKeyValues ConvertToDictionary(
+            IEnumerable<KeyValueAndTimeSpan> collection)
         {
             var dictionary = new SerializableDictionaryOfTimeSpanByKeyValues();
-            list.SelectMany(t => t.Item2)
-                .ToDictionary(t => t.Item2, t => TimeSpan.FromMilliseconds(t.Item3))
+            collection
+                .Where(kvats => kvats.TimeSpanTotalMilliseconds != null)
                 .ToList()
-                .ForEach(kvp => dictionary.Add(kvp.Key, kvp.Value));
+                .ForEach(kvats => dictionary.Add(kvats.KeyValue, TimeSpan.FromMilliseconds(kvats.TimeSpanTotalMilliseconds.Value)));
             return dictionary;
         }
 

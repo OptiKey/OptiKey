@@ -88,6 +88,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ADD TO DICTIONARY.
+        /// </summary>
+        public static string ADD_TO_DICTIONARY {
+            get {
+                return ResourceManager.GetString("ADD_TO_DICTIONARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ADD TO
         ///DICTIONARY.
         /// </summary>
@@ -444,6 +453,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to COLLAPSE DOCK.
+        /// </summary>
+        public static string COLLAPSE_DOCK {
+            get {
+                return ResourceManager.GetString("COLLAPSE_DOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COLLAPSE
         ///DOCK.
         /// </summary>
@@ -742,6 +760,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DOWN ARROW.
+        /// </summary>
+        public static string DOWN_ARROW {
+            get {
+                return ResourceManager.GetString("DOWN_ARROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DOWN
         ///ARROW.
         /// </summary>
@@ -928,6 +955,114 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string EXPAND_UP_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("EXPAND_UP_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F1.
+        /// </summary>
+        public static string F1 {
+            get {
+                return ResourceManager.GetString("F1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F10.
+        /// </summary>
+        public static string F10 {
+            get {
+                return ResourceManager.GetString("F10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F11.
+        /// </summary>
+        public static string F11 {
+            get {
+                return ResourceManager.GetString("F11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F12.
+        /// </summary>
+        public static string F12 {
+            get {
+                return ResourceManager.GetString("F12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F2.
+        /// </summary>
+        public static string F2 {
+            get {
+                return ResourceManager.GetString("F2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F3.
+        /// </summary>
+        public static string F3 {
+            get {
+                return ResourceManager.GetString("F3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F4.
+        /// </summary>
+        public static string F4 {
+            get {
+                return ResourceManager.GetString("F4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F5.
+        /// </summary>
+        public static string F5 {
+            get {
+                return ResourceManager.GetString("F5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F6.
+        /// </summary>
+        public static string F6 {
+            get {
+                return ResourceManager.GetString("F6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F7.
+        /// </summary>
+        public static string F7 {
+            get {
+                return ResourceManager.GetString("F7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F8.
+        /// </summary>
+        public static string F8 {
+            get {
+                return ResourceManager.GetString("F8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F9.
+        /// </summary>
+        public static string F9 {
+            get {
+                return ResourceManager.GetString("F9", resourceCulture);
             }
         }
         
@@ -1353,6 +1488,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string LEFT {
             get {
                 return ResourceManager.GetString("LEFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LEFT ARROW.
+        /// </summary>
+        public static string LEFT_ARROW {
+            get {
+                return ResourceManager.GetString("LEFT_ARROW", resourceCulture);
             }
         }
         
@@ -2482,6 +2626,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RIGHT ARROW.
+        /// </summary>
+        public static string RIGHT_ARROW {
+            get {
+                return ResourceManager.GetString("RIGHT_ARROW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RIGHT
         ///ARROW.
         /// </summary>
@@ -2887,6 +3040,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         public static string SUCCESS {
@@ -3216,6 +3378,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string UP {
             get {
                 return ResourceManager.GetString("UP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UP ARROW.
+        /// </summary>
+        public static string UP_ARROW {
+            get {
+                return ResourceManager.GetString("UP_ARROW", resourceCulture);
             }
         }
         
