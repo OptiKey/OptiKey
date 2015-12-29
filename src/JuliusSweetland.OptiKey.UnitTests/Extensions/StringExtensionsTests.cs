@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
 using NUnit.Framework;
 
@@ -34,6 +33,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             Assert.AreEqual(@"\r", "\r".ConvertEscapedCharsToLiterals());
             Assert.AreEqual(@"s", "s".ConvertEscapedCharsToLiterals());
             Assert.AreEqual(@" ", " ".ConvertEscapedCharsToLiterals());
+            Assert.AreEqual(null, NullString.ConvertEscapedCharsToLiterals());
         }
         
         [Test]
@@ -66,6 +66,70 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             Assert.AreEqual("a", sentence.InProgressWord(9));
             Assert.AreEqual(null, sentence.InProgressWord(10));
             Assert.AreEqual("sentence.", sentence.InProgressWord(11));
+        }
+
+        [Test]
+        public void TestRemoveDiacritics()
+        {
+            Assert.AreEqual("aAa", "aÀå".RemoveDiacritics());
+            Assert.AreEqual("CEISe", "ČĔĨŞē".RemoveDiacritics());
+            Assert.AreEqual("CEISe", "ČĔĨŞē".RemoveDiacritics(false));
+           
+        }
+
+        [Test]
+        public void TestLongestCommonSubsequence()
+        {
+            Assert.AreEqual(19, "This is a sentence.".LongestCommonSubsequence("This is another sentence."));
+            Assert.AreEqual(7, "cat hat".LongestCommonSubsequence("cat in the hat"));
+            Assert.AreEqual(3, "cat".LongestCommonSubsequence("cat in the hat"));
+            Assert.AreEqual(0, "CAT".LongestCommonSubsequence("cat in the hat"));
+        }
+
+        [Test]
+        public void TestToString()
+        {
+            var stringCollection = new List<string>
+            {
+                 "This",
+                 "is",
+                 "a",
+                 "comma",
+                 "seperated",
+                 "list",
+
+            };
+
+            var emptyStringCollection = new List<string>();
+            List<string> nullStringCollection = null;
+            Assert.AreEqual("This,is,a,comma,seperated,list", stringCollection.ToString(""));
+            Assert.AreEqual("This,is,a,comma,seperated,list", stringCollection.ToString("Base string: "));
+            Assert.AreEqual("", emptyStringCollection.ToString("EMPTY"));
+            // ReSharper disable once ExpressionIsAlwaysNull
+            Assert.AreEqual("EMPTY", nullStringCollection.ToString("EMPTY"));
+        }
+
+        [Test]
+        public void TestExtraWordsAndLines()
+        {
+            List<string> finalList = new List<string>
+            {
+                "This",
+                "is",
+                "sentence",
+                "This is a sentence"
+            };
+
+            Assert.AreEqual(null, "  ".ExtractWordsAndLines());
+            Assert.AreEqual(null, NullString.ExtractWordsAndLines());
+
+            var list = "This is a sentence".ExtractWordsAndLines();
+            Assert.AreEqual(4, list.Count);
+            CollectionAssert.AreEqual(finalList, list);
+
+            var list2 = "This is a sentence\nThis is a sentence".ExtractWordsAndLines();
+            Assert.AreEqual(4, list2.Count);
+            CollectionAssert.AreEqual(finalList, list2);
         }
 
     }
