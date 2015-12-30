@@ -73,7 +73,10 @@ namespace JuliusSweetland.OptiKey.Models
         {
             unchecked
             {
-                return (FunctionKey.GetHashCode() * 397) ^ (String != null ? String.GetHashCode() : 0);
+                int hash = 13;
+                hash = (hash * 397) ^ (FunctionKey != null ? FunctionKey.GetHashCode() : 0);
+                hash = (hash * 397) ^ (String != null ? String.GetHashCode() : 0);
+                return hash;
             }
         }
 
