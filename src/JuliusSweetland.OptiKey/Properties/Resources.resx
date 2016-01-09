@@ -1331,4 +1331,73 @@ Deutsch (Deutschland)</value>
   <data name="UP_ARROW" xml:space="preserve">
     <value>UP ARROW</value>
   </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>CLICK &amp; DRAG</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>CURRENCIES 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>CURRENCIES 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>DECREASE OPACITY</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>DIACRITICS 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>DIACRITICS 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>DIACRITICS 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>EXPAND DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>EXPAND DOWN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>EXPAND DOWN &amp; LEFT</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>EXPAND DOWN &amp; RIGHT</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>EXPAND LEFT</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>EXPAND RIGHT</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>EXPAND UP</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>EXPAND UP &amp; LEFT</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>EXPAND UP &amp; RIGHT</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>INCREASE OPACITY</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>PHYSICAL KEYS</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>SIZE &amp; POSITION</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
+  </data>
 </root>
