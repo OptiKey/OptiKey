@@ -265,6 +265,23 @@ namespace JuliusSweetland.OptiKey.Services
             return window.Opacity;
         }
 
+        public void Hide()
+        {
+            Log.Info("Hide called");
+
+            var windowState = getWindowState();
+            if (windowState != WindowStates.Hidden)
+            {
+                savePreviousWindowState(windowState);
+            }
+            if (getWindowState() == WindowStates.Docked)
+            {
+                UnRegisterAppBar();
+            }
+            saveWindowState(WindowStates.Hidden);
+            ApplySavedState();
+        }
+
         public void IncrementOrDecrementOpacity(bool increment)
         {
             Log.InfoFormat("IncrementOrDecrementOpacity called with increment {0}", increment);
@@ -378,7 +395,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("Restore called");
 
             var windowState = getWindowState();
-            if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised) return;
+            if (windowState != WindowStates.Maximised && windowState != WindowStates.Minimised && windowState != WindowStates.Hidden) return;
             saveWindowState(getPreviousWindowState()); 
             ApplySavedState();
             savePreviousWindowState(windowState);
@@ -607,6 +624,10 @@ namespace JuliusSweetland.OptiKey.Services
                     window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                         new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), minimisedSizeAndPosition);
                     break;
+
+                case WindowStates.Hidden:
+                    window.WindowState = System.Windows.WindowState.Minimized;
+                    break;
             }
         }
 
@@ -726,7 +747,9 @@ namespace JuliusSweetland.OptiKey.Services
             Log.Info("CoerceSavedStateAndApply called.");
 
             var windowState = getWindowState();
-            if (windowState != WindowStates.Minimised && windowState != WindowStates.Maximised)
+            if (windowState != WindowStates.Maximised
+                && windowState != WindowStates.Minimised
+                && windowState != WindowStates.Hidden)
             {
                 //Coerce state
                 var fullDockThicknessAsPercentageOfScreen = getFullDockThicknessAsPercentageOfScreen();
@@ -1102,6 +1125,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case WindowStates.Maximised:
                 case WindowStates.Minimised:
+                case WindowStates.Hidden:
                     //Do not save anything
                     break;
             }
