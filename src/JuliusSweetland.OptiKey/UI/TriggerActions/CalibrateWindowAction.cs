@@ -46,6 +46,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
             try
             {
                 Log.Info("Starting a calibration");
+                MainWindowManipulationService.Hide();
                 var message = await CalibrationService.Calibrate(parentWindow);
                 if (calibrationResult != null)
                 {
@@ -60,6 +61,10 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                     calibrationResult.Success = false;
                     calibrationResult.Exception = exception;
                 }
+            }
+            finally
+            {
+                MainWindowManipulationService.Restore();
             }
             
             args.Callback();
@@ -83,6 +88,15 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
         {
             get { return (ICalibrationService) GetValue(CalibrationServiceProperty); }
             set { SetValue(CalibrationServiceProperty, value); }
+        }
+
+        public static readonly DependencyProperty MainWindowManipulationServiceProperty = DependencyProperty.Register(
+            "MainWindowManipulationService", typeof (IWindowManipulationService), typeof (CalibrateWindowAction), new PropertyMetadata(default(IWindowManipulationService)));
+
+        public IWindowManipulationService MainWindowManipulationService
+        {
+            get { return (IWindowManipulationService) GetValue(MainWindowManipulationServiceProperty); }
+            set { SetValue(MainWindowManipulationServiceProperty, value); }
         }
 
         #endregion

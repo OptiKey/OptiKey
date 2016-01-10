@@ -107,6 +107,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
 
+        public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
+
         private IKeyboard keyboard;
         public IKeyboard Keyboard
         {

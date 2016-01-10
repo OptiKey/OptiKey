@@ -17,7 +17,8 @@
 
     <i:Interaction.Triggers>
         <interactionRequest:InteractionRequestTrigger SourceObject="{Binding CalibrateRequest, Mode=OneWay}">
-            <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}" />
+            <triggerActions:CalibrateWindowAction CalibrationService="{Binding CalibrationService}"
+                                                  MainWindowManipulationService="{Binding MainWindowManipulationService}"/>
         </interactionRequest:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 
