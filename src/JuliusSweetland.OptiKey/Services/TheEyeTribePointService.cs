@@ -5,7 +5,6 @@ using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using TETCSharpClient;
 using TETCSharpClient.Data;
-using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -13,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Services
     {
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private event EventHandler<Timestamped<Point>> pointEvent;
 

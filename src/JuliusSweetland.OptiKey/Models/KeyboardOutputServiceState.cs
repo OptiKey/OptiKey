@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
@@ -10,7 +8,7 @@ namespace JuliusSweetland.OptiKey.Models
 {
     internal class KeyboardOutputServiceState
     {
-        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly string text;
         private readonly string lastTextChange;

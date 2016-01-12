@@ -10,6 +10,8 @@ Patrons (thank you very much for sponsoring this project)
   Chris Brockett
   Bryan Powell
   Alexander Blech
+  Peter Grant
+  Ygb Johnnie K
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

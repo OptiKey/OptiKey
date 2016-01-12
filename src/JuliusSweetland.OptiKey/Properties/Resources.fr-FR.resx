@@ -1205,6 +1205,6 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Épaisseur de la bordure du clavier (gauche, haut, droite, bas en pixels):</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppression de la loupe pendant l'utilisation de l'ascenseur:</value>
+    <value>Supprimer le grossissement lors du défilement:</value>
   </data>
 </root>

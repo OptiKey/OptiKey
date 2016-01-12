@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.Models
 {
     public class CapturingStateManager : BindableBase, ICapturingStateManager
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IAudioService audioService;
 

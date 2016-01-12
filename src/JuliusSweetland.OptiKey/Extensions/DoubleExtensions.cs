@@ -1,15 +1,17 @@
-﻿namespace JuliusSweetland.OptiKey.Extensions
+﻿using System;
+
+namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class DoubleExtensions
     {
         public static double CoerceToUpperLimit(this double value, double upperLimit)
         {
-            return value > upperLimit ? upperLimit : value;
+            return Math.Min(value, upperLimit);
         }
 
         public static double CoerceToLowerLimit(this double value, double lowerLimit)
         {
-            return value < lowerLimit ? lowerLimit : value;
+            return Math.Max(value, lowerLimit);
         }
     }
 }

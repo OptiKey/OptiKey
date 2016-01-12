@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     {
         #region Private member vars
 
-        private readonly static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
 
@@ -297,7 +297,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         
         #region Content Change Handler
 
-        static private void ContentChangedHandler(object sender, EventArgs e)
+        private static void ContentChangedHandler(object sender, EventArgs e)
         {
             var keyboardHost = sender as KeyboardHost;
             if (keyboardHost != null)

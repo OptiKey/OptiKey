@@ -10,7 +10,7 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class PublishService : IPublishService
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private readonly InputSimulator inputSimulator;
         private readonly WindowsInputDeviceStateAdaptor inputDeviceStateAdaptor;

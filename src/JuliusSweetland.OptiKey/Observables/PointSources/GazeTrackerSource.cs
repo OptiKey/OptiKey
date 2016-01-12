@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
     {
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly TimeSpan pointTtl;
         private readonly int gazeTrackerUdpPort;
@@ -54,7 +54,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         /// i.e. it is a Task<UdpReceiveResult> which would usually begin immediately - defer prevents this happening too early.
         /// (http://msdn.microsoft.com/en-us/library/hh229160(v=vs.103).aspx)
         /// 
-        /// REPEAT: Keep resubscribing to the observable indefinitely (http://theburningmonk.com/2010/03/rx-framework-iobservable-repeat/)
+        /// REPEAT: Keep re-subscribing to the observable indefinitely (http://theburningmonk.com/2010/03/rx-framework-iobservable-repeat/)
         /// </summary>
         public IObservable<Timestamped<PointAndKeyValue?>> Sequence
         {

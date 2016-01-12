@@ -1,18 +1,18 @@
-﻿<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.YesNoQuestion"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.Common.YesNoQuestion"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
-                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
-    
+
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
@@ -53,25 +53,19 @@
         <controls:QuestionText Grid.Row="0" Grid.Column="0" 
                            Grid.RowSpan="3" Grid.ColumnSpan="22"
                            Text="{Binding Text, Mode=OneWay}" />
-        
+
         <controls:Key Grid.Row="4" Grid.Column="4" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
                       Text="{x:Static resx:Resources.YES}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="YesQuestionResult" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.YesQuestionResultKey}" />
 
         <controls:Key Grid.Row="4" Grid.Column="14" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
                       Text="{x:Static resx:Resources.NO}"
-                      SharedSizeGroup="KeyWithSymbol">
-            <controls:Key.Value>
-                <models:KeyValue FunctionKey="NoQuestionResult" />
-            </controls:Key.Value>
-        </controls:Key>
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.NoQuestionResultKey}" />
     </Grid>
 </controls:KeyboardView>

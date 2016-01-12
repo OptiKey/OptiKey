@@ -147,7 +147,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="GitHubRepoOwner" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">juliussweetland</Value>
+      <Value Profile="(Default)">optikey</Value>
     </Setting>
     <Setting Name="GitHubRepoName" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">optikey</Value>

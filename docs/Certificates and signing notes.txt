@@ -1,24 +1,11 @@
-As the manifest *should* be the same for Debug and Release builds, I think I will have to manually change the manifest before deploying a build (to require uiAccess).
-  
------------------------------------------------------------------------------------------------------------------
+Low cost certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
+		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
 
-CREATING A CERTIFICATE AND SIGNING OptiKey:
-(Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
-
-1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
-makecert -r -pe -n "CN=Julius Test CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv JuliusTestCA.pvk JuliusTestCA.cer
-
-2.IMPORT THE CA:
-certutil -user -addstore Root JuliusTestCA.cer
-
-3.MAKE A CODE-SIGNING CERTIFICATE:
-makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic JuliusTestCA.cer -iv JuliusTestCA.pvk -sv JuliusTestSPC.pvk JuliusTestSPC.cer
-
-4.CONVERT THE CERTIFICATE AND KEY INTO PFX FILE:
-pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
-
-5.SIGN THE EXE FILE WITH NEW PFX FILE: (Run from exe location)
-"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool" sign /v /f "C:\OptiKey Release Staging\Certificates\JuliusTestSPC.pfx" "C:\OptiKey Release Staging\Binaries\OptiKey.exe"
+Once purchased and activated etc on the website download the .cer file then install it into the local computer's (or current user's) certificate store.
+Open mmc.exe and add the Certificate (Local Computer or Current User) add-in and find the certificate (it should be in Personal Certificates).
+Right click on the certificate and select 'Export...'.
+Check to export the private key - complete the process (including extended properties I think). Requires password and produces a .pfx file.
+The pfx file can be used with the signtool.exe to sign files. Remember to timestamp while signing so the signed file is valid even after the expiry of the certificate.
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -45,7 +32,26 @@ http://msdn.microsoft.com/en-us/library/che5h906.aspx
 What's the Difference - certificate signing vs strong naming:
 http://blogs.msdn.com/b/ericlippert/archive/2009/09/03/what-s-the-difference-part-five-certificate-signing-vs-strong-naming.aspx
 
+What happens when a code signing certificate expires?
+http://stackoverflow.com/questions/329396/what-happens-when-a-code-signing-certificate-expires
+
+
 -----------------------------------------------------------------------------------------------------------------
 
-Free (1 year) certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
-		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
+CREATING A SELF SIGNED CERTIFICATE AND SIGNING OPTIKEY (THIS IS **NOT** HOW TO USE A CERTIFICATE AUTHORITY CERTIFICATE):
+(Taken from http://stackoverflow.com/questions/84847/how-do-i-create-a-self-signed-certificate-for-code-signing-on-windows)
+
+1.CREATE A SELF-SIGNED CERTIFICATE AUTHORITY (CA):
+makecert -r -pe -n "CN=Julius Test CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv JuliusTestCA.pvk JuliusTestCA.cer
+
+2.IMPORT THE CA:
+certutil -user -addstore Root JuliusTestCA.cer
+
+3.MAKE A CODE-SIGNING CERTIFICATE:
+makecert -pe -n "CN=Julius Test SPC" -a sha256 -cy end -sky signature -ic JuliusTestCA.cer -iv JuliusTestCA.pvk -sv JuliusTestSPC.pvk JuliusTestSPC.cer
+
+4.CONVERT THE CERTIFICATE AND KEY INTO PFX FILE:
+pvk2pfx -pvk JuliusTestSPC.pvk -spc JuliusTestSPC.cer -pfx JuliusTestSPC.pfx
+
+5.SIGN THE EXE FILE WITH NEW PFX FILE: (Run from exe location)
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool" sign /v /f "C:\OptiKey Release Staging\Certificates\JuliusTestSPC.pfx" /p %passwd% /t http://timestamp.verisign.com/scripts/timstamp.dll "C:\OptiKey Release Staging\Binaries\OptiKey.exe"
