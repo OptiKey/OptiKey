@@ -151,7 +151,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Alpha {DataContext = Keyboard};
                         break;
@@ -171,7 +170,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
                         break;
@@ -203,7 +201,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
                         break;
@@ -220,7 +217,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
                         break;
@@ -237,7 +233,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
                     case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
                     case Languages.FrenchFrance:
                         newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };
                         break;
