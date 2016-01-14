@@ -538,7 +538,6 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
                         var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Select(de => de.Entry)
                             .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                             .ToList();
 
