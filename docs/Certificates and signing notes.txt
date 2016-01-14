@@ -7,6 +7,8 @@ Right click on the certificate and select 'Export...'.
 Check to export the private key - complete the process (including extended properties I think). Requires password and produces a .pfx file.
 The pfx file can be used with the signtool.exe to sign files. Remember to timestamp while signing so the signed file is valid even after the expiry of the certificate.
 
+N.B. With Certum you CANNOT currently renew an open source certificate. Instead you must purchase a new certificate and make sure the details match the previous certificate so that Microsoft Reputation can be built up faster (info from Certum customer services email).
+
 -----------------------------------------------------------------------------------------------------------------
 
 FILE TYPES:
