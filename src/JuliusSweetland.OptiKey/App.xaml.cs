@@ -470,6 +470,7 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
             }
+            Log.InfoFormat("Running as admin: {0}", DiagnosticInfo.RunningAsAdministrator);
             Log.InfoFormat("Process elevated: {0}", DiagnosticInfo.IsProcessElevated);
             Log.InfoFormat("Process bitness: {0}", DiagnosticInfo.ProcessBitness);
             Log.InfoFormat("OS version: {0}", DiagnosticInfo.OperatingSystemVersion);
