@@ -449,7 +449,7 @@ UP</value>
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontal fill (percentage of OptiKey):</value>
+    <value>Horizontal fill (as % of screen):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Incomplete key fixation time to live (ms):</value>
@@ -574,10 +574,10 @@ CURSOR</value>
     <value>MAGNIFIER</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Magnify destination (percentage of screen):</value>
+    <value>Magnify destination (as % of screen):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Magnify source (percentage of screen):</value>
+    <value>Magnify source (as % of screen):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Management console: ALT + M</value>
@@ -1167,7 +1167,7 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>Version: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertical fill (percentage of OptiKey):</value>
+    <value>Vertical fill (as % of screen):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Visuals</value>

@@ -426,7 +426,7 @@
     <value>Толщина шрифта:</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Полная величина дока(% от окна):</value>
+    <value>Полная величина дока (% от окна):</value>
   </data>
   <data name="GAZE_TRACKER" xml:space="preserve">
     <value>Gaze Tracker</value>
@@ -438,7 +438,7 @@
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Горизонтальная величина (% от OptiKey):</value>
+    <value>Горизонтальная величина (% от окна):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Время неполной фиксации клавиши (ms):</value>
@@ -563,10 +563,10 @@
     <value>УВЕЛИЧИТЬ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Площадь поверхности увеличения (% от экрана):</value>
+    <value>Площадь поверхности увеличения (% от окна):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Увеличение (% от экрана):</value>
+    <value>Увеличение (% от окна):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Настройки: ALT + M</value>
@@ -1154,7 +1154,7 @@ LK</value>
     <value>Версия: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Вертикальная величина(% от OptiKey)</value>
+    <value>Вертикальная величина (% от окна):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Вид</value>
@@ -1215,5 +1215,5 @@ LK</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Выключить увеличение во время прокручивания мыши:</value>
-  </data>  
+  </data>
 </root>
