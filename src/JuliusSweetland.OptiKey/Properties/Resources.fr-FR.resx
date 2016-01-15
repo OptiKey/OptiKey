@@ -426,8 +426,8 @@ EN HAUT</value>
     <value>Epaisseur :</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Hauteur de la barre d'outils complète :
-(pourcentage de l'écran)</value>
+    <value>Hauteur de la barre d'outils complète
+(pourcentage de l'écran) :</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Agrandir</value>
@@ -436,7 +436,7 @@ EN HAUT</value>
     <value>ORIG.</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Largeur (pourcentage d'OptiKey) :</value>
+    <value>Largeur (pourcentage de l'écran) :</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Temps maximal de reprise d'une touche (ms) :</value>
@@ -1127,7 +1127,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Version : {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Hauteur (pourcentage d'OptiKey) :</value>
+    <value>Hauteur (pourcentage de l'écran) :</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Interface</value>

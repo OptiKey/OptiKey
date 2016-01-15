@@ -446,7 +446,7 @@ VERGRÖSSERN</value>
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontale Ausfüllung (% von OptiKey):</value>
+    <value>Horizontale Ausfüllung (von % Monitorgrösse):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Die letzte Tastenwahl bleibt bestehen, falls nicht voll ausgewählt, für (ms)</value>
@@ -570,10 +570,10 @@ CURSOR</value>
     <value>LUPE</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Lupenzielvergrösserung (% des Bildschirms):</value>
+    <value>Lupenzielvergrösserung (von % Monitorgrösse):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Lupenausgangsvergrösserung (% des Bildschirms):</value>
+    <value>Lupenausgangsvergrösserung (von % Monitorgrösse):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Verwaltungskonsole: ALT + M</value>
@@ -1155,7 +1155,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>Version: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertikale Ausfüllung (% von OptiKey):</value>
+    <value>Vertikale Ausfüllung (von % Monitorgrösse):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Visuelles</value>

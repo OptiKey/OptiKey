@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
@@ -12,6 +14,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 {
     public class ToastNotificationPopup : Popup
     {
+        #region Private Member Variables
+
+        private Window window;
+        private Screen screen;
+        private ToastNotification toastNotification;
+
+        #endregion
+
         public ToastNotificationPopup()
         {
             Loaded += OnLoaded;
@@ -21,16 +31,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var window = VisualAndLogicalTreeHelper.FindLogicalParent<Window>(this);
-            var toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
+            //Get references to window, screen, toastNotification and mainViewModel
+            window = Window.GetWindow(this);
+            screen = window.GetScreen();
+            toastNotification = VisualAndLogicalTreeHelper.FindLogicalChildren<ToastNotification>(this).First();
             var mainViewModel = DataContext as MainViewModel;
 
             //Handle ToastNotification event
             mainViewModel.ToastNotification += (o, args) =>
             {
-                //Set size and position
-                SetSize(toastNotification, window);
-                SetPosition(window);
+                SetSizeAndPosition();
 
                 Title = args.Title;
                 Content = args.Content;
@@ -86,25 +96,30 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         #endregion
 
-        #region Set Size
+        #region Set Size And Position
 
-        private static void SetSize(FrameworkElement target, FrameworkElement parent)
+        private void SetSizeAndPosition()
         {
-            target.MaxHeight = target.MinHeight = target.Height = 
-                parent.ActualHeight * Settings.Default.ToastNotificationVerticalFillPercentage / 100;
+            var screenTopLeftInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Left, screen.Bounds.Top));
+            var screenBottomRightInWpfCoords = window.GetTransformFromDevice().Transform(new Point(screen.Bounds.Right, screen.Bounds.Bottom));
 
-            target.MaxWidth = target.MinWidth = target.Width =
-                parent.ActualWidth * Settings.Default.ToastNotificationHorizontalFillPercentage / 100;
-        }
+            var screenWidth = (screenBottomRightInWpfCoords.X - screenTopLeftInWpfCoords.X);
+            var screenHeight = (screenBottomRightInWpfCoords.Y - screenTopLeftInWpfCoords.Y);
 
-        #endregion
+            var toastPopupWidthAsPercentage = Settings.Default.ToastNotificationHorizontalFillPercentage / 100d;
+            var toastPopupHeightAsPercentage = Settings.Default.ToastNotificationVerticalFillPercentage / 100d;
 
-        #region Set Position
+            var distanceFromLeftBoundary = ((1d - toastPopupWidthAsPercentage) / 2d) * screenWidth;
+            var distanceFromTopBoundary = ((1d - toastPopupHeightAsPercentage) / 2d) * screenHeight;
 
-        private void SetPosition(FrameworkElement parent)
-        {
-            //VerticalOffset is used to align the center of this popup with a point on the parent window so calculate the window's center line
-            VerticalOffset = (parent.ActualHeight / 2d) * ((double)Settings.Default.ToastNotificationVerticalFillPercentage / 100d);
+            HorizontalOffset = screenTopLeftInWpfCoords.X + distanceFromLeftBoundary;
+            VerticalOffset = screenTopLeftInWpfCoords.Y + distanceFromTopBoundary;
+
+            var width = toastPopupWidthAsPercentage * screenWidth;
+            var height = toastPopupHeightAsPercentage * screenHeight;
+
+            MaxWidth = MinWidth = Width = width;
+            MaxHeight = MinHeight = Height = height;
         }
 
         #endregion
@@ -117,7 +132,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             var introAnimation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromSeconds(0.5)), FillBehavior.Stop);
             Storyboard.SetTarget(introAnimation, target);
-            Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.RenderTransform).(ScaleTransform.ScaleY)"));
+            Storyboard.SetTargetProperty(introAnimation, new PropertyPath("(UIElement.Opacity)"));
             storyboard.Children.Add(introAnimation);
 
             var displayTimeInSeconds = Convert.ToInt32(Math.Ceiling((double)(text != null ? text.Length : 0) 
