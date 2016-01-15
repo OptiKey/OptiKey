@@ -451,7 +451,7 @@ BOVEN</value>
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontale vulling (percentage van OptiKey):</value>
+    <value>Horizontale vulling (zoveel % van het scherm):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Incomplete tijd toetsfixatie live (ms):</value>
@@ -576,10 +576,10 @@ CURSOR</value>
     <value>VERGROOTGLAS</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Bestemming Vergrootglas (percentage van scherm):</value>
+    <value>Bestemming Vergrootglas (zoveel % van het scherm):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Herkomst Vergrootglas (percentage van scherm):</value>
+    <value>Herkomst Vergrootglas (zoveel % van het scherm):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Management console: ALT + M</value>
@@ -1170,7 +1170,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
     <value>Versie: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Verticale opvulling (percentage van OptiKey):</value>
+    <value>Verticale opvulling (zoveel % van het scherm):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Visuals</value>
