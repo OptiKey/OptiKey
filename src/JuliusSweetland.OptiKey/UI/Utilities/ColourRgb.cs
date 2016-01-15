@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Utilities
             var c = Color.FromArgb(rgb.R, rgb.G, rgb.B);
             return c;
         }
+
         public static explicit operator ColourRgb(Color c)
         {
             return new ColourRgb(c);
