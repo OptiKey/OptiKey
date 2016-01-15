@@ -62,8 +62,7 @@
 
         <controls:MagnifyPopup IsHitTestVisible="False" Placement="AbsolutePoint" AllowsTransparency="True" />
         
-        <controls:ToastNotificationPopup PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
-                                         Placement="Center" AllowsTransparency="True" IsOpen="False">
+        <controls:ToastNotificationPopup Placement="AbsolutePoint"  AllowsTransparency="True" IsOpen="False">
             <controls:ToastNotification RenderTransformOrigin="0,1">
                 <controls:ToastNotification.RenderTransform>
                     <ScaleTransform ScaleY="1" />

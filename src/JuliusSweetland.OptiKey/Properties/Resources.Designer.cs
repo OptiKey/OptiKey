@@ -1078,7 +1078,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal fill (percentage of OptiKey):.
+        ///   Looks up a localized string similar to Horizontal fill (as % of screen):.
         /// </summary>
         public static string HORIZONTAL_FILL {
             get {
@@ -1434,7 +1434,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magnify destination (percentage of screen):.
+        ///   Looks up a localized string similar to Magnify destination (as % of screen):.
         /// </summary>
         public static string MAGNIFY_DESTINATION_LABEL {
             get {
@@ -1443,7 +1443,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Magnify source (percentage of screen):.
+        ///   Looks up a localized string similar to Magnify source (as % of screen):.
         /// </summary>
         public static string MAGNIFY_SOURCE_LABEL {
             get {
@@ -3204,7 +3204,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vertical fill (percentage of OptiKey):.
+        ///   Looks up a localized string similar to Vertical fill (as % of screen):.
         /// </summary>
         public static string VERTICAL_FILL_LABEL {
             get {
