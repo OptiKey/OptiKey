@@ -219,6 +219,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationCompleteTimeInMsByKeyValue, value); }
         }
 
+        private List<KeyValueAndTimeSpanGroup> keySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups;
+        public List<KeyValueAndTimeSpanGroup> KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
+        {
+            get { return keySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups; }
+            set { SetProperty(ref keySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups, value); }
+        }
+
         private double keySelectionTriggerIncompleteFixationTtlInMs;
         public double KeySelectionTriggerIncompleteFixationTtlInMs
         {
