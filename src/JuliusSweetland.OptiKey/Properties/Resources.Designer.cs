@@ -380,6 +380,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Keyboard.
+        /// </summary>
+        public static string CHANGE_KEYBOARD_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("CHANGE_KEYBOARD_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates on startup:.
         /// </summary>
         public static string CHECK_FOR_UPDATES_AT_STARTUP_LABEL {
@@ -846,6 +855,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DO_AT_POINT {
             get {
                 return ResourceManager.GetString("DO_AT_POINT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dock Actions.
+        /// </summary>
+        public static string DOCK_ACTIONS_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("DOCK_ACTIONS_KEY_GROUP", resourceCulture);
             }
         }
         
@@ -1735,6 +1753,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Languages.
+        /// </summary>
+        public static string LANGUAGES_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("LANGUAGES_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Left.
         /// </summary>
         public static string LEFT {
@@ -2039,6 +2066,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Misc Actions.
+        /// </summary>
+        public static string MISC_ACTIONS_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MISC_ACTIONS_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifier keys.
+        /// </summary>
+        public static string MODIFIER_KEYS_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MODIFIER_KEYS_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MOUSE.
         /// </summary>
         public static string MOUSE {
@@ -2098,6 +2143,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MOUSE_CLICK_SOUND_LABEL {
             get {
                 return ResourceManager.GetString("MOUSE_CLICK_SOUND_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse (Do at current location).
+        /// </summary>
+        public static string MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse (Do at point).
+        /// </summary>
+        public static string MOUSE_DO_AT_POINT_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MOUSE_DO_AT_POINT_KEY_GROUP", resourceCulture);
             }
         }
         
@@ -2188,6 +2251,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MOUSE_LAYOUT {
             get {
                 return ResourceManager.GetString("MOUSE_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouse (Misc).
+        /// </summary>
+        public static string MOUSE_MISC_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MOUSE_MISC_KEY_GROUP", resourceCulture);
             }
         }
         
@@ -2332,6 +2404,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MOVE_AMOUNT_IN_PIXEL {
             get {
                 return ResourceManager.GetString("MOVE_AMOUNT_IN_PIXEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move And Resize.
+        /// </summary>
+        public static string MOVE_AND_RESIZE_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("MOVE_AND_RESIZE_KEY_GROUP", resourceCulture);
             }
         }
         
@@ -2825,6 +2906,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PHYSICAL_KEYS {
             get {
                 return ResourceManager.GetString("PHYSICAL_KEYS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical Keys.
+        /// </summary>
+        public static string PHYSICAL_KEYS_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("PHYSICAL_KEYS_KEY_GROUP", resourceCulture);
             }
         }
         
@@ -3765,6 +3855,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SUGGESTION_KEYS_GROUP_LABEL {
             get {
                 return ResourceManager.GetString("SUGGESTION_KEYS_GROUP_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggestion keys.
+        /// </summary>
+        public static string SUGGESTION_KEYS_KEY_GROUP {
+            get {
+                return ResourceManager.GetString("SUGGESTION_KEYS_KEY_GROUP", resourceCulture);
             }
         }
         

@@ -212,13 +212,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationDefaultCompleteTimeInMs, value); }
         }
 
-        private List<KeyValueAndTimeSpan> keySelectionTriggerFixationCompleteTimeInMsByKeyValue;
-        public List<KeyValueAndTimeSpan> KeySelectionTriggerFixationCompleteTimeInMsByKeyValue
-        {
-            get { return keySelectionTriggerFixationCompleteTimeInMsByKeyValue; }
-            set { SetProperty(ref keySelectionTriggerFixationCompleteTimeInMsByKeyValue, value); }
-        }
-
         private List<KeyValueAndTimeSpanGroup> keySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups;
         public List<KeyValueAndTimeSpanGroup> KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
         {
@@ -328,6 +321,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get
             {
+                var flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesStoredSetting =
+                    FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues)
+                        .SelectMany(g => g.KeyValueAndTimeSpans);
+
+                var flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesLocalValue =
+                    KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
+                        .SelectMany(g => g.KeyValueAndTimeSpans);
+
                 return Settings.Default.PointsSource != PointsSource
                     || (Settings.Default.TobiiEyeXProcessingLevel != TobiiEyeXProcessingLevel && PointsSource == Enums.PointsSources.TobiiEyeX)
                     || (Settings.Default.PointsMousePositionSampleInterval != TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs) && PointsSource == Enums.PointsSources.MousePosition)
@@ -338,7 +339,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn != KeySelectionTriggerFixationResumeRequiresLockOn && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
-                    || (ConvertToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues).SequenceEqual(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue) == false)
+                    || (flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesStoredSetting.SequenceEqual(flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesLocalValue) == false)
                     || (Settings.Default.KeySelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
                     || (Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey != PointSelectionTriggerKeyboardKeyDownUpKey && PointSelectionTriggerSource == Enums.TriggerSources.KeyboardKeyDownsUps)
@@ -369,7 +370,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds;
-            KeySelectionTriggerFixationCompleteTimeInMsByKeyValue = ConvertToList(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
+            KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
             PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
             PointSelectionTriggerKeyboardKeyDownUpKey = Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey;
@@ -398,7 +399,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
             Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs);
-            Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ConvertToDictionary(KeySelectionTriggerFixationCompleteTimeInMsByKeyValue);
+            Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ToSetting(KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
             Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;
             Settings.Default.PointSelectionTriggerKeyboardKeyDownUpKey = PointSelectionTriggerKeyboardKeyDownUpKey;
@@ -415,157 +416,190 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MultiKeySelectionMaxDuration = TimeSpan.FromMilliseconds(MultiKeySelectionMaxDurationInMs);
         }
 
-        private List<KeyValueAndTimeSpan> ConvertToList(
+        private List<KeyValueAndTimeSpanGroup> FromSetting(
             SerializableDictionaryOfTimeSpanByKeyValues dictionary)
         {
-            return new List<KeyValueAndTimeSpan>
+            return new List<KeyValueAndTimeSpanGroup>
             {
-                new KeyValueAndTimeSpan(Resources.ADD_TO_DICTIONARY, KeyValues.AddToDictionaryKey, dictionary.ContainsKey(KeyValues.AddToDictionaryKey) ? dictionary[KeyValues.AddToDictionaryKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ALPHA, KeyValues.AlphaKeyboardKey, dictionary.ContainsKey(KeyValues.AlphaKeyboardKey) ? dictionary[KeyValues.AlphaKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DOWN_ARROW, KeyValues.ArrowDownKey, dictionary.ContainsKey(KeyValues.ArrowDownKey) ? dictionary[KeyValues.ArrowDownKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_ARROW, KeyValues.ArrowLeftKey, dictionary.ContainsKey(KeyValues.ArrowLeftKey) ? dictionary[KeyValues.ArrowLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RIGHT_ARROW, KeyValues.ArrowRightKey, dictionary.ContainsKey(KeyValues.ArrowRightKey) ? dictionary[KeyValues.ArrowRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.UP_ARROW, KeyValues.ArrowUpKey, dictionary.ContainsKey(KeyValues.ArrowUpKey) ? dictionary[KeyValues.ArrowUpKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.BACK, KeyValues.BackFromKeyboardKey, dictionary.ContainsKey(KeyValues.BackFromKeyboardKey) ? dictionary[KeyValues.BackFromKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.BACK_WORD, KeyValues.BackManyKey, dictionary.ContainsKey(KeyValues.BackManyKey) ? dictionary[KeyValues.BackManyKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.BACK_ONE, KeyValues.BackOneKey, dictionary.ContainsKey(KeyValues.BackOneKey) ? dictionary[KeyValues.BackOneKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.BREAK, KeyValues.BreakKey, dictionary.ContainsKey(KeyValues.BreakKey) ? dictionary[KeyValues.BreakKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RE_CALIBRATE, KeyValues.CalibrateKey, dictionary.ContainsKey(KeyValues.CalibrateKey) ? dictionary[KeyValues.CalibrateKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CLEAR, KeyValues.ClearScratchpadKey, dictionary.ContainsKey(KeyValues.ClearScratchpadKey) ? dictionary[KeyValues.ClearScratchpadKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.COLLAPSE_DOCK, KeyValues.CollapseDockKey, dictionary.ContainsKey(KeyValues.CollapseDockKey) ? dictionary[KeyValues.CollapseDockKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA, KeyValues.ConversationAlphaKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlphaKeyboardKey) ? dictionary[KeyValues.ConversationAlphaKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CONVERSATION_NUMERIC_AND_SYMBOLS, KeyValues.ConversationNumericAndSymbolsKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationNumericAndSymbolsKeyboardKey) ? dictionary[KeyValues.ConversationNumericAndSymbolsKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CURRENCIES_1, KeyValues.Currencies1KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies1KeyboardKey) ? dictionary[KeyValues.Currencies1KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CURRENCIES_2, KeyValues.Currencies2KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies2KeyboardKey) ? dictionary[KeyValues.Currencies2KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DECREASE_OPACITY, KeyValues.DecreaseOpacityKey, dictionary.ContainsKey(KeyValues.DecreaseOpacityKey) ? dictionary[KeyValues.DecreaseOpacityKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DEL, KeyValues.DeleteKey, dictionary.ContainsKey(KeyValues.DeleteKey) ? dictionary[KeyValues.DeleteKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DIACRITICS_1, KeyValues.Diacritic1KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic1KeyboardKey) ? dictionary[KeyValues.Diacritic1KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DIACRITICS_2, KeyValues.Diacritic2KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic2KeyboardKey) ? dictionary[KeyValues.Diacritic2KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.DIACRITICS_3, KeyValues.Diacritic3KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic3KeyboardKey) ? dictionary[KeyValues.Diacritic3KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.END, KeyValues.EndKey, dictionary.ContainsKey(KeyValues.EndKey) ? dictionary[KeyValues.EndKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ENGLISH_CANADA, KeyValues.EnglishCanadaKey, dictionary.ContainsKey(KeyValues.EnglishCanadaKey) ? dictionary[KeyValues.EnglishCanadaKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ENGLISH_UK, KeyValues.EnglishUKKey, dictionary.ContainsKey(KeyValues.EnglishUKKey) ? dictionary[KeyValues.EnglishUKKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ENGLISH_US, KeyValues.EnglishUSKey, dictionary.ContainsKey(KeyValues.EnglishUSKey) ? dictionary[KeyValues.EnglishUSKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ESC, KeyValues.EscapeKey, dictionary.ContainsKey(KeyValues.EscapeKey) ? dictionary[KeyValues.EscapeKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_DOCK, KeyValues.ExpandDockKey, dictionary.ContainsKey(KeyValues.ExpandDockKey) ? dictionary[KeyValues.ExpandDockKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_DOWN_AND_LEFT, KeyValues.ExpandToBottomAndLeftKey, dictionary.ContainsKey(KeyValues.ExpandToBottomAndLeftKey) ? dictionary[KeyValues.ExpandToBottomAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_DOWN_AND_RIGHT, KeyValues.ExpandToBottomAndRightKey, dictionary.ContainsKey(KeyValues.ExpandToBottomAndRightKey) ? dictionary[KeyValues.ExpandToBottomAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_DOWN, KeyValues.ExpandToBottomKey, dictionary.ContainsKey(KeyValues.ExpandToBottomKey) ? dictionary[KeyValues.ExpandToBottomKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_LEFT, KeyValues.ExpandToLeftKey, dictionary.ContainsKey(KeyValues.ExpandToLeftKey) ? dictionary[KeyValues.ExpandToLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_RIGHT, KeyValues.ExpandToRightKey, dictionary.ContainsKey(KeyValues.ExpandToRightKey) ? dictionary[KeyValues.ExpandToRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_UP_AND_LEFT, KeyValues.ExpandToTopAndLeftKey, dictionary.ContainsKey(KeyValues.ExpandToTopAndLeftKey) ? dictionary[KeyValues.ExpandToTopAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_UP_AND_RIGHT, KeyValues.ExpandToTopAndRightKey, dictionary.ContainsKey(KeyValues.ExpandToTopAndRightKey) ? dictionary[KeyValues.ExpandToTopAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.EXPAND_UP, KeyValues.ExpandToTopKey, dictionary.ContainsKey(KeyValues.ExpandToTopKey) ? dictionary[KeyValues.ExpandToTopKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F10, KeyValues.F10Key, dictionary.ContainsKey(KeyValues.F10Key) ? dictionary[KeyValues.F10Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F11, KeyValues.F11Key, dictionary.ContainsKey(KeyValues.F11Key) ? dictionary[KeyValues.F11Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F12, KeyValues.F12Key, dictionary.ContainsKey(KeyValues.F12Key) ? dictionary[KeyValues.F12Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F1, KeyValues.F1Key, dictionary.ContainsKey(KeyValues.F1Key) ? dictionary[KeyValues.F1Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F2, KeyValues.F2Key, dictionary.ContainsKey(KeyValues.F2Key) ? dictionary[KeyValues.F2Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F3, KeyValues.F3Key, dictionary.ContainsKey(KeyValues.F3Key) ? dictionary[KeyValues.F3Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F4, KeyValues.F4Key, dictionary.ContainsKey(KeyValues.F4Key) ? dictionary[KeyValues.F4Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F5, KeyValues.F5Key, dictionary.ContainsKey(KeyValues.F5Key) ? dictionary[KeyValues.F5Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F6, KeyValues.F6Key, dictionary.ContainsKey(KeyValues.F6Key) ? dictionary[KeyValues.F6Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F7, KeyValues.F7Key, dictionary.ContainsKey(KeyValues.F7Key) ? dictionary[KeyValues.F7Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F8, KeyValues.F8Key, dictionary.ContainsKey(KeyValues.F8Key) ? dictionary[KeyValues.F8Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.F9, KeyValues.F9Key, dictionary.ContainsKey(KeyValues.F9Key) ? dictionary[KeyValues.F9Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.FRENCH_FRANCE, KeyValues.FrenchFranceKey, dictionary.ContainsKey(KeyValues.FrenchFranceKey) ? dictionary[KeyValues.FrenchFranceKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.HOME, KeyValues.HomeKey, dictionary.ContainsKey(KeyValues.HomeKey) ? dictionary[KeyValues.HomeKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.INCREASE_OPACITY, KeyValues.IncreaseOpacityKey, dictionary.ContainsKey(KeyValues.IncreaseOpacityKey) ? dictionary[KeyValues.IncreaseOpacityKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.INS, KeyValues.InsertKey, dictionary.ContainsKey(KeyValues.InsertKey) ? dictionary[KeyValues.InsertKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LANGUAGE, KeyValues.LanguageKeyboardKey, dictionary.ContainsKey(KeyValues.LanguageKeyboardKey) ? dictionary[KeyValues.LanguageKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ALT, KeyValues.LeftAltKey, dictionary.ContainsKey(KeyValues.LeftAltKey) ? dictionary[KeyValues.LeftAltKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CTRL, KeyValues.LeftCtrlKey, dictionary.ContainsKey(KeyValues.LeftCtrlKey) ? dictionary[KeyValues.LeftCtrlKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHIFT, KeyValues.LeftShiftKey, dictionary.ContainsKey(KeyValues.LeftShiftKey) ? dictionary[KeyValues.LeftShiftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.WIN, KeyValues.LeftWinKey, dictionary.ContainsKey(KeyValues.LeftWinKey) ? dictionary[KeyValues.LeftWinKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CONTEXTUAL_MENU_KEY, KeyValues.MenuKey, dictionary.ContainsKey(KeyValues.MenuKey) ? dictionary[KeyValues.MenuKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MENU, KeyValues.MenuKeyboardKey, dictionary.ContainsKey(KeyValues.MenuKeyboardKey) ? dictionary[KeyValues.MenuKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MINIMISE, KeyValues.MinimiseKey, dictionary.ContainsKey(KeyValues.MinimiseKey) ? dictionary[KeyValues.MinimiseKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.CLICK_AND_DRAG, KeyValues.MouseDragKey, dictionary.ContainsKey(KeyValues.MouseDragKey) ? dictionary[KeyValues.MouseDragKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOUSE, KeyValues.MouseKeyboardKey, dictionary.ContainsKey(KeyValues.MouseKeyboardKey) ? dictionary[KeyValues.MouseKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_CLICK, KeyValues.MouseLeftClickKey, dictionary.ContainsKey(KeyValues.MouseLeftClickKey) ? dictionary[KeyValues.MouseLeftClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_DOUBLE_CLICK, KeyValues.MouseLeftDoubleClickKey, dictionary.ContainsKey(KeyValues.MouseLeftDoubleClickKey) ? dictionary[KeyValues.MouseLeftDoubleClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_DOWN_UP, KeyValues.MouseLeftDownUpKey, dictionary.ContainsKey(KeyValues.MouseLeftDownUpKey) ? dictionary[KeyValues.MouseLeftDownUpKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MAGNETIC_CURSOR, KeyValues.MouseMagneticCursorKey, dictionary.ContainsKey(KeyValues.MouseMagneticCursorKey) ? dictionary[KeyValues.MouseMagneticCursorKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MAGNIFIER, KeyValues.MouseMagnifierKey, dictionary.ContainsKey(KeyValues.MouseMagnifierKey) ? dictionary[KeyValues.MouseMagnifierKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MIDDLE_CLICK, KeyValues.MouseMiddleClickKey, dictionary.ContainsKey(KeyValues.MouseMiddleClickKey) ? dictionary[KeyValues.MouseMiddleClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MIDDLE_DOWN_UP, KeyValues.MouseMiddleDownUpKey, dictionary.ContainsKey(KeyValues.MouseMiddleDownUpKey) ? dictionary[KeyValues.MouseMiddleDownUpKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_AMOUNT_IN_PIXEL, KeyValues.MouseMoveAmountInPixelsKey, dictionary.ContainsKey(KeyValues.MouseMoveAmountInPixelsKey) ? dictionary[KeyValues.MouseMoveAmountInPixelsKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_CLICK, KeyValues.MouseMoveAndLeftClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftClickKey) ? dictionary[KeyValues.MouseMoveAndLeftClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.LEFT_DOUBLE_CLICK, KeyValues.MouseMoveAndLeftDoubleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftDoubleClickKey) ? dictionary[KeyValues.MouseMoveAndLeftDoubleClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MIDDLE_CLICK, KeyValues.MouseMoveAndMiddleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndMiddleClickKey) ? dictionary[KeyValues.MouseMoveAndMiddleClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RIGHT_CLICK, KeyValues.MouseMoveAndRightClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndRightClickKey) ? dictionary[KeyValues.MouseMoveAndRightClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCROLL_DOWN, KeyValues.MouseMoveAndScrollToBottomKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToBottomKey) ? dictionary[KeyValues.MouseMoveAndScrollToBottomKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCROLL_LEFT, KeyValues.MouseMoveAndScrollToLeftKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToLeftKey) ? dictionary[KeyValues.MouseMoveAndScrollToLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCROLL_RIGHT, KeyValues.MouseMoveAndScrollToRightKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToRightKey) ? dictionary[KeyValues.MouseMoveAndScrollToRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCROLL_UP, KeyValues.MouseMoveAndScrollToTopKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToTopKey) ? dictionary[KeyValues.MouseMoveAndScrollToTopKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_DOWN, KeyValues.MouseMoveToBottomKey, dictionary.ContainsKey(KeyValues.MouseMoveToBottomKey) ? dictionary[KeyValues.MouseMoveToBottomKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_TO, KeyValues.MouseMoveToKey, dictionary.ContainsKey(KeyValues.MouseMoveToKey) ? dictionary[KeyValues.MouseMoveToKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_LEFT, KeyValues.MouseMoveToLeftKey, dictionary.ContainsKey(KeyValues.MouseMoveToLeftKey) ? dictionary[KeyValues.MouseMoveToLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_RIGHT, KeyValues.MouseMoveToRightKey, dictionary.ContainsKey(KeyValues.MouseMoveToRightKey) ? dictionary[KeyValues.MouseMoveToRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_UP, KeyValues.MouseMoveToTopKey, dictionary.ContainsKey(KeyValues.MouseMoveToTopKey) ? dictionary[KeyValues.MouseMoveToTopKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RIGHT_CLICK, KeyValues.MouseRightClickKey, dictionary.ContainsKey(KeyValues.MouseRightClickKey) ? dictionary[KeyValues.MouseRightClickKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RIGHT_DOWN_UP, KeyValues.MouseRightDownUpKey, dictionary.ContainsKey(KeyValues.MouseRightDownUpKey) ? dictionary[KeyValues.MouseRightDownUpKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCROLL_AMOUNT_IN_CLICKS, KeyValues.MouseScrollAmountInClicksKey, dictionary.ContainsKey(KeyValues.MouseScrollAmountInClicksKey) ? dictionary[KeyValues.MouseScrollAmountInClicksKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.ADJUST_AMOUNT_IN_PIXELS, KeyValues.MoveAndResizeAdjustmentAmountKey, dictionary.ContainsKey(KeyValues.MoveAndResizeAdjustmentAmountKey) ? dictionary[KeyValues.MoveAndResizeAdjustmentAmountKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_DOWN_AND_LEFT, KeyValues.MoveToBottomAndLeftBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndLeftBoundariesKey) ? dictionary[KeyValues.MoveToBottomAndLeftBoundariesKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_DOWN_AND_LEFT, KeyValues.MoveToBottomAndLeftKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndLeftKey) ? dictionary[KeyValues.MoveToBottomAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_DOWN_AND_RIGHT, KeyValues.MoveToBottomAndRightBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndRightBoundariesKey) ? dictionary[KeyValues.MoveToBottomAndRightBoundariesKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_DOWN_AND_RIGHT, KeyValues.MoveToBottomAndRightKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndRightKey) ? dictionary[KeyValues.MoveToBottomAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_DOWN, KeyValues.MoveToBottomBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToBottomBoundaryKey) ? dictionary[KeyValues.MoveToBottomBoundaryKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_DOWN, KeyValues.MoveToBottomKey, dictionary.ContainsKey(KeyValues.MoveToBottomKey) ? dictionary[KeyValues.MoveToBottomKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_LEFT, KeyValues.MoveToLeftBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToLeftBoundaryKey) ? dictionary[KeyValues.MoveToLeftBoundaryKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_LEFT, KeyValues.MoveToLeftKey, dictionary.ContainsKey(KeyValues.MoveToLeftKey) ? dictionary[KeyValues.MoveToLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_RIGHT, KeyValues.MoveToRightBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToRightBoundaryKey) ? dictionary[KeyValues.MoveToRightBoundaryKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_RIGHT, KeyValues.MoveToRightKey, dictionary.ContainsKey(KeyValues.MoveToRightKey) ? dictionary[KeyValues.MoveToRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_UP_AND_LEFT, KeyValues.MoveToTopAndLeftBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToTopAndLeftBoundariesKey) ? dictionary[KeyValues.MoveToTopAndLeftBoundariesKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_UP_AND_LEFT, KeyValues.MoveToTopAndLeftKey, dictionary.ContainsKey(KeyValues.MoveToTopAndLeftKey) ? dictionary[KeyValues.MoveToTopAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_UP_AND_RIGHT, KeyValues.MoveToTopAndRightBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToTopAndRightBoundariesKey) ? dictionary[KeyValues.MoveToTopAndRightBoundariesKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_UP_AND_RIGHT, KeyValues.MoveToTopAndRightKey, dictionary.ContainsKey(KeyValues.MoveToTopAndRightKey) ? dictionary[KeyValues.MoveToTopAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.JUMP_UP, KeyValues.MoveToTopBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToTopBoundaryKey) ? dictionary[KeyValues.MoveToTopBoundaryKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MOVE_UP, KeyValues.MoveToTopKey, dictionary.ContainsKey(KeyValues.MoveToTopKey) ? dictionary[KeyValues.MoveToTopKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.MULTI_KEY_SELECTION_UPPER_CASE, KeyValues.MultiKeySelectionIsOnKey, dictionary.ContainsKey(KeyValues.MultiKeySelectionIsOnKey) ? dictionary[KeyValues.MultiKeySelectionIsOnKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NEXT, KeyValues.NextSuggestionsKey, dictionary.ContainsKey(KeyValues.NextSuggestionsKey) ? dictionary[KeyValues.NextSuggestionsKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NO, KeyValues.NoQuestionResultKey, dictionary.ContainsKey(KeyValues.NoQuestionResultKey) ? dictionary[KeyValues.NoQuestionResultKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NUM_LK, KeyValues.NumberLockKey, dictionary.ContainsKey(KeyValues.NumberLockKey) ? dictionary[KeyValues.NumberLockKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_1, KeyValues.NumericAndSymbols1KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols1KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols1KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_2, KeyValues.NumericAndSymbols2KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols2KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols2KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_3, KeyValues.NumericAndSymbols3KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols3KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols3KeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.PG_DN, KeyValues.PgDnKey, dictionary.ContainsKey(KeyValues.PgDnKey) ? dictionary[KeyValues.PgDnKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.PG_UP, KeyValues.PgUpKey, dictionary.ContainsKey(KeyValues.PgUpKey) ? dictionary[KeyValues.PgUpKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.PHYSICAL_KEYS, KeyValues.PhysicalKeysKeyboardKey, dictionary.ContainsKey(KeyValues.PhysicalKeysKeyboardKey) ? dictionary[KeyValues.PhysicalKeysKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.PREV, KeyValues.PreviousSuggestionsKey, dictionary.ContainsKey(KeyValues.PreviousSuggestionsKey) ? dictionary[KeyValues.PreviousSuggestionsKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.PRNT_SCR, KeyValues.PrintScreenKey, dictionary.ContainsKey(KeyValues.PrintScreenKey) ? dictionary[KeyValues.PrintScreenKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.QUIT, KeyValues.QuitKey, dictionary.ContainsKey(KeyValues.QuitKey) ? dictionary[KeyValues.QuitKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.REPEAT_LAST, KeyValues.RepeatLastMouseActionKey, dictionary.ContainsKey(KeyValues.RepeatLastMouseActionKey) ? dictionary[KeyValues.RepeatLastMouseActionKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SCRN_LK, KeyValues.ScrollLockKey, dictionary.ContainsKey(KeyValues.ScrollLockKey) ? dictionary[KeyValues.ScrollLockKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_UP_AND_RIGHT, KeyValues.ShrinkFromBottomAndLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomAndLeftKey) ? dictionary[KeyValues.ShrinkFromBottomAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_UP_AND_LEFT, KeyValues.ShrinkFromBottomAndRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomAndRightKey) ? dictionary[KeyValues.ShrinkFromBottomAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_UP, KeyValues.ShrinkFromBottomKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomKey) ? dictionary[KeyValues.ShrinkFromBottomKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_RIGHT, KeyValues.ShrinkFromLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromLeftKey) ? dictionary[KeyValues.ShrinkFromLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_LEFT, KeyValues.ShrinkFromRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromRightKey) ? dictionary[KeyValues.ShrinkFromRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_DOWN_AND_RIGHT, KeyValues.ShrinkFromTopAndLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopAndLeftKey) ? dictionary[KeyValues.ShrinkFromTopAndLeftKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_DOWN_AND_LEFT, KeyValues.ShrinkFromTopAndRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopAndRightKey) ? dictionary[KeyValues.ShrinkFromTopAndRightKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SHRINK_DOWN, KeyValues.ShrinkFromTopKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopKey) ? dictionary[KeyValues.ShrinkFromTopKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SIZE_AND_POSITION, KeyValues.SizeAndPositionKeyboardKey, dictionary.ContainsKey(KeyValues.SizeAndPositionKeyboardKey) ? dictionary[KeyValues.SizeAndPositionKeyboardKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SLEEP, KeyValues.SleepKey, dictionary.ContainsKey(KeyValues.SleepKey) ? dictionary[KeyValues.SleepKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SPEAK, KeyValues.SpeakKey, dictionary.ContainsKey(KeyValues.SpeakKey) ? dictionary[KeyValues.SpeakKey] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_1, KeyValues.Suggestion1Key, dictionary.ContainsKey(KeyValues.Suggestion1Key) ? dictionary[KeyValues.Suggestion1Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_2, KeyValues.Suggestion2Key, dictionary.ContainsKey(KeyValues.Suggestion2Key) ? dictionary[KeyValues.Suggestion2Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_3, KeyValues.Suggestion3Key, dictionary.ContainsKey(KeyValues.Suggestion3Key) ? dictionary[KeyValues.Suggestion3Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_4, KeyValues.Suggestion4Key, dictionary.ContainsKey(KeyValues.Suggestion4Key) ? dictionary[KeyValues.Suggestion4Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_5, KeyValues.Suggestion5Key, dictionary.ContainsKey(KeyValues.Suggestion5Key) ? dictionary[KeyValues.Suggestion5Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.SUGGESTION_6, KeyValues.Suggestion6Key, dictionary.ContainsKey(KeyValues.Suggestion6Key) ? dictionary[KeyValues.Suggestion6Key] : (TimeSpan?)null),
-                new KeyValueAndTimeSpan(Resources.YES, KeyValues.YesQuestionResultKey, dictionary.ContainsKey(KeyValues.YesQuestionResultKey) ? dictionary[KeyValues.YesQuestionResultKey] : (TimeSpan?)null),
+                new KeyValueAndTimeSpanGroup(Resources.CHANGE_KEYBOARD_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.ALPHA, KeyValues.AlphaKeyboardKey, dictionary.ContainsKey(KeyValues.AlphaKeyboardKey) ? dictionary[KeyValues.AlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.BACK, KeyValues.BackFromKeyboardKey, dictionary.ContainsKey(KeyValues.BackFromKeyboardKey) ? dictionary[KeyValues.BackFromKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA, KeyValues.ConversationAlphaKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlphaKeyboardKey) ? dictionary[KeyValues.ConversationAlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_NUMERIC_AND_SYMBOLS, KeyValues.ConversationNumericAndSymbolsKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationNumericAndSymbolsKeyboardKey) ? dictionary[KeyValues.ConversationNumericAndSymbolsKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CURRENCIES_1, KeyValues.Currencies1KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies1KeyboardKey) ? dictionary[KeyValues.Currencies1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CURRENCIES_2, KeyValues.Currencies2KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies2KeyboardKey) ? dictionary[KeyValues.Currencies2KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DIACRITICS_1, KeyValues.Diacritic1KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic1KeyboardKey) ? dictionary[KeyValues.Diacritic1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DIACRITICS_2, KeyValues.Diacritic2KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic2KeyboardKey) ? dictionary[KeyValues.Diacritic2KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DIACRITICS_3, KeyValues.Diacritic3KeyboardKey, dictionary.ContainsKey(KeyValues.Diacritic3KeyboardKey) ? dictionary[KeyValues.Diacritic3KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LANGUAGE, KeyValues.LanguageKeyboardKey, dictionary.ContainsKey(KeyValues.LanguageKeyboardKey) ? dictionary[KeyValues.LanguageKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MENU, KeyValues.MenuKeyboardKey, dictionary.ContainsKey(KeyValues.MenuKeyboardKey) ? dictionary[KeyValues.MenuKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOUSE, KeyValues.MouseKeyboardKey, dictionary.ContainsKey(KeyValues.MouseKeyboardKey) ? dictionary[KeyValues.MouseKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_1, KeyValues.NumericAndSymbols1KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols1KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_2, KeyValues.NumericAndSymbols2KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols2KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols2KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.NUMBERS_SYMBOLS_3, KeyValues.NumericAndSymbols3KeyboardKey, dictionary.ContainsKey(KeyValues.NumericAndSymbols3KeyboardKey) ? dictionary[KeyValues.NumericAndSymbols3KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.PHYSICAL_KEYS, KeyValues.PhysicalKeysKeyboardKey, dictionary.ContainsKey(KeyValues.PhysicalKeysKeyboardKey) ? dictionary[KeyValues.PhysicalKeysKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SIZE_AND_POSITION, KeyValues.SizeAndPositionKeyboardKey, dictionary.ContainsKey(KeyValues.SizeAndPositionKeyboardKey) ? dictionary[KeyValues.SizeAndPositionKeyboardKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.DOCK_ACTIONS_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.COLLAPSE_DOCK, KeyValues.CollapseDockKey, dictionary.ContainsKey(KeyValues.CollapseDockKey) ? dictionary[KeyValues.CollapseDockKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_DOCK, KeyValues.ExpandDockKey, dictionary.ContainsKey(KeyValues.ExpandDockKey) ? dictionary[KeyValues.ExpandDockKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.LANGUAGES_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.ENGLISH_CANADA, KeyValues.EnglishCanadaKey, dictionary.ContainsKey(KeyValues.EnglishCanadaKey) ? dictionary[KeyValues.EnglishCanadaKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ENGLISH_UK, KeyValues.EnglishUKKey, dictionary.ContainsKey(KeyValues.EnglishUKKey) ? dictionary[KeyValues.EnglishUKKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ENGLISH_US, KeyValues.EnglishUSKey, dictionary.ContainsKey(KeyValues.EnglishUSKey) ? dictionary[KeyValues.EnglishUSKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.FRENCH_FRANCE, KeyValues.FrenchFranceKey, dictionary.ContainsKey(KeyValues.FrenchFranceKey) ? dictionary[KeyValues.FrenchFranceKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RUSSIAN_RUSSIA, KeyValues.RussianRussiaKey, dictionary.ContainsKey(KeyValues.RussianRussiaKey) ? dictionary[KeyValues.RussianRussiaKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MISC_ACTIONS_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.ADD_TO_DICTIONARY, KeyValues.AddToDictionaryKey, dictionary.ContainsKey(KeyValues.AddToDictionaryKey) ? dictionary[KeyValues.AddToDictionaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.BACK_WORD, KeyValues.BackManyKey, dictionary.ContainsKey(KeyValues.BackManyKey) ? dictionary[KeyValues.BackManyKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.BACK_ONE, KeyValues.BackOneKey, dictionary.ContainsKey(KeyValues.BackOneKey) ? dictionary[KeyValues.BackOneKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RE_CALIBRATE, KeyValues.CalibrateKey, dictionary.ContainsKey(KeyValues.CalibrateKey) ? dictionary[KeyValues.CalibrateKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CLEAR, KeyValues.ClearScratchpadKey, dictionary.ContainsKey(KeyValues.ClearScratchpadKey) ? dictionary[KeyValues.ClearScratchpadKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DECREASE_OPACITY, KeyValues.DecreaseOpacityKey, dictionary.ContainsKey(KeyValues.DecreaseOpacityKey) ? dictionary[KeyValues.DecreaseOpacityKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.INCREASE_OPACITY, KeyValues.IncreaseOpacityKey, dictionary.ContainsKey(KeyValues.IncreaseOpacityKey) ? dictionary[KeyValues.IncreaseOpacityKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MINIMISE, KeyValues.MinimiseKey, dictionary.ContainsKey(KeyValues.MinimiseKey) ? dictionary[KeyValues.MinimiseKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MULTI_KEY_SELECTION_UPPER_CASE, KeyValues.MultiKeySelectionIsOnKey, dictionary.ContainsKey(KeyValues.MultiKeySelectionIsOnKey) ? dictionary[KeyValues.MultiKeySelectionIsOnKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.NO, KeyValues.NoQuestionResultKey, dictionary.ContainsKey(KeyValues.NoQuestionResultKey) ? dictionary[KeyValues.NoQuestionResultKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.QUIT, KeyValues.QuitKey, dictionary.ContainsKey(KeyValues.QuitKey) ? dictionary[KeyValues.QuitKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SLEEP, KeyValues.SleepKey, dictionary.ContainsKey(KeyValues.SleepKey) ? dictionary[KeyValues.SleepKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SPEAK, KeyValues.SpeakKey, dictionary.ContainsKey(KeyValues.SpeakKey) ? dictionary[KeyValues.SpeakKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.YES, KeyValues.YesQuestionResultKey, dictionary.ContainsKey(KeyValues.YesQuestionResultKey) ? dictionary[KeyValues.YesQuestionResultKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MODIFIER_KEYS_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.ALT, KeyValues.LeftAltKey, dictionary.ContainsKey(KeyValues.LeftAltKey) ? dictionary[KeyValues.LeftAltKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CTRL, KeyValues.LeftCtrlKey, dictionary.ContainsKey(KeyValues.LeftCtrlKey) ? dictionary[KeyValues.LeftCtrlKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHIFT, KeyValues.LeftShiftKey, dictionary.ContainsKey(KeyValues.LeftShiftKey) ? dictionary[KeyValues.LeftShiftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.WIN, KeyValues.LeftWinKey, dictionary.ContainsKey(KeyValues.LeftWinKey) ? dictionary[KeyValues.LeftWinKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.LEFT_CLICK, KeyValues.MouseLeftClickKey, dictionary.ContainsKey(KeyValues.MouseLeftClickKey) ? dictionary[KeyValues.MouseLeftClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LEFT_DOUBLE_CLICK, KeyValues.MouseLeftDoubleClickKey, dictionary.ContainsKey(KeyValues.MouseLeftDoubleClickKey) ? dictionary[KeyValues.MouseLeftDoubleClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LEFT_DOWN_UP, KeyValues.MouseLeftDownUpKey, dictionary.ContainsKey(KeyValues.MouseLeftDownUpKey) ? dictionary[KeyValues.MouseLeftDownUpKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MAGNETIC_CURSOR, KeyValues.MouseMagneticCursorKey, dictionary.ContainsKey(KeyValues.MouseMagneticCursorKey) ? dictionary[KeyValues.MouseMagneticCursorKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MIDDLE_CLICK, KeyValues.MouseMiddleClickKey, dictionary.ContainsKey(KeyValues.MouseMiddleClickKey) ? dictionary[KeyValues.MouseMiddleClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MIDDLE_DOWN_UP, KeyValues.MouseMiddleDownUpKey, dictionary.ContainsKey(KeyValues.MouseMiddleDownUpKey) ? dictionary[KeyValues.MouseMiddleDownUpKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_AMOUNT_IN_PIXEL, KeyValues.MouseMoveAmountInPixelsKey, dictionary.ContainsKey(KeyValues.MouseMoveAmountInPixelsKey) ? dictionary[KeyValues.MouseMoveAmountInPixelsKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_DOWN, KeyValues.MouseMoveToBottomKey, dictionary.ContainsKey(KeyValues.MouseMoveToBottomKey) ? dictionary[KeyValues.MouseMoveToBottomKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_TO, KeyValues.MouseMoveToKey, dictionary.ContainsKey(KeyValues.MouseMoveToKey) ? dictionary[KeyValues.MouseMoveToKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_LEFT, KeyValues.MouseMoveToLeftKey, dictionary.ContainsKey(KeyValues.MouseMoveToLeftKey) ? dictionary[KeyValues.MouseMoveToLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_RIGHT, KeyValues.MouseMoveToRightKey, dictionary.ContainsKey(KeyValues.MouseMoveToRightKey) ? dictionary[KeyValues.MouseMoveToRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_UP, KeyValues.MouseMoveToTopKey, dictionary.ContainsKey(KeyValues.MouseMoveToTopKey) ? dictionary[KeyValues.MouseMoveToTopKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RIGHT_CLICK, KeyValues.MouseRightClickKey, dictionary.ContainsKey(KeyValues.MouseRightClickKey) ? dictionary[KeyValues.MouseRightClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RIGHT_DOWN_UP, KeyValues.MouseRightDownUpKey, dictionary.ContainsKey(KeyValues.MouseRightDownUpKey) ? dictionary[KeyValues.MouseRightDownUpKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MOUSE_DO_AT_POINT_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.CLICK_AND_DRAG, KeyValues.MouseDragKey, dictionary.ContainsKey(KeyValues.MouseDragKey) ? dictionary[KeyValues.MouseDragKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LEFT_CLICK, KeyValues.MouseMoveAndLeftClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftClickKey) ? dictionary[KeyValues.MouseMoveAndLeftClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LEFT_DOUBLE_CLICK, KeyValues.MouseMoveAndLeftDoubleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftDoubleClickKey) ? dictionary[KeyValues.MouseMoveAndLeftDoubleClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MIDDLE_CLICK, KeyValues.MouseMoveAndMiddleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndMiddleClickKey) ? dictionary[KeyValues.MouseMoveAndMiddleClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RIGHT_CLICK, KeyValues.MouseMoveAndRightClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndRightClickKey) ? dictionary[KeyValues.MouseMoveAndRightClickKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCROLL_DOWN, KeyValues.MouseMoveAndScrollToBottomKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToBottomKey) ? dictionary[KeyValues.MouseMoveAndScrollToBottomKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCROLL_LEFT, KeyValues.MouseMoveAndScrollToLeftKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToLeftKey) ? dictionary[KeyValues.MouseMoveAndScrollToLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCROLL_RIGHT, KeyValues.MouseMoveAndScrollToRightKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToRightKey) ? dictionary[KeyValues.MouseMoveAndScrollToRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCROLL_UP, KeyValues.MouseMoveAndScrollToTopKey, dictionary.ContainsKey(KeyValues.MouseMoveAndScrollToTopKey) ? dictionary[KeyValues.MouseMoveAndScrollToTopKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCROLL_AMOUNT_IN_CLICKS, KeyValues.MouseScrollAmountInClicksKey, dictionary.ContainsKey(KeyValues.MouseScrollAmountInClicksKey) ? dictionary[KeyValues.MouseScrollAmountInClicksKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MOUSE_MISC_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.MAGNIFIER, KeyValues.MouseMagnifierKey, dictionary.ContainsKey(KeyValues.MouseMagnifierKey) ? dictionary[KeyValues.MouseMagnifierKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.REPEAT_LAST, KeyValues.RepeatLastMouseActionKey, dictionary.ContainsKey(KeyValues.RepeatLastMouseActionKey) ? dictionary[KeyValues.RepeatLastMouseActionKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.MOVE_AND_RESIZE_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.EXPAND_DOWN_AND_LEFT, KeyValues.ExpandToBottomAndLeftKey, dictionary.ContainsKey(KeyValues.ExpandToBottomAndLeftKey) ? dictionary[KeyValues.ExpandToBottomAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_DOWN_AND_RIGHT, KeyValues.ExpandToBottomAndRightKey, dictionary.ContainsKey(KeyValues.ExpandToBottomAndRightKey) ? dictionary[KeyValues.ExpandToBottomAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_DOWN, KeyValues.ExpandToBottomKey, dictionary.ContainsKey(KeyValues.ExpandToBottomKey) ? dictionary[KeyValues.ExpandToBottomKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_LEFT, KeyValues.ExpandToLeftKey, dictionary.ContainsKey(KeyValues.ExpandToLeftKey) ? dictionary[KeyValues.ExpandToLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_RIGHT, KeyValues.ExpandToRightKey, dictionary.ContainsKey(KeyValues.ExpandToRightKey) ? dictionary[KeyValues.ExpandToRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_UP_AND_LEFT, KeyValues.ExpandToTopAndLeftKey, dictionary.ContainsKey(KeyValues.ExpandToTopAndLeftKey) ? dictionary[KeyValues.ExpandToTopAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_UP_AND_RIGHT, KeyValues.ExpandToTopAndRightKey, dictionary.ContainsKey(KeyValues.ExpandToTopAndRightKey) ? dictionary[KeyValues.ExpandToTopAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.EXPAND_UP, KeyValues.ExpandToTopKey, dictionary.ContainsKey(KeyValues.ExpandToTopKey) ? dictionary[KeyValues.ExpandToTopKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ADJUST_AMOUNT_IN_PIXELS, KeyValues.MoveAndResizeAdjustmentAmountKey, dictionary.ContainsKey(KeyValues.MoveAndResizeAdjustmentAmountKey) ? dictionary[KeyValues.MoveAndResizeAdjustmentAmountKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_DOWN_AND_LEFT, KeyValues.MoveToBottomAndLeftBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndLeftBoundariesKey) ? dictionary[KeyValues.MoveToBottomAndLeftBoundariesKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_DOWN_AND_LEFT, KeyValues.MoveToBottomAndLeftKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndLeftKey) ? dictionary[KeyValues.MoveToBottomAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_DOWN_AND_RIGHT, KeyValues.MoveToBottomAndRightBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndRightBoundariesKey) ? dictionary[KeyValues.MoveToBottomAndRightBoundariesKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_DOWN_AND_RIGHT, KeyValues.MoveToBottomAndRightKey, dictionary.ContainsKey(KeyValues.MoveToBottomAndRightKey) ? dictionary[KeyValues.MoveToBottomAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_DOWN, KeyValues.MoveToBottomBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToBottomBoundaryKey) ? dictionary[KeyValues.MoveToBottomBoundaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_DOWN, KeyValues.MoveToBottomKey, dictionary.ContainsKey(KeyValues.MoveToBottomKey) ? dictionary[KeyValues.MoveToBottomKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_LEFT, KeyValues.MoveToLeftBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToLeftBoundaryKey) ? dictionary[KeyValues.MoveToLeftBoundaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_LEFT, KeyValues.MoveToLeftKey, dictionary.ContainsKey(KeyValues.MoveToLeftKey) ? dictionary[KeyValues.MoveToLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_RIGHT, KeyValues.MoveToRightBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToRightBoundaryKey) ? dictionary[KeyValues.MoveToRightBoundaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_RIGHT, KeyValues.MoveToRightKey, dictionary.ContainsKey(KeyValues.MoveToRightKey) ? dictionary[KeyValues.MoveToRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_UP_AND_LEFT, KeyValues.MoveToTopAndLeftBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToTopAndLeftBoundariesKey) ? dictionary[KeyValues.MoveToTopAndLeftBoundariesKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_UP_AND_LEFT, KeyValues.MoveToTopAndLeftKey, dictionary.ContainsKey(KeyValues.MoveToTopAndLeftKey) ? dictionary[KeyValues.MoveToTopAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_UP_AND_RIGHT, KeyValues.MoveToTopAndRightBoundariesKey, dictionary.ContainsKey(KeyValues.MoveToTopAndRightBoundariesKey) ? dictionary[KeyValues.MoveToTopAndRightBoundariesKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_UP_AND_RIGHT, KeyValues.MoveToTopAndRightKey, dictionary.ContainsKey(KeyValues.MoveToTopAndRightKey) ? dictionary[KeyValues.MoveToTopAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.JUMP_UP, KeyValues.MoveToTopBoundaryKey, dictionary.ContainsKey(KeyValues.MoveToTopBoundaryKey) ? dictionary[KeyValues.MoveToTopBoundaryKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.MOVE_UP, KeyValues.MoveToTopKey, dictionary.ContainsKey(KeyValues.MoveToTopKey) ? dictionary[KeyValues.MoveToTopKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_UP_AND_RIGHT, KeyValues.ShrinkFromBottomAndLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomAndLeftKey) ? dictionary[KeyValues.ShrinkFromBottomAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_UP_AND_LEFT, KeyValues.ShrinkFromBottomAndRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomAndRightKey) ? dictionary[KeyValues.ShrinkFromBottomAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_UP, KeyValues.ShrinkFromBottomKey, dictionary.ContainsKey(KeyValues.ShrinkFromBottomKey) ? dictionary[KeyValues.ShrinkFromBottomKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_RIGHT, KeyValues.ShrinkFromLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromLeftKey) ? dictionary[KeyValues.ShrinkFromLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_LEFT, KeyValues.ShrinkFromRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromRightKey) ? dictionary[KeyValues.ShrinkFromRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_DOWN_AND_RIGHT, KeyValues.ShrinkFromTopAndLeftKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopAndLeftKey) ? dictionary[KeyValues.ShrinkFromTopAndLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_DOWN_AND_LEFT, KeyValues.ShrinkFromTopAndRightKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopAndRightKey) ? dictionary[KeyValues.ShrinkFromTopAndRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SHRINK_DOWN, KeyValues.ShrinkFromTopKey, dictionary.ContainsKey(KeyValues.ShrinkFromTopKey) ? dictionary[KeyValues.ShrinkFromTopKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.PHYSICAL_KEYS_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.DOWN_ARROW, KeyValues.ArrowDownKey, dictionary.ContainsKey(KeyValues.ArrowDownKey) ? dictionary[KeyValues.ArrowDownKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.LEFT_ARROW, KeyValues.ArrowLeftKey, dictionary.ContainsKey(KeyValues.ArrowLeftKey) ? dictionary[KeyValues.ArrowLeftKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.RIGHT_ARROW, KeyValues.ArrowRightKey, dictionary.ContainsKey(KeyValues.ArrowRightKey) ? dictionary[KeyValues.ArrowRightKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.UP_ARROW, KeyValues.ArrowUpKey, dictionary.ContainsKey(KeyValues.ArrowUpKey) ? dictionary[KeyValues.ArrowUpKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.BREAK, KeyValues.BreakKey, dictionary.ContainsKey(KeyValues.BreakKey) ? dictionary[KeyValues.BreakKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.DEL, KeyValues.DeleteKey, dictionary.ContainsKey(KeyValues.DeleteKey) ? dictionary[KeyValues.DeleteKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.END, KeyValues.EndKey, dictionary.ContainsKey(KeyValues.EndKey) ? dictionary[KeyValues.EndKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ESC, KeyValues.EscapeKey, dictionary.ContainsKey(KeyValues.EscapeKey) ? dictionary[KeyValues.EscapeKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F10, KeyValues.F10Key, dictionary.ContainsKey(KeyValues.F10Key) ? dictionary[KeyValues.F10Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F11, KeyValues.F11Key, dictionary.ContainsKey(KeyValues.F11Key) ? dictionary[KeyValues.F11Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F12, KeyValues.F12Key, dictionary.ContainsKey(KeyValues.F12Key) ? dictionary[KeyValues.F12Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F1, KeyValues.F1Key, dictionary.ContainsKey(KeyValues.F1Key) ? dictionary[KeyValues.F1Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F2, KeyValues.F2Key, dictionary.ContainsKey(KeyValues.F2Key) ? dictionary[KeyValues.F2Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F3, KeyValues.F3Key, dictionary.ContainsKey(KeyValues.F3Key) ? dictionary[KeyValues.F3Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F4, KeyValues.F4Key, dictionary.ContainsKey(KeyValues.F4Key) ? dictionary[KeyValues.F4Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F5, KeyValues.F5Key, dictionary.ContainsKey(KeyValues.F5Key) ? dictionary[KeyValues.F5Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F6, KeyValues.F6Key, dictionary.ContainsKey(KeyValues.F6Key) ? dictionary[KeyValues.F6Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F7, KeyValues.F7Key, dictionary.ContainsKey(KeyValues.F7Key) ? dictionary[KeyValues.F7Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F8, KeyValues.F8Key, dictionary.ContainsKey(KeyValues.F8Key) ? dictionary[KeyValues.F8Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.F9, KeyValues.F9Key, dictionary.ContainsKey(KeyValues.F9Key) ? dictionary[KeyValues.F9Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.HOME, KeyValues.HomeKey, dictionary.ContainsKey(KeyValues.HomeKey) ? dictionary[KeyValues.HomeKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.INS, KeyValues.InsertKey, dictionary.ContainsKey(KeyValues.InsertKey) ? dictionary[KeyValues.InsertKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONTEXTUAL_MENU_KEY, KeyValues.MenuKey, dictionary.ContainsKey(KeyValues.MenuKey) ? dictionary[KeyValues.MenuKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.NUM_LK, KeyValues.NumberLockKey, dictionary.ContainsKey(KeyValues.NumberLockKey) ? dictionary[KeyValues.NumberLockKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.PG_DN, KeyValues.PgDnKey, dictionary.ContainsKey(KeyValues.PgDnKey) ? dictionary[KeyValues.PgDnKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.PG_UP, KeyValues.PgUpKey, dictionary.ContainsKey(KeyValues.PgUpKey) ? dictionary[KeyValues.PgUpKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.PRNT_SCR, KeyValues.PrintScreenKey, dictionary.ContainsKey(KeyValues.PrintScreenKey) ? dictionary[KeyValues.PrintScreenKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SCRN_LK, KeyValues.ScrollLockKey, dictionary.ContainsKey(KeyValues.ScrollLockKey) ? dictionary[KeyValues.ScrollLockKey] : (TimeSpan?)null),
+                }),
+                new KeyValueAndTimeSpanGroup(Resources.SUGGESTION_KEYS_KEY_GROUP, new List<KeyValueAndTimeSpan>
+                {
+                    new KeyValueAndTimeSpan(Resources.NEXT, KeyValues.NextSuggestionsKey, dictionary.ContainsKey(KeyValues.NextSuggestionsKey) ? dictionary[KeyValues.NextSuggestionsKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.PREV, KeyValues.PreviousSuggestionsKey, dictionary.ContainsKey(KeyValues.PreviousSuggestionsKey) ? dictionary[KeyValues.PreviousSuggestionsKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_1, KeyValues.Suggestion1Key, dictionary.ContainsKey(KeyValues.Suggestion1Key) ? dictionary[KeyValues.Suggestion1Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_2, KeyValues.Suggestion2Key, dictionary.ContainsKey(KeyValues.Suggestion2Key) ? dictionary[KeyValues.Suggestion2Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_3, KeyValues.Suggestion3Key, dictionary.ContainsKey(KeyValues.Suggestion3Key) ? dictionary[KeyValues.Suggestion3Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_4, KeyValues.Suggestion4Key, dictionary.ContainsKey(KeyValues.Suggestion4Key) ? dictionary[KeyValues.Suggestion4Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_5, KeyValues.Suggestion5Key, dictionary.ContainsKey(KeyValues.Suggestion5Key) ? dictionary[KeyValues.Suggestion5Key] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.SUGGESTION_6, KeyValues.Suggestion6Key, dictionary.ContainsKey(KeyValues.Suggestion6Key) ? dictionary[KeyValues.Suggestion6Key] : (TimeSpan?)null),
+                })
             };
         }
-
-        private SerializableDictionaryOfTimeSpanByKeyValues ConvertToDictionary(
-            IEnumerable<KeyValueAndTimeSpan> collection)
+        
+        private SerializableDictionaryOfTimeSpanByKeyValues ToSetting(
+            IEnumerable<KeyValueAndTimeSpanGroup> groups)
         {
             var dictionary = new SerializableDictionaryOfTimeSpanByKeyValues();
-            collection
+            groups.SelectMany(g => g.KeyValueAndTimeSpans)
                 .Where(kvats => kvats.TimeSpanTotalMilliseconds != null)
                 .ToList()
                 .ForEach(kvats => dictionary.Add(kvats.KeyValue, TimeSpan.FromMilliseconds(kvats.TimeSpanTotalMilliseconds.Value)));

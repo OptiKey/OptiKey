@@ -227,6 +227,7 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyStateServiceState.cs" />
+    <Compile Include="Models\KeyValueAndTimeSpanGroup.cs" />
     <Compile Include="Models\KeyValueAndTimeSpan.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />

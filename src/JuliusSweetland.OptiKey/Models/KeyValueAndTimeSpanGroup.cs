@@ -26,13 +26,13 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public string Name { get { return name; } }
+        public List<KeyValueAndTimeSpan> KeyValueAndTimeSpans { get { return keyValueAndTimeSpans; } }
         public double? CommonTimeSpanTotalMilliseconds
         {
             get { return commonTimeSpan != null ? commonTimeSpan.Value.TotalMilliseconds : (double?)null; }
             set { SetProperty(ref commonTimeSpan, value != null ? TimeSpan.FromMilliseconds(value.Value) : (TimeSpan?)null); }
         }
-        public List<KeyValueAndTimeSpan> KeyValueAndTimeSpans { get { return keyValueAndTimeSpans; } }
-
+        
         private void CheckIfAllChildTimeSpansAreTheSame()
         {
             if (keyValueAndTimeSpans.Any()
