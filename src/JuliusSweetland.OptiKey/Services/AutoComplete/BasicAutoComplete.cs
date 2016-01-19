@@ -7,11 +7,17 @@ using System.Linq;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-    public class BasicAutoComplete : IAutoComplete
+    public class BasicAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public void Clear()
+        {
+            Log.Debug("Clear called.");
+            entriesForAutoComplete.Clear();
+        }
 
         public IEnumerable<string> GetSuggestions(string root)
         {
@@ -45,8 +51,25 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
         }
 
-        public void AddEntry(string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
+        public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
         {
+
+            //Also add to entries for auto complete
+            var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
+            AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
+            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
+            {
+                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
+                AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
+            }
+
+
+        }
+
+        private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
+        { 
+
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
