@@ -9,6 +9,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
 
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource" 
+                              Source="{Binding KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups}" />
+    </UserControl.Resources>
+
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
@@ -207,7 +212,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.INCOMPLETE_KEY_FIXATION_TTL_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -222,6 +227,34 @@
                     </TextBlock>
                     <controls:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                             Minimum="1" Interval="10" StringFormat="###,##0"
+                                            Value="{Binding KeySelectionTriggerIncompleteFixationTtlInMs, Mode=TwoWay}">
+                        <controls:NumericUpDown.Style>
+                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:NumericUpDown.Style>
+                    </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
+                                            Minimum="1" Interval="10" StringFormat="###,##0"
                                             Value="{Binding KeySelectionTriggerFixationDefaultCompleteTimeInMs, Mode=TwoWay}">
                         <controls:NumericUpDown.Style>
                             <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
@@ -235,10 +268,8 @@
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
 
-                    <!--ADD COMPLETION TIME CONTROL HERE-->
-                    
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.INCOMPLETE_KEY_FIXATION_TTL_LABEL}" 
-                               VerticalAlignment="Center" Margin="5">
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL}" 
+                               VerticalAlignment="Top" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -250,20 +281,30 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
-                                            Minimum="1" Interval="10" StringFormat="###,##0"
-                                            Value="{Binding KeySelectionTriggerIncompleteFixationTtlInMs, Mode=TwoWay}">
-                        <controls:NumericUpDown.Style>
-                            <Style TargetType="{x:Type controls:NumericUpDown}" BasedOn="{StaticResource {x:Type controls:NumericUpDown}}">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </controls:NumericUpDown.Style>
-                    </controls:NumericUpDown>
+                    <ItemsControl Grid.Row="5" Grid.Column="1"
+                                  ItemsSource="{Binding Source={StaticResource KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource}, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <GroupBox Header="{Binding}"
+                                          VerticalAlignment="Center" Margin="0,5,0,5">
+                                    <GroupBox.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                                                <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
+                                                                        Minimum="1" Interval="10" StringFormat="###,##0"
+                                                                        Value="{Binding CommonTimeSpanTotalMilliseconds, Mode=TwoWay}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GroupBox.HeaderTemplate>
+                                </GroupBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_KEYBOARD_KEY_LABEL}" 
                                VerticalAlignment="Center" Margin="5">

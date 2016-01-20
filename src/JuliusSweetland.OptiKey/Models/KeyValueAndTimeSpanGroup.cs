@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using JuliusSweetland.OptiKey.Extensions;
 using Prism.Mvvm;
 
@@ -17,12 +18,23 @@ namespace JuliusSweetland.OptiKey.Models
             this.name = name;
             this.keyValueAndTimeSpans = keyValueAndTimeSpans;
 
-            CheckIfAllChildTimeSpansAreTheSame();
+            var monitorChildren = true;
 
-            //Subscribe to all child timespan changes
+            //Monitor children for a common timespan
             keyValueAndTimeSpans.ForEach(kvats1 => 
                 kvats1.OnPropertyChanges(kvats2 => kvats2.TimeSpanTotalMilliseconds)
-                    .Subscribe(timeSpan => CheckIfAllChildTimeSpansAreTheSame()));
+                    .Where(tstm => monitorChildren)
+                    .Subscribe(timeSpan => CalculateCommonTimeSpan()));
+            CalculateCommonTimeSpan();
+
+            //Propogate common time span changes to children
+            this.OnPropertyChanges(kwatsg => kwatsg.CommonTimeSpanTotalMilliseconds).Subscribe(
+                commonTimeSpan =>
+                {
+                    monitorChildren = false;
+                    keyValueAndTimeSpans.ForEach(kvats => kvats.TimeSpanTotalMilliseconds = commonTimeSpan);
+                    monitorChildren = true;
+                });
         }
 
         public string Name { get { return name; } }
@@ -33,12 +45,16 @@ namespace JuliusSweetland.OptiKey.Models
             set { SetProperty(ref commonTimeSpan, value != null ? TimeSpan.FromMilliseconds(value.Value) : (TimeSpan?)null); }
         }
         
-        private void CheckIfAllChildTimeSpansAreTheSame()
+        private void CalculateCommonTimeSpan()
         {
             if (keyValueAndTimeSpans.Any()
                 && keyValueAndTimeSpans.Select(kvats => kvats.TimeSpanTotalMilliseconds).Distinct().Count() == 1)
             {
                 CommonTimeSpanTotalMilliseconds = keyValueAndTimeSpans.First().TimeSpanTotalMilliseconds;
+            }
+            else
+            {
+                CommonTimeSpanTotalMilliseconds = null;
             }
         }
     }

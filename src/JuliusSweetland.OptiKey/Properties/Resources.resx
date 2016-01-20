@@ -1553,6 +1553,9 @@ Deutsch (Deutschland)</value>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
     <value>Dock Actions</value>
   </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Overrides for individual key fixation times (ms):</value>
+  </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
     <value>Languages</value>
   </data>

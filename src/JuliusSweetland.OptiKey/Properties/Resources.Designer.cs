@@ -1448,6 +1448,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overrides for individual key fixation times (ms):.
+        /// </summary>
+        public static string INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL {
+            get {
+                return ResourceManager.GetString("INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Info:.
         /// </summary>
         public static string INFO_SOUND_LABEL {
