@@ -2,7 +2,6 @@
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services.AutoComplete;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 {
@@ -25,51 +24,20 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         private void ConfigureProvider()
         {
             var entries = new[] {
-                new {Word = "the", Count = 100}, new {Word = "be", Count = 99}, new {Word = "to", Count = 98},
-                new {Word = "of", Count = 97}, new {Word = "and", Count = 96}, new {Word = "a", Count = 95},
-                new {Word = "in", Count = 94}, new {Word = "that", Count = 93}, new {Word = "have", Count = 92},
-                new {Word = "I", Count = 91}, new {Word = "it", Count = 90}, new {Word = "for", Count = 89},
-                new {Word = "not", Count = 88}, new {Word = "on", Count = 87}, new {Word = "with", Count = 86},
-                new {Word = "he", Count = 85}, new {Word = "as", Count = 84}, new {Word = "you", Count = 83},
-                new {Word = "do", Count = 82}, new {Word = "at", Count = 81}, new {Word = "this", Count = 80},
-                new {Word = "but", Count = 79}, new {Word = "his", Count = 78}, new {Word = "by", Count = 77},
-                new {Word = "from", Count = 76}, new {Word = "they", Count = 75}, new {Word = "we", Count = 74},
-                new {Word = "say", Count = 73}, new {Word = "her", Count = 72}, new {Word = "she", Count = 71},
-                new {Word = "or", Count = 70}, new {Word = "an", Count = 69}, new {Word = "will", Count = 68},
-                new {Word = "my", Count = 67}, new {Word = "one", Count = 66}, new {Word = "all", Count = 65},
-                new {Word = "would", Count = 64}, new {Word = "there", Count = 63}, new {Word = "their", Count = 62},
-                new {Word = "what", Count = 61}, new {Word = "so", Count = 60}, new {Word = "up", Count = 59},
-                new {Word = "out", Count = 58}, new {Word = "if", Count = 57}, new {Word = "about", Count = 56},
-                new {Word = "who", Count = 55}, new {Word = "get", Count = 54}, new {Word = "which", Count = 53},
-                new {Word = "go", Count = 52}, new {Word = "me", Count = 51}, new {Word = "when", Count = 50},
-                new {Word = "make", Count = 49}, new {Word = "can", Count = 48}, new {Word = "like", Count = 47},
-                new {Word = "time", Count = 46}, new {Word = "no", Count = 45}, new {Word = "just", Count = 44},
-                new {Word = "him", Count = 43}, new {Word = "know", Count = 42}, new {Word = "take", Count = 41},
-                new {Word = "people", Count = 40}, new {Word = "into", Count = 39}, new {Word = "year", Count = 38},
-                new {Word = "your", Count = 37}, new {Word = "good", Count = 36}, new {Word = "some", Count = 35},
-                new {Word = "could", Count = 34}, new {Word = "them", Count = 33}, new {Word = "see", Count = 32},
-                new {Word = "other", Count = 31}, new {Word = "than", Count = 30}, new {Word = "then", Count = 29},
-                new {Word = "now", Count = 28}, new {Word = "look", Count = 27}, new {Word = "only", Count = 26},
-                new {Word = "come", Count = 25}, new {Word = "its", Count = 24}, new {Word = "over", Count = 23},
-                new {Word = "think", Count = 22}, new {Word = "also", Count = 21}, new {Word = "back", Count = 20},
-                new {Word = "after", Count = 19}, new {Word = "use", Count = 18}, new {Word = "two", Count = 17},
-                new {Word = "how", Count = 16}, new {Word = "our", Count = 15}, new {Word = "work", Count = 14},
-                new {Word = "first", Count = 13}, new {Word = "well", Count = 12}, new {Word = "way", Count = 11},
-                new {Word = "even", Count = 10}, new {Word = "new", Count = 9}, new {Word = "want", Count = 8},
-                new {Word = "because", Count = 7}, new {Word = "any", Count = 6}, new {Word = "these", Count = 5},
-                new {Word = "give", Count = 4}, new {Word = "day", Count = 3}, new {Word = "most", Count = 2},
-                new {Word = "us", Count = 1}
+                "the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with", "he",
+                "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or",
+                "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up", "out", "if", "about",
+                "who", "get", "which", "go", "me", "when", "make", "can", "like", "time", "no", "just", "him", "know",
+                "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than",
+                "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "after", "use", "two",
+                "how", "our", "work", "first", "well", "way", "even", "new", "want", "because", "any", "these", "give",
+                "day", "most", "us"
             };
-
-            foreach (var entry in entries)
+            for (var index = 0; index < entries.Length; index++)
             {
-                AddEntry(entry.Word, entry.Count);
+                var word = entries[index];
+                basicAutoComplete.AddEntry(word, new DictionaryEntry(word, 100 - index));
             }
-        }
-
-        private void AddEntry(string entry, int count)
-        {
-            basicAutoComplete.AddEntry(entry, new DictionaryEntry(entry, count));
         }
 
         private static readonly object[] SuggestionsTestCaseSource = {
