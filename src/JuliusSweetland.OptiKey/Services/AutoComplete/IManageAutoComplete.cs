@@ -11,6 +11,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
     {
         void AddEntry(string entry, DictionaryEntry metaData);
 
+        /// <summary>
+        /// Removes all possible suggestions from the auto complete provider.
+        /// </summary>
         void Clear();
 
         void RemoveEntry(string entry);

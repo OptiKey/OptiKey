@@ -85,6 +85,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
         }
 
+        /// <summary>
+        /// Removes all possible suggestions from the auto complete provider.
+        /// </summary>
         public void Clear()
         {
             Log.Debug("Clear called.");

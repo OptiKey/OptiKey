@@ -13,6 +13,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// Removes all possible suggestions from the auto complete provider.
+        /// </summary>
         public void Clear()
         {
             Log.Debug("Clear called.");
