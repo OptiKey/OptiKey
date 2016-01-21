@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services.AutoComplete;
 using NUnit.Framework;
 
@@ -35,8 +34,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             };
             for (var index = 0; index < entries.Length; index++)
             {
-                var word = entries[index];
-                basicAutoComplete.AddEntry(word, new DictionaryEntry(word, 100 - index));
+                basicAutoComplete.AddEntry(entries[index], 100 - index);
             }
         }
 
@@ -101,7 +99,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             ConfigureProvider();
 
             // try to make this the "t"-word with the highest usage
-            basicAutoComplete.AddEntry("these", new DictionaryEntry("these", 101));
+            basicAutoComplete.AddEntry("these", 101);
 
             var suggestions = basicAutoComplete.GetSuggestions("t").ToList();
 
@@ -117,7 +115,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         [Test]
         public void After_AddEntry_called_provider_will_return_word_as_suggestion()
         {
-            basicAutoComplete.AddEntry("zoo", new DictionaryEntry("zoo"));
+            basicAutoComplete.AddEntry("zoo");
 
             var suggestions = basicAutoComplete.GetSuggestions("z");
 

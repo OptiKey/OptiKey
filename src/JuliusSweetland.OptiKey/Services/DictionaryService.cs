@@ -280,7 +280,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    autoComplete.AddEntry(entry, newEntryWithUsageCount);
+                    autoComplete.AddEntry(entry, usageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
