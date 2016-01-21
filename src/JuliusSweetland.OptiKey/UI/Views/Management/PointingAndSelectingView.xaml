@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mahAppsShared="http://metro.mahapps.com/winfx/xaml/shared"
              xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
@@ -294,7 +295,18 @@
                                                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}">
+                                                    <TextBlock.Foreground>
+                                                    <MultiBinding Converter="{x:Static mahAppsShared:BackgroundToForegroundConverter.Instance}">
+                                                        <Binding Mode="OneWay"
+                                                                 Path="Background"
+                                                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        <Binding Mode="OneWay"
+                                                                 Path="(controls:GroupBoxHelper.HeaderForeground)"
+                                                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                                    </MultiBinding>
+                                                </TextBlock.Foreground>    
+                                                </TextBlock>
                                                 <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
                                                                         Minimum="1" Interval="10" StringFormat="###,##0"
                                                                         Value="{Binding CommonTimeSpanTotalMilliseconds, Mode=TwoWay}" />
