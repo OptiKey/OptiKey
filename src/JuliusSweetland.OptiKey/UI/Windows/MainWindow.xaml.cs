@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
             managementWindowRequest = new InteractionRequest<NotificationWithServices>();
 
-            //Setup key binding (Alt-C and Shift-Alt-C) to open settings
+            //Setup key binding (Alt-M and Shift-Alt-M) to open settings
             InputBindings.Add(new KeyBinding
             {
                 Command = new DelegateCommand(RequestManagementWindow),

@@ -92,7 +92,7 @@
                       SymbolGeometry="{StaticResource LanguageIcon}"
                       Text="{x:Static resx:Resources.LANGUAGE}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.LanguageKey}"/>
+                      Value="{x:Static models:KeyValues.LanguageKeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="3"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"

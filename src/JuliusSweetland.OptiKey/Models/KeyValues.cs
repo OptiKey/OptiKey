@@ -10,9 +10,6 @@ namespace JuliusSweetland.OptiKey.Models
     {
         public static readonly KeyValue AddToDictionaryKey = new KeyValue(FunctionKeys.AddToDictionary);
         public static readonly KeyValue AlphaKeyboardKey = new KeyValue(FunctionKeys.AlphaKeyboard);
-        public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
-        public static readonly KeyValue Diacritic2KeyboardKey = new KeyValue(FunctionKeys.Diacritic2Keyboard);
-        public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue ArrowDownKey = new KeyValue(FunctionKeys.ArrowDown);
         public static readonly KeyValue ArrowLeftKey = new KeyValue(FunctionKeys.ArrowLeft);
         public static readonly KeyValue ArrowRightKey = new KeyValue(FunctionKeys.ArrowRight);
@@ -26,12 +23,13 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CollapseDockKey = new KeyValue(FunctionKeys.CollapseDock);
         public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
-        public static readonly KeyValue CopyKey = new KeyValue(FunctionKeys.Copy);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
         public static readonly KeyValue Currencies2KeyboardKey = new KeyValue(FunctionKeys.Currencies2Keyboard);
-        public static readonly KeyValue CutKey = new KeyValue(FunctionKeys.Cut);
         public static readonly KeyValue DecreaseOpacityKey = new KeyValue(FunctionKeys.DecreaseOpacity);
         public static readonly KeyValue DeleteKey = new KeyValue(FunctionKeys.Delete);
+        public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
+        public static readonly KeyValue Diacritic2KeyboardKey = new KeyValue(FunctionKeys.Diacritic2Keyboard);
+        public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue EndKey = new KeyValue(FunctionKeys.End);
         public static readonly KeyValue EnglishCanadaKey = new KeyValue(FunctionKeys.EnglishCanada);
         public static readonly KeyValue EnglishUKKey = new KeyValue(FunctionKeys.EnglishUK);
@@ -63,7 +61,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
-        public static readonly KeyValue LanguageKey = new KeyValue(FunctionKeys.Language);
+        public static readonly KeyValue LanguageKeyboardKey = new KeyValue(FunctionKeys.LanguageKeyboard);
         public static readonly KeyValue LeftAltKey = new KeyValue(FunctionKeys.LeftAlt);
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
@@ -121,7 +119,6 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue NumericAndSymbols1KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols1Keyboard);
         public static readonly KeyValue NumericAndSymbols2KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols2Keyboard);
         public static readonly KeyValue NumericAndSymbols3KeyboardKey = new KeyValue(FunctionKeys.NumericAndSymbols3Keyboard);
-        public static readonly KeyValue PasteKey = new KeyValue(FunctionKeys.Paste);
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
@@ -131,7 +128,6 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue RepeatLastMouseActionKey = new KeyValue(FunctionKeys.RepeatLastMouseAction);
         public static readonly KeyValue RussianRussiaKey = new KeyValue(FunctionKeys.RussianRussia);
         public static readonly KeyValue ScrollLockKey = new KeyValue(FunctionKeys.ScrollLock);
-        public static readonly KeyValue SelectAllKey = new KeyValue(FunctionKeys.SelectAll);
         public static readonly KeyValue ShrinkFromBottomKey = new KeyValue(FunctionKeys.ShrinkFromBottom);
         public static readonly KeyValue ShrinkFromBottomAndLeftKey = new KeyValue(FunctionKeys.ShrinkFromBottomAndLeft);
         public static readonly KeyValue ShrinkFromBottomAndRightKey = new KeyValue(FunctionKeys.ShrinkFromBottomAndRight);
@@ -268,11 +264,7 @@ namespace JuliusSweetland.OptiKey.Models
                     new KeyValue(FunctionKeys.PgDn),
                     new KeyValue(FunctionKeys.Delete),
                     new KeyValue(FunctionKeys.End),
-                    new KeyValue(FunctionKeys.Escape),
-                    new KeyValue(FunctionKeys.SelectAll),
-                    new KeyValue(FunctionKeys.Cut),
-                    new KeyValue(FunctionKeys.Copy),
-                    new KeyValue(FunctionKeys.Paste)
+                    new KeyValue(FunctionKeys.Escape)
                 };
             }
         }

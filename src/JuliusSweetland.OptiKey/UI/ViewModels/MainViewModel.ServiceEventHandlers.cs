@@ -389,7 +389,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.IncrementOrDecrementOpacity(true);
                         break;
 
-                    case FunctionKeys.Language:
+                    case FunctionKeys.LanguageKeyboard:
                         Log.Info("Restoring window size.");
                         mainWindowManipulationService.Restore();
                         Log.Info("Changing keyboard to Language.");

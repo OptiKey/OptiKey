@@ -212,6 +212,7 @@
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\IKeyStateServiceExtensions.cs" />
     <Compile Include="Extensions\KeyDownStatesExtensions.cs" />
@@ -226,6 +227,8 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyStateServiceState.cs" />
+    <Compile Include="Models\KeyValueAndTimeSpanGroup.cs" />
+    <Compile Include="Models\KeyValueAndTimeSpan.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\DictionaryEntryAndState.cs" />
@@ -233,6 +236,7 @@
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServices.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
+    <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
     <Compile Include="Native\Enums\AppBarNotify.cs" />
     <Compile Include="Native\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Enums\AppBarMessages.cs" />
