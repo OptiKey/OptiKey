@@ -12,29 +12,42 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly string name;
         private readonly List<KeyValueAndTimeSpan> keyValueAndTimeSpans;
         private TimeSpan? commonTimeSpan;
+        private bool monitorHierarchy = true;
 
         public KeyValueAndTimeSpanGroup(string name, List<KeyValueAndTimeSpan> keyValueAndTimeSpans)
         {
             this.name = name;
             this.keyValueAndTimeSpans = keyValueAndTimeSpans;
 
-            var monitorChildren = true;
+            Action calculateCommonTimeSpan = () =>
+            {
+                monitorHierarchy = false;
+                CommonTimeSpanTotalMilliseconds = keyValueAndTimeSpans.Any()
+                                              && keyValueAndTimeSpans.Select(kvats => kvats.TimeSpanTotalMilliseconds)
+                                                  .Distinct()
+                                                  .Count() == 1
+                    ? keyValueAndTimeSpans.First().TimeSpanTotalMilliseconds
+                    : null;
+                monitorHierarchy = true;
+            };
 
             //Monitor children for a common timespan
             keyValueAndTimeSpans.ForEach(kvats1 => 
                 kvats1.OnPropertyChanges(kvats2 => kvats2.TimeSpanTotalMilliseconds)
-                    .Where(tstm => monitorChildren)
-                    .Subscribe(timeSpan => CalculateCommonTimeSpan()));
-            CalculateCommonTimeSpan();
-
+                    .Where(tstm => monitorHierarchy)
+                    .Subscribe(timeSpan => calculateCommonTimeSpan()));
+            
             //Propogate common time span changes to children
-            this.OnPropertyChanges(kwatsg => kwatsg.CommonTimeSpanTotalMilliseconds).Subscribe(
-                commonTimeSpan =>
+            this.OnPropertyChanges(kwatsg => kwatsg.CommonTimeSpanTotalMilliseconds)
+                .Where(tstm => monitorHierarchy)
+                .Subscribe(commonTimeSpan =>
                 {
-                    monitorChildren = false;
+                    monitorHierarchy = false;
                     keyValueAndTimeSpans.ForEach(kvats => kvats.TimeSpanTotalMilliseconds = commonTimeSpan);
-                    monitorChildren = true;
+                    monitorHierarchy = true;
                 });
+
+            calculateCommonTimeSpan();
         }
 
         public string Name { get { return name; } }
@@ -43,19 +56,6 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get { return commonTimeSpan != null ? commonTimeSpan.Value.TotalMilliseconds : (double?)null; }
             set { SetProperty(ref commonTimeSpan, value != null ? TimeSpan.FromMilliseconds(value.Value) : (TimeSpan?)null); }
-        }
-        
-        private void CalculateCommonTimeSpan()
-        {
-            if (keyValueAndTimeSpans.Any()
-                && keyValueAndTimeSpans.Select(kvats => kvats.TimeSpanTotalMilliseconds).Distinct().Count() == 1)
-            {
-                CommonTimeSpanTotalMilliseconds = keyValueAndTimeSpans.First().TimeSpanTotalMilliseconds;
-            }
-            else
-            {
-                CommonTimeSpanTotalMilliseconds = null;
-            }
         }
     }
 }

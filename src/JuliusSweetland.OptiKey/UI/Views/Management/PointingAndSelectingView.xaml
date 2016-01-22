@@ -283,7 +283,18 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <ItemsControl Grid.Row="5" Grid.Column="1"
-                                  ItemsSource="{Binding Source={StaticResource KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource}, Mode=OneWay}">
+                                  ItemsSource="{Binding Source={StaticResource KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroupsCollectionViewSource}, Mode=OneWay}"
+                                  Grid.IsSharedSizeScope="True">
+                        <ItemsControl.Style>
+                            <Style TargetType="{x:Type ItemsControl}" BasedOn="{StaticResource {x:Type ItemsControl}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding KeySelectionTriggerSource}" Value="{x:Static enums:TriggerSources.Fixations}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ItemsControl.Style>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <GroupBox Header="{Binding}"
@@ -292,20 +303,20 @@
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="KeySelectionTriggerFixationCompleteTimeGroupNameColumn" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" Text="{Binding Name}">
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="0,0,20,0">
                                                     <TextBlock.Foreground>
-                                                    <MultiBinding Converter="{x:Static mahAppsShared:BackgroundToForegroundConverter.Instance}">
-                                                        <Binding Mode="OneWay"
-                                                                 Path="Background"
-                                                                 RelativeSource="{RelativeSource TemplatedParent}" />
-                                                        <Binding Mode="OneWay"
-                                                                 Path="(controls:GroupBoxHelper.HeaderForeground)"
-                                                                 RelativeSource="{RelativeSource TemplatedParent}" />
-                                                    </MultiBinding>
-                                                </TextBlock.Foreground>    
+                                                        <MultiBinding Converter="{x:Static mahAppsShared:BackgroundToForegroundConverter.Instance}">
+                                                            <Binding Mode="OneWay"
+                                                                     Path="Background"
+                                                                     RelativeSource="{RelativeSource AncestorType={x:Type GroupBox}}" />
+                                                            <Binding Mode="OneWay"
+                                                                     Path="(controls:GroupBoxHelper.HeaderForeground)"
+                                                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        </MultiBinding>
+                                                    </TextBlock.Foreground>    
                                                 </TextBlock>
                                                 <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
                                                                         Minimum="1" Interval="10" StringFormat="###,##0"
@@ -313,6 +324,23 @@
                                             </Grid>
                                         </DataTemplate>
                                     </GroupBox.HeaderTemplate>
+                                    <ItemsControl ItemsSource="{Binding KeyValueAndTimeSpans, Mode=OneWay}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" SharedSizeGroup="KeySelectionTriggerFixationCompleteTimeKeyNameColumn" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Text="{Binding Name}" 
+                                                               VerticalAlignment="Center" Margin="5" />
+                                                    <controls:NumericUpDown Grid.Column="1" TextAlignment="Left"
+                                                                            Minimum="1" Interval="10" StringFormat="###,##0"
+                                                                            Value="{Binding TimeSpanTotalMilliseconds, Mode=TwoWay}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </GroupBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

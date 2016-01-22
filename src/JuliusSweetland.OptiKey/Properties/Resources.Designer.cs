@@ -380,7 +380,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Keyboard.
+        ///   Looks up a localized string similar to CHANGE KEYBOARD KEYS:.
         /// </summary>
         public static string CHANGE_KEYBOARD_KEY_GROUP {
             get {
@@ -859,7 +859,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dock Actions.
+        ///   Looks up a localized string similar to DOCK ACTION KEYS:.
         /// </summary>
         public static string DOCK_ACTIONS_KEY_GROUP {
             get {
@@ -1762,7 +1762,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Languages.
+        ///   Looks up a localized string similar to LANGUAGE.
+        /// </summary>
+        public static string LANGUAGE_UPPER_CASE {
+            get {
+                return ResourceManager.GetString("LANGUAGE_UPPER_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE LANGUAGE KEYS:.
         /// </summary>
         public static string LANGUAGES_KEY_GROUP {
             get {
@@ -2075,7 +2084,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Misc Actions.
+        ///   Looks up a localized string similar to MISCELLANEOUS KEYS:.
         /// </summary>
         public static string MISC_ACTIONS_KEY_GROUP {
             get {
@@ -2084,7 +2093,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modifier keys.
+        ///   Looks up a localized string similar to MODIFIER KEYS:.
         /// </summary>
         public static string MODIFIER_KEYS_KEY_GROUP {
             get {
@@ -2156,7 +2165,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouse (Do at current location).
+        ///   Looks up a localized string similar to MOUSE (DO AT CURRENT LOCATION) KEYS:.
         /// </summary>
         public static string MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP {
             get {
@@ -2165,7 +2174,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouse (Do at point).
+        ///   Looks up a localized string similar to MOUSE (DO AT POINT) KEYS:.
         /// </summary>
         public static string MOUSE_DO_AT_POINT_KEY_GROUP {
             get {
@@ -2264,7 +2273,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouse (Misc).
+        ///   Looks up a localized string similar to MOUSE (MISCELLANEOUS) KEYS:.
         /// </summary>
         public static string MOUSE_MISC_KEY_GROUP {
             get {
@@ -2417,7 +2426,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move And Resize.
+        ///   Looks up a localized string similar to MOVE &amp; RESIZE KEYS:.
         /// </summary>
         public static string MOVE_AND_RESIZE_KEY_GROUP {
             get {
@@ -2919,7 +2928,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Physical Keys.
+        ///   Looks up a localized string similar to PHYSICAL KEYS:.
         /// </summary>
         public static string PHYSICAL_KEYS_KEY_GROUP {
             get {
@@ -3868,7 +3877,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Suggestion keys.
+        ///   Looks up a localized string similar to SUGGESTION KEYS:.
         /// </summary>
         public static string SUGGESTION_KEYS_KEY_GROUP {
             get {

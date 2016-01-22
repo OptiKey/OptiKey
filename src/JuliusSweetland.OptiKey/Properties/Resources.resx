@@ -1548,39 +1548,42 @@ Deutsch (Deutschland)</value>
     <value>SHRINK UP &amp; RIGHT</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
-    <value>Change Keyboard</value>
+    <value>CHANGE KEYBOARD KEYS:</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>Dock Actions</value>
+    <value>DOCK ACTION KEYS:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Overrides for individual key fixation times (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>Languages</value>
+    <value>CHANGE LANGUAGE KEYS:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>LANGUAGE</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>Misc Actions</value>
+    <value>MISCELLANEOUS KEYS:</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>Modifier keys</value>
+    <value>MODIFIER KEYS:</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>Mouse (Do at current location)</value>
+    <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>Mouse (Do at point)</value>
+    <value>MOUSE (DO AT POINT) KEYS:</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>Mouse (Misc)</value>
+    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>Move And Resize</value>
+    <value>MOVE &amp; RESIZE KEYS:</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>Physical Keys</value>
+    <value>PHYSICAL KEYS:</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>Suggestion keys</value>
+    <value>SUGGESTION KEYS:</value>
   </data>
 </root>
