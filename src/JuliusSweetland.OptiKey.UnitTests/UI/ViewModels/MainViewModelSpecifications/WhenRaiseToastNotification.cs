@@ -17,12 +17,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         protected override void Arrange()
         {
             base.Arrange();
-            MainViewModel.ToastNotification += (s, e) => IsToastNotificationEventHandlerCalled = true;
+            MainViewModel.SubscribeToToastNotification((s, e) => IsToastNotificationEventHandlerCalled = true);
         }
 
         protected override void Act()
         {
-            MainViewModel.RaiseToastNotification(Title, Content, NotificationType, Callback);
+            MainViewModel.RaiseToastNotification(Title, Content, NotificationType, () => { }, Callback);
         }
 
         [Test]

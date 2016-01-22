@@ -25,6 +25,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IPointSource pointSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
+        private readonly IVoiceCommandSource voiceCommandSource;
         private readonly object suspendRequestLock = new object();
 
         private int suspendRequestCount;
@@ -46,7 +47,8 @@ namespace JuliusSweetland.OptiKey.Services
             ICapturingStateManager capturingStateManager,
             IPointSource pointSource,
             ITriggerSource keySelectionTriggerSource,
-            ITriggerSource pointSelectionTriggerSource)
+            ITriggerSource pointSelectionTriggerSource,
+            IVoiceCommandSource voiceCommandSource)
         {
             this.keyStateService = keyStateService;
             this.dictionaryService = dictionaryService;
@@ -55,6 +57,7 @@ namespace JuliusSweetland.OptiKey.Services
             this.pointSource = pointSource;
             this.keySelectionTriggerSource = keySelectionTriggerSource;
             this.pointSelectionTriggerSource = pointSelectionTriggerSource;
+            this.voiceCommandSource = voiceCommandSource;
 
             //Fixation key triggers also need the enabled state info
             var fixationTrigger = keySelectionTriggerSource as IFixationTriggerSource;
@@ -269,6 +272,11 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
+
+                if (voiceCommandSubscription == null)
+                {
+                    CreateVoiceCommandSubscription();
+                }
             }
             remove
             {
@@ -280,6 +288,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (selectionResultEvent == null)
                     {
+                        //There are also no more subscribers to the SelectionResult event so we don't need the selection subscriptions any more
                         DisposeSelectionSubscriptions();
                     }
                 }
@@ -305,6 +314,11 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     CreateSelectionSubscriptions(SelectionMode);
                 }
+
+                if (voiceCommandSubscription == null)
+                {
+                    CreateVoiceCommandSubscription();
+                }
             }
             remove
             {
@@ -316,6 +330,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (selectionEvent == null)
                     {
+                        //There are also no more subscribers to the Selection event so we don't need the selection subscriptions
                         DisposeSelectionSubscriptions();
                     }
                 }
@@ -443,6 +458,10 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     pointSource.State = RunningStates.Paused;
                 }
+                if (voiceCommandSource.State == RunningStates.Running)
+                {
+                    voiceCommandSource.State = RunningStates.Paused;
+                }
             }
         }
 
@@ -465,6 +484,10 @@ namespace JuliusSweetland.OptiKey.Services
                     if (pointSource != null)
                     {
                         pointSource.State = RunningStates.Running;
+                    }
+                    if (voiceCommandSource != null)
+                    {
+                        voiceCommandSource.State = RunningStates.Running;
                     }
                 }
             }

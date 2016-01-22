@@ -1,0 +1,104 @@
+<UserControl x:Class="JuliusSweetland.OptiKey.UI.Views.Management.VoiceCommandsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="CommandsCollectionViewSource" Source="{Binding Commands}">
+            <!--CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Label" />
+            </-->
+        </CollectionViewSource>
+    </UserControl.Resources>
+    
+    <Grid IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.VOICE_COMMANDS_GROUP}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_ENABLED}" 
+                            VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="0" Grid.Column="1" 
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding Enabled, Mode=TwoWay}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_FEEDBACK}" 
+                            VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="1" Grid.Column="1" 
+                            VerticalAlignment="Center"
+                            IsChecked="{Binding Feedback, Mode=TwoWay}" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_COMMANDS_PREFIX}" 
+                            VerticalAlignment="Center" Margin="5" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Prefix, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
+                         Margin="2" VerticalAlignment="Center" />
+            </Grid>
+        </GroupBox>
+
+        <ItemsControl Grid.Row="1"
+                    VirtualizingStackPanel.IsVirtualizing="True"
+                    ScrollViewer.CanContentScroll="True"
+                    ItemsSource="{Binding Source={StaticResource CommandsCollectionViewSource}, Mode=OneWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                            Text="{Binding Label}"
+                            VerticalAlignment="Center" 
+                            Margin="5" />
+                        <TextBox Grid.Column="1"  
+                              Text="{Binding Pattern, Mode=TwoWay}" 
+                              Margin="2" 
+                              VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+                
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+                
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                        Padding="{TemplateBinding Control.Padding}"
+                        BorderBrush="{TemplateBinding Border.BorderBrush}"
+                        Background="{TemplateBinding Panel.Background}"
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
+
+    </Grid>
+</UserControl>

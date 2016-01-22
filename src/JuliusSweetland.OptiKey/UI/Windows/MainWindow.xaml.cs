@@ -22,13 +22,15 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly IDictionaryService dictionaryService;
         private readonly IInputService inputService;
         private readonly IKeyStateService keyStateService;
+        private readonly IConfigurableCommandService configurableCommandService;
         private readonly InteractionRequest<NotificationWithServices> managementWindowRequest;
 
         public MainWindow(
             IAudioService audioService,
             IDictionaryService dictionaryService,
             IInputService inputService,
-            IKeyStateService keyStateService)
+            IKeyStateService keyStateService,
+            IConfigurableCommandService configurableCommandService)
         {
             InitializeComponent();
 
@@ -36,6 +38,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.dictionaryService = dictionaryService;
             this.inputService = inputService;
             this.keyStateService = keyStateService;
+            this.configurableCommandService = configurableCommandService;
 
             managementWindowRequest = new InteractionRequest<NotificationWithServices>();
 
@@ -63,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             inputService.RequestSuspend();
             var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
             ManagementWindowRequest.Raise(new NotificationWithServices 
-                { AudioService = audioService, DictionaryService = dictionaryService },
+                { AudioService = audioService, DictionaryService = dictionaryService, ConfigurableCommandService = configurableCommandService },
                 _ =>
                 {
                     inputService.RequestResume();

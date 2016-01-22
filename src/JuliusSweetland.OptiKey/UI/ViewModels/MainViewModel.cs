@@ -16,8 +16,20 @@ using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
+  
     public partial class MainViewModel : BindableBase
     {
+        private class NotificationEventArgsAndBefore : NotificationEventArgs
+        {
+            public NotificationEventArgsAndBefore(string title, string content, NotificationTypes notificationType, Action onBefore, Action callback)
+            : base(title, content, notificationType, callback)
+            {
+                OnBefore = onBefore;
+            }
+
+            public Action OnBefore { get; private set; }
+        }
+
         #region Fields
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -46,6 +58,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
+        //Because service errors can occur while initializing OptiKey, we need to enqueue notifications
+        //until graphical UI is ready
+        private List<NotificationEventArgsAndBefore> notificationsQueue;
+        private bool toastDisplayed = false;
 
         #endregion
 
@@ -77,6 +93,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
+            notificationsQueue = new List<NotificationEventArgsAndBefore>();
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
@@ -92,14 +109,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Events
 
-        public event EventHandler<NotificationEventArgs> ToastNotification;
+        private event EventHandler<NotificationEventArgs> ToastNotification;
         public event EventHandler<KeyValue> KeySelection;
         public event EventHandler<Point> PointSelection;
 
         #endregion
 
         #region Properties
-
+   
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
         public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
@@ -240,6 +257,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Subscribes a Toast notification event handler, and dequeue available errors.
+        /// 
+        /// Because we need to detect when an event handler is added (to trigger errors dequeuing),
+        /// we can't make the event public.
+        /// </summary>
+        /// <param name="listener">Listener added to Toast notification event</param>
+        public void SubscribeToToastNotification(EventHandler<NotificationEventArgs> listener)
+        {
+            ToastNotification += listener;
+            DequeueNotifications();
+        }
+
+        public void UnsbscribeFromToastNotification(EventHandler<NotificationEventArgs> listener)
+        {
+            ToastNotification -= listener;
+        }
 
         public void FireKeySelectionEvent(KeyValue kv)
         {
@@ -396,10 +431,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     Log.InfoFormat("No new words or phrases found in output service's Text: '{0}'.", keyboardOutputService.Text);
 
-                    inputService.RequestSuspend();
-                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                    RaiseToastNotification(Resources.NOTHING_NEW, Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD, 
-                        NotificationTypes.Normal, () => { inputService.RequestResume(); });
+                    RaiseToastNotification(Resources.NOTHING_NEW, 
+                        Resources.NO_NEW_ENTRIES_IN_SCRATCHPAD, 
+                        NotificationTypes.Normal, 
+                        () => 
+                            {
+                                inputService.RequestSuspend();
+                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                            }, 
+                        () => inputService.RequestResume());
                 }
             }
             else
@@ -446,12 +486,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     prompt,
                     () =>
                     {
-                        dictionaryService.AddNewEntryToDictionary(candidate);
-                        inputService.RequestSuspend();
-                        nextAction();
-
-                        RaiseToastNotification(Resources.ADDED, string.Format(Resources.ENTRY_ADDED_TO_DICTIONARY, candidate),
-                            NotificationTypes.Normal, () => { inputService.RequestResume(); });
+                        RaiseToastNotification(Resources.ADDED, 
+                            string.Format(Resources.ENTRY_ADDED_TO_DICTIONARY, candidate),
+                            NotificationTypes.Normal, 
+                            () =>
+                                {
+                                    dictionaryService.AddNewEntryToDictionary(candidate);
+                                    inputService.RequestSuspend();
+                                    nextAction();
+                                },
+                            () => inputService.RequestResume());
                     },
                     () => nextAction());
             }
@@ -534,12 +578,54 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        internal void RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
+        /// <summary>
+        /// Notifications can be displayed once the ToastNotification event has a listener and main window is 
+        /// positioned.
+        /// Notifications will be displayed one by one, until the current toast notification disappears.
+        /// 
+        /// Until that, leaves the queue untouched.
+        /// </summary>
+        private void DequeueNotifications()
         {
-            if (ToastNotification != null)
+            if (notificationsQueue.Count > 0 && !toastDisplayed && ToastNotification != null && 
+                mainWindowManipulationService.SizeAndPositionIsInitialised)
             {
-                ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));
+                var notification = notificationsQueue.First();
+                notificationsQueue.RemoveAt(0);
+
+                toastDisplayed = true;
+                notification.OnBefore();
+                ToastNotification(this, new NotificationEventArgs(notification.Title, notification.Content, notification.NotificationType, () =>
+                {
+                    toastDisplayed = false;
+                    notification.Callback();
+                    DequeueNotifications();
+                }));
             }
+        }
+
+        /// <summary>
+        /// When a service error is triggered, suspends input service, play sound and raise notification 
+        /// </summary>
+        /// <param name="sender">Event sender</param>
+        /// <param name="exception">The error throwned</param>
+        private void HandleServiceError(object sender, Exception exception)
+        {
+            notificationsQueue.Add(new NotificationEventArgsAndBefore(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, 
+                () =>
+                    {
+                        Log.Error("Error event received from service. Raising ErrorNotificationRequest and playing ErrorSoundFile (from settings)", exception);
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                    }, 
+                () => inputService.RequestResume()));
+            DequeueNotifications();
+        }
+
+        internal void RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action before, Action callback)
+        {
+            notificationsQueue.Add(new NotificationEventArgsAndBefore(title, content, notificationType, before, callback));
+            DequeueNotifications();
         }
 
         #endregion

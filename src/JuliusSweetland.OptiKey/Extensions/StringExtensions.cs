@@ -356,5 +356,16 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return output;
         }
+
+        /// <summary>
+        /// Try to parse string value as enumeration value
+        /// </summary>
+        /// <typeparam name="T">Targeted Enum type</typeparam>
+        /// <param name="value">Parsed value</param>
+        /// <returns>The corresponding Enum value</returns>
+        public static T Parse<T>(string value)
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
     }
 }

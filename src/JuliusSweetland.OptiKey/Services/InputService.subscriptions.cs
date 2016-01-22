@@ -23,12 +23,25 @@ namespace JuliusSweetland.OptiKey.Services
         private IDisposable selectionProgressSubscription;
         private IDisposable selectionTriggerSubscription;
         private IDisposable multiKeySelectionSubscription;
+        private IDisposable voiceCommandSubscription;
         private CancellationTokenSource mapToDictionaryMatchesCancellationTokenSource;
 
         private ITriggerSource selectionTriggerSource;
 
         private TriggerSignal? startMultiKeySelectionTriggerSignal;
         private TriggerSignal? stopMultiKeySelectionTriggerSignal;
+
+        #endregion
+
+        #region Voice command Subscription
+
+        private void CreateVoiceCommandSubscription()
+        {
+            voiceCommandSubscription = voiceCommandSource.Sequence
+                .ObserveOnDispatcher()
+                .Where(_ => !keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()) // Do not process if sleeping
+                .Subscribe(ProcessSelectionTrigger);
+        }
 
         #endregion
 
@@ -183,11 +196,25 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 PublishSelection(triggerSignal.PointAndKeyValue.Value);
 
+                                var keyValue = triggerSignal.PointAndKeyValue.Value.KeyValue.Value;
+
                                 PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
                                     new List<Point> { triggerSignal.PointAndKeyValue.Value.Point },
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.String,
+                                    keyValue.FunctionKey,
+                                    keyValue.String,
                                     null));
+
+                                //Audio feedback on signals that contains notification (such as voice commands).
+                                //Do not trigger audio notification if function key is 'Speak' as this generates competing speech.
+                                if (triggerSignal.Notification != null && keyValue.FunctionKey != FunctionKeys.Speak)
+                                {
+                                    audioService.SpeakNewOrInterruptCurrentSpeech(
+                                        triggerSignal.Notification,
+                                        null,
+                                        Settings.Default.SpeechVolume,
+                                        Settings.Default.SpeechRate,
+                                        Settings.Default.SpeechVoice);
+                                }
                             }
                         }
                         else
@@ -380,6 +407,11 @@ namespace JuliusSweetland.OptiKey.Services
             if (multiKeySelectionSubscription != null)
             {
                 multiKeySelectionSubscription.Dispose();
+            }
+
+            if (voiceCommandSubscription != null)
+            {
+                voiceCommandSubscription.Dispose();
             }
         }
 

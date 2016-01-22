@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             NotifyErrorsMock = new Mock<INotifyErrors>();
             ErrorNotifyingServices.Add(NotifyErrorsMock.Object);
 
-            MainViewModel.ToastNotification += (s, e) => NotificationEvent = e;
+            MainViewModel.SubscribeToToastNotification((s, e) => NotificationEvent = e);
         }
 
         protected override void Act()

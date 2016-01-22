@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -20,11 +21,14 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
+using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
+using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -132,20 +136,22 @@ namespace JuliusSweetland.OptiKey
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
+                IConfigurableCommandService configurableCommandService = new ConfigurableCommandService();
                 IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager, lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
-                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, errorNotifyingServices);
+                IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService, calibrationService, capturingStateManager, configurableCommandService, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
+                errorNotifyingServices.Add(configurableCommandService);
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 //Compose UI
-                var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
+                var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService, configurableCommandService);
                 
                 IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
                     mainWindow,
@@ -201,10 +207,15 @@ namespace JuliusSweetland.OptiKey
                 sizeAndPositionInitialised = async (_, __) =>
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
+                    
+                    //Load configurable commands after having subscribed to service events, because it may publish an error that must be displayed
+                    configurableCommandService.Load(Settings.Default.UiLanguage);
+
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
                     inputService.RequestResume(); //Start the input service
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);
@@ -332,6 +343,7 @@ namespace JuliusSweetland.OptiKey
             IAudioService audioService,
             ICalibrationService calibrationService,
             ICapturingStateManager capturingStateManager,
+            IConfigurableCommandService configurableCommandService,
             List<INotifyErrors> errorNotifyingServices)
         {
             Log.Info("Creating InputService.");
@@ -440,8 +452,11 @@ namespace JuliusSweetland.OptiKey
                         + "Please correct and restart OptiKey.");
             }
 
+            var voiceCommandSource = new VoiceCommandSource(configurableCommandService);
+            errorNotifyingServices.Add(voiceCommandSource);
+
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource, voiceCommandSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
         }
@@ -523,17 +538,27 @@ namespace JuliusSweetland.OptiKey
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
                 }
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
+
+                var voiceEnabled = Settings.Default.VoiceCommandsEnabled ? OptiKey.Properties.Resources.YES.ToLower() : OptiKey.Properties.Resources.NO.ToLower();
+                message.AppendLine(string.Format("{0} {1}", OptiKey.Properties.Resources.VOICE_COMMANDS_ENABLED, voiceEnabled));
+                if (Settings.Default.VoiceCommandsEnabled)
+                {
+                    message.AppendLine(string.Format("{0} {1}", OptiKey.Properties.Resources.VOICE_COMMANDS_PREFIX, Settings.Default.VoiceCommandsPrefix));
+                }
 
                 message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
                 message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);
 
-                inputService.RequestSuspend();
-                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                
                 mainViewModel.RaiseToastNotification(
                     OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION, 
                     message.ToString(), 
                     NotificationTypes.Normal,
+                    () =>
+                        {
+                            inputService.RequestSuspend();
+                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                        },
                     () =>
                         {
                             inputService.RequestResume();
@@ -583,11 +608,14 @@ namespace JuliusSweetland.OptiKey
                                 Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
                                     currentVersion, latestAvailableVersion);
 
-                                inputService.RequestSuspend();
-                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
                                     string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, release.TagName),
                                     NotificationTypes.Normal,
+                                    () =>
+                                        {
+                                            inputService.RequestSuspend();
+                                            audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                        },
                                     () => 
                                         {
                                             inputService.RequestResume();
