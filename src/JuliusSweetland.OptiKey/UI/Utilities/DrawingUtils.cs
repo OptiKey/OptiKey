@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Drawing;
+
 
 namespace JuliusSweetland.OptiKey.UI.Utilities
 {
     internal static class DrawingUtils
     {
         // Given H,S,L in range of 0-1 this returns a Colour (RGB struct) in range of 0-255
-        public static ColourRgb HSL2RGB(double h, double sl, double l)
+        public static Color HSL2RGB(double h, double sl, double l)
         {
             var r = l;
             var g = l;
@@ -63,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.Utilities
             var red = Convert.ToByte(r * 255.0f);
             var green = Convert.ToByte(g * 255.0f);
             var blue = Convert.ToByte(b * 255.0f);
-            return new ColourRgb(red, green, blue);
+            return Color.FromArgb(red, green, blue);
         }
     }
 }
