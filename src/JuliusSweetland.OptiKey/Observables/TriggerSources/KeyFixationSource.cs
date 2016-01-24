@@ -44,7 +44,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             this.lockOnTime = lockOnTime;
             this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
-            this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey;
+            this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
             this.incompleteFixationTtl = incompleteFixationTtl;
             this.pointAndKeyValueSource = pointAndKeyValueSource;
 

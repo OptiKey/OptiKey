@@ -1586,4 +1586,7 @@ Deutsch (Deutschland)</value>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
     <value>SUGGESTION KEYS:</value>
   </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Specify times to complete on individual keys:</value>
+  </data>
 </root>

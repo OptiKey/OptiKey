@@ -212,6 +212,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref keySelectionTriggerFixationDefaultCompleteTimeInMs, value); }
         }
 
+        private bool keySelectionTriggerFixationCompleteTimesByIndividualKey;
+        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey
+        {
+            get { return keySelectionTriggerFixationCompleteTimesByIndividualKey; }
+            set { SetProperty(ref keySelectionTriggerFixationCompleteTimesByIndividualKey, value); }
+        }
+
         private List<KeyValueAndTimeSpanGroup> keySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups;
         public List<KeyValueAndTimeSpanGroup> KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups
         {
@@ -339,6 +346,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || (Settings.Default.KeySelectionTriggerFixationLockOnTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn != KeySelectionTriggerFixationResumeRequiresLockOn && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || (Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime != TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
+                    || Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey != KeySelectionTriggerFixationCompleteTimesByIndividualKey
                     || (flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesStoredSetting.SequenceEqual(flattenedKeySelectionTriggerFixationCompleteTimesByKeyValuesLocalValue) == false)
                     || (Settings.Default.KeySelectionTriggerIncompleteFixationTtl != TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs) && KeySelectionTriggerSource == Enums.TriggerSources.Fixations)
                     || Settings.Default.PointSelectionTriggerSource != PointSelectionTriggerSource
@@ -370,6 +378,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeySelectionTriggerFixationLockOnTimeInMs = Settings.Default.KeySelectionTriggerFixationLockOnTime.TotalMilliseconds;
             KeySelectionTriggerFixationResumeRequiresLockOn = Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn;
             KeySelectionTriggerFixationDefaultCompleteTimeInMs = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds;
+            KeySelectionTriggerFixationCompleteTimesByIndividualKey = Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups = FromSetting(Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues);
             KeySelectionTriggerIncompleteFixationTtlInMs = Settings.Default.KeySelectionTriggerIncompleteFixationTtl.TotalMilliseconds;
             PointSelectionTriggerSource = Settings.Default.PointSelectionTriggerSource;
@@ -399,6 +408,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeySelectionTriggerFixationLockOnTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationLockOnTimeInMs);
             Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn = KeySelectionTriggerFixationResumeRequiresLockOn;
             Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime = TimeSpan.FromMilliseconds(KeySelectionTriggerFixationDefaultCompleteTimeInMs);
+            Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey = KeySelectionTriggerFixationCompleteTimesByIndividualKey;
             Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = ToSetting(KeySelectionTriggerFixationCompleteTimeInMsByKeyValueGroups);
             Settings.Default.KeySelectionTriggerIncompleteFixationTtl = TimeSpan.FromMilliseconds(KeySelectionTriggerIncompleteFixationTtlInMs);
             Settings.Default.PointSelectionTriggerSource = PointSelectionTriggerSource;

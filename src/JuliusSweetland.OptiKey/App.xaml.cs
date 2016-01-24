@@ -395,7 +395,9 @@ namespace JuliusSweetland.OptiKey
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues, 
+                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
+                        ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
+                        : null, 
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
                     break;

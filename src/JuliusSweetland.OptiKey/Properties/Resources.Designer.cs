@@ -1672,6 +1672,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specify times to complete on individual keys:.
+        /// </summary>
+        public static string KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS {
+            get {
+                return ResourceManager.GetString("KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key fixation time to lock-on (ms):.
         /// </summary>
         public static string KEY_FIXATION_TIME_TO_LOCK_ON_LABEL {

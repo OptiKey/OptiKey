@@ -1592,5 +1592,18 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey {
+            get {
+                return ((bool)(this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"] = value;
+            }
+        }
     }
 }
