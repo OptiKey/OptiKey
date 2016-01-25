@@ -1,6 +1,7 @@
 ﻿using JuliusSweetland.OptiKey.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using log4net;
@@ -142,6 +143,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
         }
 
+        [DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
         private class EntryMetadata
         {
             public EntryMetadata(DictionaryEntry dictionaryEntry, int nGramCount)
