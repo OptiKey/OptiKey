@@ -33,6 +33,14 @@ namespace JuliusSweetland.OptiKey
     /// </summary>
     public partial class App : Application
     {
+        #region Constants
+
+        private const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
+        private const string GitHubRepoName = "optikey";
+        private const string GitHubRepoOwner = "optikey";
+
+        #endregion
+
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -351,7 +359,7 @@ namespace JuliusSweetland.OptiKey
                     pointSource = new GazeTrackerSource(
                         Settings.Default.PointTtl,
                         Settings.Default.GazeTrackerUdpPort,
-                        new Regex(Settings.Default.GazeTrackerUdpRegex));
+                        new Regex(GazeTrackerUdpRegex));
                     break;
 
                 case PointsSources.TheEyeTribe:
@@ -569,10 +577,10 @@ namespace JuliusSweetland.OptiKey
             if (Settings.Default.CheckForUpdates)
             {
                 Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
-                    Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName);
+                    GitHubRepoOwner, GitHubRepoName);
 
                 new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
-                    .GetAll(Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName)
+                    .GetAll(GitHubRepoOwner, GitHubRepoName)
                     .Where(release => !release.Prerelease)
                     .Take(1)
                     .ObserveOnDispatcher()

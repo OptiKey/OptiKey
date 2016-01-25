@@ -38,9 +38,6 @@
     <Setting Name="GazeTrackerUdpPort" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6666</Value>
     </Setting>
-    <Setting Name="GazeTrackerUdpRegex" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">^STREAM_DATA\s(?&lt;instanceTime&gt;\d+)\s(?&lt;x&gt;-?\d+(\.[0-9]+)?)\s(?&lt;y&gt;-?\d+(\.[0-9]+)?)</Value>
-    </Setting>
     <Setting Name="MultiKeySelectionLockedDownWhenSimulatingKeyStrokes" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -116,9 +113,6 @@
     <Setting Name="MultiKeySelectionCaptureStartSoundFile" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources\Sounds\Rising1.wav</Value>
     </Setting>
-    <Setting Name="WordRegex" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)</Value>
-    </Setting>
     <Setting Name="PointSelectionTriggerSource" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.TriggerSources" Scope="User">
       <Value Profile="(Default)">Fixations</Value>
     </Setting>
@@ -145,12 +139,6 @@
     </Setting>
     <Setting Name="ShowSplashScreen" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="GitHubRepoOwner" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">optikey</Value>
-    </Setting>
-    <Setting Name="GitHubRepoName" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">optikey</Value>
     </Setting>
     <Setting Name="TETCalibrationCheckTimeSpan" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:03</Value>
@@ -283,12 +271,6 @@
     </Setting>
     <Setting Name="MouseUpSoundVolume" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">100</Value>
-    </Setting>
-    <Setting Name="BassRegistrationEmail" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">optikeyfeedback@gmail.com</Value>
-    </Setting>
-    <Setting Name="BassRegistrationKey" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2X24252025152222</Value>
     </Setting>
     <Setting Name="StartupKeyboard" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.Keyboards" Scope="User">
       <Value Profile="(Default)">Alpha</Value>

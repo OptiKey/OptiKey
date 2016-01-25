@@ -181,20 +181,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("^STREAM_DATA\\s(?<instanceTime>\\d+)\\s(?<x>-?\\d+(\\.[0-9]+)?)\\s(?<y>-?\\d+(\\.[0-9]+)?" +
-            ")")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string GazeTrackerUdpRegex {
-            get {
-                return ((string)(this["GazeTrackerUdpRegex"]));
-            }
-            set {
-                this["GazeTrackerUdpRegex"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool MultiKeySelectionLockedDownWhenSimulatingKeyStrokes {
@@ -520,20 +506,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("(?:\\s*)(([_a-zA-Z0-9-\\+]+(\\.[_a-zA-Z0-9-\\+]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\." +
-            "[a-zA-Z]{2,6}))|(([a-zA-Z]\\.){2,})|([a-zA-Z]+([\'-][a-zA-Z]+)*))(?:\\s*)")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string WordRegex {
-            get {
-                return ((string)(this["WordRegex"]));
-            }
-            set {
-                this["WordRegex"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Fixations")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.TriggerSources PointSelectionTriggerSource {
@@ -646,32 +618,6 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["ShowSplashScreen"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("optikey")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string GitHubRepoOwner {
-            get {
-                return ((string)(this["GitHubRepoOwner"]));
-            }
-            set {
-                this["GitHubRepoOwner"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("optikey")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string GitHubRepoName {
-            get {
-                return ((string)(this["GitHubRepoName"]));
-            }
-            set {
-                this["GitHubRepoName"] = value;
             }
         }
         
@@ -1244,32 +1190,6 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["MouseUpSoundVolume"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("optikeyfeedback@gmail.com")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string BassRegistrationEmail {
-            get {
-                return ((string)(this["BassRegistrationEmail"]));
-            }
-            set {
-                this["BassRegistrationEmail"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2X24252025152222")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string BassRegistrationKey {
-            get {
-                return ((string)(this["BassRegistrationKey"]));
-            }
-            set {
-                this["BassRegistrationKey"] = value;
             }
         }
         
