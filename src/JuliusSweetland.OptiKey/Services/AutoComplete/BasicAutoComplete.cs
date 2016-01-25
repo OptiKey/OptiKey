@@ -13,6 +13,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// Removes all possible suggestions from the auto complete provider.
+        /// </summary>
         public void Clear()
         {
             Log.Debug("Clear called.");
@@ -51,8 +54,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
         }
 
-        public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
+        public void AddEntry(string entry, int usageCount = 0)
         {
+            var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
             //Also add to entries for auto complete
             var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
