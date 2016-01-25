@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Drawing;
 
-
 namespace JuliusSweetland.OptiKey.UI.Utilities
 {
     internal static class DrawingUtils
     {
         // Given H,S,L in range of 0-1 this returns a Colour (RGB struct) in range of 0-255
-        public static ColourRGB HSL2RGB(double h, double sl, double l)
+        public static Color HSL2RGB(double h, double sl, double l)
         {
             var r = l;
             var g = l;
