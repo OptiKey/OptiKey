@@ -11,6 +11,13 @@ namespace JuliusSweetland.OptiKey.Services
 {
     public class AudioService : IAudioService
     {
+        #region Constants
+
+        private const string BassRegistrationEmail = "optikeyfeedback@gmail.com";
+        private const string BassRegistrationKey = "2X24252025152222";
+
+        #endregion
+
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -33,7 +40,7 @@ namespace JuliusSweetland.OptiKey.Services
         public AudioService()
         {
             speechSynthesiser = new SpeechSynthesizer();
-            BassNet.Registration(Settings.Default.BassRegistrationEmail, Settings.Default.BassRegistrationKey);
+            BassNet.Registration(BassRegistrationEmail, BassRegistrationKey);
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             Application.Current.Exit += (sender, args) => Bass.BASS_Free();
         }
