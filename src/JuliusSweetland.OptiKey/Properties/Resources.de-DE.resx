@@ -510,6 +510,9 @@ SPRINGEN</value>
 OBEN
 SPRINGEN</value>
   </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Tastentextverstellung:</value>
+  </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Tasten Fixierungszeit um zu Vervollständigen (ms):</value>
   </data>
@@ -537,6 +540,12 @@ SPRINGEN</value>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Sprache</value>
   </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Tastatursprache: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Tastatursprache:</value>
+  </data>
   <data name="LEFT" xml:space="preserve">
     <value>Links</value>
   </data>
@@ -556,11 +565,11 @@ LINKS</value>
     <value>LINKS KLICK
 RUNTER/HOCH</value>
   </data>
-  <data name="LETTERS" xml:space="preserve">
-    <value>BUCHSTABEN</value>
-  </data>
   <data name="LOOK" xml:space="preserve">
     <value>Thema</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Alles in Kleinbuchstaben</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MAGNETISCHER
@@ -1098,6 +1107,12 @@ POSITION</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Zeit bis ein Punkt irrelevant wird (ms):</value>
   </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Wörter sind grossgeschrieben</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrierung abgeschlossen, oder möglicherweise abgebrochen. Aber Alles funktioniert jetzt wieder.</value>
+  </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
     <value>Tobii EyeX Engine kann nicht gefunden werden. Bitte installieren Sie die Tobii EyeX Engine und versuchen erneut.</value>
   </data>
@@ -1144,6 +1159,9 @@ HOCH</value>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
     <value>UPDATE GEFUNDEN!</value>
   </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Alles in Grossbuchstaben</value>
+  </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Bitte gehen Sie auf www.optikey.org um die neuste Version herunterzuladen ({0})
 Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT + M) abschalten.</value>
@@ -1175,23 +1193,17 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="WIN" xml:space="preserve">
     <value>WINDOWS</value>
   </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
   <data name="WORDS" xml:space="preserve">
     <value>Wörter</value>
   </data>
   <data name="YES" xml:space="preserve">
     <value>JA</value>
   </data>
-  <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Tastentextverstellung:</value>
-  </data>
-  <data name="TITLE_CASE" xml:space="preserve">
-    <value>Wörter sind grossgeschrieben</value>
-  </data>
-  <data name="LOWER_CASE" xml:space="preserve">
-    <value>Alles in Kleinbuchstaben</value>
-  </data>
-  <data name="UPPER_CASE" xml:space="preserve">
-    <value>Alles in Grossbuchstaben</value>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Buchstaben</value>
   </data>
   <data name="HIGH" xml:space="preserve">
     <value>Hoch</value>
@@ -1208,25 +1220,358 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Datastream Verarbeitungsrate:</value>
   </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Tastatursprache: {0}</value>
-  </data>
-  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Tastatursprache:</value>
-  </data>
-  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simuliere Tastenkombinationen bei Buchstaben-Eingabe:</value>
-  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Menüsprache: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Menüsprache:</value>
   </data>
-  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Rahmendicke der Unterhaltungstastatur (links, oben, rechts, unten in px):</value>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simuliere Tastenkombinationen bei Buchstaben-Eingabe:</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Unterdrücke Mausvergrösserung für Scrollfunktionen:</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Rahmendicke der Unterhaltungstastatur (links, oben, rechts, unten in px):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>EINS ZURÜCK</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>WORT ZURÜCK</value>
+  </data>
+  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>TEXTLÖSCHTASTEN:</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>EMPFEHLUNG 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>EMPFEHLUNG 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>EMPFEHLUNG 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>EMPFEHLUNG 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>EMPFEHLUNG 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>EMPFEHLUNG 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>EMPFEHLUNGSTASTEN:</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>ZUM WÖRTERBUCH HINZUFÜGEN</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>DOCK VERKLEINERN</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>PFEIL RUNTER</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>PFEIL LINKS</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>PFEIL RECHTS</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>PFEIL HOCH</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>KLICK &amp; ZIEHEN</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>WÄHRUNGEN 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>WÄHRUNGEN 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>TRANSPARENZ VERRINGERN</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>DIAKRITISCH 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>DIAKRITISCH 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>DIAKRITISCH 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>DOCK VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>UNTEN VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UNTEN LINKS VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UNTEN RECHTS VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>LINKS VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>RECHTS VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>OBEN VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>OBEN LINKS VERGRÖSSERN</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>OBEN RECHTS VERGRÖSSERN</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>TRANSPARENZ ERHÖHEN</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>NUMMERN &amp; SYMBOLE 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>NUMMERN &amp; SYMBOLE 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>NUMMERN &amp; SYMBOLE 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>PHYSISCHE TASTEN</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>GRÖSSE &amp; POSITION</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNETISCHER CURSOR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>KLICK MITTE</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>MITTE RUNTER/HOCH</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>UM ANZAHL PIXEL BEWEGEN</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>PIXELANZAHL FESTLEGEN</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>GESPRÄCH ALFA</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>GESPRÄCH NUMMERN &amp; SYMBOLE</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>UNTEN SPRINGEN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UNTEN LINKS SPRINGEN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UNTEN RECHTS SPRINGEN</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>LINKS SPRINGEN</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>RECHTS SPRINGEN</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>OBEN SPRINGEN</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>OBEN &amp; LINKS SPRINGEN</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>OBEN &amp; RECHTS SPRINGEN</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>LINKS KLICK</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>DOPPELKLICK LINKS</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>RUNTER/HOCH LINKS</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>HERUNTER BEWEGEN</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UNTEN&amp;  LINKS BEWEGEN</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UNTEN &amp; RECHTS BEWEGEN</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>LINKS BEWEGEN</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>RECHTS BEWEGEN</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>BEWEGE NACH</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>HERAUF BEWEGEN</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>OBEN &amp; LINKS BEWEGEN</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>OBEN &amp; RECHTS BEWEGEN</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MEHRTASTEN AUSWAHL</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>DRUCKEN</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>LETZTE WIEDERHOLEN</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>RECHTS KLICK</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>RECHTS HOCH/RUNTER</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>SCROLLANZAHL IN KLICKS</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>RUNTER SCROLLEN</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>LINKS SCROLLEN</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>RECHTS SCROLLEN</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>HINAUF SCROLLEN</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>UNTEN VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UNTEN &amp; LINKS VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UNTEN &amp; RECHTS VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>LINKS VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>RECHTS VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>OBEN VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>OBEN &amp; LINKS VERKLEINERN</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>OBEN &amp; RECHTS VERKLEINERN</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>TASTATURTASTEN ÄNDERN:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>AKTIONSTASTEN DOCKEN:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Überschreibung der individuellen Tastenfixierungszeiten (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>SPRACHENTASTEN ÄNDERN:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>SPRACHE</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>SONSTIGE TASTEN:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>MODIFIZIERUNGSTASTEN:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>MAUSTASTEN (WAS AN JETZIGER CURSORSTELLE GEMACHT WIRD):</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>MAUSTASTEN (WAS AN ZIELCURSORSTELLE GEMACHT WIRD):</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>MAUSTASTEN (SONSTIGE):</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>BEWEGUNGS &amp; GRÖSSE TASTEN:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>PHYSISCHE TASTEN:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>EMPFEHLUNGSTASTEN:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Bestimme Vervollständigungszeit individueller Tasten:</value>
   </data>
 </root>
