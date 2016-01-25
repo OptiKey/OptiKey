@@ -436,9 +436,6 @@ VERGRÖSSERN</value>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Punktgrösse (von % Monitorgrösse):</value>
   </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
-  </data>
   <data name="GROW" xml:space="preserve">
     <value>Wachsen</value>
   </data>
