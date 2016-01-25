@@ -152,7 +152,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     case Languages.DutchBelgium:
                     case Languages.FrenchFrance:
-                        newContent = new FrenchViews.Alpha {DataContext = Keyboard};
+                        newContent = new FrenchViews.Alpha { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
                         newContent = new GermanViews.Alpha { DataContext = Keyboard };
@@ -161,7 +161,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new RussianViews.Alpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = new EnglishViews.Alpha {DataContext = Keyboard};
+                        newContent = new EnglishViews.Alpha { DataContext = Keyboard };
                         break;
                 }
             }
@@ -171,7 +171,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 {
                     case Languages.DutchBelgium:
                     case Languages.FrenchFrance:
-                        newContent = new FrenchViews.ConversationAlpha {DataContext = Keyboard};
+                        newContent = new FrenchViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     case Languages.GermanGermany:
                         newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
