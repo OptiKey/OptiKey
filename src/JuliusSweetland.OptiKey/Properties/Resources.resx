@@ -1250,4 +1250,349 @@ Deutsch (Deutschland)</value>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
   </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>BACK ONE</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>BACK WORD</value>
+  </data>
+  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Destructive Keys</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>SUGGESTION 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>SUGGESTION 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>SUGGESTION 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>SUGGESTION 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>SUGGESTION 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>SUGGESTION 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Suggestion Keys</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>ADD TO DICTIONARY</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>COLLAPSE DOCK</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>DOWN ARROW</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>LEFT ARROW</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>RIGHT ARROW</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>UP ARROW</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>CLICK &amp; DRAG</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>CURRENCIES 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>CURRENCIES 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>DECREASE OPACITY</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>DIACRITICS 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>DIACRITICS 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>DIACRITICS 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>EXPAND DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>EXPAND DOWN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>EXPAND DOWN &amp; LEFT</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>EXPAND DOWN &amp; RIGHT</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>EXPAND LEFT</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>EXPAND RIGHT</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>EXPAND UP</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>EXPAND UP &amp; LEFT</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>EXPAND UP &amp; RIGHT</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>INCREASE OPACITY</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>NUMERIC &amp; SYMBOLS 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>PHYSICAL KEYS</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>SIZE &amp; POSITION</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNETIC CURSOR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>MIDDLE CLICK</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>MIDDLE DOWN/UP</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>MOVE AMOUNT IN PIXELS</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>ADJUST AMOUNT IN PIXELS</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>CONVERSATION ALPHA</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>JUMP DOWN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>JUMP DOWN &amp; LEFT</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>JUMP DOWN &amp; RIGHT</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>JUMP LEFT</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>JUMP RIGHT</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>JUMP UP</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>JUMP UP &amp; LEFT</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>JUMP UP &amp; RIGHT</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>LEFT CLICK</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>LEFT DOUBLE CLICK</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>LEFT DOWN/UP</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>MOVE DOWN</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>MOVE DOWN &amp; LEFT</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>MOVE DOWN &amp; RIGHT</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>MOVE LEFT</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>MOVE RIGHT</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>MOVE TO</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>MOVE UP</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>MOVE UP &amp; LEFT</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>MOVE UP &amp; RIGHT</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MULTI-KEY SELECTION</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>REPEAT LAST</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>RIGHT CLICK</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>RIGHT DOWN/UP</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>SCROLL AMOUNT IN CLICKS</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>SCROLL DOWN</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>SCROLL LEFT</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>SCROLL RIGHT</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>SCROLL UP</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>SHRINK DOWN</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>SHRINK DOWN &amp; LEFT</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>SHRINK DOWN &amp; RIGHT</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>SHRINK LEFT</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>SHRINK RIGHT</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>SHRINK UP</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>SHRINK UP &amp; LEFT</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>SHRINK UP &amp; RIGHT</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>CHANGE KEYBOARD KEYS:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>DOCK ACTION KEYS:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Overrides for individual key fixation times (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>CHANGE LANGUAGE KEYS:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>LANGUAGE</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>MISCELLANEOUS KEYS:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>MODIFIER KEYS:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>MOUSE (DO AT POINT) KEYS:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>MOVE &amp; RESIZE KEYS:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>PHYSICAL KEYS:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>SUGGESTION KEYS:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Specify times to complete on individual keys:</value>
+  </data>
 </root>
