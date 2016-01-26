@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using JuliusSweetland.OptiKey.Services.AutoComplete;
 using NUnit.Framework;
 
@@ -70,26 +71,17 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             }
         };
 
-        private void ExpectEmptyOrRootOnly(string root)
+        private void ExpectEmpty(string root)
         {
-            var suggestions = basicAutoComplete.GetSuggestions(root).ToList();
+            var suggestions = basicAutoComplete.GetSuggestions(root);
 
-            Assert.IsTrue((suggestions.Count == 0) || (suggestions.Count == 1));
-
-            var firstOrDefault = suggestions.FirstOrDefault();
-            Assert.IsTrue((firstOrDefault == null) || (firstOrDefault == root));
+            CollectionAssert.IsEmpty(suggestions);
         }
 
-        private void TestGetSuggestions(string root, string[] expectedSuggestions)
+        private void TestGetSuggestions(string root, IEnumerable<string> expectedSuggestions)
         {
-            var suggestions = basicAutoComplete.GetSuggestions(root).ToList();
+            var suggestions = basicAutoComplete.GetSuggestions(root);
 
-            // The first suggestion can be the original root input.
-            var first = suggestions.First();
-            if ((first == root) && ((expectedSuggestions.Length == 0) || (root != expectedSuggestions[0])))
-            {
-                suggestions.RemoveAt(0);
-            }
             CollectionAssert.AreEqual(expectedSuggestions, suggestions);
         }
 
@@ -101,15 +93,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             // try to make this the "t"-word with the highest usage
             basicAutoComplete.AddEntry("these", 101);
 
-            var suggestions = basicAutoComplete.GetSuggestions("t").ToList();
+            var suggestions = basicAutoComplete.GetSuggestions("t");
 
-            var suggestion = suggestions[0];
-            if (suggestion == "t")
-            {
-                suggestion = suggestions[1];
-            }
-
-            Assert.AreNotEqual("these", suggestion);
+            Assert.AreNotEqual("these", suggestions.First());
         }
 
         [Test]
@@ -123,14 +109,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         }
 
         [Test]
-        public void Clear_on_a_configured_provider_removes_all_suggestions_and_may_only_return_root_input()
+        public void Clear_on_a_configured_provider_removes_all_suggestions()
         {
             const string root = "t";
             ConfigureProvider();
 
             basicAutoComplete.Clear();
 
-            ExpectEmptyOrRootOnly(root);
+            ExpectEmpty(root);
         }
 
         [Test]
@@ -150,7 +136,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         }
 
         [Test]
-        public void RemoveEntry_ensures_a_word_is_no_longer_returned_as_a_suggestion_unless_it_is_the_input_root()
+        public void RemoveEntry_ensures_a_word_is_no_longer_returned_as_a_suggestion()
         {
             const string root = "peo";
             ConfigureProvider();
@@ -159,7 +145,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 
             // "peo" is not a word, so the list will either be 0 or 1 long, as we've not populated any other words
             // beginning with those letters.
-            ExpectEmptyOrRootOnly(root);
+            ExpectEmpty(root);
         }
 
         [Test]

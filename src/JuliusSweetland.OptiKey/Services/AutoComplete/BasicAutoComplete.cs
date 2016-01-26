@@ -32,26 +32,21 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
-                    var enumerator =
-                        new List<DictionaryEntry> { new DictionaryEntry(root) } //Include the typed root as first result
-                        .Union(entriesForAutoComplete
-                                .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
-                                .SelectMany(kvp => kvp.Value)
-                                .Where(de => de.Entry.Length > root.Length)
-                                .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
-                                .OrderByDescending(de => de.UsageCount)
-                                .ThenBy(de => de.Entry.Length))
-                        .Select(de => de.Entry)
-                        .GetEnumerator();
-
-                    while (enumerator.MoveNext())
-                    {
-                        yield return enumerator.Current;
-                    }
+                    return
+                        entriesForAutoComplete
+                            .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
+                            .SelectMany(kvp => kvp.Value)
+                            .Where(de => de.Entry.Length >= root.Length)
+                            .Distinct()
+                            // Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version
+                            // of the phrase and one the first letter of each word so you can look them up by either)
+                            .OrderByDescending(de => de.UsageCount)
+                            .ThenBy(de => de.Entry.Length)
+                            .Select(de => de.Entry);
                 }
-
-                yield break; //Not strictly necessary
             }
+
+            return Enumerable.Empty<string>();
         }
 
         public void AddEntry(string entry, int usageCount = 0)
