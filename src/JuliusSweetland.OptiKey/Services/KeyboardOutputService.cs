@@ -544,6 +544,13 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
                             suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
 
+                        // Ensure that the entered word is in the list of suggestions
+                        if (!suggestions.Contains(inProgressWord))
+                        {
+                            suggestions.Insert(0, inProgressWord);
+                            suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                        }
+
                         //Correctly case auto complete suggestions
                         var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
                         var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
