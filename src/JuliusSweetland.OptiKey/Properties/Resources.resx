@@ -1256,9 +1256,6 @@ Deutsch (Deutschland)</value>
   <data name="BACK_WORD" xml:space="preserve">
     <value>BACK WORD</value>
   </data>
-  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Destructive Keys</value>
-  </data>
   <data name="SUGGESTION_1" xml:space="preserve">
     <value>SUGGESTION 1</value>
   </data>
