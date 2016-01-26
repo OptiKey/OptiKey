@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,14 +124,14 @@
     <value>Добавить новую запись:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Хотите добавить фразу '{0}' в словарь под аббревиатурой '{1}'?</value>
+    <value>Хотите добавить фразу &apos;{0}&apos; в словарь под аббревиатурой &apos;{1}&apos;?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ДОБАВИТЬ
 В СЛОВАРЬ</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Хотите добавить слово '{0}' в словарь?</value>
+    <value>Хотите добавить слово &apos;{0}&apos; в словарь?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Добавлено</value>
@@ -175,7 +175,7 @@
 СЛОВО</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>"Bass" не удалось создать поток из файла '{0}'</value>
+    <value>&quot;Bass&quot; не удалось создать поток из файла &apos;{0}&apos;</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Внизу</value>
@@ -184,23 +184,23 @@
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Калибровка прервана. Сообщение: '{0}'</value>
+    <value>Калибровка прервана. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Вы уверены, что вы хотите откалибровать снова?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Произошла ошибка во время калибровки. Сообщение: '{0}'</value>
+    <value>Произошла ошибка во время калибровки. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Калибровка не удалась. Сообщение: '{0}'</value>
+    <value>Калибровка не удалась. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>Калибровка не может быть закончена без ручного вмешательства, например используя мышь. Вы можете застрять в процессе калибровки, если вы не будете взаимодействовать с компьютером вручную.
 Вы уверены, что хотите откалибровать?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Калибровка остановилась по неизвестной причине. Сообщение: '{0}'</value>
+    <value>Калибровка остановилась по неизвестной причине. Сообщение: &apos;{0}&apos;</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибровка завершена успешно! Аккуратность (Средняя степень ошибки = {0})</value>
@@ -264,9 +264,9 @@
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
     <value>OptiKey обнаружил что пользовательские настройки повреждены и должны быть востановлены. Это можно сделать восстановив предидущую версию или вернув настройки по умолчанию.
 
-Нажмите "Да" чтобы сбросить пользовательские настройки и перезагрузить.
+Нажмите &quot;Да&quot; чтобы сбросить пользовательские настройки и перезагрузить.
 
-Нажмите "Нет" чтобы закрыть и вручную исправить или скопировать пользовательские настройки.</value>
+Нажмите &quot;Нет&quot; чтобы закрыть и вручную исправить или скопировать пользовательские настройки.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
     <value>Ого! Пользовательские настройки повреждены.</value>
@@ -300,7 +300,7 @@
     <value>Ширина курсора (пиксели):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Режим "Debugging":</value>
+    <value>Режим &quot;Debugging&quot;:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>УВЕЛИЧИТЬ
@@ -329,7 +329,7 @@
     <value>Словарь</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Пользовательский словарь не существует, а словарь по умолчанию не найден: '{0}'</value>
+    <value>Пользовательский словарь не существует, а словарь по умолчанию не найден: &apos;{0}&apos;</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Показывать каждый символ уведомления на Х секунд:</value>
@@ -350,11 +350,20 @@
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>English (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>English (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>English (US)</value>
+  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Отлично! Слово '{0}' было добавлено в словарь.</value>
+    <value>Отлично! Слово &apos;{0}&apos; было добавлено в словарь.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Ошибка:</value>
@@ -424,6 +433,9 @@
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Толщина шрифта:</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>French (France) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Полная величина дока (% от окна):</value>
@@ -745,20 +757,20 @@
     <value>Захват мульти-клавишей</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Включить функцию 'Мульти-клавиши':</value>
+    <value>Включить функцию &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
     <value>Мульти-клавиши</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Окончание функции 'Мульти-клавиши':</value>
+    <value>Окончание функции &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>МУЛЬТИ
 КЛАВИШИ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Начало функции 'Мульти-клавиши':</value>
+    <value>Начало функции &apos;Мульти-клавиши&apos;:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
@@ -901,7 +913,7 @@ SCR</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>Перезагрузите OptiKey  что бы применить ваши иземенения.
-Пожалуйста нажмите "ОК" что бы перезагрузить или "ОТМЕНА" что бы отменить изменения</value>
+Пожалуйста нажмите &quot;ОК&quot; что бы перезагрузить или &quot;ОТМЕНА&quot; что бы отменить изменения</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
     <value>Восстановить</value>
@@ -929,6 +941,9 @@ SCR</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Повышающийся 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russian (Russia) / Русский (Россия)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Такая же, как и позиция дока.</value>
@@ -1071,7 +1086,7 @@ LK</value>
     <value>TheEyeTribe  не откалиброван. Данные не будут получены, пока калибровка незакончена.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Невозможно откалибровать, так как 'EyeX engine' не найден.</value>
+    <value>Невозможно откалибровать, так как &apos;EyeX engine&apos; не найден.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Тема:</value>
@@ -1089,10 +1104,10 @@ LK</value>
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>'Tobii EyeX  Engine' не найден. Пожалуйста заинсталлируйте  'EyeX  Engine' и попробуйте снова.</value>
+    <value>&apos;Tobii EyeX  Engine&apos; не найден. Пожалуйста заинсталлируйте  &apos;EyeX  Engine&apos; и попробуйте снова.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>'Tobii EyeX Engine' не работает. Пожалуйста запустите 'EyeX Engine' и попробуйте снова.</value>
+    <value>&apos;Tobii EyeX Engine&apos; не работает. Пожалуйста запустите &apos;EyeX Engine&apos; и попробуйте снова.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -1125,7 +1140,7 @@ LK</value>
     <value>Невозможно определить настоящую высоту.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Проблема с настройкой голоса на '{0}'{1}</value>
+    <value>Проблема с настройкой голоса на &apos;{0}&apos;{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Что-то пошло не так, но я не знаю что - пожалуйста, проверьте логи.</value>
@@ -1201,6 +1216,9 @@ LK</value>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Объем потока обработки данных:</value>
   </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>German (Germany) / Deutsch (Deutschland)</value>
+  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Язык интерфейса: {0}</value>
   </data>
@@ -1210,10 +1228,367 @@ LK</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Имитировать физическую клавиатуру (для письма): </value>
   </data>
-  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Толщина разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>French (France)
+Française (France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>German (Germany)
+Deutsch (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Выключить увеличение во время прокручивания мыши:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russian (Russia)
+Русский (Россия)</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Толщина края разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>НАЗАД ОДНО</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>СТЕРЕТЬ СЛОВО</value>
+  </data>
+  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Деструктивные клавиши(&apos;Назад одно&apos;, &apos;Стeреть слово&apos;, &apos;Clear&apos;)</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>ПОДСКАЗКА 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>ПОДСКАЗКА 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>ПОДСКАЗКА 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>ПОДСКАЗКА 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>ПОДСКАЗКА 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>ПОДСКАЗКА 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Клавиши подсказок</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>ДОБАВИТЬ В СЛОВАРЬ</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>СВЕРНУТЬ ДОК</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВНИЗ</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВЛЕВО</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВПРАВО</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value/>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>СТРЕЛКA ВВЕРХ</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>ВЗЯТЬ И ПЕРЕНЕСТИ</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>ВАЛЮТА 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>ВАЛЮТА 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ПРОЗРАЧНОСТЬ</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>РАСШИРИТЬ ДОК</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВПРАВО</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ПРОЗРАЧНОСТЬ</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>ФИЗИЧЕСКИЕ КЛАВИШИ</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>РАЗМЕР И РАСПОЛОЖЕНИЕ</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value/>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>ПРИТЯГИВАЮЩИЙ КУРСОР</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>СРЕДНИЙ КЛИК</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>СРЕДНИЙ ВВЕРХ/ВНИЗ</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>ШАГ В ПИКСЕЛЯХ(МЕНЮ РАЗМЕР И РАСПОЛОЖЕНИЕ)</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>ПОДВИНУТЬ В ПИКСЕЛЯХ(МЕНЮ МЫШИ)</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>РЕЧЬ(БУКВЫ)</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>РЕЧЬ(ЦИФРЫ И СИМВОЛЫ)</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВЛЕВО</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВПРАВО</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>ЛЕВЫЙ КЛИК</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>ЛЕВЫЙ ДВОЙНОЙ КЛИК</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>ЛЕВЫЙ КЛИК ВНИЗ/ВВЕРХ</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВЛЕВО</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВПРАВО</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>ДВИГАТЬ К</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>МУЛЬТИ КЛАВИШИ</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>ПОВТОРИТЬ ПОСЛЕДНЕЕ</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>ПРАВЫЙ КЛИК</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>ПРАВЫЙ КЛИК ВНИЗ/ВВЕРХ</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>ПРОКРУТИТЬ В КЛИКАХ(МЕНЮ МЫШИ)</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВНИЗ</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВЛЕВО</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВПРАВО</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВВЕРХ</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗ</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗУ И ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВПРАВО</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ ЗАМЕНЫ КЛАВИАТУРЫ:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ ПОВЕДЕНИЯ ДОКА:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Заменяет время захвата отдельной клавиши (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ СМЕНЫ ЯЗЫКА:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>ЯЗЫК</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>ДРУГИЕ КЛАВИШИ:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>ВСПОМОГАТЕЛЬНЫЕ КЛАВИШИ:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДЕЙСТВИЕ В НАСТОЯЩЕМ ПОЛОЖЕНИИ КУРСОРА):</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДЕЙСТВИЕ В ОПРЕДЕЛЕННОЙ ТОЧКЕ):</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДРУГИЕ):</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ  &quot;РАЗМЕР И РАСПОЛОЖЕНИЕ&quot;:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>ФИЗ. КЛАВИШИ</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>Клавиши подсказок:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Настройка время захвата отдельной клавиши:</value>
   </data>
 </root>
