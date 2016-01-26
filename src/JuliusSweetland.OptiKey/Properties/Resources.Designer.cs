@@ -742,15 +742,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Destructive Keys.
-        /// </summary>
-        public static string DESTRUCTIVE_KEYS_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("DESTRUCTIVE_KEYS_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to DIACRITICS.
         /// </summary>
         public static string DIACRITICS {
