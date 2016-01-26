@@ -1238,9 +1238,6 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="BACK_WORD" xml:space="preserve">
     <value>WORT ZURÜCK</value>
   </data>
-  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>TEXTLÖSCHTASTEN:</value>
-  </data>
   <data name="SUGGESTION_1" xml:space="preserve">
     <value>EMPFEHLUNG 1</value>
   </data>
