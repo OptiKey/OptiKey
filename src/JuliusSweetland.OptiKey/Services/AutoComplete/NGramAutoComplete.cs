@@ -1,6 +1,7 @@
 ﻿using JuliusSweetland.OptiKey.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using log4net;
@@ -16,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;
+        private readonly int gramCount;
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
 
@@ -63,6 +65,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
 
             normalize = normalizeFunc;
+            this.gramCount = gramCount;
             leadingSpaces = new string(' ', leadingSpaceCount);
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
@@ -134,12 +137,13 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         private IEnumerable<string> ToNGrams(string word)
         {
             var normalizedWord = leadingSpaces + normalize(word) + trailingSpaces;
-            for (var i = 0; i < normalizedWord.Length-2; i++)
+            for (var i = 0; i < normalizedWord.Length - gramCount + 1; i++)
             {
-                yield return normalizedWord.Substring(i, 3);
+                yield return normalizedWord.Substring(i, gramCount);
             }
         }
 
+        [DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
         private class EntryMetadata
         {
             public EntryMetadata(DictionaryEntry dictionaryEntry, int nGramCount)

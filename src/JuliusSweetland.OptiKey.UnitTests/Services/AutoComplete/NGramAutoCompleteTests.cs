@@ -1,24 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using JuliusSweetland.OptiKey.Services.AutoComplete;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 {
     [TestFixture]
-    public class BasicAutoCompleteTests
+    public class NGramAutoCompleteTests
     {
         #region Setup/Teardown
 
         [SetUp]
         public void Arrange()
         {
-            basicAutoComplete = new BasicAutoComplete();
+            ngramAutoComplete = new NGramAutoComplete();
         }
 
         #endregion
 
-        private BasicAutoComplete basicAutoComplete;
+        private NGramAutoComplete ngramAutoComplete;
 
         /// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
         private void ConfigureProvider()
@@ -35,7 +34,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             };
             for (var index = 0; index < entries.Length; index++)
             {
-                basicAutoComplete.AddEntry(entries[index], 100 - index);
+                ngramAutoComplete.AddEntry(entries[index], 100 - index);
             }
         }
 
@@ -43,44 +42,78 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             new object[] {
                 "t",
                 new[] {
-                    "the", "to", "that", "this", "they", "there", "their", "time", "take", "them", "than", "then",
-                    "think", "two", "these"
+                    "to", "the", "two", "that", "this", "they", "time", "take", "them", "than", "then", "there", "their",
+                    "think", "these"
                 }
             },
             new object[] {
                 "th",
                 new[] {
-                    "the", "that", "this", "they", "there", "their", "them", "than", "then", "think", "these"
+                    "the", "that", "this", "they", "them", "than", "then", "there", "their", "think", "these", "to",
+                    "two", "with", "time", "take"
                 }
             },
             new object[] {
                 "the",
                 new[] {
-                    "the", "they", "there", "their", "them", "then", "these"
+                    "the", "they", "them", "then", "there", "their", "these", "that", "this", "than", "think", "to",
+                    "he", "she", "two", "time", "take", "other"
                 }
             },
             new object[] {
                 "thes",
                 new[] {
-                    "these"
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "two", "time", "take", "other"
                 }
             },
             new object[] {
                 "thesa",
-                new string[] {}
+                new[] {
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "two", "time", "take", "other"
+                }
+            },
+            new object[] {
+                "thesau",
+                new[] {
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "two", "time", "take", "other"
+                }
+            },
+            new object[] {
+                "thesaur",
+                new[] {
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "two", "our", "time", "take", "your", "other"
+                }
+            },
+            new object[] {
+                "thesauru",
+                new[] {
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "two", "time", "take", "other"
+                }
+            },
+            new object[] {
+                "thesaurus",
+                new[] {
+                    "these", "the", "they", "them", "then", "there", "their", "that", "this", "than", "think", "to",
+                    "us", "two", "time", "take", "other"
+                }
             }
         };
 
         private void ExpectEmpty(string root)
         {
-            var suggestions = basicAutoComplete.GetSuggestions(root);
+            var suggestions = ngramAutoComplete.GetSuggestions(root).ToList();
 
             CollectionAssert.IsEmpty(suggestions);
         }
 
-        private void TestGetSuggestions(string root, IEnumerable<string> expectedSuggestions)
+        private void TestGetSuggestions(string root, string[] expectedSuggestions)
         {
-            var suggestions = basicAutoComplete.GetSuggestions(root);
+            var suggestions = ngramAutoComplete.GetSuggestions(root).ToList();
 
             CollectionAssert.AreEqual(expectedSuggestions, suggestions);
         }
@@ -91,9 +124,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             ConfigureProvider();
 
             // try to make this the "t"-word with the highest usage
-            basicAutoComplete.AddEntry("these", 101);
+            ngramAutoComplete.AddEntry("these", 101);
 
-            var suggestions = basicAutoComplete.GetSuggestions("t");
+            var suggestions = ngramAutoComplete.GetSuggestions("t");
 
             Assert.AreNotEqual("these", suggestions.First());
         }
@@ -101,9 +134,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         [Test]
         public void After_AddEntry_called_provider_will_return_word_as_suggestion()
         {
-            basicAutoComplete.AddEntry("zoo");
+            ngramAutoComplete.AddEntry("zoo");
 
-            var suggestions = basicAutoComplete.GetSuggestions("z");
+            var suggestions = ngramAutoComplete.GetSuggestions("z");
 
             CollectionAssert.Contains(suggestions, "zoo");
         }
@@ -114,7 +147,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             const string root = "t";
             ConfigureProvider();
 
-            basicAutoComplete.Clear();
+            ngramAutoComplete.Clear();
 
             ExpectEmpty(root);
         }
@@ -122,12 +155,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         [Test]
         public void Clear_on_an_empty_provider_succeeds()
         {
-            basicAutoComplete.Clear();
+            ngramAutoComplete.Clear();
         }
 
         [Test]
         [TestCaseSource("SuggestionsTestCaseSource")]
-        public void GetSuggestions_returns_words_matching_the_root_prefix_in_descending_usage_order(string root,
+        public void GetSuggestions_returns_words_containing_matching_trigrams(string root,
             string[] expectedSuggestions)
         {
             ConfigureProvider();
@@ -141,7 +174,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             const string root = "peo";
             ConfigureProvider();
 
-            basicAutoComplete.RemoveEntry("people");
+            ngramAutoComplete.RemoveEntry("people");
 
             // "peo" is not a word, so the list will either be 0 or 1 long, as we've not populated any other words
             // beginning with those letters.
@@ -155,7 +188,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         {
             ConfigureProvider();
 
-            basicAutoComplete.RemoveEntry("thesaurus");
+            ngramAutoComplete.RemoveEntry("thesaurus");
 
             TestGetSuggestions(root, expectedSuggestions);
         }
