@@ -38,6 +38,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <controls:Key Grid.Row="0" Grid.Column="0"
                                           Text="{x:Static resx:Resources.ENGLISH_CANADA}"
@@ -51,19 +52,24 @@
                                           Text="{x:Static resx:Resources.ENGLISH_US}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.EnglishUSKey}"/>
-                            
-                            <controls:Key Grid.Row="1" Grid.Column="0"
+                            <controls:Key Grid.Row="0" Grid.Column="3"
                                           Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.FrenchFranceKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="1"
+                            
+                            <controls:Key Grid.Row="1" Grid.Column="0"
                                           Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.GermanGermanyKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="2"
+                            <controls:Key Grid.Row="1" Grid.Column="1"
                                           Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
+                            <controls:Key Grid.Row="1" Grid.Column="2" IsEnabled="False"/>
+                            <controls:Key Grid.Row="1" Grid.Column="3"
+                                          Text="{x:Static resx:Resources.BACK}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                         </Grid>
                     </Setter.Value>
                 </Setter>
