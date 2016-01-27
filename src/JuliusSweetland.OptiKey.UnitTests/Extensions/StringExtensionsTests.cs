@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Extensions;
 using NUnit.Framework;
 
@@ -132,5 +133,68 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             CollectionAssert.AreEqual(finalList, list2);
         }
 
+        [Test]
+        public void TestCreateDictionaryEntryHash()
+        {
+            Assert.AreEqual(null, "  ".CreateDictionaryEntryHash());
+            Assert.AreEqual(null, NullString.CreateDictionaryEntryHash());
+            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".CreateDictionaryEntryHash());
+            Assert.AreEqual("CEISE", "ČĔĨŞē".CreateDictionaryEntryHash());
+            Assert.AreEqual("THS", "This has spaces".CreateDictionaryEntryHash());
+            Assert.AreEqual("THS", "This has spaces".CreateDictionaryEntryHash(false));
+            Assert.AreEqual(null, "5Cats 6dogs 7Goats".CreateDictionaryEntryHash());
+            Assert.AreEqual("OIAIWC", "Optikey is awesome. I want 2 copies".CreateDictionaryEntryHash());
+        }
+        
+        [Test]
+        public void TestCreateAutoCompleteDictionaryEntryHash()
+        {
+            Assert.AreEqual(null, "  ".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual(null, NullString.CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual("CEISE", "ČĔĨŞē".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual("THIS HAS SPACES", "This has spaces".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual("THIS HAS SPACES", "This has spaces".CreateAutoCompleteDictionaryEntryHash(false));
+            Assert.AreEqual("5CATS 6DOGS 7GOATS", "5Cats 6dogs 7Goats".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual("OPTIKEY IS AWESOME. I WANT 2 COPIES", "Optikey is awesome. I want 2 copies".CreateAutoCompleteDictionaryEntryHash());
+        }
+
+        [Test]
+        public void TestCleanupPossibleDictionaryEntry()
+        {
+            Assert.AreEqual(null, "  ".CleanupPossibleDictionaryEntry());
+            Assert.AreEqual(null, NullString.CleanupPossibleDictionaryEntry());
+            Assert.AreEqual("Word", "Word!".CleanupPossibleDictionaryEntry());
+            Assert.AreEqual("Cat", "Cat".CleanupPossibleDictionaryEntry());
+            Assert.AreEqual("This is a sentence", "This is a sentence".CleanupPossibleDictionaryEntry());
+            Assert.AreEqual("Čats", "Čats!".CleanupPossibleDictionaryEntry());
+        }
+
+        [Test]
+        public void TestToCharListWithCounts()
+        {
+            var strings = new List<string>
+            {
+                "Čats",
+                "Word!",
+                "THIS HAS SPACES",
+                "OPTIKEY IS AWESOME. I WANT 2 COPIES"
+            };
+
+          var charListWithCounts = strings.ToCharListWithCounts();
+          Assert.AreEqual(charListWithCounts.Count,4);
+          AssertCharTuple(charListWithCounts[0], 'C', 'Č', 1);
+          AssertCharTuple(charListWithCounts[1], 'W', 'W', 1);
+          AssertCharTuple(charListWithCounts[2], 'T', 'T', 1);
+          AssertCharTuple(charListWithCounts[3], 'O', 'O', 1);
+
+        }
+
+        private void AssertCharTuple(Tuple<char,char,int> tuple, char expectedItem1, char expectedItem2, int expectedItem3)
+        {
+            Assert.AreEqual(expectedItem1, tuple.Item1);
+            Assert.AreEqual(expectedItem2, tuple.Item2);
+            Assert.AreEqual(expectedItem3, tuple.Item3);
+        }
     }
 }
