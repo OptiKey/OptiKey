@@ -12,6 +12,7 @@ Patrons (thank you very much for sponsoring this project)
   Alexander Blech
   Peter Grant
   Marcel Abraas
+  Rod Galvão
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
