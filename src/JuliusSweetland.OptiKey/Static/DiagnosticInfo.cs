@@ -82,7 +82,6 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                string version = null;
                 bool? isServerVersion = null;
                 string isServerVersionException = null;
                 try
