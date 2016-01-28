@@ -70,10 +70,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
 
-        public void AddEntry(string entry, int usageCount = 0)
+        public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
         {
             var ngrams = ToNGrams(entry).ToList();
-            var dictionaryEntry = new DictionaryEntry(entry, usageCount);
             var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count());
 
             foreach (var ngram in ngrams)

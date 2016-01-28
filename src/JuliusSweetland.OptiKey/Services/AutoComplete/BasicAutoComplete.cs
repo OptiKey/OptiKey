@@ -49,9 +49,8 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             return Enumerable.Empty<string>();
         }
 
-        public void AddEntry(string entry, int usageCount = 0)
+        public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
         {
-            var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
             //Also add to entries for auto complete
             var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
