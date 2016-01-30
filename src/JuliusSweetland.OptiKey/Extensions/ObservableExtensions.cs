@@ -11,7 +11,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class ObservableExtensions
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Prefix the sequence with an initial value of NULL, then publish points as long as the current point is within

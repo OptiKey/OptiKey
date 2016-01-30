@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -46,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         public RunningStates State { get; set; }
 
-        public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevent on point trigger
+        public KeyEnabledStates KeyEnabledStates { get; set; } //Irrelevant on point trigger
 
         public IObservable<TriggerSignal> Sequence
         {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,9 @@ namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class StringExtensions
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private const string WordRegex = @"(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)";
 
         public static string CreateDictionaryEntryHash(this string entry, bool log = true)
         {
@@ -32,8 +33,8 @@ namespace JuliusSweetland.OptiKey.Extensions
                         .ToArray());
                 }
 
-                //Only letters are relevent
-                hash = new string(hash.Where(Char.IsLetter).ToArray());
+                //Only letters are relevant
+                hash = new string(hash.Where(char.IsLetter).ToArray());
 
                 //Hashes are stored without diacritics (accents etc)
                 hash = hash.RemoveDiacritics();
@@ -100,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             if (string.IsNullOrWhiteSpace(text)) return null;
 
-            var words = new Regex(Settings.Default.WordRegex).Matches(text)
+            var words = new Regex(WordRegex).Matches(text)
                                 .Cast<Match>()
                                 .Select(match => match.Value.CleanupPossibleDictionaryEntry())
                                 .Where(sanitisedMatch => sanitisedMatch != null)
@@ -119,12 +120,12 @@ namespace JuliusSweetland.OptiKey.Extensions
         public static string CleanupPossibleDictionaryEntry(this string word)
         {
             if (!string.IsNullOrWhiteSpace(word)
-                && word.ToCharArray().Any(Char.IsLetter))
+                && word.ToCharArray().Any(char.IsLetter))
             {
                 word = word.Trim();
 
                 while (word.Length > 1
-                    && !Char.IsLetterOrDigit(word.Last()))
+                    && !char.IsLetterOrDigit(word.Last()))
                 {
                     word = word.Substring(0, word.Length - 1);
                 }
@@ -322,12 +323,12 @@ namespace JuliusSweetland.OptiKey.Extensions
             if (!string.IsNullOrWhiteSpace(input)
                 && cursorIndex > 0
                 && cursorIndex <= input.Length
-                && !Char.IsWhiteSpace(input[cursorIndex-1])) //Character before cursor position is not whitespace, i.e. at least 1 letter of the word is before the cursor position
+                && !char.IsWhiteSpace(input[cursorIndex-1])) //Character before cursor position is not whitespace, i.e. at least 1 letter of the word is before the cursor position
             {
                 //Count back
                 int startIndex = cursorIndex;
                 while (startIndex > 0
-                    && !Char.IsWhiteSpace(input[startIndex - 1]))
+                    && !char.IsWhiteSpace(input[startIndex - 1]))
                 {
                     startIndex--;
                 }
@@ -335,7 +336,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 //Count forward
                 int endIndex = startIndex;
                 while (endIndex < input.Length
-                    && !Char.IsWhiteSpace(input[endIndex]))
+                    && !char.IsWhiteSpace(input[endIndex]))
                 {
                     endIndex++;
                 }

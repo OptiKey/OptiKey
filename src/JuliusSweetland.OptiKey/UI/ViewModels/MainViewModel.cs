@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     {
         #region Fields
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IAudioService audioService;
         private readonly ICalibrationService calibrationService;
@@ -106,6 +106,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IKeyStateService KeyStateService { get { return keyStateService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
+
+        public IWindowManipulationService MainWindowManipulationService { get { return mainWindowManipulationService; } }
 
         private IKeyboard keyboard;
         public IKeyboard Keyboard
@@ -418,7 +420,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         candidate, candidate.CreateDictionaryEntryHash(log: true))
                     : string.Format(Resources.ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE, candidate);
 
-                if (candidate.Any(Char.IsUpper))
+                if (candidate.Any(char.IsUpper))
                 {
                     prompt = string.Concat(prompt, Resources.NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS);
                 }

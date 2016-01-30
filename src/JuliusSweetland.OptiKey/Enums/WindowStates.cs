@@ -4,6 +4,7 @@ namespace JuliusSweetland.OptiKey.Enums
     {
         Docked,
         Floating,
+        Hidden,
         Maximised,
         Minimised
     }

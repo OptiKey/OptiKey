@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,14 +124,14 @@
     <value>Voeg nieuw trefwoord toe:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Wilt u de uitdrukking &apos;{0}&apos; aan het woordenboek toevoegen met de snelkoppeling &apos;{1}&apos;?</value>
+    <value>Wilt u de uitdrukking '{0}' aan het woordenboek toevoegen met de snelkoppeling '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>AAN WOORDENBOEK
 TOEVOEGEN</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Wilt u het woord &apos;{0}&apos; toevoegen aan het woordenboek?</value>
+    <value>Wilt u het woord '{0}' toevoegen aan het woordenboek?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Toegevoegd</value>
@@ -175,7 +175,7 @@ TERUG</value>
 TERUG</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass was niet in staat om een stream te creëren vanuit bestand &apos;{0}&apos;</value>
+    <value>Bass was niet in staat om een stream te creëren vanuit bestand '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Bodem</value>
@@ -184,23 +184,23 @@ TERUG</value>
     <value>SPLITSING</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Kalibratie afgebroken: &apos;{0}&apos;</value>
+    <value>Kalibratie afgebroken: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Weet u zeker dat u wilt herkalibreren?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Er heeft een fout plaatsgevonden tijdens het kalibreren: &apos;{0}&apos;</value>
+    <value>Er heeft een fout plaatsgevonden tijdens het kalibreren: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Kalibratie mislukt: &apos;{0}&apos;</value>
+    <value>Kalibratie mislukt: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>Kalibratie kan niet worden uitgevoerd zonder handmatige interventie, bijvoorbeeld met een muis. U kunt vast komen te zitten in de kalibratie als u niet handmatig interactie voert met uw computer.
 Weet u zeker dat u wilt opnieuw wilt kalibreren?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Kalibratie is gestopt vanwege een onbekende reden. Bericht: &apos;{0}&apos;</value>
+    <value>Kalibratie is gestopt vanwege een onbekende reden. Bericht: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibratie gelukt! Nauwkeurigheid (Gem Afwijking = {0})</value>
@@ -328,7 +328,7 @@ HELDERHEID</value>
     <value>Woordenboek</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Geen gebruikerswoordenboek bestaat en het originele woordenboek kon niet gevonden worden in: &apos;{0}&apos;</value>
+    <value>Geen gebruikerswoordenboek bestaat en het originele woordenboek kon niet gevonden worden in: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Toon karakter voor X seconden: </value>
@@ -349,20 +349,11 @@ BENEDEN</value>
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
-  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Super! &apos;{0}&apos; is toegevoegd aan het woordenboek</value>
+    <value>Super! '{0}' is toegevoegd aan het woordenboek</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Fout:</value>
@@ -433,14 +424,8 @@ BOVEN</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Font weight:</value>
   </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / Française (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Complete grootte dock (zoveel % van het scherm):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Toenemen</value>
@@ -449,7 +434,7 @@ BOVEN</value>
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontale vulling (percentage van OptiKey):</value>
+    <value>Horizontale opvulling (als % van scherm):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Incomplete tijd toetsfixatie live (ms):</value>
@@ -535,10 +520,10 @@ OMHOOG</value>
   <data name="LANGUAGE" xml:space="preserve">
     <value>Taal</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Taal toetsenbord: {0}</value>
   </data>
-  <data name="KEYBOARD_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Taal toetsenbord:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
@@ -574,10 +559,10 @@ CURSOR</value>
     <value>VERGROOTGLAS</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Bestemming Vergrootglas (percentage van scherm):</value>
+    <value>Vergroot bestemming (als % van scherm):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Herkomst Vergrootglas (percentage van scherm):</value>
+    <value>Vergroot bron (als % van scherm):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Management console: ALT + M</value>
@@ -940,9 +925,6 @@ BENEDEN/BOVEN</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Stijgend 2</value>
   </data>
-  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Russian (Russia) / Русский (Россия)</value>
-  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Hetzelfde als dock positie</value>
   </data>
@@ -1074,9 +1056,6 @@ POSITIE</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Niet in staat om TheEyeTribe GazeManager te activeren! Controleer of de server actief is en of het apparaat is aangesloten en probeer het opnieuw.</value>
   </data>
@@ -1095,9 +1074,6 @@ POSITIE</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Woorden in hoofdletters</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibratie voltooid of mogelijk geannuleerd, maar alles werkt in ieder geval weer!</value>
   </data>
@@ -1106,12 +1082,6 @@ POSITIE</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine draait niet. Start de EyeX Engine en probeer het opnieuw.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Toon 1</value>
@@ -1138,7 +1108,7 @@ POSITIE</value>
     <value>Niet in staat om de huidige verheffing waar te nemen.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Er is een probleem met het instellen van de stem &apos;{0}&apos;{1}</value>
+    <value>Er is een probleem met het instellen van de stem '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Iets ging er mis, maar ik weet niet wat - check dan de logboeken</value>
@@ -1167,7 +1137,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
     <value>Versie: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Verticale opvulling (percentage van OptiKey):</value>
+    <value>Verticale opvulling (als % van scherm):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Visuals</value>
@@ -1214,16 +1184,358 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Hoeveelheid dataverwerking:</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>German (Germany) / Deutsch (Deutschland)</value>
-  </data>
-  <data name="RESOURCE_LANGUAGE_DESCRIPTION" xml:space="preserve">
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Taal gebruikersinterface: {0}</value>
   </data>
-  <data name="RESOURCE_LANGUAGE_LABEL" xml:space="preserve">
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
     <value>Taal gebruikersinterface:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Fysieke toetsaanslagen simuleren wanneer men typt:</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Onderdruk muisvergroting bij het scrollen:</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Gesprekstoetsenbord lijndikte (links, boven, rechts, onder in px)</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>EEN TERUG</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>WOORD TERUG</value>
+  </data>
+  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Vernietigende Toetsen</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>SUGGESTIE 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>SUGGESTIE 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>SUGGESTIE 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>SUGGESTIE 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>SUGGESTIE 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>SUGGESTIE 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Suggestietoetsen</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>Voeg toe aan woordenboek</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>DOCK VERBERGEN</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>PIJL NAAR BENEDEN</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>PIJL NAAR LINKS</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>PIJL NAAR RECHTS</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>PIJL NAAR BOVEN</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>KLIK &amp; SLEEP</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>VALUTA 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>VALUTA 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>VERLAAG HELDERHEID</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>DIAKRITISCHE TEKENS 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>DIAKRITISCHE TEKENS 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>DIAKRITISCHE TEKENS 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>DOCK UITBREIDEN</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>UITBREIDEN NAAR BENEDEN</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UITBREIDEN NAAR LINKSONDER</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UITBREIDEN NAAR RECHTSONDER</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>UITBREIDEN NAAR LINKS</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>UITBREIDEN NAAR RECHTS</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>UITBREIDEN NAAR BOVEN</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>UITBREIDEN NAAR LINKSBOVEN</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>UITBREIDEN NAAR RECHTSBOVEN</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>VERHOOG HELDERHEID</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>NUMMERS &amp; SYMBOLEN 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>NUMMERS &amp; SYMBOLEN 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>NUMMERS &amp; SYMBOLEN 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>FYSIEKE TOETSEN</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>GROOTTE &amp; POSITIE</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNETISCHE CURSOR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>MIDDEN KLIK</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>MIDDEN OMLAAG/OMHOOG</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>VERPLAATS AANTAL IN PIXELS</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>PAS AANTAL AAN IN PIXELS</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>GESPREK ALPHA</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>GESPREK NUMMERS &amp; SYMBOLEN</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>SPRING OMLAAG</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>SPRING NAAR LINKSBOVEN</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>SPRING NAAR RECHTSONDER</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>SPRING NAAR LINKS</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>SPRING NAAR RECHTS</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>SPRING OMHOOG</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>SPRING NAAR LINKSBOVEN</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>SPRING NAAR RECHTSBOVEN</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>KLIK LINKS</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>DUBBELKLIK LINKS</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>LINKS OMLAAG/OMHOOG</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>VERPLAATS OMLAAG</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>VERPLAATS LINKSONDER</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>VERPLAATS NAAR RECHTSONDER</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>VERPLAATS NAAR LINKS</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>VERPLAATS NAAR RECHTS</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>VERPLAATS NAAR</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>VERPLAATS OMHOOG</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>VERPLAATS NAAR LINKSBOVEN</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>VERPLAATS NAAR RECHTSBOVEN</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MULTI-TOETS SELECTIE</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>HERHAAL LAATSTE</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>KLIK RECHTS</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>RECHTS BENEDEN/BOVEN</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>SCROLL AANTAL IN KLIKS</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>SCROLL OMLAAG</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>SCROLL NAAR LINKS</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>SCROLL NAAR RECHTS</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>SCROLL OMHOOG</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>VERKLEIN OMLAAG</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>VERKLEIN NAAR LINKSONDER</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>VERKLEIN NAAR RECHTSONDER</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>VERKLEIN NAAR LINKS</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>VERKLEIN NAAR RECHTS</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>VERKLEIN OMHOOG</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>VERKLEIN NAAR LINKSBOVEN</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>VERKLEIN NAAR RECHTSBOVEN</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>VERANDER TOETSENBORDTOETSEN:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>ACTIETOETSEN IN DOCK:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Tijd voor overschrijven individuele toetsfixatie (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>VERANDER TAALTOETSEN:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>TAAL:</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>OVERIGE TOETSEN:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>AANPASSINGSTOETSEN:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>MUIS (UITVOEREN OP HUIDIGE LOCATIE) TOETSEN:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>MUIS (UITVOEREN OP PUNT) TOETSEN:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>MUIS (OVERIGE) TOETSEN:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>VERPLAATS &amp; PAS GROOTTE TOETSEN AAN:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FYSIEKE TOETSEN:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>SUGGESTIETOETSEN:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Specificeer tijden om individuele toetsen te voltooien:</value>
   </data>
 </root>

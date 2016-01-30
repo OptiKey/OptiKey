@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private Dictionary<string, List<DictionaryEntry>> entries;
         private Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete;
@@ -45,13 +45,16 @@ namespace JuliusSweetland.OptiKey.Services
         {
             MigrateLegacyDictionaries();
             LoadDictionary();
+
+            //Subscribe to changes in the keyboard language to reload the dictionary
+            Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
         #endregion
 
         #region Migrate Legacy User Dictionaries
 
-        private void MigrateLegacyDictionaries()
+        private static void MigrateLegacyDictionaries()
         {
             var oldNewDictionaryFileNames = new List<Tuple<string, string>>
             {
@@ -90,7 +93,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void LoadDictionary()
         {
-            Log.InfoFormat("LoadDictionary called. Language setting is '{0}'.", Settings.Default.ResourceLanguage);
+            Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
             try
             {
@@ -98,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Services
                 entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
 
                 //Load the user dictionary
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.ResourceLanguage);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 if (File.Exists(userDictionaryPath))
                 {
@@ -107,7 +110,7 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     //Load the original dictionary
-                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.ResourceLanguage, DictionaryFileType));
+                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
 
                     if (File.Exists(originalDictionaryPath))
                     {
@@ -184,7 +187,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             try
             {
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.ResourceLanguage);
+                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 Log.DebugFormat("Saving user dictionary to file '{0}'", userDictionaryPath);
 
@@ -452,12 +455,12 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         matches.Add(exactMatch);
                     }
-                    else if(!text.All(Char.IsUpper))
+                    else if(!text.All(char.IsUpper))
                     {
                         //Text which is not all in caps could not have come from an all caps dictionary entry
                         var matchesWhichAreNotAllCaps = entries[hash].Where(dictionaryEntry =>
                             string.Equals(dictionaryEntry.Entry, text, StringComparison.InvariantCultureIgnoreCase)
-                            && !dictionaryEntry.Entry.All(Char.IsUpper));
+                            && !dictionaryEntry.Entry.All(char.IsUpper));
                         matches.AddRange(matchesWhichAreNotAllCaps);
                     }
                     else

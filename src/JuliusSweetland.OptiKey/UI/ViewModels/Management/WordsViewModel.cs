@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Private Member Vars
 
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
         
@@ -36,29 +36,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Languages>>
                 {
+                    new KeyValuePair<string, Languages>(Resources.DUTCH_BELGIUM, Enums.Languages.DutchBelgium),
+                    new KeyValuePair<string, Languages>(Resources.DUTCH_NETHERLANDS, Enums.Languages.DutchNetherlands),
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_CANADA, Enums.Languages.EnglishCanada),
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_UK, Enums.Languages.EnglishUK),
                     new KeyValuePair<string, Languages>(Resources.ENGLISH_US, Enums.Languages.EnglishUS),
                     new KeyValuePair<string, Languages>(Resources.FRENCH_FRANCE, Enums.Languages.FrenchFrance),
                     new KeyValuePair<string, Languages>(Resources.GERMAN_GERMANY, Enums.Languages.GermanGermany),
-                    new KeyValuePair<string, Languages>(Resources.DUTCH_BELGIUM, Enums.Languages.DutchBelgium),
-                    new KeyValuePair<string, Languages>(Resources.DUTCH_NETHERLANDS, Enums.Languages.DutchNetherlands)
+                    new KeyValuePair<string, Languages>(Resources.RUSSIAN_RUSSIA, Enums.Languages.RussianRussia)
                 };
             }
         }
         
-        private Languages keyboardLanguage;
-        public Languages KeyboardLanguage
+        private Languages keyboardAndDictionaryLanguage;
+        public Languages KeyboardAndDictionaryLanguage
         {
-            get { return keyboardLanguage; }
-            set { SetProperty(ref this.keyboardLanguage, value); }
+            get { return keyboardAndDictionaryLanguage; }
+            set { SetProperty(ref this.keyboardAndDictionaryLanguage, value); }
         }
 
-        private Languages resourceLanguage;
-        public Languages ResourceLanguage
+        private Languages uiLanguage;
+        public Languages UiLanguage
         {
-            get { return resourceLanguage; }
-            set { SetProperty(ref this.resourceLanguage, value); }
+            get { return uiLanguage; }
+            set { SetProperty(ref this.uiLanguage, value); }
         }
         
         private bool autoAddSpace;
@@ -114,8 +115,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
-            KeyboardLanguage = Settings.Default.KeyboardLanguage;
-            ResourceLanguage = Settings.Default.ResourceLanguage;
+            KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
+            UiLanguage = Settings.Default.UiLanguage;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
@@ -126,10 +127,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            bool reloadDictionary = Settings.Default.KeyboardLanguage != KeyboardLanguage;
+            bool reloadDictionary = Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage;
 
-            Settings.Default.KeyboardLanguage = KeyboardLanguage;
-            Settings.Default.ResourceLanguage = ResourceLanguage;
+            Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
+            Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;

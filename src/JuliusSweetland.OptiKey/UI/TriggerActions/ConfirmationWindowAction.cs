@@ -10,7 +10,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
 {
     public class ConfirmationWindowAction : TriggerAction<FrameworkElement>
     {
-        private readonly static ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         protected override void Invoke(object parameter)
         {
