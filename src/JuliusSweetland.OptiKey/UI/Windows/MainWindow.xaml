@@ -12,8 +12,20 @@
         Icon="..\..\Resources\Icons\Main.ico"
         AllowsTransparency="True"
         ResizeMode="NoResize"
-        Style="{DynamicResource MainWindowStyle}">
-    <!--Don't set the window's Width and Height properties here - they are loaded and applied from settings-->
+        Style="{DynamicResource MainWindowStyle}"
+        Tag="{Binding RelativeSource={RelativeSource Mode=Self}}">
+        <!--Don't set the window's Width and Height properties on the window itself - they are loaded and applied from settings-->
+    
+    <Window.ContextMenu>
+        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+            <MenuItem Header="Open Management Console" 
+                      Command="{Binding ManagementWindowRequestCommand}">
+                <MenuItem.Icon>
+                    <Image Source="..\..\Resources\Icons\Management.ico" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
     
     <i:Interaction.Triggers>
         <interactionRequest:InteractionRequestTrigger 
