@@ -177,8 +177,8 @@ namespace JuliusSweetland.OptiKey
                     size => Settings.Default.MainWindowDockSize = size,
                     t => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t,
                     t => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t);
-
                 errorNotifyingServices.Add(mainWindowManipulationService);
+                mainWindow.WindowManipulationService = mainWindowManipulationService;
 
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
