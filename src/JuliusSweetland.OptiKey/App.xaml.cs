@@ -20,11 +20,14 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
+using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
+using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
