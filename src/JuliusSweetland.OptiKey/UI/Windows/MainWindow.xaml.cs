@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
@@ -22,7 +23,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly IDictionaryService dictionaryService;
         private readonly IInputService inputService;
         private readonly IKeyStateService keyStateService;
-        private readonly InteractionRequest<NotificationWithServices> managementWindowRequest;
+        private readonly InteractionRequest<NotificationWithServicesAndState> managementWindowRequest;
+        private readonly ICommand managementWindowRequestCommand;
 
         public MainWindow(
             IAudioService audioService,
@@ -37,18 +39,19 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.inputService = inputService;
             this.keyStateService = keyStateService;
 
-            managementWindowRequest = new InteractionRequest<NotificationWithServices>();
+            managementWindowRequest = new InteractionRequest<NotificationWithServicesAndState>();
+            managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
 
             //Setup key binding (Alt-M and Shift-Alt-M) to open settings
             InputBindings.Add(new KeyBinding
             {
-                Command = new DelegateCommand(RequestManagementWindow),
+                Command = managementWindowRequestCommand,
                 Modifiers = ModifierKeys.Alt,
                 Key = Key.M
             });
             InputBindings.Add(new KeyBinding
             {
-                Command = new DelegateCommand(RequestManagementWindow),
+                Command = managementWindowRequestCommand,
                 Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
                 Key = Key.M
             });
@@ -56,17 +59,34 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
         }
 
-        public InteractionRequest<NotificationWithServices> ManagementWindowRequest { get { return managementWindowRequest; } }
+        public IWindowManipulationService WindowManipulationService { get; set; }
+
+        public InteractionRequest<NotificationWithServicesAndState> ManagementWindowRequest { get { return managementWindowRequest; } }
+        public ICommand ManagementWindowRequestCommand { get { return managementWindowRequestCommand; } }
 
         private void RequestManagementWindow()
         {
-            inputService.RequestSuspend();
+            var modalManagementWindow = WindowManipulationService != null &&
+                                        WindowManipulationService.WindowState == WindowStates.Maximised;
+
+            if (modalManagementWindow)
+            {
+                inputService.RequestSuspend();
+            }
             var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
-            ManagementWindowRequest.Raise(new NotificationWithServices 
-                { AudioService = audioService, DictionaryService = dictionaryService },
+            ManagementWindowRequest.Raise(
+                new NotificationWithServicesAndState
+                {
+                    ModalWindow = modalManagementWindow,
+                    AudioService = audioService,
+                    DictionaryService = dictionaryService
+                },
                 _ =>
                 {
-                    inputService.RequestResume();
+                    if (modalManagementWindow)
+                    {
+                        inputService.RequestResume();
+                    }
                     restoreModifierStates();
                 });
         }

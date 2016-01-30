@@ -113,13 +113,6 @@ namespace JuliusSweetland.OptiKey
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            //var testDic = new SerializableDictionaryOfTimeSpanByKeyValues();
-            //testDic.Add(new KeyValue(FunctionKeys.Suggestion1), TimeSpan.FromSeconds(5));
-            //testDic.Add(new KeyValue("test1"), TimeSpan.FromSeconds(5));
-            //testDic.Add(new KeyValue(FunctionKeys.Suggestion2, "test2"), TimeSpan.FromSeconds(6.75));
-            //Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues = testDic;
-            //Settings.Default.Save();
-
             try
             {
                 Log.Info("Boot strapping the services and UI.");
