@@ -53,6 +53,7 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                 if (notificationWithServicesAndState.ModalWindow)
                 {
                     Log.Info("Showing Management Window (modal)");
+                    childWindow.Topmost = true;
                     childWindow.ShowDialog();
                 }
                 else
