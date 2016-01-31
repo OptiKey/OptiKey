@@ -397,6 +397,27 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml.cs">
+      <DependentUpon>BelgiumAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml.cs">
+      <DependentUpon>NetherlandsAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml.cs">
+      <DependentUpon>BelgiumConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
+      <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml.cs">
+      <DependentUpon>Diacritics1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml.cs">
+      <DependentUpon>Diacritics2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml.cs">
+      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
@@ -851,6 +872,34 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Controls\Output.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
