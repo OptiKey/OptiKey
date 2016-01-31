@@ -1205,9 +1205,6 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="BACK_WORD" xml:space="preserve">
     <value>WOORD TERUG</value>
   </data>
-  <data name="DESTRUCTIVE_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Vernietigende Toetsen</value>
-  </data>
   <data name="SUGGESTION_1" xml:space="preserve">
     <value>SUGGESTIE 1</value>
   </data>
@@ -1230,7 +1227,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
     <value>Suggestietoetsen</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
-    <value>Voeg toe aan woordenboek</value>
+    <value>AAN WOORDENBOEK TOEVOEGEN</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
     <value>DOCK VERBERGEN</value>
