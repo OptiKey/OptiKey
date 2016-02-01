@@ -523,10 +523,10 @@ EN HAUT</value>
     <value>Langue</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue du clavier: {0}</value>
+    <value>Langue du clavier : {0}</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue du clavier:</value>
+    <value>Langue du clavier :</value>
   </data>
   <data name="LEFT" xml:space="preserve">
     <value>Gauche</value>
@@ -972,7 +972,7 @@ EN HAUT</value>
     <value>MAJUSCULE</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Afficher l'écran de démarrage</value>
+    <value>Afficher l'écran de démarrage :</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
     <value>RÉTRECIR</value>
@@ -1190,22 +1190,22 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>Aucun</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Niveau de traitement appliqué au flux de données:</value>
+    <value>Niveau de traitement appliqué au flux de données :</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Langue de l'interface: {0}</value>
+    <value>Langue de l'interface : {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Langue de l'interface:</value>
+    <value>Langue de l'interface :</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simule les touches physiques lors de la saisie de caractères:</value>
+    <value>Simule les touches physiques lors de la saisie de caractères :</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Supprimer le grossissement lors du défilement:</value>
+    <value>Supprimer le grossissement lors du défilement :</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Épaisseur de la bordure du clavier (gauche, haut, droite, bas en pixels):</value>
+    <value>Épaisseur de la bordure du clavier (gauche, haut, droite, bas en pixels) :</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
     <value>ÉFFACER</value>
@@ -1232,7 +1232,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>SUGGESTION 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Suggestion Keys</value>
+    <value>Clés de suggestion</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
     <value>AJOUTER AU DICTIONNAIRE</value>
@@ -1365,16 +1365,16 @@ barre d'outils</value>
     <value>APPUI/RELAXE MOLETTE</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>MOVE AMOUNT IN PIXELS</value>
+    <value>DEPLACER UN NOMMBRE EN PIXELS</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>ADJUST AMOUNT IN PIXELS</value>
+    <value>AJOUTER UN NOMBRE EN PIXELS</value>
   </data>
   <data name="CONVERSATION_ALPHA" xml:space="preserve">
     <value>CONVERSATION ALPHA</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
+    <value>CONVERSATION NUMERIQUE &amp; SYMBOLES</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
     <value>ATTACHER EN BAS</value>
@@ -1464,7 +1464,7 @@ barre d'outils</value>
     <value>ARRÊT DEFIL.</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>SCROLL AMOUNT IN CLICKS</value>
+    <value>DEFILEMENT EN NOMBRE DE CLICS</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
     <value>DÉFILER EN BAS</value>
@@ -1503,45 +1503,45 @@ barre d'outils</value>
     <value>RÉTRECIR EN HAUT À DROITE</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
-    <value>CHANGE KEYBOARD KEYS:</value>
+    <value>CHANGER LES TOUCHES DU CLAVIER :</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>DOCK ACTION KEYS:</value>
+    <value>REPERTOIRE DES TOUCHES D'ACTION :</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Overrides for individual key fixation times (ms):</value>
+    <value>Substituer pour fixer le nombre de fois dans la touche personnelle (ms) :</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>CHANGE LANGUAGE KEYS:</value>
+    <value>CHANGER LA TOUCHE DE LA LANGUE :</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
-    <value>LANGUAGE</value>
+    <value>LANGUE</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>MISCELLANEOUS KEYS:</value>
+    <value>DIVERSES TOUCHES :</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>MODIFIER KEYS:</value>
+    <value>MODIFIER LES TOUCHES :</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
+    <value>TOUCHES DE LA SOURIS (S'EXECUTE A L'EMPLACEMENT COURANT) :</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT POINT) KEYS:</value>
+    <value>TOUCHES DE LA SOURIS (S'EXECUTE A UN POINT) :</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
+    <value>TOUCHES DE LA SOURIS (DIVERS) :</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>MOVE &amp; RESIZE KEYS:</value>
+    <value>DEPLACER &amp; REDIMENSIONNER LES TOUCHES :</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>PHYSICAL KEYS:</value>
+    <value>TOUCHES PHYSIQUES :</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>SUGGESTION KEYS:</value>
+    <value>SUGGESTION DE TOUCHES :</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Specify times to complete on individual keys:</value>
+    <value>Préciser la durée pour terminer sur les touches personnelles :</value>
   </data>
 </root>
