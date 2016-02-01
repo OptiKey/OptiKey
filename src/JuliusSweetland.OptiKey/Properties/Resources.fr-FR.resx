@@ -1238,8 +1238,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
     <value>AJOUTER AU DICTIONNAIRE</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>Réduire la 
-barre d'outils</value>
+    <value>RÉDUIRE LA BARRE D'OUTILS</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
     <value>FLÊCHE BAS</value>
