@@ -1402,5 +1402,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["ConversationBorderThickness"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Basic")]
+        public global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods AutoCompleteMethod {
+            get {
+                return ((global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods)(this["AutoCompleteMethod"]));
+            }
+            set {
+                this["AutoCompleteMethod"] = value;
+            }
+        }
     }
 }

@@ -186,6 +186,7 @@
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
     <Compile Include="Enums\EyeXSensitivities.cs" />
+    <Compile Include="Enums\AutoSentenceAdjustments.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />

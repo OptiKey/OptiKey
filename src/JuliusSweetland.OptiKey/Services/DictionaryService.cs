@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
         
         private Dictionary<string, List<DictionaryEntry>> entries;
         private IManageAutoComplete autoComplete;
+        private readonly Func<AutoCompleteMethods> getAutoCompleteMethod;
 
         #endregion
 
@@ -42,12 +43,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public DictionaryService()
-         : this(new BasicAutoComplete()) { }
-
-        private DictionaryService(IManageAutoComplete autoComplete)
+        public DictionaryService(Func<AutoCompleteMethods> getAutoCompleteMethod)
         {
-            this.autoComplete = autoComplete;
+            this.getAutoCompleteMethod = getAutoCompleteMethod;
+            this.autoComplete = CreateAutoComplete();
             MigrateLegacyDictionaries();
             LoadDictionary();
 
@@ -103,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                autoComplete.Clear();
+                autoComplete = CreateAutoComplete();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -644,6 +643,23 @@ namespace JuliusSweetland.OptiKey.Services
             if (Error != null)
             {
                 Error(sender, ex);
+            }
+        }
+
+        #endregion
+
+        #region Configure Auto Complete
+
+        private IManageAutoComplete CreateAutoComplete()
+        {
+            var autoCompleteMethod = getAutoCompleteMethod();
+            switch (autoCompleteMethod)
+            {
+                case AutoCompleteMethods.Trigram:
+                    return new NGramAutoComplete();
+                case AutoCompleteMethods.Basic:
+                default:
+                    return new BasicAutoComplete();
             }
         }
 
