@@ -320,5 +320,8 @@
     <Setting Name="ConversationBorderThickness" Roaming="true" Type="System.Windows.Thickness" Scope="User">
       <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
+    <Setting Name="AutoCompleteMethod" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+      <Value Profile="(Default)">Basic</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

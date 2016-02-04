@@ -179,6 +179,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto complete method:.
+        /// </summary>
+        public static string AUTO_COMPLETE_METHOD {
+            get {
+                return ResourceManager.GetString("AUTO_COMPLETE_METHOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto complete words:.
         /// </summary>
         public static string AUTO_COMPLETE_WORDS_LABEL {
@@ -231,6 +240,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string BACK_WORD_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("BACK_WORD_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic.
+        /// </summary>
+        public static string BASIC_AUTO_COMPLETE {
+            get {
+                return ResourceManager.GetString("BASIC_AUTO_COMPLETE", resourceCulture);
             }
         }
         
@@ -3072,6 +3090,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TRIGGER_WITHOUT_POSITION_ERROR {
             get {
                 return ResourceManager.GetString("TRIGGER_WITHOUT_POSITION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigram.
+        /// </summary>
+        public static string TRIGRAM_AUTO_COMPLETE {
+            get {
+                return ResourceManager.GetString("TRIGRAM_AUTO_COMPLETE", resourceCulture);
             }
         }
         
