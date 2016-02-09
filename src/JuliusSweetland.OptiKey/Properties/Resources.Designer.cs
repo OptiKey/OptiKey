@@ -1947,6 +1947,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Management Console.
+        /// </summary>
+        public static string MANAGEMENT_CONSOLE {
+            get {
+                return ResourceManager.GetString("MANAGEMENT_CONSOLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Management console: ALT + M.
         /// </summary>
         public static string MANAGEMENT_CONSOLE_DESCRIPTION {
@@ -3133,6 +3142,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string QUIT_MESSAGE {
             get {
                 return ResourceManager.GetString("QUIT_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quit.
+        /// </summary>
+        public static string QUIT_TITLE_CASE {
+            get {
+                return ResourceManager.GetString("QUIT_TITLE_CASE", resourceCulture);
             }
         }
         
