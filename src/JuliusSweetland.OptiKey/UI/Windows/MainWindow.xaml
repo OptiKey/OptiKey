@@ -5,6 +5,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:triggerActions="clr-namespace:JuliusSweetland.OptiKey.UI.TriggerActions"
         xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
+        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="OptiKey"
@@ -17,11 +18,18 @@
         <!--Don't set the window's Width and Height properties on the window itself - they are loaded and applied from settings-->
     
     <Window.ContextMenu>
-        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
-            <MenuItem Header="Open Management Console" 
+        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}"
+                     Opened="OnContextMenuOpened" Closed="OnContextMenuClosed">
+            <MenuItem Header="{x:Static resx:Resources.MANAGEMENT_CONSOLE}" 
                       Command="{Binding ManagementWindowRequestCommand}">
                 <MenuItem.Icon>
                     <Image Source="..\..\Resources\Icons\Management.ico" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.QUIT_TITLE_CASE}" 
+                      Command="{Binding QuitCommand}">
+                <MenuItem.Icon>
+                    <Image Source="..\..\Resources\Icons\Quit.ico" />
                 </MenuItem.Icon>
             </MenuItem>
         </ContextMenu>

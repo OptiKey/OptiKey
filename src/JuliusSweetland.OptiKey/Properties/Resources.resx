@@ -1592,4 +1592,10 @@ Deutsch (Deutschland)</value>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Specify times to complete on individual keys:</value>
   </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Management Console</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Quit</value>
+  </data>
 </root>

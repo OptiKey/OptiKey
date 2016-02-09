@@ -1568,4 +1568,10 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Bestimme Vervollständigungszeit individueller Tasten:</value>
   </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Verwaltungskonsole</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
 </root>

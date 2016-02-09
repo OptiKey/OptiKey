@@ -646,6 +646,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
     <None Include="Resources\Icons\SVG Source Files\Language.svg" />
+    <Resource Include="Resources\Icons\Quit.ico" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
