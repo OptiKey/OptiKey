@@ -1226,12 +1226,6 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simulate physical keystrokes when typing characters:</value>
   </data>
-  <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Dutch (Belgium) / Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
-  </data>
   <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>French (France)
 Française (France)</value>
@@ -1328,6 +1322,9 @@ Deutsch (Deutschland)</value>
   <data name="RIGHT_ARROW" xml:space="preserve">
     <value>RIGHT ARROW</value>
   </data>
+  <data name="String" xml:space="preserve">
+    <value />
+  </data>
   <data name="UP_ARROW" xml:space="preserve">
     <value>UP ARROW</value>
   </data>
@@ -1396,6 +1393,9 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
     <value>SIZE &amp; POSITION</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
     <value>MAGNETIC CURSOR</value>
@@ -1589,22 +1589,8 @@ Deutsch (Deutschland)</value>
   <data name="GREEK_GREECE" xml:space="preserve">
     <value>Greek (Greece) / Ελληνικά (Greece)</value>
   </data>
-  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Management Console</value>
-  </data>
-  <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Quit</value>
-  </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Greek (Greece)
 Ελληνικά (Greece)</value>
-  </data>
-  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch (Belgium)
-Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch (Netherlands)
-Nederlands (Nederland)</value>
   </data>
 </root>
