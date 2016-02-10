@@ -54,6 +54,7 @@
         F9,
         FrenchFrance,
         GermanGermany,
+        GreekGreece,
         Home,
         IncreaseOpacity,
         Insert,
