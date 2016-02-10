@@ -384,6 +384,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Menu(() => Keyboard = currentKeyboard);
                         break;
 
+                    case FunctionKeys.GreekGreece:
+                        Log.Info("Changing keyboard language to GreekGreece.");
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.GreekGreece;
+                        Log.Info("Changing keyboard to Menu");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
                     case FunctionKeys.IncreaseOpacity:
                         Log.Info("Increasing opacity.");
                         mainWindowManipulationService.IncrementOrDecrementOpacity(true);

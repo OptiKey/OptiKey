@@ -1325,6 +1325,19 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey {
+            get {
+                return ((bool)(this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"]));
+            }
+            set {
+                this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\r\n          <dictionary>\r\n            <item>\r\n              <key>\r\n              " +
             "  <keyValue>\r\n                  <functionKey>AlphaKeyboard</functionKey>\r\n      " +
             "          </keyValue>\r\n              </key>\r\n              <value>\r\n            " +
@@ -1510,19 +1523,6 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey {
-            get {
-                return ((bool)(this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"]));
-            }
-            set {
-                this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"] = value;
             }
         }
     }

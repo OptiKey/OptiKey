@@ -1375,6 +1375,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greek (Greece) / Ελληνικά (Greece).
+        /// </summary>
+        public static string GREEK_GREECE {
+            get {
+                return ResourceManager.GetString("GREEK_GREECE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greek (Greece)
+        ///Ελληνικά (Greece).
+        /// </summary>
+        public static string GREEK_GREECE_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("GREEK_GREECE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grow.
         /// </summary>
         public static string GROW {
