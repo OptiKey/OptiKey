@@ -1598,4 +1598,12 @@ Deutsch (Deutschland)</value>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dutch (Belgium)
+Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Dutch (Netherlands)
+Nederlands (Nederland)</value>
+  </data>
 </root>

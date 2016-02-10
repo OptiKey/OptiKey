@@ -127,7 +127,8 @@
     <value>Wilt u de uitdrukking '{0}' aan het woordenboek toevoegen met de snelkoppeling '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>AAN WOORDENBOEK
+    <value>AAN
+WOORDENBOEK
 TOEVOEGEN</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
@@ -313,7 +314,8 @@ HELDERHEID</value>
     <value>Delete</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIAKRITISCHE TEKENS</value>
+    <value>DIAKRITISCHE
+TEKENS</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
     <value>Diakritische tekens 1</value>
@@ -1534,5 +1536,8 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Specificeer tijden om individuele toetsen te voltooien:</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Afsluiten</value>
   </data>
 </root>

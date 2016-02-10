@@ -896,11 +896,31 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dutch (Belgium)
+        ///Nederlands (België).
+        /// </summary>
+        public static string DUTCH_BELGIUM_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("DUTCH_BELGIUM_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dutch (Netherlands) / Nederlands (Nederland).
         /// </summary>
         public static string DUTCH_NETHERLANDS {
             get {
                 return ResourceManager.GetString("DUTCH_NETHERLANDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch (Netherlands)
+        ///Nederlands (Nederland).
+        /// </summary>
+        public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
