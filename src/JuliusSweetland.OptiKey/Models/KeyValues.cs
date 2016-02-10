@@ -60,6 +60,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue F9Key = new KeyValue(FunctionKeys.F9);
         public static readonly KeyValue FrenchFranceKey = new KeyValue(FunctionKeys.FrenchFrance);
         public static readonly KeyValue GermanGermanyKey = new KeyValue(FunctionKeys.GermanGermany);
+        public static readonly KeyValue GreekGreeceKey = new KeyValue(FunctionKeys.GreekGreece);
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
@@ -165,8 +166,13 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
-                { Languages.FrenchFrance, defaultList }, //Could be customised to include àçéèù
-                { Languages.GermanGermany, defaultList }, //Could be customised to include äöüß
+                { Languages.FrenchFrance, defaultList },    //Could be customised to include àçéèù
+                { Languages.GermanGermany, defaultList },   //Could be customised to include äöüß
+                //First attempt for this -- includes all the keyboard characters for a common Greek keyboard
+                { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ".ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },     
 				{ Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))

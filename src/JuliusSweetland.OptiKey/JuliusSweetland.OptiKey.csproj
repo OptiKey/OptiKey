@@ -186,7 +186,6 @@
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
     <Compile Include="Enums\EyeXSensitivities.cs" />
-    <Compile Include="Enums\AutoCompleteMethods.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
@@ -212,7 +211,6 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
-    <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
@@ -261,10 +259,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
@@ -402,26 +396,11 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml.cs">
-      <DependentUpon>BelgiumAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml.cs">
-      <DependentUpon>NetherlandsAlpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml.cs">
-      <DependentUpon>BelgiumConversationAlpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
-      <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -540,6 +519,7 @@
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -562,16 +542,7 @@
     <Content Include="Dictionaries\DanishDenmark.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\DutchBelgium.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\DutchNetherlands.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\CatalanSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SpanishSpain.dic">
+    <Content Include="Dictionaries\GreekGreece.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -657,7 +628,6 @@
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
     <None Include="Resources\Icons\SVG Source Files\Language.svg" />
-    <Resource Include="Resources\Icons\Quit.ico" />
     <Content Include="Resources\Sounds\Click2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -802,7 +772,6 @@
     </Content>
     <Resource Include="Resources\Fonts\Roboto-Light.ttf" />
     <Content Include="Resources\Fonts\Roboto Font - Apache License.txt" />
-    <EmbeddedResource Include="Properties\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -887,31 +856,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1090,7 +1039,10 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterClean">
+	<Message Text="### Post Cleanup Task: Deleting Temporary files used by OptiKey ###" Importance="high" />
+	<RemoveDir Directories="$(AppData)\JuliusSweetland"/>
+	<Message Text="### Post Cleanup Task: Done ###" Importance="high" />
+  </Target>
 </Project>
