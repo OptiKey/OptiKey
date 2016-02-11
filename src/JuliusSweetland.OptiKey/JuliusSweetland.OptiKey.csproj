@@ -326,7 +326,6 @@
     <Compile Include="UI\TriggerActions\ConfirmationWindowAction.cs" />
     <Compile Include="UI\TriggerActions\OpenManagementWindowAction.cs" />
     <Compile Include="UI\Controls\KeyboardHost.cs" />
-    <Compile Include="UI\Utilities\ColourRgb.cs" />
     <Compile Include="UI\ValueConverters\ObjectIsType.cs" />
     <Compile Include="UI\ValueConverters\ConvertToStarGridLength.cs" />
     <Compile Include="UI\ValueConverters\IntToSingularPluralStringFormatter.cs" />
@@ -406,9 +405,6 @@
     <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml.cs">
       <DependentUpon>BelgiumConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
-      <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml.cs">
       <DependentUpon>Diacritics1.xaml</DependentUpon>
     </Compile>
@@ -417,6 +413,9 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml.cs">
       <DependentUpon>Diacritics3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
+      <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Greek\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -898,10 +897,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Greek\Alpha.xaml">    
+    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>    
+    </Page>
+    <Page Include="UI\Views\Keyboards\Greek\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1095,8 +1098,8 @@
   </Target>
   -->
   <Target Name="AfterClean">
-	<Message Text="### Post Cleanup Task: Deleting Temporary files used by OptiKey ###" Importance="high" />
-	<RemoveDir Directories="$(AppData)\JuliusSweetland"/>
-	<Message Text="### Post Cleanup Task: Done ###" Importance="high" />
+    <Message Text="### Post Cleanup Task: Deleting Temporary files used by OptiKey ###" Importance="high" />
+    <RemoveDir Directories="$(AppData)\JuliusSweetland" />
+    <Message Text="### Post Cleanup Task: Done ###" Importance="high" />
   </Target>
 </Project>

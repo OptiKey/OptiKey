@@ -1328,9 +1328,6 @@ Deutsch (Deutschland)</value>
   <data name="RIGHT_ARROW" xml:space="preserve">
     <value>RIGHT ARROW</value>
   </data>
-  <data name="String" xml:space="preserve">
-    <value />
-  </data>
   <data name="UP_ARROW" xml:space="preserve">
     <value>UP ARROW</value>
   </data>
@@ -1399,9 +1396,6 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
     <value>SIZE &amp; POSITION</value>
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value />
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
     <value>MAGNETIC CURSOR</value>
