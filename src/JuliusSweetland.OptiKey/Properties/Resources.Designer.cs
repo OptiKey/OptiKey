@@ -1413,6 +1413,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greek (Greece) / Ελληνικά (Greece).
+        /// </summary>
+        public static string GREEK_GREECE {
+            get {
+                return ResourceManager.GetString("GREEK_GREECE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greek (Greece)
+        ///Ελληνικά (Greece).
+        /// </summary>
+        public static string GREEK_GREECE_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("GREEK_GREECE_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Grow.
         /// </summary>
         public static string GROW {
@@ -3839,24 +3858,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string STOP_SIGNAL_LABEL {
             get {
                 return ResourceManager.GetString("STOP_SIGNAL_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String {
-            get {
-                return ResourceManager.GetString("String", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String2 {
-            get {
-                return ResourceManager.GetString("String2", resourceCulture);
             }
         }
         

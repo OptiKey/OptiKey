@@ -1540,4 +1540,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Management Console</value>
+  </data>
 </root>
