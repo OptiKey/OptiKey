@@ -1537,4 +1537,10 @@ LK</value>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Настройка время захвата отдельной клавиши:</value>
   </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Выход</value>
+  </data>
 </root>
