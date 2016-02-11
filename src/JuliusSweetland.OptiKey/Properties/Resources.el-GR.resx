@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,14 +124,14 @@
     <value>Πρόσθεση νέας καταχώρισης </value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Θέλετε να εισάγετε την φράση &apos;{0}&apos; στο λεξικό με συντόμευση &apos;{1}&apos;;</value>
+    <value>Θέλετε να εισάγετε την φράση '{0}' στο λεξικό με συντόμευση '{1}';</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ΠΡΟΣΘΗΚΗ
 ΣΤΟ ΛΕΞΙΚΟ</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Θέλετε να προσθέσετε την λέξη &apos;{0}&apos; στο λεξικό;</value>
+    <value>Θέλετε να προσθέσετε την λέξη '{0}' στο λεξικό;</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Προστέθηκε</value>
@@ -175,7 +175,7 @@
 ΜΙΑ ΛΕΞΗ</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Δεν κατέστη δυνατή η δημιουργία μιας ροής από το Bass για το αρχείο &apos;{0}&apos;</value>
+    <value>Δεν κατέστη δυνατή η δημιουργία μιας ροής από το Bass για το αρχείο '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Κάτω </value>
@@ -184,26 +184,26 @@
     <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: &apos;{0}&apos;</value>
+    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Είστε σίγουρος ότι θέλετε να ξανακάνετε βαθμονόμηση;</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Παρουσιάστηκε σφάλμα κατά την διάρκεια της βαθμονόμησης με το ακόλουθο μήνυμα λάθους: &apos;{0}&apos;</value>
+    <value>Παρουσιάστηκε σφάλμα κατά την διάρκεια της βαθμονόμησης με το ακόλουθο μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: &apos;{0}&apos;</value>
+    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>Η βαθμονόμηση είναι αδύνατον να ολοκληρωθεί χωρίς χειροκίνητη παρέμβαση, π.χ. χρησιμοποιώντας το ποντίκι. Μπορεί να κολλήσετε στη διαδικασία βαθμονόμησης αν δεν μπορείτε να αλληλεπιδράσετε χειροκίνητα με τον υπολογιστή σας.
 Είστε βέβαιος ότι θα θέλατε να βαθμονομήσετε ξανά τη συσκευή;</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Η βαθμονόμηση σταμάτησε για κάποιον άγνωστο λόγο με μήνυμα: &apos;{0}&apos;</value>
+    <value>Η βαθμονόμηση σταμάτησε για κάποιον άγνωστο λόγο με μήνυμα: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Επιτυχία βαθμονόμησης! Ακρίβεια (Μέσος όρος βαθμού λάθους): &apos;{0}&apos;</value>
+    <value>Επιτυχία βαθμονόμησης! Ακρίβεια (Μέσος όρος βαθμού λάθους): '{0}'</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
     <value>ΑΚΥΡΩΣΗ</value>
@@ -328,7 +328,7 @@
     <value>Λεξικό </value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Δεν υπάρχει κάποιο λεξικό χρήστη και το αρχικό λεξικό δεν βρέθηκε χρησιμοποιώντας το μονοπάτι αρχείου: &apos;{0}&apos;</value>
+    <value>Δεν υπάρχει κάποιο λεξικό χρήστη και το αρχικό λεξικό δεν βρέθηκε χρησιμοποιώντας το μονοπάτι αρχείου: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Εμφάνιση για Χ δευτερόλεπτα ανά χαρακτήρα μηνύματος:</value>
@@ -362,7 +362,7 @@
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Πολύ καλά! Καταχωρήθηκε στο λεξικό το: &apos;{0}&apos; </value>
+    <value>Πολύ καλά! Καταχωρήθηκε στο λεξικό το: '{0}' </value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Σφάλμα:</value>
@@ -1138,7 +1138,7 @@ LK</value>
     <value>Δεν κατέστη δυνατό να υπολογιστεί το τρέχον ύψος.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Παρουσιάστηκε ένα πρόβλημα όταν βάζαμε την φωνή σε &apos;{0}&apos;{1}</value>
+    <value>Παρουσιάστηκε ένα πρόβλημα όταν βάζαμε την φωνή σε '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Κάτι πήγε πολύ στραβά... άλλα δεν γνωρίζουμε τι... - παρακαλώ ελέγξετε τα αρχεία καταγραφής (logs) για περισσότερες πληροφορίες για το τι έγινε. </value>
@@ -1322,9 +1322,6 @@ Deutsch (Deutschland)</value>
   <data name="RIGHT_ARROW" xml:space="preserve">
     <value>ΔΕΞΙ ΒΕΛΟΣ</value>
   </data>
-  <data name="String" xml:space="preserve">
-    <value/>
-  </data>
   <data name="UP_ARROW" xml:space="preserve">
     <value>ΠΑΝΩ ΒΕΛΟΣ</value>
   </data>
@@ -1393,9 +1390,6 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
     <value>ΜΕΓΕΘΟΣ &amp; ΘΕΣΗ</value>
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value/>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
     <value>ΜΑΓΝΗΤΙΚΟΣ ΚΕΡΣΟΡΑΣ</value>
@@ -1585,5 +1579,11 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Ορισμος χρονου ολοκληρωσης σε μεμονομενα πληκτρα:</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Κονσόλα Διαχείρισης</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Εξοδος</value>
   </data>
 </root>
