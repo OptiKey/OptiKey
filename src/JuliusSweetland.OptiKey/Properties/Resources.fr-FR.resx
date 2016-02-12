@@ -1543,4 +1543,10 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Préciser la durée pour terminer sur les touches personnelles :</value>
   </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Fenêtre de paramètres</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
 </root>

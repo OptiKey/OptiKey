@@ -24,6 +24,8 @@
         Currencies2Keyboard,
         DecreaseOpacity,
         Delete,
+        DutchBelgium,
+        DutchNetherlands,
         End,
         EnglishCanada,
         EnglishUK,
