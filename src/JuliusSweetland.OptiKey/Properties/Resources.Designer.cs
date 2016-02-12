@@ -887,6 +887,44 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dutch (Belgium) / Nederlands (België).
+        /// </summary>
+        public static string DUTCH_BELGIUM {
+            get {
+                return ResourceManager.GetString("DUTCH_BELGIUM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch (Belgium)
+        ///Nederlands (België).
+        /// </summary>
+        public static string DUTCH_BELGIUM_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("DUTCH_BELGIUM_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch (Netherlands) / Nederlands (Nederland).
+        /// </summary>
+        public static string DUTCH_NETHERLANDS {
+            get {
+                return ResourceManager.GetString("DUTCH_NETHERLANDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch (Netherlands)
+        ///Nederlands (Nederland).
+        /// </summary>
+        public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to END.
         /// </summary>
         public static string END {
@@ -1962,6 +2000,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL {
             get {
                 return ResourceManager.GetString("MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Management Console.
+        /// </summary>
+        public static string MANAGEMENT_CONSOLE {
+            get {
+                return ResourceManager.GetString("MANAGEMENT_CONSOLE", resourceCulture);
             }
         }
         
@@ -3156,6 +3203,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quit.
+        /// </summary>
+        public static string QUIT_TITLE_CASE {
+            get {
+                return ResourceManager.GetString("QUIT_TITLE_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate:.
         /// </summary>
         public static string RATE_LABEL {
@@ -3802,24 +3858,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string STOP_SIGNAL_LABEL {
             get {
                 return ResourceManager.GetString("STOP_SIGNAL_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String {
-            get {
-                return ResourceManager.GetString("String", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String2 {
-            get {
-                return ResourceManager.GetString("String2", resourceCulture);
             }
         }
         

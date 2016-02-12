@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 
-
 namespace JuliusSweetland.OptiKey.UI.Utilities
 {
     internal static class DrawingUtils
