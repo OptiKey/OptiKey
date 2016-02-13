@@ -119,20 +119,20 @@
                                                   Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.FrenchFranceKey}"/>
-                                    
-                                    
+
+
                                     <controls:Key Grid.Row="0" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.GermanGermanyKey}"/>
                                     <controls:Key Grid.Row="1" Grid.Column="1"
-                                                  Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
-                                                  SharedSizeGroup="KeyWithText"
-                                                  Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
-                                    <controls:Key Grid.Row="2" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.GREEK_GREECE_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.GreekGreeceKey}"/>
+                                    <controls:Key Grid.Row="2" Grid.Column="1"
+                                                  Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                                     <controls:Key Grid.Row="3" Grid.Column="1" IsEnabled="False"/>
                                     <controls:Key Grid.Row="4" Grid.Column="1"
                                           Text="{x:Static resx:Resources.BACK}"
