@@ -311,6 +311,7 @@
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
