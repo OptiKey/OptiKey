@@ -222,25 +222,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// </summary>
         public static string ComposeDiacritics(this string src, bool compatibilityDecomposition = true)
         {
-            var sb = new StringBuilder();
-
-            foreach (char c in src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC))
-            {
-                switch (CharUnicodeInfo.GetUnicodeCategory(c))
-                {
-                    case UnicodeCategory.NonSpacingMark:
-                    case UnicodeCategory.SpacingCombiningMark:
-                    case UnicodeCategory.EnclosingMark:
-                        //Skip over this character
-                        break;
-
-                    default:
-                        sb.Append(c);
-                        break;
-                }
-            }
-
-            return sb.ToString();
+            return src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC);
         }
 
         /// <summary>
