@@ -191,40 +191,56 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// </summary>
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition = true)
         {
-            return RemoveDiacritics(src, compatibilityDecomposition, c => c);
-        }
-
-        /// <summary>
-        /// Remove diacritics (accents etc) from source string and returns the base string
-        /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
-        /// � symbols in your dictionary file? Resave it in UTF-8 encoding (I use Notepad) 
-        /// </summary>
-        public static string RemoveDiacritics(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
-        {
             var sb = new StringBuilder();
-            foreach (char c in Normalise(src, compatibilityDecomposition, customFolding))
-            {
-                sb.Append(c);
-            }
-            return sb.ToString();
-        }
 
-        private static IEnumerable<char> Normalise(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
-        {
-            foreach (char c in src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD))
+            var decomposed = src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD);
+
+            foreach (char c in decomposed)
             {
                 switch (CharUnicodeInfo.GetUnicodeCategory(c))
                 {
                     case UnicodeCategory.NonSpacingMark:
                     case UnicodeCategory.SpacingCombiningMark:
                     case UnicodeCategory.EnclosingMark:
-                        //do nothing
+                        //Skip over this character
                         break;
+
                     default:
-                        yield return customFolding(c);
+                        sb.Append(c);
                         break;
                 }
             }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Normalises string using decomposition and then attempts to compose sequences into their primary composites.
+        /// In other words the string is decomposed and then recomposed. During composition any "combining" Unicode 
+        /// characters/marks are squashed into primary composites, e.g. an "e" followed by a "Combining Grave Accent" becomes "è".
+        /// This will only work if the diacritics are "combining" characters, NOT "modifier" characters or standard characters.
+        /// </summary>
+        public static string ComposeDiacritics(this string src, bool compatibilityDecomposition = true)
+        {
+            var sb = new StringBuilder();
+
+            foreach (char c in src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC))
+            {
+                switch (CharUnicodeInfo.GetUnicodeCategory(c))
+                {
+                    case UnicodeCategory.NonSpacingMark:
+                    case UnicodeCategory.SpacingCombiningMark:
+                    case UnicodeCategory.EnclosingMark:
+                        //Skip over this character
+                        break;
+
+                    default:
+                        sb.Append(c);
+                        break;
+                }
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>
