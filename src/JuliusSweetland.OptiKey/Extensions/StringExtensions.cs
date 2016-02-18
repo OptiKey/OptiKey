@@ -199,9 +199,9 @@ namespace JuliusSweetland.OptiKey.Extensions
             {
                 switch (CharUnicodeInfo.GetUnicodeCategory(c))
                 {
-                    case UnicodeCategory.NonSpacingMark:
-                    case UnicodeCategory.SpacingCombiningMark:
-                    case UnicodeCategory.EnclosingMark:
+                    case UnicodeCategory.NonSpacingMark: //(All combining diacritic characters are non-spacing marks). Nonspacing character that indicates modifications of a base character. Signified by the Unicode designation "Mn"(mark, nonspacing).The value is 5.
+                    case UnicodeCategory.SpacingCombiningMark: //Spacing character that indicates modifications of a base character and affects the width of the glyph for that base character. Signified by the Unicode designation "Mc" (mark, spacing combining). The value is 6.
+                    case UnicodeCategory.EnclosingMark: //Enclosing mark character, which is a nonspacing combining character that surrounds all previous characters up to and including a base character. Signified by the Unicode designation "Me" (mark, enclosing). The value is 7.
                         //Skip over this character
                         break;
 
