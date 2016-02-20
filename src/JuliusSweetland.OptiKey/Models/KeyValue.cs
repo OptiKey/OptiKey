@@ -100,7 +100,7 @@ namespace JuliusSweetland.OptiKey.Models
 
                 //Special chars such as '\n' have meaning in a string - convert to literal strings.
                 //This is also required by the Key property as Key is used in dictionary indexes, for example.
-                stringBuilder.Append(String.ConvertEscapedCharsToLiterals());
+                stringBuilder.Append(String.ToPrintableString());
             }
             
             return stringBuilder.ToString();

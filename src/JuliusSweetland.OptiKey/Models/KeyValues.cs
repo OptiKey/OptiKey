@@ -21,32 +21,32 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CalibrateKey = new KeyValue(FunctionKeys.Calibrate);
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
         public static readonly KeyValue CollapseDockKey = new KeyValue(FunctionKeys.CollapseDock);
-        public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("&#x0301;");
-        public static readonly KeyValue CombiningBreveKey = new KeyValue("&#x0306;");
-        public static readonly KeyValue CombiningCaronOrHacekKey = new KeyValue("&#x030C;");
-        public static readonly KeyValue CombiningCedillaKey = new KeyValue("&#x0327;");
-        public static readonly KeyValue CombiningCircumflexKey = new KeyValue("&#x0302;");
-        public static readonly KeyValue CombiningCommaAboveOrSmoothBreathingKey = new KeyValue("&#x0313;");
-        public static readonly KeyValue CombiningCyrillicPsiliPneumataOrSmoothBreathingKey = new KeyValue("&#x0486;");
-        public static readonly KeyValue CombiningDiaeresisOrUmlautKey = new KeyValue("&#x0308;");
-        public static readonly KeyValue CombiningDotAboveKey = new KeyValue("&#x0307;");
-        public static readonly KeyValue CombiningDotAboveRightKey = new KeyValue("&#x0358;");
-        public static readonly KeyValue CombiningDotBelowKey = new KeyValue("&#x0323;");
-        public static readonly KeyValue CombiningDoubleAcuteAccentKey = new KeyValue("&#x030B;");
-        public static readonly KeyValue CombiningDoubleGraveAccentKey = new KeyValue("&#x030F;");
-        public static readonly KeyValue CombiningGraveAccentKey = new KeyValue("&#x0300;");
-        public static readonly KeyValue CombiningHookAboveKey = new KeyValue("&#x0309;");
-        public static readonly KeyValue CombiningHornKey = new KeyValue("&#x031B;");
-        public static readonly KeyValue CombiningInvertedBreveKey = new KeyValue("&#x0311;");
-        public static readonly KeyValue CombiningIotaSubscriptOrYpogegrammeniKey = new KeyValue("&#x0345;");
-        public static readonly KeyValue CombiningMacronKey = new KeyValue("&#x0304;");
-        public static readonly KeyValue CombiningOgonekOrNosineKey = new KeyValue("&#x0328;");
-        public static readonly KeyValue CombiningPalatalizedHookBelowKey = new KeyValue("&#x0321;");
-        public static readonly KeyValue CombiningPerispomeneKey = new KeyValue("&#x0342;");
-        public static readonly KeyValue CombiningRetroflexHookBelowKey = new KeyValue("&#x0322;");
-        public static readonly KeyValue CombiningReversedCommaAboveOrRoughBreathingKey = new KeyValue("&#x0314;");
-        public static readonly KeyValue CombiningRingAboveKey = new KeyValue("&#x030A;");
-        public static readonly KeyValue CombiningRingBelowKey = new KeyValue("&#x0325;");
+        public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("\x0301");
+        public static readonly KeyValue CombiningBreveKey = new KeyValue("\x0306");
+        public static readonly KeyValue CombiningCaronOrHacekKey = new KeyValue("\x030C");
+        public static readonly KeyValue CombiningCedillaKey = new KeyValue("\x0327");
+        public static readonly KeyValue CombiningCircumflexKey = new KeyValue("\x0302");
+        public static readonly KeyValue CombiningCommaAboveOrSmoothBreathingKey = new KeyValue("\x0313");
+        public static readonly KeyValue CombiningCyrillicPsiliPneumataOrSmoothBreathingKey = new KeyValue("\x0486");
+        public static readonly KeyValue CombiningDiaeresisOrUmlautKey = new KeyValue("\x0308");
+        public static readonly KeyValue CombiningDotAboveKey = new KeyValue("\x0307");
+        public static readonly KeyValue CombiningDotAboveRightKey = new KeyValue("\x0358");
+        public static readonly KeyValue CombiningDotBelowKey = new KeyValue("\x0323");
+        public static readonly KeyValue CombiningDoubleAcuteAccentKey = new KeyValue("\x030B");
+        public static readonly KeyValue CombiningDoubleGraveAccentKey = new KeyValue("\x030F");
+        public static readonly KeyValue CombiningGraveAccentKey = new KeyValue("\x0300");
+        public static readonly KeyValue CombiningHookAboveKey = new KeyValue("\x0309");
+        public static readonly KeyValue CombiningHornKey = new KeyValue("\x031B");
+        public static readonly KeyValue CombiningInvertedBreveKey = new KeyValue("\x0311");
+        public static readonly KeyValue CombiningIotaSubscriptOrYpogegrammeniKey = new KeyValue("\x0345");
+        public static readonly KeyValue CombiningMacronKey = new KeyValue("\x0304");
+        public static readonly KeyValue CombiningOgonekOrNosineKey = new KeyValue("\x0328");
+        public static readonly KeyValue CombiningPalatalizedHookBelowKey = new KeyValue("\x0321");
+        public static readonly KeyValue CombiningPerispomeneKey = new KeyValue("\x0342");
+        public static readonly KeyValue CombiningRetroflexHookBelowKey = new KeyValue("\x0322");
+        public static readonly KeyValue CombiningReversedCommaAboveOrRoughBreathingKey = new KeyValue("\x0314");
+        public static readonly KeyValue CombiningRingAboveKey = new KeyValue("\x030A");
+        public static readonly KeyValue CombiningRingBelowKey = new KeyValue("\x0325");
         public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
@@ -210,18 +210,20 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return new List<KeyValue>
-                {
-                    LeftAltKey,
-                    LeftCtrlKey,
-                    LeftShiftKey,
-                    LeftWinKey,
-                    MouseLeftDownUpKey,
-                    MouseMagnifierKey,
-                    MouseMiddleDownUpKey,
-                    MouseRightDownUpKey,
-                    MultiKeySelectionIsOnKey
-                };
+                return CombiningKeys.Concat(
+                    new List <KeyValue>
+                    {
+                        LeftAltKey,
+                        LeftCtrlKey,
+                        LeftShiftKey,
+                        LeftWinKey,
+                        MouseLeftDownUpKey,
+                        MouseMagnifierKey,
+                        MouseMiddleDownUpKey,
+                        MouseRightDownUpKey,
+                        MultiKeySelectionIsOnKey
+                    })
+                    .ToList();
             }
         }
 
@@ -264,6 +266,47 @@ namespace JuliusSweetland.OptiKey.Models
             }
         }
 
+        public static List<KeyValue> CombiningKeys
+        {
+            get
+            {
+                return new List<KeyValue>
+                {
+                    //N.B. The order of these key values is important. This is the order in which combining keys which are down will be composed into a primary composite.
+                    CombiningDiaeresisOrUmlautKey, //Diaeresis must be before the AcuteAccent if they are to combine into a COMBINING GREEK DIALYTIKA TONOS U+0344
+                    CombiningAcuteAccentKey, //AuteAccent must be after the Diaeresis if they are to combine into a COMBINING GREEK DIALYTIKA TONOS U+0344
+                    CombiningBreveKey,
+                    CombiningCaronOrHacekKey,
+                    CombiningCedillaKey,
+                    CombiningCircumflexKey,
+                    CombiningCommaAboveOrSmoothBreathingKey,
+                    CombiningCyrillicPsiliPneumataOrSmoothBreathingKey,
+                    CombiningDotAboveKey,
+                    CombiningDotAboveRightKey,
+                    CombiningDotBelowKey,
+                    CombiningDoubleAcuteAccentKey,
+                    CombiningDoubleGraveAccentKey,
+                    CombiningGraveAccentKey,
+                    CombiningHookAboveKey,
+                    CombiningHornKey,
+                    CombiningInvertedBreveKey,
+                    CombiningIotaSubscriptOrYpogegrammeniKey,
+                    CombiningMacronKey,
+                    CombiningOgonekOrNosineKey,
+                    CombiningPalatalizedHookBelowKey,
+                    CombiningPerispomeneKey,
+                    CombiningRetroflexHookBelowKey,
+                    CombiningReversedCommaAboveOrRoughBreathingKey,
+                    CombiningRingAboveKey,
+                    CombiningRingBelowKey
+                };
+            }
+        }
+
+        /// <summary>
+        /// Keys which are published when OptiKey is publishing (simulating key strokes). Otherwise these keys have no impact 
+        /// on text within OptiKey (which is why LeftShift is not included as this modifies the case of entered text).
+        /// </summary>
         public static List<KeyValue> PublishOnlyKeys
         {
             get
