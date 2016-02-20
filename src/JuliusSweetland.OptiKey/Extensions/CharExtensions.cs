@@ -32,9 +32,18 @@ namespace JuliusSweetland.OptiKey.Extensions
             return CharCategories.SomethingElse;
         }
 
-        public static string ConvertEscapedCharToLiteral(this char input)
+        public static string ToPrintableString(this char c)
         {
-            return input.ToString(CultureInfo.InvariantCulture).ConvertEscapedCharsToLiterals();
+            var escapedLiteralString = c.ToString(CultureInfo.InvariantCulture)
+                    .Replace("\0", @"\0")
+                    .Replace("\a", @"\a")
+                    .Replace("\b", @"\b")
+                    .Replace("\t", @"\t")
+                    .Replace("\f", @"\f")
+                    .Replace("\n", @"\n")
+                    .Replace("\r", @"\r");
+
+            return string.Format(@"[Char:{0}|Unicode:U+{1:x4}]", escapedLiteralString, (int)c);
         }
 
         public static bool IsCombiningCharacter(this char c)

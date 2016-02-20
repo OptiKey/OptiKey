@@ -24,15 +24,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestConvertEscapedCharToLiteral()
         {
-            Assert.AreEqual(@"\0", '\0'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\a", '\a'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\b", '\b'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\t", '\t'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\f", '\f'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\n", '\n'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"\r", '\r'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@"s", 's'.ConvertEscapedCharToLiteral());
-            Assert.AreEqual(@" ", ' '.ConvertEscapedCharToLiteral());
+            Assert.AreEqual(@"\0", '\0'.ToPrintableString());
+            Assert.AreEqual(@"\a", '\a'.ToPrintableString());
+            Assert.AreEqual(@"\b", '\b'.ToPrintableString());
+            Assert.AreEqual(@"\t", '\t'.ToPrintableString());
+            Assert.AreEqual(@"\f", '\f'.ToPrintableString());
+            Assert.AreEqual(@"\n", '\n'.ToPrintableString());
+            Assert.AreEqual(@"\r", '\r'.ToPrintableString());
+            Assert.AreEqual(@"s", 's'.ToPrintableString());
+            Assert.AreEqual(@" ", ' '.ToPrintableString());
         }
 
         [Test]

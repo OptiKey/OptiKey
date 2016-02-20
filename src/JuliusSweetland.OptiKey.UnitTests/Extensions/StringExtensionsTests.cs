@@ -25,16 +25,16 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestConvertEscapedCharToLiteral()
         {
-            Assert.AreEqual(@"\0", "\0".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\a", "\a".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\b", "\b".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\t", "\t".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\f", "\f".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\n", "\n".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\r", "\r".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"s", "s".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@" ", " ".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(null, NullString.ConvertEscapedCharsToLiterals());
+            Assert.AreEqual(@"\0", "\0".ToPrintableString());
+            Assert.AreEqual(@"\a", "\a".ToPrintableString());
+            Assert.AreEqual(@"\b", "\b".ToPrintableString());
+            Assert.AreEqual(@"\t", "\t".ToPrintableString());
+            Assert.AreEqual(@"\f", "\f".ToPrintableString());
+            Assert.AreEqual(@"\n", "\n".ToPrintableString());
+            Assert.AreEqual(@"\r", "\r".ToPrintableString());
+            Assert.AreEqual(@"s", "s".ToPrintableString());
+            Assert.AreEqual(@" ", " ".ToPrintableString());
+            Assert.AreEqual(null, NullString.ToPrintableString());
         }
         
         [Test]

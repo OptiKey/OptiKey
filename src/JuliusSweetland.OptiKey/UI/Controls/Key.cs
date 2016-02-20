@@ -80,8 +80,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .Subscribe(calculateIsCurrent);
             onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
-            
+
             //Calculate DisplayShiftDownText
+            //Display shift down text (upper case text) if shift is locked down, or down (but NOT when we are capturing a multi key selection)
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
                     DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);

@@ -272,18 +272,17 @@ namespace JuliusSweetland.OptiKey.Extensions
                    || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
         }
 
-        public static string ConvertEscapedCharsToLiterals(this string input)
+        public static string ToPrintableString(this string input)
         {
             if (input == null) return null;
 
-            return input
-                .Replace("\0", @"\0")
-                .Replace("\a", @"\a")
-                .Replace("\b", @"\b")
-                .Replace("\t", @"\t")
-                .Replace("\f", @"\f")
-                .Replace("\n", @"\n")
-                .Replace("\r", @"\r");
+            var sb = new StringBuilder();
+
+            foreach (var c in input)
+            {
+                sb.Append(c.ToPrintableString());
+            }
+            return sb.ToString();
         }
 
         public static int CountBackToLastCharCategoryBoundary(this string input, bool ignoreSingleTrailingSpace = true)
