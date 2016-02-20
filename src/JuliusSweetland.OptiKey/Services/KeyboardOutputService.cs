@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
@@ -224,8 +225,7 @@ namespace JuliusSweetland.OptiKey.Services
                         //If the key cannot be pressed or locked down (these are handled in 
                         //ReactToPublishableKeyDownStateChanges) then publish it and release unlocked keys
                         var keyValue = new KeyValue(functionKey);
-                        if (!KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
-                            && !KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue))
+                        if (!KeyValues.KeysWhichCanBePressedOrLockedDown.Contains(keyValue))
                         {
                             PublishKeyPress(functionKey);
                             ReleaseUnlockedKeys();
@@ -242,9 +242,34 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessSingleKeyText(string capturedText)
         {
-            Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ConvertEscapedCharsToLiterals());
-            ProcessText(capturedText, true);
+            if (KeyValues.CombiningKeys.Any(k => k.String == capturedText))
+            {
+                //These are dead keys - do nothing until we have a letter to combine the pressed dead keys with
+                Log.InfoFormat("Suppressing processing on {0} as it is a dead key", capturedText.ToPrintableString());
+                return;
+            }
+
+            Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
+            var capturedTextAfterComposition = ComposeDiacritics(capturedText);
+            ProcessText(capturedTextAfterComposition, true);
             lastTextChangeWasSuggestion = false;
+        }
+
+        private string ComposeDiacritics(string input)
+        {
+            Log.InfoFormat("Composing diacritics on '{0}'", input);
+            var sb = new StringBuilder(input);
+            KeyValues.CombiningKeys.ForEach(combiningKey =>
+            {
+                if (keyStateService.KeyDownStates[combiningKey].Value.IsDownOrLockedDown())
+                {
+                    Log.DebugFormat("Appending '{0}' onto '{1}'", combiningKey.String.ToPrintableString(), sb.ToString());
+                    sb.Append(combiningKey.String);
+                }
+            });
+
+            var output = sb.ToString().ComposeDiacritics();
+            return output;
         }
 
         public void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions)
@@ -270,7 +295,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void ProcessText(string captureText, bool generateAutoCompleteSuggestions)
         {
-            Log.DebugFormat("Processing captured text '{0}'", captureText.ConvertEscapedCharsToLiterals());
+            Log.DebugFormat("Processing captured text '{0}'", captureText.ToPrintableString());
 
             if (string.IsNullOrEmpty(captureText)) return;
 
@@ -642,14 +667,14 @@ namespace JuliusSweetland.OptiKey.Services
                 if (virtualKeyCode != null)
                 {
                     Log.InfoFormat("Publishing '{0}' => as virtual key code {1} (using hard coded mapping)",
-                        character.ConvertEscapedCharToLiteral(), virtualKeyCode);
+                        character.ToPrintableString(), virtualKeyCode);
                     publishService.KeyDownUp(virtualKeyCode.Value);
                     return;
                 }
 
                 if (!Settings.Default.PublishVirtualKeyCodesForCharacters)
                 {
-                    Log.InfoFormat("Publishing '{0}' as text", character.ConvertEscapedCharToLiteral());
+                    Log.InfoFormat("Publishing '{0}' as text", character.ToPrintableString());
                     publishService.TypeText(character.ToString());
                     return;
                 }
@@ -682,7 +707,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (vkKeyScan != -1)
                 {
                     Log.InfoFormat("Publishing '{0}' => as virtual key code {1}(0x{1:X}){2}{3}{4} (using VkKeyScanEx with keyboard layout:{5})",
-                        character.ConvertEscapedCharToLiteral(), vkCode, shift ? "+SHIFT" : null,
+                        character.ToPrintableString(), vkCode, shift ? "+SHIFT" : null,
                         ctrl ? "+CTRL" : null, alt ? "+ALT" : null, keyboardCulture);
 
                     bool releaseShift = false;
@@ -725,7 +750,7 @@ namespace JuliusSweetland.OptiKey.Services
                 else
                 {
                     Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})",
-                        character.ConvertEscapedCharToLiteral(), keyboardCulture);
+                        character.ToPrintableString(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
             }
@@ -841,7 +866,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.Any(kv =>
                 keyStateService.KeyDownStates[kv].Value.IsDownOrLockedDown()))
             {
-                Log.DebugFormat("A key which prevents text capture is down - modifying '{0}' to null.", textToModify.ConvertEscapedCharsToLiterals());
+                Log.DebugFormat("A key which prevents text capture is down - modifying '{0}' to null.", textToModify.ToPrintableString());
                 return null;
             }
 

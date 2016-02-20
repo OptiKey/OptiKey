@@ -398,7 +398,7 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
                         selectionResult.Item2, 
-                        selectionResult.Item3.ConvertEscapedCharsToLiterals(),
+                        selectionResult.Item3.ToPrintableString(),
                         selectionResult.Item4 != null && selectionResult.Item4.Any() ? selectionResult.Item4.First() : null,
                         selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null);
 
