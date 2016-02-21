@@ -7,6 +7,7 @@
                     xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                     xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
                     xmlns:keyboardBase="clr-namespace:JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base">
+    
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/OptiKey;component/Resources/Themes/Colours/Android.xaml" />
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
@@ -153,6 +154,13 @@
                     <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--Use Unicode compatibility font (for rendering characters that may be unsupported in the user specified font)-->
+                    <DataTrigger Binding="{Binding Path=UseUnicodeCompatibilityFont, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="FontFamily" Value="/Resources/Fonts/#CharisSIL" />
+                        <Setter Property="FontWeight" Value="Regular" />
+                        <Setter Property="FontStretch" Value="Normal" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
