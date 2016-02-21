@@ -57,7 +57,8 @@
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      Text="&#x0020;&#x0301;"
+                      Text="&#x25CC;&#x0301;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.CombiningAcuteAccentKey}" />
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
@@ -97,7 +98,8 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="π"/>
         <controls:Key Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2"
-                      Text="&#x0020;&#x0308;"
+                      Text="&#x25CC;&#x0308;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.CombiningDiaeresisOrUmlautKey}" />
         <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"

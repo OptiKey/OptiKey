@@ -294,15 +294,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(ShiftDownTextProperty, value); }
         }
 
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof (KeyValue), typeof (Key), new PropertyMetadata(default(KeyValue)));
-
-        public KeyValue Value
-        {
-            get { return (KeyValue) GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
-        }
-
         private static void OnSymbolGeometryOrTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var senderAsKey = sender as Key;
@@ -315,6 +306,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+
+        public KeyValue Value
+        {
+            get { return (KeyValue)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseUnicodeCompatibilityFontProperty =
+            DependencyProperty.Register("UseUnicodeCompatibilityFont", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool UseUnicodeCompatibilityFont
+        {
+            get { return (bool)GetValue(UseUnicodeCompatibilityFontProperty); }
+            set { SetValue(UseUnicodeCompatibilityFontProperty, value); }
+        }
 
         #endregion
 
