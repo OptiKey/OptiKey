@@ -41,6 +41,7 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
             keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
@@ -323,7 +324,8 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == new KeyValue("ι")
                             || keyValue == new KeyValue("ο")
                             || keyValue == new KeyValue("υ")
-                            || keyValue == new KeyValue("ω");
+                            || keyValue == new KeyValue("ω")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
 
                     //Acute, diaeresis: ΐ ΰ
@@ -345,7 +347,8 @@ namespace JuliusSweetland.OptiKey.Models
                             || (keyValue == KeyValues.CombiningAcuteAccentKey
                                 && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //The diaeresis can be combined with an acute accent on lower case letters only (shift must be is up)
                             || keyValue == new KeyValue("ι")
-                            || keyValue == new KeyValue("υ");
+                            || keyValue == new KeyValue("υ")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
 
