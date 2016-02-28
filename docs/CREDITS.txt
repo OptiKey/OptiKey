@@ -14,6 +14,7 @@ Patrons (thank you very much for sponsoring this project)
   Marcel Abraas
   Rod Galvão
   Volluta
+  William Johnson
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
