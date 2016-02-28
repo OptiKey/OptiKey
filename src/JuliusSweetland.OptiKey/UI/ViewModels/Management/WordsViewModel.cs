@@ -45,17 +45,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-
-        public List<KeyValuePair<string, AutoCompleteMethods>> AutoCompleteMethods
-        {
-            get
-            {
-                return new List<KeyValuePair<string, AutoCompleteMethods>> {
-                    new KeyValuePair<string, AutoCompleteMethods>(Resources.BASIC_AUTO_COMPLETE, Enums.AutoCompleteMethods.Basic),
-                    new KeyValuePair<string, AutoCompleteMethods>(Resources.TRIGRAM_AUTO_COMPLETE, Enums.AutoCompleteMethods.Trigram)
-                };
-            }
-        } 
         
         private Languages keyboardAndDictionaryLanguage;
         public Languages KeyboardAndDictionaryLanguage
@@ -90,12 +79,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return suppressAutoCapitaliseIntelligently; }
             set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
-        }
-
-        private AutoCompleteMethods autoCompleteMethod;
-        public AutoCompleteMethods AutoCompleteMethod {
-            get { return autoCompleteMethod; }
-            set { SetProperty(ref autoCompleteMethod, value); }
         }
 
         private bool autoCompleteWords;
@@ -135,7 +118,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
-            AutoCompleteMethod = Settings.Default.AutoCompleteMethod;
             AutoCompleteWords = Settings.Default.AutoCompleteWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
@@ -143,15 +125,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            var reloadDictionary = (Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage)
-                                   || (Settings.Default.AutoCompleteMethod != AutoCompleteMethod);
+            var reloadDictionary = Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage;
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
-            Settings.Default.AutoCompleteMethod = autoCompleteMethod;
             Settings.Default.AutoCompleteWords = AutoCompleteWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;

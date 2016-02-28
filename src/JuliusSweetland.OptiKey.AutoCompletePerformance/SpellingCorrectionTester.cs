@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
         {
             switch (autoCompleteMethod)
             {
-                case AutoCompleteMethods.Trigram:
+                case AutoCompleteMethods.NGram:
                     autoComplete = new NGramAutoComplete();
                     break;
                 case AutoCompleteMethods.Basic:
@@ -51,8 +51,8 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
             {
                 var typedSoFar = misspellingTest.Misspelling.Substring(0, n);
                 var suggestions = autoComplete.GetSuggestions(typedSoFar).Take(NumberOfSuggestionsToCheck);
-                if (
-                    !suggestions.Any(
+
+                if (!suggestions.Any(
                         suggestion =>
                             suggestion.Equals(misspellingTest.TargetWord, StringComparison.CurrentCultureIgnoreCase)))
                 {

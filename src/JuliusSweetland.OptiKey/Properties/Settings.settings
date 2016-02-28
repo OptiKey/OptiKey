@@ -320,8 +320,17 @@
     <Setting Name="ConversationBorderThickness" Roaming="true" Type="System.Windows.Thickness" Scope="User">
       <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
-    <Setting Name="AutoCompleteMethod" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
-      <Value Profile="(Default)">Basic</Value>
+    <Setting Name="NGramAutoCompleteGramCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="NGramAutoCompleteLeadingSpaceCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="NGramAutoCompleteTrailingSpaceCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+      <Value Profile="(Default)">NGram</Value>
     </Setting>
   </Settings>
 </SettingsFile>

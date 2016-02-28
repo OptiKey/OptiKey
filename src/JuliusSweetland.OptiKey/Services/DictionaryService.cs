@@ -28,11 +28,11 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
-        private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete autoComplete;
-        private readonly Func<AutoCompleteMethods> getAutoCompleteMethod;
+        private readonly AutoCompleteMethods autoCompleteMethod;
 
+        private Dictionary<string, List<DictionaryEntry>> entries;
+        private IManageAutoComplete manageAutoComplete;
+        
         #endregion
 
         #region Events
@@ -43,10 +43,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public DictionaryService(Func<AutoCompleteMethods> getAutoCompleteMethod)
+        public DictionaryService(AutoCompleteMethods autoCompleteMethod)
         {
-            this.getAutoCompleteMethod = getAutoCompleteMethod;
-            this.autoComplete = CreateAutoComplete();
+            this.autoCompleteMethod = autoCompleteMethod;
+
             MigrateLegacyDictionaries();
             LoadDictionary();
 
@@ -102,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                autoComplete = CreateAutoComplete();
+                manageAutoComplete = CreateAutoComplete();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    autoComplete.AddEntry(entry, newEntryWithUsageCount);
+                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -320,7 +320,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Also remove from entries for auto complete
-                        autoComplete.RemoveEntry(entry);
+                        manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -356,7 +356,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public IEnumerable<string> GetAutoCompleteSuggestions(string root)
         {
-            return autoComplete.GetSuggestions(root);
+            return manageAutoComplete.GetSuggestions(root);
         }
 
         #endregion
@@ -652,11 +652,13 @@ namespace JuliusSweetland.OptiKey.Services
 
         private IManageAutoComplete CreateAutoComplete()
         {
-            var autoCompleteMethod = getAutoCompleteMethod();
             switch (autoCompleteMethod)
             {
-                case AutoCompleteMethods.Trigram:
-                    return new NGramAutoComplete();
+                case AutoCompleteMethods.NGram:
+                    return new NGramAutoComplete(
+                        Settings.Default.NGramAutoCompleteGramCount, 
+                        Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
+                        Settings.Default.NGramAutoCompleteTrailingSpaceCount);
                 case AutoCompleteMethods.Basic:
                 default:
                     return new BasicAutoComplete();

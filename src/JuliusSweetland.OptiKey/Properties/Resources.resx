@@ -1244,13 +1244,4 @@ Deutsch (Deutschland)</value>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
   </data>
-  <data name="AUTO_COMPLETE_METHOD" xml:space="preserve">
-    <value>Auto complete method:</value>
-  </data>
-  <data name="BASIC_AUTO_COMPLETE" xml:space="preserve">
-    <value>Basic</value>
-  </data>
-  <data name="TRIGRAM_AUTO_COMPLETE" xml:space="preserve">
-    <value>Trigram</value>
-  </data>
 </root>

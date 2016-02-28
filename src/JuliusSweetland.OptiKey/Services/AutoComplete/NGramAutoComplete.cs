@@ -28,26 +28,22 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         /// <summary>
         /// Creates a n-gram auto-completer using the default settings.
         /// </summary>
-        public NGramAutoComplete()
-            : this(DefaultNormalizeFunc) { }
+        public NGramAutoComplete(int gramCount = 3, int leadingSpaceCount = 2, int trailingSpaceCount = 1)
+            : this(DefaultNormalizeFunc, gramCount, leadingSpaceCount, trailingSpaceCount)
+        {
+        }
 
         /// <summary>
-        ///     Creates a n-gram auto-completer, allowing tuning of the parameters used.
+        /// Creates a n-gram auto-completer, allowing tuning of the parameters used.
         /// </summary>
-        /// <param name="normalizeFunc">A function to normalize input. This function should convert the string into a
-        /// base form for comparison.</param>
+        /// <param name="normalizeFunc">A function to normalize input. This function should convert the string into a base form for comparison.</param>
         /// <param name="gramCount">The size of each gram.</param>
-        /// <param name="leadingSpaceCount">Number of leading spaces. The more spaces the higher priority the start of
-        /// the string has.</param>
-        /// <param name="trailingSpaceCount">Number of trailing spaces. The more spaces the higher priority the end of
-        /// the string has.</param>
+        /// <param name="leadingSpaceCount">Number of leading spaces. The more spaces the higher priority the start of the string has.</param>
+        /// <param name="trailingSpaceCount">Number of trailing spaces. The more spaces the higher priority the end of the string has.</param>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="gramCount"/> must be greater than 0.</exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="leadingSpaceCount"/> must be non-negative but
-        /// less than <paramref name="gramCount"/>.</exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="trailingSpaceCount"/> must be non-negative but
-        /// less than <paramref name="gramCount"/>.</exception>
-        public NGramAutoComplete(Func<string, string> normalizeFunc, int gramCount = 3, int leadingSpaceCount = 2,
-            int trailingSpaceCount = 1)
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="leadingSpaceCount"/> must be non-negative but less than <paramref name="gramCount"/>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="trailingSpaceCount"/> must be non-negative but less than <paramref name="gramCount"/>.</exception>
+        public NGramAutoComplete(Func<string, string> normalizeFunc, int gramCount, int leadingSpaceCount, int trailingSpaceCount)
         {
             if (gramCount < 1)
             {
