@@ -1325,9 +1325,48 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int NGramAutoCompleteGramCount {
+            get {
+                return ((int)(this["NGramAutoCompleteGramCount"]));
+            }
+            set {
+                this["NGramAutoCompleteGramCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int NGramAutoCompleteLeadingSpaceCount {
+            get {
+                return ((int)(this["NGramAutoCompleteLeadingSpaceCount"]));
+            }
+            set {
+                this["NGramAutoCompleteLeadingSpaceCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int NGramAutoCompleteTrailingSpaceCount {
+            get {
+                return ((int)(this["NGramAutoCompleteTrailingSpaceCount"]));
+            }
+            set {
+                this["NGramAutoCompleteTrailingSpaceCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]		
-		public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey {
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey {
             get {
                 return ((bool)(this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"]));
             }
@@ -1460,6 +1499,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>Suggestion6</functionKey>\r\n" +
             "      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </" +
             "value>\r\n  </item>\r\n</dictionary>")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
                 return ((global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues)(this["KeySelectionTriggerFixationCompleteTimesByKeyValues"]));
@@ -1468,53 +1508,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
-		
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NGram")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods AutoCompleteMethod {
             get {
                 return ((global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods)(this["AutoCompleteMethod"]));
             }
-    	}
-			
-		[global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int NGramAutoCompleteGramCount {
-            get {
-                return ((int)(this["NGramAutoCompleteGramCount"]));
-            }
             set {
-                this["NGramAutoCompleteGramCount"] = value;
+                this["AutoCompleteMethod"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int NGramAutoCompleteLeadingSpaceCount {
-            get {
-                return ((int)(this["NGramAutoCompleteLeadingSpaceCount"]));
-            }
-            set {
-                this["NGramAutoCompleteLeadingSpaceCount"] = value;
-            }
-        }
-					
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int NGramAutoCompleteTrailingSpaceCount {
-            get {
-                return ((int)(this["NGramAutoCompleteTrailingSpaceCount"]));
-            }
-            set {
-                this["NGramAutoCompleteTrailingSpaceCount"] = value;
-            }
-        }
+    }
 }
