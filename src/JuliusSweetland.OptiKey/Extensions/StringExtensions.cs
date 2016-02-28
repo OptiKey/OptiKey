@@ -14,6 +14,8 @@ namespace JuliusSweetland.OptiKey.Extensions
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private const string WordRegex = @"(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)";
+
         public static string CreateDictionaryEntryHash(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
@@ -99,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             if (string.IsNullOrWhiteSpace(text)) return null;
 
-            var words = new Regex(Settings.Default.WordRegex).Matches(text)
+            var words = new Regex(WordRegex).Matches(text)
                                 .Cast<Match>()
                                 .Select(match => match.Value.CleanupPossibleDictionaryEntry())
                                 .Where(sanitisedMatch => sanitisedMatch != null)

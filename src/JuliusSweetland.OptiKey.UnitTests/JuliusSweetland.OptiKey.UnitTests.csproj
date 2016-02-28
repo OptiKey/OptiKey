@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -97,6 +98,7 @@
     <Compile Include="Services\AutoComplete\BasicAutoCompleteTests.cs" />
     <Compile Include="Services\KeyboardOutputServiceTests.cs" />
     <Compile Include="TestBase.cs" />
+    <Compile Include="UI\Utilities\DrawingUtilsTests.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\MainViewModelTestBase.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenAttachServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenConstruct.cs" />

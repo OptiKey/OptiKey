@@ -20,11 +20,14 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
+using NBug.Core.UI;
 using Octokit;
 using Octokit.Reactive;
 using Application = System.Windows.Application;
+using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -33,6 +36,14 @@ namespace JuliusSweetland.OptiKey
     /// </summary>
     public partial class App : Application
     {
+        #region Constants
+
+        private const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
+        private const string GitHubRepoName = "optikey";
+        private const string GitHubRepoOwner = "optikey";
+
+        #endregion
+
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -166,8 +177,8 @@ namespace JuliusSweetland.OptiKey
                     size => Settings.Default.MainWindowDockSize = size,
                     t => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t,
                     t => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t);
-
                 errorNotifyingServices.Add(mainWindowManipulationService);
+                mainWindow.WindowManipulationService = mainWindowManipulationService;
 
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
@@ -344,7 +355,7 @@ namespace JuliusSweetland.OptiKey
                     pointSource = new GazeTrackerSource(
                         Settings.Default.PointTtl,
                         Settings.Default.GazeTrackerUdpPort,
-                        new Regex(Settings.Default.GazeTrackerUdpRegex));
+                        new Regex(GazeTrackerUdpRegex));
                     break;
 
                 case PointsSources.TheEyeTribe:
@@ -387,7 +398,10 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new KeyFixationSource(
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationCompleteTime,
+                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
+                       Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
+                        ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
+                        : null, 
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource.Sequence);
                     break;
@@ -462,6 +476,7 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
             }
+            Log.InfoFormat("Running as admin: {0}", DiagnosticInfo.RunningAsAdministrator);
             Log.InfoFormat("Process elevated: {0}", DiagnosticInfo.IsProcessElevated);
             Log.InfoFormat("Process bitness: {0}", DiagnosticInfo.ProcessBitness);
             Log.InfoFormat("OS version: {0}", DiagnosticInfo.OperatingSystemVersion);
@@ -493,7 +508,7 @@ namespace JuliusSweetland.OptiKey
                 switch (Settings.Default.KeySelectionTriggerSource)
                 {
                     case TriggerSources.Fixations:
-                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.KeySelectionTriggerFixationCompleteTime.TotalMilliseconds));
+                        keySelectionSb.Append(string.Format(OptiKey.Properties.Resources.DURATION_FORMAT, Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds));
                         break;
 
                     case TriggerSources.KeyboardKeyDownsUps:
@@ -558,10 +573,10 @@ namespace JuliusSweetland.OptiKey
             if (Settings.Default.CheckForUpdates)
             {
                 Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
-                    Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName);
+                    GitHubRepoOwner, GitHubRepoName);
 
                 new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
-                    .GetAll(Settings.Default.GitHubRepoOwner, Settings.Default.GitHubRepoName)
+                    .GetAll(GitHubRepoOwner, GitHubRepoName)
                     .Where(release => !release.Prerelease)
                     .Take(1)
                     .ObserveOnDispatcher()

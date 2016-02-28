@@ -5,7 +5,6 @@
                      xmlns:views="clr-namespace:JuliusSweetland.OptiKey.UI.Views"
                      xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
                      Title="{x:Static resx:Resources.MANAGEMENT_CONSOLE_TITLE}"
-                     Topmost="True"
                      WindowStartupLocation="CenterOwner"
                      WindowState="Maximized"
                      MinWidth="300" MinHeight="200"

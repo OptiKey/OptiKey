@@ -3,8 +3,9 @@ using Prism.Interactivity.InteractionRequest;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class NotificationWithServices : INotification
+    public class NotificationWithServicesAndState : INotification
     {
+        public bool ModalWindow { get; set; }
         public IAudioService AudioService { get; set; }
         public IDictionaryService DictionaryService { get; set; }
 

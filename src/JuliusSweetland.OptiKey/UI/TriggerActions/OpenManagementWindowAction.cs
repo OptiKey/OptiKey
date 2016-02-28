@@ -19,16 +19,16 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
             var args = parameter as InteractionRequestedEventArgs;
             if (args != null)
             {
-                var notificationWithServices = args.Context as NotificationWithServices;
+                var notificationWithServicesAndState = args.Context as NotificationWithServicesAndState;
 
-                if (notificationWithServices == null
-                    || notificationWithServices.AudioService == null
-                    || notificationWithServices.DictionaryService == null)
+                if (notificationWithServicesAndState == null
+                    || notificationWithServicesAndState.AudioService == null
+                    || notificationWithServicesAndState.DictionaryService == null)
                 {
                     throw new ApplicationException(Resources.REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW);
                 }
 
-                var childWindow = new ManagementWindow(notificationWithServices.AudioService, notificationWithServices.DictionaryService);
+                var childWindow = new ManagementWindow(notificationWithServicesAndState.AudioService, notificationWithServicesAndState.DictionaryService);
                 
                 EventHandler closeHandler = null;
                 closeHandler = (sender, e) =>
@@ -43,16 +43,27 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                     : null;
 
                 bool parentWindowHadFocus = false;
-                if (parentWindow != null)
+                if (parentWindow != null
+                    && notificationWithServicesAndState.ModalWindow)
                 {
                     childWindow.Owner = parentWindow; //Setting the owner preserves the z-order of the parent and child windows when the focus is shifted back to the parent (otherwise the child popup will be hidden)
                     parentWindowHadFocus = parentWindow.IsFocused;
                 }
 
-                Log.Info("Showing Management window");
-                childWindow.ShowDialog();
+                if (notificationWithServicesAndState.ModalWindow)
+                {
+                    Log.Info("Showing Management Window (modal)");
+                    childWindow.Topmost = true;
+                    childWindow.ShowDialog();
+                }
+                else
+                {
+                    Log.Info("Showing Management Window (non-modal)");
+                    childWindow.Show();
+                }
     
-                if (parentWindow != null)
+                if (parentWindow != null
+                    && notificationWithServicesAndState.ModalWindow)
                 {
                     if(parentWindowHadFocus)
                     {

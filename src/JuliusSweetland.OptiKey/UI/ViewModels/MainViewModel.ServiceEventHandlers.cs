@@ -300,6 +300,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new Diacritics3();
                         break;
 
+                    case FunctionKeys.DutchBelgium:
+                        Log.Info("Changing keyboard language to DutchBelgium.");
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.DutchBelgium;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
+                    case FunctionKeys.DutchNetherlands:
+                        Log.Info("Changing keyboard language to DutchNetherlands.");
+                        Settings.Default.KeyboardAndDictionaryLanguage = Languages.DutchNetherlands;
+                        Log.Info("Changing keyboard to Menu.");
+                        Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                        break;
+
                     case FunctionKeys.EnglishCanada:
                         Log.Info("Changing keyboard language to EnglishCanada.");
                         Settings.Default.KeyboardAndDictionaryLanguage = Languages.EnglishCanada;
@@ -389,7 +403,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.IncrementOrDecrementOpacity(true);
                         break;
 
-                    case FunctionKeys.Language:
+                    case FunctionKeys.LanguageKeyboard:
                         Log.Info("Restoring window size.");
                         mainWindowManipulationService.Restore();
                         Log.Info("Changing keyboard to Language.");

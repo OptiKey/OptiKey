@@ -426,10 +426,7 @@
     <value>Толщина шрифта:</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Полная величина дока(% от окна):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
+    <value>Полная величина дока (% от окна):</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Увеличивающийся</value>
@@ -438,7 +435,7 @@
     <value>HOME</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Горизонтальная величина (% от OptiKey):</value>
+    <value>Горизонтальная величина (% от окна):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
     <value>Время неполной фиксации клавиши (ms):</value>
@@ -563,10 +560,10 @@
     <value>УВЕЛИЧИТЬ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Площадь поверхности увеличения (% от экрана):</value>
+    <value>Площадь поверхности увеличения (% от окна):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Увеличение (% от экрана):</value>
+    <value>Увеличение (% от окна):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
     <value>Настройки: ALT + M</value>
@@ -1061,9 +1058,6 @@ LK</value>
   <data name="TAB" xml:space="preserve">
     <value>ТАБ</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Невозможно активировать TheEyeTribe GazeManager! Пожалуйсто проверьте, что сервер включен и устройство подключено к компьютеру, и попробуйте снова.</value>
   </data>
@@ -1082,9 +1076,6 @@ LK</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Слова начинаются с заглавных букв</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Калибровка завершена или возможно была прервана, но теперь все работает! </value>
   </data>
@@ -1093,12 +1084,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>'Tobii EyeX Engine' не работает. Пожалуйста запустите 'EyeX Engine' и попробуйте снова.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Тон 1</value>
@@ -1154,7 +1139,7 @@ LK</value>
     <value>Версия: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Вертикальная величина(% от OptiKey)</value>
+    <value>Вертикальная величина (% от окна):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
     <value>Вид</value>
@@ -1210,10 +1195,352 @@ LK</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Имитировать физическую клавиатуру (для письма): </value>
   </data>
-  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Толщина разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
-  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Выключить увеличение во время прокручивания мыши:</value>
-  </data>  
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Толщина края разговорной клавиатуры (слева, сверху, справа, снизу в пикселях):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>НАЗАД ОДНО</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>СТЕРЕТЬ СЛОВО</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>ПОДСКАЗКА 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>ПОДСКАЗКА 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>ПОДСКАЗКА 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>ПОДСКАЗКА 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>ПОДСКАЗКА 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>ПОДСКАЗКА 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Клавиши подсказок</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>ДОБАВИТЬ В СЛОВАРЬ</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>СВЕРНУТЬ ДОК</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВНИЗ</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВЛЕВО</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>СТРЕЛКА ВПРАВО</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>СТРЕЛКA ВВЕРХ</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>ВЗЯТЬ И ПЕРЕНЕСТИ</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>ВАЛЮТА 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>ВАЛЮТА 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ПРОЗРАЧНОСТЬ</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>СПЕЦ. СИМВОЛЫ 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>РАСШИРИТЬ ДОК</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВПРАВО</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>УВЕЛИЧИТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ПРОЗРАЧНОСТЬ</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>ЦИФРЫ И СИМВОЛЫ 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>ФИЗИЧЕСКИЕ КЛАВИШИ</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>РАЗМЕР И РАСПОЛОЖЕНИЕ</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>ПРИТЯГИВАЮЩИЙ КУРСОР</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>СРЕДНИЙ КЛИК</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>СРЕДНИЙ ВВЕРХ/ВНИЗ</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>ШАГ В ПИКСЕЛЯХ(МЕНЮ РАЗМЕР И РАСПОЛОЖЕНИЕ)</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>ПОДВИНУТЬ В ПИКСЕЛЯХ(МЕНЮ МЫШИ)</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>РЕЧЬ(БУКВЫ)</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>РЕЧЬ(ЦИФРЫ И СИМВОЛЫ)</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВЛЕВО</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВПРАВО</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>ПЕРЕНЕСТИ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>ЛЕВЫЙ КЛИК</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>ЛЕВЫЙ ДВОЙНОЙ КЛИК</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>ЛЕВЫЙ КЛИК ВНИЗ/ВВЕРХ</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ И ВЛЕВО</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВЛЕВО</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВПРАВО</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>ДВИГАТЬ К</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>ДВИГАТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>МУЛЬТИ КЛАВИШИ</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>ПОВТОРИТЬ ПОСЛЕДНЕЕ</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>ПРАВЫЙ КЛИК</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>ПРАВЫЙ КЛИК ВНИЗ/ВВЕРХ</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>ПРОКРУТИТЬ В КЛИКАХ(МЕНЮ МЫШИ)</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВНИЗ</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВЛЕВО</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВПРАВО</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>ПРОКРУТИТЬ ВВЕРХ</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗ</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗУ И ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВНИЗ И ВПРАВО</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВПРАВО</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ И ВЛЕВО</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>УМЕНЬШИТЬ ВВЕРХ И ВПРАВО</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ ЗАМЕНЫ КЛАВИАТУРЫ:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ ПОВЕДЕНИЯ ДОКА:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Заменяет время захвата отдельной клавиши (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ СМЕНЫ ЯЗЫКА:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>ЯЗЫК</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>ДРУГИЕ КЛАВИШИ:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>ВСПОМОГАТЕЛЬНЫЕ КЛАВИШИ:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДЕЙСТВИЕ В НАСТОЯЩЕМ ПОЛОЖЕНИИ КУРСОРА):</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДЕЙСТВИЕ В ОПРЕДЕЛЕННОЙ ТОЧКЕ):</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ МЫШИ(ДРУГИЕ):</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>КЛАВИШИ  "РАЗМЕР И РАСПОЛОЖЕНИЕ":</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>ФИЗ. КЛАВИШИ</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>Клавиши подсказок:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Настройка время захвата отдельной клавиши:</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Выход</value>
+  </data>
 </root>

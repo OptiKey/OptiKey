@@ -1,7 +1,7 @@
 Low cost certificate for Open Source projects; https://www.certum.eu/certum/cert,offer_en_open_source_cs.xml
 		http://stackoverflow.com/questions/1177552/code-signing-certificate-for-open-source-projects
 
-Once purchased and activated etc on the website download the .cer file then install it into the local computer's (or current user's) certificate store.
+Once purchased and activated etc on the website download the .cer file then install it into the local computer's (or current user's) certificate store. Also use the Certum 'Install Online' option on the certificate (this installs the private key which isn't there if you just install the .cer file manually).
 Open mmc.exe and add the Certificate (Local Computer or Current User) add-in and find the certificate (it should be in Personal Certificates).
 Right click on the certificate and select 'Export...'.
 Check to export the private key - complete the process (including extended properties I think). Requires password and produces a .pfx file.

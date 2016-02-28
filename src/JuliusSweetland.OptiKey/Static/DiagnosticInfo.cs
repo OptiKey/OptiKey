@@ -82,8 +82,19 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
-                var vs = Environment.OSVersion.Version;
+                bool? isServerVersion = null;
+                string isServerVersionException = null;
+                try
+                {
+                    isServerVersion = IsServerVersion();
+                }
+                catch (Exception ex)
+                {
+                    isServerVersionException = string.Format("Error when querying if OS is server version: {0}", ex.Message);
+                }
 
+                var vs = Environment.OSVersion.Version;
+                
                 //http://msdn.microsoft.com/en-gb/library/windows/desktop/ms724832%28v=vs.85%29.aspx
                 //N.B. If the manifest file does not specify compatibility with Windows 8.1/Windows 10/later versions
                 //then the call to Environment.OSVersion.Version will lie and return 6.2 (Windows 8).
@@ -99,33 +110,61 @@ namespace JuliusSweetland.OptiKey.Static
                     case 5:
                         if (vs.Minor == 0) return "Windows 2000";
                         if (vs.Minor == 1) return "Windows XP";
-                        if (IsServerVersion())
+                        if (isServerVersion != null)
                         {
-                            if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
-                            return "Windows Server 2003 R2";
+                            if (isServerVersion.Value)
+                            {
+                                if (PInvoke.GetSystemMetrics(89) == 0) return "Windows Server 2003";
+                                return "Windows Server 2003 R2";
+                            }
+                            return "Windows XP";
                         }
-                        return "Windows XP";
+                        break;
 
                     case 6:
                         if (vs.Minor == 0)
                         {
-                            if (IsServerVersion()) return "Windows Server 2008";
-                            return "Windows Vista";
+                            if (isServerVersion != null)
+                            {
+                                if (isServerVersion.Value)
+                                {
+                                    return "Windows Server 2008";
+                                }
+                                return "Windows Vista";
+                            }
                         }
                         if (vs.Minor == 1)
                         {
-                            if (IsServerVersion()) return "Windows Server 2008 R2";
-                            return "Windows 7";
+                            if (isServerVersion != null)
+                            {
+                                if (isServerVersion.Value)
+                                {
+                                    return "Windows Server 2008 R2";
+                                }
+                                return "Windows 7";
+                            }
                         }
                         if (vs.Minor == 2)
                         {
-                            if (IsServerVersion()) return "Windows Server 2012";
-                            return "Windows 8";
+                            if (isServerVersion != null)
+                            {
+                                if (isServerVersion.Value)
+                                {
+                                    return "Windows Server 2012";
+                                }
+                                return "Windows 8";
+                            }
                         }
                         if (vs.Minor == 3)
                         {
-                            if (IsServerVersion()) return "Windows Server 2012 R2";
-                            return "Windows 8.1";
+                            if (isServerVersion != null)
+                            {
+                                if (isServerVersion.Value)
+                                {
+                                    return "Windows Server 2012 R2";
+                                }
+                                return "Windows 8.1";
+                            }
                         }
                         break;
 
@@ -133,7 +172,8 @@ namespace JuliusSweetland.OptiKey.Static
                         return "Windows 10";
                 }
 
-                return string.Format("OS v{0}.{1}", vs.Major, vs.Minor);
+                return string.Format("OS v{0}.{1}{2}", vs.Major, vs.Minor,
+                    isServerVersionException != null ? string.Format(" - {0}", isServerVersionException) : null);
             }
         }
 
@@ -209,7 +249,7 @@ namespace JuliusSweetland.OptiKey.Static
         }
     
         private static bool IsServerVersion() 
-        { 
+        {
             using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem")) 
             { 
                 foreach (var managementObject in searcher.Get()) 
@@ -230,7 +270,8 @@ namespace JuliusSweetland.OptiKey.Static
             get
             {
                 var uacKey = Registry.LocalMachine.OpenSubKey(uacRegistryKey, false);
-                return uacKey != null && uacKey.GetValue(uacRegistryValue).Equals(1);
+                var uacValue = uacKey != null ? uacKey.GetValue(uacRegistryValue) : null;
+                return uacValue != null && uacValue.Equals(1);
             }
         }
     }
