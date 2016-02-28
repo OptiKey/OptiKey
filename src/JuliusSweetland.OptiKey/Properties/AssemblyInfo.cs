@@ -63,3 +63,4 @@ using System.Windows;
 [assembly: AssemblyVersion("2.2.3")]
 
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.UnitTests")]
+[assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.AutoCompletePerformance")]
