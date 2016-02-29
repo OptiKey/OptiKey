@@ -10,6 +10,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.AutoComplete;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -27,10 +28,11 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
-        private Dictionary<string, List<DictionaryEntry>> entries;
-        private Dictionary<string, List<DictionaryEntry>> entriesForAutoComplete;
+        private readonly AutoCompleteMethods autoCompleteMethod;
 
+        private Dictionary<string, List<DictionaryEntry>> entries;
+        private IManageAutoComplete manageAutoComplete;
+        
         #endregion
 
         #region Events
@@ -41,8 +43,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public DictionaryService()
+        public DictionaryService(AutoCompleteMethods autoCompleteMethod)
         {
+            this.autoCompleteMethod = autoCompleteMethod;
+
             MigrateLegacyDictionaries();
             LoadDictionary();
 
@@ -98,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                entriesForAutoComplete = new Dictionary<string, List<DictionaryEntry>>();
+                manageAutoComplete = CreateAutoComplete();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -260,7 +264,7 @@ namespace JuliusSweetland.OptiKey.Services
                 var hash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
-                    var newEntryWithUsageCount = new DictionaryEntry { UsageCount = usageCount, Entry = entry };
+                    var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
                     if (entries.ContainsKey(hash))
                     {
@@ -275,38 +279,13 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                    AddAutoCompleteEntry(entry, autoCompleteHash, newEntryWithUsageCount);
-                    if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-                    {
-                        //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                        var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
-                        AddAutoCompleteEntry(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
-                    }
+                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
                         SaveUserDictionaryToFile();
                     }
-                }
-            }
-        }
-
-        private void AddAutoCompleteEntry(string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
-        {
-            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
-            {
-                if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
-                {
-                    if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
-                    {
-                        entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
-                    }
-                }
-                else
-                {
-                    entriesForAutoComplete.Add(autoCompleteHash, new List<DictionaryEntry> {newEntryWithUsageCount});
                 }
             }
         }
@@ -341,22 +320,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Also remove from entries for auto complete
-                        var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
-                        if (!string.IsNullOrWhiteSpace(autoCompleteHash)
-                            && entriesForAutoComplete.ContainsKey(autoCompleteHash))
-                        {
-                            var foundEntryForAutoComplete = entriesForAutoComplete[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
-
-                            if (foundEntryForAutoComplete != null)
-                            {
-                                entriesForAutoComplete[autoCompleteHash].Remove(foundEntryForAutoComplete);
-
-                                if (!entriesForAutoComplete[autoCompleteHash].Any())
-                                {
-                                    entriesForAutoComplete.Remove(autoCompleteHash);
-                                }
-                            }
-                        }
+                        manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -390,35 +354,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Get Auto Complete Suggestions
 
-        public IEnumerable<DictionaryEntry> GetAutoCompleteSuggestions(string root)
+        public IEnumerable<string> GetAutoCompleteSuggestions(string root)
         {
-            Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
-
-            if (entriesForAutoComplete != null)
-            {
-                var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
-
-                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
-                {
-                    var enumerator = 
-                        new List<DictionaryEntry> { new DictionaryEntry { Entry = root } } //Include the typed root as first result
-                        .Union(entriesForAutoComplete
-                                .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
-                                .SelectMany(kvp => kvp.Value)
-                                .Where(de => de.Entry.Length > root.Length)
-                                .Distinct() //Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version of the phrase and one the first letter of each word so you can look them up by either)
-                                .OrderByDescending(de => de.UsageCount)
-                                .ThenBy(de => de.Entry.Length))
-                        .GetEnumerator();
-
-                    while (enumerator.MoveNext())
-                    {
-                        yield return enumerator.Current;
-                    }
-                }
-
-                yield break; //Not strictly necessary
-            }
+            return manageAutoComplete.GetSuggestions(root);
         }
 
         #endregion
@@ -705,6 +643,25 @@ namespace JuliusSweetland.OptiKey.Services
             if (Error != null)
             {
                 Error(sender, ex);
+            }
+        }
+
+        #endregion
+
+        #region Configure Auto Complete
+
+        private IManageAutoComplete CreateAutoComplete()
+        {
+            switch (autoCompleteMethod)
+            {
+                case AutoCompleteMethods.NGram:
+                    return new NGramAutoComplete(
+                        Settings.Default.NGramAutoCompleteGramCount, 
+                        Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
+                        Settings.Default.NGramAutoCompleteTrailingSpaceCount);
+                case AutoCompleteMethods.Basic:
+                default:
+                    return new BasicAutoComplete();
             }
         }
 
