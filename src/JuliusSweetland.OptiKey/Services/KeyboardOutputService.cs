@@ -538,12 +538,29 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
 
                         var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Select(de => de.Entry)
                             .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                             .ToList();
 
                         Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
                             suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
+
+                        // Ensure that the entered word is in the list of suggestions...
+                        if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
+                        {
+                            suggestions.Insert(0, inProgressWord);
+                            suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                        }
+                        else
+                        {
+                            // ...and that it is at the front of the list.
+                            var index =
+                                suggestions.FindIndex(
+                                    s => string.Equals(s, inProgressWord, StringComparison.CurrentCultureIgnoreCase));
+                            if (index > 0)
+                            {
+                                suggestions.Swap(0, index);
+                            }
+                        }
 
                         //Correctly case auto complete suggestions
                         var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
