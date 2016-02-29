@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CsvHelper.2.13.5.0\lib\net40-client\CsvHelper.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
