@@ -25,16 +25,16 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestConvertEscapedCharToLiteral()
         {
-            Assert.AreEqual(@"\0", "\0".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\a", "\a".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\b", "\b".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\t", "\t".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\f", "\f".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\n", "\n".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"\r", "\r".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@"s", "s".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(@" ", " ".ConvertEscapedCharsToLiterals());
-            Assert.AreEqual(null, NullString.ConvertEscapedCharsToLiterals());
+            Assert.AreEqual(@"[Char:\0|Unicode:U+0000]", '\0'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\a|Unicode:U+0007]", '\a'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\b|Unicode:U+0008]", '\b'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\t|Unicode:U+0009]", '\t'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\f|Unicode:U+000c]", '\f'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\n|Unicode:U+000a]", '\n'.ToPrintableString());
+            Assert.AreEqual(@"[Char:\r|Unicode:U+000d]", '\r'.ToPrintableString());
+            Assert.AreEqual(@"[Char:s|Unicode:U+0073]", 's'.ToPrintableString());
+            Assert.AreEqual(@"[Char: |Unicode:U+0020]", ' '.ToPrintableString());
+            Assert.AreEqual(null, NullString.ToPrintableString());
         }
         
         [Test]

@@ -41,12 +41,16 @@ namespace JuliusSweetland.OptiKey.Models
             suggestionService.OnPropertyChanges(ss => ss.SuggestionsPerPage).Subscribe(_ => NotifyStateChanged());
 
             keyStateService.OnPropertyChanges(kss => kss.SimulateKeyStrokes).Subscribe(_ => NotifyStateChanged());
+            keyStateService.KeyDownStates[KeyValues.LeftShiftKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
             keyStateService.KeyDownStates[KeyValues.SleepKey].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged());
 
             KeyValues.KeysWhichPreventTextCaptureIfDownOrLocked.ForEach(kv =>
+                keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
+
+            KeyValues.CombiningKeys.ForEach(kv =>
                 keyStateService.KeyDownStates[kv].OnPropertyChanges(np => np.Value).Subscribe(_ => NotifyStateChanged()));
 
             capturingStateManager.OnPropertyChanges(csm => csm.CapturingMultiKeySelection).Subscribe(_ => NotifyStateChanged());
@@ -73,7 +77,7 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Key is publish only, but we are not publishing
+                //Key is publish only, but we are not publishing (simulating key strokes)
                 if (!keyStateService.SimulateKeyStrokes
                     && KeyValues.PublishOnlyKeys.Contains(keyValue))
                 {
@@ -302,6 +306,50 @@ namespace JuliusSweetland.OptiKey.Models
                     && !KeyValues.MultiKeySelectionKeys.Contains(keyValue))
                 {
                     return false;
+                }
+
+                //Greek specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.GreekGreece)
+                {
+                    //Acute: Άά Έέ Ήή Ίί Όό Ύύ Ώώ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown()
+                        && !keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || (keyValue == KeyValues.CombiningDiaeresisOrUmlautKey 
+                                && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //The acute accent can be combined with a diaeresis on lower case letters only (shift must be is up)
+                            || keyValue == new KeyValue("α")
+                            || keyValue == new KeyValue("ε")
+                            || keyValue == new KeyValue("η")
+                            || keyValue == new KeyValue("ι")
+                            || keyValue == new KeyValue("ο")
+                            || keyValue == new KeyValue("υ")
+                            || keyValue == new KeyValue("ω")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Acute, diaeresis: ΐ ΰ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown()
+                        && keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown()
+                        && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //These two diacritics can only be combined with lowercase letters
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == KeyValues.CombiningDiaeresisOrUmlautKey//Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("ι")
+                            || keyValue == new KeyValue("υ");
+                    }
+
+                    //Diaeresis: Ϊϊ Ϋϋ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown()
+                        && !keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey//Allow the diaeresis to be manually released
+                            || (keyValue == KeyValues.CombiningAcuteAccentKey
+                                && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //The diaeresis can be combined with an acute accent on lower case letters only (shift must be is up)
+                            || keyValue == new KeyValue("ι")
+                            || keyValue == new KeyValue("υ")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
                 }
 
                 return true;

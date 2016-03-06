@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docs\Localize.md = docs\Localize.md
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt
 		docs\UiAccess.txt = docs\UiAccess.txt
+		docs\Unicode standard for diacritic marks.pdf = docs\Unicode standard for diacritic marks.pdf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AD7A9FD-5D4F-4C9B-A7E8-D3A46BD4B4E3}"
