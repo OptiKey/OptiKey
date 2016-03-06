@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         #region Private Member Vars
 
         private const string RobotoUrl = "/Resources/Fonts/#Roboto";
+        private const string CharisSILUrl = "/Resources/Fonts/#CharisSIL";
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -49,7 +50,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Roboto", RobotoUrl)
+                    new KeyValuePair<string, string>("Roboto", RobotoUrl),
+                    new KeyValuePair<string, string>("Charis SIL", CharisSILUrl)
                 };
             }
         }
@@ -65,6 +67,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                         {
                             Enums.FontStretches.Normal, 
                             Enums.FontStretches.Condensed
+                        };
+
+                    case CharisSILUrl:
+                        return new List<FontStretches>
+                        {
+                            Enums.FontStretches.Normal
                         };
                 }
 
@@ -101,6 +109,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                                             };
                         }
                         break;
+
+                    case CharisSILUrl:
+                        return new List<FontWeights> {Enums.FontWeights.Regular};
                 }
 
                 return null;

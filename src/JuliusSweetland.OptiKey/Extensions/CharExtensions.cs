@@ -32,9 +32,26 @@ namespace JuliusSweetland.OptiKey.Extensions
             return CharCategories.SomethingElse;
         }
 
-        public static string ConvertEscapedCharToLiteral(this char input)
+        public static string ToPrintableString(this char c)
         {
-            return input.ToString(CultureInfo.InvariantCulture).ConvertEscapedCharsToLiterals();
+            var escapedLiteralString = c.ToString(CultureInfo.InvariantCulture)
+                    .Replace("\0", @"\0")
+                    .Replace("\a", @"\a")
+                    .Replace("\b", @"\b")
+                    .Replace("\t", @"\t")
+                    .Replace("\f", @"\f")
+                    .Replace("\n", @"\n")
+                    .Replace("\r", @"\r");
+
+            return string.Format(@"[Char:{0}|Unicode:U+{1:x4}]", escapedLiteralString, (int)c);
+        }
+
+        public static bool IsCombiningCharacter(this char c)
+        {
+            var category = CharUnicodeInfo.GetUnicodeCategory(c);
+            return category == UnicodeCategory.NonSpacingMark //(All combining diacritic characters are non-spacing marks). Nonspacing character that indicates modifications of a base character. Signified by the Unicode designation "Mn"(mark, nonspacing).The value is 5.
+                || category == UnicodeCategory.SpacingCombiningMark //Spacing character that indicates modifications of a base character and affects the width of the glyph for that base character. Signified by the Unicode designation "Mc" (mark, spacing combining). The value is 6.
+                || category == UnicodeCategory.EnclosingMark; //Enclosing mark character, which is a nonspacing combining character that surrounds all previous characters up to and including a base character. Signified by the Unicode designation "Me" (mark, enclosing). The value is 7.
         }
 
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs

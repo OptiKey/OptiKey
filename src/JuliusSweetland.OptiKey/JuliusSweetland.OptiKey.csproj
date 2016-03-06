@@ -304,7 +304,6 @@
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
@@ -577,6 +576,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Resources\Fonts\CharisSIL-B.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-BI.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-I.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-R.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />

@@ -236,5 +236,6 @@
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="19" />
     </Grid>
 </controls:KeyboardView>
