@@ -154,10 +154,10 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.AlphaKeyboardKey}" />
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource DiacriticsIcon}"
-                      Text="{x:Static resx:Resources.DIACRITICS}"
+                      SymbolGeometry="{StaticResource MouseIcon}"
+                      Text="{x:Static resx:Resources.MOUSE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.Diacritic1KeyboardKey}" />
+                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
         
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
@@ -208,10 +208,10 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}" />
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource CurrenciesIcon}"
-                      Text="{x:Static resx:Resources.CURRENCIES}"
+                      SymbolGeometry="{StaticResource MouseMagnifierIcon}"
+                      Text="{x:Static resx:Resources.MAGNIFIER}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.Currencies1KeyboardKey}" />
+                      Value="{x:Static models:KeyValues.MouseMagnifierKey}"/>
         
         <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                       Text="{x:Static resx:Resources.CTRL}"
@@ -251,14 +251,14 @@
                       WidthSpan="2"
                       Value="&#x0a;" /><!--Hex for "\n"-->
         <controls:Key Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseIcon}"
-                      Text="{x:Static resx:Resources.MOUSE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseKeyboardKey}" />
-        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseLeftClickIcon}"
                       Text="{x:Static resx:Resources.LEFT_CLICK_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseLeftClickKey}" />
+                      Value="{x:Static models:KeyValues.MouseMoveAndLeftClickKey}" />
+        <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
+                      Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.MouseMoveAndLeftDoubleClickKey}"/>
     </Grid>
 </controls:KeyboardView>
