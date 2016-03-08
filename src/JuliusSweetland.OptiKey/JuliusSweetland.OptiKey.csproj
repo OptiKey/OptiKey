@@ -405,15 +405,6 @@
     <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml.cs">
       <DependentUpon>BelgiumConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
       <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
     </Compile>
@@ -464,29 +455,11 @@
     <Compile Include="UI\Views\Keyboards\French\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\German\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\German\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -913,18 +886,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Views\Keyboards\Russian\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -977,35 +938,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Views\Keyboards\German\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\German\ConversationAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

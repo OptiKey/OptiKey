@@ -255,9 +255,9 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseKeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource PhysicalKeysIcon}"
-                      Text="{x:Static resx:Resources.PHYSICAL_KEYS_SPLIT_WITH_NEWLINE}"
+                      SymbolGeometry="{StaticResource MouseLeftClickIcon}"
+                      Text="{x:Static resx:Resources.LEFT_CLICK_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.PhysicalKeysKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.MouseLeftClickKey}" />
     </Grid>
 </controls:KeyboardView>
