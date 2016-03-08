@@ -311,7 +311,7 @@ namespace JuliusSweetland.OptiKey.Models
                 //Greek specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.GreekGreece)
                 {
-                    //Acute: Άά Έέ Ήή Ίί Όό Ύύ Ώώ
+                    //Acute accent: Άά Έέ Ήή Ίί Όό Ύύ Ώώ
                     if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown()
                         && !keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
                     {
@@ -328,7 +328,7 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
 
-                    //Acute, diaeresis: ΐ ΰ
+                    //Acute accent + diaeresis: ΐ ΰ
                     if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown()
                         && keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown()
                         && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //These two diacritics can only be combined with lowercase letters
@@ -348,6 +348,59 @@ namespace JuliusSweetland.OptiKey.Models
                                 && !keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value.IsDownOrLockedDown()) //The diaeresis can be combined with an acute accent on lower case letters only (shift must be is up)
                             || keyValue == new KeyValue("ι")
                             || keyValue == new KeyValue("υ")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
+                //French specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.FrenchFrance)
+                {
+                    //Acute accent: Éé
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("e")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Grave accent: Àà Èè Ùù
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningGraveAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningGraveAccentKey //Allow the grave accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Circumflex: Ââ Êê Îî Ôô Ûû
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningCircumflexKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningCircumflexKey //Allow the circumflex to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Diaeresis: Ëë Ïï Üü Ÿÿ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == new KeyValue("y")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Cedilla: Çç
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningCedillaKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningCedillaKey //Allow the cedilla to be manually released
+                            || keyValue == new KeyValue("c")
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
