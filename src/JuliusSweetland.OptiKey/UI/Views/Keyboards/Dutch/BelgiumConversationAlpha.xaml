@@ -174,36 +174,41 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
 
-        <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource CalibrateIcon}"
+                      Text="{x:Static resx:Resources.RE_CALIBRATE}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.CalibrateKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ShiftIcon}"
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" Case="None"
                       Text=","
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value=","/>
-        <controls:Key Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="6"
+        <controls:Key Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource SpaceIcon}"
                       Text="{x:Static resx:Resources.SPACE}"
                       WidthSpan="4" 
                       SharedSizeGroup="KeyWithSymbol"
                       Value=" "/>
-        <controls:Key Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="2" Case="None"
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
-        <ContentControl Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -229,10 +234,5 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.Row="5" Grid.Column="18"  Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource CalibrateIcon}"
-                      Text="{x:Static resx:Resources.RE_CALIBRATE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.CalibrateKey}"/>
     </Grid>
 </controls:KeyboardView>
