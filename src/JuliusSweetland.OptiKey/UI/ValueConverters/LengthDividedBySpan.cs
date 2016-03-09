@@ -11,21 +11,13 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values != null 
-                && values.Count() == 2
+                && values.Length == 2
                 && values.All(v => v != DependencyProperty.UnsetValue))
             {
                 var length = (double)values[0];
-                var span = (int)values[1];
+                var span = (double)values[1];
 
-                var singleUnit = length/span;
-
-                double parameterAsDouble;
-                if(double.TryParse((string)parameter, out parameterAsDouble))
-                {
-                    singleUnit = singleUnit - parameterAsDouble;
-                }
-
-                return singleUnit;
+                return length / span;
             }
 
             return DependencyProperty.UnsetValue;
