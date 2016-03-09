@@ -405,6 +405,43 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Dutch specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.DutchBelgium
+                    || Settings.Default.KeyboardAndDictionaryLanguage == Languages.DutchNetherlands)
+                {
+                    //Acute accent: Áá éÉ íÍ óÓ úÚ    
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Grave accent: Àà Èè
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningGraveAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningGraveAccentKey //Allow the grave accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Diaeresis: Ëë Ïï Öö Üü
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 return true;
             }
         }

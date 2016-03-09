@@ -57,7 +57,11 @@
                          ScratchpadWidthInKeys="9"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
-        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x0301;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningAcuteAccentKey}" />
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -98,7 +102,11 @@
                       ShiftUpText="p" ShiftDownText="P"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
-        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2" />
+        <controls:Key Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x0300;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningGraveAccentKey}" />
         <controls:Key Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
@@ -167,9 +175,10 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ë" ShiftDownText="Ë"
+                      Text="&#x25CC;&#x0308;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ë"/>
+                      Value="{x:Static models:KeyValues.CombiningDiaeresisOrUmlautKey}" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="w" ShiftDownText="W"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -194,7 +203,10 @@
                       ShiftUpText="n" ShiftDownText="N"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="n"/>
-        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"/>
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+                      Text="'"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="'"/>
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
