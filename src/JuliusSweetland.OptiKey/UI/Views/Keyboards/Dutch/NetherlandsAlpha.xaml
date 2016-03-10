@@ -175,8 +175,8 @@
                       Text="{x:Static resx:Resources.SHIFT}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.LeftShiftKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="m" ShiftDownText="'"
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Case="None"
+                      Text="'"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="'"/>
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"

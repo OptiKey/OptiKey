@@ -224,7 +224,7 @@
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" Case="None"
                       Text="'"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="'"/>
