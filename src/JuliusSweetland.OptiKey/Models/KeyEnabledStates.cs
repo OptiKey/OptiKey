@@ -456,6 +456,26 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Russian specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.RussianRussia)
+                {
+                    //Acute Accent: Аа Ээ Ыы Уу Оо Яя Ее Юю Ии
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("а")
+                            || keyValue == new KeyValue("э")
+                            || keyValue == new KeyValue("ы")
+                            || keyValue == new KeyValue("у")
+                            || keyValue == new KeyValue("о")
+                            || keyValue == new KeyValue("я")
+                            || keyValue == new KeyValue("е")
+                            || keyValue == new KeyValue("ю")
+                            || keyValue == new KeyValue("и")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 return true;
             }
         }
