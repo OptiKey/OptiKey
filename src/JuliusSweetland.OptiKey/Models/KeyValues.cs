@@ -192,9 +192,11 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
-                { Languages.FrenchFrance, defaultList },    //Could be customised to include àçéèù
-                { Languages.GermanGermany, defaultList },   //Could be customised to include äöüß
-                //First attempt for this -- includes all the keyboard characters for a common Greek keyboard
+                { Languages.FrenchFrance, defaultList },
+                { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß".ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ".ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()

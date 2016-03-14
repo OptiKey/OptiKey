@@ -442,6 +442,20 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //German specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.GermanGermany)
+                {
+                    //Diaeresis: Ää Öö Üü
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 return true;
             }
         }
