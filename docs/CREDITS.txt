@@ -1,7 +1,7 @@
 I would like to extend my thanks/credit to the following people, websites & organisations...
 
 Patrons (thank you very much for sponsoring this project)
-  Gerald Walden
+  Gerald Walden (for his patronage, as well as very kindly donating an OpenBCI Ultracortex kit)
   Udo Heintz
   Sean McLane
   Nikolas
@@ -13,6 +13,8 @@ Patrons (thank you very much for sponsoring this project)
   Peter Grant
   Marcel Abraas
   Rod Galvão
+  Volluta
+  William Johnson
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

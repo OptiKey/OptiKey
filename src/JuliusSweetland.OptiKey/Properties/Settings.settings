@@ -302,8 +302,17 @@
     <Setting Name="ConversationBorderThickness" Roaming="true" Type="System.Windows.Thickness" Scope="User">
       <Value Profile="(Default)">1,1,1,1</Value>
     </Setting>
+    <Setting Name="NGramAutoCompleteGramCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="NGramAutoCompleteLeadingSpaceCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="NGramAutoCompleteTrailingSpaceCount" Roaming="true" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByIndividualKey" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -829,6 +838,9 @@
     &lt;/value&gt;
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
+    </Setting>
+    <Setting Name="AutoCompleteMethod" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+      <Value Profile="(Default)">NGram</Value>
     </Setting>
   </Settings>
 </SettingsFile>
