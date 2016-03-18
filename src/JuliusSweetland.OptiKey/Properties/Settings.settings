@@ -63,7 +63,7 @@
       <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="ToastNotificationSecondsPerCharacter" Roaming="true" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0.03</Value>
+      <Value Profile="(Default)">0.02</Value>
     </Setting>
     <Setting Name="Theme" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Resources/Themes/Android_Dark.xaml</Value>
