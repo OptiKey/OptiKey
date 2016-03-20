@@ -18,8 +18,7 @@
         <!--Don't set the window's Width and Height properties on the window itself - they are loaded and applied from settings-->
     
     <Window.ContextMenu>
-        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}"
-                     Opened="OnContextMenuOpened" Closed="OnContextMenuClosed">
+        <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
             <MenuItem Header="{x:Static resx:Resources.MANAGEMENT_CONSOLE}" 
                       Command="{Binding ManagementWindowRequestCommand}">
                 <MenuItem.Icon>
