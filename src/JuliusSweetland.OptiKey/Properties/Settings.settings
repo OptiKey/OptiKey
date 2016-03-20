@@ -839,8 +839,11 @@
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
-    <Setting Name="AutoCompleteMethod" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+    <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
       <Value Profile="(Default)">NGram</Value>
+    </Setting>
+    <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
