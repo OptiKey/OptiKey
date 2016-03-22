@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management.DictionaryV
         {
             base.Arrange();
 
-            DictionaryEntries = new List<DictionaryEntry> { new DictionaryEntry(), new DictionaryEntry() };
+            DictionaryEntries = new List<DictionaryEntry> { new DictionaryEntry("a"), new DictionaryEntry("b") };
 
             DictionaryService.Setup(r => r.GetAllEntries())
                 .Returns(DictionaryEntries);
