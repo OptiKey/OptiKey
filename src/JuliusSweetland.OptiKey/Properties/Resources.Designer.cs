@@ -3943,6 +3943,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suppress modifier keys for all mouse actions:.
+        /// </summary>
+        public static string SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS {
+            get {
+                return ResourceManager.GetString("SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suppress modifier keys when in mouse keyboard:.
         /// </summary>
         public static string SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL {

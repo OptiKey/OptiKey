@@ -1607,4 +1607,7 @@ Nederlands (België)</value>
     <value>Dutch (Netherlands)
 Nederlands (Nederland)</value>
   </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Suppress modifier keys for all mouse actions:</value>
+  </data>
 </root>

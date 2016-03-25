@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -476,11 +477,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             Action<Point, Point> simulateDrag = (fp1, fp2) =>
                                             {
                                                 Log.InfoFormat("Performing mouse drag between points ({0},{1}) and {2},{3}).", fp1.X, fp1.Y, fp2.X, fp2.Y);
+                                                Action reinstateModifiers = () => { };
+                                                if (keyStateService.SimulateKeyStrokes
+                                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                                {
+                                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                                }
                                                 mouseOutputService.MoveTo(fp1);
                                                 mouseOutputService.LeftButtonDown();
                                                 audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                 mouseOutputService.MoveTo(fp2);
                                                 mouseOutputService.LeftButtonUp();
+                                                reinstateModifiers();
                                             };
 
                                             lastMouseActionStateManager.LastMouseAction =
@@ -571,33 +579,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseLeftClick:
                     var leftClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint.X, leftClickPoint.Y);
-                    Action<Point?> performLeftClick = point =>
+                    Action performLeftClick = () =>
                     {
-                        if (point != null)
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
-                            mouseOutputService.MoveTo(point.Value);
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
+                        mouseOutputService.MoveTo(leftClickPoint);
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.LeftButtonClick();
+                        reinstateModifiers();
                     };
-                    lastMouseActionStateManager.LastMouseAction = () => performLeftClick(leftClickPoint);
-                    performLeftClick(null);
+                    lastMouseActionStateManager.LastMouseAction = () => performLeftClick();
+                    performLeftClick();
                     break;
 
                 case FunctionKeys.MouseLeftDoubleClick:
                     var leftDoubleClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse left double click selected at point ({0},{1}).", leftDoubleClickPoint.X, leftDoubleClickPoint.Y);
-                    Action<Point?> performLeftDoubleClick = point =>
+                    Action performLeftDoubleClick = () =>
                     {
-                        if (point != null)
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
-                            mouseOutputService.MoveTo(point.Value);
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
+                        mouseOutputService.MoveTo(leftDoubleClickPoint);
                         audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                         mouseOutputService.LeftButtonDoubleClick();
+                        reinstateModifiers();
                     };
-                    lastMouseActionStateManager.LastMouseAction = () => performLeftDoubleClick(leftDoubleClickPoint);
-                    performLeftDoubleClick(null);
+                    lastMouseActionStateManager.LastMouseAction = () => performLeftDoubleClick();
+                    performLeftDoubleClick();
                     break;
 
                 case FunctionKeys.MouseLeftDownUp:
@@ -605,15 +621,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyStateService.KeyDownStates[KeyValues.MouseLeftDownUpKey].Value.IsDownOrLockedDown())
                     {
                         Log.InfoFormat("Pressing mouse left button down at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                         mouseOutputService.LeftButtonDown();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     else
                     {
                         Log.InfoFormat("Releasing mouse left button at point ({0},{1}).", leftDownUpPoint.X, leftDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                         mouseOutputService.LeftButtonUp();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     break;
@@ -621,17 +651,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMiddleClick:
                     var middleClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse middle click selected at point ({0},{1}).", middleClickPoint.X, middleClickPoint.Y);
-                    Action<Point?> performMiddleClick = point =>
+                    Action performMiddleClick = () =>
                     {
-                        if (point != null)
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
-                            mouseOutputService.MoveTo(point.Value);
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
+                        mouseOutputService.MoveTo(middleClickPoint);
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.MiddleButtonClick();
+                        reinstateModifiers();
                     };
-                    lastMouseActionStateManager.LastMouseAction = () => performMiddleClick(middleClickPoint);
-                    performMiddleClick(null);
+                    lastMouseActionStateManager.LastMouseAction = () => performMiddleClick();
+                    performMiddleClick();
                     break;
 
                 case FunctionKeys.MouseMiddleDownUp:
@@ -639,15 +673,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyStateService.KeyDownStates[KeyValues.MouseMiddleDownUpKey].Value.IsDownOrLockedDown())
                     {
                         Log.InfoFormat("Pressing mouse middle button down at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                         mouseOutputService.MiddleButtonDown();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     else
                     {
                         Log.InfoFormat("Releasing mouse middle button at point ({0},{1}).", middleDownUpPoint.X, middleDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                         mouseOutputService.MiddleButtonUp();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     break;
@@ -661,8 +709,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateClick = fp =>
                             {
                                 Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                 mouseOutputService.MoveAndLeftClick(fp, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -682,8 +737,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateClick = fp =>
                             {
                                 Log.InfoFormat("Performing mouse left double click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseDoubleClickSoundFile, Settings.Default.MouseDoubleClickSoundVolume);
                                 mouseOutputService.MoveAndLeftDoubleClick(fp, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -703,8 +765,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateClick = fp =>
                             {
                                 Log.InfoFormat("Performing mouse middle click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                 mouseOutputService.MoveAndMiddleClick(fp, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -724,8 +793,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateClick = fp =>
                             {
                                 Log.InfoFormat("Performing mouse right click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                                 mouseOutputService.MoveAndRightClick(fp, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateClick(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -775,8 +851,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateScrollToBottom = fp =>
                             {
                                 Log.InfoFormat("Performing mouse scroll to bottom at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                 mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -796,8 +879,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateScrollToLeft = fp =>
                             {
                                 Log.InfoFormat("Performing mouse scroll to left at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                 mouseOutputService.MoveAndScrollWheelLeft(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateScrollToLeft(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -817,8 +907,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateScrollToRight = fp =>
                             {
                                 Log.InfoFormat("Performing mouse scroll to right at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                 mouseOutputService.MoveAndScrollWheelRight(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateScrollToRight(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -838,8 +935,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateScrollToTop = fp =>
                             {
                                 Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
                                 mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(finalPoint.Value);
                             ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
@@ -859,7 +963,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Action<Point> simulateMoveTo = fp =>
                             {
                                 Log.InfoFormat("Performing mouse move to point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
                                 mouseOutputService.MoveTo(fp);
+                                reinstateModifiers();
                             };
                             lastMouseActionStateManager.LastMouseAction = () => simulateMoveTo(finalPoint.Value);
                             simulateMoveTo(finalPoint.Value);
@@ -875,7 +986,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var cursorPosition = mouseOutputService.GetCursorPosition();
                         var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y + Settings.Default.MouseMoveAmountInPixels);
                         Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         mouseOutputService.MoveTo(moveToPoint);
+                        reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToBottom;
                     simulateMoveToBottom();
@@ -888,7 +1006,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var cursorPosition = mouseOutputService.GetCursorPosition();
                         var moveToPoint = new Point(cursorPosition.X - Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
                         Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         mouseOutputService.MoveTo(moveToPoint);
+                        reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToLeft;
                     simulateMoveToLeft();
@@ -901,7 +1026,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var cursorPosition = mouseOutputService.GetCursorPosition();
                         var moveToPoint = new Point(cursorPosition.X + Settings.Default.MouseMoveAmountInPixels, cursorPosition.Y);
                         Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         mouseOutputService.MoveTo(moveToPoint);
+                        reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToRight;
                     simulateMoveToRight();
@@ -914,7 +1046,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         var cursorPosition = mouseOutputService.GetCursorPosition();
                         var moveToPoint = new Point(cursorPosition.X, cursorPosition.Y - Settings.Default.MouseMoveAmountInPixels);
                         Log.InfoFormat("Performing mouse move to point ({0},{1}).", moveToPoint.X, moveToPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         mouseOutputService.MoveTo(moveToPoint);
+                        reinstateModifiers();
                     };
                     lastMouseActionStateManager.LastMouseAction = simulateMoveToTop;
                     simulateMoveToTop();
@@ -923,17 +1062,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseRightClick:
                     var rightClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse right click selected at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
-                    Action<Point?> performRightClick = point =>
+                    Action performRightClick = () =>
                     {
-                        if (point != null)
+                        Log.InfoFormat("Performing mouse right click at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
-                            mouseOutputService.MoveTo(point.Value);
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
+                        mouseOutputService.MoveTo(rightClickPoint);
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.RightButtonClick();
+                        reinstateModifiers();
                     };
-                    lastMouseActionStateManager.LastMouseAction = () => performRightClick(rightClickPoint);
-                    performRightClick(null);
+                    lastMouseActionStateManager.LastMouseAction = () => performRightClick();
+                    performRightClick();
                     break;
 
                 case FunctionKeys.MouseRightDownUp:
@@ -941,15 +1085,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyStateService.KeyDownStates[KeyValues.MouseRightDownUpKey].Value.IsDownOrLockedDown())
                     {
                         Log.InfoFormat("Pressing mouse right button down at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
                         mouseOutputService.RightButtonDown();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     else
                     {
                         Log.InfoFormat("Releasing mouse right button at point ({0},{1}).", rightDownUpPoint.X, rightDownUpPoint.Y);
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
                         audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                         mouseOutputService.RightButtonUp();
+                        reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
                     break;
