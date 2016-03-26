@@ -896,8 +896,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dutch (Belgium)
-        ///Nederlands (België).
+        ///   Looks up a localized string similar to Dutch
+        ///(Belgium) /
+        ///Nederlands
+        ///(België).
         /// </summary>
         public static string DUTCH_BELGIUM_SPLIT_WITH_NEWLINE {
             get {
@@ -915,8 +917,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dutch (Netherlands)
-        ///Nederlands (Nederland).
+        ///   Looks up a localized string similar to Dutch
+        ///(Netherlands) /
+        ///Nederlands
+        ///(Nederland).
         /// </summary>
         public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
             get {
@@ -943,6 +947,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English
+        ///(Canada).
+        /// </summary>
+        public static string ENGLISH_CANADA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("ENGLISH_CANADA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English (UK).
         /// </summary>
         public static string ENGLISH_UK {
@@ -952,11 +966,31 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English
+        ///(UK).
+        /// </summary>
+        public static string ENGLISH_UK_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("ENGLISH_UK_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English (US).
         /// </summary>
         public static string ENGLISH_US {
             get {
                 return ResourceManager.GetString("ENGLISH_US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English
+        ///(US).
+        /// </summary>
+        public static string ENGLISH_US_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("ENGLISH_US_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         
@@ -1366,8 +1400,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to French (France)
-        ///Française (France).
+        ///   Looks up a localized string similar to French
+        ///(France) /
+        ///Française
+        ///(France).
         /// </summary>
         public static string FRENCH_FRANCE_SPLIT_WITH_NEWLINE {
             get {
@@ -1403,8 +1439,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to German (Germany)
-        ///Deutsch (Deutschland).
+        ///   Looks up a localized string similar to German
+        ///(Germany) /
+        ///Deutsch
+        ///(Deutschland).
         /// </summary>
         public static string GERMAN_GERMANY_SPLIT_WITH_NEWLINE {
             get {
@@ -1422,8 +1460,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greek (Greece)
-        ///Ελληνικά (Greece).
+        ///   Looks up a localized string similar to Greek
+        ///(Greece) /
+        ///Ελληνικά
+        ///(Greece).
         /// </summary>
         public static string GREEK_GREECE_SPLIT_WITH_NEWLINE {
             get {
@@ -3379,8 +3419,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Russian (Russia)
-        ///Русский (Россия).
+        ///   Looks up a localized string similar to Russian
+        ///(Russia) /
+        ///Русский
+        ///(Россия).
         /// </summary>
         public static string RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE {
             get {
