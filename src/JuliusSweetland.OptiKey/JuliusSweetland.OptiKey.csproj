@@ -540,9 +540,7 @@
     <Content Include="Dictionaries\RussianRussia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\DanishDenmark.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Dictionaries\Candidates\DanishDenmark.dic" />
     <Content Include="Dictionaries\GreekGreece.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -552,12 +550,8 @@
     <Content Include="Dictionaries\DutchNetherlands.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\CatalanSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SpanishSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Dictionaries\Candidates\CatalanSpain.dic" />
+    <Content Include="Dictionaries\Candidates\SpanishSpain.dic" />
     <None Include="App.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
