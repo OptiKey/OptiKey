@@ -465,7 +465,7 @@
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...αλλά απότρεψε ευφυώς τα αυτόματα κεφαλαία γράμματα όπου τυχόν δεν βοηθούν:</value>
+    <value>...αλλά ευφυώς κατέστειλε τα αυτόματα κεφαλαία γράμματα όπου τυχόν δεν βοηθούν:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>Ο τρέχων συνδυασμός πληκτρολογίου και γλώσσας δεν είναι έγκυρος</value>
@@ -1069,7 +1069,10 @@ LK</value>
     <value>Επιτυχία </value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Απόκρυψη πλήκτρων παραμετροποίησης για πληκτρολόγιο ποντικιού</value>
+    <value>Καταστολή πλήκτρων παραμετροποίησης όταν χρησιμοποιείτε το πληκτρολόγιο ποντικιού:</value>
+  </data>
+    <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Καταστολή των πλήκτρων τροποποίησης για όλες τις δράσεις του ποντικού:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
