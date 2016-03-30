@@ -1574,4 +1574,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Beenden</value>
   </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Unterdrücke Zusatztasten für alle Mausaktionen:</value>
+  </data>
 </root>
