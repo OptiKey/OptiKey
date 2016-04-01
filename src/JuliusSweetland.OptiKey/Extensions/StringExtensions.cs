@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Extensions
