@@ -94,6 +94,7 @@
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\CharExtensionsTests.cs" />
+    <Compile Include="Services\AutoComplete\AutoCompleteTestsBase.cs" />
     <Compile Include="Services\AutoComplete\NGramAutoCompleteTests.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoCompleteTests.cs" />
     <Compile Include="Services\KeyboardOutputServiceTests.cs" />
