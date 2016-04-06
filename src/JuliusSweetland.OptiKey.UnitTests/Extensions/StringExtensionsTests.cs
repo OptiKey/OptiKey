@@ -136,27 +136,27 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestCreateDictionaryEntryHash()
         {
-            Assert.AreEqual(null, "  ".CreateDictionaryEntryHash());
-            Assert.AreEqual(null, NullString.CreateDictionaryEntryHash());
-            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".CreateDictionaryEntryHash());
-            Assert.AreEqual("CEISE", "ČĔĨŞē".CreateDictionaryEntryHash());
-            Assert.AreEqual("THS", "This has spaces".CreateDictionaryEntryHash());
-            Assert.AreEqual("THS", "This has spaces".CreateDictionaryEntryHash(false));
-            Assert.AreEqual(null, "5Cats 6dogs 7Goats".CreateDictionaryEntryHash());
-            Assert.AreEqual("OIAIWC", "Optikey is awesome. I want 2 copies".CreateDictionaryEntryHash());
+            Assert.AreEqual(null, "  ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual(null, NullString.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual("CEISE", "ČĔĨŞē".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual("THS", "This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual("THS", "This has spaces".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false));
+            Assert.AreEqual(null, "5Cats 6dogs 7Goats".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
+            Assert.AreEqual("OIAIWC", "Optikey is awesome. I want 2 copies".NormaliseAndRemoveRepeatingCharactersAndHandlePhrases());
         }
         
         [Test]
         public void TestCreateAutoCompleteDictionaryEntryHash()
         {
-            Assert.AreEqual(null, "  ".CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual(null, NullString.CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual("CEISE", "ČĔĨŞē".CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual("THIS HAS SPACES", "This has spaces".CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual("THIS HAS SPACES", "This has spaces".CreateAutoCompleteDictionaryEntryHash(false));
-            Assert.AreEqual("5CATS 6DOGS 7GOATS", "5Cats 6dogs 7Goats".CreateAutoCompleteDictionaryEntryHash());
-            Assert.AreEqual("OPTIKEY IS AWESOME. I WANT 2 COPIES", "Optikey is awesome. I want 2 copies".CreateAutoCompleteDictionaryEntryHash());
+            Assert.AreEqual(null, "  ".ToNormalisedHash());
+            Assert.AreEqual(null, NullString.ToNormalisedHash());
+            Assert.AreEqual("ENTRYWITHSPACEATEND", "EntryWithSpaceAtEnd   ".ToNormalisedHash());
+            Assert.AreEqual("CEISE", "ČĔĨŞē".ToNormalisedHash());
+            Assert.AreEqual("THIS HAS SPACES", "This has spaces".ToNormalisedHash());
+            Assert.AreEqual("THIS HAS SPACES", "This has spaces".ToNormalisedHash(false));
+            Assert.AreEqual("5CATS 6DOGS 7GOATS", "5Cats 6dogs 7Goats".ToNormalisedHash());
+            Assert.AreEqual("OPTIKEY IS AWESOME. I WANT 2 COPIES", "Optikey is awesome. I want 2 copies".ToNormalisedHash());
         }
 
         [Test]
