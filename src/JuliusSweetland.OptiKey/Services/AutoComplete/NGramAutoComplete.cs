@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
@@ -68,8 +69,15 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
         {
+            if (entry.Contains(" "))
+            {
+                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(false);
+                AddEntry(phraseAutoCompleteHash, dictionaryEntry);
+            }
+
             var ngrams = ToNGrams(entry).ToList();
-            var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count());
+            var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count);
 
             foreach (var ngram in ngrams)
             {
