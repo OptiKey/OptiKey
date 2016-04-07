@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         private const string WordRegex = @"(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)";
 
-        public static string CreateDictionaryEntryHash(this string entry, bool log = true)
+        public static string NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {
@@ -69,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Extensions
             return null;
         }
 
-        public static string CreateAutoCompleteDictionaryEntryHash(this string entry, bool log = true)
+        public static string Normalise(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {

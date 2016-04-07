@@ -1549,4 +1549,7 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Quitter</value>
   </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Désactive les méta-touches pour toutes les actions de la souris :</value>
+  </data>
 </root>
