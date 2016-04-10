@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
@@ -17,7 +16,6 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
     public class NGramAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
-        private readonly Dictionary<string, HashSet<DictionaryEntry>> phrases = new Dictionary<string, HashSet<DictionaryEntry>>();
         private readonly Func<string, string> normalize;
         private readonly int gramCount;
         private readonly string leadingSpaces;
@@ -68,40 +66,20 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
 
-        public void AddEntry(string entry, DictionaryEntry entryWithUsageCount)
+        public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
         {
             var ngrams = ToNGrams(entry).ToList();
-            var entryMetaData = new EntryMetadata(entryWithUsageCount, ngrams.Count);
+            var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count());
 
             foreach (var ngram in ngrams)
             {
                 if (entries.ContainsKey(ngram))
                 {
-                    entries[ngram].Add(entryMetaData);
+                    entries[ngram].Add(metaData);
                 }
                 else
                 {
-                    entries[ngram] = new HashSet<EntryMetadata> {entryMetaData};
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-            {
-                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
-                if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash))
-                {
-                    if (phrases.ContainsKey(phraseAutoCompleteHash))
-                    {
-                        if (phrases[phraseAutoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
-                        {
-                            phrases[phraseAutoCompleteHash].Add(entryWithUsageCount);
-                        }
-                    }
-                    else
-                    {
-                        phrases.Add(phraseAutoCompleteHash, new HashSet<DictionaryEntry> { entryWithUsageCount });
-                    }
+                    entries[ngram] = new HashSet<EntryMetadata> {metaData};
                 }
             }
         }
@@ -113,7 +91,6 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         {
             Log.Debug("Clear called.");
             entries.Clear();
-            phrases.Clear();
         }
 
         public IEnumerable<string> GetSuggestions(string root)
@@ -123,7 +100,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             var nGrams = ToNGrams(root).ToList();
             var nGramcount = nGrams.Count;
 
-            var matches = nGrams
+            return nGrams
                 .Where(x => entries.ContainsKey(x))
                 .SelectMany(x => entries[x])
                 .GroupBy(x => x)
@@ -132,60 +109,18 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                     MetaData = x.Key,
                     Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
                 })
-                .Select(x => new { Entry = x.MetaData.DictionaryEntry.Entry, UsageCount = x.MetaData.DictionaryEntry.UsageCount, Score = x.Score });
-
-            //Also find phrase matches
-            var autoCompleteHash = root.CreateAutoCompleteDictionaryEntryHash();
-            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
-            {
-                matches = matches.Union(phrases
-                    .Where(kvp => kvp.Key.StartsWith(autoCompleteHash, StringComparison.Ordinal))
-                    .SelectMany(kvp => kvp.Value)
-                    .Where(de => de.Entry.Length >= root.Length)
-                    .Select(de => new { Entry = de.Entry, UsageCount = de.UsageCount, Score = double.MaxValue }));
-            }
-
-            return matches
                 .OrderByDescending(x => x.Score)
-                .ThenByDescending(x => x.UsageCount)
-                .ThenBy(x => x.Entry.Length)
-                .Select(x => x.Entry)
-                .Distinct();
+                .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
+                .Select(x => x.MetaData.DictionaryEntry.Entry);
         }
 
         public void RemoveEntry(string entry)
         {
-            foreach (var ngram in ToNGrams(entry))
+            foreach (var trigram in ToNGrams(entry))
             {
-                if (entries.ContainsKey(ngram))
+                if (entries.ContainsKey(trigram))
                 {
-                    entries[ngram].RemoveWhere(x => x.DictionaryEntry.Entry == entry);
-
-                    if (!entries[ngram].Any())
-                    {
-                        entries.Remove(ngram);
-                    }
-                }
-            }
-
-            //Also remove if entry is a phrase
-            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-            {
-                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
-                if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash)
-                    && phrases.ContainsKey(phraseAutoCompleteHash))
-                {
-                    var foundEntryForAutoComplete = phrases[phraseAutoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
-
-                    if (foundEntryForAutoComplete != null)
-                    {
-                        phrases[phraseAutoCompleteHash].Remove(foundEntryForAutoComplete);
-
-                        if (!phrases[phraseAutoCompleteHash].Any())
-                        {
-                            phrases.Remove(phraseAutoCompleteHash);
-                        }
-                    }
+                    entries[trigram].RemoveWhere(x => x.DictionaryEntry.Entry == entry);
                 }
             }
         }
