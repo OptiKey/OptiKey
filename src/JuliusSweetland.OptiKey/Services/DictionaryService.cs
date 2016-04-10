@@ -261,7 +261,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && (loadedFromDictionaryFile || !ExistsInDictionary(entry)))
             {
                 //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
-                var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: !loadedFromDictionaryFile);
+                var hash = entry.CreateDictionaryEntryHash(log: !loadedFromDictionaryFile);
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
@@ -302,7 +302,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && !string.IsNullOrWhiteSpace(entry)
                 && ExistsInDictionary(entry))
             {
-                var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                var hash = entry.CreateDictionaryEntryHash(log: false);
                 if (!string.IsNullOrWhiteSpace(hash)
                     && entries.ContainsKey(hash))
                 {
@@ -380,7 +380,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (!string.IsNullOrWhiteSpace(text)
                 && entries != null)
             {
-                var hash = text.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                var hash = text.CreateDictionaryEntryHash(log: false);
 
                 if (hash != null
                     && entries.ContainsKey(hash))

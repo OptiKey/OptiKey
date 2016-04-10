@@ -417,7 +417,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 var prompt = candidate.Contains(' ')
                     ? string.Format(Resources.ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE, 
-                        candidate, candidate.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: true))
+                        candidate, candidate.CreateDictionaryEntryHash(log: true))
                     : string.Format(Resources.ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE, candidate);
 
                 if (candidate.Any(char.IsUpper))

@@ -75,7 +75,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
                 return;
             }
 
-            var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+            var hash = entry.CreateDictionaryEntryHash(false);
             if (string.IsNullOrWhiteSpace(hash))
             {
                 return;

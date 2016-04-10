@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
 
-        private static readonly Func<string, string> DefaultNormalizeFunc = x => x.Normalise();
+        private static readonly Func<string, string> DefaultNormalizeFunc = x => x.Trim().Normalize(NormalizationForm.FormKD).ToUpperInvariant();
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
                 //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
                 if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash))
                 {
                     if (phrases.ContainsKey(phraseAutoCompleteHash))
@@ -135,11 +135,11 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 .Select(x => new { Entry = x.MetaData.DictionaryEntry.Entry, UsageCount = x.MetaData.DictionaryEntry.UsageCount, Score = x.Score });
 
             //Also find phrase matches
-            var phraseHash = root.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log:false);
-            if (!string.IsNullOrWhiteSpace(phraseHash))
+            var autoCompleteHash = root.CreateAutoCompleteDictionaryEntryHash();
+            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 matches = matches.Union(phrases
-                    .Where(kvp => kvp.Key.Equals(phraseHash))
+                    .Where(kvp => kvp.Key.StartsWith(autoCompleteHash, StringComparison.Ordinal))
                     .SelectMany(kvp => kvp.Value)
                     .Where(de => de.Entry.Length >= root.Length)
                     .Select(de => new { Entry = de.Entry, UsageCount = de.UsageCount, Score = double.MaxValue }));
@@ -171,19 +171,19 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             //Also remove if entry is a phrase
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
-                var phraseHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-                if (!string.IsNullOrWhiteSpace(phraseHash)
-                    && phrases.ContainsKey(phraseHash))
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
+                if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash)
+                    && phrases.ContainsKey(phraseAutoCompleteHash))
                 {
-                    var foundEntryForAutoComplete = phrases[phraseHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+                    var foundEntryForAutoComplete = phrases[phraseAutoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
 
                     if (foundEntryForAutoComplete != null)
                     {
-                        phrases[phraseHash].Remove(foundEntryForAutoComplete);
+                        phrases[phraseAutoCompleteHash].Remove(foundEntryForAutoComplete);
 
-                        if (!phrases[phraseHash].Any())
+                        if (!phrases[phraseAutoCompleteHash].Any())
                         {
-                            phrases.Remove(phraseHash);
+                            phrases.Remove(phraseAutoCompleteHash);
                         }
                     }
                 }

@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
             if (entriesForAutoComplete != null)
             {
-                var simplifiedRoot = root.Normalise();
+                var simplifiedRoot = root.CreateAutoCompleteDictionaryEntryHash();
 
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
@@ -52,12 +52,12 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
         {
             //Also add to entries for auto complete
-            var autoCompleteHash = entry.Normalise(log: false);
+            var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
                 //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
                 AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
             }
         }
@@ -82,7 +82,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         public void RemoveEntry(string entry)
         {
-            var autoCompleteHash = entry.Normalise(log: false);
+            var autoCompleteHash = entry.CreateAutoCompleteDictionaryEntryHash(log: false);
             if (!string.IsNullOrWhiteSpace(autoCompleteHash)
                 && entriesForAutoComplete.ContainsKey(autoCompleteHash))
             {
@@ -102,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             //Also remove if entry is a phrase
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(log: false);
                 if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash)
                     && entriesForAutoComplete.ContainsKey(phraseAutoCompleteHash))
                 {
