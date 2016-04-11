@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,422 +118,405 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Add</value>
+    <value>Ekle</value>
   </data>
   <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
-    <value>Add new entry:</value>
+    <value>Yeni girdi ekle:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Would you like to add the phrase '{0}' to the dictionary with shortcut '{1}'?</value>
+    <value>'{0}' ifadesini, '{1}' kısayoluyla sözlüğe eklemek ister misin?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ADD TO
-DICTIONARY</value>
+    <value>SÖZLÜĞE
+EKLE</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Would you like to add the word '{0}' to the dictionary?</value>
+    <value>'{0}' ifadesini sözlüğe eklemek ister misin?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
-    <value>Added</value>
+    <value>Eklendi</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
+    <value>{0} piksel olarak ayarla | {0} piksel olarak ayarla</value>
   </data>
   <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+    <value>HARFLER</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android Dark</value>
+    <value>Android Koyu Tema</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android Light</value>
+    <value>Android Aydınlık Tema</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>Auto capitalise words:</value>
+    <value>Kelimelerin ilk harflerini otomatik olarak büyüt:</value>
   </data>
   <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
-    <value>Auto complete words:</value>
+    <value>Kelimeleri otomatik olarak tamamla:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
-    <value>Automatic sentence adjustments</value>
+    <value>Otomatik cümle ayarlamaları</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
-    <value>Auto space between words:</value>
+    <value>Kelimeler arasında otomatik boşluk bırak:</value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>BACK</value>
+    <value>GERİ</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BACK
-ONE</value>
+    <value>HARF
+SİL</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BACK
-WORD</value>
+    <value>KELİME
+SİL</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass was unable to create a stream from file '{0}'</value>
+    <value>Bass ses kütüphanesi '{0}' dosyasından akış yaratamadı</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Bottom</value>
+    <value>En alt</value>
   </data>
   <data name="BREAK" xml:space="preserve">
-    <value>BREAK</value>
+    <value>SON</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Calibration aborted with message: '{0}'</value>
+    <value>Kalibrasyon iptal oldu. Mesaj: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to re-calibrate?</value>
+    <value>Tekrar kalibre etmek istediğine emin misin?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>An error occurred during calibration. Message: '{0}'</value>
+    <value>Kalibrasyon sırasında bir hata oluştu. İleti: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Calibration failed with message: '{0}'</value>
+    <value>Kalibrasyon başarısız. Hata Mesajı: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.
-Are you sure you would like to re-calibrate?</value>
+    <value>Kalibrasyon işlemi elle müdahelede bulunulmadan tamamlanamaz Örneğin farenin kullanılması gibi. Bilgisayarınız ile iletişime geçemezseniz kalibrasyon işlemi içinde takılıp kalabilirsiniz.
+Yinede yeniden kalibrasyon yapmak istiyor musunuz?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Calibration stopped for an unknown reason. Message: '{0}'</value>
+    <value>Kalibrasyon bilinmeyen bir sebepten dolayı yapılamadı. İleti: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
+    <value>Kalibrasyon başarılı! Doğruluk (Ortalama Açısal Hata Payı = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>CANCEL</value>
+    <value>İPTAL</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Capture timeout (ms):</value>
+    <value>Kayıt zaman aşımına uğradı (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Check for updates on startup:</value>
+    <value>Başlangıçta güncellemeleri kontrol et:</value>
   </data>
   <data name="CLEAR" xml:space="preserve">
-    <value>CLEAR</value>
+    <value>TEMİZLE</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLICK 
-&amp; DRAG</value>
+    <value>TIKLA
+&amp; SÜRÜKLE</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
-    <value>Click 1</value>
+    <value>Tıkla 1</value>
   </data>
   <data name="CLICK_SOUND_2" xml:space="preserve">
-    <value>Click 2</value>
+    <value>Tıkla 2</value>
   </data>
   <data name="CLICK_SOUND_3" xml:space="preserve">
-    <value>Click 3</value>
+    <value>Tıkla 3</value>
   </data>
   <data name="CLICK_SOUND_4" xml:space="preserve">
-    <value>Click 4</value>
+    <value>Tıkla 4</value>
   </data>
   <data name="CLICK_SOUND_5" xml:space="preserve">
-    <value>Click 5</value>
+    <value>Tıkla 5</value>
   </data>
   <data name="CLICK_SOUND_6" xml:space="preserve">
-    <value>Click 6</value>
+    <value>Tıkla 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>COLLAPSE
-DOCK</value>
+    <value>PANELİ
+KAPAT</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Collapsed dock thickness (as % of full dock thickness):</value>
+    <value>Kapatılmış panelin kalınlığı (Tüm panel kalınlığının %'si olarak)</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
-    <value>MENU</value>
+    <value>MENÜ</value>
   </data>
   <data name="CONVERSATION" xml:space="preserve">
-    <value>CONVERSATION</value>
+    <value>SOHBET</value>
   </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
-    <value>Conversation Letters</value>
+    <value>İletişim Harfleri</value>
   </data>
   <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
-    <value>Conversation Numeric &amp; Symbols</value>
+    <value>İletişim Rakam ve Sembolleri</value>
   </data>
   <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
-    <value>Conversation only mode:</value>
+    <value>Sadece iletişim modu:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn't possible.
+    <value>OptiKey kullanıcı ayarlarınızın bozulduğunu ve tamir edilmesi gerektiğini algıladı. Eski bir versiyona geri yükleyerek bu sorunu çözebilirsiniz. Eğer mümkün değilse mevcut versiyonu deneyin.
 
-Click Yes to reset your user settings and restart.
+Kullanıcı ayarlarınızı sıfırlamak ve yeniden başlatmak için Evet'e tıklayın
 
-Click No to close so that you can manually repair or copy your user settings file.</value>
+Dosyaları manuel olarak ya da yedeklemek için Hayır'ı tıklayın</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Uh-oh! The user settings file looks to be corrupt.</value>
+    <value>Olamaz! Kullanıcı ayarları dosyası bozulmuş gibi görünüyor.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Bad news - OptiKey has tripped over its feet and has to close down.
+    <value>Kötü haber - OptiKey'in ayağı kaydı ve kapanması gerekiyor.
 
-An email with details of what happened would be very helpful: optikeyfeedback@gmail.com
+Neler olduğuna dair bir e-posta yollayarak yardımcı olursan seviniriz: optikeyfeedback@gmail.com
 
-Sorry for the inconvenience.</value>
+Yaşanan sorundan dolayı özür dileriz.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
-    <value>Uh-oh!</value>
+    <value>Tüh!</value>
   </data>
   <data name="CTRL" xml:space="preserve">
     <value>CTRL</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>CURRENCIES</value>
+    <value>Para Birimleri</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
-    <value>Currencies 1</value>
+    <value>Parabirimleri 1</value>
   </data>
   <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
-    <value>Currencies 2</value>
+    <value>Parabirimleri 2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>Cursor height (pixels):</value>
+    <value>İmleç boyu (piksel):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
-    <value>Cursor width (pixels):</value>
+    <value>İmleç genişliği (piksel):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Debugging mode:</value>
+    <value>Hata giderme modu:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DECREASE
-OPACITY</value>
+    <value>SAYDAMLAŞTIR</value>
   </data>
   <data name="DEL" xml:space="preserve">
-    <value>DEL</value>
+    <value>SİL</value>
   </data>
   <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Delete</value>
+    <value>Sil</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIACRITICS</value>
+    <value>Fonetik işaret</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>Diacritics 1</value>
+    <value>Fonetik işaret 1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>Diacritics 2</value>
+    <value>Fonetik işaret 2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>Diacritics 3</value>
+    <value>Fonetik işaret 3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
-    <value>Dictionary</value>
+    <value>Sözlük</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>No user dictionary exists and original dictionary could not be found at path: '{0}'</value>
+    <value>Kullanıcı kayıt defteri bulunmuyor ve orijinal kayıt defteri '{0}' adresinde bulunamadı</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Display for X seconds per message character:</value>
+    <value>Herbir mesaj karakteri için X saniye boyunca göster</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Do at current location...</value>
+    <value>Mevcut lokasyonda gerçekleştir...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Do at point...</value>
+    <value>Noktada gerçekleştir...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOWN
-ARROW</value>
+    <value>AŞAĞI
+OK</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
-    <value> ({0:#,###}ms)</value>
+    <value>({0:#,###}ms)</value>
   </data>
   <data name="END" xml:space="preserve">
-    <value>END</value>
-  </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>English (Canada)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>English (UK)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>English (US)</value>
+    <value>SON</value>
   </data>
   <data name="ENTER" xml:space="preserve">
-    <value>ENTER</value>
+    <value>GİRİŞ</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Great stuff. '{0}' has been added to the dictionary.</value>
+    <value>Çok iyi. '{0}' sözlüğe eklendi.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
-    <value>Error:</value>
+    <value>Hata:</value>
   </data>
   <data name="ESC" xml:space="preserve">
     <value>ESC</value>
   </data>
   <data name="EXPAND" xml:space="preserve">
-    <value>EXPAND</value>
+    <value>GENİŞLET</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOCK</value>
+    <value>PANELİ
+AÇ</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN &amp; LEFT</value>
+    <value>SOL AŞAĞI
+GENİŞLET</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN &amp; RIGHT</value>
+    <value>SAĞ AŞAĞI
+GENİŞLET</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-DOWN</value>
+    <value>AŞAĞI
+GENİŞLET</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-LEFT</value>
+    <value>SOLA
+GENİŞLET</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-RIGHT</value>
+    <value>SAĞA
+GENİŞLET</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND 
-UP &amp; LEFT</value>
+    <value>SOL YUKARI
+GENİŞLET</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND 
-UP &amp; RIGHT</value>
+    <value>SAĞ YUKARI
+GENİŞLET</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>EXPAND
-UP</value>
+    <value>YUKARI
+GENİŞLET</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
-    <value>Falling 1</value>
+    <value>Düşüş 1</value>
   </data>
   <data name="FALLING_SOUND_2" xml:space="preserve">
-    <value>Falling 2</value>
+    <value>Düşüş 2</value>
   </data>
   <data name="FILL_PIE" xml:space="preserve">
-    <value>Fill Pie</value>
+    <value>Pasta grafiğini doldur</value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>Fixations (dwell)</value>
+    <value>Sabitleme (duraklama)</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>Font</value>
+    <value>Yazı Tipi</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
-    <value>Font family:</value>
+    <value>Yazı tipi grubu:</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Font stretch:</value>
+    <value>Yazı tipi esnekliği:</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Font weight:</value>
-  </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>French (France) / Française (France)</value>
+    <value>Yazı tipi kalınlığı:</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Full dock thickness (as % of screen):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Gaze Tracker</value>
+    <value>Tüm panel kalınlığı (ekranın %'si olarak)</value>
   </data>
   <data name="GROW" xml:space="preserve">
-    <value>Grow</value>
+    <value>Büyüme</value>
   </data>
   <data name="HOME" xml:space="preserve">
-    <value>HOME</value>
+    <value>ANA SAYFA</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontal fill (as % of screen):</value>
+    <value>Yatay doldur (Ekranın % cinsinden)</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Incomplete key fixation time to live (ms):</value>
+    <value>Tamamlanmamış ayar ve tuş basımının geçerli olabileceği süre (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>INCREASE
-OPACITY</value>
+    <value>OPAKLAŞTIR</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
-    <value>Info:</value>
+    <value>Bilgi:</value>
   </data>
   <data name="INS" xml:space="preserve">
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...but intelligently suppress auto-caps where it is probably unhelpful:</value>
+    <value>...ama otomatik büyük harf kullanımının büyük ihtimalle gereksiz olduğu yerlerde akıllı bir biçimde otomatik büyük harf kullanımını devre dışı bırakır.</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
-    <value>The current keyboard &amp; language combination is not valid</value>
+    <value>Mevcut klavye &amp; dil seçimi uyumlu değil</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>JUMP</value>
+    <value>ATLA</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN &amp; LEFT</value>
+    <value>GİT
+AŞAĞI &amp; SOLA</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN &amp; RIGHT</value>
+    <value>GİT
+AŞAĞI&amp;SAĞA</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-DOWN</value>
+    <value>GİT
+AŞAĞI</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-LEFT</value>
+    <value>GİT
+SOLA</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-RIGHT</value>
+    <value>GİT
+SAĞA</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP &amp; LEFT</value>
+    <value>GİT
+YUKARI&amp;SOLA</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP &amp; RIGHT</value>
+    <value>GİT
+YUKARI&amp;SAĞA</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>JUMP
-UP</value>
+    <value>GİT
+YUKARI</value>
   </data>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Key text transformation:</value>
+    <value>Tuş üzerindeki metin şekil değiştirmesi:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Key fixation time to complete (ms):</value>
+    <value>Tuş otomatik tamamlama sabitleme süresi (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Key fixation time to lock-on (ms):</value>
+    <value>Hedefe kilitleme için tuş sabitleme zamanı (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Key selection keyboard key:</value>
+    <value>Klavye seçimi klavye tuşu</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Key selection mouse button:</value>
+    <value>Klavye seçimi fare tuşu:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Key Selection:</value>
+    <value>Tuş Seçimi:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Key selection source:</value>
+    <value>Tuş seçme kaynağı:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Key selection: {0}</value>
+    <value>Tuş seçimi: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Keyboard key</value>
+    <value>Klavye tuşu</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Language</value>
+    <value>Dil</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Keyboard language: {0}</value>
@@ -542,289 +525,289 @@ UP</value>
     <value>Keyboard language:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Left</value>
+    <value>Sol</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-ARROW</value>
+    <value>SOL
+OK İŞARETİ</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-CLICK</value>
+    <value>SOL
+TIKLA</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-DOUBLE CLICK</value>
+    <value>SOL
+ÇİFT TIKLA</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LEFT
-DOWN/UP</value>
+    <value>SOL
+AŞAĞI/YUKARI</value>
   </data>
   <data name="LOOK" xml:space="preserve">
-    <value>Look</value>
+    <value>Bak</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
-    <value>All in lower case</value>
+    <value>Tamamı küçük harf</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MAGNETIC
-CURSOR</value>
+    <value>MANYETİK
+İMLEÇ</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
-    <value>MAGNIFIER</value>
+    <value>BÜYÜTEÇ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Magnify destination (as % of screen):</value>
+    <value>Hedefi büyüt (Ekranın % cinsinden)</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Magnify source (as % of screen):</value>
+    <value>Kaynağı büyüt (Ekranın yüzde cinsinden)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Management console: ALT + M</value>
+    <value>Yönetici Konsolu: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Management Console</value>
+    <value>OptiKey Yönetim Konsolu</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
-    <value>Maximum number of dictionary matches:</value>
+    <value>Sözlükte bulunanların maksimum sayısı:</value>
   </data>
   <data name="MENU" xml:space="preserve">
-    <value>MENU</value>
+    <value>MENÜ</value>
   </data>
   <data name="MENU_LAYOUT" xml:space="preserve">
-    <value>Menu</value>
+    <value>Menü</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MIDDLE
-CLICK</value>
+    <value>ORTATUŞ
+TIKLA</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MIDDLE
-DOWN/UP</value>
+    <value>ORTALA
+AŞAĞI/YUKARI</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
-    <value>MINIMISE</value>
+    <value>KÜÇÜLT</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Minimised</value>
+    <value>Küçültüldü</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Minimised position:</value>
+    <value>Küçültülen bölge:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Minimum dwell time on a key to include in capture (ms):</value>
+    <value>Yakalamaya dahil olması için tuş üzerinde minimum durma süresi (ms):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Misc</value>
+    <value>Çeşitli</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
-    <value>MOUSE</value>
+    <value>FARE</value>
   </data>
   <data name="MOUSE_BUTTON" xml:space="preserve">
-    <value>Mouse button</value>
+    <value>Fare tuşu</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mouse Click 1</value>
+    <value>Fare Tıklaması 1</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mouse Click 2</value>
+    <value>Fare Tıklaması 2</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mouse Click 3</value>
+    <value>Fare Tıklaması 3</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
-    <value>Mouse Click 4</value>
+    <value>Fare Tıklaması 4</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse click:</value>
+    <value>Fare tıklaması:</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mouse Double Click 1</value>
+    <value>Fare ile Çift Tıklama 1</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mouse Double Click 2</value>
+    <value>Fare ile Çift Tıklama 2</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mouse Double Click 3</value>
+    <value>Fare ile Çift Tıklama 3</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse double click:</value>
+    <value>Fare ile çift tıklama:</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
-    <value>Mouse Down 1</value>
+    <value>Fare Tıklaması 1</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
-    <value>Mouse Down 2</value>
+    <value>Fare Tıklaması 2</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
-    <value>Mouse Down 3</value>
+    <value>Fare Tıklaması 3</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
-    <value>Mouse Down 4</value>
+    <value>Fare Tıklaması 4</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse down:</value>
+    <value>Fare Tıklaması:</value>
   </data>
   <data name="MOUSE_LAYOUT" xml:space="preserve">
-    <value>Mouse</value>
+    <value>Fare</value>
   </data>
   <data name="MOUSE_POSITION" xml:space="preserve">
-    <value>Mouse position</value>
+    <value>Fare konumu</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Mouse position sample interval (ms):</value>
+    <value>Fare pozisyonu örnek süresi(ms):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
-    <value>Mouse Scroll 1</value>
+    <value>Fare Tekeri 1</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
-    <value>Mouse Scroll 2</value>
+    <value>Fare Tekeri 2</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
-    <value>Mouse Scroll 3</value>
+    <value>Fare Tekeri 3</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
-    <value>Mouse Scroll 4</value>
+    <value>Fare Tekeri 4</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
-    <value>Mouse Scroll 5</value>
+    <value>Fare Tekeri 5</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
-    <value>Mouse Scroll 6</value>
+    <value>Fare Tekeri 6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse scroll:</value>
+    <value>Fare Tekeri:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
-    <value>Mouse Up 1</value>
+    <value>Fare Yukarı 1</value>
   </data>
   <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
-    <value>Mouse Up 2</value>
+    <value>Fare Yukarı 2</value>
   </data>
   <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
-    <value>Mouse Up 3</value>
+    <value>Fare Yukarı 3</value>
   </data>
   <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
-    <value>Mouse Up 4</value>
+    <value>Fare Yukarı 4</value>
   </data>
   <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
-    <value>Mouse up:</value>
+    <value>Fare yukarı:</value>
   </data>
   <data name="MOVE" xml:space="preserve">
-    <value>MOVE</value>
+    <value>Hareket ettir</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Move by {0} pixel:|Move by {0} pixels:</value>
+    <value>İlerle {0} piksel:|İlerle by {0} piksel:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; LEFT</value>
+    <value>SOL AŞAĞI
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN &amp; RIGHT</value>
+    <value>SAĞ AŞAĞI
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-DOWN</value>
+    <value>AŞAĞI
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-LEFT</value>
+    <value>SOLA
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-RIGHT</value>
+    <value>SAĞA
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-TO</value>
+    <value>BURAYA
+GİT</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; LEFT</value>
+    <value>SOL YUKARI
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP &amp; RIGHT</value>
+    <value>SAĞ YUKARI
+HAREKET ETTİR</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MOVE
-UP</value>
+    <value>YUKARI
+HAREKET ETTİR</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
-    <value>Multi-key captures</value>
+    <value>Çoklu tuş algılama</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Multi-key captures enabled:</value>
+    <value>Çoklu tuş algılama aktif:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Multi-key Selection</value>
+    <value>Çoklu tuş seçimi</value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection ending:</value>
+    <value>Çoklu tuş seçimi sonu:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MULTI-KEY
-SELECTION</value>
+    <value>ÇOKLU TUŞ
+SEÇİMİ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Muli-key selection starting:</value>
+    <value>Çoklu tuş seçme başlangıcı:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(The new dictionary entry will contain capital letters)</value>
+(Yeni sözlük eklentisi büyük harfler içerecektir)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
-    <value>NEXT</value>
+    <value>SONRAKİ</value>
   </data>
   <data name="NO" xml:space="preserve">
-    <value>NO</value>
+    <value>HAYIR</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
+    <value>Bloknot, sözlükte yer almayan herhangi bir kelime ya da ifade içermiyor gibi görünüyor.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>None</value>
+    <value>Hiç</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
-    <value>Hmm, nothing new here!</value>
+    <value>Burada yeni bir şey yok!</value>
   </data>
   <data name="NOTIFICATIONS" xml:space="preserve">
-    <value>Notifications</value>
+    <value>Bildirimler</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
-LK</value>
+LOCK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
 SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMBERS 
-&amp; SYMBOLS</value>
+    <value>SAYILAR &amp;
+SEMBOLLER</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>Numeric &amp; Symbols 1</value>
+    <value>Numaralar &amp; Semboller 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>Numeric &amp; Symbols 2</value>
+    <value>Numaralar &amp; Semboller 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>Numeric &amp; Symbols 3</value>
+    <value>Numaralar &amp; Semboller 3</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>TAMAM</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Type · Click · Speak</value>
+    <value>OptiKey : Yaz · Tıkla · Konuş</value>
   </data>
   <data name="OTHER" xml:space="preserve">
-    <value>Other</value>
+    <value>Diğer</value>
   </data>
   <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
-    <value>Parent Window could not be identified. Unable to continue</value>
+    <value>Ana pencere tanımlanamadı. Devam edilemiyor.</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>PG
@@ -835,462 +818,418 @@ DN</value>
 UP</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
-    <value>Physical Keys</value>
+    <value>Fiziksel Tuşlar</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PHYSICAL
-KEYS</value>
+    <value>FİZİKSEL
+TUŞLAR</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
-    <value>Play</value>
+    <value>Oynat</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Pointing &amp; Selecting</value>
+    <value>İşaretleme &amp; Seçme</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Point fixation radius (pixels):</value>
+    <value>Hedef sabitleme yarıçapı (piksel):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Point fixation time to complete (ms):</value>
+    <value>Hedef sabitleme tamamlama süresi (ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Point fixation time to lock-on (ms):</value>
+    <value>Hedef sabitleme kilitleme süresi (ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Point lock-on radius (pixels):</value>
+    <value>Hedef kilitleme yarıçapı (piksel)</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
-    <value>Point selection: {0}</value>
+    <value>Nokta Seçimi: {0}</value>
   </data>
   <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Point selection keyboard key:</value>
+    <value>Hedef kilitleme seçimi klavye tuşu:</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Point selection mouse button:</value>
+    <value>Hedef seçimi fare tuşu:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Point selection source:</value>
+    <value>Nokta seçimi kaynağı:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Pointing</value>
+    <value>Hedefleme</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Pointing: {0}</value>
+    <value>Hedefleme: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
-    <value>PREVIOUS</value>
+    <value>ÖNCEKİ</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PRNT
+    <value>PRINT
 SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
-    <value>PROBLEM LOADING KEYBOARD</value>
+    <value>KLAVYE YÜKLEME HATASI</value>
   </data>
   <data name="QUIT" xml:space="preserve">
-    <value>QUIT</value>
+    <value>ÇIKIŞ</value>
   </data>
   <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Are you absolutely sure that you'd like to quit?</value>
+    <value>Çıkmaz istediğinize gerçekten emin misiniz ?</value>
   </data>
   <data name="QUIT_MESSAGE" xml:space="preserve">
-    <value>Are you sure you would like to quit?</value>
+    <value>Çıkmak istediğinize emin misiniz ?</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Rate:</value>
+    <value>Oran:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>RE-CALIBRATE</value>
+    <value>YENİDEN AYARLA</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>REPEAT
-LAST</value>
+    <value>SONUNCUYU
+TEKRARLA</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Audio and/or Dictionary service(s) were/was not supplied to the management window action.</value>
+    <value>İşitsel ve/veya Sözlük sevisi(servisleri) yönetim penceresinin eylemine aktarılamadı</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey needs to restart to apply your changes.
-Please click OK to continue with the restart, or CANCEL to discard your changes</value>
+    <value>Değişikliklerin geçerli olabilmesi için Optikey yeniden başlatılmalıdır. Yeniden başlatmak için OK tuşuna, değişikleri iptal etmek için CANCEL tuşuna tıklayınız.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Restore</value>
+    <value>Geriyükle</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Resuming an incomplete key fixation requires a new lock on:</value>
+    <value>Bitmemiş bir tuş sabitleme işine devam etmek için yeni bir kilitlenme gereklidir.</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Right</value>
+    <value>Sağ</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-ARROW</value>
+    <value>SAĞ
+OK TUŞU</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-CLICK</value>
+    <value>SAĞ
+TIKLA</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RIGHT
-DOWN/UP</value>
+    <value>SAĞ
+AŞAĞI/YUKARI</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Rising 1</value>
+    <value>Yükseliyor 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Rising 2</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Russian (Russia) / Русский (Россия)</value>
+    <value>Yükseliyor 2</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Same as dock position</value>
+    <value>Panel pozisyonuyla aynı</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Scratchpad # of lines:</value>
+    <value>Bloknot çizgi adeti # </value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCR
-LK</value>
+    <value>SCROLL
+LOCK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Scroll by {0} click:|Scroll by {0} clicks:</value>
+    <value>{0} tıklama ile kaydır:|{0} tıklama ile kaydır</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-DOWN</value>
+    <value>AŞAĞI
+KAYDIR</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-LEFT</value>
+    <value>SOLA
+KAYDIR</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-RIGHT</value>
+    <value>SAĞA
+KAYDIR</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCROLL
-UP</value>
+    <value>YUKARI
+KAYDIR</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
-    <value>Selection</value>
+    <value>Seçim</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Selection progress indicator behaviour:</value>
+    <value>Seçim işlemi işaretçisi davranışı:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator end size (%):</value>
+    <value>Seçim ilerleme göstergesi bitiş ölçüsü (%):</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Selection progress indicator start size (%):</value>
+    <value>Seçim ilerleme göstergesi başlangıç ölçüsü (%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
-    <value>SHIFT</value>
+    <value>DEĞİŞTİR</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Show splash screen on startup:</value>
+    <value>Program başlarken bilgilendirme penceresini aç:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
-    <value>SHRINK</value>
+    <value>KÜÇÜLT</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK 
-DOWN &amp; LEFT</value>
+    <value>KÜÇÜLT 
+ AŞAĞI &amp; SOLA</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN &amp; RIGHT</value>
+    <value>KÜÇÜLT
+AŞAĞI &amp; SAĞA</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-DOWN</value>
+    <value>KÜÇÜLT
+AŞAĞI</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
     <value>Shrink</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-LEFT</value>
+    <value>KÜÇÜLT
+SOLA</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-RIGHT</value>
+    <value>KÜÇÜLT
+SAĞA</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; LEFT</value>
+    <value>KÜÇÜLT
+YUKARI &amp; SOLA</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP &amp; RIGHT</value>
+    <value>KÜÇÜLT
+YUKARI &amp; SAĞA</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SHRINK
-UP</value>
+    <value>KÜÇÜLT
+YUKARI</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(FYI some similar entries are already in the dictionary: {0})</value>
+    <value>(Bilgilendirme: Sözlükte {0} benzer girdiler mevcut)</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SIZE &amp;
-POSITION</value>
+    <value>BOYUT&amp;
+POZİSYON</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
-    <value>Size &amp; Position</value>
+    <value>Boyut &amp; Konum</value>
   </data>
   <data name="SLEEP" xml:space="preserve">
-    <value>SLEEP</value>
+    <value>UYKU</value>
   </data>
   <data name="SOUND_EFFECTS" xml:space="preserve">
-    <value>Sound effects</value>
+    <value>Ses efektleri</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>Sounds</value>
+    <value>Sesler</value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
-    <value>Source:</value>
+    <value>Kaynak:</value>
   </data>
   <data name="SPACE" xml:space="preserve">
-    <value>SPACE</value>
+    <value>BOŞLUK</value>
   </data>
   <data name="SPEAK" xml:space="preserve">
-    <value>SPEAK</value>
+    <value>KONUŞ</value>
   </data>
   <data name="SPEECH" xml:space="preserve">
-    <value>Speech</value>
+    <value>Konuşma</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Startup keyboard:</value>
+    <value>Başlangıç klavyesi:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
-    <value>Stop signal:</value>
+    <value>Durdurma Sinyali:</value>
   </data>
   <data name="SUCCESS" xml:space="preserve">
-    <value>Success</value>
+    <value>Başarılı</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Suppress modifier keys when in mouse keyboard:</value>
+    <value>Fare kullanırken kısayol tuşlarını devre dışı bırak:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Unable to activate TheEyeTribe GazeManager! Please check that the server is running and the device is connected and try again.</value>
+    <value>TheEyeTribe GazeManager aktive edilemiyor! Sunucunun çalıştığı ve cihazın bağlı olduğundan emin olduktan sonra tekrar deneyin.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe has not been calibrated. No data will be received until calibration is completed.</value>
+    <value>TheEyeTribe kalibre edilmedi. Kalibrasyon tamamlanmadan veri alınmayacak.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Unable to attempt a calibration as no EyeX engine is available.</value>
+    <value>EyeX engine kullanılabilir olmadığı için kalibrasyon denemesi başarısız.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
-    <value>Theme:</value>
+    <value>Tema:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Time until point becomes irrelevent (ms):</value>
+    <value>Hedef ilgisiz olana kadar geçen süre (ms)</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
-    <value>Words are capitalized</value>
-  </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
+    <value>Kelimeler büyük harf yapıldı</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Calibration completed, or possibly cancelled, but everything is working again!</value>
+    <value>Kalibrasyon tamamlandı ya da büyük ihtimalle iptal edildi ama her şey tekrar çalışıyor.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine cannot be found. Please install the EyeX Engine and try again.</value>
+    <value>Tobii EyeX Engine bulunamadı. Lütfen EyeX sürücüsünü yükledikten sonra tekrar deneyin.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine is not running. Please start the EyeX Engine and try again.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
+    <value>Tobii EyeX Engine çalışmıyor. Lütfen EyeX Engine'i çalıştırın ve daha sonra tekrar deneyin.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
-    <value>Tone 1</value>
+    <value>Ton 1</value>
   </data>
   <data name="TONE_SOUND_2" xml:space="preserve">
-    <value>Tone 2</value>
+    <value>Ton 2</value>
   </data>
   <data name="TONE_SOUND_3" xml:space="preserve">
-    <value>Tone 3</value>
+    <value>Ton 3</value>
   </data>
   <data name="TONE_SOUND_4" xml:space="preserve">
-    <value>Tone 4</value>
+    <value>Ton 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Trigger button/key pressed again</value>
+    <value>Tetik tuşu/düğmesi yeniden basıldı.</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Trigger button/key released</value>
+    <value>Tetik tuşu/düğmesi bırakıldı</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>I can not detect where you are directing your attention. Is there a problem with the input device? Is it connected, turned on, calibrated, etc?</value>
+    <value>Dikkatinizi nereye verdiğinizi algılayamadım. Cihazla alakalı bir sorun mu var ? Bilgisayara bağlı, açık ve kalibre edilmiş vb. durumda mı ?</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Unable to determine the current elevation.</value>
+    <value>Mevcut çalıştırma izni belirlenemedi.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>There was a problem setting the voice to '{0}'{1}</value>
+    <value>Sesi '{0}'{1} ayarlarken bir problem oluştu</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Something went wrong, but I don't know what - please check the logs</value>
+    <value>Bir şeyler yanlış gitti ama ne olduğunu bilmiyorum - lütfen kayıtları kontrol edin</value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Top</value>
+    <value>En yukarı</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>UP
-ARROW</value>
+    <value>YUKARI
+OK</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
-    <value>UPDATE AVAILABLE!</value>
+    <value>GÜNCELLEME VAR!</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>All in upper case</value>
+    <value>Tamamı büyük harfle</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Please visit www.optikey.org to download latest version ({0})
-You can turn off update checks from the Management Console (ALT + M).</value>
+    <value>En son versiyonu ({0}) indirmek için, lütfen www.optikey.org  adresini ziyaret ediniz. Otomatik güncellemeleri kapatmak için Yönetim panelini kullanınız (ALT +M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>May I restart OptiKey?</value>
+    <value>OptiKey'i yeniden başlatabilir miyim ?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
-    <value>Version: {0}</value>
+    <value>Versiyon: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertical fill (as % of screen):</value>
+    <value>Düşey doldur (Ekranın yüzde cinsinden)</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Visuals</value>
+    <value>Görseller</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value> (from settings)</value>
+    <value>(ayarlar kısmından)</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
-    <value>Voice:</value>
+    <value>Ses:</value>
   </data>
   <data name="VOLUME_LABEL" xml:space="preserve">
-    <value>Volume:</value>
+    <value>Ses yükseliği:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Website: www.optikey.org</value>
+    <value>Websayfası : www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
-    <value>WIN</value>
+    <value>Windows Tuşu</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
     <value>OptiKey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
-    <value>Words</value>
+    <value>Kelimeler</value>
   </data>
   <data name="YES" xml:space="preserve">
-    <value>YES</value>
+    <value>EVET</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Letters</value>
+    <value>Harfler</value>
   </data>
   <data name="HIGH" xml:space="preserve">
-    <value>High</value>
+    <value>Yüksek</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Low</value>
+    <value>Düşük</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
-    <value>Medium</value>
+    <value>Orta</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>None</value>
+    <value>Hiç</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Data stream processing amount:</value>
-  </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>German (Germany) / Deutsch (Deutschland)</value>
+    <value>Veri akışı işleme miktarı:</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>User interface language: {0}</value>
+    <value>Kullanıcı arayüzü dili: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>User interface language:</value>
+    <value>Kullanıcı arayüzü dili:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simulate physical keystrokes when typing characters:</value>
-  </data>
-  <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Dutch (Belgium) / Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
-  </data>
-  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>French
-(France) /
-Française
-(France)</value>
-  </data>
-  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>German
-(Germany) /
-Deutsch
-(Deutschland)</value>
+    <value>Karakterleri yazarken klavye tuşlama simülasyonu yap:</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Suppress mouse magnification for scrolling actions:</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Russian
-(Russia) /
-Русский
-(Россия)</value>
+    <value>Fare yakınlaştırma işlemini fare tekeri döndürürken devre dışı bırak:</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
+    <value>İletişim klavyesi kenarlık kalınlığı (piksel olarak, sol, üst, sağ, alt)</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>BACK ONE</value>
+    <value>HARF SİL</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>BACK WORD</value>
+    <value>SÖZCÜK SİL</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
-    <value>SUGGESTION 1</value>
+    <value>ÖNERİ 1</value>
   </data>
   <data name="SUGGESTION_2" xml:space="preserve">
-    <value>SUGGESTION 2</value>
+    <value>ÖNERİ 2</value>
   </data>
   <data name="SUGGESTION_3" xml:space="preserve">
-    <value>SUGGESTION 3</value>
+    <value>ÖNERİ 3</value>
   </data>
   <data name="SUGGESTION_4" xml:space="preserve">
-    <value>SUGGESTION 4</value>
+    <value>ÖNERİ 4</value>
   </data>
   <data name="SUGGESTION_5" xml:space="preserve">
-    <value>SUGGESTION 5</value>
+    <value>ÖNERİ 5</value>
   </data>
   <data name="SUGGESTION_6" xml:space="preserve">
-    <value>SUGGESTION 6</value>
+    <value>ÖNERİ 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>Suggestion Keys</value>
+    <value>Öneri Tuşları</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
-    <value>ADD TO DICTIONARY</value>
+    <value>SÖZLÜĞE EKLE</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>COLLAPSE DOCK</value>
+    <value>PANELİ KAPAT</value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
-    <value>DOWN ARROW</value>
+    <value>AŞAĞI OK</value>
   </data>
   <data name="F1" xml:space="preserve">
     <value>F1</value>
@@ -1329,324 +1268,276 @@ Deutsch
     <value>F9</value>
   </data>
   <data name="LEFT_ARROW" xml:space="preserve">
-    <value>LEFT ARROW</value>
+    <value>SOL OK</value>
   </data>
   <data name="RIGHT_ARROW" xml:space="preserve">
-    <value>RIGHT ARROW</value>
+    <value>SAĞ OK</value>
   </data>
   <data name="UP_ARROW" xml:space="preserve">
-    <value>UP ARROW</value>
+    <value>YUKARI OK</value>
   </data>
   <data name="CLICK_AND_DRAG" xml:space="preserve">
-    <value>CLICK &amp; DRAG</value>
+    <value>TIKLA &amp; SÜRÜKLE</value>
   </data>
   <data name="CURRENCIES_1" xml:space="preserve">
-    <value>CURRENCIES 1</value>
+    <value>PARA BİRİMLERİ 1</value>
   </data>
   <data name="CURRENCIES_2" xml:space="preserve">
-    <value>CURRENCIES 2</value>
+    <value>PARA BİRİMLERİ 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>DECREASE OPACITY</value>
+    <value>DONUKLUĞU AZALT</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>DIACRITICS 1</value>
+    <value>VURGU İMLERİ 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>DIACRITICS 2</value>
+    <value>VURGU İMLERİ 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>DIACRITICS 3</value>
+    <value>VURGU İMLERİ 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>EXPAND DOCK</value>
+    <value>PANELİ AÇ</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
-    <value>EXPAND DOWN</value>
+    <value>AŞAĞI GENİŞLET</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>EXPAND DOWN &amp; LEFT</value>
+    <value>SOL AŞAĞI GENİŞLET</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>EXPAND DOWN &amp; RIGHT</value>
+    <value>SAĞ AŞAĞI GENİŞLET</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>EXPAND LEFT</value>
+    <value>SOLA GENİŞLET</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
-    <value>EXPAND RIGHT</value>
+    <value>SAĞA GENİŞLET</value>
   </data>
   <data name="EXPAND_UP" xml:space="preserve">
-    <value>EXPAND UP</value>
+    <value>YUKARI GENİŞLET</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>EXPAND UP &amp; LEFT</value>
+    <value>YUKARI &amp; SOLA GENİŞLET</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>EXPAND UP &amp; RIGHT</value>
+    <value>YUKARI &amp; SAĞA GENİŞLET</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>INCREASE OPACITY</value>
+    <value>DONUKLUĞU ARTTIR</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 1</value>
+    <value>SAYILAR VE SEMBOLLER 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 2</value>
+    <value>SAYILAR VE SEMBOLLER 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>NUMERIC &amp; SYMBOLS 3</value>
+    <value>SAYILAR VE SEMBOLLER 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
-    <value>PHYSICAL KEYS</value>
+    <value>FİZİKSEL TUŞLAR</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
-    <value>SIZE &amp; POSITION</value>
+    <value>BOYUT &amp; POZISYON</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>MAGNETIC CURSOR</value>
+    <value>MANYETİK İMLEÇ</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
-    <value>MIDDLE CLICK</value>
+    <value>ORTA TUŞ TIKLA</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>MIDDLE DOWN/UP</value>
+    <value>ORTA AŞAĞI/YUKARI</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>MOVE AMOUNT IN PIXELS</value>
+    <value>PİKSEL BAZINDA HAREKET ETTİRME MİKTARI</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>ADJUST AMOUNT IN PIXELS</value>
+    <value>PİKSEL BAZINDA DÜZELTME MİKTARI</value>
   </data>
   <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSATION ALPHA</value>
+    <value>HARFLER</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
+    <value>RAKAMLAR VE SEMBOLLER</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
-    <value>JUMP DOWN</value>
+    <value>AŞAĞI TAŞI</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
-    <value>JUMP DOWN &amp; LEFT</value>
+    <value>SOLA AŞAĞI TAŞI</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>JUMP DOWN &amp; RIGHT</value>
+    <value>SAĞA AŞAĞI TAŞI</value>
   </data>
   <data name="JUMP_LEFT" xml:space="preserve">
-    <value>JUMP LEFT</value>
+    <value>SOLA TAŞI</value>
   </data>
   <data name="JUMP_RIGHT" xml:space="preserve">
-    <value>JUMP RIGHT</value>
+    <value>SAĞA TAŞI</value>
   </data>
   <data name="JUMP_UP" xml:space="preserve">
-    <value>JUMP UP</value>
+    <value>YUKARI TAŞI</value>
   </data>
   <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
-    <value>JUMP UP &amp; LEFT</value>
+    <value>SOLA YUKARI TAŞI</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
-    <value>JUMP UP &amp; RIGHT</value>
+    <value>SAĞA YUKARI TAŞI</value>
   </data>
   <data name="LEFT_CLICK" xml:space="preserve">
-    <value>LEFT CLICK</value>
+    <value>SOL TIKLAMA</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
-    <value>LEFT DOUBLE CLICK</value>
+    <value>SOL ÇİFT TIKLAMA</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
-    <value>LEFT DOWN/UP</value>
+    <value>SOLA AŞAĞI/YUKARI</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
-    <value>MOVE DOWN</value>
+    <value>AŞAĞI HAREKET ETTİR</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
-    <value>MOVE DOWN &amp; LEFT</value>
+    <value>SOLA AŞAĞI HAREKET ETTİR</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>MOVE DOWN &amp; RIGHT</value>
+    <value>SAĞA AŞAĞI HAREKET ETTİR</value>
   </data>
   <data name="MOVE_LEFT" xml:space="preserve">
-    <value>MOVE LEFT</value>
+    <value>SOLA HAREKET ETTİR</value>
   </data>
   <data name="MOVE_RIGHT" xml:space="preserve">
-    <value>MOVE RIGHT</value>
+    <value>SAĞA HAREKET ETTİR</value>
   </data>
   <data name="MOVE_TO" xml:space="preserve">
-    <value>MOVE TO</value>
+    <value>BURAYA TAŞI</value>
   </data>
   <data name="MOVE_UP" xml:space="preserve">
-    <value>MOVE UP</value>
+    <value>YUKARI HAREKET ETTİR</value>
   </data>
   <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
-    <value>MOVE UP &amp; LEFT</value>
+    <value>YUKARI SOLA HAREKET ETTİR</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
-    <value>MOVE UP &amp; RIGHT</value>
+    <value>YUKARI SAĞA HAREKET ETTİR</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
-    <value>MULTI-KEY SELECTION</value>
+    <value>ÇOKLU TUŞ SEÇİMİ</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
-    <value>NUM LK</value>
+    <value>NUM LOCK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
     <value>PG DN</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>PG UP</value>
+    <value>PAGE UP</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
     <value>PRNT SCR</value>
   </data>
   <data name="REPEAT_LAST" xml:space="preserve">
-    <value>REPEAT LAST</value>
+    <value>SONUNCUYU TEKRARLA</value>
   </data>
   <data name="RIGHT_CLICK" xml:space="preserve">
-    <value>RIGHT CLICK</value>
+    <value>SAĞ TIKLA</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
-    <value>RIGHT DOWN/UP</value>
+    <value>SAĞA AŞAĞI/YUKARI</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
-    <value>SCR LK</value>
+    <value>SCROLL LOCK</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>SCROLL AMOUNT IN CLICKS</value>
+    <value>TIKLAMA BAZINDA KAYDIRMA MİKTARI</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
-    <value>SCROLL DOWN</value>
+    <value>AŞAĞI KAYDIR</value>
   </data>
   <data name="SCROLL_LEFT" xml:space="preserve">
-    <value>SCROLL LEFT</value>
+    <value>SOLA KAYDIR</value>
   </data>
   <data name="SCROLL_RIGHT" xml:space="preserve">
-    <value>SCROLL RIGHT</value>
+    <value>SAĞA KAYDIR</value>
   </data>
   <data name="SCROLL_UP" xml:space="preserve">
-    <value>SCROLL UP</value>
+    <value>YUKARI KAYDIR</value>
   </data>
   <data name="SHRINK_DOWN" xml:space="preserve">
-    <value>SHRINK DOWN</value>
+    <value>AŞAĞIYA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
-    <value>SHRINK DOWN &amp; LEFT</value>
+    <value>AŞAĞI &amp; SOLA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>SHRINK DOWN &amp; RIGHT</value>
+    <value>AŞAĞI &amp; SAĞA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
-    <value>SHRINK LEFT</value>
+    <value>SOLA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_RIGHT" xml:space="preserve">
-    <value>SHRINK RIGHT</value>
+    <value>SAĞA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_UP" xml:space="preserve">
-    <value>SHRINK UP</value>
+    <value>YUKARI KÜÇÜLT</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
-    <value>SHRINK UP &amp; LEFT</value>
+    <value>SOLA YUKARI KÜÇÜLT</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
-    <value>SHRINK UP &amp; RIGHT</value>
+    <value>SAĞA YUKARI KÜÇÜLT</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
-    <value>CHANGE KEYBOARD KEYS:</value>
+    <value>KLAVYE TUŞLARINI DEĞİŞTİR</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>DOCK ACTION KEYS:</value>
+    <value>SABİTLEME EYLEM TUŞLARI</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Overrides for individual key fixation times (ms):</value>
+    <value>Belirlenmiş tuşların sabitlenme sürelerini belirle (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>CHANGE LANGUAGE KEYS:</value>
+    <value>DİL DEĞİŞTİRME TUŞLARI:</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
-    <value>LANGUAGE</value>
+    <value>DİL</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>MISCELLANEOUS KEYS:</value>
+    <value>DİĞER TUŞLAR</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>MODIFIER KEYS:</value>
+    <value>KOMBİNASYON TUŞLARI:</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT CURRENT LOCATION) KEYS:</value>
+    <value>FARE TUŞLARI (MEVCUT KONUMDA)</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (DO AT POINT) KEYS:</value>
+    <value>FARE TUŞLARI (SEÇİLEN KONUMDA)</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>MOUSE (MISCELLANEOUS) KEYS:</value>
+    <value>FARE TUŞLARI (DİĞER)</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>MOVE &amp; RESIZE KEYS:</value>
+    <value>HAREKET VE BOYUTLANDIRMA TUŞLARI</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>PHYSICAL KEYS:</value>
+    <value>FİZİKSEL TUŞLAR</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>SUGGESTION KEYS:</value>
+    <value>TAVSİYE TUŞLARI:</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Specify times to complete on individual keys:</value>
-  </data>
-  <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece) / Ελληνικά (Greece)</value>
+    <value>Belirlenmiş tuşlar için tamamlanma süresini belirle:</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Management Console</value>
+    <value>Yönetim Konsolu</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Quit</value>
-  </data>
-  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Greek
-(Greece) /
-Ελληνικά
-(Greece)</value>
-  </data>
-  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Belgium) /
-Nederlands
-(België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch
-(Netherlands) /
-Nederlands
-(Nederland)</value>
+    <value>Çıkış</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Suppress modifier keys for all mouse actions:</value>
-  </data>
-  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-English
-(Canada)
-</value>
-  </data>
-  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-English
-(UK)
-</value>
-  </data>
-  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-English
-(US)
-</value>
-  </data>
-  <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turkish (Turkey) / Türkçe (Türkiye)</value>
-  </data>
-  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Turkish
-(Turkey) /
-Türkçe
-(Türkiye)</value>
+    <value>Fare eylemleri esnasında kombinasyon tuşlarını gizle:</value>
   </data>
 </root>

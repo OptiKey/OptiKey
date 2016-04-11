@@ -142,6 +142,7 @@
         Suggestion4,
         Suggestion5,
         Suggestion6,
+        TurkishTurkey,
         YesQuestionResult
     }
 }

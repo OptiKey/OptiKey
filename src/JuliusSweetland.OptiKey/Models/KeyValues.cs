@@ -174,6 +174,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion4Key = new KeyValue(FunctionKeys.Suggestion4);
         public static readonly KeyValue Suggestion5Key = new KeyValue(FunctionKeys.Suggestion5);
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
+        public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
         
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
@@ -193,15 +194,21 @@ namespace JuliusSweetland.OptiKey.Models
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
                 { Languages.FrenchFrance, defaultList },
-                { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß".ToCharArray()
+                { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß".
+                                                ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ".ToCharArray()
+                { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ"
+                                                .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },     
 				{ Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList() },
+                { Languages.TurkishTurkey, "abcdefghijklmnopqrstuvwxyzçğöşü"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() }
