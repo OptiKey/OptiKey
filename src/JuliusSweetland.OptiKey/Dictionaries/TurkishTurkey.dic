@@ -2308,7 +2308,6 @@ anayasa
 anayasacı
 anayasal
 anayol
-ana,
 anbar
 anbean
 anca
@@ -3368,7 +3367,7 @@ asimetri
 asimetrik
 asimile
 asimptot
-asimtot,
+asimtot
 asismik
 asist
 asistan
@@ -7202,9 +7201,7 @@ biliyormuyum
 billboard
 billur
 billuri
-billuri,
 billuriye
-billur,
 billurlaşma
 billurlaşmak
 billurlaşmış
@@ -9686,7 +9683,6 @@ ciğerimin
 ciğerine
 ciğerini
 ciğerinin
-ciğer,
 ciğerleri
 ciğerpare
 ciğil
@@ -9708,7 +9704,6 @@ ciharıse
 ciharıyek
 cihat
 cihaz
-cihaz,
 cihazlanma
 cihazlanmak
 cihet
@@ -17162,7 +17157,6 @@ envestisman
 enyar
 enzal
 enzim
-enzim,
 eosen
 e-öğrenme
 epe
@@ -20617,7 +20611,6 @@ gezme
 gezmek
 gezmen
 gezmeye
-g,
 gıcak
 gıccek
 gıcık
@@ -22092,7 +22085,6 @@ güverte
 güvey
 güveyfeneri
 güveyi
-güvey,-i
 güveyilik
 güveylik
 güvez
@@ -23787,7 +23779,7 @@ hidralar
 hidrasit
 hidratı
 hidratlı
-hidr-,
+hidr-
 hidro-
 hidrobiyoloji
 hidrodinamik
@@ -23855,7 +23847,7 @@ hilecilik
 hileişeriye
 hilekarlık
 hileli
-hilesi,
+hilesi
 hilesiz
 hileyapmaz
 hileye
@@ -24493,7 +24485,6 @@ hysteria
 ıhtırılmak
 ıhtırma
 ıhtırmak
-ı,
 ııı
 ıkıl
 ıkına
@@ -28024,7 +28015,6 @@ kalite
 kaliteli
 kalitesiz
 kalitesizlik
-kalite,
 kaliteyi
 kalk
 kalkan
@@ -28379,7 +28369,6 @@ kanit
 kanji
 kanka
 kankan
-kan,
 kanki
 kankurutan
 kanlama
@@ -33349,7 +33338,7 @@ kumlama
 kumlamak
 kumlu
 kumluk
-kumotu,
+kumotu
 kumpanya
 kumpas
 kumpir
@@ -34154,9 +34143,8 @@ labrador
 labret
 lacerem
 laciverdi
-lacivert,-di
-lacivertlik
 lacivert
+lacivertlik
 laçin
 laçka
 laçkalaşma
@@ -35399,7 +35387,7 @@ manifaturacı
 manifaturacılık
 manifesto
 maniheizm
-mani,-i
+mani
 manik
 manika
 manikür
@@ -35407,7 +35395,6 @@ manikürcü
 manikürcülük
 manikürlü
 manikürsüz
-mani
 maniple
 manipülasyon
 manipülatör
@@ -39712,7 +39699,6 @@ nötrleşmek
 nötrleştirme
 nötrleştirmek
 nötrlük
-nötr,
 nötron
 növbet
 nuh
@@ -40326,7 +40312,6 @@ onursuz
 onursuzluk
 onuruna
 onuruyla
-o,
 ooid
 oosfer
 oosit
@@ -41332,7 +41317,6 @@ ozuga
 önünü
 önyapım
 önyüz
-ö,
 öp
 öperken
 öpme
@@ -43521,7 +43505,6 @@ pöstekiyi
 pötibör
 pötifur
 pötikare
-p,
 prafa
 pragmacı
 pragmacılık
@@ -50543,7 +50526,6 @@ süzüntü
 şöyle
 şöylemesine
 şöylesine
-ş,
 şua
 şuaiye
 şuara
@@ -51010,11 +50992,10 @@ taklavat
 taklidi
 taklidini
 taklim
-taklip,-bi
 taklip
 taklit
 taklitçi
-taklitçilik,-ği
+taklitçilik
 takma
 takmak
 takmamazlık
@@ -51054,7 +51035,6 @@ taktakı
 taktırma
 taktırmak
 takti
-takti,-i
 taktik
 taktikçi
 taktiliğen
@@ -52490,7 +52470,6 @@ temaruz
 temas
 temasa
 temaşa
-tema,
 tematik
 temayül
 temayüz
@@ -52852,7 +52831,6 @@ terme
 termik
 termikleştirme
 termikleştirmek
-termik,
 termin
 terminal
 terminoloji
@@ -53123,7 +53101,6 @@ teyp
 teype
 teysıran
 teyze
-teyze,
 teyzezade
 tez
 tezahür
@@ -55389,7 +55366,6 @@ utma
 utmak
 utulma
 utulmak
-u,
 uvertür
 uvunmak
 uyak
@@ -56908,7 +56884,6 @@ vürut
 vüsat
 vüsul
 vüzera
-v,
 yaa
 ya
 yaba
@@ -58872,7 +58847,6 @@ yetmişlik
 yeus
 yevmi
 yevmiye
-yevmiye,
 yevmiyeci
 yevmiyeli
 yeygi
