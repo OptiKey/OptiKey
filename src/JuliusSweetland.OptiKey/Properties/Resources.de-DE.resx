@@ -837,12 +837,12 @@ SYMBOLE</value>
     <value>Hauptfenster konnte nicht identifizert werden. Es kann nicht fortgefahren werden</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-DN</value>
+    <value>BILD
+▼</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-UP</value>
+    <value>BILD
+▲</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
     <value>Physische Tasten</value>
@@ -1467,10 +1467,10 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>NUM LK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
-    <value>BILD RUNTER</value>
+    <value>BILD ▼</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>BILD HOCH</value>
+    <value>BILD ▲</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
     <value>DRUCKEN</value>
