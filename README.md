@@ -23,7 +23,7 @@ OptiKey targets the .Net 4.6 Framework, which is available for  Windows Vista SP
 
 If you find a problem (a crash, an unexpected behaviour, or something similar) please visit the [issue tracker](https://github.com/OptiKey/OptiKey/issues) and report the issue.
 
-Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyways.
+Please be kind and search to see if the issue is already logged before creating a new one. If you're pressed for time, log it anyway.
 
 When creating an issue, please clearly explain:
 
