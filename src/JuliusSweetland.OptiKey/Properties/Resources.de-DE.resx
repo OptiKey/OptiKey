@@ -957,8 +957,7 @@ RUNTER/HOCH</value>
     <value>Textfeld Zeilenanzahl:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCR
-LK</value>
+    <value>ROLLEN</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
     <value>Um {0} klicks scrollen:|Um {0} klicks scrollen</value>
