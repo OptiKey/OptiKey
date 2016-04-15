@@ -837,12 +837,12 @@ SYMBOLE</value>
     <value>Hauptfenster konnte nicht identifizert werden. Es kann nicht fortgefahren werden</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-DN</value>
+    <value>BILD
+▼</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PG
-UP</value>
+    <value>BILD
+▲</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
     <value>Physische Tasten</value>
@@ -957,8 +957,7 @@ RUNTER/HOCH</value>
     <value>Textfeld Zeilenanzahl:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SCR
-LK</value>
+    <value>ROLLEN</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
     <value>Um {0} klicks scrollen:|Um {0} klicks scrollen</value>
@@ -1467,10 +1466,10 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>NUM LK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
-    <value>PG DN</value>
+    <value>BILD ▼</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>PG UP</value>
+    <value>BILD ▲</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
     <value>DRUCKEN</value>
@@ -1485,7 +1484,7 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>RECHTS HOCH/RUNTER</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
-    <value>SCR LK</value>
+    <value>ROLLEN</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
     <value>SCROLLANZAHL IN KLICKS</value>
