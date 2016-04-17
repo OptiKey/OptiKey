@@ -1,8 +1,10 @@
 1.Download HunSpell from here: https://sourceforge.net/projects/ezwinports/files/ - e.g. https://sourceforge.net/projects/ezwinports/files/hunspell-1.3.2-3-w32-bin.zip/download
 	This gives you munch.exe/unmunch.exe in the bin directory.
 
-2.Dictionaries can be downloaded from here: http://extensions.services.openoffice.org/en/search?f[0]=field_project_tags%3A157 - e.g. http://extensions.services.openoffice.org/en/project/hellenic-greek-dictionary-spell-check-and-hyphenation
+2a.Dictionaries can be downloaded from here: http://extensions.services.openoffice.org/en/search?f[0]=field_project_tags%3A157 - e.g. http://extensions.services.openoffice.org/en/project/hellenic-greek-dictionary-spell-check-and-hyphenation
 	This gives you an .oxt file - open it as an archive (using 7zip for example) and extract the culture code .dic and .aff files.
+
+2b.Alternatively you can download (what seem to be) the same Hunspell compatible dictionaries from SoftMaker here: http://www.softmaker.com/en/download/dictionaries
 
 3.Unmunch them: unmunch el-GR.dic el-GR.aff >> el-GR.unmunched
 
