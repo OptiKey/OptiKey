@@ -7,3 +7,5 @@
 3.Unmunch them: unmunch el-GR.dic el-GR.aff >> el-GR.unmunched
 
 4.Open and inspect the unmunched file. N.B. you may have to manually open the file using the correct encoding and resave as UTF-8. Greek, for example, is gibberish when you first open the unmunched file in Sublime Text, but re-opening using "Greek Windows" encoding solves that problem.
+
+5.The dictionary files can be massive, so further filtering can be performed by then extracting only entries in the frequency word lists: https://invokeit.wordpress.com/frequency-word-lists/
