@@ -15,6 +15,7 @@ Patrons (thank you very much for sponsoring this project)
   Rod Galvão
   Volluta
   William Johnson
+  Bill Sumner
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

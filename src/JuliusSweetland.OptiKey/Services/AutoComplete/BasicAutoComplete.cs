@@ -51,6 +51,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
         {
+
             //Also add to entries for auto complete
             var autoCompleteHash = entry.Normalise(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
@@ -60,10 +61,13 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
                 AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
             }
+
+
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         { 
+
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
@@ -99,26 +103,6 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 }
             }
 
-            //Also remove if entry is a phrase
-            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-            {
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-                if (!string.IsNullOrWhiteSpace(phraseAutoCompleteHash)
-                    && entriesForAutoComplete.ContainsKey(phraseAutoCompleteHash))
-                {
-                    var foundEntryForAutoComplete = entriesForAutoComplete[phraseAutoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
-
-                    if (foundEntryForAutoComplete != null)
-                    {
-                        entriesForAutoComplete[phraseAutoCompleteHash].Remove(foundEntryForAutoComplete);
-
-                        if (!entriesForAutoComplete[phraseAutoCompleteHash].Any())
-                        {
-                            entriesForAutoComplete.Remove(phraseAutoCompleteHash);
-                        }
-                    }
-                }
-            }
         }
     }
 }
