@@ -358,6 +358,11 @@ namespace JuliusSweetland.OptiKey
                         new Regex(GazeTrackerUdpRegex));
                     break;
 
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
                     errorNotifyingServices.Add(theEyeTribePointService);
@@ -381,9 +386,12 @@ namespace JuliusSweetland.OptiKey
                         tobiiEyeXPointService);
                     break;
 
-                case PointsSources.MousePosition:
-                    pointSource = new MousePositionSource(
-                        Settings.Default.PointTtl);
+                case PointsSources.VisualInteractionMyGaze:
+                    var myGazePointService = new MyGazePointService();
+                    errorNotifyingServices.Add(myGazePointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        myGazePointService);
                     break;
 
                 default:

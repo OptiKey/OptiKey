@@ -1,4 +1,4 @@
-using JuliusSweetland.OptiKey.Native.Enums;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
 
 namespace JuliusSweetland.OptiKey.Enums
 {

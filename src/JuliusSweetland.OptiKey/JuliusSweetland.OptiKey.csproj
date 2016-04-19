@@ -239,19 +239,26 @@
     <Compile Include="Models\NotificationWithServicesAndState.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
     <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
-    <Compile Include="Native\Enums\AppBarNotify.cs" />
-    <Compile Include="Native\Enums\AppBarEdge.cs" />
-    <Compile Include="Native\Enums\AppBarMessages.cs" />
-    <Compile Include="Native\Enums\DeviceCaps.cs" />
-    <Compile Include="Native\Enums\GWL.cs" />
-    <Compile Include="Native\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Enums\SetWindowPosFlags.cs" />
-    <Compile Include="Native\Enums\SpecialWindowHandles.cs" />
-    <Compile Include="Native\Static\AppBarState.cs" />
-    <Compile Include="Native\Static\ExtendedWindowStyles.cs" />
-    <Compile Include="Native\Static\WindowStyles.cs" />
-    <Compile Include="Native\Structs\APPBARDATA.cs" />
-    <Compile Include="Native\Structs\RECT.cs" />
+    <Compile Include="Native\Common\Enums\AppBarEdge.cs" />
+    <Compile Include="Native\Common\Enums\AppBarMessages.cs" />
+    <Compile Include="Native\Common\Enums\AppBarNotify.cs" />
+    <Compile Include="Native\Common\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Common\Enums\GWL.cs" />
+    <Compile Include="Native\Common\Enums\SetWindowPosFlags.cs" />
+    <Compile Include="Native\Common\Enums\SpecialWindowHandles.cs" />
+    <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
+    <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
+    <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Common\PInvoke.cs" />
+    <Compile Include="Native\Common\Static\WindowStyles.cs" />
+    <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
+    <Compile Include="Native\Common\Structs\OSVERSIONINFO.cs" />
+    <Compile Include="Native\Common\Structs\RECT.cs" />
+    <Compile Include="Native\MyGaze\PInvoke.cs" />
+    <Compile Include="Native\MyGaze\Structs\EventStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\EyeDataStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\SampleStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\SystemStructInfo.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
@@ -302,6 +309,7 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
+    <Compile Include="Services\MyGazePointService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
@@ -542,14 +550,14 @@
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
-    <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
-    <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
-    <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
-    <Compile Include="Native\PInvoke.cs" />
     <None Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="..\..\ext\myGaze\myGazeAPI.dll">
+      <Link>myGazeAPI.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\FrenchFrance.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1077,7 +1085,9 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Native\MyGaze\Enums\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

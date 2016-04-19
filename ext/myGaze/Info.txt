@@ -1,0 +1,4 @@
+myGaze API - v4.3.0.0
+From myGaze SDK.
+
+Currently using x86 assembly (there is also a myGazeAPI64.dll for x64 applications should this ever by required).

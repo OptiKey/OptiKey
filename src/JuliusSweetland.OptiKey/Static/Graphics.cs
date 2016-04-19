@@ -1,6 +1,7 @@
 ﻿using System;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Enums;
+using JuliusSweetland.OptiKey.Native.Common;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
 
 namespace JuliusSweetland.OptiKey.Static
 {
