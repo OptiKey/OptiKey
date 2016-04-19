@@ -111,17 +111,21 @@ namespace JuliusSweetland.OptiKey.Services
                 var rightX = sampleData.leftEye.gazeX;
                 var rightY = sampleData.leftEye.gazeY;
 
-                var x = !double.IsNaN(leftX) && leftX > 0 
-                    ? leftX 
-                    : !double.IsNaN(rightX) && rightX > 0 
-                        ? rightX 
-                        : (double?)null;
+                double? x = null;
+                double? y = null;
 
-                var y = !double.IsNaN(leftY) && leftY > 0
-                    ? leftY
-                    : !double.IsNaN(rightY) && rightY > 0
-                        ? rightY
-                        : (double?)null;
+                if (!double.IsNaN(leftX) && leftX > 0
+                    && !double.IsNaN(leftY) && leftY > 0)
+                {
+                    x = leftX;
+                    y = leftY;
+                }
+                else if (!double.IsNaN(rightX) && rightX > 0
+                    && !double.IsNaN(rightY) && rightY > 0)
+                {
+                    x = rightX;
+                    y = rightY;
+                }
 
                 if (x != null && y != null)
                 {
