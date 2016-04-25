@@ -1233,19 +1233,25 @@ You can turn off update checks from the Management Console (ALT + M).</value>
     <value>Dutch (Netherlands) / Nederlands (Nederland)</value>
   </data>
   <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>French (France)
-Française (France)</value>
+    <value>French
+(France) /
+Française
+(France)</value>
   </data>
   <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>German (Germany)
-Deutsch (Deutschland)</value>
+    <value>German
+(Germany) /
+Deutsch
+(Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Suppress mouse magnification for scrolling actions:</value>
   </data>
   <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Russian (Russia)
-Русский (Россия)</value>
+    <value>Russian
+(Russia) /
+Русский
+(Россия)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
@@ -1596,15 +1602,36 @@ Deutsch (Deutschland)</value>
     <value>Quit</value>
   </data>
   <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Greek (Greece)
-Ελληνικά (Greece)</value>
+    <value>Greek
+(Greece) /
+Ελληνικά
+(Greece)</value>
   </data>
   <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch (Belgium)
-Nederlands (België)</value>
+    <value>Dutch
+(Belgium) /
+Nederlands
+(België)</value>
   </data>
   <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Dutch (Netherlands)
-Nederlands (Nederland)</value>
+    <value>Dutch
+(Netherlands) /
+Nederlands
+(Nederland)</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Suppress modifier keys for all mouse actions:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>English
+(Canada)</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>English
+(UK)</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>English
+(US)</value>
   </data>
 </root>

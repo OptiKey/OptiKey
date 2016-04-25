@@ -96,22 +96,10 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void Quit()
         {
-            inputService.RequestSuspend();
             if (MessageBox.Show(Properties.Resources.QUIT_MESSAGE, Properties.Resources.QUIT, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Application.Current.Shutdown();
             }
-            inputService.RequestResume();
-        }
-
-        private void OnContextMenuOpened(object sender, RoutedEventArgs e)
-        {
-            inputService.RequestSuspend();
-        }
-
-        private void OnContextMenuClosed(object sender, RoutedEventArgs e)
-        {
-            inputService.RequestResume();
         }
     }
 }

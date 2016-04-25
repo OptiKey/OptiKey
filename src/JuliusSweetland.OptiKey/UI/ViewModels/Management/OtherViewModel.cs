@@ -44,6 +44,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref publishVirtualKeyCodesForCharacters, value); }
         }
 
+        private bool suppressModifierKeysForAllMouseActions;
+        public bool SuppressModifierKeysForAllMouseActions
+        {
+            get { return suppressModifierKeysForAllMouseActions; }
+            set { SetProperty(ref suppressModifierKeysForAllMouseActions, value); }
+        }
+
         private bool suppressModifierKeysWhenInMouseKeyboard;
         public bool SuppressModifierKeysWhenInMouseKeyboard
         {
@@ -82,6 +89,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ShowSplashScreen = Settings.Default.ShowSplashScreen;
             CheckForUpdates = Settings.Default.CheckForUpdates;
             PublishVirtualKeyCodesForCharacters = Settings.Default.PublishVirtualKeyCodesForCharacters;
+            SuppressModifierKeysForAllMouseActions = Settings.Default.SuppressModifierKeysForAllMouseActions;
             SuppressModifierKeysWhenInMouseKeyboard = Settings.Default.SuppressModifierKeysWhenInMouseKeyboard;
             MagnifySuppressedForScrollingActions = Settings.Default.MagnifySuppressedForScrollingActions;
             Debug = Settings.Default.Debug;
@@ -92,6 +100,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ShowSplashScreen = ShowSplashScreen;
             Settings.Default.CheckForUpdates = CheckForUpdates;
             Settings.Default.PublishVirtualKeyCodesForCharacters = PublishVirtualKeyCodesForCharacters;
+            Settings.Default.SuppressModifierKeysForAllMouseActions = SuppressModifierKeysForAllMouseActions;
             Settings.Default.SuppressModifierKeysWhenInMouseKeyboard = SuppressModifierKeysWhenInMouseKeyboard;
             Settings.Default.MagnifySuppressedForScrollingActions = MagnifySuppressedForScrollingActions;
             Settings.Default.Debug = Debug;

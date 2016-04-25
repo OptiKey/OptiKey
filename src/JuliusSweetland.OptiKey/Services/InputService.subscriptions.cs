@@ -147,7 +147,8 @@ namespace JuliusSweetland.OptiKey.Services
                             if (MultiKeySelectionSupported
                                 && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
                                 && triggerSignal.PointAndKeyValue.Value.KeyValue != null
-                                && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.Value.KeyValue.Value))
+                                && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.Value.KeyValue.Value)
+                                && !KeyValues.CombiningKeys.Any(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown())) //Do not start if any combining ("dead") keys are down
                             {
                                 Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
 

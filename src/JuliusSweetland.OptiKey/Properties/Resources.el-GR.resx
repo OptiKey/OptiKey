@@ -118,1154 +118,1170 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Hinzufügen</value>
+    <value>Προσθήκη</value>
   </data>
   <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
-    <value>Neuen Eintrag:</value>
+    <value>Πρόσθεση νέας καταχώρισης </value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Satz '{0}' zum Wörterbuch hinzufügen mit der Tastenabkürzung '{1}'?</value>
+    <value>Θέλετε να εισάγετε την φράση '{0}' στο λεξικό με συντόμευση '{1}';</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ZUM
-WÖRTERBUCH
-HINZUFÜGEN</value>
+    <value>ΠΡΟΣΘΗΚΗ
+ΣΤΟ ΛΕΞΙΚΟ</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Wort '{0}' zum Wörterbuch hinzufügen?</value>
+    <value>Θέλετε να προσθέσετε την λέξη '{0}' στο λεξικό;</value>
   </data>
   <data name="ADDED" xml:space="preserve">
-    <value>Hinzugefügt</value>
+    <value>Προστέθηκε</value>
   </data>
   <data name="ADJUST_BY" xml:space="preserve">
-    <value>Um {0} pixel verstellen|Um {0} pixel verstellen</value>
+    <value>Προσαρμογή κατά {0} εικονοστοιχεία|Προσαρμογή κατά {0} εικονοστοιχεία </value>
   </data>
   <data name="ALPHA" xml:space="preserve">
-    <value>BUCHSTABEN</value>
+    <value>ΓΡΑΜΜΑΤΑ </value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
   </data>
   <data name="ANDROID_DARK" xml:space="preserve">
-    <value>Android Dunkel</value>
+    <value>Android Dark</value>
   </data>
   <data name="ANDROID_LIGHT" xml:space="preserve">
-    <value>Android Hell</value>
+    <value>Android Light</value>
   </data>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
-    <value>Automatische Grossschreibung:</value>
+    <value>Αυτόματη προσαρμογή μικρών/κεφαλαίων στις λέξεις </value>
   </data>
   <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
-    <value>Automatische Worterkennung:</value>
+    <value>Αυτόματη συμπλήρωση λέξεων </value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
-    <value>Automatische Satzumstellung:</value>
+    <value>Αυτόματη προσαρμογή προτάσεων.</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
-    <value>Automatische Leertaste zwischen Wörtern:</value>
+    <value>Αυτόματη εισαγωγή κενών μεταξύ των λέξεων </value>
   </data>
   <data name="BACK" xml:space="preserve">
-    <value>ZURÜCK</value>
+    <value>ΠΙΣΩ </value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ZEICHEN
-ZURÜCK</value>
+    <value>ΠΙΣΩ
+ΕΝΑ ΓΡΑΜΜΑ</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>WORT
-ZURÜCK</value>
+    <value>ΠΙΣΩ
+ΜΙΑ ΛΕΞΗ</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass konnte keinen stream von Datei erzeugen '{0}'</value>
+    <value>Δεν κατέστη δυνατή η δημιουργία μιας ροής από το Bass για το αρχείο '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
-    <value>Unten</value>
+    <value>Κάτω </value>
   </data>
   <data name="BREAK" xml:space="preserve">
-    <value>PAUSE</value>
+    <value>BREAK</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Kalibrierung abgebrochen mit der Nachricht: '{0}' </value>
+    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Sind Sie sicher, dass sie neukalibrieren möchten?</value>
+    <value>Είστε σίγουρος ότι θέλετε να ξανακάνετε βαθμονόμηση;</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Ein Fehler ist während der Kalibrierung aufgetreten: '{0}'</value>
+    <value>Παρουσιάστηκε σφάλμα κατά την διάρκεια της βαθμονόμησης με το ακόλουθο μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Kalibrierung fehlgeschlagen mit der Nachricht: '{0}'</value>
+    <value>Αποτυχία βαθμονόμησης με μήνυμα λάθους: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>Kalibrierung kann nicht ohne Maus oder Keyboard vollendet werden. Es ist möglich, dass die Kalibrierung nicht weitergeführt werden kann bis eine Maus oder Keyboard benutzt wird.
-Wollen Sie dennoch neu kalibrieren?</value>
+    <value>Η βαθμονόμηση είναι αδύνατον να ολοκληρωθεί χωρίς χειροκίνητη παρέμβαση, π.χ. χρησιμοποιώντας το ποντίκι. Μπορεί να κολλήσετε στη διαδικασία βαθμονόμησης αν δεν μπορείτε να αλληλεπιδράσετε χειροκίνητα με τον υπολογιστή σας.
+Είστε βέβαιος ότι θα θέλατε να βαθμονομήσετε ξανά τη συσκευή;</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Kalibrierung angehalten ohne erkenntlichen Grund. Nachricht: '{0}'</value>
+    <value>Η βαθμονόμηση σταμάτησε για κάποιον άγνωστο λόγο με μήνυμα: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibrierung erfolgreich! Genauigkeit (Durchschnittliche Fehlereinheit: = {0})</value>
+    <value>Επιτυχία βαθμονόμησης! Ακρίβεια (Μέσος όρος βαθμού λάθους): '{0}'</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>ABBRUCH</value>
+    <value>ΑΚΥΡΩΣΗ</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Aufnahme Timeout (ms):</value>
+    <value>Εκπνοή χρόνου λήψης (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Beim Start nach Updates prüfen:</value>
+    <value>Ελεγχος αναβαθμίσεων κατά την εκκίνηση:</value>
   </data>
   <data name="CLEAR" xml:space="preserve">
-    <value>LÖSCHEN</value>
+    <value>ΚΑΘΑΡΙΣΜΟΣ</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLICK &amp;
-ZIEHEN</value>
+    <value>ΚΛΙΚ
+&amp; ΣΥΡΤΕ</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
-    <value>Klick 1</value>
+    <value>Κλικ 1</value>
   </data>
   <data name="CLICK_SOUND_2" xml:space="preserve">
-    <value>Klick 2</value>
+    <value>Κλικ 2</value>
   </data>
   <data name="CLICK_SOUND_3" xml:space="preserve">
-    <value>Klick 3</value>
+    <value>Κλικ 3</value>
   </data>
   <data name="CLICK_SOUND_4" xml:space="preserve">
-    <value>Klick 4</value>
+    <value>Κλικ 4</value>
   </data>
   <data name="CLICK_SOUND_5" xml:space="preserve">
-    <value>Klick 5</value>
+    <value>Κλικ 5</value>
   </data>
   <data name="CLICK_SOUND_6" xml:space="preserve">
-    <value>Klick 6</value>
+    <value>Κλικ 6</value>
   </data>
   <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOCK
-VERKLEINERN</value>
+    <value>ΣΜΙΚΡΥΝΣΗ
+ΜΠΑΡΑΣ</value>
   </data>
   <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
-    <value>Verkleinerte Dockgrösse (in % von Gesamtgrösse):</value>
+    <value>Συρρίκνωση του πάχους της μπάρας (% μικρότερο από το κανονικό)</value>
   </data>
   <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
-    <value>MENÜ</value>
+    <value>ΜΕΝΟΥ</value>
   </data>
   <data name="CONVERSATION" xml:space="preserve">
-    <value>GESPRÄCH</value>
+    <value>ΣΥΖΗΤΗΣΗ</value>
   </data>
   <data name="CONVERSATION_LAYOUT" xml:space="preserve">
-    <value>Gesprächsschriftart</value>
+    <value>Γράμματα συζήτησης</value>
   </data>
   <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
-    <value>Gesprächsnummern &amp; Zeichen</value>
+    <value>Αριθμοί &amp; Σύμβολα Συζήτησης</value>
   </data>
   <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
-    <value>Nur Gesprächsmodus:</value>
+    <value>Χρήση μόνο συζητήσεων: </value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>Optikey hat festgestellt, dass Ihre Benutzereinstellungsdatei beschädigt ist und repariert werden muss. Dazu wird eine alte Version verwendet oder, falls nicht vorhanden, die Werkseinstellung.
+    <value>Το OptiKey έχει εντοπίσει ότι το αρχείο ρυθμίσεων χρήστη έχει αλλοιωθεί και πρέπει να επιδιορθωθεί. Αυτό θα γίνει επαναφέροντας μία παλαιότερη έκδοση, ή μία προεπιλεγμένη έκδοση αν το πρώτο είναι αδύνατο.
 
-Klicken Sie Ja um die Einstellungen zurückzusetzen und neu zu starten.
+Πατήστε Ναι για επαναφορά των εργοστασιακών ρυθμίσεων και επανεκκίνηση.
 
-Klicken Sie Nein wenn sie selbst die Datei reparieren oder kopieren wollen.</value>
+Πατήστε Όχι για κλείσιμο ούτως ώστε να επιδιορθώσετε χειροκίνητα ή για να αντιγράψετε το αρχείο ρυθμίσεων χρήστη.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Oh ha! Die Benutzereinstellungsdatei sieht beschädigt aus.</value>
+    <value>Ωχ! Το αρχείο ρυθμίσεων χρήστη μοιάζει αλλοιωμένο.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
-    <value>Schlechte Nachrichten - OptiKey ist gestürzt und muss geschlossen werden.
+    <value>Άσχημα νέα - Το OptiKey σκόνταψε μόνο του και πρέπει να κλείσει.
 
-Eine email mit Angaben was passiert ist wäre sehr hilfreich: optikeyfeedback@gmail.com
+Ένα ημέιλ με λεπτομέρειες σχετικά με το τι συνέβη θα ήταν πολύ χρήσιμο: optikeyfeedback@gmail.com
 
-Entschuldigung für die Unannehmlichkeiten.</value>
+Συγγνώμη για την αναστάτωση.</value>
   </data>
   <data name="CRASH_TITLE" xml:space="preserve">
-    <value>Oha!</value>
+    <value>Ωχ!</value>
   </data>
   <data name="CTRL" xml:space="preserve">
     <value>CTRL</value>
   </data>
   <data name="CURRENCIES" xml:space="preserve">
-    <value>WÄHRUNGEN</value>
+    <value>ΝΟΜΙΣΜΑΤΑ</value>
   </data>
   <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
-    <value>Währungen 1</value>
+    <value>Νομίσματα 1</value>
   </data>
   <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
-    <value>Währungen 2</value>
+    <value>Νομίσματα 2</value>
   </data>
   <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
-    <value>Cursorhöhe (pixel)</value>
+    <value>Ύψος κέρσορα (εικονοστοιχεία):</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
-    <value>Cursorbreite (pixel)</value>
+    <value>Πλάτος κέρσορα (εικονοστοιχεία):</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
-    <value>Debug modus:</value>
+    <value>Διαγνωστική λειτουργία εφαρμογής:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>TRANSPARENZ
-ERHÖHEN</value>
+    <value>ΕΛΑΤΤΩΣΗ
+ΑΔΙΑΦΑΝΕΙΑΣ</value>
   </data>
   <data name="DEL" xml:space="preserve">
     <value>DEL</value>
   </data>
   <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>Löschen</value>
+    <value>Διαγραφή</value>
   </data>
   <data name="DIACRITICS" xml:space="preserve">
-    <value>DIAKRITISCH</value>
+    <value>ΤΟΝΟΙ</value>
   </data>
   <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
-    <value>Diakritisch 1</value>
+    <value>Τόνοι 1</value>
   </data>
   <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
-    <value>Diakritisch 2</value>
+    <value>Τόνοι 2</value>
   </data>
   <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
-    <value>Diakritisch 3</value>
+    <value>Τόνοι 3</value>
   </data>
   <data name="DICTIONARY" xml:space="preserve">
-    <value>Wörterbuch</value>
+    <value>Λεξικό </value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Kein Benutzerwörterbuch existiert und original Wörterbuch konnte nicht in diesem Ordner gefunden werden: '{0}'</value>
+    <value>Δεν υπάρχει κάποιο λεξικό χρήστη και το αρχικό λεξικό δεν βρέθηκε χρησιμοποιώντας το μονοπάτι αρχείου: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
-    <value>Für X Sekunden pro Nachrichtbuchstaben zeigen:</value>
+    <value>Εμφάνιση για Χ δευτερόλεπτα ανά χαρακτήρα μηνύματος:</value>
   </data>
   <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
-    <value>Mache an der momentanen Mauscursor Position...</value>
+    <value>Πραγματοποίηση στην τωρινή τοποθεσία...</value>
   </data>
   <data name="DO_AT_POINT" xml:space="preserve">
-    <value>Mache an neuem Punkt...</value>
+    <value>Πραγματοποίηση στο σημείο...</value>
   </data>
   <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PFEIL
-RUNTER</value>
+    <value>ΚΑΤΩ
+ΒΕΛΟΣ</value>
   </data>
   <data name="DURATION_FORMAT" xml:space="preserve">
-    <value>({0:#,###}ms)</value>
+    <value> ({0:#,###}ms)</value>
   </data>
   <data name="END" xml:space="preserve">
-    <value>ENDE</value>
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Αγγλικά (Καναδάς)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Αγγλικά (Ηνωμένο Βασίλειο)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Αγγλικά (ΗΠΑ)</value>
   </data>
   <data name="ENTER" xml:space="preserve">
-    <value>EINGABE</value>
+    <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Gut. '{0}' wurde dem Wörterbuch hinzugefügt.</value>
+    <value>Πολύ καλά! Καταχωρήθηκε στο λεξικό το: '{0}' </value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
-    <value>Fehler:</value>
+    <value>Σφάλμα:</value>
   </data>
   <data name="ESC" xml:space="preserve">
     <value>ESC</value>
   </data>
   <data name="EXPAND" xml:space="preserve">
-    <value>VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ</value>
   </data>
   <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOCK
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΜΠΑΡΑΣ</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN LINKS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN RECHTS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΣΤΟ ΚΑΤΩ ΜΕΡΟΣ</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-LINKS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-RECHTS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΔΕΞΙΑ</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN LINKS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN RECHTS
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN
-VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ
+ΣΤΟ ΠΑΝΩ ΜΕΡΟΣ</value>
   </data>
   <data name="FALLING_SOUND_1" xml:space="preserve">
-    <value>Fallend 1</value>
+    <value>ΗΧΟΣ ΠΤΩΣΗΣ 1</value>
   </data>
   <data name="FALLING_SOUND_2" xml:space="preserve">
-    <value>Fallend 2</value>
+    <value>ΗΧΟΣ ΠΤΩΣΗΣ 2</value>
   </data>
   <data name="FILL_PIE" xml:space="preserve">
-    <value>Wartezeitanzeige füllen</value>
+    <value>Γέμισμα πίτας </value>
   </data>
   <data name="FIXATIONS_DWELL" xml:space="preserve">
-    <value>Fixierungen (verweilen)</value>
+    <value>Στηρίγματα (παραμονής)</value>
   </data>
   <data name="FONT" xml:space="preserve">
-    <value>Schrift</value>
+    <value>Γραμματοσειρά</value>
   </data>
   <data name="FONT_FAMILY_LABEL" xml:space="preserve">
-    <value>Schriftart:</value>
+    <value>Οικογένεια γραμματοσειράς</value>
   </data>
   <data name="FONT_STRETCH_LABEL" xml:space="preserve">
-    <value>Schriftbreite:</value>
+    <value>Διάκενο γραμματοσειράς</value>
   </data>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
-    <value>Schriftdicke:</value>
+    <value>Βάρος γραμματοσειράς</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Γαλλικά (Γαλλία) / Française (France)</value>
   </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
-    <value>Punktgrösse (von % Monitorgrösse):</value>
+    <value>Πλήρες πάχος μπάρας (% της οθόνης)</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Ιχνηλάτης βλέμματος</value>
   </data>
   <data name="GROW" xml:space="preserve">
-    <value>Wachsen</value>
+    <value>Μεγάλωσε </value>
   </data>
   <data name="HOME" xml:space="preserve">
-    <value>HOME</value>
+    <value>ΚΕΝΤΡΙΚΟ MENU</value>
   </data>
   <data name="HORIZONTAL_FILL" xml:space="preserve">
-    <value>Horizontale Ausfüllung (von % Monitorgrösse):</value>
+    <value>Οριζόντια εξάπλωση (ως ποσοστό της οθόνης):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Die letzte Tastenwahl bleibt bestehen, falls nicht voll ausgewählt, für (ms)</value>
+    <value>Χρόνος εκπνοής ατελούς στηρίγματος πλήκτρου (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>TRANSPARENZ
-VERRINGERN</value>
+    <value>ΑΥΞΗΣΗ
+ΑΔΙΑΦΑΝΕΙΑΣ</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
-    <value>Info:</value>
+    <value>Πληροφορίες:</value>
   </data>
   <data name="INS" xml:space="preserve">
     <value>INS</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>...aber wenn es geht vermeiden, falls nicht hilfreich:</value>
+    <value>...αλλά ευφυώς κατέστειλε τα αυτόματα κεφαλαία γράμματα όπου τυχόν δεν βοηθούν:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
-    <value>Derzeitige Tastatur &amp; Sprachenkombination ist nicht gültig</value>
+    <value>Ο τρέχων συνδυασμός πληκτρολογίου και γλώσσας δεν είναι έγκυρος</value>
   </data>
   <data name="JUMP" xml:space="preserve">
-    <value>SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN LINKS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN RECHTS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΣΤΟ ΚΑΤΩ ΜΕΡΟΣ</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-LINKS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΣΤΟ ΑΡΙΣΤΕΡΟ ΜΕΡΟΣ</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-RECHTS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΣΤΟ ΔΕΞΙΟ ΜΕΡΟΣ</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN LINKS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN RECHTS
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN
-SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ
+ΣΤΟ ΠΑΝΩ ΜΕΡΟΣ</value>
   </data>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
-    <value>Tastentextverstellung:</value>
+    <value>Αλλαγή κειμένου πλήκτρου</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Tasten Fixierungszeit um zu Vervollständigen (ms):</value>
+    <value>Χρόνος ολοκλήρωσης απόφασης πλήκτρου (σε ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Tasten Fixierungszeit um Auszuwählen(ms):</value>
+    <value>Χρόνος ολοκλήρωσης κλειδώματος πλήκτρου (σε ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Tastenauswahl Taste von Keyboard:</value>
+    <value>Πλήκτρο επιλογής πλήκτρου από το πληκτρολόγιο:</value>
   </data>
   <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Tastenauswahl Taste von Maustaste:</value>
+    <value>Κουμπί ποντικιού επιλογής πλήκτρου:</value>
   </data>
   <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
-    <value>Tastenauswahl:</value>
+    <value>Επιλογή Πλήκτρου:</value>
   </data>
   <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Tastenauswahl durch:</value>
+    <value>Πηγή επιλογής πλήκτρου:</value>
   </data>
   <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
-    <value>Tastenauswahl: {0}</value>
+    <value>Επιλογή πλήκτρου: {0}</value>
   </data>
   <data name="KEYBOARD_KEY" xml:space="preserve">
-    <value>Tastaturtaste</value>
+    <value>Πλήκτρο πληκτρολογίου</value>
   </data>
   <data name="LANGUAGE" xml:space="preserve">
-    <value>Sprache</value>
+    <value>Γλώσσα</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Tastatursprache: {0}</value>
+    <value>Γλώσσα πληκτρολογίου: {0}</value>
   </data>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Tastatursprache:</value>
+    <value>Γλώσσα πληκτρολογίου:</value>
   </data>
   <data name="LEFT" xml:space="preserve">
-    <value>Links</value>
+    <value>Αριστερά</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PFEIL
-LINKS</value>
+    <value>ΑΡΙΣΤΕΡΑ
+ΒΕΛΑΚΙ</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
-KLICK</value>
+    <value>ΑΡΙΣΤΕΡΑ
+ΚΛΙΚ</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DOPPELKLICK
-LINKS</value>
+    <value>ΑΡΙΣΤΕΡΑ
+ΔΙΠΛΟ ΚΛΙΚ</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS KLICK
-RUNTER/HOCH</value>
+    <value>ΑΡΙΣΤΕΡΑ
+ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="LOOK" xml:space="preserve">
-    <value>Thema</value>
+    <value>Όψη</value>
   </data>
   <data name="LOWER_CASE" xml:space="preserve">
-    <value>Alles in Kleinbuchstaben</value>
+    <value>Όλα μικρά</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MAGNETISCHER
-CURSOR</value>
+    <value>ΜΑΓΝΗΤΙΚΟΣ
+ΚΕΡΣΟΡΑΣ</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
-    <value>LUPE</value>
+    <value>ΜΕΓΕΘΥΝΣΗ</value>
   </data>
   <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
-    <value>Lupenzielvergrösserung (von % Monitorgrösse):</value>
+    <value>Μεγέθυνση προορισμού (ως ποσοστό της οθόνης):</value>
   </data>
   <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
-    <value>Lupenausgangsvergrösserung (von % Monitorgrösse):</value>
+    <value>Μεγέθυνση πηγής (ως ποσοστό της οθόνης):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Verwaltungskonsole: ALT + M</value>
+    <value>Κονσόλα Διαχείρισης: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>OptiKey Verwaltungskonsole</value>
+    <value>Κονσόλα Διαχείρισης OptiKey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
-    <value>Maximale Nummer der Wörterbuchübereinstimmungen:</value>
+    <value>Μέγιστο πλήθος αντιστοιχίσεων στο λεξικό:</value>
   </data>
   <data name="MENU" xml:space="preserve">
-    <value>MENÜ</value>
+    <value>ΜΕΝΟΥ</value>
   </data>
   <data name="MENU_LAYOUT" xml:space="preserve">
-    <value>Menü</value>
+    <value>Μενού</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>KLICK
-MITTE</value>
+    <value>ΜΕΣΑΙΟ
+ΚΛΙΚ</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MITTE KLICK
-RUNTER/HOCH</value>
+    <value>ΜΕΣΑΙΟ
+ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
-    <value>MINIMIEREN</value>
+    <value>ΕΛΑΧΙΣΤΟΠΟΙΗΣΗ</value>
   </data>
   <data name="MINIMISED_LAYOUT" xml:space="preserve">
-    <value>Minimiert</value>
+    <value>Ελαχιστοποιημένο</value>
   </data>
   <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
-    <value>Minimierte Position:</value>
+    <value>Ελαχιστοποιημένη θέση:</value>
   </data>
   <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
-    <value>Minimal Verweilungszeit auf einer Taste um in die Erkennung mit aufzunehmen (ms):</value>
+    <value>Ελάχιστος χρόνος παραμονής σε ένα πλήκτρο για να συμπεριληφθεί στη λήψη (ms):</value>
   </data>
   <data name="MISC" xml:space="preserve">
-    <value>Andere</value>
+    <value>Διάφορα</value>
   </data>
   <data name="MOUSE" xml:space="preserve">
-    <value>MAUS</value>
+    <value>ΠΟΝΤΙΚΙ</value>
   </data>
   <data name="MOUSE_BUTTON" xml:space="preserve">
-    <value>Maustaste</value>
+    <value>Κουμπί ποντικιού</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mausklick 1</value>
+    <value>Κλικ Ποντικιού 1</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mausklick 2</value>
+    <value>Κλικ Ποντικιού 2</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mausklick 3</value>
+    <value>Κλικ Ποντικιού 3</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
-    <value>Mausklick 4</value>
+    <value>Κλικ Ποντικιού 4</value>
   </data>
   <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mausklick:</value>
+    <value>Κλικ Ποντικιού:</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
-    <value>Mausdoppelklick 1</value>
+    <value>Διπλό Κλικ Ποντικιού 1</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
-    <value>Mausdoppelklick 2</value>
+    <value>Διπλό Κλικ Ποντικιού 2</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
-    <value>Mausdoppelklick 3</value>
+    <value>Διπλό Κλικ Ποντικιού 3</value>
   </data>
   <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
-    <value>Mausdoppelklick:</value>
+    <value>Διπλό Κλικ Ποντικιού:</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
-    <value>Maus unten 1</value>
+    <value>Πάτημα κουμπιού ποντικιού 1</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
-    <value>Maus unten 2</value>
+    <value>Πάτημα κουμπιού ποντικιού 2</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
-    <value>Maus unten 3</value>
+    <value>Πάτημα κουμπιού ποντικιού 3</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
-    <value>Maus unten 4</value>
+    <value>Πάτημα κουμπιού ποντικιού 4</value>
   </data>
   <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
-    <value>Maus runter:</value>
+    <value>Πάτημα κουμπιού ποντικιού:</value>
   </data>
   <data name="MOUSE_LAYOUT" xml:space="preserve">
-    <value>Maus</value>
+    <value>Ποντίκι</value>
   </data>
   <data name="MOUSE_POSITION" xml:space="preserve">
-    <value>Mausposition</value>
+    <value>Θέση ποντικιού</value>
   </data>
   <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
-    <value>Mausposition Messinterval (ms):</value>
+    <value>Χρόνος δειγματοληψίας θέσης ποντικιού (ms):</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
-    <value>Mausrad 1</value>
+    <value>Κύλιση Ποντικιού 1</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
-    <value>Mausrad 2</value>
+    <value>Κύλιση Ποντικιού 2</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
-    <value>Mausrad 3</value>
+    <value>Κύλιση Ποντικιού 3</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
-    <value>Mausrad 4</value>
+    <value>Κύλιση Ποντικιού 4</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
-    <value>Mausrad 5</value>
+    <value>Κύλιση Ποντικιού 5</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
-    <value>Mausrad 6</value>
+    <value>Κύλιση Ποντικιού 6</value>
   </data>
   <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
-    <value>Maus scroll:</value>
+    <value>Κύλιση Ποντικιού:</value>
   </data>
   <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
-    <value>Maus oben 1</value>
+    <value>Σήκωμα κουμπιού ποντικιού 1</value>
   </data>
   <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
-    <value>Maus oben 2</value>
+    <value>Σήκωμα κουμπιού ποντικιού 2</value>
   </data>
   <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
-    <value>Maus oben 3</value>
+    <value>Σήκωμα κουμπιού ποντικιού 3</value>
   </data>
   <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
-    <value>Maus oben 4</value>
+    <value>Σήκωμα κουμπιού ποντικιού 4</value>
   </data>
   <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
-    <value>Maus hoch:</value>
+    <value>Σήκωμα κουμπιού ποντικιού:</value>
   </data>
   <data name="MOVE" xml:space="preserve">
-    <value>BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ</value>
   </data>
   <data name="MOVE_BY" xml:space="preserve">
-    <value>Um {0} pixel bewegen:|Um {0} pixel bewegen:</value>
+    <value>Μετακίνηση {0} πίξελ:|Μετακίνηση {0} πίξελ:</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN LINKS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN RECHTS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΚΑΤΩ</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-LINKS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-RECHTS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΔΕΞΙΑ</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BEWEGE
-NACH</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΣΕ</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN LINKS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN RECHTS
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN
-BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ
+ΠΑΝΩ</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
-    <value>Mehrtasten Erkennung</value>
+    <value>Ανίχνευση πολλαπλών κουμπιών</value>
   </data>
   <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
-    <value>Mehrtasten Erkennung aktiviert:</value>
+    <value>Ενεργοποιηση ανίχνευσης πολλαπλών κουμπιών:</value>
   </data>
   <data name="MULTI_KEY_SELECTION" xml:space="preserve">
-    <value>Mehrtasten Auswahl</value>
+    <value>Επιλογή πολλαπλών κουμπιών </value>
   </data>
   <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
-    <value>Mehrtasten Auswahl Ende:</value>
+    <value>Τερματισμός επιλογής πολλαπλών κουμπιών:</value>
   </data>
   <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>MEHRTASTEN
-AUSWAHL</value>
+    <value>ΕΠΙΛΟΓΗ
+ΠΟΛΛΑΠΛΩΝ ΚΟΥΜΠΙΩΝ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
-    <value>Mehrtasten Auswahl Beginn:</value>
+    <value>Εναρξη επιλογης πολλαπλων πληκτρων:</value>
   </data>
   <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
     <value>
-(Der neue Wörterbucheintrag wird Grossbuchstaben enthalten)</value>
+(Η νέα καταχώριση στο λεξικό θα περιέχει κεφαλαία γράμματα)</value>
   </data>
   <data name="NEXT" xml:space="preserve">
-    <value>NÄCHSTES</value>
+    <value>ΕΠΟΜΕΝΟ</value>
   </data>
   <data name="NO" xml:space="preserve">
-    <value>NEIN</value>
+    <value>ΟΧΙ</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
-    <value>Es sieht so aus als ob das Textfeld keine Wörter enthält, die noch nicht im Wörterbuch sind.</value>
+    <value>Το σημειωματάριο δεν φαίνεται να περιέχει λέξεις ή φράσεις οι οποίες δεν υπάρχουν ήδη στο λεξικό.</value>
   </data>
   <data name="NO_SOUND" xml:space="preserve">
-    <value>Kein</value>
+    <value>Κανένα</value>
   </data>
   <data name="NOTHING_NEW" xml:space="preserve">
-    <value>Hmm, nichts Neues hier!</value>
+    <value>Χμμ, τίποτα καινούργιο εδώ!</value>
   </data>
   <data name="NOTIFICATIONS" xml:space="preserve">
-    <value>Benachrichtigungen</value>
+    <value>Ειδοποιήσεις</value>
   </data>
   <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>NUM
 LK</value>
   </data>
   <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NUMMERN
-SYMBOLE</value>
+    <value>NUM
+SYM</value>
   </data>
   <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
-    <value>NUMMERN
-SYMBOLE</value>
+    <value>ΑΡΙΘΜΟΙ
+&amp; ΣΥΜΒΟΛΑ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
-    <value>Nummern &amp; Symbole 1</value>
+    <value>Αριθμητικά &amp; Σύμβολα 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
-    <value>Nummern &amp; Symbole 2</value>
+    <value>Αριθμητικά &amp; Σύμβολα 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
-    <value>Nummern &amp; Symbole 3</value>
+    <value>Αριθμητικά &amp; Σύμβολα 3</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>ΕΝΤΑΞΕΙ</value>
   </data>
   <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
-    <value>OptiKey : Tippen· Klicken· Sprechen</value>
+    <value>OptiKey : Πληκτρολογήστε · Κάντε κλικ · Μιλήστε</value>
   </data>
   <data name="OTHER" xml:space="preserve">
-    <value>Andere</value>
+    <value>Άλλο</value>
   </data>
   <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
-    <value>Hauptfenster konnte nicht identifizert werden. Es kann nicht fortgefahren werden</value>
+    <value>Το παράθυρο γονέας δεν μπορούσε να βρεθει. Δεν γινεται να συνεχιστει η εκτελεση.</value>
   </data>
   <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BILD
-▼</value>
+    <value>PG
+DN</value>
   </data>
   <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BILD
-▲</value>
+    <value>PG
+UP</value>
   </data>
   <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
-    <value>Physische Tasten</value>
+    <value>Φυσικά πλήκτρα</value>
   </data>
   <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PHYSISCHE
-TASTEN</value>
+    <value>ΦΥΣΙΚΑ
+ΠΛΗΚΤΡΑ</value>
   </data>
   <data name="PLAY_SOUND" xml:space="preserve">
-    <value>Abspielen</value>
+    <value>Αναπαραγωγή</value>
   </data>
   <data name="POINT_AND_SELECTING" xml:space="preserve">
-    <value>Eingabe &amp; Auswahl</value>
+    <value>Στίξη &amp; Επιλογή</value>
   </data>
   <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
-    <value>Punkt Fixierungsradius (pixels):</value>
+    <value>Διάμετρος απόφασης σημείου (σε pixel):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Punkt Fixierungszeit um zu Vervollständigen (ms):</value>
+    <value>Χρόνος ολοκλήρωσης απόφασης σημειου (σε ms):</value>
   </data>
   <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Punkt Fixierungszeit um Auszuwählen(ms):</value>
+    <value>Χρονος ολοκληρωσης κλειδωματος σημειου (σε ms):</value>
   </data>
   <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
-    <value>Punkt Auszuwählradius (pixels):</value>
+    <value>Διαμετρος κλειδοματος σημειου (σε pixel):</value>
   </data>
   <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
-    <value>Punktauswahl: {0}</value>
+    <value>Επιλογη σημειου: {0}</value>
   </data>
   <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
-    <value>Punktauswahl Tastaturtaste:</value>
+    <value>Πληκτρο επιλογης σημειου:</value>
   </data>
   <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
-    <value>Punktauswahl Maustaste:</value>
+    <value>Κουμπι ποντικιου επιλογης σημειου:</value>
   </data>
   <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
-    <value>Punktauswahl durch:</value>
+    <value>Πηγη επιλογης σημειου:</value>
   </data>
   <data name="POINTING" xml:space="preserve">
-    <value>Eingabe</value>
+    <value>Δείχνοντας</value>
   </data>
   <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
-    <value>Eingabe: {0}</value>
+    <value>Δείχνοντας σε: {0}</value>
   </data>
   <data name="PREV" xml:space="preserve">
-    <value>VORHERIGES</value>
+    <value>ΠΡΟΗΓΟΥΜΕΝΟ</value>
   </data>
   <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>DRUCKEN</value>
+    <value>PRNT
+SCR</value>
   </data>
   <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
-    <value>PROBLEM DAS KEYBOARD ZU LADEN</value>
+    <value>ΣΦΑΛΜΑ ΦΟΡΤΩΣΗΣ ΠΛΗΚΤΡΟΛΟΓΙΟΥ</value>
   </data>
   <data name="QUIT" xml:space="preserve">
-    <value>BEENDEN</value>
+    <value>ΕΞΟΔΟΣ</value>
   </data>
   <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Sind Sie ganz sicher, dass Sie beenden wollen?</value>
+    <value>Είστε απολύτως βέβαιος ότι θέλετε να τερματίσετε το πρόγραμμα;</value>
   </data>
   <data name="QUIT_MESSAGE" xml:space="preserve">
-    <value>Wollen Sie beenden?</value>
+    <value>Είστε βέβαιος ότι θέλετε να τερματίσετε το πρόγραμμα;</value>
   </data>
   <data name="RATE_LABEL" xml:space="preserve">
-    <value>Geschwindigkeit:</value>
+    <value>Αξιολόγηση:</value>
   </data>
   <data name="RE_CALIBRATE" xml:space="preserve">
-    <value>NEU-
-KALIBRIERUNG</value>
+    <value>ΑΝΑ-ΒΑΘΜΟΝΟΜΗΣΗ</value>
   </data>
   <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LETZTES
-WIEDERHOLEN</value>
+    <value>ΕΠΑΝΑΛΑΒΕ
+ΤΕΛΕΥΤΑΙΟ</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>Audio und/oder Wörterbuch wurde nicht der Verwaltungsfensteraktion zur Verfügung gestellt.</value>
+    <value>Οι υπηρεσίες ήχου και/η λεξικού δεν τροφοδοτηθήκαν στο παράθυρο διαχείρισης ενεργείας.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
-    <value>OptiKey muss neu gestartet werden um die Änderungen zu übernehmen.
-Bitte OK klicken um neuzustarten oder ABBRECHEN um die Änderungen zu verwerfen.</value>
+    <value>Το OptiKey πρέπει να επανεκκινηθεί ώστε να εφαρμοστούν οι αλλαγές.
+Παρακαλώ πατήστε ΟΚ για να συνεχίσετε με την επανεκκίνηση, ή ΑΚΥΡΟ για να απορρίψετε τις αλλαγές.</value>
   </data>
   <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
-    <value>WIEDERHERSTELLEN</value>
+    <value>Επαναφορα</value>
   </data>
   <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Eine nicht voll ausgewählte Taste erfordert eine komplett neue Fixierung:</value>
+    <value>Επαναφορά ατελής επικέντρωσης πλήκτρου απαιτεί εκ νέου προσπάθεια.</value>
   </data>
   <data name="RIGHT" xml:space="preserve">
-    <value>Rechts</value>
+    <value>Δεξιά</value>
   </data>
   <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PFEIL
-RECHTS</value>
+    <value>ΔΕΞΙΑ
+ΒΕΛΑΚΙ</value>
   </data>
   <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-KLICK</value>
+    <value>ΔΕΞΙ
+ΚΛΙΚ</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS KLICK
-RUNTER/HOCH</value>
+    <value>ΔΕΞΙ
+ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
-    <value>Aufsteigend 1</value>
+    <value>Ανόρθωση 1</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
-    <value>Aufsteigend 2</value>
+    <value>Ανόρθωση 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value> Ρωσικά (Ρωσία) / Русский (Россия)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
-    <value>Die Gleiche wie Dockposition</value>
+    <value>Ίδιο με το μέρος πλεύρισης</value>
   </data>
   <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
-    <value>Textfeld Zeilenanzahl:</value>
+    <value># σειρές σημειωματάριου:</value>
   </data>
   <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ROLLEN</value>
+    <value>SCR
+LK</value>
   </data>
   <data name="SCROLL_BY" xml:space="preserve">
-    <value>Um {0} klicks scrollen:|Um {0} klicks scrollen</value>
+    <value>Κυλιση κατα {0} κλικ:|Κυλιση κατα {0} κλικς</value>
   </data>
   <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>HINUNTER
-SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ
+ΚΑΤΩ</value>
   </data>
   <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>LINKS
-SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ
+ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>RECHTS
-SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ
+ΔΕΞΙΑ</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>HINAUF
-SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ
+ΠΑΝΩ</value>
   </data>
   <data name="SELECTION" xml:space="preserve">
-    <value>Auswahl</value>
+    <value>Επιλογή</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Verhalten der Auswahlsfortschrittsanzeige:</value>
+    <value>Συμπεριφορα δεικτη προοδου επιλογης:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Auswahlsfortschrittsanzeige Endgrösse (%):</value>
+    <value>Μέγεθος τέλους δείκτη προόδου επιλογής (%):</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Auswahlsfortschrittsanzeige Startgrösse (%):</value>
+    <value>Μέγεθος αρχης δείκτη προόδου επιλογής (%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
-    <value>GROSS</value>
+    <value>SHIFT</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Zeige Willkommensbild bei Start:</value>
+    <value>Εμφανηση λογοτιπου κατα την εκινηση:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
-    <value>VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN LINKS
-VERKLEINERN</value>
+    <value>ΣΜΙΚΡΥΝΣΗ
+ΚΑΤΩ &amp; ΣΥΡΡΙΚΝΩΣΗ</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN RECHTS
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-UNTEN
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΚΑΤΩ</value>
   </data>
   <data name="SHRINK_INDICATOR" xml:space="preserve">
-    <value>Verkleinern</value>
+    <value>Συρρίκνωση</value>
   </data>
   <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-LINKS
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-RECHTS
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΔΕΞΙΑ</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN LINKS
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ 
+ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN RECHTS
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>NACH
-OBEN
-VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ
+ΠΑΝΩ</value>
   </data>
   <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
-    <value>(Ein Tipp: Ähnliche Einträge sind schon im Wörterbuch: {0})</value>
+    <value>(Προς ενημέρωση σας υπάρχουν παρόμοιες εισαγωγές στο λεξικό: {0})</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>GRÖSSE
-POSITION</value>
+    <value>ΜΕΓΕΘΟΣ &amp;
+ΘΕΣΗ</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
-    <value>Grösse &amp; Position</value>
+    <value>Μέγεθος &amp; Θέση</value>
   </data>
   <data name="SLEEP" xml:space="preserve">
-    <value>STANDBY</value>
+    <value>ΑΔΡΑΝΟΠΟΙΗΣΗ</value>
   </data>
   <data name="SOUND_EFFECTS" xml:space="preserve">
-    <value>Soundeffekte</value>
+    <value>Εφέ ήχου</value>
   </data>
   <data name="SOUNDS" xml:space="preserve">
-    <value>Töne</value>
+    <value>Ήχοι </value>
   </data>
   <data name="SOURCE_LABEL" xml:space="preserve">
-    <value>Herkunft:</value>
+    <value>Πηγή:</value>
   </data>
   <data name="SPACE" xml:space="preserve">
-    <value>LEERTASTE</value>
+    <value>ΚΕΝΟ</value>
   </data>
   <data name="SPEAK" xml:space="preserve">
-    <value>SPRECHEN</value>
+    <value>ΜΙΛΗΣΤΕ</value>
   </data>
   <data name="SPEECH" xml:space="preserve">
-    <value>Sprache</value>
+    <value>Ομιλία</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Ausgangstastatur:</value>
+    <value>Αρχικό πληκτρολόγιο:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
-    <value>Abbruchsignal:</value>
+    <value>Σήμα διακοπής:</value>
   </data>
   <data name="SUCCESS" xml:space="preserve">
-    <value>Erfolg</value>
+    <value>Επιτυχία </value>
   </data>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
-    <value>Ignoriere Modifizierungstasten wenn in Maustastatur:</value>
+    <value>Καταστολή πλήκτρων παραμετροποίησης όταν χρησιμοποιείτε το πληκτρολόγιο ποντικιού:</value>
+  </data>
+    <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Καταστολή των πλήκτρων τροποποίησης για όλες τις δράσεις του ποντικού:</value>
   </data>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
-    <value>Nicht in der Lage TheEyeTribe GazeManager zu aktiveren! Bitte vergewissern, dass der Server funktioniert und das Gerät angeschlossen ist. Dann neu probieren.</value>
+    <value>Η ενεργοποίηση του TheEyeTribe GazeManager δεν κατέστη δυνατή! Παρακαλώ ελέγξτε αν ο διακομιστής εκτελείται και αν η συσκευή είναι συνδεδεμένη και προσπαθήστε ξανά.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe wurde nicht kalibriert. Keine Daten werden empfangen bis die Kalibrierung abgeschlossen ist.</value>
+    <value>Το TheEyeTribe δεν έχει βαθμονομηθεί. Δεν θα ληφθούν δεδομένα ωσότου η βαθμονόμηση ολοκληρωθεί.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Kalibrierung kann nicht versucht werden, da kein EyeX zur Verfügung steht.</value>
+    <value>Αδυναμία βαθμονόμησης καθώς η μηχανή EyeX δεν είναι διαθέσιμη.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
-    <value>Thema:</value>
+    <value>Θέμα:</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
-    <value>Zeit bis ein Punkt irrelevant wird (ms):</value>
+    <value>Χρόνος μεχρι το σημειο γινει ακυρο (ms):</value>
   </data>
   <data name="TITLE_CASE" xml:space="preserve">
-    <value>Wörter sind grossgeschrieben</value>
+    <value>Τα γράμματα των λέξεων γίνονται κεφαλαία</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
   </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
-    <value>Kalibrierung abgeschlossen, oder möglicherweise abgebrochen. Aber Alles funktioniert jetzt wieder.</value>
+    <value>Η βαθμονόμηση ολοκληρώθηκε, ή πιθανώς ακυρώθηκε, αλλά όλα δουλεύουν πάλι!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine kann nicht gefunden werden. Bitte installieren Sie die Tobii EyeX Engine und versuchen erneut.</value>
+    <value>Η Μηχανή Tobii EyeX δεν κατέστη δυνατό να βρεθεί. Παρακαλώ εγκαταστήστε την Μηχανή EyeX και ξαναπροσπαθήστε. </value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine läuft nicht. Bitte starten Sie die Tobii EyeX Engine und versuchen erneut.</value>
+    <value>Η Μηχανή Tobii EyeX δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii EyeX και ξαναπροσπαθήστε.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
-    <value>Ton 1</value>
+    <value>Τόνος 1</value>
   </data>
   <data name="TONE_SOUND_2" xml:space="preserve">
-    <value>Ton 2</value>
+    <value>Τόνος 2</value>
   </data>
   <data name="TONE_SOUND_3" xml:space="preserve">
-    <value>Ton 3</value>
+    <value>Τόνος 3</value>
   </data>
   <data name="TONE_SOUND_4" xml:space="preserve">
-    <value>Ton 4</value>
+    <value>Τόνος 4</value>
   </data>
   <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
-    <value>Trigger Taste erneut gedrückt</value>
+    <value>Ενεργοποίηση διπλοπατήματος πλήκτρου/κουμπιού</value>
   </data>
   <data name="TRIGGER_RELEASED" xml:space="preserve">
-    <value>Trigger Taste losgelassen</value>
+    <value>Ενεργοποίηση σηκώματος πλήκτρου/κουμπιού</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>Ich kann nicht messen, wohin Sie ihre Aufmerksamkeit richten. Gibt es ein Problem mit dem Eingabegerät? Ist es angeschlossen, angeschalten, kalibiert, usw?</value>
+    <value>Δεν μπορώ να εντοπίσω προς τα πού κατευθύνετε την προσοχή σας. Μήπως υπάρχει κάποιο πρόβλημα με τη συσκευή εισόδου; Είναι συνδεδεμένη, σε λειτουργία, βαθμονομημένη, κλπ;</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Nicht in der Lage, die derzeitige Erhöhung festzustellen.</value>
+    <value>Δεν κατέστη δυνατό να υπολογιστεί το τρέχον ύψος.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Es gab ein Problem die Stimme einzustellen auf '{0}'{1}</value>
+    <value>Παρουσιάστηκε ένα πρόβλημα όταν βάζαμε την φωνή σε '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
-    <value>Es ist etwas schief gelaufen, aber ich weiss nicht was - bitte schauen Sie in den Logs nach</value>
+    <value>Κάτι πήγε πολύ στραβά... άλλα δεν γνωρίζουμε τι... - παρακαλώ ελέγξετε τα αρχεία καταγραφής (logs) για περισσότερες πληροφορίες για το τι έγινε. </value>
   </data>
   <data name="UP" xml:space="preserve">
-    <value>Oben</value>
+    <value>Κορυφή</value>
   </data>
   <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>PFEIL
-HOCH</value>
+    <value>ΠΑΝΩ
+ΒΕΛΟΣ</value>
   </data>
   <data name="UPDATE_AVAILABLE" xml:space="preserve">
-    <value>UPDATE GEFUNDEN!</value>
+    <value>ΕΝΗΜΕΡΩΣΗ ΔΙΑΘΕΣΙΜΗ!</value>
   </data>
   <data name="UPPER_CASE" xml:space="preserve">
-    <value>Alles in Grossbuchstaben</value>
+    <value>Όλα κεφαλαία</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
-    <value>Bitte gehen Sie auf www.optikey.org um die neuste Version herunterzuladen ({0})
-Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT + M) abschalten.</value>
+    <value>Παρακαλώ επισκεφθείτε τον ιστότοπο www.optikey.org για να κατεβάσετε την τελευταία έκδοση ({0})
+Μπορείτε να απενεργοποιήσετε τον έλεγχο ενημερώσεων από την Κονσόλα Διαχείρισης (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>Darf Ich OptiKey neustarten?</value>
+    <value>Να γίνει επανεκκίνηση του OptiKey;</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
-    <value>Version: {0}</value>
+    <value>Έκδοση: {0}</value>
   </data>
   <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
-    <value>Vertikale Ausfüllung (von % Monitorgrösse):</value>
+    <value>Κάθετο γέμισμα (ως ποσοστό της οθόνης):</value>
   </data>
   <data name="VISUALS" xml:space="preserve">
-    <value>Visuelles</value>
+    <value>Γραφικά</value>
   </data>
   <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
-    <value>(von Einstellungen)</value>
+    <value>(από ρυθμίσεις)</value>
   </data>
   <data name="VOICE_LABEL" xml:space="preserve">
-    <value>Stimme:</value>
+    <value>Φωνή:</value>
   </data>
   <data name="VOLUME_LABEL" xml:space="preserve">
-    <value>Lautstärke:</value>
+    <value>Ένταση:</value>
   </data>
   <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
-    <value>Webseite: www.optikey.org</value>
+    <value>Ιστότοπος: www.optikey.org</value>
   </data>
   <data name="WIN" xml:space="preserve">
-    <value>WINDOWS</value>
+    <value>WIN</value>
   </data>
   <data name="WINDOW_TITLE" xml:space="preserve">
     <value>OptiKey v{0}</value>
   </data>
   <data name="WORDS" xml:space="preserve">
-    <value>Wörter</value>
+    <value>Λέξεις</value>
   </data>
   <data name="YES" xml:space="preserve">
-    <value>JA</value>
+    <value>ΝΑΙ</value>
   </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
-    <value>Buchstaben</value>
+    <value>Γράμματα</value>
   </data>
   <data name="HIGH" xml:space="preserve">
-    <value>Hoch</value>
+    <value>Ψηλα</value>
   </data>
   <data name="LOW" xml:space="preserve">
-    <value>Niedrig</value>
+    <value>Χαμηλά</value>
   </data>
   <data name="MEDIUM" xml:space="preserve">
-    <value>Mittel</value>
+    <value>Μεσαία</value>
   </data>
   <data name="NONE" xml:space="preserve">
-    <value>Keine</value>
+    <value>Κανένα</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Datastream Verarbeitungsrate:</value>
+    <value>Ορισμος μεγεθους επεξεργασιας της ροης δεδομενων:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Γερμανικά (Γερμανία) / Deutsch (Deutschland)</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Menüsprache: {0}</value>
+    <value>Γλώσσα διεπαφής χρήστη: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Menüsprache:</value>
+    <value>Γλώσσα διεπαφής χρήστη:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
-    <value>Simuliere Tastenkombinationen bei Buchstaben-Eingabe:</value>
+    <value>Προσομοιωση φυσικων πατηματων πληκτρων κατα την διαρκεια εισαγωγης χαρακτηρων:</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Γαλλικά (Γαλλία)
+Française (France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Γερμανικά (Γερμανία)
+Deutsch (Deutschland)</value>
   </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
-    <value>Unterdrücke Mausvergrösserung für Scrollfunktionen:</value>
+    <value>Απενεργοποίηση της μεγέθυνσης ποντικιού όταν γίνετε κύλιση:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Ρωσικά (Ρωσία)
+Русский (Россия)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
-    <value>Rahmendicke der Unterhaltungstastatur (links, oben, rechts, unten in px):</value>
+    <value>Πάχος συνόρων πληκτρολογίου συζήτησης (αριστερά, πάνω, δεξιά και κάτω σε pixel):</value>
   </data>
   <data name="BACK_ONE" xml:space="preserve">
-    <value>EINS ZURÜCK</value>
+    <value>ΠΙΣΩ ΕΝΑ</value>
   </data>
   <data name="BACK_WORD" xml:space="preserve">
-    <value>WORT ZURÜCK</value>
+    <value>ΠΙΣΩ ΜΙΑ ΛΕΞΗ</value>
   </data>
   <data name="SUGGESTION_1" xml:space="preserve">
-    <value>EMPFEHLUNG 1</value>
+    <value>ΥΠΟΔΕΙΞΗ 1</value>
   </data>
   <data name="SUGGESTION_2" xml:space="preserve">
-    <value>EMPFEHLUNG 2</value>
+    <value>ΥΠΟΔΕΙΞΗ 2</value>
   </data>
   <data name="SUGGESTION_3" xml:space="preserve">
-    <value>EMPFEHLUNG 3</value>
+    <value>ΥΠΟΔΕΙΞΗ 3</value>
   </data>
   <data name="SUGGESTION_4" xml:space="preserve">
-    <value>EMPFEHLUNG 4</value>
+    <value>ΥΠΟΔΕΙΞΗ 4</value>
   </data>
   <data name="SUGGESTION_5" xml:space="preserve">
-    <value>EMPFEHLUNG 5</value>
+    <value>ΥΠΟΔΕΙΞΗ 5</value>
   </data>
   <data name="SUGGESTION_6" xml:space="preserve">
-    <value>EMPFEHLUNG 6</value>
+    <value>ΥΠΟΔΕΙΞΗ 6</value>
   </data>
   <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
-    <value>EMPFEHLUNGSTASTEN:</value>
+    <value>Πλήκτρα υποδείξεων</value>
   </data>
   <data name="ADD_TO_DICTIONARY" xml:space="preserve">
-    <value>ZUM WÖRTERBUCH HINZUFÜGEN</value>
+    <value>ΠΡΟΣΘΗΚΗ ΣΤΟ ΛΕΞΙΚΟ</value>
   </data>
   <data name="COLLAPSE_DOCK" xml:space="preserve">
-    <value>DOCK VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΜΠΑΡΑΣ </value>
   </data>
   <data name="DOWN_ARROW" xml:space="preserve">
-    <value>PFEIL RUNTER</value>
+    <value>ΚΑΤΩ ΒΕΛΟΣ</value>
   </data>
   <data name="F1" xml:space="preserve">
     <value>F1</value>
@@ -1304,276 +1320,273 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
     <value>F9</value>
   </data>
   <data name="LEFT_ARROW" xml:space="preserve">
-    <value>PFEIL LINKS</value>
+    <value>ΑΡΙΣΤΕΡΟ ΒΕΛΟΣ</value>
   </data>
   <data name="RIGHT_ARROW" xml:space="preserve">
-    <value>PFEIL RECHTS</value>
+    <value>ΔΕΞΙ ΒΕΛΟΣ</value>
   </data>
   <data name="UP_ARROW" xml:space="preserve">
-    <value>PFEIL HOCH</value>
+    <value>ΠΑΝΩ ΒΕΛΟΣ</value>
   </data>
   <data name="CLICK_AND_DRAG" xml:space="preserve">
-    <value>KLICK &amp; ZIEHEN</value>
+    <value>KANTE ΚΛΙΚ &amp; ΣYΡEΤΕ </value>
   </data>
   <data name="CURRENCIES_1" xml:space="preserve">
-    <value>WÄHRUNGEN 1</value>
+    <value>ΝΟΜΙΣΜΑΤΑ 1</value>
   </data>
   <data name="CURRENCIES_2" xml:space="preserve">
-    <value>WÄHRUNGEN 2</value>
+    <value>ΝΟΜΙΣΜΑΤΑ 2</value>
   </data>
   <data name="DECREASE_OPACITY" xml:space="preserve">
-    <value>TRANSPARENZ VERRINGERN</value>
+    <value>ΜΕΙΩΣΗ ΑΔΙΦΑΝΕΙΑΣ</value>
   </data>
   <data name="DIACRITICS_1" xml:space="preserve">
-    <value>DIAKRITISCH 1</value>
+    <value>ΔΙΑΚΡΙΤΙΚΑ 1</value>
   </data>
   <data name="DIACRITICS_2" xml:space="preserve">
-    <value>DIAKRITISCH 2</value>
+    <value>ΔΙΑΚΡΙΤΙΚΑ 2</value>
   </data>
   <data name="DIACRITICS_3" xml:space="preserve">
-    <value>DIAKRITISCH 3</value>
+    <value>ΔΙΑΚΡΙΤΙΚΑ 3</value>
   </data>
   <data name="EXPAND_DOCK" xml:space="preserve">
-    <value>DOCK VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΜΠΑΡΑΣ</value>
   </data>
   <data name="EXPAND_DOWN" xml:space="preserve">
-    <value>UNTEN VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΚΑΤΩ</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
-    <value>UNTEN LINKS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>UNTEN RECHTS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="EXPAND_LEFT" xml:space="preserve">
-    <value>LINKS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_RIGHT" xml:space="preserve">
-    <value>RECHTS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΔΕΞΙΑ</value>
   </data>
   <data name="EXPAND_UP" xml:space="preserve">
-    <value>OBEN VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΠΑΝΩ</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
-    <value>OBEN LINKS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
-    <value>OBEN RECHTS VERGRÖSSERN</value>
+    <value>ΕΠΕΚΤΑΣΗ ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="INCREASE_OPACITY" xml:space="preserve">
-    <value>TRANSPARENZ ERHÖHEN</value>
+    <value>ΑΥΞΗΣΗ ΑΔΙΑΦΑΝΕΙΑΣ</value>
   </data>
   <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
-    <value>NUMMERN &amp; SYMBOLE 1</value>
+    <value>ΑΡΙΘΜΟΙ &amp; ΣΥΜΒΟΛΑ 1</value>
   </data>
   <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
-    <value>NUMMERN &amp; SYMBOLE 2</value>
+    <value>ΑΡΙΘΜΟΙ &amp; ΣΥΜΒΟΛΑ 2</value>
   </data>
   <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
-    <value>NUMMERN &amp; SYMBOLE 3</value>
+    <value>ΑΡΙΘΜΟΙ &amp; ΣΥΜΒΟΛΑ 3</value>
   </data>
   <data name="PHYSICAL_KEYS" xml:space="preserve">
-    <value>PHYSISCHE TASTEN</value>
+    <value>ΦΥΣΙΚΑ ΠΛΗΚΤΡΑ</value>
   </data>
   <data name="SIZE_AND_POSITION" xml:space="preserve">
-    <value>GRÖSSE &amp; POSITION</value>
+    <value>ΜΕΓΕΘΟΣ &amp; ΘΕΣΗ</value>
   </data>
   <data name="MAGNETIC_CURSOR" xml:space="preserve">
-    <value>MAGNETISCHER CURSOR</value>
+    <value>ΜΑΓΝΗΤΙΚΟΣ ΚΕΡΣΟΡΑΣ</value>
   </data>
   <data name="MIDDLE_CLICK" xml:space="preserve">
-    <value>KLICK MITTE</value>
+    <value>ΜΕΣΑΙΟ ΚΛΙΚ</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>MITTE RUNTER/HOCH</value>
+    <value>ΜΕΣΑΙΟ ΚΛΙΚ ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
-    <value>UM ANZAHL PIXEL BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΣΕ ΑΡΙΘΜΟ PIXEL</value>
   </data>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
-    <value>PIXELANZAHL FESTLEGEN</value>
+    <value>ΜΕΓΕΘΟΣ ΑΥΞΟΜΕΙΩΣΗΣ ΣΕ PIXEL</value>
   </data>
   <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>GESPRÄCH ALFA</value>
+    <value>ΤΙΜΗ ΑΛΦΑ (ΔΙΑΦΑΝΕΙΑΣ) ΣΥΖΗΤΗΣΗΣ</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
-    <value>GESPRÄCH NUMMERN &amp; SYMBOLE</value>
+    <value>ΑΡΙΘΜΙΤΙΚΑ &amp; ΣΥΜΒΟΛΑ ΣΥΖΗΤΗΣΗΣ</value>
   </data>
   <data name="JUMP_DOWN" xml:space="preserve">
-    <value>UNTEN SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΚΑΤΩ</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
-    <value>UNTEN LINKS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>UNTEN RECHTS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="JUMP_LEFT" xml:space="preserve">
-    <value>LINKS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="JUMP_RIGHT" xml:space="preserve">
-    <value>RECHTS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΔΕΞΙΑ</value>
   </data>
   <data name="JUMP_UP" xml:space="preserve">
-    <value>OBEN SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΠΑΝΩ</value>
   </data>
   <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
-    <value>OBEN &amp; LINKS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
-    <value>OBEN &amp; RECHTS SPRINGEN</value>
+    <value>ΑΝΑΠΗΔΗΣΕ ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="LEFT_CLICK" xml:space="preserve">
-    <value>LINKS KLICK</value>
+    <value>ΑΡΙΣΤΕΡΟ ΚΛΙΚ</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
-    <value>DOPPELKLICK LINKS</value>
+    <value>ΑΡΙΣΤΕΡΟ ΔΙΠΛΟ ΚΛΙΚ</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
-    <value>RUNTER/HOCH LINKS</value>
+    <value>ΑΡΙΣΤΕΡΟ ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
-    <value>HERUNTER BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΚΑΤΩ</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
-    <value>UNTEN&amp;  LINKS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>UNTEN &amp; RECHTS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="MOVE_LEFT" xml:space="preserve">
-    <value>LINKS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_RIGHT" xml:space="preserve">
-    <value>RECHTS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΔΕΞΙΑ</value>
   </data>
   <data name="MOVE_TO" xml:space="preserve">
-    <value>BEWEGE NACH</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΣΕ</value>
   </data>
   <data name="MOVE_UP" xml:space="preserve">
-    <value>HERAUF BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΠΑΝΩ</value>
   </data>
   <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
-    <value>OBEN &amp; LINKS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
-    <value>OBEN &amp; RECHTS BEWEGEN</value>
+    <value>ΜΕΤΑΚΙΝΗΣΗ ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
-    <value>MEHRTASTEN AUSWAHL</value>
+    <value>ΕΠΙΛΟΓΗ ΠΟΛΛΑΠΛΩΝ-ΠΛΗΚΤΡΩΝ</value>
   </data>
   <data name="NUM_LK" xml:space="preserve">
     <value>NUM LK</value>
   </data>
   <data name="PG_DN" xml:space="preserve">
-    <value>BILD ▼</value>
+    <value>PG DN</value>
   </data>
   <data name="PG_UP" xml:space="preserve">
-    <value>BILD ▲</value>
+    <value>PG UP</value>
   </data>
   <data name="PRNT_SCR" xml:space="preserve">
-    <value>DRUCKEN</value>
+    <value>PRNT SCR</value>
   </data>
   <data name="REPEAT_LAST" xml:space="preserve">
-    <value>LETZTE WIEDERHOLEN</value>
+    <value>ΕΠΑΝΑΛΗΨΗ ΤΕΛΕΥΤΑΙΟΥ</value>
   </data>
   <data name="RIGHT_CLICK" xml:space="preserve">
-    <value>RECHTS KLICK</value>
+    <value>ΔΕΞΙ ΚΛΙΚ</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
-    <value>RECHTS HOCH/RUNTER</value>
+    <value>ΔΕΞΙΑ ΚΑΤΩ/ΠΑΝΩ</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
-    <value>ROLLEN</value>
+    <value>SCR LK</value>
   </data>
   <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
-    <value>SCROLLANZAHL IN KLICKS</value>
+    <value>ΜΕΓΕΘΟΣ ΚΥΛΙΣΗΣ ΣΕ ΚΛΙΚΣ</value>
   </data>
   <data name="SCROLL_DOWN" xml:space="preserve">
-    <value>RUNTER SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ ΚΑΤΩ</value>
   </data>
   <data name="SCROLL_LEFT" xml:space="preserve">
-    <value>LINKS SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SCROLL_RIGHT" xml:space="preserve">
-    <value>RECHTS SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ ΔΕΞΙΑ</value>
   </data>
   <data name="SCROLL_UP" xml:space="preserve">
-    <value>HINAUF SCROLLEN</value>
+    <value>ΚΥΛΙΣΗ ΠΑΝΩ</value>
   </data>
   <data name="SHRINK_DOWN" xml:space="preserve">
-    <value>UNTEN VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΚΑΤΩ</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
-    <value>UNTEN &amp; LINKS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΚΑΤΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>UNTEN &amp; RECHTS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΚΑΤΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
-    <value>LINKS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SHRINK_RIGHT" xml:space="preserve">
-    <value>RECHTS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΔΕΞΙΑ</value>
   </data>
   <data name="SHRINK_UP" xml:space="preserve">
-    <value>OBEN VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΠΑΝΩ</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
-    <value>OBEN &amp; LINKS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΠΑΝΩ &amp; ΑΡΙΣΤΕΡΑ</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
-    <value>OBEN &amp; RECHTS VERKLEINERN</value>
+    <value>ΣΥΡΡΙΚΝΩΣΗ ΠΑΝΩ &amp; ΔΕΞΙΑ</value>
   </data>
   <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
-    <value>TASTATURTASTEN ÄNDERN:</value>
+    <value>ΑΛΛΑΓΗ ΠΛΗΚΤΡΩΝ ΠΛΗΚΤΡΟΛΟΓΙΟΥ:</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>AKTIONSTASTEN DOCKEN:</value>
+    <value>Πλήκτρα ενεργείας πλεύρισης:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Überschreibung der individuellen Tastenfixierungszeiten (ms):</value>
+    <value>Παρακάμψεις χρόνου ολοκληρωησης για μεμονωμένα πλήκτρα (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>SPRACHENTASTEN ÄNDERN:</value>
+    <value>ΑΛΛΑΓΗ ΠΛΗΚΤΡΩΝ ΓΛΩΣΣΑΣ:</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
-    <value>SPRACHE</value>
+    <value>ΓΛΩΣΣΑ</value>
   </data>
   <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>SONSTIGE TASTEN:</value>
+    <value>ΔΙΑΦΟΡΑ ΠΛΗΚΤΡΑ:</value>
   </data>
   <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>MODIFIZIERUNGSTASTEN:</value>
+    <value>ΠΛΗΚΤΡΑ ΤΡΟΠΟΠΟΙΗΣΕΩΝ:</value>
   </data>
   <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
-    <value>MAUSTASTEN (WAS AN JETZIGER CURSORSTELLE GEMACHT WIRD):</value>
+    <value>ΠΛΗΚΤΡΑ (ΚΑΝΕ ΣΤΗΝ ΣΥΓΚΕΚΡΙΜΕΝΗ ΘΕΣΗ) ΠΟΝΤΙΚΙΟΥ:</value>
   </data>
   <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
-    <value>MAUSTASTEN (WAS AN ZIELCURSORSTELLE GEMACHT WIRD):</value>
+    <value>ΠΛΗΚΤΡΑ (ΚΑΝΕ ΣΤΟ ΣΗΜΕΙΟ) ΠΟΝΤΙΚΙΟΥ:</value>
   </data>
   <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
-    <value>MAUSTASTEN (SONSTIGE):</value>
+    <value>ΠΛΗΚΤΡΑ (ΛΟΙΠΑ) ΠΟΝΤΙΚΙΟΥ:</value>
   </data>
   <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
-    <value>BEWEGUNGS &amp; GRÖSSE TASTEN:</value>
+    <value>ΜΕΤΑΚΙΝΗΣH &amp; ΑΛΛΑΓΗ ΜΕΓΕΘΟΥΣ ΠΛΗΚΤΡΩΝ</value>
   </data>
   <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>PHYSISCHE TASTEN:</value>
+    <value>ΦΥΣΙΚΑ ΠΛΗΚΤΡΑ:</value>
   </data>
   <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
-    <value>EMPFEHLUNGSTASTEN:</value>
+    <value>ΠΛΗΚΤΡΑ ΠΡΟΤΑΣΕΩΝ</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
-    <value>Bestimme Vervollständigungszeit individueller Tasten:</value>
+    <value>Ορισμος χρονου ολοκληρωσης σε μεμονομενα πληκτρα:</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Verwaltungskonsole</value>
+    <value>Κονσόλα Διαχείρισης</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
-    <value>Beenden</value>
-  </data>
-  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
-    <value>Unterdrücke Zusatztasten für alle Mausaktionen:</value>
+    <value>Εξοδος</value>
   </data>
 </root>

@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
 
-        private static readonly Func<string, string> DefaultNormalizeFunc = x => x.Trim().Normalize(NormalizationForm.FormKD).ToUpperInvariant();
+        private static readonly Func<string, string> DefaultNormaliseFunc = x => x.Normalise();
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         /// Creates a n-gram auto-completer using the default settings.
         /// </summary>
         public NGramAutoComplete(int gramCount = 3, int leadingSpaceCount = 2, int trailingSpaceCount = 1)
-            : this(DefaultNormalizeFunc, gramCount, leadingSpaceCount, trailingSpaceCount)
+            : this(DefaultNormaliseFunc, gramCount, leadingSpaceCount, trailingSpaceCount)
         {
         }
 
@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             if (entry.Contains(" "))
             {
                 //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.CreateDictionaryEntryHash(false);
+                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
                 AddEntry(phraseAutoCompleteHash, dictionaryEntry);
             }
 

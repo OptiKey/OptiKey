@@ -19,6 +19,7 @@ using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
+using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
@@ -163,6 +164,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.GermanGermany:
                         newContent = new GermanViews.Alpha { DataContext = Keyboard };
                         break;
+                    case Languages.GreekGreece:
+                        newContent = new GreekViews.Alpha { DataContext = Keyboard };
+                        break;
                     case Languages.RussianRussia:
                         newContent = new RussianViews.Alpha { DataContext = Keyboard };
                         break;
@@ -187,6 +191,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.GermanGermany:
                         newContent = new GermanViews.ConversationAlpha { DataContext = Keyboard };
                         break;
+                    case Languages.GreekGreece:
+                        newContent = new GreekViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
                     case Languages.RussianRussia:
                         newContent = new RussianViews.ConversationAlpha { DataContext = Keyboard };
                         break;
@@ -209,60 +216,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics1)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
-                {
-                    case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
-                        newContent = new DutchViews.Diacritics1 { DataContext = Keyboard };
-                        break;
-                    case Languages.FrenchFrance:
-                        newContent = new FrenchViews.Diacritics1 { DataContext = Keyboard };
-                        break;
-                    case Languages.GermanGermany:
-                        newContent = new GermanViews.Diacritics1 { DataContext = Keyboard };
-                        break;
-                    default:
-                        newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
-                        break;
-                }
+                newContent = new CommonViews.Diacritics1 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics2)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
-                {
-                    case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
-                        newContent = new DutchViews.Diacritics2 { DataContext = Keyboard };
-                        break;
-                    case Languages.FrenchFrance:
-                        newContent = new FrenchViews.Diacritics2 { DataContext = Keyboard };
-                        break;
-                    case Languages.GermanGermany:
-                        newContent = new GermanViews.Diacritics2 { DataContext = Keyboard };
-                        break;
-                    default:
-                        newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
-                        break;
-                }
+                newContent = new CommonViews.Diacritics2 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Diacritics3)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
-                {
-                    case Languages.DutchBelgium:
-                    case Languages.DutchNetherlands:
-                        newContent = new DutchViews.Diacritics3 { DataContext = Keyboard };
-                        break;
-                    case Languages.FrenchFrance:
-                        newContent = new FrenchViews.Diacritics3 { DataContext = Keyboard };
-                        break;
-                    case Languages.GermanGermany:
-                        newContent = new GermanViews.Diacritics3 { DataContext = Keyboard };
-                        break;
-                    default:
-                        newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
-                        break;
-                }
+                newContent = new CommonViews.Diacritics3 { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.Language)
             {

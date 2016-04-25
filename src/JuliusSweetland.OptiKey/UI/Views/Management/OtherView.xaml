@@ -21,6 +21,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL}" 
@@ -38,19 +39,46 @@
                 <CheckBox Grid.Row="2" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding PublishVirtualKeyCodesForCharacters, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="3" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}" />
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
-                           VerticalAlignment="Center" Margin="5" />
+                          IsChecked="{Binding SuppressModifierKeysForAllMouseActions, Mode=TwoWay}" />
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
+                           VerticalAlignment="Center" Margin="5">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 <CheckBox Grid.Row="4" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}">
+                    <CheckBox.Style>
+                        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </CheckBox.Style>
+                </CheckBox>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
                            VerticalAlignment="Center" Margin="5" />
                 <CheckBox Grid.Row="5" Grid.Column="1" 
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
+                           VerticalAlignment="Center" Margin="5" />
+                <CheckBox Grid.Row="6" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
             </Grid>

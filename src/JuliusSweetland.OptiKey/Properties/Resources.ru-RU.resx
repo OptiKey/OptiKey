@@ -1543,4 +1543,7 @@ LK</value>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Выход</value>
   </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Скрыть модификаторы клавиш для всех действий мыши:</value>
+  </data>
 </root>

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Extensions
@@ -16,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Extensions
 
         private const string WordRegex = @"(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)";
 
-        public static string CreateDictionaryEntryHash(this string entry, bool log = true)
+        public static string NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {
@@ -70,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Extensions
             return null;
         }
 
-        public static string CreateAutoCompleteDictionaryEntryHash(this string entry, bool log = true)
+        public static string Normalise(this string entry, bool log = true)
         {
             if (!string.IsNullOrWhiteSpace(entry))
             {
@@ -191,40 +190,38 @@ namespace JuliusSweetland.OptiKey.Extensions
         /// </summary>
         public static string RemoveDiacritics(this string src, bool compatibilityDecomposition = true)
         {
-            return RemoveDiacritics(src, compatibilityDecomposition, c => c);
-        }
-
-        /// <summary>
-        /// Remove diacritics (accents etc) from source string and returns the base string
-        /// Info on unicode representation of diacritics: http://www.unicode.org/reports/tr15/
-        /// � symbols in your dictionary file? Resave it in UTF-8 encoding (I use Notepad) 
-        /// </summary>
-        public static string RemoveDiacritics(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
-        {
             var sb = new StringBuilder();
-            foreach (char c in Normalise(src, compatibilityDecomposition, customFolding))
-            {
-                sb.Append(c);
-            }
-            return sb.ToString();
-        }
 
-        private static IEnumerable<char> Normalise(this string src, bool compatibilityDecomposition, Func<char, char> customFolding)
-        {
-            foreach (char c in src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD))
+            var decomposed = src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKD : NormalizationForm.FormD);
+
+            foreach (char c in decomposed)
             {
                 switch (CharUnicodeInfo.GetUnicodeCategory(c))
                 {
-                    case UnicodeCategory.NonSpacingMark:
-                    case UnicodeCategory.SpacingCombiningMark:
-                    case UnicodeCategory.EnclosingMark:
-                        //do nothing
+                    case UnicodeCategory.NonSpacingMark: //(All combining diacritic characters are non-spacing marks). Nonspacing character that indicates modifications of a base character. Signified by the Unicode designation "Mn"(mark, nonspacing).The value is 5.
+                    case UnicodeCategory.SpacingCombiningMark: //Spacing character that indicates modifications of a base character and affects the width of the glyph for that base character. Signified by the Unicode designation "Mc" (mark, spacing combining). The value is 6.
+                    case UnicodeCategory.EnclosingMark: //Enclosing mark character, which is a nonspacing combining character that surrounds all previous characters up to and including a base character. Signified by the Unicode designation "Me" (mark, enclosing). The value is 7.
+                        //Skip over this character
                         break;
+
                     default:
-                        yield return customFolding(c);
+                        sb.Append(c);
                         break;
                 }
             }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Normalises string using decomposition and then attempts to compose sequences into their primary composites.
+        /// In other words the string is decomposed and then recomposed. During composition any "combining" Unicode 
+        /// characters/marks are squashed into primary composites, e.g. an "e" followed by a "Combining Grave Accent" becomes "è".
+        /// This will only work if the diacritics are "combining" characters, NOT "modifier" characters or standard characters.
+        /// </summary>
+        public static string ComposeDiacritics(this string src, bool compatibilityDecomposition = true)
+        {
+            return src.Normalize(compatibilityDecomposition ? NormalizationForm.FormKC : NormalizationForm.FormC);
         }
 
         /// <summary>
@@ -274,18 +271,17 @@ namespace JuliusSweetland.OptiKey.Extensions
                    || new[] {". ", "! ", "? ", "\n"}.Any(input.EndsWith);
         }
 
-        public static string ConvertEscapedCharsToLiterals(this string input)
+        public static string ToPrintableString(this string input)
         {
             if (input == null) return null;
 
-            return input
-                .Replace("\0", @"\0")
-                .Replace("\a", @"\a")
-                .Replace("\b", @"\b")
-                .Replace("\t", @"\t")
-                .Replace("\f", @"\f")
-                .Replace("\n", @"\n")
-                .Replace("\r", @"\r");
+            var sb = new StringBuilder();
+
+            foreach (var c in input)
+            {
+                sb.Append(c.ToPrintableString());
+            }
+            return sb.ToString();
         }
 
         public static int CountBackToLastCharCategoryBoundary(this string input, bool ignoreSingleTrailingSpace = true)
