@@ -80,8 +80,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 .Subscribe(calculateIsCurrent);
             onUnloaded.Add(currentPositionSubscription);
             calculateIsCurrent(mainViewModel.CurrentPositionKey);
-            
+
             //Calculate DisplayShiftDownText
+            //Display shift down text (upper case text) if shift is locked down, or down (but NOT when we are capturing a multi key selection)
             Action<KeyDownStates, bool> calculateDisplayShiftDownText = (shiftDownState, capturingMultiKeySelection) => 
                     DisplayShiftDownText = shiftDownState == KeyDownStates.LockedDown 
                     || (shiftDownState == KeyDownStates.Down && !capturingMultiKeySelection);
@@ -177,21 +178,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         
         //Specify if this key spans multiple keys horizontally - used to keep the contents proportional to other keys
         public static readonly DependencyProperty WidthSpanProperty =
-            DependencyProperty.Register("WidthSpan", typeof(int), typeof(Key), new PropertyMetadata(1));
+            DependencyProperty.Register("WidthSpan", typeof(double), typeof(Key), new PropertyMetadata(1d));
 
-        public int WidthSpan
+        public double WidthSpan
         {
-            get { return (int) GetValue(WidthSpanProperty); }
+            get { return (double) GetValue(WidthSpanProperty); }
             set { SetValue(WidthSpanProperty, value); }
         }
 
         //Specify if this key spans multiple keys vertically - used to keep the contents proportional to other keys
         public static readonly DependencyProperty HeightSpanProperty =
-            DependencyProperty.Register("HeightSpan", typeof(int), typeof(Key), new PropertyMetadata(1));
+            DependencyProperty.Register("HeightSpan", typeof(double), typeof(Key), new PropertyMetadata(1d));
 
-        public int HeightSpan
+        public double HeightSpan
         {
-            get { return (int) GetValue(HeightSpanProperty); }
+            get { return (double) GetValue(HeightSpanProperty); }
             set { SetValue(HeightSpanProperty, value); }
         }
 
@@ -293,15 +294,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(ShiftDownTextProperty, value); }
         }
 
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof (KeyValue), typeof (Key), new PropertyMetadata(default(KeyValue)));
-
-        public KeyValue Value
-        {
-            get { return (KeyValue) GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
-        }
-
         private static void OnSymbolGeometryOrTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var senderAsKey = sender as Key;
@@ -314,6 +306,24 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+
+        public KeyValue Value
+        {
+            get { return (KeyValue)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseUnicodeCompatibilityFontProperty =
+            DependencyProperty.Register("UseUnicodeCompatibilityFont", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool UseUnicodeCompatibilityFont
+        {
+            get { return (bool)GetValue(UseUnicodeCompatibilityFontProperty); }
+            set { SetValue(UseUnicodeCompatibilityFontProperty, value); }
+        }
 
         #endregion
 

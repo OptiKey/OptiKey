@@ -15,9 +15,11 @@ Patrons (thank you very much for sponsoring this project)
   Rod Galvão
   Volluta
   William Johnson
+  Bill Sumner
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
+  Charis SIL - Under the SIL Open Font License (OFL)
 
 Icons
   Add To Dictionary icon modified from: Book by Danilo Gusmão Silveira from the Noun Project (thenounproject.com)

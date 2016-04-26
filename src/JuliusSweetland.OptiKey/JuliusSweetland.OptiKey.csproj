@@ -141,6 +141,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Rx-Xaml.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.Extensions" />
@@ -414,14 +415,11 @@
     <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
       <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -464,29 +462,11 @@
     <Compile Include="UI\Views\Keyboards\French\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\German\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\German\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics1.xaml.cs">
-      <DependentUpon>Diacritics1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics2.xaml.cs">
-      <DependentUpon>Diacritics2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Diacritics3.xaml.cs">
-      <DependentUpon>Diacritics3.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -540,6 +520,7 @@
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -559,7 +540,8 @@
     <Content Include="Dictionaries\RussianRussia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\DanishDenmark.dic">
+    <Content Include="Dictionaries\Candidates\DanishDenmark.dic" />
+    <Content Include="Dictionaries\GreekGreece.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\DutchBelgium.dic">
@@ -568,16 +550,17 @@
     <Content Include="Dictionaries\DutchNetherlands.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\CatalanSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dictionaries\SpanishSpain.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Dictionaries\Candidates\CatalanSpain.dic" />
+    <Content Include="Dictionaries\Candidates\SpanishSpain.dic" />
+    <None Include="App.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Resources\Fonts\CharisSIL-B.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-BI.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-I.ttf" />
+    <Resource Include="Resources\Fonts\CharisSIL-R.ttf" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
@@ -826,11 +809,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Resources\Icons\KeySymbols.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -903,15 +881,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics1.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\Diacritics3.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -967,35 +941,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\French\Diacritics3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Views\Keyboards\German\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\German\ConversationAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\Diacritics3.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1090,7 +1040,10 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterClean">
+    <Message Text="### Post Cleanup Task: Deleting Temporary files used by OptiKey ###" Importance="high" />
+    <RemoveDir Directories="$(AppData)\JuliusSweetland" />
+    <Message Text="### Post Cleanup Task: Done ###" Importance="high" />
+  </Target>
 </Project>

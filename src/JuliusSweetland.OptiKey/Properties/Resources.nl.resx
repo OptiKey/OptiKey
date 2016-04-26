@@ -1543,4 +1543,7 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Management Console</value>
   </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Onderdruk modifier sleutels voor alle muisacties:</value>
+  </data>
 </root>

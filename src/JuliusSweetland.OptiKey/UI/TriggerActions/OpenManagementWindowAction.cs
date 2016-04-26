@@ -54,22 +54,17 @@ namespace JuliusSweetland.OptiKey.UI.TriggerActions
                 {
                     Log.Info("Showing Management Window (modal)");
                     childWindow.Topmost = true;
-                    childWindow.ShowDialog();
+                    childWindow.ShowDialog(); //This is blocking
+                    if (parentWindowHadFocus)
+                    {
+                        Log.Debug("Parent Window was previously focussed - giving it focus again.");
+                        parentWindow.Focus();
+                    }
                 }
                 else
                 {
                     Log.Info("Showing Management Window (non-modal)");
                     childWindow.Show();
-                }
-    
-                if (parentWindow != null
-                    && notificationWithServicesAndState.ModalWindow)
-                {
-                    if(parentWindowHadFocus)
-                    {
-                        Log.Debug("Parent Window was previously focussed - giving it focus again.");
-                        parentWindow.Focus();
-                    }
                 }
             }
         }

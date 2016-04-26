@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docs\Localize.md = docs\Localize.md
 		docs\Physical setup of eye trackers.txt = docs\Physical setup of eye trackers.txt
 		docs\UiAccess.txt = docs\UiAccess.txt
+		docs\Unicode standard for diacritic marks.pdf = docs\Unicode standard for diacritic marks.pdf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AD7A9FD-5D4F-4C9B-A7E8-D3A46BD4B4E3}"
@@ -27,6 +28,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.UnitTests", "src\JuliusSweetland.OptiKey.UnitTests\JuliusSweetland.OptiKey.UnitTests.csproj", "{345EB82F-7EF0-4118-A1F1-92DA1AEE5197}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.AutoCompletePerformance", "src\JuliusSweetland.OptiKey.AutoCompletePerformance\JuliusSweetland.OptiKey.AutoCompletePerformance.csproj", "{5831AF7F-EB4B-42A4-8184-0C8B3A77466B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OptiKeyLocaleGuideImages", "OptiKeyLocaleGuideImages", "{7468759C-A5A4-4228-B61C-41DE35482069}"
+	ProjectSection(SolutionItems) = preProject
+		docs\OptiKeyLocaleGuideImages\transifex_dashboard.JPG = docs\OptiKeyLocaleGuideImages\transifex_dashboard.JPG
+		docs\OptiKeyLocaleGuideImages\transifex_project_sel.JPG = docs\OptiKeyLocaleGuideImages\transifex_project_sel.JPG
+		docs\OptiKeyLocaleGuideImages\transifex_project_str_resx.JPG = docs\OptiKeyLocaleGuideImages\transifex_project_str_resx.JPG
+		docs\OptiKeyLocaleGuideImages\transifex_project_trans_box.JPG = docs\OptiKeyLocaleGuideImages\transifex_project_trans_box.JPG
+		docs\OptiKeyLocaleGuideImages\transifex_project_trans_page.JPG = docs\OptiKeyLocaleGuideImages\transifex_project_trans_page.JPG
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,5 +59,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7468759C-A5A4-4228-B61C-41DE35482069} = {117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}
 	EndGlobalSection
 EndGlobal
