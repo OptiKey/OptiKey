@@ -202,7 +202,7 @@ public enum Languages
         EnglishCanada,
         EnglishUK,
         EnglishUS,
-	    FrenchFrance,
+        FrenchFrance,
         GermanGermany,
         RussianRussia
     }
@@ -226,7 +226,7 @@ public enum Languages
         EnglishCanada,
         EnglishUK,
         EnglishUS,
-	    FrenchFrance,
+        FrenchFrance,
         GermanGermany,
         GreekGreece,
         RussianRussia
