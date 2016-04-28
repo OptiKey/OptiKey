@@ -52,7 +52,7 @@ specific language you are ready to start translating the UI resource strings of 
 your language. Start this process by going to your [Transifex dashboard][6], there you should
 see your projects, including OptiKey as it is shown in the figure below.
 
-![OptiKey Dashboard](OptiKeyLocaleGuideImages/transifex_dashboard.jpg)
+![OptiKey Dashboard](https://github.com/OptiKey/OptiKey/tree/master/docs/OptiKeyLocaleGuideImages/transifex_dashboard.jpg)
 
 There you can find the languages that their translation process has started, 
 as well as the percentage of translated strings that each one has so far.
@@ -65,23 +65,23 @@ After you have checked out and made yourself somewhat familiar with
 be done by going to your [dashboard][6] and selecting the language you applied
 to translate. Then click the OptiKey version you want to translate for:
 
-![OptiKey Project Selection](OptiKeyLocaleGuideImages/transifex_project_sel.jpg)
+![OptiKey Project Selection](https://github.com/OptiKey/OptiKey/tree/master/docs/OptiKeyLocaleGuideImages/transifex_project_sel.jpg)
 
 Then select the option to translate *English strings from Resource.resx* shown
 below.
 
-![OptiKey Project Selection](OptiKeyLocaleGuideImages/transifex_project_str_resx.jpg)
+![OptiKey Project Selection](https://github.com/OptiKey/OptiKey/tree/master/docs/OptiKeyLocaleGuideImages/transifex_project_str_resx.jpg)
 
 After clicking the last link you should be greeted with the following box
 
-![OptiKey Project Selection](OptiKeyLocaleGuideImages/transifex_project_trans_box.jpg)
+![OptiKey Project Selection](https://github.com/OptiKey/OptiKey/tree/master/docs/OptiKeyLocaleGuideImages/transifex_project_trans_box.jpg)
 
 
 Click the translate button, which should be Green colored if you have the permissions
 to translate that language; if not please contact us in order to fix this! This should 
 lead you to the following
 
-![OptiKey Project Selection](OptiKeyLocaleGuideImages/transifex_project_trans_page.jpg)
+![OptiKey Project Selection](https://github.com/OptiKey/OptiKey/tree/master/docs/OptiKeyLocaleGuideImages/transifex_project_trans_page.jpg)
 
 Which is the actual translation interface. You can easily start translating by first
 clicking at the desired string to be translated and typing the representative 
