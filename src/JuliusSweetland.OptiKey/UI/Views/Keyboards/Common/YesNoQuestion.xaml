@@ -13,8 +13,7 @@
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
 
-    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
-          Grid.IsSharedSizeScope="True">
+    <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -58,14 +57,12 @@
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource YesIcon}"
                       Text="{x:Static resx:Resources.YES}"
-                      SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.YesQuestionResultKey}" />
 
         <controls:Key Grid.Row="4" Grid.Column="14" 
                       Grid.RowSpan="3" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource NoIcon}"
                       Text="{x:Static resx:Resources.NO}"
-                      SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.NoQuestionResultKey}" />
     </Grid>
 </controls:KeyboardView>
