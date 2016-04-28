@@ -525,10 +525,9 @@ is the first entry which is the our language value from `Languages` enumeration 
 either a string that contains the characters for the keyboard of the `defaultList` which
 represents the standard Latin alphabet.
 
-### Add Language `Button` in `App.config`
+### Add Language default fixation time to `Settings.settings`
 
-Now we have to add an entry to OptiKey's `App.config` in order to let the interface know that there 
-is a button for our language. This is done by adding an `XML` entry as follows:
+In the `Properties` folder open the `Settings.settings` file and edit the `KeySelectionTriggerFixationCompleteTimesByKeyValues` setting. It might be easier to copy the value to notepad and add a new `item` for your new language. Once you have updated the `Settings.settings` file your `App.config` file should automatically be updated to include this new setting value. Double check that this has happened as Visual Studio can be a bit flakey on this. The `App.config` file is actually NOT required, so if in doubt just delete it. Example of new `item` added to the `KeySelectionTriggerFixationCompleteTimesByKeyValues` setting:
 
 ```xml
 <item>
@@ -544,8 +543,8 @@ is a button for our language. This is done by adding an `XML` entry as follows:
 ```
 
 The only thing that will be different for each language is the value of `functionKey` tag, which will be
-the one you used before for the particular language you are currently translating. After creating the entry,
-place it in the correct lexicographical slot... which shouldn't be that hard.
+the FunctionKeys (enum) value you used before for the particular language you are currently translating. After creating the entry,
+place it in the correct lexicographical slot.
 
 
 ### Add Language entry in `PointingAndSelectingViewModel`
