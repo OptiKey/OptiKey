@@ -167,12 +167,9 @@ open OptiKey solution and perform the following steps:
     2. `Copy to Output Directory` to `Always`  
 
 Please be aware that the dictionary file must be quite small at this stage due to internal
-performance limitations; the accepted dictionary entries are between 
-40k~80k -- the lower the better but it has to provide a satisfactory experience! Effort 
+performance limitations; the accepted dictionary size is less than about 100k entries -- the lower the better but it has to provide a satisfactory experience! Effort 
 is being made in order to make the performance acceptable with larger dictionary sizes 
 but unfortunately this enhancement is still a work in progress.
-
-##### Important Notes about the dictionary file
 
 Now we are ready to start implementing the logic required to add the new language.
 
