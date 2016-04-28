@@ -226,10 +226,7 @@ namespace JuliusSweetland.OptiKey.Models
                         LeftCtrlKey,
                         LeftShiftKey,
                         LeftWinKey,
-                        MouseLeftDownUpKey,
                         MouseMagnifierKey,
-                        MouseMiddleDownUpKey,
-                        MouseRightDownUpKey,
                         MultiKeySelectionIsOnKey
                     })
                     .ToList();
@@ -246,8 +243,11 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    MouseLeftDownUpKey,
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,
+                    MouseMiddleDownUpKey,
+                    MouseRightDownUpKey,
                     MultiKeySelectionIsOnKey,
                     SleepKey
                 };
