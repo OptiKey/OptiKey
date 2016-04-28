@@ -103,7 +103,7 @@ and ready to use you should make a fresh clone of the OptiKey repository; then o
 solution inside Visual Studio.
 
 Tip: Now it would be a good time to create a new branch for your language if not 
-already present.
+already present. Please contact us to create a new branch which you can then fork and work against.
 
 Tip2: Where possible adhere to the coding/naming style that is already present inside
 the project to avoid breaking the style consistency.
