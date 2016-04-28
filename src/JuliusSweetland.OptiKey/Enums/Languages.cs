@@ -11,8 +11,8 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishUK,
         EnglishUS,
 	    FrenchFrance,
-        GreekGreece,
         GermanGermany,
+        GreekGreece,
         RussianRussia,
         TurkishTurkey
     }
