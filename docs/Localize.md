@@ -52,7 +52,7 @@ specific language you are ready to start translating the UI resource strings of 
 your language. Start this process by going to your [Transifex dashboard][6], there you should
 see your projects, including OptiKey as it is shown in the figure below.
 
-![OptiKey Dashboard](https://raw.githubusercontent.com/OptiKey/OptiKey/master/docs/OptiKeyLocaleGuideImages/transifex_dashboard.jpg)
+![OptiKey Dashboard](https://raw.githubusercontent.com/OptiKey/OptiKey/master/docs/OptiKeyLocaleGuideImages/transifex_dashboard.JPG)
 
 There you can find the languages that their translation process has started, 
 as well as the percentage of translated strings that each one has so far.
