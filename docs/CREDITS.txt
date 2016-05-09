@@ -16,6 +16,8 @@ Patrons (thank you very much for sponsoring this project)
   Volluta
   William Johnson
   Bill Sumner
+  Emanuele
+  Wolfgang Engel
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
