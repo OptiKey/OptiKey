@@ -16,6 +16,7 @@
         BackOne,
         Break,
         Calibrate,
+        CatalanSpain,
         ClearScratchpad,
         CollapseDock,
         ConversationAlphaKeyboard,

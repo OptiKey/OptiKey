@@ -380,6 +380,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catalan (Spain) / Català (Espanya).
+        /// </summary>
+        public static string CATALAN_SPAIN {
+            get {
+                return ResourceManager.GetString("CATALAN_SPAIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Catalan
+        ///(Spain) /
+        ///Català
+        ///(Espanya).
+        /// </summary>
+        public static string CATALAN_SPAIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CATALAN_SPAIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CHANGE KEYBOARD KEYS:.
         /// </summary>
         public static string CHANGE_KEYBOARD_KEY_GROUP {

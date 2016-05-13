@@ -1382,7 +1382,11 @@ namespace JuliusSweetland.OptiKey.Properties {
             "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
             "\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>BackFromKeyboard</" +
             "functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</" +
-            "ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n        " +
+            "ticks>\r\n    </value>\r\n  </item>\r\n" +
+            "<item>\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>CatalanSpain</functionKey>" +
+            "\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n" +
+            "    </value>\r\n  </item>\r\n" +
+            "<item>\r\n    <key>\r\n      <keyValue>\r\n        " +
             "<functionKey>ConversationAlphaKeyboard</functionKey>\r\n      </keyValue>\r\n    </k" +
             "ey>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item" +
             ">\r\n    <key>\r\n      <keyValue>\r\n        <functionKey>ConversationNumericAndSymbo" +
