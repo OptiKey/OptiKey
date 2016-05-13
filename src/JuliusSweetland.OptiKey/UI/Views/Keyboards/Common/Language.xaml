@@ -40,6 +40,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <controls:Key Grid.Row="0" Grid.Column="0"
                                           Text="{x:Static resx:Resources.DUTCH_BELGIUM_SPLIT_WITH_NEWLINE}"
@@ -61,6 +62,10 @@
                                           Text="{x:Static resx:Resources.ENGLISH_US_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.EnglishUSKey}"/>
+                            <controls:Key Grid.Row="0" Grid.Column="5" Grid.RowSpan="2"
+                                          Text="{x:Static resx:Resources.BACK}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                             
                             <controls:Key Grid.Row="1" Grid.Column="0"
                                           Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
@@ -79,9 +84,9 @@
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                             <controls:Key Grid.Row="1" Grid.Column="4"
-                                          Text="{x:Static resx:Resources.BACK}"
+                                          Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
-                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                          Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
                         </Grid>
                     </Setter.Value>
                 </Setter>
@@ -100,6 +105,7 @@
                                 <!--Keyboard is portrait-->
                                 <Grid>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
@@ -130,6 +136,10 @@
                                                   Text="{x:Static resx:Resources.ENGLISH_US}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishUSKey}"/>
+                                    <controls:Key Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                                     
                                     <controls:Key Grid.Row="0" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
@@ -148,9 +158,9 @@
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                                     <controls:Key Grid.Row="4" Grid.Column="1"
-                                          Text="{x:Static resx:Resources.BACK}"
-                                          SharedSizeGroup="KeyWithText"
-                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+                                                  Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
                                 </Grid>
                             </Setter.Value>
                         </Setter>
