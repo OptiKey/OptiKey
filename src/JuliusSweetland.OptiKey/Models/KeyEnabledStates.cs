@@ -490,6 +490,13 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == new KeyValue("u")
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
+                    //Diaeresis: Üü
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
                 }
 
                 return true;
