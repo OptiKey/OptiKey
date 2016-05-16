@@ -498,6 +498,20 @@ namespace JuliusSweetland.OptiKey.Models
                             || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
                     }
                 }
+				
+                //Turkish specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.TurkishTurkey)
+                {
+                    //Circumflex: Ââ Îî Ûû
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningCircumflexKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
 
                 return true;
             }

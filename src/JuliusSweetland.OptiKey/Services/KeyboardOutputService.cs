@@ -614,7 +614,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 if (makeUppercase)
                                 {
-                                    suggestionChars[index] = char.ToUpper(suggestion[index]);
+                                    suggestionChars[index] = char.ToUpper(suggestion[index], Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
                                 }
                             }
 
@@ -898,7 +898,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown)
                 {
-                    var modifiedText = textToModify.ToUpper();
+                    var modifiedText = textToModify.ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
                     Log.DebugFormat("LeftShift is locked so modifying '{0}' to '{1}.", textToModify, modifiedText);
                     return modifiedText;
                 }
