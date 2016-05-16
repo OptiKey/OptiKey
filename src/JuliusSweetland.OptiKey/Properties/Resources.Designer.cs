@@ -947,8 +947,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English
-        ///(Canada).
+        ///   Looks up a localized string similar to 
+        ///English
+        ///(Canada)
+        ///.
         /// </summary>
         public static string ENGLISH_CANADA_SPLIT_WITH_NEWLINE {
             get {
@@ -966,8 +968,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English
-        ///(UK).
+        ///   Looks up a localized string similar to 
+        ///English
+        ///(UK)
+        ///.
         /// </summary>
         public static string ENGLISH_UK_SPLIT_WITH_NEWLINE {
             get {
@@ -985,8 +989,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English
-        ///(US).
+        ///   Looks up a localized string similar to 
+        ///English
+        ///(US)
+        ///.
         /// </summary>
         public static string ENGLISH_US_SPLIT_WITH_NEWLINE {
             get {
@@ -4197,6 +4203,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TRIGGER_WITHOUT_POSITION_ERROR {
             get {
                 return ResourceManager.GetString("TRIGGER_WITHOUT_POSITION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turkish (Turkey) / Türkçe (Türkiye).
+        /// </summary>
+        public static string TURKISH_TURKEY {
+            get {
+                return ResourceManager.GetString("TURKISH_TURKEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turkish
+        ///(Turkey) /
+        ///Türkçe
+        ///(Türkiye).
+        /// </summary>
+        public static string TURKISH_TURKEY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("TURKISH_TURKEY_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

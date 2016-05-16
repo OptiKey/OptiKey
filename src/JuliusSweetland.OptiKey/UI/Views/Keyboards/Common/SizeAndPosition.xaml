@@ -230,6 +230,7 @@
                                           Value="{x:Static models:KeyValues.MoveToBottomAndRightBoundariesKey}"/>
                             <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="11"
                                           Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"
+                                          SharedSizeGroup="KeyWithSymbolAndText"
                                           Value="{x:Static models:KeyValues.MoveAndResizeAdjustmentAmountKey}"/>
                             <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="3"
                                           SymbolGeometry="{StaticResource BackIcon}"
@@ -447,6 +448,7 @@
                                                   Value="{x:Static models:KeyValues.MoveToBottomAndRightBoundariesKey}"/>
                                     <controls:Key Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"
                                                   Text="{Binding Source={x:Static properties:Settings.Default}, Path=MoveAndResizeAdjustmentAmountInPixels, Converter={StaticResource IntToSingularPluralStringFormatter}, ConverterParameter={x:Static resx:Resources.ADJUST_BY}}"
+                                                  SharedSizeGroup="KeyWithSymbolAndText"
                                                   Value="{x:Static models:KeyValues.MoveAndResizeAdjustmentAmountKey}"/>
                                     <controls:Key Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="3"
                                                   SymbolGeometry="{StaticResource BackIcon}"

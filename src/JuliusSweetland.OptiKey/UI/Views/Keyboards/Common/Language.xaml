@@ -33,9 +33,9 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -57,28 +57,34 @@
                                           Text="{x:Static resx:Resources.ENGLISH_UK_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.EnglishUKKey}"/>
-                            <controls:Key Grid.Row="0" Grid.Column="4"
+                            
+                            <controls:Key Grid.Row="1" Grid.Column="0"
                                           Text="{x:Static resx:Resources.ENGLISH_US_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.EnglishUSKey}"/>
-                            
-                            <controls:Key Grid.Row="1" Grid.Column="0"
+                            <controls:Key Grid.Row="1" Grid.Column="1"
                                           Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.FrenchFranceKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="1"
+                            <controls:Key Grid.Row="1" Grid.Column="2"
                                           Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.GermanGermanyKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="2"
+                            <controls:Key Grid.Row="1" Grid.Column="3"
                                           Text="{x:Static resx:Resources.GREEK_GREECE_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.GreekGreeceKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="3"
+                            
+                            <controls:Key Grid.Row="2" Grid.Column="0"
                                           Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
-                            <controls:Key Grid.Row="1" Grid.Column="4"
+                            <controls:Key Grid.Row="2" Grid.Column="1"
+                                          Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
+                            <controls:Key Grid.Row="2" Grid.Column="2" IsEnabled="False"/>
+                            <controls:Key Grid.Row="2" Grid.Column="3"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
@@ -105,49 +111,60 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
+
                                     <controls:Key Grid.Row="0" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.DUTCH_BELGIUM_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.DutchBelgiumKey}"/>
-                                    <controls:Key Grid.Row="1" Grid.Column="0"
+                                    <controls:Key Grid.Row="0" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.DutchNetherlandsKey}"/>
-                                    <controls:Key Grid.Row="2" Grid.Column="0"
+
+                                    <controls:Key Grid.Row="1" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.ENGLISH_CANADA}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishCanadaKey}"/>
-                                    <controls:Key Grid.Row="3" Grid.Column="0"
+                                    <controls:Key Grid.Row="1" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.ENGLISH_UK}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishUKKey}"/>
-                                    <controls:Key Grid.Row="4" Grid.Column="0"
+                                    
+                                    <controls:Key Grid.Row="2" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.ENGLISH_US}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.EnglishUSKey}"/>
-                                    
-                                    <controls:Key Grid.Row="0" Grid.Column="1"
+                                    <controls:Key Grid.Row="2" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.FRENCH_FRANCE_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.FrenchFranceKey}"/>
-                                    <controls:Key Grid.Row="1" Grid.Column="1"
+
+                                    <controls:Key Grid.Row="3" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.GERMAN_GERMANY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.GermanGermanyKey}"/>
-                                    <controls:Key Grid.Row="2" Grid.Column="1"
+                                    <controls:Key Grid.Row="3" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.GREEK_GREECE_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.GreekGreeceKey}"/>
-                                    <controls:Key Grid.Row="3" Grid.Column="1"
+                                    
+                                    <controls:Key Grid.Row="4" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                                     <controls:Key Grid.Row="4" Grid.Column="1"
+                                                  Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
+                                    
+                                    <controls:Key Grid.Row="5" Grid.Column="0" IsEnabled="False"/>
+                                    <controls:Key Grid.Row="5" Grid.Column="1"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
