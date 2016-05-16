@@ -135,6 +135,7 @@
         ShrinkFromTopAndRight,
         SizeAndPositionKeyboard,
         Sleep,
+        SpanishSpain,
         Speak,
         Suggestion1,
         Suggestion2,

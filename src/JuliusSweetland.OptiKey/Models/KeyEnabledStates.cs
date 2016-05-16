@@ -476,6 +476,29 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Spanish specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.SpanishSpain)
+                {
+                    //Acute accent: Áá éÉ íÍ óÓ úÚ    
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                    //Diaeresis: Üü
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 return true;
             }
         }
