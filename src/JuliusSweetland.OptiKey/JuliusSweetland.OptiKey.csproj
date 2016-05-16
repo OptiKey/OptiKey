@@ -570,7 +570,7 @@
     </Content>
     <Content Include="Dictionaries\TurkishTurkey.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>    
+    </Content>
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

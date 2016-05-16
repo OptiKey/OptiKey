@@ -207,6 +207,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.SpanishSpain:
                         newContent = new SpanishViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
                     case Languages.TurkishTurkey:
                         newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
