@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,14 +124,14 @@
     <value>Agregar nueva entrada:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>¿Quiere agregar la frase &apos;{0}&apos; al diccionario con atajo &apos;{1}&apos;?</value>
+    <value>¿Quiere agregar la frase '{0}' al diccionario con atajo '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>AGREGAR A
 DICCIONARIO</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>¿Quiere agregar la palabra &apos;{0}&apos; al diccionario?</value>
+    <value>¿Quiere agregar la palabra '{0}' al diccionario?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Agregado</value>
@@ -167,13 +167,15 @@ DICCIONARIO</value>
     <value>VOLVER</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Borrar uno</value>
+    <value>BORRAR
+UNO</value>
   </data>
   <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Borrar palabra</value>
+    <value>BORRAR
+PALABRA</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass no pudo crear stream desde archivo &apos;{0}&apos;</value>
+    <value>Bass no pudo crear stream desde archivo '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Abajo</value>
@@ -182,23 +184,23 @@ DICCIONARIO</value>
     <value>PAUSA</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Calibración abortada con mensaje: &apos;{0}&apos;</value>
+    <value>Calibración abortada con mensaje: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>¿Está seguro de que quiere recalibrar?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Ocurrió un error durante la calibración. Mensaje: &apos;{0}&apos;</value>
+    <value>Ocurrió un error durante la calibración. Mensaje: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Falló la calibración con mensaje: &apos;{0}&apos;</value>
+    <value>Falló la calibración con mensaje: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>La calibración no se puede completar sin intervención manual, por ejemplo, con un ratón. Puede quedarse atascado en el proceso de calibración si no puede interactuar manualmente con la computadora.
 ¿Seguro que le gustaría volver a calibrar?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Calibración detenida por razones desconocidas. Mensaje: &apos;{0}&apos;</value>
+    <value>Calibración detenida por razones desconocidas. Mensaje: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>¡Calibración exitosa! Exactitud (Grado Promedio de Error = {0})</value>
@@ -216,8 +218,8 @@ DICCIONARIO</value>
     <value>BORRAR TODO</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>CLIC
-y ARRASTRAR</value>
+    <value>CLIC Y
+ARRASTRAR</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Clic 1</value>
@@ -326,7 +328,7 @@ OPACO</value>
     <value>Diccionario</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>No existe diccionario del usuario y no se pudo encontrar el diccionario original en la ruta: &apos;{0}&apos;</value>
+    <value>No existe diccionario del usuario y no se pudo encontrar el diccionario original en la ruta: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Mostrar por X segundos por cada caracter del mensaje:</value>
@@ -347,20 +349,11 @@ ABAJO</value>
   <data name="END" xml:space="preserve">
     <value>FIN</value>
   </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>Inglés (Canada)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>Inglés (Reino Unido)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>Inglés (EE.UU.)</value>
-  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Genial. &apos;{0}&apos; ha sido agregado al diccionario.</value>
+    <value>Genial. '{0}' ha sido agregado al diccionario.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Error:</value>
@@ -377,11 +370,13 @@ PANEL</value>
   </data>
   <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-ABAJO A LA IZQUIERDA</value>
+ABAJO E
+IZQUIERDA</value>
   </data>
   <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-ABAJO A LA DERECHA</value>
+ABAJO Y
+DERECHA</value>
   </data>
   <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
@@ -389,19 +384,21 @@ ABAJO</value>
   </data>
   <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-A LA IZQUIERDA</value>
+IZQUIERDA</value>
   </data>
   <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-A LA DERECHA</value>
+DERECHA</value>
   </data>
   <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-ARRIBA A LA IZQUIERDA</value>
+ARRIBA E
+IZQUIERDA</value>
   </data>
   <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
-ARRIBA A LA DERECHA</value>
+ARRIBA Y
+DERECHA</value>
   </data>
   <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>EXPANDIR
@@ -431,14 +428,8 @@ ARRIBA</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Ancho de trazo de la fuente:</value>
   </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>Francés (Francia) / Française (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Tamaño del panel completo (como % de la pantalla):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Seguidor de mirada</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Expandir</value>
@@ -473,11 +464,13 @@ OPACO</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-ABAJO A LA IZQUIERDA</value>
+ABAJO E
+IZQUIERDA</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-ABAJO A LA DERECHA</value>
+ABAJO Y
+DERECHA</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
@@ -485,19 +478,21 @@ ABAJO</value>
   </data>
   <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-A LA IZQUIERDA</value>
+IZQUIERDA</value>
   </data>
   <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-A LA DERECHA</value>
+DERECHA</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-ARRIBA A LA IZQUIERDA</value>
+ARRIBA E
+IZQUIERDA</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
-ARRIBA A LA DERECHA</value>
+ARRIBA Y
+DERECHA</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SALTAR
@@ -552,7 +547,8 @@ IZQUIERDO</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>DOBLE
-CLIC IZQUIERDO</value>
+CLIC
+IZQUIERDO</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>CLIC IZQUIERDO
@@ -565,8 +561,8 @@ ABAJO/ARRIBA</value>
     <value>Todo en minúsculas</value>
   </data>
   <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Cursor
-magnético</value>
+    <value>CURSOR
+MAGNÉTICO</value>
   </data>
   <data name="MAGNIFIER" xml:space="preserve">
     <value>LUPA</value>
@@ -594,7 +590,7 @@ magnético</value>
   </data>
   <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>CLIC
-BOTÓN CENTRAL</value>
+MEDIO</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>CLIC MEDIO
@@ -716,11 +712,13 @@ ABAJO/ARRIBA</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-ABAJO A LA IZQUIERDA</value>
+ABAJO E
+IZQUIERDA</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-ABAJO A LA DERECHA</value>
+ABAJO Y
+DERECHA</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
@@ -728,22 +726,24 @@ ABAJO</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-A LA IZQUIERDA</value>
+IZQUIERDA</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-A LA DERECHA</value>
+DERECHA</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER A</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-ARRIBA A LA IZQUIERDA</value>
+ARRIBA E
+IZQUIERDA</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
-ARRIBA A LA DERECHA</value>
+ARRIBA Y
+DERECHA</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>MOVER
@@ -937,9 +937,6 @@ ABAJO/ARRIBA</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Ascendente 2</value>
   </data>
-  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Ruso (Rusia) / Русский (Россия)</value>
-  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Igual que archivo de posición</value>
   </data>
@@ -963,7 +960,7 @@ IZQUIERDA</value>
   </data>
   <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>DESPLAZAR
-DERECHA</value>
+A DERECHA</value>
   </data>
   <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>DESPLAZAR
@@ -992,11 +989,13 @@ ARRIBA</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER
-ABAJO A LA IZQUIERDA</value>
+ABAJO E
+IZQUIERDA</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER
-ABAJO A LA DERECHA</value>
+ABAJO Y
+DERECHA</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER ABAJO</value>
@@ -1014,11 +1013,13 @@ DERECHA</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER
-ARRIBA A LA IZQUIERDA</value>
+ARRIBA E
+IZQUIERDA</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER
-ARRIBA A LA DERECHA</value>
+ARRIBA Y
+DERECHA</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>ENCOGER
@@ -1070,9 +1071,6 @@ POSICIÓN</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>¡No fue posible activar TheEyeTribe GazeManager! Por favor revise que el servidor está corriendo, que el dispositivo está conectado, e inténtelo de nuevo.</value>
   </data>
@@ -1091,9 +1089,6 @@ POSICIÓN</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Las palabras están capitalizadas.</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibración terminada, o quizás cancelada, ¡pero todo está funcionando de nuevo!</value>
   </data>
@@ -1102,12 +1097,6 @@ POSICIÓN</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine no está activo. Por favor inicie EyeX Engine e inténtelo de nuevo.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tono 1</value>
@@ -1134,7 +1123,7 @@ POSICIÓN</value>
     <value>No fue posible determinar la elevación actual.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Hubo un problema al seleccionar la voz &apos;{0}&apos;{1}</value>
+    <value>Hubo un problema al seleccionar la voz '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Hubo un problema, no sé cuál exactamente - por favor revise los logs</value>
@@ -1210,9 +1199,6 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Flujo de datos procesando cantidad:</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>Alemán (Alemania) / Deutsch (Deutschland)</value>
-  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Lenguaje de interfaz de usuario: {0}</value>
   </data>
@@ -1222,32 +1208,8 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simular presión de teclas físicas cuando se escriben caracteres: </value>
   </data>
-  <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Holandés (Bélgica) / Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Holandés (Países Bajos) / Nederlands (Nederland)</value>
-  </data>
-  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Francés
-(Francia) /
-Française
-(France)</value>
-  </data>
-  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Alemán
-(Alemania) /
-Deutsch
-(Deutschland)</value>
-  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Suprimir magnificación del ratón para acciones de desplazamiento:</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Ruso
-(Rusia) /
-Русский
-(Россия)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Grosor del borde del teclado de conversación (izquierda,arriba,derecha,abajo en px):</value>
@@ -1588,61 +1550,13 @@ Deutsch
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Específica tiempos para completar en teclas individuales:</value>
   </data>
-  <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Griego (Grécia) / Ελληνικά (Greece)</value>
-  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Consola de administración</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Salir</value>
   </data>
-  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Griego
-(Grecia) /
-Ελληνικά
-(Greece)</value>
-  </data>
-  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Holandés
-(Bélgica) /
-Nederlands
-(België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Holandés
-(Países Bajos)
-Nederlands
-(Nederland)</value>
-  </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir teclas modificadoras para todas las acciones del ratón:</value>
-  </data>
-  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Inglés
-(Canadá)
-</value>
-  </data>
-  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Inglés
-(Reino Unido)
-</value>
-  </data>
-  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Inglés
-(EE.UU.)
-</value>
-  </data>
-  <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turco (Turquía) / Türkçe (Türkiye)</value>
-  </data>
-  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Turco
-(Turquía) /
-Türkçe
-(Türkiye)</value>
   </data>
 </root>

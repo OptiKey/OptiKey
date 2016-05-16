@@ -218,8 +218,8 @@ Yinede yeniden kalibrasyon yapmak istiyor musunuz?</value>
     <value>TEMİZLE</value>
   </data>
   <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>TIKLA
-&amp; SÜRÜKLE</value>
+    <value>TIKLA &amp;
+SÜRÜKLE</value>
   </data>
   <data name="CLICK_SOUND_1" xml:space="preserve">
     <value>Tıkla 1</value>
@@ -458,11 +458,13 @@ GENİŞLET</value>
   </data>
   <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
-AŞAĞI &amp; SOLA</value>
+AŞAĞI
+&amp; SOLA</value>
   </data>
   <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
-AŞAĞI&amp;SAĞA</value>
+AŞAĞI
+&amp; SAĞA</value>
   </data>
   <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
@@ -478,11 +480,13 @@ SAĞA</value>
   </data>
   <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
-YUKARI&amp;SOLA</value>
+YUKARI
+&amp; SOLA</value>
   </data>
   <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
-YUKARI&amp;SAĞA</value>
+YUKARI
+&amp; SAĞA</value>
   </data>
   <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>GİT
@@ -528,20 +532,20 @@ YUKARI</value>
     <value>Sol</value>
   </data>
   <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SOL
-OK İŞARETİ</value>
+    <value>SOL OK
+İŞARETİ</value>
   </data>
   <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SOL
 TIKLA</value>
   </data>
   <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SOL
-ÇİFT TIKLA</value>
+    <value>SOL ÇİFT
+TIKLA</value>
   </data>
   <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SOL
-AŞAĞI/YUKARI</value>
+    <value>SOL AŞAĞI
+/ YUKARI</value>
   </data>
   <data name="LOOK" xml:space="preserve">
     <value>Bak</value>
@@ -582,8 +586,8 @@ AŞAĞI/YUKARI</value>
 TIKLA</value>
   </data>
   <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>ORTALA
-AŞAĞI/YUKARI</value>
+    <value>ORTALA AŞAĞI
+/ YUKARI</value>
   </data>
   <data name="MINIMISE" xml:space="preserve">
     <value>KÜÇÜLT</value>
@@ -701,23 +705,28 @@ AŞAĞI/YUKARI</value>
   </data>
   <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SOL AŞAĞI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SAĞ AŞAĞI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>AŞAĞI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SOLA
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SAĞA
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>BURAYA
@@ -725,15 +734,18 @@ GİT</value>
   </data>
   <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SOL YUKARI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>SAĞ YUKARI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>YUKARI
-HAREKET ETTİR</value>
+HAREKET
+ETTİR</value>
   </data>
   <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
     <value>Çoklu tuş algılama</value>
@@ -913,8 +925,8 @@ OK TUŞU</value>
 TIKLA</value>
   </data>
   <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>SAĞ
-AŞAĞI/YUKARI</value>
+    <value>SAĞ AŞAĞI
+/ YUKARI</value>
   </data>
   <data name="RISING_SOUND_1" xml:space="preserve">
     <value>Yükseliyor 1</value>
@@ -974,11 +986,13 @@ KAYDIR</value>
   </data>
   <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT 
- AŞAĞI &amp; SOLA</value>
+ AŞAĞI
+&amp; SOLA</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT
-AŞAĞI &amp; SAĞA</value>
+AŞAĞI
+&amp; SAĞA</value>
   </data>
   <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT
@@ -997,11 +1011,13 @@ SAĞA</value>
   </data>
   <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT
-YUKARI &amp; SOLA</value>
+YUKARI
+&amp; SOLA</value>
   </data>
   <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT
-YUKARI &amp; SAĞA</value>
+YUKARI
+&amp; SAĞA</value>
   </data>
   <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>KÜÇÜLT
@@ -1011,7 +1027,7 @@ YUKARI</value>
     <value>(Bilgilendirme: Sözlükte {0} benzer girdiler mevcut)</value>
   </data>
   <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>BOYUT&amp;
+    <value>BOYUT &amp;
 POZİSYON</value>
   </data>
   <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
@@ -1349,7 +1365,7 @@ OK</value>
     <value>ORTA TUŞ TIKLA</value>
   </data>
   <data name="MIDDLE_DOWN_UP" xml:space="preserve">
-    <value>ORTA AŞAĞI/YUKARI</value>
+    <value>ORTA AŞAĞI / YUKARI</value>
   </data>
   <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
     <value>PİKSEL BAZINDA HAREKET ETTİRME MİKTARI</value>
@@ -1394,7 +1410,7 @@ OK</value>
     <value>SOL ÇİFT TIKLAMA</value>
   </data>
   <data name="LEFT_DOWN_UP" xml:space="preserve">
-    <value>SOLA AŞAĞI/YUKARI</value>
+    <value>SOLA AŞAĞI / YUKARI</value>
   </data>
   <data name="MOVE_DOWN" xml:space="preserve">
     <value>AŞAĞI HAREKET ETTİR</value>
@@ -1445,7 +1461,7 @@ OK</value>
     <value>SAĞ TIKLA</value>
   </data>
   <data name="RIGHT_DOWN_UP" xml:space="preserve">
-    <value>SAĞA AŞAĞI/YUKARI</value>
+    <value>SAĞA AŞAĞI / YUKARI</value>
   </data>
   <data name="SCRN_LK" xml:space="preserve">
     <value>SCROLL LOCK</value>
@@ -1472,7 +1488,9 @@ OK</value>
     <value>AŞAĞI &amp; SOLA KÜÇÜLT</value>
   </data>
   <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
-    <value>AŞAĞI &amp; SAĞA KÜÇÜLT</value>
+    <value>AŞAĞI
+&amp; SAĞA
+KÜÇÜLT</value>
   </data>
   <data name="SHRINK_LEFT" xml:space="preserve">
     <value>SOLA KÜÇÜLT</value>
