@@ -3874,6 +3874,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spanish (Spain) / Español (España).
+        /// </summary>
+        public static string SPANISH_SPAIN {
+            get {
+                return ResourceManager.GetString("SPANISH_SPAIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanish
+        ///(Spain) /
+        ///Español
+        ///(España).
+        /// </summary>
+        public static string SPANISH_SPAIN_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("SPANISH_SPAIN_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SPEAK.
         /// </summary>
         public static string SPEAK {

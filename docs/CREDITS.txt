@@ -20,6 +20,7 @@ Patrons (thank you very much for sponsoring this project)
   Emanuele
   Wolfgang Engel
   Nan de R
+  Bradley Adams
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

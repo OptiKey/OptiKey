@@ -943,6 +943,9 @@ DOWN/UP</value>
   <data name="RUSSIAN_RUSSIA" xml:space="preserve">
     <value>Russian (Russia) / Русский (Россия)</value>
   </data>
+  <data name="SPANISH_SPAIN" xml:space="preserve">
+    <value>Spanish (Spain) / Español (España)</value>
+  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Same as dock position</value>
   </data>
@@ -1252,6 +1255,12 @@ Deutsch
 (Russia) /
 Русский
 (Россия)</value>
+  </data>
+  <data name="SPANISH_SPAIN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Spanish
+(Spain) /
+Español
+(España)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Conversation keyboard border thickness (left,top,right,bottom in px):</value>
