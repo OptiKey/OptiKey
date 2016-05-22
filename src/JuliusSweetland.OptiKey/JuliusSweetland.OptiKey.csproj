@@ -403,6 +403,12 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Croatian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml.cs">
       <DependentUpon>BelgiumAlpha.xaml</DependentUpon>
     </Compile>
@@ -535,6 +541,7 @@
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
+    <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -569,6 +576,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\TurkishTurkey.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\CroatianCroatia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -882,6 +892,14 @@
     <Page Include="UI\Controls\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Croatian\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
