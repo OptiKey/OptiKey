@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Extensions
@@ -39,7 +40,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 hash = hash.RemoveDiacritics();
 
                 //Hashes are stored as uppercase
-                hash = hash.ToUpper();
+                hash = hash.ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
 
                 //Suppress substrings of repeated characters (keep only the first character)
                 var hashStringBuilder = new StringBuilder();
@@ -80,7 +81,7 @@ namespace JuliusSweetland.OptiKey.Extensions
                 hash = hash.RemoveDiacritics();
 
                 //Hashes are stored as uppercase
-                hash = hash.ToUpper();
+                hash = hash.ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
                 
                 if (!string.IsNullOrWhiteSpace(hash))
                 {
@@ -234,7 +235,7 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             var result = new List<Tuple<char, char, int>>();
 
-            var cleansedChars = input.Select(s => s.RemoveDiacritics().ToUpper().First()).ToList();
+            var cleansedChars = input.Select(s => s.Normalise(log: false).First()).ToList();
             var uncleansedChars = input.Select(s => s.First()).ToList();
             
             for (int index = 0; index < cleansedChars.Count; index++)
@@ -262,7 +263,8 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             if (string.IsNullOrEmpty(input)) return input;
 
-            return string.Concat(input.First().ToString(CultureInfo.InvariantCulture).ToUpper(), input.Substring(1));
+            return string.Concat(input.First().ToString().ToUpper(Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo()), 
+                input.Substring(1));
         }
 
         public static bool NextCharacterWouldBeStartOfNewSentence(this string input)

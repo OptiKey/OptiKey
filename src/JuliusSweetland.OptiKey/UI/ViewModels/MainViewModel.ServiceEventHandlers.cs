@@ -221,6 +221,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
+                case FunctionKeys.CatalanSpain:
+                    Log.Info("Changing keyboard language to CatalanSpain.");
+                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CatalanSpain;
+                    InputService.RequestResume();
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.CollapseDock:
                     Log.Info("Collapsing dock.");
                     mainWindowManipulationService.ResizeDockToCollapsed();
@@ -1365,6 +1374,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new SizeAndPosition(() => Keyboard = currentKeyboard);
                     break;
 
+                case FunctionKeys.SpanishSpain:
+                    Log.Info("Changing keyboard language to SpanishSpain.");
+                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.SpanishSpain;
+                    InputService.RequestResume();
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.Speak:
                     var speechStarted = audioService.SpeakNewOrInterruptCurrentSpeech(
                         keyboardOutputService.Text,
@@ -1373,6 +1391,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Settings.Default.SpeechRate,
                         Settings.Default.SpeechVoice);
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.TurkishTurkey:
+                    Log.Info("Changing keyboard language to TurkishTurkey.");
+                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.TurkishTurkey;
+                    InputService.RequestResume();
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
                     break;
 
                 case FunctionKeys.YesQuestionResult:

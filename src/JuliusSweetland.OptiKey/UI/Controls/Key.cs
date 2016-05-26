@@ -237,7 +237,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 //Depending on parametrized case, change the value
                 if (value != null)
                 {
-                    TextInfo textInfo = Thread.CurrentThread.CurrentCulture.TextInfo;
+                    TextInfo textInfo = Settings.Default.UiLanguage.ToCultureInfo().TextInfo;
 
                     //If Case is specifically set, use it, otherwise, use setting value
                     switch (key.Case == Case.Settings ? Settings.Default.KeyCase : key.Case)

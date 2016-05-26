@@ -169,12 +169,14 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue SizeAndPositionKeyboardKey = new KeyValue(FunctionKeys.SizeAndPositionKeyboard);
         public static readonly KeyValue SleepKey = new KeyValue(FunctionKeys.Sleep);
         public static readonly KeyValue SpeakKey = new KeyValue(FunctionKeys.Speak);
+        public static readonly KeyValue SpanishSpainKey = new KeyValue(FunctionKeys.SpanishSpain);
         public static readonly KeyValue Suggestion1Key = new KeyValue(FunctionKeys.Suggestion1);
         public static readonly KeyValue Suggestion2Key = new KeyValue(FunctionKeys.Suggestion2);
         public static readonly KeyValue Suggestion3Key = new KeyValue(FunctionKeys.Suggestion3);
         public static readonly KeyValue Suggestion4Key = new KeyValue(FunctionKeys.Suggestion4);
         public static readonly KeyValue Suggestion5Key = new KeyValue(FunctionKeys.Suggestion5);
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
+        public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
         
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
@@ -188,24 +190,41 @@ namespace JuliusSweetland.OptiKey.Models
 
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
+                { Languages.CatalanSpain, "abcdefghijklmnopqrstuvwxyzñç"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.DutchBelgium, defaultList },
                 { Languages.DutchNetherlands, defaultList },
                 { Languages.EnglishCanada, defaultList },
                 { Languages.EnglishUK, defaultList },
                 { Languages.EnglishUS, defaultList },
                 { Languages.FrenchFrance, defaultList },
-                { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß".ToCharArray()
+                { Languages.GermanGermany, "abcdefghijklmnopqrstuvwxyzß"
+                                                .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ".ToCharArray()
+                { Languages.GreekGreece, "ασδφγηξκλ;ςερτυθιοπζχψωβνμ"
+                                                .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },     
 				{ Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList() }
+                                                .ToList() },
+				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.TurkishTurkey, "abcçdefgğhiıjklmnoöprsştuüvyz"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                }
             };
         }
 
@@ -220,10 +239,7 @@ namespace JuliusSweetland.OptiKey.Models
                         LeftCtrlKey,
                         LeftShiftKey,
                         LeftWinKey,
-                        MouseLeftDownUpKey,
                         MouseMagnifierKey,
-                        MouseMiddleDownUpKey,
-                        MouseRightDownUpKey,
                         MultiKeySelectionIsOnKey
                     })
                     .ToList();
@@ -240,8 +256,11 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    MouseLeftDownUpKey,
                     MouseMagneticCursorKey,
                     MouseMagnifierKey,
+                    MouseMiddleDownUpKey,
+                    MouseRightDownUpKey,
                     MultiKeySelectionIsOnKey,
                     SleepKey
                 };

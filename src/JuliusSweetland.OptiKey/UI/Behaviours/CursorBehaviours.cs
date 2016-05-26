@@ -22,7 +22,13 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             {
                 var mainViewModel = cursor.DataContext as MainViewModel;
 
-                EventHandler<Point> selectionHandler = (sender, point) => storyboard.Begin(frameworkElement);
+                EventHandler<Point> selectionHandler = (sender, point) =>
+                {
+                    if (storyboard != null && frameworkElement.IsLoaded && frameworkElement.IsVisible)
+                    {
+                        storyboard.Begin(frameworkElement);
+                    }
+                };
                 frameworkElement.Loaded += (sender, args) =>
                 {
                     if (mainViewModel != null)
