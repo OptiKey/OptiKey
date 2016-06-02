@@ -50,7 +50,7 @@
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
-                         Grid.RowSpan="2" Grid.ColumnSpan="20" 
+                         Grid.RowSpan="2" Grid.ColumnSpan="22" 
                          ScratchpadWidthInKeys="6"
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
@@ -101,78 +101,84 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.CombiningAcuteAccentKey}" />
 
-        <controls:Key Grid.Row="3" Grid.Column="0" />
-        <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="a"/>
-        <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="s" ShiftDownText="S"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="s"/>
-        <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="d" ShiftDownText="D"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="d"/>
-        <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                       ShiftUpText="f" ShiftDownText="F"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="f"/>
-        <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
                       ShiftUpText="g" ShiftDownText="G"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="g"/>
-        <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
                       ShiftUpText="h" ShiftDownText="H"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="h"/>
-        <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
                       ShiftUpText="j" ShiftDownText="J"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="j"/>
-        <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
                       ShiftUpText="k" ShiftDownText="K"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="k"/>
-        <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
                       ShiftUpText="l" ShiftDownText="L"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
-        <controls:Key Grid.Row="3" Grid.Column="19" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
                       ShiftUpText="ñ" ShiftDownText="Ñ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ñ"/>
-        <controls:Key Grid.Row="3" Grid.Column="21" />
-
-        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
-        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+                      Text="&#x25CC;&#x0300;"
+                      UseUnicodeCompatibilityFont="True"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="{x:Static models:KeyValues.CombiningGraveAccentKey}" />
+        
+        <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="z"/>
-        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       ShiftUpText="x" ShiftDownText="X"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="x"/>
-        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       ShiftUpText="c" ShiftDownText="C"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="c"/>
-        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
                       ShiftUpText="v" ShiftDownText="V"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="v"/>
-        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
                       ShiftUpText="b" ShiftDownText="B"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="b"/>
-        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
                       ShiftUpText="n" ShiftDownText="N"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="n"/>
-        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2"
                       ShiftUpText="m" ShiftDownText="M"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="m"/>
+        <controls:Key Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2"
+                      ShiftUpText="ç" ShiftDownText="Ç"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ç"/>
         <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="3"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -213,17 +219,21 @@
                       Text="."
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="."/>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2" Case="None"
+                      Text="·"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="·"/>
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
                       Text="&#x25CC;&#x0308;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="{x:Static models:KeyValues.CombiningDiaeresisOrUmlautKey}" />
-        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MultiKeySelectionIcon}"
                       Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MultiKeySelectionIsOnKey}"/>
-        <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="5" Grid.Column="20" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
