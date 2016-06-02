@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -125,14 +125,14 @@
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>
-Želite li u riječnik dodati izraz &apos;{0}&apos; sa kraticom &apos;{1}&apos;?</value>
+Želite li u riječnik dodati izraz '{0}' sa kraticom '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>DODAJ U
 RIJEČNIK</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Želite li dodati riječ &apos;{0}&apos; u riječnik?</value>
+    <value>Želite li dodati riječ '{0}' u riječnik?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Dodano</value>
@@ -176,7 +176,7 @@ ZA JEDNU</value>
 RIJEČ</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass nije uspio pustiti zvuk iz datoteke &apos;{0}&apos; </value>
+    <value>Bass nije uspio pustiti zvuk iz datoteke '{0}' </value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Dno</value>
@@ -185,23 +185,23 @@ RIJEČ</value>
     <value>PRIJELOM</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Kalibracija otkazana uz poruku: &apos;{0}&apos;</value>
+    <value>Kalibracija otkazana uz poruku: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Želite li ponovno kalibrirati?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>Dogodila se pogreška tijekom kalibracije. Poruka: &apos;{0}&apos;</value>
+    <value>Dogodila se pogreška tijekom kalibracije. Poruka: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Kalibracija nije uspjela uz poruku: &apos;{0}&apos;</value>
+    <value>Kalibracija nije uspjela uz poruku: '{0}'</value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
     <value>Kalibracija ne može biti dovršena bez ručne intervencije, tj. korištenja miša. Mogli biste ostati zaglavljeni u kalibracijskom procesu ako ne možete ručno upravljati računalom.
 Jeste li sigurni da želite ponovno kalibrirati?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Kalibracija je zaustavljena iz nepoznatog razloga. Poruka: &apos;{0}&apos;</value>
+    <value>Kalibracija je zaustavljena iz nepoznatog razloga. Poruka: '{0}'</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibracija je uspješno završena! Preciznost (prosječna pogreška u stupnjevima = {0})</value>
@@ -325,7 +325,7 @@ PROZIRNOST</value>
     <value>Rječnik</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>Ne postoji korisnički rječnik, a izvorni rječnik nije pronađen na stazi: &apos;{0}&apos;</value>
+    <value>Ne postoji korisnički rječnik, a izvorni rječnik nije pronađen na stazi: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Trajanje prikaza X sekundi po znaku poruke:</value>
@@ -346,20 +346,11 @@ DOLJE</value>
   <data name="END" xml:space="preserve">
     <value>END</value>
   </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>Engleski (Kanada)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>Engleski (UK)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>Engleski (US)</value>
-  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Izvrsno. &apos;{0}&apos; je dodano u rječnik.</value>
+    <value>Izvrsno. '{0}' je dodano u rječnik.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Greška:</value>
@@ -430,14 +421,8 @@ GORE</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Debljina fonta:</value>
   </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>Francuski (Francuska) / Française (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Puna širina trake (kao % ekrana):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Pratilac pogleda</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Povećaj</value>
@@ -937,9 +922,6 @@ DOLJE/GORE</value>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Rastući 2</value>
   </data>
-  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Ruski (Rusija) / Русский (Россия)</value>
-  </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Isto kao položaj trake</value>
   </data>
@@ -1071,9 +1053,6 @@ POLOŽAJ</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Nije moguće aktivirati TheEyeTribe GazeManager! Molimo provjerite je li server aktivan i je li uređaj spojen, pa pokušajte ponovno.</value>
   </data>
@@ -1092,9 +1071,6 @@ POLOŽAJ</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Riječi započinju velikim slovom</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibracija dovršena, ili moguće otkazana, ali sve ipak opet radi!</value>
   </data>
@@ -1103,12 +1079,6 @@ POLOŽAJ</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine nije pokrenut. Molimo pokrenite EyeX Engine i pokušajte ponovno.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Ton 1</value>
@@ -1135,7 +1105,7 @@ POLOŽAJ</value>
     <value>Ne mogu odrediti trenutna korisnička prava.</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Došlo je do poteškoće sa podešavanjem glasa na &apos;{0}&apos;{1}</value>
+    <value>Došlo je do poteškoće sa podešavanjem glasa na '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Nešto je pošlo po krivu, ali ne znam što - molim provjerite logove</value>
@@ -1211,9 +1181,6 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Količina obrade toka podataka:</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>Njemački (Njemačka) / Deutsch (Deutschland)</value>
-  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Jezik korisničkog sučelja: {0}</value>
   </data>
@@ -1223,32 +1190,8 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simuliraj stvarne udarce tipki tijekom tipkanja znakova:</value>
   </data>
-  <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Nizozemski (Belgija) / Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Nizozemski (Nizozemska) / Nederlands (Nederland)</value>
-  </data>
-  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Francuski
-(Francuska)
-Française
-(France)</value>
-  </data>
-  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Njemački
-(Njemačka)
-Deutsch
-(Deutschland)</value>
-  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Isključi povećanje miša za postupke klizanja:</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Ruski
-(Rusija)
-Русский
-(Россия)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Debljina ruba govorne tipkovnice
@@ -1590,59 +1533,13 @@ Deutsch
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Odredi vremena završetka pojedinih tipki:</value>
   </data>
-  <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Grčki (Grčka) / Ελληνικά (Greece)</value>
-  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Upravljačka konzola</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Završi</value>
   </data>
-  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Grčki
-(Grčka)
-Ελληνικά
-(Greece)</value>
-  </data>
-  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Nizozemski
-(Belgija) /
-Nederlands
-(België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Nizozemski
-(Nizozemska) /
-Nederlands
-(Nederland)</value>
-  </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Isključite tipke prilagodbe (ALT, SHIFT, CTRL, WIN) za sve akcije mišem:</value>
-  </data>
-  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Engleski
-(Kanada)
-</value>
-  </data>
-  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Engleski 
-(UK)</value>
-  </data>
-  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>
-Engleski
-(SAD)</value>
-  </data>
-  <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turski (Turska) / Türkçe (Türkiye)</value>
-  </data>
-  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Turski
-(Turska) /
-Türkçe
-(Türkiye)</value>
   </data>
 </root>

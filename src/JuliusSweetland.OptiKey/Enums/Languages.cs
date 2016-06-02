@@ -59,7 +59,6 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.SpanishSpain: return CultureInfo.GetCultureInfo("es-ES");
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
             }
-
             return CultureInfo.GetCultureInfo("en-GB");
         }
     }
