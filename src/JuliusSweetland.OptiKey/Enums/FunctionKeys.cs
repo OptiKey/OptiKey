@@ -20,6 +20,7 @@
         CollapseDock,
         ConversationAlphaKeyboard,
         ConversationNumericAndSymbolsKeyboard,
+        CroatianCroatia,
         Currencies1Keyboard,
         Currencies2Keyboard,
         DecreaseOpacity,

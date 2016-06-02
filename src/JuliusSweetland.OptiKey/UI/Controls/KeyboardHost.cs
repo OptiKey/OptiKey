@@ -15,6 +15,7 @@ using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
+using CroatianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Croatian;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
@@ -154,6 +155,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.CroatianCroatia:
+                        newContent = new CroatianViews.Alpha { DataContext = Keyboard };
+                        break;
                     case Languages.DutchBelgium:
                         newContent = new DutchViews.BelgiumAlpha { DataContext = Keyboard };
                         break;
@@ -187,6 +191,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.CroatianCroatia:
+                        newContent = new CroatianViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
                     case Languages.DutchBelgium:
                         newContent = new DutchViews.BelgiumConversationAlpha { DataContext = Keyboard };
                         break;
