@@ -92,7 +92,9 @@
                                           Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                            <controls:Key Grid.Row="2" Grid.Column="2"
+                            <controls:Key Grid.Row="2" Grid.Column="2" />
+                            <controls:Key Grid.Row="2" Grid.Column="3" />              
+                            <controls:Key Grid.Row="2" Grid.Column="4"
                                           Text="{x:Static resx:Resources.BACK}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
@@ -180,11 +182,12 @@
                                                   Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                                    
-                                    <controls:Key Grid.Row="6" Grid.Column="0"
-                                          Text="{x:Static resx:Resources.BACK}"
-                                          SharedSizeGroup="KeyWithText"
-                                          Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
+
+                                    <controls:Key Grid.Row="6" Grid.Column="0" />
+                                    <controls:Key Grid.Row="6" Grid.Column="1"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.BackFromKeyboardKey}"/>
                                 </Grid>
                             </Setter.Value>
                         </Setter>
