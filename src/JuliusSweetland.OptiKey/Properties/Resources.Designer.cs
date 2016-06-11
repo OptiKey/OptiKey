@@ -624,6 +624,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Croatian (Croatia) / Hrvatski (Hrvatska).
+        /// </summary>
+        public static string CROATIAN_CROATIA {
+            get {
+                return ResourceManager.GetString("CROATIAN_CROATIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Croatian
+        ///(Croatia) /
+        ///Hrvatski
+        ///(Hrvatska).
+        /// </summary>
+        public static string CROATIAN_CROATIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CROATIAN_CROATIA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CTRL.
         /// </summary>
         public static string CTRL {
