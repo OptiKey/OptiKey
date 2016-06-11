@@ -435,6 +435,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.IncrementOrDecrementOpacity(true);
                     break;
 
+                case FunctionKeys.ItalianItaly:
+                    Log.Info("Changing keyboard language to ItalianItaly.");
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.ItalianItaly;
+                    Log.Info("Changing keyboard to Menu");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.LanguageKeyboard:
                     Log.Info("Restoring window size.");
                     mainWindowManipulationService.Restore();

@@ -1608,6 +1608,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Italian (Italy) / Italiano (Italia).
+        /// </summary>
+        public static string ITALIAN_ITALY {
+            get {
+                return ResourceManager.GetString("ITALIAN_ITALY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italian
+        ///(Italy) /
+        ///Italiano
+        ///(Italia).
+        /// </summary>
+        public static string ITALIAN_ITALY_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("ITALIAN_ITALY_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JUMP.
         /// </summary>
         public static string JUMP {
