@@ -1602,7 +1602,7 @@ Español
     <value>Specify times to complete on individual keys:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece) / Ελληνικά (Greece)</value>
+    <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Management Console</value>
@@ -1614,7 +1614,7 @@ Español
     <value>Greek
 (Greece) /
 Ελληνικά
-(Greece)</value>
+(Ελλάδα)</value>
   </data>
   <data name="CROATIAN_CROATIA" xml:space="preserve">
     <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>

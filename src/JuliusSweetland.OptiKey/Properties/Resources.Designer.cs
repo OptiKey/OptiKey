@@ -1478,7 +1478,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greek (Greece) / Ελληνικά (Greece).
+        ///   Looks up a localized string similar to Greek (Greece) / Ελληνικά (Ελλάδα).
         /// </summary>
         public static string GREEK_GREECE {
             get {
@@ -1490,7 +1490,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///   Looks up a localized string similar to Greek
         ///(Greece) /
         ///Ελληνικά
-        ///(Greece).
+        ///(Ελλάδα).
         /// </summary>
         public static string GREEK_GREECE_SPLIT_WITH_NEWLINE {
             get {
