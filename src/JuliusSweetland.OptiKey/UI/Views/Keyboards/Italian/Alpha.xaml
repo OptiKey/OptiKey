@@ -99,11 +99,11 @@
                       ShiftUpText="p" ShiftDownText="P"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
-        <!--<controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
                       Text="&#x25CC;&#x0301;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{x:Static models:KeyValues.CombiningAcuteAccentKey}" />-->
+                      Value="{x:Static models:KeyValues.CombiningAcuteAccentKey}" />
         <controls:Key Grid.Row="2" Grid.Column="23" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
@@ -152,11 +152,11 @@
                       ShiftUpText="l" ShiftDownText="L"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
-        <!--<controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+        <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
                       Text="&#x25CC;&#x0300;"
                       UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="{x:Static models:KeyValues.CombiningGraveAccentKey}" />-->
+                      Value="{x:Static models:KeyValues.CombiningGraveAccentKey}" />
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource AlphaIcon}"
                       Text="{x:Static resx:Resources.ALPHA}"
@@ -201,10 +201,10 @@
                       ShiftUpText="m" ShiftDownText="M"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="m"/>
-        <!--<controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="î" ShiftDownText="Î"
+        <controls:Key Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2"
+                      ShiftUpText="Ã®" ShiftDownText="ÃŽ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="î"/>-->
+                      Value="Ã®" />        
         <controls:Key Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"

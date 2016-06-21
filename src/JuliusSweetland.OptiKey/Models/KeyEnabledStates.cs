@@ -456,6 +456,32 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 
+                //Italian specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.ItalianItaly)
+                {
+                    //Acute accent: éÉ óÓ úÚ    
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Grave accent: Àà Èè Ìì Òò Ùù
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningGraveAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningGraveAccentKey //Allow the grave accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 //Russian specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.RussianRussia)
                 {
