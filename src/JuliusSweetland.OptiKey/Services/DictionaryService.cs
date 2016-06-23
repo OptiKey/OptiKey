@@ -466,10 +466,18 @@ namespace JuliusSweetland.OptiKey.Services
                     : new List<Tuple<char, char, int>>();
                 
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
-                var reliableFirstCharCleansed = reliableFirstLetter != null ? reliableFirstLetter.RemoveDiacritics().ToUpper().First() : (char?)null;
-                var reliableFirstCharUncleansed = reliableFirstLetter != null ? reliableFirstLetter.First() : (char?)null;
-                var reliableLastCharCleansed = reliableLastLetter != null ? reliableLastLetter.RemoveDiacritics().ToUpper().First() : (char?)null;
-                var reliableLastCharUncleansed = reliableLastLetter != null ? reliableLastLetter.First() : (char?)null;
+                var reliableFirstCharCleansed = reliableFirstLetter != null 
+                    ? reliableFirstLetter.Normalise().First() 
+                    : (char?)null;
+                var reliableFirstCharUncleansed = reliableFirstLetter != null 
+                    ? reliableFirstLetter.First() 
+                    : (char?)null;
+                var reliableLastCharCleansed = reliableLastLetter != null 
+                    ? reliableLastLetter.Normalise().First() 
+                    : (char?)null;
+                var reliableLastCharUncleansed = reliableLastLetter != null 
+                    ? reliableLastLetter.First() 
+                    : (char?)null;
 
                 //Calculate threshold as mean of all letters without reliable first/last (as those selections can skew the average)
                 var charsWithCountWithoutReliableFirstOrLast = charsWithCount.Where((cwc, index) =>

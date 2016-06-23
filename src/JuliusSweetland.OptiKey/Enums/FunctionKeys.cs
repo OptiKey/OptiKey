@@ -16,6 +16,7 @@
         BackOne,
         Break,
         Calibrate,
+        CatalanSpain,
         ClearScratchpad,
         CollapseDock,
         ConversationAlphaKeyboard,
@@ -135,6 +136,7 @@
         ShrinkFromTopAndRight,
         SizeAndPositionKeyboard,
         Sleep,
+        SpanishSpain,
         Speak,
         Suggestion1,
         Suggestion2,
@@ -142,6 +144,7 @@
         Suggestion4,
         Suggestion5,
         Suggestion6,
+        TurkishTurkey,
         YesQuestionResult
     }
 }

@@ -5,15 +5,18 @@ namespace JuliusSweetland.OptiKey.Enums
 {
     public enum Languages
     {
-	    DutchBelgium,
+        CatalanSpain,
+        DutchBelgium,
         DutchNetherlands,
         EnglishCanada,
         EnglishUK,
         EnglishUS,
 	    FrenchFrance,
-        GreekGreece,
         GermanGermany,
-        RussianRussia
+        GreekGreece,
+        RussianRussia,
+        SpanishSpain,
+        TurkishTurkey
     }
 
     public static partial class EnumExtensions
@@ -22,6 +25,7 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
+                case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
                 case Languages.DutchBelgium: return Resources.DUTCH_BELGIUM;
                 case Languages.DutchNetherlands: return Resources.DUTCH_NETHERLANDS;
                 case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
@@ -31,6 +35,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return Resources.GERMAN_GERMANY;
                 case Languages.GreekGreece: return Resources.GREEK_GREECE;
                 case Languages.RussianRussia: return Resources.RUSSIAN_RUSSIA;
+                case Languages.SpanishSpain: return Resources.SPANISH_SPAIN;
+                case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
             }
 
             return languages.ToString();
@@ -40,6 +46,7 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
+                case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
                 case Languages.DutchBelgium: return CultureInfo.GetCultureInfo("nl-BE");
                 case Languages.DutchNetherlands: return CultureInfo.GetCultureInfo("nl-NL");			
                 case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
@@ -49,6 +56,8 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.GermanGermany: return CultureInfo.GetCultureInfo("de-DE");
                 case Languages.GreekGreece: return CultureInfo.GetCultureInfo("el-GR");
                 case Languages.RussianRussia: return CultureInfo.GetCultureInfo("ru-RU");
+                case Languages.SpanishSpain: return CultureInfo.GetCultureInfo("es-ES");
+                case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
             }
 
             return CultureInfo.GetCultureInfo("en-GB");

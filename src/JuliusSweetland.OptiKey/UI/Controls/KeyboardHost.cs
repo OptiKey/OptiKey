@@ -15,12 +15,15 @@ using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
 using CommonViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
+using CatalanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Catalan;
 using DutchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Dutch;
 using EnglishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.English;
 using FrenchViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.French;
 using GermanViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.German;
 using GreekViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Greek;
 using RussianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Russian;
+using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
+using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -152,6 +155,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.CatalanSpain:
+                        newContent = new CatalanViews.Alpha { DataContext = Keyboard };
+                        break;
                     case Languages.DutchBelgium:
                         newContent = new DutchViews.BelgiumAlpha { DataContext = Keyboard };
                         break;
@@ -170,6 +176,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     case Languages.RussianRussia:
                         newContent = new RussianViews.Alpha { DataContext = Keyboard };
                         break;
+                    case Languages.SpanishSpain:
+                        newContent = new SpanishViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.TurkishTurkey:
+                        newContent = new TurkishViews.Alpha { DataContext = Keyboard };
+                        break;
                     default:
                         newContent = new EnglishViews.Alpha { DataContext = Keyboard };
                         break;
@@ -179,6 +191,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
+                    case Languages.CatalanSpain:
+                        newContent = new CatalanViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
                     case Languages.DutchBelgium:
                         newContent = new DutchViews.BelgiumConversationAlpha { DataContext = Keyboard };
                         break;
@@ -196,6 +211,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                     case Languages.RussianRussia:
                         newContent = new RussianViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
+                    case Languages.SpanishSpain:
+                        newContent = new SpanishViews.ConversationAlpha { DataContext = Keyboard };
+                        break;
+                    case Languages.TurkishTurkey:
+                        newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     default:
                         newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };

@@ -12,7 +12,7 @@ OptiKey was written to challenge the outrageously expensive, unreliable and diff
 [**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains full information on getting started, system requirements, a user guide, demo videos, a troubleshooting page, and more. Here are some quick links if you're in a hurry:
 
 * If you want to install and use OptiKey on Windows then download the installer from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest).
-* Watch the [intro video](https://www.youtube.com/watch?v=Cgnamj5SA3Y).
+* Watch the [intro video](https://www.youtube.com/watch?v=HLkyORh7vKk).
 * If you wish to get in touch my email is <optikeyfeedback@gmail.com>.
 
 # Supported Platforms
