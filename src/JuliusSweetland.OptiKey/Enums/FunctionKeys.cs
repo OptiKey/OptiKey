@@ -59,6 +59,7 @@
         Home,
         IncreaseOpacity,
         Insert,
+        ItalianItaly,
         LanguageKeyboard,
         LeftAlt,
         LeftCtrl,

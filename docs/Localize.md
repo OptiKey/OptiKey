@@ -667,6 +667,19 @@ After slotting in our entry the result would look like this:
     Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
 ```
 
+### Add Language change handler to `MainViewModel.ServiceEventHandlers`
+
+The `HandleFunctionKeySelectionResult` method needs to know how to handle the selection of the new language key from the Languages keyboard. Add a case (in the correct alphabetical position) for your new language, for example:
+
+```
+	case FunctionKeys.GreekGreece:
+		Log.Info("Changing keyboard language to GreekGreece.");
+		Settings.Default.KeyboardAndDictionaryLanguage = Languages.GreekGreece;
+		Log.Info("Changing keyboard to Menu");
+		Keyboard = new Menu(() => Keyboard = currentKeyboard);
+		break;
+```
+
 ### Add a keyboard layout
 
 In order to complete the translation of the current language one final step remains, which
