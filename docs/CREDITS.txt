@@ -21,6 +21,8 @@ Patrons (thank you very much for sponsoring this project)
   Wolfgang Engel
   Nan de R
   Bradley Adams
+  David Rowland
+  Volluta
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
