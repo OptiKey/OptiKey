@@ -22,7 +22,6 @@ Patrons (thank you very much for sponsoring this project)
   Nan de R
   Bradley Adams
   David Rowland
-  Volluta
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
