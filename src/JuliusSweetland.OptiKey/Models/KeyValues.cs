@@ -169,6 +169,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ShrinkFromTopAndRightKey = new KeyValue(FunctionKeys.ShrinkFromTopAndRight);
         public static readonly KeyValue SizeAndPositionKeyboardKey = new KeyValue(FunctionKeys.SizeAndPositionKeyboard);
         public static readonly KeyValue SleepKey = new KeyValue(FunctionKeys.Sleep);
+        public static readonly KeyValue SlovenianSloveniaKey = new KeyValue(FunctionKeys.SlovenianSlovenia);
         public static readonly KeyValue SpeakKey = new KeyValue(FunctionKeys.Speak);
         public static readonly KeyValue SpanishSpainKey = new KeyValue(FunctionKeys.SpanishSpain);
         public static readonly KeyValue Suggestion1Key = new KeyValue(FunctionKeys.Suggestion1);
@@ -217,7 +218,12 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() },
-				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
+                { Languages.SlovenianSlovenia, "abcčćdđefghijklmnopqrsštuvwxyzž"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
