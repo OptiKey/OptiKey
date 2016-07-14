@@ -403,6 +403,12 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovenian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Croatian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
@@ -595,7 +601,6 @@
     <Content Include="Dictionaries\SlovenianSlovenia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -906,6 +911,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Controls\Output.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovenian\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
