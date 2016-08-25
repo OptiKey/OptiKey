@@ -23,6 +23,7 @@
         CroatianCroatia,
         Currencies1Keyboard,
         Currencies2Keyboard,
+        DanishDenmark,
         DecreaseOpacity,
         Delete,
         DutchBelgium,
