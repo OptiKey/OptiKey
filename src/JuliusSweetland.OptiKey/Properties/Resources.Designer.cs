@@ -715,7 +715,32 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CURSOR_WIDTH_LABEL", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Danish (Denmark) / Dansk (Danmark).
+        /// </summary>
+        public static string DANISH_DENMARK
+        {
+            get
+            {
+                return ResourceManager.GetString("DANISH_DENMARK", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Danish
+        ///(Denmark) /
+        ///Dansk
+        ///(Danmark).
+        /// </summary>
+        public static string DANISH_DENMARK_SPLIT_WITH_NEWLINE
+        {
+            get
+            {
+                return ResourceManager.GetString("DANISH_DENMARK_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Debugging mode:.
         /// </summary>
