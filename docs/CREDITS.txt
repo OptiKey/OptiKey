@@ -24,6 +24,7 @@ Patrons (thank you very much for sponsoring this project)
   David Rowland
   Simon Evans
   Mu Qiao
+  Jo Thompson
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
