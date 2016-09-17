@@ -3880,6 +3880,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Slovenian (Slovenia) / Slovensko (Slovenija).
+        /// </summary>
+        public static string SLOVENIAN_SLOVENIA {
+            get {
+                return ResourceManager.GetString("SLOVENIAN_SLOVENIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenian
+        ///(Slovenia) /
+        ///Slovensko
+        ///(Slovenija).
+        /// </summary>
+        public static string SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sound effects.
         /// </summary>
         public static string SOUND_EFFECTS {
