@@ -311,6 +311,7 @@
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
@@ -402,6 +403,12 @@
     </Compile>
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Danish\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Slovenian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -556,6 +563,7 @@
     <EmbeddedResource Include="Properties\Resources.sl-SI.resx" />
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
+    <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
@@ -575,7 +583,6 @@
     <Content Include="Dictionaries\RussianRussia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\Candidates\DanishDenmark.dic" />
     <Content Include="Dictionaries\GreekGreece.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -598,7 +605,16 @@
     <Content Include="Dictionaries\ItalianItaly.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\SlovenianSlovenia.dic">
+    <Content Include="Dictionaries\DanishDenmark.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\SlovenianSlovenia.dic">    
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\DanishDenmark.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\DanishDenmark.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -913,6 +929,14 @@
     <Page Include="UI\Controls\Output.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Danish\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\Slovenian\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>

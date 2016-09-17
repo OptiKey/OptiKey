@@ -291,6 +291,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Currencies2();
                     break;
 
+                case FunctionKeys.DanishDenmark:
+                    Log.Info("Changing keyboard language to DanishDenmark.");
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.DanishDenmark;
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.DecreaseOpacity:
                     Log.Info("Decreasing opacity.");
                     mainWindowManipulationService.IncrementOrDecrementOpacity(false);

@@ -52,6 +52,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
         public static readonly KeyValue Currencies2KeyboardKey = new KeyValue(FunctionKeys.Currencies2Keyboard);
+        public static readonly KeyValue DanishDenmarkKey = new KeyValue(FunctionKeys.DanishDenmark);
         public static readonly KeyValue DecreaseOpacityKey = new KeyValue(FunctionKeys.DecreaseOpacity);
         public static readonly KeyValue DeleteKey = new KeyValue(FunctionKeys.Delete);
         public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
@@ -193,6 +194,11 @@ namespace JuliusSweetland.OptiKey.Models
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
                 { Languages.CroatianCroatia, "abcčćdđefghijklmnopqrsštuvwxyzž"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvxyzæøå"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
