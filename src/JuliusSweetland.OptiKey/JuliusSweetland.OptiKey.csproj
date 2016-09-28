@@ -215,6 +215,7 @@
     <Compile Include="Enums\TriggerStopSignals.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\XElementExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\IKeyStateServiceExtensions.cs" />
@@ -227,8 +228,10 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
+    <Compile Include="Models\CustomKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\XmlKeyboard.cs" />
     <Compile Include="Models\KeyStateServiceState.cs" />
     <Compile Include="Models\KeyValuePress.cs" />
     <Compile Include="Models\KeyValueLink.cs" />
@@ -340,6 +343,8 @@
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\Controls\CustomKeyboard.cs" />
+    <Compile Include="UI\Controls\CustomKeyboardSelector.cs" />
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -411,6 +416,8 @@
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\CustomKeyboard.xaml.cs" />
+    <Compile Include="UI\Views\Keyboards\Common\CustomKeyboardSelector.xaml.cs" />
     <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
@@ -972,6 +979,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\CustomKeyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+	<Page Include="UI\Views\Keyboards\Common\CustomKeyboardSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

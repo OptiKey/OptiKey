@@ -173,7 +173,7 @@
 
             <Style x:Key="KeySymbolStyle" TargetType="{x:Type Path}">
                 <Setter Property="Stretch" Value="Uniform" />
-                <Setter Property="Margin" Value="2" />
+                <Setter Property="Margin" Value="{Binding Path=SymbolMargin, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Setter Property="Data" Value="{Binding Path=SymbolGeometry, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                 <Setter Property="Fill" Value="{StaticResource KeyDefaultForegroundBrush}" />
                 <Setter Property="Visibility" Value="Collapsed" />

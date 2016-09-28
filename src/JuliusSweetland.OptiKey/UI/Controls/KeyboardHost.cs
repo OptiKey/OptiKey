@@ -345,7 +345,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-
+            else if (Keyboard is ViewModelKeyboards.CustomKeyboard)
+            {
+                var kb = Keyboard as ViewModelKeyboards.CustomKeyboard;
+                newContent = new CommonViews.CustomKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };                
+            }
+            else if (Keyboard is ViewModelKeyboards.CustomKeyboardSelector)
+            {
+                var kb = Keyboard as ViewModelKeyboards.CustomKeyboardSelector;
+                newContent = new CommonViews.CustomKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+            }
             Content = newContent;
         }
 

@@ -19,14 +19,18 @@ namespace JuliusSweetland.OptiKey.Models
         // TODO: May hold ID or file path or something else?
         private readonly string keyboardLink;
 
+        // replace current keyboard instead of pushing on top?
+        private readonly bool replaceKeyboard;
+
         public KeyValueLink() : base()
         {
             this.keyboardLink = null;
         }
 
-        public KeyValueLink(string keyboardLink)
+        public KeyValueLink(string keyboardLink, bool replacePreviousKeyboard=false)
         {
             this.keyboardLink = keyboardLink;
+            this.replaceKeyboard = replacePreviousKeyboard;
         }
 
         public override bool HasContent()
@@ -35,6 +39,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public string Keyboard { get { return keyboardLink; } }
+        public bool Replace { get { return replaceKeyboard; } }
 
         #region IEquatable
 
@@ -77,7 +82,8 @@ namespace JuliusSweetland.OptiKey.Models
             }
 
             // Return true if the fields match:
-            return (x.Keyboard == y.Keyboard);
+            return (x.Keyboard == y.Keyboard) &&
+                   (x.Replace == y.Replace);
         }
 
         public static bool operator !=(KeyValueLink x, KeyValueLink y)
@@ -91,6 +97,7 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 int hash = 17;
                 hash = (hash * 389) ^ (Keyboard != null ? Keyboard.GetHashCode() : 0);
+                hash = (hash * 13) ^ Replace.GetHashCode();
                 return hash;
             }
         }
@@ -105,6 +112,8 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 stringBuilder.Append(Keyboard);
             }
+            stringBuilder.Append(" replace = ");
+            stringBuilder.Append(this.replaceKeyboard);
             
             return stringBuilder.ToString();
         }

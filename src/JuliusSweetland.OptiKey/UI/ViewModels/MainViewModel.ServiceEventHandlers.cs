@@ -163,20 +163,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         
             var currentKeyboard = Keyboard;
 
-            Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-            Action backAction = () =>
+            Action backAction;
+            if (keyValue.Replace)
             {
-                reinstateModifiers();
-                Keyboard = currentKeyboard;
+                var navigableKeyboard = Keyboard as IBackAction;
+                if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
+                {
+                    backAction = navigableKeyboard.BackAction;
+                }
+                else
+                {
+                    backAction = () => { }; //hrmm, not ideal
+                }
+            }
+            else
+            {
+                Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                backAction = () =>
+                {
+                    reinstateModifiers();
+                    Keyboard = currentKeyboard;                    
+                    // TODO: Or docked, whatevre it currently is!
+                    if (!(currentKeyboard is CustomKeyboard))
+                    {
+                        mainWindowManipulationService.ResizeDockToFull();
+                    }
 
-                // Clear the keyboard when leaving keyboard.
-                // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky
-                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                    // Clear the keyboard when leaving keyboard.
+                    // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky
+                    keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
 
-            };
+                };
+            }
 
-            // TODO: implement customkeyboard 
-            // Keyboard = new CustomKeyboard(backAction, keyValue.Keyboard);
+            Action<double> resizeAction = mainWindowManipulationService.TemporarilyResizeDockToSpecifiedHeight;
+            Keyboard = new CustomKeyboard(backAction, resizeAction, keyValue.Keyboard);
 
         }
 
@@ -413,6 +434,87 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Currencies2.");
                     Keyboard = new Currencies2();
                     break;
+
+                case FunctionKeys.CustomKeyboardMenu:
+                    {
+                        Log.Info("Changing keyboard to CustomKeyboardMenu.");
+
+                        var currentKeyboard2 = Keyboard;
+
+                        Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        Action backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+
+                            reinstateModifiers();
+
+                            // Clear the keyboard when leaving keyboard.
+                            // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky 
+                            // TODO: Will we support custom keyboards that want to use the scratchpad?
+                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                        };
+
+                        int pageIndex = 0;
+                        if (Keyboard is CustomKeyboardSelector)
+                        {
+                            var kb = Keyboard as CustomKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex + 1;
+                        }
+                        Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+
+                case FunctionKeys.CustomKeyboardPrev:
+                    {
+                        Log.Info("Changing keyboard to prev CustomKeyboardMenu.");
+
+                        Action backAction;
+                        var currentKeyboard2 = Keyboard;
+                        int pageIndex = 0;
+                        if (Keyboard is CustomKeyboardSelector)
+                        {
+                            var kb = Keyboard as CustomKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex - 1;
+                        }
+                        else
+                        {
+                            Log.Error("Unexpectedly entering CustomKeyboardPrev from somewhere other than CustomKeyboard");
+                            backAction = () =>
+                            {
+                                Keyboard = currentKeyboard2;
+                            };
+                        }
+                        Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+            case FunctionKeys.CustomKeyboardNext:
+                {
+                    Log.Info("Changing keyboard to next CustomKeyboardMenu.");
+
+                    Action backAction;
+                    var currentKeyboard2 = Keyboard;
+                    int pageIndex = 0;
+                    if (Keyboard is CustomKeyboardSelector)
+                    {
+                        var kb = Keyboard as CustomKeyboardSelector;
+                        backAction = kb.BackAction;
+                        pageIndex = kb.PageIndex + 1;
+                    }
+                    else
+                    {
+                        Log.Error("Unexpectedly entering CustomKeyboardNext from somewhere other than CustomKeyboard");
+                        backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+                        };
+                    }
+                    Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                }
+                break;
 
                 case FunctionKeys.CzechCzechRepublic:
                     Log.Info("Changing keyboard language to CzechCzechRepublic.");

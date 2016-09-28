@@ -636,8 +636,8 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("ApplyAndPersistSizeAndPosition called with rect.Top:{0}, rect.Bottom:{1}, rect.Left:{2}, rect.Right:{3}", 
                 rect.Top, rect.Bottom, rect.Left, rect.Right);
             
-            PersistSizeAndPosition();
             this.ApplySizeAndPosition(rect);
+            PersistSizeAndPosition();
         }
 
         private void ApplySizeAndPosition(Rect rect)

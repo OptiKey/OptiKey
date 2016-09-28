@@ -203,6 +203,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(HeightSpanProperty, value); }
         }
 
+        public static readonly DependencyProperty SymbolMarginProperty =
+                   DependencyProperty.Register("SymbolMargin", typeof(double), typeof(Key), new PropertyMetadata(2d));
+
+        public double SymbolMargin
+        {
+            get { return (double)GetValue(SymbolMarginProperty); }
+            set { SetValue(SymbolMarginProperty, value); }
+        }
+
         public static readonly DependencyProperty SharedSizeGroupProperty =
             DependencyProperty.Register("SharedSizeGroup", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
