@@ -155,8 +155,8 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 NGramCount = nGramCount;
             }
 
-            public DictionaryEntry DictionaryEntry { get; }
-            public int NGramCount { get; }
+            public DictionaryEntry DictionaryEntry { get; set; }
+            public int NGramCount { get; set;}
         }
     }
 }
