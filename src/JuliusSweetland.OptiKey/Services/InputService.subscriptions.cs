@@ -56,10 +56,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             currentPositionSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null)
-                .Select(tp => new Tuple<Point, KeyValue?>(
-                    tp.Value.Value.Point,
+                .Select(tp => new Tuple<Point, KeyValue>(
+                    tp.Value.Point,
                     SelectionMode == SelectionModes.Key 
-                        ? tp.Value.Value.KeyValue 
+                        ? tp.Value.KeyValue 
                         : null))
                 .DistinctUntilChanged()
                 .ObserveOnDispatcher() //Subscribe on UI thread
@@ -95,7 +95,7 @@ namespace JuliusSweetland.OptiKey.Services
                     .ObserveOnDispatcher()
                     .Subscribe(ts =>
                     {
-                        PublishSelectionProgress(new Tuple<PointAndKeyValue?, double>(ts.PointAndKeyValue, ts.Progress.Value));
+                        PublishSelectionProgress(new Tuple<PointAndKeyValue, double>(ts.PointAndKeyValue, ts.Progress.Value));
                     });
             }
         }
@@ -139,15 +139,15 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (SelectionMode == SelectionModes.Key)
                     {
-                        if (triggerSignal.PointAndKeyValue.Value.KeyValue != null
-                            && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.Value.KeyValue.Value]))
+                        if (triggerSignal.PointAndKeyValue.KeyValue != null
+                            && (keyStateService.KeyEnabledStates == null || keyStateService.KeyEnabledStates[triggerSignal.PointAndKeyValue.KeyValue]))
                         {
                             Log.Debug("Selection mode is KEY and the key on which the trigger occurred is enabled.");
 
                             if (MultiKeySelectionSupported
                                 && keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown()
-                                && triggerSignal.PointAndKeyValue.Value.KeyValue != null
-                                && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.Value.KeyValue.Value)
+                                && triggerSignal.PointAndKeyValue.KeyValue != null
+                                && KeyValues.MultiKeySelectionKeys.Contains(triggerSignal.PointAndKeyValue.KeyValue)
                                 && !KeyValues.CombiningKeys.Any(key => keyStateService.KeyDownStates[key].Value.IsDownOrLockedDown())) //Do not start if any combining ("dead") keys are down
                             {
                                 Log.Debug("Multi-key selection is currently enabled and the key on which the trigger occurred is a letter. Publishing the selection and beginning a new multi-key selection capture.");
@@ -158,7 +158,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                                 CapturingMultiKeySelection = true;
 
-                                PublishSelection(triggerSignal.PointAndKeyValue.Value);
+                                PublishSelection(triggerSignal.PointAndKeyValue);
 
                                 multiKeySelectionSubscription =
                                     CreateMultiKeySelectionSubscription()
@@ -182,12 +182,11 @@ namespace JuliusSweetland.OptiKey.Services
                             }
                             else
                             {
-                                PublishSelection(triggerSignal.PointAndKeyValue.Value);
+                                PublishSelection(triggerSignal.PointAndKeyValue);
 
-                                PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                                    new List<Point> { triggerSignal.PointAndKeyValue.Value.Point },
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.FunctionKey,
-                                    triggerSignal.PointAndKeyValue.Value.KeyValue.Value.String,
+                                PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
+                                    new List<Point> { triggerSignal.PointAndKeyValue.Point },
+                                    triggerSignal.PointAndKeyValue.KeyValue,
                                     null));
                             }
                         }
@@ -198,10 +197,10 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PublishSelection(triggerSignal.PointAndKeyValue.Value);
+                        PublishSelection(triggerSignal.PointAndKeyValue);
 
-                        PublishSelectionResult(new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                            new List<Point> { triggerSignal.PointAndKeyValue.Value.Point }, null, null, null));
+                        PublishSelectionResult(new Tuple<List<Point>, KeyValue, List<string>>(
+                            new List<Point> { triggerSignal.PointAndKeyValue.Point }, null, null));
                     }
                 }
                 else
@@ -221,7 +220,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     //If we are using a fixation trigger source then the stop signal must occur on a letter
                     if (!(selectionTriggerSource is IFixationTriggerSource)
-                        || (triggerSignal.PointAndKeyValue != null && triggerSignal.PointAndKeyValue.Value.StringIsLetter))
+                        || (triggerSignal.PointAndKeyValue != null && triggerSignal.PointAndKeyValue.StringIsLetter))
                     {
                         Log.Debug("Trigger signal to stop the current multi-key selection capture detected.");
 
@@ -246,7 +245,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var pointAndKeyValueSubscription = pointSource.Sequence
                     .Where(tp => tp.Value != null) //Filter out stale indicators
-                    .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                    .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value, tp.Timestamp))
                     .TakeWhile(tp => stopMultiKeySelectionTriggerSignal == null)
                     .ToList()
                     .Subscribe(points =>
@@ -304,8 +303,8 @@ namespace JuliusSweetland.OptiKey.Services
                     string reliableFirstLetter =
                         startMultiKeySelectionTriggerSignal != null
                         && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
-                        && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
-                            ? startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
+                        && startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.StringIsLetter
+                            ? startMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.String
                             : null;
 
                     Log.DebugFormat(
@@ -317,8 +316,8 @@ namespace JuliusSweetland.OptiKey.Services
                     string reliableLastLetter = selectionTriggerSource is IFixationTriggerSource
                         && stopMultiKeySelectionTriggerSignal != null
                         && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue != null
-                        && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.StringIsLetter
-                            ? stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value.String
+                        && stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.StringIsLetter
+                            ? stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.String
                             : null;
 
                     Log.DebugFormat(
@@ -330,13 +329,13 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.Debug("Publishing selection event on last letter of multi-key selection capture.");
 
-                        PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue.Value);
+                        PublishSelection(stopMultiKeySelectionTriggerSignal.Value.PointAndKeyValue);
                     }
 
                     //Why am I wrapping this call in a Task.Run? Internally the MapCaptureToEntries method uses PLINQ which also blocks the UI thread - this frees it up.
                     //This cannot be done inside the MapCaptureToEntries method as the method takes a ref param, which cannot be used inside an anonymous delegate or lambda.
                     //The method cannot be made awaitable as async/await also does not support ref params.
-                    Tuple<List<Point>, FunctionKeys?, string, List<string>> result = null;
+                    Tuple<List<Point>, KeyValue, List<string>> result = null;
                     await Task.Run(() =>
                     {
                         result = dictionaryService.MapCaptureToEntries(
@@ -348,8 +347,8 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (result != null)
                     {
-                        if (result.Item2 == null && result.Item3 == null &&
-                            (result.Item4 == null || !result.Item4.Any()))
+                        if (result.Item2 == null && 
+                            (result.Item3 == null || !result.Item3.Any()))
                         {
                             //Nothing useful in the result - play error message. Publish anyway as the points can be rendered in debugging mode.
                             audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);

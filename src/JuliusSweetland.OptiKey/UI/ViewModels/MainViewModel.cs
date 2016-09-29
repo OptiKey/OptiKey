@@ -38,13 +38,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
-        private EventHandler<Tuple<Point, KeyValue?>> inputServiceCurrentPositionHandler;
-        private EventHandler<Tuple<PointAndKeyValue?, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
+        private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
-        private EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> inputServiceSelectionResultHandler;
+        private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
-        private KeyValue? currentPositionKey;
+        private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
@@ -216,7 +216,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref currentPositionPoint, value); }
         }
 
-        public KeyValue? CurrentPositionKey
+        public KeyValue CurrentPositionKey
         {
             get { return currentPositionKey; }
             set { SetProperty(ref currentPositionKey, value); }

@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
     {
         private readonly TimeSpan pointTtl;
 
-        private IObservable<Timestamped<PointAndKeyValue?>> sequence;
+        private IObservable<Timestamped<PointAndKeyValue>> sequence;
 
         public MousePositionSource(TimeSpan pointTtl)
         {
@@ -26,7 +26,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
 
         public Dictionary<Rect, KeyValue> PointToKeyValueMap { private get; set; }
 
-        public IObservable<Timestamped<PointAndKeyValue?>> Sequence
+        public IObservable<Timestamped<PointAndKeyValue>> Sequence
         {
             get
             {
@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                         .Select(_ => new Point(Cursor.Position.X, Cursor.Position.Y))
                         .Timestamp()
                         .PublishLivePointsOnly(pointTtl)
-                        .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))
+                        .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))
                         .Replay(1) //Buffer one value for every subscriber so there is always a 'most recent' point available
                         .RefCount();
                 }

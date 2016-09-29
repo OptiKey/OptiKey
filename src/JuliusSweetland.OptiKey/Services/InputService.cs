@@ -30,10 +30,10 @@ namespace JuliusSweetland.OptiKey.Services
         private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
-        private event EventHandler<Tuple<Point, KeyValue?>> currentPositionEvent;
-        private event EventHandler<Tuple<PointAndKeyValue?, double>> selectionProgressEvent;
+        private event EventHandler<Tuple<Point, KeyValue>> currentPositionEvent;
+        private event EventHandler<Tuple<PointAndKeyValue, double>> selectionProgressEvent;
         private event EventHandler<PointAndKeyValue> selectionEvent;
-        private event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> selectionResultEvent;
+        private event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> selectionResultEvent;
 
         #endregion
 
@@ -208,7 +208,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Current Position
 
-        public event EventHandler<Tuple<Point, KeyValue?>> CurrentPosition
+        public event EventHandler<Tuple<Point, KeyValue>> CurrentPosition
         {
             add
             {
@@ -245,7 +245,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Progress
 
-        public event EventHandler<Tuple<PointAndKeyValue?, double>> SelectionProgress
+        public event EventHandler<Tuple<PointAndKeyValue, double>> SelectionProgress
         {
             add
             {
@@ -318,7 +318,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Selection Result
 
-        public event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult
+        public event EventHandler<Tuple<List<Point>, KeyValue, List<string>>> SelectionResult
         {
             add
             {
@@ -374,7 +374,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Current Position
 
-        private void PublishCurrentPosition(Tuple<Point, KeyValue?> currentPosition)
+        private void PublishCurrentPosition(Tuple<Point, KeyValue> currentPosition)
         {
             if (currentPositionEvent != null)
             {
@@ -388,7 +388,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Progress
 
-        private void PublishSelectionProgress(Tuple<PointAndKeyValue?, double> selectionProgress)
+        private void PublishSelectionProgress(Tuple<PointAndKeyValue, double> selectionProgress)
         {
             if (selectionProgressEvent != null)
             {
@@ -419,16 +419,16 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Publish Selection Result
 
-        private void PublishSelectionResult(Tuple<List<Point>, FunctionKeys?, string, List<string>> selectionResult)
+        private void PublishSelectionResult(Tuple<List<Point>, KeyValue, List<string>> selectionResult)
         {
             if (selectionResultEvent != null)
             {
                 Log.DebugFormat("Publishing Selection Result event with {0} point(s), FunctionKey:'{1}', String:'{2}', Best match '{3}', Suggestion count:{4}",
                         selectionResult.Item1 != null ? selectionResult.Item1.Count : (int?)null,
-                        selectionResult.Item2, 
-                        selectionResult.Item3.ToPrintableString(),
-                        selectionResult.Item4 != null && selectionResult.Item4.Any() ? selectionResult.Item4.First() : null,
-                        selectionResult.Item4 != null ? selectionResult.Item4.Count : (int?)null);
+                        selectionResult.Item2 != null ? selectionResult.Item2.FunctionKey : null,  
+                        selectionResult.Item2 != null ? selectionResult.Item2.String.ToPrintableString() : "",
+                        selectionResult.Item3 != null && selectionResult.Item3.Any() ? selectionResult.Item3.First() : null,
+                        selectionResult.Item3 != null ? selectionResult.Item3.Count : (int?)null);
 
                 selectionResultEvent(this, selectionResult);
             }

@@ -47,27 +47,33 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
-            var keyStateSubscription = keyStateService.KeyDownStates[Value]
-                .OnPropertyChanges(kds => kds.Value)
-                .Subscribe(value => KeyDownState = value);
-            onUnloaded.Add(keyStateSubscription);
-            KeyDownState = keyStateService.KeyDownStates[Value].Value;
+            if (Value != null)
+            {
+                var keyStateSubscription = keyStateService.KeyDownStates[Value]
+                    .OnPropertyChanges(kds => kds.Value)
+                    .Subscribe(value => KeyDownState = value);
+                onUnloaded.Add(keyStateSubscription);
+            }
+            KeyDownState = (Value == null) ? KeyDownStates.Up : keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress and SelectionInProgress
-            var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
-                .OnPropertyChanges(ksp => ksp.Value)
-                .Subscribe(value =>
-                {
-                    SelectionProgress = value;
-                    SelectionInProgress = value > 0d;
-                });
-            onUnloaded.Add(keySelectionProgressSubscription);
-            var progress = keyStateService.KeySelectionProgress[Value].Value;
+            if (Value != null)
+            {
+                var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                    .OnPropertyChanges(ksp => ksp.Value)
+                    .Subscribe(value =>
+                    {
+                        SelectionProgress = value;
+                        SelectionInProgress = value > 0d;
+                    });
+                onUnloaded.Add(keySelectionProgressSubscription);
+            }
+            var progress = (Value == null) ? 0 : keyStateService.KeySelectionProgress[Value].Value;
             SelectionProgress = progress;
             SelectionInProgress = progress > 0d;
 
             //Calculate IsEnabled
-            Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
+            Action calculateIsEnabled = () => IsEnabled = Value != null && keyStateService.KeyEnabledStates[Value];
             var keyEnabledSubscription = keyStateService.KeyEnabledStates
                 .OnAnyPropertyChanges()
                 .Subscribe(_ => calculateIsEnabled());
@@ -75,7 +81,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             calculateIsEnabled();
             
             //Calculate IsCurrent
-            Action<KeyValue?> calculateIsCurrent = value => IsCurrent = value != null && value.Value.Equals(Value);
+            Action<KeyValue> calculateIsCurrent = value => IsCurrent = value != null && Value != null && value.Equals(Value);
             var currentPositionSubscription = mainViewModel.OnPropertyChanges(vm => vm.CurrentPositionKey)
                 .Subscribe(calculateIsCurrent);
             onUnloaded.Add(currentPositionSubscription);
@@ -102,7 +108,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 handler => mainViewModel.KeySelection -= handler)
                 .Subscribe(pattern =>
                 {
-                    if (pattern.EventArgs.Equals(Value)
+                    if (Value != null &&
+                        pattern.EventArgs.Equals(Value)
                         && Selection != null)
                     {
                         Selection(this, null);

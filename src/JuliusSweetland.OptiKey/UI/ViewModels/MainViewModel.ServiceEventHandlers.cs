@@ -54,14 +54,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (progress.Item1 != null)
                 {
                     if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.Value.KeyValue != null)
+                        && progress.Item1.KeyValue != null)
                     {
-                        keyStateService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                        keyStateService.KeySelectionProgress[progress.Item1.KeyValue] =
                             new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Point, progress.Item2);
                     }
                 }
             };
@@ -82,8 +82,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (KeySelection != null)
                     {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value);
-                        KeySelection(this, value.KeyValue.Value);
+                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue);
+                        KeySelection(this, value.KeyValue);
                     }
                 }
                 else if (SelectionMode == SelectionModes.Point)
@@ -106,10 +106,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.Info("SelectionResult event received from InputService.");
 
                 var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue(tuple.Item2, tuple.Item3)
-                    : (KeyValue?)null;
-                var multiKeySelection = tuple.Item4;
+                var singleKeyValue = tuple.Item2;
+                var multiKeySelection = tuple.Item3;
 
                 SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
@@ -156,26 +154,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("DetachInputServiceEventHandlers complete.");
         }
 
-        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
+        private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
         {
             //Single key
             if (singleKeyValue != null)
             {
                 Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'", 
-                    singleKeyValue.Value.String.ToPrintableString(), singleKeyValue.Value.FunctionKey);
+                    singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
 
-                keyStateService.ProgressKeyDownState(singleKeyValue.Value);
+                keyStateService.ProgressKeyDownState(singleKeyValue);
 
-                if (!string.IsNullOrEmpty(singleKeyValue.Value.String))
+                if (!string.IsNullOrEmpty(singleKeyValue.String))
                 {
                     //Single key string
-                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.Value.String);
+                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
                 }
 
-                if (singleKeyValue.Value.FunctionKey != null)
+                if (singleKeyValue.FunctionKey != null)
                 {
                     //Single key function key
-                    HandleFunctionKeySelectionResult(singleKeyValue.Value);
+                    HandleFunctionKeySelectionResult(singleKeyValue);
                 }
             }
             
