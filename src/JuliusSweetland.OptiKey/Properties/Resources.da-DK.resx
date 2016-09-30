@@ -303,7 +303,7 @@ Vi beklager ulejligheden.</value>
     <value>Debug tilstand:</value>
   </data>
   <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>FORMINDSK
+    <value>FORØG
 GENNEMSIGTIGHED</value>
   </data>
   <data name="DEL" xml:space="preserve">
@@ -455,7 +455,7 @@ OP</value>
     <value>Ufuldstændige tastfikseringers levetid (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>FORØG
+    <value>FORMINDSK
 GENNEMSIGTIGHED</value>
   </data>
   <data name="INFO_SOUND_LABEL" xml:space="preserve">
