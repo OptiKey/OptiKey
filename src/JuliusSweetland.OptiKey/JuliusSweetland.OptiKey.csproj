@@ -311,6 +311,7 @@
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
     <Compile Include="Services\MyGazePointService.cs" />
+    <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
@@ -616,7 +617,7 @@
     <Content Include="Dictionaries\DanishDenmark.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\SlovenianSlovenia.dic">    
+    <Content Include="Dictionaries\SlovenianSlovenia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">

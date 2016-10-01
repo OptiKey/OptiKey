@@ -334,6 +334,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calibration failed!.
+        /// </summary>
+        public static string CALIBRATION_FAIL_NO_MESSAGE {
+            get {
+                return ResourceManager.GetString("CALIBRATION_FAIL_NO_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calibration cannot be completed without manual intervention, e.g. having to use a mouse. You may be stuck in the calibration process if you cannot manually interact with your computer.
         ///Are you sure you would like to re-calibrate?.
         /// </summary>
@@ -353,11 +362,20 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calibration success! Accuracy (Avg Error Degree = {0}).
+        ///   Looks up a localized string similar to Calibration success!.
         /// </summary>
         public static string CALIBRATION_SUCCESS {
             get {
                 return ResourceManager.GetString("CALIBRATION_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calibration success! Accuracy (Avg Error Degree = {0}).
+        /// </summary>
+        public static string CALIBRATION_SUCCESS_WITH_ACCURACY {
+            get {
+                return ResourceManager.GetString("CALIBRATION_SUCCESS_WITH_ACCURACY", resourceCulture);
             }
         }
         
@@ -715,32 +733,28 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CURSOR_WIDTH_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Danish (Denmark) / Dansk (Danmark).
         /// </summary>
-        public static string DANISH_DENMARK
-        {
-            get
-            {
+        public static string DANISH_DENMARK {
+            get {
                 return ResourceManager.GetString("DANISH_DENMARK", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Danish
         ///(Denmark) /
         ///Dansk
         ///(Danmark).
         /// </summary>
-        public static string DANISH_DENMARK_SPLIT_WITH_NEWLINE
-        {
-            get
-            {
+        public static string DANISH_DENMARK_SPLIT_WITH_NEWLINE {
+            get {
                 return ResourceManager.GetString("DANISH_DENMARK_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Debugging mode:.
         /// </summary>

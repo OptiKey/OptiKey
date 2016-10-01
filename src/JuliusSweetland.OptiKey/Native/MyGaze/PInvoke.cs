@@ -18,6 +18,9 @@ namespace JuliusSweetland.OptiKey.Native.MyGaze
         [DllImport("myGazeAPI.dll", CallingConvention = CallingConvention.StdCall, EntryPoint = "iV_SetEventCallback")]
         public static extern void SetEventCallback(MulticastDelegate eventCallbackFunction);
 
+        [DllImport("myGazeAPI.dll", EntryPoint = "iV_Calibrate")]
+        public static extern int Calibrate();
+
         [DllImport("myGazeAPI.dll", EntryPoint = "iV_Disconnect")]
         public static extern int Disconnect();
     }

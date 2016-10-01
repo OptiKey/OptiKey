@@ -202,7 +202,7 @@ Sei sicuro di voler ri-calibrare?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>La calibrazione è stata bloccata per un motivo sconosciuto. Messaggio: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Calibrazione avvenuta! Accuratezza (Errore medio = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1594,5 +1594,11 @@ IN SU &amp; DESTRA</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Sopprimi modificatori tasti per tutte le azioni mouse:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Calibrazione avvenuta!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Calibrazione fallita!</value>
   </data>
 </root>

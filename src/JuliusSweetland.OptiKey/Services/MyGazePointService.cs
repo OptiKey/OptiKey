@@ -106,10 +106,11 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (pointEvent != null)
             {
+                //Take left OR right eye screen co-ordinates (left takes precedence if present)
                 var leftX = sampleData.leftEye.gazeX;
                 var leftY = sampleData.leftEye.gazeY;
-                var rightX = sampleData.leftEye.gazeX;
-                var rightY = sampleData.leftEye.gazeY;
+                var rightX = sampleData.rightEye.gazeX;
+                var rightY = sampleData.rightEye.gazeY;
 
                 double? x = null;
                 double? y = null;
@@ -130,7 +131,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (x != null && y != null)
                 {
                     pointEvent(this, new Timestamped<Point>(new Point(x.Value, y.Value),
-                        new DateTimeOffset(DateTime.UtcNow).ToUniversalTime()));
+                        new DateTimeOffset(DateTime.UtcNow).ToUniversalTime())); //Sample timestamp is not useful
                         //new DateTimeOffset(new DateTime(sampleData.timestamp)).ToUniversalTime()));
                 }
             }

@@ -45,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Services
             switch (calibrateArgs.Result)
             {
                 case CalibrationRunnerResult.Success:
-                    var message = string.Format(Resources.CALIBRATION_SUCCESS,
+                    var message = string.Format(Resources.CALIBRATION_SUCCESS_WITH_ACCURACY,
                         calibrateArgs.CalibrationResult.AverageErrorDegree);
                     Log.Info(message);
                     return message;

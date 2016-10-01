@@ -203,7 +203,7 @@ Weet u zeker dat u wilt opnieuw wilt kalibreren?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Kalibratie is gestopt vanwege een onbekende reden. Bericht: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Kalibratie gelukt! Nauwkeurigheid (Gem Afwijking = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1545,5 +1545,11 @@ U kunt de update-check uitschakelen via de Management Console (ALT + M).</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Onderdruk modifier sleutels voor alle muisacties:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibratie gelukt!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibratie mislukt!</value>
   </data>
 </root>

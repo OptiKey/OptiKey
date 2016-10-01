@@ -203,7 +203,7 @@ Jeste li sigurni da želite ponovno kalibrirati?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Kalibracija je zaustavljena iz nepoznatog razloga. Poruka: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Kalibracija je uspješno završena! Preciznost (prosječna pogreška u stupnjevima = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1541,5 +1541,11 @@ Možete isključiti ažuriranja iz upravljačke konzole (ALT + M).</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Isključite tipke prilagodbe (ALT, SHIFT, CTRL, WIN) za sve akcije mišem:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibracija je uspješno završena!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibracija nije uspjela!</value>
   </data>
 </root>

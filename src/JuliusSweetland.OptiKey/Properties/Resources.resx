@@ -202,7 +202,7 @@ Are you sure you would like to re-calibrate?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Calibration stopped for an unknown reason. Message: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1699,5 +1699,11 @@ Slovensko
   </data>
   <data name="VI_MYGAZE" xml:space="preserve">
     <value>Visual Interaction myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Calibration failed!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Calibration success!</value>
   </data>
 </root>

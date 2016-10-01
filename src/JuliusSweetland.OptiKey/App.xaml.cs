@@ -332,6 +332,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                     return new TobiiEyeXCalibrationService();
+
+                case PointsSources.VisualInteractionMyGaze:
+                    return new MyGazeCalibrationService();
             }
 
             return null;
