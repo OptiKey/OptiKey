@@ -1694,4 +1694,10 @@ Italiano
 Slovensko
 (Slovenija)</value>
   </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Unable to connect to myGaze! Please check that the server is running and the device is connected and try again.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Visual Interaction myGaze</value>
+  </data>
 </root>

@@ -7,8 +7,9 @@ using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Enums;
-using JuliusSweetland.OptiKey.Native.Structs;
+using JuliusSweetland.OptiKey.Native.Common;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
+using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
 

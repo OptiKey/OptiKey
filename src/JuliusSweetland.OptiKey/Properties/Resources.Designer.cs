@@ -2858,6 +2858,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to connect to myGaze! Please check that the server is running and the device is connected and try again..
+        /// </summary>
+        public static string MY_GAZE_CONNECT_ERROR {
+            get {
+                return ResourceManager.GetString("MY_GAZE_CONNECT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///(The new dictionary entry will contain capital letters).
         /// </summary>
@@ -4461,6 +4470,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VERTICAL_FILL_LABEL {
             get {
                 return ResourceManager.GetString("VERTICAL_FILL_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual Interaction myGaze.
+        /// </summary>
+        public static string VI_MYGAZE {
+            get {
+                return ResourceManager.GetString("VI_MYGAZE", resourceCulture);
             }
         }
         
