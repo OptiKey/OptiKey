@@ -10,7 +10,6 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using log4net;
@@ -60,17 +59,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #endregion
 
         #region Properties
-
-        public static readonly DependencyProperty InputServiceProperty =
-            DependencyProperty.Register("InputService", typeof(IInputService),
-                typeof(KeyboardHost), new PropertyMetadata(default(IInputService)));
-
-        public IInputService InputService
-        {
-            get { return (InputService)GetValue(InputServiceProperty); }
-            set { SetValue(InputServiceProperty, value); }
-        }
-
+        
         public static readonly DependencyProperty KeyboardProperty =
             DependencyProperty.Register("Keyboard", typeof (IKeyboard), typeof (KeyboardHost),
                 new PropertyMetadata(default(IKeyboard),
@@ -145,13 +134,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Log.DebugFormat("GenerateContent called. Keyboard language is '{0}' and Keyboard type is '{1}'", 
                 Settings.Default.KeyboardAndDictionaryLanguage, Keyboard != null ? Keyboard.GetType() : null);
 
-            //Clear out point to key map and pause input service
+            //Clear out point to key map
             PointToKeyValueMap = null;
-            if(InputService != null)
-            {
-                InputService.RequestSuspend();
-            }
-            
+          
             object newContent = ErrorContent;
 
             if (Keyboard is ViewModelKeyboards.Alpha)
@@ -322,11 +307,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (keyboardHost != null)
             {
                 keyboardHost.BuildPointToKeyMap();
-
-                if (keyboardHost.InputService != null)
-                {
-                    keyboardHost.InputService.RequestResume();
-                }
             }
         }
         
