@@ -613,18 +613,18 @@ namespace JuliusSweetland.OptiKey
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
                                     string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, release.TagName),
                                     NotificationTypes.Normal,
-                                    () => 
-                                        {
-                                            inputService.RequestResume();
-                                            taskCompletionSource.SetResult(true);
-                                        });
-
+                                    () => taskCompletionSource.SetResult(true));
                                 return;
                             }
                         }
 
                         Log.Info("No update found.");
-                    }, exception => Log.WarnFormat("Error when checking for updates. Exception message:{0}", exception.Message));
+                        taskCompletionSource.SetResult(false);
+                    }, exception =>
+                    {
+                        Log.ErrorFormat("Error when checking for updates. Exception message:{0}", exception.Message);
+                        taskCompletionSource.SetResult(false);
+                    });
             }
             else
             {
