@@ -100,12 +100,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Octokit, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Octokit.0.16.0\lib\net45\Octokit.dll</HintPath>
-    </Reference>
-    <Reference Include="Octokit.Reactive">
-      <HintPath>..\..\packages\Octokit.Reactive.0.16.0\lib\net45\Octokit.Reactive.dll</HintPath>
+    <Reference Include="Octokit, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.23.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Prism">
