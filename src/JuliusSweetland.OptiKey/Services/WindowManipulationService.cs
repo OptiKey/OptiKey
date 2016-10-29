@@ -308,8 +308,8 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 UnRegisterAppBar();
             }
-            window.WindowState = System.Windows.WindowState.Maximized;
             saveWindowState(WindowStates.Maximised);
+            ApplySavedState();
         }
 
         public void Minimise()
