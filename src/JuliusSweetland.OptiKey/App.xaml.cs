@@ -19,8 +19,10 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
+using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
+using NBug.Core.UI;
 using Octokit;
 using Application = System.Windows.Application;
 
@@ -251,7 +253,7 @@ namespace JuliusSweetland.OptiKey
 
                 if (rootAppender != null)
                 {
-                    using (var fs = new FileStream(rootAppender.File, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (var fs = new FileStream(rootAppender.File, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                     {
                         using (var sr = new StreamReader(fs, Encoding.Default))
                         {
