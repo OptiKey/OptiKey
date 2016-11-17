@@ -698,6 +698,8 @@ let's do a bit of setup work:
  3. Create a file inside the newly created folder named `Alpha.xaml`
  4. Create a file inside the same folder you just created named `ConversationAlpha.xaml`
 
+When saving the Alpha.xaml and ConversationAlpha.xaml files it is advisable to use the 'File'\'Save As' option and choose the encoding as UTF-8. If not, and your keyboard contains characters outside of the default encoding set (e.g. characters with diacritic/combining marks) then you will encounter build errors.
+
 That's it for the setup work, we shall now create each one of these 
 keyboards separately.
 
