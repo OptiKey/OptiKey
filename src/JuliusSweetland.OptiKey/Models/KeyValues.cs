@@ -47,6 +47,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningReversedCommaAboveOrRoughBreathingKey = new KeyValue("\x0314");
         public static readonly KeyValue CombiningRingAboveKey = new KeyValue("\x030A");
         public static readonly KeyValue CombiningRingBelowKey = new KeyValue("\x0325");
+        public static readonly KeyValue CombiningTildeKey = new KeyValue("\x0303");
         public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
         public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
@@ -154,6 +155,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
+        public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
@@ -220,6 +222,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToList()
                 },
                 { Languages.ItalianItaly, defaultList },
+                { Languages.PortuguesePortugal, defaultList },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -334,7 +337,8 @@ namespace JuliusSweetland.OptiKey.Models
                     CombiningRetroflexHookBelowKey,
                     CombiningReversedCommaAboveOrRoughBreathingKey,
                     CombiningRingAboveKey,
-                    CombiningRingBelowKey
+                    CombiningRingBelowKey,
+                    CombiningTildeKey
                 };
             }
         }

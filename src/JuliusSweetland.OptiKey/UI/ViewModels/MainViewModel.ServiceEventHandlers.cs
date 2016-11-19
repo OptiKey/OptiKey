@@ -1304,7 +1304,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to PhysicalKeys.");
                     Keyboard = new PhysicalKeys();
                     break;
-                        
+
+                case FunctionKeys.PortuguesePortugal:
+                    Log.Info("Changing keyboard language to PortuguesePortugal.");
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.PortuguesePortugal;
+                    Log.Info("Changing keyboard to Menu");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.PreviousSuggestions:
                     Log.Info("Decrementing suggestions page.");
 

@@ -122,6 +122,7 @@
         PgDn,
         PgUp,
         PhysicalKeysKeyboard,
+        PortuguesePortugal,
         PreviousSuggestions,
         PrintScreen,
         Quit,
