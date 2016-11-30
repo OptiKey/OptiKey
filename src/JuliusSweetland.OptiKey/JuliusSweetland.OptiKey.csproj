@@ -264,9 +264,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\IManagedSuggestions.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\ISuggestions.cs" />
     <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />

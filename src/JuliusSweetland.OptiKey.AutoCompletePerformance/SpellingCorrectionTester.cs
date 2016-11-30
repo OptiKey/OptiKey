@@ -6,7 +6,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 
 namespace JuliusSweetland.OptiKey.AutoCompletePerformance
 {
@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
         private const string DictionaryFileType = "dic";
         private const int NumberOfSuggestionsToCheck = 4;
         private const string OriginalDictionariesSubPath = @"Dictionaries";
-        private readonly IManageAutoComplete autoComplete;
+        private readonly IManagedSuggestions autoComplete;
 
         public SpellingCorrectionTester(AutoCompleteMethods autoCompleteMethod, Languages language)
         {
