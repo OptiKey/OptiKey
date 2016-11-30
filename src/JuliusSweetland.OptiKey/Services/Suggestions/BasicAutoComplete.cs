@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
-    public class BasicAutoComplete : IManageAutoComplete
+    public class BasicAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, HashSet<DictionaryEntry>>();
 
@@ -62,12 +62,15 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
             }
 
+			//Also add the normalized hash to the dictionary
+			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
+								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
+								: normalizedHash;
 
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
-        { 
-
+        {
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 if (entriesForAutoComplete.ContainsKey(autoCompleteHash))

@@ -1,4 +1,10 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.Suggestions;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,11 +12,6 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -31,14 +32,14 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly AutoCompleteMethods autoCompleteMethod;
 
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
-        
+        private IManagedSuggestions manageAutoComplete;
+
         #endregion
 
         #region Events
 
-        public event EventHandler<Exception> Error;
-        
+		public event EventHandler<Exception> Error;
+
         #endregion
 
         #region Ctor
@@ -143,7 +144,7 @@ namespace JuliusSweetland.OptiKey.Services
                 while ((line = reader.ReadLine()) != null)
                 {
                     //Entries must be londer than 1 character
-                    if (!string.IsNullOrWhiteSpace(line) 
+                    if (!string.IsNullOrWhiteSpace(line)
                         && line.Trim().Length > 1)
                     {
                         AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
@@ -266,21 +267,9 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-                    if (entries.ContainsKey(hash))
-                    {
-                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
-                        {
-                            entries[hash].Add(newEntryWithUsageCount);
-                        }
-                    }
-                    else
-                    {
-                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
-                    }
+					//Also add to entries for auto complete
+					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount, hash);
 
-                    //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
-                    
                     if (!loadedFromDictionaryFile)
                     {
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
@@ -464,19 +453,19 @@ namespace JuliusSweetland.OptiKey.Services
                         .Select(tp => tp.Value.String)
                         .ToCharListWithCounts()
                     : new List<Tuple<char, char, int>>();
-                
+
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
-                var reliableFirstCharCleansed = reliableFirstLetter != null 
-                    ? reliableFirstLetter.Normalise().First() 
+                var reliableFirstCharCleansed = reliableFirstLetter != null
+                    ? reliableFirstLetter.Normalise().First()
                     : (char?)null;
-                var reliableFirstCharUncleansed = reliableFirstLetter != null 
-                    ? reliableFirstLetter.First() 
+                var reliableFirstCharUncleansed = reliableFirstLetter != null
+                    ? reliableFirstLetter.First()
                     : (char?)null;
-                var reliableLastCharCleansed = reliableLastLetter != null 
-                    ? reliableLastLetter.Normalise().First() 
+                var reliableLastCharCleansed = reliableLastLetter != null
+                    ? reliableLastLetter.Normalise().First()
                     : (char?)null;
-                var reliableLastCharUncleansed = reliableLastLetter != null 
-                    ? reliableLastLetter.First() 
+                var reliableLastCharUncleansed = reliableLastLetter != null
+                    ? reliableLastLetter.First()
                     : (char?)null;
 
                 //Calculate threshold as mean of all letters without reliable first/last (as those selections can skew the average)
@@ -495,7 +484,7 @@ namespace JuliusSweetland.OptiKey.Services
                     ? Math.Max((int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)), minCount) //Coerce threshold up to minimum count from settings
                     : minCount;
 
-                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount, 
+                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount,
                     reliableFirstCharCleansed, reliableFirstCharUncleansed, reliableLastCharCleansed, reliableLastCharUncleansed);
 
                 if (filteredStrings.Item1.Length == 0)
@@ -563,7 +552,7 @@ namespace JuliusSweetland.OptiKey.Services
         /// <summary>
         /// Construct a tuple of cleansed and original strings after applying a threshold to the count and ensuring the reliable first/last characters are present
         /// </summary>
-        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold, 
+        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold,
             char? firstCharCleansed, char? firstCharUncleansed, char? lastCharCleansed, char? lastCharUncleansed)
         {
             var charsAboveThresold = charsWithCount.Where(cwc => (double) cwc.Item3 >= threshold)
@@ -574,13 +563,13 @@ namespace JuliusSweetland.OptiKey.Services
             var unCleansedSb = new StringBuilder();
 
             //Ensure first character is applied
-            if (firstCharCleansed != null && 
+            if (firstCharCleansed != null &&
                 (!charsAboveThresold.Any() || charsAboveThresold.First().Item1 != firstCharCleansed.Value))
             {
                 cleansedSb.Append(firstCharCleansed);
                 unCleansedSb.Append(firstCharUncleansed);
             }
-            
+
             cleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item1).ToArray()));
             unCleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item2).ToArray()));
 
@@ -658,14 +647,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Configure Auto Complete
 
-        private IManageAutoComplete CreateAutoComplete()
+        private IManagedSuggestions CreateAutoComplete()
         {
             switch (autoCompleteMethod)
             {
                 case AutoCompleteMethods.NGram:
                     return new NGramAutoComplete(
-                        Settings.Default.NGramAutoCompleteGramCount, 
-                        Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
+                        Settings.Default.NGramAutoCompleteGramCount,
+                        Settings.Default.NGramAutoCompleteLeadingSpaceCount,
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
                 case AutoCompleteMethods.Basic:
                 default:

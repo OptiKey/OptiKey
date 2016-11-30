@@ -7,14 +7,14 @@ using System.Text;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     /// <summary>
     /// An auto suggest class using the n-gram algorithm.
     /// https://en.wikipedia.org/wiki/N-gram
     /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
     /// </summary>
-    public class NGramAutoComplete : IManageAutoComplete
+    public class NGramAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;
@@ -83,7 +83,12 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             {
                 if (entries.ContainsKey(ngram))
                 {
-                    entries[ngram].Add(metaData);
+                    // Update existing entry to be "NGram" entry
+                    var foundEntry = entries[hash].FirstOrDefault(nwwuc => nwwuc.Entry == entry);
+
+                    // Synch usage count and then replace the existing entry
+                    dictEntry.UsageCount = foundEntry.UsageCount;
+                    foundEntry = dictEntry;
                 }
                 else
                 {
@@ -108,15 +113,19 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             var nGrams = ToNGrams(root).ToList();
             var nGramcount = nGrams.Count;
 
-            return nGrams
-                .Where(x => entries.ContainsKey(x))
-                .SelectMany(x => entries[x])
-                .GroupBy(x => x)
-                .Select(x => new
-                {
-                    MetaData = x.Key,
-                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
-                })
+			return nGrams
+				.Where(x => entries.ContainsKey(x))
+				.SelectMany(x => entries[x])
+				.GroupBy(x => x)
+				.Select(x =>
+				{
+					double NGramCount = (x.Key is EntryMetadata) ? ((EntryMetadata)x.Key).NGramCount : 0;
+					return new
+					{
+						MetaData = x.Key,
+						Score = CalculateScore(x.Count(), nGramcount, NGramCount)
+					};
+				})
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
                 .Select(x => x.MetaData.DictionaryEntry.Entry);
@@ -155,8 +164,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 NGramCount = nGramCount;
             }
 
-            public DictionaryEntry DictionaryEntry { get; set; }
-            public int NGramCount { get; set;}
+            public int NGramCount { get; }
         }
     }
 }

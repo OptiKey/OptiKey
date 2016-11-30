@@ -268,9 +268,9 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\IManagedSuggestions.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
+    <Compile Include="Services\AutoComplete\ISuggestions.cs" />
     <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
@@ -1265,7 +1265,7 @@
     <Folder Include="Native\MyGaze\Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
