@@ -318,7 +318,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
-      <Value Profile="(Default)">NGram</Value>
+      <Value Profile="(Default)">Presage</Value>
     </Setting>
     <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

@@ -656,6 +656,8 @@ namespace JuliusSweetland.OptiKey.Services
                         Settings.Default.NGramAutoCompleteGramCount,
                         Settings.Default.NGramAutoCompleteLeadingSpaceCount,
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
+                case AutoCompleteMethods.Presage:
+                    return new PresageSuggestions();
                 case AutoCompleteMethods.Basic:
                 default:
                     return new BasicAutoComplete();
