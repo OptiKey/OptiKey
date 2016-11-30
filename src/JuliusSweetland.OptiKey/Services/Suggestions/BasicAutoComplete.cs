@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
-    public class BasicAutoComplete : IManageAutoComplete
+    public class BasicAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, HashSet<DictionaryEntry>>();
 

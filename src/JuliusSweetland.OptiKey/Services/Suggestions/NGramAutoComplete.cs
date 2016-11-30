@@ -7,14 +7,14 @@ using System.Text;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     /// <summary>
     /// An auto suggest class using the n-gram algorithm.
     /// https://en.wikipedia.org/wiki/N-gram
     /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
     /// </summary>
-    public class NGramAutoComplete : IManageAutoComplete
+    public class NGramAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;

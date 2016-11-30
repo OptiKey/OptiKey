@@ -10,7 +10,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly AutoCompleteMethods autoCompleteMethod;
 
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
+        private IManagedSuggestions manageAutoComplete;
         
         #endregion
 
@@ -658,7 +658,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Configure Auto Complete
 
-        private IManageAutoComplete CreateAutoComplete()
+        private IManagedSuggestions CreateAutoComplete()
         {
             switch (autoCompleteMethod)
             {
