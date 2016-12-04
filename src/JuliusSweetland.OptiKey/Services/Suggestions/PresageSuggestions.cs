@@ -33,9 +33,13 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'", root);
 
-            if (prsg != null && !string.IsNullOrWhiteSpace(root))
-            {
+            if (root == null)
+                this.root = "";
+            else
                 this.root = root;
+
+            if (prsg != null)
+            {
                 return prsg.predict();
             }
 

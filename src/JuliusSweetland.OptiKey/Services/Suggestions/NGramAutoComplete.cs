@@ -110,7 +110,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             if (!string.IsNullOrEmpty(inProgressWord)
                         && char.IsLetter(inProgressWord.First())) //A word must start with a letter
             {
-                var nGrams = ToNGrams(root).ToList();
+                var nGrams = ToNGrams(inProgressWord).ToList();
                 var nGramcount = nGrams.Count;
 
                 return nGrams
