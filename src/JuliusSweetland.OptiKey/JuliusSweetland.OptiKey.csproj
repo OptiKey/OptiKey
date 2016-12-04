@@ -186,7 +186,7 @@
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
     <Compile Include="Enums\EyeXSensitivities.cs" />
-    <Compile Include="Enums\AutoCompleteMethods.cs" />
+    <Compile Include="Enums\SuggestionMethods.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
@@ -267,6 +267,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
@@ -574,11 +579,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />

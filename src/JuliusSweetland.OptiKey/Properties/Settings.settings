@@ -176,9 +176,6 @@
     <Setting Name="CrashMessageFontSize" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="AutoCompleteWords" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="CalibrationMaxDuration" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:01:00</Value>
     </Setting>
@@ -314,7 +311,7 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByIndividualKey" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+    <Setting Name="SuggestionMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SuggestionMethods" Scope="User">
       <Value Profile="(Default)">Presage</Value>
     </Setting>
     <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">
@@ -944,6 +941,9 @@
     &lt;/value&gt;
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
+    </Setting>
+    <Setting Name="SuggestWords" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

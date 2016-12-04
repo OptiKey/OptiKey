@@ -31,7 +31,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         public IEnumerable<string> GetSuggestions(string root)
         {
-            Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
+            Log.DebugFormat("GetSuggestions called with root '{0}'", root);
 
             if (prsg != null && !string.IsNullOrWhiteSpace(root))
             {
@@ -47,7 +47,9 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         }
 
-        private void AddToDictionary(string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
+        private void AddToDictionary(string entry, string 
+            
+            pleteHash, DictionaryEntry newEntryWithUsageCount)
         {
             
         }

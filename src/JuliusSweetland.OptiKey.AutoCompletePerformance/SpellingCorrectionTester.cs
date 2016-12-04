@@ -24,14 +24,14 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
         private const string OriginalDictionariesSubPath = @"Dictionaries";
         private readonly IManagedSuggestions autoComplete;
 
-        public SpellingCorrectionTester(AutoCompleteMethods autoCompleteMethod, Languages language)
+        public SpellingCorrectionTester(SuggestionMethods autoCompleteMethod, Languages language)
         {
             switch (autoCompleteMethod)
             {
-                case AutoCompleteMethods.NGram:
+                case SuggestionMethods.NGram:
                     autoComplete = new NGramAutoComplete();
                     break;
-                case AutoCompleteMethods.Basic:
+                case SuggestionMethods.Basic:
                     autoComplete = new BasicAutoComplete();
                     break;
                 default:
