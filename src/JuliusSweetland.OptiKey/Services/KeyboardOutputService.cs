@@ -552,25 +552,23 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void GenerateAutoCompleteSuggestions()
         {
-            if (lastTextChange == null || lastTextChange.Length == 1) //Don't generate auto complete words if the last input was a multi key capture
+            if (Settings.Default.AutoCompleteWords)
             {
-                if (Settings.Default.AutoCompleteWords)
+                if (!string.IsNullOrEmpty(Text))
                 {
+                    Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
+
+                    var suggestions = dictionaryService.GetAutoCompleteSuggestions(Text)
+                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                        .ToList();
+
+                    Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
+                        suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
+
+                    // Ensure that the entered word is in the list of suggestions...
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
-
-                    if (!string.IsNullOrEmpty(inProgressWord)
-                        && char.IsLetter(inProgressWord.First())) //A word must start with a letter
+                    if (inProgressWord != null)
                     {
-                        Log.DebugFormat("Generating auto complete suggestions from '{0}'.", inProgressWord);
-
-                        var suggestions = dictionaryService.GetAutoCompleteSuggestions(inProgressWord)
-                            .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                            .ToList();
-
-                        Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
-                            suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
-
-                        // Ensure that the entered word is in the list of suggestions...
                         if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
                         {
                             suggestions.Insert(0, inProgressWord);
@@ -587,11 +585,14 @@ namespace JuliusSweetland.OptiKey.Services
                                 suggestions.Swap(0, index);
                             }
                         }
+                    }
 
-                        //Correctly case auto complete suggestions
-                        var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
-                        var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
-                        suggestionService.Suggestions = suggestions.Select(suggestion =>
+                    //Correctly case auto complete suggestions
+                    var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
+                    var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
+                    suggestionService.Suggestions = suggestions.Select(suggestion =>
+                    {
+                        if (inProgressWord != null)
                         {
                             var suggestionChars = suggestion.ToCharArray();
                             for (var index = 0; index < suggestionChars.Length; index++)
@@ -608,7 +609,7 @@ namespace JuliusSweetland.OptiKey.Services
                                     makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
                                 }
                                 else if (index > inProgressWord.Length
-                                         && leftShiftIsLockedDown)
+                                            && leftShiftIsLockedDown)
                                 {
                                     makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
                                 }
@@ -620,16 +621,21 @@ namespace JuliusSweetland.OptiKey.Services
                             }
 
                             return new string(suggestionChars);
-                        })
-                        .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
-                        .ToList();
+                        }
+                        else
+                        {
+                            // TODO: Need to handle this case better
+                            return suggestion;
+                        }
+                    })
+                    .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
+                    .ToList();
 
-                        return;
-                    }
+                    return;
                 }
-
-                ClearSuggestions();
             }
+
+            ClearSuggestions();
         }
 
         private void ClearSuggestions()
@@ -821,6 +827,11 @@ namespace JuliusSweetland.OptiKey.Services
                             var newSuggestions = suggestionService.Suggestions.ToList();
                             newSuggestions.RemoveAt(suggestionIndex);
                             StoreSuggestions(newSuggestions);
+                        }
+                        else
+                        {
+                            // We are writing a whole word
+                            ProcessText(suggestionService.Suggestions[suggestionIndex], true);
                         }
                     }
                 }
