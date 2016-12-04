@@ -317,7 +317,7 @@
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByIndividualKey" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="AutoCompleteMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.AutoCompleteMethods" Scope="User">
+    <Setting Name="SuggestionMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SuggestionMethods" Scope="User">
       <Value Profile="(Default)">Presage</Value>
     </Setting>
     <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">

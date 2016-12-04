@@ -1,6 +1,6 @@
 namespace JuliusSweetland.OptiKey.Enums
 {
-    public enum AutoCompleteMethods
+    public enum SuggestionMethods
     {
         Basic,
         NGram,

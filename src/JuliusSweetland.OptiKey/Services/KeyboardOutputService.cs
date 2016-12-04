@@ -113,7 +113,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         StoreLastTextChange(null);
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions();
 
                         Log.Debug("Suppressing next auto space.");
                         suppressNextAutoSpace = true;
@@ -171,7 +171,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     StoreLastTextChange(null);
-                    GenerateAutoCompleteSuggestions();
+                    GenerateSuggestions();
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
@@ -308,7 +308,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (functionKey.ToVirtualKeyCode() != null)
                     {
                         //Key corresponds to physical keyboard key
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions();
 
                         //If the key cannot be pressed or locked down (these are handled in
                         //ReactToPublishableKeyDownStateChanges) then publish it and release unlocked keys
@@ -402,7 +402,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Methods - private
 
-        private void ProcessText(string captureText, bool generateAutoCompleteSuggestions)
+        private void ProcessText(string captureText, bool generateSuggestions)
         {
             Log.DebugFormat("Processing captured text '{0}'", captureText.ToPrintableString());
 
@@ -513,9 +513,9 @@ namespace JuliusSweetland.OptiKey.Services
 
             StoreLastTextChange(modifiedCaptureText);
 
-            if (generateAutoCompleteSuggestions)
+            if (generateSuggestions)
             {
-                GenerateAutoCompleteSuggestions();
+                GenerateSuggestions();
             }
         }
 
@@ -578,7 +578,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     if (!shiftStateSetAutomatically)
                     {
-                        GenerateAutoCompleteSuggestions();
+                        GenerateSuggestions();
                     }
                 });
         }
@@ -683,15 +683,15 @@ namespace JuliusSweetland.OptiKey.Services
             lastTextChange = textChange;
         }
 
-        private void GenerateAutoCompleteSuggestions()
+        private void GenerateSuggestions()
         {
-            if (Settings.Default.AutoCompleteWords)
+            if (Settings.Default.SuggestWords)
             {
                 if (Settings.Default.SuggestWords)
                 {
                     Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
 
-                    var suggestions = dictionaryService.GetAutoCompleteSuggestions(Text)
+                    var suggestions = dictionaryService.GetSuggestions(Text)
                         .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                         .ToList();
 

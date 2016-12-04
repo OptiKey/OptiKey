@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
-        
+
         #region Ctor
 
         public WordsViewModel(IDictionaryService dictionaryService)
@@ -27,9 +27,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         #endregion
-        
+
         #region Properties
-        
+
         public List<KeyValuePair<string, Languages>> Languages
         {
             get
@@ -58,7 +58,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
         private Languages keyboardAndDictionaryLanguage;
         public Languages KeyboardAndDictionaryLanguage
         {
@@ -125,7 +125,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return autoAddSpace; }
             set { SetProperty(ref autoAddSpace, value); }
         }
-        
+
         private bool autoCapitalise;
         public bool AutoCapitalise
         {
@@ -139,7 +139,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return suppressAutoCapitaliseIntelligently; }
             set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
         }
- 
+
         private bool suggestWords;
         public bool SuggestWords
         {
@@ -165,9 +165,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return ForceCapsLock != Settings.Default.ForceCapsLock; }
         }
-        
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -200,7 +200,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
-            
+
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
