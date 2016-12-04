@@ -28,21 +28,27 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
             if (entriesForAutoComplete != null)
             {
-                var simplifiedRoot = root.Normalise();
+                var inProgressWord = root == null ? null : root.InProgressWord(root.Length);
 
-                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
+                if (!string.IsNullOrEmpty(inProgressWord)
+                            && char.IsLetter(inProgressWord.First())) //A word must start with a letter
                 {
-                    return
-                        entriesForAutoComplete
-                            .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
-                            .SelectMany(kvp => kvp.Value)
-                            .Where(de => de.Entry.Length >= root.Length)
-                            .Distinct()
-                            // Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version
-                            // of the phrase and one the first letter of each word so you can look them up by either)
-                            .OrderByDescending(de => de.UsageCount)
-                            .ThenBy(de => de.Entry.Length)
-                            .Select(de => de.Entry);
+                    var simplifiedRoot = inProgressWord.Normalise();
+
+                    if (!string.IsNullOrWhiteSpace(simplifiedRoot))
+                    {
+                        return
+                            entriesForAutoComplete
+                                .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
+                                .SelectMany(kvp => kvp.Value)
+                                .Where(de => de.Entry.Length >= root.Length)
+                                .Distinct()
+                                // Phrases are stored in entriesForAutoComplete with multiple hashes (one the full version
+                                // of the phrase and one the first letter of each word so you can look them up by either)
+                                .OrderByDescending(de => de.UsageCount)
+                                .ThenBy(de => de.Entry.Length)
+                                .Select(de => de.Entry);
+                    }
                 }
             }
 

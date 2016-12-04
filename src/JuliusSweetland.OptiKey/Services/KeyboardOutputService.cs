@@ -59,6 +59,7 @@ namespace JuliusSweetland.OptiKey.Services
             ReactToKeyboardIsShiftAwareChanges();
             ReactToSuppressAutoCapitaliseIntelligentlyChanges();
             AutoPressShiftIfAppropriate();
+            GenerateSuggestions();
         }
 
         #endregion
@@ -557,85 +558,88 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (Settings.Default.SuggestWords)
             {
-                if (!string.IsNullOrEmpty(Text))
+                Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
+
+                var suggestions = dictionaryService.GetSuggestions(Text)
+                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+                    .ToList();
+
+                Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
+                    suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
+
+                // Ensure that the entered word is in the list of suggestions...
+                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                if (inProgressWord != null)
                 {
-                    Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
-
-                    var suggestions = dictionaryService.GetSuggestions(Text)
-                        .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                        .ToList();
-
-                    Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
-                        suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
-
-                    // Ensure that the entered word is in the list of suggestions...
-                    var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
-                    if (inProgressWord != null)
+                    if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
                     {
-                        if (!suggestions.Contains(inProgressWord, StringComparer.CurrentCultureIgnoreCase))
+                        suggestions.Insert(0, inProgressWord);
+                        suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                    }
+                    else
+                    {
+                        // ...and that it is at the front of the list.
+                        var index =
+                            suggestions.FindIndex(
+                                s => string.Equals(s, inProgressWord, StringComparison.CurrentCultureIgnoreCase));
+                        if (index > 0)
                         {
-                            suggestions.Insert(0, inProgressWord);
-                            suggestions = suggestions.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions).ToList();
+                            suggestions.Swap(0, index);
+                        }
+                    }
+                }
+
+                //Correctly case auto complete suggestions
+                var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
+                var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
+                suggestionService.Suggestions = suggestions.Select(suggestion =>
+                {
+                    var suggestionChars = suggestion.ToCharArray();
+                    for (var index = 0; index < suggestionChars.Length; index++)
+                    {
+                        bool makeUppercase = false;
+                        if (inProgressWord != null)
+                        {
+                            if (index < inProgressWord.Length
+                                && char.IsUpper(inProgressWord[index]))
+                            {
+                                makeUppercase = true; //In progress word is uppercase as this index
+                            }
+                            else if (index == inProgressWord.Length
+                                && (leftShiftIsDown || leftShiftIsLockedDown))
+                            {
+                                makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
+                            }
+                            else if (index > inProgressWord.Length
+                                        && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
                         }
                         else
                         {
-                            // ...and that it is at the front of the list.
-                            var index =
-                                suggestions.FindIndex(
-                                    s => string.Equals(s, inProgressWord, StringComparison.CurrentCultureIgnoreCase));
-                            if (index > 0)
+                            if (index == 0 && (leftShiftIsDown || leftShiftIsLockedDown)) //First character should be uppercase
                             {
-                                suggestions.Swap(0, index);
+                                makeUppercase = true;
                             }
+                            else if (index > 0 && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
+                        }
+
+                        if (makeUppercase)
+                        {
+                            suggestionChars[index] = char.ToUpper(suggestion[index], Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
                         }
                     }
 
-                    //Correctly case auto complete suggestions
-                    var leftShiftIsDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down;
-                    var leftShiftIsLockedDown = keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.LockedDown;
-                    suggestionService.Suggestions = suggestions.Select(suggestion =>
-                    {
-                        if (inProgressWord != null)
-                        {
-                            var suggestionChars = suggestion.ToCharArray();
-                            for (var index = 0; index < suggestionChars.Length; index++)
-                            {
-                                bool makeUppercase = false;
-                                if (index < inProgressWord.Length
-                                    && char.IsUpper(inProgressWord[index]))
-                                {
-                                    makeUppercase = true; //In progress word is uppercase as this index
-                                }
-                                else if (index == inProgressWord.Length
-                                    && (leftShiftIsDown || leftShiftIsLockedDown))
-                                {
-                                    makeUppercase = true; //Shift is down, so the next character after the end of the in progress word should be uppercase
-                                }
-                                else if (index > inProgressWord.Length
-                                            && leftShiftIsLockedDown)
-                                {
-                                    makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
-                                }
+                    return new string(suggestionChars);
+                })
+                .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
+                .ToList();
 
-                                if (makeUppercase)
-                                {
-                                    suggestionChars[index] = char.ToUpper(suggestion[index], Settings.Default.KeyboardAndDictionaryLanguage.ToCultureInfo());
-                                }
-                            }
-
-                            return new string(suggestionChars);
-                        }
-                        else
-                        {
-                            // TODO: Need to handle this case better
-                            return suggestion;
-                        }
-                    })
-                    .Distinct() //Changing the casing can result in multiple identical entries (e.g. "am" and "AM" both could become "am")
-                    .ToList();
-
-                    return;
-                }
+                return;
             }
 
             ClearSuggestions();
