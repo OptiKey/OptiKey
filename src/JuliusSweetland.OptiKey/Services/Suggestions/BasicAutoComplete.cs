@@ -28,9 +28,10 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
             if (entriesForAutoComplete != null)
             {
-                var simplifiedRoot = root.Normalise();
+                var inProgressWord = root == null ? null : root.InProgressWord(root.Length);
 
-                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
+                if (!string.IsNullOrEmpty(inProgressWord)
+                            && char.IsLetter(inProgressWord.First())) //A word must start with a letter
                 {
                     return
                         entriesForAutoComplete
