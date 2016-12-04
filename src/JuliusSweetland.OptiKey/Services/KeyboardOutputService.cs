@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Services
         private string text;
         private string lastTextChange;
         private bool lastTextChangeWasSuggestion;
+        private bool lastTextChangeWasMultiKey;
         private bool suppressNextAutoSpace = true;
         private bool keyboardIsShiftAware;
         private bool shiftStateSetAutomatically;
@@ -85,6 +86,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Processing captured function key '{0}'", functionKey);
 
             lastTextChangeWasSuggestion = false;
+            lastTextChangeWasMultiKey = false;
 
             switch (functionKey)
             {
@@ -188,32 +190,32 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.Suggestion1:
-                    SwapLastTextChangeForSuggestion(0);
+                    ProcessSuggestion(0);
                     lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion2:
-                    SwapLastTextChangeForSuggestion(1);
+                    ProcessSuggestion(1);
                     lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion3:
-                    SwapLastTextChangeForSuggestion(2);
+                    ProcessSuggestion(2);
                     lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion4:
-                    SwapLastTextChangeForSuggestion(3);
+                    ProcessSuggestion(3);
                     lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion5:
-                    SwapLastTextChangeForSuggestion(4);
+                    ProcessSuggestion(4);
                     lastTextChangeWasSuggestion = true;
                     break;
 
                 case FunctionKeys.Suggestion6:
-                    SwapLastTextChangeForSuggestion(5);
+                    ProcessSuggestion(5);
                     lastTextChangeWasSuggestion = true;
                     break;
 
@@ -288,6 +290,7 @@ namespace JuliusSweetland.OptiKey.Services
             ProcessText(captureAndSuggestions.First(), false);
 
             lastTextChangeWasSuggestion = false;
+            lastTextChangeWasMultiKey = true;
         }
 
         #endregion
@@ -798,22 +801,22 @@ namespace JuliusSweetland.OptiKey.Services
             shiftStateSetAutomatically = false;
         }
 
-        private void SwapLastTextChangeForSuggestion(int index)
+        private void ProcessSuggestion(int index)
         {
-            Log.DebugFormat("SwapLastTextChangeForSuggestion called with index {0}", index);
+            Log.DebugFormat("ProcessSuggestion called with index {0}", index);
 
             var suggestionIndex = (suggestionService.SuggestionsPage * suggestionService.SuggestionsPerPage) + index;
             if (suggestionService.Suggestions.Count > suggestionIndex)
             {
                 if (!string.IsNullOrEmpty(lastTextChange)
-                    && lastTextChange.Length > 1)
+                    && lastTextChange.Length > 1
+                    && lastTextChangeWasMultiKey)
                 {
-                    //We are swapping out a multi-key capture, or a swapped in suggestion for another suggestion
+                    //We are swapping out a multi-key capture
                     var replacedText = lastTextChange;
                     SwapText(lastTextChange, suggestionService.Suggestions[suggestionIndex]);
-                    var newSuggestions = suggestionService.Suggestions.ToList();
-                    newSuggestions[suggestionIndex] = replacedText;
-                    StoreSuggestions(newSuggestions);
+                    AutoAddSpace();
+                    GenerateSuggestions();
                 }
                 else
                 {
@@ -824,18 +827,19 @@ namespace JuliusSweetland.OptiKey.Services
                         if (!string.IsNullOrEmpty(inProgressWord))
                         {
                             SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
-                            var newSuggestions = suggestionService.Suggestions.ToList();
-                            newSuggestions.RemoveAt(suggestionIndex);
-                            StoreSuggestions(newSuggestions);
+                            AutoAddSpace();
+                            GenerateSuggestions();
                         }
                         else
                         {
                             // We are writing a whole word
-                            ProcessText(suggestionService.Suggestions[suggestionIndex], true);
+                            ProcessText(suggestionService.Suggestions[suggestionIndex], false);
+                            AutoAddSpace();
+                            GenerateSuggestions();
                         }
                     }
                 }
-                suppressNextAutoSpace = false;
+                suppressNextAutoSpace = true;
             }
         }
 
