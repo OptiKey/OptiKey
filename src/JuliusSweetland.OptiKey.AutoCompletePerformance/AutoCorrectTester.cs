@@ -8,7 +8,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
 {
     public class AutoCorrectTestResults
     {
-        public AutoCorrectTestResults(AutoCompleteMethods autoCompleteMethod,
+        public AutoCorrectTestResults(SuggestionMethods autoCompleteMethod,
             IEnumerable<SpellingCorrectionTestResult> results, long memorySize)
         {
             AutoCompleteMethod = autoCompleteMethod;
@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
             MemorySize = memorySize;
         }
 
-        public AutoCompleteMethods AutoCompleteMethod { get; private set; }
+        public SuggestionMethods AutoCompleteMethod { get; private set; }
         public long MemorySize { get; private set; }
         public IEnumerable<SpellingCorrectionTestResult> Results { get; private set; }
     }
@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.AutoCompletePerformance
 
             var results = new List<AutoCorrectTestResults>();
 
-            foreach (AutoCompleteMethods autoCompleteMethod in Enum.GetValues(typeof (AutoCompleteMethods)))
+            foreach (SuggestionMethods autoCompleteMethod in Enum.GetValues(typeof (SuggestionMethods)))
             {
                 var before = GC.GetTotalMemory(true);
 

@@ -105,21 +105,29 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'.", root);
 
-            var nGrams = ToNGrams(root).ToList();
-            var nGramcount = nGrams.Count;
+            var inProgressWord = root == null ? null : root.InProgressWord(root.Length);
 
-            return nGrams
-                .Where(x => entries.ContainsKey(x))
-                .SelectMany(x => entries[x])
-                .GroupBy(x => x)
-                .Select(x => new
-                {
-                    MetaData = x.Key,
-                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
-                })
-                .OrderByDescending(x => x.Score)
-                .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
-                .Select(x => x.MetaData.DictionaryEntry.Entry);
+            if (!string.IsNullOrEmpty(inProgressWord)
+                        && char.IsLetter(inProgressWord.First())) //A word must start with a letter
+            {
+                var nGrams = ToNGrams(root).ToList();
+                var nGramcount = nGrams.Count;
+
+                return nGrams
+                    .Where(x => entries.ContainsKey(x))
+                    .SelectMany(x => entries[x])
+                    .GroupBy(x => x)
+                    .Select(x => new
+                    {
+                        MetaData = x.Key,
+                        Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
+                    })
+                    .OrderByDescending(x => x.Score)
+                    .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
+                    .Select(x => x.MetaData.DictionaryEntry.Entry);
+            }
+
+            return Enumerable.Empty<string>();
         }
 
         public void RemoveEntry(string entry)
