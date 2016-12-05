@@ -35,10 +35,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             //Act
             keyboardOutputService.ProcessSingleKeyText("1");
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
+            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
 
             //Assert
-            Assert.AreEqual(multiCodePointString, keyboardOutputService.Text);
+            Assert.AreEqual(multiCodePointString + " ", keyboardOutputService.Text);
         }
 
         [Test]
@@ -60,10 +61,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             //Act
             keyboardOutputService.ProcessSingleKeyText("1");
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
+            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
 
             //Assert
-            Assert.AreEqual(singleCodePointString, keyboardOutputService.Text);
+            Assert.AreEqual(singleCodePointString + " ", keyboardOutputService.Text);
         }
     }
 }
