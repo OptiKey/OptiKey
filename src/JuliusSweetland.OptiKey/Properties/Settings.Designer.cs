@@ -1707,10 +1707,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
-                return ((global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues)(this["KeySelectionTriggerFixationCompleteTimesByKeyValues"]));
+                return ((bool)(this["SuggestWords"]));
             }
             set {
-                this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
+                this["SuggestWords"] = value;
             }
         }
 
