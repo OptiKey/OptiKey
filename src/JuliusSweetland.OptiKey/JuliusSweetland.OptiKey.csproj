@@ -103,9 +103,9 @@
       <HintPath>..\..\packages\Octokit.0.23.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="presage.net, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="presage.net, Version=0.9.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\cygwin64\home\mostlyjason\presage-0.9.2~beta\bindings\csharp\presage.net\bin\Debug\presage.net.dll</HintPath>
+      <HintPath>..\..\ext\Presage\presage.net.dll</HintPath>
     </Reference>
     <Reference Include="Prism">
       <HintPath>..\..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
