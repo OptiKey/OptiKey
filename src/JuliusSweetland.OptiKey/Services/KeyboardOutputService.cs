@@ -130,55 +130,22 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.BackOne:
-                    var backOneCount = string.IsNullOrEmpty(lastTextChange)
-                        ? 1 //Default to removing one character if no lastTextChange
-                        : lastTextChange.Length;
-
-                    var textChangedByBackOne = false;
-
-                    if (!string.IsNullOrEmpty(Text))
+                    if (!string.IsNullOrEmpty(Text) && Text.Length >= 1)
                     {
-                        if (Text.Length < backOneCount)
-                        {
-                            backOneCount = Text.Length; //Coallesce backCount if somehow the Text length is less
-                        }
-
-                        var textAfterBackOne = Text.Substring(0, Text.Length - backOneCount);
-                        textChangedByBackOne = Text != textAfterBackOne;
-
-                        if (backOneCount > 1)
-                        {
-                            //Removing more than one character - only decrement removed string
-                            dictionaryService.DecrementEntryUsageCount(Text.Substring(Text.Length - backOneCount, backOneCount).Trim());
-                        }
-                        else if (!string.IsNullOrEmpty(lastTextChange)
-                            && lastTextChange.Length == 1
-                            && !char.IsWhiteSpace(lastTextChange[0]))
-                        {
-                            dictionaryService.DecrementEntryUsageCount(Text.InProgressWord(Text.Length)); //We are removing a non-whitespace character - decrement the in progress word
-                            dictionaryService.IncrementEntryUsageCount(textAfterBackOne.InProgressWord(Text.Length)); //And increment the in progress word that is left after the removal
-                        }
-
+                        var textAfterBackOne = Text.Substring(0, Text.Length - 1);
                         Text = textAfterBackOne;
-                    }
 
-                    for (int i = 0; i < backOneCount; i++)
-                    {
                         PublishKeyPress(FunctionKeys.BackOne);
                         ReleaseUnlockedKeys();
-                    }
 
-                    if (textChangedByBackOne
-                        || string.IsNullOrEmpty(Text))
-                    {
                         AutoPressShiftIfAppropriate();
-                    }
 
-                    StoreLastTextChange(null);
+                                            StoreLastTextChange(null);
                     GenerateSuggestions();
 
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
+                    }
                     break;
 
                 case FunctionKeys.ClearScratchpad:
@@ -626,6 +593,10 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
                             }
+                            else if (index > 0 && leftShiftIsLockedDown)
+                            {
+                                makeUppercase = true; //Shift is locked down, so all characters after the in progress word should be uppercase
+                            }
                         }
 
                         if (makeUppercase)
@@ -834,13 +805,13 @@ namespace JuliusSweetland.OptiKey.Services
                             AutoAddSpace();
                             GenerateSuggestions();
                         }
-                        else
-                        {
-                            // We are writing a whole word
-                            ProcessText(suggestionService.Suggestions[suggestionIndex], false);
-                            AutoAddSpace();
-                            GenerateSuggestions();
-                        }
+                    }
+                    else
+                    {
+                        // We are writing the first word or adding a whole word
+                        ProcessText(suggestionService.Suggestions[suggestionIndex], false);
+                        AutoAddSpace();
+                        GenerateSuggestions();
                     }
                 }
                 suppressNextAutoSpace = true;

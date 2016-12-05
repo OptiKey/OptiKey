@@ -312,7 +312,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SuggestionMethod" Roaming="true" Type="JuliusSweetland.OptiKey.Enums.SuggestionMethods" Scope="User">
-      <Value Profile="(Default)">Presage</Value>
+      <Value Profile="(Default)">NGram</Value>
     </Setting>
     <Setting Name="SuppressModifierKeysForAllMouseActions" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
