@@ -795,20 +795,17 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    //We are auto-completing a word with a suggestion
-                    if (!string.IsNullOrEmpty(Text))
+                    var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                    if (!string.IsNullOrEmpty(inProgressWord))
                     {
-                        var inProgressWord = Text.InProgressWord(Text.Length);
-                        if (!string.IsNullOrEmpty(inProgressWord))
-                        {
-                            SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
-                            AutoAddSpace();
-                            GenerateSuggestions();
-                        }
+                        //We are auto-completing a word with a suggestion
+                        SwapText(inProgressWord, suggestionService.Suggestions[suggestionIndex]);
+                        AutoAddSpace();
+                        GenerateSuggestions();
                     }
                     else
                     {
-                        // We are writing the first word or adding a whole word
+                        //We are writing the first word or adding a whole word
                         ProcessText(suggestionService.Suggestions[suggestionIndex], false);
                         AutoAddSpace();
                         GenerateSuggestions();
