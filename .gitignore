@@ -5,7 +5,6 @@
 *.suo
 *.user
 *.sln.docstates
-app.config
 
 # Release deployment, including certificates, etc
 deployment/
