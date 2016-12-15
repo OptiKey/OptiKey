@@ -98,19 +98,22 @@
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                             <controls:Key Grid.Row="2" Grid.Column="3"
+                                          Text="{x:Static resx:Resources.SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE}"
+                                          SharedSizeGroup="KeyWithText"
+                                          Value="{x:Static models:KeyValues.SlovakSlovakiaKey}"/>
+                            <controls:Key Grid.Row="2" Grid.Column="4"
                                           Text="{x:Static resx:Resources.SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SlovenianSloveniaKey}"/>
-                            <controls:Key Grid.Row="2" Grid.Column="4"
+                            <controls:Key Grid.Row="3" Grid.Column="0"
                                           Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
-                            
-                            <controls:Key Grid.Row="3" Grid.Column="0"
+                            <controls:Key Grid.Row="3" Grid.Column="1"
                                           Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithText"
                                           Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                            <controls:Key Grid.Row="3" Grid.Column="1" />
+
                             <controls:Key Grid.Row="3" Grid.Column="2" />
                             <controls:Key Grid.Row="3" Grid.Column="3" />
                             <controls:Key Grid.Row="3" Grid.Column="4"
@@ -205,19 +208,22 @@
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.RussianRussiaKey}"/>
                                     <controls:Key Grid.Row="4" Grid.Column="1"
+                                                  Text="{x:Static resx:Resources.SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithText"
+                                                  Value="{x:Static models:KeyValues.SlovakSlovakiaKey}"/>
+                                    <controls:Key Grid.Row="4" Grid.Column="2"
                                                   Text="{x:Static resx:Resources.SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SlovenianSloveniaKey}"/>
-                                    <controls:Key Grid.Row="4" Grid.Column="2"
+                                    <controls:Key Grid.Row="5" Grid.Column="0"
                                                   Text="{x:Static resx:Resources.SPANISH_SPAIN_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.SpanishSpainKey}"/>
                                     
-                                    <controls:Key Grid.Row="5" Grid.Column="0"
+                                    <controls:Key Grid.Row="5" Grid.Column="1"
                                                   Text="{x:Static resx:Resources.TURKISH_TURKEY_SPLIT_WITH_NEWLINE}"
                                                   SharedSizeGroup="KeyWithText"
                                                   Value="{x:Static models:KeyValues.TurkishTurkeyKey}"/>
-                                    <controls:Key Grid.Row="5" Grid.Column="1" />
                                     <controls:Key Grid.Row="5" Grid.Column="2"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithText"

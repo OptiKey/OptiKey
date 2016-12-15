@@ -576,6 +576,39 @@ namespace JuliusSweetland.OptiKey.Models
                     }
                 }
 				
+                //Slovak specific rules
+                if(Settings.Default.KeyboardAndDictionaryLanguage == Languages.SlovakSlovakia)
+                {
+                    //Acute accent: Áá éÉ íÍ ĺĹ óÓ ŕŔ úÚ ýÝ
+                    if(keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("l")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("r")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == new KeyValue("y")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+
+                    //Caron: čČ ďĎ ľĽ ňŇ šŠ ťŤ žŽ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningCaronOrHacekKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningCaronOrHacekKey //Allow the caron to be manually released
+                        || keyValue == new KeyValue("c")
+                        || keyValue == new KeyValue("d")
+                        || keyValue == new KeyValue("l")
+                        || keyValue == new KeyValue("n")
+                        || keyValue == new KeyValue("s")
+                        || keyValue == new KeyValue("t")
+                        || keyValue == new KeyValue("z")
+                        || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 //Turkish specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.TurkishTurkey)
                 {
