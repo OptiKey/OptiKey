@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,14 +124,14 @@
     <value>Afegir nova entrada:</value>
   </data>
   <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Vols afegir la frase &apos;{0}&apos; al diccionari amb accés directe &apos;{1}&apos;?</value>
+    <value>Vols afegir la frase '{0}' al diccionari amb accés directe '{1}'?</value>
   </data>
   <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>AFEGIR A
 DICCIONARI</value>
   </data>
   <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
-    <value>Vols afegir la paraula &quot;{0}&quot; al diccionari?</value>
+    <value>Vols afegir la paraula "{0}" al diccionari?</value>
   </data>
   <data name="ADDED" xml:space="preserve">
     <value>Afegit</value>
@@ -158,7 +158,7 @@ DICCIONARI</value>
     <value>Completar automàticament paraules:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
-    <value>Ajustos automàtics d&apos;oracions</value>
+    <value>Ajustos automàtics d'oracions</value>
   </data>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Espai automàtic entre paraules:</value>
@@ -175,7 +175,7 @@ UNA</value>
 PARAULA</value>
   </data>
   <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
-    <value>Bass va ser incapaç de crear un flux d&apos;arxiu &apos;{0}&apos;</value>
+    <value>Bass va ser incapaç de crear un flux d'arxiu '{0}'</value>
   </data>
   <data name="BOTTOM" xml:space="preserve">
     <value>Avall</value>
@@ -184,23 +184,23 @@ PARAULA</value>
     <value>SALT DE LÍNIA</value>
   </data>
   <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
-    <value>Interrupció del calibratge amb el missatge: &apos;{0}&apos;</value>
+    <value>Interrupció del calibratge amb el missatge: '{0}'</value>
   </data>
   <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
     <value>Estàs segur que vols tornar a calibrar?</value>
   </data>
   <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
-    <value>S&apos;ha produït un error durant el calibratge. Missatge: &apos;{0}&apos;</value>
+    <value>S'ha produït un error durant el calibratge. Missatge: '{0}'</value>
   </data>
   <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
-    <value>Error en el calibratge amb missatge: &apos;{0} </value>
+    <value>Error en el calibratge amb missatge: '{0} </value>
   </data>
   <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
-    <value>El calibratge no es pot completar sense intervenció manual, p. ex. haver d&apos;utilitzar un ratolí. Vostè podria aturar-se en el procés de calibratge si no és possible interactuar manualment amb l&apos;ordinador.
+    <value>El calibratge no es pot completar sense intervenció manual, p. ex. haver d'utilitzar un ratolí. Vostè podria aturar-se en el procés de calibratge si no és possible interactuar manualment amb l'ordinador.
 Està segur que vol tornar a re-calibrar?</value>
   </data>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
-    <value>Calibratge aturat per causa desconeguda. Missatge: &apos;{0}</value>
+    <value>Calibratge aturat per causa desconeguda. Missatge: '{0}</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Exit en el calibratge! Precisió (Mitjana Grau Error = {0})</value>
@@ -209,10 +209,10 @@ Està segur que vol tornar a re-calibrar?</value>
     <value>CANCEL·LAR</value>
   </data>
   <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
-    <value>Temps d&apos;espera de captura (ms):</value>
+    <value>Temps d'espera de captura (ms):</value>
   </data>
   <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
-    <value>Buscar actualitzacions a l&apos;inici:</value>
+    <value>Buscar actualitzacions a l'inici:</value>
   </data>
   <data name="CLEAR" xml:space="preserve">
     <value>NETEJAR</value>
@@ -262,14 +262,14 @@ TECLAT</value>
     <value>Només mode conversa:</value>
   </data>
   <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
-    <value>OptiKey ha detectat que el seu arxiu de configuració d&apos;usuari està malmès i s&apos;ha de reparar. Això es farà mitjançant la restauració d&apos;una versió antiga, o d&apos;una versió per defecte si això no és possible.
+    <value>OptiKey ha detectat que el seu arxiu de configuració d'usuari està malmès i s'ha de reparar. Això es farà mitjançant la restauració d'una versió antiga, o d'una versió per defecte si això no és possible.
 
-Clica Sí per restablir la configuració d&apos;usuari i reiniciar.
+Clica Sí per restablir la configuració d'usuari i reiniciar.
 
-Clica No per tancar de manera que es pugui reparar  de forma manual o copiar el fitxer de configuració d&apos;usuari.</value>
+Clica No per tancar de manera que es pugui reparar  de forma manual o copiar el fitxer de configuració d'usuari.</value>
   </data>
   <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
-    <value>Oh-Oh! El fitxer de configuració d&apos;usuari sembla que està malmès.</value>
+    <value>Oh-Oh! El fitxer de configuració d'usuari sembla que està malmès.</value>
   </data>
   <data name="CRASH_MESSAGE" xml:space="preserve">
     <value>Les males notícies - OptiKey ha ensopegat amb els seus peus i ha de tancar.
@@ -328,7 +328,7 @@ OPACITAT</value>
     <value>Diccionari</value>
   </data>
   <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
-    <value>No hi ha cap diccionari de l&apos;usuari i el diccionari original no s&apos;ha trobat: &apos;{0}&apos;</value>
+    <value>No hi ha cap diccionari de l'usuari i el diccionari original no s'ha trobat: '{0}'</value>
   </data>
   <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
     <value>Visualitzar durant X segons per paraules del missatge:</value>
@@ -349,20 +349,11 @@ AVALL</value>
   <data name="END" xml:space="preserve">
     <value>FINAL</value>
   </data>
-  <data name="ENGLISH_CANADA" xml:space="preserve">
-    <value>Anglès (Canadà)</value>
-  </data>
-  <data name="ENGLISH_UK" xml:space="preserve">
-    <value>Anglès (Regne Unit)</value>
-  </data>
-  <data name="ENGLISH_US" xml:space="preserve">
-    <value>Anglès (Estats Units)</value>
-  </data>
   <data name="ENTER" xml:space="preserve">
     <value>ENTER</value>
   </data>
   <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
-    <value>Perfecte. &apos;{0}&apos; s&apos;ha afegit al diccionari.</value>
+    <value>Perfecte. '{0}' s'ha afegit al diccionari.</value>
   </data>
   <data name="ERROR_SOUND_LABEL" xml:space="preserve">
     <value>Error:</value>
@@ -433,14 +424,8 @@ AMUNT</value>
   <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
     <value>Pes de la font:</value>
   </data>
-  <data name="FRENCH_FRANCE" xml:space="preserve">
-    <value>Francès (France) / Français (France)</value>
-  </data>
   <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
     <value>Mida del teclat (com % de la pantalla):</value>
-  </data>
-  <data name="GAZE_TRACKER" xml:space="preserve">
-    <value>Seguiment de mirada</value>
   </data>
   <data name="GROW" xml:space="preserve">
     <value>Ampliar</value>
@@ -465,7 +450,7 @@ OPACITAT</value>
     <value>INSERT</value>
   </data>
   <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
-    <value>... però intel·ligentment suprimir l&apos;auto-caps (majúscula a la primera lletra de la paraula), on és probable que sigui poc útil:</value>
+    <value>... però intel·ligentment suprimir l'auto-caps (majúscula a la primera lletra de la paraula), on és probable que sigui poc útil:</value>
   </data>
   <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
     <value>La combinació actual de teclat i idioma no és vàlida</value>
@@ -512,7 +497,7 @@ AMUNT</value>
     <value>Temps per completar la fixació de tecla (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
-    <value>Temps per l&apos;enclavament d&apos;una fixació de tecla (ms):</value>
+    <value>Temps per l'enclavament d'una fixació de tecla (ms):</value>
   </data>
   <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
     <value>Tecla selecció tecla del teclat:</value>
@@ -580,10 +565,10 @@ MAGNÈTIC</value>
     <value>Ampliar font (com% de la pantalla):</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
-    <value>Consola d&apos;administració: ALT + M</value>
+    <value>Consola d'administració: ALT + M</value>
   </data>
   <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
-    <value>Consola d&apos;administració d&apos;OptiKey</value>
+    <value>Consola d'administració d'OptiKey</value>
   </data>
   <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
     <value>Nombre màxim de coincidències al diccionari:</value>
@@ -906,7 +891,7 @@ PANT</value>
 ÚLTIMA</value>
   </data>
   <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
-    <value>No s&apos;ha subministrat servei d&apos;àudio i/o de diccionari a l&apos;acció de la finestra de gestió.</value>
+    <value>No s'ha subministrat servei d'àudio i/o de diccionari a l'acció de la finestra de gestió.</value>
   </data>
   <data name="RESTART_MESSAGE" xml:space="preserve">
     <value>OptiKey necessita reiniciar per aplicar els teus canvis.
@@ -938,9 +923,6 @@ PRÉMER/DEIXAR</value>
   </data>
   <data name="RISING_SOUND_2" xml:space="preserve">
     <value>Ascendint 2</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
-    <value>Rus (Rússia) / Русский (Россия)</value>
   </data>
   <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
     <value>Igual que la posició del teclat encaixat</value>
@@ -975,19 +957,19 @@ AMUNT</value>
     <value>Selecció</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
-    <value>Comportament de l&apos;indicador de progrés:</value>
+    <value>Comportament de l'indicador de progrés:</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
-    <value>Mida final de l&apos;indicador de progrés (%):</value>
+    <value>Mida final de l'indicador de progrés (%):</value>
   </data>
   <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
-    <value>Mida inicial de l&apos;indicador de progrés (%):</value>
+    <value>Mida inicial de l'indicador de progrés (%):</value>
   </data>
   <data name="SHIFT" xml:space="preserve">
     <value>MAJÚS</value>
   </data>
   <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
-    <value>Mostrar pantalla de presentació a l&apos;inici:</value>
+    <value>Mostrar pantalla de presentació a l'inici:</value>
   </data>
   <data name="SHRINK" xml:space="preserve">
     <value>REDUIR</value>
@@ -1062,7 +1044,7 @@ POSICIÓ</value>
     <value>Pantalla inicial:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
-    <value>Senyal d&apos;aturada:</value>
+    <value>Senyal d'aturada:</value>
   </data>
   <data name="SUCCESS" xml:space="preserve">
     <value>Aconseguit</value>
@@ -1073,14 +1055,11 @@ POSICIÓ</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>No es pot activar el TheEyeTribe GazeManager! Sisplau, comprova que el servidor està funcionant i el dispositiu està connectat i torna a provar.</value>
   </data>
   <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
-    <value>TheEyeTribe no s&apos;ha calibrat. No es rebran dades fins que la calibració es completi.</value>
+    <value>TheEyeTribe no s'ha calibrat. No es rebran dades fins que la calibració es completi.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
     <value>No es pot calibrar perquè no hi ha cap motor EyeX disponible.</value>
@@ -1094,9 +1073,6 @@ POSICIÓ</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Paraules amb majúscules</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Calibració completada, o possiblement cancel·lada, però tot torna a funcionar un altre cop!</value>
   </data>
@@ -1105,12 +1081,6 @@ POSICIÓ</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>El motor EyeX no està en funcionament. Sisplau, inicia el motor EyeX i torna a provar.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>To 1</value>
@@ -1131,13 +1101,13 @@ POSICIÓ</value>
     <value>Tecla/botó gallet alliberat</value>
   </data>
   <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
-    <value>No puc detectar a on senyales. Hi ha algun problema amb el dispositiu d&apos;entrada? Està connectat, encès, calibrat, etc.?</value>
+    <value>No puc detectar a on senyales. Hi ha algun problema amb el dispositiu d'entrada? Està connectat, encès, calibrat, etc.?</value>
   </data>
   <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
-    <value>Impossible determinar l&apos;elevació actual</value>
+    <value>Impossible determinar l'elevació actual</value>
   </data>
   <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
-    <value>Hi ha hagut un problema establint la veu a &apos;{0}&apos;{1}</value>
+    <value>Hi ha hagut un problema establint la veu a '{0}'{1}</value>
   </data>
   <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
     <value>Alguna cosa ha fallat, però no sé el què - sisplau, comprova els arxius de registre</value>
@@ -1157,7 +1127,7 @@ AMUNT</value>
   </data>
   <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
     <value>Sisplau, visita www.optikey.org per descarregar la darrera versió ({0})
-Pots desactivar la comprovació d&apos;actualitzacions des de la Consola d&apos;administració (ALT + M).</value>
+Pots desactivar la comprovació d'actualitzacions des de la Consola d'administració (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
     <value>Puc reiniciar OptiKey?</value>
@@ -1213,44 +1183,17 @@ Pots desactivar la comprovació d&apos;actualitzacions des de la Consola d&apos;
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
     <value>Q</value>
   </data>
-  <data name="GERMAN_GERMANY" xml:space="preserve">
-    <value>Alemany (Alemanya) / Deutsch (Deutschland)</value>
-  </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
-    <value>Idioma de la interfície d&apos;usuari: {0}</value>
+    <value>Idioma de la interfície d'usuari: {0}</value>
   </data>
   <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
-    <value>Idioma de la interfície d&apos;usuari:</value>
+    <value>Idioma de la interfície d'usuari:</value>
   </data>
   <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
     <value>Simular pulsacions de tecles físiques al escriure caràcters:</value>
   </data>
-  <data name="DUTCH_BELGIUM" xml:space="preserve">
-    <value>Holandès (Bèlgica) / Nederlands (België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
-    <value>Holandès (Països Baixos) / Nederlands (Nederland)</value>
-  </data>
-  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Francès
-(França) /
-Française
-(France)</value>
-  </data>
-  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Alemany
-(Alemanya)
-Deutsch
-(Deutschland)</value>
-  </data>
   <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
     <value>Elimina la magnificació del ratolí per accions de desplaçament:</value>
-  </data>
-  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Rus
-(Rússia)
-Русский
-(Россия)</value>
   </data>
   <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
     <value>Gruix del marge de la pantalla de conversa (esquerra en px):</value>
@@ -1553,13 +1496,13 @@ Deutsch
     <value>CANVIAR LES TECLES DE LA PANTALLA:</value>
   </data>
   <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
-    <value>TECLES D&apos;ACCIONS D&apos;ACOBLAMENT:</value>
+    <value>TECLES D'ACCIONS D'ACOBLAMENT:</value>
   </data>
   <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
     <value>Substitucions per temps de fixació de tecla (ms):</value>
   </data>
   <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
-    <value>TECLES DE CANVI D&apos;IDIOMA:</value>
+    <value>TECLES DE CANVI D'IDIOMA:</value>
   </data>
   <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
     <value>IDIOMA</value>
@@ -1591,55 +1534,13 @@ Deutsch
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
     <value>Especificar temps per completar en tecles individuals:</value>
   </data>
-  <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Grec (Grècia) / Ελληνικά (Grècia)</value>
-  </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Consola d&apos;administració</value>
+    <value>Consola d'administració</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Sortir</value>
   </data>
-  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Grec
-(Grècia)
-Ελληνικά
-(Greece)</value>
-  </data>
-  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Neerlandès
-(Bèlgica) /
-Nederlands
-(België)</value>
-  </data>
-  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Neerlandès
-(Països Baixos) /
-Nederlands
-(Nederland)</value>
-  </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir les tecles de modificació per totes les accions de ratolí:</value>
-  </data>
-  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>English
-(Canadà)</value>
-  </data>
-  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>English
-(UK)</value>
-  </data>
-  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>English
-(US)</value>
-  </data>
-  <data name="TURKISH_TURKEY" xml:space="preserve">
-    <value>Turc (Turquia) / Türkçe (Türkiye)</value>
-  </data>
-  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
-    <value>Turc
-(Turquia) /
-Türkçe
-(Türkiye)</value>
   </data>
 </root>
