@@ -1374,20 +1374,23 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByIndividualKey"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NGram")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods AutoCompleteMethod {
-            get {
+        public global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods AutoCompleteMethod
+        {
+            get
+            {
                 return ((global::JuliusSweetland.OptiKey.Enums.AutoCompleteMethods)(this["AutoCompleteMethod"]));
             }
-            set {
+            set
+            {
                 this["AutoCompleteMethod"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]

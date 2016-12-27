@@ -5,6 +5,7 @@ namespace JuliusSweetland.OptiKey.Enums
 {
     public enum Languages
     {
+        CatalanSpain,
         CroatianCroatia,
         DanishDenmark,
         DutchBelgium,
@@ -30,6 +31,7 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
+                case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
                 case Languages.DanishDenmark: return Resources.DANISH_DENMARK;
                 case Languages.DutchBelgium: return Resources.DUTCH_BELGIUM;
@@ -56,6 +58,7 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (languages)
             {
+                case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
                 case Languages.DutchBelgium: return CultureInfo.GetCultureInfo("nl-BE");

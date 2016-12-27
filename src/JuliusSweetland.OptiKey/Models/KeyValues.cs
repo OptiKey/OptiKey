@@ -19,6 +19,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue BackOneKey = new KeyValue(FunctionKeys.BackOne);
         public static readonly KeyValue BreakKey = new KeyValue(FunctionKeys.Break);
         public static readonly KeyValue CalibrateKey = new KeyValue(FunctionKeys.Calibrate);
+        public static readonly KeyValue CatalanSpainKey = new KeyValue(FunctionKeys.CatalanSpain);
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
         public static readonly KeyValue CollapseDockKey = new KeyValue(FunctionKeys.CollapseDock);
         public static readonly KeyValue CombiningAcuteAccentKey = new KeyValue("\x0301");
@@ -196,6 +197,11 @@ namespace JuliusSweetland.OptiKey.Models
 
             multiKeySelectionKeys = new Dictionary<Languages, List<KeyValue>>
             {
+                { Languages.CatalanSpain, "abcdefghijklmnopqrstuvwxyzñç"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.CroatianCroatia, "abcčćdđefghijklmnopqrsštuvwxyzž"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -228,8 +234,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() },
-                {
-                    Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
+                { Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
@@ -239,7 +244,7 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
-                { Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
+				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
