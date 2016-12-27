@@ -420,6 +420,12 @@
     <Compile Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovak\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Slovenian\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
@@ -571,10 +577,12 @@
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
+    <EmbeddedResource Include="Properties\Resources.sk-SK.resx" />
     <EmbeddedResource Include="Properties\Resources.sl-SI.resx" />
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
+    <EmbeddedResource Include="Resources.sk-SK.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
     <None Include="..\..\LICENSE.txt">
@@ -623,6 +631,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dictionaries\PortuguesePortugal.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\SlovakSlovakia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="nbug.config">
@@ -951,6 +962,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovak\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

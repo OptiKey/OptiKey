@@ -139,6 +139,7 @@
         ShrinkFromTopAndRight,
         SizeAndPositionKeyboard,
         Sleep,
+        SlovakSlovakia,
         SlovenianSlovenia,
         SpanishSpain,
         Speak,
