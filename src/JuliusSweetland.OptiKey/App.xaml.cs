@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,9 +24,7 @@ using log4net.Core;
 using log4net.Repository.Hierarchy;
 using NBug.Core.UI;
 using Octokit;
-using Octokit.Reactive;
 using Application = System.Windows.Application;
-using FileMode = System.IO.FileMode;
 
 namespace JuliusSweetland.OptiKey
 {
@@ -256,7 +253,7 @@ namespace JuliusSweetland.OptiKey
 
                 if (rootAppender != null)
                 {
-                    using (var fs = new FileStream(rootAppender.File, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    using (var fs = new FileStream(rootAppender.File, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                     {
                         using (var sr = new StreamReader(fs, Encoding.Default))
                         {
@@ -332,6 +329,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                     return new TobiiEyeXCalibrationService();
+
+                case PointsSources.VisualInteractionMyGaze:
+                    return new MyGazeCalibrationService();
             }
 
             return null;
@@ -358,6 +358,11 @@ namespace JuliusSweetland.OptiKey
                         new Regex(GazeTrackerUdpRegex));
                     break;
 
+                case PointsSources.MousePosition:
+                    pointSource = new MousePositionSource(
+                        Settings.Default.PointTtl);
+                    break;
+
                 case PointsSources.TheEyeTribe:
                     var theEyeTribePointService = new TheEyeTribePointService();
                     errorNotifyingServices.Add(theEyeTribePointService);
@@ -381,9 +386,12 @@ namespace JuliusSweetland.OptiKey
                         tobiiEyeXPointService);
                     break;
 
-                case PointsSources.MousePosition:
-                    pointSource = new MousePositionSource(
-                        Settings.Default.PointTtl);
+                case PointsSources.VisualInteractionMyGaze:
+                    var myGazePointService = new MyGazePointService();
+                    errorNotifyingServices.Add(myGazePointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        myGazePointService);
                     break;
 
                 default:
@@ -570,53 +578,67 @@ namespace JuliusSweetland.OptiKey
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
-            if (Settings.Default.CheckForUpdates)
+            try
             {
-                Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", 
-                    GitHubRepoOwner, GitHubRepoName);
+                if (Settings.Default.CheckForUpdates)
+                {
+                    Log.InfoFormat("Checking GitHub for updates (repo owner:'{0}', repo name:'{1}').", GitHubRepoOwner, GitHubRepoName);
 
-                new ObservableGitHubClient(new ProductHeaderValue("OptiKey")).Release
-                    .GetAll(GitHubRepoOwner, GitHubRepoName)
-                    .Where(release => !release.Prerelease)
-                    .Take(1)
-                    .ObserveOnDispatcher()
-                    .Subscribe(release =>
+                    var github = new GitHubClient(new ProductHeaderValue("OptiKey"));
+                    var releases = await github.Repository.Release.GetAll(GitHubRepoOwner, GitHubRepoName);
+                    var latestRelease = releases.FirstOrDefault(release => !release.Prerelease);
+                    if (latestRelease != null)
                     {
                         var currentVersion = new Version(DiagnosticInfo.AssemblyVersion); //Convert from string
 
                         //Discard revision (4th number) as my GitHub releases are tagged with "vMAJOR.MINOR.PATCH"
                         currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build);
 
-                        if (!string.IsNullOrEmpty(release.TagName))
+                        if (!string.IsNullOrEmpty(latestRelease.TagName))
                         {
                             var tagNameWithoutLetters =
-                                new string(release.TagName.ToCharArray().Where(c => !char.IsLetter(c)).ToArray());
+                                new string(latestRelease.TagName.ToCharArray().Where(c => !char.IsLetter(c)).ToArray());
                             var latestAvailableVersion = new Version(tagNameWithoutLetters);
                             if (latestAvailableVersion > currentVersion)
                             {
-                                Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                Log.InfoFormat(
+                                    "An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
                                     currentVersion, latestAvailableVersion);
 
                                 inputService.RequestSuspend();
                                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
-                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, release.TagName),
+                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
                                     NotificationTypes.Normal,
-                                    () => 
-                                        {
-                                            inputService.RequestResume();
-                                            taskCompletionSource.SetResult(true);
-                                        });
-
-                                return;
+                                    () => taskCompletionSource.SetResult(true));
+                            }
+                            else
+                            {
+                                Log.Info("No update found.");
+                                taskCompletionSource.SetResult(false);
                             }
                         }
-
-                        Log.Info("No update found.");
-                    }, exception => Log.WarnFormat("Error when checking for updates. Exception message:{0}", exception.Message));
+                        else
+                        {
+                            Log.Info("Unable to determine if an update is available as the latest release lacks a tag.");
+                            taskCompletionSource.SetResult(false);
+                        }
+                    }
+                    else
+                    {
+                        Log.Info("No releases found.");
+                        taskCompletionSource.SetResult(false);
+                    }
+                }
+                else
+                {
+                    Log.Info("Check for update is disabled - skipping check.");
+                    taskCompletionSource.SetResult(false);
+                }
             }
-            else
+            catch (Exception ex)
             {
+                Log.ErrorFormat("Error when checking for updates. Exception message:{0}\nStackTrace:{1}", ex.Message, ex.StackTrace);
                 taskCompletionSource.SetResult(false);
             }
 

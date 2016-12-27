@@ -202,7 +202,7 @@
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Калибровка остановилась по неизвестной причине. Сообщение: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Калибровка завершена успешно! Аккуратность (Средняя степень ошибки = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1545,5 +1545,11 @@ LK</value>
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Скрыть модификаторы клавиш для всех действий мыши:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Калибровка завершена успешно!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Калибровка не удалась!</value>
   </data>
 </root>

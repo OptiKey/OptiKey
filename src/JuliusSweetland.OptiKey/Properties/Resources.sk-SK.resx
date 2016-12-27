@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>Pridať nový záznam:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Chcete pridať frázu '{0}' do slovníka so skratkou '{1}'?</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRIDAŤ DO
+SLOVNÍKA</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Chcete pridať slovo '{0}' do slovníka?</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>Pridané</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>Upraviť {0} pixel|Upraviť o {0} pixelov</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>PÍSMENÁ</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Android Tmavý</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Android Svetlý</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>Automaticky kapitalizovať slová:</value>
+  </data>
+  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+    <value>Automaticky dopĺňať slová:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>Automatická úprava viet</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>Automatické medzery medzi slovami:</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>SPÄŤ</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMAZAŤ
+ZNAK</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMAZAŤ
+SLOVO</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>Bass nedokázal vytvoriť stream zo súboru '{0}'</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>Na  spodku</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>BREAK</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>Kalibrácia prerušená so správou: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Ste si isí že chcete rekalibrovať?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>Pri kalibrácii došlo k chybe. Správa:  '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>Kalibrácia zlyhala so správou: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>Kalibráciu nie je možné ukončiť bez fyzického zásahu, napr. je potrebné hýbať myšou. Ak nie ste schopní fyzicky interagovať s počítačom, je možné že zostanete zaseknutí v procese kalibrácie. Ste si istí že chcete rekalibrovať?</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>Kalíbrácia bola zastavená z neznámych príčin. Správa: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>Kalibrácia úspešná! Presnosť (Priemerná Miera Chýb =  '{0}')</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>ZRUŠIŤ</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>Časový limit pre zachytávanie (ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>Skontrolovať dostupnosť aktualizácií pri štarte:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>ZMAZAŤ
+VŠETKO</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIKNÚŤ
+A ŤAHAŤ</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>Kliknutie 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>Kliknutie 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>Kliknutie 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>Kliknutie 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>Kliknutie 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>Kliknutie 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOK</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>Šírka v zmenšenom móde (ako percento šírky v plnej veľkosti):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>KONVERZÁCIA</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>Konverzácia Písmená</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>Konverzácia Čísla a Symboly</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Iba konverzácia:</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>OptiKey zistil e váš súbor s používateľskými nastaveniami bol poškodený a musí byť opravený. Oprava bude realizovaný obnovením staršej verzie, alebo pôvodenj verzie ak to nie je možné. 
+Zvoľte Áno ak chcete resetovať používateľské nastavenia a reštartovať aplikáciu.
+Zvoľte Nie ak chcete ukončiť aplikáciu a manuálne opraviť alebo skopírovať súbor s používateľskými nastaveniami.</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>Uh-oh! Zdá sa že súbor s používateľskými nastaveniami je poškodený.</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>Zlé správy - OptiKey sa potkol sám o seba a musí byť ukončený. 
+Ocenili by sme email s popisom incidentu: optikeyfeedback@gmail.com
+Za vzniknutú situáciu sa ospravedlňujeme.</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>Uh-oh!</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>MENY</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>Meny 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>Meny 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>Výška kurzoru (v pixeloch):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>Šírka kurzoru (v pixeloch):</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>Debugovací mód:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZNÍŽIŤ
+NEPRIEHĽADNOSŤ</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Zmazať</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>DIAKRITIKA</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>Diakritika 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>Diakritika 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>Diakritika 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>Slovník</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>Neexistuje žiaden používateľský slovník, a pôvodný slovník sa nenašiel na ceste: '{0}'</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>Zobraziť na X sekúnd pre každý znak v správe:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>Vykonať na aktuálnej pozícii...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>Vykonať v bode...</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ŠÍPKA
+DOLE</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value> ({0:#,###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>Skvelé. '{0}' bolo pridané do slovníka.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>Chyba:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>ZVÄČŠIŤ</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOK</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOLE A DOĽAVA</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOLE A DOPRAVA</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOLE</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOĽAVA</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+DOPRAVA</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+HORE A DOĽAVA</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+HORE A DOPRAVA</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÄČŠIŤ
+HORE</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>Klesajúci 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>Klesajúci 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>Vypĺňanie Kruhu</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>Fixácie (zotrvanie)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>Písmo:</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>Šírka písma:</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>Hrúbka písma:</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>Plná šírka doku  (ako % obrazovky):</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Zväčšiť</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>Horizontálne rozmery (ako % obrazovky):</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>Životnosť nedokončenej fixácie klávesy (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZVÝŠIŤ
+NEPRIEHĽADNOSŤ</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>Info:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...ale inteligentne potláčať veľké počiatočné písmená tam kde sú pravdepodobne neužitočné:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>Aktuálna kombinácia klávesnice a jazyka je neplatná.</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>PRESUNÚŤ</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+DOLE A VĽAVO</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+DOLE A VPRAVO</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+DOLE</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+VĽAVO</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+VPRAVO</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+HORE A VĽAVO</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+HORE A VPRAVO</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRESUNÚŤ
+HORE</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Transformácia popisu kláves:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Trvanie fixácie klávesy pre dokončenie (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Trvanie fixácie klávesy pre zachytenie (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Klávesa pre stláčanie kláves</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Tlačidlo myši pre stláčanie kláves</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>Stláčanie Kláves:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Zdroj stláčania kláves:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>Stláčanie kláves: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Klávesa na klávesnici</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Jazyk klávesnice: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Jazyk klávesnice:</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>Vľavo</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ŠÍPKA
+DOĽAVA</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIKNÚŤ
+ĽAVÝM 
+TLAČIDLOM</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>DVOJKLIK
+ĽAVÝM TLAČIDLOM</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ
+ĽAVÉ TLAČIDLO</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>Vzhľad</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Všetko malými písmenami</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MAGNETICKÝ
+KURZOR</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>LUPA</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>Plocha využitá pre lupu (ako % obrazovky):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>Plocha zachytená lupou (ako % obrazovky):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>Nastavania: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>Nastavenia OptiKey</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>Maximálny počet nálezov zo slovníka:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIKNÚŤ
+STREDNÝM TLAČIDLOM</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ
+STREDNÉ TLAČIDLO</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>MINIMALIZOVAŤ</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>Minimalizované</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>Minimalizovaná pozícia:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>Maximálna doba zotrvania na klávese pre zahrnutie do zachytávania (ms):</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>Rôzne</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>MYŠ</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>Tlačidlo myši</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Kliknutie Myšou 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Kliknutie Myšou 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Kliknutie Myšou 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>Kliknutie Myšou 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Kliknutie myšou:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Dvojklik Myšou 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Dvojklik Myšou 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Dvojklik Myšou 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Dvojklik myšou:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>Stlačenie Tlačidla Myši 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>Stlačenie Tlačidla Myši 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>Stlačenie Tlačidla Myši 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>Stlačenie Tlačidla Myši 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>Stlačenie tlačidla myši:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>Myš</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>Pozícia myši</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>Interval pre zisťovanie pozície myši (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>Skrolovanie Myši 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>Skrolovanie Myši 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>Skrolovanie Myši 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>Skrolovanie Myši 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>Skrolovanie Myši 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>Skrolovanie Myši 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>Skrolovanie myši:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>Zdvihnutie Tlačidla Myši 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>Zdvihnutie Tlačidla Myši 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>Zdvihnutie Tlačidla Myši 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>Zdvihnutie Tlačidla Myši 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>Zdvihnutie tlačidla myši:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>POSUNÚŤ</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>Posunúť o {0} pixel:|Posunúť o {0} pixelov:</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+DOLE A DOĽAVA</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+DOLE A DOPRAVA</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+DOLE</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+DOĽAVA</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+DOPRAVA</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+NA</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+HORE A DOĽAVA</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+HORE A DOPRAVA</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>POSUNÚŤ
+HORE</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Zachytávanie viacerých kláves</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Povoliť zachytávanie viacerých kláves:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Stláčanie viacerých kláves</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Ukončenie stláčania viacerých kláves:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>STLÁČANIE
+VIACERÝCH KLÁVES</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Začiatok stláčania viacerých kláves:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(Nový záznam v slovníku bude obsahovať veľké písmená)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>ĎALŠIE</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NIE</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Zdá sa že v zápisníku nie sú žiadne slová alebo frázy, ktoré ešte nie sú v slovníku.</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>Žiadny</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>Hmm, nie je tu nič nové!</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>Upozornenia</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ČÍSLA
+SYM</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>ČÍSLA
+A SYMBOLY</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>Čísla a Symboly 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>Čísla a Symboly 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>Čísla a Symboly 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Píš · Klikaj · Hovor</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Ostatné</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>Nebolo možné identifikovať rodičovské okno. Nedá sa pokračovať</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+DN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>Fyzické Klávesy</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FYZICKÉ
+KLÁVESY</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>Prehrať</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>Ukazovanie a Označovanie</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>Rozsah bodu fixácie (v pixeloch):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Čas pre dokončnie fixácie na bod (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Čas pre zachytenie bodu fixácie (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>Rozsah zachytenia bodu (v pixeloch):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>Označenie bodu: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Klávesa pre označenie bodu:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Tlačidlo myši pre označenie bodu:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Zdroj označenia bodu:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>Ukazovanie</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>Ukazovanie: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>PREDCHÁDZAJÚCE</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRNT
+SCR</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>CHYBA PRI NAČÍTAVANÍ KLÁVESNICE</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>UKONČIŤ</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Ste si absolútne istí že chcete ukončiť aplikáciu?</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>Ste si istí že chcete ukončiť aplikáciu?</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>Rýchlosť:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>REKALIBROVAŤ</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZOPAKOVAŤ
+POSLEDNÉ</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>Servis(y) pre Audio a/alebo Slovník nie sú dostupné oknu s nastaveniami.</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>Pre aplikovanie vašich zmien je potrebné reštartovať OptiKey. Stlačte OK ak chcete reštartovať, alebo ZRUŠIŤ ak chcete zrušiť zmeny.</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Obnoviť</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Pre pokračovanie v nedokončenej fixácii klávesy je potrebné nové zachytenie:</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>Vpravo</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ŠÍPKA
+DOPRAVA</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIKNÚŤ
+PRAVÝM
+TLAČIDLOM</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ
+PRAVÉ TLAČIDLO</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>Stúpajúci 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>Stúpajúci 2</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>Rovnaká ako pozícia doku</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>Počet riadkov zápisníka:</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCR
+LK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>Skrolovať {0} kilknutím:|Skrolovať {0} klikmi:</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SKROLOVAŤ
+DOLE</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SKROLOVAŤ
+DOĽAVA</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SKROLOVAŤ
+DOPRAVA</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SKROLOVAŤ
+HORE</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>Označovanie:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>Správanie indikátora priebehu označovania:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>Konečná veľkosť indikátora priebehu označovania (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>Počiatočná veľkosť indikátora priebehu označovania (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>Zobraziť úvodnú obrazovku pri štarte aplikácie:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>ZMENŠIŤ</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOLE A DOĽAVA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOLE A DOPRAVA</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOLE</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>Zmenšiť</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOĽAVA</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+DOPRAVA</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+HORE A DOĽAVA</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+HORE A DOPRAVA</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ZMENŠIŤ
+HORE</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(Mimochodom, v slovníku už sú podobné záznamy: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VEĽKOSŤ
+A POZÍCIA</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>Veľkosť
+a pozícia</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>USPAŤ</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>Zvukové efekty</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>Zvuky</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>Zdroj:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>SPACE</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>HOVORIŤ</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>Reč:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Pri štarte zobraziť klávesnicu:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>Signál pre zastavenie:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Úspech</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Potlačiť modifikačné klávesy v móde myši:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>Nepodarilo sa aktivovať TheEyeTribe GazeManager! Prosím uistite sa že server beží a zariadenie je pripojené, a skúste znova.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe nebol nakalibrovaný. Prenos dát nie je možný kým nebude kalibrácia dokončená.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>Nie je možné začať kalibráciu, pretože EyeX engine nie je k dispozícii.</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>Téma:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>Čas kým sa bod stane nepodstatným (ms):</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Slová začínajú veľkými písmenami</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrácia bola dokončená, alebo možno zrušená, ale všetko opäť funguje!</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Nepodarilo sa nájsť Tobii EyeX Engine. Prosím nainštalujte Tobii EyeX Engine a skúste znova.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine nie je spustený. Prosím spustite Tobii EyeX Engine a skúste znova.</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>Tón 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>Tón 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>Tón 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>Tón 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>Opätovné stlačenie klávesy/tlačidla</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>Pustenie stlačenie klávesy/tlačidla</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>Nedokážem detekovať kam upriamujete svoju pozornosť. Nemáte problém so vstupným zariadením? Je pripojené, zapnuté, nakalibrované, atď?</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>Nie je možné určiť aktuálnu eleváciu.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>Pri nastavovaní hlasu na '{0}'{1} došlo k chybe</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>Niečo sa pokazilo, ale neviem čo - prosím skontrolujte logy</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>Na vrchu</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>ŠÍPKA
+HORE</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>AKTUALIZÁCIE DOSTUPNÉ!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Všetko veľkými písmenami</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>Prosím navštívte www.optikey.org pre stiahnutie najnovšej verzie ({0})
+Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>Môžem reštartovať OptiKey?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Verzia: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Vertikálne rozmery (ako % obrazovky):</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Vzhľad</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(z nastavení)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Hlas:</value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Hlasitosť:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Web: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Slová</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>ÁNO</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Písmená</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Vysoké</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Nízke</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Stredné</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Žiadny</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Množstvo spracovaných dát z dátového toku:</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Jazyk používateľského rozhrania: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Jazyk používateľského rozhrania:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simulovať fyzické stlačenie kláves pri písaní znakov:</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Potlačiť približovanie myšov pri skrolovaní:</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Šírka okrajov konverzačnej klávesnice (ľavý, horný, pravý, spodný  v pixeloch):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>ZMAZAŤ ZNAK</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>ZMAZAŤ SLOVO</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>PONUKA 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>PONUKA 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>PONUKA 3</value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>PONUKA 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>PONUKA 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>PONUKA 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Klávesy s ponukami</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>PRIDAŤ DO SLOVNÍKA</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>ZMENŠIŤ DOK</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>ŠÍPKA DOLE</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>ŠÍPKA DOĽAVA</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>ŠÍPKA DOPRAVA</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>ŠÍPKA HORE</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>KLIKNÚŤ A ŤAHAŤ</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>MENY 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>MENY 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>ZNÍŽIŤ NEPRIEHĽADNOSŤ</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>DIAKRITIKA 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>DIAKRITIKA 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>DIAKRITIKA 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOK</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOLE
+</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOLE A DOĽAVA</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOLE A DOPRAVA</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOĽAVA</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>ZVÄČŠIŤ DOLE A DOPRAVA</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>ZVÄČŠIŤ HORE</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>ZVÄČŠIŤ HORE A DOĽAVA</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>ZVÄČŠIŤ HORE A DOPRAVA</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>ZVÝŠIŤ NEPRIEHĽADNOSŤ</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>ČÍSLA A SYMBOLY 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>ČÍSLA A SYMBOLY 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>ČÍSLA A SYMBOLY 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>FYZICKÉ KLÁVESY</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>ROZMERY A POZÍCIA</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNETICKÝ KURZOR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>KLIKNÚŤ STREDNÝM TLAČIDLOM</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ STREDNÉ TLAČIDLO</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>POSUNÚŤ O VZDIALENOSŤ V PIXELOCH</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>UPRAVIŤ O POČET PIXELOV</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>KONVERZÁCIA PÍSMENÁ</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>KONVERZÁCIA ČÍSLA A SYMBOLY</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>PRESUNÚŤ DOLE</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>PRESUNÚŤ DOLE A VĽAVO</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>PRESUNÚŤ DOLE A VPRAVO</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>PRESUNÚŤ VĽAVO</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>PRESUNÚŤ VPRAVO</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>PRESUNÚŤ HORE</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>PRESUNÚŤ HORE A VĽAVO</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>PRESUNÚŤ HORE A VPRAVO</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>KLIKNÚŤ ĽAVÝM TLAČIDLOM</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>DVOJKLIK ĽAVÝM TLAČIDLOM</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ ĽAVÉ TLAČIDLO</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>POSUNÚŤ DOLE</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>POSUNÚŤ DOLE A DOĽAVA</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>POSUNÚŤ DOLE A DOPRAVA</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>POSUNÚŤ DOĽAVA</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>POSUNÚŤ DOPRAVA</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>POSUNÚŤ NA</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>POSUNÚŤ HORE</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>POSUNÚŤ HORE A DOĽAVA</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>POSUNÚŤ HORE A DOPRAVA</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>STLÁČANIE VIACERÝCH KLÁVES</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>ZOPAKOVAŤ POSLEDNÉ</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>KLIKNÚŤ PRAVÝM TLAČIDLOM</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>STLAČIŤ/ZDVIHNÚŤ PRAVÉ TLAČIDLO</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>SKROLOVAŤ O POČET KLIKNUTÍ</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>SKROLOVAŤ DOLE</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>SKROLOVAŤ DOĽAVA</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>SKROLOVAŤ DOPRAVA</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>SKROLOVAŤ HORE</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>ZMENŠIŤ DOLE</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>ZMENŠIŤ DOLE A DOĽAVA</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>ZMENŠIŤ DOLE A DOPRAVA</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>ZMENŠIŤ DOĽAVA</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>ZMENŠIŤ DOPRAVA</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>ZMENŠIŤ HORE</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>ZMENŠIŤ HORE A DOĽAVA</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>ZMENŠIŤ HORE A DOPRAVA</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>KLÁVESY NA ZMENU KLÁVESNICE:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>KLÁVESY NA ZMENU DOKOVANIA:</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Špecifikovať dobu fixácie pre jednotlivé klávesy (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>KLÁVESY NA ZMENU JAZYKA:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>JAZYK</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>RÔZNE KLÁVESY:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>MODIFIKAČNÉ KLÁVESY:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>TLAČIDLÁ MYŠI (VYKONAŤ NA AKTUÁLNEJ POZÍCII):</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>TLAČIDLÁ MYŠI (VYKONAŤ V BODE):</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>TLAČIDLÁ MYŠI (RÔZNE):</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>POSUNÚŤ KLÁVESY A ZMENIŤ ICH VEĽKOSŤ:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FYZICKÉ KLÁVESY:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>KLÁVESY S PONUKAMI:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Špecifikovať časy pre dokončenie jednotlivých kláves:</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Ukončiť</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Potlačiť modifikačné klávesy pre všetky akcie myšou:</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Nedá sa spojiť s myGaze! Prosím skontrolujte či server beží a zariadenie je pripojené, a skúste znova.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Visual Interaction myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibrácia zlyhala!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrácia úspešná!</value>
+  </data>
+</root>

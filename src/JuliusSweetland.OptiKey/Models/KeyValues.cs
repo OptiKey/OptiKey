@@ -48,10 +48,13 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CombiningReversedCommaAboveOrRoughBreathingKey = new KeyValue("\x0314");
         public static readonly KeyValue CombiningRingAboveKey = new KeyValue("\x030A");
         public static readonly KeyValue CombiningRingBelowKey = new KeyValue("\x0325");
+        public static readonly KeyValue CombiningTildeKey = new KeyValue("\x0303");
+        public static readonly KeyValue CroatianCroatiaKey = new KeyValue(FunctionKeys.CroatianCroatia);
         public static readonly KeyValue ConversationAlphaKeyboardKey = new KeyValue(FunctionKeys.ConversationAlphaKeyboard);
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
         public static readonly KeyValue Currencies2KeyboardKey = new KeyValue(FunctionKeys.Currencies2Keyboard);
+        public static readonly KeyValue DanishDenmarkKey = new KeyValue(FunctionKeys.DanishDenmark);
         public static readonly KeyValue DecreaseOpacityKey = new KeyValue(FunctionKeys.DecreaseOpacity);
         public static readonly KeyValue DeleteKey = new KeyValue(FunctionKeys.Delete);
         public static readonly KeyValue Diacritic1KeyboardKey = new KeyValue(FunctionKeys.Diacritic1Keyboard);
@@ -91,6 +94,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue HomeKey = new KeyValue(FunctionKeys.Home);
         public static readonly KeyValue IncreaseOpacityKey = new KeyValue(FunctionKeys.IncreaseOpacity);
         public static readonly KeyValue InsertKey = new KeyValue(FunctionKeys.Insert);
+        public static readonly KeyValue ItalianItalyKey = new KeyValue(FunctionKeys.ItalianItaly);
         public static readonly KeyValue LanguageKeyboardKey = new KeyValue(FunctionKeys.LanguageKeyboard);
         public static readonly KeyValue LeftAltKey = new KeyValue(FunctionKeys.LeftAlt);
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
@@ -152,6 +156,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue PgDnKey = new KeyValue(FunctionKeys.PgDn);
         public static readonly KeyValue PgUpKey = new KeyValue(FunctionKeys.PgUp);
         public static readonly KeyValue PhysicalKeysKeyboardKey = new KeyValue(FunctionKeys.PhysicalKeysKeyboard);
+        public static readonly KeyValue PortuguesePortugalKey = new KeyValue(FunctionKeys.PortuguesePortugal);
         public static readonly KeyValue PreviousSuggestionsKey = new KeyValue(FunctionKeys.PreviousSuggestions);
         public static readonly KeyValue PrintScreenKey = new KeyValue(FunctionKeys.PrintScreen);
         public static readonly KeyValue QuitKey = new KeyValue(FunctionKeys.Quit);
@@ -168,6 +173,8 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ShrinkFromTopAndRightKey = new KeyValue(FunctionKeys.ShrinkFromTopAndRight);
         public static readonly KeyValue SizeAndPositionKeyboardKey = new KeyValue(FunctionKeys.SizeAndPositionKeyboard);
         public static readonly KeyValue SleepKey = new KeyValue(FunctionKeys.Sleep);
+        public static readonly KeyValue SlovakSlovakiaKey = new KeyValue(FunctionKeys.SlovakSlovakia);
+        public static readonly KeyValue SlovenianSloveniaKey = new KeyValue(FunctionKeys.SlovenianSlovenia);
         public static readonly KeyValue SpeakKey = new KeyValue(FunctionKeys.Speak);
         public static readonly KeyValue SpanishSpainKey = new KeyValue(FunctionKeys.SpanishSpain);
         public static readonly KeyValue Suggestion1Key = new KeyValue(FunctionKeys.Suggestion1);
@@ -195,6 +202,16 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
                 },
+                { Languages.CroatianCroatia, "abcčćdđefghijklmnopqrsštuvwxyzž"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.DanishDenmark, "abcdefghijklmnopqrstuvxyzæøå"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
                 { Languages.DutchBelgium, defaultList },
                 { Languages.DutchNetherlands, defaultList },
                 { Languages.EnglishCanada, defaultList },
@@ -210,11 +227,23 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList()
-                },     
-				{ Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+                },
+                { Languages.ItalianItaly, defaultList },
+                { Languages.PortuguesePortugal, defaultList },
+                { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
                                                 .ToList() },
+                { Languages.SlovakSlovakia, "aáäbcčdďeéfghchiíjklĺľmnoóôpqrŕsštťuúvwxyýzž"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
+                { Languages.SlovenianSlovenia, "abcčćdđefghijklmnopqrsštuvwxyzž"
+                                                .ToCharArray()
+                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                                                .ToList()
+                },
 				{ Languages.SpanishSpain, "abcdefghijklmnopqrstuvwxyzñ"
                                                 .ToCharArray()
                                                 .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
@@ -320,7 +349,8 @@ namespace JuliusSweetland.OptiKey.Models
                     CombiningRetroflexHookBelowKey,
                     CombiningReversedCommaAboveOrRoughBreathingKey,
                     CombiningRingAboveKey,
-                    CombiningRingBelowKey
+                    CombiningRingBelowKey,
+                    CombiningTildeKey
                 };
             }
         }

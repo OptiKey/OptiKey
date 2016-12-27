@@ -6,8 +6,9 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Enums;
-using JuliusSweetland.OptiKey.Native.Structs;
+using JuliusSweetland.OptiKey.Native.Common;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
+using JuliusSweetland.OptiKey.Native.Common.Structs;
 using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Properties;
 

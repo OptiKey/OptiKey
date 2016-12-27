@@ -203,7 +203,7 @@ Wollen Sie dennoch neu kalibrieren?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Kalibrierung angehalten ohne erkenntlichen Grund. Nachricht: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Kalibrierung erfolgreich! Genauigkeit (Durchschnittliche Fehlereinheit: = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1575,5 +1575,11 @@ Sie können die automatische Suche nach Updates in der Verwaltungskonsole (ALT +
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Unterdrücke Zusatztasten für alle Mausaktionen:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrierung erfolgreich!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibrierung fehlgeschlagen!</value>
   </data>
 </root>

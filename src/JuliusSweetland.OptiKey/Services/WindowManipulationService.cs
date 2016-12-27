@@ -7,8 +7,9 @@ using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Enums;
-using JuliusSweetland.OptiKey.Native.Structs;
+using JuliusSweetland.OptiKey.Native.Common;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
+using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
 
@@ -184,7 +185,45 @@ namespace JuliusSweetland.OptiKey.Services
                             window.Width += xAdjustmentToRight;
                             break;
                     }
-                    PersistSizeAndPosition();
+
+                    //Recalculate distance to boundaries and check if we are now aligned with 3 edges
+                    distanceToBottomBoundary = screenBoundsInDp.Bottom - (window.Top + window.ActualHeight);
+                    distanceToTopBoundary = window.Top - screenBoundsInDp.Top;
+                    distanceToLeftBoundary = window.Left - screenBoundsInDp.Left;
+                    distanceToRightBoundary = screenBoundsInDp.Right - (window.Left + window.ActualWidth);
+
+                    DockEdges? dockToEdge = null;
+                    if (distanceToTopBoundary == 0 && distanceToLeftBoundary == 0 && distanceToRightBoundary == 0)
+                    {
+                        dockToEdge = DockEdges.Top;
+                    }
+                    else if (distanceToBottomBoundary == 0 && distanceToLeftBoundary == 0 && distanceToRightBoundary == 0)
+                    {
+                        dockToEdge = DockEdges.Bottom;
+                    }
+                    else if (distanceToTopBoundary == 0 && distanceToLeftBoundary == 0 && distanceToBottomBoundary == 0)
+                    {
+                        dockToEdge = DockEdges.Left;
+                    }
+                    else if (distanceToTopBoundary == 0 && distanceToRightBoundary == 0 && distanceToBottomBoundary == 0)
+                    {
+                        dockToEdge = DockEdges.Right;
+                    }
+
+                    if (dockToEdge != null)
+                    {
+                        //We are aligned with 3 edges and currently floating, so switch to docked mode
+                        saveWindowState(WindowStates.Docked);
+                        savePreviousWindowState(WindowStates.Docked);
+                        saveDockPosition(dockToEdge.Value);
+                        RegisterAppBar();
+                        var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize());
+                        SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx);
+                    }
+                    else
+                    {
+                        PersistSizeAndPosition();
+                    }
                     break;
 
                 case WindowStates.Docked:
@@ -307,8 +346,8 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 UnRegisterAppBar();
             }
-            window.WindowState = System.Windows.WindowState.Maximized;
             saveWindowState(WindowStates.Maximised);
+            ApplySavedState();
         }
 
         public void Minimise()
@@ -941,8 +980,6 @@ namespace JuliusSweetland.OptiKey.Services
                     switch (direction) //Handle horizontal adjustment
                     {
                         case MoveToDirections.Left:
-                        case MoveToDirections.BottomLeft:
-                        case MoveToDirections.TopLeft:
                             if (xAdjustmentAmount > xAdjustmentToLeft)
                             {
                                 saveWindowState(WindowStates.Docked);
@@ -956,9 +993,12 @@ namespace JuliusSweetland.OptiKey.Services
                             }
                             break;
 
+                        case MoveToDirections.BottomLeft:
+                        case MoveToDirections.TopLeft:
+                            window.Left -= xAdjustmentToLeft;
+                            break;
+
                         case MoveToDirections.Right:
-                        case MoveToDirections.BottomRight:
-                        case MoveToDirections.TopRight:
                             if (xAdjustmentAmount > xAdjustmentToRight)
                             {
                                 saveWindowState(WindowStates.Docked);
@@ -971,12 +1011,15 @@ namespace JuliusSweetland.OptiKey.Services
                                 window.Left += xAdjustmentToRight;
                             }
                             break;
+
+                        case MoveToDirections.BottomRight:
+                        case MoveToDirections.TopRight:
+                            window.Left += xAdjustmentToRight;
+                            break;
                     }
                     switch (direction) //Handle vertical adjustment
                     {
                         case MoveToDirections.Bottom:
-                        case MoveToDirections.BottomLeft:
-                        case MoveToDirections.BottomRight:
                             if (yAdjustmentAmount > yAdjustmentToBottom)
                             {
                                 saveWindowState(WindowStates.Docked);
@@ -990,9 +1033,12 @@ namespace JuliusSweetland.OptiKey.Services
                             }
                             break;
 
+                        case MoveToDirections.BottomLeft:
+                        case MoveToDirections.BottomRight:
+                            window.Top += yAdjustmentToBottom;
+                            break;
+
                         case MoveToDirections.Top:
-                        case MoveToDirections.TopLeft:
-                        case MoveToDirections.TopRight:
                             if (yAdjustmentAmount > yAdjustmentToTop)
                             {
                                 saveWindowState(WindowStates.Docked);
@@ -1004,6 +1050,11 @@ namespace JuliusSweetland.OptiKey.Services
                             {
                                 window.Top -= yAdjustmentToTop;
                             }
+                            break;
+
+                        case MoveToDirections.TopLeft:
+                        case MoveToDirections.TopRight:
+                            window.Top -= yAdjustmentToTop;
                             break;
                     }
                     adjustment = true;
@@ -1048,16 +1099,37 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case WindowStates.Floating:
-                    //Jump to edge(s)
+                    //Jump to edge(s), or dock against edge if we are already against that edge
+                    DockEdges? dockToEdge = null;
                     switch (direction) //Handle horizontal adjustment
                     {
                         case MoveToDirections.Left:
+                            if (distanceToLeftBoundaryIfFloating == 0)
+                            {
+                                dockToEdge = DockEdges.Left;
+                            }
+                            else
+                            {
+                                window.Left -= distanceToLeftBoundaryIfFloating; 
+                            }
+                            break;
+
                         case MoveToDirections.BottomLeft:
                         case MoveToDirections.TopLeft:
                             window.Left -= distanceToLeftBoundaryIfFloating;
                             break;
 
                         case MoveToDirections.Right:
+                            if (distanceToRightBoundaryIfFloating == 0)
+                            {
+                                dockToEdge = DockEdges.Right;
+                            }
+                            else
+                            {
+                                window.Left += distanceToRightBoundaryIfFloating;
+                            }
+                            break;
+
                         case MoveToDirections.BottomRight:
                         case MoveToDirections.TopRight:
                             window.Left += distanceToRightBoundaryIfFloating;
@@ -1066,17 +1138,46 @@ namespace JuliusSweetland.OptiKey.Services
                     switch (direction) //Handle vertical adjustment
                     {
                         case MoveToDirections.Bottom:
+                            if (distanceToBottomBoundaryIfFloating == 0)
+                            {
+                                dockToEdge = DockEdges.Bottom;
+                            }
+                            else
+                            {
+                                window.Top += distanceToBottomBoundaryIfFloating;
+                            }
+                            break;
+
                         case MoveToDirections.BottomLeft:
                         case MoveToDirections.BottomRight:
                             window.Top += distanceToBottomBoundaryIfFloating;
                             break;
 
                         case MoveToDirections.Top:
+                            if (distanceToTopBoundaryIfFloating == 0)
+                            {
+                                dockToEdge = DockEdges.Top;
+                            }
+                            else
+                            {
+                                window.Top -= distanceToTopBoundaryIfFloating;
+                            }
+                            break;
+
                         case MoveToDirections.TopLeft:
                         case MoveToDirections.TopRight:
                             window.Top -= distanceToTopBoundaryIfFloating;
                             break;
                     }
+
+                    if (dockToEdge != null)
+                    {
+                        saveWindowState(WindowStates.Docked);
+                        savePreviousWindowState(WindowStates.Docked);
+                        saveDockPosition(dockToEdge.Value);
+                        RegisterAppBar();
+                    }
+
                     adjustment = true;
                     break;
             }

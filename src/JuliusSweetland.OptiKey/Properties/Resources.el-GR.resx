@@ -202,7 +202,7 @@
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Η βαθμονόμηση σταμάτησε για κάποιον άγνωστο λόγο με μήνυμα: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Επιτυχία βαθμονόμησης! Ακρίβεια (Μέσος όρος βαθμού λάθους): '{0}'</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1071,7 +1071,7 @@ LK</value>
   <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
     <value>Καταστολή πλήκτρων παραμετροποίησης όταν χρησιμοποιείτε το πληκτρολόγιο ποντικιού:</value>
   </data>
-    <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Καταστολή των πλήκτρων τροποποίησης για όλες τις δράσεις του ποντικού:</value>
   </data>
   <data name="TAB" xml:space="preserve">
@@ -1588,5 +1588,11 @@ Deutsch (Deutschland)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Εξοδος</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Επιτυχία βαθμονόμησης!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Αποτυχία βαθμονόμησης!</value>
   </data>
 </root>

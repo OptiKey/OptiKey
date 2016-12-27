@@ -15,7 +15,6 @@
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -100,12 +99,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Octokit, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Octokit.0.16.0\lib\net45\Octokit.dll</HintPath>
-    </Reference>
-    <Reference Include="Octokit.Reactive">
-      <HintPath>..\..\packages\Octokit.Reactive.0.16.0\lib\net45\Octokit.Reactive.dll</HintPath>
+    <Reference Include="Octokit, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octokit.0.23.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Prism">
@@ -240,19 +235,26 @@
     <Compile Include="Models\NotificationWithServicesAndState.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
     <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
-    <Compile Include="Native\Enums\AppBarNotify.cs" />
-    <Compile Include="Native\Enums\AppBarEdge.cs" />
-    <Compile Include="Native\Enums\AppBarMessages.cs" />
-    <Compile Include="Native\Enums\DeviceCaps.cs" />
-    <Compile Include="Native\Enums\GWL.cs" />
-    <Compile Include="Native\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Enums\SetWindowPosFlags.cs" />
-    <Compile Include="Native\Enums\SpecialWindowHandles.cs" />
-    <Compile Include="Native\Static\AppBarState.cs" />
-    <Compile Include="Native\Static\ExtendedWindowStyles.cs" />
-    <Compile Include="Native\Static\WindowStyles.cs" />
-    <Compile Include="Native\Structs\APPBARDATA.cs" />
-    <Compile Include="Native\Structs\RECT.cs" />
+    <Compile Include="Native\Common\Enums\AppBarEdge.cs" />
+    <Compile Include="Native\Common\Enums\AppBarMessages.cs" />
+    <Compile Include="Native\Common\Enums\AppBarNotify.cs" />
+    <Compile Include="Native\Common\Enums\DeviceCaps.cs" />
+    <Compile Include="Native\Common\Enums\GWL.cs" />
+    <Compile Include="Native\Common\Enums\SetWindowPosFlags.cs" />
+    <Compile Include="Native\Common\Enums\SpecialWindowHandles.cs" />
+    <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
+    <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
+    <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Common\PInvoke.cs" />
+    <Compile Include="Native\Common\Static\WindowStyles.cs" />
+    <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
+    <Compile Include="Native\Common\Structs\OSVERSIONINFO.cs" />
+    <Compile Include="Native\Common\Structs\RECT.cs" />
+    <Compile Include="Native\MyGaze\PInvoke.cs" />
+    <Compile Include="Native\MyGaze\Structs\EventStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\EyeDataStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\SampleStruct.cs" />
+    <Compile Include="Native\MyGaze\Structs\SystemStructInfo.cs" />
     <Compile Include="Observables\PointSources\GazeTrackerSource.cs" />
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
@@ -303,6 +305,8 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
+    <Compile Include="Services\MyGazePointService.cs" />
+    <Compile Include="Services\MyGazeCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
@@ -311,6 +315,7 @@
     <Compile Include="Services\SuggestionStateService.cs" />
     <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
     <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
@@ -409,6 +414,36 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Danish\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Portuguese\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovak\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovenian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Croatian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml.cs">
       <DependentUpon>BelgiumAlpha.xaml</DependentUpon>
     </Compile>
@@ -420,6 +455,12 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
       <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Italian\Alpha.xaml.cs">
+      <DependentUpon>Alpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Italian\ConversationAlpha.xaml.cs">
+      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Turkish\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -537,21 +578,28 @@
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
     <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
+    <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
+    <EmbeddedResource Include="Properties\Resources.pt-PT.resx" />
     <EmbeddedResource Include="Properties\Resources.ru-RU.resx" />
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
     <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Properties\Resources.el-GR.resx" />
+    <EmbeddedResource Include="Properties\Resources.sk-SK.resx" />
+    <EmbeddedResource Include="Properties\Resources.sl-SI.resx" />
     <EmbeddedResource Include="Properties\Resources.tr-TR.resx" />
+    <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
+    <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
+    <EmbeddedResource Include="Resources.sk-SK.resx" />
     <Resource Include="Resources\Icons\Management.ico" />
     <Resource Include="Resources\Icons\Main.ico" />
-    <Compile Include="Native\Enums\TOKEN_ELEVATION_TYPE.cs" />
-    <Compile Include="Native\Enums\TOKEN_INFORMATION_CLASS.cs" />
-    <Compile Include="Native\Structs\OSVERSIONINFO.cs" />
-    <Compile Include="Native\PInvoke.cs" />
     <None Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="..\..\ext\myGaze\myGazeAPI.dll">
+      <Link>myGazeAPI.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\FrenchFrance.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -561,7 +609,6 @@
     <Content Include="Dictionaries\RussianRussia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dictionaries\Candidates\DanishDenmark.dic" />
     <Content Include="Dictionaries\GreekGreece.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -580,6 +627,25 @@
     <Content Include="Dictionaries\TurkishTurkey.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dictionaries\CroatianCroatia.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\ItalianItaly.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\DanishDenmark.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\SlovenianSlovenia.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\PortuguesePortugal.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dictionaries\SlovakSlovakia.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -832,6 +898,7 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -900,6 +967,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Danish\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Portuguese\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovak\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovenian\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Croatian\Alpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -913,6 +1020,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Italian\Alpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Italian\ConversationAlpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1078,15 +1193,10 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Native\MyGaze\Enums\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

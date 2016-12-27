@@ -4,11 +4,12 @@ namespace JuliusSweetland.OptiKey.Enums
     public enum PointsSources
     {
         GazeTracker,
-        TheEyeTribe,
         MousePosition,
+        TheEyeTribe,
         TobiiEyeX,
         TobiiRex,
-        TobiiPcEyeGo
+        TobiiPcEyeGo,
+        VisualInteractionMyGaze
     }
 
     public static partial class EnumExtensions
@@ -18,11 +19,12 @@ namespace JuliusSweetland.OptiKey.Enums
             switch (pointSource)
             {
                 case PointsSources.GazeTracker: return Resources.GAZE_TRACKER;
-                case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;
                 case PointsSources.MousePosition: return Resources.MOUSE_POSITION;
+                case PointsSources.TheEyeTribe: return Resources.THE_EYE_TRIBE;
                 case PointsSources.TobiiEyeX: return Resources.TOBII_EYEX;
                 case PointsSources.TobiiRex: return Resources.TOBII_REX;
                 case PointsSources.TobiiPcEyeGo: return Resources.TOBII_PCEYE_GO;
+                case PointsSources.VisualInteractionMyGaze: return Resources.VI_MYGAZE;
             }
 
             return pointSource.ToString();

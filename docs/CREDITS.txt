@@ -19,6 +19,13 @@ Patrons (thank you very much for sponsoring this project)
   Jason Adams
   Emanuele
   Wolfgang Engel
+  Nan de R
+  Bradley Adams
+  David Rowland
+  Simon Evans
+  Mu Qiao
+  Jo Thompson
+  Karson Chan
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")

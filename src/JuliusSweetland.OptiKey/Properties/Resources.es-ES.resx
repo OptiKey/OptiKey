@@ -202,7 +202,7 @@ PALABRA</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Calibración detenida por razones desconocidas. Mensaje: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>¡Calibración exitosa! Exactitud (Grado Promedio de Error = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -1558,5 +1558,11 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir teclas modificadoras para todas las acciones del ratón:</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>¡Calibración exitosa!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Falló la calibración!</value>
   </data>
 </root>

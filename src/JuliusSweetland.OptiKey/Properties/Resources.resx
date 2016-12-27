@@ -202,7 +202,7 @@ Are you sure you would like to re-calibrate?</value>
   <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
     <value>Calibration stopped for an unknown reason. Message: '{0}'</value>
   </data>
-  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
     <value>Calibration success! Accuracy (Avg Error Degree = {0})</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
@@ -298,6 +298,15 @@ Sorry for the inconvenience.</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Cursor width (pixels):</value>
+  </data>
+  <data name="DANISH_DENMARK" xml:space="preserve">
+    <value>Danish (Denmark) / Dansk (Danmark)</value>
+  </data>
+  <data name="DANISH_DENMARK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Danish
+(Denmark) /
+Dansk
+(Danmark)</value>
   </data>
   <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
     <value>Debugging mode:</value>
@@ -1602,7 +1611,7 @@ Español
     <value>Specify times to complete on individual keys:</value>
   </data>
   <data name="GREEK_GREECE" xml:space="preserve">
-    <value>Greek (Greece) / Ελληνικά (Greece)</value>
+    <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
     <value>Management Console</value>
@@ -1614,7 +1623,16 @@ Español
     <value>Greek
 (Greece) /
 Ελληνικά
-(Greece)</value>
+(Ελλάδα)</value>
+  </data>
+  <data name="CROATIAN_CROATIA" xml:space="preserve">
+    <value>Croatian (Croatia) / Hrvatski (Hrvatska)</value>
+  </data>
+  <data name="CROATIAN_CROATIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Croatian
+(Croatia) /
+Hrvatski
+(Hrvatska)</value>
   </data>
   <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Dutch
@@ -1666,5 +1684,53 @@ Català
 (Turkey) /
 Türkçe
 (Türkiye)</value>
+  </data>
+  <data name="ITALIAN_ITALY" xml:space="preserve">
+    <value>Italian (Italy) / Italiano (Italia)</value>
+  </data>
+  <data name="ITALIAN_ITALY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Italian
+(Italy) /
+Italiano
+(Italia)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA" xml:space="preserve">
+    <value>Slovenian (Slovenia) / Slovensko (Slovenija)</value>
+  </data>
+  <data name="SLOVENIAN_SLOVENIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Slovenian
+(Slovenia) /
+Slovensko
+(Slovenija)</value>
+  </data>
+  <data name="MY_GAZE_CONNECT_ERROR" xml:space="preserve">
+    <value>Unable to connect to myGaze! Please check that the server is running and the device is connected and try again.</value>
+  </data>
+  <data name="VI_MYGAZE" xml:space="preserve">
+    <value>Visual Interaction myGaze</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Calibration failed!</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Calibration success!</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL" xml:space="preserve">
+    <value>Portuguese (Portugal) / Português (Portugal)</value>
+  </data>
+  <data name="PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Portuguese
+(Portugal) /
+Português
+(Portugal)</value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA" xml:space="preserve">
+    <value>Slovak (Slovakia) / Slovenčina (Slovensko) </value>
+  </data>
+  <data name="SLOVAK_SLOVAKIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Slovak
+(Slovakia) /
+Slovenčina
+(Slovensko)</value>
   </data>
 </root>

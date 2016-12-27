@@ -1,0 +1,1657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Tilføj</value>
+  </data>
+  <data name="ADD_NEW_ENTRY_TO_DICTIONARY" xml:space="preserve">
+    <value>Tilføj nyt indlæg:</value>
+  </data>
+  <data name="ADD_PHRASE_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Ønsker du at tilføje udtrykket '{0}' til orbogen med genvejen '{1}'?</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>TILFØJ TIL
+ORDBOG</value>
+  </data>
+  <data name="ADD_WORD_TO_DICTIONARY_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Ønsker du at tilføje ordet '{0}' til ordborgen?</value>
+  </data>
+  <data name="ADDED" xml:space="preserve">
+    <value>Tilføjet</value>
+  </data>
+  <data name="ADJUST_BY" xml:space="preserve">
+    <value>Juster {0} pixel|Juster {0} pixels</value>
+  </data>
+  <data name="ALPHA" xml:space="preserve">
+    <value>BOGSTAVER</value>
+  </data>
+  <data name="ALT" xml:space="preserve">
+    <value>ALT</value>
+  </data>
+  <data name="ANDROID_DARK" xml:space="preserve">
+    <value>Android Mørk</value>
+  </data>
+  <data name="ANDROID_LIGHT" xml:space="preserve">
+    <value>Android Lys</value>
+  </data>
+  <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
+    <value>Start automatisk ord med stort:</value>
+  </data>
+  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+    <value>Automatisk færdiggørelse af ord:</value>
+  </data>
+  <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">
+    <value>Automatiske justeringer af sætninger</value>
+  </data>
+  <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
+    <value>Automatisk mellemrum mellem ord</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
+    <value>TILBAGE</value>
+  </data>
+  <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SLET
+TEGN</value>
+  </data>
+  <data name="BACK_WORD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SLET
+ORD</value>
+  </data>
+  <data name="BASS_UNABLE_TO_CREATE_STREAM_FROM_FILE" xml:space="preserve">
+    <value>Bass kunne ikke læse data fra filen '{0}'</value>
+  </data>
+  <data name="BOTTOM" xml:space="preserve">
+    <value>Bund</value>
+  </data>
+  <data name="BREAK" xml:space="preserve">
+    <value>BREAK</value>
+  </data>
+  <data name="CALIBRATION_ABORT_MESSAGE" xml:space="preserve">
+    <value>Kalibrering afbrudt med beskeden: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Er du sikker på at du ønsker at omkalibrere?</value>
+  </data>
+  <data name="CALIBRATION_ERROR_MESSAGE" xml:space="preserve">
+    <value>En fejl opstod under kalibrering. Besked: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_FAIL_MESSAGE" xml:space="preserve">
+    <value>Kalibrering mislykkedes med beskeden: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_REQUIRES_MANUAL_INTERACTION" xml:space="preserve">
+    <value>Kalibrering kunne ikke gennemføres uden manuel hjælp, f.eks. ved at bruge musen. Du sidder måske fast med kalibreringsporcessen hvis du ikke er i stand til manuelt at bruge computeren.
+Er du sikker på, at du vil re-kalibrere?</value>
+  </data>
+  <data name="CALIBRATION_STOPPED_MESSAGE" xml:space="preserve">
+    <value>Kalibreringen stoppede af en ukendt årsag. Besked: '{0}'</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS_WITH_ACCURACY" xml:space="preserve">
+    <value>Kalibrering succesfuld! Præcision (Avg Error Degree = {0})</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>ANNULLER</value>
+  </data>
+  <data name="CAPTURE_TIMEOUT_LABEL" xml:space="preserve">
+    <value>Udløbstid for opfangelse (ms):</value>
+  </data>
+  <data name="CHECK_FOR_UPDATES_AT_STARTUP_LABEL" xml:space="preserve">
+    <value>Søg efter opdateringer ved opstart:</value>
+  </data>
+  <data name="CLEAR" xml:space="preserve">
+    <value>RYD</value>
+  </data>
+  <data name="CLICK_AND_DRAG_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>KLIK
+&amp; TRÆK</value>
+  </data>
+  <data name="CLICK_SOUND_1" xml:space="preserve">
+    <value>Klik 1</value>
+  </data>
+  <data name="CLICK_SOUND_2" xml:space="preserve">
+    <value>Klik 2</value>
+  </data>
+  <data name="CLICK_SOUND_3" xml:space="preserve">
+    <value>Klik 3</value>
+  </data>
+  <data name="CLICK_SOUND_4" xml:space="preserve">
+    <value>Klik 4</value>
+  </data>
+  <data name="CLICK_SOUND_5" xml:space="preserve">
+    <value>Klik 5</value>
+  </data>
+  <data name="CLICK_SOUND_6" xml:space="preserve">
+    <value>Klik 6</value>
+  </data>
+  <data name="COLLAPSE_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+DOCK</value>
+  </data>
+  <data name="COLLAPSED_DOCK_THICKNESS" xml:space="preserve">
+    <value>Dock-størrelse i formindsket tilstand (som % af udvidet dock-størrelse):</value>
+  </data>
+  <data name="CONTEXTUAL_MENU_KEY" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="CONVERSATION" xml:space="preserve">
+    <value>SAMTALE</value>
+  </data>
+  <data name="CONVERSATION_LAYOUT" xml:space="preserve">
+    <value>Samtale Bogstave</value>
+  </data>
+  <data name="CONVERSATION_NUM_SYM_LAYOUT" xml:space="preserve">
+    <value>Samtale Tal &amp; Symboler</value>
+  </data>
+  <data name="CONVERSATION_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Samtale tilstand:</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_MESSAGE" xml:space="preserve">
+    <value>OptiKey kan ikke læse brugerindstillingerne, da filen er ødelagt og må repareres. Dette gøres ved at genindlæse en tidligere udgave, eller standardindstillingerne hvis det ikke er muligt.
+
+Klik Ja for at nulstille brugerindstillinger og genstarte.
+
+Klik Nej for at lukke, så du manuelt kan reparere eller kopiere dine brugerindstillinger.</value>
+  </data>
+  <data name="CORRUPTED_SETTINGS_TITLE" xml:space="preserve">
+    <value>Åh-åh! Filen med brugerindstillinger ser ud til at være ødelagt.</value>
+  </data>
+  <data name="CRASH_MESSAGE" xml:space="preserve">
+    <value>Dårlige nyheder - OptiKey ser ud til at have problemer og er nødt til at lukke.
+
+En email med detaljer om hændelsen ville være meget behjælpelig: optikeyfeedback@gmail.com
+
+Vi beklager ulejligheden.</value>
+  </data>
+  <data name="CRASH_TITLE" xml:space="preserve">
+    <value>Åh-åh!</value>
+  </data>
+  <data name="CTRL" xml:space="preserve">
+    <value>CTRL</value>
+  </data>
+  <data name="CURRENCIES" xml:space="preserve">
+    <value>VALUTAER</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_1" xml:space="preserve">
+    <value>Valutaer 1</value>
+  </data>
+  <data name="CURRENCIES_LAYOUT_2" xml:space="preserve">
+    <value>Valutaer 2</value>
+  </data>
+  <data name="CURSOR_HEIGHT_LABEL" xml:space="preserve">
+    <value>Markør højde (pixels):</value>
+  </data>
+  <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
+    <value>Markør bredde (pixels):</value>
+  </data>
+  <data name="DEBUGGING_MODE_LABEL" xml:space="preserve">
+    <value>Debug tilstand:</value>
+  </data>
+  <data name="DECREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORØG
+GENNEMSIGTIGHED</value>
+  </data>
+  <data name="DEL" xml:space="preserve">
+    <value>DEL</value>
+  </data>
+  <data name="DELETE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="DIACRITICS" xml:space="preserve">
+    <value>DIAKRITISKE TEGN</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_1" xml:space="preserve">
+    <value>Diakritiske 1</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_2" xml:space="preserve">
+    <value>Diakritiske 2</value>
+  </data>
+  <data name="DIACRITICS_LAYOUT_3" xml:space="preserve">
+    <value>Diakritiske 3</value>
+  </data>
+  <data name="DICTIONARY" xml:space="preserve">
+    <value>Ordbog</value>
+  </data>
+  <data name="DICTIONARY_FILE_NOT_FOUND_ERROR" xml:space="preserve">
+    <value>Der eksisterer ingen bruger orbog og den originale ordbog kunne ikke findes på stien: '{0}'</value>
+  </data>
+  <data name="DISPLAY_FOR_X_SECONDS_PER_CHARACTER_LABEL" xml:space="preserve">
+    <value>Vis i X sekunder per meddelelses tegn:</value>
+  </data>
+  <data name="DO_AT_CURRENT_LOCATION" xml:space="preserve">
+    <value>Udfør ved nuværende position...</value>
+  </data>
+  <data name="DO_AT_POINT" xml:space="preserve">
+    <value>Udfør ved position...</value>
+  </data>
+  <data name="DOWN_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NED
+PIL</value>
+  </data>
+  <data name="DURATION_FORMAT" xml:space="preserve">
+    <value> ({0:#.###}ms)</value>
+  </data>
+  <data name="END" xml:space="preserve">
+    <value>END</value>
+  </data>
+  <data name="ENGLISH_CANADA" xml:space="preserve">
+    <value>Engelsk (Canada)</value>
+  </data>
+  <data name="ENGLISH_UK" xml:space="preserve">
+    <value>Engelsk (UK)</value>
+  </data>
+  <data name="ENGLISH_US" xml:space="preserve">
+    <value>Engelsk (US)</value>
+  </data>
+  <data name="ENTER" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="ENTRY_ADDED_TO_DICTIONARY" xml:space="preserve">
+    <value>Godt. '{0}' er blevet tilføjet til ordbogen.</value>
+  </data>
+  <data name="ERROR_SOUND_LABEL" xml:space="preserve">
+    <value>Fejl:</value>
+  </data>
+  <data name="ESC" xml:space="preserve">
+    <value>ESC</value>
+  </data>
+  <data name="EXPAND" xml:space="preserve">
+    <value>UDVID</value>
+  </data>
+  <data name="EXPAND_DOCK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+NED &amp; TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+NED &amp; TIL HØJRE</value>
+  </data>
+  <data name="EXPAND_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+NED</value>
+  </data>
+  <data name="EXPAND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+TIL HØJRE</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+OP &amp; TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+OP &amp; TIL HØJRE</value>
+  </data>
+  <data name="EXPAND_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>UDVID
+OP</value>
+  </data>
+  <data name="FALLING_SOUND_1" xml:space="preserve">
+    <value>Faldende 1</value>
+  </data>
+  <data name="FALLING_SOUND_2" xml:space="preserve">
+    <value>Faldende 2</value>
+  </data>
+  <data name="FILL_PIE" xml:space="preserve">
+    <value>Udfyld cirkel</value>
+  </data>
+  <data name="FIXATIONS_DWELL" xml:space="preserve">
+    <value>Fikseringer (hvil)</value>
+  </data>
+  <data name="FONT" xml:space="preserve">
+    <value>Skrifttype</value>
+  </data>
+  <data name="FONT_FAMILY_LABEL" xml:space="preserve">
+    <value>Skrifttype familie:</value>
+  </data>
+  <data name="FONT_STRETCH_LABEL" xml:space="preserve">
+    <value>Skrifttype bredde:</value>
+  </data>
+  <data name="FONT_WEIGHT_LABEL" xml:space="preserve">
+    <value>Skrifttype tykkelse:</value>
+  </data>
+  <data name="FRENCH_FRANCE" xml:space="preserve">
+    <value>Fransk (Frankrig) / Française (France)</value>
+  </data>
+  <data name="FULL_DOCK_THICKNESS_LABEL" xml:space="preserve">
+    <value>Udvidet dock-tykkelse (som % af skærmstørrelsen):</value>
+  </data>
+  <data name="GAZE_TRACKER" xml:space="preserve">
+    <value>Gaze Tracker</value>
+  </data>
+  <data name="GROW" xml:space="preserve">
+    <value>Voks</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>HJEM</value>
+  </data>
+  <data name="HORIZONTAL_FILL" xml:space="preserve">
+    <value>Horisontal udfyldelse (som % af skærmen)</value>
+  </data>
+  <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
+    <value>Ufuldstændige tastfikseringers levetid (ms):</value>
+  </data>
+  <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+GENNEMSIGTIGHED</value>
+  </data>
+  <data name="INFO_SOUND_LABEL" xml:space="preserve">
+    <value>Information:</value>
+  </data>
+  <data name="INS" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="INTELLIGENTLY_SUPPRESS_AUTO_CAPS" xml:space="preserve">
+    <value>...men forsøg på bedste vis at undgå automatisk store bogstaver hvor det nok ikke er anvendeligt:</value>
+  </data>
+  <data name="INVALID_KEYBOARD_AND_LANGUAGE_ERROR" xml:space="preserve">
+    <value>Den nuværende kombination af tastatur &amp; sprog er ugyldig</value>
+  </data>
+  <data name="JUMP" xml:space="preserve">
+    <value>HOP</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+NED &amp; TIL VENSTRE</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+NED &amp; TIL HØJRE</value>
+  </data>
+  <data name="JUMP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+NED</value>
+  </data>
+  <data name="JUMP_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+TIL VENSTRE</value>
+  </data>
+  <data name="JUMP_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+TIL HØJRE</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+OP &amp; TIL VENSTRE</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+OP &amp; TIL HØJRE</value>
+  </data>
+  <data name="JUMP_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HOP
+OP</value>
+  </data>
+  <data name="KEY_CASE_LABEL" xml:space="preserve">
+    <value>Tast tekst ændring:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Fikseringstid på tast for fuldførelse (ms):</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Fikseringstid på tast for fast-låsning (ms):</value>
+  </data>
+  <data name="KEY_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Tast valg tastaturtast:</value>
+  </data>
+  <data name="KEY_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Tast valg musseknap:</value>
+  </data>
+  <data name="KEY_SELECTION_SOUND_LABEL" xml:space="preserve">
+    <value>Tast Valg:</value>
+  </data>
+  <data name="KEY_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Tast valg kilde:</value>
+  </data>
+  <data name="KEY_SELECTION_TRIGGER_DESCRIPTION" xml:space="preserve">
+    <value>Tast valg: {0}</value>
+  </data>
+  <data name="KEYBOARD_KEY" xml:space="preserve">
+    <value>Tastatur tast</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Tastatur sprog: {0}</value>
+  </data>
+  <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Tastatur sprog:</value>
+  </data>
+  <data name="LEFT" xml:space="preserve">
+    <value>Venstre</value>
+  </data>
+  <data name="LEFT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VENSTRE
+PIL</value>
+  </data>
+  <data name="LEFT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VENSTRE
+KLIK</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VENSTRE
+DOBBELTKLIK</value>
+  </data>
+  <data name="LEFT_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>VENSTRE
+NED/OP</value>
+  </data>
+  <data name="LOOK" xml:space="preserve">
+    <value>Kig</value>
+  </data>
+  <data name="LOWER_CASE" xml:space="preserve">
+    <value>Alt med små bogstaver</value>
+  </data>
+  <data name="MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MAGNETISK
+MARKØR</value>
+  </data>
+  <data name="MAGNIFIER" xml:space="preserve">
+    <value>FORSTØRRELSESGLAS</value>
+  </data>
+  <data name="MAGNIFY_DESTINATION_LABEL" xml:space="preserve">
+    <value>Forstør destinationen (som % af skærmstørrelsen):</value>
+  </data>
+  <data name="MAGNIFY_SOURCE_LABEL" xml:space="preserve">
+    <value>Forstør kilde (som % af skærmstørrelsen):</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_DESCRIPTION" xml:space="preserve">
+    <value>Administrationskonsol: ALT + M</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE_TITLE" xml:space="preserve">
+    <value>OptiKey Administrationskonsol</value>
+  </data>
+  <data name="MAX_DICTIONARY_MATCHES_LABEL" xml:space="preserve">
+    <value>Maksimalt antal ordbogs forekomster:</value>
+  </data>
+  <data name="MENU" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="MENU_LAYOUT" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MIDDLE_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MELLEM
+KLIK</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MELLEM
+NED/UP</value>
+  </data>
+  <data name="MINIMISE" xml:space="preserve">
+    <value>MINIMER</value>
+  </data>
+  <data name="MINIMISED_LAYOUT" xml:space="preserve">
+    <value>Minimeret</value>
+  </data>
+  <data name="MINIMISED_POSITION_LABEL" xml:space="preserve">
+    <value>Minimeret position:</value>
+  </data>
+  <data name="MINIMUM_DWELL_TIME_TO_INCLUDE_IN_CAPTURE" xml:space="preserve">
+    <value>Minimum dvæletid på en tast for opfangning (ms):</value>
+  </data>
+  <data name="MISC" xml:space="preserve">
+    <value>Diverse</value>
+  </data>
+  <data name="MOUSE" xml:space="preserve">
+    <value>MUS</value>
+  </data>
+  <data name="MOUSE_BUTTON" xml:space="preserve">
+    <value>Museknap</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Museklik 1</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Museklik 2</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Museklik 3</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_4" xml:space="preserve">
+    <value>Museklik 4</value>
+  </data>
+  <data name="MOUSE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Museklik:</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_1" xml:space="preserve">
+    <value>Mus Dobbeltklik 1</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_2" xml:space="preserve">
+    <value>Mus Dobbeltklik 2</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_3" xml:space="preserve">
+    <value>Mus Dobbeltklik 3</value>
+  </data>
+  <data name="MOUSE_DOUBLE_CLICK_SOUND_LABEL" xml:space="preserve">
+    <value>Mus dobbeltklik:</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_1" xml:space="preserve">
+    <value>Mus Ned 1</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_2" xml:space="preserve">
+    <value>Mus Ned 2</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_3" xml:space="preserve">
+    <value>Mus Ned 3</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_4" xml:space="preserve">
+    <value>Mus Ned 4</value>
+  </data>
+  <data name="MOUSE_DOWN_SOUND_LABEL" xml:space="preserve">
+    <value>Mus ned:</value>
+  </data>
+  <data name="MOUSE_LAYOUT" xml:space="preserve">
+    <value>Mus</value>
+  </data>
+  <data name="MOUSE_POSITION" xml:space="preserve">
+    <value>Museposition</value>
+  </data>
+  <data name="MOUSE_POSITION_SAMPLE_INTERVAL_LABEL" xml:space="preserve">
+    <value>Musepositionens måleinterval (ms):</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_1" xml:space="preserve">
+    <value>Muserul 1</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_2" xml:space="preserve">
+    <value>Muserul 2</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_3" xml:space="preserve">
+    <value>Muserul 3</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_4" xml:space="preserve">
+    <value>Muserul 4</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_5" xml:space="preserve">
+    <value>Muserul 5</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_6" xml:space="preserve">
+    <value>Muserul 6</value>
+  </data>
+  <data name="MOUSE_SCROLL_SOUND_LABEL" xml:space="preserve">
+    <value>Muserul:</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_1" xml:space="preserve">
+    <value>Mus Op 1</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_2" xml:space="preserve">
+    <value>Mus Op 2</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_3" xml:space="preserve">
+    <value>Mus Op 3</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_4" xml:space="preserve">
+    <value>Mus Op 4</value>
+  </data>
+  <data name="MOUSE_UP_SOUND_LABEL" xml:space="preserve">
+    <value>Mus op:</value>
+  </data>
+  <data name="MOVE" xml:space="preserve">
+    <value>FLYT</value>
+  </data>
+  <data name="MOVE_BY" xml:space="preserve">
+    <value>Flyt {0} pixel:|Flyt {0} pixels:</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+NED &amp; TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+NED &amp; TIL HØJRE</value>
+  </data>
+  <data name="MOVE_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT NED</value>
+  </data>
+  <data name="MOVE_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+TIL HØJRE</value>
+  </data>
+  <data name="MOVE_TO_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+TIL</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+OP &amp; TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+OP &amp; TIL HØJRE</value>
+  </data>
+  <data name="MOVE_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FLYT
+OP</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES" xml:space="preserve">
+    <value>Multi-tast opfangelser</value>
+  </data>
+  <data name="MULTI_KEY_CAPTURES_ENABLED_LABEL" xml:space="preserve">
+    <value>Multi-tast opfangelser aktiveret:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION" xml:space="preserve">
+    <value>Multi-tast valg</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_ENDING_SOUND_LABEL" xml:space="preserve">
+    <value>Multi-tast valg slut:</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>MULTI-TAST
+VALG</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_STARTING_SOUND_LABEL" xml:space="preserve">
+    <value>Multi-tast valg start:</value>
+  </data>
+  <data name="NEW_DICTIONARY_ENTRY_WILL_CONTAIN_CAPITALS" xml:space="preserve">
+    <value>
+(Den nye tilføjelse til ordbogen vil indeholde store bogstaver)</value>
+  </data>
+  <data name="NEXT" xml:space="preserve">
+    <value>NÆSTE</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NEJ</value>
+  </data>
+  <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
+    <value>Det ser ikke ud til at skrivefeltet indeholder nogen ord eller vendinger, som ikke allerede findes i ordbogen.</value>
+  </data>
+  <data name="NO_SOUND" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="NOTHING_NEW" xml:space="preserve">
+    <value>Hmm, intet nyt her!</value>
+  </data>
+  <data name="NOTIFICATIONS" xml:space="preserve">
+    <value>Notifikationer</value>
+  </data>
+  <data name="NUM_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+LK</value>
+  </data>
+  <data name="NUM_SYM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>NUM
+SYM</value>
+  </data>
+  <data name="NUMBERS_AND_SYMBOLS" xml:space="preserve">
+    <value>TAL
+&amp; SYMBOLER</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_1" xml:space="preserve">
+    <value>Tal &amp; Symboler 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_2" xml:space="preserve">
+    <value>Tal &amp; Symboler 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_LAYOUT_3" xml:space="preserve">
+    <value>Tal &amp; Symboler 3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OPTIKEY_DESCRIPTION" xml:space="preserve">
+    <value>OptiKey : Skriv · Klik · Tal</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Andet</value>
+  </data>
+  <data name="PARENT_WINDOW_COULD_NOT_BE_FOUND" xml:space="preserve">
+    <value>Tilhørende vindue kunne ikke identificeres. Kan ikke fortsætte</value>
+  </data>
+  <data name="PG_DN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+DN</value>
+  </data>
+  <data name="PG_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PG
+UP</value>
+  </data>
+  <data name="PHYSICAL_KEYS_LAYOUT" xml:space="preserve">
+    <value>Fysiske Taster</value>
+  </data>
+  <data name="PHYSICAL_KEYS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FYSISKE
+TASTER</value>
+  </data>
+  <data name="PLAY_SOUND" xml:space="preserve">
+    <value>Afspil</value>
+  </data>
+  <data name="POINT_AND_SELECTING" xml:space="preserve">
+    <value>Punkt &amp; Udvælgning</value>
+  </data>
+  <data name="POINT_FIXATION_RADIUS_LABEL" xml:space="preserve">
+    <value>Fikseringspunktets radius (pixels):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Fikseringspunktets udførelsestid (ms):</value>
+  </data>
+  <data name="POINT_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Fikseringspunktets låse-tid (ms):</value>
+  </data>
+  <data name="POINT_LOCK_ON_RADIUS_LABEL" xml:space="preserve">
+    <value>Punkt lock-on radius (pixels):</value>
+  </data>
+  <data name="POINT_SELECTION_DESCRIPTION" xml:space="preserve">
+    <value>Punktvalg: {0}</value>
+  </data>
+  <data name="POINT_SELECTION_KEYBOARD_KEY_LABEL" xml:space="preserve">
+    <value>Punktvalg tastaturtast:</value>
+  </data>
+  <data name="POINT_SELECTION_MOUSE_BUTTON_LABEL" xml:space="preserve">
+    <value>Punktvalg musetast:</value>
+  </data>
+  <data name="POINT_SELECTION_SOURCE_LABEL" xml:space="preserve">
+    <value>Punktvalg kilde:</value>
+  </data>
+  <data name="POINTING" xml:space="preserve">
+    <value>Peger</value>
+  </data>
+  <data name="POINTING_SOURCE_DESCRIPTION" xml:space="preserve">
+    <value>Peger: {0}</value>
+  </data>
+  <data name="PREV" xml:space="preserve">
+    <value>FORRIGE</value>
+  </data>
+  <data name="PRNT_SCR_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>PRNT
+SCR</value>
+  </data>
+  <data name="PROBLEM_LOADING_KEYBOARD" xml:space="preserve">
+    <value>PROBLEM VED INDLÆSNING AF TASTATUR</value>
+  </data>
+  <data name="QUIT" xml:space="preserve">
+    <value>LUK</value>
+  </data>
+  <data name="QUIT_CONFIRMATION_MESSAGE" xml:space="preserve">
+    <value>Er du helt sikker på, at du gerne vil afslutte?</value>
+  </data>
+  <data name="QUIT_MESSAGE" xml:space="preserve">
+    <value>Er du sikker på, at du gerne vil afslutte?</value>
+  </data>
+  <data name="RATE_LABEL" xml:space="preserve">
+    <value>Bedøm:</value>
+  </data>
+  <data name="RE_CALIBRATE" xml:space="preserve">
+    <value>OMKALIBRER</value>
+  </data>
+  <data name="REPEAT_LAST_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>GENTAG
+SIDSTE</value>
+  </data>
+  <data name="REQUIRED_SERVICES_NOT_PASSED_TO_MANAGEMENT_WINDOW" xml:space="preserve">
+    <value>Lyd og/eller Orbogs service(er) blev ikke leveret til administration vindue handlingen.</value>
+  </data>
+  <data name="RESTART_MESSAGE" xml:space="preserve">
+    <value>OptiKey er nødt til at genstarte for at udføre ændringerne.
+Klik på OK for at genstarte, eller ANNULLER for at annullere ændringerne.</value>
+  </data>
+  <data name="RESTORE_DICTIONARY_ENTRY" xml:space="preserve">
+    <value>Gendan</value>
+  </data>
+  <data name="RESUMING_INCOMPLETE_KEY_FIXATION_REQUIRES_NEW_LOCK_ON_LABEL" xml:space="preserve">
+    <value>Genoptagelse af ufuldstændig tastfiksering kræver ny låsning på:</value>
+  </data>
+  <data name="RIGHT" xml:space="preserve">
+    <value>Højre</value>
+  </data>
+  <data name="RIGHT_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HØJRE
+PIL</value>
+  </data>
+  <data name="RIGHT_CLICK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HØJRE
+KLIK</value>
+  </data>
+  <data name="RIGHT_UP_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>HØJRE
+NED/OP</value>
+  </data>
+  <data name="RISING_SOUND_1" xml:space="preserve">
+    <value>Stigende 1</value>
+  </data>
+  <data name="RISING_SOUND_2" xml:space="preserve">
+    <value>Stigende 2</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA" xml:space="preserve">
+    <value>Russisk (Rusland) / Русский (Россия)</value>
+  </data>
+  <data name="SAME_AS_DOCK_POSITION" xml:space="preserve">
+    <value>Samme som dock position</value>
+  </data>
+  <data name="SCRATCHPAD_NUMBER_OF_LINES_LABEL" xml:space="preserve">
+    <value>Skrivefeltets antal af linier:</value>
+  </data>
+  <data name="SCRN_LK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>SCR
+LK</value>
+  </data>
+  <data name="SCROLL_BY" xml:space="preserve">
+    <value>Rul svarende til {0} klik:|Rul svarende til {0} klik:</value>
+  </data>
+  <data name="SCROLL_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>RUL
+NED</value>
+  </data>
+  <data name="SCROLL_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>RUL
+TIL VENSTRE</value>
+  </data>
+  <data name="SCROLL_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>RUL
+TIL HØJRE</value>
+  </data>
+  <data name="SCROLL_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>RUL
+OP</value>
+  </data>
+  <data name="SELECTION" xml:space="preserve">
+    <value>Valg</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_BEHAVIOUR_LABEL" xml:space="preserve">
+    <value>Valg progressionsindikator opførsel:</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_END_SIZE_LABEL" xml:space="preserve">
+    <value>Valg progressionsindikator slut-størrelse (%):</value>
+  </data>
+  <data name="SELECTION_PROGRESS_INDICATOR_START_SIZE_LABEL" xml:space="preserve">
+    <value>Valg progressionsindikator start-størrelse (%):</value>
+  </data>
+  <data name="SHIFT" xml:space="preserve">
+    <value>SHIFT</value>
+  </data>
+  <data name="SHOW_SPLASH_SCREEN_ON_STARTUP_LABEL" xml:space="preserve">
+    <value>Vis titelskærm ved opstart:</value>
+  </data>
+  <data name="SHRINK" xml:space="preserve">
+    <value>FORMINDSK</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+NED &amp; TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+NED &amp; TIL HØJRE</value>
+  </data>
+  <data name="SHRINK_DOWN_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+NED</value>
+  </data>
+  <data name="SHRINK_INDICATOR" xml:space="preserve">
+    <value>Formindsk</value>
+  </data>
+  <data name="SHRINK_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+TIL HØJRE</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+OP &amp; TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+OP &amp; TIL HØJRE</value>
+  </data>
+  <data name="SHRINK_UP_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>FORMINDSK
+OP</value>
+  </data>
+  <data name="SIMILAR_DICTIONARY_ENTRIES_EXIST" xml:space="preserve">
+    <value>(Lignende poster eksisterer allerede i orbogen: {0})</value>
+  </data>
+  <data name="SIZE_AND_POSITION_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>STØRRELSE &amp;
+POSITION</value>
+  </data>
+  <data name="SIZE_POSITION_LAYOUT" xml:space="preserve">
+    <value>Størrelse &amp; Position</value>
+  </data>
+  <data name="SLEEP" xml:space="preserve">
+    <value>SOV</value>
+  </data>
+  <data name="SOUND_EFFECTS" xml:space="preserve">
+    <value>Lydeffekter</value>
+  </data>
+  <data name="SOUNDS" xml:space="preserve">
+    <value>Lyde</value>
+  </data>
+  <data name="SOURCE_LABEL" xml:space="preserve">
+    <value>Kilde:</value>
+  </data>
+  <data name="SPACE" xml:space="preserve">
+    <value>MELLEMRUM</value>
+  </data>
+  <data name="SPEAK" xml:space="preserve">
+    <value>TAL</value>
+  </data>
+  <data name="SPEECH" xml:space="preserve">
+    <value>Tale</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Opstarts tastatur:</value>
+  </data>
+  <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
+    <value>Stop signal:</value>
+  </data>
+  <data name="SUCCESS" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL" xml:space="preserve">
+    <value>Ignorer ændringstaster når musen bruges:</value>
+  </data>
+  <data name="TAB" xml:space="preserve">
+    <value>TAB</value>
+  </data>
+  <data name="THE_EYE_TRIBE" xml:space="preserve">
+    <value>The Eye Tribe</value>
+  </data>
+  <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
+    <value>Ude af stand til at aktivere TheEyeTriber GazeManager! Tjek venligst at serveren kører og at enheden er forbundet og forsøg igen.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_NOT_CALIBRATED" xml:space="preserve">
+    <value>TheEyeTribe er ikke blevet kalibreret. Ingen data vil blive modtager indtil kalibreringen er fuldført.</value>
+  </data>
+  <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
+    <value>Ude af stand til at forsøge en kalibrering da ingen EyeX engine er tilgængelig.</value>
+  </data>
+  <data name="THEME_LABEL" xml:space="preserve">
+    <value>Tema:</value>
+  </data>
+  <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
+    <value>Tid indtil punkt bliver irrelevant (ms):</value>
+  </data>
+  <data name="TITLE_CASE" xml:space="preserve">
+    <value>Ord skrives med stort</value>
+  </data>
+  <data name="TOBII_EYEX" xml:space="preserve">
+    <value>Tobii EyeX</value>
+  </data>
+  <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
+    <value>Tobii EyeX Engine blev ikke fundet. Installer venligst EyeX Engine og forsøg igen.</value>
+  </data>
+  <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
+    <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
+  </data>
+  <data name="TOBII_PCEYE_GO" xml:space="preserve">
+    <value>Tobii PCEye Go</value>
+  </data>
+  <data name="TOBII_REX" xml:space="preserve">
+    <value>Tobii REX</value>
+  </data>
+  <data name="TONE_SOUND_1" xml:space="preserve">
+    <value>Tone 1</value>
+  </data>
+  <data name="TONE_SOUND_2" xml:space="preserve">
+    <value>Tone 2</value>
+  </data>
+  <data name="TONE_SOUND_3" xml:space="preserve">
+    <value>Tone 3</value>
+  </data>
+  <data name="TONE_SOUND_4" xml:space="preserve">
+    <value>Tone 4</value>
+  </data>
+  <data name="TRIGGER_PRESSED_AGAIN" xml:space="preserve">
+    <value>Udløserknap/tast trykket igen</value>
+  </data>
+  <data name="TRIGGER_RELEASED" xml:space="preserve">
+    <value>Udløserknap/tast sluppet</value>
+  </data>
+  <data name="TRIGGER_WITHOUT_POSITION_ERROR" xml:space="preserve">
+    <value>Jeg kan ikke opfange hvor du fokuserer. Er der et problem med input enheden? Er enheden forbundet, tændt, kalibreret, osv.?</value>
+  </data>
+  <data name="UNABLE_TO_DETERMINE_CURRENT_ELEVATION" xml:space="preserve">
+    <value>Ude af stand til at fastslå den nuværende højde.</value>
+  </data>
+  <data name="UNABLE_TO_SET_VOICE_WARNING" xml:space="preserve">
+    <value>Der var et problem med at instille stemmen til '{0}'{1}</value>
+  </data>
+  <data name="UNKNOWN_CALIBRATION_ERROR" xml:space="preserve">
+    <value>Noget gik galt, men jeg ved ikke hvad - tjek venligst registrene</value>
+  </data>
+  <data name="UP" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="UP_ARROW_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>OP
+PIL</value>
+  </data>
+  <data name="UPDATE_AVAILABLE" xml:space="preserve">
+    <value>OPDATERING TILGÆNGELIG!</value>
+  </data>
+  <data name="UPPER_CASE" xml:space="preserve">
+    <value>Alt med store bogstaver</value>
+  </data>
+  <data name="URL_DOWNLOAD_PROMPT" xml:space="preserve">
+    <value>Besøg venligst www.optikey.org for at hente seneste version ({0})
+Du kan slå tjek for opdateringer fra i Administrationskonsollen (ALT + M).</value>
+  </data>
+  <data name="VERIFY_RESTART" xml:space="preserve">
+    <value>Må jeg genstarte OptiKey?</value>
+  </data>
+  <data name="VERSION_DESCRIPTION" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="VERTICAL_FILL_LABEL" xml:space="preserve">
+    <value>Lodret fyld (som % af skærm):</value>
+  </data>
+  <data name="VISUALS" xml:space="preserve">
+    <value>Visualiseringer</value>
+  </data>
+  <data name="VOICE_COMES_FROM_SETTINGS" xml:space="preserve">
+    <value>(fra indstillinger)</value>
+  </data>
+  <data name="VOICE_LABEL" xml:space="preserve">
+    <value>Stemme: </value>
+  </data>
+  <data name="VOLUME_LABEL" xml:space="preserve">
+    <value>Volumen:</value>
+  </data>
+  <data name="WEBSITE_DESCRIPTION" xml:space="preserve">
+    <value>Webside: www.optikey.org</value>
+  </data>
+  <data name="WIN" xml:space="preserve">
+    <value>WIN</value>
+  </data>
+  <data name="WINDOW_TITLE" xml:space="preserve">
+    <value>OptiKey v{0}</value>
+  </data>
+  <data name="WORDS" xml:space="preserve">
+    <value>Ord</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>JA</value>
+  </data>
+  <data name="ALPHA_LAYOUT" xml:space="preserve">
+    <value>Bogstaver</value>
+  </data>
+  <data name="HIGH" xml:space="preserve">
+    <value>Høj</value>
+  </data>
+  <data name="LOW" xml:space="preserve">
+    <value>Lav</value>
+  </data>
+  <data name="MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
+    <value>Niveau for dataprocessering:</value>
+  </data>
+  <data name="GERMAN_GERMANY" xml:space="preserve">
+    <value>Tysk (Tyskland) / Deutsch (Deutschland)</value>
+  </data>
+  <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
+    <value>Brugerinterfacesprog: {0}</value>
+  </data>
+  <data name="UI_LANGUAGE_LABEL" xml:space="preserve">
+    <value>Brugerinterfacesprog:</value>
+  </data>
+  <data name="PUBLISH_VIRTUAL_KEY_CODES_FOR_CHARACTERS_LABEL" xml:space="preserve">
+    <value>Simuler fysiske tastetryk under skrivning:</value>
+  </data>
+  <data name="DUTCH_BELGIUM" xml:space="preserve">
+    <value>Hollandsk (Belgisk) / Nederlands (België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS" xml:space="preserve">
+    <value>Hollandsk (Nederlansk) / Nederlands (Nederland)</value>
+  </data>
+  <data name="FRENCH_FRANCE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Fransk
+(Frankrig) /
+Française
+(France)</value>
+  </data>
+  <data name="GERMAN_GERMANY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Tysk
+(Tyskland) /
+Deutsch
+(Deutschland)</value>
+  </data>
+  <data name="MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL" xml:space="preserve">
+    <value>Forstør ikke mus under scroll-aktivitet:</value>
+  </data>
+  <data name="RUSSIAN_RUSSIA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Russisk
+(Rusland) /
+Русский
+(Россия)</value>
+  </data>
+  <data name="CONVERSATION_BORDER_THICKNESS_LABEL" xml:space="preserve">
+    <value>Samtale keyboard kant tykkelse (venstre,top,højre,bunden i pixels):</value>
+  </data>
+  <data name="BACK_ONE" xml:space="preserve">
+    <value>SLET TEGN</value>
+  </data>
+  <data name="BACK_WORD" xml:space="preserve">
+    <value>SLET ORD</value>
+  </data>
+  <data name="SUGGESTION_1" xml:space="preserve">
+    <value>FORSLAG 1</value>
+  </data>
+  <data name="SUGGESTION_2" xml:space="preserve">
+    <value>FORSLAG 2</value>
+  </data>
+  <data name="SUGGESTION_3" xml:space="preserve">
+    <value>FORSLAG </value>
+  </data>
+  <data name="SUGGESTION_4" xml:space="preserve">
+    <value>FORSLAG 4</value>
+  </data>
+  <data name="SUGGESTION_5" xml:space="preserve">
+    <value>FORSLAG 5</value>
+  </data>
+  <data name="SUGGESTION_6" xml:space="preserve">
+    <value>FORSLAG 6</value>
+  </data>
+  <data name="SUGGESTION_KEYS_GROUP_LABEL" xml:space="preserve">
+    <value>Forslagstaster</value>
+  </data>
+  <data name="ADD_TO_DICTIONARY" xml:space="preserve">
+    <value>TILFØJ TIL ORDBOG</value>
+  </data>
+  <data name="COLLAPSE_DOCK" xml:space="preserve">
+    <value>MINIMER DOCK</value>
+  </data>
+  <data name="DOWN_ARROW" xml:space="preserve">
+    <value>PIL NED</value>
+  </data>
+  <data name="F1" xml:space="preserve">
+    <value>F1</value>
+  </data>
+  <data name="F10" xml:space="preserve">
+    <value>F10</value>
+  </data>
+  <data name="F11" xml:space="preserve">
+    <value>F11</value>
+  </data>
+  <data name="F12" xml:space="preserve">
+    <value>F12</value>
+  </data>
+  <data name="F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="F3" xml:space="preserve">
+    <value>F3</value>
+  </data>
+  <data name="F4" xml:space="preserve">
+    <value>F4</value>
+  </data>
+  <data name="F5" xml:space="preserve">
+    <value>F5</value>
+  </data>
+  <data name="F6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="F7" xml:space="preserve">
+    <value>F7</value>
+  </data>
+  <data name="F8" xml:space="preserve">
+    <value>F8</value>
+  </data>
+  <data name="F9" xml:space="preserve">
+    <value>F9</value>
+  </data>
+  <data name="LEFT_ARROW" xml:space="preserve">
+    <value>VENSTREPIL</value>
+  </data>
+  <data name="RIGHT_ARROW" xml:space="preserve">
+    <value>HØJREPIL</value>
+  </data>
+  <data name="UP_ARROW" xml:space="preserve">
+    <value>PIL OP</value>
+  </data>
+  <data name="CLICK_AND_DRAG" xml:space="preserve">
+    <value>KLIK &amp; TRÆK</value>
+  </data>
+  <data name="CURRENCIES_1" xml:space="preserve">
+    <value>VALUTAER 1</value>
+  </data>
+  <data name="CURRENCIES_2" xml:space="preserve">
+    <value>VALUTAER 2</value>
+  </data>
+  <data name="DECREASE_OPACITY" xml:space="preserve">
+    <value>MINDSK GENNEMSIGTIGHED</value>
+  </data>
+  <data name="DIACRITICS_1" xml:space="preserve">
+    <value>OMLYDE 1</value>
+  </data>
+  <data name="DIACRITICS_2" xml:space="preserve">
+    <value>OMLYDE 2</value>
+  </data>
+  <data name="DIACRITICS_3" xml:space="preserve">
+    <value>OMLYDE 3</value>
+  </data>
+  <data name="EXPAND_DOCK" xml:space="preserve">
+    <value>UDVID DOCK</value>
+  </data>
+  <data name="EXPAND_DOWN" xml:space="preserve">
+    <value>UDVID NED</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_LEFT" xml:space="preserve">
+    <value>UDVID NED &amp; TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>UDVID NED &amp; TIL HØJRE</value>
+  </data>
+  <data name="EXPAND_LEFT" xml:space="preserve">
+    <value>UDVID TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_RIGHT" xml:space="preserve">
+    <value>UDVID TIL HØJRE</value>
+  </data>
+  <data name="EXPAND_UP" xml:space="preserve">
+    <value>UDVID OP</value>
+  </data>
+  <data name="EXPAND_UP_AND_LEFT" xml:space="preserve">
+    <value>UDVID OP &amp; TIL VENSTRE</value>
+  </data>
+  <data name="EXPAND_UP_AND_RIGHT" xml:space="preserve">
+    <value>UDVID OP &amp; TIL HØJRE</value>
+  </data>
+  <data name="INCREASE_OPACITY" xml:space="preserve">
+    <value>ØG GENNEMSIGTIGHED</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_1" xml:space="preserve">
+    <value>TAL &amp; SYMBOLER 1</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_2" xml:space="preserve">
+    <value>TAL &amp; SYMBOLER 2</value>
+  </data>
+  <data name="NUMBERS_SYMBOLS_3" xml:space="preserve">
+    <value>TAL &amp; SYMBOLER 3</value>
+  </data>
+  <data name="PHYSICAL_KEYS" xml:space="preserve">
+    <value>FYSISKE TASTER</value>
+  </data>
+  <data name="SIZE_AND_POSITION" xml:space="preserve">
+    <value>STØRRELSE &amp; POSITION</value>
+  </data>
+  <data name="MAGNETIC_CURSOR" xml:space="preserve">
+    <value>MAGNETISK MUSSEMARKØR</value>
+  </data>
+  <data name="MIDDLE_CLICK" xml:space="preserve">
+    <value>MIDTERSTE KLIK</value>
+  </data>
+  <data name="MIDDLE_DOWN_UP" xml:space="preserve">
+    <value>MIDTE NED/OP</value>
+  </data>
+  <data name="MOVE_AMOUNT_IN_PIXEL" xml:space="preserve">
+    <value>BEVÆG MÆNGDE I PIXELS</value>
+  </data>
+  <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
+    <value>JUSTÉR MÆNGDEN I PIXELS</value>
+  </data>
+  <data name="CONVERSATION_ALPHA" xml:space="preserve">
+    <value>SAMTALE ALPHA</value>
+  </data>
+  <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
+    <value>SAMTALE NUMERISK OG SYMBOLER</value>
+  </data>
+  <data name="JUMP_DOWN" xml:space="preserve">
+    <value>HOP NED</value>
+  </data>
+  <data name="JUMP_DOWN_AND_LEFT" xml:space="preserve">
+    <value>HOP NED OG TIL VENSTRE</value>
+  </data>
+  <data name="JUMP_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>HOP NED OG TIL HØJRE</value>
+  </data>
+  <data name="JUMP_LEFT" xml:space="preserve">
+    <value>HOP VENSTRE</value>
+  </data>
+  <data name="JUMP_RIGHT" xml:space="preserve">
+    <value>HOP HØJRE</value>
+  </data>
+  <data name="JUMP_UP" xml:space="preserve">
+    <value>HOP OP</value>
+  </data>
+  <data name="JUMP_UP_AND_LEFT" xml:space="preserve">
+    <value>HOP OP OG TIL VENSTRE</value>
+  </data>
+  <data name="JUMP_UP_AND_RIGHT" xml:space="preserve">
+    <value>HOP OP OG TIL HØJRE</value>
+  </data>
+  <data name="LEFT_CLICK" xml:space="preserve">
+    <value>VENSTRE KLIK</value>
+  </data>
+  <data name="LEFT_DOUBLE_CLICK" xml:space="preserve">
+    <value>VENSTRE DOBBELT KLIK</value>
+  </data>
+  <data name="LEFT_DOWN_UP" xml:space="preserve">
+    <value>VENSTRE NED/OP</value>
+  </data>
+  <data name="MOVE_DOWN" xml:space="preserve">
+    <value>BEVÆG NED</value>
+  </data>
+  <data name="MOVE_DOWN_AND_LEFT" xml:space="preserve">
+    <value>BEVÆG NED OG TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>BEVÆG NED OG TIL HØJRE</value>
+  </data>
+  <data name="MOVE_LEFT" xml:space="preserve">
+    <value>BEVÆG TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_RIGHT" xml:space="preserve">
+    <value>BEVÆG TIL HØJRE</value>
+  </data>
+  <data name="MOVE_TO" xml:space="preserve">
+    <value>BEVÆG TIL</value>
+  </data>
+  <data name="MOVE_UP" xml:space="preserve">
+    <value>BEVÆG OP</value>
+  </data>
+  <data name="MOVE_UP_AND_LEFT" xml:space="preserve">
+    <value>BEVÆG OP OG TIL VENSTRE</value>
+  </data>
+  <data name="MOVE_UP_AND_RIGHT" xml:space="preserve">
+    <value>BEVÆG OP OG TIL HØJRE</value>
+  </data>
+  <data name="MULTI_KEY_SELECTION_UPPER_CASE" xml:space="preserve">
+    <value>MULTI-KEY VALG</value>
+  </data>
+  <data name="NUM_LK" xml:space="preserve">
+    <value>NUM LK</value>
+  </data>
+  <data name="PG_DN" xml:space="preserve">
+    <value>PG DN</value>
+  </data>
+  <data name="PG_UP" xml:space="preserve">
+    <value>PG UP</value>
+  </data>
+  <data name="PRNT_SCR" xml:space="preserve">
+    <value>PRNT SCR</value>
+  </data>
+  <data name="REPEAT_LAST" xml:space="preserve">
+    <value>GENTAG SIDSTE</value>
+  </data>
+  <data name="RIGHT_CLICK" xml:space="preserve">
+    <value>HØJRE KLIK</value>
+  </data>
+  <data name="RIGHT_DOWN_UP" xml:space="preserve">
+    <value>HØJRE NED/OP</value>
+  </data>
+  <data name="SCRN_LK" xml:space="preserve">
+    <value>SCR LK</value>
+  </data>
+  <data name="SCROLL_AMOUNT_IN_CLICKS" xml:space="preserve">
+    <value>SCROLL MÆNGDE I KLIKS</value>
+  </data>
+  <data name="SCROLL_DOWN" xml:space="preserve">
+    <value>SCROLL NED</value>
+  </data>
+  <data name="SCROLL_LEFT" xml:space="preserve">
+    <value>SCROLL TIL VENSTRE</value>
+  </data>
+  <data name="SCROLL_RIGHT" xml:space="preserve">
+    <value>SCROLL TIL HØJRE</value>
+  </data>
+  <data name="SCROLL_UP" xml:space="preserve">
+    <value>SCROLL OP</value>
+  </data>
+  <data name="SHRINK_DOWN" xml:space="preserve">
+    <value>FORMINDSK NED</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_LEFT" xml:space="preserve">
+    <value>FORMINDSK NED OG TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_DOWN_AND_RIGHT" xml:space="preserve">
+    <value>FORMINDSK NED OG TIL HØJRE</value>
+  </data>
+  <data name="SHRINK_LEFT" xml:space="preserve">
+    <value>FORMINDSK TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_RIGHT" xml:space="preserve">
+    <value>FORMINDSK TIL HØJRE</value>
+  </data>
+  <data name="SHRINK_UP" xml:space="preserve">
+    <value>FORMINDSK OP</value>
+  </data>
+  <data name="SHRINK_UP_AND_LEFT" xml:space="preserve">
+    <value>FORMINDSK OP OG TIL VENSTRE</value>
+  </data>
+  <data name="SHRINK_UP_AND_RIGHT" xml:space="preserve">
+    <value>FORMINDSK OP OG TIL HØJRE</value>
+  </data>
+  <data name="CHANGE_KEYBOARD_KEY_GROUP" xml:space="preserve">
+    <value>ÆNDRE KEYBOARD TASTER:</value>
+  </data>
+  <data name="DOCK_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>DOCK ACTION TASTER</value>
+  </data>
+  <data name="INDIVIDUAL_KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
+    <value>Overrides for individual key fixation times (ms):</value>
+  </data>
+  <data name="LANGUAGES_KEY_GROUP" xml:space="preserve">
+    <value>ÆNDRE SPROG TASTER:</value>
+  </data>
+  <data name="LANGUAGE_UPPER_CASE" xml:space="preserve">
+    <value>SPROG</value>
+  </data>
+  <data name="MISC_ACTIONS_KEY_GROUP" xml:space="preserve">
+    <value>DIVERSE TASTER:</value>
+  </data>
+  <data name="MODIFIER_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>ÆNDRINGSTASTER:</value>
+  </data>
+  <data name="MOUSE_DO_AT_CURRENT_LOCATION_KEY_GROUP" xml:space="preserve">
+    <value>MUSE (GØR VED NUVÆRENDE POSITION) TASTER:</value>
+  </data>
+  <data name="MOUSE_DO_AT_POINT_KEY_GROUP" xml:space="preserve">
+    <value>MUSE (GØR VED PUNKT) TASTER:</value>
+  </data>
+  <data name="MOUSE_MISC_KEY_GROUP" xml:space="preserve">
+    <value>MUSE (DIVERSE) TASTER:</value>
+  </data>
+  <data name="MOVE_AND_RESIZE_KEY_GROUP" xml:space="preserve">
+    <value>BEVÆGELSE OG STØRRELSESTILPASNINGS TASTER:</value>
+  </data>
+  <data name="PHYSICAL_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FYSISKE TASTER:</value>
+  </data>
+  <data name="SUGGESTION_KEYS_KEY_GROUP" xml:space="preserve">
+    <value>FORSLAGS TASTER:</value>
+  </data>
+  <data name="KEY_FIXATION_TIME_TO_COMPLETE_ON_INDIVIDUAL_KEYS" xml:space="preserve">
+    <value>Specificer tider til at færdiggøre individuelle taster:</value>
+  </data>
+  <data name="GREEK_GREECE" xml:space="preserve">
+    <value>Græsk (Grækenland) / Ελληνικά (Greece)</value>
+  </data>
+  <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
+    <value>Administrationskonsol</value>
+  </data>
+  <data name="QUIT_TITLE_CASE" xml:space="preserve">
+    <value>Luk</value>
+  </data>
+  <data name="GREEK_GREECE_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Græsk
+(Grækenland) /
+Ελληνικά
+(Greece)</value>
+  </data>
+  <data name="DUTCH_BELGIUM_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Belgisk
+(Belgien) /
+Nederlands
+(België)</value>
+  </data>
+  <data name="DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Belgisk
+(Netherlands) /
+Nederlands
+(Nederland)</value>
+  </data>
+  <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
+    <value>Ignorér ændringstaster for alle museoperationer:</value>
+  </data>
+  <data name="ENGLISH_CANADA_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Engelsk
+(Canada)
+</value>
+  </data>
+  <data name="ENGLISH_UK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Engelsk
+(UK)
+</value>
+  </data>
+  <data name="ENGLISH_US_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>
+Engelsk
+(US)
+</value>
+  </data>
+  <data name="TURKISH_TURKEY" xml:space="preserve">
+    <value>Tyrkisk (Tyrkiet) / Türkçe (Türkiye)</value>
+  </data>
+  <data name="TURKISH_TURKEY_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Tyrkisk
+(Turkey) /
+Türkçe
+(Türkiye)</value>
+  </data>
+  <data name="CALIBRATION_SUCCESS" xml:space="preserve">
+    <value>Kalibrering succesfuld!</value>
+  </data>
+  <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
+    <value>Kalibrering mislykkedes!</value>
+  </data>
+</root>
