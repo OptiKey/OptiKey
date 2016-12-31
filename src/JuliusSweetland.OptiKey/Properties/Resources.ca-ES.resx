@@ -1181,7 +1181,7 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
     <value>Cap</value>
   </data>
   <data name="TOBII_EYEX_DATA_STREAM_PROCESSING_LEVEL" xml:space="preserve">
-    <value>Q</value>
+    <value>Quantitat de flux de dades:</value>
   </data>
   <data name="UI_LANGUAGE_DESCRIPTION" xml:space="preserve">
     <value>Idioma de la interfície d'usuari: {0}</value>
