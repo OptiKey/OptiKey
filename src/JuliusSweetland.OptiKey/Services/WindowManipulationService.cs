@@ -1252,6 +1252,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (getWindowState() != WindowStates.Docked) return;
 
+            Log.Debug("WindowState is Docked, continuing to register app bar");
+
             //Register a new app bar with Windows - this adds it to a list of app bars
             var abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);

@@ -308,6 +308,45 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                //Catalan specific rules
+                if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.CatalanSpain)
+                {
+                    //Acute accent: Éé, Íí, Óó, Úú    
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningAcuteAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningAcuteAccentKey //Allow the acute accent to be manually released
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                    //Grave accent: Àà, Èè, Òò
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningGraveAccentKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningGraveAccentKey //Allow the grave accent to be manually released
+                            || keyValue == new KeyValue("a")
+                            || keyValue == new KeyValue("e")
+                            || keyValue == new KeyValue("o")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                    //Diaeresis: Ïï, Üü
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningDiaeresisOrUmlautKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningDiaeresisOrUmlautKey //Allow the diaeresis to be manually released
+                            || keyValue == new KeyValue("i")
+                            || keyValue == new KeyValue("u")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                    //Cedilla: çÇ
+                    if (keyStateService.KeyDownStates[KeyValues.CombiningCedillaKey].Value.IsDownOrLockedDown())
+                    {
+                        return keyValue == KeyValues.CombiningCedillaKey //Allow the cedilla to be manually released
+                            || keyValue == new KeyValue("c")
+                            || keyValue == KeyValues.LeftShiftKey; //Allow shift to be toggled on/off
+                    }
+                }
+
                 //Greek specific rules
                 if (Settings.Default.KeyboardAndDictionaryLanguage == Languages.GreekGreece)
                 {

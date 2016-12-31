@@ -154,26 +154,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
-                
-                IWindowManipulationService mainWindowManipulationService = new WindowManipulationService(
-                    mainWindow,
-                    () => Settings.Default.MainWindowOpacity,
-                    () => Settings.Default.MainWindowState,
-                    () => Settings.Default.MainWindowPreviousState,
-                    () => Settings.Default.MainWindowFloatingSizeAndPosition,
-                    () => Settings.Default.MainWindowDockPosition,
-                    () => Settings.Default.MainWindowDockSize,
-                    () => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen,
-                    () => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness,
-                    () => Settings.Default.MainWindowMinimisedPosition,
-                    o => Settings.Default.MainWindowOpacity = o,
-                    state => Settings.Default.MainWindowState = state,
-                    state => Settings.Default.MainWindowPreviousState = state,
-                    rect => Settings.Default.MainWindowFloatingSizeAndPosition = rect,
-                    pos => Settings.Default.MainWindowDockPosition = pos,
-                    size => Settings.Default.MainWindowDockSize = size,
-                    t => Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t,
-                    t => Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t);
+                IWindowManipulationService mainWindowManipulationService = CreateMainWindowManipulationService(mainWindow);
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
@@ -227,6 +208,152 @@ namespace JuliusSweetland.OptiKey
                 Log.Error("Error starting up application", ex);
                 throw;
             }
+        }
+
+        #endregion
+
+        #region Create Main Window Manipulation Service
+
+        private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+        {
+            return new WindowManipulationService(
+                mainWindow,
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowOpacity from settings with value '{0}'", Settings.Default.MainWindowOpacity);
+                    }
+                    return Settings.Default.MainWindowOpacity;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowState from settings with value '{0}'", Settings.Default.MainWindowState);
+                    }
+                    return Settings.Default.MainWindowState;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowPreviousState from settings with value '{0}'", Settings.Default.MainWindowPreviousState);
+                    }
+                    return Settings.Default.MainWindowPreviousState;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowFloatingSizeAndPosition from settings with value '{0}'", Settings.Default.MainWindowFloatingSizeAndPosition);
+                    }
+                    return Settings.Default.MainWindowFloatingSizeAndPosition;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowDockPosition from settings with value '{0}'", Settings.Default.MainWindowDockPosition);
+                    }
+                    return Settings.Default.MainWindowDockPosition;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowDockSize from settings with value '{0}'", Settings.Default.MainWindowDockSize);
+                    }
+                    return Settings.Default.MainWindowDockSize;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowFullDockThicknessAsPercentageOfScreen from settings with value '{0}'", Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen);
+                    }
+                    return Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness from settings with value '{0}'", Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness);
+                    }
+                    return Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
+                },
+                () =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Getting MainWindowMinimisedPosition from settings with value '{0}'", Settings.Default.MainWindowMinimisedPosition);
+                    }
+                    return Settings.Default.MainWindowMinimisedPosition;
+                },
+                o =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowOpacity to settings with value '{0}'", o);
+                    }
+                    Settings.Default.MainWindowOpacity = o;
+                },
+                state =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowState to settings with value '{0}'", state);
+                    }
+                    Settings.Default.MainWindowState = state;
+                },
+                state =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowPreviousState to settings with value '{0}'", state);
+                    }
+                    Settings.Default.MainWindowPreviousState = state;
+                },
+                rect =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowFloatingSizeAndPosition to settings with value '{0}'", rect);
+                    }
+                    Settings.Default.MainWindowFloatingSizeAndPosition = rect;
+                },
+                pos =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowDockPosition to settings with value '{0}'", pos);
+                    }
+                    Settings.Default.MainWindowDockPosition = pos;
+                },
+                size =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowDockSize to settings with value '{0}'", size);
+                    }
+                    Settings.Default.MainWindowDockSize = size;
+                },
+                t =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowFullDockThicknessAsPercentageOfScreen to settings with value '{0}'", t);
+                    }
+                    Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = t;
+                },
+                t =>
+                {
+                    if (Settings.Default.Debug)
+                    {
+                        Log.DebugFormat("Storing MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness to settings with value '{0}'", t);
+                    }
+                    Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = t;
+                });
         }
 
         #endregion
