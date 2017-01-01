@@ -103,11 +103,13 @@ namespace JuliusSweetland.OptiKey.Services
             windowHandle = new WindowInteropHelper(window).EnsureHandle();
             screen = window.GetScreen();
             screenBoundsInPx = new Rect(screen.Bounds.Left, screen.Bounds.Top, screen.Bounds.Width, screen.Bounds.Height);
+            Log.DebugFormat("Screen bounds in Px: {0}", screenBoundsInPx);
             var screenBoundsTopLeftInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.TopLeft);
             var screenBoundsBottomRightInDp = window.GetTransformFromDevice().Transform(screenBoundsInPx.BottomRight);
             screenBoundsInDp = new Rect(screenBoundsTopLeftInDp.X, screenBoundsTopLeftInDp.Y,
                 screenBoundsBottomRightInDp.X - screenBoundsTopLeftInDp.X,
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
+            Log.DebugFormat("Screen bounds in Dp: {0}", screenBoundsInDp);
 
             CoerceSavedStateAndApply();
         
