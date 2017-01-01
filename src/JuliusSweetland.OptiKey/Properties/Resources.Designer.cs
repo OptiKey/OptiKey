@@ -143,6 +143,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alienware 17 (EyeX).
+        /// </summary>
+        public static string ALIENWARE_17 {
+            get {
+                return ResourceManager.GetString("ALIENWARE_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LETTERS.
         /// </summary>
         public static string ALPHA {
@@ -4096,6 +4105,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Steelseries Sentry (EyeX).
+        /// </summary>
+        public static string STEELSERIES_SENTRY {
+            get {
+                return ResourceManager.GetString("STEELSERIES_SENTRY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop signal:.
         /// </summary>
         public static string STOP_SIGNAL_LABEL {
@@ -4276,6 +4294,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobii Eye Tracker 4C.
+        /// </summary>
+        public static string TOBII_EYE_TRACKER_4C {
+            get {
+                return ResourceManager.GetString("TOBII_EYE_TRACKER_4C", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii EyeX.
         /// </summary>
         public static string TOBII_EYEX {
@@ -4330,11 +4357,38 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobii PCEyeMini.
+        /// </summary>
+        public static string TOBII_PCEYE_MINI {
+            get {
+                return ResourceManager.GetString("TOBII_PCEYE_MINI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii REX.
         /// </summary>
         public static string TOBII_REX {
             get {
                 return ResourceManager.GetString("TOBII_REX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii X2-30.
+        /// </summary>
+        public static string TOBII_X2_30 {
+            get {
+                return ResourceManager.GetString("TOBII_X2_30", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii X2-60.
+        /// </summary>
+        public static string TOBII_X2_60 {
+            get {
+                return ResourceManager.GetString("TOBII_X2_60", resourceCulture);
             }
         }
         
