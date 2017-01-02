@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
         private static readonly string dzMultiCodePoint = "\u0064\u007A";
 
         private static readonly string singleCodePointString = "12" + dzSingleCodePoint + "34";
-        private static readonly string multiCodePointString = "12" + dzMultiCodePoint +"34";
+        private static readonly string multiCodePointString = "12" + dzMultiCodePoint + "34";
 
         [Test]
         public void SuggestionSingleCodePointToMultiCodePoint()
@@ -35,11 +35,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             //Act
             keyboardOutputService.ProcessSingleKeyText("1");
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
-            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
 
             //Assert
-            Assert.AreEqual(multiCodePointString + " ", keyboardOutputService.Text);
+            Assert.AreEqual(multiCodePointString, keyboardOutputService.Text);
         }
 
         [Test]
@@ -61,11 +60,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             //Act
             keyboardOutputService.ProcessSingleKeyText("1");
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
-            keyboardOutputService.ProcessFunctionKey(FunctionKeys.BackMany);
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
 
             //Assert
-            Assert.AreEqual(singleCodePointString + " ", keyboardOutputService.Text);
+            Assert.AreEqual(singleCodePointString, keyboardOutputService.Text);
         }
     }
 }
