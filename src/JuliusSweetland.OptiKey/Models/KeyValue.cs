@@ -1,12 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Configuration;
 using System.Globalization;
-using System.Runtime.Serialization;
-using System.Security.Permissions;
 using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 
