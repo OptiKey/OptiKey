@@ -181,7 +181,6 @@
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
-    <Compile Include="Enums\EyeXSensitivities.cs" />
     <Compile Include="Enums\AutoCompleteMethods.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
@@ -200,7 +199,6 @@
     <Compile Include="Enums\DockEdges.cs" />
     <Compile Include="Enums\RunningStates.cs" />
     <Compile Include="Enums\NotificationTypes.cs" />
-    <Compile Include="Enums\TaskbarPosition.cs" />
     <Compile Include="Enums\KeyDownStates.cs" />
     <Compile Include="Enums\SelectionModes.cs" />
     <Compile Include="Enums\FunctionKeys.cs" />
