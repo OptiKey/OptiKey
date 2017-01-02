@@ -10,8 +10,9 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         /// <summary>
         ///     Returns an enumerable collection of suggestions.
         /// </summary>
-        /// <param name="root">The initial word stem on which to base predictions.</param>
+        /// <param name="root">The initial text stem on which to base predictions.</param>
+        /// <param name="nextWord">Whether to suggest the next word</param>
         /// <returns>An enumerable collection of words.</returns>
-        IEnumerable<string> GetSuggestions(string root);
+        IEnumerable<string> GetSuggestions(string root, bool nextWord = false);
     }
 }

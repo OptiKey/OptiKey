@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             entries.Clear();
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'.", root);
 
