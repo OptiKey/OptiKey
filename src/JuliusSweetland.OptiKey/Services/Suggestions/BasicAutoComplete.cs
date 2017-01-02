@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             entriesForAutoComplete.Clear();
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
 

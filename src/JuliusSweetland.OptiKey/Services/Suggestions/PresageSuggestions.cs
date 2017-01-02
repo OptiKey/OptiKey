@@ -29,14 +29,21 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             Log.Debug("Clear called.");
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'", root);
 
             if (root == null)
                 this.root = "";
             else
+            {
                 this.root = root;
+                // force presage to suggest the next word by adding a space 
+                if (nextWord & Char.IsLetterOrDigit(root.Last()))
+                {
+                    this.root = this.root + " ";
+                }
+            }
 
             if (prsg != null)
             {

@@ -354,9 +354,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Get Suggestions
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
-            return managedSuggestions.GetSuggestions(root);
+            return managedSuggestions.GetSuggestions(root, nextWord);
         }
 
         #endregion
