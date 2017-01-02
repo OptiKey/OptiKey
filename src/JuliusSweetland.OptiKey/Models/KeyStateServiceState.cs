@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
 

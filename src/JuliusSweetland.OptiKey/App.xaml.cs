@@ -19,19 +19,16 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
 using Octokit;
-using Application = System.Windows.Application;
 
 namespace JuliusSweetland.OptiKey
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         #region Constants
 

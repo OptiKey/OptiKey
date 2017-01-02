@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Linq;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 
