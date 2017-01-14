@@ -188,6 +188,7 @@ namespace JuliusSweetland.OptiKey.Services
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
                     lastTextChangeWasSuggestion = false;
+                    GenerateSuggestions(false);
                     break;
 
                 case FunctionKeys.ConversationConfirmYes:

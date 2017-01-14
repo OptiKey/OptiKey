@@ -646,14 +646,20 @@ namespace JuliusSweetland.OptiKey.Services
             switch (suggestionMethod)
             {
                 case SuggestionMethods.NGram:
+                    if (Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to false when uing the NGram SuggestionMethod");
                     return new NGramAutoComplete(
                         Settings.Default.NGramAutoCompleteGramCount,
                         Settings.Default.NGramAutoCompleteLeadingSpaceCount,
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
                 case SuggestionMethods.Presage:
+                    if (!Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to true when uing the Presage SuggestionMethod");
                     return new PresageSuggestions();
                 case SuggestionMethods.Basic:
                 default:
+                    if (Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to false when uing the Basic SuggestionMethod");
                     return new BasicAutoComplete();
             }
         }
