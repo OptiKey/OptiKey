@@ -452,9 +452,15 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TheEyeTribe:
                     return new TheEyeTribeCalibrationService();
 
+                case PointsSources.Alienware17:
+                case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
+                case PointsSources.TobiiEyeTracker4C:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
+                case PointsSources.TobiiPcEyeMini:
+                case PointsSources.TobiiX2_30:
+                case PointsSources.TobiiX2_60:
                     return new TobiiEyeXCalibrationService();
 
                 case PointsSources.VisualInteractionMyGaze:
@@ -498,9 +504,15 @@ namespace JuliusSweetland.OptiKey
                         theEyeTribePointService);
                     break;
 
+                case PointsSources.Alienware17:
+                case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
+                case PointsSources.TobiiEyeTracker4C:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
+                case PointsSources.TobiiPcEyeMini:
+                case PointsSources.TobiiX2_30:
+                case PointsSources.TobiiX2_60:
                     var tobiiEyeXPointService = new TobiiEyeXPointService();
                     var tobiiEyeXCalibrationService = calibrationService as TobiiEyeXCalibrationService;
                     if (tobiiEyeXCalibrationService != null)
