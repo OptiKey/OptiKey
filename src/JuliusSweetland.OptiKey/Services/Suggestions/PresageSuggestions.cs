@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             {
                 this.root = root;
                 // force presage to suggest the next word by adding a space 
-                if (nextWord & Char.IsLetterOrDigit(root.Last()))
+                if (nextWord && root.Length > 0 && Char.IsLetterOrDigit(root.Last()))
                 {
                     this.root = this.root + " ";
                 }
