@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -13,8 +12,6 @@ namespace JuliusSweetland.OptiKey.Extensions
     public static class StringExtensions
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private const string WordRegex = @"(?:\s*)(([_a-zA-Z0-9-\+]+(\.[_a-zA-Z0-9-\+]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6}))|(([a-zA-Z]\.){2,})|([a-zA-Z]+(['-][a-zA-Z]+)*))(?:\s*)";
 
         public static string NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(this string entry, bool log = true)
         {
@@ -101,11 +98,10 @@ namespace JuliusSweetland.OptiKey.Extensions
         {
             if (string.IsNullOrWhiteSpace(text)) return null;
 
-            var words = new Regex(WordRegex).Matches(text)
-                                .Cast<Match>()
-                                .Select(match => match.Value.CleanupPossibleDictionaryEntry())
-                                .Where(sanitisedMatch => sanitisedMatch != null)
-                                .ToList();
+            var words = text.Split(' ', '\t', '\n', ',')
+                .Select(s => s.CleanupPossibleDictionaryEntry())
+                .Where(sanitisedMatch => sanitisedMatch != null)
+                .ToList();
 
             var lines = text.Split('\n')
                             .Select(line => line.CleanupPossibleDictionaryEntry())
