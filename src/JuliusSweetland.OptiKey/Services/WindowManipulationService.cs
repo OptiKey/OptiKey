@@ -1271,8 +1271,8 @@ namespace JuliusSweetland.OptiKey.Services
             source.AddHook(AppBarPositionChangeCallback);
         }
 
-        // If we are using mouse button clicks as a key selection source we should prevent the window from changing focus 
-        // so the target window receives the keyboard input
+        //If we are using mouse button clicks as a key selection source we should prevent 
+        //the window from changing focus so the target window receives the keyboard input.
         private void PreventWindowActivation()
         {
             if (Settings.Default.KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps)
@@ -1281,8 +1281,8 @@ namespace JuliusSweetland.OptiKey.Services
                 const int WS_EX_NOACTIVATE = 0x08000000;
                 const int GWL_EXSTYLE = -0x14;
 
-                PInvoke.SetWindowLong(windowHandle, GWL_EXSTYLE, (int)PInvoke.GetWindowLong(windowHandle, GWL_EXSTYLE)
-                    | WS_EX_NOACTIVATE | WS_EX_APPWINDOW);
+                PInvoke.SetWindowLong(windowHandle, GWL_EXSTYLE, 
+                    (int)PInvoke.GetWindowLong(windowHandle, GWL_EXSTYLE) | WS_EX_NOACTIVATE | WS_EX_APPWINDOW);
             }
         }
 
