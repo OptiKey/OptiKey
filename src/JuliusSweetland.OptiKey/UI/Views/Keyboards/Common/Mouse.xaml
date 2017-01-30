@@ -237,7 +237,6 @@
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
                                                         <controls:Key Grid.Row="0" Grid.Column="0"
                                                                       SymbolGeometry="{StaticResource MouseLeftClickIcon}"
@@ -275,11 +274,6 @@
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
                                                                       Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
                                                         <controls:Key Grid.Row="0" Grid.Column="7"
-                                                                      SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
-                                                                      Text="{x:Static resx:Resources.MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE}"
-                                                                      SharedSizeGroup="KeyWithSymbolAndText"
-                                                                      Value="{x:Static models:KeyValues.MouseMagneticCursorKey}"/>
-                                                        <controls:Key Grid.Row="0" Grid.Column="8"
                                                                       SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                       Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -293,7 +287,7 @@
                                                                 </MultiBinding>
                                                             </controls:Key.SymbolOrientation>
                                                         </controls:Key>
-                                                        <controls:Key Grid.Row="0" Grid.Column="9"
+                                                        <controls:Key Grid.Row="0" Grid.Column="8"
                                                                       SymbolGeometry="{StaticResource BackIcon}"
                                                                       Text="{x:Static resx:Resources.BACK}"
                                                                       SharedSizeGroup="KeyWithSymbolAndText"
@@ -528,7 +522,6 @@
                                                                     <RowDefinition Height="*" />
                                                                     <RowDefinition Height="*" />
                                                                     <RowDefinition Height="*" />
-                                                                    <RowDefinition Height="*" />
                                                                 </Grid.RowDefinitions>
                                                                 <Grid.ColumnDefinitions>
                                                                     <ColumnDefinition Width="*" />
@@ -569,11 +562,6 @@
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
                                                                               Value="{x:Static models:KeyValues.RepeatLastMouseActionKey}"/>
                                                                 <controls:Key Grid.Row="7" Grid.Column="0"
-                                                                              SymbolGeometry="{StaticResource MouseMagneticCursorIcon}"
-                                                                              Text="{x:Static resx:Resources.MAGNETIC_CURSOR_SPLIT_WITH_NEWLINE}"
-                                                                              SharedSizeGroup="KeyWithSymbolAndText"
-                                                                              Value="{x:Static models:KeyValues.MouseMagneticCursorKey}"/>
-                                                                <controls:Key Grid.Row="8" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource ExpandDockIcon}"
                                                                               Text="{x:Static resx:Resources.EXPAND_DOCK_SPLIT_WITH_NEWLINE}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
@@ -587,7 +575,7 @@
                                                                         </MultiBinding>
                                                                     </controls:Key.SymbolOrientation>
                                                                 </controls:Key>
-                                                                <controls:Key Grid.Row="9" Grid.Column="0"
+                                                                <controls:Key Grid.Row="8" Grid.Column="0"
                                                                               SymbolGeometry="{StaticResource BackIcon}"
                                                                               Text="{x:Static resx:Resources.BACK}"
                                                                               SharedSizeGroup="KeyWithSymbolAndText"
