@@ -11,6 +11,7 @@ using JuliusSweetland.OptiKey.Native.Common;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -112,7 +113,8 @@ namespace JuliusSweetland.OptiKey.Services
             Log.DebugFormat("Screen bounds in Dp: {0}", screenBoundsInDp);
 
             CoerceSavedStateAndApply();
-        
+            PreventWindowActivation();
+
             window.Closed += (_, __) => UnRegisterAppBar();
         }
 
@@ -1267,6 +1269,21 @@ namespace JuliusSweetland.OptiKey.Services
             //Add hook to receive position change messages from Windows
             HwndSource source = HwndSource.FromHwnd(abd.hWnd);
             source.AddHook(AppBarPositionChangeCallback);
+        }
+
+        //If we are using mouse button clicks as a key selection source we should prevent 
+        //the window from changing focus so the target window receives the keyboard input.
+        private void PreventWindowActivation()
+        {
+            if (Settings.Default.KeySelectionTriggerSource == TriggerSources.MouseButtonDownUps)
+            {
+                const int WS_EX_APPWINDOW = 0x40000;
+                const int WS_EX_NOACTIVATE = 0x08000000;
+                const int GWL_EXSTYLE = -0x14;
+
+                PInvoke.SetWindowLong(windowHandle, GWL_EXSTYLE, 
+                    (int)PInvoke.GetWindowLong(windowHandle, GWL_EXSTYLE) | WS_EX_NOACTIVATE | WS_EX_APPWINDOW);
+            }
         }
 
         private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false)
