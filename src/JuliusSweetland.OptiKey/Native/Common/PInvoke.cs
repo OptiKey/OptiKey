@@ -48,6 +48,9 @@ namespace JuliusSweetland.OptiKey.Native
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int RegisterWindowMessage(string msg);
 
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
         //Wrapper around GetWindowLong32 and GetWindowLong64 based on the current bitness
         public static long GetWindowLong(IntPtr hWnd, int nIndex)
         {
