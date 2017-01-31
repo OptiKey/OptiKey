@@ -130,7 +130,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
-            AutoCompleteWords = Settings.Default.AutoCompleteWords;
+            AutoCompleteWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
         }
@@ -144,7 +144,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
-            Settings.Default.AutoCompleteWords = AutoCompleteWords;
+            Settings.Default.SuggestWords = AutoCompleteWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
             

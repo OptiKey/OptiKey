@@ -10,7 +10,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -28,10 +28,10 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly AutoCompleteMethods autoCompleteMethod;
+        private readonly SuggestionMethods suggestionMethod;
 
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
+        private IManagedSuggestions managedSuggestions;
         
         #endregion
 
@@ -43,9 +43,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Ctor
 
-        public DictionaryService(AutoCompleteMethods autoCompleteMethod)
+        public DictionaryService(SuggestionMethods suggestionMethod)
         {
-            this.autoCompleteMethod = autoCompleteMethod;
+            this.suggestionMethod = suggestionMethod;
 
             MigrateLegacyDictionaries();
             LoadDictionary();
@@ -102,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                manageAutoComplete = CreateAutoComplete();
+                managedSuggestions = CreateSuggestions();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
+                    managedSuggestions.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -320,7 +320,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Also remove from entries for auto complete
-                        manageAutoComplete.RemoveEntry(entry);
+                        managedSuggestions.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -352,11 +352,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Get Auto Complete Suggestions
+        #region Get Suggestions
 
-        public IEnumerable<string> GetAutoCompleteSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
-            return manageAutoComplete.GetSuggestions(root);
+            return managedSuggestions.GetSuggestions(root, nextWord);
         }
 
         #endregion
@@ -658,17 +658,25 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Configure Auto Complete
 
-        private IManageAutoComplete CreateAutoComplete()
+        private IManagedSuggestions CreateSuggestions()
         {
-            switch (autoCompleteMethod)
+            switch (suggestionMethod)
             {
-                case AutoCompleteMethods.NGram:
+                case SuggestionMethods.NGram:
+                    if (Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to false when uing the NGram SuggestionMethod");
                     return new NGramAutoComplete(
                         Settings.Default.NGramAutoCompleteGramCount, 
                         Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
-                case AutoCompleteMethods.Basic:
+                case SuggestionMethods.Presage:
+                    if (!Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to true when uing the Presage SuggestionMethod");
+                    return new PresageSuggestions();
+                case SuggestionMethods.Basic:
                 default:
+                    if (Settings.Default.SuggestNextWords)
+                        throw new Exception("Error: SuggestNextWord must be set to false when uing the Basic SuggestionMethod");
                     return new BasicAutoComplete();
             }
         }

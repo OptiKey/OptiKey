@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 {
     internal abstract class AutoCompleteTestsBase
     {
-        private IManageAutoComplete autoComplete;
+        private IManagedSuggestions autoComplete;
         protected abstract object[] SuggestionsTestCaseSource { get; }
 
         [Test]
@@ -96,7 +96,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             TestGetSuggestions(root, expectedSuggestions);
         }
 
-        protected abstract IManageAutoComplete CreateAutoComplete();
+        protected abstract IManagedSuggestions CreateAutoComplete();
 
         /// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
         private void ConfigureProvider()

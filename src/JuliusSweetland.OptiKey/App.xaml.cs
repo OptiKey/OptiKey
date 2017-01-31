@@ -134,7 +134,7 @@ namespace JuliusSweetland.OptiKey
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
-                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.AutoCompleteMethod);
+                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
                 IPublishService publishService = new PublishService();
                 ISuggestionStateService suggestionService = new SuggestionStateService();
                 ICalibrationService calibrationService = CreateCalibrationService();

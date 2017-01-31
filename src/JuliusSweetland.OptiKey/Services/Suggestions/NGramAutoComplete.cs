@@ -7,14 +7,14 @@ using System.Text;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     /// <summary>
     /// An auto suggest class using the n-gram algorithm.
     /// https://en.wikipedia.org/wiki/N-gram
     /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
     /// </summary>
-    public class NGramAutoComplete : IManageAutoComplete
+    public class NGramAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;
@@ -101,25 +101,33 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             entries.Clear();
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'.", root);
 
-            var nGrams = ToNGrams(root).ToList();
-            var nGramcount = nGrams.Count;
+            var inProgressWord = root == null ? null : root.InProgressWord(root.Length);
 
-            return nGrams
-                .Where(x => entries.ContainsKey(x))
-                .SelectMany(x => entries[x])
-                .GroupBy(x => x)
-                .Select(x => new
-                {
-                    MetaData = x.Key,
-                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
-                })
-                .OrderByDescending(x => x.Score)
-                .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
-                .Select(x => x.MetaData.DictionaryEntry.Entry);
+            if (!string.IsNullOrEmpty(inProgressWord)
+                        && char.IsLetter(inProgressWord.First())) //A word must start with a letter
+            {
+                var nGrams = ToNGrams(inProgressWord).ToList();
+                var nGramcount = nGrams.Count;
+
+                return nGrams
+                    .Where(x => entries.ContainsKey(x))
+                    .SelectMany(x => entries[x])
+                    .GroupBy(x => x)
+                    .Select(x => new
+                    {
+                        MetaData = x.Key,
+                        Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
+                    })
+                    .OrderByDescending(x => x.Score)
+                    .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
+                    .Select(x => x.MetaData.DictionaryEntry.Entry);
+            }
+
+            return Enumerable.Empty<string>();
         }
 
         public void RemoveEntry(string entry)

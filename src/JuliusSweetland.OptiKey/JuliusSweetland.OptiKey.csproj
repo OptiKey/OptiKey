@@ -103,6 +103,10 @@
       <HintPath>..\..\packages\Octokit.0.23.0\lib\net45\Octokit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="presage.net, Version=0.9.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\Presage\presage.net.dll</HintPath>
+    </Reference>
     <Reference Include="Prism">
       <HintPath>..\..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -181,7 +185,7 @@
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
-    <Compile Include="Enums\AutoCompleteMethods.cs" />
+    <Compile Include="Enums\SuggestionMethods.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
@@ -262,10 +266,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
+    <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
+    <Compile Include="Services\Suggestions\ISuggestions.cs" />
+    <Compile Include="Services\Suggestions\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
@@ -305,6 +314,7 @@
     <Compile Include="Services\MouseOutputService.cs" />
     <Compile Include="Services\MyGazePointService.cs" />
     <Compile Include="Services\MyGazeCalibrationService.cs" />
+    <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
@@ -567,11 +577,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
