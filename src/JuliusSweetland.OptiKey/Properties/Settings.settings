@@ -945,5 +945,11 @@
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
+    <Setting Name="UseAlphabeticalKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ForceCapsLock" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

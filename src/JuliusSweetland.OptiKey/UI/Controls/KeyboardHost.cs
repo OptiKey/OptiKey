@@ -49,6 +49,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -192,7 +193,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.Alpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = new EnglishViews.Alpha { DataContext = Keyboard };
+                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout 
+                            ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
+                            : new EnglishViews.Alpha { DataContext = Keyboard };
                         break;
                 }
             }
@@ -246,7 +249,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = new EnglishViews.ConversationAlpha { DataContext = Keyboard };
+                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                            ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
+                            : new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
             }

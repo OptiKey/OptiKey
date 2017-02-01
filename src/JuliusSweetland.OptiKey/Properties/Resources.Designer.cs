@@ -1487,6 +1487,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Force caps lock:.
+        /// </summary>
+        public static string FORCE_CAPS_LOCK {
+            get {
+                return ResourceManager.GetString("FORCE_CAPS_LOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to French (France) / Française (France).
         /// </summary>
         public static string FRENCH_FRANCE {
@@ -4574,6 +4583,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string URL_DOWNLOAD_PROMPT {
             get {
                 return ResourceManager.GetString("URL_DOWNLOAD_PROMPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use alphabetical keyboard layout:.
+        /// </summary>
+        public static string USE_ALPHABETICAL_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_ALPHABETICAL_KEYBOARD_LAYOUT", resourceCulture);
             }
         }
         

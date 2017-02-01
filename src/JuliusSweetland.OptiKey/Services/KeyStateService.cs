@@ -106,6 +106,9 @@ namespace JuliusSweetland.OptiKey.Services
             KeyDownStates[KeyValues.MouseMagnifierKey].Value =
                 Settings.Default.MouseMagnifierLockedDown ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
 
+            KeyDownStates[KeyValues.LeftShiftKey].Value =
+                Settings.Default.ForceCapsLock ? Enums.KeyDownStates.LockedDown : Enums.KeyDownStates.Up;
+
             SetMultiKeySelectionKeyStateFromSetting();
         }
 

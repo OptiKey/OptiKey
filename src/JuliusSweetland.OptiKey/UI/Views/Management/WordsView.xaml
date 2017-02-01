@@ -6,12 +6,12 @@
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="385.924" d:DesignWidth="768.753">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    
+
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
@@ -27,6 +27,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -46,6 +48,20 @@
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}" 
+                               VerticalAlignment="Center" Margin="5"
+                               Visibility="{Binding UseAlphabeticalKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                    <CheckBox Grid.Row="2" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding UseAlphabeticalKeyboardLayout, Mode=TwoWay}"
+                              Visibility="{Binding UseAlphabeticalKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="3" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
@@ -99,7 +115,7 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </CheckBox.Style>    
+                        </CheckBox.Style>
                     </CheckBox>
 
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_COMPLETE_WORDS_LABEL}" 

@@ -92,6 +92,13 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
+                //Key is Shift and ForceCapsLock setting is true
+                if (keyValue == KeyValues.LeftShiftKey
+                    && Settings.Default.ForceCapsLock)
+                {
+                    return false;
+                }
+
                 //Key is Calibrate, but not calibrate service available
                 if (keyValue == KeyValues.CalibrateKey
                     && calibrationService == null)
