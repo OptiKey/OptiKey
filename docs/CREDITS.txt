@@ -26,6 +26,7 @@ Patrons (thank you very much for sponsoring this project)
   Mu Qiao
   Jo Thompson
   Karson Chan
+  Loreta Boskovic
 
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
