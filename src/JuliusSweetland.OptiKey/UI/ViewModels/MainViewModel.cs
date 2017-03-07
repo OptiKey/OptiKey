@@ -448,10 +448,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         dictionaryService.AddNewEntryToDictionary(candidate);
                         inputService.RequestSuspend();
-                        nextAction();
 
                         RaiseToastNotification(Resources.ADDED, string.Format(Resources.ENTRY_ADDED_TO_DICTIONARY, candidate),
                             NotificationTypes.Normal, () => { inputService.RequestResume(); });
+
+                        nextAction();
                     },
                     () => nextAction());
             }
