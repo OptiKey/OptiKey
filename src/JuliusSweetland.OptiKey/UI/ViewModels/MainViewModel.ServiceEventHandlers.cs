@@ -195,7 +195,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             () =>
                             {
                                 inputService.RequestSuspend();
-                                Keyboard = currentKeyboard;
                                 CalibrateRequest.Raise(new NotificationWithCalibrationResult(), calibrationResult =>
                                 {
                                     if (calibrationResult.Success)
@@ -213,6 +212,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                             () => inputService.RequestResume());
                                     }
                                 });
+                                Keyboard = currentKeyboard;
                             },
                             () =>
                             {
