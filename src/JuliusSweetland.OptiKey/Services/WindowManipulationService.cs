@@ -112,17 +112,23 @@ namespace JuliusSweetland.OptiKey.Services
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
             Log.DebugFormat("Screen bounds in Dp: {0}", screenBoundsInDp);
 
-            //Force the window state/previous window state to Docked if either is Minimised
-            //This is to avoid restoring the window state to Minimised in certain scenarios
+            //Force the window state/previous window state to non-Minimised/non-Hidden
+            //This is to avoid restoring the window state to Minimised or Hidden in certain scenarios
             var windowState = getWindowState();
             var previousWindowState = getPreviousWindowState();
-            if (windowState == WindowStates.Minimised)
+            if (windowState == WindowStates.Minimised ||
+                windowState == WindowStates.Hidden)
             {
-                saveWindowState(WindowStates.Docked);
-            }
-            if (previousWindowState == WindowStates.Minimised)
-            {
-                savePreviousWindowState(WindowStates.Docked);
+                if (previousWindowState == WindowStates.Minimised ||
+                    previousWindowState == WindowStates.Hidden)
+                {
+                    saveWindowState(WindowStates.Docked);
+                    savePreviousWindowState(WindowStates.Docked);
+                }
+                else
+                {
+                    saveWindowState(previousWindowState);
+                }
             }
 
             CoerceSavedStateAndApply();
