@@ -112,6 +112,7 @@ namespace JuliusSweetland.OptiKey.Services
                 screenBoundsBottomRightInDp.Y - screenBoundsTopLeftInDp.Y);
             Log.DebugFormat("Screen bounds in Dp: {0}", screenBoundsInDp);
 
+            PreventInvalidRestoreState();
             CoerceSavedStateAndApply();
             PreventWindowActivation();
 
@@ -1269,6 +1270,36 @@ namespace JuliusSweetland.OptiKey.Services
             //Add hook to receive position change messages from Windows
             HwndSource source = HwndSource.FromHwnd(abd.hWnd);
             source.AddHook(AppBarPositionChangeCallback);
+        }
+
+        private void PreventInvalidRestoreState()
+        {
+            // We don't want OptiKey to be restored to a Minimised, Hidden,
+            //  or Maximised state, especially if it starts up in Conversation
+            //  mode
+            // Thus we modify the initial window states if necessary
+
+            var windowState = getWindowState();
+            var previousWindowState = getPreviousWindowState();
+            if (windowState != WindowStates.Docked &&
+                windowState != WindowStates.Floating)
+            {
+                if (previousWindowState == WindowStates.Docked ||
+                    previousWindowState == WindowStates.Floating)
+                {
+                    saveWindowState(previousWindowState);
+                }
+                else
+                {
+                    saveWindowState(WindowStates.Docked);
+                }
+            }
+
+            if (previousWindowState != WindowStates.Docked &&
+                previousWindowState != WindowStates.Floating)
+            {
+                savePreviousWindowState(WindowStates.Docked);
+            }
         }
 
         //If we are using mouse button clicks as a key selection source we should prevent 
