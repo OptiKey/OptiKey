@@ -458,6 +458,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Menu(() => Keyboard = currentKeyboard);
                     break;
 
+                case FunctionKeys.KoreanKorea:
+                    Log.Info("Changing keyboard language to KoreanKorea.");
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.KoreanKorea;
+                    Log.Info("Changing keyboard to Menu");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.LanguageKeyboard:
                     Log.Info("Restoring window size.");
                     mainWindowManipulationService.Restore();

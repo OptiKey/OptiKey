@@ -1976,6 +1976,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Korean (Korea) / 한국어 (한국).
+        /// </summary>
+        public static string KOREAN_KOREA {
+            get {
+                return ResourceManager.GetString("KOREAN_KOREA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korean
+        ///(Korea) /
+        ///한국어
+        ///(한국).
+        /// </summary>
+        public static string KOREAN_KOREA_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("KOREAN_KOREA_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LANGUAGE {

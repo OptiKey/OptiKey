@@ -62,6 +62,7 @@
         IncreaseOpacity,
         Insert,
         ItalianItaly,
+        KoreanKorea,
         LanguageKeyboard,
         LeftAlt,
         LeftCtrl,
