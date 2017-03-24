@@ -1274,18 +1274,17 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void PreventInvalidRestoreState()
         {
-            // We don't want OptiKey to be restored to a Minimised, Hidden,
-            //  or Maximised state, especially if it starts up in Conversation
-            //  mode
-            // Thus we modify the initial window states if necessary
-
+            //We don't want OptiKey to be restored to a Minimised, Hidden,
+            //or Maximised state, especially if it starts up in Conversation
+            //mode. Thus we modify the initial window states if necessary.
             var windowState = getWindowState();
             var previousWindowState = getPreviousWindowState();
-            if (windowState != WindowStates.Docked &&
-                windowState != WindowStates.Floating)
+
+            if (windowState != WindowStates.Docked 
+                && windowState != WindowStates.Floating)
             {
-                if (previousWindowState == WindowStates.Docked ||
-                    previousWindowState == WindowStates.Floating)
+                if (previousWindowState == WindowStates.Docked 
+                    || previousWindowState == WindowStates.Floating)
                 {
                     saveWindowState(previousWindowState);
                 }
@@ -1295,8 +1294,8 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             }
 
-            if (previousWindowState != WindowStates.Docked &&
-                previousWindowState != WindowStates.Floating)
+            if (previousWindowState != WindowStates.Docked 
+                && previousWindowState != WindowStates.Floating)
             {
                 savePreviousWindowState(WindowStates.Docked);
             }
