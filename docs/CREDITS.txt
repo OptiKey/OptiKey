@@ -27,7 +27,8 @@ Patrons (thank you very much for sponsoring this project)
   Jo Thompson
   Karson Chan
   Loreta Boskovic
-
+  Luis Pohoski
+  
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
   Charis SIL - Under the SIL Open Font License (OFL)
