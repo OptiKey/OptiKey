@@ -467,13 +467,13 @@ namespace JuliusSweetland.OptiKey.Services
                 
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
                 var reliableFirstCharCleansed = reliableFirstLetter != null 
-                    ? reliableFirstLetter.Normalise().First() 
+                    ? reliableFirstLetter.ToDictionaryHash().First() 
                     : (char?)null;
                 var reliableFirstCharUncleansed = reliableFirstLetter != null 
                     ? reliableFirstLetter.First() 
                     : (char?)null;
                 var reliableLastCharCleansed = reliableLastLetter != null 
-                    ? reliableLastLetter.Normalise().First() 
+                    ? reliableLastLetter.ToDictionaryHash().First() 
                     : (char?)null;
                 var reliableLastCharUncleansed = reliableLastLetter != null 
                     ? reliableLastLetter.First() 

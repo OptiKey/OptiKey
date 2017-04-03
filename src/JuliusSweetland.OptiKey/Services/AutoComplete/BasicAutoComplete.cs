@@ -28,7 +28,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
             if (entriesForAutoComplete != null)
             {
-                var simplifiedRoot = root.Normalise();
+                var simplifiedRoot = root.ToDictionaryHash();
 
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
@@ -53,7 +53,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         {
 
             //Also add to entries for auto complete
-            var autoCompleteHash = entry.Normalise(log: false);
+            var autoCompleteHash = entry.ToDictionaryHash(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         public void RemoveEntry(string entry)
         {
-            var autoCompleteHash = entry.Normalise(log: false);
+            var autoCompleteHash = entry.ToDictionaryHash(log: false);
             if (!string.IsNullOrWhiteSpace(autoCompleteHash)
                 && entriesForAutoComplete.ContainsKey(autoCompleteHash))
             {

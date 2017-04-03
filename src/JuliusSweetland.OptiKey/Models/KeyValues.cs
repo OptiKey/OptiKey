@@ -186,7 +186,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
-        
+
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()

@@ -56,19 +56,25 @@
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
+        <!--https://en.wikipedia.org/wiki/Korean_language_and_computers-->
+        <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅂ" ShiftDownText="ㅃ"
+                      Text="&#x1112;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅂ"/>
+                      Value="&#x1112;" /> <!--ㅎ-->
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅈ" ShiftDownText="ㅉ"
+                      Text="&#x1161;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅈ"/>
+                      Value="&#x1161;" /> <!--ㅏ-->
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
-                      ShiftUpText="ㄷ" ShiftDownText="ㄸ" 
+                      Text="&#x11AB;"
+                      UseUnicodeCompatibilityFont="True"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㄷ"/>
+                      Value="&#x11AB;" /> <!--ㄴ-->
+
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
                       ShiftUpText="ㄱ" ShiftDownText="ㄲ"
                       SharedSizeGroup="KeyWithSingleLetter"

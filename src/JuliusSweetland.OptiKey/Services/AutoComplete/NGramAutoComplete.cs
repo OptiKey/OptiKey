@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
 
-        private static readonly Func<string, string> DefaultNormaliseFunc = x => x.Normalise();
+        private static readonly Func<string, string> DefaultNormaliseFunc = x => x.ToDictionaryHash();
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 

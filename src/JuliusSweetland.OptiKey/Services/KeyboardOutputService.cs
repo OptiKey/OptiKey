@@ -251,14 +251,16 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             Log.DebugFormat("Processing single key captured text '{0}'", capturedText.ToPrintableString());
-            var capturedTextAfterComposition = ComposeDiacritics(capturedText);
+
+            var capturedTextAfterComposition = CombineDeadKeys(capturedText);
             ProcessText(capturedTextAfterComposition, true);
+            
             lastTextChangeWasSuggestion = false;
         }
 
-        private string ComposeDiacritics(string input)
+        private string CombineDeadKeys(string input)
         {
-            Log.InfoFormat("Composing diacritics on '{0}'", input);
+            Log.InfoFormat("Combing dead keys (diacritics) on '{0}'", input);
             var sb = new StringBuilder(input);
             KeyValues.CombiningKeys.ForEach(combiningKey =>
             {
@@ -269,7 +271,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
             });
 
-            var output = sb.ToString().ComposeDiacritics();
+            var output = sb.ToString().Compose();
             return output;
         }
 
@@ -313,8 +315,8 @@ namespace JuliusSweetland.OptiKey.Services
             var textBeforeCaptureText = Text;
 
             //Modify the capture and apply to Text
-            var modifiedCaptureText = ModifyText(captureText);
-            if (!string.IsNullOrEmpty(modifiedCaptureText))
+            var processedText = ApplyModifierKeys(captureText);
+            if (!string.IsNullOrEmpty(processedText))
             {
                 var spaceAdded = AutoAddSpace();
                 if (spaceAdded)
@@ -325,20 +327,44 @@ namespace JuliusSweetland.OptiKey.Services
                     if (shiftPressed)
                     {
                         //LeftShift has been auto-pressed - re-apply modifiers to captured text and suggestions
-                        modifiedCaptureText = ModifyText(captureText);
+                        processedText = ApplyModifierKeys(captureText);
                         StoreSuggestions(ModifySuggestions(suggestionService.Suggestions));
 
                         //Ensure suggestions do not contain the modifiedText
-                        if (!string.IsNullOrEmpty(modifiedCaptureText)
+                        if (!string.IsNullOrEmpty(processedText)
                             && suggestionService.Suggestions != null
-                            && suggestionService.Suggestions.Contains(modifiedCaptureText))
+                            && suggestionService.Suggestions.Contains(processedText))
                         {
-                            suggestionService.Suggestions = suggestionService.Suggestions.Where(s => s != modifiedCaptureText).ToList();
+                            suggestionService.Suggestions = suggestionService.Suggestions.Where(s => s != processedText).ToList();
                         }
                     }
                 }
 
-                Text = string.Concat(Text, modifiedCaptureText);
+                Text = string.Concat(Text, processedText);
+
+                var inProgressWord = Text.InProgressWord(Text.Length);
+                if (processedText != null && inProgressWord != null)
+                {
+                    //Attempt to combine in-progress word using normalisation
+                    var composedInProgressWord = inProgressWord.Compose();
+                    if (composedInProgressWord != inProgressWord)
+                    {
+                        Log.DebugFormat("In progress word can be combined using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWord, composedInProgressWord);
+                        
+                        //Remove decomposed string from Text and add back composed string
+                        Text = Text.Substring(0, Text.Length - inProgressWord.Length);
+                        Text = string.Concat(Text, composedInProgressWord);
+
+                        //Remove decomposed string from external applications by outputting backspaces - the composed word will be published seperately
+                        var alreadyPublishedInProgressCount = inProgressWord.Length - (processedText != null ? processedText.Length : 0); //In-progress word var includes processedText that hasn't been published yet
+                        for (var backCount = 0; backCount < alreadyPublishedInProgressCount; backCount++)
+                        {
+                            PublishKeyPress(FunctionKeys.BackOne);
+                        }
+
+                        processedText = composedInProgressWord;
+                    }
+                }
             }
 
             //Increment/decrement usage counts
@@ -363,22 +389,20 @@ namespace JuliusSweetland.OptiKey.Services
             }
 
             //Publish each character (if SimulatingKeyStrokes), releasing 'on' (but not 'locked') modifier keys as appropriate
-            for (int index = 0; index < captureText.Length; index++)
+            var textToPublish = processedText != null ? processedText : captureText;
+            foreach (var c in textToPublish)
             {
-                PublishKeyPress(modifiedCaptureText != null && modifiedCaptureText.Length == captureText.Length
-                        ? modifiedCaptureText[index]
-                        : captureText[index]);
-
+                PublishKeyPress(c);
                 ReleaseUnlockedKeys();
             }
 
-            if (!string.IsNullOrEmpty(modifiedCaptureText))
+            if (!string.IsNullOrEmpty(processedText))
             {
                 AutoPressShiftIfAppropriate();
                 suppressNextAutoSpace = false;
             }
 
-            StoreLastTextChange(modifiedCaptureText);
+            StoreLastTextChange(processedText);
 
             if (generateAutoCompleteSuggestions)
             {
@@ -645,7 +669,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (suggestions == null || !suggestions.Any()) return null;
 
             var modifiedSuggestions = suggestions
-                .Select(ModifyText)
+                .Select(ApplyModifierKeys)
                 .Where(s => !string.IsNullOrEmpty(s))
                 .Distinct()
                 .ToList();
@@ -877,7 +901,7 @@ namespace JuliusSweetland.OptiKey.Services
             return false;
         }
 
-        private string ModifyText(string textToModify)
+        private string ApplyModifierKeys(string textToModify)
         {
             //TODO Handle LeftAlt modified captures - LeftAlt+Code = unicode characters
 
