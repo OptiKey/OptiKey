@@ -230,11 +230,12 @@ namespace JuliusSweetland.OptiKey.Models
                                                 .ToList()
                 },
                 { Languages.ItalianItaly, defaultList },
-                { Languages.KoreanKorea, "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅓㅐㅑㅓㅔㅕㅗㅛㅜㅠㅡㅣ"
-                                                .ToCharArray()
-                                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
-                                                .ToList()
-                },
+                //Korean commented out - I don't believe multi-key selection will work at the moment
+                //{ Languages.KoreanKorea, "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅓㅐㅑㅓㅔㅕㅗㅛㅜㅠㅡㅣ"
+                //                                .ToCharArray()
+                //                                .Select(c => new KeyValue (c.ToString(CultureInfo.InvariantCulture) ))
+                //                                .ToList()
+                //},
                 { Languages.PortuguesePortugal, defaultList },
                 { Languages.RussianRussia, "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
                                                 .ToCharArray()
