@@ -60,21 +60,19 @@
         <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                      Text="&#x1112;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="ㅂ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1112;" /> <!--ㅎ-->
+                      Value="&#x1107;" />
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
-                      Text="&#x1161;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="ㅈ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1161;" /> <!--ㅏ-->
+                      Value="&#x110C;" />
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
-                      Text="&#x11AB;"
-                      UseUnicodeCompatibilityFont="True"
+                      Text="ㄷ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x11AB;" /> <!--ㄴ-->
-
+                      Value="&#x1103;" />
+        
+        
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
                       ShiftUpText="ㄱ" ShiftDownText="ㄲ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -140,9 +138,9 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ㅗ"/>
         <controls:Key Grid.Row="3" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅓ" ShiftDownText="ㅓ"
+                      Text="ㅓ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅓ"/>
+                      Value="&#x1165;"/>
         <controls:Key Grid.Row="3" Grid.Column="16" Grid.ColumnSpan="2"
                       ShiftUpText="ㅏ" ShiftDownText="ㅏ"
                       SharedSizeGroup="KeyWithSingleLetter"

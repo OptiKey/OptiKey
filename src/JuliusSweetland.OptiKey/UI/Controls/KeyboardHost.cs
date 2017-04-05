@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Windows;
@@ -39,6 +40,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #region Private member vars
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private CompositeDisposable currentKeyboardKeyValueSubscriptions;
 
         #endregion
 
@@ -351,6 +354,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             Log.Debug("Building PointToKeyMap.");
 
+            if (currentKeyboardKeyValueSubscriptions != null)
+            {
+                Log.Debug("Disposing of currentKeyboardKeyValueSubscriptions.");
+                currentKeyboardKeyValueSubscriptions.Dispose();
+            }
+            currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
+
             var contentAsFrameworkElement = Content as FrameworkElement;
             if (contentAsFrameworkElement != null)
             {
@@ -394,6 +404,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         pointToKeyValueMap.Add(rect, key.Value);
                     }
+
+                    var keyValueChangedSubscription = key.OnPropertyChanges(k => k.Value).Subscribe(kv =>
+                    {
+                        KeyValue mapValue;
+                        if (pointToKeyValueMap.TryGetValue(rect, out mapValue))
+                        {
+                            pointToKeyValueMap[rect] = kv;
+                        }
+                    });
+                    currentKeyboardKeyValueSubscriptions.Add(keyValueChangedSubscription);
                 }
             }
 
