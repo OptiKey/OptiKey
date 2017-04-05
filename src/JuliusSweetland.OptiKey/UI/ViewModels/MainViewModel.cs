@@ -86,6 +86,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
             AttachKeyboardSupportsMultiKeySelectionListener();
+            AttachKeyboardOutputServiceTextListener();
         }
 
         #endregion
@@ -235,6 +236,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref scratchpadIsDisabled, value); }
         }
 
+        public char? LastCharacter
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(keyboardOutputService.Text))
+                {
+                    return null;
+                }
+                
+                return keyboardOutputService.Text.Last();
+            }
+        }
+        
         public InteractionRequest<NotificationWithCalibrationResult> CalibrateRequest { get { return calibrateRequest; } }
         
         #endregion
@@ -523,6 +537,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
             this.OnPropertyChanges(mvm => mvm.KeyboardSupportsCollapsedDock).Subscribe(resizeDockIfCollapsedDockingNotSupported);
             resizeDockIfCollapsedDockingNotSupported(KeyboardSupportsCollapsedDock);
+        }
+
+        private void AttachKeyboardOutputServiceTextListener()
+        {
+            keyboardOutputService.OnPropertyChanges(kos => kos.Text).Subscribe(t => OnPropertyChanged(() => LastCharacter));
         }
 
         private void ResetSelectionProgress()

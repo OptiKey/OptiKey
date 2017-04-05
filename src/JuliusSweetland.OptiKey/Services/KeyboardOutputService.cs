@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
-
+        
         public string Text
         {
             get { return text; }

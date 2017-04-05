@@ -32,6 +32,33 @@ namespace JuliusSweetland.OptiKey.Extensions
             return CharCategories.SomethingElse;
         }
 
+        public static UnicodeCodePointRanges ToUnicodeCodePointRange(this char c)
+        {
+            var codePoint = (int)c;
+
+            if (codePoint >= 0xAC00 && codePoint <= 0xD7A3)
+            {
+                return UnicodeCodePointRanges.HangulSyllable;
+            }
+
+            if (codePoint >= 0x1100 && codePoint <= 0x1112)
+            {
+                return UnicodeCodePointRanges.HangulLeadingOrInitialJamo;
+            }
+
+            if (codePoint >= 0x1161 && codePoint <= 0x1175)
+            {
+                return UnicodeCodePointRanges.HangulVowelOrMedialJamo;
+            }
+
+            if (codePoint >= 0x11A8 && codePoint <= 0x11C2)
+            {
+                return UnicodeCodePointRanges.HangulTrailingConsonantOrFinalJamo;
+            }
+
+            return UnicodeCodePointRanges.Other;
+        }
+
         public static string ToPrintableString(this char c)
         {
             var escapedLiteralString = c.ToString(CultureInfo.InvariantCulture)

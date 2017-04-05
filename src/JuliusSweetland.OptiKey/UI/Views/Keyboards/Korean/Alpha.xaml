@@ -6,6 +6,8 @@
                        xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:enums="clr-namespace:JuliusSweetland.OptiKey.Enums"
+                       xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
@@ -59,10 +61,13 @@
         <!--https://en.wikipedia.org/wiki/Korean_language_and_computers-->
         <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
+        
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                       Text="ㅂ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1107;" />
+                      Value="&#x1107;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11B8;" />
+        
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                       Text="ㅈ"
                       SharedSizeGroup="KeyWithSingleLetter"
