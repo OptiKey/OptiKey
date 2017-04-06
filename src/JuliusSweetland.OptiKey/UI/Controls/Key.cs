@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 
@@ -22,6 +23,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         #region Private Member Vars
 
         private CompositeDisposable onUnloaded = null;
+        private IKeyStateService keyStateService;
+        private IDisposable keySelectionProgressSubscription;
 
         #endregion
 
@@ -43,7 +46,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
-            var keyStateService = mainViewModel.KeyStateService;
+            keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;
 
             //Calculate KeyDownState
@@ -54,17 +57,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             KeyDownState = keyStateService.KeyDownStates[Value].Value;
 
             //Calculate SelectionProgress and SelectionInProgress
-            var keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
-                .OnPropertyChanges(ksp => ksp.Value)
-                .Subscribe(value =>
-                {
-                    SelectionProgress = value;
-                    SelectionInProgress = value > 0d;
-                });
-            onUnloaded.Add(keySelectionProgressSubscription);
-            var progress = keyStateService.KeySelectionProgress[Value].Value;
-            SelectionProgress = progress;
-            SelectionInProgress = progress > 0d;
+            BindToKeySelectionProgress();
 
             //Calculate IsEnabled
             Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
@@ -110,7 +103,31 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 });
             onUnloaded.Add(keySelectionSubscription);
         }
-        
+
+        private void BindToKeySelectionProgress()
+        {
+            if (keySelectionProgressSubscription != null)
+            {
+                onUnloaded.Remove(keySelectionProgressSubscription);
+                keySelectionProgressSubscription.Dispose();
+            }
+
+            if (keyStateService == null) return; //Can be called by ValueChanged handler before key is loaded
+
+            keySelectionProgressSubscription = keyStateService.KeySelectionProgress[Value]
+                .OnPropertyChanges(ksp => ksp.Value)
+                .Subscribe(value =>
+                {
+                    SelectionProgress = value;
+                    SelectionInProgress = value > 0d;
+                });
+            onUnloaded.Add(keySelectionProgressSubscription);
+
+            var progress = keyStateService.KeySelectionProgress[Value].Value;
+            SelectionProgress = progress;
+            SelectionInProgress = progress > 0d;
+        }
+
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             if (onUnloaded != null
@@ -234,7 +251,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (key != null)
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                //Depending on parametrized case, change the value
                 if (value != null)
                 {
                     TextInfo textInfo = Settings.Default.UiLanguage.ToCultureInfo().TextInfo;
@@ -308,7 +324,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
+            DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue), ValueChanged));
+
+        private static void ValueChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var key = dependencyObject as Key;
+
+            if (key != null)
+            {
+                key.BindToKeySelectionProgress();
+            }
+        }
 
         public KeyValue Value
         {

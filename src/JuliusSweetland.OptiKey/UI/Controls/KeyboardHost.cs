@@ -354,12 +354,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             Log.Debug("Building PointToKeyMap.");
 
-            //if (currentKeyboardKeyValueSubscriptions != null)
-            //{
-            //    Log.Debug("Disposing of currentKeyboardKeyValueSubscriptions.");
-            //    currentKeyboardKeyValueSubscriptions.Dispose();
-            //}
-            //currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
+            if (currentKeyboardKeyValueSubscriptions != null)
+            {
+                Log.Debug("Disposing of currentKeyboardKeyValueSubscriptions.");
+                currentKeyboardKeyValueSubscriptions.Dispose();
+            }
+            currentKeyboardKeyValueSubscriptions = new CompositeDisposable();
 
             var contentAsFrameworkElement = Content as FrameworkElement;
             if (contentAsFrameworkElement != null)
@@ -405,7 +405,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         pointToKeyValueMap.Add(rect, key.Value);
                     }
 
-                    var keyValueChangedSubscription = key.OnPropertyChanges(k => k.Value).Subscribe(kv =>
+                    var keyValueChangedSubscription = key.OnPropertyChanges<KeyValue>(Key.ValueProperty).Subscribe(kv =>
                     {
                         KeyValue mapValue;
                         if (pointToKeyValueMap.TryGetValue(rect, out mapValue))
@@ -413,7 +413,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             pointToKeyValueMap[rect] = kv;
                         }
                     });
-                    //currentKeyboardKeyValueSubscriptions.Add(keyValueChangedSubscription);
+                    currentKeyboardKeyValueSubscriptions.Add(keyValueChangedSubscription);
                 }
             }
 

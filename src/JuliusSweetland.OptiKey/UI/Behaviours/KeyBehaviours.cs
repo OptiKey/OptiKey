@@ -71,11 +71,14 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             {
                 var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(key);
                 var mainViewModel = keyboardHost.DataContext as MainViewModel;
-                lastCharacterSubscription = mainViewModel.OnPropertyChanges(mvm => mvm.LastCharacter).Subscribe(c =>
+                lastCharacterSubscription = mainViewModel.KeyboardOutputService.OnPropertyChanges(kos => kos.Text).Subscribe(t =>
                 {
-                   if (c != null && c.Value.ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulSyllable)
+                    if (string.IsNullOrEmpty(t)) return;
+
+                    var lastChar = t.Last();
+                    if (lastChar.ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulSyllable)
                     {
-                        var composedChar = c.ToString();
+                        var composedChar = lastChar.ToString();
                         var decomposedChar = composedChar.Decompose();
                         if (decomposedChar != null
                             && decomposedChar != composedChar
