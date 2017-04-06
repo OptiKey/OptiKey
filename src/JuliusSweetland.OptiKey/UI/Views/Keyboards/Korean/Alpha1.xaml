@@ -58,8 +58,10 @@
                          NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
         <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
+        <!--USEFUL LINKS FOR KOREAN:-->
         <!--https://en.wikipedia.org/wiki/Korean_language_and_computers-->
         <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
+        <!--https://www.branah.com/korean-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
         
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
