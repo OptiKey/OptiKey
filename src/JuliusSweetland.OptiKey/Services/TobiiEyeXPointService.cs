@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Fields
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private GazePointDataStream gazeDataStream;
         private FixationDataStream fixationDataStream;
 
@@ -44,6 +44,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
+        public bool CanHaveSmoothingApplied {get;} = true;
         public EyeXHost EyeXHost { get; private set; }
 
         #endregion

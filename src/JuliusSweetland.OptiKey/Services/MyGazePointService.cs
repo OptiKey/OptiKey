@@ -39,6 +39,12 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
+        #region Properties
+
+        public bool CanHaveSmoothingApplied { get; } = true;
+
+        #endregion
+
         #region Events
 
         public event EventHandler<Exception> Error;
