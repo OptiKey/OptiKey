@@ -439,9 +439,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 new KeyValueAndTimeSpanGroup(Resources.CHANGE_KEYBOARD_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
-                    new KeyValueAndTimeSpan(Resources.ALPHA, KeyValues.AlphaKeyboardKey, dictionary.ContainsKey(KeyValues.AlphaKeyboardKey) ? dictionary[KeyValues.AlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ALPHA_1, KeyValues.Alpha1KeyboardKey, dictionary.ContainsKey(KeyValues.Alpha1KeyboardKey) ? dictionary[KeyValues.Alpha1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.ALPHA_2, KeyValues.Alpha2KeyboardKey, dictionary.ContainsKey(KeyValues.Alpha2KeyboardKey) ? dictionary[KeyValues.Alpha2KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.BACK, KeyValues.BackFromKeyboardKey, dictionary.ContainsKey(KeyValues.BackFromKeyboardKey) ? dictionary[KeyValues.BackFromKeyboardKey] : (TimeSpan?)null),
-                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA, KeyValues.ConversationAlphaKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlphaKeyboardKey) ? dictionary[KeyValues.ConversationAlphaKeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA_1, KeyValues.ConversationAlpha1KeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlpha1KeyboardKey) ? dictionary[KeyValues.ConversationAlpha1KeyboardKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CONVERSATION_ALPHA_2, KeyValues.ConversationAlpha2KeyboardKey, dictionary.ContainsKey(KeyValues.ConversationAlpha2KeyboardKey) ? dictionary[KeyValues.ConversationAlpha2KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CONVERSATION_NUMERIC_AND_SYMBOLS, KeyValues.ConversationNumericAndSymbolsKeyboardKey, dictionary.ContainsKey(KeyValues.ConversationNumericAndSymbolsKeyboardKey) ? dictionary[KeyValues.ConversationNumericAndSymbolsKeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CURRENCIES_1, KeyValues.Currencies1KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies1KeyboardKey) ? dictionary[KeyValues.Currencies1KeyboardKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.CURRENCIES_2, KeyValues.Currencies2KeyboardKey, dictionary.ContainsKey(KeyValues.Currencies2KeyboardKey) ? dictionary[KeyValues.Currencies2KeyboardKey] : (TimeSpan?)null),

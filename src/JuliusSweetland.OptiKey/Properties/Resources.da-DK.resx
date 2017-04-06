@@ -139,8 +139,8 @@ ORDBOG</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Juster {0} pixel|Juster {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>BOGSTAVER</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>BOGSTAVER 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1417,8 +1417,8 @@ Deutsch
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>JUSTÉR MÆNGDEN I PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>SAMTALE ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>SAMTALE ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>SAMTALE NUMERISK OG SYMBOLER</value>
@@ -1653,5 +1653,11 @@ Türkçe
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrering mislykkedes!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>BOGSTAVER 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>SAMTALE ALPHA 2</value>
   </data>
 </root>

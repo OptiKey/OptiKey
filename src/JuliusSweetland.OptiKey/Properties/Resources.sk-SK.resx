@@ -139,8 +139,8 @@ SLOVNÍKA</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Upraviť {0} pixel|Upraviť o {0} pixelov</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>PÍSMENÁ</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>PÍSMENÁ 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1360,8 +1360,8 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>UPRAVIŤ O POČET PIXELOV</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>KONVERZÁCIA PÍSMENÁ</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>KONVERZÁCIA PÍSMENÁ 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>KONVERZÁCIA ČÍSLA A SYMBOLY</value>
@@ -1554,5 +1554,11 @@ Kontrolu aktualizácií môžete vypnúť v nastaveniach (ALT + M).</value>
   </data>
   <data name="CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrácia úspešná!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>PÍSMENÁ 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>KONVERZÁCIA PÍSMENÁ 2</value>
   </data>
 </root>

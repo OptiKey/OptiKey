@@ -139,8 +139,8 @@ DICCIONARI</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Ajustar per {0} píxelAjustar per {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LLETRES</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LLETRES 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1360,8 +1360,8 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>AJUSTAR QUANTITAT EN PÍXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSA ALFA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSA ALFA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>CONVERSA NÚMEROS I SÍMBOLS</value>
@@ -1542,5 +1542,11 @@ Pots desactivar la comprovació d'actualitzacions des de la Consola d'administra
   </data>
   <data name="SUPPRESS_MODIFIERS_FOR_ALL_MOUSE_ACTIONS" xml:space="preserve">
     <value>Suprimir les tecles de modificació per totes les accions de ratolí:</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LLETRES 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSA ALFA 2</value>
   </data>
 </root>

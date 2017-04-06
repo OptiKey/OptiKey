@@ -139,8 +139,8 @@ DICCIONARIO</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Ajuste en {0} pixel|Ajuste en {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETRAS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETRAS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1376,8 +1376,8 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>AJUSTA CANTIDAD EN PIXELES</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSACIÓN ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSACIÓN ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>NÚMEROS Y SÍMBOLOS CONVERSACIONALES</value>
@@ -1564,5 +1564,11 @@ Para dejar de revisar si existen nuevas versiones del software, diríjase a la C
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Falló la calibración!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETRAS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSACIÓN ALPHA 2</value>
   </data>
 </root>

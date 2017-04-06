@@ -39,9 +39,9 @@
         </Grid.ColumnDefinitions>
         <controls:Key Grid.Row="0" Grid.Column="0"
                       SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA}"
+                      Text="{x:Static resx:Resources.ALPHA_1}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.AlphaKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.Alpha1KeyboardKey}"/>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
@@ -61,7 +61,7 @@
                       SymbolGeometry="{StaticResource ConversationIcon}"
                       Text="{x:Static resx:Resources.CONVERSATION}"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}"/>
         <controls:Key Grid.Row="1" Grid.Column="1"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       Text="{x:Static resx:Resources.MOUSE}"

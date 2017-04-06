@@ -347,10 +347,12 @@
     <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Alpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IConversationKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\Keyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Language.cs" />
@@ -368,7 +370,7 @@
     <Compile Include="UI\ViewModels\Keyboards\YesNoQuestion.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols2.cs" />
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
-    <Compile Include="UI\ViewModels\Keyboards\Alpha.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\Alpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
@@ -379,11 +381,11 @@
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
-    <Compile Include="UI\Views\Keyboards\Catalan\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Catalan\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Catalan\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
@@ -415,86 +417,92 @@
     <Compile Include="UI\Controls\Output.xaml.cs">
       <DependentUpon>Output.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Danish\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Danish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\AlphabeticalAlpha.xaml.cs">
-      <DependentUpon>AlphabeticalAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\AlphabeticalAlpha1.xaml.cs">
+      <DependentUpon>AlphabeticalAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml.cs">
-      <DependentUpon>AlphabeticalConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha1.xaml.cs">
+      <DependentUpon>AlphabeticalConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Korean\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Korean\Alpha2.xaml.cs">
+      <DependentUpon>Alpha2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Korean\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Korean\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Portuguese\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Korean\ConversationAlpha2.xaml.cs">
+      <DependentUpon>ConversationAlpha2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Korean\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Slovak\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Portuguese\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Portuguese\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Slovenian\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Slovak\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Slovak\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Croatian\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Slovenian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Slovenian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml.cs">
-      <DependentUpon>BelgiumAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Croatian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml.cs">
-      <DependentUpon>NetherlandsAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Croatian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml.cs">
-      <DependentUpon>BelgiumConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumAlpha1.xaml.cs">
+      <DependentUpon>BelgiumAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml.cs">
-      <DependentUpon>NetherlandsConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha1.xaml.cs">
+      <DependentUpon>NetherlandsAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Italian\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha1.xaml.cs">
+      <DependentUpon>BelgiumConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Italian\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha1.xaml.cs">
+      <DependentUpon>NetherlandsConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Turkish\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Italian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Turkish\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Italian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Greek\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Turkish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Turkish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Russian\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Greek\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Russian\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\Russian\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Common\NumericAndSymbols1.xaml.cs">
       <DependentUpon>NumericAndSymbols1.xaml</DependentUpon>
@@ -519,26 +527,26 @@
     <Compile Include="UI\Views\Keyboards\Common\ConversationNumericAndSymbols.xaml.cs">
       <DependentUpon>ConversationNumericAndSymbols.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\English\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\French\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\French\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\French\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\French\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\German\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\German\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\German\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\German\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Spanish\Alpha.xaml.cs">
-      <DependentUpon>Alpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Spanish\Alpha1.xaml.cs">
+      <DependentUpon>Alpha1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\Spanish\ConversationAlpha.xaml.cs">
-      <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    <Compile Include="UI\Views\Keyboards\Spanish\ConversationAlpha1.xaml.cs">
+      <DependentUpon>ConversationAlpha1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -661,6 +669,7 @@
     <Content Include="Dictionaries\KoreanKorea.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="nbug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -934,11 +943,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Catalan\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Catalan\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Catalan\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Catalan\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -982,111 +991,119 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Danish\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Danish\Alpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\AlphabeticalAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\AlphabeticalAlpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Korean\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Korean\Alpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Korean\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Korean\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Portuguese\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Korean\ConversationAlpha2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Portuguese\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Korean\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Slovak\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Portuguese\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Slovak\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Portuguese\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Slovenian\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Slovak\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Slovenian\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Slovak\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Croatian\Alpha.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Croatian\ConversationAlpha.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Slovenian\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Slovenian\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Croatian\Alpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Croatian\ConversationAlpha1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Dutch\BelgiumAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Italian\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Dutch\BelgiumConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Italian\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Dutch\NetherlandsConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Turkish\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Italian\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Turkish\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Italian\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Greek\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Turkish\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Greek\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Turkish\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Russian\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Russian\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Greek\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Russian\Alpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Russian\ConversationAlpha1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\Alpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1118,31 +1135,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\English\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\English\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\French\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\French\Alpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\French\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\French\ConversationAlpha1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Keyboards\German\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\German\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\German\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\German\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Spanish\Alpha.xaml">
+    <Page Include="UI\Views\Keyboards\Spanish\Alpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Views\Keyboards\Spanish\ConversationAlpha.xaml">
+    <Page Include="UI\Views\Keyboards\Spanish\ConversationAlpha1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

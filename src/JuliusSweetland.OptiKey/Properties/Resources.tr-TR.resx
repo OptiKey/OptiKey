@@ -139,8 +139,8 @@ EKLE</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>{0} piksel olarak ayarla | {0} piksel olarak ayarla</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>HARFLER</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>HARFLER 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1373,8 +1373,8 @@ OK</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>PİKSEL BAZINDA DÜZELTME MİKTARI</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>HARFLER</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>HARFLER 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>RAKAMLAR VE SEMBOLLER</value>
@@ -1563,5 +1563,11 @@ KÜÇÜLT</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Kalibrasyon başarısız!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>HARFLER 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>HARFLER 2</value>
   </data>
 </root>

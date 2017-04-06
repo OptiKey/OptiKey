@@ -182,9 +182,9 @@
                   Value="{x:Static models:KeyValues.LeftShiftKey}" />
     <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                   SymbolGeometry="{StaticResource AlphaIcon}"
-                  Text="{x:Static resx:Resources.ALPHA}"
+                  Text="{x:Static resx:Resources.ALPHA_1}"
                   SharedSizeGroup="KeyWithSymbol"
-                  Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}" />
+                  Value="{x:Static models:KeyValues.ConversationAlpha1KeyboardKey}" />
     <controls:Key Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Case="None"
                   Text=","
                   SharedSizeGroup="KeyWithSingleLetter"

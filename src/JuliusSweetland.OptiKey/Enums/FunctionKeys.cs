@@ -3,7 +3,8 @@
     public enum FunctionKeys
     {
         AddToDictionary,
-        AlphaKeyboard,
+        Alpha1Keyboard,
+        Alpha2Keyboard,
         Diacritic1Keyboard,
         Diacritic2Keyboard,
         Diacritic3Keyboard,
@@ -19,7 +20,8 @@
         CatalanSpain,
         ClearScratchpad,
         CollapseDock,
-        ConversationAlphaKeyboard,
+        ConversationAlpha1Keyboard,
+        ConversationAlpha2Keyboard,
         ConversationNumericAndSymbolsKeyboard,
         CroatianCroatia,
         Currencies1Keyboard,

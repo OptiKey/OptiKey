@@ -253,7 +253,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha(null);
+                Keyboard = new ConversationAlpha1(null);
                 windowManipulationService.Maximise();
             }
             else
@@ -261,15 +261,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 switch (Settings.Default.StartupKeyboard)
                 {
                     case Enums.Keyboards.Alpha:
-                        Keyboard = new Alpha();
+                        Keyboard = new Alpha1();
                         windowManipulationService.Restore();
                         mainWindowManipulationService.ResizeDockToFull();
                         break;
 
                     case Enums.Keyboards.ConversationAlpha:
-                        Keyboard = new ConversationAlpha(() =>
+                        Keyboard = new ConversationAlpha1(() =>
                         {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            Keyboard = new Menu(() => Keyboard = new Alpha1());
                             mainWindowManipulationService.Restore();
                             mainWindowManipulationService.ResizeDockToFull();
                         });
@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.ConversationNumericAndSymbols:
                         Keyboard = new ConversationNumericAndSymbols(() =>
                         {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            Keyboard = new Menu(() => Keyboard = new Alpha1());
                             mainWindowManipulationService.Restore();
                             mainWindowManipulationService.ResizeDockToFull();
                         });
@@ -317,7 +317,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.Menu:
-                        Keyboard = new Menu(() => Keyboard = new Alpha());
+                        Keyboard = new Menu(() => Keyboard = new Alpha1());
                         windowManipulationService.Restore();
                         mainWindowManipulationService.ResizeDockToFull();
                         break;
@@ -325,7 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     case Enums.Keyboards.Minimised:
                         Keyboard = new Minimised(() =>
                         {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            Keyboard = new Menu(() => Keyboard = new Alpha1());
                             windowManipulationService.Restore();
                             mainWindowManipulationService.ResizeDockToFull();
                         });
@@ -333,7 +333,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.Mouse:
-                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
+                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
                         windowManipulationService.Restore();
                         if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
                         {
@@ -370,7 +370,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     case Enums.Keyboards.SizeAndPosition:
-                        Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
+                        Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha1()));
                         windowManipulationService.Restore();
                         mainWindowManipulationService.ResizeDockToFull();
                         break;

@@ -139,8 +139,8 @@ DICTIONNAIRE</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Ajuster par {0} pixel|Ajuster par {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTRES</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTRES 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1369,8 +1369,8 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>AJOUTER UN NOMBRE EN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSATION ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSATION ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>CONVERSATION NUMERIQUE &amp; SYMBOLES</value>
@@ -1557,5 +1557,11 @@ Vous pouvez éteindre la vérification de nouvelle version dans la fenêtre de p
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Le calibrage a échoué!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTRES 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSATION ALPHA 2</value>
   </data>
 </root>

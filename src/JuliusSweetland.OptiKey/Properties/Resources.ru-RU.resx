@@ -139,8 +139,8 @@
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Шаг: {0} пиксель|Шаг: {0} пикселeй</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>БУКВЫ</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>БУКВЫ 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1363,8 +1363,8 @@ LK</value>
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ПОДВИНУТЬ В ПИКСЕЛЯХ(МЕНЮ МЫШИ)</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>РЕЧЬ(БУКВЫ)</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>РЕЧЬ(БУКВЫ) 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>РЕЧЬ(ЦИФРЫ И СИМВОЛЫ)</value>
@@ -1551,5 +1551,11 @@ LK</value>
   </data>
   <data name="CALIBRATION_FAIL_NO_MESSAGE" xml:space="preserve">
     <value>Калибровка не удалась!</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>БУКВЫ 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>РЕЧЬ(БУКВЫ) 2</value>
   </data>
 </root>

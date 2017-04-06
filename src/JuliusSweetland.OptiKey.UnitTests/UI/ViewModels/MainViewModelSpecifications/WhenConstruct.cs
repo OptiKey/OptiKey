@@ -68,7 +68,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void ThenKeyboardShouldBeAlpha()
         {
             Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Alpha), MainViewModel.Keyboard.GetType());
+            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.Alpha1), MainViewModel.Keyboard.GetType());
         }
 
         [Test]
@@ -98,9 +98,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void ThenKeyboardShouldBeConversationAlphaWithA_BackAction()
         {
             Assert.IsNotNull(MainViewModel.Keyboard);
-            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationAlpha), MainViewModel.Keyboard.GetType());
+            Assert.AreEqual(typeof(OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1), MainViewModel.Keyboard.GetType());
 
-            var conversationAlpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.ConversationAlpha;
+            var conversationAlpha = MainViewModel.Keyboard as OptiKey.UI.ViewModels.Keyboards.ConversationAlpha1;
             Assert.AreEqual(typeof(Action), conversationAlpha.BackAction.GetType());
         }
 

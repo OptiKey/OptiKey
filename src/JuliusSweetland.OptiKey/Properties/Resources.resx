@@ -139,8 +139,8 @@ DICTIONARY</value>
   <data name="ADJUST_BY" xml:space="preserve">
     <value>Adjust by {0} pixel|Adjust by {0} pixels</value>
   </data>
-  <data name="ALPHA" xml:space="preserve">
-    <value>LETTERS</value>
+  <data name="ALPHA_1" xml:space="preserve">
+    <value>LETTERS 1</value>
   </data>
   <data name="ALT" xml:space="preserve">
     <value>ALT</value>
@@ -1436,8 +1436,8 @@ Español
   <data name="ADJUST_AMOUNT_IN_PIXELS" xml:space="preserve">
     <value>ADJUST AMOUNT IN PIXELS</value>
   </data>
-  <data name="CONVERSATION_ALPHA" xml:space="preserve">
-    <value>CONVERSATION ALPHA</value>
+  <data name="CONVERSATION_ALPHA_1" xml:space="preserve">
+    <value>CONVERSATION ALPHA 1</value>
   </data>
   <data name="CONVERSATION_NUMERIC_AND_SYMBOLS" xml:space="preserve">
     <value>CONVERSATION NUMERIC &amp; SYMBOLS</value>
@@ -1765,5 +1765,11 @@ Slovenčina
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use alphabetical keyboard layout:</value>
+  </data>
+  <data name="ALPHA_2" xml:space="preserve">
+    <value>LETTERS 2</value>
+  </data>
+  <data name="CONVERSATION_ALPHA_2" xml:space="preserve">
+    <value>CONVERSATION ALPHA 2</value>
   </data>
 </root>
