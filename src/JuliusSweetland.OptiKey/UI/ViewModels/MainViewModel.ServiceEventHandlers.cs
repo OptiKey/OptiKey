@@ -279,7 +279,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
                                 Keyboard = currentKeyboard;
                             };
-                    Keyboard = new ConversationAlpha1(conversationAlpha2BackAction);
+                    Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");

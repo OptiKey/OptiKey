@@ -7,13 +7,14 @@
                        xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
                        xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties"
                        xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+                       xmlns:behaviours="clr-namespace:JuliusSweetland.OptiKey.UI.Behaviours"
                        mc:Ignorable="d" 
                        d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
-    
+
     <Grid Background="{DynamicResource KeyDefaultBackgroundBrush}"
           Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
@@ -50,117 +51,132 @@
         <controls:Output Grid.Row="0" Grid.Column="0"
                          Grid.RowSpan="2" Grid.ColumnSpan="20" 
                          ScratchpadWidthInKeys="6"
-                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" /> <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
+                         NumberOfSuggestionsDisplayed="{Binding Path=DataContext.SuggestionService.SuggestionsPerPage, RelativeSource={RelativeSource AncestorType=controls:KeyboardHost}, Mode=TwoWay}" />
+        <!--N.B. This MUST be TwoWay to detect changes to the DataContext used in the binding path-->
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅂ" ShiftDownText="ㅃ"
+                      Text="ㅂ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅂ"/>
+                      Value="&#x1107;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B8;" />
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅈ" ShiftDownText="ㅉ"
+                      Text="ㅈ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅈ"/>
+                      Value="&#x110C;" 
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BD;" />
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
-                      ShiftUpText="ㄷ" ShiftDownText="ㄸ" 
+                      Text="ㄷ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㄷ"/>
+                      Value="&#x1103;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AE;" />
         <controls:Key Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2"
-                      ShiftUpText="ㄱ" ShiftDownText="ㄲ"
+                      Text="ㄱ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㄱ"/>
+                      Value="&#x1100;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11A8;" />
         <controls:Key Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅅ" ShiftDownText="ㅆ"
+                      Text="ㅅ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅅ"/>
+                      Value="&#x1109;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BA;" />
         <controls:Key Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅛ" ShiftDownText="ㅛ"
+                      Text="ㅛ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅛ"/>
+                      Value="&#x116D;" />
         <controls:Key Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅕ" ShiftDownText="ㅕ"
+                      Text="ㅕ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅕ"/>
+                      Value="&#x1167;" />
         <controls:Key Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅑ" ShiftDownText="ㅑ"
+                      Text="ㅑ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅑ"/>
+                      Value="&#x1163;" />
         <controls:Key Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅐ" ShiftDownText="ㅒ"
+                      Text="ㅐ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅐ"/>
+                      Value="&#x1162;" />
         <controls:Key Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅔ" ShiftDownText="ㅖ"
+                      Text="ㅔ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅔ"/>
+                      Value="&#x1166;" />
 
         <controls:Key Grid.Row="3" Grid.Column="0" />
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅁ" ShiftDownText="ㅁ"
+                      Text="ㅁ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅁ"/>
+                      Value="&#x1106;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B7;" />
         <controls:Key Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="ㄴ" ShiftDownText="ㄴ"
+                      Text="ㄴ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㄴ"/>
+                      Value="&#x1102;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AB;" />
         <controls:Key Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅇ" ShiftDownText="ㅇ"
+                      Text="ㅇ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅇ"/>
+                      Value="&#x110B;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BC;" />
         <controls:Key Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2"
-                      ShiftUpText="ㄹ" ShiftDownText="ㄹ"
+                      Text="ㄹ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㄹ"/>
+                      Value="&#x1105;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AF;" />
         <controls:Key Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅎ" ShiftDownText="ㅎ"
+                      Text="ㅎ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅎ"/>
+                      Value="&#x1112;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C2;" />
         <controls:Key Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅗ" ShiftDownText="ㅗ"
+                      Text="ㅗ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅗ"/>
+                      Value="&#x1169;" />
         <controls:Key Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅓ" ShiftDownText="ㅓ"
+                      Text="ㅓ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅓ"/>
+                      Value="&#x1165;" />
         <controls:Key Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅏ" ShiftDownText="ㅏ"
+                      Text="ㅏ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅏ"/>
+                      Value="&#x1161;" />
         <controls:Key Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅣ" ShiftDownText="ㅣ"
+                      Text="ㅣ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅣ"/>
+                      Value="&#x1175;" />
         <controls:Key Grid.Row="3" Grid.Column="19" />
 
         <controls:Key Grid.Row="4" Grid.Column="0" />
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅋ" ShiftDownText="ㅋ"
+                      Text="ㅋ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅋ"/>
+                      Value="&#x110F;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BF;" />
         <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅌ" ShiftDownText="ㅌ"
+                      Text="ㅌ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅌ"/>
+                      Value="&#x1110;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C0;" />
         <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅊ" ShiftDownText="ㅊ"
+                      Text="ㅊ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅊ"/>
+                      Value="&#x110E;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BE;" />
         <controls:Key Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅍ" ShiftDownText="ㅍ"
+                      Text="ㅍ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅍ"/>
+                      Value="&#x1111;"
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C1;" />
         <controls:Key Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅠ" ShiftDownText="ㅠ"
+                      Text="ㅠ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅠ"/>
+                      Value="&#x1172;" />
         <controls:Key Grid.Row="4" Grid.Column="11" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅜ" ShiftDownText="ㅜ"
+                      Text="ㅜ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅜ"/>
+                      Value="&#x116E;" />
         <controls:Key Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="2"
-                      ShiftUpText="ㅡ" ShiftDownText="ㅡ"
+                      Text="ㅡ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ㅡ"/>
+                      Value="&#x1173;" />
         <controls:Key Grid.Row="4" Grid.Column="15" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource BackOneIcon}"
                       Text="{x:Static resx:Resources.BACK_ONE_SPLIT_WITH_NEWLINE}"
@@ -172,17 +188,17 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="19" />
-        
+
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource CalibrateIcon}"
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource ShiftIcon}"
-                      Text="{x:Static resx:Resources.SHIFT}"
+                      SymbolGeometry="{StaticResource 1of2Icon}"
+                      Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftShiftKey}"/>
+                      Value="{x:Static models:KeyValues.ConversationAlpha2KeyboardKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"

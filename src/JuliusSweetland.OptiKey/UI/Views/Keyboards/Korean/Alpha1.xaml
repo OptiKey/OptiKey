@@ -68,27 +68,27 @@
                       Text="ㅂ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1107;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11B8;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B8;" />
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                       Text="ㅈ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x110C;" 
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BD;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BD;" />
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
                       Text="ㄷ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1103;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11AE;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AE;" />
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
                       Text="ㄱ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1100;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11A8;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11A8;" />
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
                       Text="ㅅ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1109;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BA;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BA;" />
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
                       Text="ㅛ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -125,27 +125,27 @@
                       Text="ㅁ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1106;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11B7;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B7;" />
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ㄴ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1102;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11AB;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AB;" />
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="ㅇ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x110B;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BC;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BC;" />
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="ㄹ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1105;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11AF;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AF;" />
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="ㅎ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1112;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11C2;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C2;" />
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="ㅗ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -182,22 +182,22 @@
                       Text="ㅋ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x110F;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BF;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BF;" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ㅌ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1110;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11C0;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C0;" />
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="ㅊ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x110E;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BE;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BE;" />
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="ㅍ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1111;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11C1;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C1;" />
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="ㅠ"
                       SharedSizeGroup="KeyWithSingleLetter"

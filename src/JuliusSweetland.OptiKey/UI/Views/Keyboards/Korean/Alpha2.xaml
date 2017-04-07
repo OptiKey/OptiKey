@@ -78,12 +78,12 @@
                       Text="ㄲ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x1101;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11A9;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11A9;" />
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
                       Text="ㅆ"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&#x110A;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo="&#x11BB;" />
+                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BB;" />
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="2" />
         <controls:Key Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="2" />

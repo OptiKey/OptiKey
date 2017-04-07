@@ -54,13 +54,13 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
 
         #endregion
 
-        #region IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo
+        #region IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo
 
-        public static readonly DependencyProperty IfPreviousCharIsHangulMedialJamoThenChangeKeyValueToProperty =
-            DependencyProperty.RegisterAttached("IfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo", typeof(KeyValue), typeof(KeyBehaviours),
-            new PropertyMetadata(default(KeyValue), IfPreviousCharIsHangulMedialJamoThenChangeKeyValueToChanged));
+        public static readonly DependencyProperty IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty =
+            DependencyProperty.RegisterAttached("IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo", typeof(KeyValue), typeof(KeyBehaviours),
+            new PropertyMetadata(default(KeyValue), IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToChanged));
 
-        private static void IfPreviousCharIsHangulMedialJamoThenChangeKeyValueToChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private static void IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var trailingConsonantOrFinalJamo = (KeyValue)dependencyPropertyChangedEventArgs.NewValue;
             var key = dependencyObject as Key;
@@ -101,14 +101,14 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             };
         }
 
-        public static void SetIfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo(DependencyObject element, KeyValue value)
+        public static void SetIfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo(DependencyObject element, KeyValue value)
         {
-            element.SetValue(IfPreviousCharIsHangulMedialJamoThenChangeKeyValueToProperty, value);
+            element.SetValue(IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty, value);
         }
 
-        public static KeyValue GetIfPreviousCharIsHangulMedialJamoThenChangeKeyValueTo(DependencyObject element)
+        public static KeyValue GetIfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo(DependencyObject element)
         {
-            return (KeyValue)element.GetValue(IfPreviousCharIsHangulMedialJamoThenChangeKeyValueToProperty);
+            return (KeyValue)element.GetValue(IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty);
         }
 
         #endregion
