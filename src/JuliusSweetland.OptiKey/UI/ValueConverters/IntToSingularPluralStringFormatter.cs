@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.UI.ValueConverters
 
             var splitParams = stringParam.Split('|');
 
-            return valueAsInt == 1
+            return valueAsInt == 1 || splitParams.Length == 1
                 ? string.Format(splitParams[0], value)
                 : string.Format(splitParams[1], value);
         }
