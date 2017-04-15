@@ -76,9 +76,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker4C.ToDescription(), Enums.PointsSources.TobiiEyeTracker4C),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeX.ToDescription(), Enums.PointsSources.TobiiEyeX),
-                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiRex.ToDescription(), Enums.PointsSources.TobiiRex),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGo.ToDescription(), Enums.PointsSources.TobiiPcEyeGo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeMini.ToDescription(), Enums.PointsSources.TobiiPcEyeMini),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiRex.ToDescription(), Enums.PointsSources.TobiiRex),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_30.ToDescription(), Enums.PointsSources.TobiiX2_30),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiX2_60.ToDescription(), Enums.PointsSources.TobiiX2_60),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.VisualInteractionMyGaze.ToDescription(), Enums.PointsSources.VisualInteractionMyGaze)
@@ -160,6 +160,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get {  return tobiiEyeXProcessingLevel; }
             set { SetProperty(ref tobiiEyeXProcessingLevel, value); }
+        }
+
+        private bool kalmanFilterEnabled;
+        public bool KalmanFilterEnabled
+        {
+            get { return kalmanFilterEnabled; }
+            set { SetProperty(ref kalmanFilterEnabled, value); }
         }
 
         private double pointsMousePositionSampleIntervalInMs;
@@ -376,6 +383,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
+            KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
             KeySelectionTriggerSource = Settings.Default.KeySelectionTriggerSource;
@@ -406,6 +414,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
+            Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;

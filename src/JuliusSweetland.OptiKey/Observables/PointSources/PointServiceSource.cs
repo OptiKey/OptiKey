@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.DataFilters;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
 {
@@ -32,8 +33,10 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         {
             this.pointTtl = pointTtl;
             this.pointGeneratingService = pointGeneratingService;
-            this.kalmanFilterX = new KalmanFilter(0, 0, 5, 1000);
-            this.kalmanFilterY = new KalmanFilter(0, 0, 5, 1000);
+            this.kalmanFilterX = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue, 
+                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
+            this.kalmanFilterY = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue, 
+                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
         }
 
         #endregion
@@ -54,15 +57,9 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             eh => pointGeneratingService.Point += eh,
                             eh => pointGeneratingService.Point -= eh)
                         .Where(_ => State == RunningStates.Running)
-                        .Select(ep => 
-                            !pointGeneratingService.CanHaveSmoothingApplied 
-                            ? ep.EventArgs
-                            : new Timestamped<Point>(
-                                value: new Point(
-                                    x: (int)kalmanFilterX.Update(ep.EventArgs.Value.X),
-                                    y: (int)kalmanFilterY.Update(ep.EventArgs.Value.Y)
-                                ),
-                                timestamp: ep.EventArgs.Timestamp)
+                        .Select(ep => Settings.Default.KalmanFilterEnabled && pointGeneratingService.KalmanFilterSupported
+                            ? new Timestamped<Point>(new Point((int)kalmanFilterX.Update(ep.EventArgs.Value.X), (int)kalmanFilterY.Update(ep.EventArgs.Value.Y)), ep.EventArgs.Timestamp)
+                            : ep.EventArgs
                         )
                         .PublishLivePointsOnly(pointTtl)
                         .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp))

@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TobiiEyeXPointService()
         {
+            KalmanFilterSupported = true;
             EyeXHost = new EyeXHost();
 
             //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
@@ -44,7 +45,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
-        public bool CanHaveSmoothingApplied {get;} = true;
+        public bool KalmanFilterSupported {get; private set; }
         public EyeXHost EyeXHost { get; private set; }
 
         #endregion
