@@ -26,6 +26,8 @@ namespace JuliusSweetland.OptiKey.Services
 
         public MyGazePointService()
         {
+            KalmanFilterSupported = true;
+
             sampleCallbackHandler = SampleCallback;
             eventCallbackHandler = EventCallback;
 
@@ -36,6 +38,12 @@ namespace JuliusSweetland.OptiKey.Services
                 MyGazeNative.PInvoke.Disconnect();
             };
         }
+
+        #endregion
+
+        #region Properties
+
+        public bool KalmanFilterSupported { get; private set; }
 
         #endregion
 

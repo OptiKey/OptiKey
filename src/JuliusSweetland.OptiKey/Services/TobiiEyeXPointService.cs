@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Services
         #region Fields
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private GazePointDataStream gazeDataStream;
         private FixationDataStream fixationDataStream;
 
@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public TobiiEyeXPointService()
         {
+            KalmanFilterSupported = true;
             EyeXHost = new EyeXHost();
 
             //Disconnect (deactivate) from the TET server on shutdown - otherwise the process can hang
@@ -44,6 +45,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Properties
 
+        public bool KalmanFilterSupported {get; private set; }
         public EyeXHost EyeXHost { get; private set; }
 
         #endregion

@@ -1868,6 +1868,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kalman Filter:.
+        /// </summary>
+        public static string KALMAN_FILTER_ENABLED {
+            get {
+                return ResourceManager.GetString("KALMAN_FILTER_ENABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key text transformation:.
         /// </summary>
         public static string KEY_CASE_LABEL {

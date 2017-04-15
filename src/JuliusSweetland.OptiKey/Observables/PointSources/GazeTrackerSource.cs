@@ -8,9 +8,11 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using JuliusSweetland.OptiKey.DataFilters;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Observables.PointSources
@@ -24,6 +26,8 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         private readonly TimeSpan pointTtl;
         private readonly int gazeTrackerUdpPort;
         private readonly Regex gazeTrackerRegex;
+        private readonly KalmanFilter kalmanFilterX;
+        private readonly KalmanFilter kalmanFilterY;
 
         private IObservable<Timestamped<PointAndKeyValue?>> sequence;
 
@@ -39,6 +43,11 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
             this.pointTtl = pointTtl;
             this.gazeTrackerUdpPort = gazeTrackerUdpPort;
             this.gazeTrackerRegex = gazeTrackerRegex;
+
+            this.kalmanFilterX = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue,
+                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
+            this.kalmanFilterY = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue,
+                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
         }
 
         #endregion
@@ -92,7 +101,11 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                                 
                                 return new Timestamped<Point>(new Point(0,0), new DateTimeOffset()); //Return useless point which will be filtered out
                             })
-                            .Where(tp => (tp.Value.X != 0 || tp.Value.Y != 0)) //(0,0) coordinates indicate that GT hasn't been calibrated, or regex failed to parse datagram - suppress
+                            .Where(tp => tp.Value.X != 0 || tp.Value.Y != 0) //(0,0) coordinates indicate that GT hasn't been calibrated, or regex failed to parse datagram - suppress
+                            .Select(tp => Settings.Default.KalmanFilterEnabled
+                                ? new Timestamped<Point>(new Point((int)kalmanFilterX.Update(tp.Value.X), (int)kalmanFilterY.Update(tp.Value.Y)), tp.Timestamp)
+                                : tp
+                        )
                             .DistinctUntilChanged(tp => tp.Value) //When GT loses the user's eyes it repeats the last value - suppress
                             .PublishLivePointsOnly(pointTtl)
                             .Select(tp => new Timestamped<PointAndKeyValue?>(tp.Value.ToPointAndKeyValue(PointToKeyValueMap), tp.Timestamp)))
