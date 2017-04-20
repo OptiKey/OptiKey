@@ -14,18 +14,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     public partial class MainViewModel
     {
-        public void AttachServiceEventHandlers()
+        public void AttachErrorNotifyingServiceHandlers()
         {
-            Log.Info("AttachServiceEventHandlers called.");
+            Log.Info("AttachErrorNotifyingServiceHandlers called.");
 
             if (errorNotifyingServices != null)
             {
                 errorNotifyingServices.ForEach(s => s.Error += HandleServiceError);
             }
 
-            inputService.PointsPerSecond += (o, value) => { PointsPerSecond = value; };
+            Log.Info("AttachErrorNotifyingServiceHandlers complete.");
+        }
 
-            inputService.CurrentPosition += (o, tuple) =>
+        private void SetupInputServiceEventHandlers()
+        {
+            Log.Info("SetupInputServiceEventHandlers called.");
+
+            inputServicePointsPerSecondHandler = (o, value) => { PointsPerSecond = value; };
+
+            inputServiceCurrentPositionHandler = (o, tuple) =>
             {
                 CurrentPositionPoint = tuple.Item1;
                 CurrentPositionKey = tuple.Item2;
@@ -37,7 +44,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.SelectionProgress += (o, progress) =>
+            inputServiceSelectionProgressHandler = (o, progress) =>
             {
                 if (progress.Item1 == null
                     && progress.Item2 == 0)
@@ -59,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.Selection += (o, value) =>
+            inputServiceSelectionHandler = (o, value) =>
             {
                 Log.Info("Selection event received from InputService.");
 
@@ -94,13 +101,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            inputService.SelectionResult += (o, tuple) =>
+            inputServiceSelectionResultHandler = (o, tuple) =>
             {
                 Log.Info("SelectionResult event received from InputService.");
 
                 var points = tuple.Item1;
                 var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue (tuple.Item2, tuple.Item3 )
+                    ? new KeyValue(tuple.Item2, tuple.Item3)
                     : (KeyValue?)null;
                 var multiKeySelection = tuple.Item4;
 
@@ -117,10 +124,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
+            Log.Info("SetupInputServiceEventHandlers complete.");
+        }
+
+        public void AttachInputServiceEventHandlers()
+        {
+            Log.Info("AttachInputServiceEventHandlers called.");
+            
+            inputService.PointsPerSecond += inputServicePointsPerSecondHandler;
+            inputService.CurrentPosition += inputServiceCurrentPositionHandler;
+            inputService.SelectionProgress += inputServiceSelectionProgressHandler;
+            inputService.Selection += inputServiceSelectionHandler;
+            inputService.SelectionResult += inputServiceSelectionResultHandler;
+
             inputService.PointToKeyValueMap = pointToKeyValueMap;
             inputService.SelectionMode = SelectionMode;
+
+            Log.Info("AttachInputServiceEventHandlers complete.");
         }
-        
+
+        public void DetachInputServiceEventHandlers()
+        {
+            Log.Info("DetachInputServiceEventHandlers called.");
+            
+            inputService.PointsPerSecond -= inputServicePointsPerSecondHandler;
+            inputService.CurrentPosition -= inputServiceCurrentPositionHandler;
+            inputService.SelectionProgress -= inputServiceSelectionProgressHandler;
+            inputService.Selection -= inputServiceSelectionHandler;
+            inputService.SelectionResult -= inputServiceSelectionResultHandler;
+
+            Log.Info("DetachInputServiceEventHandlers complete.");
+        }
+
         private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
         {
             //Single key

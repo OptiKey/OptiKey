@@ -22,11 +22,11 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly IDictionaryService dictionaryService;
         private readonly IAudioService audioService;
         private readonly ICapturingStateManager capturingStateManager;
-        private readonly IPointSource pointSource;
         private readonly ITriggerSource keySelectionTriggerSource;
         private readonly ITriggerSource pointSelectionTriggerSource;
         private readonly object suspendRequestLock = new object();
 
+        private IPointSource pointSource;
         private int suspendRequestCount;
         
         private event EventHandler<int> pointsPerSecondEvent;
@@ -67,7 +67,29 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Properties
-        
+
+        public IPointSource PointSource
+        {
+            get { return pointSource; }
+            set
+            {
+                pointSource = value;
+
+                //Replace point source on trigger source if it is a FixationTriggerSource (which rely on a point source)
+                var keyFixationTriggerSource = keySelectionTriggerSource as IFixationTriggerSource;
+                if (keyFixationTriggerSource != null)
+                {
+                    keyFixationTriggerSource.PointSource = pointSource;
+                }
+
+                var pointFixationTriggerSource = pointSelectionTriggerSource as IFixationTriggerSource;
+                if (pointFixationTriggerSource != null)
+                {
+                    pointFixationTriggerSource.PointSource = pointSource;
+                }
+            }
+        }
+
         public Dictionary<Rect, KeyValue> PointToKeyValueMap
         {
             set
@@ -97,18 +119,21 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.Debug("Disposing of selection progress subscription");
                         selectionProgressSubscription.Dispose();
+                        selectionProgressSubscription = null;
                     }
 
                     if (selectionTriggerSubscription != null)
                     {
                         Log.Debug("Disposing of selection trigger subscription");
                         selectionTriggerSubscription.Dispose();
+                        selectionTriggerSubscription = null;
                     }
 
                     if (multiKeySelectionSubscription != null)
                     {
                         Log.Debug("Disposing of multi-key selection points subscription");
                         multiKeySelectionSubscription.Dispose();
+                        multiKeySelectionSubscription = null;
                     }
 
                     if (selectionProgressEvent != null)
@@ -173,6 +198,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (pointsPerSecondSubscription != null)
                     {
                         pointsPerSecondSubscription.Dispose();
+                        pointsPerSecondSubscription = null;
                     }
                 }
             }
@@ -202,13 +228,14 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 currentPositionEvent -= value;
 
-                if (pointsPerSecondEvent == null)
+                if (currentPositionEvent == null)
                 {
                     Log.Info("Last listener of CurrentPosition event has unsubscribed. Disposing of currentPositionSubscription.");
 
                     if (currentPositionSubscription != null)
                     {
                         currentPositionSubscription.Dispose();
+                        currentPositionSubscription = null;
                     }
                 }
             }
@@ -245,6 +272,7 @@ namespace JuliusSweetland.OptiKey.Services
                     if (selectionProgressSubscription != null)
                     {
                         selectionProgressSubscription.Dispose();
+                        selectionProgressSubscription = null;
                     }
                 }
             }

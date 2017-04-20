@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
 using MouseKeyboardActivityMonitor;
 using MouseKeyboardActivityMonitor.WinApi;
 using MouseButtons = System.Windows.Forms.MouseButtons;
@@ -15,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         #region Fields
 
         private readonly MouseButtons triggerButton;
-        private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
+        private readonly IPointSource pointSource;
         private readonly MouseHookListener mouseHookListener;
 
         private IObservable<TriggerSignal> sequence;
@@ -26,10 +27,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
         public MouseButtonDownUpSource(
             Enums.MouseButtons triggerButton,
-            IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
+            IPointSource pointSource)
         {
             this.triggerButton = (System.Windows.Forms.MouseButtons)triggerButton; //Cast to the Windows.Forms.MouseButtons enum
-            this.pointAndKeyValueSource = pointAndKeyValueSource;
+            this.pointSource = pointSource;
 
             mouseHookListener = new MouseHookListener(new GlobalHooker())
             {
@@ -66,7 +67,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                     sequence = buttonDowns.Merge(buttonUps)
                         .DistinctUntilChanged()
                         .SkipWhile(b => b == false) //Ensure the first value we hit is a true, i.e. a mouse down
-                        .CombineLatest(pointAndKeyValueSource, (b, point) => new TriggerSignal(b ? 1 : -1, null, point.Value))
+                        .CombineLatest(pointSource.Sequence, (b, point) => new TriggerSignal(b ? 1 : -1, null, point.Value))
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)
                         .Publish()

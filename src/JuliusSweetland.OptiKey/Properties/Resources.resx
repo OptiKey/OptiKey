@@ -1614,7 +1614,7 @@ Español
     <value>Greek (Greece) / Ελληνικά (Ελλάδα)</value>
   </data>
   <data name="MANAGEMENT_CONSOLE" xml:space="preserve">
-    <value>Management Console</value>
+    <value>Management Console (Settings)</value>
   </data>
   <data name="QUIT_TITLE_CASE" xml:space="preserve">
     <value>Quit</value>
@@ -1759,5 +1759,8 @@ Slovenčina
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
+  </data>
+  <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
+    <value>Toggle Manual Mode</value>
   </data>
 </root>

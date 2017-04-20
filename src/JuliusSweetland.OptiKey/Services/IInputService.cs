@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -15,6 +16,7 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler<PointAndKeyValue> Selection;
         event EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> SelectionResult;
 
+        IPointSource PointSource { get; set; }
         Dictionary<Rect, KeyValue> PointToKeyValueMap { set; }
         SelectionModes SelectionMode { set; }
         bool MultiKeySelectionSupported { set; }

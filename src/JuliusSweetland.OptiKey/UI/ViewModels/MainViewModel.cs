@@ -36,7 +36,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly List<INotifyErrors> errorNotifyingServices; 
 
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
-        
+
+        private EventHandler<int> inputServicePointsPerSecondHandler;
+        private EventHandler<Tuple<Point, KeyValue?>> inputServiceCurrentPositionHandler;
+        private EventHandler<Tuple<PointAndKeyValue?, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
+        private EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> inputServiceSelectionResultHandler;
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue? currentPositionKey;
@@ -80,7 +85,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
             SelectionMode = SelectionModes.Key;
-            
+
+            SetupInputServiceEventHandlers();
             InitialiseKeyboard(mainWindowManipulationService);
             AttachScratchpadEnabledListener();
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);

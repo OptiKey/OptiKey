@@ -25,6 +25,12 @@
                     <Image Source="..\..\Resources\Icons\Management.ico" />
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.TOGGLE_MANUAL_MODE}" 
+                      Command="{Binding ToggleManualModeCommand}">
+                <MenuItem.Icon>
+                    <Image Source="..\..\Resources\Icons\Management.ico" />
+                </MenuItem.Icon>
+            </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.QUIT_TITLE_CASE}" 
                       Command="{Binding QuitCommand}">
                 <MenuItem.Icon>

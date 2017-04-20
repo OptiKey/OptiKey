@@ -2179,7 +2179,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Management Console.
+        ///   Looks up a localized string similar to Management Console (Settings).
         /// </summary>
         public static string MANAGEMENT_CONSOLE {
             get {
@@ -4407,6 +4407,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_X2_60 {
             get {
                 return ResourceManager.GetString("TOBII_X2_60", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle Manual Mode.
+        /// </summary>
+        public static string TOGGLE_MANUAL_MODE {
+            get {
+                return ResourceManager.GetString("TOGGLE_MANUAL_MODE", resourceCulture);
             }
         }
         

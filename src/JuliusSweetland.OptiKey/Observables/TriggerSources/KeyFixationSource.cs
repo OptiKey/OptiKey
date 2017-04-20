@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Observables.PointSources;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -23,10 +24,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         private readonly TimeSpan defaultTimeToCompleteTrigger;
         private readonly IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey;
         private readonly TimeSpan incompleteFixationTtl;
-        private readonly IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource;
         private readonly ConcurrentDictionary<KeyValue, long> incompleteFixationProgress;
         private readonly ConcurrentDictionary<KeyValue, IDisposable> incompleteFixationTimeouts;
 
+        private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
 
         #endregion
@@ -39,14 +40,14 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             TimeSpan defaultTimeToCompleteTrigger,
             IDictionary<KeyValue, TimeSpan> timeToCompleteTriggerByKey,
             TimeSpan incompleteFixationTtl,
-            IObservable<Timestamped<PointAndKeyValue?>> pointAndKeyValueSource)
+            IPointSource pointSource)
         {
             this.lockOnTime = lockOnTime;
             this.resumeRequiresLockOn = resumeRequiresLockOn;
             this.defaultTimeToCompleteTrigger = defaultTimeToCompleteTrigger;
             this.timeToCompleteTriggerByKey = timeToCompleteTriggerByKey ?? new Dictionary<KeyValue, TimeSpan>();
             this.incompleteFixationTtl = incompleteFixationTtl;
-            this.pointAndKeyValueSource = pointAndKeyValueSource;
+            this.pointSource = pointSource;
 
             incompleteFixationProgress = new ConcurrentDictionary<KeyValue, long>();
             incompleteFixationTimeouts = new ConcurrentDictionary<KeyValue, IDisposable>();
@@ -59,6 +60,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         public RunningStates State { get; set; }
 
         public KeyEnabledStates KeyEnabledStates { get; set; }
+
+        /// <summary>
+        /// Change the point and key value source. N.B. After setting this any existing subscription 
+        /// to the sequence must be disposed and the getter called again to recreate the sequence again.
+        /// </summary>
+        public IPointSource PointSource
+        {
+            get { return pointSource; }
+            set { pointSource = value; }
+        }
 
         public IObservable<TriggerSignal> Sequence
         {
@@ -76,7 +87,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         
                         Action disposeAllSubscriptions = null;
 
-                        var pointAndKeyValueSubscription = pointAndKeyValueSource
+                        var pointAndKeyValueSubscription = pointSource.Sequence
                             .Where(_ => disposed == false)
                             .Where(_ => State == RunningStates.Running)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
@@ -242,6 +253,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 pointAndKeyValueSubscription.Dispose();
                                 pointAndKeyValueSubscription = null;
                             }
+
+                            sequence = null;
                         };
 
                         return disposeAllSubscriptions;

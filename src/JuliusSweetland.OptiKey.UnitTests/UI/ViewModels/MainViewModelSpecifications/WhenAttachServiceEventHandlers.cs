@@ -28,7 +28,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
 
         protected override void Act()
         {
-            MainViewModel.AttachServiceEventHandlers();
+            MainViewModel.AttachErrorNotifyingServiceHandlers();
+            MainViewModel.AttachInputServiceEventHandlers();
         }
 
         [Test]

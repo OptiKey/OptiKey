@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreatePointsPerSecondSubscription()
         {
-            Log.Debug("Creating subscription to PointAndKeyValueSource for points per second.");
+            Log.Debug("Creating subscription to PointSource for points per second.");
 
             pointsPerSecondSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null) //Filter out stale indicators - we only want 'live'/useful points in our count
@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void CreateCurrentPositionSubscription()
         {
-            Log.Debug("Creating subscription to PointAndKeyValueSource for current position.");
+            Log.Debug("Creating subscription to PointSource for current position.");
 
             currentPositionSubscription = pointSource.Sequence
                 .Where(tp => tp.Value != null)
@@ -376,11 +376,13 @@ namespace JuliusSweetland.OptiKey.Services
             if (selectionTriggerSubscription != null)
             {
                 selectionTriggerSubscription.Dispose();
+                selectionTriggerSubscription = null;
             }
 
             if (multiKeySelectionSubscription != null)
             {
                 multiKeySelectionSubscription.Dispose();
+                multiKeySelectionSubscription = null;
             }
         }
 
