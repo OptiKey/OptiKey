@@ -1763,4 +1763,13 @@ Slovenčina
   <data name="TOGGLE_MANUAL_MODE" xml:space="preserve">
     <value>Toggle Manual Mode</value>
   </data>
+  <data name="CZECH_CZECH_REPUBLIC" xml:space="preserve">
+    <value>Czech (Czech Rep.) / Čeština (Česko)</value>
+  </data>
+  <data name="CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Czech
+(Czech Rep.) /
+Čeština
+(Česko)</value>
+  </data>
 </root>

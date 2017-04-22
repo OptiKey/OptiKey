@@ -765,6 +765,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Czech (Czech Rep.) / Čeština (Česko).
+        /// </summary>
+        public static string CZECH_CZECH_REPUBLIC {
+            get {
+                return ResourceManager.GetString("CZECH_CZECH_REPUBLIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czech
+        ///(Czech Rep.) /
+        ///Čeština
+        ///(Česko).
+        /// </summary>
+        public static string CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("CZECH_CZECH_REPUBLIC_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Danish (Denmark) / Dansk (Danmark).
         /// </summary>
         public static string DANISH_DENMARK {
