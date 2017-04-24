@@ -68,6 +68,20 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 Key = Key.M
             });
 
+            //Setup key binding (Alt+Enter and Shift+Alt+Enter) to open settings
+            InputBindings.Add(new KeyBinding
+            {
+                Command = toggleManualModeCommand,
+                Modifiers = ModifierKeys.Alt,
+                Key = Key.Enter
+            });
+            InputBindings.Add(new KeyBinding
+            {
+                Command = toggleManualModeCommand,
+                Modifiers = ModifierKeys.Shift | ModifierKeys.Alt,
+                Key = Key.Enter
+            });
+
             Title = string.Format(Properties.Resources.WINDOW_TITLE, DiagnosticInfo.AssemblyVersion);
         }
 
@@ -118,11 +132,12 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 inputService.RequestSuspend();
                 mainViewModel.DetachInputServiceEventHandlers();
-                inputService.PointSource = inputService.PointSource == defaultPointSource
-                    ? manualModePointSource
-                    : defaultPointSource;
+                var changingToManualMode = inputService.PointSource == defaultPointSource;
+                inputService.PointSource = changingToManualMode ? manualModePointSource : defaultPointSource;
                 mainViewModel.AttachInputServiceEventHandlers();
-                inputService.RequestResume();
+                mainViewModel.RaiseToastNotification(Properties.Resources.MANUAL_MODE_CHANGED,
+                    changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED, 
+                    NotificationTypes.Normal, () => inputService.RequestResume());
             }
 
             Log.Info("ToggleManualMode complete.");

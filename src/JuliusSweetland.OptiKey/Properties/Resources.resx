@@ -1772,4 +1772,13 @@ Slovenčina
 Čeština
 (Česko)</value>
   </data>
+  <data name="MANUAL_MODE_CHANGED" xml:space="preserve">
+    <value>Input mode changed</value>
+  </data>
+  <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
+    <value>Manual/mouse mode has been disabled!</value>
+  </data>
+  <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
+    <value>Manual/mouse mode has been enabled!</value>
+  </data>
 </root>

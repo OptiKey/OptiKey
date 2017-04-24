@@ -2227,6 +2227,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input mode changed.
+        /// </summary>
+        public static string MANUAL_MODE_CHANGED {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE_CHANGED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual/mouse mode has been disabled!.
+        /// </summary>
+        public static string MANUAL_MODE_DISABLED {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE_DISABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual/mouse mode has been enabled!.
+        /// </summary>
+        public static string MANUAL_MODE_ENABLED {
+            get {
+                return ResourceManager.GetString("MANUAL_MODE_ENABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum number of dictionary matches:.
         /// </summary>
         public static string MAX_DICTIONARY_MATCHES_LABEL {
