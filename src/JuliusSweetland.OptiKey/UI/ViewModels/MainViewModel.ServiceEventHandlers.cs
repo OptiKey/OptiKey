@@ -335,6 +335,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Currencies2();
                     break;
 
+                case FunctionKeys.CzechCzechRepublic:
+                    Log.Info("Changing keyboard language to CzechCzechRepublic.");
+                    InputService.RequestSuspend(); //Reloading the dictionary locks the UI thread, so suspend input service to prevent accidental selections until complete
+                    Settings.Default.KeyboardAndDictionaryLanguage = Languages.CzechCzechRepublic;
+                    InputService.RequestResume();
+                    Log.Info("Changing keyboard to Menu.");
+                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                    break;
+
                 case FunctionKeys.DanishDenmark:
                     Log.Info("Changing keyboard language to DanishDenmark.");
                     Settings.Default.KeyboardAndDictionaryLanguage = Languages.DanishDenmark;

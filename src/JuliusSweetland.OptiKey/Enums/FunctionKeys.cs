@@ -24,6 +24,7 @@
         CroatianCroatia,
         Currencies1Keyboard,
         Currencies2Keyboard,
+        CzechCzechRepublic,
         DanishDenmark,
         DecreaseOpacity,
         Delete,
