@@ -753,7 +753,11 @@ namespace JuliusSweetland.OptiKey
                                 mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
                                     string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
                                     NotificationTypes.Normal,
-                                    () => taskCompletionSource.SetResult(true));
+                                     () =>
+                                     {
+                                         inputService.RequestResume();
+                                         taskCompletionSource.SetResult(true);
+                                     });
                             }
                             else
                             {
