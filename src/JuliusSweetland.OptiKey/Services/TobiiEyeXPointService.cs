@@ -37,6 +37,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     Log.Info("Disposing of the EyeXHost.");
                     EyeXHost.Dispose();
+                    EyeXHost = null;
                 }
             };
         }
@@ -85,7 +86,10 @@ namespace JuliusSweetland.OptiKey.Services
                                 ? GazePointDataMode.Unfiltered //None
                                 : GazePointDataMode.LightlyFiltered); //Low
 
-                        EyeXHost.Start(); // Start the EyeX host
+                        if (!EyeXHost.IsStarted)
+                        {
+                            EyeXHost.Start(); // Start the EyeX host
+                        }
 
                         gazeDataStream.Next += (s, data) =>
                         {
@@ -105,7 +109,10 @@ namespace JuliusSweetland.OptiKey.Services
                                 ? FixationDataMode.Sensitive //Medium
                                 : FixationDataMode.Slow); //Hight
 
-                        EyeXHost.Start(); // Start the EyeX host
+                        if(!EyeXHost.IsStarted)
+                        {
+                            EyeXHost.Start(); // Start the EyeX host
+                        }
 
                         fixationDataStream.Next += (s, data) =>
                         {
@@ -128,8 +135,19 @@ namespace JuliusSweetland.OptiKey.Services
 
                 if (pointEvent == null)
                 {
-                    Log.Info("Last listener of Point event has unsubscribed. Disposing gaze data stream.");
-                    gazeDataStream.Dispose();
+                    Log.Info("Last listener of Point event has unsubscribed. Disposing gaze data & fixation data streams.");
+
+                    if (gazeDataStream != null)
+                    {
+                        gazeDataStream.Dispose();
+                        gazeDataStream = null;
+                    }
+
+                    if (fixationDataStream != null)
+                    {
+                        fixationDataStream.Dispose();
+                        fixationDataStream = null;
+                    }
                 }
             }
         }
