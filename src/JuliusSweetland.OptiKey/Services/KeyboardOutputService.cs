@@ -304,7 +304,7 @@ namespace JuliusSweetland.OptiKey.Services
             if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
                 || (lastTextChange.Length == 1 && captureText.Length == 1 && !lastTextChangeWasSuggestion) //we are capturing single chars and are on the 2nd or later key (and the last capture wasn't a suggestion, which can be 1 character)
                 || (captureText.Length == 1 && !char.IsLetter(captureText.First())) //we have captured a single char which is not a letter
-                || new[] { " ", "\n" }.Contains(lastTextChange)) //the current capture follows a space or newline
+                || (lastTextChange.Length == 1 && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastTextChange.First()) & !char.IsLetter(lastTextChange.First()))) //the current capture follows a single character which is not closing  or mid-sentence punctuation, or a letter; e.g. whitespace or a symbol
             {
                 Log.Debug("Suppressing next auto space.");
                 suppressNextAutoSpace = true;
