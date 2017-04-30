@@ -301,12 +301,37 @@ namespace JuliusSweetland.OptiKey.Services
             if (string.IsNullOrEmpty(captureText)) return;
 
             //Suppress auto space if... 
-            if (string.IsNullOrEmpty(lastTextChange) //we have no text change history
-                || (lastTextChange.Length == 1 && captureText.Length == 1 && !lastTextChangeWasSuggestion) //we are capturing single chars and are on the 2nd or later key (and the last capture wasn't a suggestion, which can be 1 character)
-                || (captureText.Length == 1 && !char.IsLetter(captureText.First())) //we have captured a single char which is not a letter
-                || (lastTextChange.Length == 1 && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastTextChange.First()) & !char.IsLetter(lastTextChange.First()))) //the current capture follows a single character which is not closing  or mid-sentence punctuation, or a letter; e.g. whitespace or a symbol
+            if (string.IsNullOrWhiteSpace(lastTextChange))
             {
-                Log.Debug("Suppressing next auto space.");
+                //We have no text change history, or the last capture was whitespace.
+                Log.Debug("Suppressing auto space before this capture as the last text change was null or white space.");
+                suppressNextAutoSpace = true;
+            }
+            else if(lastTextChange.Length == 1 
+                && captureText.Length == 1 
+                && !lastTextChangeWasSuggestion 
+                && !(keyStateService.KeyDownStates[KeyValues.MultiKeySelectionIsOnKey].Value.IsDownOrLockedDown() && char.IsLetter(captureText.First())))
+            {
+                //We are capturing single chars and are on the 2nd+ character,
+                //the last capture wasn't a suggestion (as these can also be 1 character and we want to inject the space if it is),
+                //and the current capture is not a multi-key selection of a single letter (as we also want to inject the space for this scenario).
+                Log.Debug("Suppressing auto space before this capture as the user appears to be typing one char at a time. Also the last text change was not a suggestion, and the current capture is not a single letter captured with multi-key selection enabled.");
+                suppressNextAutoSpace = true;
+            }
+            else if (captureText.Length == 1 
+                && !char.IsLetter(captureText.First()))
+            {
+                //We have captured a single char which is not a letter
+                Log.Debug("Suppressing auto space before this capture as this capture is a single character which is not a letter.");
+                suppressNextAutoSpace = true;
+            }
+            else if (lastTextChange.Length == 1 
+                && !new[] {'.', '!', '?', ',', ':', ';', ')', ']', '}', '>'}.Contains(lastTextChange.First()) 
+                && !char.IsLetter(lastTextChange.First()))
+            {
+                //The current capture (which we know is a letter or multi-key capture) follows a single character 
+                //which is not a letter, or a closing or mid-sentence punctuation; e.g. whitespace or a symbol
+                Log.Debug("Suppressing auto space before this capture as it follows a single character which is not a letter, or a closing or mid-sentence punctuation mark.");
                 suppressNextAutoSpace = true;
             }
 
