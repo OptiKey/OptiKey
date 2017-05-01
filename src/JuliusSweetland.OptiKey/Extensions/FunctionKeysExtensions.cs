@@ -95,6 +95,36 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.Home:
                     return VirtualKeyCode.HOME;
 
+                case FunctionKeys.NumPad0:
+                    return VirtualKeyCode.NUMPAD0;
+
+                case FunctionKeys.NumPad1:
+                    return VirtualKeyCode.NUMPAD1;
+
+                case FunctionKeys.NumPad2:
+                    return VirtualKeyCode.NUMPAD2;
+
+                case FunctionKeys.NumPad3:
+                    return VirtualKeyCode.NUMPAD3;
+
+                case FunctionKeys.NumPad4:
+                    return VirtualKeyCode.NUMPAD4;
+
+                case FunctionKeys.NumPad5:
+                    return VirtualKeyCode.NUMPAD5;
+
+                case FunctionKeys.NumPad6:
+                    return VirtualKeyCode.NUMPAD6;
+
+                case FunctionKeys.NumPad7:
+                    return VirtualKeyCode.NUMPAD7;
+
+                case FunctionKeys.NumPad8:
+                    return VirtualKeyCode.NUMPAD8;
+
+                case FunctionKeys.NumPad9:
+                    return VirtualKeyCode.NUMPAD9;                
+
                 case FunctionKeys.PgUp:
                     return VirtualKeyCode.PRIOR;
 
