@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
             managementWindowRequest = new InteractionRequest<NotificationWithServicesAndState>();
             managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
-            toggleManualModeCommand = new DelegateCommand(ToggleManualMode);
+            toggleManualModeCommand = new DelegateCommand(ToggleManualMode, () => !(defaultPointSource is MousePositionSource));
             quitCommand = new DelegateCommand(Quit);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
@@ -138,6 +138,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
                 mainViewModel.RaiseToastNotification(Properties.Resources.MANUAL_MODE_CHANGED,
                     changingToManualMode ? Properties.Resources.MANUAL_MODE_ENABLED : Properties.Resources.MANUAL_MODE_DISABLED, 
                     NotificationTypes.Normal, () => inputService.RequestResume());
+                mainViewModel.ManualModeEnabled = changingToManualMode;
             }
 
             Log.Info("ToggleManualMode complete.");

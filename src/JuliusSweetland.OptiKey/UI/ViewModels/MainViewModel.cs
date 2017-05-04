@@ -48,6 +48,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
+        private bool manualModeEnabled;
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
@@ -168,6 +169,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                 }
             }
+        }
+
+        public bool ManualModeEnabled
+        {
+            get { return manualModeEnabled; }
+            set { SetProperty(ref manualModeEnabled, value); }
         }
 
         public bool ShowCursor

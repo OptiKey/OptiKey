@@ -51,7 +51,8 @@
             <SolidColorBrush x:Key="QuestionBackgroundBrush" Color="{StaticResource White}" />
             
             <SolidColorBrush x:Key="DebugTextForegroundBrush" Color="{StaticResource Green}" />
-
+            <SolidColorBrush x:Key="ManualModeTextForegroundBrush" Color="{StaticResource Green}" />
+            
             <SolidColorBrush x:Key="CursorDefaultStrokeBrush" Color="{StaticResource Black}" />
             <SolidColorBrush x:Key="CursorDefaultFillBrush" Color="{StaticResource White}" />
             <StaticResource x:Key="PointSelectionForeground" ResourceKey="Blue"/>

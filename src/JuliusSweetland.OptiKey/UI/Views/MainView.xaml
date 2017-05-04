@@ -45,11 +45,16 @@
                                   PointsToDisplay="{Binding SelectionResultPoints, Mode=OneWay}" />
 
         <TextBlock Text="{Binding ApplicationAndSystemInfo}" 
-                    Foreground="{DynamicResource DebugTextForegroundBrush}"
-                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
+                   Foreground="{DynamicResource DebugTextForegroundBrush}"
+                   Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 
                                         Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
-                    HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom" />
 
+        <TextBlock Text="{x:Static resx:Resources.MANUAL_MODE_ENABLED}" 
+                   Foreground="{DynamicResource ManualModeTextForegroundBrush}"
+                   Visibility="{Binding ManualModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        
         <TextBlock Text="{Binding PointsPerSecond, StringFormat='{}{0} points per second'}" 
                    Foreground="{DynamicResource DebugTextForegroundBrush}"
                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Debug, 

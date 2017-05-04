@@ -2236,7 +2236,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual/mouse mode has been disabled!.
+        ///   Looks up a localized string similar to Manual (mouse) mode disabled!.
         /// </summary>
         public static string MANUAL_MODE_DISABLED {
             get {
@@ -2245,7 +2245,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual/mouse mode has been enabled!.
+        ///   Looks up a localized string similar to Manual (mouse) mode enabled!.
         /// </summary>
         public static string MANUAL_MODE_ENABLED {
             get {

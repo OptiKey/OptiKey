@@ -1776,9 +1776,9 @@ Slovenčina
     <value>Input mode changed</value>
   </data>
   <data name="MANUAL_MODE_DISABLED" xml:space="preserve">
-    <value>Manual/mouse mode has been disabled!</value>
+    <value>Manual (mouse) mode disabled!</value>
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
-    <value>Manual/mouse mode has been enabled!</value>
+    <value>Manual (mouse) mode enabled!</value>
   </data>
 </root>
