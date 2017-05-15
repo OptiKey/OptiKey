@@ -386,6 +386,9 @@
     <Compile Include="UI\Views\Keyboards\Catalan\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml.cs">
+      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
     </Compile>
@@ -435,6 +438,12 @@
       <DependentUpon>AlphabeticalConversationAlpha.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\ConversationConfirm.xaml.cs">
+      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\French\ConversationConfirm.xaml.cs">
+      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\German\ConversationConfirm.xaml.cs">
       <DependentUpon>ConversationConfirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Portuguese\Alpha.xaml.cs">
@@ -947,6 +956,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\Common\Language.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1012,6 +1025,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\ConversationConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\French\ConversationConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\German\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

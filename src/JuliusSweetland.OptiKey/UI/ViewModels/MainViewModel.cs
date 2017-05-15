@@ -299,6 +299,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         windowManipulationService.Maximise();
                         break;
 
+                    case Enums.Keyboards.ConversationConfirm:
+                        Keyboard = new ConversationConfirm(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
+                        });
+                        windowManipulationService.Maximise();
+                        break;
+
                     case Enums.Keyboards.Currencies1:
                         Keyboard = new Currencies1();
                         windowManipulationService.Restore();

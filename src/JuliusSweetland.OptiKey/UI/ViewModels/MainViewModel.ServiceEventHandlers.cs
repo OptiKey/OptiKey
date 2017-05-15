@@ -1507,8 +1507,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ConversationConfirmYes:
+                    string SpeakTextYes;
+                    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                    {
+                        case Languages.FrenchFrance:
+                            SpeakTextYes = "Oui";
+                            break;
+                        case Languages.GermanGermany:
+                            SpeakTextYes = "Ja";
+                            break;
+                        default:
+                            SpeakTextYes = "Yes";
+                            break;
+                    }
                     var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        "yes",
+                        SpeakTextYes,
                         () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                         Settings.Default.SpeechVolume,
                         Settings.Default.SpeechRate,
@@ -1517,8 +1530,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ConversationConfirmNo:
+                    string SpeakTextNo;
+                    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                    {
+                        case Languages.FrenchFrance:
+                            SpeakTextNo = "Non";
+                            break;
+                        case Languages.GermanGermany:
+                            SpeakTextNo = "Nein";
+                            break;
+                        default:
+                            SpeakTextNo = "No";
+                            break;
+                    }
                     var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
-                        "no",
+                        SpeakTextNo,
                         () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
                         Settings.Default.SpeechVolume,
                         Settings.Default.SpeechRate,

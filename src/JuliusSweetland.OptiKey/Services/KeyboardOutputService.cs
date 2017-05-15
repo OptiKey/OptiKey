@@ -194,7 +194,18 @@ namespace JuliusSweetland.OptiKey.Services
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
-                    Text = "Yes";
+                    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                    {
+                        case Languages.FrenchFrance:
+                            Text = "Oui";
+                            break;
+                        case Languages.GermanGermany:
+                            Text = "Ja";
+                            break;
+                        default:
+                            Text = "Yes";
+                            break;
+                    }
                     break;
 
                 case FunctionKeys.ConversationConfirmNo:
@@ -204,7 +215,18 @@ namespace JuliusSweetland.OptiKey.Services
                     AutoPressShiftIfAppropriate();
                     Log.Debug("Suppressing next auto space.");
                     suppressNextAutoSpace = true;
-                    Text = "No";
+                    switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                    {
+                        case Languages.FrenchFrance:
+                            Text = "Non";
+                            break;
+                        case Languages.GermanGermany:
+                            Text = "Nein";
+                            break;
+                        default:
+                            Text = "No";
+                            break;
+                    }
                     break;
 
                 case FunctionKeys.Suggestion1:
