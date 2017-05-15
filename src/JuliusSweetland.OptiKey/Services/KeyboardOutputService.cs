@@ -187,6 +187,26 @@ namespace JuliusSweetland.OptiKey.Services
                     suppressNextAutoSpace = true;
                     break;
 
+                case FunctionKeys.ConversationConfirmYes:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = "Yes";
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = "No";
+                    break;
+
                 case FunctionKeys.Suggestion1:
                     SwapLastTextChangeForSuggestion(0);
                     lastTextChangeWasSuggestion = true;

@@ -349,6 +349,7 @@
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\BackActionKeyboard.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IConversationKeyboard.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\ConversationConfirm.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationNumericAndSymbols.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IBackAction.cs" />
@@ -432,6 +433,9 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml.cs">
       <DependentUpon>AlphabeticalConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\ConversationConfirm.xaml.cs">
+      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\Portuguese\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
@@ -1004,6 +1008,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

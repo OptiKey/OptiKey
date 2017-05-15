@@ -295,6 +295,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mainWindowManipulationService.SetOpacity(1);
                     break;
 
+                case FunctionKeys.ConversationConfirmKeyboard:
+                    Log.Info("Changing keyboard to ConversationConfirm.");
+                    var opacityBeforeConversationConfirm = mainWindowManipulationService.GetOpacity();
+                    Action conversationConfirmBackAction =
+                        currentKeyboard is ConversationNumericAndSymbols
+                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                            : () =>
+                            {
+                                Log.Info("Restoring window size.");
+                                mainWindowManipulationService.Restore();
+                                Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationConfirm);
+                                mainWindowManipulationService.SetOpacity(opacityBeforeConversationConfirm);
+                                Keyboard = currentKeyboard;
+                            };
+                    Keyboard = new ConversationConfirm(conversationConfirmBackAction);
+                    Log.Info("Maximising window.");
+                    mainWindowManipulationService.Maximise();
+                    Log.InfoFormat("Setting opacity to 1 (fully opaque)");
+                    mainWindowManipulationService.SetOpacity(1);
+                    break;
+
                 case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                     Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                     var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
@@ -1483,6 +1504,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Settings.Default.SpeechRate,
                         Settings.Default.SpeechVoice);
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmYes:
+                    var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        "yes",
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedYes ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        "no",
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedNo ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
                 case FunctionKeys.TurkishTurkey:

@@ -262,6 +262,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
+            else if (Keyboard is ViewModelKeyboards.ConversationConfirm)
+            {
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    default:
+                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                            ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
+                            : new EnglishViews.ConversationConfirm { DataContext = Keyboard };
+                        break;
+                }
+            }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {
                 newContent = new CommonViews.ConversationNumericAndSymbols { DataContext = Keyboard };
