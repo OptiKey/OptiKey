@@ -437,15 +437,6 @@
     <Compile Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml.cs">
       <DependentUpon>AlphabeticalConversationAlpha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Keyboards\English\ConversationConfirm.xaml.cs">
-      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\French\ConversationConfirm.xaml.cs">
-      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Views\Keyboards\German\ConversationConfirm.xaml.cs">
-      <DependentUpon>ConversationConfirm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Views\Keyboards\Portuguese\Alpha.xaml.cs">
       <DependentUpon>Alpha.xaml</DependentUpon>
     </Compile>
@@ -1021,18 +1012,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Views\Keyboards\English\AlphabeticalConversationAlpha.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\English\ConversationConfirm.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\French\ConversationConfirm.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Keyboards\German\ConversationConfirm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
