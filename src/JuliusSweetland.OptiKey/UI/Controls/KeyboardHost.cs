@@ -264,23 +264,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.ConversationConfirm)
             {
-                switch (Settings.Default.KeyboardAndDictionaryLanguage)
-                {
-                    case Languages.EnglishUK:
-                        newContent = new EnglishViews.ConversationConfirm { DataContext = Keyboard };
-                        break;
-                    case Languages.FrenchFrance:
-                        newContent = new FrenchViews.ConversationConfirm { DataContext = Keyboard };
-                        break;
-                    case Languages.GermanGermany:
-                        newContent = new GermanViews.ConversationConfirm { DataContext = Keyboard };
-                        break;
-                    default:
-                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
-                            ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
-                            : new CommonViews.ConversationConfirm { DataContext = Keyboard };
-                        break;
-                }
+                newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                    ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
+                    : new CommonViews.ConversationConfirm { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {

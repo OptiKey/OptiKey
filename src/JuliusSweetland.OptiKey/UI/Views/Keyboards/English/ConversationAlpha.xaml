@@ -133,8 +133,8 @@
         <controls:Key Grid.Row="3" Grid.Column="19" />
 
         <controls:Key Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1"
-                      Text="Y/N"
-                      SharedSizeGroup="KeyWithSingleLetter"
+                      SymbolGeometry="{StaticResource YesNoIcon}"
+                      Text="{x:Static resx:Resources.YESNO}"
                       Value="{x:Static models:KeyValues.ConversationConfirmKeyboardKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="z" ShiftDownText="Z"
