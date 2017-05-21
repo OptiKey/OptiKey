@@ -7,7 +7,6 @@ using System.Windows.Threading;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Common;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
@@ -1265,7 +1264,7 @@ namespace JuliusSweetland.OptiKey.Services
             abd.hWnd = windowHandle;
             appBarCallBackId = PInvoke.RegisterWindowMessage("AppBarMessage"); //Get a system wide unique window message (id)
             abd.uCallbackMessage = appBarCallBackId;
-            var result = PInvoke.SHAppBarMessage((int)AppBarMessages.New, ref abd);
+            PInvoke.SHAppBarMessage((int)AppBarMessages.New, ref abd);
 
             //Add hook to receive position change messages from Windows
             HwndSource source = HwndSource.FromHwnd(abd.hWnd);
