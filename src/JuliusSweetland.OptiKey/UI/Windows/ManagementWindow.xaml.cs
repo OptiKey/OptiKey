@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services;
+﻿using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using MahApps.Metro.Controls;
 

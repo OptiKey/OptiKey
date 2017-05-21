@@ -164,7 +164,7 @@ namespace JuliusSweetland.OptiKey.Services
                                     CreateMultiKeySelectionSubscription()
                                         .ObserveOnDispatcher()
                                         .Subscribe(
-                                            async pointsAndKeyValues => await ProcessMultiKeySelectionResult(pointsAndKeyValues, triggerSignal),
+                                            async pointsAndKeyValues => await ProcessMultiKeySelectionResult(pointsAndKeyValues),
                                             (exception =>
                                             {
                                                 PublishError(this, exception);
@@ -277,8 +277,7 @@ namespace JuliusSweetland.OptiKey.Services
         }
 
         private async Task ProcessMultiKeySelectionResult(
-            IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues, 
-            TriggerSignal startSelectionTriggerSignal)
+            IList<Timestamped<PointAndKeyValue>> pointsAndKeyValues)
         {
             Log.DebugFormat("Multi-key selection captured a set of '{0}' PointAndKeyValues.", pointsAndKeyValues.Count);
 

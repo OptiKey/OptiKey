@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using JuliusSweetland.OptiKey.Native;
-using JuliusSweetland.OptiKey.Native.Common;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Static;
 
