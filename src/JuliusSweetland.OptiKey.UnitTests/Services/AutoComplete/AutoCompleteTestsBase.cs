@@ -9,9 +9,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
     internal abstract class AutoCompleteTestsBase
     {
         private IManageAutoComplete autoComplete;
-        protected abstract object[] SuggestionsTestCaseSource { get; }
 
-        [Test]
+		protected static object[] SuggestionsTestCaseSource { get; private set; }
+
+		[Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();
@@ -97,9 +98,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         }
 
         protected abstract IManageAutoComplete CreateAutoComplete();
+		protected abstract object[] GetTestCases();
 
-        /// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
-        private void ConfigureProvider()
+		/// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
+		private void ConfigureProvider()
         {
             var entries = new[] {
                 "the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with", "he",
@@ -148,9 +150,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         #region Setup/Teardown
 
         [SetUp]
-        public void Arrange() {
+        public void Arrange()
+		{
             autoComplete = CreateAutoComplete();
-        }
+			SuggestionsTestCaseSource = GetTestCases();
+		}
 
         #endregion
     }
