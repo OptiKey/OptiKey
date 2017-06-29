@@ -13,7 +13,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 
 	protected override object[] GetTestCases()
 	{
-		return SuggestionsTestCases;
+	    return SuggestionsTestCases;
 	}
 
 	private object[] SuggestionsTestCases
