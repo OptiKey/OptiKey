@@ -10,9 +10,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
     {
         private IManageAutoComplete autoComplete;
 
-		protected static object[] SuggestionsTestCaseSource { get; private set; }
+	protected static object[] SuggestionsTestCaseSource { get; private set; }
 
-		[Test]
+	[Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();
