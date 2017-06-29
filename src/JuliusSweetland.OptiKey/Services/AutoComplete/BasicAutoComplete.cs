@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-    public class BasicAutoComplete : IManageAutoComplete
+	public class BasicAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, HashSet<DictionaryEntry>>();
 
@@ -50,24 +50,21 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         }
 
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
-        {
+		{
+			if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
+			{
+				//Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+				var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+				AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
+			}
 
-            //Also add to entries for auto complete
-            var autoCompleteHash = entry.Normalise(log: false);
+			//Also add to entries for auto complete
+			var autoCompleteHash = entry.Normalise(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
-            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-            {
-                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-                AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
-            }
-
-
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         { 
-
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 if (entriesForAutoComplete.ContainsKey(autoCompleteHash))

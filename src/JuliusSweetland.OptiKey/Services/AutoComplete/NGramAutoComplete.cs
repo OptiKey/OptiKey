@@ -1,20 +1,19 @@
-﻿using JuliusSweetland.OptiKey.Models;
+﻿using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using JuliusSweetland.OptiKey.Extensions;
-using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-    /// <summary>
-    /// An auto suggest class using the n-gram algorithm.
-    /// https://en.wikipedia.org/wiki/N-gram
-    /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
-    /// </summary>
-    public class NGramAutoComplete : IManageAutoComplete
+	/// <summary>
+	/// An auto suggest class using the n-gram algorithm.
+	/// https://en.wikipedia.org/wiki/N-gram
+	/// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
+	/// </summary>
+	public class NGramAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;
@@ -50,11 +49,13 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             {
                 throw new ArgumentOutOfRangeException("gramCount", gramCount, @"Must be greater than 0");
             }
+
             if ((leadingSpaceCount < 0) || (leadingSpaceCount >= gramCount))
             {
                 throw new ArgumentOutOfRangeException("leadingSpaceCount", leadingSpaceCount,
                     @"Must be 0 or larger, and less than gramCount");
             }
+
             if ((trailingSpaceCount < 0) || (trailingSpaceCount >= gramCount))
             {
                 throw new ArgumentOutOfRangeException("trailingSpaceCount", trailingSpaceCount,
@@ -77,7 +78,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
 
             var ngrams = ToNGrams(entry).ToList();
-            var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count);
+            var metaData = new EntryMetadata(dictionaryEntry.Entry, dictionaryEntry.UsageCount, ngrams.Count);
 
             foreach (var ngram in ngrams)
             {
@@ -87,7 +88,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 }
                 else
                 {
-                    entries[ngram] = new HashSet<EntryMetadata> {metaData};
+                    entries[ngram] = new HashSet<EntryMetadata> { metaData };
                 }
             }
         }
@@ -118,8 +119,8 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                     Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
                 })
                 .OrderByDescending(x => x.Score)
-                .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
-                .Select(x => x.MetaData.DictionaryEntry.Entry);
+                .ThenByDescending(x => x.MetaData.UsageCount)
+                .Select(x => x.MetaData.Entry);
         }
 
         public void RemoveEntry(string entry)
@@ -128,7 +129,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             {
                 if (entries.ContainsKey(trigram))
                 {
-                    entries[trigram].RemoveWhere(x => x.DictionaryEntry.Entry == entry);
+                    entries[trigram].RemoveWhere(x => x.Entry == entry);
                 }
             }
         }
@@ -147,15 +148,14 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         }
 
         [DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
-        private class EntryMetadata
+        private class EntryMetadata : DictionaryEntry
         {
-            public EntryMetadata(DictionaryEntry dictionaryEntry, int nGramCount)
+            public EntryMetadata(string entry, int usageCount, int nGramCount)
+				: base(entry, usageCount)
             {
-                DictionaryEntry = dictionaryEntry;
                 NGramCount = nGramCount;
             }
-
-            public DictionaryEntry DictionaryEntry { get; }
+			
             public int NGramCount { get; }
         }
     }

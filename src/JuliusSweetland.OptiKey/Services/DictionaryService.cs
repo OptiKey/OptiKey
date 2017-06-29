@@ -1,4 +1,10 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.AutoComplete;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,16 +12,10 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
-using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class DictionaryService : IDictionaryService
+	public class DictionaryService : IDictionaryService
     {
         #region Constants
 
@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AutoCompleteMethods autoCompleteMethod;
 
-        private Dictionary<string, List<DictionaryEntry>> entries;
+        private Dictionary<string, HashSet<DictionaryEntry>> entries;
         private IManageAutoComplete manageAutoComplete;
         
         #endregion
@@ -101,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                entries = new Dictionary<string, List<DictionaryEntry>>();
+                entries = new Dictionary<string, HashSet<DictionaryEntry>>();
                 manageAutoComplete = CreateAutoComplete();
 
                 //Load the user dictionary
@@ -275,7 +275,7 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     else
                     {
-                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
+                        entries.Add(hash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
                     }
 
                     //Also add to entries for auto complete
