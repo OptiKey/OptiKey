@@ -176,6 +176,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref pointsMousePositionSampleIntervalInMs, value); }
         }
 
+        private bool pointsMousePositionHideCursor;
+        public bool PointsMousePositionHideCursor
+        {
+            get { return pointsMousePositionHideCursor; }
+            set { SetProperty(ref pointsMousePositionHideCursor, value); }
+        }
+        
         private double pointTtlInMs;
         public double PointTtlInMs
         {
@@ -385,6 +392,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
+            PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
             KeySelectionTriggerSource = Settings.Default.KeySelectionTriggerSource;
             KeySelectionTriggerKeyboardKeyDownUpKey = Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey;
@@ -416,6 +424,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
+            Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
             Settings.Default.KeySelectionTriggerSource = KeySelectionTriggerSource;
             Settings.Default.KeySelectionTriggerKeyboardKeyDownUpKey = KeySelectionTriggerKeyboardKeyDownUpKey;

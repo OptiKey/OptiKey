@@ -1104,6 +1104,9 @@ POSITION</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Time until point becomes irrelevent (ms):</value>
   </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Hide cursor</value>
+  </data>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Words are capitalized</value>
   </data>
