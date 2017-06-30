@@ -172,6 +172,9 @@ SLOVNÍKU</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatické mezery mezi slovama:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>ZPĚT</value>
   </data>

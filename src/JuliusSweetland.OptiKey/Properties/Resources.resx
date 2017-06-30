@@ -163,6 +163,9 @@ DICTIONARY</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Auto space between words:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>BACK</value>
   </data>

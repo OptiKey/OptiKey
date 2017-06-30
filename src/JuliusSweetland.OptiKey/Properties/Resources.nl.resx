@@ -164,6 +164,9 @@ TOEVOEGEN</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatische spaties tussen woorden:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Terug</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>TERUG</value>
   </data>

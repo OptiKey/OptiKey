@@ -163,6 +163,9 @@ ORDBOG</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatisk mellemrum mellem ord</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Tilbage</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>TILBAGE</value>
   </data>

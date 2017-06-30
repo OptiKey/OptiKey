@@ -157,6 +157,9 @@ DICIONÁRIO</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Espaçar palavras automaticamente:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>VOLTAR</value>
   </data>

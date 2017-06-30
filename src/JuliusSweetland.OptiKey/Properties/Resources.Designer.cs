@@ -252,6 +252,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string BACK_TITLE_CASE {
+            get {
+                return ResourceManager.GetString("BACK_TITLE_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BACK WORD.
         /// </summary>
         public static string BACK_WORD {
@@ -821,7 +830,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CURSOR_WIDTH_LABEL", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Czech (Czech Rep.) / Čeština (Česko).
         /// </summary>

@@ -127,6 +127,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        public void BackFromKeyboard()
+        {
+            Log.Info("Navigating back from keyboard via contextmenu.");
+            var navigableKeyboard = Keyboard as IBackAction;
+            if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
+            {
+                navigableKeyboard.BackAction();
+            }
+            else
+            {
+                // TODO: Shouldn't we always remember 'last' keyboard?
+                Log.Error("Keyboard doesn't have backaction, can't go back");
+            }
+        }
+
         private bool keyboardSupportsCollapsedDock = true;
         public bool KeyboardSupportsCollapsedDock
         {

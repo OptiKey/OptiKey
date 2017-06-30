@@ -163,6 +163,9 @@
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Αυτόματη εισαγωγή κενών μεταξύ των λέξεων </value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Πισω </value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>ΠΙΣΩ </value>
   </data>

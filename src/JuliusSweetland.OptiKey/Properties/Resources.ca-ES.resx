@@ -163,6 +163,9 @@ DICCIONARI</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Espai automàtic entre paraules:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Enrera</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>ENRERA</value>
   </data>

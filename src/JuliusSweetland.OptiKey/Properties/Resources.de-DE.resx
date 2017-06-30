@@ -165,6 +165,9 @@ HINZUFÜGEN</value>
     <value>Automatische Leertaste zwischen Wörtern:</value>
   </data>
   <data name="BACK" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
     <value>ZURÜCK</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">

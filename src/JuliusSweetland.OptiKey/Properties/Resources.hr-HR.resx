@@ -165,6 +165,9 @@ RIJEČNIK</value>
     <value>Automatski razmak između riječi:</value>
   </data>
   <data name="BACK" xml:space="preserve">
+    <value>Natrag</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
     <value>NATRAG</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">

@@ -164,6 +164,9 @@
     <value>Автопробел между слов:</value>
   </data>
   <data name="BACK" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
     <value>НАЗАД</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">
