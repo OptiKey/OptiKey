@@ -619,35 +619,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseKeyboard:
-                    Log.Info("Changing keyboard to Mouse.");
-                    Action backAction;
-                    if (keyStateService.SimulateKeyStrokes
-                        && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                     {
-                        var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
-                        backAction = () =>
+                        Log.Info("Changing keyboard to Mouse.");
+                        Action backAction;
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            restoreModifierStates();
-                            Keyboard = currentKeyboard;
-                        };
-                    }
-                    else
-                    {
-                        backAction = () => Keyboard = currentKeyboard;
-                    }
-                    Keyboard = new Mouse(backAction);
-                    //Reinstate mouse keyboard docked state (if docked)
-                    if (Settings.Default.MainWindowState == WindowStates.Docked)
-                    {
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
-                            && Settings.Default.MainWindowDockSize != DockSizes.Full)
-                        {
-                            mainWindowManipulationService.ResizeDockToFull();
+                            var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
+                            backAction = () =>
+                            {
+                                restoreModifierStates();
+                                Keyboard = currentKeyboard;
+                            };
                         }
-                        else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
-                            && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                        else
                         {
-                            mainWindowManipulationService.ResizeDockToCollapsed();
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        //Reinstate mouse keyboard docked state (if docked)
+                        if (Settings.Default.MainWindowState == WindowStates.Docked)
+                        {
+                            if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
+                                && Settings.Default.MainWindowDockSize != DockSizes.Full)
+                            {
+                                mainWindowManipulationService.ResizeDockToFull();
+                            }
+                            else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
+                                && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                            {
+                                mainWindowManipulationService.ResizeDockToCollapsed();
+                            }
                         }
                     }
                     break;
