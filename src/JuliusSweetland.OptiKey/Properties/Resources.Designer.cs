@@ -832,15 +832,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom keyboard menu.
-        /// </summary>
-        public static string CUSTOM_KEYBOARD_LAYOUT {
-            get {
-                return ResourceManager.GetString("CUSTOM_KEYBOARD_LAYOUT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Czech (Czech Rep.) / Čeština (Česko).
         /// </summary>
         public static string CZECH_CZECH_REPUBLIC {
