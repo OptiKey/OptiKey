@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 	/// </summary>
 	public class NGramAutoComplete : IManageAutoComplete
     {
-        private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
+        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
         private readonly Func<string, string> normalize;
         private readonly int gramCount;
         private readonly string leadingSpaces;
@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 }
                 else
                 {
-                    entries[ngram] = new HashSet<EntryMetadata> { metaData };
+                    entries[ngram] = new HashSet<DictionaryEntry> { metaData };
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 .Select(x => new
                 {
                     MetaData = x.Key,
-                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
+                    Score = CalculateScore(x.Count(), nGramcount, ((EntryMetadata)x.Key).NGramCount)
                 })
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.MetaData.UsageCount)

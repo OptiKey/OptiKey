@@ -9,10 +9,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
     internal abstract class AutoCompleteTestsBase
     {
         private IManageAutoComplete autoComplete;
+		protected static object[] SuggestionsTestCaseSource { get; private set; }
 
-	protected static object[] SuggestionsTestCaseSource { get; private set; }
-
-	[Test]
+		[Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();
@@ -98,7 +97,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         }
 
         protected abstract IManageAutoComplete CreateAutoComplete();
-	protected abstract object[] GetTestCases();
+		protected abstract object[] GetTestCases();
 
 	/// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
 	private void ConfigureProvider()
@@ -151,10 +150,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 
         [SetUp]
         public void Arrange()
-	{
+		{
             autoComplete = CreateAutoComplete();
-	    SuggestionsTestCaseSource = GetTestCases();
-	}
+			SuggestionsTestCaseSource = GetTestCases();
+		}
 
         #endregion
     }

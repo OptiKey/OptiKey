@@ -29,15 +29,26 @@ namespace JuliusSweetland.OptiKey.Services
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AutoCompleteMethods autoCompleteMethod;
+		
+		private IManageAutoComplete manageAutoComplete;
 
-        private Dictionary<string, HashSet<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
-        
-        #endregion
+		#region Lazy and thread safe instantiation
+		private static Dictionary<string, HashSet<DictionaryEntry>> entries { get { return EntriesStore.dictEntries; } }
 
-        #region Events
+		private class EntriesStore
+		{
+			// Explicit static constructor to tell C# compiler not to mark type as beforefieldinit
+			static EntriesStore() { }
 
-        public event EventHandler<Exception> Error;
+			internal static readonly Dictionary<string, HashSet<DictionaryEntry>> dictEntries = new Dictionary<string, HashSet<DictionaryEntry>>();
+		}
+		#endregion
+
+		#endregion
+
+		#region Events
+
+		public event EventHandler<Exception> Error;
         
         #endregion
 
@@ -91,17 +102,25 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        #endregion
+		#endregion
 
-        #region Load / Save Dictionary
+		#region Entries APIs
 
-        public void LoadDictionary()
+		internal static Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
+		{
+			return entries;
+		}
+
+		#endregion
+
+		#region Load / Save Dictionary
+
+		public void LoadDictionary()
         {
             Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
             try
             {
-                entries = new Dictionary<string, HashSet<DictionaryEntry>>();
                 manageAutoComplete = CreateAutoComplete();
 
                 //Load the user dictionary
@@ -266,20 +285,21 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-                    if (entries.ContainsKey(hash))
-                    {
-                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
-                        {
-                            entries[hash].Add(newEntryWithUsageCount);
-                        }
-                    }
-                    else
-                    {
-                        entries.Add(hash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
-                    }
+					if (entries.ContainsKey(hash))
+					{
+						if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
+						{
+							entries[hash].Add(newEntryWithUsageCount);
+						}
+					}
+					else
+					{
+						entries.Add(hash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
+					}
 
-                    //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
+					//Also add to entries for auto complete
+					// TODO: use unified entries removes needs to add auto-complete in a separate store.
+					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -319,8 +339,9 @@ namespace JuliusSweetland.OptiKey.Services
                             entries.Remove(hash);
                         }
 
-                        //Also remove from entries for auto complete
-                        manageAutoComplete.RemoveEntry(entry);
+						//Also remove from entries for auto complete
+						// TODO: use unified entries removes needs to remove it from auto-complete store.
+						manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
