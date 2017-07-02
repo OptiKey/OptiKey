@@ -29,21 +29,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AutoCompleteMethods autoCompleteMethod;
-		
+
+		private Dictionary<string, HashSet<DictionaryEntry>> entries;
 		private IManageAutoComplete manageAutoComplete;
-
-		#region Lazy and thread safe instantiation
-		private static Dictionary<string, HashSet<DictionaryEntry>> entries { get { return EntriesStore.dictEntries; } }
-
-		private class EntriesStore
-		{
-			// Explicit static constructor to tell C# compiler not to mark type as beforefieldinit
-			static EntriesStore() { }
-
-			internal static readonly Dictionary<string, HashSet<DictionaryEntry>> dictEntries = new Dictionary<string, HashSet<DictionaryEntry>>();
-		}
-		#endregion
-
 		#endregion
 
 		#region Events
@@ -104,15 +92,6 @@ namespace JuliusSweetland.OptiKey.Services
 
 		#endregion
 
-		#region Entries APIs
-
-		internal static Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
-		{
-			return entries;
-		}
-
-		#endregion
-
 		#region Load / Save Dictionary
 
 		public void LoadDictionary()
@@ -122,6 +101,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 manageAutoComplete = CreateAutoComplete();
+				entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -285,20 +265,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-					if (entries.ContainsKey(hash))
-					{
-						if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
-						{
-							entries[hash].Add(newEntryWithUsageCount);
-						}
-					}
-					else
-					{
-						entries.Add(hash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
-					}
-
 					//Also add to entries for auto complete
-					// TODO: use unified entries removes needs to add auto-complete in a separate store.
 					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
@@ -332,15 +299,7 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
-                        entries[hash].Remove(foundEntry);
-
-                        if (!entries[hash].Any())
-                        {
-                            entries.Remove(hash);
-                        }
-
 						//Also remove from entries for auto complete
-						// TODO: use unified entries removes needs to remove it from auto-complete store.
 						manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();

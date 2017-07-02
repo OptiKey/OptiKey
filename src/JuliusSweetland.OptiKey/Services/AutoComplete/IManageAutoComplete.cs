@@ -1,4 +1,5 @@
 ﻿using JuliusSweetland.OptiKey.Models;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
@@ -17,5 +18,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         void Clear();
 
         void RemoveEntry(string entry);
-    }
+
+		Dictionary<string, HashSet<DictionaryEntry>> GetEntries();
+	}
 }

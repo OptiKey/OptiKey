@@ -67,8 +67,13 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             leadingSpaces = new string(' ', leadingSpaceCount);
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
+		
+		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
+		{
+			return entries;
+		}
 
-        public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
+		public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
         {
             if (entry.Contains(" "))
             {
@@ -130,7 +135,12 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 if (entries.ContainsKey(trigram))
                 {
                     entries[trigram].RemoveWhere(x => x.Entry == entry);
-                }
+
+					if (!entries[trigram].Any())
+					{
+						entries.Remove(trigram);
+					}
+				}
             }
         }
         private static double CalculateScore(double numberOfMatches, double numberOfRootNGrams, double numberOfEntryNGrams)
