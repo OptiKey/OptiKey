@@ -101,6 +101,8 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 manageAutoComplete = CreateAutoComplete();
+
+				// Create reference to the dictionary entries.
 				entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
