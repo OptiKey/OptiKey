@@ -1,4 +1,10 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.AutoComplete;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,16 +12,10 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
-using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-    public class DictionaryService : IDictionaryService
+	public class DictionaryService : IDictionaryService
     {
         #region Constants
 
@@ -30,14 +30,13 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AutoCompleteMethods autoCompleteMethod;
 
-        private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
-        
-        #endregion
+		private Dictionary<string, HashSet<DictionaryEntry>> entries;
+		private IManageAutoComplete manageAutoComplete;
+		#endregion
 
-        #region Events
+		#region Events
 
-        public event EventHandler<Exception> Error;
+		public event EventHandler<Exception> Error;
         
         #endregion
 
@@ -91,18 +90,20 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        #endregion
+		#endregion
 
-        #region Load / Save Dictionary
+		#region Load / Save Dictionary
 
-        public void LoadDictionary()
+		public void LoadDictionary()
         {
             Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
             try
             {
-                entries = new Dictionary<string, List<DictionaryEntry>>();
                 manageAutoComplete = CreateAutoComplete();
+
+				// Create reference to the dictionary entries.
+				entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -266,20 +267,8 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-                    if (entries.ContainsKey(hash))
-                    {
-                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
-                        {
-                            entries[hash].Add(newEntryWithUsageCount);
-                        }
-                    }
-                    else
-                    {
-                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
-                    }
-
-                    //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
+					//Also add to entries for auto complete
+					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -312,15 +301,8 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
-                        entries[hash].Remove(foundEntry);
-
-                        if (!entries[hash].Any())
-                        {
-                            entries.Remove(hash);
-                        }
-
-                        //Also remove from entries for auto complete
-                        manageAutoComplete.RemoveEntry(entry);
+						//Also remove from entries for auto complete
+						manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }

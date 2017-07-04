@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-    public class BasicAutoComplete : IManageAutoComplete
+	public class BasicAutoComplete : IManageAutoComplete
     {
-        private readonly Dictionary<string, HashSet<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, HashSet<DictionaryEntry>>();
+        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -19,21 +19,21 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         public void Clear()
         {
             Log.Debug("Clear called.");
-            entriesForAutoComplete.Clear();
+            entries.Clear();
         }
 
         public IEnumerable<string> GetSuggestions(string root)
         {
             Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
 
-            if (entriesForAutoComplete != null)
+            if (entries != null)
             {
                 var simplifiedRoot = root.Normalise();
 
                 if (!string.IsNullOrWhiteSpace(simplifiedRoot))
                 {
                     return
-                        entriesForAutoComplete
+                        entries
                             .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
                             .SelectMany(kvp => kvp.Value)
                             .Where(de => de.Entry.Length >= root.Length)
@@ -50,36 +50,33 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         }
 
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
-        {
+		{
+			if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
+			{
+				//Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+				var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+				AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
+			}
 
-            //Also add to entries for auto complete
-            var autoCompleteHash = entry.Normalise(log: false);
+			//Also add to entries for auto complete
+			var autoCompleteHash = entry.Normalise(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
-            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
-            {
-                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-                AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
-            }
-
-
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         { 
-
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
-                if (entriesForAutoComplete.ContainsKey(autoCompleteHash))
+                if (entries.ContainsKey(autoCompleteHash))
                 {
-                    if (entriesForAutoComplete[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
+                    if (entries[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
                     {
-                        entriesForAutoComplete[autoCompleteHash].Add(newEntryWithUsageCount);
+                        entries[autoCompleteHash].Add(newEntryWithUsageCount);
                     }
                 }
                 else
                 {
-                    entriesForAutoComplete.Add(autoCompleteHash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
+                    entries.Add(autoCompleteHash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
                 }
             }
         }
@@ -88,21 +85,26 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         {
             var autoCompleteHash = entry.Normalise(log: false);
             if (!string.IsNullOrWhiteSpace(autoCompleteHash)
-                && entriesForAutoComplete.ContainsKey(autoCompleteHash))
+                && entries.ContainsKey(autoCompleteHash))
             {
-                var foundEntryForAutoComplete = entriesForAutoComplete[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+                var foundEntryForAutoComplete = entries[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
 
                 if (foundEntryForAutoComplete != null)
                 {
-                    entriesForAutoComplete[autoCompleteHash].Remove(foundEntryForAutoComplete);
+                    entries[autoCompleteHash].Remove(foundEntryForAutoComplete);
 
-                    if (!entriesForAutoComplete[autoCompleteHash].Any())
+                    if (!entries[autoCompleteHash].Any())
                     {
-                        entriesForAutoComplete.Remove(autoCompleteHash);
+                        entries.Remove(autoCompleteHash);
                     }
                 }
             }
 
         }
+
+		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
+		{
+			return entries;
+		}
     }
 }
