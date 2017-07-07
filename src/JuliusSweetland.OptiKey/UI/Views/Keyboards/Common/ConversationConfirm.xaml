@@ -48,14 +48,14 @@
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="10"
+                      WidthSpan="1.5" HeightSpan="1.5"
                       SymbolGeometry="{StaticResource YesIcon}"
                       Text="{x:Static resx:Resources.YES}"
-                      SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ConversationConfirmYesKey}"/>
         <controls:Key Grid.Row="0" Grid.Column="10" Grid.RowSpan="5" Grid.ColumnSpan="10"
+                      WidthSpan="2" HeightSpan="2"
                       SymbolGeometry="{StaticResource NoIcon}"
                       Text="{x:Static resx:Resources.NO}"
-                      SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.ConversationConfirmNoKey}"/>
 
         <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2"
@@ -63,21 +63,47 @@
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}"/>
+        <ContentControl Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmOnlyMode}" Value="False">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.ALPHA}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.ConversationAlphaKeyboardKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
         <controls:Key Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
+        <ContentControl Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmOnlyMode}" Value="False">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
+                                                  Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.ConversationNumericAndSymbolsKeyboardKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
         <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
@@ -91,6 +117,16 @@
                     </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmOnlyMode}" Value="True">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource QuitIcon}"

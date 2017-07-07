@@ -50,6 +50,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
