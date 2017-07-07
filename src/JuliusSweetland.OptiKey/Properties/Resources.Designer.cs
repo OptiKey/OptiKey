@@ -1364,6 +1364,69 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to F13.
+        /// </summary>
+        public static string F13 {
+            get {
+                return ResourceManager.GetString("F13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F14.
+        /// </summary>
+        public static string F14 {
+            get {
+                return ResourceManager.GetString("F14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F15.
+        /// </summary>
+        public static string F15 {
+            get {
+                return ResourceManager.GetString("F15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F16.
+        /// </summary>
+        public static string F16 {
+            get {
+                return ResourceManager.GetString("F16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F17.
+        /// </summary>
+        public static string F17 {
+            get {
+                return ResourceManager.GetString("F17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F18.
+        /// </summary>
+        public static string F18 {
+            get {
+                return ResourceManager.GetString("F18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F19.
+        /// </summary>
+        public static string F19 {
+            get {
+                return ResourceManager.GetString("F19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to F2.
         /// </summary>
         public static string F2 {
