@@ -51,6 +51,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.UiLanguage).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.MouseKeyboardDockSize).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationOnlyMode).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
@@ -264,6 +266,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             : new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                 }
+            }
+            else if (Keyboard is ViewModelKeyboards.ConversationConfirm)
+            {
+                newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                    ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
+                    : new CommonViews.ConversationConfirm { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.ConversationNumericAndSymbols)
             {

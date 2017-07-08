@@ -269,6 +269,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Keyboard = new ConversationAlpha(null);
                 windowManipulationService.Maximise();
             }
+            else if (Settings.Default.ConversationConfirmOnlyMode)
+            {
+                Keyboard = new ConversationConfirm(null);
+                windowManipulationService.Maximise();
+            }
             else
             {
                 switch (Settings.Default.StartupKeyboard)
@@ -291,6 +296,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case Enums.Keyboards.ConversationNumericAndSymbols:
                         Keyboard = new ConversationNumericAndSymbols(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
+                        });
+                        windowManipulationService.Maximise();
+                        break;
+
+                    case Enums.Keyboards.ConversationConfirm:
+                        Keyboard = new ConversationConfirm(() =>
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
                             mainWindowManipulationService.Restore();
