@@ -473,6 +473,87 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
+                case FunctionKeys.BlockyNum:
+                    Settings.Default.BlockyLayer = "Num";
+                    break;
+
+                case FunctionKeys.Blocky123:
+                    Settings.Default.BlockyLayer = "123";
+                    break;
+
+                case FunctionKeys.Blocky456:
+                    Settings.Default.BlockyLayer = "456";
+                    break;
+
+                case FunctionKeys.Blocky789:
+                    Settings.Default.BlockyLayer = "789";
+                    break;
+
+                case FunctionKeys.Blocky0:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "0";
+                    break;
+
+                case FunctionKeys.Blocky1:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "1";
+                    break;
+
+                case FunctionKeys.Blocky2:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "2";
+                    break;
+
+                case FunctionKeys.Blocky3:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "3";
+                    break;
+
+                case FunctionKeys.Blocky4:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "4";
+                    break;
+
+                case FunctionKeys.Blocky5:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "5";
+                    break;
+
+                case FunctionKeys.Blocky6:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "6";
+                    break;
+
+                case FunctionKeys.Blocky7:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "7";
+                    break;
+
+                case FunctionKeys.Blocky8:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "8";
+                    break;
+
+                case FunctionKeys.Blocky9:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "9";
+                    break;
+
+                case FunctionKeys.BlockyAp:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "'";
+                    break;
+
+                case FunctionKeys.BlockyEx:
+                    Settings.Default.BlockyLayer = "";
+                    Text += "!";
+                    break;
+
+                case FunctionKeys.BlockyPe:
+                    Settings.Default.BlockyLayer = "";
+                    Text += ".";
+                    break;
+
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
                     StoreLastTextChange(null);
