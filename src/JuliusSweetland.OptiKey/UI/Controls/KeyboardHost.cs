@@ -54,6 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.BlockyLayer).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -205,6 +206,65 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = Settings.Default.UseAlphabeticalKeyboardLayout 
                             ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
                             : new EnglishViews.Alpha { DataContext = Keyboard };
+                        break;
+                }
+            }
+            else if (Keyboard is ViewModelKeyboards.BlockyAlpha)
+            {
+                switch (Settings.Default.KeyboardAndDictionaryLanguage)
+                {
+                    case Languages.CatalanSpain:
+                        newContent = new CatalanViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.CroatianCroatia:
+                        newContent = new CroatianViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.CzechCzechRepublic:
+                        newContent = new CzechViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.DanishDenmark:
+                        newContent = new DanishViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.DutchBelgium:
+                        newContent = new DutchViews.BelgiumAlpha { DataContext = Keyboard };
+                        break;
+                    case Languages.DutchNetherlands:
+                        newContent = new DutchViews.NetherlandsAlpha { DataContext = Keyboard };
+                        break;
+                    case Languages.FrenchFrance:
+                        newContent = new FrenchViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.GermanGermany:
+                        newContent = new GermanViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.GreekGreece:
+                        newContent = new GreekViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.ItalianItaly:
+                        newContent = new ItalianViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.PortuguesePortugal:
+                        newContent = new PortugueseViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.RussianRussia:
+                        newContent = new RussianViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.SlovakSlovakia:
+                        newContent = new SlovakViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.SlovenianSlovenia:
+                        newContent = new SlovenianViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.SpanishSpain:
+                        newContent = new SpanishViews.Alpha { DataContext = Keyboard };
+                        break;
+                    case Languages.TurkishTurkey:
+                        newContent = new TurkishViews.Alpha { DataContext = Keyboard };
+                        break;
+                    default:
+                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                            ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
+                            : new EnglishViews.BlockyAlpha { DataContext = Keyboard };
                         break;
                 }
             }

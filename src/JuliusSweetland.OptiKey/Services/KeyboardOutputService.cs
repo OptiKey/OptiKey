@@ -178,6 +178,301 @@ namespace JuliusSweetland.OptiKey.Services
                     suppressNextAutoSpace = true;
                     break;
 
+                case FunctionKeys.BlockyClear:
+                    Settings.Default.BlockyLayer = "";
+                    break;
+
+                case FunctionKeys.BlockyABCDEFGHI:
+                    Settings.Default.BlockyLayer = "ABCDEFGHI";
+                    break;
+
+                case FunctionKeys.BlockyJKLMNOPQR:
+                    Settings.Default.BlockyLayer = "JKLMNOPQR";
+                    break;
+
+                case FunctionKeys.BlockySTUVWXYZ:
+                    Settings.Default.BlockyLayer = "STUVWXYZ";
+                    break;
+
+                case FunctionKeys.BlockyABC:
+                    Settings.Default.BlockyLayer = "ABC";
+                    break;
+
+                case FunctionKeys.BlockyDEF:
+                    Settings.Default.BlockyLayer = "DEF";
+                    break;
+
+                case FunctionKeys.BlockyGHI:
+                    Settings.Default.BlockyLayer = "GHI";
+                    break;
+
+                case FunctionKeys.BlockyJKL:
+                    Settings.Default.BlockyLayer = "JKL";
+                    break;
+
+                case FunctionKeys.BlockyMNO:
+                    Settings.Default.BlockyLayer = "MNO";
+                    break;
+
+                case FunctionKeys.BlockyPQR:
+                    Settings.Default.BlockyLayer = "PQR";
+                    break;
+
+                case FunctionKeys.BlockySTU:
+                    Settings.Default.BlockyLayer = "STU";
+                    break;
+
+                case FunctionKeys.BlockyVWX:
+                    Settings.Default.BlockyLayer = "VWX";
+                    break;
+
+                case FunctionKeys.BlockyYZ:
+                    Settings.Default.BlockyLayer = "YZ";
+                    break;
+
+                case FunctionKeys.BlockyA:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "A":
+                        "a";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyB:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "B":
+                        "b";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyC:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "C":
+                        "c";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyD:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "D":
+                        "d";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyE:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "E":
+                        "e";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyF:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "F":
+                        "f";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyG:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "G":
+                        "g";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyH:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "H":
+                        "h";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyI:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "I":
+                        "i";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyJ:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "J":
+                        "j";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyK:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "K":
+                        "k";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyL:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "L":
+                        "l";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyM:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "M":
+                        "m";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyN:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "N":
+                        "n";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyO:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "O":
+                        "o";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyP:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "P":
+                        "p";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyQ:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "Q":
+                        "q";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyR:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "R":
+                        "r";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyS:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "S":
+                        "s";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyT:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "T":
+                        "t";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyU:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "U":
+                        "u";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyV:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "V":
+                        "v";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyW:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "W":
+                        "w";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyX:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "X":
+                        "x";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyY:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "Y":
+                        "y";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyZ:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "Z":
+                        "z";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
+                case FunctionKeys.BlockyQE:
+                    Settings.Default.BlockyLayer = "";
+                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
+                        "!":
+                        "?";
+                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    GenerateAutoCompleteSuggestions();
+                    break;
+
                 case FunctionKeys.ClearScratchpad:
                     Text = null;
                     StoreLastTextChange(null);

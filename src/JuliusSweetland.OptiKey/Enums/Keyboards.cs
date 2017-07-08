@@ -3,6 +3,7 @@
     public enum Keyboards
     {
         Alpha,
+        BlockyAlpha,
         ConversationAlpha,
         ConversationConfirm,
         ConversationNumericAndSymbols,

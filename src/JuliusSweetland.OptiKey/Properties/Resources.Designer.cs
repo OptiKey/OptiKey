@@ -289,6 +289,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blocky letters.
+        /// </summary>
+        public static string BLOCKY_ALPHA_LAYOUT {
+            get {
+                return ResourceManager.GetString("BLOCKY_ALPHA_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string BOTTOM {

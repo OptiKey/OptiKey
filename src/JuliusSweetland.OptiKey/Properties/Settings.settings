@@ -350,6 +350,9 @@
     <Setting Name="ConversationConfirmEnable" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="BlockyLayer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">
                     &lt;dictionary&gt;
@@ -965,6 +968,5 @@
                         &lt;/item&gt;
                     &lt;/dictionary&gt;
                 </Value>
-    </Setting>
   </Settings>
 </SettingsFile>
