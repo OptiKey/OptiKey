@@ -279,6 +279,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref conversationOnlyMode, value); }
         }
 
+        private bool conversationconfirmEnable;
+        public bool ConversationConfirmEnable
+        {
+            get { return conversationconfirmEnable; }
+            set { SetProperty(ref conversationconfirmEnable, value); }
+        }
+
+        private bool conversationconfirmOnlyMode;
+        public bool ConversationConfirmOnlyMode
+        {
+            get { return conversationconfirmOnlyMode; }
+            set { SetProperty(ref conversationconfirmOnlyMode, value); }
+        }
+
         private Enums.Keyboards startupKeyboard;
         public Enums.Keyboards StartupKeyboard
         {
@@ -318,6 +332,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
         }
+
+        public bool ChangesRequireRestartCCE
+        {
+            get { return Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable; }
+        }
+
+        public bool ChangesRequireRestartCCOM
+        {
+            get { return Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode; }
+        }
         
         #endregion
         
@@ -338,6 +362,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
             ConversationOnlyMode = Settings.Default.ConversationOnlyMode;
+            ConversationConfirmEnable = Settings.Default.ConversationConfirmEnable;
+            ConversationConfirmOnlyMode = Settings.Default.ConversationConfirmOnlyMode;
             StartupKeyboard = Settings.Default.StartupKeyboard;
             MinimisedPosition = Settings.Default.MainWindowMinimisedPosition;
             KeyCase = Settings.Default.KeyCase;
@@ -361,6 +387,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;
             Settings.Default.ConversationOnlyMode = ConversationOnlyMode;
+            Settings.Default.ConversationConfirmEnable = ConversationConfirmEnable;
+            Settings.Default.ConversationConfirmOnlyMode = ConversationConfirmOnlyMode;
             Settings.Default.StartupKeyboard = StartupKeyboard;
             Settings.Default.MainWindowMinimisedPosition = MinimisedPosition;
             Settings.Default.KeyCase = KeyCase;

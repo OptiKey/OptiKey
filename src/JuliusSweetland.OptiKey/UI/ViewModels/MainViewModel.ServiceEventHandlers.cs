@@ -277,18 +277,53 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.ConversationAlphaKeyboard:
                     Log.Info("Changing keyboard to ConversationAlpha.");
                     var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
-                    Action conversationAlphaBackAction =
-                        currentKeyboard is ConversationNumericAndSymbols
-                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
-                            : () => 
+                    Action conversationAlphaBackAction;
+                    if (currentKeyboard is ConversationConfirm)
+                    {
+                        conversationAlphaBackAction =
+                            ((ConversationConfirm)currentKeyboard).BackAction;
+                    }
+                    else
+                        conversationAlphaBackAction =
+                            currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : () => 
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
+                                        Keyboard = currentKeyboard;
+                                    };
+                    Keyboard = new ConversationAlpha(conversationAlphaBackAction);
+                    Log.Info("Maximising window.");
+                    mainWindowManipulationService.Maximise();
+                    Log.InfoFormat("Setting opacity to 1 (fully opaque)");
+                    mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.ConversationConfirmKeyboard:
+                    Log.Info("Changing keyboard to ConversationConfirm.");
+                    var opacityBeforeConversationConfirm = mainWindowManipulationService.GetOpacity();
+                    Action conversationConfirmBackAction;
+                    if (currentKeyboard is ConversationAlpha)
+                    {
+                        conversationConfirmBackAction =
+                            ((ConversationAlpha)currentKeyboard).BackAction;
+                    }
+                    else
+                        conversationConfirmBackAction =
+                            currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : () =>
                                 {
                                     Log.Info("Restoring window size.");
                                     mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
+                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationConfirm);
+                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationConfirm);
                                     Keyboard = currentKeyboard;
                                 };
-                    Keyboard = new ConversationAlpha(conversationAlphaBackAction);
+                    Keyboard = new ConversationConfirm(conversationConfirmBackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
@@ -298,17 +333,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.ConversationNumericAndSymbolsKeyboard:
                     Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                     var opacityBeforeConversationNumericAndSymbols = mainWindowManipulationService.GetOpacity();
-                    Action conversationNumericAndSymbolsBackAction =
-                        currentKeyboard is ConversationAlpha
-                            ? ((ConversationAlpha)currentKeyboard).BackAction
-                            : () => 
-                                {
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
-                                    Keyboard = currentKeyboard;
-                                };
+                    Action conversationNumericAndSymbolsBackAction;
+                    if (currentKeyboard is ConversationConfirm)
+                    {
+                        conversationNumericAndSymbolsBackAction =
+                            ((ConversationConfirm)currentKeyboard).BackAction;
+                    }
+                    else
+                        conversationNumericAndSymbolsBackAction =
+                            currentKeyboard is ConversationAlpha
+                                ? ((ConversationAlpha)currentKeyboard).BackAction
+                                : () => 
+                                    {
+                                        Log.Info("Restoring window size.");
+                                        mainWindowManipulationService.Restore();
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationNumericAndSymbols);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationNumericAndSymbols);
+                                        Keyboard = currentKeyboard;
+                                    };
                     Keyboard = new ConversationNumericAndSymbols(conversationNumericAndSymbolsBackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
@@ -1531,6 +1573,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Settings.Default.SpeechRate,
                         Settings.Default.SpeechVoice);
                     KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStarted ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmYes:
+                    var speechStartedYes = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.YES,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedYes ? KeyDownStates.Down : KeyDownStates.Up;
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    var speechStartedNo = audioService.SpeakNewOrInterruptCurrentSpeech(
+                        Resources.NO,
+                        () => { KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = KeyDownStates.Up; },
+                        Settings.Default.SpeechVolume,
+                        Settings.Default.SpeechRate,
+                        Settings.Default.SpeechVoice);
+                    KeyStateService.KeyDownStates[KeyValues.SpeakKey].Value = speechStartedNo ? KeyDownStates.Down : KeyDownStates.Up;
                     break;
 
                 case FunctionKeys.TurkishTurkey:
