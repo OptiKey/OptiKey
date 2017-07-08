@@ -619,35 +619,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseKeyboard:
-                    Log.Info("Changing keyboard to Mouse.");
-                    Action backAction;
-                    if (keyStateService.SimulateKeyStrokes
-                        && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                     {
-                        var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
-                        backAction = () =>
+                        Log.Info("Changing keyboard to Mouse.");
+                        Action backAction;
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysWhenInMouseKeyboard)
                         {
-                            restoreModifierStates();
-                            Keyboard = currentKeyboard;
-                        };
-                    }
-                    else
-                    {
-                        backAction = () => Keyboard = currentKeyboard;
-                    }
-                    Keyboard = new Mouse(backAction);
-                    //Reinstate mouse keyboard docked state (if docked)
-                    if (Settings.Default.MainWindowState == WindowStates.Docked)
-                    {
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
-                            && Settings.Default.MainWindowDockSize != DockSizes.Full)
-                        {
-                            mainWindowManipulationService.ResizeDockToFull();
+                            var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
+                            backAction = () =>
+                            {
+                                restoreModifierStates();
+                                Keyboard = currentKeyboard;
+                            };
                         }
-                        else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
-                            && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                        else
                         {
-                            mainWindowManipulationService.ResizeDockToCollapsed();
+                            backAction = () => Keyboard = currentKeyboard;
+                        }
+                        Keyboard = new Mouse(backAction);
+                        //Reinstate mouse keyboard docked state (if docked)
+                        if (Settings.Default.MainWindowState == WindowStates.Docked)
+                        {
+                            if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full
+                                && Settings.Default.MainWindowDockSize != DockSizes.Full)
+                            {
+                                mainWindowManipulationService.ResizeDockToFull();
+                            }
+                            else if (Settings.Default.MouseKeyboardDockSize == DockSizes.Collapsed
+                                && Settings.Default.MainWindowDockSize != DockSizes.Collapsed)
+                            {
+                                mainWindowManipulationService.ResizeDockToCollapsed();
+                            }
                         }
                     }
                     break;
@@ -1029,6 +1031,52 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         ResetAndCleanupAfterMouseAction();
                     }, suppressMagnification: true);
                     break;
+
+                    case FunctionKeys.MouseScrollToTop:
+
+                        var currentPoint = mouseOutputService.GetCursorPosition();
+                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPoint.X, currentPoint.Y);
+                        Action<Point?> performScroll = point =>
+                        {
+                            if (point != null)
+                            {
+                                Action<Point> simulateScrollToTop = fp =>
+                                {
+                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                    mouseOutputService.MoveAndScrollWheelUp(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                };
+                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToTop(point.Value);
+                                simulateScrollToTop(point.Value);
+                            }
+                        };
+                        performScroll(currentPoint);
+                        ResetAndCleanupAfterMouseAction();
+
+                        break;
+
+                    case FunctionKeys.MouseScrollToBottom:
+
+                        var currentPointScroll = mouseOutputService.GetCursorPosition();
+                        Log.InfoFormat("Mouse scroll to top selected at point ({0},{1}).", currentPointScroll.X, currentPointScroll.Y);
+                        Action<Point?> performScrollDown = point =>
+                        {
+                            if (point != null)
+                            {
+                                Action<Point> simulateScrollToBottom = fp =>
+                                {
+                                    Log.InfoFormat("Performing mouse scroll to top at point ({0},{1}).", fp.X, fp.Y);
+                                    audioService.PlaySound(Settings.Default.MouseScrollSoundFile, Settings.Default.MouseScrollSoundVolume);
+                                    mouseOutputService.MoveAndScrollWheelDown(fp, Settings.Default.MouseScrollAmountInClicks, true);
+                                };
+                                lastMouseActionStateManager.LastMouseAction = () => simulateScrollToBottom(point.Value);
+                                simulateScrollToBottom(point.Value);
+                            }
+                        };
+                        performScrollDown(currentPointScroll);
+                        ResetAndCleanupAfterMouseAction();
+
+                        break;
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");

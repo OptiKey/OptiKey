@@ -31,6 +31,7 @@ using SlovenianViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Slovenian;
 using SpanishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Spanish;
 using TurkishViews = JuliusSweetland.OptiKey.UI.Views.Keyboards.Turkish;
 using ViewModelKeyboards = JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
+using System.Diagnostics;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -59,6 +60,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 contentDp.AddValueChanged(this, ContentChangedHandler);
             }
+
+            this.MouseEnter += this.OnMouseEnter;
         }
 
         #endregion
@@ -342,6 +345,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 keyboardHost.BuildPointToKeyMap();
             }
         }
+
+        private void OnMouseEnter(object sender, System.EventArgs e)
+        {
+            if (Settings.Default.PointsSource == PointsSources.MousePosition &&
+                Settings.Default.PointsMousePositionHideCursor)
+            {
+                this.Cursor = System.Windows.Input.Cursors.None;
+            }
+            else
+            {
+                this.Cursor = System.Windows.Input.Cursors.Arrow;
+            }
+        }
         
         #endregion
 
@@ -393,7 +409,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
                     {
-                        pointToKeyValueMap.Add(rect, key.Value);
+
+                        if (pointToKeyValueMap.ContainsKey(rect))
+                        {
+                            // In Release, just log error
+                            KeyValue existingKeyValue = pointToKeyValueMap[rect];
+                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map",
+                                             existingKeyValue.ToString(), key.Value.ToString());
+
+                            Debug.Assert(!pointToKeyValueMap.ContainsKey(rect));
+                        }
+                        else
+                        {
+                            pointToKeyValueMap.Add(rect, key.Value);
+                        }
                     }
                 }
             }
