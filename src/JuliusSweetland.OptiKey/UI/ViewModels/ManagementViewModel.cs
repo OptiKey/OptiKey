@@ -50,8 +50,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
-                    || VisualsViewModel.ChangesRequireRestartCCE
-                    || VisualsViewModel.ChangesRequireRestartCCOM
                     || WordsViewModel.ChangesRequireRestart;
             }
         }

@@ -330,17 +330,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return Settings.Default.ConversationOnlyMode != ConversationOnlyMode; }
-        }
-
-        public bool ChangesRequireRestartCCE
-        {
-            get { return Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable; }
-        }
-
-        public bool ChangesRequireRestartCCOM
-        {
-            get { return Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode; }
+            get
+            {
+                return Settings.Default.ConversationOnlyMode != ConversationOnlyMode
+                    || Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable
+                    || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode;
+            }
         }
         
         #endregion

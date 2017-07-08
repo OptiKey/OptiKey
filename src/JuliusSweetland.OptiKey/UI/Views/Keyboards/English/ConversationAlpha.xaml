@@ -132,16 +132,21 @@
                       Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="19" />
 
-        <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1">
+        <ContentControl Grid.Row="4" Grid.Column="0">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource YesNoIcon}"
-                                Text="{x:Static resx:Resources.YESNO}"
-                                Value="{x:Static models:KeyValues.ConversationConfirmKeyboardKey}"/>
+                                                  Text="{x:Static resx:Resources.YESNO}"
+                                                  Value="{x:Static models:KeyValues.ConversationConfirmKeyboardKey}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

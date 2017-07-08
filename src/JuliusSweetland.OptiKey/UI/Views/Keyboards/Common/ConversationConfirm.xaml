@@ -63,9 +63,15 @@
                       Text="{x:Static resx:Resources.RE_CALIBRATE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.CalibrateKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="4" />
         <ContentControl Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmOnlyMode}" Value="False">
                             <Setter Property="Content">
@@ -81,14 +87,21 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
+        <controls:Key Grid.Row="5" Grid.Column="6"  Grid.ColumnSpan="3" />
         <controls:Key Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource SleepIcon}"
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="11" Grid.ColumnSpan="3" />
         <ContentControl Grid.Row="5" Grid.Column="14" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmOnlyMode}" Value="False">
                             <Setter Property="Content">
@@ -104,6 +117,7 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
+        <controls:Key Grid.Row="5" Grid.Column="16" Grid.ColumnSpan="2" />
         <ContentControl Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
