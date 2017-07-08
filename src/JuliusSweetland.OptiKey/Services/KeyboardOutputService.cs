@@ -235,8 +235,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "A":
                         "a";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyB:
@@ -244,8 +244,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "B":
                         "b";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyC:
@@ -253,8 +253,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "C":
                         "c";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyD:
@@ -262,8 +262,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "D":
                         "d";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyE:
@@ -271,8 +271,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "E":
                         "e";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyF:
@@ -280,8 +280,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "F":
                         "f";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyG:
@@ -289,8 +289,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "G":
                         "g";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyH:
@@ -298,8 +298,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "H":
                         "h";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyI:
@@ -307,8 +307,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "I":
                         "i";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyJ:
@@ -316,8 +316,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "J":
                         "j";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyK:
@@ -325,8 +325,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "K":
                         "k";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyL:
@@ -334,8 +334,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "L":
                         "l";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyM:
@@ -343,8 +343,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "M":
                         "m";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyN:
@@ -352,8 +352,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "N":
                         "n";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyO:
@@ -361,8 +361,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "O":
                         "o";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyP:
@@ -370,8 +370,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "P":
                         "p";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyQ:
@@ -379,8 +379,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "Q":
                         "q";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyR:
@@ -388,8 +388,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "R":
                         "r";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyS:
@@ -397,8 +397,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "S":
                         "s";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyT:
@@ -406,8 +406,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "T":
                         "t";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyU:
@@ -415,8 +415,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "U":
                         "u";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyV:
@@ -424,8 +424,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "V":
                         "v";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyW:
@@ -433,8 +433,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "W":
                         "w";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyX:
@@ -442,8 +442,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "X":
                         "x";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyY:
@@ -451,8 +451,8 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "Y":
                         "y";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyZ:
@@ -460,17 +460,17 @@ namespace JuliusSweetland.OptiKey.Services
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
                         "Z":
                         "z";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.BlockyQE:
                     Settings.Default.BlockyLayer = "";
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "!":
-                        "?";
-                    keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    GenerateAutoCompleteSuggestions();
+                        "?":
+                        "!";
+                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
+                    // GenerateAutoCompleteSuggestions();
                     break;
 
                 case FunctionKeys.ClearScratchpad:
