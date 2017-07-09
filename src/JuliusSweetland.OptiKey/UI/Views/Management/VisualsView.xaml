@@ -77,7 +77,13 @@
                                             Minimum="10" Interval="10"
                                             Value="{Binding MagnifyDestinationPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.Enable_Quit_Keys_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="6" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding EnableQuitKeys, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -90,7 +96,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="6" Grid.Column="1" 
+                    <CheckBox Grid.Row="7" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationOnlyMode, Mode=TwoWay}">
                         <CheckBox.Style>
@@ -105,13 +111,13 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ENABLE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="7" Grid.Column="1" 
+                    <CheckBox Grid.Row="8" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationConfirmEnable, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_CONFIRM_ONLY_MODE_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -127,7 +133,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="8" Grid.Column="1" 
+                    <CheckBox Grid.Row="9" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ConversationConfirmOnlyMode, Mode=TwoWay}">
                         <CheckBox.Style>
@@ -145,7 +151,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.STARTUP_KEYBOARD_LABEL}" 
                                VerticalAlignment="Center" Margin="5">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -161,7 +167,7 @@
                             </Style>
                         </TextBlock.Style>    
                     </TextBlock>
-                    <ComboBox Grid.Row="9" Grid.Column="1" 
+                    <ComboBox Grid.Row="10" Grid.Column="1" 
                               ItemsSource="{Binding StartupKeyboards}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
@@ -181,29 +187,29 @@
                         </ComboBox.Style>
                     </ComboBox>
 
-                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.MINIMISED_POSITION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <ComboBox Grid.Row="10" Grid.Column="1" 
+                    <ComboBox Grid.Row="11" Grid.Column="1" 
                               ItemsSource="{Binding MinimisedPositions}"
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding MinimisedPosition, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.FULL_DOCK_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="11" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="90" Interval="10"
                                             Value="{Binding MainWindowFullDockThicknessAsPercentageOfScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.COLLAPSED_DOCK_THICKNESS}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <controls:NumericUpDown Grid.Row="12" Grid.Column="1" TextAlignment="Left"
+                    <controls:NumericUpDown Grid.Row="13" Grid.Column="1" TextAlignment="Left"
                                             Minimum="10" Maximum="100" Interval="10"
                                             Value="{Binding MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_BORDER_THICKNESS_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.CONVERSATION_BORDER_THICKNESS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
-                    <TextBox Grid.Row="13" Grid.Column="1" TextAlignment="Left"
+                    <TextBox Grid.Row="14" Grid.Column="1" TextAlignment="Left"
                              Text="{Binding ConversationBorderThickness, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>

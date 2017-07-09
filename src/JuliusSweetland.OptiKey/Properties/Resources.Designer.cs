@@ -1071,6 +1071,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable quit keys?.
+        /// </summary>
+        public static string Enable_Quit_Keys_LABEL {
+            get {
+                return ResourceManager.GetString("Enable_Quit_Keys_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to END.
         /// </summary>
         public static string END {

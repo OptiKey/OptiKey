@@ -353,6 +353,9 @@
     <Setting Name="BlockyLayer" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="EnableQuitKeys" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">
                     &lt;dictionary&gt;

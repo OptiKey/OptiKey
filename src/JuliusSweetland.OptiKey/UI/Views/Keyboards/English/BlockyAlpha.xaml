@@ -51,7 +51,7 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                            <controls:Key ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
                                           SharedSizeGroup="KeyWithNineLetters"
                                           Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
                         </Setter.Value>
@@ -60,7 +60,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="abc" ShiftDownText="ABC"
+                                    <controls:Key ShiftUpText="abc" Text="ABC"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyABC}"/>
                                 </Setter.Value>
@@ -69,7 +69,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="a" ShiftDownText="A"
+                                    <controls:Key ShiftUpText="a" Text="A"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyA}"/>
                                 </Setter.Value>
@@ -78,7 +78,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="d" ShiftDownText="D"
+                                    <controls:Key ShiftUpText="d" Text="D"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyD}"/>
                                 </Setter.Value>
@@ -87,7 +87,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="g" ShiftDownText="G"
+                                    <controls:Key ShiftUpText="g" Text="G"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyG}"/>
                                 </Setter.Value>
@@ -96,7 +96,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="jkl" ShiftDownText="JKL"
+                                    <controls:Key ShiftUpText="jkl" Text="JKL"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyJKL}"/>
                                 </Setter.Value>
@@ -105,7 +105,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="j" ShiftDownText="J"
+                                    <controls:Key ShiftUpText="j" Text="J"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyJ}"/>
                                 </Setter.Value>
@@ -114,7 +114,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="m" ShiftDownText="M"
+                                    <controls:Key ShiftUpText="m" Text="M"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyM}"/>
                                 </Setter.Value>
@@ -123,7 +123,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="p" ShiftDownText="P"
+                                    <controls:Key ShiftUpText="p" Text="P"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyP}"/>
                                 </Setter.Value>
@@ -132,7 +132,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="stu" ShiftDownText="STU"
+                                    <controls:Key ShiftUpText="stu" Text="STU"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockySTU}"/>
                                 </Setter.Value>
@@ -141,7 +141,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="s" ShiftDownText="S"
+                                    <controls:Key ShiftUpText="s" Text="S"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyS}"/>
                                 </Setter.Value>
@@ -150,7 +150,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="v" ShiftDownText="V"
+                                    <controls:Key ShiftUpText="v" Text="V"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyV}"/>
                                 </Setter.Value>
@@ -159,7 +159,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="y" ShiftDownText="Y"
+                                    <controls:Key ShiftUpText="y" Text="Y"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyY}"/>
                                 </Setter.Value>
@@ -212,7 +212,7 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                            <controls:Key ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
                                           SharedSizeGroup="KeyWithNineLetters"
                                           Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
                         </Setter.Value>
@@ -221,7 +221,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="def" ShiftDownText="DEF"
+                                    <controls:Key ShiftUpText="def" Text="DEF"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyDEF}"/>
                                 </Setter.Value>
@@ -230,7 +230,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="b" ShiftDownText="B"
+                                    <controls:Key ShiftUpText="b" Text="B"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyB}"/>
                                 </Setter.Value>
@@ -239,7 +239,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="e" ShiftDownText="E"
+                                    <controls:Key ShiftUpText="e" Text="E"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyE}"/>
                                 </Setter.Value>
@@ -248,7 +248,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="h" ShiftDownText="H"
+                                    <controls:Key ShiftUpText="h" Text="H"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyH}"/>
                                 </Setter.Value>
@@ -257,7 +257,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="mno" ShiftDownText="MNO"
+                                    <controls:Key ShiftUpText="mno" Text="MNO"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyMNO}"/>
                                 </Setter.Value>
@@ -266,7 +266,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="k" ShiftDownText="K"
+                                    <controls:Key ShiftUpText="k" Text="K"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyK}"/>
                                 </Setter.Value>
@@ -275,7 +275,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="n" ShiftDownText="N"
+                                    <controls:Key ShiftUpText="n" Text="N"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyN}"/>
                                 </Setter.Value>
@@ -284,7 +284,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="q" ShiftDownText="Q"
+                                    <controls:Key ShiftUpText="q" Text="Q"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyQ}"/>
                                 </Setter.Value>
@@ -293,7 +293,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="vwx" ShiftDownText="VWX"
+                                    <controls:Key ShiftUpText="vwx" Text="VWX"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyVWX}"/>
                                 </Setter.Value>
@@ -302,7 +302,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="t" ShiftDownText="T"
+                                    <controls:Key ShiftUpText="t" Text="T"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyT}"/>
                                 </Setter.Value>
@@ -311,7 +311,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="w" ShiftDownText="W"
+                                    <controls:Key ShiftUpText="w" Text="W"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyW}"/>
                                 </Setter.Value>
@@ -320,7 +320,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="z" ShiftDownText="Z"
+                                    <controls:Key ShiftUpText="z" Text="Z"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyZ}"/>
                                 </Setter.Value>
@@ -373,7 +373,7 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="stu&#x0a;vwx&#x0a;yz!" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                            <controls:Key ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
                                           SharedSizeGroup="KeyWithNineLetters"
                                           Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
                         </Setter.Value>
@@ -382,7 +382,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="ghi" ShiftDownText="GHI"
+                                    <controls:Key ShiftUpText="ghi" Text="GHI"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyGHI}"/>
                                 </Setter.Value>
@@ -391,7 +391,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="c" ShiftDownText="C"
+                                    <controls:Key ShiftUpText="c" Text="C"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyC}"/>
                                 </Setter.Value>
@@ -400,7 +400,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="f" ShiftDownText="F"
+                                    <controls:Key ShiftUpText="f" Text="F"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyF}"/>
                                 </Setter.Value>
@@ -409,7 +409,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="i" ShiftDownText="I"
+                                    <controls:Key ShiftUpText="i" Text="I"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyI}"/>
                                 </Setter.Value>
@@ -418,7 +418,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="pqr" ShiftDownText="PQR"
+                                    <controls:Key ShiftUpText="pqr" Text="PQR"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyPQR}"/>
                                 </Setter.Value>
@@ -427,7 +427,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="l" ShiftDownText="L"
+                                    <controls:Key ShiftUpText="l" Text="L"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyL}"/>
                                 </Setter.Value>
@@ -436,7 +436,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="o" ShiftDownText="O"
+                                    <controls:Key ShiftUpText="o" Text="O"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyO}"/>
                                 </Setter.Value>
@@ -445,7 +445,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="r" ShiftDownText="R"
+                                    <controls:Key ShiftUpText="r" Text="R"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyR}"/>
                                 </Setter.Value>
@@ -454,7 +454,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="yz!" ShiftDownText="YZ?"
+                                    <controls:Key ShiftUpText="yz!" Text="YZ?"
                                                   SharedSizeGroup="KeyWithThreeLetters"
                                                   Value="{x:Static models:KeyValues.BlockyYZ}"/>
                                 </Setter.Value>
@@ -463,7 +463,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="u" ShiftDownText="U"
+                                    <controls:Key ShiftUpText="u" Text="U"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyU}"/>
                                 </Setter.Value>
@@ -472,7 +472,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="x" ShiftDownText="X"
+                                    <controls:Key ShiftUpText="x" Text="X"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyX}"/>
                                 </Setter.Value>
@@ -481,7 +481,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="!" ShiftDownText="?"
+                                    <controls:Key ShiftUpText="!" Text="?"
                                                   SharedSizeGroup="KeyWithOneLetter"
                                                   Value="{x:Static models:KeyValues.BlockyQE}"/>
                                 </Setter.Value>
@@ -539,11 +539,32 @@
                       Text="{x:Static resx:Resources.SLEEP}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
-        <controls:Key Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="1"
-                      SymbolGeometry="{StaticResource QuitIcon}"
-                      Text="{x:Static resx:Resources.QUIT}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.QuitKey}"/>
+        <ContentControl Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="1">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                          Text="{x:Static resx:Resources.QUIT}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.QuitKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
+                                                  Text="{x:Static resx:Resources.SLEEP}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
 
         <ContentControl Grid.Row="4" Grid.Column="2" 
                         Grid.ColumnSpan="2">
@@ -824,7 +845,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
@@ -835,7 +856,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
@@ -846,7 +867,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
@@ -868,7 +889,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
@@ -879,7 +900,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
@@ -890,7 +911,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
@@ -912,7 +933,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
@@ -923,7 +944,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
@@ -934,7 +955,7 @@
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>

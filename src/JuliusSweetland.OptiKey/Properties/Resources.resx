@@ -1813,4 +1813,7 @@ Slovenčina
   <data name="BLOCKY_ALPHA_LAYOUT" xml:space="preserve">
     <value>Blocky letters</value>
   </data>
+  <data name="Enable_Quit_Keys_LABEL" xml:space="preserve">
+    <value>Enable quit keys?</value>
+  </data>
 </root>

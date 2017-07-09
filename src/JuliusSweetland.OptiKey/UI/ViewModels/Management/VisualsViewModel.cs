@@ -346,6 +346,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref blockyLayer, value); }
         }
 
+        private bool enableQuitKeys;
+        public bool EnableQuitKeys
+        {
+            get { return enableQuitKeys; }
+            set { SetProperty(ref enableQuitKeys, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -374,6 +381,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             BlockyLayer = Settings.Default.BlockyLayer;
+            EnableQuitKeys = Settings.Default.EnableQuitKeys;
         }
 
         public void ApplyChanges()
@@ -400,6 +408,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.BlockyLayer = BlockyLayer;
+            Settings.Default.EnableQuitKeys = EnableQuitKeys;
         }
 
         #endregion

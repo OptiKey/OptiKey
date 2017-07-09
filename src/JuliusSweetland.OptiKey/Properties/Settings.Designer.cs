@@ -1519,6 +1519,18 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableQuitKeys {
+            get {
+                return ((bool)(this["EnableQuitKeys"]));
+            }
+            set {
+                this["EnableQuitKeys"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ConversationConfirmOnlyMode {
             get {
