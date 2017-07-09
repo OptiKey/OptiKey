@@ -168,7 +168,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="123&#x0a;0"
+                                    <controls:Key Text="123&#x0a;0   "
                                                   SharedSizeGroup="KeyWithFourLetters"
                                                   Value="{x:Static models:KeyValues.Blocky123}"/>
                                 </Setter.Value>
@@ -329,7 +329,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="456&#x0a;."
+                                    <controls:Key Text="456&#x0a;.  "
                                                   SharedSizeGroup="KeyWithFourLetters"
                                                   Value="{x:Static models:KeyValues.Blocky456}"/>
                                 </Setter.Value>
@@ -490,7 +490,7 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="789&#x0a;!"
+                                    <controls:Key Text="789&#x0a;!   "
                                                   SharedSizeGroup="KeyWithFourLetters"
                                                   Value="{x:Static models:KeyValues.Blocky789}"/>
                                 </Setter.Value>
@@ -562,40 +562,44 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="'"
-                                                  SharedSizeGroup="KeyWithOneLetter"
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyAp}"/>
+                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="0"
-                                                  SharedSizeGroup="KeyWithOneLetter"
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.Blocky0}"/>
+                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="."
-                                                  SharedSizeGroup="KeyWithOneLetter"
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyPe}"/>
+                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="!"
-                                                  SharedSizeGroup="KeyWithOneLetter"
+                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
+                                                  Text="{x:Static resx:Resources.HOME}"
+                                                  SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyEx}"/>
+                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -753,44 +757,36 @@
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                    <controls:Key Text="'"
+                                                  SharedSizeGroup="KeyWithOneLetter"
+                                                  Value="{x:Static models:KeyValues.BlockyAp}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                    <controls:Key Text="0"
+                                                  SharedSizeGroup="KeyWithOneLetter"
+                                                  Value="{x:Static models:KeyValues.Blocky0}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                    <controls:Key Text="."
+                                                  SharedSizeGroup="KeyWithOneLetter"
+                                                  Value="{x:Static models:KeyValues.BlockyPe}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
-                                                  Text="{x:Static resx:Resources.HOME}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                    <controls:Key Text="!"
+                                                  SharedSizeGroup="KeyWithOneLetter"
+                                                  Value="{x:Static models:KeyValues.BlockyEx}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -819,7 +815,7 @@
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" HeightSpan="2"
+                                                  WidthSpan="2" 
                                                   Value="{x:Static models:KeyValues.BlockyClear}"/>
                                 </Setter.Value>
                             </Setter>
