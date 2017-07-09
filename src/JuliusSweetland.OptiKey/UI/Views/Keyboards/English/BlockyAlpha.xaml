@@ -534,11 +534,48 @@
                       WidthSpan="2" 
                       SharedSizeGroup="KeyWithSymbol" 
                       Value=" "/>
-        <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="1"
-                      SymbolGeometry="{StaticResource SleepIcon}"
-                      Text="{x:Static resx:Resources.SLEEP}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.SleepKey}"/>
+        
+        <ContentControl Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="1">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Visibility" Value="Hidden" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
+                                                  Text="{x:Static resx:Resources.SLEEP}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <ContentControl Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Visibility" Value="Hidden" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
+                                                  Text="{x:Static resx:Resources.SLEEP}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        
         <ContentControl Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="1">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
@@ -552,14 +589,7 @@
                     </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableQuitKeys}" Value="False">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource SleepIcon}"
-                                                  Text="{x:Static resx:Resources.SLEEP}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  Value="{x:Static models:KeyValues.SleepKey}"/>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Visibility" Value="Hidden" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
