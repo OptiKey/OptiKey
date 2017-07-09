@@ -601,6 +601,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conversation Confirm enable.
+        /// </summary>
+        public static string CONVERSATION_CONFIRM_ENABLE_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_CONFIRM_ENABLE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversation Confirm only mode:.
+        /// </summary>
+        public static string CONVERSATION_CONFIRM_ONLY_MODE_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_CONFIRM_ONLY_MODE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conversation Letters.
         /// </summary>
         public static string CONVERSATION_LAYOUT {
@@ -635,29 +653,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CONVERSATION_ONLY_MODE_LABEL", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Conversation Confirm enable.
-        /// </summary>
-        public static string CONVERSATION_CONFIRM_ENABLE_LABEL
-        {
-            get
-            {
-                return ResourceManager.GetString("CONVERSATION_CONFIRM_ENABLE_LABEL", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Conversation Confirm only mode:.
-        /// </summary>
-        public static string CONVERSATION_CONFIRM_ONLY_MODE_LABEL
-        {
-            get
-            {
-                return ResourceManager.GetString("CONVERSATION_CONFIRM_ONLY_MODE_LABEL", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
         ///
