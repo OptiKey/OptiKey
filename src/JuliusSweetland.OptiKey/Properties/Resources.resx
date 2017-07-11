@@ -1814,9 +1814,6 @@ Slovenčina
   <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
     <value>Conversation Confirm only mode:</value>
   </data>
-  <data name="SIMPLIFIED_ALPHA_LAYOUT" xml:space="preserve">
-    <value>Simplified letters</value>
-  </data>
   <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
     <value>Enable quit keys?</value>
   </data>

@@ -4107,15 +4107,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simplified letters.
-        /// </summary>
-        public static string SIMPLIFIED_ALPHA_LAYOUT {
-            get {
-                return ResourceManager.GetString("SIMPLIFIED_ALPHA_LAYOUT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to SIZE &amp; POSITION.
         /// </summary>
         public static string SIZE_AND_POSITION {
