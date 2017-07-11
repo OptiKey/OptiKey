@@ -178,60 +178,60 @@ namespace JuliusSweetland.OptiKey.Services
                     suppressNextAutoSpace = true;
                     break;
 
-                case FunctionKeys.BlockyClear:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaClear:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     break;
 
-                case FunctionKeys.BlockyABCDEFGHI:
-                    Settings.Default.BlockyLayer = "ABCDEFGHI";
+                case FunctionKeys.SimplifiedAlphaABCDEFGHI:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABCDEFGHI";
                     break;
 
-                case FunctionKeys.BlockyJKLMNOPQR:
-                    Settings.Default.BlockyLayer = "JKLMNOPQR";
+                case FunctionKeys.SimplifiedAlphaJKLMNOPQR:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKLMNOPQR";
                     break;
 
-                case FunctionKeys.BlockySTUVWXYZ:
-                    Settings.Default.BlockyLayer = "STUVWXYZ";
+                case FunctionKeys.SimplifiedAlphaSTUVWXYZ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "STUVWXYZ";
                     break;
 
-                case FunctionKeys.BlockyABC:
-                    Settings.Default.BlockyLayer = "ABC";
+                case FunctionKeys.SimplifiedAlphaABC:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "ABC";
                     break;
 
-                case FunctionKeys.BlockyDEF:
-                    Settings.Default.BlockyLayer = "DEF";
+                case FunctionKeys.SimplifiedAlphaDEF:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "DEF";
                     break;
 
-                case FunctionKeys.BlockyGHI:
-                    Settings.Default.BlockyLayer = "GHI";
+                case FunctionKeys.SimplifiedAlphaGHI:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "GHI";
                     break;
 
-                case FunctionKeys.BlockyJKL:
-                    Settings.Default.BlockyLayer = "JKL";
+                case FunctionKeys.SimplifiedAlphaJKL:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "JKL";
                     break;
 
-                case FunctionKeys.BlockyMNO:
-                    Settings.Default.BlockyLayer = "MNO";
+                case FunctionKeys.SimplifiedAlphaMNO:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "MNO";
                     break;
 
-                case FunctionKeys.BlockyPQR:
-                    Settings.Default.BlockyLayer = "PQR";
+                case FunctionKeys.SimplifiedAlphaPQR:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "PQR";
                     break;
 
-                case FunctionKeys.BlockySTU:
-                    Settings.Default.BlockyLayer = "STU";
+                case FunctionKeys.SimplifiedAlphaSTU:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "STU";
                     break;
 
-                case FunctionKeys.BlockyVWX:
-                    Settings.Default.BlockyLayer = "VWX";
+                case FunctionKeys.SimplifiedAlphaVWX:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "VWX";
                     break;
 
-                case FunctionKeys.BlockyYZ:
-                    Settings.Default.BlockyLayer = "YZ";
+                case FunctionKeys.SimplifiedAlphaYZ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "YZ";
                     break;
 
-                case FunctionKeys.BlockyA:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaA:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "A";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -242,8 +242,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyB:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaB:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "B";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -254,8 +254,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyC:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaC:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "C";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -266,8 +266,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyD:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaD:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "D";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -278,8 +278,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyE:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaE:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "E";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -290,8 +290,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyF:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaF:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "F";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -302,8 +302,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyG:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaG:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "G";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -314,8 +314,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyH:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaH:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "H";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -326,8 +326,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyI:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaI:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "I";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -338,8 +338,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyJ:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaJ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "J";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -350,8 +350,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyK:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaK:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "K";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -362,8 +362,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyL:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaL:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "L";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -374,8 +374,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyM:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaM:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "M";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -386,8 +386,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyN:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaN:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "N";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -398,8 +398,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyO:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaO:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "O";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -410,8 +410,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyP:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaP:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "P";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -422,8 +422,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyQ:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaQ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "Q";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -434,8 +434,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyR:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaR:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "R";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -446,8 +446,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyS:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaS:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "S";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -458,8 +458,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyT:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaT:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "T";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -470,8 +470,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyU:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaU:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "U";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -482,8 +482,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyV:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaV:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "V";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -494,8 +494,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyW:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaW:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "W";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -506,8 +506,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyX:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaX:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "X";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -518,8 +518,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyY:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaY:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "Y";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -530,8 +530,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyZ:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaZ:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "Z";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -542,8 +542,8 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyQE:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaQE:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "?";
                     /*/
                     Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
@@ -554,84 +554,84 @@ namespace JuliusSweetland.OptiKey.Services
                     // GenerateAutoCompleteSuggestions();
                     break;
 
-                case FunctionKeys.BlockyNum:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlphaNum:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     break;
 
-                case FunctionKeys.Blocky123:
-                    Settings.Default.BlockyLayer = "123";
+                case FunctionKeys.SimplifiedAlpha123:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "123";
                     break;
 
-                case FunctionKeys.Blocky456:
-                    Settings.Default.BlockyLayer = "456";
+                case FunctionKeys.SimplifiedAlpha456:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "456";
                     break;
 
-                case FunctionKeys.Blocky789:
-                    Settings.Default.BlockyLayer = "789";
+                case FunctionKeys.SimplifiedAlpha789:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "789";
                     break;
 
-                case FunctionKeys.Blocky0:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha0:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "0";
                     break;
 
-                case FunctionKeys.Blocky1:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha1:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "1";
                     break;
 
-                case FunctionKeys.Blocky2:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha2:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "2";
                     break;
 
-                case FunctionKeys.Blocky3:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha3:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "3";
                     break;
 
-                case FunctionKeys.Blocky4:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha4:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "4";
                     break;
 
-                case FunctionKeys.Blocky5:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha5:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "5";
                     break;
 
-                case FunctionKeys.Blocky6:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha6:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "6";
                     break;
 
-                case FunctionKeys.Blocky7:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha7:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "7";
                     break;
 
-                case FunctionKeys.Blocky8:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha8:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "8";
                     break;
 
-                case FunctionKeys.Blocky9:
-                    Settings.Default.BlockyLayer = "Num";
+                case FunctionKeys.SimplifiedAlpha9:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     Text += "9";
                     break;
 
-                case FunctionKeys.BlockyAp:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaAp:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "'";
                     break;
 
-                case FunctionKeys.BlockyEx:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaEx:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += "!";
                     break;
 
-                case FunctionKeys.BlockyPe:
-                    Settings.Default.BlockyLayer = "";
+                case FunctionKeys.SimplifiedAlphaPe:
+                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     Text += ".";
                     break;
 

@@ -1,4 +1,4 @@
-<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.BlockyAlpha"
+<controls:KeyboardView x:Class="JuliusSweetland.OptiKey.UI.Views.Keyboards.English.SimplifiedAlpha"
                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -51,153 +51,153 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
+                            <controls:Key ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="abc" Text="ABC"
+                                    <controls:Key ShiftUpText="abc" ShiftDownText="ABC"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyABC}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABC}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="a" Text="A"
+                                    <controls:Key ShiftUpText="a" ShiftDownText="A"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyA}"/>
+                                                  Value="a"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="d" Text="D"
+                                    <controls:Key ShiftUpText="d" ShiftDownText="D"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyD}"/>
+                                                  Value="d"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="g" Text="G"
+                                    <controls:Key ShiftUpText="g" ShiftDownText="G"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyG}"/>
+                                                  Value="g"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="jkl" Text="JKL"
+                                    <controls:Key ShiftUpText="jkl" ShiftDownText="JKL"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyJKL}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKL}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="j" Text="J"
+                                    <controls:Key ShiftUpText="j" ShiftDownText="J"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyJ}"/>
+                                                  Value="j"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="m" Text="M"
+                                    <controls:Key ShiftUpText="m" ShiftDownText="M"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyM}"/>
+                                                  Value="m"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="p" Text="P"
+                                    <controls:Key ShiftUpText="p" ShiftDownText="P"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyP}"/>
+                                                  Value="p"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="stu" Text="STU"
+                                    <controls:Key ShiftUpText="stu" ShiftDownText="STU"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockySTU}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTU}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="s" Text="S"
+                                    <controls:Key ShiftUpText="s" ShiftDownText="S"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyS}"/>
+                                                  Value="s"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="v" Text="V"
+                                    <controls:Key ShiftUpText="v" ShiftDownText="V"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyV}"/>
+                                                  Value="v"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="y" Text="Y"
+                                    <controls:Key ShiftUpText="y" ShiftDownText="Y"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyY}"/>
+                                                  Value="y"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="123&#x0a;0   "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.Blocky123}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha123}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="1"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky1}"/>
+                                                  Value="1"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="4"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky4}"/>
+                                                  Value="4"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key Text="4"
+                                    <controls:Key Text="7"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky4}"/>
+                                                  Value="7"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -212,153 +212,153 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
+                            <controls:Key ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="def" Text="DEF"
+                                    <controls:Key ShiftUpText="def" ShiftDownText="DEF"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyDEF}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaDEF}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="b" Text="B"
+                                    <controls:Key ShiftUpText="b" ShiftDownText="B"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyB}"/>
+                                                  Value="b"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="e" Text="E"
+                                    <controls:Key ShiftUpText="e" ShiftDownText="E"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyE}"/>
+                                                  Value="e"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="h" Text="H"
+                                    <controls:Key ShiftUpText="h" ShiftDownText="H"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyH}"/>
+                                                  Value="h"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="mno" Text="MNO"
+                                    <controls:Key ShiftUpText="mno" ShiftDownText="MNO"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyMNO}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaMNO}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="k" Text="K"
+                                    <controls:Key ShiftUpText="k" ShiftDownText="K"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyK}"/>
+                                                  Value="k"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="n" Text="N"
+                                    <controls:Key ShiftUpText="n" ShiftDownText="N"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyN}"/>
+                                                  Value="n"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="q" Text="Q"
+                                    <controls:Key ShiftUpText="q" ShiftDownText="Q"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyQ}"/>
+                                                  Value="q"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="vwx" Text="VWX"
+                                    <controls:Key ShiftUpText="vwx" ShiftDownText="VWX"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyVWX}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaVWX}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="t" Text="T"
+                                    <controls:Key ShiftUpText="t" ShiftDownText="T"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyT}"/>
+                                                  Value="t"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="w" Text="W"
+                                    <controls:Key ShiftUpText="w" ShiftDownText="W"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyW}"/>
+                                                  Value="w"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="z" Text="Z"
+                                    <controls:Key ShiftUpText="z" ShiftDownText="Z"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyZ}"/>
+                                                  Value="z"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="456&#x0a;.  "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.Blocky456}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha456}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="2"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky2}"/>
+                                                  Value="2"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="5"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky5}"/>
+                                                  Value="5"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="8"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky8}"/>
+                                                  Value="8"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -373,153 +373,153 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
+                            <controls:Key ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
                                           SharedSizeGroup="KeyWithNineLetters"
-                                          Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="ghi" Text="GHI"
+                                    <controls:Key ShiftUpText="ghi" ShiftDownText="GHI"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyGHI}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaGHI}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="c" Text="C"
+                                    <controls:Key ShiftUpText="c" ShiftDownText="C"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyC}"/>
+                                                  Value="c"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="f" Text="F"
+                                    <controls:Key ShiftUpText="f" ShiftDownText="F"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyF}"/>
+                                                  Value="f"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="i" Text="I"
+                                    <controls:Key ShiftUpText="i" ShiftDownText="I"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyI}"/>
+                                                  Value="i"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="pqr" Text="PQR"
+                                    <controls:Key ShiftUpText="pqr" ShiftDownText="PQR"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyPQR}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaPQR}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="l" Text="L"
+                                    <controls:Key ShiftUpText="l" ShiftDownText="L"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyL}"/>
+                                                  Value="l"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="o" Text="O"
+                                    <controls:Key ShiftUpText="o" ShiftDownText="O"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyO}"/>
+                                                  Value="o"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="r" Text="R"
+                                    <controls:Key ShiftUpText="r" ShiftDownText="R"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyR}"/>
+                                                  Value="r"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="yz!" Text="YZ?"
+                                    <controls:Key ShiftUpText="yz?" ShiftDownText="YZ?"
                                                   SharedSizeGroup="KeyWithThreeLetters"
-                                                  Value="{x:Static models:KeyValues.BlockyYZ}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaYZ}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="u" Text="U"
+                                    <controls:Key ShiftUpText="u" ShiftDownText="U"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyU}"/>
+                                                  Value="u"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="x" Text="X"
+                                    <controls:Key ShiftUpText="x" ShiftDownText="X"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyX}"/>
+                                                  Value="x"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
-                                    <controls:Key ShiftUpText="!" Text="?"
+                                    <controls:Key Text="?"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyQE}"/>
+                                                  Value="?"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="789&#x0a;!   "
                                                   SharedSizeGroup="KeyWithFourLetters"
-                                                  Value="{x:Static models:KeyValues.Blocky789}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha789}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="3"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky3}"/>
+                                                  Value="3"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="6"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky6}"/>
+                                                  Value="6"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="9"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky9}"/>
+                                                  Value="9"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -606,51 +606,51 @@
                                           Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
                                           WidthSpan="2" 
                                           SharedSizeGroup="KeyWithSymbol" 
-                                          Value="{x:Static models:KeyValues.BlockyNum}"/>
+                                          Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -673,171 +673,171 @@
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource AlphaIcon}"
                                                   Text="{x:Static resx:Resources.HOME}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" HeightSpan="2"
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="'"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyAp}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaAp}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="0"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.Blocky0}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlpha0}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="."
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyPe}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaPe}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key Text="!"
                                                   SharedSizeGroup="KeyWithOneLetter"
-                                                  Value="{x:Static models:KeyValues.BlockyEx}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaEx}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -860,179 +860,179 @@
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABCDEFGHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABCDEFGHI">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="ABC">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="ABC">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="DEF">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="DEF">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="GHI">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="GHI">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" Text="ABC&#x0a;DEF&#x0a;GHI"
+                                                  ShiftUpText="abc&#x0a;def&#x0a;ghi" ShiftDownText="ABC&#x0a;DEF&#x0a;GHI"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyABCDEFGHI}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaABCDEFGHI}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKLMNOPQR">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  Text="{x:Static resx:Resources.BACK}"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="JKL">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="MNO">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="PQR">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" Text="JKL&#x0a;MNO&#x0a;PQR"
-                                                  SharedSizeGroup="KeyWithSymbol"
-                                                  WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyJKLMNOPQR}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STUVWXYZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKLMNOPQR">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="STU">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="JKL">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="VWX">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="MNO">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="YZ">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="PQR">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
-                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz!" Text="STU&#x0a;VWX&#x0a;YZ?"
+                                                  ShiftUpText="jkl&#x0a;mno&#x0a;pqr" ShiftDownText="JKL&#x0a;MNO&#x0a;PQR"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockySTUVWXYZ}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaJKLMNOPQR}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="Num">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STUVWXYZ">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.BACK}"
                                                   SharedSizeGroup="KeyWithSymbol"
                                                   WidthSpan="2" 
-                                                  Value="{x:Static models:KeyValues.BlockyClear}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="123">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="STU">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="VWX">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="YZ">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  ShiftUpText="stu&#x0a;vwx&#x0a;yz?" ShiftDownText="STU&#x0a;VWX&#x0a;YZ?"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaSTUVWXYZ}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="Num">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource BackIcon}"
+                                                  Text="{x:Static resx:Resources.BACK}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  WidthSpan="2" 
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaClear}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="123">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
                                                   WidthSpan="2" 
                                                   SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.BlockyNum}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="456">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="456">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
                                                   WidthSpan="2" 
                                                   SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.BlockyNum}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=BlockyLayer}" Value="789">
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=SimplifiedKeyboardCurrentContext}" Value="789">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <controls:Key SymbolGeometry="{StaticResource BackIcon}"
                                                   Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
                                                   WidthSpan="2" 
                                                   SharedSizeGroup="KeyWithSymbol" 
-                                                  Value="{x:Static models:KeyValues.BlockyNum}"/>
+                                                  Value="{x:Static models:KeyValues.SimplifiedAlphaNum}"/>
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

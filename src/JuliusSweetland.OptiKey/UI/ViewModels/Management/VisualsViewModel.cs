@@ -125,7 +125,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return new List<KeyValuePair<string, Enums.Keyboards>>
                 {
                     new KeyValuePair<string, Enums.Keyboards>(Resources.ALPHA_LAYOUT, Enums.Keyboards.Alpha),
-                    new KeyValuePair<string, Enums.Keyboards>(Resources.BLOCKY_ALPHA_LAYOUT, Enums.Keyboards.BlockyAlpha),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_LAYOUT, Enums.Keyboards.ConversationAlpha),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_NUM_SYM_LAYOUT, Enums.Keyboards.ConversationNumericAndSymbols),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
@@ -140,6 +139,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_2, Enums.Keyboards.NumericAndSymbols2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.NUMBERS_SYMBOLS_LAYOUT_3, Enums.Keyboards.NumericAndSymbols3),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.PHYSICAL_KEYS_LAYOUT, Enums.Keyboards.PhysicalKeys),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.SIMPLIFIED_ALPHA_LAYOUT, Enums.Keyboards.SimplifiedAlpha),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.SIZE_POSITION_LAYOUT, Enums.Keyboards.SizeAndPosition)
                 };
             }
@@ -339,11 +339,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private string blockyLayer;
-        public string BlockyLayer
+        private string simplifiedKeyboardCurrentContext;
+        public string SimplifiedKeyboardCurrentContext
         {
-            get { return blockyLayer; }
-            set { SetProperty(ref blockyLayer, value); }
+            get { return simplifiedKeyboardCurrentContext; }
+            set { SetProperty(ref simplifiedKeyboardCurrentContext, value); }
         }
 
         private bool enableQuitKeys;
@@ -380,7 +380,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
-            BlockyLayer = Settings.Default.BlockyLayer;
+            SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
         }
 
@@ -407,7 +407,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
-            Settings.Default.BlockyLayer = BlockyLayer;
+            Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
         }
 

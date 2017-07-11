@@ -284,16 +284,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ResizeDockToFull();
                         break;
 
-                    case Enums.Keyboards.BlockyAlpha:
-                        Keyboard = new BlockyAlpha(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
                     case Enums.Keyboards.ConversationAlpha:
                         Keyboard = new ConversationAlpha(() =>
                         {
@@ -405,6 +395,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Keyboard = new PhysicalKeys();
                         windowManipulationService.Restore();
                         mainWindowManipulationService.ResizeDockToFull();
+                        break;
+
+                    case Enums.Keyboards.SimplifiedAlpha:
+                        Keyboard = new SimplifiedAlpha(() =>
+                        {
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            mainWindowManipulationService.Restore();
+                            mainWindowManipulationService.ResizeDockToFull();
+                        });
+                        windowManipulationService.Maximise();
                         break;
 
                     case Enums.Keyboards.SizeAndPosition:

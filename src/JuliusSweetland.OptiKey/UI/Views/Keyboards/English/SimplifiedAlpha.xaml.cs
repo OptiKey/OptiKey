@@ -3,11 +3,11 @@
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
 {
     /// <summary>
-    /// Interaction logic for BlockyAlpha.xaml
+    /// Interaction logic for SimplifiedAlpha.xaml
     /// </summary>
-    public partial class BlockyAlpha : KeyboardView
+    public partial class SimplifiedAlpha : KeyboardView
     {
-        public BlockyAlpha() : base(shiftAware: true)
+        public SimplifiedAlpha() : base(shiftAware: true)
         {
             InitializeComponent();
         }

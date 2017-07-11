@@ -54,7 +54,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.BlockyLayer).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -209,7 +210,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         break;
                 }
             }
-            else if (Keyboard is ViewModelKeyboards.BlockyAlpha)
+            else if (Keyboard is ViewModelKeyboards.SimplifiedAlpha)
             {
                 switch (Settings.Default.KeyboardAndDictionaryLanguage)
                 {
@@ -264,7 +265,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     default:
                         newContent = Settings.Default.UseAlphabeticalKeyboardLayout
                             ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
-                            : new EnglishViews.BlockyAlpha { DataContext = Keyboard };
+                            : new EnglishViews.SimplifiedAlpha { DataContext = Keyboard };
                         break;
                 }
             }

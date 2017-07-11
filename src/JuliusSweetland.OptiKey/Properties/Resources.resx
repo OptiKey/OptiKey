@@ -1211,6 +1211,9 @@ You can turn off update checks from the Management Console (ALT + M).</value>
   <data name="YES" xml:space="preserve">
     <value>YES</value>
   </data>
+  <data name="YESNO" xml:space="preserve">
+    <value>YES/NO</value>
+  </data>
   <data name="ALPHA_LAYOUT" xml:space="preserve">
     <value>Letters</value>
   </data>
@@ -1811,10 +1814,10 @@ Slovenčina
   <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
     <value>Conversation Confirm only mode:</value>
   </data>
-  <data name="BLOCKY_ALPHA_LAYOUT" xml:space="preserve">
-    <value>Blocky letters</value>
+  <data name="SIMPLIFIED_ALPHA_LAYOUT" xml:space="preserve">
+    <value>Simplified letters</value>
   </data>
-  <data name="Enable_Quit_Keys_LABEL" xml:space="preserve">
+  <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
     <value>Enable quit keys?</value>
   </data>
 </root>

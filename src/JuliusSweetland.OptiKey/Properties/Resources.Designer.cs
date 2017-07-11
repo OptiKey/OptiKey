@@ -289,15 +289,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blocky letters.
-        /// </summary>
-        public static string BLOCKY_ALPHA_LAYOUT {
-            get {
-                return ResourceManager.GetString("BLOCKY_ALPHA_LAYOUT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string BOTTOM {
@@ -1069,9 +1060,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enable quit keys?.
         /// </summary>
-        public static string Enable_Quit_Keys_LABEL {
+        public static string ENABLE_QUIT_KEYS_LABEL {
             get {
-                return ResourceManager.GetString("Enable_Quit_Keys_LABEL", resourceCulture);
+                return ResourceManager.GetString("ENABLE_QUIT_KEYS_LABEL", resourceCulture);
             }
         }
         
@@ -4116,6 +4107,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simplified letters.
+        /// </summary>
+        public static string SIMPLIFIED_ALPHA_LAYOUT {
+            get {
+                return ResourceManager.GetString("SIMPLIFIED_ALPHA_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SIZE &amp; POSITION.
         /// </summary>
         public static string SIZE_AND_POSITION {
@@ -4885,17 +4885,13 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("YES", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to YES/NO.
         /// </summary>
-        public static string YESNO
-        {
-            get
-            {
-                return ResourceManager.GetString("YES", resourceCulture)[0] +
-                    "/" +
-                    ResourceManager.GetString("NO", resourceCulture)[0];
+        public static string YESNO {
+            get {
+                return ResourceManager.GetString("YESNO", resourceCulture);
             }
         }
     }
