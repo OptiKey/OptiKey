@@ -178,6 +178,35 @@ namespace JuliusSweetland.OptiKey.Services
                     suppressNextAutoSpace = true;
                     break;
 
+                case FunctionKeys.ClearScratchpad:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    break;
+
+                case FunctionKeys.ConversationConfirmYes:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = Resources.YES;
+                    break;
+
+                case FunctionKeys.ConversationConfirmNo:
+                    Text = null;
+                    StoreLastTextChange(null);
+                    ClearSuggestions();
+                    AutoPressShiftIfAppropriate();
+                    Log.Debug("Suppressing next auto space.");
+                    suppressNextAutoSpace = true;
+                    Text = Resources.NO;
+                    break;
+
                 case FunctionKeys.SimplifiedAlphaClear:
                     Settings.Default.SimplifiedKeyboardCurrentContext = "";
                     break;
@@ -230,330 +259,6 @@ namespace JuliusSweetland.OptiKey.Services
                     Settings.Default.SimplifiedKeyboardCurrentContext = "YZ";
                     break;
 
-                case FunctionKeys.SimplifiedAlphaA:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "A";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "A":
-                        "a";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaB:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "B";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "B":
-                        "b";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaC:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "C";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "C":
-                        "c";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaD:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "D";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "D":
-                        "d";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaE:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "E";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "E":
-                        "e";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaF:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "F";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "F":
-                        "f";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaG:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "G";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "G":
-                        "g";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaH:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "H";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "H":
-                        "h";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaI:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "I";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "I":
-                        "i";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaJ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "J";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "J":
-                        "j";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaK:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "K";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "K":
-                        "k";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaL:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "L";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "L":
-                        "l";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaM:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "M";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "M":
-                        "m";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaN:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "N";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "N":
-                        "n";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaO:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "O";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "O":
-                        "o";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaP:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "P";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "P":
-                        "p";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaQ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "Q";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "Q":
-                        "q";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaR:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "R";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "R":
-                        "r";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaS:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "S";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "S":
-                        "s";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaT:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "T";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "T":
-                        "t";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaU:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "U";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "U":
-                        "u";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaV:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "V";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "V":
-                        "v";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaW:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "W";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "W":
-                        "w";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaX:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "X";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "X":
-                        "x";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaY:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "Y";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "Y":
-                        "y";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaZ:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "Z";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "Z":
-                        "z";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaQE:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "?";
-                    /*/
-                    Text += keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value == KeyDownStates.Down ?
-                        "?":
-                        "!";
-                    /*/
-                    // keyStateService.KeyDownStates[KeyValues.LeftShiftKey].Value = KeyDownStates.Up;
-                    // GenerateAutoCompleteSuggestions();
-                    break;
-
                 case FunctionKeys.SimplifiedAlphaNum:
                     Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
                     break;
@@ -568,100 +273,6 @@ namespace JuliusSweetland.OptiKey.Services
 
                 case FunctionKeys.SimplifiedAlpha789:
                     Settings.Default.SimplifiedKeyboardCurrentContext = "789";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha0:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "0";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha1:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "1";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha2:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "2";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha3:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "3";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha4:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "4";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha5:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "5";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha6:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "6";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha7:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "7";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha8:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "8";
-                    break;
-
-                case FunctionKeys.SimplifiedAlpha9:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
-                    Text += "9";
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaAp:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "'";
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaEx:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += "!";
-                    break;
-
-                case FunctionKeys.SimplifiedAlphaPe:
-                    Settings.Default.SimplifiedKeyboardCurrentContext = "";
-                    Text += ".";
-                    break;
-
-                case FunctionKeys.ClearScratchpad:
-                    Text = null;
-                    StoreLastTextChange(null);
-                    ClearSuggestions();
-                    AutoPressShiftIfAppropriate();
-                    Log.Debug("Suppressing next auto space.");
-                    suppressNextAutoSpace = true;
-                    break;
-
-                case FunctionKeys.ConversationConfirmYes:
-                    Text = null;
-                    StoreLastTextChange(null);
-                    ClearSuggestions();
-                    AutoPressShiftIfAppropriate();
-                    Log.Debug("Suppressing next auto space.");
-                    suppressNextAutoSpace = true;
-                    Text = Resources.YES;
-                    break;
-
-                case FunctionKeys.ConversationConfirmNo:
-                    Text = null;
-                    StoreLastTextChange(null);
-                    ClearSuggestions();
-                    AutoPressShiftIfAppropriate();
-                    Log.Debug("Suppressing next auto space.");
-                    suppressNextAutoSpace = true;
-                    Text = Resources.NO;
                     break;
 
                 case FunctionKeys.Suggestion1:

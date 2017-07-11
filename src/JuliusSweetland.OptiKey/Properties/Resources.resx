@@ -1820,4 +1820,7 @@ Slovenčina
   <data name="ENABLE_QUIT_KEYS_LABEL" xml:space="preserve">
     <value>Enable quit keys?</value>
   </data>
+  <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Use simplify keyboard layout:</value>
+  </data>
 </root>

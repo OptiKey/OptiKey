@@ -31,6 +31,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}" 
@@ -57,9 +58,17 @@
                               IsChecked="{Binding UseAlphabeticalKeyboardLayout, Mode=TwoWay}"
                               Visibility="{Binding UseAlphabeticalKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}" 
-                               VerticalAlignment="Center" Margin="5" />
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}" 
+                               VerticalAlignment="Center" Margin="5"
+                               Visibility="{Binding UseSimplifiedKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
                     <CheckBox Grid.Row="3" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding UseSimplifiedKeyboardLayout, Mode=TwoWay}"
+                              Visibility="{Binding UseSimplifiedKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="4" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

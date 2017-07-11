@@ -4770,6 +4770,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use simplify keyboard layout:.
+        /// </summary>
+        public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_SIMPLIFIED_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to May I restart OptiKey?.
         /// </summary>
         public static string VERIFY_RESTART {
@@ -4890,8 +4899,11 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///   Looks up a localized string similar to YES/NO.
         /// </summary>
         public static string YESNO {
-            get {
-                return ResourceManager.GetString("YESNO", resourceCulture);
+            get
+            {
+                return ResourceManager.GetString("YES", resourceCulture)[0] +
+                    "/" +
+                    ResourceManager.GetString("NO", resourceCulture)[0];
             }
         }
     }
