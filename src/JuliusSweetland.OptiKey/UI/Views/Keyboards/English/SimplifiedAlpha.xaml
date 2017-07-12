@@ -123,8 +123,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="0" 
-                        Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -284,8 +283,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="2" 
-                        Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -445,8 +443,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="0" Grid.Column="4" 
-                        Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -613,7 +610,7 @@
                       SharedSizeGroup="KeyWithSymbol" 
                       Value=" "/>
         
-        <ContentControl Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="1">
+        <ContentControl Grid.Row="4" Grid.Column="4">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Visible" />
@@ -664,7 +661,7 @@
             </ContentControl.Style>
         </ContentControl>
         
-        <ContentControl Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="1">
+        <ContentControl Grid.Row="4" Grid.Column="5">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -694,8 +691,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="4" Grid.Column="2" 
-                        Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -757,8 +753,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="0" 
-                        Grid.RowSpan="1" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
@@ -783,8 +778,7 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <ContentControl Grid.Row="4" Grid.Column="0" 
-                        Grid.RowSpan="1" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
@@ -810,8 +804,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="0" 
-                        Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -1023,8 +1016,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="4" 
-                        Grid.RowSpan="1" Grid.ColumnSpan="1">
+        <ContentControl Grid.Row="3" Grid.Column="4">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
@@ -1049,17 +1041,12 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="5" 
-                        Grid.RowSpan="1" Grid.ColumnSpan="1">
+        <ContentControl Grid.Row="3" Grid.Column="5">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Visibility" Value="Hidden" />
                     <Setter Property="Content">
                         <Setter.Value>
-                            <!--controls:Key SymbolGeometry="{StaticResource BackManyIcon}"
-                                          Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
-                                          SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.BackManyKey}"/-->
                             <controls:Key SymbolGeometry="{StaticResource EnterIcon}"
                                           Text="{x:Static resx:Resources.ENTER}"
                                           SharedSizeGroup="KeyWithSymbol"
@@ -1079,8 +1066,7 @@
             </ContentControl.Style>
         </ContentControl>
 
-        <ContentControl Grid.Row="3" Grid.Column="4" 
-                        Grid.RowSpan="1" Grid.ColumnSpan="2">
+        <ContentControl Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -1280,6 +1266,5 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        
     </Grid>
 </controls:KeyboardView>

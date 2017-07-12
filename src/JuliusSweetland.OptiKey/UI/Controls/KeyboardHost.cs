@@ -421,13 +421,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
                     {
-
                         if (pointToKeyValueMap.ContainsKey(rect))
                         {
                             // In Release, just log error
                             KeyValue existingKeyValue = pointToKeyValueMap[rect];
-                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map",
-                                             existingKeyValue.ToString(), key.Value.ToString());
+                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map", existingKeyValue, key.Value);
 
                             Debug.Assert(!pointToKeyValueMap.ContainsKey(rect));
                         }
