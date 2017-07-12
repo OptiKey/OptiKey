@@ -342,6 +342,26 @@ namespace JuliusSweetland.OptiKey.Services
             var capturedTextAfterComposition = ComposeDiacritics(capturedText);
             ProcessText(capturedTextAfterComposition, true);
             lastTextChangeWasSuggestion = false;
+
+            if (Settings.Default.UseSimplifiedKeyboardLayout)
+            {
+                char last = capturedText.LastOrDefault();
+                if (last != null)
+                {
+                    if (char.IsLetter(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    }
+                    else if (char.IsNumber(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "Num";
+                    }
+                    else if (char.IsPunctuation(last))
+                    {
+                        Settings.Default.SimplifiedKeyboardCurrentContext = "";
+                    }
+                }
+            }
         }
 
         private string ComposeDiacritics(string input)

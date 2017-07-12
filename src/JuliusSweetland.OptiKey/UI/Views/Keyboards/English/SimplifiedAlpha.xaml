@@ -1056,10 +1056,14 @@
                     <Setter Property="Visibility" Value="Hidden" />
                     <Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key SymbolGeometry="{StaticResource BackManyIcon}"
+                            <!--controls:Key SymbolGeometry="{StaticResource BackManyIcon}"
                                           Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                                           SharedSizeGroup="KeyWithSymbol"
-                                          Value="{x:Static models:KeyValues.BackManyKey}"/>
+                                          Value="{x:Static models:KeyValues.BackManyKey}"/-->
+                            <controls:Key SymbolGeometry="{StaticResource EnterIcon}"
+                                          Text="{x:Static resx:Resources.ENTER}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="&#x0a;"/>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>

@@ -592,7 +592,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conversation Confirm enable.
+        ///   Looks up a localized string similar to Enable Conversation Confirm keyboard?.
         /// </summary>
         public static string CONVERSATION_CONFIRM_ENABLE_LABEL {
             get {

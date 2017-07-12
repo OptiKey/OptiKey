@@ -1809,7 +1809,7 @@ Slovenčina
     <value>Manual (mouse) mode enabled!</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
-    <value>Conversation Confirm enable</value>
+    <value>Enable Conversation Confirm keyboard?</value>
   </data>
   <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
     <value>Conversation Confirm only mode:</value>
