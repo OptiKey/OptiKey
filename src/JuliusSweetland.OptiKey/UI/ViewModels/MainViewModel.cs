@@ -397,16 +397,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         mainWindowManipulationService.ResizeDockToFull();
                         break;
 
-                    case Enums.Keyboards.SimplifiedAlpha:
-                        Keyboard = new SimplifiedAlpha(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
                     case Enums.Keyboards.SizeAndPosition:
                         Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
                         windowManipulationService.Restore();

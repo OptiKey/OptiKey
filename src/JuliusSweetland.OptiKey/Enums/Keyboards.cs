@@ -18,7 +18,6 @@
         NumericAndSymbols2,
         NumericAndSymbols3,
         PhysicalKeys,
-        SimplifiedAlpha,
         SizeAndPosition
     }
 }
