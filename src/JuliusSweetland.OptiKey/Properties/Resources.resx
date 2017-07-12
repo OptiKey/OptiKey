@@ -1104,6 +1104,9 @@ POSITION</value>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Time until point becomes irrelevent (ms):</value>
   </data>
+  <data name="HIDE_CURSOR_LABEL" xml:space="preserve">
+    <value>Hide cursor</value>
+  </data>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Words are capitalized</value>
   </data>
@@ -1321,6 +1324,27 @@ Español
   </data>
   <data name="F12" xml:space="preserve">
     <value>F12</value>
+  </data>
+  <data name="F13" xml:space="preserve">
+    <value>F13</value>
+  </data>
+  <data name="F14" xml:space="preserve">
+    <value>F14</value>
+  </data>
+  <data name="F15" xml:space="preserve">
+    <value>F15</value>
+  </data>
+  <data name="F16" xml:space="preserve">
+    <value>F16</value>
+  </data>
+  <data name="F17" xml:space="preserve">
+    <value>F17</value>
+  </data>
+  <data name="F18" xml:space="preserve">
+    <value>F18</value>
+  </data>
+  <data name="F19" xml:space="preserve">
+    <value>F19</value>
   </data>
   <data name="F2" xml:space="preserve">
     <value>F2</value>
@@ -1780,5 +1804,11 @@ Slovenčina
   </data>
   <data name="MANUAL_MODE_ENABLED" xml:space="preserve">
     <value>Manual (mouse) mode enabled!</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ENABLE_LABEL" xml:space="preserve">
+    <value>Conversation Confirm enable</value>
+  </data>
+  <data name="CONVERSATION_CONFIRM_ONLY_MODE_LABEL" xml:space="preserve">
+    <value>Conversation Confirm only mode:</value>
   </data>
 </root>

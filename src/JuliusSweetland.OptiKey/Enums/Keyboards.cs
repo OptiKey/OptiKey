@@ -4,6 +4,7 @@
     {
         Alpha,
         ConversationAlpha,
+        ConversationConfirm,
         ConversationNumericAndSymbols,
         Currencies1,
         Currencies2,

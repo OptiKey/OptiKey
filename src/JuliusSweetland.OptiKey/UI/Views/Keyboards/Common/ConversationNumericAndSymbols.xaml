@@ -174,7 +174,23 @@
                   Value="{x:Static models:KeyValues.BackManyKey}" />
     <controls:Key Grid.Row="4" Grid.Column="19" />
 
-    <controls:Key Grid.Row="5" Grid.Column="0" />
+    <ContentControl Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1">
+      <ContentControl.Style>
+        <Style TargetType="{x:Type ContentControl}">
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationConfirmEnable}" Value="True">
+              <Setter Property="Content">
+                <Setter.Value>
+                  <controls:Key SymbolGeometry="{StaticResource YesNoIcon}"
+                                Text="{x:Static resx:Resources.YESNO}"
+                                Value="{x:Static models:KeyValues.ConversationConfirmKeyboardKey}"/>
+                </Setter.Value>
+              </Setter>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ContentControl.Style>
+    </ContentControl>
     <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                   SymbolGeometry="{StaticResource ShiftIcon}"
                   Text="{x:Static resx:Resources.SHIFT}"
