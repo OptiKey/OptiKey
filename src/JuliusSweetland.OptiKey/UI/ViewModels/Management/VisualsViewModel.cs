@@ -337,9 +337,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode;
             }
         }
-        
+
+        private string simplifiedKeyboardCurrentContext;
+        public string SimplifiedKeyboardCurrentContext
+        {
+            get { return simplifiedKeyboardCurrentContext; }
+            set { SetProperty(ref simplifiedKeyboardCurrentContext, value); }
+        }
+
+        private bool enableQuitKeys;
+        public bool EnableQuitKeys
+        {
+            get { return enableQuitKeys; }
+            set { SetProperty(ref enableQuitKeys, value); }
+        }
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -365,6 +379,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MainWindowFullDockThicknessAsPercentageOfScreen = Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen;
             MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
+            SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
+            EnableQuitKeys = Settings.Default.EnableQuitKeys;
         }
 
         public void ApplyChanges()
@@ -390,6 +406,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen = MainWindowFullDockThicknessAsPercentageOfScreen;
             Settings.Default.MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness = MainWindowCollapsedDockThicknessAsPercentageOfFullDockThickness;
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
+            Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
+            Settings.Default.EnableQuitKeys = EnableQuitKeys;
         }
 
         #endregion

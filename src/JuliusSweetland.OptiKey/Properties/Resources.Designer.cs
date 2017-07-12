@@ -592,6 +592,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Conversation Confirm keyboard?.
+        /// </summary>
+        public static string CONVERSATION_CONFIRM_ENABLE_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_CONFIRM_ENABLE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversation Confirm only mode:.
+        /// </summary>
+        public static string CONVERSATION_CONFIRM_ONLY_MODE_LABEL {
+            get {
+                return ResourceManager.GetString("CONVERSATION_CONFIRM_ONLY_MODE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conversation Letters.
         /// </summary>
         public static string CONVERSATION_LAYOUT {
@@ -626,29 +644,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CONVERSATION_ONLY_MODE_LABEL", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Conversation Confirm enable.
-        /// </summary>
-        public static string CONVERSATION_CONFIRM_ENABLE_LABEL
-        {
-            get
-            {
-                return ResourceManager.GetString("CONVERSATION_CONFIRM_ENABLE_LABEL", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Conversation Confirm only mode:.
-        /// </summary>
-        public static string CONVERSATION_CONFIRM_ONLY_MODE_LABEL
-        {
-            get
-            {
-                return ResourceManager.GetString("CONVERSATION_CONFIRM_ONLY_MODE_LABEL", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to OptiKey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
         ///
@@ -1058,6 +1054,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable quit keys?.
+        /// </summary>
+        public static string ENABLE_QUIT_KEYS_LABEL {
+            get {
+                return ResourceManager.GetString("ENABLE_QUIT_KEYS_LABEL", resourceCulture);
             }
         }
         
@@ -4756,6 +4761,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use simplify keyboard layout:.
+        /// </summary>
+        public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_SIMPLIFIED_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to May I restart OptiKey?.
         /// </summary>
         public static string VERIFY_RESTART {
@@ -4871,12 +4885,11 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("YES", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to YES/NO.
         /// </summary>
-        public static string YESNO
-        {
+        public static string YESNO {
             get
             {
                 return ResourceManager.GetString("YES", resourceCulture)[0] +

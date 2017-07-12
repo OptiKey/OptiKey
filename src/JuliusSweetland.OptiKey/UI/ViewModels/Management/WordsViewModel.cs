@@ -67,6 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
+                OnPropertyChanged(() => UseSimplifiedKeyboardLayoutIsVisible);
             }
         }
 
@@ -85,6 +86,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         public bool UseAlphabeticalKeyboardLayoutIsVisible
+        {
+            get
+            {
+                return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
+                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
+                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
+            }
+        }
+
+        private bool useSimplifiedKeyboardLayout;
+        public bool UseSimplifiedKeyboardLayout
+        {
+            get { return useSimplifiedKeyboardLayout; }
+            set { SetProperty(ref useSimplifiedKeyboardLayout, value); }
+        }
+
+        public bool UseSimplifiedKeyboardLayoutIsVisible
         {
             get
             {
@@ -157,6 +175,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
             UiLanguage = Settings.Default.UiLanguage;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
+            UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
@@ -173,6 +192,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
+            Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
