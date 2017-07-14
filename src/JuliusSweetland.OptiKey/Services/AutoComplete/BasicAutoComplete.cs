@@ -49,18 +49,24 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             return Enumerable.Empty<string>();
         }
 
-        public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
+		public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount, string normalizedHash = "")
 		{
 			if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
 			{
 				//Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
 				var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-				AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
+				AddEntry(phraseAutoCompleteHash, newEntryWithUsageCount);
 			}
 
 			//Also add to entries for auto complete
 			var autoCompleteHash = entry.Normalise(log: false);
             AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
+
+			//Also add the normalized hash to the dictionary
+			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash) 
+								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false) 
+								: normalizedHash;
+			AddToDictionary(entry, normalizedHash, newEntryWithUsageCount);
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
@@ -84,27 +90,39 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         public void RemoveEntry(string entry)
         {
             var autoCompleteHash = entry.Normalise(log: false);
-            if (!string.IsNullOrWhiteSpace(autoCompleteHash)
-                && entries.ContainsKey(autoCompleteHash))
-            {
-                var foundEntryForAutoComplete = entries[autoCompleteHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+			RemoveEntryWorker(entry, autoCompleteHash);
 
-                if (foundEntryForAutoComplete != null)
-                {
-                    entries[autoCompleteHash].Remove(foundEntryForAutoComplete);
-
-                    if (!entries[autoCompleteHash].Any())
-                    {
-                        entries.Remove(autoCompleteHash);
-                    }
-                }
-            }
-
+			var normalizedHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+			RemoveEntryWorker(entry, autoCompleteHash);
         }
+
+		private void RemoveEntryWorker(string entry, string hash)
+		{
+			if (!string.IsNullOrWhiteSpace(hash)
+					&& entries.ContainsKey(hash))
+			{
+				var foundEntryForAutoComplete = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+
+				if (foundEntryForAutoComplete != null)
+				{
+					entries[hash].Remove(foundEntryForAutoComplete);
+
+					if (!entries[hash].Any())
+					{
+						entries.Remove(hash);
+					}
+				}
+			}
+		}
 
 		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
 		{
 			return entries;
 		}
-    }
+
+		public bool IsWordOrAcronym(string hash)
+		{
+			return entries.ContainsKey(hash);
+		}
+	}
 }

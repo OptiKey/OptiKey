@@ -16,7 +16,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 	public class NGramAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
-        private readonly Func<string, string> normalize;
+		private readonly Dictionary<string, HashSet<DictionaryEntry>> wordsOrAcronyms = new Dictionary<string, HashSet<DictionaryEntry>>();
+
+		private readonly Func<string, string> normalize;
         private readonly int gramCount;
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
@@ -67,13 +69,18 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             leadingSpaces = new string(' ', leadingSpaceCount);
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
-		
+
 		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
 		{
-			return entries;
+			return wordsOrAcronyms;
 		}
 
-		public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
+		public bool IsWordOrAcronym(string hash)
+		{
+			return wordsOrAcronyms.ContainsKey(hash);
+		}
+
+		public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
         {
             if (entry.Contains(" "))
             {
@@ -81,6 +88,24 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
                 AddEntry(phraseAutoCompleteHash, dictionaryEntry);
             }
+
+			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
+								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
+								: normalizedHash;
+			if (!string.IsNullOrWhiteSpace(normalizedHash))
+			{
+				if (wordsOrAcronyms.ContainsKey(normalizedHash))
+				{
+					if (wordsOrAcronyms[normalizedHash].All(nwwuc => nwwuc.Entry != entry))
+					{
+						wordsOrAcronyms[normalizedHash].Add(dictionaryEntry);
+					}
+				}
+				else
+				{
+					wordsOrAcronyms.Add(normalizedHash, new HashSet<DictionaryEntry> { dictionaryEntry });
+				}
+			}
 
             var ngrams = ToNGrams(entry).ToList();
             var metaData = new EntryMetadata(dictionaryEntry.Entry, dictionaryEntry.UsageCount, ngrams.Count);
@@ -114,15 +139,19 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             var nGrams = ToNGrams(root).ToList();
             var nGramcount = nGrams.Count;
 
-            return nGrams
-                .Where(x => entries.ContainsKey(x))
-                .SelectMany(x => entries[x])
-                .GroupBy(x => x)
-                .Select(x => new
-                {
-                    MetaData = x.Key,
-                    Score = CalculateScore(x.Count(), nGramcount, ((EntryMetadata)x.Key).NGramCount)
-                })
+			return nGrams
+				.Where(x => entries.ContainsKey(x))
+				.SelectMany(x => entries[x])
+				.GroupBy(x => x)
+				.Select(x => 
+				{
+					double NGramCount = (x.Key is EntryMetadata) ? ((EntryMetadata)x.Key).NGramCount : 0;
+					return new
+					{
+						MetaData = x.Key,
+						Score = CalculateScore(x.Count(), nGramcount, NGramCount)
+					};
+				})
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.MetaData.UsageCount)
                 .Select(x => x.MetaData.Entry);
@@ -142,7 +171,24 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 					}
 				}
             }
-        }
+
+			var entryHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+			if (!string.IsNullOrWhiteSpace(entryHash)
+				&& wordsOrAcronyms.ContainsKey(entryHash))
+			{
+				var foundEntry = wordsOrAcronyms[entryHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+
+				if (foundEntry != null)
+				{
+					wordsOrAcronyms[entryHash].Remove(foundEntry);
+
+					if (!wordsOrAcronyms[entryHash].Any())
+					{
+						wordsOrAcronyms.Remove(entryHash);
+					}
+				}
+			}
+		}
         private static double CalculateScore(double numberOfMatches, double numberOfRootNGrams, double numberOfEntryNGrams)
         {
             return 2 * numberOfMatches / (numberOfRootNGrams + numberOfEntryNGrams);
@@ -158,7 +204,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         }
 
         [DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
-        private class EntryMetadata : DictionaryEntry
+        internal class EntryMetadata : DictionaryEntry
         {
             public EntryMetadata(string entry, int usageCount, int nGramCount)
 				: base(entry, usageCount)

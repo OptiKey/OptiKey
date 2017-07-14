@@ -102,7 +102,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 manageAutoComplete = CreateAutoComplete();
 
-				// Create reference to the dictionary entries.
+				// Create reference to the actual storage of the dictionary entries.
 				entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
@@ -201,7 +201,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     writer = new StreamWriter(userDictionaryPath);
 
-                    foreach (var entryWithUsageCount in entries.SelectMany(pair => pair.Value))
+                    foreach (var entryWithUsageCount in entries.SelectMany(pair => pair.Value).Distinct())
                     {
                         writer.WriteLine("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount);
                     }
@@ -232,7 +232,8 @@ namespace JuliusSweetland.OptiKey.Services
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
                 var exists = entries
-                    .SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
+					//.Where(keyPair => manageAutoComplete.IsWordOrAcronym(keyPair.Key)) //only cares about normalized words
+					.SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
                     .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
 
@@ -268,7 +269,7 @@ namespace JuliusSweetland.OptiKey.Services
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
 					//Also add to entries for auto complete
-					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
+					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount, hash);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -321,13 +322,14 @@ namespace JuliusSweetland.OptiKey.Services
             if (entries != null)
             {
                 var enumerator = entries
+					//.Where(pair => manageAutoComplete.IsWordOrAcronym(pair.Key))
                     .SelectMany(entry => entry.Value)
                     .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();
 
                 while (enumerator.MoveNext())
-                {
-                    yield return enumerator.Current;
+				{
+					yield return enumerator.Current;
                 }
             }
         }
@@ -589,12 +591,11 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-                var enumerator = entries.GetEnumerator();
-
+				var enumerator = entries.GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-                    var pair = enumerator.Current;
-                    yield return pair.Key;
+					var pair = enumerator.Current;
+					yield return pair.Key;
                 }
             }
         }
