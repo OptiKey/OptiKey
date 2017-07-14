@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
         void RemoveEntry(string entry);
 
-		bool IsWordOrAcronym(string hash);
+		bool IsWordOrAcronym(string hash, bool isNormalized = false);
 
 		Dictionary<string, HashSet<DictionaryEntry>> GetEntries();
 	}

@@ -10,8 +10,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 	public class BasicAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
+		private readonly HashSet<string> wordsIndex = new HashSet<string>();
 
-        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+		private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Removes all possible suggestions from the auto complete provider.
@@ -66,8 +67,13 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash) 
 								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false) 
 								: normalizedHash;
+
 			AddToDictionary(entry, normalizedHash, newEntryWithUsageCount);
-        }
+			if (!wordsIndex.Contains(normalizedHash))
+			{
+				wordsIndex.Add(normalizedHash);
+			}
+		}
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         { 
@@ -94,6 +100,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 			var normalizedHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
 			RemoveEntryWorker(entry, autoCompleteHash);
+			wordsIndex.Remove(normalizedHash);
         }
 
 		private void RemoveEntryWorker(string entry, string hash)
@@ -120,9 +127,14 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			return entries;
 		}
 
-		public bool IsWordOrAcronym(string hash)
+		public bool IsWordOrAcronym(string entry, bool isNormalized = false)
 		{
-			return entries.ContainsKey(hash);
+			if (!isNormalized)
+			{
+				entry = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+			}
+
+			return wordsIndex.Contains(entry);
 		}
 	}
 }

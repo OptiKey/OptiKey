@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 	public class NGramAutoComplete : IManageAutoComplete
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
-		private readonly Dictionary<string, HashSet<DictionaryEntry>> wordsOrAcronyms = new Dictionary<string, HashSet<DictionaryEntry>>();
+		private readonly HashSet<string> wordsIndex = new HashSet<string>();
 
 		private readonly Func<string, string> normalize;
         private readonly int gramCount;
@@ -72,12 +72,17 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
 		{
-			return wordsOrAcronyms;
+			return entries;
 		}
 
-		public bool IsWordOrAcronym(string hash)
+		public bool IsWordOrAcronym(string entry, bool isNormalized = false)
 		{
-			return wordsOrAcronyms.ContainsKey(hash);
+			if (!isNormalized)
+			{
+				entry = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+			}
+
+			return wordsIndex.Contains(entry);
 		}
 
 		public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
@@ -92,18 +97,24 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
 								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
 								: normalizedHash;
+
 			if (!string.IsNullOrWhiteSpace(normalizedHash))
 			{
-				if (wordsOrAcronyms.ContainsKey(normalizedHash))
+				if (entries.ContainsKey(normalizedHash))
 				{
-					if (wordsOrAcronyms[normalizedHash].All(nwwuc => nwwuc.Entry != entry))
+					if (entries[normalizedHash].All(nwwuc => nwwuc.Entry != entry))
 					{
-						wordsOrAcronyms[normalizedHash].Add(dictionaryEntry);
+						entries[normalizedHash].Add(dictionaryEntry);
 					}
 				}
 				else
 				{
-					wordsOrAcronyms.Add(normalizedHash, new HashSet<DictionaryEntry> { dictionaryEntry });
+					entries.Add(normalizedHash, new HashSet<DictionaryEntry> { dictionaryEntry });
+				}
+
+				if (!wordsIndex.Contains(normalizedHash))
+				{
+					wordsIndex.Add(normalizedHash);
 				}
 			}
 
@@ -161,34 +172,34 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         {
             foreach (var trigram in ToNGrams(entry))
             {
-                if (entries.ContainsKey(trigram))
-                {
-                    entries[trigram].RemoveWhere(x => x.Entry == entry);
-
-					if (!entries[trigram].Any())
-					{
-						entries.Remove(trigram);
-					}
-				}
+				RemoveEntryWorker(entry, trigram);
             }
 
-			var entryHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-			if (!string.IsNullOrWhiteSpace(entryHash)
-				&& wordsOrAcronyms.ContainsKey(entryHash))
+			// also remove the normalized entry from the index and entries storage.
+			var normalizedEntry = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+			RemoveEntryWorker(entry, normalizedEntry);
+			wordsIndex.Remove(normalizedEntry);
+		}
+
+		private void RemoveEntryWorker(string entry, string hash)
+		{
+			if (!string.IsNullOrWhiteSpace(hash)
+					&& entries.ContainsKey(hash))
 			{
-				var foundEntry = wordsOrAcronyms[entryHash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+				var foundEntry = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
 
 				if (foundEntry != null)
 				{
-					wordsOrAcronyms[entryHash].Remove(foundEntry);
+					entries[hash].Remove(foundEntry);
 
-					if (!wordsOrAcronyms[entryHash].Any())
+					if (!entries[hash].Any())
 					{
-						wordsOrAcronyms.Remove(entryHash);
+						entries.Remove(hash);
 					}
 				}
 			}
 		}
+
         private static double CalculateScore(double numberOfMatches, double numberOfRootNGrams, double numberOfEntryNGrams)
         {
             return 2 * numberOfMatches / (numberOfRootNGrams + numberOfEntryNGrams);
