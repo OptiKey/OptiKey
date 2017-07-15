@@ -4890,11 +4890,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         ///   Looks up a localized string similar to YES/NO.
         /// </summary>
         public static string YESNO {
-            get
-            {
-                return ResourceManager.GetString("YES", resourceCulture)[0] +
-                    "/" +
-                    ResourceManager.GetString("NO", resourceCulture)[0];
+            get {
+                return ResourceManager.GetString("YESNO", resourceCulture);
             }
         }
     }
