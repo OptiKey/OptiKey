@@ -1,4 +1,5 @@
 ﻿using JuliusSweetland.OptiKey.Models;
+using System.Collections.Generic;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
@@ -9,7 +10,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
     /// <remarks>This class is for management of an underlying provider and so is declared <c>internal</c>.</remarks>
     internal interface IManageAutoComplete : IAutoComplete
     {
-        void AddEntry(string entry, DictionaryEntry metaData);
+        void AddEntry(string entry, DictionaryEntry metaData, string normalizedHash = "");
 
         /// <summary>
         /// Removes all possible suggestions from the auto complete provider.
@@ -17,5 +18,9 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         void Clear();
 
         void RemoveEntry(string entry);
-    }
+
+		HashSet<string> GetWordsHashes();
+
+		Dictionary<string, HashSet<DictionaryEntry>> GetEntries();
+	}
 }
