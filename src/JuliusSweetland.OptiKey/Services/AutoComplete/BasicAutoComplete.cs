@@ -131,15 +131,5 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 		{
 			return wordsIndex;
 		}
-
-		public bool IsWordOrAcronym(string entry, bool isNormalized = false)
-		{
-			if (!isNormalized)
-			{
-				entry = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
-			}
-
-			return wordsIndex.Contains(entry);
-		}
 	}
 }
