@@ -9,9 +9,9 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
     internal abstract class AutoCompleteTestsBase
     {
         private IManageAutoComplete autoComplete;
-        protected abstract object[] SuggestionsTestCaseSource { get; }
+		protected static object[] SuggestionsTestCaseSource { get; private set; }
 
-        [Test]
+		[Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();
@@ -97,9 +97,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         }
 
         protected abstract IManageAutoComplete CreateAutoComplete();
+		protected abstract object[] GetTestCases();
 
-        /// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
-        private void ConfigureProvider()
+		/// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
+		private void ConfigureProvider()
         {
             var entries = new[] {
                 "the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", "on", "with", "he",
@@ -111,6 +112,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
                 "how", "our", "work", "first", "well", "way", "even", "new", "want", "because", "any", "these", "give",
                 "day", "most", "us"
             };
+
             for (var index = 0; index < entries.Length; index++)
             {
                 var word = entries[index];
@@ -124,6 +126,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
                 "how are you", "hay", "hays", "hay's", "hayed", "ha", "haying", "had", "hag", "halfway", "hallway",
                 "ham", "has", "hat", "haywire", "haystack", "hack", "hags", "hail", "hair", "hale"
             };
+
             for (var index = 0; index < entries.Length; index++)
             {
                 var word = entries[index];
@@ -148,9 +151,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         #region Setup/Teardown
 
         [SetUp]
-        public void Arrange() {
+        public void Arrange()
+		{
             autoComplete = CreateAutoComplete();
-        }
+			SuggestionsTestCaseSource = GetTestCases();
+		}
 
         #endregion
     }
