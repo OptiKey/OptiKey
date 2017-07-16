@@ -95,7 +95,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 			if (!string.IsNullOrWhiteSpace(normalizedHash))
 			{
-                AddToDictionaryWorker(entry, normalizedHash, dictionaryEntry)
+			    AddToDictionaryWorker(entry, normalizedHash, dictionaryEntry);
 
 				if (!wordsIndex.Contains(normalizedHash))
 				{
