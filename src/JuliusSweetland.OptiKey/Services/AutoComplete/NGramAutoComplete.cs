@@ -95,17 +95,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 			if (!string.IsNullOrWhiteSpace(normalizedHash))
 			{
-				if (entries.ContainsKey(normalizedHash))
-				{
-					if (entries[normalizedHash].All(nwwuc => nwwuc.Entry != entry))
-					{
-						entries[normalizedHash].Add(dictionaryEntry);
-					}
-				}
-				else
-				{
-					entries.Add(normalizedHash, new HashSet<DictionaryEntry> { dictionaryEntry });
-				}
+                AddToDictionaryWorker(entry, normalizedHash, dictionaryEntry)
 
 				if (!wordsIndex.Contains(normalizedHash))
 				{
@@ -118,14 +108,36 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
             foreach (var ngram in ngrams)
             {
-                if (entries.ContainsKey(ngram))
+                AddToDictionaryWorker(entry, ngram, metaData, true);
+            }
+        }
+
+        private void AddToDictionaryWorker(string entry, string hash, DictionaryEntry dictEntry, bool isNGram = false)
+        {
+            if (string.IsNullOrWhiteSpace(entry) || string.IsNullOrWhiteSpace(hash) || dictEntry == null)
+            {
+                return;
+            }
+
+            if (entries.ContainsKey(hash))
+            {
+                if  (isNGram && entries[hash].Where(nwwuc => nwwuc.Entry == entry).Any())
                 {
-                    entries[ngram].Add(metaData);
+                    // Update existing entry to be "NGram" entry
+                    var foundEntry = entries[hash].FirstOrDefault(nwwuc => nwwuc.Entry == entry);
+
+                    // Synch usage count and then replace the existing entry
+                    dictEntry.UsageCount = foundEntry.UsageCount;   
+                    foundEntry = dictEntry;
                 }
-                else
+                if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
                 {
-                    entries[ngram] = new HashSet<DictionaryEntry> { metaData };
+                    entries[hash].Add(dictEntry);
                 }
+            }
+            else
+            {
+                entries.Add(hash, new HashSet<DictionaryEntry> { dictEntry });
             }
         }
 
