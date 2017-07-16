@@ -21,6 +21,8 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 		bool IsWordOrAcronym(string hash, bool isNormalized = false);
 
+		HashSet<string> GetWordsHashes();
+
 		Dictionary<string, HashSet<DictionaryEntry>> GetEntries();
 	}
 }

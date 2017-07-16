@@ -201,7 +201,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     writer = new StreamWriter(userDictionaryPath);
 
-                    foreach (var entryWithUsageCount in entries.Where(pair => manageAutoComplete.IsWordOrAcronym(pair.Key)).SelectMany(pair => pair.Value).Distinct())
+                    foreach (var entryWithUsageCount in manageAutoComplete.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
                     {
                         writer.WriteLine("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount);
                     }
@@ -231,9 +231,8 @@ namespace JuliusSweetland.OptiKey.Services
             if (entries != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
-                var exists = entries
-					.Where(pair => manageAutoComplete.IsWordOrAcronym(pair.Key))   //only cares about normalized words
-					.SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
+                var exists = manageAutoComplete.GetWordsHashes()
+					.SelectMany(hash => entries[hash]) //Expand out all values in the dictionary and all values in the sorted lists
                     .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
 
@@ -321,9 +320,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-                var enumerator = entries
-					.Where(pair => manageAutoComplete.IsWordOrAcronym(pair.Key))
-                    .SelectMany(entry => entry.Value)
+                var enumerator = manageAutoComplete.GetWordsHashes()
+                    .SelectMany(hash => entries[hash])
                     .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();
 
@@ -591,16 +589,10 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-				var enumerator = entries.GetEnumerator();
+				var enumerator = manageAutoComplete.GetWordsHashes().GetEnumerator();
                 while (enumerator.MoveNext())
                 {
-					var pair = enumerator.Current;
-					if (!manageAutoComplete.IsWordOrAcronym(pair.Key))
-					{
-						continue;
-					}
-
-					yield return pair.Key;
+					yield return enumerator.Current;
                 }
             }
         }

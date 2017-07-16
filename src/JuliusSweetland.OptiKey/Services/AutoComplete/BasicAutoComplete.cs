@@ -127,6 +127,11 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			return entries;
 		}
 
+		public HashSet<string> GetWordsHashes()
+		{
+			return wordsIndex;
+		}
+
 		public bool IsWordOrAcronym(string entry, bool isNormalized = false)
 		{
 			if (!isNormalized)
