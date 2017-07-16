@@ -54,6 +54,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmEnable).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
 
@@ -202,7 +204,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.Alpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout 
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedAlpha { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout 
                             ? (object)new EnglishViews.AlphabeticalAlpha { DataContext = Keyboard }
                             : new EnglishViews.Alpha { DataContext = Keyboard };
                         break;
@@ -261,7 +265,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseAlphabeticalKeyboardLayout
+                        newContent = Settings.Default.UseSimplifiedKeyboardLayout
+                            ? (object)new EnglishViews.SimplifiedConversationAlpha { DataContext = Keyboard }
+                            : Settings.Default.UseAlphabeticalKeyboardLayout
                             ? (object)new EnglishViews.AlphabeticalConversationAlpha { DataContext = Keyboard }
                             : new EnglishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
@@ -415,13 +421,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     if (rect.Size.Width != 0 && rect.Size.Height != 0)
                     {
-
                         if (pointToKeyValueMap.ContainsKey(rect))
                         {
                             // In Release, just log error
                             KeyValue existingKeyValue = pointToKeyValueMap[rect];
-                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map",
-                                             existingKeyValue.ToString(), key.Value.ToString());
+                            Log.ErrorFormat("Overlapping keys {0} and {1}, cannot add {1} to map", existingKeyValue, key.Value);
 
                             Debug.Assert(!pointToKeyValueMap.ContainsKey(rect));
                         }
