@@ -168,14 +168,14 @@
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftCtrlKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource WinIcon}"
-                      Text="{x:Static resx:Resources.WIN}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftWinKey}"/>
-        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="{x:Static resx:Resources.ALT}"
                       SharedSizeGroup="KeyWithDescription"
                       Value="{x:Static models:KeyValues.LeftAltKey}"/>
+        <controls:Key Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource EndIcon}"
+                      Text="{x:Static resx:Resources.END}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.EndKey}"/>
         <controls:Key Grid.Row="5" Grid.Column="18" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource ReplayLastMouseActionIcon}"
                       Text="{x:Static resx:Resources.REPEAT_LAST_SPLIT_WITH_NEWLINE}"
