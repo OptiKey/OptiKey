@@ -18,6 +18,10 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue BackManyKey = new KeyValue(FunctionKeys.BackMany);
         public static readonly KeyValue BackOneKey = new KeyValue(FunctionKeys.BackOne);
         public static readonly KeyValue BreakKey = new KeyValue(FunctionKeys.Break);
+        public static readonly KeyValue BrowserBackKey = new KeyValue(FunctionKeys.BrowserBack);
+        public static readonly KeyValue BrowserForwardKey = new KeyValue(FunctionKeys.BrowserForward);
+        public static readonly KeyValue BrowserHomeKey = new KeyValue(FunctionKeys.BrowserHome);
+        public static readonly KeyValue BrowserSearchKey = new KeyValue(FunctionKeys.BrowserSearch);
         public static readonly KeyValue CalibrateKey = new KeyValue(FunctionKeys.Calibrate);
         public static readonly KeyValue CatalanSpainKey = new KeyValue(FunctionKeys.CatalanSpain);
         public static readonly KeyValue ClearScratchpadKey = new KeyValue(FunctionKeys.ClearScratchpad);
@@ -215,6 +219,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Suggestion5Key = new KeyValue(FunctionKeys.Suggestion5);
         public static readonly KeyValue Suggestion6Key = new KeyValue(FunctionKeys.Suggestion6);
         public static readonly KeyValue TurkishTurkeyKey = new KeyValue(FunctionKeys.TurkishTurkey);
+        public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
         
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;

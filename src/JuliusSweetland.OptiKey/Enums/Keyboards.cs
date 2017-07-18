@@ -18,6 +18,7 @@
         NumericAndSymbols2,
         NumericAndSymbols3,
         PhysicalKeys,
-        SizeAndPosition
+        SizeAndPosition,
+        WebBrowsing
     }
 }

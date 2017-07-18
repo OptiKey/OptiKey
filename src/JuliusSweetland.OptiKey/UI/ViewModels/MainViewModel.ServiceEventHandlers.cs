@@ -1590,6 +1590,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Menu(() => Keyboard = currentKeyboard);
                     break;
 
+                case FunctionKeys.WebBrowsingKeyboard:
+                    Log.Info("Changing keyboard to WebBrowsing.");
+                    Keyboard = new WebBrowsing();
+                    break;
+
                 case FunctionKeys.YesQuestionResult:
                     HandleYesNoQuestionResult(true);
                     break;

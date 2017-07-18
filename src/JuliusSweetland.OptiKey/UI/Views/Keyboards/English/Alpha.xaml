@@ -146,10 +146,9 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
-                      Text="{x:Static resx:Resources.ALPHA}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.AlphaKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseIcon}"
                       Text="{x:Static resx:Resources.MOUSE}"

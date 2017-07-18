@@ -307,6 +307,46 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browser
+        ///Back.
+        /// </summary>
+        public static string BROWSER_BACK_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("BROWSER_BACK_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browser
+        ///Forward.
+        /// </summary>
+        public static string BROWSER_FORWARD_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("BROWSER_FORWARD_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browser
+        ///Home.
+        /// </summary>
+        public static string BROWSER_HOME_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("BROWSER_HOME_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browser
+        ///Search.
+        /// </summary>
+        public static string BROWSER_SEARCH_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("BROWSER_SEARCH_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calibration aborted with message: &apos;{0}&apos;.
         /// </summary>
         public static string CALIBRATION_ABORT_MESSAGE {
@@ -4838,6 +4878,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string VOLUME_LABEL {
             get {
                 return ResourceManager.GetString("VOLUME_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Browsing.
+        /// </summary>
+        public static string WEB_BROWSING_LAYOUT {
+            get {
+                return ResourceManager.GetString("WEB_BROWSING_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web
+        ///Browsing.
+        /// </summary>
+        public static string WEB_BROWSING_SPLIT_WITH_NEWLINE {
+            get {
+                return ResourceManager.GetString("WEB_BROWSING_SPLIT_WITH_NEWLINE", resourceCulture);
             }
         }
         

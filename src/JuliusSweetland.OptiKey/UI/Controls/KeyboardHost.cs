@@ -337,6 +337,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.SizeAndPosition { DataContext = Keyboard };
             }
+            else if (Keyboard is ViewModelKeyboards.WebBrowsing)
+            {
+                newContent = new CommonViews.WebBrowsing { DataContext = Keyboard };
+            }
             else if (Keyboard is ViewModelKeyboards.YesNoQuestion)
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };

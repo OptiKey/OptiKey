@@ -203,10 +203,9 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource NumericAndSymbolsIcon}"
-                      Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
+                      Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>
         <controls:Key Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MouseMagnifierIcon}"
                       Text="{x:Static resx:Resources.MAGNIFIER}"
