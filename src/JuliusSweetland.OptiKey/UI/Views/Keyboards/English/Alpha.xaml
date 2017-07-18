@@ -146,6 +146,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
         <controls:Key Grid.Row="3" Grid.Column="20" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserIcon}"
                       Text="{x:Static resx:Resources.WEB_BROWSING_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.WebBrowsingKeyboardKey}"/>

@@ -61,14 +61,17 @@
         </Grid.ColumnDefinitions>
 
         <controls:Key Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserHomeIcon}"
                       Text="{x:Static resx:Resources.BROWSER_HOME_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BrowserHomeKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserSearchIcon}"
                       Text="{x:Static resx:Resources.BROWSER_SEARCH_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BrowserSearchKey}"/>
         <controls:Key Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource HomeIcon}"
                       Text="{x:Static resx:Resources.HOME}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.HomeKey}"/>
@@ -103,6 +106,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="&#x09;"/>
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserBackIcon}"
                       Text="{x:Static resx:Resources.BROWSER_BACK_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BrowserBackKey}"/>
@@ -112,6 +116,7 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseMoveAndScrollToTopKey}"/>
         <controls:Key Grid.Row="3" Grid.Column="18" Grid.ColumnSpan="2"
+                      SymbolGeometry="{StaticResource BrowserForwardIcon}"
                       Text="{x:Static resx:Resources.BROWSER_FORWARD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BrowserForwardKey}"/>
@@ -182,9 +187,9 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.MouseMoveAndLeftClickKey}" />
         <controls:Key Grid.Row="5" Grid.Column="22" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource MouseLeftDoubleClickIcon}"
-                      Text="{x:Static resx:Resources.LEFT_DOUBLE_CLICK_SPLIT_WITH_NEWLINE}"
+                      SymbolGeometry="{StaticResource MouseRightClickIcon}"
+                      Text="{x:Static resx:Resources.RIGHT_CLICK_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MouseMoveAndLeftDoubleClickKey}"/>
+                      Value="{x:Static models:KeyValues.MouseMoveAndRightClickKey}"/>
     </Grid>
 </controls:KeyboardView>
