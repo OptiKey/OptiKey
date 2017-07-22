@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
+using System.Media;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Un4seen.Bass;
@@ -142,44 +143,67 @@ namespace JuliusSweetland.OptiKey.Services
                 speechSynthesiser.SpeakAsyncCancelAll();
             }
         }
-        
+
         private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
             Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
-            speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
-            speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
-
-            var voiceToUse = voice ?? Settings.Default.SpeechVoice;
-            if (!string.IsNullOrWhiteSpace(voiceToUse))
+            if (false)
             {
-                try
-                {
-                    speechSynthesiser.SelectVoice(voiceToUse);
-                }
-                catch (Exception exception)
-                {
-                    var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
-                        voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
-                    PublishError(this, customException);
-                }
-            }
+                speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
+                speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
 
-            speakCompleted = (sender, args) =>
-            {
-                lock (speakCompletedLock)
+                var voiceToUse = voice ?? Settings.Default.SpeechVoice;
+                if (!string.IsNullOrWhiteSpace(voiceToUse))
                 {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
-                    if (onComplete != null)
+                    try
                     {
-                        onComplete();
+                        speechSynthesiser.SelectVoice(voiceToUse);
+                    }
+                    catch (Exception exception)
+                    {
+                        var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
+                            voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
+                        PublishError(this, customException);
                     }
                 }
-            };
-            speechSynthesiser.SpeakCompleted += speakCompleted;
-            speechSynthesiser.SpeakAsync(textToSpeak);
+
+                speakCompleted = (sender, args) =>
+                {
+                    lock (speakCompletedLock)
+                    {
+                        speechSynthesiser.SpeakCompleted -= speakCompleted;
+                        speakCompleted = null;
+                        if (onComplete != null)
+                        {
+                            onComplete();
+                        }
+                    }
+                };
+                speechSynthesiser.SpeakCompleted += speakCompleted;
+                speechSynthesiser.SpeakAsync(textToSpeak);
+            }
+            else
+            {
+                SoundPlayer player = new SoundPlayer();
+                player.SoundLocation = "http://localhost:59125/process?"
+                    + "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&AUDIO=WAVE_FILE&"
+                    + "LOCALE=en_GB&"
+                    + "VOICE=dfki-spike-hsmm&"
+                    + "INPUT_TEXT="+ textToSpeak
+                    + "&effect_Volume_selected=on&effect_Volume_parameters=amount:1.0;";
+
+                player.Load();
+                player.Play();
+                /*
+                speakCompleted = null;
+                if (onComplete != null)
+                {
+                    onComplete();
+                }*/
+            }
+
         }
 
         #endregion
