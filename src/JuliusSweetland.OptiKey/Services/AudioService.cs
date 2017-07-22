@@ -91,6 +91,47 @@ namespace JuliusSweetland.OptiKey.Services
             return availableVoices;
         }
 
+        public List<string> GetAvailableMaryTTSLocales()
+        {
+            Log.Info("GetAvailableMaryTTSLocales called");
+            List<string> availableVoices = new List<string>();
+            availableVoices.Add("en_US");
+            availableVoices.Add("en_GB");
+            availableVoices.Add("de");
+            availableVoices.Add("fr");
+            availableVoices.Add("ru");
+            availableVoices.Add("tr");
+            availableVoices.Add("sv");
+            availableVoices.Add("it");
+            availableVoices.Add("te");
+            availableVoices.Add("lb");
+
+            Log.InfoFormat("GetAvailableMaryTTSLocales returing {0} voices", availableVoices.Count);
+
+            return availableVoices;
+        }
+
+        public List<string> GetAvailableMaryTTSVoices()
+        {
+            Log.Info("GetAvailableMaryTTSVoices called");
+            List<string> availableVoices = new List<string>();
+            availableVoices.Add("dfki-spike-hsmm");
+            availableVoices.Add("dfki-spike");
+            availableVoices.Add("dfki-prudence-hsmm");
+            availableVoices.Add("dfki-prudence");
+            availableVoices.Add("dfki-poppy-hsmm");
+            availableVoices.Add("dfki-poppy");
+            availableVoices.Add("dfki-obadiah-hsmm");
+            availableVoices.Add("dfki-obadiah");
+            availableVoices.Add("cmu-slt-hsmm");
+            availableVoices.Add("cmu-rms-hsmm");
+            availableVoices.Add("cmu-bdl-hsmm");
+
+            Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
+
+            return availableVoices;
+        }
+
         public void PlaySound(string file, int volume)
         {
             Log.InfoFormat("Playing sound '{0}' at volume '{1}'", file, volume);
@@ -149,7 +190,7 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
-            if (false)
+            if (!Settings.Default.MaryTTSEnabled)
             {
                 speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
                 speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
@@ -186,11 +227,14 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
+                int MaryTTSRate = rate ?? Settings.Default.SpeechRate;
+                int MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+
                 SoundPlayer player = new SoundPlayer();
                 player.SoundLocation = "http://localhost:59125/process?"
                     + "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&AUDIO=WAVE_FILE&"
-                    + "LOCALE=en_GB&"
-                    + "VOICE=dfki-spike-hsmm&"
+                    + "LOCALE=" + Settings.Default.MaryTTSLocale + "&" //en_GB&"
+                    + "VOICE=" + Settings.Default.MaryTTSVoice + "&" //dfki-spike-hsmm&"
                     + "INPUT_TEXT="+ textToSpeak
                     + "&effect_Volume_selected=on&effect_Volume_parameters=amount:1.0;";
 

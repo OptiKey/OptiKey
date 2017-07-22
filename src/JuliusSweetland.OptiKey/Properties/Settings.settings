@@ -974,5 +974,14 @@
     <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MaryTTSEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaryTTSLocale" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en_GB</Value>
+    </Setting>
+    <Setting Name="MaryTTSVoice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dfki-spike-hsmm</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
