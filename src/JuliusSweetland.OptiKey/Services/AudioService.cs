@@ -4,6 +4,9 @@ using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
 using System.Media;
+using System.Net;
+using System.Text;
+using System.IO;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Un4seen.Bass;
@@ -91,41 +94,30 @@ namespace JuliusSweetland.OptiKey.Services
             return availableVoices;
         }
 
-        public List<string> GetAvailableMaryTTSLocales()
-        {
-            Log.Info("GetAvailableMaryTTSLocales called");
-            List<string> availableVoices = new List<string>();
-            availableVoices.Add("en_US");
-            availableVoices.Add("en_GB");
-            availableVoices.Add("de");
-            availableVoices.Add("fr");
-            availableVoices.Add("ru");
-            availableVoices.Add("tr");
-            availableVoices.Add("sv");
-            availableVoices.Add("it");
-            availableVoices.Add("te");
-            availableVoices.Add("lb");
-
-            Log.InfoFormat("GetAvailableMaryTTSLocales returing {0} voices", availableVoices.Count);
-
-            return availableVoices;
-        }
-
         public List<string> GetAvailableMaryTTSVoices()
         {
             Log.Info("GetAvailableMaryTTSVoices called");
             List<string> availableVoices = new List<string>();
-            availableVoices.Add("dfki-spike-hsmm");
-            availableVoices.Add("dfki-spike");
-            availableVoices.Add("dfki-prudence-hsmm");
-            availableVoices.Add("dfki-prudence");
-            availableVoices.Add("dfki-poppy-hsmm");
-            availableVoices.Add("dfki-poppy");
-            availableVoices.Add("dfki-obadiah-hsmm");
-            availableVoices.Add("dfki-obadiah");
-            availableVoices.Add("cmu-slt-hsmm");
-            availableVoices.Add("cmu-rms-hsmm");
-            availableVoices.Add("cmu-bdl-hsmm");
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:59125/voices");
+
+            // Set some reasonable limits on resources used by this request
+            request.MaximumAutomaticRedirections = 4;
+            request.MaximumResponseHeadersLength = 4;
+            // Set credentials to use for this request.
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            // Get the stream associated with the response.
+            Stream receiveStream = response.GetResponseStream();
+
+            // Pipes the stream to a higher level stream reader with the required encoding format. 
+            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+            string responseText = readStream.ReadToEnd();
+
+            availableVoices = responseText.Split('\n').ToList();
+            // remove the end one because it is blank
+            availableVoices.RemoveAt(availableVoices.Count() - 1);
 
             Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
 
@@ -230,11 +222,13 @@ namespace JuliusSweetland.OptiKey.Services
                 int MaryTTSRate = rate ?? Settings.Default.SpeechRate;
                 int MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
 
+                List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
+
                 SoundPlayer player = new SoundPlayer();
                 player.SoundLocation = "http://localhost:59125/process?"
                     + "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&AUDIO=WAVE_FILE&"
-                    + "LOCALE=" + Settings.Default.MaryTTSLocale + "&" //en_GB&"
-                    + "VOICE=" + Settings.Default.MaryTTSVoice + "&" //dfki-spike-hsmm&"
+                    + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
+                    + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
                     + "INPUT_TEXT="+ textToSpeak
                     + "&effect_Volume_selected=on&effect_Volume_parameters=amount:1.0;";
 

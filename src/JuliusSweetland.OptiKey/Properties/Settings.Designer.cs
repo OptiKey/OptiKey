@@ -1736,19 +1736,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en_GB")]
-        public string MaryTTSLocale {
-            get {
-                return ((string)(this["MaryTTSLocale"]));
-            }
-            set {
-                this["MaryTTSLocale"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("dfki-spike-hsmm")]
+        [global::System.Configuration.DefaultSettingValueAttribute("cmu-slt-hsmm en_US female hmm")]
         public string MaryTTSVoice {
             get {
                 return ((string)(this["MaryTTSVoice"]));

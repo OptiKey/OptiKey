@@ -977,11 +977,8 @@
     <Setting Name="MaryTTSEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="MaryTTSLocale" Type="System.String" Scope="User">
-      <Value Profile="(Default)">en_GB</Value>
-    </Setting>
     <Setting Name="MaryTTSVoice" Type="System.String" Scope="User">
-      <Value Profile="(Default)">dfki-spike-hsmm</Value>
+      <Value Profile="(Default)">cmu-slt-hsmm en_US female hmm</Value>
     </Setting>
   </Settings>
 </SettingsFile>

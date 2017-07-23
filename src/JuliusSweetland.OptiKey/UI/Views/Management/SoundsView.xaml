@@ -27,7 +27,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_LABEL}" 
@@ -54,7 +53,7 @@
                               VerticalAlignment="Center"
                               IsChecked="{Binding MaryTTSEnabled, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="MaryTTSLocale" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="MaryTTSVoices" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -68,34 +67,6 @@
                         </TextBlock.Style>
                     </TextBlock>
                     <ComboBox Grid.Row="4" Grid.Column="1" 
-                              ItemsSource="{Binding MaryTTSLocales}"
-                              SelectedValue="{Binding MaryTTSLocale, Mode=TwoWay}" >
-                        <ComboBox.Style>
-                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ComboBox.Style>
-                    </ComboBox>
-
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="MaryTTSVoices" 
-                               VerticalAlignment="Center" Margin="5" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                <Setter Property="Visibility" Value="Visible" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <ComboBox Grid.Row="5" Grid.Column="1" 
                               ItemsSource="{Binding MaryTTSVoices}"
                               SelectedValue="{Binding MaryTTSVoice, Mode=TwoWay}" >
                         <ComboBox.Style>

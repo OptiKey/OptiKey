@@ -46,11 +46,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return audioService.GetAvailableVoices(); }
         }
 
-        public List<string> MaryTTSLocales
-        {
-            get { return audioService.GetAvailableMaryTTSLocales(); }
-        }
-
         public List<string> MaryTTSVoices
         {
             get { return audioService.GetAvailableMaryTTSVoices(); }
@@ -183,13 +178,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return maryTTSEnabled; }
             set { SetProperty(ref maryTTSEnabled, value); }
-        }
-
-        private string maryTTSLocale;
-        public string MaryTTSLocale
-        {
-            get { return maryTTSLocale; }
-            set { SetProperty(ref maryTTSLocale, value); }
         }
 
         private string maryTTSVoice;
@@ -365,7 +353,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SpeechVolume = Settings.Default.SpeechVolume;
             SpeechRate = Settings.Default.SpeechRate;
             MaryTTSEnabled = Settings.Default.MaryTTSEnabled;
-            MaryTTSLocale = Settings.Default.MaryTTSLocale;
             MaryTTSVoice = Settings.Default.MaryTTSVoice;
             InfoSoundFile = Settings.Default.InfoSoundFile;
             InfoSoundVolume = Settings.Default.InfoSoundVolume;
@@ -395,7 +382,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
             Settings.Default.MaryTTSEnabled = MaryTTSEnabled;
-            Settings.Default.MaryTTSLocale = MaryTTSLocale;
             Settings.Default.MaryTTSVoice = MaryTTSVoice;
             Settings.Default.InfoSoundFile = InfoSoundFile;
             Settings.Default.InfoSoundVolume = InfoSoundVolume;
