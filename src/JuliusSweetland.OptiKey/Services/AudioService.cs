@@ -219,8 +219,16 @@ namespace JuliusSweetland.OptiKey.Services
             }
             else
             {
-                int MaryTTSRate = rate ?? Settings.Default.SpeechRate;
-                int MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+                float MaryTTSRate = rate ?? Settings.Default.SpeechRate;
+                float MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+
+                MaryTTSRate = (MaryTTSRate + 10.0f) / 20.0f * 3.0f;
+                MaryTTSRate = (MaryTTSRate < 0.1f) ? 0.1f
+                    : (MaryTTSRate > 3.0f) ? 3.0f : MaryTTSRate;
+
+                MaryTTSVolume = MaryTTSVolume / 100.0f * 1.4f;
+                MaryTTSVolume = (MaryTTSVolume < 0.0f) ? 0.0f 
+                    : (MaryTTSVolume > 1.4f) ? 1.4f : MaryTTSVolume;
 
                 List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
 
@@ -229,8 +237,11 @@ namespace JuliusSweetland.OptiKey.Services
                     + "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&AUDIO=WAVE_FILE&"
                     + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
                     + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
-                    + "INPUT_TEXT="+ textToSpeak
-                    + "&effect_Volume_selected=on&effect_Volume_parameters=amount:1.0;";
+                    + "INPUT_TEXT=" + textToSpeak
+                    + "&effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                    + string.Format("{0:N1}", MaryTTSRate) + ";&"
+                    + "&effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                    + string.Format("{0:N1}", MaryTTSVolume) + ";";
 
                 player.Load();
                 player.Play();
