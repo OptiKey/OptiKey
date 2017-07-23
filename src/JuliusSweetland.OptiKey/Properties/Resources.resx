@@ -1845,4 +1845,10 @@ Search</value>
 Browsing</value>
     <comment>B</comment>
   </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Use MaryTTS speech synthesizer?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS voice:</value>
+  </data>
 </root>

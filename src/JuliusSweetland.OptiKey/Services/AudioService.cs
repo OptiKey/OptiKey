@@ -116,7 +116,7 @@ namespace JuliusSweetland.OptiKey.Services
             string responseText = readStream.ReadToEnd();
 
             availableVoices = responseText.Split('\n').ToList();
-            // remove the end one because it is blank
+            // remove the last entry because it is blank
             availableVoices.RemoveAt(availableVoices.Count() - 1);
 
             Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);

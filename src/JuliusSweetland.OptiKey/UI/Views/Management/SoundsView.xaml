@@ -47,13 +47,13 @@
                                             Minimum="-10" Maximum="10" Interval="1"
                                             Value="{Binding SpeechRate, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="MaryTTSEnable" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_ENABLED_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1" 
                               VerticalAlignment="Center"
                               IsChecked="{Binding MaryTTSEnabled, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="MaryTTSVoices" 
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_VOICE_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">

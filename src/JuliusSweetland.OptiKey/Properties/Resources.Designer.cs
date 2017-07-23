@@ -2393,6 +2393,24 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use MaryTTS speech synthesisez?.
+        /// </summary>
+        public static string MARYTTS_ENABLED_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_ENABLED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MaryTTS Voice:.
+        /// </summary>
+        public static string MARYTTS_VOICE_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_VOICE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum number of dictionary matches:.
         /// </summary>
         public static string MAX_DICTIONARY_MATCHES_LABEL {
