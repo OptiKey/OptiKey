@@ -1820,4 +1820,29 @@ Slovenčina
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use simplify keyboard layout:</value>
   </data>
+  <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Back</value>
+  </data>
+  <data name="BROWSER_FORWARD_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Forward</value>
+  </data>
+  <data name="BROWSER_HOME_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Home</value>
+  </data>
+  <data name="BROWSER_SEARCH_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Browser
+Search</value>
+  </data>
+  <data name="WEB_BROWSING_LAYOUT" xml:space="preserve">
+    <value>Web Browsing</value>
+    <comment>EB </comment>
+  </data>
+  <data name="WEB_BROWSING_SPLIT_WITH_NEWLINE" xml:space="preserve">
+    <value>Web
+Browsing</value>
+    <comment>B</comment>
+  </data>
 </root>
