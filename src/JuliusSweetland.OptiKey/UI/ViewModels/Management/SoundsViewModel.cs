@@ -329,7 +329,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return false; }
+            get { return Settings.Default.MaryTTSEnabled != MaryTTSEnabled; ; }
         }
 
         public DelegateCommand InfoSoundPlayCommand { get; private set; }

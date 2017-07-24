@@ -295,7 +295,7 @@ namespace JuliusSweetland.OptiKey.Services
             // add 250 ms to the delay to ensure the speech is finished
             int delaytime = 250 + (int)(1000 * Convert.ToSingle(realised_durations.ElementAt(realised_durations.Count() - 2).Split(' ').ToList().ElementAt(0)));
             
-            Log.InfoFormat("MaryTTS speech ends in {0} ms", delaytime);
+            //Log.InfoFormat("MaryTTS speech ends in {0} ms", delaytime);
             
             Task SoundPlayerDelayTask = SoundPlayerDelayAsync(delaytime); 
 

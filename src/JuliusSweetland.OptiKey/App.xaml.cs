@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -151,6 +152,24 @@ namespace JuliusSweetland.OptiKey
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
+
+                if (Settings.Default.MaryTTSEnabled)
+                {
+
+                    Process proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = @".\Resources\marytts\bin\marytts-server.bat",
+                            UseShellExecute = true,
+                            WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if hidden
+                            CreateNoWindow = true
+                        }
+                    };
+                    proc.Start();
+                    Log.InfoFormat("Started MaryTTS in '{0}' with process name '{1}'.", proc.StartInfo.FileName, proc.ProcessName);
+                    CloseMaryTTSOnApplicationExit(proc);
+                }
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -803,6 +822,18 @@ namespace JuliusSweetland.OptiKey
                 if (keyStateService.SimulateKeyStrokes)
                 {
                     publishService.ReleaseAllDownKeys();
+                }
+            };
+        }
+
+        private static void CloseMaryTTSOnApplicationExit(Process proc)
+        {
+            Current.Exit += (o, args) =>
+            {
+                if (Settings.Default.MaryTTSEnabled)
+                {
+                    proc.CloseMainWindow();
+                    Log.InfoFormat("MaryTTS has been closed.");
                 }
             };
         }
