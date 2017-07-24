@@ -7,6 +7,7 @@ using System.Media;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Un4seen.Bass;
@@ -30,7 +31,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> speakCompleted;
-        
+
+        private bool MaryTTSSpeaking = false;
+
         #endregion
 
         #region Events
@@ -66,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 lock (speakCompletedLock)
                 {
-                    if (speakCompleted == null)
+                    if (speakCompleted == null && !MaryTTSSpeaking)
                     {
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
@@ -114,11 +117,9 @@ namespace JuliusSweetland.OptiKey.Services
             // Pipes the stream to a higher level stream reader with the required encoding format. 
             StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
             string responseText = readStream.ReadToEnd();
-
-            availableVoices = responseText.Split('\n').ToList();
-            // remove the last entry because it is blank
-            availableVoices.RemoveAt(availableVoices.Count() - 1);
-
+            //Log.InfoFormat("AvailableMaryTTSVoices:\n" + responseText);
+            availableVoices = responseText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            
             Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
 
             return availableVoices;
@@ -166,20 +167,31 @@ namespace JuliusSweetland.OptiKey.Services
         private void CancelSpeech()
         {
             Log.Info("Cancelling all speech");
-            lock (speakCompletedLock)
+            if (!MaryTTSSpeaking)
             {
-                if (speakCompleted != null)
+                lock (speakCompletedLock)
                 {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
+                    if (speakCompleted != null)
+                    {
+                        speechSynthesiser.SpeakCompleted -= speakCompleted;
+                        speakCompleted = null;
+                    }
+                    speechSynthesiser.SpeakAsyncCancelAll();
                 }
-                speechSynthesiser.SpeakAsyncCancelAll();
+            }
+            else
+            {
+                SoundPlayer player = new SoundPlayer();
+                player.Stop();
+                player.Dispose();
+                MaryTTSSpeaking = false;
             }
         }
 
         private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
-            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
+            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, 
+                !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
             if (!Settings.Default.MaryTTSEnabled)
@@ -226,33 +238,81 @@ namespace JuliusSweetland.OptiKey.Services
                 MaryTTSRate = (MaryTTSRate < 0.1f) ? 0.1f
                     : (MaryTTSRate > 3.0f) ? 3.0f : MaryTTSRate;
 
-                MaryTTSVolume = MaryTTSVolume / 100.0f * 1.4f;
+                MaryTTSVolume = MaryTTSVolume / 100.0f * 1.0f;
                 MaryTTSVolume = (MaryTTSVolume < 0.0f) ? 0.0f 
-                    : (MaryTTSVolume > 1.4f) ? 1.4f : MaryTTSVolume;
+                    : (MaryTTSVolume > 1.0f) ? 1.0f : MaryTTSVolume;
 
                 List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
 
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = "http://localhost:59125/process?"
-                    + "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&AUDIO=WAVE_FILE&"
-                    + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
-                    + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
-                    + "INPUT_TEXT=" + textToSpeak
-                    + "&effect_Rate_selected=on&effect_Rate_parameters=durScale:"
-                    + string.Format("{0:N1}", MaryTTSRate) + ";&"
-                    + "&effect_Volume_selected=on&effect_Volume_parameters=amount:"
-                    + string.Format("{0:N1}", MaryTTSVolume) + ";";
+                string SpeakURL = "http://localhost:59125/process?"
+                                + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
+                                + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
+                                + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
+                                + "INPUT_TEXT=" + textToSpeak + "&";
 
-                player.Load();
+                string timeURL = SpeakURL + "OUTPUT_TYPE=REALISED_DURATIONS&"
+                        + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                        + string.Format("{0:N1}", MaryTTSRate) + ";";
+
+                SpeakURL += "OUTPUT_TYPE=AUDIO&"
+                        + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                        + string.Format("{0:N1}", MaryTTSRate) + ";&"
+                        + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                        + string.Format("{0:N1}", MaryTTSVolume) + ";";
+
+                SoundPlayer player = new SoundPlayer();
+                player.SoundLocation = SpeakURL;
+                Task task = DelayAsync(timeURL, onComplete, player);
+                MaryTTSSpeaking = true;
                 player.Play();
-                /*
-                speakCompleted = null;
-                if (onComplete != null)
-                {
-                    onComplete();
-                }*/
             }
 
+        }
+
+        public async Task DelayAsync(string timeURL, Action onComplete, SoundPlayer player)
+        {
+            List<string> realised_durations = new List<string>();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(timeURL);
+
+            // Set some reasonable limits on resources used by this request
+            request.MaximumAutomaticRedirections = 4;
+            request.MaximumResponseHeadersLength = 4;
+            // Set credentials to use for this request.
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            // Get the stream associated with the response.
+            Stream receiveStream = response.GetResponseStream();
+
+            // Pipes the stream to a higher level stream reader with the required encoding format. 
+            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+            string responseText = readStream.ReadToEnd();
+
+            realised_durations = responseText.Split('\n').ToList();
+
+            // retrieve the time of the last syllable
+            // add 250 ms to the delay to ensure the speech is finished
+            int delaytime = 250 + (int)(1000 * Convert.ToSingle(realised_durations.ElementAt(realised_durations.Count() - 2).Split(' ').ToList().ElementAt(0)));
+            
+            Log.InfoFormat("MaryTTS speech ends in {0} ms", delaytime);
+            
+            Task SoundPlayerDelayTask = SoundPlayerDelayAsync(delaytime); 
+
+            await SoundPlayerDelayTask;
+
+            if (onComplete != null)
+            {
+                onComplete();
+            }
+            player.Dispose();
+            MaryTTSSpeaking = false;
+        }
+
+        public async Task<int> SoundPlayerDelayAsync(int delaytime)
+        {
+            await Task.Delay(delaytime); // delay until speech finishes
+            return 1;
         }
 
         #endregion
