@@ -244,62 +244,28 @@ namespace JuliusSweetland.OptiKey.Services
 
                 List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
 
-                string SpeakURL = "http://localhost:59125/process?"
+                SoundPlayer player = new SoundPlayer();
+                player.SoundLocation =  "http://localhost:59125/process?"
                                 + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
                                 + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
                                 + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
-                                + "INPUT_TEXT=" + textToSpeak + "&";
+                                + "INPUT_TEXT=" + textToSpeak + "&"
+                                + "OUTPUT_TYPE=AUDIO&"
+                                + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                                + string.Format("{0:N1}", MaryTTSRate) + ";&"
+                                + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                                + string.Format("{0:N1}", MaryTTSVolume) + ";";
 
-                string timeURL = SpeakURL + "OUTPUT_TYPE=REALISED_DURATIONS&"
-                        + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
-                        + string.Format("{0:N1}", MaryTTSRate) + ";";
-
-                SpeakURL += "OUTPUT_TYPE=AUDIO&"
-                        + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
-                        + string.Format("{0:N1}", MaryTTSRate) + ";&"
-                        + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
-                        + string.Format("{0:N1}", MaryTTSVolume) + ";";
-
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation = SpeakURL;
-                Task task = DelayAsync(timeURL, onComplete, player);
+                Task task = SoundPlayerTask(onComplete, player);
                 MaryTTSSpeaking = true;
-                player.Play();
             }
 
         }
 
-        public async Task DelayAsync(string timeURL, Action onComplete, SoundPlayer player)
+        public async Task SoundPlayerTask(Action onComplete, SoundPlayer player)
         {
-            List<string> realised_durations = new List<string>();
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(timeURL);
-
-            // Set some reasonable limits on resources used by this request
-            request.MaximumAutomaticRedirections = 4;
-            request.MaximumResponseHeadersLength = 4;
-            // Set credentials to use for this request.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            // Get the stream associated with the response.
-            Stream receiveStream = response.GetResponseStream();
-
-            // Pipes the stream to a higher level stream reader with the required encoding format. 
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            string responseText = readStream.ReadToEnd();
-
-            realised_durations = responseText.Split('\n').ToList();
-
-            // retrieve the time of the last syllable
-            // add 250 ms to the delay to ensure the speech is finished
-            int delaytime = 250 + (int)(1000 * Convert.ToSingle(realised_durations.ElementAt(realised_durations.Count() - 2).Split(' ').ToList().ElementAt(0)));
-            
-            //Log.InfoFormat("MaryTTS speech ends in {0} ms", delaytime);
-            
-            Task SoundPlayerDelayTask = SoundPlayerDelayAsync(delaytime); 
-
-            await SoundPlayerDelayTask;
+            var task = Task.Run(() => player.PlaySync());
+            await task;
 
             if (onComplete != null)
             {
@@ -307,12 +273,6 @@ namespace JuliusSweetland.OptiKey.Services
             }
             player.Dispose();
             MaryTTSSpeaking = false;
-        }
-
-        public async Task<int> SoundPlayerDelayAsync(int delaytime)
-        {
-            await Task.Delay(delaytime); // delay until speech finishes
-            return 1;
         }
 
         #endregion
