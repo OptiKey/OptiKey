@@ -22,6 +22,7 @@ namespace JuliusSweetland.OptiKey.Services
         private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Dictionaries\";
         private const string OriginalDictionariesSubPath = @"Dictionaries\";
         private const string DictionaryFileType = ".dic";
+	private const string BackupDictFileType = ".bak.dic";
 
         #endregion
 
@@ -90,11 +91,11 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-		#endregion
+	#endregion
 
-		#region Load / Save Dictionary
+	#region Load / Save Dictionary
 
-		public void LoadDictionary()
+	public void LoadDictionary()
         {
             Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
@@ -102,8 +103,8 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 manageAutoComplete = CreateAutoComplete();
 
-				// Create reference to the actual storage of the dictionary entries.
-				entries = manageAutoComplete.GetEntries();
+		// Create reference to the actual storage of the dictionary entries.
+		entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -153,9 +154,9 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private static string GetUserDictionaryPath(Languages? language)
+        private static string GetUserDictionaryPath(Languages? language, bool? isBackup)
         {
-            return GetUserDictionaryPath(string.Format("{0}{1}", language, DictionaryFileType));
+            return GetUserDictionaryPath(string.Format("{0}{1}", language, (isBackup ? DictionaryFileType : BackupDictFileType));
         }
 
         private static string GetUserDictionaryPath(string fileName)
@@ -198,7 +199,18 @@ namespace JuliusSweetland.OptiKey.Services
 
                 StreamWriter writer = null;
                 try
-                {
+                {   
+		    var backupDictPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage, true);
+                    if (File.Exists(backupDictPath))
+                    {	
+		    	File.Delete(backupDictPath);
+		    }
+		    
+		    if (File.Exists(userDictionaryPath))
+		    {
+		    	File.Move(userDictionaryPath, backupDictPath);
+		    }
+		    
                     writer = new StreamWriter(userDictionaryPath);
 
                     foreach (var entryWithUsageCount in manageAutoComplete.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
