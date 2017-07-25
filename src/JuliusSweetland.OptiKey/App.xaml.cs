@@ -160,15 +160,34 @@ namespace JuliusSweetland.OptiKey
                     {
                         StartInfo = new ProcessStartInfo
                         {
-                            FileName = @".\Resources\marytts\bin\marytts-server.bat",
                             UseShellExecute = true,
-                            WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if hidden
+                            WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if set to hidden
                             CreateNoWindow = true
                         }
                     };
-                    proc.Start();
-                    Log.InfoFormat("Started MaryTTS in '{0}' with process name '{1}'.", proc.StartInfo.FileName, proc.ProcessName);
-                    CloseMaryTTSOnApplicationExit(proc);
+                    if (Settings.Default.MaryTTSLocation.EndsWith(@"\bin\marytts-server.bat"))
+                    {
+                        proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
+                        Log.InfoFormat("Trying to start MaryTTS from '{0}'.", proc.StartInfo.FileName);
+                        try { proc.Start(); }
+                        catch (Exception)
+                        {
+                            Log.InfoFormat("Failed to started MaryTTS. Disabling MaryTTS and using System Voice '{0}' instead.", 
+                                Settings.Default.SpeechVoice);
+                            Settings.Default.MaryTTSEnabled = false;
+                        }
+                        if (Settings.Default.MaryTTSEnabled)
+                        {
+                            Log.InfoFormat("Started MaryTTS.");
+                            CloseMaryTTSOnApplicationExit(proc);
+                        }
+                    }
+                    else
+                    {
+                        Log.InfoFormat("Failed to started MaryTTS. Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        Settings.Default.MaryTTSEnabled = false;
+                    }
                 }
 
                 //Compose UI

@@ -1745,5 +1745,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["MaryTTSVoice"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MaryTTSLocation {
+            get {
+                return ((string)(this["MaryTTSLocation"]));
+            }
+            set {
+                this["MaryTTSLocation"] = value;
+            }
+        }
     }
 }

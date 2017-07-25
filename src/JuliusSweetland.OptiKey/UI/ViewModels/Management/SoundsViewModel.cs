@@ -187,6 +187,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref maryTTSVoice, value); }
         }
 
+        private bool useEmbeddedMaryTTS;
+        public bool UseEmbeddedMaryTTS
+        {
+            get { return useEmbeddedMaryTTS; }
+            set { SetProperty(ref useEmbeddedMaryTTS, value); }
+        }
+
+        private string maryTTSLocation;
+        public string MaryTTSLocation
+        {
+            get { return maryTTSLocation; }
+            set { SetProperty(ref maryTTSLocation, value); }
+        }
+
         private string infoSoundFile;
         public string InfoSoundFile
         {
@@ -329,7 +343,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return Settings.Default.MaryTTSEnabled != MaryTTSEnabled; ; }
+            get
+            {
+                return Settings.Default.MaryTTSEnabled != MaryTTSEnabled
+                    || Settings.Default.MaryTTSLocation != MaryTTSLocation; ;
+            }
         }
 
         public DelegateCommand InfoSoundPlayCommand { get; private set; }
@@ -354,6 +372,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SpeechRate = Settings.Default.SpeechRate;
             MaryTTSEnabled = Settings.Default.MaryTTSEnabled;
             MaryTTSVoice = Settings.Default.MaryTTSVoice;
+            MaryTTSLocation = Settings.Default.MaryTTSLocation;
             InfoSoundFile = Settings.Default.InfoSoundFile;
             InfoSoundVolume = Settings.Default.InfoSoundVolume;
             KeySelectionSoundFile = Settings.Default.KeySelectionSoundFile;
@@ -383,6 +402,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SpeechRate = SpeechRate;
             Settings.Default.MaryTTSEnabled = MaryTTSEnabled;
             Settings.Default.MaryTTSVoice = MaryTTSVoice;
+            Settings.Default.MaryTTSLocation = MaryTTSLocation;
             Settings.Default.InfoSoundFile = InfoSoundFile;
             Settings.Default.InfoSoundVolume = InfoSoundVolume;
             Settings.Default.KeySelectionSoundFile = KeySelectionSoundFile;
