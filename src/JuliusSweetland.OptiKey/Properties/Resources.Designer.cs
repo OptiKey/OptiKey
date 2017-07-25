@@ -2393,49 +2393,43 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use MaryTTS speech synthesisez?.
+        ///   Looks up a localized string similar to Use MaryTTS speech synthesizer?.
         /// </summary>
         public static string MARYTTS_ENABLED_LABEL {
             get {
                 return ResourceManager.GetString("MARYTTS_ENABLED_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to ERROR: a valid &apos;marytts-server.bat&apos; file was not selected. Please try again..
         /// </summary>
-        public static string MARYTTS_LOCATION_ERROR_LABEL
-        {
-            get
-            {
+        public static string MARYTTS_LOCATION_ERROR_LABEL {
+            get {
                 return ResourceManager.GetString("MARYTTS_LOCATION_ERROR_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Find.
         /// </summary>
-        public static string MARYTTS_LOCATION_FIND_LABEL
-        {
-            get
-            {
+        public static string MARYTTS_LOCATION_FIND_LABEL {
+            get {
                 return ResourceManager.GetString("MARYTTS_LOCATION_FIND_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to MaryTTS location (marytts-server.bat):.
         /// </summary>
-        public static string MARYTTS_LOCATION_LABEL
-        {
-            get
-            {
+        public static string MARYTTS_LOCATION_LABEL {
+            get {
                 return ResourceManager.GetString("MARYTTS_LOCATION_LABEL", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to MaryTTS Voice:.
+        ///   Looks up a localized string similar to MaryTTS voice:.
         /// </summary>
         public static string MARYTTS_VOICE_LABEL {
             get {
@@ -4341,7 +4335,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("SPEAK", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Speech.
         /// </summary>
@@ -4850,7 +4844,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("USE_ALPHABETICAL_KEYBOARD_LAYOUT", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Use simplify keyboard layout:.
         /// </summary>
