@@ -182,7 +182,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return ForceCapsLock != Settings.Default.ForceCapsLock; }
+            get { return ForceCapsLock != Settings.Default.ForceCapsLock
+                    || Settings.Default.SuggestionMethod != SuggestionMethod; }
         }
 
         #endregion

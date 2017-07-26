@@ -10,6 +10,9 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     public class PresageSuggestions : IManagedSuggestions
     {
+        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
+        private readonly HashSet<string> wordsIndex = new HashSet<string>();
+
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private Presage prsg;
@@ -53,7 +56,17 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             return Enumerable.Empty<string>();
         }
 
-        public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount)
+        public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
+        {
+            return entries;
+        }
+
+        public HashSet<string> GetWordsHashes()
+        {
+            return wordsIndex;
+        }
+
+        public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
         {
 
         }
