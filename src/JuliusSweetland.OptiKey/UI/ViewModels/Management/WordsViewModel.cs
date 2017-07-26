@@ -59,6 +59,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        public List<KeyValuePair<string, SuggestionMethods>> SuggestionMethods
+        {
+            get
+                {
+                    return new List<KeyValuePair<string, SuggestionMethods>> {
+                        new KeyValuePair<string, SuggestionMethods>(Resources.BASIC_SUGGESTION, Enums.SuggestionMethods.Basic),
+                        new KeyValuePair<string, SuggestionMethods>(Resources.NGRAM_SUGGESTION, Enums.SuggestionMethods.NGram),
+                        new KeyValuePair<string, SuggestionMethods>(Resources.PRESAGE_SUGGESTION, Enums.SuggestionMethods.Presage)
+                    };
+                }
+        }
+
         private Languages keyboardAndDictionaryLanguage;
         public Languages KeyboardAndDictionaryLanguage
         {
@@ -140,6 +152,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
         }
 
+        private SuggestionMethods suggestionMethod;
+        public SuggestionMethods SuggestionMethod
+        {
+            get { return suggestionMethod; }
+            set { SetProperty(ref suggestionMethod, value); }
+        }
+
         private bool suggestWords;
         public bool SuggestWords
         {
@@ -180,6 +199,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
+            SuggestionMethod = Settings.Default.SuggestionMethod;
             SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
@@ -187,7 +207,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            var reloadDictionary = Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage;
+            var reloadDictionary = (Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage)
+                                   || (Settings.Default.SuggestionMethod != SuggestionMethod);
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
@@ -197,6 +218,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
+            Settings.Default.SuggestionMethod = SuggestionMethod;
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
