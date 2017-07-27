@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
+using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -95,17 +96,17 @@ namespace JuliusSweetland.OptiKey
                 {
                     Source = new Uri(Settings.Default.Theme, UriKind.Relative)
                 };
-                
+
                 var previousThemes = Resources.MergedDictionaries
                     .OfType<ThemeResourceDictionary>()
                     .ToList();
-                    
+
                 //N.B. Add replacement before removing the previous as having no applicable resource
                 //dictionary can result in the first element not being rendered (usually the first key).
                 Resources.MergedDictionaries.Add(themeDictionary);
                 previousThemes.ForEach(rd => Resources.MergedDictionaries.Remove(rd));
             };
-            
+
             Settings.Default.OnPropertyChanges(settings => settings.Theme).Subscribe(_ => applyTheme());
         }
 
@@ -121,7 +122,7 @@ namespace JuliusSweetland.OptiKey
 
                 //Apply theme
                 applyTheme();
-                
+
                 //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
                 //This is to work around the fact that the MainViewModel is created after the services.
                 MainViewModel mainViewModel = null;
@@ -136,6 +137,49 @@ namespace JuliusSweetland.OptiKey
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    string resultpath = null;
+                    string resulSMF = null;
+                    string OSBitness = DiagnosticInfo.OperatingSystemBitness;
+
+                    try
+                    {
+                        resultpath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
+                        resulSMF = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
+                    }
+                    catch (System.Security.SecurityException ex)
+                    {
+                        Log.ErrorFormat("Caught exception: {0}", ex);
+                        resultpath = string.Empty;
+                        resulSMF = string.Empty;
+                    }
+                    catch (System.IO.IOException ex)
+                    {
+                        Log.ErrorFormat("Caught exception: {0}", ex);
+                        resultpath = string.Empty;
+                        resulSMF = string.Empty;
+                    }
+                    catch(Exception ex)
+                    {
+                        Log.ErrorFormat("Caught exception: {0}", ex);
+                        resultpath = string.Empty;
+                        resulSMF = string.Empty;
+                    }
+
+                    if (resulSMF != "presage-0.9.2~beta20150909"
+                                || resultpath == string.Empty || resultpath == null
+                                || (OSBitness == "64-Bit" && resultpath != @"C:\Program Files (x86)\presage")
+                                || (OSBitness == "32-Bit" && resultpath != @"C:\Program Files\presage"))
+                    {
+                        Settings.Default.SuggestionMethod = SuggestionMethods.Basic;
+                        Log.Error("Invalid Presage installation. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to Basic.");
+                    }
+                    else
+                    {
+                        Log.InfoFormat("Using Presage {0} at {1}.", resulSMF.ToString(), resultpath.ToString());
+                    }
+                }
                 IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
                 IPublishService publishService = new PublishService();
                 ISuggestionStateService suggestionService = new SuggestionStateService();
@@ -150,7 +194,7 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(dictionaryService);
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
-                
+
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
 
                 AttemptToStartMaryTTSService();
@@ -207,7 +251,7 @@ namespace JuliusSweetland.OptiKey
                 }
                 else
                 {
-                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;    
+                    mainWindowManipulationService.SizeAndPositionInitialised += sizeAndPositionInitialised;
                 }
             }
             catch (Exception ex)
@@ -555,7 +599,7 @@ namespace JuliusSweetland.OptiKey
                        Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
-                        : null, 
+                        : null,
                        Settings.Default.KeySelectionTriggerIncompleteFixationTtl,
                        pointSource);
                     break;
@@ -615,9 +659,9 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-        
+
         #region Log Diagnostic Info
-        
+
         private static void LogDiagnosticInfo()
         {
             Log.InfoFormat("Assembly version: {0}", DiagnosticInfo.AssemblyVersion);
@@ -637,7 +681,7 @@ namespace JuliusSweetland.OptiKey
             Log.InfoFormat("OS service pack: {0}", DiagnosticInfo.OperatingSystemServicePack);
             Log.InfoFormat("OS bitness: {0}", DiagnosticInfo.OperatingSystemBitness);
         }
-        
+
         #endregion
 
         #region Show Splash Screen
@@ -699,8 +743,8 @@ namespace JuliusSweetland.OptiKey
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
-                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION, 
-                    message.ToString(), 
+                    OptiKey.Properties.Resources.OPTIKEY_DESCRIPTION,
+                    message.ToString(),
                     NotificationTypes.Normal,
                     () =>
                         {
