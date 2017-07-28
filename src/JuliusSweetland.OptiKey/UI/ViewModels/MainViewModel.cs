@@ -382,6 +382,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Diacritics3();
                     break;
 
+                case Enums.Keyboards.DynamicKeyboard:
+                    Keyboard = new DynamicKeyboardSelector(backAction, 0);
+                    break;
+
                 case Enums.Keyboards.Menu:
                     Keyboard = new Menu(backAction);
                     break;
@@ -416,6 +420,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case Enums.Keyboards.WebBrowsing:
                     Keyboard = new WebBrowsing();
+                    break;
+
+                default:
+                    Log.ErrorFormat("Cannot load keyboard: {0}, this is not a valid StartupKeyboard", 
+                        Settings.Default.StartupKeyboard);
                     break;
             }
 
