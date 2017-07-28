@@ -29,6 +29,7 @@ Patrons (thank you very much for sponsoring this project)
   Loreta Boskovic
   Luis Pohoski
   Juniichi Odagiri
+  Brian Bourne
   
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
