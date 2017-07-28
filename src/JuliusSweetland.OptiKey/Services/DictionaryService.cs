@@ -1,10 +1,4 @@
-﻿using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
-using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,10 +6,16 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.AutoComplete;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-	public class DictionaryService : IDictionaryService
+    public class DictionaryService : IDictionaryService
     {
         #region Constants
 
@@ -30,13 +30,14 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AutoCompleteMethods autoCompleteMethod;
 
-		private Dictionary<string, HashSet<DictionaryEntry>> entries;
-		private IManageAutoComplete manageAutoComplete;
-		#endregion
+        private Dictionary<string, List<DictionaryEntry>> entries;
+        private IManageAutoComplete manageAutoComplete;
+        
+        #endregion
 
-		#region Events
+        #region Events
 
-		public event EventHandler<Exception> Error;
+        public event EventHandler<Exception> Error;
         
         #endregion
 
@@ -90,20 +91,18 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-		#endregion
+        #endregion
 
-		#region Load / Save Dictionary
+        #region Load / Save Dictionary
 
-		public void LoadDictionary()
+        public void LoadDictionary()
         {
             Log.InfoFormat("LoadDictionary called. Keyboard language setting is '{0}'.", Settings.Default.KeyboardAndDictionaryLanguage);
 
             try
             {
+                entries = new Dictionary<string, List<DictionaryEntry>>();
                 manageAutoComplete = CreateAutoComplete();
-
-				// Create reference to the actual storage of the dictionary entries.
-				entries = manageAutoComplete.GetEntries();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -201,7 +200,7 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     writer = new StreamWriter(userDictionaryPath);
 
-                    foreach (var entryWithUsageCount in manageAutoComplete.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
+                    foreach (var entryWithUsageCount in entries.SelectMany(pair => pair.Value))
                     {
                         writer.WriteLine("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount);
                     }
@@ -231,8 +230,8 @@ namespace JuliusSweetland.OptiKey.Services
             if (entries != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
-                var exists = manageAutoComplete.GetWordsHashes()
-					.SelectMany(hash => entries[hash]) //Expand out all values in the dictionary and all values in the sorted lists
+                var exists = entries
+                    .SelectMany(pair => pair.Value) //Expand out all values in the dictionary and all values in the sorted lists
                     .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
 
@@ -267,8 +266,20 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-					//Also add to entries for auto complete
-					manageAutoComplete.AddEntry(entry, newEntryWithUsageCount, hash);
+                    if (entries.ContainsKey(hash))
+                    {
+                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
+                        {
+                            entries[hash].Add(newEntryWithUsageCount);
+                        }
+                    }
+                    else
+                    {
+                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
+                    }
+
+                    //Also add to entries for auto complete
+                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
                     
                     if (!loadedFromDictionaryFile)
                     {
@@ -301,8 +312,15 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
-						//Also remove from entries for auto complete
-						manageAutoComplete.RemoveEntry(entry);
+                        entries[hash].Remove(foundEntry);
+
+                        if (!entries[hash].Any())
+                        {
+                            entries.Remove(hash);
+                        }
+
+                        //Also remove from entries for auto complete
+                        manageAutoComplete.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -320,14 +338,14 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-                var enumerator = manageAutoComplete.GetWordsHashes()
-                    .SelectMany(hash => entries[hash])
+                var enumerator = entries
+                    .SelectMany(entry => entry.Value)
                     .OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();
 
                 while (enumerator.MoveNext())
-				{
-					yield return enumerator.Current;
+                {
+                    yield return enumerator.Current;
                 }
             }
         }
@@ -589,10 +607,12 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-				var enumerator = manageAutoComplete.GetWordsHashes().GetEnumerator();
+                var enumerator = entries.GetEnumerator();
+
                 while (enumerator.MoveNext())
                 {
-					yield return enumerator.Current;
+                    var pair = enumerator.Current;
+                    yield return pair.Key;
                 }
             }
         }
@@ -609,7 +629,6 @@ namespace JuliusSweetland.OptiKey.Services
                 && entries.ContainsKey(hash))
             {
                 var enumerator = entries[hash]
-					.Where(dictEntry => !(dictEntry is NGramAutoComplete.EntryMetadata))
                     .OrderByDescending(entryWithUsageCount => entryWithUsageCount.UsageCount)
                     .Select(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();
