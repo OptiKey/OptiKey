@@ -39,6 +39,10 @@
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
+            <SolidColorBrush x:Key="KeyHasImageForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="KeyHasImageBorderBrush" Color="{StaticResource Transparent}" />
+            <SolidColorBrush x:Key="KeyHasImageBackgroundBrush" Color="{StaticResource Transparent}" />
+
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
             <SolidColorBrush x:Key="ScratchpadBorderBrush" Color="{StaticResource Grey}" />
@@ -322,6 +326,11 @@
                     </Setter.Value>
                 </Setter>
                 <Style.Triggers>
+                    <!--This key has an image-->
+                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
+                        <Setter Property="Background" Value="{StaticResource KeyHasImageBackgroundBrush}" />
+                    </DataTrigger>
+                    
                     <!--This key is in a key down state of On-->
                     <DataTrigger Binding="{Binding Path=KeyDownState, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="{x:Static enums:KeyDownStates.Down}">
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDownStateIsDownBorderBrush}" />

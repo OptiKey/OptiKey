@@ -4909,6 +4909,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use CommuniKate keyboard layout:.
+        /// </summary>
+        public static string USE_COMMUNIKATE_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_COMMUNIKATE_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use simplify keyboard layout:.
         /// </summary>
         public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {

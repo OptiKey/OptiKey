@@ -79,6 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
+                OnPropertyChanged(() => UseCommuniKateKeyboardLayout);
                 OnPropertyChanged(() => UseSimplifiedKeyboardLayoutIsVisible);
             }
         }
@@ -115,6 +116,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         public bool UseSimplifiedKeyboardLayoutIsVisible
+        {
+            get
+            {
+                return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
+                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
+                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
+            }
+        }
+
+        private bool useCommuniKateKeyboardLayout;
+        public bool UseCommuniKateKeyboardLayout
+        {
+            get { return useCommuniKateKeyboardLayout; }
+            set { SetProperty(ref useCommuniKateKeyboardLayout, value); }
+        }
+
+        public bool UseCommuniKatedKeyboardLayoutIsVisible
         {
             get
             {
@@ -195,6 +213,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             KeyboardAndDictionaryLanguage = Settings.Default.KeyboardAndDictionaryLanguage;
             UiLanguage = Settings.Default.UiLanguage;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
+            UseCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayout;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
             AutoAddSpace = Settings.Default.AutoAddSpace;
@@ -214,6 +233,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
+            Settings.Default.UseCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayout;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
             Settings.Default.AutoAddSpace = AutoAddSpace;

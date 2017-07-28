@@ -191,6 +191,70 @@ namespace JuliusSweetland.OptiKey.Services
                     GenerateSuggestions(false);
                     break;
 
+                case FunctionKeys.CommuniKate_Home:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_235:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_235";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_236:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_236";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_237:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_237";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_238:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_238";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_239:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_239";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_240:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_240";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_241:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_241";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_242:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_242";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_243:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_243";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_244:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_244";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_245:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_245";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_246:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_246";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_247:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_247";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_248:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_248";
+                    break;
+
+                case FunctionKeys.CommuniKate_1_249:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_249";
+                    break;
+
                 case FunctionKeys.ConversationConfirmYes:
                     Text = null;
                     StoreLastTextChange(null);
