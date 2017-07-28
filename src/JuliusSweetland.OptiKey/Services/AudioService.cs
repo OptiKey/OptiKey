@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
+using System.Media;
+using System.Net;
+using System.Text;
+using System.IO;
+using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Un4seen.Bass;
@@ -26,7 +31,9 @@ namespace JuliusSweetland.OptiKey.Services
 
         private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> speakCompleted;
-        
+
+        private bool MaryTTSSpeaking = false;
+
         #endregion
 
         #region Events
@@ -62,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 lock (speakCompletedLock)
                 {
-                    if (speakCompleted == null)
+                    if (speakCompleted == null && !MaryTTSSpeaking)
                     {
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
@@ -86,6 +93,34 @@ namespace JuliusSweetland.OptiKey.Services
                 .ToList();
 
             Log.InfoFormat("GetAvailableVoices returing {0} voices", availableVoices.Count);
+
+            return availableVoices;
+        }
+
+        public List<string> GetAvailableMaryTTSVoices()
+        {
+            Log.Info("GetAvailableMaryTTSVoices called");
+            List<string> availableVoices = new List<string>();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:59125/voices");
+
+            // Set some reasonable limits on resources used by this request
+            request.MaximumAutomaticRedirections = 4;
+            request.MaximumResponseHeadersLength = 4;
+            // Set credentials to use for this request.
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            // Get the stream associated with the response.
+            Stream receiveStream = response.GetResponseStream();
+
+            // Pipes the stream to a higher level stream reader with the required encoding format. 
+            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+            string responseText = readStream.ReadToEnd();
+            //Log.InfoFormat("AvailableMaryTTSVoices:\n" + responseText);
+            availableVoices = responseText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            
+            Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
 
             return availableVoices;
         }
@@ -132,54 +167,112 @@ namespace JuliusSweetland.OptiKey.Services
         private void CancelSpeech()
         {
             Log.Info("Cancelling all speech");
-            lock (speakCompletedLock)
-            {
-                if (speakCompleted != null)
-                {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
-                }
-                speechSynthesiser.SpeakAsyncCancelAll();
-            }
-        }
-        
-        private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
-        {
-            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, voice);
-            if (string.IsNullOrEmpty(textToSpeak)) return;
-
-            speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
-            speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
-
-            var voiceToUse = voice ?? Settings.Default.SpeechVoice;
-            if (!string.IsNullOrWhiteSpace(voiceToUse))
-            {
-                try
-                {
-                    speechSynthesiser.SelectVoice(voiceToUse);
-                }
-                catch (Exception exception)
-                {
-                    var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
-                        voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
-                    PublishError(this, customException);
-                }
-            }
-
-            speakCompleted = (sender, args) =>
+            if (!MaryTTSSpeaking)
             {
                 lock (speakCompletedLock)
                 {
-                    speechSynthesiser.SpeakCompleted -= speakCompleted;
-                    speakCompleted = null;
-                    if (onComplete != null)
+                    if (speakCompleted != null)
                     {
-                        onComplete();
+                        speechSynthesiser.SpeakCompleted -= speakCompleted;
+                        speakCompleted = null;
+                    }
+                    speechSynthesiser.SpeakAsyncCancelAll();
+                }
+            }
+            else
+            {
+                SoundPlayer player = new SoundPlayer();
+                player.Stop();
+                player.Dispose();
+                MaryTTSSpeaking = false;
+            }
+        }
+
+        private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
+        {
+            Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, 
+                !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
+            if (string.IsNullOrEmpty(textToSpeak)) return;
+
+            if (!Settings.Default.MaryTTSEnabled)
+            {
+                speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
+                speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
+
+                var voiceToUse = voice ?? Settings.Default.SpeechVoice;
+                if (!string.IsNullOrWhiteSpace(voiceToUse))
+                {
+                    try
+                    {
+                        speechSynthesiser.SelectVoice(voiceToUse);
+                    }
+                    catch (Exception exception)
+                    {
+                        var customException = new ApplicationException(string.Format(Resources.UNABLE_TO_SET_VOICE_WARNING,
+                            voiceToUse, voice == null ? Resources.VOICE_COMES_FROM_SETTINGS : null), exception);
+                        PublishError(this, customException);
                     }
                 }
-            };
-            speechSynthesiser.SpeakCompleted += speakCompleted;
-            speechSynthesiser.SpeakAsync(textToSpeak);
+
+                speakCompleted = (sender, args) =>
+                {
+                    lock (speakCompletedLock)
+                    {
+                        speechSynthesiser.SpeakCompleted -= speakCompleted;
+                        speakCompleted = null;
+                        if (onComplete != null)
+                        {
+                            onComplete();
+                        }
+                    }
+                };
+                speechSynthesiser.SpeakCompleted += speakCompleted;
+                speechSynthesiser.SpeakAsync(textToSpeak);
+            }
+            else
+            {
+                float MaryTTSRate = rate ?? Settings.Default.SpeechRate;
+                float MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+
+                MaryTTSRate = (MaryTTSRate + 10.0f) / 20.0f * 3.0f;
+                MaryTTSRate = (MaryTTSRate < 0.1f) ? 0.1f
+                    : (MaryTTSRate > 3.0f) ? 3.0f : MaryTTSRate;
+
+                MaryTTSVolume = MaryTTSVolume / 100.0f * 1.0f;
+                MaryTTSVolume = (MaryTTSVolume < 0.0f) ? 0.0f 
+                    : (MaryTTSVolume > 1.0f) ? 1.0f : MaryTTSVolume;
+
+                List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
+
+                SoundPlayer player = new SoundPlayer();
+                player.SoundLocation =  "http://localhost:59125/process?"
+                                + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
+                                + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
+                                + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
+                                + "INPUT_TEXT=" + textToSpeak + "&"
+                                + "OUTPUT_TYPE=AUDIO&"
+                                + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                                + string.Format("{0:N1}", MaryTTSRate) + ";&"
+                                + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                                + string.Format("{0:N1}", MaryTTSVolume) + ";";
+
+                Task task = SoundPlayerTask(onComplete, player);
+                MaryTTSSpeaking = true;
+            }
+
+        }
+
+        public async Task SoundPlayerTask(Action onComplete, SoundPlayer player)
+        {
+            var task = Task.Run(() => player.PlaySync());
+            await task;
+
+            if (onComplete != null)
+            {
+                onComplete();
+            }
+            player.Dispose();
+            MaryTTSSpeaking = false;
         }
 
         #endregion

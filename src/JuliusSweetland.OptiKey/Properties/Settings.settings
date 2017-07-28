@@ -974,5 +974,14 @@
     <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MaryTTSEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaryTTSVoice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cmu-slt-hsmm en_US female hmm</Value>
+    </Setting>
+    <Setting Name="MaryTTSLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

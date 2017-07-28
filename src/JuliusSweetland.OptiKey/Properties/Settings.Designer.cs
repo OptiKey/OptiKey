@@ -1721,5 +1721,41 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["UseSimplifiedKeyboardLayout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MaryTTSEnabled {
+            get {
+                return ((bool)(this["MaryTTSEnabled"]));
+            }
+            set {
+                this["MaryTTSEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cmu-slt-hsmm en_US female hmm")]
+        public string MaryTTSVoice {
+            get {
+                return ((string)(this["MaryTTSVoice"]));
+            }
+            set {
+                this["MaryTTSVoice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MaryTTSLocation {
+            get {
+                return ((string)(this["MaryTTSLocation"]));
+            }
+            set {
+                this["MaryTTSLocation"] = value;
+            }
+        }
     }
 }

@@ -1845,4 +1845,19 @@ Search</value>
 Browsing</value>
     <comment>B</comment>
   </data>
+  <data name="MARYTTS_ENABLED_LABEL" xml:space="preserve">
+    <value>Use MaryTTS speech synthesizer?</value>
+  </data>
+  <data name="MARYTTS_VOICE_LABEL" xml:space="preserve">
+    <value>MaryTTS voice:</value>
+  </data>
+  <data name="MARYTTS_LOCATION_LABEL" xml:space="preserve">
+    <value>MaryTTS location (marytts-server.bat):</value>
+  </data>
+  <data name="MARYTTS_LOCATION_FIND_LABEL" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>ERROR: a valid 'marytts-server.bat' file was not selected. Please try again.</value>
+  </data>
 </root>

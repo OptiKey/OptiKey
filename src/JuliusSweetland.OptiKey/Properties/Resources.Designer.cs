@@ -2393,6 +2393,51 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use MaryTTS speech synthesizer?.
+        /// </summary>
+        public static string MARYTTS_ENABLED_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_ENABLED_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ERROR: a valid &apos;marytts-server.bat&apos; file was not selected. Please try again..
+        /// </summary>
+        public static string MARYTTS_LOCATION_ERROR_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_LOCATION_ERROR_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find.
+        /// </summary>
+        public static string MARYTTS_LOCATION_FIND_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_LOCATION_FIND_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MaryTTS location (marytts-server.bat):.
+        /// </summary>
+        public static string MARYTTS_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MaryTTS voice:.
+        /// </summary>
+        public static string MARYTTS_VOICE_LABEL {
+            get {
+                return ResourceManager.GetString("MARYTTS_VOICE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum number of dictionary matches:.
         /// </summary>
         public static string MAX_DICTIONARY_MATCHES_LABEL {

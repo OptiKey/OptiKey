@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -151,6 +152,43 @@ namespace JuliusSweetland.OptiKey
 
                 //Release keys on application exit
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
+
+                if (Settings.Default.MaryTTSEnabled)
+                {
+
+                    Process proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            UseShellExecute = true,
+                            WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if set to hidden
+                            CreateNoWindow = true
+                        }
+                    };
+                    if (Settings.Default.MaryTTSLocation.EndsWith(@"\bin\marytts-server.bat"))
+                    {
+                        proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
+                        Log.InfoFormat("Trying to start MaryTTS from '{0}'.", proc.StartInfo.FileName);
+                        try { proc.Start(); }
+                        catch (Exception)
+                        {
+                            Log.InfoFormat("Failed to started MaryTTS. Disabling MaryTTS and using System Voice '{0}' instead.", 
+                                Settings.Default.SpeechVoice);
+                            Settings.Default.MaryTTSEnabled = false;
+                        }
+                        if (Settings.Default.MaryTTSEnabled)
+                        {
+                            Log.InfoFormat("Started MaryTTS.");
+                            CloseMaryTTSOnApplicationExit(proc);
+                        }
+                    }
+                    else
+                    {
+                        Log.InfoFormat("Failed to started MaryTTS. Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        Settings.Default.MaryTTSEnabled = false;
+                    }
+                }
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -803,6 +841,18 @@ namespace JuliusSweetland.OptiKey
                 if (keyStateService.SimulateKeyStrokes)
                 {
                     publishService.ReleaseAllDownKeys();
+                }
+            };
+        }
+
+        private static void CloseMaryTTSOnApplicationExit(Process proc)
+        {
+            Current.Exit += (o, args) =>
+            {
+                if (Settings.Default.MaryTTSEnabled)
+                {
+                    proc.CloseMainWindow();
+                    Log.InfoFormat("MaryTTS has been closed.");
                 }
             };
         }
