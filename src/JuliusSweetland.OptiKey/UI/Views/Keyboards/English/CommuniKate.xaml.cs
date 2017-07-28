@@ -11,5 +11,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
         {
             InitializeComponent();
         }
+
+        private void Key_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+
+        }
     }
 }
