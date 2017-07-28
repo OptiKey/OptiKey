@@ -1227,6 +1227,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dynamic keyboard selector.
+        /// </summary>
+        public static string DYNAMIC_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Folder containing dynamic keyboards:.
         /// </summary>
         public static string DYNAMIC_KEYBOARDS_LOCATION_LABEL {

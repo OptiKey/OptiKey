@@ -130,6 +130,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_2, Enums.Keyboards.Currencies2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CUSTOM_LAYOUT, Enums.Keyboards.CustomKeyboardFile),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.DYNAMIC_KEYBOARD_LAYOUT, Enums.Keyboards.DynamicKeyboard),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_1, Enums.Keyboards.Diacritics1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_2, Enums.Keyboards.Diacritics2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_3, Enums.Keyboards.Diacritics3),
