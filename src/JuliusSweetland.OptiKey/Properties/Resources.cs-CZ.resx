@@ -163,7 +163,7 @@ SLOVNÍKU</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky kapitalizovat slova:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automaticky doplňovat slova :</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">

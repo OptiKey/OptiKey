@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -154,7 +154,7 @@
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Автокапитализация слов:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Автозавершение слов :</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">

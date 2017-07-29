@@ -686,7 +686,7 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (lastTextChange == null || lastTextChange.Length == 1) //Don't generate auto complete words if the last input was a multi key capture
             {
-                if (Settings.Default.AutoCompleteWords)
+                if (Settings.Default.SuggestWords)
                 {
                     var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 

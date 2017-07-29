@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -155,7 +155,7 @@ TOEVOEGEN</value>
   <data name="AUTO_CAPITALISE_WORDS_LABEL" xml:space="preserve">
     <value>Automatische hoofdletters:</value>
   </data>
-  <data name="AUTO_COMPLETE_WORDS_LABEL" xml:space="preserve">
+  <data name="SUGGEST_WORDS_LABEL" xml:space="preserve">
     <value>Automatisch woorden invullen:</value>
   </data>
   <data name="AUTO_SENTENCE_ADJUSTMENTS" xml:space="preserve">

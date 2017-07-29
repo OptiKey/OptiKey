@@ -1,24 +1,23 @@
-﻿using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using log4net;
+﻿using JuliusSweetland.OptiKey.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
+using JuliusSweetland.OptiKey.Extensions;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.AutoComplete
 {
-	/// <summary>
-	/// An auto suggest class using the n-gram algorithm.
-	/// https://en.wikipedia.org/wiki/N-gram
-	/// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
-	/// </summary>
-	public class NGramAutoComplete : IManageAutoComplete
+    /// <summary>
+    /// An auto suggest class using the n-gram algorithm.
+    /// https://en.wikipedia.org/wiki/N-gram
+    /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
+    /// </summary>
+    public class NGramAutoComplete : IManageAutoComplete
     {
-        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
-		private readonly HashSet<string> wordsIndex = new HashSet<string>();
-
-		private readonly Func<string, string> normalize;
+        private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
+        private readonly Func<string, string> normalize;
         private readonly int gramCount;
         private readonly string leadingSpaces;
         private readonly string trailingSpaces;
@@ -51,13 +50,11 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             {
                 throw new ArgumentOutOfRangeException("gramCount", gramCount, @"Must be greater than 0");
             }
-
             if ((leadingSpaceCount < 0) || (leadingSpaceCount >= gramCount))
             {
                 throw new ArgumentOutOfRangeException("leadingSpaceCount", leadingSpaceCount,
                     @"Must be 0 or larger, and less than gramCount");
             }
-
             if ((trailingSpaceCount < 0) || (trailingSpaceCount >= gramCount))
             {
                 throw new ArgumentOutOfRangeException("trailingSpaceCount", trailingSpaceCount,
@@ -70,17 +67,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             trailingSpaces = new string(' ', trailingSpaceCount);
         }
 
-		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
-		{
-			return entries;
-		}
-
-		public HashSet<string> GetWordsHashes()
-		{
-			return wordsIndex;
-		}
-
-		public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
+        public void AddEntry(string entry, DictionaryEntry dictionaryEntry)
         {
             if (entry.Contains(" "))
             {
@@ -89,6 +76,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 AddEntry(phraseAutoCompleteHash, dictionaryEntry);
             }
 
+<<<<<<< HEAD
 			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
 								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
 								: normalizedHash;
@@ -103,41 +91,21 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 				}
 			}
 
+=======
+>>>>>>> b99bf9f7aa6159d3d7f07a472a08e5e7b5c7404b
             var ngrams = ToNGrams(entry).ToList();
-            var metaData = new EntryMetadata(dictionaryEntry.Entry, dictionaryEntry.UsageCount, ngrams.Count);
+            var metaData = new EntryMetadata(dictionaryEntry, ngrams.Count);
 
             foreach (var ngram in ngrams)
             {
-                AddToDictionaryWorker(entry, ngram, metaData, true);
-            }
-        }
-
-        private void AddToDictionaryWorker(string entry, string hash, DictionaryEntry dictEntry, bool isNGram = false)
-        {
-            if (string.IsNullOrWhiteSpace(entry) || string.IsNullOrWhiteSpace(hash) || dictEntry == null)
-            {
-                return;
-            }
-
-            if (entries.ContainsKey(hash))
-            {
-                if  (isNGram && entries[hash].Where(nwwuc => nwwuc.Entry == entry).Any())
+                if (entries.ContainsKey(ngram))
                 {
-                    // Update existing entry to be "NGram" entry
-                    var foundEntry = entries[hash].FirstOrDefault(nwwuc => nwwuc.Entry == entry);
-
-                    // Synch usage count and then replace the existing entry
-                    dictEntry.UsageCount = foundEntry.UsageCount;   
-                    foundEntry = dictEntry;
+                    entries[ngram].Add(metaData);
                 }
-                if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
+                else
                 {
-                    entries[hash].Add(dictEntry);
+                    entries[ngram] = new HashSet<EntryMetadata> {metaData};
                 }
-            }
-            else
-            {
-                entries.Add(hash, new HashSet<DictionaryEntry> { dictEntry });
             }
         }
 
@@ -157,56 +125,30 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             var nGrams = ToNGrams(root).ToList();
             var nGramcount = nGrams.Count;
 
-			return nGrams
-				.Where(x => entries.ContainsKey(x))
-				.SelectMany(x => entries[x])
-				.GroupBy(x => x)
-				.Select(x => 
-				{
-					double NGramCount = (x.Key is EntryMetadata) ? ((EntryMetadata)x.Key).NGramCount : 0;
-					return new
-					{
-						MetaData = x.Key,
-						Score = CalculateScore(x.Count(), nGramcount, NGramCount)
-					};
-				})
+            return nGrams
+                .Where(x => entries.ContainsKey(x))
+                .SelectMany(x => entries[x])
+                .GroupBy(x => x)
+                .Select(x => new
+                {
+                    MetaData = x.Key,
+                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
+                })
                 .OrderByDescending(x => x.Score)
-                .ThenByDescending(x => x.MetaData.UsageCount)
-                .Select(x => x.MetaData.Entry);
+                .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
+                .Select(x => x.MetaData.DictionaryEntry.Entry);
         }
 
         public void RemoveEntry(string entry)
         {
             foreach (var trigram in ToNGrams(entry))
             {
-				RemoveEntryWorker(entry, trigram);
+                if (entries.ContainsKey(trigram))
+                {
+                    entries[trigram].RemoveWhere(x => x.DictionaryEntry.Entry == entry);
+                }
             }
-
-			// also remove the normalized entry from the index and entries storage.
-			var normalizedEntry = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-			RemoveEntryWorker(entry, normalizedEntry);
-			wordsIndex.Remove(normalizedEntry);
-		}
-
-		private void RemoveEntryWorker(string entry, string hash)
-		{
-			if (!string.IsNullOrWhiteSpace(hash)
-					&& entries.ContainsKey(hash))
-			{
-				var foundEntry = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
-
-				if (foundEntry != null)
-				{
-					entries[hash].Remove(foundEntry);
-
-					if (!entries[hash].Any())
-					{
-						entries.Remove(hash);
-					}
-				}
-			}
-		}
-
+        }
         private static double CalculateScore(double numberOfMatches, double numberOfRootNGrams, double numberOfEntryNGrams)
         {
             return 2 * numberOfMatches / (numberOfRootNGrams + numberOfEntryNGrams);
@@ -222,15 +164,16 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
         }
 
         [DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
-        internal class EntryMetadata : DictionaryEntry
+        private class EntryMetadata
         {
-            public EntryMetadata(string entry, int usageCount, int nGramCount)
-				: base(entry, usageCount)
+            public EntryMetadata(DictionaryEntry dictionaryEntry, int nGramCount)
             {
+                DictionaryEntry = dictionaryEntry;
                 NGramCount = nGramCount;
             }
-			
-            public int NGramCount { get; }
+
+            public DictionaryEntry DictionaryEntry { get; set; }
+            public int NGramCount { get; set;}
         }
     }
 }

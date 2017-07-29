@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -19,10 +20,10 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
+using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
 using Application = System.Windows.Application;
 
@@ -38,6 +39,7 @@ namespace JuliusSweetland.OptiKey
         private const string GazeTrackerUdpRegex = @"^STREAM_DATA\s(?<instanceTime>\d+)\s(?<x>-?\d+(\.[0-9]+)?)\s(?<y>-?\d+(\.[0-9]+)?)";
         private const string GitHubRepoName = "optikey";
         private const string GitHubRepoOwner = "optikey";
+        private const string ExpectedMaryTTSLocationSuffix = @"\bin\marytts-server.bat";
 
         #endregion
 
@@ -148,9 +150,10 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(dictionaryService);
                 errorNotifyingServices.Add(publishService);
                 errorNotifyingServices.Add(inputService);
-
-                //Release keys on application exit
+                
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
+
+                AttemptToStartMaryTTSService();
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -803,6 +806,77 @@ namespace JuliusSweetland.OptiKey
                 if (keyStateService.SimulateKeyStrokes)
                 {
                     publishService.ReleaseAllDownKeys();
+                }
+            };
+        }
+
+        #endregion
+
+        #region Attempt To Start/Stop Mary TTS Service Automatically
+
+        private static void AttemptToStartMaryTTSService()
+        {
+            if (Settings.Default.MaryTTSEnabled)
+            {
+                Process proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        UseShellExecute = true,
+                        WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if set to hidden
+                        CreateNoWindow = true
+                    }
+                };
+
+                if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                {
+                    proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
+
+                    Log.InfoFormat("Trying to start MaryTTS from '{0}'.", proc.StartInfo.FileName);
+                    try
+                    {
+                        proc.Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        var errorMsg = string.Format(
+                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        Log.Error(errorMsg, ex);
+                        Settings.Default.MaryTTSEnabled = false;
+                    }
+
+                    if (Settings.Default.MaryTTSEnabled)
+                    {
+                        Log.InfoFormat("Started MaryTTS.");
+                        CloseMaryTTSOnApplicationExit(proc);
+                    }
+                }
+                else
+                {
+                    Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does not end in the expected suffix '{0}'). " +
+                        "Disabling MaryTTS and using System Voice '{1}' instead.", ExpectedMaryTTSLocationSuffix,
+                        Settings.Default.SpeechVoice);
+                    Settings.Default.MaryTTSEnabled = false;
+                }
+            }
+        }
+
+        private static void CloseMaryTTSOnApplicationExit(Process proc)
+        {
+            Current.Exit += (o, args) =>
+            {
+                if (Settings.Default.MaryTTSEnabled)
+                {
+                    try
+                    {
+                        proc.CloseMainWindow();
+                        Log.InfoFormat("MaryTTS has been closed.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Error closing MaryTTS on OptiKey shutdown", ex);
+                    }
                 }
             };
         }

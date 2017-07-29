@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
@@ -34,6 +36,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MouseDoubleClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseDoubleClickSoundFile, MouseDoubleClickSoundVolume));
             MouseScrollSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseScrollSoundFile, MouseScrollSoundVolume));
 
+            this.OnPropertyChanges(svm => svm.MaryTTSEnabled).Subscribe(_ =>
+            {
+                if (MaryTTSEnabled && Settings.Default.MaryTTSEnabled)
+                {
+                    OnPropertyChanged(() => MaryTTSVoices);
+                }
+            });
+            
             Load();
         }
         
@@ -45,7 +55,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return audioService.GetAvailableVoices(); }
         }
-        
+
+        public List<string> MaryTTSVoices
+        {
+            get { return audioService.GetAvailableMaryTTSVoices(); }
+        }
+
         public List<KeyValuePair<string, string>> GeneralSoundFiles
         {
             get
@@ -168,6 +183,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref speechRate, value); }
         }
         
+        private bool maryTTSEnabled;
+        public bool MaryTTSEnabled
+        {
+            get { return maryTTSEnabled; }
+            set { SetProperty(ref maryTTSEnabled, value); }
+        }
+
+        private string maryTTSVoice;
+        public string MaryTTSVoice
+        {
+            get { return maryTTSVoice; }
+            set { SetProperty(ref maryTTSVoice, value); }
+        }
+
+        private bool useEmbeddedMaryTTS;
+        public bool UseEmbeddedMaryTTS
+        {
+            get { return useEmbeddedMaryTTS; }
+            set { SetProperty(ref useEmbeddedMaryTTS, value); }
+        }
+
+        private string maryTTSLocation;
+        public string MaryTTSLocation
+        {
+            get { return maryTTSLocation; }
+            set { SetProperty(ref maryTTSLocation, value); }
+        }
+
         private string infoSoundFile;
         public string InfoSoundFile
         {
@@ -310,7 +353,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return false; }
+            get
+            {
+                return Settings.Default.MaryTTSEnabled != MaryTTSEnabled
+                    || Settings.Default.MaryTTSLocation != MaryTTSLocation; ;
+            }
         }
 
         public DelegateCommand InfoSoundPlayCommand { get; private set; }
@@ -333,6 +380,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SpeechVoice = Settings.Default.SpeechVoice;
             SpeechVolume = Settings.Default.SpeechVolume;
             SpeechRate = Settings.Default.SpeechRate;
+            MaryTTSEnabled = Settings.Default.MaryTTSEnabled;
+            MaryTTSVoice = Settings.Default.MaryTTSVoice;
+            MaryTTSLocation = Settings.Default.MaryTTSLocation;
             InfoSoundFile = Settings.Default.InfoSoundFile;
             InfoSoundVolume = Settings.Default.InfoSoundVolume;
             KeySelectionSoundFile = Settings.Default.KeySelectionSoundFile;
@@ -360,6 +410,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SpeechVoice = SpeechVoice;
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
+            Settings.Default.MaryTTSEnabled = MaryTTSEnabled;
+            Settings.Default.MaryTTSVoice = MaryTTSVoice;
+            Settings.Default.MaryTTSLocation = MaryTTSLocation;
             Settings.Default.InfoSoundFile = InfoSoundFile;
             Settings.Default.InfoSoundVolume = InfoSoundVolume;
             Settings.Default.KeySelectionSoundFile = KeySelectionSoundFile;

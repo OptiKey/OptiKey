@@ -15,6 +15,10 @@
         BackMany,
         BackOne,
         Break,
+        BrowserBack,
+        BrowserForward,
+        BrowserHome,
+        BrowserSearch,
         Calibrate,
         CatalanSpain,
         ClearScratchpad,
@@ -192,6 +196,7 @@
         Suggestion5,
         Suggestion6,
         TurkishTurkey,
+        WebBrowsingKeyboard,
         YesQuestionResult
     }
 }

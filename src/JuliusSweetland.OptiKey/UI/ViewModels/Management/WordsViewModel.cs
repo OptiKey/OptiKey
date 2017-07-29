@@ -139,12 +139,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return suppressAutoCapitaliseIntelligently; }
             set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
         }
-
-        private bool autoCompleteWords;
-        public bool AutoCompleteWords
+ 
+        private bool suggestWords;
+        public bool SuggestWords
         {
-            get {  return autoCompleteWords; }
-            set { SetProperty(ref autoCompleteWords, value); }
+            get {  return suggestWords; }
+            set { SetProperty(ref suggestWords, value); }
         }
 
         private bool multiKeySelectionEnabled;
@@ -180,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
-            AutoCompleteWords = Settings.Default.AutoCompleteWords;
+            SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
         }
@@ -197,7 +197,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
-            Settings.Default.AutoCompleteWords = AutoCompleteWords;
+            Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
             

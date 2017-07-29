@@ -14,6 +14,18 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.BackOne:
                     return VirtualKeyCode.BACK;
 
+                case FunctionKeys.BrowserBack:
+                    return VirtualKeyCode.BROWSER_BACK;
+
+                case FunctionKeys.BrowserForward:
+                    return VirtualKeyCode.BROWSER_FORWARD;
+
+                case FunctionKeys.BrowserHome:
+                    return VirtualKeyCode.BROWSER_HOME;
+
+                case FunctionKeys.BrowserSearch:
+                    return VirtualKeyCode.BROWSER_SEARCH;
+
                 case FunctionKeys.LeftShift:
                     return VirtualKeyCode.LSHIFT;
 

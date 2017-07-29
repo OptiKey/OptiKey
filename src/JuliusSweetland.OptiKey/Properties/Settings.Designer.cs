@@ -794,12 +794,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool AutoCompleteWords {
+        public bool SuggestWords {
             get {
-                return ((bool)(this["AutoCompleteWords"]));
+                return ((bool)(this["SuggestWords"]));
             }
             set {
-                this["AutoCompleteWords"] = value;
+                this["SuggestWords"] = value;
             }
         }
         
@@ -1508,6 +1508,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool ConversationConfirmOnlyMode {
             get {
                 return ((bool)(this["ConversationConfirmOnlyMode"]));
@@ -1520,6 +1521,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool ConversationConfirmEnable {
             get {
                 return ((bool)(this["ConversationConfirmEnable"]));
@@ -1532,6 +1534,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string SimplifiedKeyboardCurrentContext {
             get {
                 return ((string)(this["SimplifiedKeyboardCurrentContext"]));
@@ -1544,6 +1547,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool EnableQuitKeys {
             get {
                 return ((bool)(this["EnableQuitKeys"]));
@@ -1713,12 +1717,52 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseSimplifiedKeyboardLayout {
             get {
                 return ((bool)(this["UseSimplifiedKeyboardLayout"]));
             }
             set {
                 this["UseSimplifiedKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool MaryTTSEnabled {
+            get {
+                return ((bool)(this["MaryTTSEnabled"]));
+            }
+            set {
+                this["MaryTTSEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cmu-slt-hsmm en_US female hmm")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MaryTTSVoice {
+            get {
+                return ((string)(this["MaryTTSVoice"]));
+            }
+            set {
+                this["MaryTTSVoice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string MaryTTSLocation {
+            get {
+                return ((string)(this["MaryTTSLocation"]));
+            }
+            set {
+                this["MaryTTSLocation"] = value;
             }
         }
     }

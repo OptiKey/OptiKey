@@ -402,6 +402,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         windowManipulationService.Restore();
                         mainWindowManipulationService.ResizeDockToFull();
                         break;
+
+                    case Enums.Keyboards.WebBrowsing:
+                        Keyboard = new WebBrowsing();
+                        windowManipulationService.Restore();
+                        mainWindowManipulationService.ResizeDockToFull();
+                        break;
                 }
             }
         }
