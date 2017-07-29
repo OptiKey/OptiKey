@@ -1869,9 +1869,5 @@ Browsing</value>
     </data>
     <data name="SUGGESTION_METHOD" xml:space="preserve">
       <value>Suggestion method:</value>
-<<<<<<< 0a14ffa82193ded1d974d7cb1c0de838199ff31d
-=======
-      <comment>UGGESTION</comment>
->>>>>>> Add control of the SuggestionMethod option
     </data>
 </root>

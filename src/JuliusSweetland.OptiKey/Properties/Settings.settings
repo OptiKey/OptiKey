@@ -329,7 +329,7 @@
     <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SuggestWords" Type="System.Boolean" Scope="User">
+    <Setting Name="SuggestWords1" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SuggestNextWords" Type="System.Boolean" Scope="User">
@@ -364,6 +364,21 @@
     </Setting>
     <Setting Name="EnableQuitKeys" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UseSimplifiedKeyboardLayout1" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaryTTSEnabled" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MaryTTSVoice" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cmu-slt-hsmm en_US female hmm</Value>
+    </Setting>
+    <Setting Name="MaryTTSLocation" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SuggestNextWords1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -979,24 +994,6 @@
     &lt;/value&gt;
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
-    </Setting>
-    <Setting Name="UseSimplifiedKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="MaryTTSEnabled" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="MaryTTSVoice" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)">cmu-slt-hsmm en_US female hmm</Value>
-    </Setting>
-    <Setting Name="MaryTTSLocation" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="SuggestNextWords" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
