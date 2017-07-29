@@ -304,7 +304,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
-        public bool HasSymbol { get { return SymbolGeometry != null || HasImage; } }
+        public bool HasSymbol { get { return SymbolGeometry != null; } } //|| HasImage; } }
         public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
 
         public static readonly DependencyProperty HasImageProperty =

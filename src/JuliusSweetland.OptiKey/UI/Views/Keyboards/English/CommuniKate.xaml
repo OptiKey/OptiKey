@@ -71,9 +71,24 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <Image Source="/Resources/CommuniKateImages/image_1_4241_11be41c199409ffaf4183ed5.png"
-                                   Height="Auto" Width="Auto" Margin="0" Stretch="Uniform" 
-                                   VerticalAlignment="Center"/>
+                            <Grid Background="Gray">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="4*" />
+                                </Grid.RowDefinitions>
+                                <Image Source="/Resources/CommuniKateImages/image_1_4241_11be41c199409ffaf4183ed5.png"
+                                       Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="Hello" FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                                <Path Fill="Black" VerticalAlignment="Top"
+                                      Stretch="Uniform" HorizontalAlignment="Right"
+                                      Data="M0,0 L0,20 A100,100 0 0 1 -20,0 z" />
+                                <controls:Key Grid.RowSpan="2" ShiftUpText="hello" ShiftDownText="Hello"
+                                              SharedSizeGroup="KeyWithText"
+                                              HasImage="True" SymbolGeometry=""
+                                              Value="hello"/>
+                            </Grid>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -1046,14 +1061,6 @@
         <ContentControl Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key ShiftUpText="hello" ShiftDownText="Hello"
-                                          SharedSizeGroup="KeyWithText"
-                                          HasImage="True"
-                                          Value="hello"/>
-                        </Setter.Value>
-                    </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=CommuniKateKeyboardCurrentContext}" Value="CommuniKate_1_236">
                             <Setter Property="Content">
@@ -3981,9 +3988,11 @@
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
                         <Setter.Value>
-                            <Image Source="/Resources/CommuniKateImages/image_.png"
+                            <Border Height="Auto" Width="Auto" Background="Pink">
+                                <Image Source="/Resources/CommuniKateImages/image_1_2806_4e8fc7f601b7aafd246e7a15.png"
                                            Height="Auto" Width="Auto" Margin="0" Stretch="Uniform" 
                                            VerticalAlignment="Center"/>
+                            </Border>
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
