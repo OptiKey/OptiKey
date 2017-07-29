@@ -5943,13 +5943,6 @@
         <ContentControl Grid.Row="1" Grid.Column="6" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <Image Source="/Resources/CommuniKateImages/image_.png"
-                                           Height="Auto" Width="Auto" Margin="0" Stretch="Uniform" 
-                                           VerticalAlignment="Center"/>
-                        </Setter.Value>
-                    </Setter>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, 
                                             Path=CommuniKateKeyboardCurrentContext}" Value="CommuniKate_1_236">
@@ -6920,13 +6913,15 @@
         <ContentControl Grid.Row="1" Grid.Column="6" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
+                    <!--Setter Property="Content">
                         <Setter.Value>
-                            <controls:Key ShiftUpText="" ShiftDownText=""
-                                          SharedSizeGroup="KeyWithText" HasImage="True"
-                                          Value=""/>
+                            <controls:CKKey ShiftUpText="" ShiftDownText=""
+                                            ImageSource="1_4241_11be41c199409ffaf4183ed5"
+                                            Background="Red"
+                                          Text="KeyWithText"
+                                          Value="KeyWithText"/>
                         </Setter.Value>
-                    </Setter>
+                    </-->
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, 
                                             Path=CommuniKateKeyboardCurrentContext}" Value="CommuniKate_1_236">
