@@ -20,10 +20,10 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
 using log4net;
-using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
-using NBug.Core.UI;
+using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
+using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
 using Application = System.Windows.Application;
 
