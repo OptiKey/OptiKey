@@ -83,16 +83,11 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             {
                 if (entries.ContainsKey(ngram))
                 {
-                    // Update existing entry to be "NGram" entry
-                    var foundEntry = entries[hash].FirstOrDefault(nwwuc => nwwuc.Entry == entry);
-
-                    // Synch usage count and then replace the existing entry
-                    dictEntry.UsageCount = foundEntry.UsageCount;
-                    foundEntry = dictEntry;
+                    entries[ngram].Add(metaData);
                 }
                 else
                 {
-                    entries[ngram] = new HashSet<EntryMetadata> {metaData};
+                    entries[ngram] = new HashSet<EntryMetadata> { metaData };
                 }
             }
         }
@@ -113,19 +108,15 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             var nGrams = ToNGrams(root).ToList();
             var nGramcount = nGrams.Count;
 
-			return nGrams
-				.Where(x => entries.ContainsKey(x))
-				.SelectMany(x => entries[x])
-				.GroupBy(x => x)
-				.Select(x =>
-				{
-					double NGramCount = (x.Key is EntryMetadata) ? ((EntryMetadata)x.Key).NGramCount : 0;
-					return new
-					{
-						MetaData = x.Key,
-						Score = CalculateScore(x.Count(), nGramcount, NGramCount)
-					};
-				})
+            return nGrams
+                .Where(x => entries.ContainsKey(x))
+                .SelectMany(x => entries[x])
+                .GroupBy(x => x)
+                .Select(x => new
+                {
+                    MetaData = x.Key,
+                    Score = CalculateScore(x.Count(), nGramcount, x.Key.NGramCount)
+                })
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.MetaData.DictionaryEntry.UsageCount)
                 .Select(x => x.MetaData.DictionaryEntry.Entry);
@@ -164,7 +155,8 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
                 NGramCount = nGramCount;
             }
 
-            public int NGramCount { get; }
+            public DictionaryEntry DictionaryEntry { get; set; }
+            public int NGramCount { get; set; }
         }
     }
 }

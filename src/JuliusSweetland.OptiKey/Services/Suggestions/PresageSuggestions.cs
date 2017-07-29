@@ -75,7 +75,12 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             
             pleteHash, DictionaryEntry newEntryWithUsageCount)
         {
-            
+
+        }
+
+        public void AddEntry(string entry, DictionaryEntry metaData)
+        {
+
         }
 
         public void RemoveEntry(string entry)

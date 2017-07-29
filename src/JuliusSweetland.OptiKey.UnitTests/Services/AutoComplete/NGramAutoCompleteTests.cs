@@ -11,7 +11,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             return new NGramAutoComplete();
         }
 
-        protected override object[] SuggestionsTestCaseSource
+        protected override object[] GetTestCases()
+        {
+            return SuggestionsTestCases;
+        }
+
+        private object[] SuggestionsTestCases
         {
             get
             {

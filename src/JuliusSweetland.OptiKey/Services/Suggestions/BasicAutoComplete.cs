@@ -65,9 +65,10 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             }
 
 			//Also add the normalized hash to the dictionary
+            /*
 			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
 								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
-								: normalizedHash;
+								: normalizedHash;*/
 
         }
 

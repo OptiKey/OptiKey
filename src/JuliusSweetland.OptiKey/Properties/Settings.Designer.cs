@@ -1743,10 +1743,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues KeySelectionTriggerFixationCompleteTimesByKeyValues {
             get {
-                return ((bool)(this["SuggestWords"]));
+                return ((global::JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues)(this["KeySelectionTriggerFixationCompleteTimesByKeyValues"]));
             }
             set {
-                this["SuggestWords"] = value;
+                this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
 
@@ -1756,10 +1756,10 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseSimplifiedKeyboardLayout {
             get {
-                return ((bool)(this["UseSimplifiedKeyboardLayout"]));
+                return ((bool)(this["UseSimplifiedKeyboardLayout1"]));
             }
             set {
-                this["UseSimplifiedKeyboardLayout"] = value;
+                this["UseSimplifiedKeyboardLayout1"] = value;
             }
         }
 

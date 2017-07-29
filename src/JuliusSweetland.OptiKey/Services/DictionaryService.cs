@@ -31,13 +31,14 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly SuggestionMethods suggestionMethod;
 
-		private Dictionary<string, HashSet<DictionaryEntry>> entries;
-		private IManagedSuggestions managedSuggestions;
-		#endregion
+        private Dictionary<string, List<DictionaryEntry>> entries;
+        private IManagedSuggestions managedSuggestions;
+
+        #endregion
 
         #region Events
 
-		public event EventHandler<Exception> Error;
+        public event EventHandler<Exception> Error;
 
         #endregion
 
@@ -101,10 +102,8 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
+                entries = new Dictionary<string, List<DictionaryEntry>>();
                 managedSuggestions = CreateSuggestions();
-
-				// Create reference to the actual storage of the dictionary entries.
-				entries = managedSuggestions.GetEntries();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -145,7 +144,7 @@ namespace JuliusSweetland.OptiKey.Services
                 while ((line = reader.ReadLine()) != null)
                 {
                     //Entries must be londer than 1 character
-                    if (!string.IsNullOrWhiteSpace(line)
+                    if (!string.IsNullOrWhiteSpace(line) 
                         && line.Trim().Length > 1)
                     {
                         AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
@@ -268,8 +267,20 @@ namespace JuliusSweetland.OptiKey.Services
                 {
                     var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-					//Also add to entries for auto complete
-					managedSuggestions.AddEntry(entry, newEntryWithUsageCount, hash);
+                    if (entries.ContainsKey(hash))
+                    {
+                        if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
+                        {
+                            entries[hash].Add(newEntryWithUsageCount);
+                        }
+                    }
+                    else
+                    {
+                        entries.Add(hash, new List<DictionaryEntry> { newEntryWithUsageCount });
+                    }
+
+                    //Also add to entries for auto complete
+                    managedSuggestions.AddEntry(entry, newEntryWithUsageCount);
 
                     if (!loadedFromDictionaryFile)
                     {
@@ -302,8 +313,15 @@ namespace JuliusSweetland.OptiKey.Services
                     {
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
-						//Also remove from entries for auto complete
-						managedSuggestions.RemoveEntry(entry);
+                        entries[hash].Remove(foundEntry);
+
+                        if (!entries[hash].Any())
+                        {
+                            entries.Remove(hash);
+                        }
+
+                        //Also remove from entries for auto complete
+                        managedSuggestions.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -449,17 +467,17 @@ namespace JuliusSweetland.OptiKey.Services
                     : new List<Tuple<char, char, int>>();
 
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
-                var reliableFirstCharCleansed = reliableFirstLetter != null
-                    ? reliableFirstLetter.Normalise().First()
+                var reliableFirstCharCleansed = reliableFirstLetter != null 
+                    ? reliableFirstLetter.Normalise().First() 
                     : (char?)null;
-                var reliableFirstCharUncleansed = reliableFirstLetter != null
-                    ? reliableFirstLetter.First()
+                var reliableFirstCharUncleansed = reliableFirstLetter != null 
+                    ? reliableFirstLetter.First() 
                     : (char?)null;
-                var reliableLastCharCleansed = reliableLastLetter != null
-                    ? reliableLastLetter.Normalise().First()
+                var reliableLastCharCleansed = reliableLastLetter != null 
+                    ? reliableLastLetter.Normalise().First() 
                     : (char?)null;
-                var reliableLastCharUncleansed = reliableLastLetter != null
-                    ? reliableLastLetter.First()
+                var reliableLastCharUncleansed = reliableLastLetter != null 
+                    ? reliableLastLetter.First() 
                     : (char?)null;
 
                 //Calculate threshold as mean of all letters without reliable first/last (as those selections can skew the average)
