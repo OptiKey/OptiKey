@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -90,7 +91,7 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 XmlKeyboard spec = XmlKeyboard.ReadFromFile(keyboardPath);
                 
-                info.keyboardName = spec.Name.ToStringWithValidNewlines();
+                info.keyboardName = DynamicKeyboard.StringWithValidNewlines(spec.Name);
                 info.symbolString = spec.Symbol;
                 info.isHidden = spec.Hidden;
 
