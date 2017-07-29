@@ -15,19 +15,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
             InitializeComponent();
         }
 
-        private void btnFindFile_Click(object sender, RoutedEventArgs e)
+        private void btnFindMaryTts_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
                 if (openFileDialog.FileName.EndsWith(@"\bin\marytts-server.bat"))
                 {
-                    txtEditor.Text = openFileDialog.FileName;
-                    Settings.Default.MaryTTSLocation = txtEditor.Text;
+                    txtMaryTtsLocation.Text = openFileDialog.FileName;
+                    Settings.Default.MaryTTSLocation = txtMaryTtsLocation.Text;
                 }
                 else
                 {
-                    txtEditor.Text = Properties.Resources.MARYTTS_LOCATION_ERROR_LABEL;
+                    txtMaryTtsLocation.Text = Properties.Resources.MARYTTS_LOCATION_ERROR_LABEL;
                     Settings.Default.MaryTTSLocation = null;
                 }
             }

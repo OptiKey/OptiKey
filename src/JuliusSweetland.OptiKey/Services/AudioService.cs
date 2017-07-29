@@ -32,7 +32,7 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly object speakCompletedLock = new object();
         private EventHandler<SpeakCompletedEventArgs> speakCompleted;
 
-        private bool MaryTTSSpeaking = false;
+        private bool MaryTTSSpeaking;
 
         #endregion
 
@@ -99,28 +99,32 @@ namespace JuliusSweetland.OptiKey.Services
 
         public List<string> GetAvailableMaryTTSVoices()
         {
-            Log.Info("GetAvailableMaryTTSVoices called");
-            List<string> availableVoices = new List<string>();
+            var availableVoices = new List<string>();
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:59125/voices");
+            if (Settings.Default.MaryTTSEnabled)
+            {
+                Log.Info("GetAvailableMaryTTSVoices called");
 
-            // Set some reasonable limits on resources used by this request
-            request.MaximumAutomaticRedirections = 4;
-            request.MaximumResponseHeadersLength = 4;
-            // Set credentials to use for this request.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:59125/voices");
 
-            // Get the stream associated with the response.
-            Stream receiveStream = response.GetResponseStream();
+                //Set some reasonable limits on resources used by this request
+                request.MaximumAutomaticRedirections = 4;
+                request.MaximumResponseHeadersLength = 4;
+                request.Timeout = 20000; //20 second timeout
+                //Set credentials to use for this request.
+                request.Credentials = CredentialCache.DefaultCredentials;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            // Pipes the stream to a higher level stream reader with the required encoding format. 
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            string responseText = readStream.ReadToEnd();
-            //Log.InfoFormat("AvailableMaryTTSVoices:\n" + responseText);
-            availableVoices = responseText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            
-            Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
+                //Get the stream associated with the response.
+                Stream receiveStream = response.GetResponseStream();
+
+                //Pipes the stream to a higher level stream reader with the required encoding format. 
+                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                string responseText = readStream.ReadToEnd();
+                availableVoices = responseText.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                Log.InfoFormat("GetAvailableMaryTTSVoices returing {0} voices", availableVoices.Count);
+            }
 
             return availableVoices;
         }

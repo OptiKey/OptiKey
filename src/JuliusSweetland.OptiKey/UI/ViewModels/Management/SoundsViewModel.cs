@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using log4net;
@@ -34,6 +36,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             MouseDoubleClickSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseDoubleClickSoundFile, MouseDoubleClickSoundVolume));
             MouseScrollSoundPlayCommand = new DelegateCommand(() => audioService.PlaySound(MouseScrollSoundFile, MouseScrollSoundVolume));
 
+            this.OnPropertyChanges(svm => svm.MaryTTSEnabled).Subscribe(_ =>
+            {
+                if (MaryTTSEnabled && Settings.Default.MaryTTSEnabled)
+                {
+                    OnPropertyChanged(() => MaryTTSVoices);
+                }
+            });
+            
             Load();
         }
         

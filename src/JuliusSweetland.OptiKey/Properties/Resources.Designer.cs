@@ -206,15 +206,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto complete words:.
-        /// </summary>
-        public static string AUTO_COMPLETE_WORDS_LABEL {
-            get {
-                return ResourceManager.GetString("AUTO_COMPLETE_WORDS_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Automatic sentence adjustments.
         /// </summary>
         public static string AUTO_SENTENCE_ADJUSTMENTS {
@@ -276,6 +267,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string BACK_WORD_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("BACK_WORD_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic.
+        /// </summary>
+        public static string BASIC_SUGGESTION {
+            get {
+                return ResourceManager.GetString("BASIC_SUGGESTION", resourceCulture);
             }
         }
         
@@ -504,7 +504,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CLICK 
+        ///   Looks up a localized string similar to CLICK
         ///&amp; DRAG.
         /// </summary>
         public static string CLICK_AND_DRAG_SPLIT_WITH_NEWLINE {
@@ -1356,7 +1356,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND 
+        ///   Looks up a localized string similar to EXPAND
         ///UP &amp; LEFT.
         /// </summary>
         public static string EXPAND_UP_AND_LEFT_SPLIT_WITH_NEWLINE {
@@ -1375,7 +1375,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EXPAND 
+        ///   Looks up a localized string similar to EXPAND
         ///UP &amp; RIGHT.
         /// </summary>
         public static string EXPAND_UP_AND_RIGHT_SPLIT_WITH_NEWLINE {
@@ -3180,6 +3180,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NGram.
+        /// </summary>
+        public static string NGRAM_SUGGESTION {
+            get {
+                return ResourceManager.GetString("NGRAM_SUGGESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NO.
         /// </summary>
         public static string NO {
@@ -3263,7 +3272,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NUMBERS 
+        ///   Looks up a localized string similar to NUMBERS
         ///&amp; SYMBOLS.
         /// </summary>
         public static string NUMBERS_AND_SYMBOLS {
@@ -3563,6 +3572,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("PORTUGUESE_PORTUGAL_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presage.
+        /// </summary>
+        public static string PRESAGE_SUGGESTION {
+            get {
+                return ResourceManager.GetString("PRESAGE_SUGGESTION", resourceCulture);
             }
         }
         
@@ -4040,7 +4058,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SHRINK 
+        ///   Looks up a localized string similar to SHRINK
         ///DOWN &amp; LEFT.
         /// </summary>
         public static string SHRINK_DOWN_AND_LEFT_SPLIT_WITH_NEWLINE {
@@ -4382,6 +4400,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto complete words:.
+        /// </summary>
+        public static string SUGGEST_WORDS_LABEL {
+            get {
+                return ResourceManager.GetString("SUGGEST_WORDS_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SUGGESTION 1.
         /// </summary>
         public static string SUGGESTION_1 {
@@ -4450,6 +4477,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SUGGESTION_KEYS_KEY_GROUP {
             get {
                 return ResourceManager.GetString("SUGGESTION_KEYS_KEY_GROUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suggestion method:.
+        /// </summary>
+        public static string SUGGESTION_METHOD {
+            get {
+                return ResourceManager.GetString("SUGGESTION_METHOD", resourceCulture);
             }
         }
         

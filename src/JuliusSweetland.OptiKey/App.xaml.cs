@@ -868,8 +868,15 @@ namespace JuliusSweetland.OptiKey
             {
                 if (Settings.Default.MaryTTSEnabled)
                 {
-                    proc.CloseMainWindow();
-                    Log.InfoFormat("MaryTTS has been closed.");
+                    try
+                    {
+                        proc.CloseMainWindow();
+                        Log.InfoFormat("MaryTTS has been closed.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Error closing MaryTTS on OptiKey shutdown", ex);
+                    }
                 }
             };
         }

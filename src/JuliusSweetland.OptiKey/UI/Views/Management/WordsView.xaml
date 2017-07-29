@@ -167,11 +167,11 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.AUTO_COMPLETE_WORDS_LABEL}" 
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.SUGGEST_WORDS_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <CheckBox Grid.Row="3" Grid.Column="1" 
                               VerticalAlignment="Center"
-                              IsChecked="{Binding AutoCompleteWords, Mode=TwoWay}" />
+                              IsChecked="{Binding SuggestWords, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
