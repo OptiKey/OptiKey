@@ -5,12 +5,14 @@ using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.Services
 {
     public interface IDictionaryService : INotifyErrors
     {
         void LoadDictionary();
+		void OnAppClosing(object sender, System.ComponentModel.CancelEventArgs e);
         bool ExistsInDictionary(string entryToFind);
         IEnumerable<DictionaryEntry> GetAllEntries();
         IEnumerable<string> GetAutoCompleteSuggestions(string root);
