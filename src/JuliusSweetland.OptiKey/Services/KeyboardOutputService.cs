@@ -697,17 +697,21 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 Log.DebugFormat("Generating auto complete suggestions from '{0}'.", Text);
 
-                if (!Settings.Default.SuggestNextWords)
-                    nextWord = false;
+                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
+                var root = Text;
 
-                var suggestions = dictionaryService.GetSuggestions(Text, nextWord)
+                if (!Settings.Default.SuggestNextWords)
+                {
+                    nextWord = false;
+                    root = inProgressWord;
+                }
+
+                var suggestions = dictionaryService.GetSuggestions(root, nextWord)
                     .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
                     .ToList();
 
                 Log.DebugFormat("{0} suggestions generated (possibly capped to {1} by MaxDictionaryMatchesOrSuggestions setting)",
                     suggestions.Count(), Settings.Default.MaxDictionaryMatchesOrSuggestions);
-
-                var inProgressWord = Text == null ? null : Text.InProgressWord(Text.Length);
 
                 if (!nextWord & inProgressWord != null)
                 {

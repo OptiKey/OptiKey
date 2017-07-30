@@ -365,9 +365,6 @@
     <Setting Name="EnableQuitKeys" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="UseSimplifiedKeyboardLayout1" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="MaryTTSEnabled" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
