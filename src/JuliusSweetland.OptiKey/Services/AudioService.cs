@@ -270,8 +270,8 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 };
 
-                maryTtsPlayer.PlayAsync();
                 maryTtsPlayer.SoundFinished += onMaryTtsSpeakCompleted;
+                maryTtsPlayer.PlayAsync();
             }
         }
 

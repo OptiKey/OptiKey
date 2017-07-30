@@ -44,10 +44,6 @@ namespace JuliusSweetland.OptiKey.Services.Audio
                 {
                     base.Stop();
                 }
-                finally
-                {
-                    OnSoundFinished();
-                }
             }, ct).ContinueWith(antecedent => OnSoundFinished(), TaskScheduler.FromCurrentSynchronizationContext());
         }
 
