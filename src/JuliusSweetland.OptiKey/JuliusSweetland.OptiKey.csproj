@@ -246,7 +246,7 @@
     <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Common\PInvoke.cs" />
+    <Compile Include="Native\PInvoke.cs" />
     <Compile Include="Native\Common\Static\WindowStyles.cs" />
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
     <Compile Include="Native\Common\Structs\OSVERSIONINFO.cs" />
@@ -264,6 +264,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Audio\SoundPlayerEx.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
     <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
@@ -318,6 +321,7 @@
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
+    <Compile Include="Static\Sound.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />

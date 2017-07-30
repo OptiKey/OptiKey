@@ -78,5 +78,8 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern IntPtr GetKeyboardLayout(int WindowsThreadProcessID);
+
+        [DllImport("winmm.dll")]
+        public static extern uint mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr winHandle);
     }
 } 

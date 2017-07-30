@@ -342,6 +342,7 @@ namespace JuliusSweetland.OptiKey.Services
             ProcessText(capturedTextAfterComposition, true);
             lastTextChangeWasSuggestion = false;
 
+            //Special handling for simplified keyboards
             if (Settings.Default.UseSimplifiedKeyboardLayout)
             {
                 char last = capturedText.LastOrDefault();
@@ -516,6 +517,8 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 GenerateAutoCompleteSuggestions();
             }
+
+            Text = "This is a long sentence to test cancelling speech. It takes a long time to speak and so can be stopped mid way through.";
         }
 
         private bool AutoPressShiftIfAppropriate()
