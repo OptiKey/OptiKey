@@ -110,7 +110,7 @@ namespace JuliusSweetland.OptiKey.Services
                 //Set some reasonable limits on resources used by this request
                 request.MaximumAutomaticRedirections = 4;
                 request.MaximumResponseHeadersLength = 4;
-                request.Timeout = 20000; //20 second timeout
+
                 //Set credentials to use for this request.
                 request.Credentials = CredentialCache.DefaultCredentials;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();

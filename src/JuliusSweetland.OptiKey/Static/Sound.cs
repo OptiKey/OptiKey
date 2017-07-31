@@ -12,7 +12,7 @@ namespace JuliusSweetland.OptiKey.Static
     {
         public static int GetSoundLength(string fileName)
         {
-            int length = 0;
+            int length;
             if (fileName.StartsWith("http://localhost:59125/process?"))
             {
                 string timeURL = fileName.Replace("OUTPUT_TYPE=AUDIO", "OUTPUT_TYPE=REALISED_DURATIONS");
@@ -23,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Static
                 // Set some reasonable limits on resources used by this request
                 request.MaximumAutomaticRedirections = 4;
                 request.MaximumResponseHeadersLength = 4;
+
                 // Set credentials to use for this request.
                 request.Credentials = CredentialCache.DefaultCredentials;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
