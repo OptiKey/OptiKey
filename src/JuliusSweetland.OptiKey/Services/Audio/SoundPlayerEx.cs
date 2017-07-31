@@ -3,15 +3,18 @@ using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Static;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.Services.Audio
 {
     public class SoundPlayerEx : SoundPlayer
     {
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool Finished { get; private set; }
 
-        private Task playTask;
-        private readonly CancellationTokenSource tokenSource = new CancellationTokenSource();
+        //private Task playTask;
+        private CancellationTokenSource tokenSource = new CancellationTokenSource();
         private CancellationToken ct;
         private bool playingAsync;
 
@@ -24,6 +27,7 @@ namespace JuliusSweetland.OptiKey.Services.Audio
 
         public void PlayAsync()
         {
+            Log.DebugFormat("Attempting to play sound asynchronously.");
             Finished = false;
             playingAsync = true;
             Task.Run(() =>
@@ -32,6 +36,7 @@ namespace JuliusSweetland.OptiKey.Services.Audio
                 {
                     double lenMs = Sound.GetSoundLength(SoundLocation);
                     DateTime stopAt = DateTime.Now.AddMilliseconds(lenMs);
+                    Log.DebugFormat("Sound ends at {0}.", stopAt);
                     this.Play();
                     while (DateTime.Now < stopAt)
                     {
@@ -43,6 +48,11 @@ namespace JuliusSweetland.OptiKey.Services.Audio
                 catch (OperationCanceledException)
                 {
                     base.Stop();
+                    Log.DebugFormat("Sound manually stoped. Generating a new CancellationTokenSource");
+                    // Create new CancellationTokenSource
+                    tokenSource.Dispose();
+                    tokenSource = new CancellationTokenSource();
+                    ct = tokenSource.Token;
                 }
             }, ct).ContinueWith(antecedent => OnSoundFinished(), TaskScheduler.FromCurrentSynchronizationContext());
         }
@@ -57,6 +67,7 @@ namespace JuliusSweetland.OptiKey.Services.Audio
 
         protected virtual void OnSoundFinished()
         {
+            Log.DebugFormat("Sound Finished.");
             Finished = true;
             playingAsync = false;
 
