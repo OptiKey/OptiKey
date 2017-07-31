@@ -705,6 +705,11 @@ namespace JuliusSweetland.OptiKey.Services
                     nextWord = false;
                     root = inProgressWord;
                 }
+                else if (lastTextChangeWasMultiKey)
+                {
+                    lastTextChangeWasMultiKey = false;
+                    lastTextChangeWasSuggestion = true;
+                }
 
                 var suggestions = dictionaryService.GetSuggestions(root, nextWord)
                     .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
