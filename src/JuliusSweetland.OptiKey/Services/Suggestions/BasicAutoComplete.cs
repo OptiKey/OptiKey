@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
-    public class BasicAutoComplete : IManageAutoComplete
+    public class BasicAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entriesForAutoComplete = new Dictionary<string, HashSet<DictionaryEntry>>();
 
@@ -22,15 +22,17 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             entriesForAutoComplete.Clear();
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetAutoCompleteSuggestions called with root '{0}'", root);
 
             if (entriesForAutoComplete != null)
             {
+                var inProgressWord = root == null ? null : root.InProgressWord(root.Length);
                 var simplifiedRoot = root.Normalise();
 
-                if (!string.IsNullOrWhiteSpace(simplifiedRoot))
+                if (!string.IsNullOrEmpty(inProgressWord)
+                            && char.IsLetter(inProgressWord.First())) //A word must start with a letter
                 {
                     return
                         entriesForAutoComplete
@@ -62,12 +64,16 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 AddToDictionary(entry, phraseAutoCompleteHash, newEntryWithUsageCount);
             }
 
+			//Also add the normalized hash to the dictionary
+            /*
+			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
+								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
+								: normalizedHash;*/
 
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
-        { 
-
+        {
             if (!string.IsNullOrWhiteSpace(autoCompleteHash))
             {
                 if (entriesForAutoComplete.ContainsKey(autoCompleteHash))

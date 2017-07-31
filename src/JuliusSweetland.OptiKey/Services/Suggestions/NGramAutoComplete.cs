@@ -7,14 +7,14 @@ using System.Text;
 using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 
-namespace JuliusSweetland.OptiKey.Services.AutoComplete
+namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     /// <summary>
     /// An auto suggest class using the n-gram algorithm.
     /// https://en.wikipedia.org/wiki/N-gram
     /// n-grams provide a quick way to do a fuzzy search that works decently across a wide range of languages.
     /// </summary>
-    public class NGramAutoComplete : IManageAutoComplete
+    public class NGramAutoComplete : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<EntryMetadata>> entries = new Dictionary<string, HashSet<EntryMetadata>>();
         private readonly Func<string, string> normalize;
@@ -87,7 +87,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
                 }
                 else
                 {
-                    entries[ngram] = new HashSet<EntryMetadata> {metaData};
+                    entries[ngram] = new HashSet<EntryMetadata> { metaData };
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             entries.Clear();
         }
 
-        public IEnumerable<string> GetSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'.", root);
 
@@ -156,7 +156,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
             }
 
             public DictionaryEntry DictionaryEntry { get; set; }
-            public int NGramCount { get; set;}
+            public int NGramCount { get; set; }
         }
     }
 }

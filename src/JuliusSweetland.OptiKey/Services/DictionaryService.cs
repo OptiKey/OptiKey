@@ -1,4 +1,10 @@
-﻿using System;
+﻿using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.Suggestions;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,11 +12,6 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -28,24 +29,24 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly AutoCompleteMethods autoCompleteMethod;
+        private readonly SuggestionMethods suggestionMethod;
 
         private Dictionary<string, List<DictionaryEntry>> entries;
-        private IManageAutoComplete manageAutoComplete;
-        
+        private IManagedSuggestions managedSuggestions;
+
         #endregion
 
         #region Events
 
         public event EventHandler<Exception> Error;
-        
+
         #endregion
 
         #region Ctor
 
-        public DictionaryService(AutoCompleteMethods autoCompleteMethod)
+        public DictionaryService(SuggestionMethods suggestionMethod)
         {
-            this.autoCompleteMethod = autoCompleteMethod;
+            this.suggestionMethod = suggestionMethod;
 
             MigrateLegacyDictionaries();
             LoadDictionary();
@@ -102,7 +103,7 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 entries = new Dictionary<string, List<DictionaryEntry>>();
-                manageAutoComplete = CreateAutoComplete();
+                managedSuggestions = CreateSuggestions();
 
                 //Load the user dictionary
                 var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
@@ -279,8 +280,8 @@ namespace JuliusSweetland.OptiKey.Services
                     }
 
                     //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount);
-                    
+                    managedSuggestions.AddEntry(entry, newEntryWithUsageCount);
+
                     if (!loadedFromDictionaryFile)
                     {
                         Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
@@ -320,7 +321,7 @@ namespace JuliusSweetland.OptiKey.Services
                         }
 
                         //Also remove from entries for auto complete
-                        manageAutoComplete.RemoveEntry(entry);
+                        managedSuggestions.RemoveEntry(entry);
 
                         SaveUserDictionaryToFile();
                     }
@@ -352,11 +353,11 @@ namespace JuliusSweetland.OptiKey.Services
 
         #endregion
 
-        #region Get Auto Complete Suggestions
+        #region Get Suggestions
 
-        public IEnumerable<string> GetAutoCompleteSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
-            return manageAutoComplete.GetSuggestions(root);
+            return managedSuggestions.GetSuggestions(root, nextWord);
         }
 
         #endregion
@@ -464,7 +465,7 @@ namespace JuliusSweetland.OptiKey.Services
                         .Select(tp => tp.Value.String)
                         .ToCharListWithCounts()
                     : new List<Tuple<char, char, int>>();
-                
+
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
                 var reliableFirstCharCleansed = reliableFirstLetter != null 
                     ? reliableFirstLetter.Normalise().First() 
@@ -495,7 +496,7 @@ namespace JuliusSweetland.OptiKey.Services
                     ? Math.Max((int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)), minCount) //Coerce threshold up to minimum count from settings
                     : minCount;
 
-                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount, 
+                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount,
                     reliableFirstCharCleansed, reliableFirstCharUncleansed, reliableLastCharCleansed, reliableLastCharUncleansed);
 
                 if (filteredStrings.Item1.Length == 0)
@@ -563,7 +564,7 @@ namespace JuliusSweetland.OptiKey.Services
         /// <summary>
         /// Construct a tuple of cleansed and original strings after applying a threshold to the count and ensuring the reliable first/last characters are present
         /// </summary>
-        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold, 
+        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold,
             char? firstCharCleansed, char? firstCharUncleansed, char? lastCharCleansed, char? lastCharUncleansed)
         {
             var charsAboveThresold = charsWithCount.Where(cwc => (double) cwc.Item3 >= threshold)
@@ -574,13 +575,13 @@ namespace JuliusSweetland.OptiKey.Services
             var unCleansedSb = new StringBuilder();
 
             //Ensure first character is applied
-            if (firstCharCleansed != null && 
+            if (firstCharCleansed != null &&
                 (!charsAboveThresold.Any() || charsAboveThresold.First().Item1 != firstCharCleansed.Value))
             {
                 cleansedSb.Append(firstCharCleansed);
                 unCleansedSb.Append(firstCharUncleansed);
             }
-            
+
             cleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item1).ToArray()));
             unCleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item2).ToArray()));
 
@@ -658,17 +659,28 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Configure Auto Complete
 
-        private IManageAutoComplete CreateAutoComplete()
+        private IManagedSuggestions CreateSuggestions()
         {
-            switch (autoCompleteMethod)
+            switch (suggestionMethod)
             {
-                case AutoCompleteMethods.NGram:
+                case SuggestionMethods.NGram:
+                    if (Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = false;
+                        // throw new Exception("Error: SuggestNextWord must be set to false when uing the NGram SuggestionMethod");
                     return new NGramAutoComplete(
-                        Settings.Default.NGramAutoCompleteGramCount, 
-                        Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
+                        Settings.Default.NGramAutoCompleteGramCount,
+                        Settings.Default.NGramAutoCompleteLeadingSpaceCount,
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
-                case AutoCompleteMethods.Basic:
+                case SuggestionMethods.Presage:
+                    if (!Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = true;
+                        // throw new Exception("Error: SuggestNextWord must be set to true when uing the Presage SuggestionMethod");
+                    return new PresageSuggestions();
+                case SuggestionMethods.Basic:
                 default:
+                    if (Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = false;
+                        // throw new Exception("Error: SuggestNextWord must be set to false when uing the Basic SuggestionMethod");
                     return new BasicAutoComplete();
             }
         }

@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         #endregion
-        
+
         #region Ctor
 
         public WordsViewModel(IDictionaryService dictionaryService)
@@ -27,9 +27,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         }
 
         #endregion
-        
+
         #region Properties
-        
+
         public List<KeyValuePair<string, Languages>> Languages
         {
             get
@@ -58,7 +58,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 };
             }
         }
-        
+
+        public List<KeyValuePair<string, SuggestionMethods>> SuggestionMethods
+        {
+            get
+                {
+                    return new List<KeyValuePair<string, SuggestionMethods>> {
+                        new KeyValuePair<string, SuggestionMethods>(Resources.BASIC_SUGGESTION, Enums.SuggestionMethods.Basic),
+                        new KeyValuePair<string, SuggestionMethods>(Resources.NGRAM_SUGGESTION, Enums.SuggestionMethods.NGram),
+                        new KeyValuePair<string, SuggestionMethods>(Resources.PRESAGE_SUGGESTION, Enums.SuggestionMethods.Presage)
+                    };
+                }
+        }
+
         private Languages keyboardAndDictionaryLanguage;
         public Languages KeyboardAndDictionaryLanguage
         {
@@ -125,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return autoAddSpace; }
             set { SetProperty(ref autoAddSpace, value); }
         }
-        
+
         private bool autoCapitalise;
         public bool AutoCapitalise
         {
@@ -139,7 +151,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return suppressAutoCapitaliseIntelligently; }
             set { SetProperty(ref suppressAutoCapitaliseIntelligently, value); }
         }
- 
+
+        private SuggestionMethods suggestionMethod;
+        public SuggestionMethods SuggestionMethod
+        {
+            get { return suggestionMethod; }
+            set { SetProperty(ref suggestionMethod, value); }
+        }
+
         private bool suggestWords;
         public bool SuggestWords
         {
@@ -163,11 +182,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public bool ChangesRequireRestart
         {
-            get { return ForceCapsLock != Settings.Default.ForceCapsLock; }
+            get { return ForceCapsLock != Settings.Default.ForceCapsLock
+                    || Settings.Default.SuggestionMethod != SuggestionMethod; }
         }
-        
+
         #endregion
-        
+
         #region Methods
 
         private void Load()
@@ -180,6 +200,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             AutoAddSpace = Settings.Default.AutoAddSpace;
             AutoCapitalise = Settings.Default.AutoCapitalise;
             SuppressAutoCapitaliseIntelligently = Settings.Default.SuppressAutoCapitaliseIntelligently;
+            SuggestionMethod = Settings.Default.SuggestionMethod;
             SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
@@ -187,7 +208,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            var reloadDictionary = Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage;
+            var reloadDictionary = (Settings.Default.KeyboardAndDictionaryLanguage != KeyboardAndDictionaryLanguage)
+                                   || (Settings.Default.SuggestionMethod != SuggestionMethod);
 
             Settings.Default.KeyboardAndDictionaryLanguage = KeyboardAndDictionaryLanguage;
             Settings.Default.UiLanguage = UiLanguage;
@@ -197,10 +219,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.AutoAddSpace = AutoAddSpace;
             Settings.Default.AutoCapitalise = AutoCapitalise;
             Settings.Default.SuppressAutoCapitaliseIntelligently = SuppressAutoCapitaliseIntelligently;
+            Settings.Default.SuggestionMethod = SuggestionMethod;
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
-            
+
             if (reloadDictionary)
             {
                 dictionaryService.LoadDictionary();
