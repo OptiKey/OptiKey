@@ -118,17 +118,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 
 			if (entries.ContainsKey(hash))
 			{
-				if (isNGram && entries[hash].Where(nwwuc => nwwuc.Entry == entry).Any())
-				{
-					// Update existing entry to be "NGram" entry
-					var foundEntry = entries[hash].FirstOrDefault(nwwuc => nwwuc.Entry == entry);
-
-					// Synch usage count and then replace the existing entry
-					dictEntry.UsageCount = foundEntry.UsageCount;
-					foundEntry = dictEntry;
-				}
-
-				if (entries[hash].All(nwwuc => nwwuc.Entry != entry))
+				if (isNGram || entries[hash].All(nwwuc => nwwuc.Entry != entry))
 				{
 					entries[hash].Add(dictEntry);
 				}
@@ -136,6 +126,22 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			else
 			{
 				entries.Add(hash, new HashSet<DictionaryEntry> { dictEntry });
+			}
+		}
+
+		public void BuildInMemomryDictionary(List<DictionaryEntry> dictStore)
+		{
+			string normalizedHash = string.Empty; 
+			foreach (DictionaryEntry entry in dictStore)
+			{
+				normalizedHash = entry.Entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+
+				if (!wordsIndex.Contains(normalizedHash))
+				{
+					wordsIndex.Add(normalizedHash);
+				}
+				
+				var ngrams = ToNGrams(entry.Entry).ToList();
 			}
 		}
 
@@ -220,7 +226,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 		}
 
 		[DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
-		internal class EntryMetadata : DictionaryEntry
+		public class EntryMetadata : DictionaryEntry
 		{
 			public EntryMetadata(string entry, int usageCount, int nGramCount)
 				: base(entry, usageCount)

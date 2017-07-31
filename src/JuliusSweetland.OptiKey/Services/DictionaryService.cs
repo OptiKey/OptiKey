@@ -6,6 +6,7 @@ using JuliusSweetland.OptiKey.Services.AutoComplete;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -150,20 +151,38 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Loading original dictionary from file '{0}'", filePath);
 
-            using (var reader = File.OpenText(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    //Entries must be londer than 1 character
-                    if (!string.IsNullOrWhiteSpace(line) 
-                        && line.Trim().Length > 1)
+			StreamReader reader = null;
+			string line = string.Empty;
+
+			try
+			{
+				using (reader = new StreamReader(filePath))
+				{
+					while (reader.Peek() >= 0)
 					{
-						AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
-                    }
-                }
+						line = reader.ReadLine();
+
+						//Entries must be londer than 1 character
+						if (!string.IsNullOrWhiteSpace(line)
+							&& line.Trim().Length > 1)
+						{
+							AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
+						}
+					}
+				}
             }
-        }
+			catch (Exception exception)
+			{
+				PublishError(this, exception);
+			}
+			finally
+			{
+				if (reader != null)
+				{
+					reader.Dispose();
+				}
+			}
+		}
 
         private static string GetUserDictionaryPath(Languages? language)
         {
@@ -181,24 +200,48 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.DebugFormat("Loading user dictionary from file '{0}'", filePath);
 
-            using (var reader = File.OpenText(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    if (!string.IsNullOrWhiteSpace(line))
-                    {
-                        var entryWithUsageCount = line.Trim().Split('|');
-                        if (entryWithUsageCount.Length == 2)
-                        {
-                            var entry = entryWithUsageCount[0];
-							var usageCount = int.Parse(entryWithUsageCount[1]);
-							AddEntryToDictionary(entry, loadedFromDictionaryFile: true, usageCount: usageCount);
-                        }
-                    }
-                }
-            }
-        }
+			StreamReader reader = null;
+			List<DictionaryEntry> tempStore = new List<DictionaryEntry>();
+
+			string hash = string.Empty;
+			string line = string.Empty;
+			int usageCount = 0;
+
+			try
+			{
+				using (reader = new StreamReader(filePath))
+				{
+					while (reader.Peek() >= 0)
+					{
+						line = reader.ReadLine();
+
+						var entryWithUsageCount = line.Trim().Split('|');
+						if (entryWithUsageCount.Length == 2)
+						{
+							var entry = entryWithUsageCount[0];
+							if (!int.TryParse(entryWithUsageCount[1], out usageCount))
+							{
+								usageCount = 0;
+							}
+
+							hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);							
+							manageAutoComplete.AddEntry(entry, new DictionaryEntry(entry, usageCount), hash);
+						}
+					}
+				}
+			}
+			catch (Exception exception)
+			{
+				PublishError(this, exception);
+			}
+			finally
+			{
+				if (reader != null)
+				{
+					reader.Dispose();
+				}
+			}
+		}
 
         private void SaveUserDictionaryToFile(bool? resetUserDict = false)
         {
@@ -216,7 +259,10 @@ namespace JuliusSweetland.OptiKey.Services
 						writer = new StreamWriter(userDictionaryPath);
 						foreach (var entryWithUsageCount in manageAutoComplete.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
 						{
-							writer.WriteLine(string.Format("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount));
+							if (!typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(entryWithUsageCount))
+							{
+								writer.WriteLine(string.Format("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount));
+							}
 						}
 					}
 					finally
@@ -408,8 +454,6 @@ namespace JuliusSweetland.OptiKey.Services
                 if (hash != null
                     && entries.ContainsKey(hash))
                 {
-                    bool saveDictionary = false;
-
                     var matches = new List<DictionaryEntry>();
                     var exactMatch = entries[hash].FirstOrDefault(de => de.Entry == text);
                     if (exactMatch != null)
