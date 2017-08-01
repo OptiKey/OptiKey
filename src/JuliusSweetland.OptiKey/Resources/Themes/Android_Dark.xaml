@@ -39,9 +39,11 @@
             <SolidColorBrush x:Key="KeyDisabledBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDisabledBackgroundBrush" Color="{StaticResource Black}" />
 
-            <SolidColorBrush x:Key="KeyHasImageForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="KeyHasImageForegroundBrush" Color="{StaticResource Transparent}" />
             <SolidColorBrush x:Key="KeyHasImageBorderBrush" Color="{StaticResource Transparent}" />
             <SolidColorBrush x:Key="KeyHasImageBackgroundBrush" Color="{StaticResource Transparent}" />
+            <SolidColorBrush x:Key="KeyHasImageHoverForegroundBrush" Color="{StaticResource Black}" />
+            <SolidColorBrush x:Key="KeyHasImageSelectionProgressBrush" Color="{StaticResource Black}" />
 
             <StaticResource x:Key="ScratchpadCaretBackgroundBrush" ResourceKey="Blue"/>
             <SolidColorBrush x:Key="ScratchpadForegroundBrush" Color="{StaticResource Blue}" />
@@ -164,6 +166,11 @@
                     <!--Is Key Enabled-->
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--Key has an image-->
+                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="Foreground" Value="{StaticResource KeyHasImageForegroundBrush}" />
                     </DataTrigger>
 
                     <!--Use Unicode compatibility font (for rendering characters that may be unsupported in the user specified font)-->
@@ -303,6 +310,11 @@
                     <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
                         <Setter Property="Visibility" Value="Hidden" />
                     </DataTrigger>
+
+                    <!--Key has an image-->
+                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="Fill" Value="{StaticResource KeyHasImageSelectionProgressBrush}" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
 
@@ -369,6 +381,11 @@
                     <!--Make visible when this key is current-->
                     <DataTrigger Binding="{Binding Path=IsCurrent, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
                         <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+
+                    <!--Key has an image-->
+                    <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyHasImageHoverForegroundBrush}" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
