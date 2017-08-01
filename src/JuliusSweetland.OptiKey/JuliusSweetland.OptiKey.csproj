@@ -335,6 +335,9 @@
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\CKPage.xaml.cs">
+      <DependentUpon>CKPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\CKKey.xaml.cs">
       <DependentUpon>CKKey.xaml</DependentUpon>
@@ -5101,6 +5104,10 @@
     <Page Include="Resources\Themes\Colours\Android.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\CKPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Controls\CKKey.xaml">
       <Generator>MSBuild:Compile</Generator>

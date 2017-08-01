@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
     /// <summary>
-    /// Interaction logic for Output.xaml
+    /// Interaction logic for CKKey.xaml
     /// </summary>
     public partial class CKKey : UserControl
     {
@@ -13,58 +13,45 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenuProperty =
+            DependencyProperty.Register("CKMenu", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
-        public string Value
+        public string CKMenu
         {
-            get { return (string)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { return (string)GetValue(CKMenuProperty); }
+            set { SetValue(CKMenuProperty, value); }
         }
 
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKTextProperty =
+            DependencyProperty.Register("CKText", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
-        public string Text
+        public string CKText
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get { return (string)GetValue(CKTextProperty); }
+            set { SetValue(CKTextProperty, value); }
         }
 
-        public static readonly DependencyProperty ShiftUpTextProperty =
-            DependencyProperty.Register("ShiftUpText", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKMenuKeyProperty =
+            DependencyProperty.Register("CKMenuKey", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public string ShiftUpText
+        public bool CKMenuKey { get { return CKMenu !=null && CKMenu != ""; } }
+
+        public static readonly DependencyProperty CKBaCoProperty =
+            DependencyProperty.Register("CKBaCo", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKBaCo
         {
-            get { return (string)GetValue(ShiftUpTextProperty); }
-            set { SetValue(ShiftUpTextProperty, value); }
+            get { return (string)GetValue(CKBaCoProperty); }
+            set { SetValue(CKBaCoProperty, value); }
         }
 
-        public static readonly DependencyProperty ShiftDownTextProperty =
-            DependencyProperty.Register("ShiftDownText", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
+        public static readonly DependencyProperty CKImSoProperty =
+            DependencyProperty.Register("CKImSo", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
-        public string ShiftDownText
+        public string CKImSo
         {
-            get { return (string)GetValue(ShiftDownTextProperty); }
-            set { SetValue(ShiftDownTextProperty, value); }
-        }
-
-        public static readonly DependencyProperty BackgroundColourProperty =
-            DependencyProperty.Register("BackgroundColour", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
-
-        public string BackgroundColour
-        {
-            get { return (string)GetValue(BackgroundColourProperty); }
-            set { SetValue(BackgroundColourProperty, value); }
-        }
-
-        public static readonly DependencyProperty BImageSourceProperty =
-            DependencyProperty.Register("BackgroundColour", typeof(string), typeof(Key), new PropertyMetadata(default(bool)));
-
-        public string ImageSource
-        {
-            get { return (string)GetValue(BImageSourceProperty); }
-            set { SetValue(BImageSourceProperty, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            get { return (string)GetValue(CKImSoProperty); }
+            set { SetValue(CKImSoProperty, "/Resources/CommuniKateImages/image_" + value + ".png"); }
         }
     }
 }

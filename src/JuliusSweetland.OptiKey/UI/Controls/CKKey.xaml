@@ -15,28 +15,27 @@
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
     </UserControl.Resources>
 
-
-    <Grid Background="{Binding Path=BackgroundColour, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}">
+    <Grid Background="{Binding Path=CKBaCo, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
-        <Image Source="{Binding Path=ImageSource, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+        <Image Source="{Binding Path=CKImSo, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
                Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
         <Viewbox Stretch="Uniform">
-            <TextBlock Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+            <TextBlock Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
                        FontWeight="Heavy" HorizontalAlignment="Center" />
         </Viewbox>
         <ContentControl>
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=MenuKey, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" Value="True">
+                        <DataTrigger Binding="{Binding Path=CKMenuKey, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" Value="True">
                             <Setter Property="Content">
                                 <Setter.Value>
                                     <Path Fill="Black" VerticalAlignment="Top"
                                           Stretch="Uniform" HorizontalAlignment="Right"
-                                          Data="M0,0 L0,20 A100,100 0 0 1 -20,0 z" />
+                                          Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>
@@ -44,14 +43,40 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <controls:Key Grid.RowSpan="2"
+        <ContentControl Grid.RowSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SharedSizeGroup="KeyWithText"
+                                          HasImage="True" SymbolGeometry="" 
+                                          ShiftUpText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+                                          ShiftDownText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+                                          Value="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=CKMenuKey, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SharedSizeGroup="KeyWithText"
+                                                  HasImage="True" SymbolGeometry="" 
+                                                  Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
+                                                  Value="{Binding Path=CKMenu, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <!--controls:Key Grid.RowSpan="2"
                       SharedSizeGroup="KeyWithText"
                       HasImage="True" SymbolGeometry="" 
-                      ShiftUpText="{Binding Path=ShiftUpText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
-                      ShiftDownText="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
-                      Value="{Binding Path=Value, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
+                      Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
+                      Value="{Binding Path=CKValue, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/-->
     </Grid>
-    <!--Background="Gray">
+    <!--Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="4*" />
@@ -67,6 +92,6 @@
         <controls:Key Grid.RowSpan="2" ShiftUpText="hello" ShiftDownText="Hello"
                                               SharedSizeGroup="KeyWithText"
                                               HasImage="True" SymbolGeometry=""
-                                              Value="hello"/> Value="hello"/>
+                                              Value="hello"/>
     </-->
 </UserControl>
