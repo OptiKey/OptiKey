@@ -2,11 +2,10 @@
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using log4net;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -30,24 +29,32 @@ namespace JuliusSweetland.OptiKey.Services
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly AutoCompleteMethods autoCompleteMethod;
+        private readonly SuggestionMethods suggestionMethod;
 
 		private Dictionary<string, HashSet<DictionaryEntry>> entries;
-		private IManageAutoComplete manageAutoComplete;
+		private IManagedSuggestions managedSuggestions;
 
-		#endregion
+        #endregion
 
 		#region Events
 
-		public event EventHandler<Exception> Error;
-        
+        public event EventHandler<Exception> Error;
+
         #endregion
+
+		#region On closing events callback
+		public void OnAppClosing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			// Save entries to user file when leaving the app.
+			this.SaveUserDictionaryToFile();
+		}
+		#endregion
 
         #region Ctor
 
-        public DictionaryService(AutoCompleteMethods autoCompleteMethod)
+        public DictionaryService(SuggestionMethods suggestionMethod)
         {
-            this.autoCompleteMethod = autoCompleteMethod;
+            this.suggestionMethod = suggestionMethod;
 
             MigrateLegacyDictionaries();
             LoadDictionary();
@@ -56,14 +63,6 @@ namespace JuliusSweetland.OptiKey.Services
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
-		#endregion
-
-		#region 
-		public void OnAppClosing(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			// Save entries to user file when leaving the app.
-			this.SaveUserDictionaryToFile(true);
-		}
 		#endregion
 
 		#region Migrate Legacy User Dictionaries
@@ -110,13 +109,13 @@ namespace JuliusSweetland.OptiKey.Services
 
             try
             {
-                manageAutoComplete = CreateAutoComplete();
+                managedSuggestions = CreateSuggestions();
 
 				// Create reference to the actual storage of the dictionary entries.
-				entries = manageAutoComplete.GetEntries();
+				entries = managedSuggestions.GetEntries();
 
-                //Load the user dictionary
-                var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
+				//Load the user dictionary
+				var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 if (File.Exists(userDictionaryPath))
                 {
@@ -129,10 +128,10 @@ namespace JuliusSweetland.OptiKey.Services
 
                     if (File.Exists(originalDictionaryPath))
                     {
-                        LoadOriginalDictionaryFromFile(originalDictionaryPath);
+                        LoadOriginalDictionaryFromFile(originalDictionaryPath); 
 						
 						//Create a user specific version of the dictionary in a worker thread
-						Thread writeToFile = new Thread(() => SaveUserDictionaryToFile(true));
+						Thread writeToFile = new Thread(() => SaveUserDictionaryToFile());
 						writeToFile.Start();
 					}
                     else
@@ -170,7 +169,7 @@ namespace JuliusSweetland.OptiKey.Services
 						}
 					}
 				}
-            }
+			}
 			catch (Exception exception)
 			{
 				PublishError(this, exception);
@@ -224,8 +223,8 @@ namespace JuliusSweetland.OptiKey.Services
 								usageCount = 0;
 							}
 
-							hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);							
-							manageAutoComplete.AddEntry(entry, new DictionaryEntry(entry, usageCount), hash);
+							hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+							managedSuggestions.AddEntry(entry, new DictionaryEntry(entry, usageCount), hash);
 						}
 					}
 				}
@@ -243,7 +242,7 @@ namespace JuliusSweetland.OptiKey.Services
 			}
 		}
 
-        private void SaveUserDictionaryToFile(bool? resetUserDict = false)
+        private void SaveUserDictionaryToFile()
         {
 			lock (Settings.Default)
 			{
@@ -257,7 +256,8 @@ namespace JuliusSweetland.OptiKey.Services
 					try
 					{
 						writer = new StreamWriter(userDictionaryPath);
-						foreach (var entryWithUsageCount in manageAutoComplete.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
+
+						foreach (var entryWithUsageCount in managedSuggestions.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
 						{
 							if (!typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(entryWithUsageCount))
 							{
@@ -278,21 +278,21 @@ namespace JuliusSweetland.OptiKey.Services
 					PublishError(this, exception);
 				}
 			}
-        }
+		}
 
 		private void WriteNewEntryToDictionaryFile(string newEntry)
 		{
 			try
-			{ 
+			{
 				var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
-				Log.DebugFormat("Saving user dictionary to file '{0}'", userDictionaryPath);
+				Log.DebugFormat("Saving new entry {0} to dictionary file '{1}'", newEntry, userDictionaryPath);
 
 				StreamWriter writer = null;
 				try
 				{
 					writer = new StreamWriter(userDictionaryPath, append: true);
-					writer.WriteLine(string.Format("{0}|{1}", newEntry, 0));
+					writer.WriteLine(string.Format("{0}|{1}", newEntry, 1));
 				}
 				finally
 				{
@@ -319,9 +319,9 @@ namespace JuliusSweetland.OptiKey.Services
             if (entries != null
                 && !string.IsNullOrWhiteSpace(entryToFind))
             {
-				var exists = manageAutoComplete.GetWordsHashes()
-	                .SelectMany(hash => entries[hash]) //Expand out all values in the dictionary and all values in the sorted lists
-				    .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
+                var exists = managedSuggestions.GetWordsHashes()
+					.SelectMany(hash => entries[hash]) //Expand out all values in the dictionary and all values in the sorted lists
+                    .Select(dictionaryEntryWithUsageCount => dictionaryEntryWithUsageCount.Entry)
                     .Any(dictionaryEntry => !string.IsNullOrWhiteSpace(dictionaryEntry) && dictionaryEntry.Trim().Equals(entryToFind.Trim()));
 
                 Log.Debug(exists
@@ -349,24 +349,24 @@ namespace JuliusSweetland.OptiKey.Services
                 && !string.IsNullOrWhiteSpace(entry)
 				&& (!loadedFromDictionaryFile || !ExistsInDictionary(entry)))
             {
-                //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
-                var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: !loadedFromDictionaryFile);
-                if (!string.IsNullOrWhiteSpace(hash))
-                {
-                    var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
+				//Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
+				var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: !loadedFromDictionaryFile);
+				if (!string.IsNullOrWhiteSpace(hash))
+				{
+					var newEntryWithUsageCount = new DictionaryEntry(entry, usageCount);
 
-                    //Also add to entries for auto complete
-                    manageAutoComplete.AddEntry(entry, newEntryWithUsageCount, hash);
-                    
-                    if (!loadedFromDictionaryFile)
-                    {
-                        Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
+					//Also add to entries for auto complete
+					managedSuggestions.AddEntry(entry, newEntryWithUsageCount, hash);
+
+					if (!loadedFromDictionaryFile)
+					{
+						Log.DebugFormat("Adding new (not loaded from dictionary file) entry '{0}' to in-memory dictionary with hash '{1}'", entry, hash);
 
 						Thread writeToFile = new Thread(() => WriteNewEntryToDictionaryFile(entry));
 						writeToFile.Start();
 					}
-                }
-            }
+				}
+			}
         }
 
         #endregion
@@ -392,7 +392,7 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("Removing entry '{0}' from dictionary", entry);
 
                         //Also remove from entries for auto complete
-                        manageAutoComplete.RemoveEntry(entry);
+                        managedSuggestions.RemoveEntry(entry);
                     }
                 }
             }
@@ -408,25 +408,25 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-				var enumerator = manageAutoComplete.GetWordsHashes()
-                    .SelectMany(hash => entries[hash])
+				var enumerator = managedSuggestions.GetWordsHashes()
+					.SelectMany(hash => entries[hash])
 					.OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
-                    .GetEnumerator();
+					.GetEnumerator();
 
-                while (enumerator.MoveNext())
-                {
-                    yield return enumerator.Current;
-                }
+				while (enumerator.MoveNext())
+				{
+					yield return enumerator.Current;
+				}
             }
         }
 
         #endregion
 
-        #region Get Auto Complete Suggestions
+        #region Get Suggestions
 
-        public IEnumerable<string> GetAutoCompleteSuggestions(string root)
+        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
-            return manageAutoComplete.GetSuggestions(root);
+            return managedSuggestions.GetSuggestions(root, nextWord);
         }
 
         #endregion
@@ -525,7 +525,7 @@ namespace JuliusSweetland.OptiKey.Services
                         .Select(tp => tp.Value.String)
                         .ToCharListWithCounts()
                     : new List<Tuple<char, char, int>>();
-                
+
                 //Create strings (Item1==cleansed/hashed, Item2==uncleansed) of reliable + characters with counts above the mean
                 var reliableFirstCharCleansed = reliableFirstLetter != null 
                     ? reliableFirstLetter.Normalise().First() 
@@ -556,7 +556,7 @@ namespace JuliusSweetland.OptiKey.Services
                     ? Math.Max((int)Math.Floor(charsWithCountWithoutReliableFirstOrLast.Average(cwc => cwc.Item3)), minCount) //Coerce threshold up to minimum count from settings
                     : minCount;
 
-                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount, 
+                var filteredStrings = ToCleansedUncleansedStrings(charsWithCount, thresholdCount,
                     reliableFirstCharCleansed, reliableFirstCharUncleansed, reliableLastCharCleansed, reliableLastCharUncleansed);
 
                 if (filteredStrings.Item1.Length == 0)
@@ -624,7 +624,7 @@ namespace JuliusSweetland.OptiKey.Services
         /// <summary>
         /// Construct a tuple of cleansed and original strings after applying a threshold to the count and ensuring the reliable first/last characters are present
         /// </summary>
-        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold, 
+        private Tuple<string, string> ToCleansedUncleansedStrings(IEnumerable<Tuple<char, char, int>> charsWithCount, int threshold,
             char? firstCharCleansed, char? firstCharUncleansed, char? lastCharCleansed, char? lastCharUncleansed)
         {
             var charsAboveThresold = charsWithCount.Where(cwc => (double) cwc.Item3 >= threshold)
@@ -635,13 +635,13 @@ namespace JuliusSweetland.OptiKey.Services
             var unCleansedSb = new StringBuilder();
 
             //Ensure first character is applied
-            if (firstCharCleansed != null && 
+            if (firstCharCleansed != null &&
                 (!charsAboveThresold.Any() || charsAboveThresold.First().Item1 != firstCharCleansed.Value))
             {
                 cleansedSb.Append(firstCharCleansed);
                 unCleansedSb.Append(firstCharUncleansed);
             }
-            
+
             cleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item1).ToArray()));
             unCleansedSb.Append(new string(charsAboveThresold.Select(t => t.Item2).ToArray()));
 
@@ -668,13 +668,13 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null)
             {
-				var enumerator = manageAutoComplete.GetWordsHashes().GetEnumerator();
+				var enumerator = managedSuggestions.GetWordsHashes().GetEnumerator();
 
 				while (enumerator.MoveNext())
-                {
+				{
 					yield return enumerator.Current;
 				}
-            }
+			}
         }
 
         #endregion
@@ -687,18 +687,18 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (entries != null
                 && entries.ContainsKey(hash))
-            {
-                var enumerator = entries[hash]
+			{
+				var enumerator = entries[hash]
 					.Where(dictEntry => !(typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(dictEntry)))
 					.OrderByDescending(entryWithUsageCount => entryWithUsageCount.UsageCount)
-                    .Select(entryWithUsageCount => entryWithUsageCount.Entry)
-                    .GetEnumerator();
+					.Select(entryWithUsageCount => entryWithUsageCount.Entry)
+					.GetEnumerator();
 
                 while (enumerator.MoveNext()
                     && !string.IsNullOrWhiteSpace(enumerator.Current))
-                {
-                    yield return enumerator.Current;
-                }
+				{
+					yield return enumerator.Current;
+				}
             }
         }
 
@@ -719,17 +719,28 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Configure Auto Complete
 
-        private IManageAutoComplete CreateAutoComplete()
+        private IManagedSuggestions CreateSuggestions()
         {
-            switch (autoCompleteMethod)
+            switch (suggestionMethod)
             {
-                case AutoCompleteMethods.NGram:
+                case SuggestionMethods.NGram:
+                    if (Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = false;
+                        // throw new Exception("Error: SuggestNextWord must be set to false when uing the NGram SuggestionMethod");
                     return new NGramAutoComplete(
-                        Settings.Default.NGramAutoCompleteGramCount, 
-                        Settings.Default.NGramAutoCompleteLeadingSpaceCount, 
+                        Settings.Default.NGramAutoCompleteGramCount,
+                        Settings.Default.NGramAutoCompleteLeadingSpaceCount,
                         Settings.Default.NGramAutoCompleteTrailingSpaceCount);
-                case AutoCompleteMethods.Basic:
+                case SuggestionMethods.Presage:
+                    if (!Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = true;
+                        // throw new Exception("Error: SuggestNextWord must be set to true when uing the Presage SuggestionMethod");
+                    return new PresageSuggestions();
+                case SuggestionMethods.Basic:
                 default:
+                    if (Settings.Default.SuggestNextWords)
+                        Settings.Default.SuggestNextWords = false;
+                        // throw new Exception("Error: SuggestNextWord must be set to false when uing the Basic SuggestionMethod");
                     return new BasicAutoComplete();
             }
         }

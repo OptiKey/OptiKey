@@ -1,4 +1,4 @@
-﻿using JuliusSweetland.OptiKey.Services.AutoComplete;
+﻿using JuliusSweetland.OptiKey.Services.Suggestions;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
@@ -6,10 +6,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
     [TestFixture]
     internal class NGramAutoCompleteTests : AutoCompleteTestsBase
     {
-        protected override IManageAutoComplete CreateAutoComplete()
+        protected override IManagedSuggestions CreateAutoComplete()
         {
             return new NGramAutoComplete();
 		}
+		
 		protected override object[] GetTestCases()
  		{
  			return SuggestionsTestCases;

@@ -17,7 +17,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
 
         private void btnFindMaryTts_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                FileName = "marytts-server.bat",
+                Filter = "marytts-server|marytts-server.bat"
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 if (openFileDialog.FileName.EndsWith(@"\bin\marytts-server.bat"))

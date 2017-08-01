@@ -107,6 +107,10 @@
     <Reference Include="Octokit, Version=0.24.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Octokit.0.24.0\lib\net45\Octokit.dll</HintPath>
     </Reference>
+    <Reference Include="presage.net, Version=0.9.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ext\Presage\presage.net.dll</HintPath>
+    </Reference>
     <Reference Include="Prism">
       <HintPath>..\..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -186,7 +190,7 @@
     <Compile Include="Enums\Case.cs" />
     <Compile Include="Enums\CursorPointPositions.cs" />
     <Compile Include="Enums\DataStreamProcessingLevels.cs" />
-    <Compile Include="Enums\AutoCompleteMethods.cs" />
+    <Compile Include="Enums\SuggestionMethods.cs" />
     <Compile Include="Enums\MinimisedEdges.cs" />
     <Compile Include="Enums\Keyboards.cs" />
     <Compile Include="Enums\SymbolOrientations.cs" />
@@ -248,7 +252,7 @@
     <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Common\PInvoke.cs" />
+    <Compile Include="Native\PInvoke.cs" />
     <Compile Include="Native\Common\Static\WindowStyles.cs" />
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
     <Compile Include="Native\Common\Structs\OSVERSIONINFO.cs" />
@@ -267,10 +271,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\AutoComplete\IManageAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\BasicAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\IAutoComplete.cs" />
-    <Compile Include="Services\AutoComplete\NGramAutoComplete.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Audio\SoundPlayerEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
+    <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
+    <Compile Include="Services\Suggestions\ISuggestions.cs" />
+    <Compile Include="Services\Suggestions\NGramAutoComplete.cs" />
     <Compile Include="Services\ICalibrationService.cs" />
     <Compile Include="Services\IMouseOutputService.cs" />
     <Compile Include="Services\INotifyErrors.cs" />
@@ -310,6 +322,7 @@
     <Compile Include="Services\MouseOutputService.cs" />
     <Compile Include="Services\MyGazePointService.cs" />
     <Compile Include="Services\MyGazeCalibrationService.cs" />
+    <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
     <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
     <Compile Include="Services\TobiiEyeXPointService.cs" />
     <Compile Include="Services\WindowManipulationService.cs" />
@@ -320,6 +333,7 @@
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Static\Graphics.cs" />
+    <Compile Include="Static\Sound.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -600,11 +614,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Static\DiagnosticInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.ca-ES.resx" />
@@ -1263,7 +1272,7 @@
     <Folder Include="Native\MyGaze\Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

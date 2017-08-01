@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows;
-using System.Media;
 using System.Net;
 using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services.Audio;
 using log4net;
 using Un4seen.Bass;
 
@@ -28,11 +27,11 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
         private readonly SpeechSynthesizer speechSynthesiser;
+        private readonly SoundPlayerEx maryTtsPlayer;
 
         private readonly object speakCompletedLock = new object();
-        private EventHandler<SpeakCompletedEventArgs> speakCompleted;
-
-        private bool MaryTTSSpeaking;
+        private EventHandler<SpeakCompletedEventArgs> onSpeakCompleted;
+        private EventHandler onMaryTtsSpeakCompleted;
 
         #endregion
 
@@ -47,6 +46,7 @@ namespace JuliusSweetland.OptiKey.Services
         public AudioService()
         {
             speechSynthesiser = new SpeechSynthesizer();
+            maryTtsPlayer = new SoundPlayerEx();
             BassNet.Registration(BassRegistrationEmail, BassRegistrationKey);
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             Application.Current.Exit += (sender, args) => Bass.BASS_Free();
@@ -69,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 lock (speakCompletedLock)
                 {
-                    if (speakCompleted == null && !MaryTTSSpeaking)
+                    if (onSpeakCompleted == null && onMaryTtsSpeakCompleted == null)
                     {
                         Speak(textToSpeak, onComplete, volume, rate, voice);
                         return true;
@@ -110,7 +110,7 @@ namespace JuliusSweetland.OptiKey.Services
                 //Set some reasonable limits on resources used by this request
                 request.MaximumAutomaticRedirections = 4;
                 request.MaximumResponseHeadersLength = 4;
-                request.Timeout = 20000; //20 second timeout
+
                 //Set credentials to use for this request.
                 request.Credentials = CredentialCache.DefaultCredentials;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -171,24 +171,20 @@ namespace JuliusSweetland.OptiKey.Services
         private void CancelSpeech()
         {
             Log.Info("Cancelling all speech");
-            if (!MaryTTSSpeaking)
+            lock (speakCompletedLock)
             {
-                lock (speakCompletedLock)
+                if (onSpeakCompleted != null)
                 {
-                    if (speakCompleted != null)
-                    {
-                        speechSynthesiser.SpeakCompleted -= speakCompleted;
-                        speakCompleted = null;
-                    }
-                    speechSynthesiser.SpeakAsyncCancelAll();
+                    speechSynthesiser.SpeakCompleted -= onSpeakCompleted;
+                    onSpeakCompleted = null;
                 }
-            }
-            else
-            {
-                SoundPlayer player = new SoundPlayer();
-                player.Stop();
-                player.Dispose();
-                MaryTTSSpeaking = false;
+                if (onMaryTtsSpeakCompleted != null)
+                {
+                    maryTtsPlayer.SoundFinished -= onMaryTtsSpeakCompleted;
+                    onMaryTtsSpeakCompleted = null;
+                }
+                speechSynthesiser.SpeakAsyncCancelAll();
+                maryTtsPlayer.Stop();
             }
         }
 
@@ -200,6 +196,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             if (!Settings.Default.MaryTTSEnabled)
             {
+                //Default TTS
                 speechSynthesiser.Rate = rate ?? Settings.Default.SpeechRate;
                 speechSynthesiser.Volume = volume ?? Settings.Default.SpeechVolume;
 
@@ -218,65 +215,64 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
 
-                speakCompleted = (sender, args) =>
+                onSpeakCompleted = (sender, args) =>
                 {
                     lock (speakCompletedLock)
                     {
-                        speechSynthesiser.SpeakCompleted -= speakCompleted;
-                        speakCompleted = null;
+                        speechSynthesiser.SpeakCompleted -= onSpeakCompleted;
+                        onSpeakCompleted = null;
                         if (onComplete != null)
                         {
                             onComplete();
                         }
                     }
                 };
-                speechSynthesiser.SpeakCompleted += speakCompleted;
+                speechSynthesiser.SpeakCompleted += onSpeakCompleted;
                 speechSynthesiser.SpeakAsync(textToSpeak);
             }
             else
             {
-                float MaryTTSRate = rate ?? Settings.Default.SpeechRate;
-                float MaryTTSVolume = volume ?? Settings.Default.SpeechVolume;
+                //MaryTTS
+                float maryTTSRate = rate ?? Settings.Default.SpeechRate;
+                float maryTTSVolume = volume ?? Settings.Default.SpeechVolume;
 
-                MaryTTSRate = (MaryTTSRate + 10.0f) / 20.0f * 3.0f;
-                MaryTTSRate = (MaryTTSRate < 0.1f) ? 0.1f
-                    : (MaryTTSRate > 3.0f) ? 3.0f : MaryTTSRate;
+                maryTTSRate = (maryTTSRate + 10.0f) / 20.0f * 3.0f;
+                maryTTSRate = maryTTSRate < 0.1f ? 0.1f
+                    : maryTTSRate > 3.0f ? 3.0f : maryTTSRate;
 
-                MaryTTSVolume = MaryTTSVolume / 100.0f * 1.0f;
-                MaryTTSVolume = (MaryTTSVolume < 0.0f) ? 0.0f 
-                    : (MaryTTSVolume > 1.0f) ? 1.0f : MaryTTSVolume;
+                maryTTSVolume = maryTTSVolume / 100.0f * 1.0f;
+                maryTTSVolume = maryTTSVolume < 0.0f ? 0.0f 
+                    : maryTTSVolume > 1.0f ? 1.0f : maryTTSVolume;
 
-                List<string> VoiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
+                List<string> voiceParameters = Settings.Default.MaryTTSVoice.Split(' ').ToList();
 
-                SoundPlayer player = new SoundPlayer();
-                player.SoundLocation =  "http://localhost:59125/process?"
-                                + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
-                                + "LOCALE=" + VoiceParameters.ElementAt(1) + "&"
-                                + "VOICE=" + VoiceParameters.ElementAt(0) + "&"
-                                + "INPUT_TEXT=" + textToSpeak + "&"
-                                + "OUTPUT_TYPE=AUDIO&"
-                                + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
-                                + string.Format("{0:N1}", MaryTTSRate) + ";&"
-                                + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
-                                + string.Format("{0:N1}", MaryTTSVolume) + ";";
+                maryTtsPlayer.SoundLocation = "http://localhost:59125/process?"
+                                              + "INPUT_TYPE=TEXT&AUDIO=WAVE_FILE&"
+                                              + "LOCALE=" + voiceParameters.ElementAt(1) + "&"
+                                              + "VOICE=" + voiceParameters.ElementAt(0) + "&"
+                                              + "INPUT_TEXT=" + textToSpeak + "&"
+                                              + "OUTPUT_TYPE=AUDIO&"
+                                              + "effect_Rate_selected=on&effect_Rate_parameters=durScale:"
+                                              + string.Format("{0:N1}", maryTTSRate) + ";&"
+                                              + "effect_Volume_selected=on&effect_Volume_parameters=amount:"
+                                              + string.Format("{0:N1}", maryTTSVolume) + ";";
 
-                Task task = SoundPlayerTask(onComplete, player);
-                MaryTTSSpeaking = true;
+                onMaryTtsSpeakCompleted = (sender, args) =>
+                {
+                    lock (speakCompletedLock)
+                    {
+                        maryTtsPlayer.SoundFinished -= onMaryTtsSpeakCompleted;
+                        onMaryTtsSpeakCompleted = null;
+                        if (onComplete != null)
+                        {
+                            onComplete();
+                        }
+                    }
+                };
+
+                maryTtsPlayer.SoundFinished += onMaryTtsSpeakCompleted;
+                maryTtsPlayer.PlayAsync();
             }
-
-        }
-
-        public async Task SoundPlayerTask(Action onComplete, SoundPlayer player)
-        {
-            var task = Task.Run(() => player.PlaySync());
-            await task;
-
-            if (onComplete != null)
-            {
-                onComplete();
-            }
-            player.Dispose();
-            MaryTTSSpeaking = false;
         }
 
         #endregion

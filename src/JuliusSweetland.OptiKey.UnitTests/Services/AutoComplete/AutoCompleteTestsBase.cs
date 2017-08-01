@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Services.AutoComplete;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using NUnit.Framework;
 
 namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
 {
     internal abstract class AutoCompleteTestsBase
     {
-        private IManageAutoComplete autoComplete;
-        protected static object[] SuggestionsTestCaseSource { get; private set; }
+        private IManagedSuggestions autoComplete;
+		protected static object[] SuggestionsTestCaseSource { get; private set; }
 
-        [Test]
+		[Test]
         public void AddEntry_called_with_existing_entry_does_not_update_usage_count()
         {
             ConfigureProvider();
@@ -96,7 +96,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
             TestGetSuggestions(root, expectedSuggestions);
         }
 
-        protected abstract IManageAutoComplete CreateAutoComplete();
+
+        protected abstract IManagedSuggestions CreateAutoComplete();
 		protected abstract object[] GetTestCases();
 
 		/// <remarks>Top 100 most common words in English: https://en.wikipedia.org/wiki/Most_common_words_in_English. </remarks>
