@@ -346,7 +346,8 @@ namespace JuliusSweetland.OptiKey.Services
         private void AddEntryToDictionary(string entry, bool loadedFromDictionaryFile, int usageCount = 0)
         {
             if (entries != null
-                && !string.IsNullOrWhiteSpace(entry))
+                && !string.IsNullOrWhiteSpace(entry)
+				&& (!loadedFromDictionaryFile || !ExistsInDictionary(entry)))
             {
                 //Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
                 var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: !loadedFromDictionaryFile);
@@ -688,7 +689,7 @@ namespace JuliusSweetland.OptiKey.Services
                 && entries.ContainsKey(hash))
             {
                 var enumerator = entries[hash]
-					.Where(dictEntry => !(dictEntry is NGramAutoComplete.EntryMetadata))
+					.Where(dictEntry => !(typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(dictEntry)))
 					.OrderByDescending(entryWithUsageCount => entryWithUsageCount.UsageCount)
                     .Select(entryWithUsageCount => entryWithUsageCount.Entry)
                     .GetEnumerator();

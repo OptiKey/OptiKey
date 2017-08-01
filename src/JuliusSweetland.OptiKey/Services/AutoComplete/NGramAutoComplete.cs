@@ -129,22 +129,6 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 			}
 		}
 
-		public void BuildInMemomryDictionary(List<DictionaryEntry> dictStore)
-		{
-			string normalizedHash = string.Empty; 
-			foreach (DictionaryEntry entry in dictStore)
-			{
-				normalizedHash = entry.Entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
-
-				if (!wordsIndex.Contains(normalizedHash))
-				{
-					wordsIndex.Add(normalizedHash);
-				}
-				
-				var ngrams = ToNGrams(entry.Entry).ToList();
-			}
-		}
-
 		/// <summary>
 		/// Removes all possible suggestions from the auto complete provider.
 		/// </summary>
@@ -226,7 +210,7 @@ namespace JuliusSweetland.OptiKey.Services.AutoComplete
 		}
 
 		[DebuggerDisplay("'{DictionaryEntry.Entry}' used {DictionaryEntry.UsageCount} (ngrams: {NGramCount})")]
-		public class EntryMetadata : DictionaryEntry
+		internal class EntryMetadata : DictionaryEntry
 		{
 			public EntryMetadata(string entry, int usageCount, int nGramCount)
 				: base(entry, usageCount)
