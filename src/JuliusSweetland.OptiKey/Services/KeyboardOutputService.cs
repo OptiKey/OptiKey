@@ -255,6 +255,46 @@ namespace JuliusSweetland.OptiKey.Services
                     Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_249";
                     break;
 
+                case FunctionKeys.CommuniKate_insects:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_insects";
+                    break;
+
+                case FunctionKeys.CommuniKate_money:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_money";
+                    break;
+
+                case FunctionKeys.CommuniKate_shape:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_shape";
+                    break;
+
+                case FunctionKeys.CommuniKate_mp3:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_mp3";
+                    break;
+
+                case FunctionKeys.CommuniKate_questions:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_questions";
+                    break;
+
+                case FunctionKeys.CommuniKate_inserttitlehere:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_inserttitlehere";
+                    break;
+
+                case FunctionKeys.CommuniKate_birds:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_birds";
+                    break;
+
+                case FunctionKeys.CommuniKate_workthings:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_workthings";
+                    break;
+
+                case FunctionKeys.CommuniKate_aboutme:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_aboutme";
+                    break;
+
+                case FunctionKeys.CommuniKate_thingsthathelp:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_thingsthathelp";
+                    break;
+
                 case FunctionKeys.CommuniKate_wml:
                     Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wml";
                     break;

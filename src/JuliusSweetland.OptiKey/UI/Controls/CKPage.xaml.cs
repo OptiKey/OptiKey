@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo00
         {
             get { return (string)GetValue(CKImSo00Property); }
-            set { SetValue(CKImSo00Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo00Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu01Property =
@@ -109,7 +109,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo01
         {
             get { return (string)GetValue(CKImSo01Property); }
-            set { SetValue(CKImSo01Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo01Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu02Property =
@@ -145,7 +145,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo02
         {
             get { return (string)GetValue(CKImSo02Property); }
-            set { SetValue(CKImSo02Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo02Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu03Property =
@@ -181,7 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo03
         {
             get { return (string)GetValue(CKImSo03Property); }
-            set { SetValue(CKImSo03Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo03Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu04Property =
@@ -217,7 +217,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo04
         {
             get { return (string)GetValue(CKImSo04Property); }
-            set { SetValue(CKImSo04Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo04Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu10Property =
@@ -253,7 +253,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo10
         {
             get { return (string)GetValue(CKImSo10Property); }
-            set { SetValue(CKImSo10Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo10Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu11Property =
@@ -289,7 +289,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo11
         {
             get { return (string)GetValue(CKImSo11Property); }
-            set { SetValue(CKImSo11Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo11Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu12Property =
@@ -325,7 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo12
         {
             get { return (string)GetValue(CKImSo12Property); }
-            set { SetValue(CKImSo12Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo12Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu13Property =
@@ -361,7 +361,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo13
         {
             get { return (string)GetValue(CKImSo13Property); }
-            set { SetValue(CKImSo13Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo13Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu14Property =
@@ -397,7 +397,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo14
         {
             get { return (string)GetValue(CKImSo14Property); }
-            set { SetValue(CKImSo14Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo14Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu20Property =
@@ -433,7 +433,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo20
         {
             get { return (string)GetValue(CKImSo20Property); }
-            set { SetValue(CKImSo20Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo20Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu21Property =
@@ -469,7 +469,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo21
         {
             get { return (string)GetValue(CKImSo21Property); }
-            set { SetValue(CKImSo21Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo21Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu22Property =
@@ -505,7 +505,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo22
         {
             get { return (string)GetValue(CKImSo22Property); }
-            set { SetValue(CKImSo22Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo22Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu23Property =
@@ -541,7 +541,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo23
         {
             get { return (string)GetValue(CKImSo23Property); }
-            set { SetValue(CKImSo23Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo23Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu24Property =
@@ -577,7 +577,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo24
         {
             get { return (string)GetValue(CKImSo24Property); }
-            set { SetValue(CKImSo24Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo24Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu30Property =
@@ -613,7 +613,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo30
         {
             get { return (string)GetValue(CKImSo30Property); }
-            set { SetValue(CKImSo30Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo30Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu31Property =
@@ -649,7 +649,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo31
         {
             get { return (string)GetValue(CKImSo31Property); }
-            set { SetValue(CKImSo31Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo31Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu32Property =
@@ -685,7 +685,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo32
         {
             get { return (string)GetValue(CKImSo32Property); }
-            set { SetValue(CKImSo32Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo32Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu33Property =
@@ -721,7 +721,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo33
         {
             get { return (string)GetValue(CKImSo33Property); }
-            set { SetValue(CKImSo33Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo33Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenu34Property =
@@ -757,7 +757,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo34
         {
             get { return (string)GetValue(CKImSo34Property); }
-            set { SetValue(CKImSo34Property, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSo34Property, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
 
         public static readonly DependencyProperty CKMenuKey00Property =

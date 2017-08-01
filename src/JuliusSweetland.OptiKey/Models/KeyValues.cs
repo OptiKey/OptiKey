@@ -152,6 +152,16 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CommuniKate_1_331 = new KeyValue(FunctionKeys.CommuniKate_1_331);
         public static readonly KeyValue CommuniKate_ = new KeyValue(FunctionKeys.CommuniKate_);
         public static readonly KeyValue CommuniKate_Home = new KeyValue(FunctionKeys.CommuniKate_Home);
+        public static readonly KeyValue CommuniKate_insects = new KeyValue(FunctionKeys.CommuniKate_insects);
+        public static readonly KeyValue CommuniKate_money = new KeyValue(FunctionKeys.CommuniKate_money);
+        public static readonly KeyValue CommuniKate_shape = new KeyValue(FunctionKeys.CommuniKate_shape);
+        public static readonly KeyValue CommuniKate_mp3 = new KeyValue(FunctionKeys.CommuniKate_mp3);
+        public static readonly KeyValue CommuniKate_questions = new KeyValue(FunctionKeys.CommuniKate_questions);
+        public static readonly KeyValue CommuniKate_inserttitlehere = new KeyValue(FunctionKeys.CommuniKate_inserttitlehere);
+        public static readonly KeyValue CommuniKate_birds = new KeyValue(FunctionKeys.CommuniKate_birds);
+        public static readonly KeyValue CommuniKate_workthings = new KeyValue(FunctionKeys.CommuniKate_workthings);
+        public static readonly KeyValue CommuniKate_aboutme = new KeyValue(FunctionKeys.CommuniKate_aboutme);
+        public static readonly KeyValue CommuniKate_thingsthathelp = new KeyValue(FunctionKeys.CommuniKate_thingsthathelp);
         public static readonly KeyValue CommuniKate_wml = new KeyValue(FunctionKeys.CommuniKate_wml);
         public static readonly KeyValue CommuniKate_nzcaps = new KeyValue(FunctionKeys.CommuniKate_nzcaps);
         public static readonly KeyValue CommuniKate_foodchat = new KeyValue(FunctionKeys.CommuniKate_foodchat);
