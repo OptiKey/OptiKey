@@ -205,7 +205,10 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
-                mainViewModel = new MainViewModel(
+				//Subscribing to the on closing events.
+				mainWindow.Closing += dictionaryService.OnAppClosing;
+
+				mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
@@ -218,6 +221,7 @@ namespace JuliusSweetland.OptiKey
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
                 };
+
                 if(mainWindow.MainView.IsLoaded)
                 {
                     postMainViewLoaded();
@@ -245,6 +249,7 @@ namespace JuliusSweetland.OptiKey
                     inputService.RequestResume(); //Start the input service
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);

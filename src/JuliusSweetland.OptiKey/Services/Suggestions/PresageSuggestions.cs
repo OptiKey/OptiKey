@@ -1,14 +1,13 @@
-﻿using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
+﻿using JuliusSweetland.OptiKey.Models;
 using log4net;
+using presage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using presage;
 
 namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
-    public class PresageSuggestions : IManagedSuggestions
+	public class PresageSuggestions : IManagedSuggestions
     {
         private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
         private readonly HashSet<string> wordsIndex = new HashSet<string>();
@@ -41,6 +40,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             else
             {
                 this.root = root;
+
                 // force presage to suggest the next word by adding a space 
                 if (nextWord && root.Length > 0 && Char.IsLetterOrDigit(root.Last()))
                 {
@@ -71,9 +71,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         }
 
-        private void AddToDictionary(string entry, string 
-            
-            pleteHash, DictionaryEntry newEntryWithUsageCount)
+        private void AddToDictionary(string entry, string pleteHash, DictionaryEntry newEntryWithUsageCount)
         {
 
         }
