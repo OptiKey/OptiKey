@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Collections.Generic;
+using System.Linq;
 using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -12,6 +15,29 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public CKPage()
         {
             InitializeComponent();
+        }
+
+        public string dec2hex(string dec)
+        {
+            if (dec == null || dec == "")
+            {
+                return "#000000";
+            }
+            else if (dec.StartsWith("#"))
+            {
+                return dec;
+            }
+            else
+            {
+                List<string> deccolours = dec.Split(',').ToList<string>();
+                int intR = (int)Convert.ToSingle(deccolours.ElementAt(0));
+                int intG = (int)Convert.ToSingle(deccolours.ElementAt(1));
+                int intB = (int)Convert.ToSingle(deccolours.ElementAt(2));
+                byte byteR = Convert.ToByte(intR);
+                byte byteG = Convert.ToByte(intG);
+                byte byteB = Convert.ToByte(intB);
+                return "#" + byteR.ToString("X2") + byteG.ToString("X2") + byteB.ToString("X2");
+            }
         }
 
         public static readonly DependencyProperty CKMenu00Property =
@@ -38,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo00
         {
             get { return (string)GetValue(CKBaCo00Property); }
-            set { SetValue(CKBaCo00Property, value); }
+            set { SetValue(CKBaCo00Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo00Property =
@@ -74,7 +100,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo01
         {
             get { return (string)GetValue(CKBaCo01Property); }
-            set { SetValue(CKBaCo01Property, value); }
+            set { SetValue(CKBaCo01Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo01Property =
@@ -110,7 +136,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo02
         {
             get { return (string)GetValue(CKBaCo02Property); }
-            set { SetValue(CKBaCo02Property, value); }
+            set { SetValue(CKBaCo02Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo02Property =
@@ -146,7 +172,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo03
         {
             get { return (string)GetValue(CKBaCo03Property); }
-            set { SetValue(CKBaCo03Property, value); }
+            set { SetValue(CKBaCo03Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo03Property =
@@ -182,7 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo04
         {
             get { return (string)GetValue(CKBaCo04Property); }
-            set { SetValue(CKBaCo04Property, value); }
+            set { SetValue(CKBaCo04Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo04Property =
@@ -218,7 +244,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo10
         {
             get { return (string)GetValue(CKBaCo10Property); }
-            set { SetValue(CKBaCo10Property, value); }
+            set { SetValue(CKBaCo10Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo10Property =
@@ -254,7 +280,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo11
         {
             get { return (string)GetValue(CKBaCo11Property); }
-            set { SetValue(CKBaCo11Property, value); }
+            set { SetValue(CKBaCo11Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo11Property =
@@ -290,7 +316,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo12
         {
             get { return (string)GetValue(CKBaCo12Property); }
-            set { SetValue(CKBaCo12Property, value); }
+            set { SetValue(CKBaCo12Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo12Property =
@@ -326,7 +352,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo13
         {
             get { return (string)GetValue(CKBaCo13Property); }
-            set { SetValue(CKBaCo13Property, value); }
+            set { SetValue(CKBaCo13Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo13Property =
@@ -362,7 +388,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo14
         {
             get { return (string)GetValue(CKBaCo14Property); }
-            set { SetValue(CKBaCo14Property, value); }
+            set { SetValue(CKBaCo14Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo14Property =
@@ -398,7 +424,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo20
         {
             get { return (string)GetValue(CKBaCo20Property); }
-            set { SetValue(CKBaCo20Property, value); }
+            set { SetValue(CKBaCo20Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo20Property =
@@ -434,7 +460,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo21
         {
             get { return (string)GetValue(CKBaCo21Property); }
-            set { SetValue(CKBaCo21Property, value); }
+            set { SetValue(CKBaCo21Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo21Property =
@@ -470,7 +496,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo22
         {
             get { return (string)GetValue(CKBaCo22Property); }
-            set { SetValue(CKBaCo22Property, value); }
+            set { SetValue(CKBaCo22Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo22Property =
@@ -506,7 +532,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo23
         {
             get { return (string)GetValue(CKBaCo23Property); }
-            set { SetValue(CKBaCo23Property, value); }
+            set { SetValue(CKBaCo23Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo23Property =
@@ -542,7 +568,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo24
         {
             get { return (string)GetValue(CKBaCo24Property); }
-            set { SetValue(CKBaCo24Property, value); }
+            set { SetValue(CKBaCo24Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo24Property =
@@ -578,7 +604,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo30
         {
             get { return (string)GetValue(CKBaCo30Property); }
-            set { SetValue(CKBaCo30Property, value); }
+            set { SetValue(CKBaCo30Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo30Property =
@@ -614,7 +640,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo31
         {
             get { return (string)GetValue(CKBaCo31Property); }
-            set { SetValue(CKBaCo31Property, value); }
+            set { SetValue(CKBaCo31Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo31Property =
@@ -650,7 +676,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo32
         {
             get { return (string)GetValue(CKBaCo32Property); }
-            set { SetValue(CKBaCo32Property, value); }
+            set { SetValue(CKBaCo32Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo32Property =
@@ -686,7 +712,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo33
         {
             get { return (string)GetValue(CKBaCo33Property); }
-            set { SetValue(CKBaCo33Property, value); }
+            set { SetValue(CKBaCo33Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo33Property =
@@ -722,7 +748,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKBaCo34
         {
             get { return (string)GetValue(CKBaCo34Property); }
-            set { SetValue(CKBaCo34Property, value); }
+            set { SetValue(CKBaCo34Property, dec2hex(value)); }
         }
 
         public static readonly DependencyProperty CKImSo34Property =
