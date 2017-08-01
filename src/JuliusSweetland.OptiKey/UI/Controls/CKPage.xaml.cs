@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
@@ -14,11 +15,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu00Property =
-            DependencyProperty.Register("CKMenu00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu00", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu00
+        public KeyValue CKMenu00
         {
-            get { return (string)GetValue(CKMenu00Property); }
+            get { return (KeyValue)GetValue(CKMenu00Property); }
             set { SetValue(CKMenu00Property, value); }
         }
 
@@ -50,11 +51,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu01Property =
-            DependencyProperty.Register("CKMenu01", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu01", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu01
+        public KeyValue CKMenu01
         {
-            get { return (string)GetValue(CKMenu01Property); }
+            get { return (KeyValue)GetValue(CKMenu01Property); }
             set { SetValue(CKMenu01Property, value); }
         }
 
@@ -86,11 +87,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu02Property =
-            DependencyProperty.Register("CKMenu02", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu02", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu02
+        public KeyValue CKMenu02
         {
-            get { return (string)GetValue(CKMenu02Property); }
+            get { return (KeyValue)GetValue(CKMenu02Property); }
             set { SetValue(CKMenu02Property, value); }
         }
 
@@ -122,11 +123,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu03Property =
-            DependencyProperty.Register("CKMenu03", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu03", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu03
+        public KeyValue CKMenu03
         {
-            get { return (string)GetValue(CKMenu03Property); }
+            get { return (KeyValue)GetValue(CKMenu03Property); }
             set { SetValue(CKMenu03Property, value); }
         }
 
@@ -158,11 +159,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu04Property =
-            DependencyProperty.Register("CKMenu04", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu04", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu04
+        public KeyValue CKMenu04
         {
-            get { return (string)GetValue(CKMenu04Property); }
+            get { return (KeyValue)GetValue(CKMenu04Property); }
             set { SetValue(CKMenu04Property, value); }
         }
 
@@ -194,11 +195,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu10Property =
-            DependencyProperty.Register("CKMenu10", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu10", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu10
+        public KeyValue CKMenu10
         {
-            get { return (string)GetValue(CKMenu10Property); }
+            get { return (KeyValue)GetValue(CKMenu10Property); }
             set { SetValue(CKMenu10Property, value); }
         }
 
@@ -230,11 +231,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu11Property =
-            DependencyProperty.Register("CKMenu11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu11", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu11
+        public KeyValue CKMenu11
         {
-            get { return (string)GetValue(CKMenu11Property); }
+            get { return (KeyValue)GetValue(CKMenu11Property); }
             set { SetValue(CKMenu11Property, value); }
         }
 
@@ -266,11 +267,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu12Property =
-            DependencyProperty.Register("CKMenu12", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu12", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu12
+        public KeyValue CKMenu12
         {
-            get { return (string)GetValue(CKMenu12Property); }
+            get { return (KeyValue)GetValue(CKMenu12Property); }
             set { SetValue(CKMenu12Property, value); }
         }
 
@@ -302,11 +303,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu13Property =
-            DependencyProperty.Register("CKMenu13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu13", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu13
+        public KeyValue CKMenu13
         {
-            get { return (string)GetValue(CKMenu13Property); }
+            get { return (KeyValue)GetValue(CKMenu13Property); }
             set { SetValue(CKMenu13Property, value); }
         }
 
@@ -338,11 +339,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu14Property =
-            DependencyProperty.Register("CKMenu14", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu14", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu14
+        public KeyValue CKMenu14
         {
-            get { return (string)GetValue(CKMenu14Property); }
+            get { return (KeyValue)GetValue(CKMenu14Property); }
             set { SetValue(CKMenu14Property, value); }
         }
 
@@ -374,11 +375,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu20Property =
-            DependencyProperty.Register("CKMenu20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu20", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu20
+        public KeyValue CKMenu20
         {
-            get { return (string)GetValue(CKMenu20Property); }
+            get { return (KeyValue)GetValue(CKMenu20Property); }
             set { SetValue(CKMenu20Property, value); }
         }
 
@@ -410,11 +411,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu21Property =
-            DependencyProperty.Register("CKMenu21", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu21", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu21
+        public KeyValue CKMenu21
         {
-            get { return (string)GetValue(CKMenu21Property); }
+            get { return (KeyValue)GetValue(CKMenu21Property); }
             set { SetValue(CKMenu21Property, value); }
         }
 
@@ -446,11 +447,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu22Property =
-            DependencyProperty.Register("CKMenu22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu22", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu22
+        public KeyValue CKMenu22
         {
-            get { return (string)GetValue(CKMenu22Property); }
+            get { return (KeyValue)GetValue(CKMenu22Property); }
             set { SetValue(CKMenu22Property, value); }
         }
 
@@ -482,11 +483,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu23Property =
-            DependencyProperty.Register("CKMenu23", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu23", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu23
+        public KeyValue CKMenu23
         {
-            get { return (string)GetValue(CKMenu23Property); }
+            get { return (KeyValue)GetValue(CKMenu23Property); }
             set { SetValue(CKMenu23Property, value); }
         }
 
@@ -518,11 +519,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu24Property =
-            DependencyProperty.Register("CKMenu24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu24", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu24
+        public KeyValue CKMenu24
         {
-            get { return (string)GetValue(CKMenu24Property); }
+            get { return (KeyValue)GetValue(CKMenu24Property); }
             set { SetValue(CKMenu24Property, value); }
         }
 
@@ -554,11 +555,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu30Property =
-            DependencyProperty.Register("CKMenu30", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu30", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu30
+        public KeyValue CKMenu30
         {
-            get { return (string)GetValue(CKMenu30Property); }
+            get { return (KeyValue)GetValue(CKMenu30Property); }
             set { SetValue(CKMenu30Property, value); }
         }
 
@@ -590,11 +591,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu31Property =
-            DependencyProperty.Register("CKMenu31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu31", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu31
+        public KeyValue CKMenu31
         {
-            get { return (string)GetValue(CKMenu31Property); }
+            get { return (KeyValue)GetValue(CKMenu31Property); }
             set { SetValue(CKMenu31Property, value); }
         }
 
@@ -626,11 +627,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu32Property =
-            DependencyProperty.Register("CKMenu32", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu32", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu32
+        public KeyValue CKMenu32
         {
-            get { return (string)GetValue(CKMenu32Property); }
+            get { return (KeyValue)GetValue(CKMenu32Property); }
             set { SetValue(CKMenu32Property, value); }
         }
 
@@ -662,11 +663,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu33Property =
-            DependencyProperty.Register("CKMenu33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu33", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu33
+        public KeyValue CKMenu33
         {
-            get { return (string)GetValue(CKMenu33Property); }
+            get { return (KeyValue)GetValue(CKMenu33Property); }
             set { SetValue(CKMenu33Property, value); }
         }
 
@@ -698,11 +699,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKMenu34Property =
-            DependencyProperty.Register("CKMenu34", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("CKMenu34", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
-        public string CKMenu34
+        public KeyValue CKMenu34
         {
-            get { return (string)GetValue(CKMenu34Property); }
+            get { return (KeyValue)GetValue(CKMenu34Property); }
             set { SetValue(CKMenu34Property, value); }
         }
 
@@ -736,101 +737,101 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public static readonly DependencyProperty CKMenuKey00Property =
             DependencyProperty.Register("CKMenuKey00", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey00 { get { return CKMenu00 != null && CKMenu00 != ""; } }
+        public bool CKMenuKey00 { get { return CKMenu00 != null && CKMenu00 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey01Property =
             DependencyProperty.Register("CKMenuKey01", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey01 { get { return CKMenu01 != null && CKMenu01 != ""; } }
+        public bool CKMenuKey01 { get { return CKMenu01 != null && CKMenu01 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey02Property =
             DependencyProperty.Register("CKMenuKey02", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey02 { get { return CKMenu02 != null && CKMenu02 != ""; } }
+        public bool CKMenuKey02 { get { return CKMenu02 != null && CKMenu02 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey03Property =
             DependencyProperty.Register("CKMenuKey03", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey03 { get { return CKMenu03 != null && CKMenu03 != ""; } }
+        public bool CKMenuKey03 { get { return CKMenu03 != null && CKMenu03 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey04Property =
             DependencyProperty.Register("CKMenuKey04", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey04 { get { return CKMenu04 != null && CKMenu04 != ""; } }
+        public bool CKMenuKey04 { get { return CKMenu04 != null && CKMenu04 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey10Property =
             DependencyProperty.Register("CKMenuKey10", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey10 { get { return CKMenu10 != null && CKMenu10 != ""; } }
+        public bool CKMenuKey10 { get { return CKMenu10 != null && CKMenu10 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey11Property =
             DependencyProperty.Register("CKMenuKey11", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey11 { get { return CKMenu11 != null && CKMenu11 != ""; } }
+        public bool CKMenuKey11 { get { return CKMenu11 != null && CKMenu11 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey12Property =
             DependencyProperty.Register("CKMenuKey12", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey12 { get { return CKMenu12 != null && CKMenu12 != ""; } }
+        public bool CKMenuKey12 { get { return CKMenu12 != null && CKMenu12 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey13Property =
             DependencyProperty.Register("CKMenuKey13", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey13 { get { return CKMenu13 != null && CKMenu13 != ""; } }
+        public bool CKMenuKey13 { get { return CKMenu13 != null && CKMenu13 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey14Property =
             DependencyProperty.Register("CKMenuKey14", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey14 { get { return CKMenu14 != null && CKMenu14 != ""; } }
+        public bool CKMenuKey14 { get { return CKMenu14 != null && CKMenu14 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey20Property =
             DependencyProperty.Register("CKMenuKey20", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey20 { get { return CKMenu20 != null && CKMenu20 != ""; } }
+        public bool CKMenuKey20 { get { return CKMenu20 != null && CKMenu20 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey21Property =
             DependencyProperty.Register("CKMenuKey21", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey21 { get { return CKMenu21 != null && CKMenu21 != ""; } }
+        public bool CKMenuKey21 { get { return CKMenu21 != null && CKMenu21 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey22Property =
             DependencyProperty.Register("CKMenuKey22", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey22 { get { return CKMenu22 != null && CKMenu22 != ""; } }
+        public bool CKMenuKey22 { get { return CKMenu22 != null && CKMenu22 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey23Property =
             DependencyProperty.Register("CKMenuKey23", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey23 { get { return CKMenu23 != null && CKMenu23 != ""; } }
+        public bool CKMenuKey23 { get { return CKMenu23 != null && CKMenu23 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey24Property =
             DependencyProperty.Register("CKMenuKey24", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey24 { get { return CKMenu24 != null && CKMenu24 != ""; } }
+        public bool CKMenuKey24 { get { return CKMenu24 != null && CKMenu24 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey30Property =
             DependencyProperty.Register("CKMenuKey30", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey30 { get { return CKMenu30 != null && CKMenu30 != ""; } }
+        public bool CKMenuKey30 { get { return CKMenu30 != null && CKMenu30 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey31Property =
             DependencyProperty.Register("CKMenuKey31", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey31 { get { return CKMenu31 != null && CKMenu31 != ""; } }
+        public bool CKMenuKey31 { get { return CKMenu31 != null && CKMenu31 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey32Property =
             DependencyProperty.Register("CKMenuKey32", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey32 { get { return CKMenu32 != null && CKMenu32 != ""; } }
+        public bool CKMenuKey32 { get { return CKMenu32 != null && CKMenu32 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey33Property =
             DependencyProperty.Register("CKMenuKey33", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey33 { get { return CKMenu33 != null && CKMenu33 != ""; } }
+        public bool CKMenuKey33 { get { return CKMenu33 != null && CKMenu33 != KeyValues.CommuniKate_; } }
 
         public static readonly DependencyProperty CKMenuKey34Property =
             DependencyProperty.Register("CKMenuKey34", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey34 { get { return CKMenu34 != null && CKMenu34 != ""; } }
+        public bool CKMenuKey34 { get { return CKMenu34 != null && CKMenu34 != KeyValues.CommuniKate_; } }
     }
 }
