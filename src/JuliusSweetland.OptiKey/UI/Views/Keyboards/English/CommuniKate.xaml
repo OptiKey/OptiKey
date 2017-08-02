@@ -51,11 +51,17 @@
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.BackManyKey}"/>
-        <controls:Key Grid.Row="0" Grid.Column="9"
+        <controls:Key Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6"
                       SymbolGeometry="{StaticResource SpeakIcon}"
-                      Text="{x:Static resx:Resources.SPEAK}"
+                      Text=""
+                      HasImage="True"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SpeakKey}"/>
+        <controls:Key Grid.Row="0" Grid.Column="9"
+                      SymbolGeometry="{StaticResource SleepIcon}"
+                      Text="{x:Static resx:Resources.SLEEP}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.SleepKey}"/>
 
         <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10">
             <ContentControl.Style>

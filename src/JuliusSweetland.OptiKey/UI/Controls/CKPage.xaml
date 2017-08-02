@@ -65,7 +65,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText00, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText00, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText00, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -76,7 +76,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText00, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu00, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -122,7 +122,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText01, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText01, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText01, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -133,7 +133,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText01, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu01, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -179,7 +179,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText02, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText02, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText02, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -190,7 +190,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText02, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu02, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -236,7 +236,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText03, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText03, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText03, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -247,7 +247,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText03, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu03, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -293,7 +293,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText04, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText04, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText04, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -304,7 +304,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText04, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu04, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -351,7 +351,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText10, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText10, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText10, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -362,7 +362,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText10, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu10, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -408,7 +408,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText11, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText11, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText11, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -419,7 +419,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText11, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu11, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -465,7 +465,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText12, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText12, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText12, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -476,7 +476,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText12, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu12, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -522,7 +522,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText13, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText13, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText13, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -533,7 +533,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText13, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu13, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -579,7 +579,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText14, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText14, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText14, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -590,7 +590,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText14, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu14, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -637,7 +637,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText20, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText20, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText20, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -648,7 +648,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText20, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu20, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -694,7 +694,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText21, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText21, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText21, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -705,7 +705,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText21, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu21, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -751,7 +751,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText22, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText22, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText22, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -762,7 +762,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText22, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu22, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -808,7 +808,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText23, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText23, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText23, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -819,7 +819,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText23, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu23, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -865,7 +865,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText24, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText24, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText24, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -876,7 +876,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText24, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu24, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -923,7 +923,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText30, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText30, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText30, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -934,7 +934,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText30, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu30, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -980,7 +980,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText31, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText31, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText31, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -991,7 +991,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText31, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu31, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -1037,7 +1037,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText32, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText32, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText32, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -1048,7 +1048,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText32, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu32, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -1094,7 +1094,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText33, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText33, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText33, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -1105,7 +1105,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText33, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu33, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
@@ -1151,7 +1151,7 @@
                         <Setter Property="Content">
                             <Setter.Value>
                                 <controls:Key SharedSizeGroup="KeyWithText"
-                                              HasImage="True" SymbolGeometry="" 
+                                              HasImage="True" 
                                               ShiftUpText="{Binding Path=CKText34, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               ShiftDownText="{Binding Path=CKText34, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"
                                               Value="{Binding Path=CKText34, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
@@ -1162,7 +1162,7 @@
                                 <Setter Property="Content">
                                     <Setter.Value>
                                         <controls:Key SharedSizeGroup="KeyWithText"
-                                                      HasImage="True" SymbolGeometry="" 
+                                                      HasImage="True" 
                                                       Text="{Binding Path=CKText34, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}" 
                                                       Value="{Binding Path=CKMenu34, RelativeSource={RelativeSource AncestorType={x:Type controls:CKPage}}}"/>
                                     </Setter.Value>
