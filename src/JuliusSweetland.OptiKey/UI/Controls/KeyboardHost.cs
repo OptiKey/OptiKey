@@ -415,7 +415,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 if (key.IsVisible
                     && PresentationSource.FromVisual(key) != null
-                    && (key.Value.FunctionKey != null || key.Value.String != null))
+                    && key.Value != null 
+		    && key.Value.HasContent() )
                 {
                     var rect = new Rect
                     {

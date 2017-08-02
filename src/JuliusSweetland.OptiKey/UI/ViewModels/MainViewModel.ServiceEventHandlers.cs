@@ -140,6 +140,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
+        
 
         public void DetachInputServiceEventHandlers()
         {
@@ -152,30 +153,81 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.SelectionResult -= inputServiceSelectionResultHandler;
 
             Log.Info("DetachInputServiceEventHandlers complete.");
+
+        }
+        
+	private void ProcessKeyValueLink(KeyValueLink keyValue)
+        {
+            // Placeholder for now
+            Log.InfoFormat("link key found! {0}", keyValue.ToString());    
+        
+            var currentKeyboard = Keyboard;
+
+            Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+            Action backAction = () =>
+            {
+                reinstateModifiers();
+                Keyboard = currentKeyboard;
+
+                // Clear the keyboard when leaving keyboard.
+                // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky
+                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+
+            };
+
+            // TODO: implement customkeyboard 
+            // Keyboard = new CustomKeyboard(backAction, keyValue.Keyboard);
+
         }
 
-        private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
+        private void ProcessKeyValuePress(KeyValuePress keyValue)
         {
-            //Single key
+            // Placeholder for now
+            Log.InfoFormat("keypress key found! : {0}", keyValue.ToString());
+            keyboardOutputService.ProcessSingleKeyPress(keyValue.Key, keyValue.Type, keyValue.DurationMs);
+        }
+
+        private void ProcessBasicKeyValue(KeyValue singleKeyValue)
+        {
+            Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
+                singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
+
+            keyStateService.ProgressKeyDownState(singleKeyValue);
+
+            if (!string.IsNullOrEmpty(singleKeyValue.String))
+            {
+                //Single key string
+                keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
+            }
+
+            if (singleKeyValue.FunctionKey != null)
+            {
+                //Single key function key
+                HandleFunctionKeySelectionResult(singleKeyValue);
+            }
+        }
+	private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
+        {
+            // Pass single key to appropriate processing function
             if (singleKeyValue != null)
             {
-                Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'", 
-                    singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
+                KeyValueLink kv_link = singleKeyValue as KeyValueLink;
+                KeyValuePress kv_press = singleKeyValue as KeyValuePress;
 
-                keyStateService.ProgressKeyDownState(singleKeyValue);
-
-                if (!string.IsNullOrEmpty(singleKeyValue.String))
+                if (kv_link != null)
                 {
-                    //Single key string
-                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
+                    ProcessKeyValueLink(kv_link);
                 }
-
-                if (singleKeyValue.FunctionKey != null)
+                else if (kv_press != null) 
                 {
-                    //Single key function key
-                    HandleFunctionKeySelectionResult(singleKeyValue);
+                    ProcessKeyValuePress(kv_press);
+                }
+                else 
+                {
+                    ProcessBasicKeyValue(singleKeyValue);
                 }
             }
+            
             
             //Multi key selection
             if (multiKeySelection != null

@@ -12,56 +12,41 @@ using JuliusSweetland.OptiKey.Extensions;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    [TypeConverter(typeof(KeyValueConverter))]
-    public class KeyValue : IEquatable<KeyValue>
+    [TypeConverter(typeof(KeyValueLinkConverter))]
+    public class KeyValueLink : KeyValue, IEquatable<KeyValueLink>
     {
 
-        private readonly FunctionKeys? functionKey;
-        private readonly string str;
+        // TODO: May hold ID or file path or something else?
+        private readonly string keyboardLink;
 
-        public KeyValue()
+        public KeyValueLink() : base()
         {
-            this.functionKey = null;
-            this.str = null;
+            this.keyboardLink = null;
         }
 
-        public KeyValue(FunctionKeys functionKey)
+        public KeyValueLink(string keyboardLink)
         {
-            this.functionKey = functionKey;
-            this.str = null;
+            this.keyboardLink = keyboardLink;
         }
 
-        public KeyValue(string str)
+        public override bool HasContent()
         {
-            this.functionKey = null;
-            this.str = str;
+            return (this.keyboardLink != null);
         }
 
-        public KeyValue(FunctionKeys? functionKey, string str)
-        {
-            this.functionKey = functionKey;
-            this.str = str;
-        }
+        public string Keyboard { get { return keyboardLink; } }
 
-        public FunctionKeys? FunctionKey { get { return functionKey; } }
-        public string String { get { return str; } }
-
-        public bool StringIsLetter
-        {
-            get { return String != null && String.Length == 1 && char.IsLetter(String, 0); }
-        }
-        
         #region IEquatable
 
-        public static bool Equals(KeyValue x, KeyValue y)
+        public static bool Equals(KeyValueLink x, KeyValueLink y)
         {
             return x == y;
         }
 
         public override bool Equals(System.Object obj)
         {
-            // If parameter cannot be cast to KeyValue return false:
-            KeyValue p = obj as KeyValue;
+            // If parameter cannot be cast to KeyValueLink return false:
+            KeyValueLink p = obj as KeyValueLink;
             if ((object)p == null)
             {
                 return false;
@@ -71,13 +56,13 @@ namespace JuliusSweetland.OptiKey.Models
             return (p == this);
         }
 
-        public bool Equals(KeyValue kv)
+        public bool Equals(KeyValueLink kv)
         {
             if (ReferenceEquals(null, kv)) return false;
             else return (this == kv);   
         }
 
-        public static bool operator ==(KeyValue x, KeyValue y)
+        public static bool operator ==(KeyValueLink x, KeyValueLink y)
         {
             // If both are null, or both are same instance, return true.
             if (System.Object.ReferenceEquals(x, y))
@@ -91,15 +76,11 @@ namespace JuliusSweetland.OptiKey.Models
                 return false;
             }
 
-            // Return true if the fields and hash codes match
-            // Hash code check allows us to account for differences in 
-            // subclasses, even if the (KeyValue) parts are equal.
-            return (x.FunctionKey == y.FunctionKey)
-                && (x.String == y.String)
-                && x.GetHashCode() == y.GetHashCode();
+            // Return true if the fields match:
+            return (x.Keyboard == y.Keyboard);
         }
 
-        public static bool operator !=(KeyValue x, KeyValue y)
+        public static bool operator !=(KeyValueLink x, KeyValueLink y)
         {
             return !(x == y);
         }
@@ -108,9 +89,8 @@ namespace JuliusSweetland.OptiKey.Models
         {
             unchecked
             {
-                int hash = 13;
-                hash = (hash * 397) ^ (FunctionKey != null ? FunctionKey.GetHashCode() : 0);
-                hash = (hash * 397) ^ (String != null ? String.GetHashCode() : 0);
+                int hash = 17;
+                hash = (hash * 389) ^ (Keyboard != null ? Keyboard.GetHashCode() : 0);
                 return hash;
             }
         }
@@ -121,33 +101,16 @@ namespace JuliusSweetland.OptiKey.Models
         {
             var stringBuilder = new StringBuilder();
 
-            if (FunctionKey != null)
+            if (Keyboard != null)
             {
-                stringBuilder.Append(FunctionKey);
-            }
-
-            if (String != null)
-            {
-                if (stringBuilder.Length > 0)
-                {
-                    stringBuilder.Append(",");
-                }
-
-                //Special chars such as '\n' have meaning in a string - convert to literal strings.
-                //This is also required by the Key property as Key is used in dictionary indexes, for example.
-                stringBuilder.Append(String.ToPrintableString());
+                stringBuilder.Append(Keyboard);
             }
             
             return stringBuilder.ToString();
         }
-
-        public virtual bool HasContent() {            
-            return (FunctionKey != null) ||
-                   (String != null); 
-        }
     }
 
-    public sealed class KeyValueConverter : TypeConverter
+    public sealed class KeyValueLinkConverter : TypeConverter
     {
         // The ITypeDescriptorContext interface provides the context for the
         // conversion. Typically, this interface is used at design time to 
@@ -168,7 +131,7 @@ namespace JuliusSweetland.OptiKey.Models
             var text = value as string;
             if (text!=null)
             {
-                return new KeyValue(text);
+                return new KeyValueLink(text);
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -178,7 +141,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             if (destinationType == typeof(string))
             {
-                return ((KeyValue)value).String;
+                return ((KeyValueLink)value).String;
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }

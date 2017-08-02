@@ -371,6 +371,13 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void ProcessSingleKeyPress(string key, KeyValuePress.KeyPressType type, int delayMs = 0)
+        {
+            // TODO
+            throw new NotImplementedException();            
+        }
+
+
         private string ComposeDiacritics(string input)
         {
             Log.InfoFormat("Composing diacritics on '{0}'", input);
