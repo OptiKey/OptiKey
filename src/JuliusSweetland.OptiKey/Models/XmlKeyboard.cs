@@ -2,6 +2,7 @@
 using log4net;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Media;
 using System.Xml;
 using System.Xml.Serialization;
@@ -36,6 +37,29 @@ namespace JuliusSweetland.OptiKey.Models
         public double? SymbolMargin
         { get; set; }
 
+        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        [XmlIgnore]
+        public Thickness? BorderThickness
+        { get; set; }
+
+        [XmlElement("BorderThickness")]
+        public string BorderThicknessAsString
+        {
+            get { return BorderThickness.ToString(); }
+            set {
+                try
+                {
+                    ThicknessConverter thicknessConverter = new ThicknessConverter();
+                    BorderThickness = (Thickness)thicknessConverter.ConvertFromString(value);
+                }
+                catch (System.FormatException)
+                {
+                    Log.ErrorFormat("Cannot interpret \"{0}\" as thickness", value);                
+                }
+            }
+        }        
+        
         [XmlIgnore]
         public bool Hidden
         { get; set; }

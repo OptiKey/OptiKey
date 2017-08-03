@@ -9,7 +9,7 @@ using System.Linq;
 using System.Windows.Media;
 using System.Reflection;
 using log4net;
-
+using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -292,6 +292,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     resizeAction(keyboard.Height.Value);
                 }
+            }
+
+            // Get border thickness, if specified, to override
+            if (keyboard.BorderThickness.HasValue)
+            {
+                Log.InfoFormat("Setting border thickness for custom keyboard: {0}!!",
+                               keyboard.BorderThickness.Value);
+                this.BorderThickness = keyboard.BorderThickness.Value;
             }
         }
 
