@@ -321,7 +321,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public bool HasSymbol { get { return SymbolGeometry != null; } }
-        public bool HasText { get { return ShiftUpText != null || ShiftDownText != null; } }
+        public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
+                                           !String.IsNullOrEmpty(ShiftDownText); } }
 
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
