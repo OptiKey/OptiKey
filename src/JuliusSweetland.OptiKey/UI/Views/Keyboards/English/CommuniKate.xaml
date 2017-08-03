@@ -63,7 +63,30 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.SleepKey}"/>
 
-        <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10">
+        <controls:CK20Page Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10"
+                           CKPageFile="questions"
+                            CKMenu00="{x:Static models:KeyValues.CommuniKate_00key}"
+                            CKMenu01="{x:Static models:KeyValues.CommuniKate_01key}"
+                            CKMenu02="{x:Static models:KeyValues.CommuniKate_02key}"
+                            CKMenu03="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu04="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu10="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu11="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu12="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu13="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu14="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu20="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu21="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu22="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu23="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu24="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu30="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu31="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu32="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu33="{x:Static models:KeyValues.CommuniKate_}"
+                            CKMenu34="{x:Static models:KeyValues.CommuniKate_}" />
+
+        <!--ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
                     <Setter Property="Content">
@@ -1089,6 +1112,6 @@
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>
-        </ContentControl>
+        </-->
     </Grid>
 </controls:KeyboardView>

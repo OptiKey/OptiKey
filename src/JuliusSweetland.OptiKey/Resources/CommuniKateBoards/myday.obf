@@ -1,0 +1,166 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S40X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "10", 
+      "image_id": "", 
+      "label": "My day"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S40X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S40X0Y1toppage.png", 
+      "label": "Top Page", 
+      "load_board": {
+        "path": "boards/toppage.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(125,255,206)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "11", 
+      "image_id": "S40X1Y1spelling.png", 
+      "label": "Spelling", 
+      "load_board": {
+        "path": "boards/spelling.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(1,231,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "21", 
+      "image_id": "S40X2Y1numbers.png", 
+      "label": "numbers", 
+      "load_board": {
+        "path": "boards/numbers.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "31", 
+      "image_id": "S40X3Y1timetable.png", 
+      "label": "Timetable"
+    }, 
+    {
+      "background_color": "rgb(255,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "41", 
+      "image_id": "S40X4Y1computercontrol.png", 
+      "label": "Computer control"
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        "10", 
+        null, 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        "11", 
+        "21", 
+        "31", 
+        "41"
+      ], 
+      [
+        null, 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        null, 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        null, 
+        null, 
+        null, 
+        null, 
+        null
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "myday", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X0Y0yes.png", 
+      "path": "images/S40X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X4Y0no.png", 
+      "path": "images/S40X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X0Y1toppage.png", 
+      "path": "images/S40X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X1Y1spelling.png", 
+      "path": "images/S40X1Y1spelling.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X2Y1numbers.png", 
+      "path": "images/S40X2Y1numbers.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X3Y1timetable.png", 
+      "path": "images/S40X3Y1timetable.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S40X4Y1computercontrol.png", 
+      "path": "images/S40X4Y1computercontrol.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate myday", 
+  "sounds": []
+}

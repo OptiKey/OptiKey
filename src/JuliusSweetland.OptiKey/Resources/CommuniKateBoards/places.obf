@@ -1,0 +1,379 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S87X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "10", 
+      "image_id": "", 
+      "label": "places"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S87X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S87X0Y1toppage.png", 
+      "label": "Top Page", 
+      "load_board": {
+        "path": "boards/toppage.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "11", 
+      "image_id": "S87X1Y1place.png", 
+      "label": "place"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "21", 
+      "image_id": "S87X2Y1mydayplaces.png", 
+      "label": "My day places"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "31", 
+      "image_id": "S87X3Y1shops.png", 
+      "label": "shops", 
+      "load_board": {
+        "path": "boards/shops.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "41", 
+      "image_id": "S87X4Y1placesoutside.png", 
+      "label": "places outside", 
+      "load_board": {
+        "path": "boards/outsideplaces.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "02", 
+      "image_id": "S87X0Y2work.png", 
+      "label": "work"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "12", 
+      "image_id": "S87X1Y2schoolcollege.png", 
+      "label": "School /  college"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "22", 
+      "image_id": "S87X2Y2town.png", 
+      "label": "town"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "32", 
+      "image_id": "S87X3Y2hospital.png", 
+      "label": "hospital"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "42", 
+      "image_id": "S87X4Y2airport.png", 
+      "label": "airport"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "03", 
+      "image_id": "S87X0Y3dentist.png", 
+      "label": "dentist"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "13", 
+      "image_id": "S87X1Y3bank.png", 
+      "label": "bank"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "23", 
+      "image_id": "S87X2Y3doctors.png", 
+      "label": "doctors"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "33", 
+      "image_id": "S87X3Y3pool.png", 
+      "label": "pool"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "43", 
+      "image_id": "S87X4Y3restaurant.png", 
+      "label": "restaurant"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "04", 
+      "image_id": "S87X0Y4library.png", 
+      "label": "library"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "14", 
+      "image_id": "S87X1Y4pub.png", 
+      "label": "pub"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "24", 
+      "image_id": "S87X2Y4postoffice.png", 
+      "label": "post office"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "34", 
+      "image_id": "S87X3Y4cinema.png", 
+      "label": "cinema"
+    }, 
+    {
+      "background_color": "rgb(102,0,102)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "44", 
+      "image_id": "S87X4Y4home.png", 
+      "label": "home", 
+      "load_board": {
+        "path": "boards/home.obf"
+      }
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        "10", 
+        null, 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        "11", 
+        "21", 
+        "31", 
+        "41"
+      ], 
+      [
+        "02", 
+        "12", 
+        "22", 
+        "32", 
+        "42"
+      ], 
+      [
+        "03", 
+        "13", 
+        "23", 
+        "33", 
+        "43"
+      ], 
+      [
+        "04", 
+        "14", 
+        "24", 
+        "34", 
+        "44"
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "places", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X0Y0yes.png", 
+      "path": "images/S87X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X4Y0no.png", 
+      "path": "images/S87X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X0Y1toppage.png", 
+      "path": "images/S87X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X1Y1place.png", 
+      "path": "images/S87X1Y1place.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X2Y1mydayplaces.png", 
+      "path": "images/S87X2Y1mydayplaces.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X3Y1shops.png", 
+      "path": "images/S87X3Y1shops.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X4Y1placesoutside.png", 
+      "path": "images/S87X4Y1placesoutside.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X0Y2work.png", 
+      "path": "images/S87X0Y2work.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X1Y2schoolcollege.png", 
+      "path": "images/S87X1Y2schoolcollege.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X2Y2town.png", 
+      "path": "images/S87X2Y2town.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X3Y2hospital.png", 
+      "path": "images/S87X3Y2hospital.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X4Y2airport.png", 
+      "path": "images/S87X4Y2airport.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X0Y3dentist.png", 
+      "path": "images/S87X0Y3dentist.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X1Y3bank.png", 
+      "path": "images/S87X1Y3bank.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X2Y3doctors.png", 
+      "path": "images/S87X2Y3doctors.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X3Y3pool.png", 
+      "path": "images/S87X3Y3pool.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X4Y3restaurant.png", 
+      "path": "images/S87X4Y3restaurant.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X0Y4library.png", 
+      "path": "images/S87X0Y4library.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X1Y4pub.png", 
+      "path": "images/S87X1Y4pub.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X2Y4postoffice.png", 
+      "path": "images/S87X2Y4postoffice.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X3Y4cinema.png", 
+      "path": "images/S87X3Y4cinema.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S87X4Y4home.png", 
+      "path": "images/S87X4Y4home.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate places", 
+  "sounds": []
+}

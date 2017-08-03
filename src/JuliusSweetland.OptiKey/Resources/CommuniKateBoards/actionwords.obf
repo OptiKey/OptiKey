@@ -1,0 +1,366 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S46X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "10", 
+      "image_id": "", 
+      "label": "Action words"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S46X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S46X0Y1toppage.png", 
+      "label": "Top Page", 
+      "load_board": {
+        "path": "boards/toppage.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "11", 
+      "image_id": "S46X1Y1do.png", 
+      "label": "do"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "21", 
+      "image_id": "S46X2Y1help.png", 
+      "label": "help"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "31", 
+      "image_id": "S46X3Y1look.png", 
+      "label": "look"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "41", 
+      "image_id": "S46X4Y1see.png", 
+      "label": "see"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "02", 
+      "image_id": "S46X0Y2stop.png", 
+      "label": "stop"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "12", 
+      "image_id": "", 
+      "label": "come"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "22", 
+      "image_id": "S46X2Y2get.png", 
+      "label": "get"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "32", 
+      "image_id": "S46X3Y2give.png", 
+      "label": "give"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "42", 
+      "image_id": "S46X4Y2think.png", 
+      "label": "think"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "03", 
+      "image_id": "S46X0Y3like.png", 
+      "label": "like"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "13", 
+      "image_id": "S46X1Y3listen.png", 
+      "label": "listen"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "23", 
+      "image_id": "S46X2Y3make.png", 
+      "label": "make"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "33", 
+      "image_id": "S46X3Y3put.png", 
+      "label": "put"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "43", 
+      "image_id": "S46X4Y3tell.png", 
+      "label": "tell"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "04", 
+      "image_id": "S46X0Y4take.png", 
+      "label": "take"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "14", 
+      "image_id": "S46X1Y4turn.png", 
+      "label": "turn"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "24", 
+      "image_id": "S46X2Y4open.png", 
+      "label": "open"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "34", 
+      "image_id": "S46X3Y4close.png", 
+      "label": "close"
+    }, 
+    {
+      "background_color": "rgb(255,3,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "44", 
+      "image_id": "S46X4Y4moreactionwords.png", 
+      "label": "More action words", 
+      "load_board": {
+        "path": "boards/moreactionwords.obf"
+      }
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        "10", 
+        null, 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        "11", 
+        "21", 
+        "31", 
+        "41"
+      ], 
+      [
+        "02", 
+        "12", 
+        "22", 
+        "32", 
+        "42"
+      ], 
+      [
+        "03", 
+        "13", 
+        "23", 
+        "33", 
+        "43"
+      ], 
+      [
+        "04", 
+        "14", 
+        "24", 
+        "34", 
+        "44"
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "actionwords", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X0Y0yes.png", 
+      "path": "images/S46X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X4Y0no.png", 
+      "path": "images/S46X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X0Y1toppage.png", 
+      "path": "images/S46X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X1Y1do.png", 
+      "path": "images/S46X1Y1do.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X2Y1help.png", 
+      "path": "images/S46X2Y1help.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X3Y1look.png", 
+      "path": "images/S46X3Y1look.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X4Y1see.png", 
+      "path": "images/S46X4Y1see.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X0Y2stop.png", 
+      "path": "images/S46X0Y2stop.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X2Y2get.png", 
+      "path": "images/S46X2Y2get.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X3Y2give.png", 
+      "path": "images/S46X3Y2give.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X4Y2think.png", 
+      "path": "images/S46X4Y2think.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X0Y3like.png", 
+      "path": "images/S46X0Y3like.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X1Y3listen.png", 
+      "path": "images/S46X1Y3listen.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X2Y3make.png", 
+      "path": "images/S46X2Y3make.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X3Y3put.png", 
+      "path": "images/S46X3Y3put.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X4Y3tell.png", 
+      "path": "images/S46X4Y3tell.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X0Y4take.png", 
+      "path": "images/S46X0Y4take.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X1Y4turn.png", 
+      "path": "images/S46X1Y4turn.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X2Y4open.png", 
+      "path": "images/S46X2Y4open.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X3Y4close.png", 
+      "path": "images/S46X3Y4close.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S46X4Y4moreactionwords.png", 
+      "path": "images/S46X4Y4moreactionwords.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate actionwords", 
+  "sounds": []
+}

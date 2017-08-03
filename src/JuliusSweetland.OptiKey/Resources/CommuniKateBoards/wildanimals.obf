@@ -1,0 +1,314 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S61X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "10", 
+      "image_id": "", 
+      "label": "Wild animals"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S61X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S61X0Y1toppage.png", 
+      "label": "Top Page", 
+      "load_board": {
+        "path": "boards/toppage.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "11", 
+      "image_id": "S61X1Y1wildanimal.png", 
+      "label": "wild animal"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "21", 
+      "image_id": "S61X2Y1zebra.png", 
+      "label": "zebra"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "31", 
+      "image_id": "S61X3Y1snake.png", 
+      "label": "snake"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "41", 
+      "image_id": "S61X4Y1monkey.png", 
+      "label": "monkey"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "02", 
+      "image_id": "S61X0Y2bear.png", 
+      "label": "bear"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "12", 
+      "image_id": "S61X1Y2camel.png", 
+      "label": "camel"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "22", 
+      "image_id": "S61X2Y2cheetah.png", 
+      "label": "cheetah"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "32", 
+      "image_id": "S61X3Y2deer.png", 
+      "label": "deer"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "42", 
+      "image_id": "S61X4Y2elephant.png", 
+      "label": "elephant"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "03", 
+      "image_id": "S61X0Y3giraffe.png", 
+      "label": "giraffe"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "13", 
+      "image_id": "S61X1Y3gorilla.png", 
+      "label": "gorilla"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "23", 
+      "image_id": "S61X2Y3hippo.png", 
+      "label": "hippo"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "33", 
+      "image_id": "S61X3Y3lion.png", 
+      "label": "lion"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "43", 
+      "image_id": "S61X4Y3tiger.png", 
+      "label": "tiger"
+    }, 
+    {
+      "background_color": "rgb(255,255,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "04", 
+      "image_id": "S61X0Y4rhinoceros.png", 
+      "label": "rhinoceros"
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        "10", 
+        null, 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        "11", 
+        "21", 
+        "31", 
+        "41"
+      ], 
+      [
+        "02", 
+        "12", 
+        "22", 
+        "32", 
+        "42"
+      ], 
+      [
+        "03", 
+        "13", 
+        "23", 
+        "33", 
+        "43"
+      ], 
+      [
+        "04", 
+        null, 
+        null, 
+        null, 
+        null
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "wildanimals", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X0Y0yes.png", 
+      "path": "images/S61X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X4Y0no.png", 
+      "path": "images/S61X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X0Y1toppage.png", 
+      "path": "images/S61X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X1Y1wildanimal.png", 
+      "path": "images/S61X1Y1wildanimal.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X2Y1zebra.png", 
+      "path": "images/S61X2Y1zebra.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X3Y1snake.png", 
+      "path": "images/S61X3Y1snake.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X4Y1monkey.png", 
+      "path": "images/S61X4Y1monkey.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X0Y2bear.png", 
+      "path": "images/S61X0Y2bear.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X1Y2camel.png", 
+      "path": "images/S61X1Y2camel.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X2Y2cheetah.png", 
+      "path": "images/S61X2Y2cheetah.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X3Y2deer.png", 
+      "path": "images/S61X3Y2deer.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X4Y2elephant.png", 
+      "path": "images/S61X4Y2elephant.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X0Y3giraffe.png", 
+      "path": "images/S61X0Y3giraffe.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X1Y3gorilla.png", 
+      "path": "images/S61X1Y3gorilla.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X2Y3hippo.png", 
+      "path": "images/S61X2Y3hippo.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X3Y3lion.png", 
+      "path": "images/S61X3Y3lion.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X4Y3tiger.png", 
+      "path": "images/S61X4Y3tiger.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S61X0Y4rhinoceros.png", 
+      "path": "images/S61X0Y4rhinoceros.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate wildanimals", 
+  "sounds": []
+}

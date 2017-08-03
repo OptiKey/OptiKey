@@ -1,0 +1,139 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S96X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "10", 
+      "image_id": "", 
+      "label": "Show pictures"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S96X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S96X0Y1toppage.png", 
+      "label": "Top Page", 
+      "load_board": {
+        "path": "boards/toppage.obf"
+      }
+    }, 
+    {
+      "background_color": "rgb(51,102,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "02", 
+      "image_id": "", 
+      "label": "About this pic"
+    }, 
+    {
+      "background_color": "rgb(51,102,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "03", 
+      "image_id": "S96X0Y3previousphoto.png", 
+      "label": "Previous photo"
+    }, 
+    {
+      "background_color": "rgb(51,102,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "04", 
+      "image_id": "S96X0Y4nextphoto.png", 
+      "label": "Next photo"
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        "10", 
+        null, 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        "02", 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        "03", 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        "04", 
+        null, 
+        null, 
+        null, 
+        null
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "showpictures", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S96X0Y0yes.png", 
+      "path": "images/S96X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S96X4Y0no.png", 
+      "path": "images/S96X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S96X0Y1toppage.png", 
+      "path": "images/S96X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S96X0Y3previousphoto.png", 
+      "path": "images/S96X0Y3previousphoto.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S96X0Y4nextphoto.png", 
+      "path": "images/S96X0Y4nextphoto.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate showpictures", 
+  "sounds": []
+}

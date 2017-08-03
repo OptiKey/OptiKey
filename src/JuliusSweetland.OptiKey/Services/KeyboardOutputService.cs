@@ -192,467 +192,488 @@ namespace JuliusSweetland.OptiKey.Services
                     break;
 
                 case FunctionKeys.CommuniKate_Home:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "";
+                    break;
+
+                case FunctionKeys.CommuniKate_00:
+                    int element00 = 0;
+                    if (Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element00) != null)
+                        Settings.Default.KeyboardCurrentContext = 
+                            Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element00);
+                    break;
+
+                case FunctionKeys.CommuniKate_01:
+                    int element01 = 1;
+                    if (Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element01) != null)
+                        Settings.Default.KeyboardCurrentContext = 
+                            Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element01);
+                    break;
+
+                case FunctionKeys.CommuniKate_02:
+                    int element02 = 2;
+                    if (Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element02) != null)
+                        Settings.Default.KeyboardCurrentContext = 
+                            Settings.Default.CommuniKateKeyboardCurrentContext.ElementAt(element02);
                     break;
 
                 case FunctionKeys.CommuniKate_1_235:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_235";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_235";
                     break;
 
                 case FunctionKeys.CommuniKate_1_236:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_236";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_236";
                     break;
 
                 case FunctionKeys.CommuniKate_1_237:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_237";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_237";
                     break;
 
                 case FunctionKeys.CommuniKate_1_238:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_238";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_238";
                     break;
 
                 case FunctionKeys.CommuniKate_1_239:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_239";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_239";
                     break;
 
                 case FunctionKeys.CommuniKate_1_240:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_240";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_240";
                     break;
 
                 case FunctionKeys.CommuniKate_1_241:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_241";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_241";
                     break;
 
                 case FunctionKeys.CommuniKate_1_242:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_242";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_242";
                     break;
 
                 case FunctionKeys.CommuniKate_1_243:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_243";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_243";
                     break;
 
                 case FunctionKeys.CommuniKate_1_244:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_244";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_244";
                     break;
 
                 case FunctionKeys.CommuniKate_1_245:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_245";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_245";
                     break;
 
                 case FunctionKeys.CommuniKate_1_246:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_246";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_246";
                     break;
 
                 case FunctionKeys.CommuniKate_1_247:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_247";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_247";
                     break;
 
                 case FunctionKeys.CommuniKate_1_248:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_248";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_248";
                     break;
 
                 case FunctionKeys.CommuniKate_1_249:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_249";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_1_249";
                     break;
 
                 case FunctionKeys.CommuniKate_insects:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_insects";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_insects";
                     break;
 
                 case FunctionKeys.CommuniKate_money:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_money";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_money";
                     break;
 
                 case FunctionKeys.CommuniKate_shape:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_shape";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_shape";
                     break;
 
                 case FunctionKeys.CommuniKate_mp3:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_mp3";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_mp3";
                     break;
 
                 case FunctionKeys.CommuniKate_questions:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_questions";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_questions";
                     break;
 
                 case FunctionKeys.CommuniKate_inserttitlehere:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_inserttitlehere";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_inserttitlehere";
                     break;
 
                 case FunctionKeys.CommuniKate_birds:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_birds";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_birds";
                     break;
 
                 case FunctionKeys.CommuniKate_workthings:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_workthings";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_workthings";
                     break;
 
                 case FunctionKeys.CommuniKate_aboutme:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_aboutme";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_aboutme";
                     break;
 
                 case FunctionKeys.CommuniKate_thingsthathelp:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_thingsthathelp";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_thingsthathelp";
                     break;
 
                 case FunctionKeys.CommuniKate_wml:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wml";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wml";
                     break;
 
                 case FunctionKeys.CommuniKate_nzcaps:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nzcaps";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nzcaps";
                     break;
 
                 case FunctionKeys.CommuniKate_foodchat:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_foodchat";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_foodchat";
                     break;
 
                 case FunctionKeys.CommuniKate_food:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_food";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_food";
                     break;
 
                 case FunctionKeys.CommuniKate_leisure:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_leisure";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_leisure";
                     break;
 
                 case FunctionKeys.CommuniKate_lunch:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_lunch";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_lunch";
                     break;
 
                 case FunctionKeys.CommuniKate_flavour:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_flavour";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_flavour";
                     break;
 
                 case FunctionKeys.CommuniKate_fizzydrinks:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fizzydrinks";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fizzydrinks";
                     break;
 
                 case FunctionKeys.CommuniKate_furniture:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_furniture";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_furniture";
                     break;
 
                 case FunctionKeys.CommuniKate_fastfood:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fastfood";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fastfood";
                     break;
 
                 case FunctionKeys.CommuniKate_places:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_places";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_places";
                     break;
 
                 case FunctionKeys.CommuniKate_meal:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_meal";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_meal";
                     break;
 
                 case FunctionKeys.CommuniKate_clothes:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_clothes";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_clothes";
                     break;
 
                 case FunctionKeys.CommuniKate_spellingcaps:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_spellingcaps";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_spellingcaps";
                     break;
 
                 case FunctionKeys.CommuniKate_gardening:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_gardening";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_gardening";
                     break;
 
                 case FunctionKeys.CommuniKate_people:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_people";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_people";
                     break;
 
                 case FunctionKeys.CommuniKate_specialdays:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_specialdays";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_specialdays";
                     break;
 
                 case FunctionKeys.CommuniKate_iwant:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_iwant";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_iwant";
                     break;
 
                 case FunctionKeys.CommuniKate_computer:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_computer";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_computer";
                     break;
 
                 case FunctionKeys.CommuniKate_home:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_home";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_home";
                     break;
 
                 case FunctionKeys.CommuniKate_sauces:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_sauces";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_sauces";
                     break;
 
                 case FunctionKeys.CommuniKate_drinks:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_drinks";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_drinks";
                     break;
 
                 case FunctionKeys.CommuniKate_describing:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_describing";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_describing";
                     break;
 
                 case FunctionKeys.CommuniKate_alcohol:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_alcohol";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_alcohol";
                     break;
 
                 case FunctionKeys.CommuniKate_supportstaff:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_supportstaff";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_supportstaff";
                     break;
 
                 case FunctionKeys.CommuniKate_colours:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_colours";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_colours";
                     break;
 
                 case FunctionKeys.CommuniKate_moreactionwords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_moreactionwords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_moreactionwords";
                     break;
 
                 case FunctionKeys.CommuniKate_farmanimals:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_farmanimals";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_farmanimals";
                     break;
 
                 case FunctionKeys.CommuniKate_pets:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_pets";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_pets";
                     break;
 
                 case FunctionKeys.CommuniKate_privateparts:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_privateparts";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_privateparts";
                     break;
 
                 case FunctionKeys.CommuniKate_christmas:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_christmas";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_christmas";
                     break;
 
                 case FunctionKeys.CommuniKate_outsideplaces:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_outsideplaces";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_outsideplaces";
                     break;
 
                 case FunctionKeys.CommuniKate_nature:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nature";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nature";
                     break;
 
                 case FunctionKeys.CommuniKate_meatandfish:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_meatandfish";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_meatandfish";
                     break;
 
                 case FunctionKeys.CommuniKate_idontfeelwell:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_idontfeelwell";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_idontfeelwell";
                     break;
 
                 case FunctionKeys.CommuniKate_job:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_job";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_job";
                     break;
 
                 case FunctionKeys.CommuniKate_petcare:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_petcare";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_petcare";
                     break;
 
                 case FunctionKeys.CommuniKate_aboutyou:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_aboutyou";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_aboutyou";
                     break;
 
                 case FunctionKeys.CommuniKate_wateranimals:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wateranimals";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wateranimals";
                     break;
 
                 case FunctionKeys.CommuniKate_months:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_months";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_months";
                     break;
 
                 case FunctionKeys.CommuniKate_days:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_days";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_days";
                     break;
 
                 case FunctionKeys.CommuniKate_milkshake:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_milkshake";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_milkshake";
                     break;
 
                 case FunctionKeys.CommuniKate_artthings:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_artthings";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_artthings";
                     break;
 
                 case FunctionKeys.CommuniKate_educationstaff:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_educationstaff";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_educationstaff";
                     break;
 
                 case FunctionKeys.CommuniKate_cookingwords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_cookingwords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_cookingwords";
                     break;
 
                 case FunctionKeys.CommuniKate_family:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_family";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_family";
                     break;
 
                 case FunctionKeys.CommuniKate_myday:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_myday";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_myday";
                     break;
 
                 case FunctionKeys.CommuniKate_feelings:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_feelings";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_feelings";
                     break;
 
                 case FunctionKeys.CommuniKate_channels:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_channels";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_channels";
                     break;
 
                 case FunctionKeys.CommuniKate_weather:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_weather";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_weather";
                     break;
 
                 case FunctionKeys.CommuniKate_toys:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toys";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toys";
                     break;
 
                 case FunctionKeys.CommuniKate_tools:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_tools";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_tools";
                     break;
 
                 case FunctionKeys.CommuniKate_yetmoreactionwords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_yetmoreactionwords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_yetmoreactionwords";
                     break;
 
                 case FunctionKeys.CommuniKate_describingdrinks:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_describingdrinks";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_describingdrinks";
                     break;
 
                 case FunctionKeys.CommuniKate_unknown:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_unknown";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_unknown";
                     break;
 
                 case FunctionKeys.CommuniKate_vegetables:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_vegetables";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_vegetables";
                     break;
 
                 case FunctionKeys.CommuniKate_sports:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_sports";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_sports";
                     break;
 
                 case FunctionKeys.CommuniKate_music:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_music";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_music";
                     break;
 
                 case FunctionKeys.CommuniKate_kitchenequipment:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_kitchenequipment";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_kitchenequipment";
                     break;
 
                 case FunctionKeys.CommuniKate_showpictures:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_showpictures";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_showpictures";
                     break;
 
                 case FunctionKeys.CommuniKate_bodyparts:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_bodyparts";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_bodyparts";
                     break;
 
                 case FunctionKeys.CommuniKate_chatting:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_chatting";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_chatting";
                     break;
 
                 case FunctionKeys.CommuniKate_opposites:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_opposites";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_opposites";
                     break;
 
                 case FunctionKeys.CommuniKate_commonthings:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_commonthings";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_commonthings";
                     break;
 
                 case FunctionKeys.CommuniKate_animals:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_animals";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_animals";
                     break;
 
                 case FunctionKeys.CommuniKate_salad:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_salad";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_salad";
                     break;
 
                 case FunctionKeys.CommuniKate_snackspudding:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_snackspudding";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_snackspudding";
                     break;
 
                 case FunctionKeys.CommuniKate_actionwords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_actionwords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_actionwords";
                     break;
 
                 case FunctionKeys.CommuniKate_personalcare:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_personalcare";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_personalcare";
                     break;
 
                 case FunctionKeys.CommuniKate_shops:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_shops";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_shops";
                     break;
 
                 case FunctionKeys.CommuniKate_scwfriends:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_scwfriends";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_scwfriends";
                     break;
 
                 case FunctionKeys.CommuniKate_littlewords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_littlewords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_littlewords";
                     break;
 
                 case FunctionKeys.CommuniKate_juice:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_juice";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_juice";
                     break;
 
                 case FunctionKeys.CommuniKate_numbers:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_numbers";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_numbers";
                     break;
 
                 case FunctionKeys.CommuniKate_breakfast:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_breakfast";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_breakfast";
                     break;
 
                 case FunctionKeys.CommuniKate_things:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_things";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_things";
                     break;
 
                 case FunctionKeys.CommuniKate_nz:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nz";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_nz";
                     break;
 
                 case FunctionKeys.CommuniKate_transport:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_transport";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_transport";
                     break;
 
                 case FunctionKeys.CommuniKate_positionwords:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_positionwords";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_positionwords";
                     break;
 
                 case FunctionKeys.CommuniKate_fruit:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fruit";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_fruit";
                     break;
 
                 case FunctionKeys.CommuniKate_toppage:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toppage";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toppage";
                     break;
 
                 case FunctionKeys.CommuniKate_spelling:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_spelling";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_spelling";
                     break;
 
                 case FunctionKeys.CommuniKate_friends:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_friends";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_friends";
                     break;
 
                 case FunctionKeys.CommuniKate_wildanimals:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wildanimals";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_wildanimals";
                     break;
 
                 case FunctionKeys.CommuniKate_potato:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_potato";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_potato";
                     break;
 
                 case FunctionKeys.CommuniKate_dvd:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_dvd";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_dvd";
                     break;
 
                 case FunctionKeys.CommuniKate_toiletries:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toiletries";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_toiletries";
                     break;
 
                 case FunctionKeys.CommuniKate_materials:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_materials";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_materials";
                     break;
 
                 case FunctionKeys.CommuniKate_mystories:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_mystories";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_mystories";
                     break;
 
                 case FunctionKeys.CommuniKate_time:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_time";
+                    // Settings.Default.CommuniKateKeyboardCurrentContext = "CommuniKate_time";
                     break;
 
                 case FunctionKeys.ConversationConfirmYes:

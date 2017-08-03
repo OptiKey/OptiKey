@@ -151,6 +151,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue CommuniKate_1_330 = new KeyValue(FunctionKeys.CommuniKate_1_330);
         public static readonly KeyValue CommuniKate_1_331 = new KeyValue(FunctionKeys.CommuniKate_1_331);
         public static readonly KeyValue CommuniKate_ = new KeyValue(FunctionKeys.CommuniKate_);
+        public static readonly KeyValue CommuniKate_00key = new KeyValue(FunctionKeys.CommuniKate_00);
+        public static readonly KeyValue CommuniKate_01key = new KeyValue(FunctionKeys.CommuniKate_01);
+        public static readonly KeyValue CommuniKate_02key = new KeyValue(FunctionKeys.CommuniKate_02);
         public static readonly KeyValue CommuniKate_Home = new KeyValue(FunctionKeys.CommuniKate_Home);
         public static readonly KeyValue CommuniKate_insects = new KeyValue(FunctionKeys.CommuniKate_insects);
         public static readonly KeyValue CommuniKate_money = new KeyValue(FunctionKeys.CommuniKate_money);

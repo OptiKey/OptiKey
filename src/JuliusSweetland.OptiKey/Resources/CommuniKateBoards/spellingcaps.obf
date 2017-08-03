@@ -1,0 +1,241 @@
+{
+  "buttons": [
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S42X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
+      "background_color": "rgb(0,0,0)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "20", 
+      "image_id": "", 
+      "label": "spellingcaps"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S42X4Y0no.png", 
+      "label": "No"
+    }, 
+    {
+      "background_color": "rgb(255,239,7)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "01", 
+      "image_id": "S42X0Y1toppage.png", 
+      "label": "Top Page"
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "24", 
+      "image_id": "S42X2Y4space.png", 
+      "label": "Space"
+    }
+  ], 
+  "format": "open-board-0.1", 
+  "grid": {
+    "columns": 5, 
+    "order": [
+      [
+        "00", 
+        null, 
+        "20", 
+        null, 
+        "40"
+      ], 
+      [
+        "01", 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        null, 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        null, 
+        null, 
+        null, 
+        null, 
+        null
+      ], 
+      [
+        null, 
+        null, 
+        "24", 
+        null, 
+        null
+      ]
+    ], 
+    "rows": 5
+  }, 
+  "id": "spellingcaps", 
+  "images": [
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X0Y0yes.png", 
+      "path": "images/S42X0Y0yes.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X4Y0no.png", 
+      "path": "images/S42X4Y0no.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X0Y1toppage.png", 
+      "path": "images/S42X0Y1toppage.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X1Y1unknown.png", 
+      "path": "images/S42X1Y1unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X2Y1unknown.png", 
+      "path": "images/S42X2Y1unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X3Y1unknown.png", 
+      "path": "images/S42X3Y1unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X4Y1unknown.png", 
+      "path": "images/S42X4Y1unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X0Y2unknown.png", 
+      "path": "images/S42X0Y2unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X1Y2unknown.png", 
+      "path": "images/S42X1Y2unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X2Y2unknown.png", 
+      "path": "images/S42X2Y2unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X3Y2unknown.png", 
+      "path": "images/S42X3Y2unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X4Y2unknown.png", 
+      "path": "images/S42X4Y2unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X0Y3unknown.png", 
+      "path": "images/S42X0Y3unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X1Y3unknown.png", 
+      "path": "images/S42X1Y3unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X2Y3unknown.png", 
+      "path": "images/S42X2Y3unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X3Y3unknown.png", 
+      "path": "images/S42X3Y3unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X4Y3unknown.png", 
+      "path": "images/S42X4Y3unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X0Y4unknown.png", 
+      "path": "images/S42X0Y4unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X1Y4unknown.png", 
+      "path": "images/S42X1Y4unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X2Y4space.png", 
+      "path": "images/S42X2Y4space.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X3Y4unknown.png", 
+      "path": "images/S42X3Y4unknown.png", 
+      "width": 300
+    }, 
+    {
+      "content_type": "image/png", 
+      "height": 300, 
+      "id": "S42X4Y4unknown.png", 
+      "path": "images/S42X4Y4unknown.png", 
+      "width": 300
+    }
+  ], 
+  "locale": "en", 
+  "name": "CommuniKate spellingcaps", 
+  "sounds": []
+}

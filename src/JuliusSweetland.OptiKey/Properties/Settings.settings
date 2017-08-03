@@ -332,7 +332,7 @@
     <Setting Name="UseCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.Collections.Generic.List&lt;System.String&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SuggestWords1" Type="System.Boolean" Scope="User">
@@ -1000,6 +1000,9 @@
     </Setting>
     <Setting Name="SpeechDelay" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="KeyboardCurrentContext" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

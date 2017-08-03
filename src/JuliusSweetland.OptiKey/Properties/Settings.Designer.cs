@@ -1453,10 +1453,9 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CommuniKateKeyboardCurrentContext {
+        public global::System.Collections.Generic.List<System.String> CommuniKateKeyboardCurrentContext {
             get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext"]));
+                return ((global::System.Collections.Generic.List<System.String>)(this["CommuniKateKeyboardCurrentContext"]));
             }
             set {
                 this["CommuniKateKeyboardCurrentContext"] = value;
@@ -1824,7 +1823,7 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
@@ -1834,6 +1833,18 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["SpeechDelay"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string KeyboardCurrentContext {
+            get {
+                return ((string)(this["KeyboardCurrentContext"]));
+            }
+            set {
+                this["KeyboardCurrentContext"] = value;
             }
         }
     }

@@ -3,18 +3,147 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.IO;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Properties;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
 {
     /// <summary>
-    /// Interaction logic for CKPage.xaml
+    /// Interaction logic for CK20Page.xaml
     /// </summary>
-    public partial class CKPage : UserControl
+    public partial class CK20Page : UserControl
     {
-        public CKPage()
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //public string CKPageFile = @"F:\soft\eye tracking\osk\CommuniKate\pageset\boards\toppage.obf";
+
+        public class CKOBF
         {
+
+            public List<Buttons> buttons { get; set; }
+        }
+
+        public class Buttons
+        {
+
+            public string background_color { get; set; }
+            public string border_color { get; set; }
+            public string id { get; set; }
+            public string image_id { get; set; }
+            public string label { get; set; }
+            public List<Load_board> load_board { get; set; }
+        }
+
+        public class Load_board
+        {
+
+            public string path { get; set; }
+        }
+        //*
+        public static readonly DependencyProperty CKPageFileProperty =
+        DependencyProperty.Register("CKPageFile", typeof(string), typeof(CK20Page), new PropertyMetadata(default(string), CKPageFileChanged));
+
+        private static void CKPageFileChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            var key = dependencyObject as CK20Page;
+
+            if (key != null)
+            {
+                var value = dependencyPropertyChangedEventArgs.NewValue as string;
+                //Depending on parametrized case, change the value
+                if (value == null)
+                    value = "./Resources/CommuniKateBoards/questions.obf";
+                {
+                    //value = "./Resources/CommuniKateBoards/" + value + ".obf";
+                    Log.InfoFormat("Page file to read: {0}.", value);
+                    string contents = new StreamReader(value, Encoding.UTF8).ReadToEnd();
+                    CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
+                    //Log.InfoFormat("raw json file:\n{0}", contents);
+                    Log.InfoFormat("Page contains {0} buttons.", CKPageOBF.buttons.Count());
+                    int buttonid = 3;
+                    string colour;
+                    string image;
+                    List<Load_board> context;
+                    //Settings.Default.CommuniKateKeyboardCurrentContext = "toppage,toppage".Split(',').ToList();
+                    string path;
+                    string paths = "";
+                    //if (Settings.Default.CommuniKateKeyboardCurrentContext != null)
+                    //    Settings.Default.CommuniKateKeyboardCurrentContext.Clear();
+                    //else
+                    //    Settings.Default.CommuniKateKeyboardCurrentContext = new List<string>;
+
+                    colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
+                    key.CKBaCo00 = colour.Substring(0, colour.Length - 1);
+                    key.CKText00 = CKPageOBF.buttons.ElementAt(buttonid).label;
+                    image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
+                    key.CKImSo00 = image.Substring(0, image.Length - 4);
+                    context = CKPageOBF.buttons.ElementAt(buttonid).load_board;
+                    if (context != null && context.Count() == 1)
+                        path = (context.ElementAt(0).path.Substring(7)) + ",";
+                    else
+                        path = ",";
+                    paths += path;
+                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(context.ElementAt(0).path);
+                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(path);
+
+                    ++buttonid;
+                    colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
+                    key.CKBaCo01 = colour.Substring(0, colour.Length - 1);
+                    key.CKText01 = CKPageOBF.buttons.ElementAt(buttonid).label;
+                    image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
+                    key.CKImSo01 = image.Substring(0, image.Length - 4);
+                    if (context != null && context.Count() == 1)
+                        path = (context.ElementAt(0).path.Substring(7)) + ",";
+                    else
+                        path = ",";
+                    paths += path;
+                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(path);
+                    Settings.Default.CommuniKateKeyboardCurrentContext = paths.Split(',').ToList();
+                }
+                //else
+                {
+                    //Log.Error("Page json file to read is null.");
+                }
+            }
+        }
+
+        public string CKPageFile
+        {
+            get { return (string)GetValue(CKPageFileProperty); }
+            set { SetValue(CKPageFileProperty, "./Resources/CommuniKateBoards/" + value + ".obf"); }
+        }//*/
+
+        public CK20Page()
+        {
+            //CKPageFile = "questions"; // "./Resources/CommuniKateBoards/questions.obf";
+            //if (Settings.Default.CommuniKateKeyboardCurrentContext == null)
+            //    Settings.Default.CommuniKateKeyboardCurrentContext = "questions";
+
             InitializeComponent();
+            //OnLoaded();
+        }
+
+        #region On Loaded
+
+        private void OnLoaded()
+        {
+            //onUnloaded = new CompositeDisposable();
+
+        }
+
+        #endregion
+
+        public CKOBF readpage(string file)
+        {
+            if (file == null || file == "")
+                file = "./Resources/CommuniKateBoards/toppage.obf";
+            string contents = new StreamReader(file, Encoding.UTF8).ReadToEnd();
+            CKOBF page = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
+            //Log.InfoFormat("raw json file:\n{0}", contents);
+            Log.InfoFormat("Page contains {0} buttons.", page.buttons.Count());
+            return page;
         }
 
         public string dec2hex(string dec)
@@ -39,7 +168,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 return "#" + byteR.ToString("X2") + byteG.ToString("X2") + byteB.ToString("X2");
             }
         }
-        /*
+
         public static readonly DependencyProperty CKMenu00Property =
             DependencyProperty.Register("CKMenu00", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 
@@ -763,7 +892,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public static readonly DependencyProperty CKMenuKey00Property =
             DependencyProperty.Register("CKMenuKey00", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
-        public bool CKMenuKey00 { get { return CKMenu00 != null && CKMenu00 != KeyValues.CommuniKate_; } }
+        public bool CKMenuKey00 { get { return CKMenu00 != null && CKMenu00 != KeyValues.CommuniKate_
+                                                || CKKeCo_00 != null && CKKeCo_00 != ""; } }
 
         public static readonly DependencyProperty CKMenuKey01Property =
             DependencyProperty.Register("CKMenuKey01", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
@@ -859,6 +989,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             DependencyProperty.Register("CKMenuKey34", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
 
         public bool CKMenuKey34 { get { return CKMenu34 != null && CKMenu34 != KeyValues.CommuniKate_; } }
-        */
+
+        public static readonly DependencyProperty CKKeCo_00Property =
+            DependencyProperty.Register("CKKeCo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
+
+        public string CKKeCo_00
+        {
+            get { return (string)GetValue(CKKeCo_00Property); }
+            set { SetValue(CKKeCo_00Property, value); }
+        }
     }
 }
