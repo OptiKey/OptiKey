@@ -64,7 +64,7 @@
                       Value="{x:Static models:KeyValues.SleepKey}"/>
 
         <controls:CK20Page Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10"
-                           CKPageFile="questions"
+                           CKPageFile="{Binding KeyboardCurrentContext, Mode=OneWay}"
                             CKMenu00="{x:Static models:KeyValues.CommuniKate_00key}"
                             CKMenu01="{x:Static models:KeyValues.CommuniKate_01key}"
                             CKMenu02="{x:Static models:KeyValues.CommuniKate_02key}"
