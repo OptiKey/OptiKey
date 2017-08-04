@@ -13,7 +13,8 @@
         <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
         <ResourceDictionary>
             <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource Grey}" />
-        
+            <SolidColorBrush x:Key="KeyboardBorderBrush" Color="{StaticResource Grey}" />
+
             <SolidColorBrush x:Key="KeyDefaultForegroundBrush" Color="{StaticResource White}" />
             <SolidColorBrush x:Key="KeyDefaultBorderBrush" Color="{StaticResource Grey}" />
             <SolidColorBrush x:Key="KeyDefaultBackgroundBrush" Color="{StaticResource Black}" />
@@ -79,6 +80,10 @@
                         <Setter Property="BorderThickness" Value="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationBorderThickness}" />
                     </DataTrigger>
                 </Style.Triggers>
+            </Style>
+
+            <Style x:Key="KeyboardViewStyle" TargetType="{x:Type controls:KeyboardView}">
+                <Setter Property="BorderBrush" Value="{StaticResource KeyboardBorderBrush}" />
             </Style>
 
             <Style x:Key="KeyTextStyle" TargetType="{x:Type TextBlock}">

@@ -30,6 +30,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 SupportsCollapsedDock = supportsCollapsedDock;
                 ShiftAware = shiftAware;
             };
+
+            SetResourceReference(StyleProperty, "KeyboardViewStyle");
         }
 
         public static readonly DependencyProperty SupportsCollapsedDockProperty =
