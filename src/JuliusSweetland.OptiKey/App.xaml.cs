@@ -137,6 +137,7 @@ namespace JuliusSweetland.OptiKey
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
+                bool PresageFail = false;
                 if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
                 {
                     string resultpath = null;
@@ -172,8 +173,9 @@ namespace JuliusSweetland.OptiKey
                                 || (OSBitness == "64-Bit" && resultpath != @"C:\Program Files (x86)\presage")
                                 || (OSBitness == "32-Bit" && resultpath != @"C:\Program Files\presage"))
                     {
-                        Settings.Default.SuggestionMethod = SuggestionMethods.Basic;
-                        Log.Error("Invalid Presage installation. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to Basic.");
+                        Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                        Log.Error("Invalid Presage installation. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                        PresageFail = true;
                     }
                     else
                     {
@@ -196,8 +198,6 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(inputService);
 
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
-
-                AttemptToStartMaryTTSService();
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -244,6 +244,9 @@ namespace JuliusSweetland.OptiKey
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
                     inputService.RequestResume(); //Start the input service
                     await CheckForUpdates(inputService, audioService, mainViewModel);
+                    if (PresageFail)
+                        await NotifyPresageFailure(inputService, audioService, mainViewModel);
+                    await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                 };
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
@@ -856,10 +859,32 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Attempt To Start/Stop Mary TTS Service Automatically
+        #region Notify on Presage failure
 
-        private static void AttemptToStartMaryTTSService()
+        private static async Task<bool> NotifyPresageFailure(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+            inputService.RequestSuspend();
+            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+            mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
+                string.Format(OptiKey.Properties.Resources.USING_DEFAULT_SUGGESTION_METHOD, Settings.Default.SuggestionMethod),
+                NotificationTypes.Error,
+                 () =>
+                 {
+                     inputService.RequestResume();
+                     taskCompletionSource.SetResult(true);
+                 });
+            return await taskCompletionSource.Task;
+        }
+
+        #endregion
+
+            #region Attempt To Start/Stop Mary TTS Service Automatically
+
+        private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
             if (Settings.Default.MaryTTSEnabled)
             {
                 Process proc = new Process
@@ -888,6 +913,18 @@ namespace JuliusSweetland.OptiKey
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
                         Settings.Default.MaryTTSEnabled = false;
+
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error,
+                             () =>
+                             {
+                                 inputService.RequestResume();
+                                 taskCompletionSource.SetResult(true);
+                             });
+
                     }
 
                     if (Settings.Default.MaryTTSEnabled)
@@ -904,6 +941,8 @@ namespace JuliusSweetland.OptiKey
                     Settings.Default.MaryTTSEnabled = false;
                 }
             }
+
+            return await taskCompletionSource.Task;
         }
 
         private static void CloseMaryTTSOnApplicationExit(Process proc)
