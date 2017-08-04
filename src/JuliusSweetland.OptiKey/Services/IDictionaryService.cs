@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.UI.Windows;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -18,7 +19,8 @@ namespace JuliusSweetland.OptiKey.Services
         void RemoveEntryFromDictionary(string entry);
         void IncrementEntryUsageCount(string entry);
         void DecrementEntryUsageCount(string entry);
-        Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
+		void OnAppClosing(object sender, System.ComponentModel.CancelEventArgs e);
+		Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues, 
             int minCount, string reliableFirstLetter, string reliableLastLetter,
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler);

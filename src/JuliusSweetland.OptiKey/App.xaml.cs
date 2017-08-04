@@ -205,7 +205,10 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
-                mainViewModel = new MainViewModel(
+				//Subscribing to the on closing events.
+				mainWindow.Closing += dictionaryService.OnAppClosing;
+
+				mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
@@ -218,6 +221,7 @@ namespace JuliusSweetland.OptiKey
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
                 };
+
                 if(mainWindow.MainView.IsLoaded)
                 {
                     postMainViewLoaded();
@@ -230,6 +234,7 @@ namespace JuliusSweetland.OptiKey
                         postMainViewLoaded();
                         mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
+					
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
 
@@ -248,6 +253,7 @@ namespace JuliusSweetland.OptiKey
                         await NotifyPresageFailure(inputService, audioService, mainViewModel);
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);
@@ -264,11 +270,11 @@ namespace JuliusSweetland.OptiKey
             }
         }
 
-        #endregion
+		#endregion
 
-        #region Create Main Window Manipulation Service
+		#region Create Main Window Manipulation Service
 
-        private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+		private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
             return new WindowManipulationService(
                 mainWindow,
