@@ -63,7 +63,10 @@
       "border_color": "rgb(68,68,68)", 
       "id": "41", 
       "image_id": "S40X4Y1computercontrol.png", 
-      "label": "Computer control"
+      "label": "Computer control",
+      "load_board": {
+        "path": "boards/computercontrol.obf"
+      }
     }
   ], 
   "format": "open-board-0.1", 

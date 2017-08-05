@@ -1442,6 +1442,18 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableCommuniKateKeyboardLayout {
+            get {
+                return ((bool)(this["EnableCommuniKateKeyboardLayout"]));
+            }
+            set {
+                this["EnableCommuniKateKeyboardLayout"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool UseCommuniKateKeyboardLayout {
             get {
                 return ((bool)(this["UseCommuniKateKeyboardLayout"]));
@@ -1454,240 +1466,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_00 {
+        public string CommuniKateKeyboardCurrentContext {
             get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_00"]));
+                return ((string)(this["CommuniKateKeyboardCurrentContext"]));
             }
             set {
-                this["CommuniKateKeyboardCurrentContext_00"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_01 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_01"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_01"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_02 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_02"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_02"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_03 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_03"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_03"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_04 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_04"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_04"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_10 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_10"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_10"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_11 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_11"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_11"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_12 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_12"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_12"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_13 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_13"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_13"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_14 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_14"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_14"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_20 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_20"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_20"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_21 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_21"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_21"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_22 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_22"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_22"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_23 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_23"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_23"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_24 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_24"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_24"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_30 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_30"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_30"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_31 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_31"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_31"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_32 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_32"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_32"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_33 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_33"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_33"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string CommuniKateKeyboardCurrentContext_34 {
-            get {
-                return ((string)(this["CommuniKateKeyboardCurrentContext_34"]));
-            }
-            set {
-                this["CommuniKateKeyboardCurrentContext_34"] = value;
+                this["CommuniKateKeyboardCurrentContext"] = value;
             }
         }
 

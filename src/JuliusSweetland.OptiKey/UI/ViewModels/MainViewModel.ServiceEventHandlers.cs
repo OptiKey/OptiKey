@@ -201,7 +201,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             switch (singleKeyValue.FunctionKey.Value)
             {
-                case FunctionKeys.CommuniKate_:
+                case FunctionKeys.CommuniKate:
                     switch (singleKeyValue.String)
                     {
                         case "spelling.obf":
@@ -209,13 +209,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Log.Info("Changing keyboard to Alpha.");
                             Keyboard = new Alpha();
                             break;
+
+                        case "numbers.obf":
+                            Log.Info("Changing keyboard to Numeric And Symbols.");
+                            Keyboard = new NumericAndSymbols1();
+                            Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
+                            break;
+
+                        case "computercontrol.obf":
+                            Log.Info("Changing keyboard to Web Browsing.");
+                            Keyboard = new WebBrowsing();
+                            Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
+                            break;
+
                         default:
-                            Settings.Default.KeyboardCurrentContext =
+                            Settings.Default.CommuniKateKeyboardCurrentContext =
                                     singleKeyValue.String;
 
                             //CK20Page.CKPageFileProperty = singleKeyValue.String;
                             Log.InfoFormat("Keyboard current context changed to {0}.",
-                                Settings.Default.KeyboardCurrentContext);
+                                Settings.Default.CommuniKateKeyboardCurrentContext);
                             break;
                     }
                     break;
@@ -308,144 +321,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
-                case FunctionKeys.CommuniKate_00:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_00;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_01:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_01;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_02:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_02;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_03:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_03;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_04:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_04;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_10:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_10;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_11:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_11;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_12:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_12;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_13:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_13;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_14:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_14;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_20:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_20;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_21:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_21;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_22:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_22;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_23:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_23;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_24:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_24;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_30:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_30;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_31:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_31;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_32:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_32;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_33:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_33;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
-                    break;
-
-                case FunctionKeys.CommuniKate_34:
-                    Settings.Default.KeyboardCurrentContext =
-                            Settings.Default.CommuniKateKeyboardCurrentContext_34;
-                    Log.InfoFormat("Keyboard current context changed to {0}.",
-                        Settings.Default.KeyboardCurrentContext);
+                case FunctionKeys.CommuniKateKeyboard:
+                    Settings.Default.UseCommuniKateKeyboardLayout = true;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
+                    Log.Info("Changing keyboard to CommuniKate.");
+                    Keyboard = new Alpha();
                     break;
 
                 case FunctionKeys.ConversationAlphaKeyboard:

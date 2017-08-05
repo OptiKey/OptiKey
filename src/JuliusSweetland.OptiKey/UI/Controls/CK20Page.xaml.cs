@@ -51,87 +51,39 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
                 string pagefile = value;
-                //Depending on parametrized case, change the value
+
                 Log.InfoFormat("Trying to read page file: {0}.", pagefile);
                 if (pagefile == null)
-                    pagefile = "./Resources/CommuniKateBoards/questions.obf"; //questions.obf";toppage
+                    pagefile = "./Resources/CommuniKateBoards/toppage.obf"; //questions.obf";
                 else if (!pagefile.StartsWith("./Resources/CommuniKateBoards/"))
                     pagefile = "./Resources/CommuniKateBoards/" + pagefile + ".obf";
                 if (pagefile.EndsWith(".obf.obf"))
                     pagefile = pagefile.Substring(0, pagefile.Length - 4);
+                if (!File.Exists(pagefile))
+                    pagefile = "./Resources/CommuniKateBoards/toppage.obf";
+                //if (File.Exists(pagefile))
                 {
-                    //value = "./Resources/CommuniKateBoards/" + value + ".obf";
                     Log.InfoFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
                     //Log.InfoFormat("raw json file:\n{0}", contents);
                     int ButtonCount = CKPageOBF.buttons.Count();
-                    Log.InfoFormat("Page contains {0} buttons.", ButtonCount -2);
-                    /*
-                    //Buttons BlankButton;// = new Button(bac);
-                    //BlankButton.background_color = "rgb(0,0,0)";
-                    for (int i = 0; i < 20 - ButtonCount; ++i)
-                    {
-                        CKPageOBF.buttons.Add(BlankButton);
-                    }
-                    */
-                    //Log.InfoFormat("Page:{0}\n", CKPageOBF);
+                    Log.DebugFormat("Page contains {0} buttons.", ButtonCount -2);
                     int buttonid = 3;
                     string colour;
                     string image;
                     string path;
                     bool ismenukey;
-                    KeyValue menukey;
+                    //KeyValue menukey;
                     string text;
                     Load_board board;
                     string defaultcolour = "#000000";
                     string defaultimage = ".png";
                     string defaultpath = null;
                     bool defaultismenukey = false;
-                    KeyValue defaultmenukey;
+                    //KeyValue defaultmenukey;
                     string defaulttext = "";
                     Load_board defaultboard = null;
-                    //Settings.Default.CommuniKateKeyboardCurrentContext = "toppage,toppage".Split(',').ToList();
-                    //if (Settings.Default.CommuniKateKeyboardCurrentContext != null)
-                    //    Settings.Default.CommuniKateKeyboardCurrentContext.Clear();
-                    //else
-                    //    Settings.Default.CommuniKateKeyboardCurrentContext = new List<string>;
-                    /*
-                    colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                    key.CKBaCo_00 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_00 = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                    key.CKImSo_00 = image.Substring(0, image.Length - 4);
-                    board = CKPageOBF.buttons.ElementAt(buttonid).load_board;
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7);
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
-                        key.CKMenuKey_00 = true;
-                        key.CKKeCo_00 = path;
-                        //Settings.Default.CommuniKateKeyboardCurrentContext00 = path;
-                    }
-                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(context.ElementAt(0).path);
-                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(path);
-
-                    ++buttonid;
-                    colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
-                    key.CKBaCo_01 = colour.Substring(0, colour.Length - 1);
-                    key.CKText_01 = CKPageOBF.buttons.ElementAt(buttonid).label;
-                    image = CKPageOBF.buttons.ElementAt(buttonid).image_id;
-                    key.CKImSo_01 = image.Substring(0, image.Length - 4);
-                    if (board != null && board.path != null)
-                    {
-                        path = board.path.Substring(7); //, context.path.Length - 4);
-                        key.CKMenuKey_01 = true;
-                        key.CKKeCo_01 = path;
-                        //Settings.Default.CommuniKateKeyboardCurrentContext01 = path;
-                    }
-                    //Settings.Default.CommuniKateKeyboardCurrentContext.Add(path);
-                    //Settings.Default.CommuniKateKeyboardCurrentContext = paths.Split(',').ToList();
-                    */
-
-                    //++buttonid;
                     if (buttonid < ButtonCount)
                     {
                         colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
@@ -153,7 +105,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -185,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -217,7 +169,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -249,7 +201,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -281,7 +233,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -314,7 +266,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
-                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -346,6 +298,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -377,6 +330,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -408,6 +362,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -439,6 +394,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -471,6 +427,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -502,6 +459,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -533,6 +491,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -564,6 +523,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -595,6 +555,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -627,6 +588,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -658,6 +620,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -689,6 +652,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -720,6 +684,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -751,6 +716,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -759,10 +725,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKMenuKey_34 = ismenukey;
                         key.CKKeCo_34 = path;
-                }
-                //else
-                {
-                    //Log.Error("Page json file to read is null.");
                 }
             }
         }
@@ -777,15 +739,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public CK20Page()
         {
-            //CKPageFile = "toppage"; // Settings.Default.KeyboardCurrentContext;// "./Resources/CommuniKateBoards/questions.obf"; 
-            // "{Binding KeyboardCurrentContext, Mode=Default}"
-            //{Binding KeyboardCurrentContext, Mode=TwoWay}
-            CKPageFile = Settings.Default.KeyboardCurrentContext;
-            //if (Settings.Default.CommuniKateKeyboardCurrentContext == null)
-            //    Settings.Default.CommuniKateKeyboardCurrentContext = "questions";
+            CKPageFile = Settings.Default.CommuniKateKeyboardCurrentContext;
 
             InitializeComponent();
-            //OnLoaded();
         }
 
         public CKOBF readpage(string file)
@@ -830,10 +786,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (KeyValue)GetValue(CKMenu00Property); }
             set
             {
-                KeyValue tmpkey = value;
                 if (CKKeCo_00 != null)
-                    tmpkey.String = CKKeCo_00;
-                SetValue(CKMenu00Property, tmpkey);
+                    value.String = CKKeCo_00;
+                SetValue(CKMenu00Property, value);
             }
         }
 
@@ -870,7 +825,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu01
         {
             get { return (KeyValue)GetValue(CKMenu01Property); }
-            set { SetValue(CKMenu01Property, value); }
+            set {
+                if (CKKeCo_01 != null)
+                    value.String = CKKeCo_01;
+                SetValue(CKMenu01Property, value); }
         }
 
         public static readonly DependencyProperty CKText_01Property =
@@ -906,11 +864,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu02
         {
             get { return (KeyValue)GetValue(CKMenu02Property); }
-            set { //SetValue(CKMenu02Property, value);
-                KeyValue tmpkey = value;
+            set { 
                 if (CKKeCo_02 != null)
-                    tmpkey.String = CKKeCo_02;
-                SetValue(CKMenu02Property, tmpkey);
+                    value.String = CKKeCo_02;
+                SetValue(CKMenu02Property, value);
             }
         }
 
@@ -1794,19 +1751,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         
 
         public static readonly DependencyProperty CKKeCo_00Property =
-            DependencyProperty.Register("CKKeCo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_00Changed));
-
-        private static void CKKeCo_00Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_00 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_00", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_00
         {
@@ -1815,19 +1760,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_01Property =
-            DependencyProperty.Register("CKKeCo_01", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_01Changed));
-
-        private static void CKKeCo_01Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_01 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_01", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_01
         {
@@ -1836,19 +1769,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_02Property =
-            DependencyProperty.Register("CKKeCo_02", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_02Changed));
-
-        private static void CKKeCo_02Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_02 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_02", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_02
         {
@@ -1857,19 +1778,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_03Property =
-            DependencyProperty.Register("CKKeCo_03", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_03Changed));
-
-        private static void CKKeCo_03Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_03 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_03", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_03
         {
@@ -1878,19 +1787,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_04Property =
-            DependencyProperty.Register("CKKeCo_04", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_04Changed));
-
-        private static void CKKeCo_04Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_04 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_04", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_04
         {
@@ -1900,19 +1797,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
 
         public static readonly DependencyProperty CKKeCo_10Property =
-            DependencyProperty.Register("CKKeCo_10", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_10Changed));
-
-        private static void CKKeCo_10Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_10 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_10", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_10
         {
@@ -1921,19 +1806,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_11Property =
-            DependencyProperty.Register("CKKeCo_11", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_11Changed));
-
-        private static void CKKeCo_11Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_11 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_11", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_11
         {
@@ -1942,19 +1815,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_12Property =
-            DependencyProperty.Register("CKKeCo_12", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_12Changed));
-
-        private static void CKKeCo_12Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_12 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_12", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_12
         {
@@ -1963,19 +1824,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_13Property =
-            DependencyProperty.Register("CKKeCo_13", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_13Changed));
-
-        private static void CKKeCo_13Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_13 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_13", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_13
         {
@@ -1984,19 +1833,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_14Property =
-            DependencyProperty.Register("CKKeCo_14", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_14Changed));
-
-        private static void CKKeCo_14Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_14 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_14", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_14
         {
@@ -2006,19 +1843,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
 
         public static readonly DependencyProperty CKKeCo_20Property =
-            DependencyProperty.Register("CKKeCo_20", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_20Changed));
-
-        private static void CKKeCo_20Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_20 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_20", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_20
         {
@@ -2027,19 +1852,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_21Property =
-            DependencyProperty.Register("CKKeCo_21", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_21Changed));
-
-        private static void CKKeCo_21Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_21 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_21", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_21
         {
@@ -2048,19 +1861,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_22Property =
-            DependencyProperty.Register("CKKeCo_22", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_22Changed));
-
-        private static void CKKeCo_22Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_22 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_22", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_22
         {
@@ -2069,19 +1870,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_23Property =
-            DependencyProperty.Register("CKKeCo_23", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_23Changed));
-
-        private static void CKKeCo_23Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_23 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_23", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_23
         {
@@ -2090,19 +1879,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_24Property =
-            DependencyProperty.Register("CKKeCo_24", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_24Changed));
-
-        private static void CKKeCo_24Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_24 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_24", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_24
         {
@@ -2112,19 +1889,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
 
         public static readonly DependencyProperty CKKeCo_30Property =
-            DependencyProperty.Register("CKKeCo_30", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_30Changed));
-
-        private static void CKKeCo_30Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_30 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_30", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_30
         {
@@ -2133,19 +1898,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_31Property =
-            DependencyProperty.Register("CKKeCo_31", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_31Changed));
-
-        private static void CKKeCo_31Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_31 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_31", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_31
         {
@@ -2154,19 +1907,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_32Property =
-            DependencyProperty.Register("CKKeCo_32", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_32Changed));
-
-        private static void CKKeCo_32Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_32 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_32", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_32
         {
@@ -2175,19 +1916,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_33Property =
-            DependencyProperty.Register("CKKeCo_33", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_33Changed));
-
-        private static void CKKeCo_33Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_33 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_33", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_33
         {
@@ -2196,19 +1925,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         }
 
         public static readonly DependencyProperty CKKeCo_34Property =
-            DependencyProperty.Register("CKKeCo_34", typeof(string), typeof(Key), new PropertyMetadata(default(string), CKKeCo_34Changed));
-
-        private static void CKKeCo_34Changed(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var key = dependencyObject as CK20Page;
-
-            if (key != null)
-            {
-                var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                if (value != null)
-                    Settings.Default.CommuniKateKeyboardCurrentContext_34 = value;
-            }
-        }
+            DependencyProperty.Register("CKKeCo_34", typeof(string), typeof(Key), new PropertyMetadata(default(string)));
 
         public string CKKeCo_34
         {

@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo
         {
             get { return (string)GetValue(CKImSoProperty); }
-            set { SetValue(CKImSoProperty, "/Resources/CommuniKateImages/image_" + value + ".png"); }
+            set { SetValue(CKImSoProperty, "/Resources/CommuniKateImages/" + value + ".png"); }
         }
     }
 }

@@ -33,6 +33,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL}"
@@ -51,7 +52,29 @@
                               SelectedValuePath="Value"
                               SelectedValue="{Binding UiLanguage, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="{Binding EnableCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <CheckBox Grid.Row="2" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding EnableCommuniKateKeyboardLayout, Mode=TwoWay}" >
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                <Setter Property="Visibility" Value="{Binding UseCommuniKateKeyboardLayoutIsVisible, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" />
+                                <Style.Triggers>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -67,7 +90,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="2" Grid.Column="1"
+                    <CheckBox Grid.Row="3" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseAlphabeticalKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -85,7 +108,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -101,7 +124,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="3" Grid.Column="1"
+                    <CheckBox Grid.Row="4" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseSimplifiedKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -119,7 +142,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -135,7 +158,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="4" Grid.Column="1"
+                    <CheckBox Grid.Row="5" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseCommuniKateKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -153,9 +176,9 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="5" Grid.Column="1"
+                    <CheckBox Grid.Row="6" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

@@ -329,67 +329,13 @@
     <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="EnableCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="UseCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_00" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_01" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_04" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_10" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_11" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_12" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_13" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_14" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_20" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_21" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_22" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_23" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_24" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_30" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_31" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_32" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_33" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext_34" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
     <Setting Name="SuggestWords1" Type="System.Boolean" Scope="User">

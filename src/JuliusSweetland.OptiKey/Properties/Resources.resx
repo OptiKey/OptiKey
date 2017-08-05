@@ -1893,4 +1893,7 @@ from the Management Console (ALT + M).</value>
   <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Use CommuniKate keyboard layout:</value>
   </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Enable CommuniKate keyboard layout:</value>
+  </data>
 </root>

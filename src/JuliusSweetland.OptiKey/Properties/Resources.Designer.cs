@@ -1098,6 +1098,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable CommuniKate keyboard layout:.
+        /// </summary>
+        public static string ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable quit keys?.
         /// </summary>
         public static string ENABLE_QUIT_KEYS_LABEL {
