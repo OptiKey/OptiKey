@@ -1875,15 +1875,14 @@ Browsing</value>
   </data>
   <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
     <value>Presage word prediction not available</value>
-    <comment>RESAGE</comment>
   </data>
   <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
-    <value>Setting the suggestion method to: ({0}).
+    <value>Setting the suggestion method to: {0}.
 You can change this back 
 from the Management Console (ALT + M).</value>
   </data>
   <data name="USING_DEFAULT_VOICE" xml:space="preserve">
-    <value>Setting the speech voice to the system voice: ({0}).
+    <value>Setting the speech voice to the system voice: {0}.
 You can check the path for MaryTTS 
 and change the voice back to it 
 from the Management Console (ALT + M).</value>

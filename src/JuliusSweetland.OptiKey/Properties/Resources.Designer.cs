@@ -4909,7 +4909,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting the suggestion method to: ({0}).
+        ///   Looks up a localized string similar to Setting the suggestion method to: {0}.
         ///You can change this back 
         ///from the Management Console (ALT + M)..
         /// </summary>
@@ -4920,7 +4920,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting the speech voice to the system voice: ({0}).
+        ///   Looks up a localized string similar to Setting the speech voice to the system voice: {0}.
         ///You can check the path for MaryTTS 
         ///and change the voice back to it 
         ///from the Management Console (ALT + M)..
