@@ -82,6 +82,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -136,6 +143,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_00, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -196,6 +210,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -253,6 +274,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -307,6 +335,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -368,6 +403,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -422,6 +464,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -482,6 +531,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -539,6 +595,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -593,6 +656,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -654,6 +724,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -708,6 +785,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -768,6 +852,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -825,6 +916,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -879,6 +977,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -940,6 +1045,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -994,6 +1106,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
@@ -1054,6 +1173,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1111,6 +1237,13 @@
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
@@ -1165,6 +1298,13 @@
                                                       HasImage="True" 
                                                       Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" 
                                                       Value="{Binding Path=CKMenu34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <controls:Key />
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>

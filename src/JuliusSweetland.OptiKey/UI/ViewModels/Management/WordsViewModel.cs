@@ -146,17 +146,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public bool UseCommuniKateKeyboardLayout
         {
             get { return useCommuniKateKeyboardLayout; }
-            set { SetProperty(ref useCommuniKateKeyboardLayout, value); }
+            set { SetProperty(ref useCommuniKateKeyboardLayout, value
+                        && enableCommuniKateKeyboardLayout); }
         }
 
         public bool UseCommuniKatedKeyboardLayoutIsVisible
         {
             get
             {
-                return EnableCommuniKateKeyboardLayout &&
-                    ( KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
+                return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
                     || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS );
+                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
             }
         }
 
