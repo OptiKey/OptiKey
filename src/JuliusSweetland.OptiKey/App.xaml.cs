@@ -141,7 +141,7 @@ namespace JuliusSweetland.OptiKey
                 {
                     if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
                     {
-                        new Presage(() => null, () => null); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
+                        new PresageSuggestions(); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
                     }
                 }
                 catch (Exception ex)

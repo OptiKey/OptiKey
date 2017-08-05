@@ -63,10 +63,6 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         {
             return wordsIndex;
         }
-
-        public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
-        {
-        }
         
         public void AddEntry(string entry, DictionaryEntry metaData)
         {
