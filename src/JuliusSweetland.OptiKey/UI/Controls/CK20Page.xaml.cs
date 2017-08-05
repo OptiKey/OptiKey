@@ -40,7 +40,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             public string path { get; set; }
         }
         //*
-        public static readonly DependencyProperty CKPageFileProperty =
+        public static DependencyProperty CKPageFileProperty =
         DependencyProperty.Register("CKPageFile", typeof(string), typeof(CK20Page), new PropertyMetadata(default(string), CKPageFileChanged));
 
         private static void CKPageFileChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -54,9 +54,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 //Depending on parametrized case, change the value
                 Log.InfoFormat("Trying to read page file: {0}.", pagefile);
                 if (pagefile == null)
-                    pagefile = "./Resources/CommuniKateBoards/toppage.obf"; //questions.obf";
+                    pagefile = "./Resources/CommuniKateBoards/questions.obf"; //questions.obf";toppage
                 else if (!pagefile.StartsWith("./Resources/CommuniKateBoards/"))
                     pagefile = "./Resources/CommuniKateBoards/" + pagefile + ".obf";
+                if (pagefile.EndsWith(".obf.obf"))
+                    pagefile = pagefile.Substring(0, pagefile.Length - 4);
                 {
                     //value = "./Resources/CommuniKateBoards/" + value + ".obf";
                     Log.InfoFormat("Page file to read: {0}.", pagefile);
@@ -64,7 +66,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
                     //Log.InfoFormat("raw json file:\n{0}", contents);
                     int ButtonCount = CKPageOBF.buttons.Count();
-                    Log.InfoFormat("Page contains {0} buttons.", ButtonCount -3);
+                    Log.InfoFormat("Page contains {0} buttons.", ButtonCount -2);
                     /*
                     //Buttons BlankButton;// = new Button(bac);
                     //BlankButton.background_color = "rgb(0,0,0)";
@@ -79,12 +81,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     string image;
                     string path;
                     bool ismenukey;
+                    KeyValue menukey;
                     string text;
                     Load_board board;
                     string defaultcolour = "#000000";
                     string defaultimage = ".png";
                     string defaultpath = null;
                     bool defaultismenukey = false;
+                    KeyValue defaultmenukey;
                     string defaulttext = "";
                     Load_board defaultboard = null;
                     //Settings.Default.CommuniKateKeyboardCurrentContext = "toppage,toppage".Split(',').ToList();
@@ -149,14 +153,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
                         path = defaultpath;
                         ismenukey = defaultismenukey;
                     }
-                    key.CKMenuKey_00 = ismenukey;
                     key.CKKeCo_00 = path;
+                    key.CKMenuKey_00 = ismenukey;
 
                     ++buttonid;
                     if (buttonid < ButtonCount)
@@ -180,6 +185,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -211,6 +217,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -242,6 +249,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -273,6 +281,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -305,6 +314,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         path = board.path.Substring(7);
                         ismenukey = true;
+                        Log.InfoFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
                     else
                     {
@@ -767,24 +777,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         public CK20Page()
         {
-            CKPageFile = "toppage"; // Settings.Default.KeyboardCurrentContext;// "./Resources/CommuniKateBoards/questions.obf"; 
+            //CKPageFile = "toppage"; // Settings.Default.KeyboardCurrentContext;// "./Resources/CommuniKateBoards/questions.obf"; 
             // "{Binding KeyboardCurrentContext, Mode=Default}"
+            //{Binding KeyboardCurrentContext, Mode=TwoWay}
+            CKPageFile = Settings.Default.KeyboardCurrentContext;
             //if (Settings.Default.CommuniKateKeyboardCurrentContext == null)
             //    Settings.Default.CommuniKateKeyboardCurrentContext = "questions";
 
             InitializeComponent();
             //OnLoaded();
         }
-
-        #region On Loaded
-
-        private void OnLoaded()
-        {
-            //onUnloaded = new CompositeDisposable();
-
-        }
-
-        #endregion
 
         public CKOBF readpage(string file)
         {
@@ -826,7 +828,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu00
         {
             get { return (KeyValue)GetValue(CKMenu00Property); }
-            set { SetValue(CKMenu00Property, value); }
+            set
+            {
+                KeyValue tmpkey = value;
+                if (CKKeCo_00 != null)
+                    tmpkey.String = CKKeCo_00;
+                SetValue(CKMenu00Property, tmpkey);
+            }
         }
 
         public static readonly DependencyProperty CKText_00Property =
@@ -898,7 +906,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu02
         {
             get { return (KeyValue)GetValue(CKMenu02Property); }
-            set { SetValue(CKMenu02Property, value); }
+            set { //SetValue(CKMenu02Property, value);
+                KeyValue tmpkey = value;
+                if (CKKeCo_02 != null)
+                    tmpkey.String = CKKeCo_02;
+                SetValue(CKMenu02Property, tmpkey);
+            }
         }
 
         public static readonly DependencyProperty CKText_02Property =
@@ -934,7 +947,12 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu03
         {
             get { return (KeyValue)GetValue(CKMenu03Property); }
-            set { SetValue(CKMenu03Property, value); }
+            set
+            {
+                if (CKKeCo_03 != null)
+                    value.String = CKKeCo_03;
+                SetValue(CKMenu03Property, value);
+            }
         }
 
         public static readonly DependencyProperty CKText_03Property =
@@ -970,7 +988,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu04
         {
             get { return (KeyValue)GetValue(CKMenu04Property); }
-            set { SetValue(CKMenu04Property, value); }
+            set
+            {
+                if (CKKeCo_04 != null)
+                    value.String = CKKeCo_04;
+                SetValue(CKMenu04Property, value); }
         }
 
         public static readonly DependencyProperty CKText_04Property =
@@ -1006,7 +1028,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu10
         {
             get { return (KeyValue)GetValue(CKMenu10Property); }
-            set { SetValue(CKMenu10Property, value); }
+            set
+            {
+                if (CKKeCo_10 != null)
+                    value.String = CKKeCo_10;
+                SetValue(CKMenu10Property, value); }
         }
 
         public static readonly DependencyProperty CKText_10Property =
@@ -1042,7 +1068,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu11
         {
             get { return (KeyValue)GetValue(CKMenu11Property); }
-            set { SetValue(CKMenu11Property, value); }
+            set {
+                if (CKKeCo_11 != null)
+                    value.String = CKKeCo_11;
+                SetValue(CKMenu11Property, value); }
         }
 
         public static readonly DependencyProperty CKText_11Property =
@@ -1078,7 +1107,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu12
         {
             get { return (KeyValue)GetValue(CKMenu12Property); }
-            set { SetValue(CKMenu12Property, value); }
+            set {
+                if (CKKeCo_12 != null)
+                    value.String = CKKeCo_12;
+                SetValue(CKMenu12Property, value); }
         }
 
         public static readonly DependencyProperty CKText_12Property =
@@ -1114,7 +1146,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu13
         {
             get { return (KeyValue)GetValue(CKMenu13Property); }
-            set { SetValue(CKMenu13Property, value); }
+            set {
+                if (CKKeCo_13 != null)
+                    value.String = CKKeCo_13;
+                SetValue(CKMenu13Property, value); }
         }
 
         public static readonly DependencyProperty CKText_13Property =
@@ -1150,7 +1185,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu14
         {
             get { return (KeyValue)GetValue(CKMenu14Property); }
-            set { SetValue(CKMenu14Property, value); }
+            set {
+                if (CKKeCo_14 != null)
+                    value.String = CKKeCo_14;
+                SetValue(CKMenu14Property, value); }
         }
 
         public static readonly DependencyProperty CKText_14Property =
@@ -1186,7 +1224,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu20
         {
             get { return (KeyValue)GetValue(CKMenu20Property); }
-            set { SetValue(CKMenu20Property, value); }
+            set {
+                if (CKKeCo_20 != null)
+                    value.String = CKKeCo_20;
+                SetValue(CKMenu20Property, value); }
         }
 
         public static readonly DependencyProperty CKText_20Property =
@@ -1222,7 +1263,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu21
         {
             get { return (KeyValue)GetValue(CKMenu21Property); }
-            set { SetValue(CKMenu21Property, value); }
+            set {
+                if (CKKeCo_21 != null)
+                    value.String = CKKeCo_21;
+                SetValue(CKMenu21Property, value); }
         }
 
         public static readonly DependencyProperty CKText_21Property =
@@ -1258,7 +1302,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu22
         {
             get { return (KeyValue)GetValue(CKMenu22Property); }
-            set { SetValue(CKMenu22Property, value); }
+            set {
+                if (CKKeCo_22 != null)
+                    value.String = CKKeCo_22;
+                SetValue(CKMenu22Property, value); }
         }
 
         public static readonly DependencyProperty CKText_22Property =
@@ -1294,7 +1341,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu23
         {
             get { return (KeyValue)GetValue(CKMenu23Property); }
-            set { SetValue(CKMenu23Property, value); }
+            set {
+                if (CKKeCo_23 != null)
+                    value.String = CKKeCo_23;
+                SetValue(CKMenu23Property, value); }
         }
 
         public static readonly DependencyProperty CKText_23Property =
@@ -1330,7 +1380,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu24
         {
             get { return (KeyValue)GetValue(CKMenu24Property); }
-            set { SetValue(CKMenu24Property, value); }
+            set {
+                if (CKKeCo_24 != null)
+                    value.String = CKKeCo_24;
+                SetValue(CKMenu24Property, value); }
         }
 
         public static readonly DependencyProperty CKText_24Property =
@@ -1366,7 +1419,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu30
         {
             get { return (KeyValue)GetValue(CKMenu30Property); }
-            set { SetValue(CKMenu30Property, value); }
+            set {
+                if (CKKeCo_30 != null)
+                    value.String = CKKeCo_30;
+                SetValue(CKMenu30Property, value); }
         }
 
         public static readonly DependencyProperty CKText_30Property =
@@ -1402,7 +1458,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu31
         {
             get { return (KeyValue)GetValue(CKMenu31Property); }
-            set { SetValue(CKMenu31Property, value); }
+            set {
+                if (CKKeCo_31 != null)
+                    value.String = CKKeCo_31;
+                SetValue(CKMenu31Property, value); }
         }
 
         public static readonly DependencyProperty CKText_31Property =
@@ -1438,7 +1497,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu32
         {
             get { return (KeyValue)GetValue(CKMenu32Property); }
-            set { SetValue(CKMenu32Property, value); }
+            set {
+                if (CKKeCo_32 != null)
+                    value.String = CKKeCo_32;
+                SetValue(CKMenu32Property, value); }
         }
 
         public static readonly DependencyProperty CKText_32Property =
@@ -1474,7 +1536,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu33
         {
             get { return (KeyValue)GetValue(CKMenu33Property); }
-            set { SetValue(CKMenu33Property, value); }
+            set {
+                if (CKKeCo_33 != null)
+                    value.String = CKKeCo_33;
+                SetValue(CKMenu33Property, value); }
         }
 
         public static readonly DependencyProperty CKText_33Property =
@@ -1510,7 +1575,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu34
         {
             get { return (KeyValue)GetValue(CKMenu34Property); }
-            set { SetValue(CKMenu34Property, value); }
+            set {
+                if (CKKeCo_34 != null)
+                    value.String = CKKeCo_34;
+                SetValue(CKMenu34Property, value); }
         }
 
         public static readonly DependencyProperty CKText_34Property =

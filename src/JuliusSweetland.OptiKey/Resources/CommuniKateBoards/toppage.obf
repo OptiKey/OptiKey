@@ -157,6 +157,13 @@
       }
     }, 
     {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "00", 
+      "image_id": "S0X0Y0yes.png", 
+      "label": "Yes"
+    }, 
+    {
       "background_color": "rgb(0,0,255)", 
       "border_color": "rgb(68,68,68)", 
       "id": "14", 
@@ -185,6 +192,13 @@
       "load_board": {
         "path": "boards/leisure.obf"
       }
+    }, 
+    {
+      "background_color": "rgb(255,255,255)", 
+      "border_color": "rgb(68,68,68)", 
+      "id": "40", 
+      "image_id": "S0X4Y0no.png", 
+      "label": "No"
     }, 
     {
       "background_color": "rgb(204,255,204)", 

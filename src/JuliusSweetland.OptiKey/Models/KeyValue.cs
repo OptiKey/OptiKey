@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Models
     public struct KeyValue : IEquatable<KeyValue>
     {
         private readonly FunctionKeys? functionKey;
-        private readonly string str;
+        private string str;
 
         public KeyValue(FunctionKeys functionKey)
         {
@@ -36,8 +36,18 @@ namespace JuliusSweetland.OptiKey.Models
             this.str = str;
         }
 
+        public KeyValue(FunctionKeys functionKey, string str)
+        {
+            this.functionKey = functionKey;
+            this.str = str;
+        }
+
         public FunctionKeys? FunctionKey { get { return functionKey; } }
-        public string String { get { return str; } }
+        public string String
+        {
+            get { return str; }
+            set { str = value; }
+        }
 
         public bool StringIsLetter
         {
