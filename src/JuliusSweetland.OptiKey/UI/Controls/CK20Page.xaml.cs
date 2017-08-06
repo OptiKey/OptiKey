@@ -100,7 +100,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_00 = colour.Substring(0, colour.Length - 1);
                     key.CKText_00 = text;
-                    key.CKImSo_00 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_00 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -132,7 +132,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_01 = colour.Substring(0, colour.Length - 1);
                     key.CKText_01 = text;
-                    key.CKImSo_01 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_01 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -164,7 +164,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_02 = colour.Substring(0, colour.Length - 1);
                     key.CKText_02 = text;
-                    key.CKImSo_02 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_02 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -196,7 +196,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_03 = colour.Substring(0, colour.Length - 1);
                     key.CKText_03 = text;
-                    key.CKImSo_03 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_03 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -228,7 +228,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_04 = colour.Substring(0, colour.Length - 1);
                     key.CKText_04 = text;
-                    key.CKImSo_04 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_04 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -261,7 +261,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_10 = colour.Substring(0, colour.Length - 1);
                     key.CKText_10 = text;
-                    key.CKImSo_10 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_10 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -293,7 +293,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_11 = colour.Substring(0, colour.Length - 1);
                     key.CKText_11 = text;
-                    key.CKImSo_11 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_11 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -325,7 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_12 = colour.Substring(0, colour.Length - 1);
                     key.CKText_12 = text;
-                    key.CKImSo_12 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_12 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -357,7 +357,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_13 = colour.Substring(0, colour.Length - 1);
                     key.CKText_13 = text;
-                    key.CKImSo_13 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_13 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -389,7 +389,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_14 = colour.Substring(0, colour.Length - 1);
                     key.CKText_14 = text;
-                    key.CKImSo_14 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_14 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -422,7 +422,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_20 = colour.Substring(0, colour.Length - 1);
                     key.CKText_20 = text;
-                    key.CKImSo_20 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_20 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -454,7 +454,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_21 = colour.Substring(0, colour.Length - 1);
                     key.CKText_21 = text;
-                    key.CKImSo_21 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_21 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -486,7 +486,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_22 = colour.Substring(0, colour.Length - 1);
                     key.CKText_22 = text;
-                    key.CKImSo_22 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_22 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -518,7 +518,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_23 = colour.Substring(0, colour.Length - 1);
                     key.CKText_23 = text;
-                    key.CKImSo_23 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_23 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -550,7 +550,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_24 = colour.Substring(0, colour.Length - 1);
                     key.CKText_24 = text;
-                    key.CKImSo_24 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_24 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -583,7 +583,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_30 = colour.Substring(0, colour.Length - 1);
                     key.CKText_30 = text;
-                    key.CKImSo_30 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_30 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -615,7 +615,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_31 = colour.Substring(0, colour.Length - 1);
                     key.CKText_31 = text;
-                    key.CKImSo_31 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_31 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -647,7 +647,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_32 = colour.Substring(0, colour.Length - 1);
                     key.CKText_32 = text;
-                    key.CKImSo_32 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_32 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -679,7 +679,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_33 = colour.Substring(0, colour.Length - 1);
                     key.CKText_33 = text;
-                    key.CKImSo_33 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_33 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -711,7 +711,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     }
                     key.CKBaCo_34 = colour.Substring(0, colour.Length - 1);
                     key.CKText_34 = text;
-                    key.CKImSo_34 = image.Substring(0, image.Length - 4);
+                    key.CKImSo_34 = image;
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
@@ -816,7 +816,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_00
         {
             get { return (string)GetValue(CKImSo_00Property); }
-            set { SetValue(CKImSo_00Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_00Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu01Property =
@@ -855,7 +855,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_01
         {
             get { return (string)GetValue(CKImSo_01Property); }
-            set { SetValue(CKImSo_01Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_01Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu02Property =
@@ -895,7 +895,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_02
         {
             get { return (string)GetValue(CKImSo_02Property); }
-            set { SetValue(CKImSo_02Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_02Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu03Property =
@@ -936,7 +936,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_03
         {
             get { return (string)GetValue(CKImSo_03Property); }
-            set { SetValue(CKImSo_03Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_03Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu04Property =
@@ -976,7 +976,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_04
         {
             get { return (string)GetValue(CKImSo_04Property); }
-            set { SetValue(CKImSo_04Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_04Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu10Property =
@@ -1016,7 +1016,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_10
         {
             get { return (string)GetValue(CKImSo_10Property); }
-            set { SetValue(CKImSo_10Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_10Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu11Property =
@@ -1055,7 +1055,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_11
         {
             get { return (string)GetValue(CKImSo_11Property); }
-            set { SetValue(CKImSo_11Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_11Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu12Property =
@@ -1094,7 +1094,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_12
         {
             get { return (string)GetValue(CKImSo_12Property); }
-            set { SetValue(CKImSo_12Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_12Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu13Property =
@@ -1133,7 +1133,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_13
         {
             get { return (string)GetValue(CKImSo_13Property); }
-            set { SetValue(CKImSo_13Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_13Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu14Property =
@@ -1172,7 +1172,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_14
         {
             get { return (string)GetValue(CKImSo_14Property); }
-            set { SetValue(CKImSo_14Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_14Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu20Property =
@@ -1211,7 +1211,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_20
         {
             get { return (string)GetValue(CKImSo_20Property); }
-            set { SetValue(CKImSo_20Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_20Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu21Property =
@@ -1250,7 +1250,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_21
         {
             get { return (string)GetValue(CKImSo_21Property); }
-            set { SetValue(CKImSo_21Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_21Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu22Property =
@@ -1289,7 +1289,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_22
         {
             get { return (string)GetValue(CKImSo_22Property); }
-            set { SetValue(CKImSo_22Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_22Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu23Property =
@@ -1328,7 +1328,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_23
         {
             get { return (string)GetValue(CKImSo_23Property); }
-            set { SetValue(CKImSo_23Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_23Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu24Property =
@@ -1367,7 +1367,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_24
         {
             get { return (string)GetValue(CKImSo_24Property); }
-            set { SetValue(CKImSo_24Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_24Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu30Property =
@@ -1406,7 +1406,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_30
         {
             get { return (string)GetValue(CKImSo_30Property); }
-            set { SetValue(CKImSo_30Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_30Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu31Property =
@@ -1445,7 +1445,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_31
         {
             get { return (string)GetValue(CKImSo_31Property); }
-            set { SetValue(CKImSo_31Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_31Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu32Property =
@@ -1484,7 +1484,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_32
         {
             get { return (string)GetValue(CKImSo_32Property); }
-            set { SetValue(CKImSo_32Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_32Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu33Property =
@@ -1523,7 +1523,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_33
         {
             get { return (string)GetValue(CKImSo_33Property); }
-            set { SetValue(CKImSo_33Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_33Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu34Property =
@@ -1562,7 +1562,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_34
         {
             get { return (string)GetValue(CKImSo_34Property); }
-            set { SetValue(CKImSo_34Property, "/Resources/CommuniKateImages/" + value + ".png"); }
+            set { SetValue(CKImSo_34Property, "/Resources/CommuniKateImages/" + value); }
         }
 
         public bool CKMenuKey_00

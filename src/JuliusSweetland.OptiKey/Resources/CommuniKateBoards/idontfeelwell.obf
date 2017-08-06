@@ -123,11 +123,14 @@
       "label": "cramp"
     }, 
     {
-      "background_color": "rgb(255,255,255)", 
+      "background_color": "rgb(255,255,0)", 
       "border_color": "rgb(68,68,68)", 
-      "id": "44", 
-      "image_id": "", 
-      "label": "C"
+      "id": "41", 
+      "image_id": "S36X4Y1bodyparts.png", 
+      "label": "body parts", 
+      "load_board": {
+        "path": "boards/bodyparts.obf"
+      }
     }
   ], 
   "format": "open-board-0.1", 
