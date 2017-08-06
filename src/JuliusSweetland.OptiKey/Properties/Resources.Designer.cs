@@ -4382,6 +4382,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay before speech (ms):.
+        /// </summary>
+        public static string SPEECH_DELAY_LABEL {
+            get {
+                return ResourceManager.GetString("SPEECH_DELAY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Startup keyboard:.
         /// </summary>
         public static string STARTUP_KEYBOARD_LABEL {

@@ -29,6 +29,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_ENABLED_LABEL}" 
@@ -147,6 +148,12 @@
                     <controls:NumericUpDown Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
                                             Minimum="-10" Maximum="10" Interval="1"
                                             Value="{Binding SpeechRate, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.SPEECH_DELAY_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="0" Maximum="5000" Interval="1"
+                                            Value="{Binding SpeechDelay, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
         
