@@ -193,7 +193,9 @@ namespace JuliusSweetland.OptiKey.Services
             Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, 
                 !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
-            System.Threading.Thread.Sleep(Settings.Default.SpeechDelay);
+
+            if (Settings.Default.SpeechDelay > 0 && Settings.Default.SpeechDelay < 10000)
+                System.Threading.Thread.Sleep(Settings.Default.SpeechDelay);
 
             if (!Settings.Default.MaryTTSEnabled)
             {
