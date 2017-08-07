@@ -199,6 +199,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void HandleMultiPropertyKeySelectionResult(KeyValue singleKeyValue)
         {
+            var currentKeyboard = Keyboard;
+
             switch (singleKeyValue.FunctionKey.Value)
             {
                 case FunctionKeys.CommuniKate:
@@ -206,21 +208,65 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
                         case "spelling.obf":
                             Settings.Default.UseCommuniKateKeyboardLayout = false;
-                            Log.Info("Changing keyboard to Alpha.");
-                            Keyboard = new Alpha();
+                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to ConversationAlpha.");
+                                var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
+                                Action conversationAlphaBackAction = () =>
+                                {
+                                    /*
+                                    Log.Info("Restoring window size.");
+                                    mainWindowManipulationService.Restore();
+                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
+                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                                    */
+                                    Settings.Default.UseCommuniKateKeyboardLayout = true;
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new ConversationAlpha(conversationAlphaBackAction);
+                            }
+                            else
+                            {
+                                Log.Info("Changing keyboard to Alpha.");
+                                Keyboard = new Alpha();
+                            }
                             Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             break;
 
                         case "numbers.obf":
-                            Log.Info("Changing keyboard to Numeric And Symbols.");
-                            Keyboard = new NumericAndSymbols1();
+                            if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to ConversationAlpha.");
+                                var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
+                                Action conversationAlphaBackAction = () =>
+                                {
+                                    /*
+                                    Log.Info("Restoring window size.");
+                                    mainWindowManipulationService.Restore();
+                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
+                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                                    */
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new ConversationNumericAndSymbols(conversationAlphaBackAction);
+                            }
+                            else
+                            {
+                                Log.Info("Changing keyboard to Numeric And Symbols.");
+                                Keyboard = new NumericAndSymbols1();
+                            }
                             Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             break;
 
                         case "computercontrol.obf":
-                            Log.Info("Changing keyboard to Web Browsing.");
-                            Keyboard = new WebBrowsing();
-                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            if (mainWindowManipulationService.WindowState != WindowStates.Maximised)
+                            {
+                                Log.Info("Changing keyboard to Web Browsing.");
+                                Keyboard = new WebBrowsing();
+                                Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                            }
                             break;
 
                         default:

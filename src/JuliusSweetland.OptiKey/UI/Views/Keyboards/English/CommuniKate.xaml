@@ -34,11 +34,32 @@
         </Grid.ColumnDefinitions>
 
 
-        <controls:Key Grid.Row="0" Grid.Column="0"
-                      SymbolGeometry="{StaticResource MenuIcon}"
-                      Text="{x:Static resx:Resources.MENU}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
+        <ContentControl Grid.Row="0" Grid.Column="0">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SymbolGeometry="{StaticResource MenuIcon}"
+                                          Text="{x:Static resx:Resources.MENU}"
+                                          SharedSizeGroup="KeyWithSymbol"
+                                          Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=ConversationOnlyMode}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SymbolGeometry="{StaticResource QuitIcon}"
+                                                  Text="{x:Static resx:Resources.QUIT}"
+                                                  SharedSizeGroup="KeyWithSymbol"
+                                                  Value="{x:Static models:KeyValues.QuitKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
         <controls:Key Grid.Row="0" Grid.Column="1"
                       SymbolGeometry="{StaticResource ClearIcon}" 
                       Text="{x:Static resx:Resources.CLEAR}"
