@@ -182,7 +182,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return speechRate; }
             set { SetProperty(ref speechRate, value); }
         }
-        
+
+        private int speechDelay;
+        public int SpeechDelay
+        {
+            get { return speechDelay; }
+            set { SetProperty(ref speechDelay, value); }
+        }
+
         private bool maryTTSEnabled;
         public bool MaryTTSEnabled
         {
@@ -380,6 +387,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SpeechVoice = Settings.Default.SpeechVoice;
             SpeechVolume = Settings.Default.SpeechVolume;
             SpeechRate = Settings.Default.SpeechRate;
+            SpeechDelay = Settings.Default.SpeechDelay;
             MaryTTSEnabled = Settings.Default.MaryTTSEnabled;
             MaryTTSVoice = Settings.Default.MaryTTSVoice;
             MaryTTSLocation = Settings.Default.MaryTTSLocation;
@@ -410,6 +418,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SpeechVoice = SpeechVoice;
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
+            Settings.Default.SpeechDelay = SpeechDelay;
             Settings.Default.MaryTTSEnabled = MaryTTSEnabled;
             Settings.Default.MaryTTSVoice = MaryTTSVoice;
             Settings.Default.MaryTTSLocation = MaryTTSLocation;

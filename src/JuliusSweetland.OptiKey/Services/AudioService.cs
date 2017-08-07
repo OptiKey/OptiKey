@@ -194,6 +194,9 @@ namespace JuliusSweetland.OptiKey.Services
                 !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
+            if (Settings.Default.SpeechDelay > 0 && Settings.Default.SpeechDelay < 10000)
+                System.Threading.Thread.Sleep(Settings.Default.SpeechDelay);
+
             if (!Settings.Default.MaryTTSEnabled)
             {
                 //Default TTS

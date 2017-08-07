@@ -1887,4 +1887,7 @@ You can check the path for MaryTTS
 and change the voice back to it 
 from the Management Console (ALT + M).</value>
   </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Delay before speech (ms):</value>
+  </data>
 </root>
