@@ -6,6 +6,7 @@ using System.Windows;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services.Audio;
 using log4net;
@@ -63,6 +64,7 @@ namespace JuliusSweetland.OptiKey.Services
         public bool SpeakNewOrInterruptCurrentSpeech(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
             Log.Info("SpeakNewOrInterruptCurrentSpeech called");
+
             if (string.IsNullOrEmpty(textToSpeak)) return false;
 
             try
@@ -188,14 +190,17 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
+        private async void Speak(string textToSpeak, Action onComplete, int? volume = null, int? rate = null, string voice = null)
         {
             Log.InfoFormat("Speaking '{0}' with volume '{1}', rate '{2}' and voice '{3}'", textToSpeak, volume, rate, 
                 !Settings.Default.MaryTTSEnabled ? voice : Settings.Default.MaryTTSVoice);
+
             if (string.IsNullOrEmpty(textToSpeak)) return;
 
-            if (Settings.Default.SpeechDelay > 0 && Settings.Default.SpeechDelay < 10000)
-                System.Threading.Thread.Sleep(Settings.Default.SpeechDelay);
+            if (Settings.Default.SpeechDelay > 0)
+            {
+                await Task.Delay(Settings.Default.SpeechDelay);
+            }
 
             if (!Settings.Default.MaryTTSEnabled)
             {

@@ -152,7 +152,7 @@
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.SPEECH_DELAY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
-                                            Minimum="0" Maximum="5000" Interval="1"
+                                            Minimum="0" Maximum="5000" Interval="100"
                                             Value="{Binding SpeechDelay, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
