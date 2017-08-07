@@ -208,18 +208,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Settings.Default.UseCommuniKateKeyboardLayout = false;
                             Log.Info("Changing keyboard to Alpha.");
                             Keyboard = new Alpha();
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             break;
 
                         case "numbers.obf":
                             Log.Info("Changing keyboard to Numeric And Symbols.");
                             Keyboard = new NumericAndSymbols1();
-                            Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             break;
 
                         case "computercontrol.obf":
                             Log.Info("Changing keyboard to Web Browsing.");
                             Keyboard = new WebBrowsing();
-                            Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             break;
 
                         default:
@@ -322,8 +323,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CommuniKateKeyboard:
+                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
                     Settings.Default.UseCommuniKateKeyboardLayout = true;
-                    Settings.Default.CommuniKateKeyboardCurrentContext = "toppage";
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha();
                     break;

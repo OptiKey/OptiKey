@@ -1007,5 +1007,8 @@
     <Setting Name="KeyboardCurrentContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
+    <Setting Name="CommuniKateTopPageLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">./Resources/CommuniKateBoards/toppage.obf</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -24,9 +24,11 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -74,7 +76,50 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.COMMUNIKATE_TOPPAGE_LOCATION_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Click="btnFindCommuniKateTopPageLocation_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                    </StackPanel>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Name="txtCommuniKateTopPageLocation"
+                               Text="{Binding CommuniKateTopPageLocation, Mode=TwoWay}" 
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding EnableCommuniKateKeyboardLayout}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.USE_ALPHABETICAL_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -96,7 +141,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="3" Grid.Column="1"
+                    <CheckBox Grid.Row="4" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseAlphabeticalKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -120,7 +165,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.USE_SIMPLIFIED_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -142,7 +187,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="4" Grid.Column="1"
+                    <CheckBox Grid.Row="5" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseSimplifiedKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -166,7 +211,7 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT}"
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.USE_COMMUNIKATE_KEYBOARD_LAYOUT}"
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -185,7 +230,7 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <CheckBox Grid.Row="5" Grid.Column="1"
+                    <CheckBox Grid.Row="6" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding UseCommuniKateKeyboardLayout, Mode=TwoWay}" >
                         <CheckBox.Style>
@@ -206,9 +251,9 @@
                         </CheckBox.Style>
                     </CheckBox>
 
-                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.FORCE_CAPS_LOCK}"
                                VerticalAlignment="Center" Margin="5" />
-                    <CheckBox Grid.Row="6" Grid.Column="1"
+                    <CheckBox Grid.Row="7" Grid.Column="1"
                               VerticalAlignment="Center"
                               IsChecked="{Binding ForceCapsLock, Mode=TwoWay}" />
                 </Grid>

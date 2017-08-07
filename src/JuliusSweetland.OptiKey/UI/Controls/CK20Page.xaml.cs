@@ -54,13 +54,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                 Log.InfoFormat("Trying to read page file: {0}.", pagefile);
                 if (pagefile == null)
-                    pagefile = "./Resources/CommuniKateBoards/toppage.obf"; //questions.obf";
-                else if (!pagefile.StartsWith("./Resources/CommuniKateBoards/"))
-                    pagefile = "./Resources/CommuniKateBoards/" + pagefile + ".obf";
-                if (pagefile.EndsWith(".obf.obf"))
-                    pagefile = pagefile.Substring(0, pagefile.Length - 4);
+                    pagefile = Settings.Default.CommuniKateTopPageLocation;
+                if (!pagefile.EndsWith(".obf"))
+                    pagefile = pagefile + ".obf";
                 if (!File.Exists(pagefile))
-                    pagefile = "./Resources/CommuniKateBoards/toppage.obf";
+                    pagefile = Settings.Default.CommuniKateTopPageLocation;
                 //if (File.Exists(pagefile))
                 {
                     Log.InfoFormat("Page file to read: {0}.", pagefile);
@@ -732,10 +730,17 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKPageFile
         {
             get { return (string)GetValue(CKPageFileProperty); }
-            set { SetValue(CKPageFileProperty,// value); }
-                                (value != null) ? "./Resources/CommuniKateBoards/" + value + ".obf" 
-                                : "./Resources/CommuniKateBoards/toppage.obf"); }
-        }//*/
+            set
+            {
+                List<string> pathprefix = Settings.Default.CommuniKateTopPageLocation.Split(new Char [] {'/', '\\' }).ToList();
+                string toppage = pathprefix.ElementAt(pathprefix.Count - 1);
+                int pathlength = Settings.Default.CommuniKateTopPageLocation.Length - toppage.Length;
+                SetValue(CKPageFileProperty,
+                                (value != null) 
+                                ? Settings.Default.CommuniKateTopPageLocation.Substring(0, pathlength) + value
+                                : Settings.Default.CommuniKateTopPageLocation);
+            }
+        }
 
         public CK20Page()
         {

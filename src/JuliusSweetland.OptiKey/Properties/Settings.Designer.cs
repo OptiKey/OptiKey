@@ -1860,5 +1860,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeyboardCurrentContext"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Resources/CommuniKateBoards/toppage.obf")]
+        public string CommuniKateTopPageLocation {
+            get {
+                return ((string)(this["CommuniKateTopPageLocation"]));
+            }
+            set {
+                this["CommuniKateTopPageLocation"] = value;
+            }
+        }
     }
 }

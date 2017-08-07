@@ -142,6 +142,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
+        private string communiKateTopPageLocation;
+        public string CommuniKateTopPageLocation
+        {
+            get { return communiKateTopPageLocation; }
+            set { SetProperty(ref communiKateTopPageLocation, value); }
+        }
+
         private bool useCommuniKateKeyboardLayout;
         public bool UseCommuniKateKeyboardLayout
         {
@@ -232,6 +239,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             UiLanguage = Settings.Default.UiLanguage;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
+            CommuniKateTopPageLocation = Settings.Default.CommuniKateTopPageLocation;
             UseCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayout;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
@@ -253,6 +261,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
+            Settings.Default.CommuniKateTopPageLocation = CommuniKateTopPageLocation;
             Settings.Default.UseCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayout;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
