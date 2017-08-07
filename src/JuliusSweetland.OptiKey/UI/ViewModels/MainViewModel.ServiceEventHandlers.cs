@@ -211,7 +211,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
                             {
                                 Log.Info("Changing keyboard to ConversationAlpha.");
-                                var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
+                                //var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                                 Action conversationAlphaBackAction = () =>
                                 {
                                     /*
@@ -238,8 +238,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
                             {
                                 Log.Info("Changing keyboard to ConversationAlpha.");
-                                var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
-                                Action conversationAlphaBackAction = () =>
+                                //var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
+                                Action BackAction = () =>
                                 {
                                     /*
                                     Log.Info("Restoring window size.");
@@ -250,7 +250,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     */
                                     Keyboard = currentKeyboard;
                                 };
-                                Keyboard = new ConversationNumericAndSymbols(conversationAlphaBackAction);
+                                Keyboard = new ConversationNumericAndSymbols(BackAction);
                             }
                             else
                             {
@@ -263,8 +263,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         case "computercontrol.obf":
                             if (mainWindowManipulationService.WindowState != WindowStates.Maximised)
                             {
-                                Log.Info("Changing keyboard to Web Browsing.");
-                                Keyboard = new WebBrowsing();
+                                Log.Info("Changing keyboard to Mouse.");
+                                Action BackAction = () =>
+                                {
+                                    /*
+                                    Log.Info("Restoring window size.");
+                                    mainWindowManipulationService.Restore();
+                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
+                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
+                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
+                                    */
+                                    Keyboard = currentKeyboard;
+                                };
+                                Keyboard = new Mouse(BackAction);
                                 Settings.Default.CommuniKateKeyboardCurrentContext = null;
                             }
                             break;
