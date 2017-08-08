@@ -129,6 +129,40 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
                     //string currentPath = Directory.GetCurrentDirectory();
 
+                    int b = 3;
+                    Buttons blankbutton = new Buttons();
+                    blankbutton.background_color = "rgb(0,0,0)";
+                    blankbutton.image_id = "";
+                    blankbutton.label = defaulttext;
+                    //blankbutton.load_board.path = defaultpath;
+                    blankbutton.load_board = defaultboard;
+
+                    for (int r = 1; r < 5; ++r)
+                        for (int c = 0; c < 5; ++c)
+                        {
+                            if (b < CKPageOBF.buttons.Count)
+                            {
+                                if (CKPageOBF.buttons.ElementAt(b).id != c.ToString() + r.ToString())
+                                {
+                                    blankbutton.id = c.ToString() + r.ToString();
+                                    CKPageOBF.buttons.Insert(b, blankbutton);
+                                    Log.InfoFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                                }
+                                else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color == "rgb(0,0,0)")
+                                {
+                                    blankbutton.background_color = CKPageOBF.buttons.ElementAt(b).background_color;
+                                }
+                            }
+                            else
+                            {
+                                blankbutton.id = c.ToString() + r.ToString();
+                                CKPageOBF.buttons.Insert(b, blankbutton);
+                                Log.InfoFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                            }
+                            ++b;
+                        }
+                    ButtonCount = CKPageOBF.buttons.Count();
+
                     if (buttonid < ButtonCount)
                     {
                         colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
