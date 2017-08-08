@@ -142,11 +142,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             }
         }
 
-        private string communiKateTopPageLocation;
-        public string CommuniKateTopPageLocation
+        private string communiKatePagesetLocation;
+        public string CommuniKatePagesetLocation
         {
-            get { return communiKateTopPageLocation; }
-            set { SetProperty(ref communiKateTopPageLocation, value); }
+            get { return communiKatePagesetLocation; }
+            set { SetProperty(ref communiKatePagesetLocation, value); }
         }
 
         private bool useCommuniKateKeyboardLayout;
@@ -239,7 +239,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             UiLanguage = Settings.Default.UiLanguage;
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
-            CommuniKateTopPageLocation = Settings.Default.CommuniKateTopPageLocation;
+            CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
             UseCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayout;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
@@ -261,7 +261,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.UiLanguage = UiLanguage;
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
-            Settings.Default.CommuniKateTopPageLocation = CommuniKateTopPageLocation;
+            Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
             Settings.Default.UseCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayout;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;

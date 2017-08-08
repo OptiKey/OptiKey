@@ -338,9 +338,6 @@
     <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
-    <Setting Name="SuggestWords1" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="SuggestNextWords" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -382,9 +379,6 @@
     </Setting>
     <Setting Name="MaryTTSLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="SuggestNextWords1" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="KeySelectionTriggerFixationCompleteTimesByKeyValues" Roaming="true" Type="JuliusSweetland.OptiKey.Models.SerializableDictionaryOfTimeSpanByKeyValues" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -1007,8 +1001,8 @@
     <Setting Name="KeyboardCurrentContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
-    <Setting Name="CommuniKateTopPageLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">./Resources/CommuniKateBoards/toppage.obf</Value>
+    <Setting Name="CommuniKatePagesetLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
     </Setting>
   </Settings>
 </SettingsFile>

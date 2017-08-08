@@ -19,19 +19,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Open Board Format (*.obf)|*.obf"
+                Filter = "Open Board Format (*.obz)|*.obz"
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                if (openFileDialog.FileName.EndsWith(@".obf"))
+                if (openFileDialog.FileName.EndsWith(@".obz"))
                 {
                     txtCommuniKateTopPageLocation.Text = openFileDialog.FileName;
-                    Settings.Default.CommuniKateTopPageLocation = txtCommuniKateTopPageLocation.Text;
+                    Settings.Default.CommuniKatePagesetLocation = txtCommuniKateTopPageLocation.Text;
                 }
                 else
                 {
                     txtCommuniKateTopPageLocation.Text = Properties.Resources.COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL;
-                    Settings.Default.CommuniKateTopPageLocation = null;
+                    Settings.Default.CommuniKatePagesetLocation = null;
                 }
             }
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.IO.Compression;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
@@ -39,6 +40,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         {
             public string path { get; set; }
         }
+
+        public class Pageset
+        {
+            //[JsonProperty("Pageset")]
+            public string format { get; set; }
+            public string root { get; set; }
+        }
         //*
         public static DependencyProperty CKPageFileProperty =
         DependencyProperty.Register("CKPageFile", typeof(string), typeof(CK20Page), new PropertyMetadata(default(string), CKPageFileChanged));
@@ -52,13 +60,44 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
                 string pagefile = value;
 
+                string extractPath = @"./Resources/CommuniKate/pageset";
+
+                if (!File.Exists(@"./Resources/CommuniKate/pageset/manifest.json"))
+                {
+                    string zipPath = Settings.Default.CommuniKatePagesetLocation; //@"./Resources/CommuniKate/pageset.obz";
+                    /*
+                    using (ZipArchive archive = ZipFile.OpenRead(zipPath))
+                    {
+                        foreach (ZipArchiveEntry entry in archive.Entries)
+                        {
+                            if (entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
+                                || entry.FullName.EndsWith(".obf", StringComparison.OrdinalIgnoreCase)
+                                || entry.FullName.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                            {
+                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
+                            }
+                        }
+                    }*/
+                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
+                    {
+                        archive.ExtractToDirectory(extractPath);
+                    }
+                }
+
+
                 Log.InfoFormat("Trying to read page file: {0}.", pagefile);
                 if (pagefile == null)
-                    pagefile = Settings.Default.CommuniKateTopPageLocation;
+                    pagefile = @"./Resources/CommuniKate/pageset/boards/toppage.obf"; //Settings.Default.CommuniKateTopPageLocation;
                 if (!pagefile.EndsWith(".obf"))
                     pagefile = pagefile + ".obf";
                 if (!File.Exists(pagefile))
-                    pagefile = Settings.Default.CommuniKateTopPageLocation;
+                {
+                    pagefile = @"./Resources/CommuniKate/pageset/boards/toppage.obf"; //Settings.Default.CommuniKateTopPageLocation;
+
+                    string contents = new StreamReader(@"./Resources/CommuniKate/pageset/manifest.json", Encoding.UTF8).ReadToEnd();
+                    Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                    pagefile = Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/" + manifest.root;
+                }
                 //if (File.Exists(pagefile))
                 {
                     Log.InfoFormat("Page file to read: {0}.", pagefile);
@@ -82,6 +121,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     //KeyValue defaultmenukey;
                     string defaulttext = "";
                     Load_board defaultboard = null;
+
+                    //string currentPath = Directory.GetCurrentDirectory();
+
                     if (buttonid < ButtonCount)
                     {
                         colour = CKPageOBF.buttons.ElementAt(buttonid).background_color.Substring(4);
@@ -732,13 +774,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (string)GetValue(CKPageFileProperty); }
             set
             {
-                List<string> pathprefix = Settings.Default.CommuniKateTopPageLocation.Split(new Char [] {'/', '\\' }).ToList();
+                List<string> pathprefix = Settings.Default.CommuniKatePagesetLocation.Split(new Char [] {'/', '\\' }).ToList();
                 string toppage = pathprefix.ElementAt(pathprefix.Count - 1);
-                int pathlength = Settings.Default.CommuniKateTopPageLocation.Length - toppage.Length;
+                int pathlength = Settings.Default.CommuniKatePagesetLocation.Length - toppage.Length;
                 SetValue(CKPageFileProperty,
-                                (value != null) 
-                                ? Settings.Default.CommuniKateTopPageLocation.Substring(0, pathlength) + value
-                                : Settings.Default.CommuniKateTopPageLocation);
+                                (value != null)
+                                ? @"./Resources/CommuniKate/pageset/boards/" + value
+                                : @"./Resources/CommuniKate/pageset/boards/toppage.obf"); //Settings.Default.CommuniKateTopPageLocation);
             }
         }
 
@@ -747,17 +789,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             CKPageFile = Settings.Default.CommuniKateKeyboardCurrentContext;
 
             InitializeComponent();
-        }
-
-        public CKOBF readpage(string file)
-        {
-            if (file == null || file == "")
-                file = "./Resources/CommuniKateBoards/toppage.obf";
-            string contents = new StreamReader(file, Encoding.UTF8).ReadToEnd();
-            CKOBF page = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
-            //Log.InfoFormat("raw json file:\n{0}", contents);
-            Log.InfoFormat("Page contains {0} buttons.", page.buttons.Count());
-            return page;
         }
 
         public string dec2hex(string dec)
@@ -821,7 +852,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_00
         {
             get { return (string)GetValue(CKImSo_00Property); }
-            set { SetValue(CKImSo_00Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_00Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu01Property =
@@ -860,7 +891,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_01
         {
             get { return (string)GetValue(CKImSo_01Property); }
-            set { SetValue(CKImSo_01Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_01Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu02Property =
@@ -900,7 +931,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_02
         {
             get { return (string)GetValue(CKImSo_02Property); }
-            set { SetValue(CKImSo_02Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_02Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu03Property =
@@ -941,7 +972,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_03
         {
             get { return (string)GetValue(CKImSo_03Property); }
-            set { SetValue(CKImSo_03Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_03Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu04Property =
@@ -981,7 +1012,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_04
         {
             get { return (string)GetValue(CKImSo_04Property); }
-            set { SetValue(CKImSo_04Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_04Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu10Property =
@@ -1021,7 +1052,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_10
         {
             get { return (string)GetValue(CKImSo_10Property); }
-            set { SetValue(CKImSo_10Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_10Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu11Property =
@@ -1060,7 +1091,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_11
         {
             get { return (string)GetValue(CKImSo_11Property); }
-            set { SetValue(CKImSo_11Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_11Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu12Property =
@@ -1099,7 +1130,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_12
         {
             get { return (string)GetValue(CKImSo_12Property); }
-            set { SetValue(CKImSo_12Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_12Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu13Property =
@@ -1138,7 +1169,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_13
         {
             get { return (string)GetValue(CKImSo_13Property); }
-            set { SetValue(CKImSo_13Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_13Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu14Property =
@@ -1177,7 +1208,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_14
         {
             get { return (string)GetValue(CKImSo_14Property); }
-            set { SetValue(CKImSo_14Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_14Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu20Property =
@@ -1216,7 +1247,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_20
         {
             get { return (string)GetValue(CKImSo_20Property); }
-            set { SetValue(CKImSo_20Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_20Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu21Property =
@@ -1255,7 +1286,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_21
         {
             get { return (string)GetValue(CKImSo_21Property); }
-            set { SetValue(CKImSo_21Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_21Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu22Property =
@@ -1294,7 +1325,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_22
         {
             get { return (string)GetValue(CKImSo_22Property); }
-            set { SetValue(CKImSo_22Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_22Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu23Property =
@@ -1333,7 +1364,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_23
         {
             get { return (string)GetValue(CKImSo_23Property); }
-            set { SetValue(CKImSo_23Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_23Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu24Property =
@@ -1372,7 +1403,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_24
         {
             get { return (string)GetValue(CKImSo_24Property); }
-            set { SetValue(CKImSo_24Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_24Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu30Property =
@@ -1411,7 +1442,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_30
         {
             get { return (string)GetValue(CKImSo_30Property); }
-            set { SetValue(CKImSo_30Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_30Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu31Property =
@@ -1450,7 +1481,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_31
         {
             get { return (string)GetValue(CKImSo_31Property); }
-            set { SetValue(CKImSo_31Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_31Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu32Property =
@@ -1489,7 +1520,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_32
         {
             get { return (string)GetValue(CKImSo_32Property); }
-            set { SetValue(CKImSo_32Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_32Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu33Property =
@@ -1528,7 +1559,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_33
         {
             get { return (string)GetValue(CKImSo_33Property); }
-            set { SetValue(CKImSo_33Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_33Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu34Property =
@@ -1567,7 +1598,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_34
         {
             get { return (string)GetValue(CKImSo_34Property); }
-            set { SetValue(CKImSo_34Property, "/Resources/CommuniKateImages/" + value); }
+            set { SetValue(CKImSo_34Property, Directory.GetCurrentDirectory() + "/Resources/CommuniKate/pageset/images/" + value); }
         }
 
         public bool CKMenuKey_00

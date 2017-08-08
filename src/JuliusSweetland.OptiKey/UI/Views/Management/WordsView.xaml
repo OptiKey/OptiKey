@@ -105,7 +105,7 @@
                         </StackPanel.Style>
                     </StackPanel>
                     <TextBlock Grid.Row="3" Grid.Column="2" Name="txtCommuniKateTopPageLocation"
-                               Text="{Binding CommuniKateTopPageLocation, Mode=TwoWay}" 
+                               Text="{Binding CommuniKatePagesetLocation, Mode=TwoWay}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
