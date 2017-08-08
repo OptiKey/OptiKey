@@ -8,7 +8,6 @@ using System.IO;
 using System.IO.Compression;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
-using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -19,8 +18,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     public partial class CK20Page : UserControl
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        //public string CKPageFile = @"F:\soft\eye tracking\osk\CommuniKate\pageset\boards\toppage.obf";
-
+        
         public class CKOBF
         {
             public List<Buttons> buttons { get; set; }
@@ -48,7 +46,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             public string format { get; set; }
             public string root { get; set; }
         }
-        //*
+        
         public static DependencyProperty CKPageFileProperty =
         DependencyProperty.Register("CKPageFile", typeof(string), typeof(CK20Page), new PropertyMetadata(default(string), CKPageFileChanged));
 
@@ -60,45 +58,21 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
                 string extractPath = CKpath(true);
-                string pagefile = extractPath + "boards/" + value;
-                /*
-                if (WordsViewModel.CommuniKateOBZChanged == true)
-                {
-                    Directory.Delete(@"./Resources/CommuniKate/pageset/", true);
-                }*/
-
+                
                 if (!File.Exists(extractPath + "manifest.json"))
                 {
-                    string zipPath = Settings.Default.CommuniKatePagesetLocation; //@"./Resources/CommuniKate/pageset.obz";
-                    /*
-                    using (ZipArchive archive = ZipFile.OpenRead(zipPath))
-                    {
-                        foreach (ZipArchiveEntry entry in archive.Entries)
-                        {
-                            if (entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
-                                || entry.FullName.EndsWith(".obf", StringComparison.OrdinalIgnoreCase)
-                                || entry.FullName.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
-                            {
-                                entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
-                            }
-                        }
-                    }*/
+                    string zipPath = Settings.Default.CommuniKatePagesetLocation;
+
                     using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
                     {
                         archive.ExtractToDirectory(extractPath);
                     }
                 }
 
-
+                string pagefile = value;
                 Log.InfoFormat("Trying to read page file: {0}.", pagefile);
-                if (pagefile == null)
-                    pagefile = extractPath + "boards/toppage.obf"; //Settings.Default.CommuniKateTopPageLocation;
-                if (!pagefile.EndsWith(".obf"))
-                    pagefile = pagefile + ".obf";
-                if (!File.Exists(pagefile))
+                if (value == null || !File.Exists(pagefile))
                 {
-                    pagefile = extractPath + "boards/toppage.obf"; //Settings.Default.CommuniKateTopPageLocation;
-
                     string contents = new StreamReader(extractPath + "manifest.json", Encoding.UTF8).ReadToEnd();
                     Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
                     pagefile = extractPath + manifest.root;
@@ -126,8 +100,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     //KeyValue defaultmenukey;
                     string defaulttext = "";
                     Load_board defaultboard = null;
-
-                    //string currentPath = Directory.GetCurrentDirectory();
 
                     int b = 3;
                     Buttons blankbutton = new Buttons();
@@ -811,7 +783,20 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKPageFile
         {
             get { return (string)GetValue(CKPageFileProperty); }
-            set { SetValue(CKPageFileProperty, value); }
+            set
+            {
+                string path = CKpath(true);
+                if (value != null)
+                {
+                    SetValue(CKPageFileProperty, path + "boards/" + value);
+                }
+                else
+                {
+                    string contents = new StreamReader(path + "manifest.json", Encoding.UTF8).ReadToEnd();
+                    Pageset manifest = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Pageset>(contents);
+                    SetValue(CKPageFileProperty, path + manifest.root);
+                }
+            }
         }
 
         public CK20Page()

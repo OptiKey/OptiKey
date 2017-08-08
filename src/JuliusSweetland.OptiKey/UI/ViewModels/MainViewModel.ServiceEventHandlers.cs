@@ -211,16 +211,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
                             {
                                 Log.Info("Changing keyboard to ConversationAlpha.");
-                                //var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                                 Action conversationAlphaBackAction = () =>
                                 {
-                                    /*
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
-                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
-                                    */
                                     Settings.Default.UseCommuniKateKeyboardLayout = true;
                                     Keyboard = currentKeyboard;
                                 };
@@ -237,17 +229,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         case "numbers.obf":
                             if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
                             {
-                                Log.Info("Changing keyboard to ConversationAlpha.");
-                                //var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
+                                Log.Info("Changing keyboard to ConversationNumericAndSymbols.");
                                 Action BackAction = () =>
                                 {
-                                    /*
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
-                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
-                                    */
                                     Keyboard = currentKeyboard;
                                 };
                                 Keyboard = new ConversationNumericAndSymbols(BackAction);
@@ -266,13 +250,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Log.Info("Changing keyboard to Mouse.");
                                 Action BackAction = () =>
                                 {
-                                    /*
-                                    Log.Info("Restoring window size.");
-                                    mainWindowManipulationService.Restore();
-                                    Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha);
-                                    mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha);
-                                    Keyboard = new Menu(() => Keyboard = currentKeyboard);
-                                    */
                                     Keyboard = currentKeyboard;
                                 };
                                 Keyboard = new Mouse(BackAction);
@@ -284,7 +261,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Settings.Default.CommuniKateKeyboardCurrentContext =
                                     singleKeyValue.String;
 
-                            //CK20Page.CKPageFileProperty = singleKeyValue.String;
                             Log.InfoFormat("Keyboard current context changed to {0}.",
                                 Settings.Default.CommuniKateKeyboardCurrentContext);
                             break;
@@ -380,7 +356,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CommuniKateKeyboard:
-                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    //Settings.Default.CommuniKateKeyboardCurrentContext = null;
                     Settings.Default.UseCommuniKateKeyboardLayout = true;
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha();
