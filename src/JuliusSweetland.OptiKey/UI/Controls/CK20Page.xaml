@@ -102,10 +102,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_01, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -166,10 +181,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_02, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -230,10 +260,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_03, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -294,10 +339,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_04, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -359,10 +419,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_10, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -423,10 +498,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_11, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -487,10 +577,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_12, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -551,10 +656,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_13, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -615,10 +735,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_14, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -680,10 +815,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_20, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -744,10 +894,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_21, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -808,10 +973,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_22, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -872,10 +1052,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_23, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -936,10 +1131,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_24, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1001,10 +1211,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_30, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1065,10 +1290,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_31, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1129,10 +1369,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_32, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1193,10 +1448,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_33, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">
@@ -1257,10 +1527,25 @@
             </Grid.RowDefinitions>
             <Image Source="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
                    Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
-            <Viewbox Stretch="Uniform">
-                <TextBlock Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
-                           FontWeight="Heavy" HorizontalAlignment="Center" />
-            </Viewbox>
+            <ContentControl>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Viewbox Stretch="Uniform">
+                                    <TextBlock Text="{Binding Path=CKText_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}"
+                                               FontWeight="Heavy" HorizontalAlignment="Center" />
+                                </Viewbox>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CKImSo_34, RelativeSource={RelativeSource AncestorType={x:Type controls:CK20Page}}}" Value="">
+                                <Setter Property="Grid.RowSpan" Value="2"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
             <ContentControl>
                 <ContentControl.Style>
                     <Style TargetType="{x:Type ContentControl}">

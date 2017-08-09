@@ -877,7 +877,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_00
         {
             get { return (string)GetValue(CKImSo_00Property); }
-            set { SetValue(CKImSo_00Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_00Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu01Property =
@@ -916,7 +916,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_01
         {
             get { return (string)GetValue(CKImSo_01Property); }
-            set { SetValue(CKImSo_01Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_01Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu02Property =
@@ -956,7 +956,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_02
         {
             get { return (string)GetValue(CKImSo_02Property); }
-            set { SetValue(CKImSo_02Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_02Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu03Property =
@@ -997,7 +997,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_03
         {
             get { return (string)GetValue(CKImSo_03Property); }
-            set { SetValue(CKImSo_03Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_03Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu04Property =
@@ -1037,7 +1037,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_04
         {
             get { return (string)GetValue(CKImSo_04Property); }
-            set { SetValue(CKImSo_04Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_04Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu10Property =
@@ -1077,7 +1077,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_10
         {
             get { return (string)GetValue(CKImSo_10Property); }
-            set { SetValue(CKImSo_10Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_10Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu11Property =
@@ -1116,7 +1116,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_11
         {
             get { return (string)GetValue(CKImSo_11Property); }
-            set { SetValue(CKImSo_11Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_11Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu12Property =
@@ -1155,7 +1155,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_12
         {
             get { return (string)GetValue(CKImSo_12Property); }
-            set { SetValue(CKImSo_12Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_12Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu13Property =
@@ -1194,7 +1194,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_13
         {
             get { return (string)GetValue(CKImSo_13Property); }
-            set { SetValue(CKImSo_13Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_13Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu14Property =
@@ -1233,7 +1233,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_14
         {
             get { return (string)GetValue(CKImSo_14Property); }
-            set { SetValue(CKImSo_14Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_14Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu20Property =
@@ -1272,7 +1272,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_20
         {
             get { return (string)GetValue(CKImSo_20Property); }
-            set { SetValue(CKImSo_20Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_20Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu21Property =
@@ -1311,7 +1311,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_21
         {
             get { return (string)GetValue(CKImSo_21Property); }
-            set { SetValue(CKImSo_21Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_21Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu22Property =
@@ -1350,7 +1350,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_22
         {
             get { return (string)GetValue(CKImSo_22Property); }
-            set { SetValue(CKImSo_22Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_22Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu23Property =
@@ -1389,7 +1389,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_23
         {
             get { return (string)GetValue(CKImSo_23Property); }
-            set { SetValue(CKImSo_23Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_23Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu24Property =
@@ -1428,7 +1428,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_24
         {
             get { return (string)GetValue(CKImSo_24Property); }
-            set { SetValue(CKImSo_24Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_24Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu30Property =
@@ -1467,7 +1467,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_30
         {
             get { return (string)GetValue(CKImSo_30Property); }
-            set { SetValue(CKImSo_30Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_30Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu31Property =
@@ -1506,7 +1506,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_31
         {
             get { return (string)GetValue(CKImSo_31Property); }
-            set { SetValue(CKImSo_31Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_31Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu32Property =
@@ -1545,7 +1545,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_32
         {
             get { return (string)GetValue(CKImSo_32Property); }
-            set { SetValue(CKImSo_32Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_32Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu33Property =
@@ -1584,7 +1584,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_33
         {
             get { return (string)GetValue(CKImSo_33Property); }
-            set { SetValue(CKImSo_33Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_33Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public static readonly DependencyProperty CKMenu34Property =
@@ -1623,7 +1623,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public string CKImSo_34
         {
             get { return (string)GetValue(CKImSo_34Property); }
-            set { SetValue(CKImSo_34Property, CKpath() + "images/" + value); }
+            set { SetValue(CKImSo_34Property, value == "" ? value : CKpath() + "images/" + value); }
         }
 
         public bool CKMenuKey_00
