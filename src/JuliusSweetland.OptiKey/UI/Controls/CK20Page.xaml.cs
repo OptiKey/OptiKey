@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 }
 
                 string pagefile = value;
-                Log.InfoFormat("Trying to read page file: {0}.", pagefile);
+                Log.DebugFormat("Trying to read page file: {0}.", pagefile);
                 if (value == null || !File.Exists(pagefile))
                 {
                     string contents = new StreamReader(extractPath + "manifest.json", Encoding.UTF8).ReadToEnd();
@@ -79,7 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 }
                 //if (File.Exists(pagefile))
                 {
-                    Log.InfoFormat("Page file to read: {0}.", pagefile);
+                    Log.DebugFormat("Page file to read: {0}.", pagefile);
                     string contents = new StreamReader(pagefile, Encoding.UTF8).ReadToEnd();
                     CKOBF CKPageOBF = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<CKOBF>(contents);
                     //Log.InfoFormat("raw json file:\n{0}", contents);
@@ -118,7 +118,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                 {
                                     blankbutton.id = c.ToString() + r.ToString();
                                     CKPageOBF.buttons.Insert(b, blankbutton);
-                                    Log.InfoFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                                    Log.DebugFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
                                 }
                                 else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color == "rgb(0,0,0)")
                                 {
@@ -129,7 +129,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 blankbutton.id = c.ToString() + r.ToString();
                                 CKPageOBF.buttons.Insert(b, blankbutton);
-                                Log.InfoFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                                Log.DebugFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
                             }
                             ++b;
                         }

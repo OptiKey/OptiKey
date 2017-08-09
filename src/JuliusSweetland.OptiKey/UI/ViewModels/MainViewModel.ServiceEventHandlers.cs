@@ -267,7 +267,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                             else { Settings.Default.CommuniKateKeyboardCurrentContext = singleKeyValue.String; }
 
-                            Log.InfoFormat("Keyboard current context changed to {0}.",
+                            Log.InfoFormat("CommuniKate keyboard page changed to {0}.",
                                 Settings.Default.CommuniKateKeyboardCurrentContext);
                             break;
                     }
