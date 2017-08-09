@@ -2429,6 +2429,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MaryTTS is not available.
+        /// </summary>
+        public static string MARYTTS_UNAVAILABLE {
+            get {
+                return ResourceManager.GetString("MARYTTS_UNAVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MaryTTS voice:.
         /// </summary>
         public static string MARYTTS_VOICE_LABEL {
@@ -3585,6 +3594,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Presage word prediction not available.
+        /// </summary>
+        public static string PRESAGE_UNAVAILABLE {
+            get {
+                return ResourceManager.GetString("PRESAGE_UNAVAILABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PREVIOUS.
         /// </summary>
         public static string PREV {
@@ -4364,6 +4382,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delay before speech (ms):.
+        /// </summary>
+        public static string SPEECH_DELAY_LABEL {
+            get {
+                return ResourceManager.GetString("SPEECH_DELAY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Startup keyboard:.
         /// </summary>
         public static string STARTUP_KEYBOARD_LABEL {
@@ -4887,6 +4914,29 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
             get {
                 return ResourceManager.GetString("USE_SIMPLIFIED_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the suggestion method to: {0}.
+        ///You can change this back 
+        ///from the Management Console (ALT + M)..
+        /// </summary>
+        public static string USING_DEFAULT_SUGGESTION_METHOD {
+            get {
+                return ResourceManager.GetString("USING_DEFAULT_SUGGESTION_METHOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the speech voice to the system voice: {0}.
+        ///You can check the path for MaryTTS 
+        ///and change the voice back to it 
+        ///from the Management Console (ALT + M)..
+        /// </summary>
+        public static string USING_DEFAULT_VOICE {
+            get {
+                return ResourceManager.GetString("USING_DEFAULT_VOICE", resourceCulture);
             }
         }
         

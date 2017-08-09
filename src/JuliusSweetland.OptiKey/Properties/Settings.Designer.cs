@@ -1800,5 +1800,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SpeechDelay {
+            get {
+                return ((int)(this["SpeechDelay"]));
+            }
+            set {
+                this["SpeechDelay"] = value;
+            }
+        }
     }
 }

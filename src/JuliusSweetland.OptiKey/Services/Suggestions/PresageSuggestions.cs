@@ -1,4 +1,4 @@
-﻿using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Models;
 using log4net;
 using presage;
 using System;
@@ -42,7 +42,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
                 this.root = root;
 
                 // force presage to suggest the next word by adding a space 
-                if (nextWord && root.Length > 0 && Char.IsLetterOrDigit(root.Last()))
+                if (nextWord && root.Length > 0 && char.IsLetterOrDigit(root.Last()))
                 {
                     this.root = this.root + " ";
                 }
@@ -76,14 +76,8 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         }
 
-        public void AddEntry(string entry, DictionaryEntry metaData)
-        {
-
-        }
-
         public void RemoveEntry(string entry)
         {
-            
         }
 
         private string callback_get_past_stream()

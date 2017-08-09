@@ -17,6 +17,7 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
+using JuliusSweetland.OptiKey.Services.Suggestions;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
@@ -26,6 +27,7 @@ using log4net.Repository.Hierarchy;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
+using presage;
 using Application = System.Windows.Application;
 
 namespace JuliusSweetland.OptiKey
@@ -134,52 +136,26 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
+                bool presageBootstrapFailure = false;
+                try
+                {
+                    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                    {
+                        new PresageSuggestions(); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Presage failed to bootstrap - changing suggestion method to NGram", ex);
+                    presageBootstrapFailure = true;
+                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                }
+
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 IAudioService audioService = new AudioService();
-                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-                {
-                    string resultpath = null;
-                    string resulSMF = null;
-                    string OSBitness = DiagnosticInfo.OperatingSystemBitness;
-
-                    try
-                    {
-                        resultpath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
-                        resulSMF = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
-                    }
-                    catch (System.Security.SecurityException ex)
-                    {
-                        Log.ErrorFormat("Caught exception: {0}", ex);
-                        resultpath = string.Empty;
-                        resulSMF = string.Empty;
-                    }
-                    catch (System.IO.IOException ex)
-                    {
-                        Log.ErrorFormat("Caught exception: {0}", ex);
-                        resultpath = string.Empty;
-                        resulSMF = string.Empty;
-                    }
-                    catch(Exception ex)
-                    {
-                        Log.ErrorFormat("Caught exception: {0}", ex);
-                        resultpath = string.Empty;
-                        resulSMF = string.Empty;
-                    }
-
-                    if (resulSMF != "presage-0.9.2~beta20150909"
-                                || resultpath == string.Empty || resultpath == null
-                                || (OSBitness == "64-Bit" && resultpath != @"C:\Program Files (x86)\presage")
-                                || (OSBitness == "32-Bit" && resultpath != @"C:\Program Files\presage"))
-                    {
-                        Settings.Default.SuggestionMethod = SuggestionMethods.Basic;
-                        Log.Error("Invalid Presage installation. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to Basic.");
-                    }
-                    else
-                    {
-                        Log.InfoFormat("Using Presage {0} at {1}.", resulSMF.ToString(), resultpath.ToString());
-                    }
-                }
+                
                 IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
                 IPublishService publishService = new PublishService();
                 ISuggestionStateService suggestionService = new SuggestionStateService();
@@ -196,8 +172,6 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(inputService);
 
                 ReleaseKeysOnApplicationExit(keyStateService, publishService);
-
-                AttemptToStartMaryTTSService();
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
@@ -247,7 +221,11 @@ namespace JuliusSweetland.OptiKey
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
+                    await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
+                    await CheckPresageIsInstalledAndWorking(presageBootstrapFailure, inputService, audioService, mainViewModel);
+
                     inputService.RequestResume(); //Start the input service
+
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
 
@@ -861,11 +839,13 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-
+        
         #region Attempt To Start/Stop Mary TTS Service Automatically
 
-        private static void AttemptToStartMaryTTSService()
+        private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
             if (Settings.Default.MaryTTSEnabled)
             {
                 Process proc = new Process
@@ -886,30 +866,51 @@ namespace JuliusSweetland.OptiKey
                     try
                     {
                         proc.Start();
+
+                        Log.InfoFormat("Started MaryTTS.");
+                        CloseMaryTTSOnApplicationExit(proc);
+                        taskCompletionSource.SetResult(true);
                     }
                     catch (Exception ex)
                     {
                         var errorMsg = string.Format(
-                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
                         Settings.Default.MaryTTSEnabled = false;
-                    }
 
-                    if (Settings.Default.MaryTTSEnabled)
-                    {
-                        Log.InfoFormat("Started MaryTTS.");
-                        CloseMaryTTSOnApplicationExit(proc);
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error, () =>
+                            {
+                                inputService.RequestResume();
+                                taskCompletionSource.SetResult(false);
+                            });
                     }
                 }
                 else
                 {
                     Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does not end in the expected suffix '{0}'). " +
-                        "Disabling MaryTTS and using System Voice '{1}' instead.", ExpectedMaryTTSLocationSuffix,
-                        Settings.Default.SpeechVoice);
+                        "Disabling MaryTTS and using System Voice '{1}' instead.", ExpectedMaryTTSLocationSuffix, Settings.Default.SpeechVoice);
                     Settings.Default.MaryTTSEnabled = false;
+
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
                 }
             }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            
+            return await taskCompletionSource.Task;
         }
 
         private static void CloseMaryTTSOnApplicationExit(Process proc)
@@ -929,6 +930,65 @@ namespace JuliusSweetland.OptiKey
                     }
                 }
             };
+        }
+
+        #endregion
+
+        #region Check Presage Is Installed And Working
+
+        private static async Task<bool> CheckPresageIsInstalledAndWorking(bool presageBootstrapFailure, IInputService inputService, IAudioService audioService, 
+            MainViewModel mainViewModel)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
+
+            if (presageBootstrapFailure || Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+            {
+                string presagePath = null;
+                string presageStartMenuFolder = null;
+                string osBitness = DiagnosticInfo.OperatingSystemBitness;
+
+                try
+                {
+                    presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
+                    presageStartMenuFolder = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Caught exception: {0}", ex);
+                }
+
+                if (string.IsNullOrEmpty(presagePath)
+                    || string.IsNullOrEmpty(presageStartMenuFolder)
+                    || presageStartMenuFolder != "presage-0.9.2~beta20150909"
+                    || (osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
+                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage")
+                    || presageBootstrapFailure)
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    inputService.RequestSuspend();
+                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_SUGGESTION_METHOD,
+                            Settings.Default.SuggestionMethod),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
+                }
+                else
+                {
+                    Log.InfoFormat("Using Presage {0} at {1}.", presageStartMenuFolder, presagePath);
+                    taskCompletionSource.SetResult(true);
+                }
+            }
+            else
+            {
+                taskCompletionSource.SetResult(true);
+            }
+
+            return await taskCompletionSource.Task;
         }
 
         #endregion
