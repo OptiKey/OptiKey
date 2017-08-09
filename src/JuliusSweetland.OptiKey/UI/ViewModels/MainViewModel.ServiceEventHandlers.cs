@@ -258,8 +258,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             break;
 
                         default:
-                            Settings.Default.CommuniKateKeyboardCurrentContext =
-                                    singleKeyValue.String;
+                            if (singleKeyValue.String.Contains("+"))
+                            {
+                                keyboardOutputService.ProcessSingleKeyText(
+                                    singleKeyValue.String.Split('+').ToList().ElementAt(0));
+                                Settings.Default.CommuniKateKeyboardCurrentContext = 
+                                    singleKeyValue.String.Split('+').ToList().ElementAt(1);
+                            }
+                            else { Settings.Default.CommuniKateKeyboardCurrentContext = singleKeyValue.String; }
 
                             Log.InfoFormat("Keyboard current context changed to {0}.",
                                 Settings.Default.CommuniKateKeyboardCurrentContext);

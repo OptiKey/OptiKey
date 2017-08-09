@@ -155,6 +155,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -187,6 +189,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -219,6 +223,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -251,6 +257,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -283,6 +291,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -316,6 +326,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -348,6 +360,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -380,6 +394,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -412,6 +428,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -444,6 +462,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -477,6 +497,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -509,6 +531,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -541,6 +565,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -573,6 +599,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -605,6 +633,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -638,6 +668,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -670,6 +702,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -702,6 +736,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -734,6 +770,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
@@ -766,6 +804,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (board != null && board.path != null)
                     {
                         path = board.path.Substring(7);
+                        if (path.StartsWith("+"))
+                            path = text + path;
                         ismenukey = true;
                         Log.DebugFormat("Button {0} is a menu key for board {1}.", buttonid - 2, path);
                     }
