@@ -346,8 +346,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void AddEntryToDictionary(string entry, bool loadedFromDictionaryFile, int usageCount = 0)
         {
             if (entries != null
-                && !string.IsNullOrWhiteSpace(entry)
-				&& (!loadedFromDictionaryFile || !ExistsInDictionary(entry)))
+                && !string.IsNullOrWhiteSpace(entry))
             {
 				//Add to in-memory (hashed) dictionary (and then save to custom dictionary file if new entry entered by user)
 				var hash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: !loadedFromDictionaryFile);
