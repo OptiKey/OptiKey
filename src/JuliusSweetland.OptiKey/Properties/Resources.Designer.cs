@@ -3225,6 +3225,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No keyboards found.
+        /// </summary>
+        public static string NO_KEYBOARDS_FOUND {
+            get {
+                return ResourceManager.GetString("NO_KEYBOARDS_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It doesn&apos;t look like the scratchpad contains any words or phrases that don&apos;t already exist in the dictionary..
         /// </summary>
         public static string NO_NEW_ENTRIES_IN_SCRATCHPAD {

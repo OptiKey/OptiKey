@@ -793,6 +793,9 @@ SELECTION</value>
   <data name="NO" xml:space="preserve">
     <value>NO</value>
   </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>No keyboards found</value>
+  </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
     <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
   </data>

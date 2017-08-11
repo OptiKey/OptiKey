@@ -92,7 +92,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     {
                         // Special case for empty grid                       
                         newKey.SharedSizeGroup = "BackButton";
-                        newKey.Text = "No keyboards\nfound"; // TODO: resource string   
+                        newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.NO_KEYBOARDS_FOUND;
                     }
                     this.AddKey(newKey, r, c);
                 }
@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "BackButton";        
                 newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["ArrowPointingToLeftIcon"];
-                newKey.Text = "Prev"; // TODO: resource string
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.PREV;
                 if (this.pageIndex > 0)
                 {
                     newKey.Value = KeyValues.DynamicKeyboardPrev;
@@ -114,7 +114,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "BackButton";
                 newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["ArrowPointingToRightIcon"];
-                newKey.Text = "Next"; // TODO: resource string
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.NEXT;
                 if (nKBs < remainingKeyboards)
                 {
                     newKey.Value = KeyValues.DynamicKeyboardNext;
