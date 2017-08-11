@@ -184,7 +184,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     reinstateModifiers();
                     Keyboard = currentKeyboard;                    
                     // TODO: Or docked, whatevre it currently is!
-                    if (!(currentKeyboard is CustomKeyboard))
+                    if (!(currentKeyboard is DynamicKeyboard))
                     {
                         mainWindowManipulationService.ResizeDockToFull();
                     }
@@ -197,7 +197,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             Action<double> resizeAction = mainWindowManipulationService.TemporarilyResizeDockToSpecifiedHeight;
-            Keyboard = new CustomKeyboard(backAction, resizeAction, keyValue.Keyboard);
+            Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.Keyboard);
 
         }
 
@@ -435,9 +435,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Currencies2();
                     break;
 
-                case FunctionKeys.CustomKeyboardMenu:
+                case FunctionKeys.DynamicKeyboardMenu:
                     {
-                        Log.Info("Changing keyboard to CustomKeyboardMenu.");
+                        Log.Info("Changing keyboard to DynamicKeyboardMenu.");
 
                         var currentKeyboard2 = Keyboard;
 
@@ -455,27 +455,27 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         };
 
                         int pageIndex = 0;
-                        if (Keyboard is CustomKeyboardSelector)
+                        if (Keyboard is DynamicKeyboardSelector)
                         {
-                            var kb = Keyboard as CustomKeyboardSelector;
+                            var kb = Keyboard as DynamicKeyboardSelector;
                             backAction = kb.BackAction;
                             pageIndex = kb.PageIndex + 1;
                         }
-                        Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
                     }
                     break;
 
 
-                case FunctionKeys.CustomKeyboardPrev:
+                case FunctionKeys.DynamicKeyboardPrev:
                     {
-                        Log.Info("Changing keyboard to prev CustomKeyboardMenu.");
+                        Log.Info("Changing keyboard to prev DynamicKeyboardMenu.");
 
                         Action backAction;
                         var currentKeyboard2 = Keyboard;
                         int pageIndex = 0;
-                        if (Keyboard is CustomKeyboardSelector)
+                        if (Keyboard is DynamicKeyboardSelector)
                         {
-                            var kb = Keyboard as CustomKeyboardSelector;
+                            var kb = Keyboard as DynamicKeyboardSelector;
                             backAction = kb.BackAction;
                             pageIndex = kb.PageIndex - 1;
                         }
@@ -487,20 +487,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Keyboard = currentKeyboard2;
                             };
                         }
-                        Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
                     }
                     break;
 
-            case FunctionKeys.CustomKeyboardNext:
+            case FunctionKeys.DynamicKeyboardNext:
                 {
-                    Log.Info("Changing keyboard to next CustomKeyboardMenu.");
+                    Log.Info("Changing keyboard to next DynamicKeyboardMenu.");
 
                     Action backAction;
                     var currentKeyboard2 = Keyboard;
                     int pageIndex = 0;
-                    if (Keyboard is CustomKeyboardSelector)
+                    if (Keyboard is DynamicKeyboardSelector)
                     {
-                        var kb = Keyboard as CustomKeyboardSelector;
+                        var kb = Keyboard as DynamicKeyboardSelector;
                         backAction = kb.BackAction;
                         pageIndex = kb.PageIndex + 1;
                     }
@@ -512,7 +512,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Keyboard = currentKeyboard2;
                         };
                     }
-                    Keyboard = new CustomKeyboardSelector(backAction, pageIndex);
+                    Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
                 }
                 break;
 

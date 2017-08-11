@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
     }
 
-    class CustomKeyboardFolder
+    class DynamicKeyboardFolder
     {
 
         #region Constants
@@ -48,7 +48,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public List<KeyboardInfo> keyboards;
 
-        public CustomKeyboardFolder()
+        public DynamicKeyboardFolder()
         {
             // Find all possible xml files
             string filePath = GetUserKeyboardFolder();

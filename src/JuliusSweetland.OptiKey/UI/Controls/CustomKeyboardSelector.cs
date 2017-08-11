@@ -3,11 +3,11 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class CustomKeyboardSelector : BackActionKeyboard
+    public class DynamicKeyboardSelector : BackActionKeyboard
     {
         private int pageIndex;
 
-        public CustomKeyboardSelector(Action backAction, int pageIndex)
+        public DynamicKeyboardSelector(Action backAction, int pageIndex)
             : base(backAction)
         {
             this.pageIndex = pageIndex;

@@ -61,9 +61,6 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue ConversationNumericAndSymbolsKeyboardKey = new KeyValue(FunctionKeys.ConversationNumericAndSymbolsKeyboard);
         public static readonly KeyValue Currencies1KeyboardKey = new KeyValue(FunctionKeys.Currencies1Keyboard);
         public static readonly KeyValue Currencies2KeyboardKey = new KeyValue(FunctionKeys.Currencies2Keyboard);
-        public static readonly KeyValue CustomKeyboardMenu = new KeyValue(FunctionKeys.CustomKeyboardMenu);
-        public static readonly KeyValue CustomKeyboardNext = new KeyValue(FunctionKeys.CustomKeyboardNext);
-        public static readonly KeyValue CustomKeyboardPrev = new KeyValue(FunctionKeys.CustomKeyboardPrev);
         public static readonly KeyValue CzechCzechRepublicKey = new KeyValue(FunctionKeys.CzechCzechRepublic);
         public static readonly KeyValue DanishDenmarkKey = new KeyValue(FunctionKeys.DanishDenmark);
         public static readonly KeyValue DecreaseOpacityKey = new KeyValue(FunctionKeys.DecreaseOpacity);
@@ -73,6 +70,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue DutchBelgiumKey = new KeyValue(FunctionKeys.DutchBelgium);
         public static readonly KeyValue DutchNetherlandsKey = new KeyValue(FunctionKeys.DutchNetherlands);
+        public static readonly KeyValue DynamicKeyboardMenu = new KeyValue(FunctionKeys.DynamicKeyboardMenu);
+        public static readonly KeyValue DynamicKeyboardNext = new KeyValue(FunctionKeys.DynamicKeyboardNext);
+        public static readonly KeyValue DynamicKeyboardPrev = new KeyValue(FunctionKeys.DynamicKeyboardPrev);
         public static readonly KeyValue EndKey = new KeyValue(FunctionKeys.End);
         public static readonly KeyValue EnglishCanadaKey = new KeyValue(FunctionKeys.EnglishCanada);
         public static readonly KeyValue EnglishUKKey = new KeyValue(FunctionKeys.EnglishUK);

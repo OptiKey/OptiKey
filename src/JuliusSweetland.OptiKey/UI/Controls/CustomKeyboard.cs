@@ -3,12 +3,12 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards
 {
-    public class CustomKeyboard : BackActionKeyboard
+    public class DynamicKeyboard : BackActionKeyboard
     {
         private string link;
         private Action<double> resizeAction;
 
-        public CustomKeyboard(Action backAction, Action<double> resizeAction, string link)
+        public DynamicKeyboard(Action backAction, Action<double> resizeAction, string link)
             : base(backAction)
         {
             this.link = link;

@@ -16,15 +16,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
 
     /// <summary>
-    /// Interaction logic for CustomKeyboard.xaml
+    /// Interaction logic for DynamicKeyboard.xaml
     /// </summary>
-    public partial class CustomKeyboard : KeyboardView
+    public partial class DynamicKeyboard : KeyboardView
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private string inputFilename;
         private XmlKeyboard keyboard;
 
-        public CustomKeyboard(string inputFile, Action<double> resizeAction)
+        public DynamicKeyboard(string inputFile, Action<double> resizeAction)
         {
 
             InitializeComponent();

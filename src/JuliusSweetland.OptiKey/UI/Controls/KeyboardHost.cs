@@ -345,15 +345,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-            else if (Keyboard is ViewModelKeyboards.CustomKeyboard)
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
             {
-                var kb = Keyboard as ViewModelKeyboards.CustomKeyboard;
-                newContent = new CommonViews.CustomKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };                
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
+                newContent = new CommonViews.DynamicKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };                
             }
-            else if (Keyboard is ViewModelKeyboards.CustomKeyboardSelector)
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
             {
-                var kb = Keyboard as ViewModelKeyboards.CustomKeyboardSelector;
-                newContent = new CommonViews.CustomKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboardSelector;
+                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
             }
             Content = newContent;
         }

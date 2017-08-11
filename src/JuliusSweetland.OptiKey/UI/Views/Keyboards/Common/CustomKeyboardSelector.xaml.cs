@@ -19,16 +19,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
 
     /// <summary>
-    /// Interaction logic for CustomKeyboardSelector.xaml
+    /// Interaction logic for DynamicKeyboardSelector.xaml
     /// </summary>
-    public partial class CustomKeyboardSelector : KeyboardView
+    public partial class DynamicKeyboardSelector : KeyboardView
     {
 
         #region Private Members
     
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private CustomKeyboardFolder folder;
+        private DynamicKeyboardFolder folder;
         private int pageIndex = 0;
 
         // TODO: Make user configurable?
@@ -37,13 +37,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         #endregion
 
-        public CustomKeyboardSelector(int pageIndex)
+        public DynamicKeyboardSelector(int pageIndex)
         {
             InitializeComponent();
             this.pageIndex = pageIndex;
 
             // Populate model
-            folder = new CustomKeyboardFolder();
+            folder = new DynamicKeyboardFolder();
             
             // Setup grid
             for (int i = 0; i < this.mRows; i++)
@@ -112,7 +112,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.Text = "Prev"; // TODO: resource string
                 if (this.pageIndex > 0)
                 {
-                    newKey.Value = KeyValues.CustomKeyboardPrev;
+                    newKey.Value = KeyValues.DynamicKeyboardPrev;
                 }
                 this.AddKey(newKey, 0, 0, 2, 1);
             }
@@ -123,7 +123,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.Text = "Next"; // TODO: resource string
                 if (nKBs < remainingKeyboards)
                 {
-                    newKey.Value = KeyValues.CustomKeyboardNext;
+                    newKey.Value = KeyValues.DynamicKeyboardNext;
                 }
                 this.AddKey(newKey, 0, this.mCols - 1, 2, 1);
             }
