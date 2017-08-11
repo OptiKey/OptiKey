@@ -122,6 +122,11 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.Info("Boot strapping the services and UI.");
 
+                if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                {
+                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                }
+
                 //Apply theme
                 applyTheme();
 

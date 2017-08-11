@@ -4936,7 +4936,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use alphabetical keyboard layout:.
+        ///   Looks up a localized string similar to Replace QWERTY keyboard layout with alphabetical keyboard layout:.
         /// </summary>
         public static string USE_ALPHABETICAL_KEYBOARD_LAYOUT {
             get {
@@ -4945,7 +4945,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use CommuniKate keyboard layout:.
+        ///   Looks up a localized string similar to Replace Alpha keyboard with CommuniKate:.
         /// </summary>
         public static string USE_COMMUNIKATE_KEYBOARD_LAYOUT {
             get {
@@ -4954,7 +4954,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use simplify keyboard layout:.
+        ///   Looks up a localized string similar to Replace Alpha keyboard with simplified keyboard layout:.
         /// </summary>
         public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
             get {

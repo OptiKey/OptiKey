@@ -79,7 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
-                OnPropertyChanged(() => UseCommuniKateKeyboardLayout);
+                OnPropertyChanged(() => UseCommuniKateKeyboardLayoutByDefault);
                 OnPropertyChanged(() => UseSimplifiedKeyboardLayoutIsVisible);
             }
         }
@@ -95,7 +95,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public bool UseAlphabeticalKeyboardLayout
         {
             get { return useAlphabeticalKeyboardLayout; }
-            set { SetProperty(ref useAlphabeticalKeyboardLayout, value); }
+            set { SetProperty(ref useAlphabeticalKeyboardLayout, 
+                        value 
+                        && useSimplifiedKeyboardLayout == false
+                        && useCommuniKateKeyboardLayoutByDefault == false
+                        && usingCommuniKateKeyboardLayout == false); }
         }
 
         public bool UseAlphabeticalKeyboardLayoutIsVisible
@@ -112,7 +116,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public bool UseSimplifiedKeyboardLayout
         {
             get { return useSimplifiedKeyboardLayout; }
-            set { SetProperty(ref useSimplifiedKeyboardLayout, value); }
+            set { SetProperty(ref useSimplifiedKeyboardLayout,
+                        value
+                        && useAlphabeticalKeyboardLayout == false
+                        && useCommuniKateKeyboardLayoutByDefault == false
+                        && usingCommuniKateKeyboardLayout == false);
+            }
         }
 
         public bool UseSimplifiedKeyboardLayoutIsVisible
@@ -129,7 +138,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public bool EnableCommuniKateKeyboardLayout
         {
             get { return enableCommuniKateKeyboardLayout; }
-            set { SetProperty(ref enableCommuniKateKeyboardLayout, value); }
+            set { SetProperty(ref enableCommuniKateKeyboardLayout, value
+                        && useAlphabeticalKeyboardLayout == false
+                        && useSimplifiedKeyboardLayout == false);
+            }
         }
 
         public bool EnableCommuniKateKeyboardLayoutIsVisible
@@ -149,12 +161,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref communiKatePagesetLocation, value); }
         }
 
-        private bool useCommuniKateKeyboardLayout;
-        public bool UseCommuniKateKeyboardLayout
+        private bool useCommuniKateKeyboardLayoutByDefault;
+        public bool UseCommuniKateKeyboardLayoutByDefault
         {
-            get { return useCommuniKateKeyboardLayout; }
-            set { SetProperty(ref useCommuniKateKeyboardLayout, value
-                        && enableCommuniKateKeyboardLayout); }
+            get { return useCommuniKateKeyboardLayoutByDefault; }
+            set { SetProperty(ref useCommuniKateKeyboardLayoutByDefault, value
+                        && enableCommuniKateKeyboardLayout);
+            }
+        }
+
+        private bool usingCommuniKateKeyboardLayout;
+        public bool UsingCommuniKateKeyboardLayout
+        {
+            get { return usingCommuniKateKeyboardLayout; }
+            set { SetProperty(ref usingCommuniKateKeyboardLayout, useCommuniKateKeyboardLayoutByDefault); }
         }
 
         public bool UseCommuniKatedKeyboardLayoutIsVisible
@@ -240,7 +260,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
-            UseCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayout;
+            UseCommuniKateKeyboardLayoutByDefault = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+            UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
             ForceCapsLock = Settings.Default.ForceCapsLock;
             AutoAddSpace = Settings.Default.AutoAddSpace;
@@ -262,7 +283,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
-            Settings.Default.UseCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayout;
+            Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
+            Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;
             Settings.Default.ForceCapsLock = ForceCapsLock;
             Settings.Default.AutoAddSpace = AutoAddSpace;

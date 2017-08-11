@@ -1782,7 +1782,7 @@ Slovenčina
     <value>Force caps lock:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use alphabetical keyboard layout:</value>
+    <value>Replace QWERTY keyboard layout with alphabetical keyboard layout:</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
@@ -1818,7 +1818,7 @@ Slovenčina
     <value>Enable quit keys?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use simplify keyboard layout:</value>
+    <value>Replace Alpha keyboard with simplified keyboard layout:</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Browser
@@ -1891,7 +1891,7 @@ from the Management Console (ALT + M).</value>
     <value>Delay before speech (ms):</value>
   </data>
   <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use CommuniKate keyboard layout:</value>
+    <value>Replace Alpha keyboard with CommuniKate:</value>
   </data>
   <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
     <value>Enable CommuniKate keyboard layout:</value>

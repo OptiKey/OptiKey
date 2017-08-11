@@ -170,7 +170,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (!string.IsNullOrEmpty(singleKeyValue.Value.String)
                     && singleKeyValue.Value.FunctionKey != null)
                 {
-                    HandleMultiPropertyKeySelectionResult(singleKeyValue.Value);
+                    HandleStringAndFunctionKeySelectionResult(singleKeyValue.Value);
                 }
                 else
                 {
@@ -197,7 +197,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void HandleMultiPropertyKeySelectionResult(KeyValue singleKeyValue)
+        private void HandleStringAndFunctionKeySelectionResult(KeyValue singleKeyValue)
         {
             var currentKeyboard = Keyboard;
 
@@ -207,13 +207,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     switch (singleKeyValue.String)
                     {
                         case "spelling.obf":
-                            Settings.Default.UseCommuniKateKeyboardLayout = false;
+                            Settings.Default.UsingCommuniKateKeyboardLayout = false;
                             if (mainWindowManipulationService.WindowState == WindowStates.Maximised)
                             {
                                 Log.Info("Changing keyboard to ConversationAlpha.");
                                 Action conversationAlphaBackAction = () =>
                                 {
-                                    Settings.Default.UseCommuniKateKeyboardLayout = true;
+                                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
                                     Keyboard = currentKeyboard;
                                 };
                                 Keyboard = new ConversationAlpha(conversationAlphaBackAction);
@@ -286,6 +286,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.AlphaKeyboard:
+                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                     Log.Info("Changing keyboard to Alpha.");
                     Keyboard = new Alpha();
                     break;
@@ -299,6 +300,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
+                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                         Keyboard = new Alpha();
                     }
                     break;
@@ -363,12 +365,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.CommuniKateKeyboard:
                     //Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                    Settings.Default.UseCommuniKateKeyboardLayout = true;
+                    Settings.Default.UsingCommuniKateKeyboardLayout = true;
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha();
                     break;
 
                 case FunctionKeys.ConversationAlphaKeyboard:
+                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                     Log.Info("Changing keyboard to ConversationAlpha.");
                     var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                     Action conversationAlphaBackAction =

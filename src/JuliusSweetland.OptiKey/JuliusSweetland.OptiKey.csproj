@@ -340,7 +340,7 @@
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
     <Compile Include="UI\Controls\CK20Page.xaml.cs">
-       <DependentUpon>CK20Page.xaml</DependentUpon>
+      <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\CKPage.xaml.cs">
       <DependentUpon>CKPage.xaml</DependentUpon>

@@ -332,7 +332,7 @@
     <Setting Name="EnableCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UseCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
+    <Setting Name="UseCommuniKateKeyboardLayoutByDefault" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.String" Scope="User">
@@ -1003,6 +1003,9 @@
     </Setting>
     <Setting Name="CommuniKatePagesetLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
+    </Setting>
+    <Setting Name="UsingCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

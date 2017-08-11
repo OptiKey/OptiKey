@@ -55,7 +55,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.ConversationConfirmOnlyMode).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.EnableCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.UseCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UseCommuniKateKeyboardLayoutByDefault).Subscribe(_ => GenerateContent());
+            Settings.Default.OnPropertyChanges(s => s.UsingCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardCurrentContext).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
@@ -207,7 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.Alpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseCommuniKateKeyboardLayout
+                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
                             ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
                             : Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedAlpha { DataContext = Keyboard }
@@ -270,7 +271,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                         newContent = new TurkishViews.ConversationAlpha { DataContext = Keyboard };
                         break;
                     default:
-                        newContent = Settings.Default.UseCommuniKateKeyboardLayout
+                        newContent = Settings.Default.UsingCommuniKateKeyboardLayout
                             ? (object)new EnglishViews.CommuniKate { DataContext = Keyboard }
                             : Settings.Default.UseSimplifiedKeyboardLayout
                             ? (object)new EnglishViews.SimplifiedConversationAlpha { DataContext = Keyboard }

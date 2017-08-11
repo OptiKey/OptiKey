@@ -1454,12 +1454,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UseCommuniKateKeyboardLayout {
+        public bool UseCommuniKateKeyboardLayoutByDefault {
             get {
-                return ((bool)(this["UseCommuniKateKeyboardLayout"]));
+                return ((bool)(this["UseCommuniKateKeyboardLayoutByDefault"]));
             }
             set {
-                this["UseCommuniKateKeyboardLayout"] = value;
+                this["UseCommuniKateKeyboardLayoutByDefault"] = value;
             }
         }
         
@@ -1846,6 +1846,18 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["CommuniKatePagesetLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UsingCommuniKateKeyboardLayout {
+            get {
+                return ((bool)(this["UsingCommuniKateKeyboardLayout"]));
+            }
+            set {
+                this["UsingCommuniKateKeyboardLayout"] = value;
             }
         }
     }
