@@ -1,6 +1,5 @@
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using System.Windows.Controls;
 using System.Xml.Serialization;

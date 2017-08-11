@@ -1,14 +1,8 @@
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
-using JuliusSweetland.OptiKey.Enums;
 using System.Windows.Controls;
-using System.Xml.Serialization;
-using System.IO;
-using System.Xml.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Media;
 using System.Reflection;
 
