@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.Models
             Log.InfoFormat("Found {0} keyboard files", fileArray.Length);
 
             // Read in keyboard name, symbol, hidden state from each file
-            // TODO: ordering is undefined
+            // Note that ordering is currently undefined
             keyboards = new List<KeyboardInfo>();
             foreach (string fileName in fileArray)
             {

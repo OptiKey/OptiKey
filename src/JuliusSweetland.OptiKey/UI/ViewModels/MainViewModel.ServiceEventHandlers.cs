@@ -173,7 +173,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 else
                 {
-                    backAction = () => { }; //hrmm, not ideal
+                    backAction = () => { }; 
                 }
             }
             else
@@ -182,15 +182,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 backAction = () =>
                 {
                     reinstateModifiers();
-                    Keyboard = currentKeyboard;                    
-                    // TODO: Or docked, whatevre it currently is!
+                    Keyboard = currentKeyboard;
+
                     if (!(currentKeyboard is DynamicKeyboard))
                     {
                         mainWindowManipulationService.ResizeDockToFull();
                     }
 
                     // Clear the keyboard when leaving keyboard.
-                    // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky
+                    // (proper scratchpad functionality not supported in dynamic keyboards presently
                     keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
 
                 };
@@ -448,9 +448,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                             reinstateModifiers();
 
-                            // Clear the keyboard when leaving keyboard.
-                            // TODO: Actually you shouldn't use the scratchpad at all, this is a bit hacky 
-                            // TODO: Will we support custom keyboards that want to use the scratchpad?
+                            // Clear the scratchpad when leaving keyboard
+                            // (proper scratchpad functionality not supported in dynamic keyboards presently
                             keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
                         };
 

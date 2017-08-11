@@ -16,7 +16,6 @@ namespace JuliusSweetland.OptiKey.Models
     public class KeyValueLink : KeyValue, IEquatable<KeyValueLink>
     {
 
-        // TODO: May hold ID or file path or something else?
         private readonly string keyboardLink;
 
         // replace current keyboard instead of pushing on top?

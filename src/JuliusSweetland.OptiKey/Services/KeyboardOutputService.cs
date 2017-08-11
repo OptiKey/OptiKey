@@ -373,7 +373,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void ProcessSingleKeyPress(string key, KeyValuePress.KeyPressType type, int delayMs = 0)
         {
-            // TODO
+            // TODO: This is a stub for future use
             throw new NotImplementedException();            
         }
 

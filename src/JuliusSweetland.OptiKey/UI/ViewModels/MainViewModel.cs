@@ -137,7 +137,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                // TODO: Shouldn't we always remember 'last' keyboard?
                 Log.Error("Keyboard doesn't have backaction, can't go back");
             }
         }

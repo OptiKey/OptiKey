@@ -25,7 +25,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private DynamicKeyboardFolder folder;
         private int pageIndex = 0;
 
-        // TODO: Make user configurable?
+        // TODO: Could be user configurable at some point?
         private int mRows = 3;
         private int mCols = 4;
 
