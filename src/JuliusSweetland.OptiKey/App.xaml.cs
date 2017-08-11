@@ -125,6 +125,7 @@ namespace JuliusSweetland.OptiKey
                 if (Settings.Default.EnableCommuniKateKeyboardLayout)
                 {
                     Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
                 }
 
                 //Apply theme

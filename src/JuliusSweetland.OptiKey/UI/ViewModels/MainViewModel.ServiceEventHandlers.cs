@@ -286,7 +286,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.AlphaKeyboard:
-                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                    if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                    {
+                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    }
                     Log.Info("Changing keyboard to Alpha.");
                     Keyboard = new Alpha();
                     break;
@@ -300,7 +304,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
-                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                        if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                        {
+                            Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                            Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                        }
                         Keyboard = new Alpha();
                     }
                     break;
@@ -371,7 +379,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ConversationAlphaKeyboard:
-                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                    if (Settings.Default.EnableCommuniKateKeyboardLayout)
+                    {
+                        Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                        Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    }
                     Log.Info("Changing keyboard to ConversationAlpha.");
                     var opacityBeforeConversationAlpha = mainWindowManipulationService.GetOpacity();
                     Action conversationAlphaBackAction =

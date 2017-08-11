@@ -58,16 +58,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
                 string extractPath = CKpath(true);
-                
-                if (!File.Exists(extractPath + "manifest.json"))
-                {
-                    string zipPath = Settings.Default.CommuniKatePagesetLocation;
-
-                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
-                    {
-                        archive.ExtractToDirectory(extractPath);
-                    }
-                }
 
                 string pagefile = value;
                 Log.DebugFormat("Trying to read page file: {0}.", pagefile);
@@ -826,6 +816,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set
             {
                 string path = CKpath(true);
+                if (!File.Exists(path + "manifest.json"))
+                {
+                    string zipPath = Settings.Default.CommuniKatePagesetLocation;
+
+                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
+                    {
+                        archive.ExtractToDirectory(path);
+                    }
+                }
                 if (value != null)
                 {
                     SetValue(CKPageFileProperty, path + "boards/" + value);
