@@ -1848,5 +1848,17 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["UsingCommuniKateKeyboardLayout"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
+        public string CommuniKateKeyboardPreviousContext {
+            get {
+                return ((string)(this["CommuniKateKeyboardPreviousContext"]));
+            }
+            set {
+                this["CommuniKateKeyboardPreviousContext"] = value;
+            }
+        }
     }
 }

@@ -92,6 +92,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     Load_board defaultboard = null;
 
                     int b = 3;
+                    int BlankButtonCount = 23 - CKPageOBF.buttons.Count;
+                    Log.InfoFormat("There are {0} blank button(s) on this page.", BlankButtonCount);
                     Buttons blankbutton = new Buttons();
                     blankbutton.background_color = "rgb(0,0,0)";
                     blankbutton.image_id = "";
@@ -106,9 +108,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             {
                                 if (CKPageOBF.buttons.ElementAt(b).id != c.ToString() + r.ToString())
                                 {
+                                    if (BlankButtonCount < 2)
+                                    {
+                                        blankbutton = new Buttons();
+                                        blankbutton.background_color = "rgb(204,255,204)";
+                                        blankbutton.label = "BACK";
+                                        blankbutton.image_id = "back.png";
+                                        blankbutton.load_board = new Load_board();
+                                        blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPreviousContext;
+                                    }
                                     blankbutton.id = c.ToString() + r.ToString();
                                     CKPageOBF.buttons.Insert(b, blankbutton);
-                                    Log.DebugFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                                    Log.InfoFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
+                                    --BlankButtonCount;
                                 }
                                 else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color == "rgb(0,0,0)")
                                 {
@@ -117,9 +129,19 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                             }
                             else
                             {
+                                if (BlankButtonCount < 2)
+                                {
+                                    blankbutton = new Buttons();
+                                    blankbutton.background_color = "rgb(204,255,204)";
+                                    blankbutton.label = "BACK";
+                                    blankbutton.image_id = "back.png";
+                                    blankbutton.load_board = new Load_board();
+                                    blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPreviousContext;
+                                }
                                 blankbutton.id = c.ToString() + r.ToString();
                                 CKPageOBF.buttons.Insert(b, blankbutton);
-                                Log.DebugFormat("Blank button added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color);
+                                Log.InfoFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
+                                --BlankButtonCount;
                             }
                             ++b;
                         }

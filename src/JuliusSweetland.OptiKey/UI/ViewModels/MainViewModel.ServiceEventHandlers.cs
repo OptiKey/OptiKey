@@ -204,6 +204,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             switch (singleKeyValue.FunctionKey.Value)
             {
                 case FunctionKeys.CommuniKate:
+                    Settings.Default.CommuniKateKeyboardPreviousContext =
+                        Settings.Default.CommuniKateKeyboardCurrentContext != null 
+                        ? Settings.Default.CommuniKateKeyboardCurrentContext
+                        : "_null_";
                     switch (singleKeyValue.String)
                     {
                         case "spelling.obf":
