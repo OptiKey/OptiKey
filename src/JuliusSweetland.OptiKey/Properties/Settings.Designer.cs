@@ -1851,13 +1851,49 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CommuniKateKeyboardPreviousContext {
             get {
                 return ((string)(this["CommuniKateKeyboardPreviousContext"]));
             }
             set {
                 this["CommuniKateKeyboardPreviousContext"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CommuniKateKeyboardPrevious2Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious2Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious2Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CommuniKateKeyboardPrevious3Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious3Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious3Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CommuniKateKeyboardPrevious4Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious4Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious4Context"] = value;
             }
         }
     }

@@ -1005,7 +1005,16 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CommuniKateKeyboardPreviousContext" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious2Context" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious3Context" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CommuniKateKeyboardPrevious4Context" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

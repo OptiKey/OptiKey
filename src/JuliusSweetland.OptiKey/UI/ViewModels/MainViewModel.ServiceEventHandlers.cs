@@ -204,10 +204,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             switch (singleKeyValue.FunctionKey.Value)
             {
                 case FunctionKeys.CommuniKate:
-                    Settings.Default.CommuniKateKeyboardPreviousContext =
-                        Settings.Default.CommuniKateKeyboardCurrentContext != null 
-                        ? Settings.Default.CommuniKateKeyboardCurrentContext
-                        : "_null_";
                     switch (singleKeyValue.String)
                     {
                         case "spelling.obf":
@@ -262,6 +258,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             break;
 
                         default:
+                            if (Settings.Default.CommuniKateKeyboardCurrentContext == null)
+                            {
+                                Settings.Default.CommuniKateKeyboardPreviousContext = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+                            }
+                            else if (Settings.Default.CommuniKateKeyboardPrevious3Context == singleKeyValue.String)
+                            {
+                                Settings.Default.CommuniKateKeyboardPreviousContext =
+                                    Settings.Default.CommuniKateKeyboardPrevious4Context;
+                            }
+                            else if (Settings.Default.CommuniKateKeyboardPrevious2Context == singleKeyValue.String)
+                            {
+                                Settings.Default.CommuniKateKeyboardPreviousContext =
+                                    Settings.Default.CommuniKateKeyboardPrevious3Context;
+                            }
+                            else if (Settings.Default.CommuniKateKeyboardPreviousContext == singleKeyValue.String)
+                            {
+                                Settings.Default.CommuniKateKeyboardPreviousContext = 
+                                    Settings.Default.CommuniKateKeyboardPrevious2Context;
+                            }
+                            else
+                            {
+                                Settings.Default.CommuniKateKeyboardPrevious4Context = Settings.Default.CommuniKateKeyboardPrevious3Context;
+                                Settings.Default.CommuniKateKeyboardPrevious3Context = Settings.Default.CommuniKateKeyboardPrevious2Context;
+                                Settings.Default.CommuniKateKeyboardPrevious2Context = Settings.Default.CommuniKateKeyboardPreviousContext;
+                                Settings.Default.CommuniKateKeyboardPreviousContext = Settings.Default.CommuniKateKeyboardCurrentContext;
+                            }
+
                             if (singleKeyValue.String.Contains("+"))
                             {
                                 keyboardOutputService.ProcessSingleKeyText(
