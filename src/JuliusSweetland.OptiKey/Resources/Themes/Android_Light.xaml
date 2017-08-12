@@ -165,14 +165,14 @@
                         <Setter Property="Text" Value="{Binding Path=ShiftDownText, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
-                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
-                        <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
-                    </DataTrigger>
-
                     <!--Key has an image-->
                     <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True">
                         <Setter Property="Foreground" Value="{StaticResource KeyHasImageForegroundBrush}" />
+                    </DataTrigger>
+
+                    <!--Is Key Enabled-->
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
+                        <Setter Property="Foreground" Value="{StaticResource KeyDisabledForegroundBrush}" />
                     </DataTrigger>
 
                     <!--Use Unicode compatibility font (for rendering characters that may be unsupported in the user specified font)-->
@@ -347,11 +347,6 @@
                         <Setter Property="Visibility" Value="Hidden" />
                     </Trigger>
 
-                    <!--Is Key Enabled-->
-                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
-                        <Setter Property="Visibility" Value="Hidden" />
-                    </DataTrigger>
-
                     <!--Key has an image and no symbol-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
@@ -362,6 +357,11 @@
                             <Setter Property="Fill" Value="{StaticResource KeyHasImageSelectionProgressBrush}" />
                         </MultiDataTrigger.Setters>
                     </MultiDataTrigger>
+
+                    <!--Is Key Enabled-->
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
+                        <Setter Property="Visibility" Value="Hidden" />
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
 
@@ -397,12 +397,6 @@
                         <Setter Property="Background" Value="{StaticResource KeyDownStateIsLockedDownBackgroundBrush}" />
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
-                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
-                        <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
-                        <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
-                    </DataTrigger>
-
                     <!--This key has an image-->
                     <DataTrigger Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}}" Value="True">
                         <Setter Property="Background" Value="{StaticResource KeyHasImageBackgroundBrush}" />
@@ -420,6 +414,12 @@
                                 </Storyboard>
                             </Setter.Value>
                         </Setter>
+                    </DataTrigger>
+
+                    <!--Is Key Enabled-->
+                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
+                        <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
+                        <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -447,6 +447,7 @@
                     <!--Key has an image and no symbol-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True"/>
                             <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="True" />
                             <Condition Binding="{Binding Path=HasSymbol, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
                         </MultiDataTrigger.Conditions>
