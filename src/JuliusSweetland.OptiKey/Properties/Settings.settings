@@ -998,9 +998,6 @@
     <Setting Name="SpeechDelay" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="KeyboardCurrentContext" Type="System.String" Scope="User">
-      <Value Profile="(Default)">toppage</Value>
-    </Setting>
     <Setting Name="CommuniKatePagesetLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
     </Setting>

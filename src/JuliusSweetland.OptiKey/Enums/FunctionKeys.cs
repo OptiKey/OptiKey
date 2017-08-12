@@ -79,7 +79,6 @@
         IncreaseOpacity,
         Insert,
         ItalianItaly,
-        KeyboardContext,
         LanguageKeyboard,
         LeftAlt,
         LeftCtrl,

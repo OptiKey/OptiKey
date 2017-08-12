@@ -372,7 +372,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.CommuniKateKeyboard:
-                    //Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
                     Settings.Default.UsingCommuniKateKeyboardLayout = true;
                     Log.Info("Changing keyboard to CommuniKate.");
                     Keyboard = new Alpha();

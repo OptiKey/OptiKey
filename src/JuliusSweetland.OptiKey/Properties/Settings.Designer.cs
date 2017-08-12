@@ -1827,18 +1827,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
-        public string KeyboardCurrentContext {
-            get {
-                return ((string)(this["KeyboardCurrentContext"]));
-            }
-            set {
-                this["KeyboardCurrentContext"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("./Resources/CommuniKate/pageset.obz")]
         public string CommuniKatePagesetLocation {
             get {
