@@ -1004,7 +1004,7 @@
     <Setting Name="UsingCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CommuniKateKeyboardPreviousContext" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardPrevious1Context" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CommuniKateKeyboardPrevious2Context" Type="System.String" Scope="User">

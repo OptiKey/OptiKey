@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         blankbutton.label = "BACK";
                                         blankbutton.image_id = "back.png";
                                         blankbutton.load_board = new Load_board();
-                                        blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPreviousContext;
+                                        blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
                                     }
                                     blankbutton.id = c.ToString() + r.ToString();
                                     CKPageOBF.buttons.Insert(b, blankbutton);
@@ -136,7 +136,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     blankbutton.label = "BACK";
                                     blankbutton.image_id = "back.png";
                                     blankbutton.load_board = new Load_board();
-                                    blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPreviousContext;
+                                    blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
                                 }
                                 blankbutton.id = c.ToString() + r.ToString();
                                 CKPageOBF.buttons.Insert(b, blankbutton);

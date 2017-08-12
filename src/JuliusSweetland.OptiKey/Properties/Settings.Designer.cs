@@ -1852,12 +1852,12 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CommuniKateKeyboardPreviousContext {
+        public string CommuniKateKeyboardPrevious1Context {
             get {
-                return ((string)(this["CommuniKateKeyboardPreviousContext"]));
+                return ((string)(this["CommuniKateKeyboardPrevious1Context"]));
             }
             set {
-                this["CommuniKateKeyboardPreviousContext"] = value;
+                this["CommuniKateKeyboardPrevious1Context"] = value;
             }
         }
         
