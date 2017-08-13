@@ -1,6 +1,8 @@
 ﻿using JuliusSweetland.OptiKey.Enums;
 using log4net;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
@@ -70,6 +72,29 @@ namespace JuliusSweetland.OptiKey.Models
             get { return this.Hidden ? "True" : "False"; }
             set { this.Hidden = XmlUtils.ConvertToBoolean(value); }
         }        
+        
+        public static XmlKeyboard ReadFromFile(string inputFilename)
+        {
+            XmlKeyboard keyboard;
+
+            // If no extension given, try ".xml"
+            string ext = Path.GetExtension(inputFilename);
+            bool exists = File.Exists(inputFilename);
+            if (!File.Exists(inputFilename) &&
+                String.IsNullOrEmpty(Path.GetExtension(inputFilename)))
+            {
+                inputFilename += ".xml";
+            } 
+
+            // Read in XML file (may throw)
+            XmlSerializer serializer = new XmlSerializer(typeof(XmlKeyboard));
+            using (FileStream readStream = new FileStream(@inputFilename, FileMode.Open))
+            {
+                keyboard = (XmlKeyboard)serializer.Deserialize(readStream);
+            }
+
+            return keyboard;
+        }
     }
 
     public class XmlGrid

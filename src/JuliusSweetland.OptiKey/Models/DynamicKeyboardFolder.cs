@@ -93,11 +93,8 @@ namespace JuliusSweetland.OptiKey.Models
             
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(XmlKeyboard));
-                FileStream readStream = new FileStream(@keyboardPath, FileMode.Open);
-                XmlKeyboard spec = (XmlKeyboard)serializer.Deserialize(readStream);
-                readStream.Close();
-
+                XmlKeyboard spec = XmlKeyboard.ReadFromFile(keyboardPath);
+                
                 info.keyboardName = spec.Name.ToStringWithValidNewlines();
                 info.symbolString = spec.Symbol;
                 info.isHidden = spec.Hidden;

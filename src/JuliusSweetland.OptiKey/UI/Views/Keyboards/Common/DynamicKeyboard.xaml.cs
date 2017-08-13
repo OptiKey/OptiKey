@@ -28,23 +28,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             InitializeComponent();
             inputFilename = inputFile;
-
-            // If no extension given, try ".xml"
-            string ext = Path.GetExtension(inputFilename);
-            bool exists = File.Exists(inputFilename);
-            if (!File.Exists(inputFilename) &&
-                String.IsNullOrEmpty(Path.GetExtension(inputFilename)))
-            {
-                inputFilename += ".xml";
-            }
-        
-            // Read in XML file
-            XmlSerializer serializer = new XmlSerializer(typeof(XmlKeyboard));
+            
+            // Read in XML file, exceptions get displayed to user
             try
             {
-                FileStream readStream = new FileStream(@inputFilename, FileMode.Open);
-                keyboard = (XmlKeyboard)serializer.Deserialize(readStream);
-                readStream.Close();
+                keyboard = XmlKeyboard.ReadFromFile(inputFilename);
             }
             catch (Exception e)
             {
