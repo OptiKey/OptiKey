@@ -7,7 +7,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.English
     /// </summary>
     public partial class CommuniKate : KeyboardView
     {
-        public CommuniKate() : base(shiftAware: true)
+        public CommuniKate() : base(shiftAware: false)
         {
             InitializeComponent();
         }

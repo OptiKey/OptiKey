@@ -126,6 +126,10 @@ namespace JuliusSweetland.OptiKey
                 {
                     Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                     Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                    Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                    Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                    Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                    Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
                 }
 
                 //Apply theme
