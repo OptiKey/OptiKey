@@ -280,8 +280,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
-                        // TODO: Shouldn't this take you to 'default' keyboard? (may not be alpha)
-                        Keyboard = new Alpha();
+                        Log.Error("Keyboard doesn't have backaction, going back to initial keyboard instead");
+                        InitialiseKeyboard(this.mainWindowManipulationService);
                     }
                     break;
 

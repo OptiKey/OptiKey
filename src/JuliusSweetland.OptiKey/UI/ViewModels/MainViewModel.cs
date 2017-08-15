@@ -137,7 +137,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                Log.Error("Keyboard doesn't have backaction, can't go back");
+                Log.Error("Keyboard doesn't have backaction, going back to initial keyboard instead");
+                InitialiseKeyboard(this.mainWindowManipulationService);
             }
         }
 
