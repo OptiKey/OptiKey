@@ -1430,6 +1430,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseSimplifiedKeyboardLayout {
             get {
                 return ((bool)(this["UseSimplifiedKeyboardLayout"]));
@@ -1442,6 +1443,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool EnableCommuniKateKeyboardLayout {
             get {
                 return ((bool)(this["EnableCommuniKateKeyboardLayout"]));
@@ -1454,6 +1456,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseCommuniKateKeyboardLayoutByDefault {
             get {
                 return ((bool)(this["UseCommuniKateKeyboardLayoutByDefault"]));
@@ -1466,6 +1469,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKateKeyboardCurrentContext {
             get {
                 return ((string)(this["CommuniKateKeyboardCurrentContext"]));
@@ -1478,6 +1482,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool SuggestNextWords {
             get {
                 return ((bool)(this["SuggestNextWords"]));
@@ -1816,6 +1821,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public int SpeechDelay {
             get {
                 return ((int)(this["SpeechDelay"]));
@@ -1828,6 +1834,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("./Resources/CommuniKate/pageset.obz")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKatePagesetLocation {
             get {
                 return ((string)(this["CommuniKatePagesetLocation"]));
@@ -1840,6 +1847,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UsingCommuniKateKeyboardLayout {
             get {
                 return ((bool)(this["UsingCommuniKateKeyboardLayout"]));
@@ -1852,6 +1860,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKateKeyboardPrevious1Context {
             get {
                 return ((string)(this["CommuniKateKeyboardPrevious1Context"]));
@@ -1864,6 +1873,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKateKeyboardPrevious2Context {
             get {
                 return ((string)(this["CommuniKateKeyboardPrevious2Context"]));
@@ -1876,6 +1886,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKateKeyboardPrevious3Context {
             get {
                 return ((string)(this["CommuniKateKeyboardPrevious3Context"]));
@@ -1888,6 +1899,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public string CommuniKateKeyboardPrevious4Context {
             get {
                 return ((string)(this["CommuniKateKeyboardPrevious4Context"]));

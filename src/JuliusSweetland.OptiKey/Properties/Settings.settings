@@ -326,19 +326,19 @@
     <Setting Name="UseAlphabeticalKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UseSimplifiedKeyboardLayout" Type="System.Boolean" Scope="User">
+    <Setting Name="UseSimplifiedKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="EnableCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
+    <Setting Name="EnableCommuniKateKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UseCommuniKateKeyboardLayoutByDefault" Type="System.Boolean" Scope="User">
+    <Setting Name="UseCommuniKateKeyboardLayoutByDefault" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CommuniKateKeyboardCurrentContext" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardCurrentContext" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
-    <Setting Name="SuggestNextWords" Type="System.Boolean" Scope="User">
+    <Setting Name="SuggestNextWords" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ForceCapsLock" Roaming="true" Type="System.Boolean" Scope="User">
@@ -995,25 +995,25 @@
   &lt;/item&gt;
 &lt;/dictionary&gt;</Value>
     </Setting>
-    <Setting Name="SpeechDelay" Type="System.Int32" Scope="User">
+    <Setting Name="SpeechDelay" Roaming="true" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="CommuniKatePagesetLocation" Type="System.String" Scope="User">
+    <Setting Name="CommuniKatePagesetLocation" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">./Resources/CommuniKate/pageset.obz</Value>
     </Setting>
-    <Setting Name="UsingCommuniKateKeyboardLayout" Type="System.Boolean" Scope="User">
+    <Setting Name="UsingCommuniKateKeyboardLayout" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CommuniKateKeyboardPrevious1Context" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardPrevious1Context" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CommuniKateKeyboardPrevious2Context" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardPrevious2Context" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CommuniKateKeyboardPrevious3Context" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardPrevious3Context" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CommuniKateKeyboardPrevious4Context" Type="System.String" Scope="User">
+    <Setting Name="CommuniKateKeyboardPrevious4Context" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
