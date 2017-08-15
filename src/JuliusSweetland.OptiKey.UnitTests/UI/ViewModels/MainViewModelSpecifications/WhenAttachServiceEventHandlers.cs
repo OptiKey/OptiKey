@@ -260,8 +260,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsStringThenSelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, null, "SingleKeyValueIsString", new List<string>());
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, new KeyValue("SingleKeyValueIsString"), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -274,8 +274,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsFunctionKeySelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, FunctionKeys.Suggestion1, null, new List<string>());
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
@@ -293,8 +293,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var multiKeySelection = new List<string> { "test-multi" };
-            var selection = new Tuple<List<Point>, FunctionKeys?, string, List<string>>(
-                points, null, null, multiKeySelection);
+            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
+                points, null, multiKeySelection);
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
