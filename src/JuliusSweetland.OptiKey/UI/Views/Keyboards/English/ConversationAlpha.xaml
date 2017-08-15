@@ -93,7 +93,27 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="p"/>
 
-        <controls:Key Grid.Row="3" Grid.Column="0" />
+        <ContentControl Grid.Row="3" Grid.Column="0">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key Text="CK"
+                                                  Value="{x:Static models:KeyValues.CommuniKateKeyboardKey}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="a" ShiftDownText="A"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -130,27 +150,7 @@
                       ShiftUpText="l" ShiftDownText="L"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="l"/>
-        <ContentControl Grid.Row="3" Grid.Column="19">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Content">
-                        <Setter.Value>
-                            <controls:Key />
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=EnableCommuniKateKeyboardLayout}" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <controls:Key Text="CK"
-                                                  Value="{x:Static models:KeyValues.CommuniKateKeyboardKey}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+        <controls:Key Grid.Row="3" Grid.Column="19" />
 
         <ContentControl Grid.Row="4" Grid.Column="0">
             <ContentControl.Style>
