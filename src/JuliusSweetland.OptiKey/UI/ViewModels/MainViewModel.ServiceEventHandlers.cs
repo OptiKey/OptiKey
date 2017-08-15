@@ -158,9 +158,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         
 	private void ProcessKeyValueLink(KeyValueLink keyValue)
         {
-            // Placeholder for now
-            Log.InfoFormat("link key found! {0}", keyValue.ToString());    
-        
             var currentKeyboard = Keyboard;
 
             Action backAction;
