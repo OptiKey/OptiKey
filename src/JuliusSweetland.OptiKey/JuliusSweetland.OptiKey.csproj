@@ -120,6 +120,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -337,7 +339,16 @@
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
     <Compile Include="UI\Behaviours\KeyBehaviours.cs" />
     <Compile Include="UI\Behaviours\ScrollViewerBehaviours.cs" />
+    <Compile Include="UI\Controls\CK20Page.xaml.cs">
+      <DependentUpon>CK20Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\CKPage.xaml.cs">
+      <DependentUpon>CKPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\Controls\CKKey.xaml.cs">
+      <DependentUpon>CKKey.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\ToastNotification.cs" />
     <Compile Include="UI\Controls\Cursor.cs" />
     <Compile Include="UI\Controls\ToastNotificationPopup.cs" />
@@ -361,6 +372,7 @@
     <Compile Include="UI\ValueConverters\WidthGreaterThanHeight.cs" />
     <Compile Include="UI\ValueConverters\LengthDividedBySpan.cs" />
     <Compile Include="UI\ValueConverters\SuggestionsPaged.cs" />
+    <Compile Include="UI\ViewModels\Keyboards\CommuniKate.cs" />
     <Compile Include="UI\ViewModels\Keyboards\WebBrowsing.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SimplifiedConversationAlpha.cs" />
     <Compile Include="UI\ViewModels\Keyboards\SimplifiedAlpha.cs" />
@@ -450,6 +462,9 @@
     </Compile>
     <Compile Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml.cs">
       <DependentUpon>ConversationAlpha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Keyboards\English\CommuniKate.xaml.cs">
+      <DependentUpon>CommuniKate.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Keyboards\English\AlphabeticalAlpha.xaml.cs">
       <DependentUpon>AlphabeticalAlpha.xaml</DependentUpon>
@@ -694,6 +709,9 @@
     <Resource Include="Resources\Fonts\CharisSIL-BI.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-I.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-R.ttf" />
+    <Content Include="Resources\CommuniKate\pageset.obz">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottom.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomBoundary.svg" />
     <None Include="Resources\Icons\SVG Source Files\ArrowPointingToBottomLeft.svg" />
@@ -960,6 +978,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Controls\CK20Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Controls\CKPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Controls\CKKey.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\Keyboards\Catalan\Alpha.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1031,6 +1061,10 @@
     <Page Include="UI\Views\Keyboards\Danish\ConversationAlpha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Keyboards\English\CommuniKate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\English\AlphabeticalAlpha.xaml">
       <SubType>Designer</SubType>
