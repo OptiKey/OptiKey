@@ -124,6 +124,14 @@ namespace JuliusSweetland.OptiKey
 
                 if (Settings.Default.EnableCommuniKateKeyboardLayout)
                 {
+                    if (Settings.Default.CommuniKateStagedForDeletion)
+                    {
+                        Log.Info("Deleting previously unpacked CommuniKate pageset.");
+                        string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+                        var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                        Directory.Delete(applicationDataPath, true);
+                        Settings.Default.CommuniKateStagedForDeletion = false;
+                    }
                     Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                     Settings.Default.CommuniKateKeyboardCurrentContext = null;
                     Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";

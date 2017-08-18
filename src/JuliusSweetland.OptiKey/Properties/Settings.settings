@@ -338,6 +338,9 @@
     <Setting Name="CommuniKateKeyboardCurrentContext" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">toppage</Value>
     </Setting>
+    <Setting Name="CommuniKateStagedForDeletion" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="SuggestNextWords" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
