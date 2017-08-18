@@ -161,6 +161,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref communiKatePagesetLocation, value); }
         }
 
+        private bool communiKateStagedForDeletion;
+        public bool CommuniKateStagedForDeletion
+        {
+            get { return communiKateStagedForDeletion; }
+            set { SetProperty(ref communiKateStagedForDeletion, value); }
+        }
+
         private bool useCommuniKateKeyboardLayoutByDefault;
         public bool UseCommuniKateKeyboardLayoutByDefault
         {
@@ -246,7 +253,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         public bool ChangesRequireRestart
         {
             get { return ForceCapsLock != Settings.Default.ForceCapsLock
-                    || Settings.Default.SuggestionMethod != SuggestionMethod; }
+                    || Settings.Default.SuggestionMethod != SuggestionMethod
+                    || Settings.Default.CommuniKateStagedForDeletion == true; }
         }
 
         #endregion
@@ -260,6 +268,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             UseAlphabeticalKeyboardLayout = Settings.Default.UseAlphabeticalKeyboardLayout;
             EnableCommuniKateKeyboardLayout = Settings.Default.EnableCommuniKateKeyboardLayout;
             CommuniKatePagesetLocation = Settings.Default.CommuniKatePagesetLocation;
+            CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
             UseCommuniKateKeyboardLayoutByDefault = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
             UseSimplifiedKeyboardLayout = Settings.Default.UseSimplifiedKeyboardLayout;
@@ -283,6 +292,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.UseAlphabeticalKeyboardLayout = UseAlphabeticalKeyboardLayout;
             Settings.Default.EnableCommuniKateKeyboardLayout = EnableCommuniKateKeyboardLayout;
             Settings.Default.CommuniKatePagesetLocation = CommuniKatePagesetLocation;
+            CommuniKateStagedForDeletion = Settings.Default.CommuniKateStagedForDeletion;
             Settings.Default.UseCommuniKateKeyboardLayoutByDefault = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UsingCommuniKateKeyboardLayout = UseCommuniKateKeyboardLayoutByDefault;
             Settings.Default.UseSimplifiedKeyboardLayout = UseSimplifiedKeyboardLayout;

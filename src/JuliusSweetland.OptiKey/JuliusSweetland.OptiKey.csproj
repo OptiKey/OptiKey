@@ -709,6 +709,9 @@
     <Resource Include="Resources\Fonts\CharisSIL-BI.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-I.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-R.ttf" />
+    <Content Include="Resources\CommuniKate\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\CommuniKate\pageset.obz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

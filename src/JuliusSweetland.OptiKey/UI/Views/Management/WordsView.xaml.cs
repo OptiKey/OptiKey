@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
                 {
                     txtCommuniKateTopPageLocation.Text = openFileDialog.FileName;
                     Settings.Default.CommuniKatePagesetLocation = txtCommuniKateTopPageLocation.Text;
+                    Settings.Default.CommuniKateStagedForDeletion = true;
                 }
                 else
                 {

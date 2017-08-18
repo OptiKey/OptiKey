@@ -18,7 +18,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     public partial class CK20Page : UserControl
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+        private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+
         public class CKOBF
         {
             public List<Buttons> buttons { get; set; }
@@ -57,7 +58,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             if (key != null)
             {
                 var value = dependencyPropertyChangedEventArgs.NewValue as string;
-                string extractPath = CKpath(true);
+                string extractPath = CKpath();
 
                 string pagefile = value;
                 Log.DebugFormat("Trying to read page file: {0}.", pagefile);
@@ -837,15 +838,18 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (string)GetValue(CKPageFileProperty); }
             set
             {
-                string path = CKpath(true);
+                string path = CKpath();
                 if (!File.Exists(path + "manifest.json"))
                 {
                     string zipPath = Settings.Default.CommuniKatePagesetLocation;
+                    if (!File.Exists(zipPath))
+                        zipPath = @"./Resources/CommuniKate/pageset.obz";
 
                     using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
                     {
                         archive.ExtractToDirectory(path);
                     }
+                    File.Copy(@"./Resources/CommuniKate/back.png", path + @"images/back.png");
                 }
                 if (value != null)
                 {
@@ -867,14 +871,11 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             InitializeComponent();
         }
 
-        private static string CKpath(bool relative = false)
+        private static string CKpath()
         {
-            string OBZFilename = Settings.Default.CommuniKatePagesetLocation.Split(new Char[] { '\\', '/' }).ToList().Last();
-            OBZFilename = OBZFilename.Substring(0, OBZFilename.Length - 4);
-            if (relative)
-                return @"./Resources/CommuniKate/" + OBZFilename + "/";
-            else
-                return Directory.GetCurrentDirectory() + @"/Resources/CommuniKate/" + OBZFilename + "/";
+            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+            //Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists
+            return applicationDataPath;
         }
 
         public string dec2hex(string dec)
