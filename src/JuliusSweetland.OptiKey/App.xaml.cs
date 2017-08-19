@@ -122,24 +122,6 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.Info("Boot strapping the services and UI.");
 
-                if (Settings.Default.EnableCommuniKateKeyboardLayout)
-                {
-                    if (Settings.Default.CommuniKateStagedForDeletion)
-                    {
-                        Log.Info("Deleting previously unpacked CommuniKate pageset.");
-                        string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
-                        var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-                        Directory.Delete(applicationDataPath, true);
-                        Settings.Default.CommuniKateStagedForDeletion = false;
-                    }
-                    Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
-                    Settings.Default.CommuniKateKeyboardCurrentContext = null;
-                    Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
-                    Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
-                    Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
-                    Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
-                }
-
                 //Apply theme
                 applyTheme();
 
@@ -154,6 +136,9 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
+                CleanUpExtractedCommuniKateFilesIfStagedForDeletion();
+
+                //Initial Presage bootstapping check (before later checks)
                 bool presageBootstrapFailure = false;
                 try
                 {
@@ -851,7 +836,37 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-        
+
+        #region Clean Up Extracted CommuniKate Files If Staged For Deletion
+
+        private static void CleanUpExtractedCommuniKateFilesIfStagedForDeletion()
+        {
+            if (Settings.Default.EnableCommuniKateKeyboardLayout)
+            {
+                if (Settings.Default.CommuniKateStagedForDeletion)
+                {
+                    Log.Info("Deleting previously unpacked CommuniKate pageset.");
+                    string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                    if (Directory.Exists(path))
+                    {
+                        Directory.Delete(path, true);
+                    }
+                    Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
+                }
+                Settings.Default.CommuniKateStagedForDeletion = false;
+                }
+                Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+            }
+        }
+
+        #endregion
+
         #region Attempt To Start/Stop Mary TTS Service Automatically
 
         private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
