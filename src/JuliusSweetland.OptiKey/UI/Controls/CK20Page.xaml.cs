@@ -845,7 +845,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     if (!File.Exists(zipPath))
                         zipPath = @"./Resources/CommuniKate/pageset.obz";
 
-                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
+                    using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Read))
                     {
                         archive.ExtractToDirectory(path);
                     }
