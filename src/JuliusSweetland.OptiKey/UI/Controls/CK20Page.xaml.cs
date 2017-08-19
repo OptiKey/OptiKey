@@ -849,7 +849,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                     {
                         archive.ExtractToDirectory(path);
                     }
-                    File.Copy(@"./Resources/CommuniKate/back.png", path + @"images/back.png");
+                    File.Copy(@"./Resources/CommuniKate/back.png", path + @"images/back.png", true);
                 }
                 if (value != null)
                 {
@@ -874,7 +874,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         private static string CKpath()
         {
             var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-            //Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists
             return applicationDataPath;
         }
 
