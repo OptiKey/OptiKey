@@ -136,7 +136,7 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
-                CleanUpExtractedCommuniKateFilesIfStagedForDeletion();
+                CleanupAndPrepareCommuniKateInitialState();
 
                 //Initial Presage bootstapping check (before later checks)
                 bool presageBootstrapFailure = false;
@@ -839,7 +839,7 @@ namespace JuliusSweetland.OptiKey
 
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
-        private static void CleanUpExtractedCommuniKateFilesIfStagedForDeletion()
+        private static void CleanupAndPrepareCommuniKateInitialState()
         {
             if (Settings.Default.EnableCommuniKateKeyboardLayout)
             {
@@ -855,7 +855,7 @@ namespace JuliusSweetland.OptiKey
                     Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
                 }
                 Settings.Default.CommuniKateStagedForDeletion = false;
-                }
+                
                 Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                 Settings.Default.CommuniKateKeyboardCurrentContext = null;
                 Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
