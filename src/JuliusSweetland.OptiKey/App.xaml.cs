@@ -152,8 +152,16 @@ namespace JuliusSweetland.OptiKey
                 {
                     //If the installed version of Presage is the wrong format (i.e. 64 bit) then this can occur.
                     //This causes an additional problem as the Presage object will probably be non-deterministically
-                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress this.
-                    Log.Error("Presage failed to bootstrap (BadFormatException) - suppressing finalisation", ex);
+                    //finalised, which will cause this exception again and crash OptiKey.
+                    //The workaround is to suppress finalisation if an object is available (which it won't be!), or
+                    //to warn the user and react.
+
+                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Settings.Default.Save();
+                    Log.Error("Presage failed to bootstrap (BadFormatException) - attempting to suppress finalisation. The suggestion method has been changed to NGram", ex);
+                    presageBootstrapFailure = true;
+
                     if (presageTestInstance != null)
                     {
                         GC.SuppressFinalize(presageTestInstance);
@@ -166,10 +174,6 @@ namespace JuliusSweetland.OptiKey
                             MessageBoxButton.OK,
                             MessageBoxImage.Error);
                     }
-                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Presage failed to bootstrap - the suggestion method has been changed to NGram", ex);
-                    presageBootstrapFailure = true;
                 }
                 catch (Exception ex)
                 {
