@@ -140,12 +140,29 @@ namespace JuliusSweetland.OptiKey
 
                 //Initial Presage bootstapping check (before later checks)
                 bool presageBootstrapFailure = false;
+                Presage presageTestInstance = null;
                 try
                 {
                     if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
                     {
-                        new PresageSuggestions(); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
+                        presageTestInstance = new Presage(() => "", () => ""); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
                     }
+                }
+                catch (BadImageFormatException ex)
+                {
+                    //If the installed version of Presage is the wrong format (i.e. 64 bit) then this can occur.
+                    //This causes an additional problem as the Presage object will probably be non-deterministically
+                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress this.
+                    Log.Error("Presage failed to bootstrap (BadFormatException) - suppressing finalisation", ex);
+                    if (presageTestInstance != null)
+                    {
+                        GC.SuppressFinalize(presageTestInstance);
+                    }
+
+                    Log.Error("Presage failed to bootstrap - changing suggestion method to NGram", ex);
+                    presageBootstrapFailure = true;
+                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
                 }
                 catch (Exception ex)
                 {
