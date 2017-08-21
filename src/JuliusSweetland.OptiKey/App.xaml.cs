@@ -158,11 +158,18 @@ namespace JuliusSweetland.OptiKey
                     {
                         GC.SuppressFinalize(presageTestInstance);
                     }
-
-                    Log.Error("Presage failed to bootstrap - changing suggestion method to NGram", ex);
-                    presageBootstrapFailure = true;
+                    else
+                    {
+                        MessageBox.Show(
+                            OptiKey.Properties.Resources.PRESAGE_BAD_FORMAT_EXCEPTION_MESSAGE,
+                            OptiKey.Properties.Resources.PRESAGE_BAD_FORMAT_EXCEPTION_TITLE,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
                     //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Presage failed to bootstrap - the suggestion method has been changed to NGram", ex);
+                    presageBootstrapFailure = true;
                 }
                 catch (Exception ex)
                 {

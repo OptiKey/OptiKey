@@ -3621,6 +3621,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It looks like the 64 bit version of Presage is installed, but OptiKey only supports the 32 bit version!
+        ///Please uninstall Presage and install the 32 bit version of 0.9.2.
+        ///OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+        ///The prediction method will be changed to NGram to prevent a crash on next run..
+        /// </summary>
+        public static string PRESAGE_BAD_FORMAT_EXCEPTION_MESSAGE {
+            get {
+                return ResourceManager.GetString("PRESAGE_BAD_FORMAT_EXCEPTION_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect version of Presage installed.
+        /// </summary>
+        public static string PRESAGE_BAD_FORMAT_EXCEPTION_TITLE {
+            get {
+                return ResourceManager.GetString("PRESAGE_BAD_FORMAT_EXCEPTION_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presage.
         /// </summary>
         public static string PRESAGE_SUGGESTION {
