@@ -136,21 +136,9 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
-                bool presageBootstrapFailure = false;
-                try
-                {
-                    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-                    {
-                        new PresageSuggestions(); //This will throw an exception (e.g. DllNotFoundException) if Presage cannot be loaded
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("Presage failed to bootstrap - changing suggestion method to NGram", ex);
-                    presageBootstrapFailure = true;
-                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                }
+                CleanupAndPrepareCommuniKateInitialState();
+
+                var presageInstallationProblem = PresageInstallationProblemsDetected();
 
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
@@ -222,7 +210,7 @@ namespace JuliusSweetland.OptiKey
                     mainWindowManipulationService.SizeAndPositionInitialised -= sizeAndPositionInitialised; //Ensure this handler only triggers once
                     await ShowSplashScreen(inputService, audioService, mainViewModel);
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
-                    await CheckPresageIsInstalledAndWorking(presageBootstrapFailure, inputService, audioService, mainViewModel);
+                    await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService, audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
 
@@ -245,11 +233,104 @@ namespace JuliusSweetland.OptiKey
             }
         }
 
-		#endregion
+        private static bool PresageInstallationProblemsDetected()
+        {
+            if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+            {
+                //1.Check the install path to detect if the wrong bitness of Presage is installed
+                string presagePath = null;
+                string presageStartMenuFolder = null;
+                string osBitness = DiagnosticInfo.OperatingSystemBitness;
 
-		#region Create Main Window Manipulation Service
+                try
+                {
+                    presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
+                    presageStartMenuFolder = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorFormat("Caught exception: {0}", ex);
+                }
 
-		private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | OS bitness: {2}", presagePath, presageStartMenuFolder, osBitness);
+
+                if (string.IsNullOrEmpty(presagePath)
+                    || string.IsNullOrEmpty(presageStartMenuFolder))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if (presageStartMenuFolder != "presage-0.9.2~beta20150909"
+                    && presageStartMenuFolder != "presage-0.9.1")
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if ((osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
+                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage"))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                if (!Directory.Exists(presagePath))
+                {
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Log.Error("Invalid Presage installation detected (install directory does not exist). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    return true;
+                }
+
+                //2.Attempt to construct a Presage object, which can fail for a few reasons, including BadImageFormatExceptions (64-bit version installed)
+                Presage presageTestInstance = null;
+                try
+                {
+                    //Test Presage constructor call for DllNotFoundException or BadImageFormatException
+                    presageTestInstance = new Presage(() => "", () => "");
+                }
+                catch (Exception ex)
+                {
+                    //If the installed version of Presage is the wrong format (i.e. 64 bit) then a BadImageFormatException can occur.
+                    //If Presage has been deleted, corrupted, or another problem, then a DllLoadException can occur.
+                    //These causes an additional problem as the Presage object will probably be non-deterministically
+                    //finalised, which will cause this exception again and crash OptiKey. The workaround is to suppress finalisation 
+                    //if an object is available (which it generally won't be!), or to warn the user and react.
+
+                    //Set the suggestion method to NGram so that the IDictionaryService can be instantiated without crashing OptiKey
+                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                    Settings.Default.Save(); //Save as OptiKey can crash as soon as the finaliser is called by the GC
+                    Log.Error("Presage failed to bootstrap - attempting to suppress finalisation. The suggestion method has been changed to NGram", ex);
+
+                    //Attempt to suppress finalisation on the presage instance, or just warn the user
+                    if (presageTestInstance != null)
+                    {
+                        GC.SuppressFinalize(presageTestInstance);
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            OptiKey.Properties.Resources.PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE,
+                            OptiKey.Properties.Resources.PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        #endregion
+
+		    #region Create Main Window Manipulation Service
+
+		    private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
             return new WindowManipulationService(
                 mainWindow,
@@ -839,7 +920,37 @@ namespace JuliusSweetland.OptiKey
         }
 
         #endregion
-        
+
+        #region Clean Up Extracted CommuniKate Files If Staged For Deletion
+
+        private static void CleanupAndPrepareCommuniKateInitialState()
+        {
+            if (Settings.Default.EnableCommuniKateKeyboardLayout)
+            {
+                if (Settings.Default.CommuniKateStagedForDeletion)
+                {
+                    Log.Info("Deleting previously unpacked CommuniKate pageset.");
+                    string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\CommuniKate\";
+                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+                    if (Directory.Exists(path))
+                    {
+                        Directory.Delete(path, true);
+                    }
+                    Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
+                }
+                Settings.Default.CommuniKateStagedForDeletion = false;
+                
+                Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
+                Settings.Default.CommuniKateKeyboardCurrentContext = null;
+                Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious2Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
+                Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
+            }
+        }
+
+        #endregion
+
         #region Attempt To Start/Stop Mary TTS Service Automatically
 
         private static async Task<bool> AttemptToStartMaryTTSService(IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
@@ -934,57 +1045,34 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Check Presage Is Installed And Working
+        #region Alert If Presage Bitness Or Bootstrap Or Version Failure
 
-        private static async Task<bool> CheckPresageIsInstalledAndWorking(bool presageBootstrapFailure, IInputService inputService, IAudioService audioService, 
-            MainViewModel mainViewModel)
+        private static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
+            bool presageInstallationProblem, IInputService inputService, IAudioService audioService,  MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
-            if (presageBootstrapFailure || Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+            if (presageInstallationProblem)
             {
-                string presagePath = null;
-                string presageStartMenuFolder = null;
-                string osBitness = DiagnosticInfo.OperatingSystemBitness;
-
-                try
-                {
-                    presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
-                    presageStartMenuFolder = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "Start Menu Folder", string.Empty).ToString();
-                }
-                catch (Exception ex)
-                {
-                    Log.ErrorFormat("Caught exception: {0}", ex);
-                }
-
-                if (string.IsNullOrEmpty(presagePath)
-                    || string.IsNullOrEmpty(presageStartMenuFolder)
-                    || presageStartMenuFolder != "presage-0.9.2~beta20150909"
-                    || (osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
-                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage")
-                    || presageBootstrapFailure)
-                {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                    inputService.RequestSuspend();
-                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
-                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_SUGGESTION_METHOD,
-                            Settings.Default.SuggestionMethod),
-                        NotificationTypes.Error, () =>
-                        {
-                            inputService.RequestResume();
-                            taskCompletionSource.SetResult(false);
-                        });
-                }
-                else
-                {
-                    Log.InfoFormat("Using Presage {0} at {1}.", presageStartMenuFolder, presagePath);
-                    taskCompletionSource.SetResult(true);
-                }
+                Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                Log.Error("Invalid Presage installation, or problem starting Presage. Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                inputService.RequestSuspend();
+                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.PRESAGE_UNAVAILABLE,
+                    string.Format(OptiKey.Properties.Resources.USING_DEFAULT_SUGGESTION_METHOD,
+                        Settings.Default.SuggestionMethod),
+                    NotificationTypes.Error, () =>
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(false);
+                    });
             }
-            else
+            else 
             {
+                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+                {
+                    Log.Info("Presage installation validated.");
+                }
                 taskCompletionSource.SetResult(true);
             }
 

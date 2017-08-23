@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="JuliusSweetland.OptiKey.UI.Controls.CKKey"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters"
+             xmlns:controls="clr-namespace:JuliusSweetland.OptiKey.UI.Controls"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:models="clr-namespace:JuliusSweetland.OptiKey.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+    </UserControl.Resources>
+
+    <Grid Background="{Binding Path=CKBaCo, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Path=CKImSo, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+               Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+        <Viewbox Stretch="Uniform">
+            <TextBlock Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+                       FontWeight="Heavy" HorizontalAlignment="Center" />
+        </Viewbox>
+        <ContentControl>
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=CKMenuKey, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <Path Fill="Black" VerticalAlignment="Top"
+                                          Stretch="Uniform" HorizontalAlignment="Right"
+                                          Data="M0,0 L0,20 A40,40 0 0 1 -20,0 z" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <ContentControl Grid.RowSpan="2">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <controls:Key SharedSizeGroup="KeyWithText"
+                                          HasImage="True" SymbolGeometry="" 
+                                          ShiftUpText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+                                          ShiftDownText="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"
+                                          Value="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=CKMenuKey, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <controls:Key SharedSizeGroup="KeyWithText"
+                                                  HasImage="True" SymbolGeometry="" 
+                                                  Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
+                                                  Value="{Binding Path=CKMenu, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+        <!--controls:Key Grid.RowSpan="2"
+                      SharedSizeGroup="KeyWithText"
+                      HasImage="True" SymbolGeometry="" 
+                      Text="{Binding Path=CKText, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}" 
+                      Value="{Binding Path=CKValue, RelativeSource={RelativeSource AncestorType={x:Type controls:CKKey}}}"/-->
+    </Grid>
+    <!--Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/CommuniKateImages/image_1_4241_11be41c199409ffaf4183ed5.png"
+                                       Grid.Row="1" Height="Auto" Width="Auto" Margin="5" Stretch="Uniform" />
+        <Viewbox Stretch="Uniform">
+            <TextBlock Text="Hello" FontWeight="Heavy" HorizontalAlignment="Center" />
+        </Viewbox>
+        <Path Fill="Black" VerticalAlignment="Top"
+                                      Stretch="Uniform" HorizontalAlignment="Right"
+                                      Data="M0,0 L0,20 A100,100 0 0 1 -20,0 z" />
+        <controls:Key Grid.RowSpan="2" ShiftUpText="hello" ShiftDownText="Hello"
+                                              SharedSizeGroup="KeyWithText"
+                                              HasImage="True" SymbolGeometry=""
+                                              Value="hello"/>
+    </-->
+</UserControl>
