@@ -605,6 +605,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommuniKate top page obf file:.
+        /// </summary>
+        public static string COMMUNIKATE_TOPPAGE_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_TOPPAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid file.
+        /// </summary>
+        public static string COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location of CommuniKate top page .obf file:.
+        /// </summary>
+        public static string COMMUNIKATE_TOPPAGE_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("COMMUNIKATE_TOPPAGE_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MENU.
         /// </summary>
         public static string CONTEXTUAL_MENU_KEY {
@@ -1103,6 +1130,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable CommuniKate keyboard layout:.
+        /// </summary>
+        public static string ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT", resourceCulture);
             }
         }
         
@@ -3603,6 +3639,27 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+        ///Please uninstall Presage and install the 32 bit version of 0.9.2.
+        ///OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+        ///The prediction method will be changed to NGram to prevent a crash on next run..
+        /// </summary>
+        public static string PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE {
+            get {
+                return ResourceManager.GetString("PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a problem with Presage.
+        /// </summary>
+        public static string PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE {
+            get {
+                return ResourceManager.GetString("PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presage.
         /// </summary>
         public static string PRESAGE_SUGGESTION {
@@ -4918,7 +4975,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use alphabetical keyboard layout:.
+        ///   Looks up a localized string similar to Replace QWERTY keyboard layout with alphabetical keyboard layout:.
         /// </summary>
         public static string USE_ALPHABETICAL_KEYBOARD_LAYOUT {
             get {
@@ -4927,7 +4984,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use simplify keyboard layout:.
+        ///   Looks up a localized string similar to Replace Alpha keyboard with CommuniKate:.
+        /// </summary>
+        public static string USE_COMMUNIKATE_KEYBOARD_LAYOUT {
+            get {
+                return ResourceManager.GetString("USE_COMMUNIKATE_KEYBOARD_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace Alpha keyboard with simplified keyboard layout:.
         /// </summary>
         public static string USE_SIMPLIFIED_KEYBOARD_LAYOUT {
             get {
@@ -4937,7 +5003,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Setting the suggestion method to: {0}.
-        ///You can change this back 
+        ///You can change this back
         ///from the Management Console (ALT + M)..
         /// </summary>
         public static string USING_DEFAULT_SUGGESTION_METHOD {
@@ -4948,8 +5014,8 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Setting the speech voice to the system voice: {0}.
-        ///You can check the path for MaryTTS 
-        ///and change the voice back to it 
+        ///You can check the path for MaryTTS
+        ///and change the voice back to it
         ///from the Management Console (ALT + M)..
         /// </summary>
         public static string USING_DEFAULT_VOICE {

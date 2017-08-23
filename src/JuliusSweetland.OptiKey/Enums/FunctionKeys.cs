@@ -23,6 +23,8 @@
         CatalanSpain,
         ClearScratchpad,
         CollapseDock,
+        CommuniKate,
+        CommuniKateKeyboard,
         ConversationAlphaKeyboard,
         ConversationConfirmKeyboard,
         ConversationConfirmYes,

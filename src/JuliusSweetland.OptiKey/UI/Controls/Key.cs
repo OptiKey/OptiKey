@@ -324,6 +324,15 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public bool HasText { get { return !String.IsNullOrEmpty(ShiftUpText) ||
                                            !String.IsNullOrEmpty(ShiftDownText); } }
 
+        public static readonly DependencyProperty HasImageProperty =
+            DependencyProperty.Register("HasImage", typeof(bool), typeof(Key), new PropertyMetadata(default(bool)));
+
+        public bool HasImage
+        {
+            get { return (bool)GetValue(HasImageProperty); }
+            set { SetValue(HasImageProperty, value); }
+        }
+
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(KeyValue), typeof(Key), new PropertyMetadata(default(KeyValue)));
 

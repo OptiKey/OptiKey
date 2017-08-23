@@ -279,7 +279,9 @@ namespace JuliusSweetland.OptiKey.Services
                 };
 
                 maryTtsPlayer.SoundFinished += onMaryTtsSpeakCompleted;
-                maryTtsPlayer.PlayAsync();
+#pragma warning disable 4014
+                maryTtsPlayer.PlayAsync(ex => PublishError(this, ex)); //Awaitable, but we don't want to await it
+#pragma warning restore 4014
             }
         }
 
