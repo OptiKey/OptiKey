@@ -22,7 +22,6 @@ namespace JuliusSweetland.OptiKey.Services
         private const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Dictionaries\";
         private const string OriginalDictionariesSubPath = @"Dictionaries\";
         private const string DictionaryFileType = ".dic";
-		private const string BackupDictFileType = ".bak.dic";
 
         #endregion
 
@@ -111,6 +110,12 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 managedSuggestions = CreateSuggestions();
 
+				if (suggestionMethod == SuggestionMethods.Presage)
+				{
+					// If using external dictionary, such as Presage, don't bother loading/saving user dictionaries.
+					return;
+				}
+
 				// Create reference to the actual storage of the dictionary entries.
 				entries = managedSuggestions.GetEntries();
 
@@ -123,21 +128,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    //Load the original dictionary
-                    var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
-
-                    if (File.Exists(originalDictionaryPath))
-                    {
-                        LoadOriginalDictionaryFromFile(originalDictionaryPath); 
-						
-						//Create a user specific version of the dictionary in a worker thread
-						Thread writeToFile = new Thread(() => SaveUserDictionaryToFile());
-						writeToFile.Start();
-					}
-                    else
-                    {
-                        throw new ApplicationException(string.Format(Resources.DICTIONARY_FILE_NOT_FOUND_ERROR, originalDictionaryPath));
-                    }
+					LoadDictionaryFromLanguageFile();
                 }
             }
             catch (Exception exception)
@@ -146,7 +137,26 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void LoadOriginalDictionaryFromFile(string filePath)
+		private void LoadDictionaryFromLanguageFile()
+		{
+			//Load the original dictionary
+			var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+
+			if (File.Exists(originalDictionaryPath))
+			{
+				LoadOriginalDictionaryFromFile(originalDictionaryPath);
+
+				//Create a user specific version of the dictionary in a worker thread
+				Thread writeToFile = new Thread(() => SaveUserDictionaryToFile());
+				writeToFile.Start();
+			}
+			else
+			{
+				throw new ApplicationException(string.Format(Resources.DICTIONARY_FILE_NOT_FOUND_ERROR, originalDictionaryPath));
+			}
+		}
+
+		private void LoadOriginalDictionaryFromFile(string filePath)
         {
             Log.DebugFormat("Loading original dictionary from file '{0}'", filePath);
 
@@ -197,7 +207,13 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadUserDictionaryFromFile(string filePath)
         {
-            Log.DebugFormat("Loading user dictionary from file '{0}'", filePath);
+			if (suggestionMethod == SuggestionMethods.Presage)
+			{
+				// Don't bother loading user dictionary if using external predictions.
+				return;
+			}
+
+			Log.DebugFormat("Loading user dictionary from file '{0}'", filePath);
 
 			StreamReader reader = null;
 			List<DictionaryEntry> tempStore = new List<DictionaryEntry>();
@@ -228,6 +244,13 @@ namespace JuliusSweetland.OptiKey.Services
 						}
 					}
 				}
+
+				if (managedSuggestions.GetWordsHashes().Count == 0)
+				{
+					// Loading from user dictionary yield empty dict, then try load from 
+					// source of truth -- this will flush any previous user entry counts.
+					LoadDictionaryFromLanguageFile();
+				}
 			}
 			catch (Exception exception)
 			{
@@ -244,6 +267,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void SaveUserDictionaryToFile()
         {
+			if (suggestionMethod == SuggestionMethods.Presage)
+			{
+				// don't bother saving user dictionary if we're using external dictionaries,
+				// such as Presage service. In that case the in-memory dictionary is empty 
+				// and we would accidentally clearing the user dictionary. 
+				return;
+			}
+
 			lock (Settings.Default)
 			{
 				try
@@ -255,13 +286,24 @@ namespace JuliusSweetland.OptiKey.Services
 
 					try
 					{
-						writer = new StreamWriter(userDictionaryPath);
+						List<DictionaryEntry> userDictToSave = managedSuggestions.
+																GetWordsHashes().
+																SelectMany(hash => entries[hash]).
+																Distinct().ToList();
 
-						foreach (var entryWithUsageCount in managedSuggestions.GetWordsHashes().SelectMany(hash => entries[hash]).Distinct())
+						if (userDictToSave != null && userDictToSave.Count > 0)
 						{
-							if (!typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(entryWithUsageCount))
+							// Only save dictionary if it's not empty, to prevent override user dictionary with
+							//	Presage dictionary (which use external dictionary, hence local dict cache is empty),
+							//	or when the in-memory dict is corrupted. 
+							writer = new StreamWriter(userDictionaryPath);
+
+							foreach (var entryWithUsageCount in userDictToSave)
 							{
-								writer.WriteLine(string.Format("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount));
+								if (!typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(entryWithUsageCount))
+								{
+									writer.WriteLine(string.Format("{0}|{1}", entryWithUsageCount.Entry, entryWithUsageCount.UsageCount));
+								}
 							}
 						}
 					}

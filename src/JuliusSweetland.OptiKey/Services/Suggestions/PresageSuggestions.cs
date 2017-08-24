@@ -76,11 +76,6 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         }
 
-        public void AddEntry(string entry, DictionaryEntry metaData)
-        {
-
-        }
-
         public void RemoveEntry(string entry)
         {
             
