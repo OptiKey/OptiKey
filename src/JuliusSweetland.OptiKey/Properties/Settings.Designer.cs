@@ -1430,6 +1430,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseSimplifiedKeyboardLayout {
             get {
                 return ((bool)(this["UseSimplifiedKeyboardLayout"]));
@@ -1441,19 +1442,60 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SuggestWords1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool EnableCommuniKateKeyboardLayout {
             get {
-                return ((bool)(this["SuggestWords1"]));
+                return ((bool)(this["EnableCommuniKateKeyboardLayout"]));
             }
             set {
-                this["SuggestWords1"] = value;
+                this["EnableCommuniKateKeyboardLayout"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UseCommuniKateKeyboardLayoutByDefault {
+            get {
+                return ((bool)(this["UseCommuniKateKeyboardLayoutByDefault"]));
+            }
+            set {
+                this["UseCommuniKateKeyboardLayoutByDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("toppage")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardCurrentContext {
+            get {
+                return ((string)(this["CommuniKateKeyboardCurrentContext"]));
+            }
+            set {
+                this["CommuniKateKeyboardCurrentContext"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool CommuniKateStagedForDeletion {
+            get {
+                return ((bool)(this["CommuniKateStagedForDeletion"]));
+            }
+            set {
+                this["CommuniKateStagedForDeletion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool SuggestNextWords {
             get {
                 return ((bool)(this["SuggestNextWords"]));
@@ -1634,18 +1676,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SuggestNextWords1 {
-            get {
-                return ((bool)(this["SuggestNextWords1"]));
-            }
-            set {
-                this["SuggestNextWords1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<dictionary>\r\n  <item>\r\n    <key>\r\n     " +
             " <keyValue>\r\n        <functionKey>AlphaKeyboard</functionKey>\r\n      </keyValue>" +
             "\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>" +
@@ -1798,6 +1828,97 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["KeySelectionTriggerFixationCompleteTimesByKeyValues"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int SpeechDelay {
+            get {
+                return ((int)(this["SpeechDelay"]));
+            }
+            set {
+                this["SpeechDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("./Resources/CommuniKate/pageset.obz")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKatePagesetLocation {
+            get {
+                return ((string)(this["CommuniKatePagesetLocation"]));
+            }
+            set {
+                this["CommuniKatePagesetLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool UsingCommuniKateKeyboardLayout {
+            get {
+                return ((bool)(this["UsingCommuniKateKeyboardLayout"]));
+            }
+            set {
+                this["UsingCommuniKateKeyboardLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious1Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious1Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious1Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious2Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious2Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious2Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious3Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious3Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious3Context"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string CommuniKateKeyboardPrevious4Context {
+            get {
+                return ((string)(this["CommuniKateKeyboardPrevious4Context"]));
+            }
+            set {
+                this["CommuniKateKeyboardPrevious4Context"] = value;
             }
         }
     }

@@ -9,11 +9,9 @@ namespace JuliusSweetland.OptiKey.Services.Audio
 {
     public class SoundPlayerEx : SoundPlayer
     {
-
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool Finished { get; private set; }
-
-        //private Task playTask;
+        
         private CancellationTokenSource tokenSource = new CancellationTokenSource();
         private CancellationToken ct;
         private bool playingAsync;
@@ -25,36 +23,49 @@ namespace JuliusSweetland.OptiKey.Services.Audio
             ct = tokenSource.Token;
         }
 
-        public void PlayAsync()
+        public async Task PlayAsync(Action<Exception> onError)
         {
             Log.DebugFormat("Attempting to play sound asynchronously.");
             Finished = false;
             playingAsync = true;
-            Task.Run(() =>
+
+            try
             {
-                try
+                await Task.Run(() =>
                 {
-                    double lenMs = Sound.GetSoundLength(SoundLocation);
-                    DateTime stopAt = DateTime.Now.AddMilliseconds(lenMs);
-                    Log.DebugFormat("Sound ends at {0}.", stopAt);
-                    this.Play();
-                    while (DateTime.Now < stopAt)
+                    try
                     {
-                        ct.ThrowIfCancellationRequested();
-                        //The delay helps reduce processor usage while "spinning"
-                        Task.Delay(10).Wait();
+                        double lenMs = Sound.GetSoundLength(SoundLocation);
+                        DateTime stopAt = DateTime.Now.AddMilliseconds(lenMs);
+                        Log.DebugFormat("Sound ends at {0}.", stopAt);
+                        this.Play();
+                        while (DateTime.Now < stopAt)
+                        {
+                            ct.ThrowIfCancellationRequested();
+                            //The delay helps reduce processor usage while "spinning"
+                            Task.Delay(10).Wait();
+                        }
                     }
-                }
-                catch (OperationCanceledException)
-                {
-                    base.Stop();
-                    Log.DebugFormat("Sound manually stoped. Generating a new CancellationTokenSource");
-                    // Create new CancellationTokenSource
-                    tokenSource.Dispose();
-                    tokenSource = new CancellationTokenSource();
-                    ct = tokenSource.Token;
-                }
-            }, ct).ContinueWith(antecedent => OnSoundFinished(), TaskScheduler.FromCurrentSynchronizationContext());
+                    catch (OperationCanceledException)
+                    {
+                        base.Stop();
+                        Log.DebugFormat("Sound manually stoped. Generating a new CancellationTokenSource");
+                        // Create new CancellationTokenSource
+                        tokenSource.Dispose();
+                        tokenSource = new CancellationTokenSource();
+                        ct = tokenSource.Token;
+                    }
+                }, ct);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error when calling SoundPlayerEx.PlayAsync (MaryTTS).", ex);
+                onError(ex);
+            }
+            finally
+            {
+                OnSoundFinished();
+            }
         }
 
         public new void Stop()

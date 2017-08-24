@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -1782,7 +1782,7 @@ Slovenčina
     <value>Force caps lock:</value>
   </data>
   <data name="USE_ALPHABETICAL_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use alphabetical keyboard layout:</value>
+    <value>Replace QWERTY keyboard layout with alphabetical keyboard layout:</value>
   </data>
   <data name="KALMAN_FILTER_ENABLED" xml:space="preserve">
     <value>Kalman Filter:</value>
@@ -1818,7 +1818,7 @@ Slovenčina
     <value>Enable quit keys?</value>
   </data>
   <data name="USE_SIMPLIFIED_KEYBOARD_LAYOUT" xml:space="preserve">
-    <value>Use simplify keyboard layout:</value>
+    <value>Replace Alpha keyboard with simplified keyboard layout:</value>
   </data>
   <data name="BROWSER_BACK_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>Browser
@@ -1858,16 +1858,60 @@ Browsing</value>
   <data name="MARYTTS_LOCATION_ERROR_LABEL" xml:space="preserve">
     <value>ERROR: a valid 'marytts-server.bat' file was not selected. Please try again.</value>
   </data>
-    <data name="BASIC_SUGGESTION" xml:space="preserve">
-      <value>Basic</value>
-    </data>
-    <data name="NGRAM_SUGGESTION" xml:space="preserve">
-      <value>NGram</value>
-    </data>
-    <data name="PRESAGE_SUGGESTION" xml:space="preserve">
-      <value>Presage</value>
-    </data>
-    <data name="SUGGESTION_METHOD" xml:space="preserve">
-      <value>Suggestion method:</value>
-    </data>
+  <data name="BASIC_SUGGESTION" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="NGRAM_SUGGESTION" xml:space="preserve">
+    <value>NGram</value>
+  </data>
+  <data name="PRESAGE_SUGGESTION" xml:space="preserve">
+    <value>Presage</value>
+  </data>
+  <data name="SUGGESTION_METHOD" xml:space="preserve">
+    <value>Suggestion method:</value>
+  </data>
+  <data name="MARYTTS_UNAVAILABLE" xml:space="preserve">
+    <value>MaryTTS is not available</value>
+  </data>
+  <data name="PRESAGE_UNAVAILABLE" xml:space="preserve">
+    <value>Presage word prediction not available</value>
+  </data>
+  <data name="USING_DEFAULT_SUGGESTION_METHOD" xml:space="preserve">
+    <value>Setting the suggestion method to: {0}.
+You can change this back
+from the Management Console (ALT + M).</value>
+  </data>
+  <data name="USING_DEFAULT_VOICE" xml:space="preserve">
+    <value>Setting the speech voice to the system voice: {0}.
+You can check the path for MaryTTS
+and change the voice back to it
+from the Management Console (ALT + M).</value>
+  </data>
+  <data name="SPEECH_DELAY_LABEL" xml:space="preserve">
+    <value>Delay before speech (ms):</value>
+  </data>
+  <data name="USE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Replace Alpha keyboard with CommuniKate:</value>
+  </data>
+  <data name="ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT" xml:space="preserve">
+    <value>Enable CommuniKate keyboard layout:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LABEL" xml:space="preserve">
+    <value>CommuniKate top page obf file:</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_ERROR_LABEL" xml:space="preserve">
+    <value>Invalid file</value>
+  </data>
+  <data name="COMMUNIKATE_TOPPAGE_LOCATION_LABEL" xml:space="preserve">
+    <value>Location of CommuniKate top page .obf file:</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_MESSAGE" xml:space="preserve">
+    <value>Either a 64 bit version of Presage is installed (OptiKey only supports the 32 bit version), or the Presage files have been moved, deleted, or corrupted.
+Please uninstall Presage and install the 32 bit version of 0.9.2.
+OptiKey will attempt to continue, but there is a good chance it will crash shortly.
+The prediction method will be changed to NGram to prevent a crash on next run.</value>
+  </data>
+  <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
+    <value>There is a problem with Presage</value>
+  </data>
 </root>

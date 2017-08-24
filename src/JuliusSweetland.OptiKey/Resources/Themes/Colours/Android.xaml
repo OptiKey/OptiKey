@@ -9,4 +9,5 @@
     <Color x:Key="DarkRed">DarkRed</Color>
     <Color x:Key="Green">#3CAC6F</Color>
     <Color x:Key="Yellow">Yellow</Color>
+    <Color x:Key="Transparent">Transparent</Color>
 </ResourceDictionary>
