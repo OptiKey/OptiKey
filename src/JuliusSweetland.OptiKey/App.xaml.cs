@@ -963,7 +963,21 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
-                if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                if (!File.Exists(Settings.Default.MaryTTSLocation))
+                {
+                    Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does represent an existing file). " +
+                        "Disabling MaryTTS and using System Voice '{0}' instead.", Settings.Default.SpeechVoice);
+                    Settings.Default.MaryTTSEnabled = false;
+
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
+                }
+                else if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
                 {
                     proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
 
@@ -971,10 +985,6 @@ namespace JuliusSweetland.OptiKey
                     try
                     {
                         proc.Start();
-
-                        Log.InfoFormat("Started MaryTTS.");
-                        CloseMaryTTSOnApplicationExit(proc);
-                        taskCompletionSource.SetResult(true);
                     }
                     catch (Exception ex)
                     {
@@ -982,6 +992,37 @@ namespace JuliusSweetland.OptiKey
                             "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
+                        Settings.Default.MaryTTSEnabled = false;
+
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error, () =>
+                            {
+                                inputService.RequestResume();
+                                taskCompletionSource.SetResult(false);
+                            });
+                    }
+
+                    if (proc.StartTime <= DateTime.Now && !proc.HasExited)
+                    {
+                        Log.InfoFormat("Started MaryTTS at {0}.", proc.StartTime);
+                        CloseMaryTTSOnApplicationExit(proc);
+                        taskCompletionSource.SetResult(true);
+                    }
+                    else
+                    {
+                        var errorMsg = string.Format(
+                            "Failed to started MaryTTS (server not running). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        if (proc.HasExited)
+                        {
+                            errorMsg = string.Format(
+                            "Failed to started MaryTTS (server was closed). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        }
+                        Log.Error(errorMsg);
                         Settings.Default.MaryTTSEnabled = false;
 
                         inputService.RequestSuspend();
@@ -1022,7 +1063,11 @@ namespace JuliusSweetland.OptiKey
         {
             Current.Exit += (o, args) =>
             {
-                if (Settings.Default.MaryTTSEnabled)
+                if (proc.HasExited)
+                {
+                    Log.InfoFormat("MaryTTS has already been closed.");
+                }
+                else if (Settings.Default.MaryTTSEnabled)
                 {
                     try
                     {

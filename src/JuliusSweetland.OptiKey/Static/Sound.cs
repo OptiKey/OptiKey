@@ -4,12 +4,18 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
+using System.Reflection;
+using log4net;
 using JuliusSweetland.OptiKey.Native;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Static
 {
     public static class Sound
     {
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public static int GetSoundLength(string fileName)
         {
             int length;
@@ -26,7 +32,51 @@ namespace JuliusSweetland.OptiKey.Static
 
                 // Set credentials to use for this request.
                 request.Credentials = CredentialCache.DefaultCredentials;
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                HttpWebResponse response = null;
+
+                try
+                {
+                    response = (HttpWebResponse)request.GetResponse();
+                }
+                catch
+                {
+                    Log.Error("Unable to use MaryTTS voice synthesiser.");
+                    if (File.Exists(Settings.Default.MaryTTSLocation))
+                    {
+                        Log.Error("Trying to restart MaryTTS server.");
+                        Process proc = new Process
+                        {
+                            StartInfo = new ProcessStartInfo
+                            {
+                                UseShellExecute = true,
+                                WindowStyle = ProcessWindowStyle.Minimized, // cannot close it if set to hidden
+                                CreateNoWindow = true,
+                                FileName = Settings.Default.MaryTTSLocation
+                            }
+                        };
+                        try
+                        {
+                            proc.Start();
+                        }
+                        catch
+                        {
+                            Log.ErrorFormat("Failed to restart MaryTTS server. Disabling MaryTTS and using System Voice '{0}' instead.",
+                                Settings.Default.SpeechVoice);
+                            Settings.Default.MaryTTSEnabled = false;
+                        }
+
+                        if (proc.StartTime <= DateTime.Now && !proc.HasExited)
+                        {
+                            Log.InfoFormat("Restarted MaryTTS server at {0}.", proc.StartTime);
+                        }
+                    }
+                    else
+                    {
+                        Log.ErrorFormat("Failed to restart MaryTTS server. Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        Settings.Default.MaryTTSEnabled = false;
+                    }
+                }
 
                 // Get the stream associated with the response.
                 Stream receiveStream = response.GetResponseStream();
