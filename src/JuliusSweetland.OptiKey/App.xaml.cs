@@ -17,7 +17,6 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
-using JuliusSweetland.OptiKey.Services.Suggestions;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
@@ -328,7 +327,7 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-		    #region Create Main Window Manipulation Service
+		#region Create Main Window Manipulation Service
 
 		    private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
@@ -1014,7 +1013,7 @@ namespace JuliusSweetland.OptiKey
                     if (proc.StartTime <= DateTime.Now && !proc.HasExited)
                     {
                         Log.InfoFormat("Started MaryTTS at {0}.", proc.StartTime);
-                        CloseMaryTTSOnApplicationExit(proc);
+                        proc.CloseOnApplicationExit(Log, "MaryTTS");
                         taskCompletionSource.SetResult(true);
                     }
                     else
@@ -1022,12 +1021,14 @@ namespace JuliusSweetland.OptiKey
                         var errorMsg = string.Format(
                             "Failed to started MaryTTS (server not running). Disabling MaryTTS and using System Voice '{0}' instead.",
                             Settings.Default.SpeechVoice);
+
                         if (proc.HasExited)
                         {
                             errorMsg = string.Format(
                             "Failed to started MaryTTS (server was closed). Disabling MaryTTS and using System Voice '{0}' instead.",
                             Settings.Default.SpeechVoice);
                         }
+
                         Log.Error(errorMsg);
                         Settings.Default.MaryTTSEnabled = false;
 
@@ -1063,29 +1064,6 @@ namespace JuliusSweetland.OptiKey
             }
             
             return await taskCompletionSource.Task;
-        }
-
-        private static void CloseMaryTTSOnApplicationExit(Process proc)
-        {
-            Current.Exit += (o, args) =>
-            {
-                if (proc.HasExited)
-                {
-                    Log.InfoFormat("MaryTTS has already been closed.");
-                }
-                else if (Settings.Default.MaryTTSEnabled)
-                {
-                    try
-                    {
-                        proc.CloseMainWindow();
-                        Log.InfoFormat("MaryTTS has been closed.");
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Error closing MaryTTS on OptiKey shutdown", ex);
-                    }
-                }
-            };
         }
 
         #endregion

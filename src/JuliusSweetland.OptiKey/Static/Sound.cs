@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
+using JuliusSweetland.OptiKey.Extensions;
 using log4net;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
@@ -68,6 +69,23 @@ namespace JuliusSweetland.OptiKey.Static
                         if (proc.StartTime <= DateTime.Now && !proc.HasExited)
                         {
                             Log.InfoFormat("Restarted MaryTTS server at {0}.", proc.StartTime);
+                            proc.CloseOnApplicationExit(Log, "MaryTTS");
+                        }
+                        else
+                        {
+                            var errorMsg = string.Format(
+                                "Failed to started MaryTTS (server not running). Disabling MaryTTS and using System Voice '{0}' instead.",
+                                Settings.Default.SpeechVoice);
+
+                            if (proc.HasExited)
+                            {
+                                errorMsg = string.Format(
+                                "Failed to started MaryTTS (server was closed). Disabling MaryTTS and using System Voice '{0}' instead.",
+                                Settings.Default.SpeechVoice);
+                            }
+
+                            Log.Error(errorMsg);
+                            Settings.Default.MaryTTSEnabled = false;
                         }
                     }
                     else
