@@ -235,6 +235,7 @@
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\KeyValueExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
+    <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Extensions\PropertyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />

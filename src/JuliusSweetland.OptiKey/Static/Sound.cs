@@ -96,19 +96,21 @@ namespace JuliusSweetland.OptiKey.Static
                     }
                 }
 
-                // Get the stream associated with the response.
-                Stream receiveStream = response.GetResponseStream();
+                if (response != null)
+                {
+                    // Get the stream associated with the response.
+                    Stream receiveStream = response.GetResponseStream();
 
-                // Pipes the stream to a higher level stream reader with the required encoding format. 
-                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                string responseText = readStream.ReadToEnd();
+                    // Pipes the stream to a higher level stream reader with the required encoding format. 
+                    StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                    string responseText = readStream.ReadToEnd();
 
-                realised_durations = responseText.Split('\n').ToList();
+                    realised_durations = responseText.Split('\n').ToList();
 
-                // retrieve the time of the last syllable
-                length = (int)(1000 * Convert.ToSingle(realised_durations.ElementAt(realised_durations.Count() - 2).Split(' ').ToList().ElementAt(0)));
-
-                //Log.InfoFormat("MaryTTS speech ends in {0} ms", delaytime);
+                    // retrieve the time of the last syllable
+                    length = (int)(1000 * Convert.ToSingle(realised_durations.ElementAt(realised_durations.Count() - 2).Split(' ').ToList().ElementAt(0)));
+                    return length;
+                }
             }
             else
             {
@@ -119,9 +121,10 @@ namespace JuliusSweetland.OptiKey.Static
                 PInvoke.mciSendString("close wave", null, 0, IntPtr.Zero);
 
                 int.TryParse(lengthBuf.ToString(), out length);
+                return length;
             }
 
-            return length;
+            return 0; //This is an error condition
         }
     }
 }

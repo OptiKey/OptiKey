@@ -9,27 +9,30 @@ namespace JuliusSweetland.OptiKey.Extensions
     {
         public static void CloseOnApplicationExit(this Process proc, ILog log, string description)
         {
-            Application.Current.Exit += (o, args) =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                if (proc == null) return;
+                Application.Current.Exit += (o, args) =>
+                {
+                    if (proc == null) return;
 
-                if (proc.HasExited)
-                {
-                    log.InfoFormat("{0} has already been closed.", description);
-                }
-                else
-                {
-                    try
+                    if (proc.HasExited)
                     {
-                        proc.CloseMainWindow();
-                        log.InfoFormat("{0} has been closed.", description);
+                        log.InfoFormat("{0} has already been closed.", description);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        log.Error(string.Format("Error closing {0} on OptiKey shutdown", description), ex);
+                        try
+                        {
+                            proc.CloseMainWindow();
+                            log.InfoFormat("{0} has been closed.", description);
+                        }
+                        catch (Exception ex)
+                        {
+                            log.Error(string.Format("Error closing {0} on OptiKey shutdown", description), ex);
+                        }
                     }
-                }
-            };
+                };
+            });
         }
     }
 }
