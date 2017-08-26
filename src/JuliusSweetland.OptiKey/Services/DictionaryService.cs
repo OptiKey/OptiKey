@@ -110,12 +110,6 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 managedSuggestions = CreateSuggestions();
 
-				if (suggestionMethod == SuggestionMethods.Presage)
-				{
-					// If using external dictionary, such as Presage, don't bother loading/saving user dictionaries.
-					return;
-				}
-
 				// Create reference to the actual storage of the dictionary entries.
 				entries = managedSuggestions.GetEntries();
 
@@ -207,12 +201,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void LoadUserDictionaryFromFile(string filePath)
         {
-			if (suggestionMethod == SuggestionMethods.Presage)
-			{
-				// Don't bother loading user dictionary if using external predictions.
-				return;
-			}
-
 			Log.DebugFormat("Loading user dictionary from file '{0}'", filePath);
 
 			StreamReader reader = null;
@@ -267,14 +255,6 @@ namespace JuliusSweetland.OptiKey.Services
 
         private void SaveUserDictionaryToFile()
         {
-			if (suggestionMethod == SuggestionMethods.Presage)
-			{
-				// don't bother saving user dictionary if we're using external dictionaries,
-				// such as Presage service. In that case the in-memory dictionary is empty 
-				// and we would accidentally clearing the user dictionary. 
-				return;
-			}
-
 			lock (Settings.Default)
 			{
 				try
@@ -615,35 +595,35 @@ namespace JuliusSweetland.OptiKey.Services
                 Log.DebugFormat("Attempting to match using filtered string: '{0}'", filteredStrings.Item1);
 
                 cancellationTokenSource = new CancellationTokenSource();
-                var matches = new List<string>();
+				var matches = new List<string>();
 
-                GetHashes()
-                    .AsParallel()
-                    .WithCancellation(cancellationTokenSource.Token)
-                    .Where(hash => reliableFirstCharCleansed == null || hash.First() == reliableFirstCharCleansed.Value)
-                    .Where(hash => reliableLastCharCleansed == null || hash.Last() == reliableLastCharCleansed.Value)
-                    .Select(hash =>
-                    {
-                        var lcs = filteredStrings.Item1.LongestCommonSubsequence(hash);
+				GetHashes()
+					.AsParallel()
+					.WithCancellation(cancellationTokenSource.Token)
+					.Where(hash => reliableFirstCharCleansed == null || hash.First() == reliableFirstCharCleansed.Value)
+					.Where(hash => reliableLastCharCleansed == null || hash.Last() == reliableLastCharCleansed.Value)
+					.Select(hash =>
+					{
+						var lcs = filteredStrings.Item1.LongestCommonSubsequence(hash);
 
-                        return new
-                        {
-                            Hash = hash,
-                            HashLastLetter = hash.Last(),
-                            CaptureLastLetter = filteredStrings.Item1.Last(),
-                            SimilarityToMeanFilteredString = ((double)lcs / (double)hash.Length) * (double)lcs
-                        };
-                    })
-                    .OrderByDescending(x => x.SimilarityToMeanFilteredString)
-                    .ThenByDescending(x => x.HashLastLetter == x.CaptureLastLetter) //Matching last letter - assume some reliability
-                    .SelectMany(x => GetEntries(x.Hash))
-                    .Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
-                    .ToList()
-                    .ForEach(matches.Add);
+						return new
+						{
+							Hash = hash,
+							HashLastLetter = hash.Last(),
+							CaptureLastLetter = filteredStrings.Item1.Last(),
+							SimilarityToMeanFilteredString = ((double)lcs / (double)hash.Length) * (double)lcs
+						};
+					})
+					.OrderByDescending(x => x.SimilarityToMeanFilteredString)
+					.ThenByDescending(x => x.HashLastLetter == x.CaptureLastLetter) //Matching last letter - assume some reliability
+					.SelectMany(x => GetEntries(x.Hash))
+					.Take(Settings.Default.MaxDictionaryMatchesOrSuggestions)
+					.ToList()
+					.ForEach(matches.Add);
 
-                matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
+				matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
                 return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches.Any() ? matches : null);
-            }
+			}
             catch (OperationCanceledException)
             {
                 Log.Error("Map capture to dictionary matches cancelled - returning nothing");
