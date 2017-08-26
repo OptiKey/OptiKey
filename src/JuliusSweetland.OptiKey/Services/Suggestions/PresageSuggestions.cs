@@ -1,37 +1,26 @@
 using JuliusSweetland.OptiKey.Models;
 using log4net;
 using presage;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
-	public class PresageSuggestions : IManagedSuggestions
-    {
-        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
-        private readonly HashSet<string> wordsIndex = new HashSet<string>();
+	public class PresageSuggestions : BasicAutoComplete
+	{
+		private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
+		private readonly HashSet<string> wordsIndex = new HashSet<string>();
+		private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private Presage prsg;
-
+		private Presage prsg;
         private string root = "";
 
-        public PresageSuggestions()
+        public PresageSuggestions() : base()
         {
             prsg = new Presage(this.callback_get_past_stream, this.callback_get_future_stream);
         }
 
-        /// <summary>
-        /// Removes all possible suggestions from the auto complete provider.
-        /// </summary>
-        public void Clear()
-        {
-            Log.Debug("Clear called.");
-        }
-
-        public IEnumerable<string> GetSuggestions(string root, bool nextWord)
+        public override IEnumerable<string> GetSuggestions(string root, bool nextWord)
         {
             Log.DebugFormat("GetSuggestions called with root '{0}'", root);
 
@@ -54,30 +43,6 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             }
 
             return Enumerable.Empty<string>();
-        }
-
-        public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
-        {
-            return entries;
-        }
-
-        public HashSet<string> GetWordsHashes()
-        {
-            return wordsIndex;
-        }
-
-        public void AddEntry(string entry, DictionaryEntry dictionaryEntry, string normalizedHash = "")
-        {
-
-        }
-
-        private void AddToDictionary(string entry, string pleteHash, DictionaryEntry newEntryWithUsageCount)
-        {
-
-        }
-
-        public void RemoveEntry(string entry)
-        {
         }
 
         private string callback_get_past_stream()
