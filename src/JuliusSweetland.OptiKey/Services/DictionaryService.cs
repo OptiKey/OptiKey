@@ -15,7 +15,7 @@ using System.Windows;
 
 namespace JuliusSweetland.OptiKey.Services
 {
-	public class DictionaryService : IDictionaryService
+    public class DictionaryService : IDictionaryService
     {
         #region Constants
 
@@ -30,12 +30,12 @@ namespace JuliusSweetland.OptiKey.Services
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly SuggestionMethods suggestionMethod;
 
-		private Dictionary<string, HashSet<DictionaryEntry>> entries;
-		private IManagedSuggestions managedSuggestions;
+	private Dictionary<string, HashSet<DictionaryEntry>> entries;
+	private IManagedSuggestions managedSuggestions;
 
         #endregion
 
-		#region Events
+	#region Events
 
         public event EventHandler<Exception> Error;
 
@@ -62,11 +62,11 @@ namespace JuliusSweetland.OptiKey.Services
             Settings.Default.OnPropertyChanges(settings => settings.KeyboardAndDictionaryLanguage).Subscribe(_ => LoadDictionary());
         }
 
-		#endregion
+	#endregion
 
-		#region Migrate Legacy User Dictionaries
+	#region Migrate Legacy User Dictionaries
 
-		private static void MigrateLegacyDictionaries()
+	private static void MigrateLegacyDictionaries()
         {
             var oldNewDictionaryFileNames = new List<Tuple<string, string>>
             {
@@ -110,11 +110,11 @@ namespace JuliusSweetland.OptiKey.Services
             {
                 managedSuggestions = CreateSuggestions();
 
-				// Create reference to the actual storage of the dictionary entries.
-				entries = managedSuggestions.GetEntries();
+		// Create reference to the actual storage of the dictionary entries.
+		entries = managedSuggestions.GetEntries();
 
-				//Load the user dictionary
-				var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
+		//Load the user dictionary
+		var userDictionaryPath = GetUserDictionaryPath(Settings.Default.KeyboardAndDictionaryLanguage);
 
                 if (File.Exists(userDictionaryPath))
                 {
@@ -122,7 +122,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-					LoadDictionaryFromLanguageFile();
+		    LoadDictionaryFromLanguageFile();
                 }
             }
             catch (Exception exception)
@@ -131,61 +131,61 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-		private void LoadDictionaryFromLanguageFile()
+	private void LoadDictionaryFromLanguageFile()
+	{
+		//Load the original dictionary
+		var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+
+		if (File.Exists(originalDictionaryPath))
 		{
-			//Load the original dictionary
-			var originalDictionaryPath = Path.GetFullPath(string.Format(@"{0}{1}{2}", OriginalDictionariesSubPath, Settings.Default.KeyboardAndDictionaryLanguage, DictionaryFileType));
+			LoadOriginalDictionaryFromFile(originalDictionaryPath);
 
-			if (File.Exists(originalDictionaryPath))
-			{
-				LoadOriginalDictionaryFromFile(originalDictionaryPath);
-
-				//Create a user specific version of the dictionary in a worker thread
-				Thread writeToFile = new Thread(() => SaveUserDictionaryToFile());
-				writeToFile.Start();
-			}
-			else
-			{
-				throw new ApplicationException(string.Format(Resources.DICTIONARY_FILE_NOT_FOUND_ERROR, originalDictionaryPath));
-			}
+			//Create a user specific version of the dictionary in a worker thread
+			Thread writeToFile = new Thread(() => SaveUserDictionaryToFile());
+			writeToFile.Start();
 		}
+		else
+		{
+			throw new ApplicationException(string.Format(Resources.DICTIONARY_FILE_NOT_FOUND_ERROR, originalDictionaryPath));
+		}
+	}
 
-		private void LoadOriginalDictionaryFromFile(string filePath)
+	private void LoadOriginalDictionaryFromFile(string filePath)
         {
             Log.DebugFormat("Loading original dictionary from file '{0}'", filePath);
 
-			StreamReader reader = null;
-			string line = string.Empty;
+		StreamReader reader = null;
+		string line = string.Empty;
 
-			try
+		try
+		{
+			using (reader = new StreamReader(filePath))
 			{
-				using (reader = new StreamReader(filePath))
+				while (reader.Peek() >= 0)
 				{
-					while (reader.Peek() >= 0)
-					{
-						line = reader.ReadLine();
+					line = reader.ReadLine();
 
-						//Entries must be londer than 1 character
-						if (!string.IsNullOrWhiteSpace(line)
-							&& line.Trim().Length > 1)
-						{
-							AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
-						}
+					//Entries must be londer than 1 character
+					if (!string.IsNullOrWhiteSpace(line)
+						&& line.Trim().Length > 1)
+					{
+						AddEntryToDictionary(line.Trim(), loadedFromDictionaryFile: true, usageCount: 0);
 					}
 				}
 			}
-			catch (Exception exception)
+		}
+		catch (Exception exception)
+		{
+			PublishError(this, exception);
+		}
+		finally
+		{
+			if (reader != null)
 			{
-				PublishError(this, exception);
-			}
-			finally
-			{
-				if (reader != null)
-				{
-					reader.Dispose();
-				}
+				reader.Dispose();
 			}
 		}
+	}
 
         private static string GetUserDictionaryPath(Languages? language)
         {
@@ -431,6 +431,7 @@ namespace JuliusSweetland.OptiKey.Services
             {
 				var enumerator = managedSuggestions.GetWordsHashes()
 					.SelectMany(hash => entries[hash])
+					.Where(dictEntry => !(typeof(NGramAutoComplete.EntryMetadata).IsInstanceOfType(dictEntry)))
 					.OrderBy(entryWithUsageCount => entryWithUsageCount.Entry)
 					.GetEnumerator();
 
