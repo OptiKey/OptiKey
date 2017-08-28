@@ -54,21 +54,21 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount, string normalizedHash = "")
         {
-			//Also add to entries for auto complete
-			var autoCompleteHash = entry.Normalise(log: false);
-            
-			AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
-			if (!wordsIndex.Contains(autoCompleteHash))
-			{
-				wordsIndex.Add(autoCompleteHash);
-			}
-
             if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
             {
                 //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
                 var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
                 AddEntry(phraseAutoCompleteHash, newEntryWithUsageCount);
             }
+
+            //Also add to entries for auto complete
+            var autoCompleteHash = entry.Normalise(log: false);
+            
+			AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
+			if (!wordsIndex.Contains(autoCompleteHash))
+			{
+				wordsIndex.Add(autoCompleteHash);
+			}
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
