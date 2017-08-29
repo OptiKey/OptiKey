@@ -31,6 +31,7 @@ Patrons (thank you very much for sponsoring this project)
   Juniichi Odagiri
   Brian Bourne
   Alan Dickson
+  Independent Living Centre Tasmania Inc
   
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
