@@ -54,27 +54,22 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
 
         public void AddEntry(string entry, DictionaryEntry newEntryWithUsageCount, string normalizedHash = "")
         {
-			if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
+            if (!string.IsNullOrWhiteSpace(entry) && entry.Contains(" "))
+            {
+                //Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
+                var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
+                AddEntry(phraseAutoCompleteHash, newEntryWithUsageCount);
+            }
+
+            //Also add to entries for auto complete
+            var autoCompleteHash = entry.Normalise(log: false);
+            
+			AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
+			if (!wordsIndex.Contains(autoCompleteHash))
 			{
-				//Entry is a phrase - also add with a dictionary entry hash (first letter of each word)
-				var phraseAutoCompleteHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(log: false);
-				AddEntry(phraseAutoCompleteHash, newEntryWithUsageCount);
+				wordsIndex.Add(autoCompleteHash);
 			}
-
-			//Also add to entries for auto complete
-			var autoCompleteHash = entry.Normalise(log: false);
-
-			//Also add the normalized hash to the dictionary
-			normalizedHash = string.IsNullOrWhiteSpace(normalizedHash)
-								? entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false)
-								: normalizedHash;
-
-			AddToDictionary(entry, normalizedHash, newEntryWithUsageCount);
-			if (!wordsIndex.Contains(normalizedHash))
-			{
-				wordsIndex.Add(normalizedHash);
-			}
-		}
+        }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         {
