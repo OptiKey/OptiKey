@@ -9,10 +9,15 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services.AutoComplete
         protected override IManagedSuggestions CreateAutoComplete()
         {
             return new NGramAutoComplete();
-        }
-
-        protected override object[] SuggestionsTestCaseSource
-        {
+		}
+		
+		protected override object[] GetTestCases()
+ 		{
+ 			return SuggestionsTestCases;
+ 		}
+ 
+ 		private object[] SuggestionsTestCases
+ 		{
             get
             {
                 return new object[] {

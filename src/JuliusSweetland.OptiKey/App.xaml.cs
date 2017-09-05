@@ -17,7 +17,6 @@ using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Observables.TriggerSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
-using JuliusSweetland.OptiKey.Services.Suggestions;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using JuliusSweetland.OptiKey.UI.Windows;
@@ -167,7 +166,10 @@ namespace JuliusSweetland.OptiKey
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
 
-                mainViewModel = new MainViewModel(
+				//Subscribing to the on closing events.
+				mainWindow.Closing += dictionaryService.OnAppClosing;
+
+				mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService, errorNotifyingServices);
@@ -180,6 +182,7 @@ namespace JuliusSweetland.OptiKey
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
                 };
+
                 if(mainWindow.MainView.IsLoaded)
                 {
                     postMainViewLoaded();
@@ -192,6 +195,7 @@ namespace JuliusSweetland.OptiKey
                         postMainViewLoaded();
                         mainWindow.MainView.Loaded -= loadedHandler; //Ensure this handler only triggers once
                     };
+					
                     mainWindow.MainView.Loaded += loadedHandler;
                 }
 
@@ -211,6 +215,7 @@ namespace JuliusSweetland.OptiKey
 
                     await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
+
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
                 {
                     sizeAndPositionInitialised(null, null);
@@ -322,9 +327,9 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Create Main Window Manipulation Service
+		#region Create Main Window Manipulation Service
 
-        private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
+		    private WindowManipulationService CreateMainWindowManipulationService(MainWindow mainWindow)
         {
             return new WindowManipulationService(
                 mainWindow,
@@ -963,7 +968,21 @@ namespace JuliusSweetland.OptiKey
                     }
                 };
 
-                if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
+                if (!File.Exists(Settings.Default.MaryTTSLocation))
+                {
+                    Log.InfoFormat("Failed to started MaryTTS (setting MaryTTSLocation does represent an existing file). " +
+                        "Disabling MaryTTS and using System Voice '{0}' instead.", Settings.Default.SpeechVoice);
+                    Settings.Default.MaryTTSEnabled = false;
+
+                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                        string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                        NotificationTypes.Error, () =>
+                        {
+                            inputService.RequestResume();
+                            taskCompletionSource.SetResult(false);
+                        });
+                }
+                else if (Settings.Default.MaryTTSLocation.EndsWith(ExpectedMaryTTSLocationSuffix))
                 {
                     proc.StartInfo.FileName = Settings.Default.MaryTTSLocation;
 
@@ -971,10 +990,6 @@ namespace JuliusSweetland.OptiKey
                     try
                     {
                         proc.Start();
-
-                        Log.InfoFormat("Started MaryTTS.");
-                        CloseMaryTTSOnApplicationExit(proc);
-                        taskCompletionSource.SetResult(true);
                     }
                     catch (Exception ex)
                     {
@@ -982,6 +997,39 @@ namespace JuliusSweetland.OptiKey
                             "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
+                        Settings.Default.MaryTTSEnabled = false;
+
+                        inputService.RequestSuspend();
+                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
+                        mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.MARYTTS_UNAVAILABLE,
+                            string.Format(OptiKey.Properties.Resources.USING_DEFAULT_VOICE, Settings.Default.SpeechVoice),
+                            NotificationTypes.Error, () =>
+                            {
+                                inputService.RequestResume();
+                                taskCompletionSource.SetResult(false);
+                            });
+                    }
+
+                    if (proc.StartTime <= DateTime.Now && !proc.HasExited)
+                    {
+                        Log.InfoFormat("Started MaryTTS at {0}.", proc.StartTime);
+                        proc.CloseOnApplicationExit(Log, "MaryTTS");
+                        taskCompletionSource.SetResult(true);
+                    }
+                    else
+                    {
+                        var errorMsg = string.Format(
+                            "Failed to started MaryTTS (server not running). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+
+                        if (proc.HasExited)
+                        {
+                            errorMsg = string.Format(
+                            "Failed to started MaryTTS (server was closed). Disabling MaryTTS and using System Voice '{0}' instead.",
+                            Settings.Default.SpeechVoice);
+                        }
+
+                        Log.Error(errorMsg);
                         Settings.Default.MaryTTSEnabled = false;
 
                         inputService.RequestSuspend();
@@ -1016,25 +1064,6 @@ namespace JuliusSweetland.OptiKey
             }
             
             return await taskCompletionSource.Task;
-        }
-
-        private static void CloseMaryTTSOnApplicationExit(Process proc)
-        {
-            Current.Exit += (o, args) =>
-            {
-                if (Settings.Default.MaryTTSEnabled)
-                {
-                    try
-                    {
-                        proc.CloseMainWindow();
-                        Log.InfoFormat("MaryTTS has been closed.");
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Error closing MaryTTS on OptiKey shutdown", ex);
-                    }
-                }
-            };
         }
 
         #endregion
