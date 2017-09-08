@@ -194,7 +194,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 };
             }
 
-            Action<double> resizeAction = mainWindowManipulationService.TemporarilyResizeDockToSpecifiedHeight;
+            Action<double> resizeAction = size =>
+            {
+                mainWindowManipulationService.ResizeDockToSpecificHeight(size, false);
+            };
             Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.Keyboard);
 
         }

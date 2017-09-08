@@ -415,13 +415,14 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void TemporarilyResizeDockToSpecifiedHeight(double heightAsPercentScreen)
+        public void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize=false)
         {
-            Log.Info("TemporarilyResizeDockToSpecifiedHeight called");
+            Log.InfoFormat("ResizeDockToSpecificHeight called with height: {0} and persist?: {1}",
+                heightAsPercentScreen, persistNewSize);
 
             if (getWindowState() != WindowStates.Docked) return;
             var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize(), heightAsPercentScreen);
-            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: false); 
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: persistNewSize); 
         }
 
         public void ResizeDockToCollapsed()
