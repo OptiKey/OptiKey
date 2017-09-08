@@ -153,14 +153,14 @@ namespace JuliusSweetland.OptiKey.Models
     {
 
         [XmlIgnore]
-        public FunctionKeys? FunctionKey
+        public FunctionKeys? Action
         { get; set; }
 
-        [XmlElement("FunctionKey")]
+        [XmlElement("Action")]
         public string FunctionKeyAsString
         {
             get {
-                return FunctionKey.ToString();
+                return Action.ToString();
             }
             set
             {
@@ -169,7 +169,7 @@ namespace JuliusSweetland.OptiKey.Models
                     FunctionKeys fKey;
                     if (System.Enum.TryParse(value, out fKey))
                     {
-                        FunctionKey = fKey;
+                        Action = fKey;
                     }
                     else
                     {

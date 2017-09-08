@@ -255,9 +255,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
-            if (xmlKey.FunctionKey.HasValue)
+            if (xmlKey.Action.HasValue)
             {
-                newKey.Value = new KeyValue(xmlKey.FunctionKey.Value);
+                newKey.Value = new KeyValue(xmlKey.Action.Value);
             }
             else { 
                 Log.ErrorFormat("No FunctionKey found for key with label {0}", xmlKey.Label);
