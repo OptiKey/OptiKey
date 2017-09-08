@@ -16,28 +16,39 @@ namespace JuliusSweetland.OptiKey.Models
     public class ChangeKeyboardKeyValue : KeyValue, IEquatable<ChangeKeyboardKeyValue>
     {
 
-        private readonly string keyboardLink;
+        // Payload is either a builtin keyboard (by enum) or a string
+        // defining file path for XML file. 
+        private readonly Enums.Keyboards? builtinKeyboard;
+        private readonly string keyboardFilename;
 
         // replace current keyboard instead of pushing on top?
         private readonly bool replaceKeyboard;
 
         public ChangeKeyboardKeyValue() : base()
         {
-            this.keyboardLink = null;
+            this.keyboardFilename = null;
+        }
+
+        public ChangeKeyboardKeyValue(Enums.Keyboards keyboardEnum, bool replacePreviousKeyboard = false)
+        {
+            this.builtinKeyboard = keyboardEnum;
+            this.replaceKeyboard = replacePreviousKeyboard;
         }
 
         public ChangeKeyboardKeyValue(string keyboardLink, bool replacePreviousKeyboard=false)
         {
-            this.keyboardLink = keyboardLink;
+            this.keyboardFilename = keyboardLink;
             this.replaceKeyboard = replacePreviousKeyboard;
         }
 
         public override bool HasContent()
         {
-            return (this.keyboardLink != null);
+            return (this.keyboardFilename != null ||
+                    this.builtinKeyboard.HasValue);
         }
 
-        public string Keyboard { get { return keyboardLink; } }
+        public string KeyboardFilename { get { return keyboardFilename; } }
+        public Enums.Keyboards? BuiltInKeyboard { get { return builtinKeyboard; } }
         public bool Replace { get { return replaceKeyboard; } }
 
         #region IEquatable
@@ -81,7 +92,8 @@ namespace JuliusSweetland.OptiKey.Models
             }
 
             // Return true if the fields match:
-            return (x.Keyboard == y.Keyboard) &&
+            return (x.BuiltInKeyboard == y.BuiltInKeyboard) &&
+                   (x.KeyboardFilename == y.KeyboardFilename) &&
                    (x.Replace == y.Replace);
         }
 
@@ -95,7 +107,8 @@ namespace JuliusSweetland.OptiKey.Models
             unchecked
             {
                 int hash = 17;
-                hash = (hash * 389) ^ (Keyboard != null ? Keyboard.GetHashCode() : 0);
+                hash = (hash * 389) ^ (KeyboardFilename != null ? KeyboardFilename.GetHashCode() : 0);
+                hash = (hash * 7) ^ BuiltInKeyboard.GetHashCode();
                 hash = (hash * 13) ^ Replace.GetHashCode();
                 return hash;
             }
@@ -107,10 +120,15 @@ namespace JuliusSweetland.OptiKey.Models
         {
             var stringBuilder = new StringBuilder();
 
-            if (Keyboard != null)
+            if (KeyboardFilename != null)
             {
-                stringBuilder.Append(Keyboard);
+                stringBuilder.Append(KeyboardFilename);
             }
+            if (BuiltInKeyboard.HasValue)
+            {
+                stringBuilder.Append(BuiltInKeyboard);
+            }
+
             stringBuilder.Append(" replace = ");
             stringBuilder.Append(this.replaceKeyboard);
             

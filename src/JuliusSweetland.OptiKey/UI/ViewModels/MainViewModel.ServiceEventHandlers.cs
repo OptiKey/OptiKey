@@ -198,8 +198,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 mainWindowManipulationService.ResizeDockToSpecificHeight(size, false);
             };
-            Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.Keyboard);
 
+            if (keyValue.BuiltInKeyboard.HasValue)
+            {
+                SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
+            }
+            else
+            {
+                Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.KeyboardFilename);
+            }
         }
 
         private void ProcessKeyPressKeyValue(KeyPressKeyValue keyValue)
