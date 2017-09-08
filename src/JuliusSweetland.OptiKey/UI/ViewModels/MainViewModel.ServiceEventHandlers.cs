@@ -624,7 +624,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         else
                         {
-                            Log.Error("Unexpectedly entering CustomKeyboardPrev from somewhere other than CustomKeyboard");
+                            Log.Error("Unexpectedly entering DynamicKeyboardPrev from somewhere other than DynamicKeyboard");
                             backAction = () =>
                             {
                                 Keyboard = currentKeyboard2;
@@ -649,7 +649,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
-                        Log.Error("Unexpectedly entering CustomKeyboardNext from somewhere other than CustomKeyboard");
+                        Log.Error("Unexpectedly entering DynamicKeyboardNext from somewhere other than DynamicKeyboard");
                         backAction = () =>
                         {
                             Keyboard = currentKeyboard2;
