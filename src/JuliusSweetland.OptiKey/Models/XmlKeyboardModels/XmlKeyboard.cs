@@ -1,14 +1,9 @@
-﻿using JuliusSweetland.OptiKey.Enums;
-using log4net;
+﻿using log4net;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Media;
-using System.Xml;
 using System.Xml.Serialization;
-
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -94,153 +89,6 @@ namespace JuliusSweetland.OptiKey.Models
             }
 
             return keyboard;
-        }
-    }
-
-    public class XmlGrid
-    {
-        public int Rows
-        { get; set; }
-
-        public int Cols
-        { get; set; }
-
-    }
-
-    public class XmlKeys
-    {
-        [XmlElement(ElementName = "ActionKey")]
-        public List<XmlActionKey> ActionKeys
-        { get; set; }
-
-        [XmlElement(ElementName = "TextKey")]
-        public List<XmlTextKey> TextKeys
-        { get; set; }
-
-        [XmlElement(ElementName = "ChangeKeyboardKey")]
-        public List<XmlChangeKeyboardKey> ChangeKeyboardKeys
-        { get; set; }
-
-        [XmlIgnore]
-        public int Count
-        {
-            get
-            {
-                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count;
-            }
-        }
-    }
-
-    public class XmlChangeKeyboardKey : XmlKey
-    {
-
-        public string DestinationKeyboard
-        { get; set; }
-
-        [XmlIgnore]
-        public bool ReturnToThisKeyboard
-        { get; set; }
-        
-        [XmlElement("ReturnToThisKeyboard")]
-        public string ReturnToThisKeyboardAsString
-        {
-            get { return this.ReturnToThisKeyboard ? "True" : "False"; }
-            set { this.ReturnToThisKeyboard = XmlUtils.ConvertToBoolean(value); }            
-        }
-    }
-
-    public class XmlActionKey : XmlKey
-    {
-
-        [XmlIgnore]
-        public FunctionKeys? Action
-        { get; set; }
-
-        [XmlElement("Action")]
-        public string FunctionKeyAsString
-        {
-            get {
-                return Action.ToString();
-            }
-            set
-            {
-                if (null != value)
-                {
-                    FunctionKeys fKey;
-                    if (System.Enum.TryParse(value, out fKey))
-                    {
-                        Action = fKey;
-                    }
-                    else
-                    {
-                        Log.ErrorFormat("Could not parse {0} as function key", value);
-                    }
-                }
-            }
-        }
-
-    }
-
-    public class XmlTextKey : XmlKey
-    {
-        public string Text
-        { get; set; }
-    }
-
-    public class XmlKey
-    {
-        protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public XmlKey()
-        {
-            Width = 1;
-            Height = 1;
-            Label = "";
-        }
-
-        public int Row
-        { get; set; }
-
-        public int Col
-        { get; set; }
-
-        public string Label
-        { get; set; }
-
-        public string Symbol
-        { get; set; }
-
-        public int Width
-        { get; set; }
-
-        public int Height
-        { get; set; }
-
-    }
-
-    public static class XmlUtils
-    {
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public static bool ConvertToBoolean(string value)
-        {
-            if (value.Trim().ToLower().Equals("true"))
-                return true;
-            else if (value.Trim().ToLower().Equals("false"))
-                return false;
-            else
-            {
-                bool bVal = false;
-                try
-                {
-                    bVal = XmlConvert.ToBoolean(value);
-                }
-                catch (System.Exception)
-                {
-                    Log.ErrorFormat("Cannot convert string '{0}' to boolean", value);
-                }
-                return bVal;
-            }
         }
     }
 }
