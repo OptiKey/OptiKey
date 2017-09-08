@@ -157,7 +157,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
         
-	private void ProcessKeyValueLink(ChangeKeyboardKeyValue keyValue)
+	private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
         {
             var currentKeyboard = Keyboard;
 
@@ -199,7 +199,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
 
-        private void ProcessKeyValuePress(KeyPressKeyValue keyValue)
+        private void ProcessKeyPressKeyValue(KeyPressKeyValue keyValue)
         {
             // Placeholder for now
             Log.InfoFormat("keypress key found! : {0}", keyValue.ToString());
@@ -244,11 +244,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (kv_link != null)
                 {
-                    ProcessKeyValueLink(kv_link);
+                    ProcessChangeKeyboardKeyValue(kv_link);
                 }
                 else if (kv_press != null) 
                 {
-                    ProcessKeyValuePress(kv_press);
+                    ProcessKeyPressKeyValue(kv_press);
                 }
                 else 
                 {
