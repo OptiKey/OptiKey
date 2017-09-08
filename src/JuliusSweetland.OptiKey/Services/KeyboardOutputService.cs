@@ -371,7 +371,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        public void ProcessSingleKeyPress(string key, KeyValuePress.KeyPressType type, int delayMs = 0)
+        public void ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type, int delayMs = 0)
         {
             // TODO: This is a stub for future use
             throw new NotImplementedException();            

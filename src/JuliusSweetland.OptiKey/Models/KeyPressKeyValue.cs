@@ -12,7 +12,7 @@ using JuliusSweetland.OptiKey.Extensions;
 
 namespace JuliusSweetland.OptiKey.Models
 {
-    public class KeyValuePress : KeyValue, IEquatable<KeyValuePress>
+    public class KeyPressKeyValue : KeyValue, IEquatable<KeyPressKeyValue>
     {
         
         public enum KeyPressType { PressAndRelease, Press, Release };
@@ -21,14 +21,14 @@ namespace JuliusSweetland.OptiKey.Models
         private readonly int durationMs;
         private readonly KeyPressType type;
 
-        public KeyValuePress() : base()
+        public KeyPressKeyValue() : base()
         {
             this.key = null;
             this.type = KeyPressType.PressAndRelease;
             this.durationMs = 0; 
         }
 
-        public KeyValuePress(string key, KeyPressType type = default(KeyPressType), int duration = 0)
+        public KeyPressKeyValue(string key, KeyPressType type = default(KeyPressType), int duration = 0)
             : base()
         {
             this.key = key;
@@ -51,15 +51,15 @@ namespace JuliusSweetland.OptiKey.Models
 
         #region IEquatable
 
-        public static bool Equals(KeyValuePress x, KeyValuePress y)
+        public static bool Equals(KeyPressKeyValue x, KeyPressKeyValue y)
         {
             return x == y;
         }
 
         public override bool Equals(System.Object obj)
         {
-            // If parameter cannot be cast to KeyValuePress return false:
-            KeyValuePress p = obj as KeyValuePress;
+            // If parameter cannot be cast to KeyPressKeyValue return false:
+            KeyPressKeyValue p = obj as KeyPressKeyValue;
             if ((object)p == null)
             {
                 return false;
@@ -69,13 +69,13 @@ namespace JuliusSweetland.OptiKey.Models
             return (p == this);
         }
 
-        public bool Equals(KeyValuePress kv)
+        public bool Equals(KeyPressKeyValue kv)
         {
             if (ReferenceEquals(null, kv)) return false;
             else return (this == kv);   
         }
 
-        public static bool operator ==(KeyValuePress x, KeyValuePress y)
+        public static bool operator ==(KeyPressKeyValue x, KeyPressKeyValue y)
         {
             // If both are null, or both are same instance, return true.
             if (System.Object.ReferenceEquals(x, y))
@@ -95,7 +95,7 @@ namespace JuliusSweetland.OptiKey.Models
                    (x.DurationMs == y.DurationMs);
         }
 
-        public static bool operator !=(KeyValuePress x, KeyValuePress y)
+        public static bool operator !=(KeyPressKeyValue x, KeyPressKeyValue y)
         {
             return !(x == y);
         }

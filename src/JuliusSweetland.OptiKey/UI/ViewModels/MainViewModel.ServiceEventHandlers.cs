@@ -199,7 +199,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
 
-        private void ProcessKeyValuePress(KeyValuePress keyValue)
+        private void ProcessKeyValuePress(KeyPressKeyValue keyValue)
         {
             // Placeholder for now
             Log.InfoFormat("keypress key found! : {0}", keyValue.ToString());
@@ -240,7 +240,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (singleKeyValue != null)
             {
                 ChangeKeyboardKeyValue kv_link = singleKeyValue as ChangeKeyboardKeyValue;
-                KeyValuePress kv_press = singleKeyValue as KeyValuePress;
+                KeyPressKeyValue kv_press = singleKeyValue as KeyPressKeyValue;
 
                 if (kv_link != null)
                 {
