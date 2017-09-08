@@ -221,11 +221,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
-            if (null != xmlKey.Link)
+            if (null != xmlKey.DestinationKeyboard)
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
                 bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
-                newKey.Value = new KeyValueLink(Path.Combine(rootDir, xmlKey.Link), replaceCurrKeyboard);
+                newKey.Value = new KeyValueLink(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
             }
             else
             {

@@ -134,7 +134,7 @@ namespace JuliusSweetland.OptiKey.Models
     public class XmlChangeKeyboardKey : XmlKey
     {
 
-        public string Link
+        public string DestinationKeyboard
         { get; set; }
 
         [XmlIgnore]
