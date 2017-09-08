@@ -136,7 +136,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         private void AddKeyboardKey(KeyboardInfo info, int row, int col)
         {
             Key lKey = new Key();
-            lKey.Value = new KeyValueLink(info.fullPath);
+            lKey.Value = new ChangeKeyboardKeyValue(info.fullPath);
             lKey.SharedSizeGroup = "KeyboardKey";
             lKey.Text = info.keyboardName;
             if (info.symbolString != null)

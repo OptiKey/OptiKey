@@ -13,7 +13,7 @@ using JuliusSweetland.OptiKey.Extensions;
 namespace JuliusSweetland.OptiKey.Models
 {
     [TypeConverter(typeof(KeyValueLinkConverter))]
-    public class KeyValueLink : KeyValue, IEquatable<KeyValueLink>
+    public class ChangeKeyboardKeyValue : KeyValue, IEquatable<ChangeKeyboardKeyValue>
     {
 
         private readonly string keyboardLink;
@@ -21,12 +21,12 @@ namespace JuliusSweetland.OptiKey.Models
         // replace current keyboard instead of pushing on top?
         private readonly bool replaceKeyboard;
 
-        public KeyValueLink() : base()
+        public ChangeKeyboardKeyValue() : base()
         {
             this.keyboardLink = null;
         }
 
-        public KeyValueLink(string keyboardLink, bool replacePreviousKeyboard=false)
+        public ChangeKeyboardKeyValue(string keyboardLink, bool replacePreviousKeyboard=false)
         {
             this.keyboardLink = keyboardLink;
             this.replaceKeyboard = replacePreviousKeyboard;
@@ -42,7 +42,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         #region IEquatable
 
-        public static bool Equals(KeyValueLink x, KeyValueLink y)
+        public static bool Equals(ChangeKeyboardKeyValue x, ChangeKeyboardKeyValue y)
         {
             return x == y;
         }
@@ -50,7 +50,7 @@ namespace JuliusSweetland.OptiKey.Models
         public override bool Equals(System.Object obj)
         {
             // If parameter cannot be cast to KeyValueLink return false:
-            KeyValueLink p = obj as KeyValueLink;
+            ChangeKeyboardKeyValue p = obj as ChangeKeyboardKeyValue;
             if ((object)p == null)
             {
                 return false;
@@ -60,13 +60,13 @@ namespace JuliusSweetland.OptiKey.Models
             return (p == this);
         }
 
-        public bool Equals(KeyValueLink kv)
+        public bool Equals(ChangeKeyboardKeyValue kv)
         {
             if (ReferenceEquals(null, kv)) return false;
             else return (this == kv);   
         }
 
-        public static bool operator ==(KeyValueLink x, KeyValueLink y)
+        public static bool operator ==(ChangeKeyboardKeyValue x, ChangeKeyboardKeyValue y)
         {
             // If both are null, or both are same instance, return true.
             if (System.Object.ReferenceEquals(x, y))
@@ -85,7 +85,7 @@ namespace JuliusSweetland.OptiKey.Models
                    (x.Replace == y.Replace);
         }
 
-        public static bool operator !=(KeyValueLink x, KeyValueLink y)
+        public static bool operator !=(ChangeKeyboardKeyValue x, ChangeKeyboardKeyValue y)
         {
             return !(x == y);
         }
@@ -139,7 +139,7 @@ namespace JuliusSweetland.OptiKey.Models
             var text = value as string;
             if (text!=null)
             {
-                return new KeyValueLink(text);
+                return new ChangeKeyboardKeyValue(text);
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -149,7 +149,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             if (destinationType == typeof(string))
             {
-                return ((KeyValueLink)value).String;
+                return ((ChangeKeyboardKeyValue)value).String;
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }

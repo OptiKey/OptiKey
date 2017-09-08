@@ -225,7 +225,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
                 bool replaceCurrKeyboard = !xmlKey.ReturnToThisKeyboard;
-                newKey.Value = new KeyValueLink(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
+                newKey.Value = new ChangeKeyboardKeyValue(Path.Combine(rootDir, xmlKey.DestinationKeyboard), replaceCurrKeyboard);
             }
             else
             {

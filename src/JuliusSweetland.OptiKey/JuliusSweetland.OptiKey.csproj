@@ -247,7 +247,7 @@
     <Compile Include="Models\XmlKeyboard.cs" />
     <Compile Include="Models\KeyStateServiceState.cs" />
     <Compile Include="Models\KeyValuePress.cs" />
-    <Compile Include="Models\KeyValueLink.cs" />
+    <Compile Include="Models\ChangeKeyboardKeyValue.cs" />
     <Compile Include="Models\KeyValueAndTimeSpanGroup.cs" />
     <Compile Include="Models\KeyValueAndTimeSpan.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />

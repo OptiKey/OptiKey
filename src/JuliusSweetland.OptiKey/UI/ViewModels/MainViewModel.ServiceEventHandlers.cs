@@ -157,7 +157,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
         
-	private void ProcessKeyValueLink(KeyValueLink keyValue)
+	private void ProcessKeyValueLink(ChangeKeyboardKeyValue keyValue)
         {
             var currentKeyboard = Keyboard;
 
@@ -239,7 +239,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Pass single key to appropriate processing function
             if (singleKeyValue != null)
             {
-                KeyValueLink kv_link = singleKeyValue as KeyValueLink;
+                ChangeKeyboardKeyValue kv_link = singleKeyValue as ChangeKeyboardKeyValue;
                 KeyValuePress kv_press = singleKeyValue as KeyValuePress;
 
                 if (kv_link != null)
