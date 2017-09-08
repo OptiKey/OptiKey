@@ -117,8 +117,8 @@ namespace JuliusSweetland.OptiKey.Models
         public List<XmlTextKey> TextKeys
         { get; set; }
 
-        [XmlElement(ElementName = "LinkKey")]
-        public List<XmlLinkKey> LinkKeys
+        [XmlElement(ElementName = "ChangeKeyboardKey")]
+        public List<XmlChangeKeyboardKey> ChangeKeyboardKeys
         { get; set; }
 
         [XmlIgnore]
@@ -126,12 +126,12 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return ActionKeys.Count + TextKeys.Count + LinkKeys.Count;
+                return ActionKeys.Count + TextKeys.Count + ChangeKeyboardKeys.Count;
             }
         }
     }
 
-    public class XmlLinkKey : XmlKey
+    public class XmlChangeKeyboardKey : XmlKey
     {
 
         public string Link

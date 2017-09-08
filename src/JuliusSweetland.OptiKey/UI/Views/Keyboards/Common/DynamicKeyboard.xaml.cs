@@ -210,14 +210,14 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 AddTextKey(key);
             }
 
-            foreach (XmlLinkKey key in keys.LinkKeys)
+            foreach (XmlChangeKeyboardKey key in keys.ChangeKeyboardKeys)
             {
-                AddLinkKey(key);
+                AddChangeKeyboardKey(key);
             }
 
         }
 
-        void AddLinkKey(XmlLinkKey xmlKey) {
+        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey) {
 
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
@@ -229,7 +229,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
             else
             {
-                Log.ErrorFormat("No link found for link key with label {0}", xmlKey.Label);
+                Log.ErrorFormat("No destination keyboard found for changekeyboard key with label {0}", xmlKey.Label);
             }
 
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
