@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue Diacritic3KeyboardKey = new KeyValue(FunctionKeys.Diacritic3Keyboard);
         public static readonly KeyValue DutchBelgiumKey = new KeyValue(FunctionKeys.DutchBelgium);
         public static readonly KeyValue DutchNetherlandsKey = new KeyValue(FunctionKeys.DutchNetherlands);
-        public static readonly KeyValue DynamicKeyboardMenu = new KeyValue(FunctionKeys.DynamicKeyboardMenu);
+        public static readonly KeyValue DynamicKeyboardMenu = new KeyValue(FunctionKeys.DynamicKeyboard);
         public static readonly KeyValue DynamicKeyboardNext = new KeyValue(FunctionKeys.DynamicKeyboardNext);
         public static readonly KeyValue DynamicKeyboardPrev = new KeyValue(FunctionKeys.DynamicKeyboardPrev);
         public static readonly KeyValue EndKey = new KeyValue(FunctionKeys.End);

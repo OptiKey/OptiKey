@@ -579,9 +579,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new Currencies2();
                     break;
 
-                case FunctionKeys.DynamicKeyboardMenu:
+                case FunctionKeys.DynamicKeyboard:
                     {
-                        Log.Info("Changing keyboard to DynamicKeyboardMenu.");
+                        Log.Info("Changing keyboard to DynamicKeyboard.");
 
                         var currentKeyboard2 = Keyboard;
 
@@ -611,7 +611,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.DynamicKeyboardPrev:
                     {
-                        Log.Info("Changing keyboard to prev DynamicKeyboardMenu.");
+                        Log.Info("Changing keyboard to prev DynamicKeyboard.");
 
                         Action backAction;
                         var currentKeyboard2 = Keyboard;
@@ -636,7 +636,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             case FunctionKeys.DynamicKeyboardNext:
                 {
-                    Log.Info("Changing keyboard to next DynamicKeyboardMenu.");
+                    Log.Info("Changing keyboard to next DynamicKeyboard.");
 
                     Action backAction;
                     var currentKeyboard2 = Keyboard;

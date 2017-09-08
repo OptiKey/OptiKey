@@ -8,7 +8,7 @@
         ConversationNumericAndSymbols,
         Currencies1,
         Currencies2,
-        DynamicKeyboardMenu,
+        DynamicKeyboard,
         Diacritics1,
         Diacritics2,
         Diacritics3,

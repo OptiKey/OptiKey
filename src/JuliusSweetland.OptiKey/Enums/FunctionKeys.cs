@@ -39,7 +39,7 @@
         Delete,
         DutchBelgium,
         DutchNetherlands,
-        DynamicKeyboardMenu,
+        DynamicKeyboard,
         DynamicKeyboardNext,
         DynamicKeyboardPrev,
         End,
