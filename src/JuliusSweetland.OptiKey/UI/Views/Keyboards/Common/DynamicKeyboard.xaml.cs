@@ -13,7 +13,6 @@ using System.Windows;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
-
     /// <summary>
     /// Interaction logic for DynamicKeyboard.xaml
     /// </summary>
@@ -196,7 +195,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         private void SetupKeys()
         {
-
             XmlKeys keys = keyboard.Keys;
             
             // Iterate over each possible type of key and add to keyboard
@@ -214,11 +212,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 AddChangeKeyboardKey(key);
             }
-
         }
 
-        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey) {
-
+        void AddChangeKeyboardKey(XmlChangeKeyboardKey xmlKey)
+        {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
             if (null != xmlKey.DestinationKeyboard)
@@ -264,7 +261,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);
-            
         }
 
         private void SetupKeyboardLayout(Action<double> resizeAction)
@@ -296,7 +292,6 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             XmlGrid grid = keyboard.Grid;
             AddRowsToGrid(grid.Rows);
             AddColsToGrid(grid.Cols);
-
         }
 
         private void AddRowsToGrid(int nRows)
@@ -314,6 +309,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
         }
+
         private void PlaceKeyInPosition(Key key, int row, int col, int rowspan = 1, int colspan = 1)
         {         
             MainGrid.Children.Add(key);
