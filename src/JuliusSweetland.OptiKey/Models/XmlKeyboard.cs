@@ -109,8 +109,8 @@ namespace JuliusSweetland.OptiKey.Models
 
     public class XmlKeys
     {
-        [XmlElement(ElementName = "BehaviourKey")]
-        public List<XmlBehaviourKey> BehaviourKeys
+        [XmlElement(ElementName = "ActionKey")]
+        public List<XmlActionKey> ActionKeys
         { get; set; }
 
         [XmlElement(ElementName = "TextKey")]
@@ -126,7 +126,7 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
-                return BehaviourKeys.Count + TextKeys.Count + LinkKeys.Count;
+                return ActionKeys.Count + TextKeys.Count + LinkKeys.Count;
             }
         }
     }
@@ -149,7 +149,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
     }
 
-    public class XmlBehaviourKey : XmlKey
+    public class XmlActionKey : XmlKey
     {
 
         [XmlIgnore]

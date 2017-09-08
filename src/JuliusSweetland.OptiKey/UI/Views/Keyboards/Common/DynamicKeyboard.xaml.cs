@@ -200,9 +200,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             XmlKeys keys = keyboard.Keys;
             
             // Iterate over each possible type of key and add to keyboard
-            foreach (XmlBehaviourKey key in keys.BehaviourKeys)
+            foreach (XmlActionKey key in keys.ActionKeys)
             {
-                AddBehaviourKey(key);
+                AddActionKey(key);
             }
 
             foreach (XmlTextKey key in keys.TextKeys)
@@ -251,7 +251,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             PlaceKeyInPosition(newKey, xmlKey.Row, xmlKey.Col, xmlKey.Height, xmlKey.Width);            
         }
 
-        void AddBehaviourKey(XmlBehaviourKey xmlKey)
+        void AddActionKey(XmlActionKey xmlKey)
         {
             Key newKey = CreateKeyWithBasicProps(xmlKey);
 
