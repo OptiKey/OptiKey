@@ -281,7 +281,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Get border thickness, if specified, to override
             if (keyboard.BorderThickness.HasValue)
             {
-                Log.InfoFormat("Setting border thickness for custom keyboard: {0}!!",
+                Log.InfoFormat("Setting border thickness for custom keyboard: {0}",
                                keyboard.BorderThickness.Value);
                 this.BorderThickness = keyboard.BorderThickness.Value;
             }
