@@ -243,6 +243,7 @@
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlGrid.cs" />
