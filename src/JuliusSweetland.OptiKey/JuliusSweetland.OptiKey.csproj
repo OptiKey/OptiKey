@@ -353,9 +353,6 @@
     <Compile Include="UI\Controls\CK20Page.xaml.cs">
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controls\CKPage.xaml.cs">
-      <DependentUpon>CKPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\Controls\CKKey.xaml.cs">
       <DependentUpon>CKKey.xaml</DependentUpon>
@@ -993,10 +990,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\CK20Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Controls\CKPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
