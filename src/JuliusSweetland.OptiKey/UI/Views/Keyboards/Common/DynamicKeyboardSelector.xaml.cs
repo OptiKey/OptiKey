@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Reflection;
 
 using log4net;
-
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -70,31 +70,52 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // Add keyboard keys, or blanks
             int maxKeyboardsPerPage = (this.mCols - 2) * this.mRows;
             int totalNumKeyboards = folder.keyboards.Count;
-            int remainingKeyboards =  totalNumKeyboards - maxKeyboardsPerPage*pageIndex;
+            int remainingKeyboards = totalNumKeyboards - maxKeyboardsPerPage * pageIndex;
             int nKBs = Math.Min(remainingKeyboards, maxKeyboardsPerPage);
             int firstKB = maxKeyboardsPerPage * pageIndex;
-            for (int i = 0; i < maxKeyboardsPerPage; i++)
-            {
-                var r = i / (this.mCols - 2); // integer division
-                var c = 1 + (i % (this.mCols - 2)); 
 
-                if (i < nKBs)
+            if (totalNumKeyboards > 0)
+            {
+                for (int i = 0; i < maxKeyboardsPerPage; i++)
                 {
-                    KeyboardInfo kbInfo = folder.keyboards.ElementAt(firstKB + i);
-                    // Add key to link to keyboard
-                    this.AddKeyboardKey(kbInfo, r, c);
-                }
-                else
-                {
-                    // Add empty/inactive key for consistent aesthetic
-                    Key newKey = new Key();
-                    if (i == 0)
+                    var r = i / (this.mCols - 2); // integer division
+                    var c = 1 + (i % (this.mCols - 2));
+
+                    if (i < nKBs)
                     {
-                        // Special case for empty grid                       
-                        newKey.SharedSizeGroup = "BackButton";
-                        newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.NO_KEYBOARDS_FOUND;
+                        KeyboardInfo kbInfo = folder.keyboards.ElementAt(firstKB + i);
+                        // Add key to link to keyboard
+                        this.AddKeyboardKey(kbInfo, r, c);
                     }
-                    this.AddKey(newKey, r, c);
+                    else
+                    {
+                        // Add empty/inactive key for consistent aesthetic
+                        this.AddKey(new Key(), r, c);
+                    }
+                }
+            }
+            else
+            {
+                // Error layout for when there are no keyboards
+                {
+                    Key newKey = new Key();
+                    newKey.SharedSizeGroup = "ErrorText1";
+                    newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.NO_KEYBOARDS_FOUND;
+                    this.AddKey(newKey, 0, 1, 1, 2);
+                }
+                {
+                    Key newKey = new Key();
+                    newKey.SharedSizeGroup = "ErrorText1";
+                    newKey.Text = "Keyboards folder can be set in \n Management Console (Visuals tab)";
+                    this.AddKey(newKey, 1, 1, 1, 2);
+                }
+                {
+                    Key newKey = new Key();
+                    newKey.SharedSizeGroup = "ErrorText2";
+                    newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL;
+                    newKey.Text += "\n";
+                    newKey.Text += Settings.Default.DynamicKeyboardsLocation;
+                    this.AddKey(newKey, 2, 1, 1, 2);
                 }
             }
 

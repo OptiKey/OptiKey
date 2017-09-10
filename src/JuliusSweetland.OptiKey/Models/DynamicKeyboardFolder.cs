@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -42,48 +43,42 @@ namespace JuliusSweetland.OptiKey.Models
         #endregion
 
         public List<KeyboardInfo> keyboards;
-
+        
         public DynamicKeyboardFolder()
         {
             // Find all possible xml files
-            string filePath = GetUserKeyboardFolder();
-            string[] fileArray = Directory.GetFiles(filePath, "*.xml");
-
-            Log.InfoFormat("Found {0} keyboard files", fileArray.Length);
-
-            // Read in keyboard name, symbol, hidden state from each file
-            // Note that ordering is currently undefined
+            string filePath = Settings.Default.DynamicKeyboardsLocation;
             keyboards = new List<KeyboardInfo>();
-            foreach (string fileName in fileArray)
+
+            if (Directory.Exists(filePath))
             {
-                string keyboardPath = Path.Combine(filePath, fileName);
-                KeyboardInfo info = GetKeyboardInfo(keyboardPath);
-                if (null != info.fullPath)
+                string[] fileArray = Directory.GetFiles(filePath, "*.xml");
+
+                Log.InfoFormat("Found {0} keyboard files", fileArray.Length);
+
+                // Read in keyboard name, symbol, hidden state from each file
+                // Note that ordering is currently undefined
+                foreach (string fileName in fileArray)
                 {
-                    if (!info.isHidden)
+                    string keyboardPath = Path.Combine(filePath, fileName);
+                    KeyboardInfo info = GetKeyboardInfo(keyboardPath);
+                    if (null != info.fullPath)
                     {
-                        keyboards.Add(info);
-                        Log.InfoFormat("Found keyboard file: {0}", info.fullPath);
-                    }
-                    else
-                    {
-                        Log.InfoFormat("Ignoring keyboard file: {0}", info.fullPath);
+                        if (!info.isHidden)
+                        {
+                            keyboards.Add(info);
+                            Log.InfoFormat("Found keyboard file: {0}", info.fullPath);
+                        }
+                        else
+                        {
+                            Log.InfoFormat("Ignoring keyboard file: {0}", info.fullPath);
+                        }
                     }
                 }
             }
         }
 
         #region Private Methods
-
-        private static string GetUserKeyboardFolder()
-        {
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists
-
-            Log.DebugFormat("GetUserKeyboardFolder: {0}", applicationDataPath);
-
-            return applicationDataPath;
-        }
 
         // get name from XML if present
         private KeyboardInfo GetKeyboardInfo(string keyboardPath)

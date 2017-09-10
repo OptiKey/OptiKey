@@ -1134,6 +1134,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Folder containing dynamic keyboards:.
+        /// </summary>
+        public static string DYNAMIC_KEYBOARDS_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARDS_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable CommuniKate keyboard layout:.
         /// </summary>
         public static string ENABLE_COMMUNIKATE_KEYBOARD_LAYOUT {

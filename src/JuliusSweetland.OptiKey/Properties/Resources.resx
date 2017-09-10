@@ -1920,4 +1920,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
     <value>There is a problem with Presage</value>
   </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing dynamic keyboards:</value>
+  </data>
 </root>

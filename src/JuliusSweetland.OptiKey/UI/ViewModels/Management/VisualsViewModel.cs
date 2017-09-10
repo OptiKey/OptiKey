@@ -353,6 +353,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableQuitKeys, value); }
         }
 
+        private string dynamicKeyboardsLocation;
+        public string DynamicKeyboardsLocation
+        {
+            get { return dynamicKeyboardsLocation; }
+            set { SetProperty(ref dynamicKeyboardsLocation, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -382,6 +389,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
+            DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
         }
 
         public void ApplyChanges()
@@ -409,6 +417,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
+            Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
         }
 
         #endregion
