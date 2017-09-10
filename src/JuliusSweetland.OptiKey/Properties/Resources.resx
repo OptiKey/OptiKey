@@ -553,6 +553,9 @@ UP</value>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Keyboard language:</value>
   </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>Keyboards folder can be set in \n Management Console (Visuals tab)</value>
+  </data>
   <data name="LEFT" xml:space="preserve">
     <value>Left</value>
   </data>

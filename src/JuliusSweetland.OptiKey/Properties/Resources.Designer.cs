@@ -2190,6 +2190,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keyboards folder can be set in \n Management Console (Visuals tab).
+        /// </summary>
+        public static string KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE {
+            get {
+                return ResourceManager.GetString("KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keyboard key.
         /// </summary>
         public static string KEYBOARD_KEY {

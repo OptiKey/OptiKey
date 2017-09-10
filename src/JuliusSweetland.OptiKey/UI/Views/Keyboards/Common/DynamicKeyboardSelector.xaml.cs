@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     Key newKey = new Key();
                     newKey.SharedSizeGroup = "ErrorText1";
-                    newKey.Text = "Keyboards folder can be set in \n Management Console (Visuals tab)";
+                    newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE;
                     this.AddKey(newKey, 1, 1, 1, 2);
                 }
                 {
