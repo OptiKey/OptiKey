@@ -67,6 +67,9 @@
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGo}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGoPlus}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeMini}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
@@ -105,6 +108,9 @@
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGo}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeGoPlus}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding PointsSource}" Value="{x:Static enums:PointsSources.TobiiPcEyeMini}">

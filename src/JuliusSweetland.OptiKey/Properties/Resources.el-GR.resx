@@ -1098,9 +1098,6 @@ LK</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Τα γράμματα των λέξεων γίνονται κεφαλαία</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Η βαθμονόμηση ολοκληρώθηκε, ή πιθανώς ακυρώθηκε, αλλά όλα δουλεύουν πάλι!</value>
   </data>
@@ -1109,12 +1106,6 @@ LK</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Η Μηχανή Tobii EyeX δεν εκτελείται. Παρακαλώ εκκινήστε την Μηχανή Tobii EyeX και ξαναπροσπαθήστε.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Τόνος 1</value>

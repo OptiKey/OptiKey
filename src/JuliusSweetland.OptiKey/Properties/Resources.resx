@@ -1914,4 +1914,7 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
     <value>There is a problem with Presage</value>
   </data>
+  <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
+    <value>Tobii PCEye Plus</value>
+  </data>
 </root>

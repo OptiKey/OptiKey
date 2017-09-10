@@ -1073,9 +1073,6 @@ POSITION</value>
   <data name="TAB" xml:space="preserve">
     <value>TAB</value>
   </data>
-  <data name="THE_EYE_TRIBE" xml:space="preserve">
-    <value>The Eye Tribe</value>
-  </data>
   <data name="THE_EYE_TRIBE_ACTIVATION_ERROR" xml:space="preserve">
     <value>Ude af stand til at aktivere TheEyeTriber GazeManager! Tjek venligst at serveren kører og at enheden er forbundet og forsøg igen.</value>
   </data>
@@ -1094,9 +1091,6 @@ POSITION</value>
   <data name="TITLE_CASE" xml:space="preserve">
     <value>Ord skrives med stort</value>
   </data>
-  <data name="TOBII_EYEX" xml:space="preserve">
-    <value>Tobii EyeX</value>
-  </data>
   <data name="TOBII_EYEX_CALIBRATION_SUCCESS" xml:space="preserve">
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
   </data>
@@ -1105,12 +1099,6 @@ POSITION</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
     <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
-  </data>
-  <data name="TOBII_PCEYE_GO" xml:space="preserve">
-    <value>Tobii PCEye Go</value>
-  </data>
-  <data name="TOBII_REX" xml:space="preserve">
-    <value>Tobii REX</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>

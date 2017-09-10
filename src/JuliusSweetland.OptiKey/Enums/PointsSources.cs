@@ -12,6 +12,7 @@ namespace JuliusSweetland.OptiKey.Enums
         TobiiEyeX,
         TobiiRex,
         TobiiPcEyeGo,
+        TobiiPcEyeGoPlus,
         TobiiPcEyeMini,
         TobiiX2_30,
         TobiiX2_60,
@@ -33,6 +34,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case PointsSources.TobiiEyeX: return Resources.TOBII_EYEX;
                 case PointsSources.TobiiRex: return Resources.TOBII_REX;
                 case PointsSources.TobiiPcEyeGo: return Resources.TOBII_PCEYE_GO;
+                case PointsSources.TobiiPcEyeGoPlus: return Resources.TOBII_PCEYE_GO_PLUS;
                 case PointsSources.TobiiPcEyeMini: return Resources.TOBII_PCEYE_MINI;
                 case PointsSources.TobiiX2_30: return Resources.TOBII_X2_30;
                 case PointsSources.TobiiX2_60: return Resources.TOBII_X2_60;

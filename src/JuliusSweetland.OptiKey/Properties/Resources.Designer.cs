@@ -4727,6 +4727,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobii PCEye Plus.
+        /// </summary>
+        public static string TOBII_PCEYE_GO_PLUS {
+            get {
+                return ResourceManager.GetString("TOBII_PCEYE_GO_PLUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tobii PCEyeMini.
         /// </summary>
         public static string TOBII_PCEYE_MINI {
