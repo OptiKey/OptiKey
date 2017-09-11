@@ -208,14 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.KeyboardFilename);
             }
         }
-
-        private void ProcessKeyPressKeyValue(KeyPressKeyValue keyValue)
-        {
-            // Placeholder for now
-            Log.InfoFormat("keypress key found! : {0}", keyValue.ToString());
-            keyboardOutputService.ProcessSingleKeyPress(keyValue.Key, keyValue.Type, keyValue.DurationMs);
-        }
-
+        
         private void ProcessBasicKeyValue(KeyValue singleKeyValue)
         {
             Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
@@ -250,15 +243,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (singleKeyValue != null)
             {
                 ChangeKeyboardKeyValue kv_link = singleKeyValue as ChangeKeyboardKeyValue;
-                KeyPressKeyValue kv_press = singleKeyValue as KeyPressKeyValue;
 
                 if (kv_link != null)
                 {
                     ProcessChangeKeyboardKeyValue(kv_link);
-                }
-                else if (kv_press != null) 
-                {
-                    ProcessKeyPressKeyValue(kv_press);
                 }
                 else 
                 {
