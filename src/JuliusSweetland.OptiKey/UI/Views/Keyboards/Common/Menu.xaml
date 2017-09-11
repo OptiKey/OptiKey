@@ -47,10 +47,17 @@
                       Text="{x:Static resx:Resources.NUMBERS_AND_SYMBOLS}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
+        <!-- Sample key to get to Dynamic keyboards 
         <controls:Key Grid.Row="0" Grid.Column="2"
                       Text="Dynamic!"
                       SharedSizeGroup="KeyWithSymbolAndText"
-                      Value="{x:Static models:KeyValues.DynamicKeyboardMenu}"/>
+                      Value="{x:Static models:KeyValues.DynamicKeyboardMenu}"/> 
+        -->
+        <controls:Key Grid.Row="0" Grid.Column="2"
+                      SymbolGeometry="{StaticResource DiacriticsIcon}"
+                      Text="{x:Static resx:Resources.DIACRITICS}"
+                      SharedSizeGroup="KeyWithSymbolAndText"
+                      Value="{x:Static models:KeyValues.Diacritic1KeyboardKey}"/>
         <controls:Key Grid.Row="0" Grid.Column="3"
                       SymbolGeometry="{StaticResource CurrenciesIcon}"
                       Text="{x:Static resx:Resources.CURRENCIES}"
