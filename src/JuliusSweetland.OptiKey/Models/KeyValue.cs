@@ -16,7 +16,7 @@ namespace JuliusSweetland.OptiKey.Models
     {
 
         private readonly FunctionKeys? functionKey;
-        private string str;
+        private readonly string str;
 
         public KeyValue()
         {
@@ -49,11 +49,7 @@ namespace JuliusSweetland.OptiKey.Models
         }
 
         public FunctionKeys? FunctionKey { get { return functionKey; } }
-        public string String
-        {
-            get { return str; }
-            set { str = value; }
-        }
+        public string String { get { return str; } }
 
         public bool StringIsLetter
         {

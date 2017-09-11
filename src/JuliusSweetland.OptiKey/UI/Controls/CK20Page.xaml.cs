@@ -908,9 +908,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (KeyValue)GetValue(CKMenu00Property); }
             set
             {
-                if (CKKeCo_00 != null)
-                    value.String = CKKeCo_00;
-                SetValue(CKMenu00Property, value);
+                SetValue(CKMenu00Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_00));
             }
         }
 
@@ -947,10 +945,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu01
         {
             get { return (KeyValue)GetValue(CKMenu01Property); }
-            set {
-                if (CKKeCo_01 != null)
-                    value.String = CKKeCo_01;
-                SetValue(CKMenu01Property, value); }
+            set
+            {
+                SetValue(CKMenu01Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_01));
+            }
         }
 
         public static readonly DependencyProperty CKText_01Property =
@@ -986,10 +984,9 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu02
         {
             get { return (KeyValue)GetValue(CKMenu02Property); }
-            set { 
-                if (CKKeCo_02 != null)
-                    value.String = CKKeCo_02;
-                SetValue(CKMenu02Property, value);
+            set
+            {
+                SetValue(CKMenu02Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_02));
             }
         }
 
@@ -1028,9 +1025,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (KeyValue)GetValue(CKMenu03Property); }
             set
             {
-                if (CKKeCo_03 != null)
-                    value.String = CKKeCo_03;
-                SetValue(CKMenu03Property, value);
+                SetValue(CKMenu03Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_03));
             }
         }
 
@@ -1069,9 +1064,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (KeyValue)GetValue(CKMenu04Property); }
             set
             {
-                if (CKKeCo_04 != null)
-                    value.String = CKKeCo_04;
-                SetValue(CKMenu04Property, value); }
+                SetValue(CKMenu04Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_04));
+            }
         }
 
         public static readonly DependencyProperty CKText_04Property =
@@ -1109,9 +1103,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             get { return (KeyValue)GetValue(CKMenu10Property); }
             set
             {
-                if (CKKeCo_10 != null)
-                    value.String = CKKeCo_10;
-                SetValue(CKMenu10Property, value); }
+                SetValue(CKMenu10Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_10));
+            }
         }
 
         public static readonly DependencyProperty CKText_10Property =
@@ -1147,10 +1140,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu11
         {
             get { return (KeyValue)GetValue(CKMenu11Property); }
-            set {
-                if (CKKeCo_11 != null)
-                    value.String = CKKeCo_11;
-                SetValue(CKMenu11Property, value); }
+            set
+            {
+                SetValue(CKMenu11Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_11));
+            }
         }
 
         public static readonly DependencyProperty CKText_11Property =
@@ -1186,10 +1179,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu12
         {
             get { return (KeyValue)GetValue(CKMenu12Property); }
-            set {
-                if (CKKeCo_12 != null)
-                    value.String = CKKeCo_12;
-                SetValue(CKMenu12Property, value); }
+            set { SetValue(CKMenu12Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_12)); }
         }
 
         public static readonly DependencyProperty CKText_12Property =
@@ -1225,10 +1215,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu13
         {
             get { return (KeyValue)GetValue(CKMenu13Property); }
-            set {
-                if (CKKeCo_13 != null)
-                    value.String = CKKeCo_13;
-                SetValue(CKMenu13Property, value); }
+            set { SetValue(CKMenu13Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_13)); }
         }
 
         public static readonly DependencyProperty CKText_13Property =
@@ -1264,10 +1251,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu14
         {
             get { return (KeyValue)GetValue(CKMenu14Property); }
-            set {
-                if (CKKeCo_14 != null)
-                    value.String = CKKeCo_14;
-                SetValue(CKMenu14Property, value); }
+            set { SetValue(CKMenu14Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_14)); }
         }
 
         public static readonly DependencyProperty CKText_14Property =
@@ -1303,10 +1287,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu20
         {
             get { return (KeyValue)GetValue(CKMenu20Property); }
-            set {
-                if (CKKeCo_20 != null)
-                    value.String = CKKeCo_20;
-                SetValue(CKMenu20Property, value); }
+            set { SetValue(CKMenu20Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_20)); }
         }
 
         public static readonly DependencyProperty CKText_20Property =
@@ -1342,10 +1323,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu21
         {
             get { return (KeyValue)GetValue(CKMenu21Property); }
-            set {
-                if (CKKeCo_21 != null)
-                    value.String = CKKeCo_21;
-                SetValue(CKMenu21Property, value); }
+            set { SetValue(CKMenu21Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_21)); }
         }
 
         public static readonly DependencyProperty CKText_21Property =
@@ -1381,10 +1359,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu22
         {
             get { return (KeyValue)GetValue(CKMenu22Property); }
-            set {
-                if (CKKeCo_22 != null)
-                    value.String = CKKeCo_22;
-                SetValue(CKMenu22Property, value); }
+            set { SetValue(CKMenu22Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_22)); }
         }
 
         public static readonly DependencyProperty CKText_22Property =
@@ -1420,10 +1395,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu23
         {
             get { return (KeyValue)GetValue(CKMenu23Property); }
-            set {
-                if (CKKeCo_23 != null)
-                    value.String = CKKeCo_23;
-                SetValue(CKMenu23Property, value); }
+            set { SetValue(CKMenu23Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_23)); }
         }
 
         public static readonly DependencyProperty CKText_23Property =
@@ -1459,10 +1431,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu24
         {
             get { return (KeyValue)GetValue(CKMenu24Property); }
-            set {
-                if (CKKeCo_24 != null)
-                    value.String = CKKeCo_24;
-                SetValue(CKMenu24Property, value); }
+            set { SetValue(CKMenu24Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_24)); }
         }
 
         public static readonly DependencyProperty CKText_24Property =
@@ -1498,10 +1467,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu30
         {
             get { return (KeyValue)GetValue(CKMenu30Property); }
-            set {
-                if (CKKeCo_30 != null)
-                    value.String = CKKeCo_30;
-                SetValue(CKMenu30Property, value); }
+            set { SetValue(CKMenu30Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_30)); }
         }
 
         public static readonly DependencyProperty CKText_30Property =
@@ -1537,10 +1503,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu31
         {
             get { return (KeyValue)GetValue(CKMenu31Property); }
-            set {
-                if (CKKeCo_31 != null)
-                    value.String = CKKeCo_31;
-                SetValue(CKMenu31Property, value); }
+            set { SetValue(CKMenu31Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_31)); }
         }
 
         public static readonly DependencyProperty CKText_31Property =
@@ -1576,10 +1539,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu32
         {
             get { return (KeyValue)GetValue(CKMenu32Property); }
-            set {
-                if (CKKeCo_32 != null)
-                    value.String = CKKeCo_32;
-                SetValue(CKMenu32Property, value); }
+            set { SetValue(CKMenu32Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_32)); }
         }
 
         public static readonly DependencyProperty CKText_32Property =
@@ -1615,10 +1575,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu33
         {
             get { return (KeyValue)GetValue(CKMenu33Property); }
-            set {
-                if (CKKeCo_33 != null)
-                    value.String = CKKeCo_33;
-                SetValue(CKMenu33Property, value); }
+            set { SetValue(CKMenu33Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_33)); }
         }
 
         public static readonly DependencyProperty CKText_33Property =
@@ -1654,10 +1611,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
         public KeyValue CKMenu34
         {
             get { return (KeyValue)GetValue(CKMenu34Property); }
-            set {
-                if (CKKeCo_34 != null)
-                    value.String = CKKeCo_34;
-                SetValue(CKMenu34Property, value); }
+            set { SetValue(CKMenu34Property, new KeyValue(Enums.FunctionKeys.CommuniKate, CKKeCo_34)); }
         }
 
         public static readonly DependencyProperty CKText_34Property =
