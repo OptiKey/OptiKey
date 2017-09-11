@@ -1,10 +1,15 @@
 ﻿using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
+using log4net;
+using System.Reflection;
 
 namespace JuliusSweetland.OptiKey.Extensions
 {
     public static class FunctionKeysExtensions
     {
+
+        static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         //http://inputsimulator.codeplex.com/SourceControl/latest#WindowsInput/Native/VirtualKeyCode.cs
         //http://msdn.microsoft.com/en-gb/library/windows/desktop/dd375731(v=vs.85).aspx
         public static VirtualKeyCode? ToVirtualKeyCode(this FunctionKeys functionKey)
@@ -175,6 +180,20 @@ namespace JuliusSweetland.OptiKey.Extensions
 
                 default:
                     return null;
+            }
+        }
+
+        public static FunctionKeys? FromString(string keyString)
+        {
+            FunctionKeys fKey;
+            if (System.Enum.TryParse(keyString, out fKey))
+            {
+                return fKey;
+            }
+            else
+            {
+                Log.ErrorFormat("Could not parse {0} as function key", keyString);
+                return null;
             }
         }
     }

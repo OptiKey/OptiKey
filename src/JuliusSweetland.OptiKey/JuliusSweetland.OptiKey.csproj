@@ -266,6 +266,7 @@
     <Compile Include="Models\NotificationEventArgs.cs" />
     <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlKeys.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlKeyStates.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlTextKey.cs" />
     <Compile Include="Models\XmlKeyboardModels\XmlUtils.cs" />
     <Compile Include="Native\Common\Enums\AppBarEdge.cs" />

@@ -154,12 +154,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("DetachInputServiceEventHandlers complete.");
 
         }
-        
-	private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
+
+        private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
         {
             var currentKeyboard = Keyboard;
 
-            Action backAction;
+            Action backAction = () => { };
+            Action exitAction = () => { };
+            Action enterAction = () => { };
+
+            // Set up back action
             if (keyValue.Replace)
             {
                 var navigableKeyboard = Keyboard as IBackAction;
@@ -167,17 +171,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     backAction = navigableKeyboard.BackAction;
                 }
-                else
-                {
-                    backAction = () => { }; 
-                }
             }
             else
             {
-                Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                 backAction = () =>
                 {
-                    reinstateModifiers();
                     Keyboard = currentKeyboard;
 
                     if (!(currentKeyboard is DynamicKeyboard))
@@ -192,18 +190,51 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 };
             }
 
-            Action<double> resizeAction = size =>
-            {
-                mainWindowManipulationService.ResizeDockToSpecificHeight(size, false);
-            };
+            // If keyboard we're exiting is a dynamic one, process any key resets.
+            // (this may have already been handled via a BackAction, but we can't
+            // be sure and it doesn't hurt to re-apply).
+            var oldDynKeyboard = Keyboard as DynamicKeyboard;
+            oldDynKeyboard?.ResetOveriddenKeyStates();
 
             if (keyValue.BuiltInKeyboard.HasValue)
             {
                 SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
             }
-            else
-            {
-                Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.KeyboardFilename);
+            else {
+                // Set up new dynamic keyboard
+                Action<double> resizeAction = h => { mainWindowManipulationService.ResizeDockToSpecificHeight(h, false); };
+
+                // Extract any key states if present
+                var initialKeyStates = new Dictionary<KeyValue, KeyDownStates>();
+                var resetKeyStates = new Dictionary<KeyValue, KeyDownStates>();
+                try
+                {
+                    XmlKeyboard keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
+                    XmlKeyStates states = keyboard.InitialKeyStates;
+
+                    if (states != null)
+                    {
+                        foreach (var item in states.GetKeyOverrides())
+                        {
+                            FunctionKeys? fKey = FunctionKeysExtensions.FromString(item.Item1);
+                            if (fKey.HasValue)
+                            {
+                                KeyValue val = new KeyValue(fKey.Value);
+                                initialKeyStates.Add(val, item.Item2);
+                                resetKeyStates.Add(val, keyStateService.KeyDownStates[val].Value);
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    // will get caught and handled when DynamicKeyboard is created so we are good to ignore here 
+                }
+
+                DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, resizeAction, keyStateService, keyValue.KeyboardFilename);
+                newDynKeyboard.ApplyKeyOverrides(initialKeyStates, resetKeyStates);
+                Keyboard = newDynKeyboard;
             }
         }
         
