@@ -367,7 +367,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.CustomKeyboardFile:
-                    Keyboard = new DynamicKeyboard(backAction, (d) => { }, Settings.Default.StartupKeyboardFile);
+                    Keyboard = new DynamicKeyboard(backAction, (d) => { },
+                                   keyStateService, Settings.Default.StartupKeyboardFile);
                     break;
 
                 case Enums.Keyboards.Diacritics1:

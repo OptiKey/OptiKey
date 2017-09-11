@@ -4,7 +4,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base
 {
     public abstract class BackActionKeyboard : Keyboard, IBackAction
     {
-        private readonly Action backAction;
+        protected Action backAction;
 
         protected BackActionKeyboard(Action backAction, bool simulateKeyStrokes = true, bool multiKeySelectionSupported = false)
             : base(simulateKeyStrokes, multiKeySelectionSupported)

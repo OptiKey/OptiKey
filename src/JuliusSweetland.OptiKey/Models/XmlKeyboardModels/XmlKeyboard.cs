@@ -22,6 +22,9 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         // The following are all optional
+        public XmlKeyStates InitialKeyStates
+        { get; set; }
+
         public double? Height
         { get; set; }
 
