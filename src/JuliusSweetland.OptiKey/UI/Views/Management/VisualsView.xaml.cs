@@ -21,12 +21,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Management
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.Description = "Select folder containing dynamic keyboards";
-            folderBrowser.SelectedPath = Settings.Default.DynamicKeyboardsLocation;
+            folderBrowser.SelectedPath = txtKeyboardsLocation.Text;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                Settings.Default.DynamicKeyboardsLocation = folderBrowser.SelectedPath;
-                txtKeyboardsLocation.Text = Settings.Default.DynamicKeyboardsLocation;
+                // This is hooked up to the DynamicKeyboardsLocation property
+                txtKeyboardsLocation.Text = folderBrowser.SelectedPath; 
             }
         }
     }
