@@ -314,7 +314,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             windowManipulationService.ResizeDockToFull();
                         });
                         break;
-                        
+
+                    case Enums.Keyboards.CustomKeyboardFile:
+                        // No BackAction if we're starting from a custom keyboard, since it should be 
+                        // the root menu.
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () => { });
+                        break;
+
                     default:
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
                             windowManipulationService, () =>
@@ -355,6 +362,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case Enums.Keyboards.Currencies2:
                     Keyboard = new Currencies2();
+                    break;
+
+                case Enums.Keyboards.CustomKeyboardFile:
+                    Keyboard = new DynamicKeyboard(backAction, (d) => { }, Settings.Default.StartupKeyboardFile);
                     break;
 
                 case Enums.Keyboards.Diacritics1:

@@ -859,6 +859,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom keyboard file.
+        /// </summary>
+        public static string CUSTOM_LAYOUT {
+            get {
+                return ResourceManager.GetString("CUSTOM_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Czech (Czech Rep.) / Čeština (Česko).
         /// </summary>
         public static string CZECH_CZECH_REPUBLIC {
@@ -4480,6 +4489,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SPEECH_DELAY_LABEL {
             get {
                 return ResourceManager.GetString("SPEECH_DELAY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom keyboard file:.
+        /// </summary>
+        public static string STARTUP_KEYBOARD_FILE_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("STARTUP_KEYBOARD_FILE_LOCATION_LABEL", resourceCulture);
             }
         }
         

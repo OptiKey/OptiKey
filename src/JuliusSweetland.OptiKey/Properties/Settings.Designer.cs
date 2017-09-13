@@ -1934,5 +1934,21 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["DynamicKeyboardsLocation"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string StartupKeyboardFile
+        {
+            get
+            {
+                return ((string)(this["StartupKeyboardFile"]));
+            }
+            set
+            {
+                this["StartupKeyboardFile"] = value;
+            }
+        }
     }
 }

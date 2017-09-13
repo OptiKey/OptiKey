@@ -302,6 +302,9 @@ Sorry for the inconvenience.</value>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Cursor width (pixels):</value>
   </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Custom keyboard file</value>
+  </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>Danish (Denmark) / Dansk (Danmark)</value>
   </data>
@@ -1082,6 +1085,9 @@ POSITION</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>Startup keyboard:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Custom keyboard file:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Stop signal:</value>
