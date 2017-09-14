@@ -1020,7 +1020,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DynamicKeyboardsLocation" Roaming="true" Type="System.String" Scope="User">
-      <Value Profile="(Default)"></Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="StartupKeyboardFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
