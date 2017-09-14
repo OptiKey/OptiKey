@@ -148,7 +148,7 @@ namespace JuliusSweetland.OptiKey.Models
 
         public virtual bool HasContent() {            
             return (FunctionKey != null) ||
-                   (String != null); 
+                   (!string.IsNullOrEmpty(String)); 
         }
     }
 }
