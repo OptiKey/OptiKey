@@ -181,12 +181,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (!(currentKeyboard is DynamicKeyboard))
                     {
                         mainWindowManipulationService.ResizeDockToFull();
-                    }
-
-                    // Clear the keyboard when leaving keyboard.
-                    // (proper scratchpad functionality not supported in dynamic keyboards presently
-                    keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
-
+                    }                    
                 };
             }
 
@@ -235,6 +230,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 DynamicKeyboard newDynKeyboard = new DynamicKeyboard(backAction, resizeAction, keyStateService, keyValue.KeyboardFilename);
                 newDynKeyboard.ApplyKeyOverrides(initialKeyStates, resetKeyStates);
                 Keyboard = newDynKeyboard;
+
+                // Clear the scratchpad when launching a dynamic keyboard.
+                // (scratchpad only supported on single dynamic keyboard currently)
+                keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
             }
         }
         
