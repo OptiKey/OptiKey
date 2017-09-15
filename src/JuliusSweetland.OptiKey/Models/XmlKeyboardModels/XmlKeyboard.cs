@@ -22,6 +22,17 @@ namespace JuliusSweetland.OptiKey.Models
         { get; set; }
 
         // The following are all optional
+        [XmlIgnore]
+        public bool ShowOutputPanel
+        { get; set; }
+
+        [XmlElement("ShowOutputPanel")]
+        public string ShowOutputPanelBoolAsString
+        {
+            get { return this.ShowOutputPanel ? "True" : "False"; }
+            set { this.ShowOutputPanel = XmlUtils.ConvertToBoolean(value); }
+        }
+
         public XmlKeyStates InitialKeyStates
         { get; set; }
 
