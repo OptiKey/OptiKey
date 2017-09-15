@@ -301,9 +301,16 @@ namespace JuliusSweetland.OptiKey.Models
                     return false;
                 }
 
-                //Multi-key capture is disabled
+                //Multi-key capture is disabled explicitly in the settings
                 if (keyValue == KeyValues.MultiKeySelectionIsOnKey
                     && !Settings.Default.MultiKeySelectionEnabled)
+                {
+                    return false;
+                }
+
+                //Multi-key capture is disabled because the current language does not support the concept
+                if (keyValue == KeyValues.MultiKeySelectionIsOnKey
+                    && new[]{Languages.KoreanKorea}.Contains(Settings.Default.KeyboardAndDictionaryLanguage))
                 {
                     return false;
                 }
