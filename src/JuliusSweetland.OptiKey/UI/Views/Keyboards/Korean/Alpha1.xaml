@@ -62,6 +62,7 @@
         <!--https://en.wikipedia.org/wiki/Korean_language_and_computers-->
         <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
         <!--https://www.branah.com/korean-->
+        <!--http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
         
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"

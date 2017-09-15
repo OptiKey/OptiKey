@@ -836,7 +836,7 @@ namespace JuliusSweetland.OptiKey.Services
                 }
                 else
                 {
-                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (keyboard:{1})",
+                    Log.InfoFormat("No virtual key code found for '{0}' so publishing as text (OS keyboard layout:{1})",
                         character.ToPrintableString(), keyboardCulture);
                     publishService.TypeText(character.ToString());
                 }
