@@ -50,20 +50,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add back key 
+            // Add quit key, bottom right
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "BackButton";
-                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["BackIcon"];
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
-                newKey.Value = KeyValues.BackFromKeyboardKey;
+                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["QuitIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
+                newKey.Value = KeyValues.QuitKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
 
-            // Empty key for bottom left
+            // Sleep key for bottom left
             {
                 Key newKey = new Key();
-                newKey.SharedSizeGroup = "BackButton";
+                newKey.SymbolGeometry = (System.Windows.Media.Geometry)App.Current.Resources["SleepIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SLEEP;
+                newKey.Value = KeyValues.SleepKey;
                 this.AddKey(newKey, this.mRows - 1, 0);
             }
 
