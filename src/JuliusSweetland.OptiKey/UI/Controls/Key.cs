@@ -41,6 +41,13 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             onUnloaded = new CompositeDisposable();
 
             var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(this);
+
+            // If key isn't visible, it won't have a visual parent and this is okay.
+            if (keyboardHost == null && !this.IsVisible)
+            {
+                return;
+            }
+
             var mainViewModel = keyboardHost.DataContext as MainViewModel;
             var keyStateService = mainViewModel.KeyStateService;
             var capturingStateManager = mainViewModel.CapturingStateManager;

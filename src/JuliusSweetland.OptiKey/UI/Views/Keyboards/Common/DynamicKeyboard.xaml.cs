@@ -308,6 +308,18 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             {
                 MainGrid.RowDefinitions.Add(new RowDefinition());
             }
+
+            if (keyboard.ShowOutputPanel)
+            {
+                // make sure top controls and main grid are scaled appropriately
+                TopGrid.RowDefinitions[1].Height = new GridLength(nRows, GridUnitType.Star);
+            }
+            else
+            {
+                // hide the output control
+                TopGrid.RowDefinitions[0].Height = new GridLength(0);
+                OutputPanel.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void AddColsToGrid(int nCols)
