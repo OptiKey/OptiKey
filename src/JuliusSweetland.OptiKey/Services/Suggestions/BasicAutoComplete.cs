@@ -8,11 +8,11 @@ using System.Linq;
 namespace JuliusSweetland.OptiKey.Services.Suggestions
 {
     public class BasicAutoComplete : IManagedSuggestions
-	{
-		private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
-		private readonly HashSet<string> wordsIndex = new HashSet<string>();
+    {
+        private readonly Dictionary<string, HashSet<DictionaryEntry>> entries = new Dictionary<string, HashSet<DictionaryEntry>>();
+        private readonly HashSet<string> wordsIndex = new HashSet<string>();
 
-		private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Removes all possible suggestions from the auto complete provider.
@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
         public void Clear()
         {
             Log.Debug("Clear called.");
-			entries.Clear();
+            entries.Clear();
         }
 
         public virtual IEnumerable<string> GetSuggestions(string root, bool nextWord)
@@ -36,8 +36,8 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
                             && char.IsLetter(inProgressWord.First())) //A word must start with a letter
                 {
                     return
-						entries
-							.Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
+                        entries
+                            .Where(kvp => kvp.Key.StartsWith(simplifiedRoot, StringComparison.Ordinal))
                             .SelectMany(kvp => kvp.Value)
                             .Where(de => de.Entry.Length >= root.Length)
                             .Distinct()
@@ -64,68 +64,68 @@ namespace JuliusSweetland.OptiKey.Services.Suggestions
             //Also add to entries for auto complete
             var autoCompleteHash = entry.Normalise(log: false);
             
-			AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
-			if (!wordsIndex.Contains(autoCompleteHash))
-			{
-				wordsIndex.Add(autoCompleteHash);
-			}
+            AddToDictionary(entry, autoCompleteHash, newEntryWithUsageCount);
+            if (!wordsIndex.Contains(autoCompleteHash))
+            {
+                wordsIndex.Add(autoCompleteHash);
+            }
         }
 
         private void AddToDictionary (string entry, string autoCompleteHash, DictionaryEntry newEntryWithUsageCount)
         {
-			if (!string.IsNullOrWhiteSpace(autoCompleteHash))
-			{
-				if (entries.ContainsKey(autoCompleteHash))
-				{
-					if (entries[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
-					{
-						entries[autoCompleteHash].Add(newEntryWithUsageCount);
-					}
-				}
-				else
-				{
-					entries.Add(autoCompleteHash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
-				}
-			}
-		}
+            if (!string.IsNullOrWhiteSpace(autoCompleteHash))
+            {
+                if (entries.ContainsKey(autoCompleteHash))
+                {
+                    if (entries[autoCompleteHash].All(nwwuc => nwwuc.Entry != entry))
+                    {
+                        entries[autoCompleteHash].Add(newEntryWithUsageCount);
+                    }
+                }
+                else
+                {
+                    entries.Add(autoCompleteHash, new HashSet<DictionaryEntry> { newEntryWithUsageCount });
+                }
+            }
+        }
 
         public void RemoveEntry(string entry)
         {
-			var autoCompleteHash = entry.Normalise(log: false);
-			RemoveEntryWorker(entry, autoCompleteHash);
+            var autoCompleteHash = entry.Normalise(log: false);
+            RemoveEntryWorker(entry, autoCompleteHash);
 
-			var normalizedHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
-			RemoveEntryWorker(entry, autoCompleteHash);
-			wordsIndex.Remove(normalizedHash);
-		}
+            var normalizedHash = entry.NormaliseAndRemoveRepeatingCharactersAndHandlePhrases(false);
+            RemoveEntryWorker(entry, autoCompleteHash);
+            wordsIndex.Remove(normalizedHash);
+        }
 
-		private void RemoveEntryWorker(string entry, string hash)
-		{
-			if (!string.IsNullOrWhiteSpace(hash)
-					&& entries.ContainsKey(hash))
-			{
-				var foundEntryForAutoComplete = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
+        private void RemoveEntryWorker(string entry, string hash)
+        {
+            if (!string.IsNullOrWhiteSpace(hash)
+                    && entries.ContainsKey(hash))
+            {
+                var foundEntryForAutoComplete = entries[hash].FirstOrDefault(ewuc => ewuc.Entry == entry);
 
-				if (foundEntryForAutoComplete != null)
-				{
-					entries[hash].Remove(foundEntryForAutoComplete);
+                if (foundEntryForAutoComplete != null)
+                {
+                    entries[hash].Remove(foundEntryForAutoComplete);
 
-					if (!entries[hash].Any())
-					{
-						entries.Remove(hash);
-					}
-				}
-			}
-		}
+                    if (!entries[hash].Any())
+                    {
+                        entries.Remove(hash);
+                    }
+                }
+            }
+        }
 
-		public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
-		{
-			return entries;
-		}
+        public Dictionary<string, HashSet<DictionaryEntry>> GetEntries()
+        {
+            return entries;
+        }
 
-		public HashSet<string> GetWordsHashes()
-		{
-			return wordsIndex;
-		}
-	}
+        public HashSet<string> GetWordsHashes()
+        {
+            return wordsIndex;
+        }
+    }
 }
