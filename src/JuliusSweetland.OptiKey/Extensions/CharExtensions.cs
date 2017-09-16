@@ -43,17 +43,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             if (codePoint >= 0x1100 && codePoint <= 0x1112)
             {
-                return UnicodeCodePointRanges.HangulLeadingOrInitialJamo;
+                return UnicodeCodePointRanges.HangulInitialConsonant;
             }
 
             if (codePoint >= 0x1161 && codePoint <= 0x1175)
             {
-                return UnicodeCodePointRanges.HangulVowelOrMedialJamo;
+                return UnicodeCodePointRanges.HangulVowel;
             }
 
             if (codePoint >= 0x11A8 && codePoint <= 0x11C2)
             {
-                return UnicodeCodePointRanges.HangulTrailingConsonantOrFinalJamo;
+                return UnicodeCodePointRanges.HangulFinalConsonent;
             }
 
             return UnicodeCodePointRanges.Other;

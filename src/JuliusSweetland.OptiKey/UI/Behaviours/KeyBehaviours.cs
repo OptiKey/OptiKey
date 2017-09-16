@@ -97,7 +97,7 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
                 var decomposedChar = composedChar.Decompose();
                 if (decomposedChar != null
                     && decomposedChar != composedChar
-                    && decomposedChar.Last().ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowelOrMedialJamo)
+                    && decomposedChar.Last().ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowel)
                 {
                     key.Value = trailingConsonantOrFinalJamo;
                     return;
