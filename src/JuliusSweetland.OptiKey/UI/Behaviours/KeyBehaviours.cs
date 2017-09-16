@@ -8,6 +8,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.UI.Utilities;
 using JuliusSweetland.OptiKey.UI.ViewModels;
+using Tobii.EyeX.Client.Interop;
 
 namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
@@ -71,27 +72,11 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
             {
                 var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(key);
                 var mainViewModel = keyboardHost.DataContext as MainViewModel;
-                lastCharacterSubscription = mainViewModel.KeyboardOutputService.OnPropertyChanges(kos => kos.Text).Subscribe(t =>
-                {
-                    if (string.IsNullOrEmpty(t)) return;
-
-                    var lastChar = t.Last();
-                    if (lastChar.ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulSyllable)
-                    {
-                        var composedChar = lastChar.ToString();
-                        var decomposedChar = composedChar.Decompose();
-                        if (decomposedChar != null
-                            && decomposedChar != composedChar
-                            && decomposedChar.Last().ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowelOrMedialJamo)
-                        {
-                            key.Value = trailingConsonantOrFinalJamo;
-                            return;
-                        }
-                    }
-
-                    key.Value = defaultKeyValue;
-                });
+                lastCharacterSubscription = mainViewModel.KeyboardOutputService.OnPropertyChanges(kos => kos.Text).Subscribe(t => 
+                    RecalculateKoreanKeyValue(t, key, defaultKeyValue, trailingConsonantOrFinalJamo));
+                RecalculateKoreanKeyValue(mainViewModel.KeyboardOutputService.Text, key, defaultKeyValue, trailingConsonantOrFinalJamo);
             };
+
             key.Unloaded += (sender, args) =>
             {
                 if (lastCharacterSubscription != null)
@@ -99,6 +84,27 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
                     lastCharacterSubscription.Dispose();
                 }
             };
+        }
+
+        private static void RecalculateKoreanKeyValue(string text, Key key, KeyValue defaultKeyValue, KeyValue trailingConsonantOrFinalJamo)
+        {
+            if (string.IsNullOrEmpty(text)) return;
+
+            var lastChar = text.Last();
+            if (lastChar.ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulSyllable)
+            {
+                var composedChar = lastChar.ToString();
+                var decomposedChar = composedChar.Decompose();
+                if (decomposedChar != null
+                    && decomposedChar != composedChar
+                    && decomposedChar.Last().ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowelOrMedialJamo)
+                {
+                    key.Value = trailingConsonantOrFinalJamo;
+                    return;
+                }
+            }
+
+            key.Value = defaultKeyValue;
         }
 
         public static void SetIfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo(DependencyObject element, KeyValue value)
