@@ -63,6 +63,7 @@
         <!--https://en.wikipedia.org/wiki/Hangul_Jamo_(Unicode_block)-->
         <!--https://www.branah.com/korean-->
         <!--http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/-->
+        <!--https://msdn.microsoft.com/en-us/library/cc194843.aspx?f=255&MSPPError=-2147217396-->
         <controls:Key Grid.Row="2" Grid.Column="0" />
         
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
