@@ -33,6 +33,8 @@ Patrons (thank you very much for sponsoring this project)
   Alan Dickson
   Independent Living Centre Tasmania Inc
   Sam Meier
+  Peter Evans
+  SuJin Lee
   
 Fonts
   Roboto - Under the Apache Licence ("Roboto Font - Apache License.txt")
