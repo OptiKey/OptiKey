@@ -29,6 +29,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             inputFilename = inputFile;
             
             // Read in XML file, exceptions get displayed to user
+            if (string.IsNullOrEmpty(inputFilename))
+            {
+                Log.Error("No file specified for dynamic keyboard");
+                SetupErrorLayout("Error loading file", "No file specified. Please choose a startup file in Management Console.");
+                return;
+            }
             try
             {
                 keyboard = XmlKeyboard.ReadFromFile(inputFilename);
