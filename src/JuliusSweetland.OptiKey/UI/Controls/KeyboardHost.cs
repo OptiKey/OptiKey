@@ -56,13 +56,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             Settings.Default.OnPropertyChanges(s => s.UseAlphabeticalKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.EnableCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseCommuniKateKeyboardLayoutByDefault).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.UsingCommuniKateKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.UseSimplifiedKeyboardLayout).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardCurrentContext).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardPrevious1Context).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardPrevious2Context).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardPrevious3Context).Subscribe(_ => GenerateContent());
-            Settings.Default.OnPropertyChanges(s => s.CommuniKateKeyboardPrevious4Context).Subscribe(_ => GenerateContent());
             Settings.Default.OnPropertyChanges(s => s.SimplifiedKeyboardCurrentContext).Subscribe(_ => GenerateContent());
 
             Loaded += OnLoaded;
