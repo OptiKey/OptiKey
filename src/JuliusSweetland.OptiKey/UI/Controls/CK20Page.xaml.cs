@@ -117,10 +117,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                         blankbutton.image_id = "back.png";
                                         blankbutton.load_board = new Load_board();
                                         blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
+                                        Log.DebugFormat("Back button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
+                                    }
+                                    else
+                                    {
+                                        Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                     }
                                     blankbutton.id = c.ToString() + r.ToString();
                                     CKPageOBF.buttons.Insert(b, blankbutton);
-                                    Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                     --BlankButtonCount;
                                 }
                                 else if (CKPageOBF.buttons.ElementAt(b).load_board == null && blankbutton.background_color == "rgb(0,0,0)")
@@ -138,10 +142,14 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                                     blankbutton.image_id = "back.png";
                                     blankbutton.load_board = new Load_board();
                                     blankbutton.load_board.path = "boards/" + Settings.Default.CommuniKateKeyboardPrevious1Context;
+                                    Log.DebugFormat("Back button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
+                                }
+                                else
+                                {
+                                    Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                 }
                                 blankbutton.id = c.ToString() + r.ToString();
                                 CKPageOBF.buttons.Insert(b, blankbutton);
-                                Log.DebugFormat("Blank button {3} added at column {0} row {1} with background colour {2}.", c, r, blankbutton.background_color, BlankButtonCount);
                                 --BlankButtonCount;
                             }
                             ++b;
