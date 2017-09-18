@@ -79,6 +79,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             {
                 SetProperty(ref this.keyboardAndDictionaryLanguage, value);
                 OnPropertyChanged(() => UseAlphabeticalKeyboardLayoutIsVisible);
+                OnPropertyChanged(() => EnableCommuniKateKeyboardLayoutIsVisible);
                 OnPropertyChanged(() => UseCommuniKateKeyboardLayoutByDefault);
                 OnPropertyChanged(() => UseSimplifiedKeyboardLayoutIsVisible);
             }
@@ -140,7 +141,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return enableCommuniKateKeyboardLayout; }
             set { SetProperty(ref enableCommuniKateKeyboardLayout, value
                         && useAlphabeticalKeyboardLayout == false
-                        && useSimplifiedKeyboardLayout == false);
+                        && useSimplifiedKeyboardLayout == false
+                        && (KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
+                            || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
+                            || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS));
             }
         }
 
@@ -182,16 +186,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return usingCommuniKateKeyboardLayout; }
             set { SetProperty(ref usingCommuniKateKeyboardLayout, useCommuniKateKeyboardLayoutByDefault); }
-        }
-
-        public bool UseCommuniKatedKeyboardLayoutIsVisible
-        {
-            get
-            {
-                return KeyboardAndDictionaryLanguage == Enums.Languages.EnglishCanada
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUK
-                    || KeyboardAndDictionaryLanguage == Enums.Languages.EnglishUS;
-            }
         }
 
         private bool forceCapsLock;
