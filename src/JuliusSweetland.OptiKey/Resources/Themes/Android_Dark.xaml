@@ -416,11 +416,15 @@
                         </Setter>
                     </DataTrigger>
 
-                    <!--Is Key Enabled-->
-                    <DataTrigger Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False">
+                    <!--Is Key Enabled and no Communikate image attached-->
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
+                            <Condition Binding="{Binding Path=HasImage, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Mode=OneWay}" Value="False" />
+                        </MultiDataTrigger.Conditions>
                         <Setter Property="BorderBrush" Value="{StaticResource KeyDisabledBorderBrush}" />
                         <Setter Property="Background" Value="{StaticResource KeyDisabledBackgroundBrush}" />
-                    </DataTrigger>
+                    </MultiDataTrigger>
                 </Style.Triggers>
             </Style>
 
