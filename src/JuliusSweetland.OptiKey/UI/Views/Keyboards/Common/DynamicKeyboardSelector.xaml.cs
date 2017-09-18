@@ -108,7 +108,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     Key newKey = new Key();
                     newKey.SharedSizeGroup = "ErrorText1";
-                    newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE;
+                    newKey.Text = DynamicKeyboard.StringWithValidNewlines(JuliusSweetland.OptiKey.Properties.Resources.KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE);
                     this.AddKey(newKey, 1, 1, 1, 2);
                 }
                 {
