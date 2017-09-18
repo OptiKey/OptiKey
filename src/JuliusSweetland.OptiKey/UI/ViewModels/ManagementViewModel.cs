@@ -112,9 +112,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private static void Cancel(Window window)
+        private void Cancel(Window window)
         {
-            window.Close();
+            if (ChangesRequireRestart)
+            {
+                //Warn if wants to discard all the changes
+                ConfirmationRequest.Raise(
+                    new Confirmation
+                    {
+                        Title = "Settings Changed",
+                        Content = "Settings have been updated, do you want to discard all changes?"
+                    }, confirmation =>
+                    {
+                        if (confirmation.Confirmed)
+                        {
+                            Settings.Default.Reload();
+                            window.Close();
+                        }
+                    });
+            }
+            else
+            {
+                window.Close();
+            }
+
         }
 
         #endregion
