@@ -231,6 +231,7 @@
     <Compile Include="Models\LastMouseActionStateManager.cs" />
     <Compile Include="Models\CapturingStateManager.cs" />
     <Compile Include="Models\DictionaryEntryAndState.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\NotificationWithCalibrationResult.cs" />
     <Compile Include="Models\ICapturingStateManager.cs" />
     <Compile Include="Models\NotificationWithServicesAndState.cs" />

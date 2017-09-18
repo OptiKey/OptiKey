@@ -25,6 +25,6 @@ namespace JuliusSweetland.OptiKey.Enums
         /// <summary>
         /// Final (or trailing) consonent (Ja-eum) jamo
         /// </summary>
-        HangulFinalConsonent
+        HangulFinalConsonant
     }
 }

@@ -69,28 +69,23 @@
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                       Text="ㅂ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1107;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B8;" />
+                      Value="&#x1107;" />
         <controls:Key Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                       Text="ㅈ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x110C;" 
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BD;" />
+                      Value="&#x110C;" />
         <controls:Key Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2"
                       Text="ㄷ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1103;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AE;" />
+                      Value="&#x1103;" />
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
                       Text="ㄱ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1100;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11A8;" />
+                      Value="&#x1100;" />
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
                       Text="ㅅ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1109;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BA;" />
+                      Value="&#x1109;" />
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
                       Text="ㅛ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -126,28 +121,23 @@
         <controls:Key Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="ㅁ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1106;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11B7;" />
+                      Value="&#x1106;" />
         <controls:Key Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ㄴ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1102;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AB;" />
+                      Value="&#x1102;" />
         <controls:Key Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="ㅇ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x110B;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BC;" />
+                      Value="&#x110B;" />
         <controls:Key Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="ㄹ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1105;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11AF;" />
+                      Value="&#x1105;" />
         <controls:Key Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="ㅎ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1112;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C2;" />
+                      Value="&#x1112;" />
         <controls:Key Grid.Row="3" Grid.Column="12" Grid.ColumnSpan="2"
                       Text="ㅗ"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -183,23 +173,19 @@
         <controls:Key Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                       Text="ㅋ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x110F;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BF;" />
+                      Value="&#x110F;" />
         <controls:Key Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
                       Text="ㅌ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1110;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C0;" />
+                      Value="&#x1110;" />
         <controls:Key Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"
                       Text="ㅊ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x110E;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BE;" />
+                      Value="&#x110E;" />
         <controls:Key Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"
                       Text="ㅍ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1111;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11C1;" />
+                      Value="&#x1111;" />
         <controls:Key Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2"
                       Text="ㅠ"
                       SharedSizeGroup="KeyWithSingleLetter"

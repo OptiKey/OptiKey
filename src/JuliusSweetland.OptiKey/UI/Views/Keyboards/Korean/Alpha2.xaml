@@ -77,13 +77,11 @@
         <controls:Key Grid.Row="2" Grid.Column="7" Grid.ColumnSpan="2"
                       Text="ㄲ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x1101;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11A9;" />
+                      Value="&#x1101;" />
         <controls:Key Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2"
                       Text="ㅆ"
                       SharedSizeGroup="KeyWithSingleLetter"
-                      Value="&#x110A;"
-                      behaviours:KeyBehaviours.IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo="&#x11BB;" />
+                      Value="&#x110A;" />
         <controls:Key Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="2"
                       Text="ㅝ"
                       SharedSizeGroup="KeyWithSingleLetter"

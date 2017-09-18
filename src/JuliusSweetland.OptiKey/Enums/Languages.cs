@@ -28,9 +28,9 @@ namespace JuliusSweetland.OptiKey.Enums
 
     public static partial class EnumExtensions
     {
-        public static string ToDescription(this Languages languages)
+        public static string ToDescription(this Languages language)
         {
-            switch (languages)
+            switch (language)
             {
                 case Languages.CatalanSpain: return Resources.CATALAN_SPAIN;
                 case Languages.CroatianCroatia: return Resources.CROATIAN_CROATIA;
@@ -53,12 +53,12 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return Resources.TURKISH_TURKEY;
             }
 
-            return languages.ToString();
+            return language.ToString();
         }
 
-        public static CultureInfo ToCultureInfo(this Languages languages)
+        public static CultureInfo ToCultureInfo(this Languages language)
         {
-            switch (languages)
+            switch (language)
             {
                 case Languages.CatalanSpain: return CultureInfo.GetCultureInfo("ca-ES");
                 case Languages.CroatianCroatia: return CultureInfo.GetCultureInfo("hr-HR");
@@ -81,6 +81,18 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.TurkishTurkey: return CultureInfo.GetCultureInfo("tr-TR");
             }
             return CultureInfo.GetCultureInfo("en-GB");
+        }
+
+        public static bool SupportsAutoSpace(this Languages language)
+        {
+            switch (language)
+            {
+                case Languages.KoreanKorea:
+                    return false;
+
+                default:
+                    return true;
+            }
         }
     }
 }

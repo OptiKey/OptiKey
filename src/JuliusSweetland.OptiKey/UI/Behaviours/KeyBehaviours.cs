@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media.Animation;
-using JuliusSweetland.OptiKey.Enums;
-using JuliusSweetland.OptiKey.Extensions;
-using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.UI.Controls;
-using JuliusSweetland.OptiKey.UI.Utilities;
-using JuliusSweetland.OptiKey.UI.ViewModels;
-using Tobii.EyeX.Client.Interop;
 
 namespace JuliusSweetland.OptiKey.UI.Behaviours
 {
@@ -51,70 +44,6 @@ namespace JuliusSweetland.OptiKey.UI.Behaviours
         public static Storyboard GetBeginAnimationOnKeySelectionEvent(DependencyObject element)
         {
             return (Storyboard)element.GetValue(BeginAnimationOnKeySelectionEventProperty);
-        }
-
-        #endregion
-
-        #region IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo
-
-        public static readonly DependencyProperty IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty =
-            DependencyProperty.RegisterAttached("IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo", typeof(KeyValue), typeof(KeyBehaviours),
-            new PropertyMetadata(default(KeyValue), IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToChanged));
-
-        private static void IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        {
-            var trailingConsonantOrFinalJamo = (KeyValue)dependencyPropertyChangedEventArgs.NewValue;
-            var key = dependencyObject as Key;
-            var defaultKeyValue = key.Value;
-
-            IDisposable lastCharacterSubscription = null;
-            key.Loaded += (sender, args) =>
-            {
-                var keyboardHost = VisualAndLogicalTreeHelper.FindVisualParent<KeyboardHost>(key);
-                var mainViewModel = keyboardHost.DataContext as MainViewModel;
-                lastCharacterSubscription = mainViewModel.KeyboardOutputService.OnPropertyChanges(kos => kos.Text).Subscribe(t => 
-                    RecalculateKoreanKeyValue(t, key, defaultKeyValue, trailingConsonantOrFinalJamo));
-                RecalculateKoreanKeyValue(mainViewModel.KeyboardOutputService.Text, key, defaultKeyValue, trailingConsonantOrFinalJamo);
-            };
-
-            key.Unloaded += (sender, args) =>
-            {
-                if (lastCharacterSubscription != null)
-                {
-                    lastCharacterSubscription.Dispose();
-                }
-            };
-        }
-
-        private static void RecalculateKoreanKeyValue(string text, Key key, KeyValue defaultKeyValue, KeyValue trailingConsonantOrFinalJamo)
-        {
-            if (string.IsNullOrEmpty(text)) return;
-
-            var lastChar = text.Last();
-            if (lastChar.ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulSyllable)
-            {
-                var composedChar = lastChar.ToString();
-                var decomposedChar = composedChar.Decompose();
-                if (decomposedChar != null
-                    && decomposedChar != composedChar
-                    && decomposedChar.Last().ToUnicodeCodePointRange() == UnicodeCodePointRanges.HangulVowel)
-                {
-                    key.Value = trailingConsonantOrFinalJamo;
-                    return;
-                }
-            }
-
-            key.Value = defaultKeyValue;
-        }
-
-        public static void SetIfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo(DependencyObject element, KeyValue value)
-        {
-            element.SetValue(IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty, value);
-        }
-
-        public static KeyValue GetIfPreviousCharIsKoreanMedialJamoThenChangeKeyValueTo(DependencyObject element)
-        {
-            return (KeyValue)element.GetValue(IfPreviousCharIsKoreanMedialJamoThenChangeKeyValueToProperty);
         }
 
         #endregion
