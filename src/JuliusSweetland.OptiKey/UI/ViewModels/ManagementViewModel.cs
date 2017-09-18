@@ -120,8 +120,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ConfirmationRequest.Raise(
                     new Confirmation
                     {
-                        Title = "Settings Changed",
-                        Content = "Settings have been updated, do you want to discard all changes?"
+                        Title = Resources.SETTINGS_CHANGED,
+                        Content = Resources.DISCARD_CHANGED_SETTINGS
                     }, confirmation =>
                     {
                         if (confirmation.Confirmed)
@@ -135,7 +135,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 window.Close();
             }
-
         }
 
         #endregion
