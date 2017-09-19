@@ -114,27 +114,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void Cancel(Window window)
         {
-            if (ChangesRequireRestart)
-            {
-                //Warn if wants to discard all the changes
-                ConfirmationRequest.Raise(
-                    new Confirmation
+            //Warn if wants to discard all the changes
+            ConfirmationRequest.Raise(
+                new Confirmation
+                {
+                    Title = Resources.SETTINGS_CHANGED,
+                    Content = Resources.DISCARD_CHANGED_SETTINGS
+                }, confirmation =>
+                {
+                    if (confirmation.Confirmed)
                     {
-                        Title = Resources.SETTINGS_CHANGED,
-                        Content = Resources.DISCARD_CHANGED_SETTINGS
-                    }, confirmation =>
-                    {
-                        if (confirmation.Confirmed)
-                        {
-                            Settings.Default.Reload();
-                            window.Close();
-                        }
-                    });
-            }
-            else
-            {
-                window.Close();
-            }
+                        Settings.Default.Reload();
+                        window.Close();
+                    }
+                });
         }
 
         #endregion

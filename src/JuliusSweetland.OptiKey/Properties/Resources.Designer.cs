@@ -1019,7 +1019,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings have been updated, do you want to discard all changes?.
+        ///   Looks up a localized string similar to All changes made to the settings will be discarded, do you want to continue?.
         /// </summary>
         public static string DISCARD_CHANGED_SETTINGS {
             get {
@@ -4097,7 +4097,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings Changed.
+        ///   Looks up a localized string similar to Cancel Settings.
         /// </summary>
         public static string SETTINGS_CHANGED {
             get {

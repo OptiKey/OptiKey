@@ -1918,9 +1918,9 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
     <value>Tobii PCEye Plus</value>
   </data>
   <data name="DISCARD_CHANGED_SETTINGS" xml:space="preserve">
-    <value>Settings have been updated, do you want to discard all changes?</value>
+    <value>All changes made to the settings will be discarded, do you want to continue?</value>
   </data>
   <data name="SETTINGS_CHANGED" xml:space="preserve">
-    <value>Settings Changed</value>
+    <value>Cancel Settings</value>
   </data>
 </root>
