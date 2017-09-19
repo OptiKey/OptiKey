@@ -73,7 +73,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             SelectionInProgress = progress > 0d;
 
             //Calculate IsEnabled
-            Action calculateIsEnabled = () => IsEnabled = Value != null && keyStateService.KeyEnabledStates[Value];
+            Action calculateIsEnabled = () => IsEnabled = keyStateService.KeyEnabledStates[Value];
             var keyEnabledSubscription = keyStateService.KeyEnabledStates
                 .OnAnyPropertyChanges()
                 .Subscribe(_ => calculateIsEnabled());
