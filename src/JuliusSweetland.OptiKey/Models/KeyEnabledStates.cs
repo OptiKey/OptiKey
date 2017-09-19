@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.Models
             get
             {
                 // Key has no payload
-                if (keyValue != null && !keyValue.HasContent())
+                if (keyValue == null || !keyValue.HasContent())
                 {
                     return false;
                 }
