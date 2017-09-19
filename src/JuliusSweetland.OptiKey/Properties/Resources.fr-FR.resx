@@ -164,6 +164,9 @@ DICTIONNAIRE</value>
     <value>Espacement des mots automatique :</value>
   </data>
   <data name="BACK" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="BACK" xml:space="preserve">
     <value>RETOUR</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">

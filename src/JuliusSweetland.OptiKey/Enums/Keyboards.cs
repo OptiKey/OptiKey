@@ -8,6 +8,8 @@
         ConversationNumericAndSymbols,
         Currencies1,
         Currencies2,
+        CustomKeyboardFile,
+        DynamicKeyboard,
         Diacritics1,
         Diacritics2,
         Diacritics3,

@@ -415,6 +415,16 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void ResizeDockToSpecificHeight(double heightAsPercentScreen, bool persistNewSize=false)
+        {
+            Log.InfoFormat("ResizeDockToSpecificHeight called with height: {0} and persist?: {1}",
+                heightAsPercentScreen, persistNewSize);
+
+            if (getWindowState() != WindowStates.Docked) return;
+            var dockSizeAndPositionInPx = CalculateDockSizeAndPositionInPx(getDockPosition(), getDockSize(), heightAsPercentScreen);
+            SetAppBarSizeAndPosition(getDockPosition(), dockSizeAndPositionInPx, persist: persistNewSize); 
+        }
+
         public void ResizeDockToCollapsed()
         {
             Log.Info("ResizeDockToCollapsed called");
@@ -626,13 +636,21 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("ApplyAndPersistSizeAndPosition called with rect.Top:{0}, rect.Bottom:{1}, rect.Left:{2}, rect.Right:{3}", 
                 rect.Top, rect.Bottom, rect.Left, rect.Right);
+            
+            this.ApplySizeAndPosition(rect);
+            PersistSizeAndPosition();
+        }
+
+        private void ApplySizeAndPosition(Rect rect)
+        {
+            Log.InfoFormat("ApplySizeAndPosition called with rect.Top:{0}, rect.Bottom:{1}, rect.Left:{2}, rect.Right:{3}",
+                rect.Top, rect.Bottom, rect.Left, rect.Right);
 
             window.Top = rect.Top;
             window.Left = rect.Left;
             window.Width = rect.Width;
             window.Height = rect.Height;
-            
-            PersistSizeAndPosition();
+
             PublishSizeAndPositionInitialised();
         }
 
@@ -676,15 +694,23 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size)
+        private Rect CalculateDockSizeAndPositionInPx(DockEdges position, DockSizes size, double? overrideThicknessAsPercentage=null)
         {
             Log.InfoFormat("CalculateDockSizeAndPositionInPx called with position:{0}, size:{1}", position, size);
 
             double x, y, width, height;
-            var thicknessAsPercentage = size == DockSizes.Full
-                ? getFullDockThicknessAsPercentageOfScreen() / 100
-                : (getFullDockThicknessAsPercentageOfScreen() * getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage
-
+            double thicknessAsPercentage;
+            if (overrideThicknessAsPercentage.HasValue)
+            {
+                thicknessAsPercentage = overrideThicknessAsPercentage.Value / 100;
+            }
+            else
+            {
+                thicknessAsPercentage = size == DockSizes.Full
+                    ? getFullDockThicknessAsPercentageOfScreen() / 100
+                    : (getFullDockThicknessAsPercentageOfScreen() *
+                       getCollapsedDockThicknessAsPercentageOfFullDockThickness()) / 10000; //Percentage of a percentage
+            }
             switch (position)
             {
                 case DockEdges.Top:
@@ -1317,8 +1343,8 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false)
-        {
+      	private void SetAppBarSizeAndPosition(DockEdges dockPosition, Rect sizeAndPosition, bool isInitialising = false, bool persist=true)
+        { 
             Log.InfoFormat("SetAppBarSizeAndPosition called with dockPosition:{0}, sizeAndPosition.Top:{1}, sizeAndPosition.Bottom:{2}, sizeAndPosition.Left:{3}, sizeAndPosition.Right:{4}",
                     dockPosition, sizeAndPosition.Top, sizeAndPosition.Bottom, sizeAndPosition.Left, sizeAndPosition.Right);
             Log.InfoFormat("Screen bounds in px - Top:{0}, Left:{1}, Width:{2}, Height:{3}", screenBoundsInPx.Top, screenBoundsInPx.Left, screenBoundsInPx.Width, screenBoundsInPx.Height);
@@ -1393,7 +1419,10 @@ namespace JuliusSweetland.OptiKey.Services
                 //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
                 //RECT values are in pixels so I need to scale back to DIPs for WPF.
                 appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
-                window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), appBarBoundsInPx);
+                if (persist)
+                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition), appBarBoundsInPx);
+                else
+                    window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
             }
         }
 

@@ -137,6 +137,8 @@ namespace JuliusSweetland.OptiKey
 
                 CleanupAndPrepareCommuniKateInitialState();
 
+                ValidateDynamicKeyboardLocation();
+
                 var presageInstallationProblem = PresageInstallationProblemsDetected();
 
                 //Create services
@@ -922,6 +924,29 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
+        #region Validate Dynamic Keyboard Location
+
+        private static string GetDefaultUserKeyboardFolder()
+        {
+            const string ApplicationDataSubPath = @"JuliusSweetland\OptiKey\Keyboards\";
+
+            var applicationDataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                ApplicationDataSubPath);
+            Directory.CreateDirectory(applicationDataPath); //Does nothing if already exists                        
+            return applicationDataPath;
+        }
+
+        private static void ValidateDynamicKeyboardLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder(); ;
+            }
+        }
+
+        #endregion
         #region Clean Up Extracted CommuniKate Files If Staged For Deletion
 
         private static void CleanupAndPrepareCommuniKateInitialState()

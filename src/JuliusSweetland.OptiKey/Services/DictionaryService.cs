@@ -527,7 +527,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         #region Map Capture To Entries
 
-        public Tuple<List<Point>, FunctionKeys?, string, List<string>> MapCaptureToEntries(
+        public Tuple<List<Point>, KeyValue, List<string>> MapCaptureToEntries(
             List<Timestamped<PointAndKeyValue>> timestampedPointAndKeyValues,
             int minCount, string reliableFirstLetter, string reliableLastLetter,
             ref CancellationTokenSource cancellationTokenSource, Action<Exception> exceptionHandler)
@@ -543,7 +543,7 @@ namespace JuliusSweetland.OptiKey.Services
 
                 var charsWithCount = timestampedPointAndKeyValues != null
                     ? timestampedPointAndKeyValues
-                        .Where(tp => tp.Value.StringIsLetter)
+                        .Where(tp => tp.Value != null && tp.Value.StringIsLetter)
                         .Select(tp => tp.Value.String)
                         .ToCharListWithCounts()
                     : new List<Tuple<char, char, int>>();
@@ -584,13 +584,13 @@ namespace JuliusSweetland.OptiKey.Services
                 if (filteredStrings.Item1.Length == 0)
                 {
                     Log.Info("Capture reduces to nothing useful.");
-                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, null);
+                    return new Tuple<List<Point>, KeyValue, List<string>>(points, null, null);
                 }
 
                 if (filteredStrings.Item1.Length == 1)
                 {
                     Log.Info("Capture reduces to a single letter.");
-                    return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, filteredStrings.Item2, null);
+                    return new Tuple<List<Point>, KeyValue, List<string>>(points, new KeyValue(filteredStrings.Item2), null);
                 }
 
                 Log.DebugFormat("Attempting to match using filtered string: '{0}'", filteredStrings.Item1);
@@ -623,7 +623,7 @@ namespace JuliusSweetland.OptiKey.Services
                     .ForEach(matches.Add);
 
                 matches.ForEach(match => Log.DebugFormat("Returning dictionary match: {0}", match));
-                return new Tuple<List<Point>, FunctionKeys?, string, List<string>>(points, null, null, matches.Any() ? matches : null);
+                return new Tuple<List<Point>, KeyValue, List<string>>(points, null, matches.Any() ? matches : null);
             }
             catch (OperationCanceledException)
             {

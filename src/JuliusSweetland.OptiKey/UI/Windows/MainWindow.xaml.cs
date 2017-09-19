@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private readonly InteractionRequest<NotificationWithServicesAndState> managementWindowRequest;
         private readonly ICommand managementWindowRequestCommand;
         private readonly ICommand toggleManualModeCommand;
+        private readonly ICommand backCommand;
         private readonly ICommand quitCommand;
 
         public MainWindow(
@@ -53,6 +54,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
             toggleManualModeCommand = new DelegateCommand(ToggleManualMode, () => !(defaultPointSource is MousePositionSource));
             quitCommand = new DelegateCommand(Quit);
+            backCommand = new DelegateCommand(Back);
 
             //Setup key binding (Alt+M and Shift+Alt+M) to open settings
             InputBindings.Add(new KeyBinding
@@ -91,6 +93,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         public ICommand ManagementWindowRequestCommand { get { return managementWindowRequestCommand; } }
         public ICommand ToggleManualModeCommand { get { return toggleManualModeCommand; } }
         public ICommand QuitCommand { get { return quitCommand; } }
+        public ICommand BackCommand { get { return backCommand; } }
 
         private void RequestManagementWindow()
         {
@@ -150,6 +153,15 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void Back()
+        {
+            var mainViewModel = MainView.DataContext as MainViewModel;
+            if (null != mainViewModel)
+            {
+                mainViewModel.BackFromKeyboard();   
+            }            
         }
     }
 }

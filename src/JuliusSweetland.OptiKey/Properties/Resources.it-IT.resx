@@ -163,6 +163,9 @@ DIZIONARIO</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Spazio tra le parole automatico:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Indietro</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>INDIETRO</value>
   </data>

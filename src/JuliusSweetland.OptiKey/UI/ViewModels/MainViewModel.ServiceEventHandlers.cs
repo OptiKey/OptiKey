@@ -55,14 +55,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (progress.Item1 != null)
                 {
                     if (SelectionMode == SelectionModes.Key
-                        && progress.Item1.Value.KeyValue != null)
+                        && progress.Item1.KeyValue != null)
                     {
-                        keyStateService.KeySelectionProgress[progress.Item1.Value.KeyValue.Value] =
+                        keyStateService.KeySelectionProgress[progress.Item1.KeyValue] =
                             new NotifyingProxy<double>(progress.Item2);
                     }
                     else if (SelectionMode == SelectionModes.Point)
                     {
-                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Value.Point, progress.Item2);
+                        PointSelectionProgress = new Tuple<Point, double>(progress.Item1.Point, progress.Item2);
                     }
                 }
             };
@@ -83,8 +83,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (KeySelection != null)
                     {
-                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue.Value);
-                        KeySelection(this, value.KeyValue.Value);
+                        Log.InfoFormat("Firing KeySelection event with KeyValue '{0}'", value.KeyValue);
+                        KeySelection(this, value.KeyValue);
                     }
                 }
                 else if (SelectionMode == SelectionModes.Point)
@@ -107,10 +107,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.Info("SelectionResult event received from InputService.");
 
                 var points = tuple.Item1;
-                var singleKeyValue = tuple.Item2 != null || tuple.Item3 != null
-                    ? new KeyValue(tuple.Item2, tuple.Item3)
-                    : (KeyValue?)null;
-                var multiKeySelection = tuple.Item4;
+                var singleKeyValue = tuple.Item2;
+                var multiKeySelection = tuple.Item3;
 
                 SelectionResultPoints = points; //Store captured points from SelectionResult event (displayed for debugging)
 
@@ -143,6 +141,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Log.Info("AttachInputServiceEventHandlers complete.");
         }
+        
 
         public void DetachInputServiceEventHandlers()
         {
@@ -155,38 +154,106 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputService.SelectionResult -= inputServiceSelectionResultHandler;
 
             Log.Info("DetachInputServiceEventHandlers complete.");
+
         }
-
-        private void KeySelectionResult(KeyValue? singleKeyValue, List<string> multiKeySelection)
+        
+	private void ProcessChangeKeyboardKeyValue(ChangeKeyboardKeyValue keyValue)
         {
-            //Single key
-            if (singleKeyValue != null)
+            var currentKeyboard = Keyboard;
+
+            Action backAction;
+            if (keyValue.Replace)
             {
-                Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'", 
-                    singleKeyValue.Value.String.ToPrintableString(), singleKeyValue.Value.FunctionKey);
-
-                keyStateService.ProgressKeyDownState(singleKeyValue.Value);
-
-                if (!string.IsNullOrEmpty(singleKeyValue.Value.String)
-                    && singleKeyValue.Value.FunctionKey != null)
+                var navigableKeyboard = Keyboard as IBackAction;
+                if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
                 {
-                    HandleStringAndFunctionKeySelectionResult(singleKeyValue.Value);
+                    backAction = navigableKeyboard.BackAction;
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(singleKeyValue.Value.String))
-                    {
-                        //Single key string
-                        keyboardOutputService.ProcessSingleKeyText(singleKeyValue.Value.String);
-                    }
-
-                    if (singleKeyValue.Value.FunctionKey != null)
-                    {
-                        //Single key function key
-                        HandleFunctionKeySelectionResult(singleKeyValue.Value);
-                    }
+                    backAction = () => { }; 
                 }
             }
+            else
+            {
+                Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                backAction = () =>
+                {
+                    reinstateModifiers();
+                    Keyboard = currentKeyboard;
+
+                    if (!(currentKeyboard is DynamicKeyboard))
+                    {
+                        mainWindowManipulationService.ResizeDockToFull();
+                    }
+
+                    // Clear the keyboard when leaving keyboard.
+                    // (proper scratchpad functionality not supported in dynamic keyboards presently
+                    keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+
+                };
+            }
+
+            Action<double> resizeAction = size =>
+            {
+                mainWindowManipulationService.ResizeDockToSpecificHeight(size, false);
+            };
+
+            if (keyValue.BuiltInKeyboard.HasValue)
+            {
+                SetKeyboardFromEnum(keyValue.BuiltInKeyboard.Value, mainWindowManipulationService, backAction);
+            }
+            else
+            {
+                Keyboard = new DynamicKeyboard(backAction, resizeAction, keyValue.KeyboardFilename);
+            }
+        }
+        
+        private void ProcessBasicKeyValue(KeyValue singleKeyValue)
+        {
+            Log.InfoFormat("KeySelectionResult received with string value '{0}' and function key values '{1}'",
+                singleKeyValue.String.ToPrintableString(), singleKeyValue.FunctionKey);
+          
+            keyStateService.ProgressKeyDownState(singleKeyValue);
+
+            if (!string.IsNullOrEmpty(singleKeyValue.String)
+                && singleKeyValue.FunctionKey != null)
+            {
+                HandleStringAndFunctionKeySelectionResult(singleKeyValue);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(singleKeyValue.String))
+                {
+                    //Single key string
+                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
+                }
+
+                if (singleKeyValue.FunctionKey != null)
+                {
+                    //Single key function key
+                    HandleFunctionKeySelectionResult(singleKeyValue);
+                }          
+            }
+        }
+      
+	private void KeySelectionResult(KeyValue singleKeyValue, List<string> multiKeySelection)
+        {
+            // Pass single key to appropriate processing function
+            if (singleKeyValue != null)
+            {
+                ChangeKeyboardKeyValue kv_link = singleKeyValue as ChangeKeyboardKeyValue;
+
+                if (kv_link != null)
+                {
+                    ProcessChangeKeyboardKeyValue(kv_link);
+                }
+                else 
+                {
+                    ProcessBasicKeyValue(singleKeyValue);
+                }
+            }
+            
             
             //Multi key selection
             if (multiKeySelection != null
@@ -331,6 +398,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
+                        Log.Error("Keyboard doesn't have backaction, going back to initial keyboard instead");
+
                         if (Settings.Default.EnableCommuniKateKeyboardLayout)
                         {
                             Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
@@ -340,7 +409,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             Settings.Default.CommuniKateKeyboardPrevious3Context = "_null_";
                             Settings.Default.CommuniKateKeyboardPrevious4Context = "_null_";
                         }
-                        Keyboard = new Alpha();
+                      
+                        InitialiseKeyboard(this.mainWindowManipulationService);                     
                     }
                     break;
 
@@ -506,6 +576,86 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Info("Changing keyboard to Currencies2.");
                     Keyboard = new Currencies2();
                     break;
+
+                case FunctionKeys.DynamicKeyboard:
+                    {
+                        Log.Info("Changing keyboard to DynamicKeyboard.");
+
+                        var currentKeyboard2 = Keyboard;
+
+                        Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        Action backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+
+                            reinstateModifiers();
+
+                            // Clear the scratchpad when leaving keyboard
+                            // (proper scratchpad functionality not supported in dynamic keyboards presently
+                            keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                        };
+
+                        int pageIndex = 0;
+                        if (Keyboard is DynamicKeyboardSelector)
+                        {
+                            var kb = Keyboard as DynamicKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex + 1;
+                        }
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+
+                case FunctionKeys.DynamicKeyboardPrev:
+                    {
+                        Log.Info("Changing keyboard to prev DynamicKeyboard.");
+
+                        Action backAction;
+                        var currentKeyboard2 = Keyboard;
+                        int pageIndex = 0;
+                        if (Keyboard is DynamicKeyboardSelector)
+                        {
+                            var kb = Keyboard as DynamicKeyboardSelector;
+                            backAction = kb.BackAction;
+                            pageIndex = kb.PageIndex - 1;
+                        }
+                        else
+                        {
+                            Log.Error("Unexpectedly entering DynamicKeyboardPrev from somewhere other than DynamicKeyboard");
+                            backAction = () =>
+                            {
+                                Keyboard = currentKeyboard2;
+                            };
+                        }
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                    }
+                    break;
+
+            case FunctionKeys.DynamicKeyboardNext:
+                {
+                    Log.Info("Changing keyboard to next DynamicKeyboard.");
+
+                    Action backAction;
+                    var currentKeyboard2 = Keyboard;
+                    int pageIndex = 0;
+                    if (Keyboard is DynamicKeyboardSelector)
+                    {
+                        var kb = Keyboard as DynamicKeyboardSelector;
+                        backAction = kb.BackAction;
+                        pageIndex = kb.PageIndex + 1;
+                    }
+                    else
+                    {
+                        Log.Error("Unexpectedly entering DynamicKeyboardNext from somewhere other than DynamicKeyboard");
+                        backAction = () =>
+                        {
+                            Keyboard = currentKeyboard2;
+                        };
+                    }
+                    Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                }
+                break;
 
                 case FunctionKeys.CzechCzechRepublic:
                     Log.Info("Changing keyboard language to CzechCzechRepublic.");

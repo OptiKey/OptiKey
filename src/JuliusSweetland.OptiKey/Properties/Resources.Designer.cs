@@ -252,6 +252,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string BACK_TITLE_CASE {
+            get {
+                return ResourceManager.GetString("BACK_TITLE_CASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BACK WORD.
         /// </summary>
         public static string BACK_WORD {
@@ -850,6 +859,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom keyboard file.
+        /// </summary>
+        public static string CUSTOM_LAYOUT {
+            get {
+                return ResourceManager.GetString("CUSTOM_LAYOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Czech (Czech Rep.) / Čeština (Česko).
         /// </summary>
         public static string CZECH_CZECH_REPUBLIC {
@@ -1121,6 +1139,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE {
             get {
                 return ResourceManager.GetString("DUTCH_NETHERLANDS_SPLIT_WITH_NEWLINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder containing dynamic keyboards:.
+        /// </summary>
+        public static string DYNAMIC_KEYBOARDS_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("DYNAMIC_KEYBOARDS_LOCATION_LABEL", resourceCulture);
             }
         }
         
@@ -2168,6 +2195,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL {
             get {
                 return ResourceManager.GetString("KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboards folder can be set in \n Management Console (Visuals tab).
+        /// </summary>
+        public static string KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE {
+            get {
+                return ResourceManager.GetString("KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE", resourceCulture);
             }
         }
         
@@ -3239,6 +3275,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string NO {
             get {
                 return ResourceManager.GetString("NO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No keyboards found.
+        /// </summary>
+        public static string NO_KEYBOARDS_FOUND {
+            get {
+                return ResourceManager.GetString("NO_KEYBOARDS_FOUND", resourceCulture);
             }
         }
         
@@ -4444,6 +4489,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string SPEECH_DELAY_LABEL {
             get {
                 return ResourceManager.GetString("SPEECH_DELAY_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom keyboard file:.
+        /// </summary>
+        public static string STARTUP_KEYBOARD_FILE_LOCATION_LABEL {
+            get {
+                return ResourceManager.GetString("STARTUP_KEYBOARD_FILE_LOCATION_LABEL", resourceCulture);
             }
         }
         

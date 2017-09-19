@@ -38,13 +38,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly InteractionRequest<NotificationWithCalibrationResult> calibrateRequest;
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
-        private EventHandler<Tuple<Point, KeyValue?>> inputServiceCurrentPositionHandler;
-        private EventHandler<Tuple<PointAndKeyValue?, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
+        private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
-        private EventHandler<Tuple<List<Point>, FunctionKeys?, string, List<string>>> inputServiceSelectionResultHandler;
+        private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
-        private KeyValue? currentPositionKey;
+        private KeyValue currentPositionKey;
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
@@ -127,6 +127,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        public void BackFromKeyboard()
+        {
+            Log.Info("Navigating back from keyboard via contextmenu.");
+            var navigableKeyboard = Keyboard as IBackAction;
+            if (navigableKeyboard != null && navigableKeyboard.BackAction != null)
+            {
+                navigableKeyboard.BackAction();
+            }
+            else
+            {
+                Log.Error("Keyboard doesn't have backaction, going back to initial keyboard instead");
+                InitialiseKeyboard(this.mainWindowManipulationService);
+            }
+        }
+
         private bool keyboardSupportsCollapsedDock = true;
         public bool KeyboardSupportsCollapsedDock
         {
@@ -201,7 +216,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref currentPositionPoint, value); }
         }
 
-        public KeyValue? CurrentPositionKey
+        public KeyValue CurrentPositionKey
         {
             get { return currentPositionKey; }
             set { SetProperty(ref currentPositionKey, value); }
@@ -278,137 +293,159 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 switch (Settings.Default.StartupKeyboard)
                 {
-                    case Enums.Keyboards.Alpha:
-                        Keyboard = new Alpha();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
                     case Enums.Keyboards.ConversationAlpha:
-                        Keyboard = new ConversationAlpha(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
-                    case Enums.Keyboards.ConversationNumericAndSymbols:
-                        Keyboard = new ConversationNumericAndSymbols(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
                     case Enums.Keyboards.ConversationConfirm:
-                        Keyboard = new ConversationConfirm(() =>
-                        {
-                            Keyboard = new Menu(() => Keyboard = new Alpha());
-                            mainWindowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
-                        });
-                        windowManipulationService.Maximise();
-                        break;
-
-                    case Enums.Keyboards.Currencies1:
-                        Keyboard = new Currencies1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Currencies2:
-                        Keyboard = new Currencies2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics1:
-                        Keyboard = new Diacritics1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics2:
-                        Keyboard = new Diacritics2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Diacritics3:
-                        Keyboard = new Diacritics3();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Menu:
-                        Keyboard = new Menu(() => Keyboard = new Alpha());
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.Minimised:
-                        Keyboard = new Minimised(() =>
+                    case Enums.Keyboards.ConversationNumericAndSymbols:
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard, 
+                            windowManipulationService, () =>
                         {
                             Keyboard = new Menu(() => Keyboard = new Alpha());
                             windowManipulationService.Restore();
-                            mainWindowManipulationService.ResizeDockToFull();
+                            windowManipulationService.ResizeDockToFull();
                         });
-                        windowManipulationService.Minimise();
                         break;
 
-                    case Enums.Keyboards.Mouse:
-                        Keyboard = new Mouse(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        windowManipulationService.Restore();
-                        if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    case Enums.Keyboards.Minimised:
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () =>
                         {
-                            mainWindowManipulationService.ResizeDockToFull();
-                        }
-                        else
+                            Keyboard = new Menu(() => Keyboard = new Alpha());
+                            windowManipulationService.Restore();
+                            windowManipulationService.ResizeDockToFull();
+                        });
+                        break;
+
+                    case Enums.Keyboards.CustomKeyboardFile:
+                        // No BackAction if we're starting from a custom keyboard, since it should be 
+                        // the root menu.
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () => { });
+                        break;
+
+                    default:
+                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
+                            windowManipulationService, () =>
                         {
-                            mainWindowManipulationService.ResizeDockToCollapsed();
-                        }
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols1:
-                        Keyboard = new NumericAndSymbols1();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols2:
-                        Keyboard = new NumericAndSymbols2();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.NumericAndSymbols3:
-                        Keyboard = new NumericAndSymbols3();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.PhysicalKeys:
-                        Keyboard = new PhysicalKeys();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.SizeAndPosition:
-                        Keyboard = new SizeAndPosition(() => Keyboard = new Menu(() => Keyboard = new Alpha()));
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
-                        break;
-
-                    case Enums.Keyboards.WebBrowsing:
-                        Keyboard = new WebBrowsing();
-                        windowManipulationService.Restore();
-                        mainWindowManipulationService.ResizeDockToFull();
+                            Keyboard = new Alpha(); 
+                        });
                         break;
                 }
+            }
+        }
+
+        private void SetKeyboardFromEnum(Enums.Keyboards keyboardEnum,
+                                         IWindowManipulationService windowManipulationService,
+                                         Action backAction)
+        {
+            // Set up the keyboard
+            switch (keyboardEnum)
+            {
+                case Enums.Keyboards.Alpha:
+                    Keyboard = new Alpha();
+                    break;
+
+                case Enums.Keyboards.ConversationAlpha:
+                    Keyboard = new ConversationAlpha(backAction);
+                    break;
+
+                case Enums.Keyboards.ConversationNumericAndSymbols:
+                    Keyboard = new ConversationNumericAndSymbols(backAction);
+                    break;
+
+                case Enums.Keyboards.ConversationConfirm:
+                    Keyboard = new ConversationConfirm(backAction);
+                    break;
+
+                case Enums.Keyboards.Currencies1:
+                    Keyboard = new Currencies1();
+                    break;
+
+                case Enums.Keyboards.Currencies2:
+                    Keyboard = new Currencies2();
+                    break;
+
+                case Enums.Keyboards.CustomKeyboardFile:
+                    Keyboard = new DynamicKeyboard(backAction, (d) => { }, Settings.Default.StartupKeyboardFile);
+                    break;
+
+                case Enums.Keyboards.Diacritics1:
+                    Keyboard = new Diacritics1();
+                    break;
+
+                case Enums.Keyboards.Diacritics2:
+                    Keyboard = new Diacritics2();
+                    break;
+
+                case Enums.Keyboards.Diacritics3:
+                    Keyboard = new Diacritics3();
+                    break;
+
+                case Enums.Keyboards.Menu:
+                    Keyboard = new Menu(backAction);
+                    break;
+
+                case Enums.Keyboards.Minimised:
+                    Keyboard = new Minimised(backAction);
+                    break;
+
+                case Enums.Keyboards.Mouse:
+                    Keyboard = new Mouse(backAction);
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols1:
+                    Keyboard = new NumericAndSymbols1();
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols2:
+                    Keyboard = new NumericAndSymbols2();
+                    break;
+
+                case Enums.Keyboards.NumericAndSymbols3:
+                    Keyboard = new NumericAndSymbols3();
+                    break;
+
+                case Enums.Keyboards.PhysicalKeys:
+                    Keyboard = new PhysicalKeys();
+                    break;
+
+                case Enums.Keyboards.SizeAndPosition:
+                    Keyboard = new SizeAndPosition(backAction);
+                    break;
+
+                case Enums.Keyboards.WebBrowsing:
+                    Keyboard = new WebBrowsing();
+                    break;
+            }
+
+            // Set the window appropriately according to keyboard
+            switch (Settings.Default.StartupKeyboard)
+            {
+                case Enums.Keyboards.ConversationAlpha:
+                case Enums.Keyboards.ConversationConfirm:
+                case Enums.Keyboards.ConversationNumericAndSymbols:
+                    windowManipulationService.Maximise();
+                    break;
+
+                case Enums.Keyboards.Minimised:
+                    windowManipulationService.Minimise();
+                    break;
+
+                case Enums.Keyboards.Mouse:
+                    windowManipulationService.Restore();
+                    if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    {
+                        windowManipulationService.ResizeDockToFull();
+                    }
+                    else
+                    {
+                        windowManipulationService.ResizeDockToCollapsed();
+                    }
+                    break;
+
+                default:
+                    windowManipulationService.Restore();
+                    windowManipulationService.ResizeDockToFull();
+                    break;
             }
         }
 

@@ -129,6 +129,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CONVERSATION_NUM_SYM_LAYOUT, Enums.Keyboards.ConversationNumericAndSymbols),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_1, Enums.Keyboards.Currencies1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.CURRENCIES_LAYOUT_2, Enums.Keyboards.Currencies2),
+                    new KeyValuePair<string, Enums.Keyboards>(Resources.CUSTOM_LAYOUT, Enums.Keyboards.CustomKeyboardFile),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_1, Enums.Keyboards.Diacritics1),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_2, Enums.Keyboards.Diacritics2),
                     new KeyValuePair<string, Enums.Keyboards>(Resources.DIACRITICS_LAYOUT_3, Enums.Keyboards.Diacritics3),
@@ -353,6 +354,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref enableQuitKeys, value); }
         }
 
+        private string dynamicKeyboardsLocation;
+        public string DynamicKeyboardsLocation
+        {
+            get { return dynamicKeyboardsLocation; }
+            set { SetProperty(ref dynamicKeyboardsLocation, value); }
+        }
+
+        private string startupKeyboardFile;
+        public string StartupKeyboardFile
+        {
+            get { return startupKeyboardFile; }
+            set { SetProperty(ref startupKeyboardFile, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -382,6 +397,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ConversationBorderThickness = Settings.Default.ConversationBorderThickness;
             SimplifiedKeyboardCurrentContext = Settings.Default.SimplifiedKeyboardCurrentContext;
             EnableQuitKeys = Settings.Default.EnableQuitKeys;
+            DynamicKeyboardsLocation = Settings.Default.DynamicKeyboardsLocation;
+            StartupKeyboardFile = Settings.Default.StartupKeyboardFile;
         }
 
         public void ApplyChanges()
@@ -409,6 +426,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ConversationBorderThickness = ConversationBorderThickness;
             Settings.Default.SimplifiedKeyboardCurrentContext = SimplifiedKeyboardCurrentContext;
             Settings.Default.EnableQuitKeys = EnableQuitKeys;
+            Settings.Default.DynamicKeyboardsLocation = DynamicKeyboardsLocation;
+            Settings.Default.StartupKeyboardFile = StartupKeyboardFile;
         }
 
         #endregion

@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Models
             {
                 dictionary.AddOrUpdate(key, value, (k, existingValue) =>
                 {
-                    existingValue.Value = value.Value;
+                    existingValue.Value = value.Value;    
                     return existingValue;
                 });
             }

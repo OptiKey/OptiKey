@@ -240,9 +240,18 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
+    <Compile Include="Models\DynamicKeyboardFolder.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
+    <Compile Include="Models\KeyValueConverter.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlActionKey.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlChangeKeyboardKey.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlGrid.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlKey.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlKeyboard.cs" />
     <Compile Include="Models\KeyStateServiceState.cs" />
+    <Compile Include="Models\KeyPressKeyValue.cs" />
+    <Compile Include="Models\ChangeKeyboardKeyValue.cs" />
     <Compile Include="Models\KeyValueAndTimeSpanGroup.cs" />
     <Compile Include="Models\KeyValueAndTimeSpan.cs" />
     <Compile Include="Models\LastMouseActionStateManager.cs" />
@@ -253,6 +262,9 @@
     <Compile Include="Models\NotificationWithServicesAndState.cs" />
     <Compile Include="Models\NotificationEventArgs.cs" />
     <Compile Include="Models\SerializableDictionaryOfTimeSpanByKeyValues.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlKeys.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlTextKey.cs" />
+    <Compile Include="Models\XmlKeyboardModels\XmlUtils.cs" />
     <Compile Include="Native\Common\Enums\AppBarEdge.cs" />
     <Compile Include="Native\Common\Enums\AppBarMessages.cs" />
     <Compile Include="Native\Common\Enums\AppBarNotify.cs" />
@@ -354,6 +366,8 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\Controls\DynamicKeyboard.cs" />
+    <Compile Include="UI\Controls\DynamicKeyboardSelector.cs" />
     <Compile Include="UI\Controls\CKKey.xaml.cs">
       <DependentUpon>CKKey.xaml</DependentUpon>
     </Compile>
@@ -429,6 +443,8 @@
     <Compile Include="UI\Views\Keyboards\Common\Language.xaml.cs">
       <DependentUpon>Language.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboard.xaml.cs" />
+    <Compile Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml.cs" />
     <Compile Include="UI\Views\Keyboards\Common\Minimised.xaml.cs">
       <DependentUpon>Minimised.xaml</DependentUpon>
     </Compile>
@@ -802,6 +818,7 @@
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToRight.svg" />
     <None Include="Resources\Icons\SVG Source Files\MouseScrollToTop.svg" />
     <None Include="Resources\Icons\SVG Source Files\Language.svg" />
+    <Resource Include="Resources\Icons\Back.ico" />
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
     <Content Include="Resources\Sounds\Click2.wav">
@@ -1006,6 +1023,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Keyboards\Common\ConversationConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\DynamicKeyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Keyboards\Common\DynamicKeyboardSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

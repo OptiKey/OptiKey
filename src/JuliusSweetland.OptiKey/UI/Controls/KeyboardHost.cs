@@ -352,7 +352,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 newContent = new CommonViews.YesNoQuestion { DataContext = Keyboard };
             }
-
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboard)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboard;
+                newContent = new CommonViews.DynamicKeyboard(kb.Link, kb.ResizeAction) { DataContext = Keyboard };                
+            }
+            else if (Keyboard is ViewModelKeyboards.DynamicKeyboardSelector)
+            {
+                var kb = Keyboard as ViewModelKeyboards.DynamicKeyboardSelector;
+                newContent = new CommonViews.DynamicKeyboardSelector(kb.PageIndex) { DataContext = Keyboard };
+            }
             Content = newContent;
         }
 
@@ -422,7 +431,8 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             {
                 if (key.IsVisible
                     && PresentationSource.FromVisual(key) != null
-                    && (key.Value.FunctionKey != null || key.Value.String != null))
+                    && key.Value != null 
+		    && key.Value.HasContent() )
                 {
                     var rect = new Rect
                     {

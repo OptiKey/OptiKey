@@ -70,6 +70,12 @@ namespace JuliusSweetland.OptiKey.Models
         {
             get
             {
+                // Key has no payload
+                if (keyValue == null || !keyValue.HasContent())
+                {
+                    return false;
+                }
+
                 //Key is not Sleep, but we are sleeping
                 if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown()
                     && keyValue != KeyValues.SleepKey)

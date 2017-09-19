@@ -164,6 +164,9 @@ EKLE</value>
     <value>Kelimeler arasında otomatik boşluk bırak:</value>
   </data>
   <data name="BACK" xml:space="preserve">
+    <value>Geri</value> 
+  </data>
+  <data name="BACK" xml:space="preserve">
     <value>GERİ</value>
   </data>
   <data name="BACK_ONE_SPLIT_WITH_NEWLINE" xml:space="preserve">

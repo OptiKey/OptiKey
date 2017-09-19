@@ -163,6 +163,9 @@ SLOVNÍKA</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Automatické medzery medzi slovami:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Späť</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>SPÄŤ</value>
   </data>

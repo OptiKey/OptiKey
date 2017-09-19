@@ -352,5 +352,17 @@ namespace JuliusSweetland.OptiKey.Extensions
 
             return output;
         }
+
+        public static string ToStringWithValidNewlines(this string s)
+        {
+            if (s.Contains("\\r\\n"))
+                s = s.Replace("\\r\\n", Environment.NewLine);
+
+            if (s.Contains("\\n"))
+                s = s.Replace("\\n", Environment.NewLine);
+
+            return s;
+        }
+
     }
 }

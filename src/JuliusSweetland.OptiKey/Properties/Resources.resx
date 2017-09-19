@@ -163,6 +163,9 @@ DICTIONARY</value>
   <data name="AUTO_SPACE_BETWEEN_WORDS_LABEL" xml:space="preserve">
     <value>Auto space between words:</value>
   </data>
+  <data name="BACK_TITLE_CASE" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="BACK" xml:space="preserve">
     <value>BACK</value>
   </data>
@@ -298,6 +301,9 @@ Sorry for the inconvenience.</value>
   </data>
   <data name="CURSOR_WIDTH_LABEL" xml:space="preserve">
     <value>Cursor width (pixels):</value>
+  </data>
+  <data name="CUSTOM_LAYOUT" xml:space="preserve">
+    <value>Custom keyboard file</value>
   </data>
   <data name="DANISH_DENMARK" xml:space="preserve">
     <value>Danish (Denmark) / Dansk (Danmark)</value>
@@ -550,6 +556,9 @@ UP</value>
   <data name="KEYBOARD_AND_DICTIONARY_LANGUAGE_LABEL" xml:space="preserve">
     <value>Keyboard language:</value>
   </data>
+  <data name="KEYBOARD_FOLDER_CAN_BE_CHANGED_SPLIT_LINE" xml:space="preserve">
+    <value>Keyboards folder can be set in \n Management Console (Visuals tab)</value>
+  </data>
   <data name="LEFT" xml:space="preserve">
     <value>Left</value>
   </data>
@@ -789,6 +798,9 @@ SELECTION</value>
   </data>
   <data name="NO" xml:space="preserve">
     <value>NO</value>
+  </data>
+  <data name="NO_KEYBOARDS_FOUND" xml:space="preserve">
+    <value>No keyboards found</value>
   </data>
   <data name="NO_NEW_ENTRIES_IN_SCRATCHPAD" xml:space="preserve">
     <value>It doesn't look like the scratchpad contains any words or phrases that don't already exist in the dictionary.</value>
@@ -1073,6 +1085,9 @@ POSITION</value>
   </data>
   <data name="STARTUP_KEYBOARD_LABEL" xml:space="preserve">
     <value>Startup keyboard:</value>
+  </data>
+  <data name="STARTUP_KEYBOARD_FILE_LOCATION_LABEL" xml:space="preserve">
+    <value>Custom keyboard file:</value>
   </data>
   <data name="STOP_SIGNAL_LABEL" xml:space="preserve">
     <value>Stop signal:</value>
@@ -1913,6 +1928,9 @@ The prediction method will be changed to NGram to prevent a crash on next run.</
   </data>
   <data name="PRESAGE_CONSTRUCTOR_EXCEPTION_TITLE" xml:space="preserve">
     <value>There is a problem with Presage</value>
+  </data>
+  <data name="DYNAMIC_KEYBOARDS_LOCATION_LABEL" xml:space="preserve">
+    <value>Folder containing dynamic keyboards:</value>
   </data>
   <data name="TOBII_PCEYE_GO_PLUS" xml:space="preserve">
     <value>Tobii PCEye Plus</value>

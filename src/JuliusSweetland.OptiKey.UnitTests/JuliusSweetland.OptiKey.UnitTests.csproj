@@ -104,6 +104,7 @@
     <Compile Include="Services\AutoComplete\BasicAutoCompleteTests.cs" />
     <Compile Include="Services\KeyboardOutputServiceTests.cs" />
     <Compile Include="TestBase.cs" />
+    <Compile Include="UI\Models\KeyValueTest.cs" />
     <Compile Include="UI\Utilities\DrawingUtilsTests.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\MainViewModelTestBase.cs" />
     <Compile Include="UI\ViewModels\MainViewModelSpecifications\WhenAttachServiceEventHandlers.cs" />

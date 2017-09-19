@@ -83,7 +83,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                         Timestamped<PointAndKeyValue>? lockOnStart = null; 
                         DateTimeOffset fixationStart = DateTimeOffset.MinValue;
-                        PointAndKeyValue? fixationCentrePointAndKeyValue = null;
+                        PointAndKeyValue fixationCentrePointAndKeyValue = null;
                         
                         Action disposeAllSubscriptions = null;
 
@@ -91,7 +91,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                             .Where(_ => disposed == false)
                             .Where(_ => State == RunningStates.Running)
                             .Where(tp => tp.Value != null) //Filter out stale indicators - the fixation progress is not reset by the points sequence being stale
-                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value.Value, tp.Timestamp))
+                            .Select(tp => new Timestamped<PointAndKeyValue>(tp.Value, tp.Timestamp))
                             .Buffer(2, 1) //Sliding buffer of 2 (last & current) that moves by 1 value at a time
                             .Subscribe(tps =>
                             {
@@ -103,7 +103,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     //Does the latest point continue an incomplete fixation? Continue it immediately, i.e. don't require a lock on again
                                     long storedProgress;
                                     if (latestPointAndKeyValue.Value.KeyValue != null
-                                        && incompleteFixationProgress.TryGetValue(latestPointAndKeyValue.Value.KeyValue.Value, out storedProgress))
+                                        && incompleteFixationProgress.TryGetValue(latestPointAndKeyValue.Value.KeyValue, out storedProgress))
                                     {
                                         fixationStart = latestPointAndKeyValue.Timestamp;
                                         fixationCentrePointAndKeyValue = new PointAndKeyValue(latestPointAndKeyValue.Value.Point, latestPointAndKeyValue.Value.KeyValue);
@@ -118,7 +118,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                     {
                                         //We have no current lock-on - start a new one
                                         if (latestPointAndKeyValue.Value.KeyValue != null
-                                            && (KeyEnabledStates == null || KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
+                                            && (KeyEnabledStates == null || KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue]))
                                         {
                                             lockOnStart = latestPointAndKeyValue;
                                         }
@@ -128,7 +128,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         //Lock-on in progress, but latest point breaks the lock-on
                                         if (latestPointAndKeyValue.Value.KeyValue == null
                                             || !lockOnStart.Value.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
-                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
+                                            || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue]))
                                         {
                                             lockOnStart = null;
                                         }
@@ -148,8 +148,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                 {
                                     //We have a current fixation
                                     if (latestPointAndKeyValue.Value.KeyValue == null
-                                        || !fixationCentrePointAndKeyValue.Value.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
-                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue.Value]))
+                                        || !fixationCentrePointAndKeyValue.KeyValue.Equals(latestPointAndKeyValue.Value.KeyValue)
+                                        || (KeyEnabledStates != null && !KeyEnabledStates[latestPointAndKeyValue.Value.KeyValue]))
                                     {
                                         //Latest pointAndKeyValue is not over the fixation key, or the key is now disabled
                                         if (tps.Count > 1)
@@ -159,13 +159,13 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
                                             //Calculate the span of the fixation up to this point and store the aggregate progress (so that we can resume progress later)
                                             var fixationSpan = previousPointAndKeyValue.Value.Timestamp.Subtract(fixationStart);
-                                            incompleteFixationProgress.AddOrUpdate(fixationCentrePointAndKeyValue.Value.KeyValue.Value,
+                                            incompleteFixationProgress.AddOrUpdate(fixationCentrePointAndKeyValue.KeyValue,
                                                     _ => fixationSpan.Ticks,
                                                     (_, existingProgress) => existingProgress + fixationSpan.Ticks);
 
                                             //Dispose of existing incomplete fixation timeout for this key
                                             IDisposable timeout;
-                                            if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out timeout))
+                                            if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out timeout))
                                             {
                                                 if (timeout != null)
                                                 {
@@ -174,14 +174,14 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                             }
 
                                             //Setup new incomplete fixation timeout
-                                            PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue.Value; //Access to modified closure
-                                            incompleteFixationTimeouts[fixationCentrePointAndKeyValue.Value.KeyValue.Value] =
+                                            PointAndKeyValue fixationCentrePointAndKeyValueCopy = fixationCentrePointAndKeyValue; //Access to modified closure
+                                            incompleteFixationTimeouts[fixationCentrePointAndKeyValue.KeyValue] =
                                                 Observable.Timer(incompleteFixationTtl).Subscribe(_ =>
                                                 {
                                                     long removedProgress;
                                                     IDisposable removedTimeout;
-                                                    incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue.Value, out removedProgress);
-                                                    incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue.Value, out removedTimeout);
+                                                    incompleteFixationProgress.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedProgress);
+                                                    incompleteFixationTimeouts.TryRemove(fixationCentrePointAndKeyValueCopy.KeyValue, out removedTimeout);
                                                     observer.OnNext(new TriggerSignal(null, 0, fixationCentrePointAndKeyValueCopy));
                                                 });
                                         }
@@ -195,11 +195,11 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         var fixationSpan = latestPointAndKeyValue.Timestamp.Subtract(fixationStart);
 
                                         long storedProgress;
-                                        incompleteFixationProgress.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out storedProgress);
+                                        incompleteFixationProgress.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out storedProgress);
 
                                         //Dispose of the timeout for the current fixation as it is in progress again
                                         IDisposable timeout;
-                                        if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.Value.KeyValue.Value, out timeout))
+                                        if (incompleteFixationTimeouts.TryGetValue(fixationCentrePointAndKeyValue.KeyValue, out timeout))
                                         {
                                             if (timeout != null)
                                             {
@@ -208,7 +208,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                                         }
 
                                         var timeToCompleteTrigger = timeToCompleteTriggerByKey.GetValueOrDefault(
-                                            fixationCentrePointAndKeyValue.Value.KeyValue.Value,
+                                            fixationCentrePointAndKeyValue.KeyValue,
                                             defaultTimeToCompleteTrigger);
                                         var progress = (((double)(storedProgress + fixationSpan.Ticks)) / (double)timeToCompleteTrigger.Ticks);
 
