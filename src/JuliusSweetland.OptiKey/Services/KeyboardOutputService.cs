@@ -374,33 +374,29 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                 }
 
-                var inProgressWord = Text != null ? Text.InProgressWord(Text.Length) : null;
-                if (newTextModified != null && inProgressWord != null)
+                var alreadyOutputInProgressWord = Text != null ? Text.InProgressWord(Text.Length) : null;
+                if (newTextModified != null && alreadyOutputInProgressWord != null)
                 {
-                    var inProgressWordWithNewProcessedText = string.Concat(inProgressWord, newTextModified);
+                    var inProgressWordWithNewProcessedText = string.Concat(alreadyOutputInProgressWord, newTextModified);
 
-                    inProgressWordWithNewProcessedText = AdjustInProgressWord(inProgressWordWithNewProcessedText);
-
-                    //Attempt to combine/compose in-progress word using normalisation
-                    var composedInProgressWordWithNewProcessedText = inProgressWordWithNewProcessedText.Compose();
-                    if (composedInProgressWordWithNewProcessedText != inProgressWordWithNewProcessedText)
+                    //Attempt to adjust and combine (using normalisation) the in-progress word (with new processed text appended)
+                    var adjustedInProgressWordWithNewProcessedText = AdjustInProgressWord(inProgressWordWithNewProcessedText);
+                    var adjustedAndComposedInProgressWordWithNewProcessedText = adjustedInProgressWordWithNewProcessedText.Compose();
+                    if (adjustedAndComposedInProgressWordWithNewProcessedText != inProgressWordWithNewProcessedText)
                     {
-                        Log.DebugFormat("In-progress word (including new text) can be combined/composed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWordWithNewProcessedText, composedInProgressWordWithNewProcessedText);
+                        Log.DebugFormat("In-progress word (including new text) can be combined/composed using normalisation. It will be normalised from '{0}' to '{1}'.", inProgressWordWithNewProcessedText, adjustedAndComposedInProgressWordWithNewProcessedText);
 
                         int commonRootLength = 0;
-                        for (var index = 0; index < composedInProgressWordWithNewProcessedText.Length; index++)
+                        for (var index = 0; index < adjustedAndComposedInProgressWordWithNewProcessedText.Length; index++)
                         {
-                            if (inProgressWordWithNewProcessedText[index] != composedInProgressWordWithNewProcessedText[index])
+                            if (adjustedAndComposedInProgressWordWithNewProcessedText[index] != inProgressWordWithNewProcessedText[index])
                             {
                                 commonRootLength = index;
                                 break;
                             }
                         }
 
-                        //The inProgressWordWithNewProcessedText is now the same as composedInProgressWordWithNewProcessedText 
-                        //for commonRootLength characters, after which the word endings differ and must be removed.
-                        var lengthOfTextWhichHasChangedByComposition = inProgressWordWithNewProcessedText.Length - commonRootLength;
-                        var countOfCharactersToRemove = lengthOfTextWhichHasChangedByComposition - newTextModified.Length; //Don't include newTextProcessed as it does not exist on Text yet
+                        var countOfCharactersToRemove = alreadyOutputInProgressWord.Length - commonRootLength;
                         if (countOfCharactersToRemove > Text.Length)
                         {
                             countOfCharactersToRemove = Text.Length; //Coerce to length of text as we can't remove more than we've already output
@@ -415,7 +411,7 @@ namespace JuliusSweetland.OptiKey.Services
                             PublishKeyPress(FunctionKeys.BackOne);
                         }
 
-                        newTextModified = composedInProgressWordWithNewProcessedText.Substring(commonRootLength, composedInProgressWordWithNewProcessedText.Length - commonRootLength);
+                        newTextModified = adjustedAndComposedInProgressWordWithNewProcessedText.Substring(commonRootLength, adjustedAndComposedInProgressWordWithNewProcessedText.Length - commonRootLength);
                     }
                 }
 
