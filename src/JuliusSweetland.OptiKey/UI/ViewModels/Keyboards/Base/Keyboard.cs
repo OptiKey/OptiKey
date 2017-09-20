@@ -10,5 +10,8 @@
 
         public bool SimulateKeyStrokes { get; private set; }
         public bool MultiKeySelectionSupported { get; private set; }
+
+        public virtual void OnEnter() { }
+        public virtual void OnExit() { }        
     }
 }
